@@ -6,3 +6,7 @@ Software installed
 - Ollama (https://ollama.com/download)
 - Gemma for Ollama (https://ollama.com/library/gemma3:4b)
 - Git bash (https://git-scm.com/install/windows). Git Desktop (https://desktop.github.com/download/) 
+
+
+guides:
+https://medium.com/@jonigl/using-ollama-with-python-a-simple-guide-0752369e1e55
