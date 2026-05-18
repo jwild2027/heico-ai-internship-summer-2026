@@ -10,3 +10,5 @@ Software installed
 
 guides:
 https://medium.com/@jonigl/using-ollama-with-python-a-simple-guide-0752369e1e55
+https://github.com/ollama/ollama-python
+https://developers.openai.com/cookbook
