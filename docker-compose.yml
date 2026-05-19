@@ -1,22 +1,16 @@
 name: heico-docker
 
 services:
-  db:
-    image: postgres:18-alpine
-    environment:
-      POSTGRES_USER: ${DB_USER:-user}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-password}
-      POSTGRES_DB: ${DB_NAME:-score}
-      PGDATA: /var/lib/postgresql/data/pgdata
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-admin} -d ${DB_NAME:-score}"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+  chroma:
+    build:
+      context: .
+      dockerfile: Dockerfile.chroma
+    # Expose the ChromaDB HTTP API
     ports:
-      - "5432:5432"
+      - "8000:8000"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - chroma_data:/data
+    # Simple restart policy; healthchecks vary between Chroma versions so skip here
 
   api:
     build:
@@ -27,10 +21,11 @@ services:
     ports:
       - "8080:8080"
     environment:
-      DB_URL: postgres://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}?sslmode=disable
+      # Point API to ChromaDB's HTTP endpoint. Adjust your API code if it expects a
+      # different var name (e.g., CHROMA_URL) — this sets DB_URL for backward compat.
+      DB_URL: http://chroma:8000
     depends_on:
-      db:
-        condition: service_healthy
+      - chroma
 
   web:
     build:
@@ -49,9 +44,18 @@ services:
       - VITE_AUTH0_CLIENT_ID=${VITE_AUTH0_CLIENT_ID}
       - VITE_AUTH0_AUDIENCE=${VITE_AUTH0_AUDIENCE}
 
+  streamlit:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - chroma
+
 volumes:
-<<<<<<< Updated upstream
-  pgdata:
-=======
-  pgdata:
->>>>>>> Stashed changes
+  chroma_data:
