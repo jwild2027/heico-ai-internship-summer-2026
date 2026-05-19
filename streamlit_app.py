@@ -1,23 +1,21 @@
 #!/usr/bin/env python3
 """Streamlit web app for exploring word-context graphs with Gemma.
 
-This app wraps the embed script functionality into an interactive UI where you can:
-- Input a seed word
-- Control the number of related words and context focus
-- View the generated graph in real time
+The app asks Ollama for JSON describing related words, turns that into a small
+graph, and falls back to showing the raw model output when parsing fails.
 """
 
+from __future__ import annotations
+
 import json
+import re
 from collections import defaultdict
 
 import streamlit as st
 
-# Try importing the Ollama client. If it's not available, define a placeholder
-# `chat` function that raises a clear error when called. This allows the Streamlit
-# app to load and show a helpful message in the UI instead of crashing at import time.
 try:
     from ollama import ResponseError, chat
-except Exception as _import_err:
+except Exception:
     ResponseError = Exception
 
     def chat(*args, **kwargs):
@@ -32,61 +30,35 @@ except Exception as _import_err:
 MODEL = "gemma3:4b"
 SYSTEM_PROMPT = (
     "You help build a small context graph. "
-    "Return only concise JSON with related words and short edge reasons."
+    "Return only valid JSON with related words and short edge reasons."
 )
 
-#!/usr/bin/env python3  # Shebang so script can be run directly on Unix systems
-"""Streamlit web app for exploring word-context graphs with Gemma.
 
-This app wraps the embed script functionality into an interactive UI where you can:
-- Input a seed word
-- Control the number of related words and context focus
-- View the generated graph in real time
-"""
+def extract_json_text(content: str) -> str:
+    """Strip markdown fences or surrounding text and return a JSON object string."""
+    text = content.strip()
 
-import json  # Used to parse JSON model output
-from collections import defaultdict  # Used to build adjacency lists for the graph
+    fenced = re.search(r"```(?:json)?\s*(.*?)```", text, flags=re.DOTALL | re.IGNORECASE)
+    if fenced:
+        text = fenced.group(1).strip()
 
-import streamlit as st  # Streamlit library for the web UI
+    start = text.find("{")
+    end = text.rfind("}")
+    if start != -1 and end != -1 and end > start:
+        text = text[start : end + 1].strip()
 
-# Attempt to import the Ollama client; if it's unavailable, provide a helpful
-# placeholder so the app can load and display an error rather than crashing.
-try:
-    from ollama import ResponseError, chat
-except Exception:
-    ResponseError = Exception
-
-    def chat(*args, **kwargs):
-        # Raise a clear runtime error when the real client is absent
-        raise RuntimeError(
-            "The 'ollama' package is not installed in this environment. "
-            "Install it into the project's venv with:\n"
-            ".venv\\Scripts\\python.exe -m pip install ollama\n"
-            "or run Streamlit using the venv python (python -m streamlit run ...)."
-        )
-
-
-MODEL = "gemma3:4b"  # Local Ollama model to query
-SYSTEM_PROMPT = (
-    "You help build a small context graph. "
-    "Return only concise JSON with related words and short edge reasons."
-)
+    return text
 
 
 def request_related_words(seed: str, focus: str, neighbors: int) -> dict[str, object]:
-    """Send a prompt to the model asking for related words in compact JSON.
-
-    Returns the parsed JSON on success or a fallback dict containing the raw
-    output when parsing fails.
-    """
     prompt = (
         "Create a compact JSON object for a word-context graph. "
         f"Seed word: {seed}. "
         f"Context focus: {focus}. "
         f"Return exactly {neighbors} related words. "
-        "Use this schema: {\"seed\": string, \"focus\": string, \"related\": ["
-        "{\"word\": string, \"reason\": string}]} . "
-        "Keep reasons short and specific."
+        'Use this schema: {"seed": string, "focus": string, "related": ['
+        '{"word": string, "reason": string}]}. '
+        "Keep reasons short and specific. Return JSON only. No markdown. No commentary."
     )
 
     response = chat(
@@ -98,18 +70,28 @@ def request_related_words(seed: str, focus: str, neighbors: int) -> dict[str, ob
         stream=False,
     )
 
-    content = response["message"]["content"]  # Extract content text
+    content = response["message"]["content"]
+    json_text = extract_json_text(content)
+
     try:
-        return json.loads(content)  # Parse content as JSON
+        payload = json.loads(json_text)
     except json.JSONDecodeError:
-        # On parse failure, return a fallback structure with the raw output
         return {"seed": seed, "focus": focus, "related": [], "raw_output": content}
+
+    if not isinstance(payload, dict):
+        return {"seed": seed, "focus": focus, "related": [], "raw_output": content}
+
+    payload.setdefault("seed", seed)
+    payload.setdefault("focus", focus)
+    payload.setdefault("related", [])
+    return payload
 
 
 def build_graph(seed: str, related: list[dict[str, str]]) -> dict[str, set[str]]:
-    """Create a simple bidirectional adjacency list from related-word entries."""
     graph = defaultdict(set)
     for item in related:
+        if not isinstance(item, dict):
+            continue
         word = item.get("word", "").strip()
         if not word:
             continue
@@ -118,27 +100,63 @@ def build_graph(seed: str, related: list[dict[str, str]]) -> dict[str, set[str]]
     return dict(graph)
 
 
-def main():
-    # Configure page layout and header
+def build_graph_dot(seed: str, related: list[dict[str, str]]) -> str:
+    """Build a Graphviz DOT string for the current seed and related words."""
+    lines = [
+        'graph G {',
+        '  rankdir="LR";',
+        '  splines=true;',
+        '  overlap=false;',
+        '  node [shape=circle, style=filled, fillcolor="#E8F1FF", color="#2F6FED", fontname="Arial"];',
+        '  edge [color="#6B7280", penwidth=1.5];',
+        f'  "{seed}" [fillcolor="#1D4ED8", fontcolor="white", penwidth=2.0];',
+    ]
+
+    seen_edges = set()
+    for item in related:
+        if not isinstance(item, dict):
+            continue
+        word = item.get("word", "").strip()
+        if not word:
+            continue
+        edge = tuple(sorted((seed, word)))
+        if edge in seen_edges:
+            continue
+        seen_edges.add(edge)
+        reason = item.get("reason", "").strip().replace('"', '\\"')
+        lines.append(f'  "{seed}" -- "{word}" [label="{reason}"];')
+
+    lines.append("}")
+    return "\n".join(lines)
+
+
+def main() -> None:
     st.set_page_config(page_title="Context Graph Explorer", layout="wide")
     st.title("🌐 Word Context Graph with Gemma")
     st.markdown("Enter a seed word and explore its context through a word graph generated by Gemma.")
 
-    # Sidebar: inputs for seed, neighbor count, and context focus
     with st.sidebar:
         st.header("Graph Settings")
         seed = st.text_input("Seed word", value="embedding", help="The starting word for the context graph.")
-        neighbors = st.slider("Number of neighbors", min_value=3, max_value=20, value=8, help="How many related words Gemma should generate.")
-        focus = st.text_input("Context focus", value="word usage in technical text", help="What context to bias the related words toward.")
+        neighbors = st.slider(
+            "Number of neighbors",
+            min_value=3,
+            max_value=20,
+            value=8,
+            help="How many related words Gemma should generate.",
+        )
+        focus = st.text_input(
+            "Context focus",
+            value="word usage in technical text",
+            help="What context to bias the related words toward.",
+        )
         generate = st.button("Generate Graph", type="primary")
 
-    # Main area: trigger query and render results
     if generate or "payload" in st.session_state:
         if generate:
             with st.spinner("Querying Gemma..."):
                 try:
-                    payload = request_related_words(seed, focus, neighbors)
-                    st.session_state.payload = payload
+                    st.session_state.payload = request_related_words(seed, focus, neighbors)
                 except ResponseError as error:
                     st.error(f"Ollama error: {error}. Make sure '{MODEL}' is installed and running.")
                     return
@@ -147,7 +165,6 @@ def main():
         related = payload.get("related", [])
         graph = build_graph(seed, related if isinstance(related, list) else [])
 
-        # Metrics: Seed, node count, and edge count
         col1, col2, col3 = st.columns(3)
         with col1:
             st.metric("Seed Word", seed)
@@ -159,7 +176,6 @@ def main():
 
         st.divider()
 
-        # Show nodes, edges and reasons side-by-side
         col_nodes, col_reasons = st.columns([1, 1])
 
         with col_nodes:
@@ -181,6 +197,8 @@ def main():
             st.subheader("Relationship Reasons")
             if isinstance(related, list) and related:
                 for item in related:
+                    if not isinstance(item, dict):
+                        continue
                     word = item.get("word", "").strip()
                     reason = item.get("reason", "").strip()
                     if word:
@@ -188,7 +206,13 @@ def main():
             else:
                 st.info("No relationship data available.")
 
-        # If model parsing failed, show raw text for debugging
+        st.divider()
+        st.subheader("Graph Diagram")
+        if isinstance(related, list) and related:
+            st.graphviz_chart(build_graph_dot(seed, related), use_container_width=True)
+        else:
+            st.info("No diagram to show yet because there are no related words.")
+
         raw_output = payload.get("raw_output")
         if raw_output:
             with st.expander("Raw Model Output"):
