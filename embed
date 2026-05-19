@@ -53,10 +53,8 @@ def request_related_words(seed: str, focus: str, neighbors: int) -> dict[str, ob
         f"Seed word: {seed}. "
         f"Context focus: {focus}. "
         f"Return exactly {neighbors} related words. "
-        "Use this schema: {"
-        '"seed": string, "focus": string, "related": ["
-        "{\"word\": string, \"reason\": string}"'
-        "]}. "
+        "Use this schema: {\"seed\": string, \"focus\": string, \"related\": ["
+        "{\"word\": string, \"reason\": string}]} . "
         "Keep reasons short and specific."
     )
 
