@@ -15,6 +15,10 @@ guides:
 https://medium.com/@jonigl/using-ollama-with-python-a-simple-guide-0752369e1e55
 https://github.com/ollama/ollama-python
 https://developers.openai.com/cookbook
+
+PDF ingestion:
+- `python doc_ingest.py --pdf path\to\file.pdf` to extract and summarize a PDF with Ollama.
+- Run `python doc_ingest.py` to choose a PDF with the file picker on Windows.
 https://www.pinecone.io/learn/vector-database/
 
 
