@@ -9,6 +9,27 @@ Software installed
 - chroma DB use pip install chromadb
 - Streamlit (https://streamlit.io/)
 - LlamaIndex (https://cloud.llamaindex.ai/project/06aa1528-ed1d-43b6-bb66-cbbdb78c7b7b)
+- nomic
+- copali
+- byaldi
+- sentence_transformers
+- torch
+- accelerate
+- numpy
+- pandas
+- scipy
+- scikit-learn
+- unstructured
+- pypdf
+- pytesseract
+- pynumpdf
+- pdfplumber
+- pillow
+- qwen3-vl
+- mxbai-embed-large
+- bge-embed-large
+- poppler
+- 
 
 
 guides:
