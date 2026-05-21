@@ -78,6 +78,11 @@ def normalize_text(text: str) -> str:
     text = re.sub(r"[ \t]+", " ", text)
     text = re.sub(r"\n[ \t]+", "\n", text)
     text = re.sub(r"\n{3,}", "\n\n", text)
+    # strip OCR header/footer artifacts
+    text = re.sub(r"—\$—", "", text)
+    text = re.sub(r"\d+-\d+\s*—[^—\n]*—", "", text)
+    # strip PDF chapter file headers e.g. "Ch 01.qxd 8/24/04 10:28 AM Page 1-2"
+    text = re.sub(r"Ch\s+\d+\.qxd\s+[\d/]+\s+[\d:]+\s+[AP]M\s+Page\s+[\d-]+", "", text)
     return text.strip()
 
 
@@ -116,7 +121,6 @@ def split_semantic_blocks(page_text: str) -> list[str]:
 
         if is_heading_line(line) and current_lines:
             blocks.append("\n".join(current_lines).strip())
-            # start new block with the heading line
             current_lines = [line]
             continue
 
@@ -168,7 +172,6 @@ def chunk_into_windows(text: str, window_words: int = EMBED_WINDOW_WORDS, overla
 def extract_title(blocks: list[str]) -> str:
     heading_lines: list[str] = []
     for block in blocks:
-        # find the first non-empty line in the block
         lines = [ln.strip() for ln in block.splitlines() if ln.strip()]
         if not lines:
             continue
@@ -370,7 +373,6 @@ def extract_pages_pymupdf(pdf_path: Path) -> list[dict[str, Any]]:
                         native_text = ocr_text
                         ocr_used = True
                 except Exception as error:
-                    # keep native text when OCR is unavailable or fails; the pipeline can still continue
                     print(f"[warning] OCR failed on page {index}: {error}")
 
             pages.append({"page": index, "text": native_text, "ocr_used": ocr_used})
@@ -389,9 +391,7 @@ def build_chunks(pages: list[dict[str, Any]], target_words: int, max_words: int,
         if not current_blocks:
             return
 
-        # ensure we don't duplicate titles: if first block is heading-only, use it as title
         title = extract_title(current_blocks) or "Untitled section"
-        # remove heading-only duplicates at start of body
         body_blocks = [strip_heading_from_block(b) for b in current_blocks]
         body_text = "\n\n".join([b for b in body_blocks if b]).strip()
         if not body_text:
@@ -421,7 +421,6 @@ def build_chunks(pages: list[dict[str, Any]], target_words: int, max_words: int,
         chunk_number += 1
 
         carry_blocks = current_blocks[-overlap_blocks:] if overlap_blocks > 0 else []
-        # strip leading headings from carry to avoid duplicating titles
         carry_blocks = [strip_heading_from_block(b) for b in carry_blocks]
         carry_pages = current_pages[-overlap_blocks:] if overlap_blocks > 0 else []
         current_blocks = list(carry_blocks)
@@ -442,11 +441,8 @@ def build_chunks(pages: list[dict[str, Any]], target_words: int, max_words: int,
             first_line = block.splitlines()[0].strip()
             block_words = block_word_count(block)
 
-            # If block is heading-only (short), treat it as a title and don't make it a standalone chunk
             if is_heading_line(first_line) and block_words < 20:
-                # carry heading text into next blocks rather than making a title-only chunk
                 current_title_parts.append(first_line)
-                # store heading as a block but it will be stripped from body when flushing
                 current_blocks.append(block)
                 current_pages.append(page_number)
                 continue
@@ -499,11 +495,7 @@ def extract_embeddings(response: Any) -> list[list[float]]:
 
 
 def embed_texts(model: str, texts: list[str], *, kind: str = "passage", show_progress: bool = False) -> list[list[float]]:
-    """Embed each text. For long passages, split into windows, embed windows, then average.
-
-    - `kind=="query"` uses query formatting (no windowing).
-    - Returns a list of vectors (one per input text).
-    """
+    """Embed each text. For long passages, split into windows, embed windows, then average."""
     out_vectors: list[list[float]] = []
 
     if kind == "query":
@@ -511,7 +503,6 @@ def embed_texts(model: str, texts: list[str], *, kind: str = "passage", show_pro
         response = ollama.embed(model=model, input=payloads, truncate=True)
         return extract_embeddings(response)
 
-    # passages: ensure each passage is embedded safely
     for idx, text in enumerate(texts, start=1):
         passage = format_passage_for_embedding(text)
         windows = chunk_into_windows(passage)
@@ -529,15 +520,12 @@ def embed_texts(model: str, texts: list[str], *, kind: str = "passage", show_pro
                 out_vectors.append(vec)
                 continue
             except Exception:
-                # fallthrough to per-window attempts
                 pass
 
-        # embed multiple windows and average
         try:
             response = ollama.embed(model=model, input=windows, truncate=True)
             window_vecs = extract_embeddings(response)
         except Exception:
-            # try per-window (slower) if batch fails
             window_vecs = []
             for w_i, w in enumerate(windows, start=1):
                 if show_progress:
@@ -545,7 +533,6 @@ def embed_texts(model: str, texts: list[str], *, kind: str = "passage", show_pro
                 response = ollama.embed(model=model, input=[w], truncate=True)
                 window_vecs.append(extract_embeddings(response)[0])
 
-        # average and L2-normalize
         mat = np.asarray(window_vecs, dtype=np.float64)
         avg = np.mean(mat, axis=0)
         norm = np.linalg.norm(avg) + 1e-12
@@ -620,26 +607,33 @@ def lexical_rerank(query: str, results: dict[str, list[list[Any]]], top_k: int) 
         scored.append((document, metadata or {}, distance, overlap_score))
 
     scored.sort(key=lambda item: (-item[3], item[2] if item[2] is not None else 9999.0))
-    return scored[:top_k]
+
+    # Deduplicate by page range so overlap chunks from the same page
+    # don't consume multiple result slots.
+    seen_pages: set[tuple] = set()
+    deduped: list = []
+    for item in scored:
+        meta = item[1] or {}
+        page_key = (meta.get("page_start"), meta.get("page_end"))
+        if page_key not in seen_pages:
+            seen_pages.add(page_key)
+            deduped.append(item)
+
+    return deduped[:top_k]
 
 
 def cross_encoder_rerank(query: str, results: dict[str, list[list[Any]]], model: str, top_k: int) -> list[tuple[str, dict[str, Any], float | None, float]]:
-    """Use an Ollama cross-encoder-style model to score each candidate.
-
-    Returns list of tuples (document, metadata, distance, score) sorted by score desc.
-    """
+    """Use an Ollama cross-encoder-style model to score each candidate."""
     documents = results.get("documents", [[]])[0]
     metadatas = results.get("metadatas", [[]])[0]
     distances = results.get("distances", [[]])[0]
 
-    # Try to use a local CrossEncoder from sentence-transformers if available.
     try:
         from sentence_transformers import CrossEncoder
 
         try:
             reranker = CrossEncoder(model)
         except Exception as e:
-            # Likely a download or SSL error when trying to fetch model files
             print("[warning] failed to load CrossEncoder model:", str(e))
             print("[hint] This often happens when the environment cannot download from Hugging Face (SSL / network issue).")
             print(" - Option A: install 'sentence-transformers' and ensure network/SSL is functional (pip install certifi).")
@@ -647,9 +641,8 @@ def cross_encoder_rerank(query: str, results: dict[str, list[list[Any]]], model:
             print(" - Example PowerShell step to use certifi's CA bundle:")
             print(r"   $env:SSL_CERT_FILE = (python -c \"import certifi; print(certifi.where())\")")
             print("Common smaller alternative (more likely to download): 'cross-encoder/ms-marco-MiniLM-L-6-v2'")
-            print("Falling back to lexical rerank (hybrid retrieval) instead of CrossEncoder.")
+            print("Falling back to lexical rerank.")
             lex = lexical_rerank(query, results, top_k)
-            # annotate lexical results with method tag
             return [(doc, meta, dist, float(score), "lexical") for (doc, meta, dist, score) in lex]
 
         pairs = [[query, doc] for doc in documents]
@@ -661,11 +654,10 @@ def cross_encoder_rerank(query: str, results: dict[str, list[list[Any]]], model:
         return scored[:top_k]
     except ModuleNotFoundError:
         print("[info] 'sentence-transformers' is not installed. Install it with: pip install sentence-transformers")
-        print("Falling back to lexical rerank (hybrid retrieval).")
+        print("Falling back to lexical rerank.")
         lex = lexical_rerank(query, results, top_k)
         return [(doc, meta, dist, float(score), "lexical") for (doc, meta, dist, score) in lex]
     except Exception as e:
-        # Any other unexpected error: fallback to lexical rerank and surface a hint
         print("[warning] CrossEncoder reranker failed:", str(e))
         print("Falling back to lexical rerank.")
         lex = lexical_rerank(query, results, top_k)
@@ -695,7 +687,6 @@ def query_collection(persist_dir: Path, collection_name: str, model: str, query:
 
     print(f"Query: {query}\n")
     for index, item in enumerate(reranked, start=1):
-        # item may be (document, metadata, distance, score) or (document, metadata, distance, score, method)
         if len(item) == 5:
             document, metadata, distance, score, method = item
         else:
