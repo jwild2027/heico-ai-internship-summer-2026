@@ -139,6 +139,40 @@ class RAGDatabase:
         ).fetchall()
         return [dict(r) for r in rows]
 
+    def clear_document_content(self, doc_id: str) -> dict[str, int]:
+        """Delete pages, page_texts, images, and chunks for a doc, keeping
+        the document row + its ingestion_runs history.
+
+        Use this at the start of a re-ingest so rows don't accumulate across
+        runs. Returns a count of rows deleted per table so the caller can log
+        what was cleared.
+        """
+        counts = {"chunks": 0, "page_texts": 0, "images": 0, "pages": 0}
+        with self._conn:
+            counts["chunks"] = self._conn.execute(
+                "DELETE FROM chunks WHERE doc_id=?", (doc_id,)
+            ).rowcount
+
+            page_ids = [
+                r["id"] for r in self._conn.execute(
+                    "SELECT id FROM pages WHERE doc_id=?", (doc_id,)
+                ).fetchall()
+            ]
+            if page_ids:
+                placeholders = ",".join("?" * len(page_ids))
+                counts["page_texts"] = self._conn.execute(
+                    f"DELETE FROM page_texts WHERE page_id IN ({placeholders})",
+                    page_ids,
+                ).rowcount
+                counts["images"] = self._conn.execute(
+                    f"DELETE FROM images WHERE page_id IN ({placeholders})",
+                    page_ids,
+                ).rowcount
+                counts["pages"] = self._conn.execute(
+                    f"DELETE FROM pages WHERE id IN ({placeholders})", page_ids
+                ).rowcount
+        return counts
+
     def delete_document(self, doc_id: str) -> None:
         """Delete a document and all dependent rows (cascades via FK)."""
         with self._conn:
@@ -357,8 +391,26 @@ class RAGDatabase:
         page_end: Optional[int] = None,
         chunker_version: str = "semantic_v1",
         config: Optional[dict[str, Any]] = None,
+        strategy: str = "flat",
+        level: str = "flat",
+        parent_id: Optional[str] = None,
+        explicit_id: Optional[str] = None,
     ) -> str:
-        chunk_id = _new_id()
+        """Insert/upsert a chunk.
+
+        - For flat chunks, leave strategy/level/parent_id at defaults.
+        - For parent chunks, pass strategy="parent_child", level="parent".
+        - For child chunks, pass strategy="parent_child", level="child", parent_id=<parent uuid>.
+        - explicit_id overrides the deterministic hash (used when the chunker
+          already generated a stable ID, e.g. parent_child chunker).
+        """
+        if explicit_id:
+            chunk_id = explicit_id
+        else:
+            import hashlib as _hl
+            chunk_id = _hl.sha256(
+                f"{doc_id}::{level}::{chunk_index}::{chunker_version}".encode()
+            ).hexdigest()[:32]
         wc = word_count if word_count is not None else len(text.split())
         with self._conn:
             self._conn.execute(
@@ -366,17 +418,54 @@ class RAGDatabase:
                 INSERT INTO chunks
                     (id, doc_id, page_id, page_text_id, run_id, chunk_index,
                      text, title, char_start, char_end, word_count, token_count,
-                     page_start, page_end, chunker_version, config_json, embedded)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)
+                     page_start, page_end, chunker_version, strategy, level,
+                     parent_id, config_json, embedded)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)
+                ON CONFLICT(id) DO UPDATE SET
+                    text=excluded.text,
+                    title=excluded.title,
+                    word_count=excluded.word_count,
+                    page_start=excluded.page_start,
+                    page_end=excluded.page_end,
+                    run_id=excluded.run_id,
+                    strategy=excluded.strategy,
+                    level=excluded.level,
+                    parent_id=excluded.parent_id,
+                    embedded=0
                 """,
                 (
                     chunk_id, doc_id, page_id, page_text_id, run_id, chunk_index,
                     text, title, char_start, char_end, wc, token_count,
-                    page_start, page_end, chunker_version,
+                    page_start, page_end, chunker_version, strategy, level,
+                    parent_id,
                     json.dumps(config) if config else None,
                 ),
             )
         return chunk_id
+
+    def get_parent_chunk(self, child_chunk_id: str) -> Optional[dict[str, Any]]:
+        """Given a child chunk ID, fetch its parent chunk row (for LLM context)."""
+        row = self._conn.execute(
+            """
+            SELECT p.* FROM chunks p
+            JOIN chunks c ON c.parent_id = p.id
+            WHERE c.id = ? AND p.level = 'parent'
+            """,
+            (child_chunk_id,),
+        ).fetchone()
+        return dict(row) if row else None
+
+    def get_parents_by_ids(self, parent_ids: list[str]) -> list[dict[str, Any]]:
+        """Bulk-fetch parents by ID (used after child retrieval to assemble context)."""
+        if not parent_ids:
+            return []
+        placeholders = ",".join("?" * len(parent_ids))
+        rows = self._conn.execute(
+            f"SELECT * FROM chunks WHERE id IN ({placeholders}) AND level='parent'",
+            parent_ids,
+        ).fetchall()
+        row_map = {dict(r)["id"]: dict(r) for r in rows}
+        return [row_map[pid] for pid in parent_ids if pid in row_map]
 
     def mark_chunk_embedded(self, chunk_id: str) -> None:
         with self._conn:
@@ -501,4 +590,3 @@ class RAGDatabase:
             "retrieval_logs": log_count,
             "document_list": [dict(r) for r in docs],
         }
-    

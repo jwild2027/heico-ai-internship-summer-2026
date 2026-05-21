@@ -1,0 +1,3 @@
+- [Project: local RAG stack for technical PDFs](project_rag_stack.md) — what's wired vs. experimental, current branch focus
+- [Repo layout: active vs. exploration code](project_repo_layout.md) — which dirs are pipeline, which are scaffolding/experiments
+- [User: AI internship at HEICO, building this project solo](user_role.md) — frames how to scope suggestions

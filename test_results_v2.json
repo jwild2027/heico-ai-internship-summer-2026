@@ -1,0 +1,383 @@
+{
+  "summary": {
+    "passed": 11,
+    "total": 13
+  },
+  "cases": [
+    {
+      "query": "What are sponsons?",
+      "difficulty": "easy",
+      "passed": true,
+      "grounded": true,
+      "term_score": 1.0,
+      "term_hits": [
+        "sponson",
+        "winglike",
+        "hull",
+        "stabilize"
+      ],
+      "latency_ms": 9186.7,
+      "answer": "Sponsons are short, winglike projections from the sides of the hull near the waterline [p5]. Their purpose is to stabilize the hull from rolling motion when the flying boat is on the water, and they may also provide some aerodynamic lift in flight. Tip floats are sometimes known as sponsons [p5].",
+      "citations": [
+        {
+          "page_start": 5,
+          "page_end": 5,
+          "title": "SEAPLANE CHARACTERISTICS",
+          "distance": 1.0256
+        },
+        {
+          "page_start": 5,
+          "page_end": 6,
+          "title": "SEAPLANE CHARACTERISTICS",
+          "distance": 1.0943
+        }
+      ]
+    },
+    {
+      "query": "What is the step on a float?",
+      "difficulty": "easy",
+      "passed": true,
+      "grounded": true,
+      "term_score": 0.75,
+      "term_hits": [
+        "step",
+        "water drag",
+        "takeoff"
+      ],
+      "latency_ms": 2977.2,
+      "answer": "The step on a float provides a means of reducing water drag during takeoff and during high-speed taxi [p8]. It allows the pilot to relax elevator back pressure, allowing the aft portions of the floats to be out of the water [p8].",
+      "citations": [
+        {
+          "page_start": 8,
+          "page_end": 8,
+          "title": "Untitled section",
+          "distance": 0.6571
+        },
+        {
+          "page_start": 6,
+          "page_end": 7,
+          "title": "Untitled section",
+          "distance": 0.6677
+        }
+      ]
+    },
+    {
+      "query": "What are water rudders?",
+      "difficulty": "easy",
+      "passed": true,
+      "grounded": true,
+      "term_score": 1.0,
+      "term_hits": [
+        "water rudder",
+        "retract",
+        "maneuvering",
+        "cables"
+      ],
+      "latency_ms": 2865.5,
+      "answer": "Water rudders are retractable control surfaces located at the rear tip of each float [p7-p8]. They are connected by cables and springs to the rudder pedals in the cockpit and are used for maneuvering on the water surface [p7-p8].",
+      "citations": [
+        {
+          "page_start": 7,
+          "page_end": 8,
+          "title": "Untitled section",
+          "distance": 0.6308
+        },
+        {
+          "page_start": 11,
+          "page_end": 12,
+          "title": "WATER EFFECTS ON OPERATIONS",
+          "distance": 0.7643
+        }
+      ]
+    },
+    {
+      "query": "What is hydrodynamic lift?",
+      "difficulty": "easy",
+      "passed": true,
+      "grounded": true,
+      "term_score": 1.0,
+      "term_hits": [
+        "hydrodynamic",
+        "upward force",
+        "motion",
+        "floats"
+      ],
+      "latency_ms": 2478.0,
+      "answer": "Hydrodynamic lift is the upward force produced by the motion of the floats through the water. [p7] This lift increases as speed increases, but water drag increases more quickly.",
+      "citations": [
+        {
+          "page_start": 7,
+          "page_end": 7,
+          "title": "Untitled section",
+          "distance": 0.7954
+        },
+        {
+          "page_start": 7,
+          "page_end": 8,
+          "title": "Untitled section",
+          "distance": 0.8199
+        }
+      ]
+    },
+    {
+      "query": "How does a seaplane slow down on water?",
+      "difficulty": "medium",
+      "passed": false,
+      "grounded": false,
+      "term_score": 0.0,
+      "term_hits": [],
+      "latency_ms": 1431.2,
+      "answer": "I don't have enough information in the provided documents to answer that.",
+      "citations": [
+        {
+          "page_start": 9,
+          "page_end": 9,
+          "title": "CHARACTERISTICS OF WATER | DETERMINING SEA CONDITIONS",
+          "distance": 0.6009
+        }
+      ]
+    },
+    {
+      "query": "What makes glassy water dangerous for landing?",
+      "difficulty": "medium",
+      "passed": true,
+      "grounded": true,
+      "term_score": 1.0,
+      "term_hits": [
+        "glassy",
+        "altitude",
+        "illusion",
+        "featureless"
+      ],
+      "latency_ms": 2503.8,
+      "answer": "The flat, featureless surface of glassy water makes it far more difficult to gauge altitude accurately, and reflections can create confusing optical illusions [p11]. This poses a significant challenge for seaplane pilots attempting to land.",
+      "citations": [
+        {
+          "page_start": 11,
+          "page_end": 11,
+          "title": "Untitled section",
+          "distance": 0.5682
+        },
+        {
+          "page_start": 10,
+          "page_end": 11,
+          "title": "19 - 24",
+          "distance": 0.6157
+        }
+      ]
+    },
+    {
+      "query": "How do you know which side of a buoy to pass?",
+      "difficulty": "medium",
+      "passed": false,
+      "grounded": true,
+      "term_score": 0.33,
+      "term_hits": [
+        "red",
+        "right"
+      ],
+      "latency_ms": 5769.8,
+      "answer": "If the topmost band is black, the buoy should be kept to the left of an inbound vessel. If the topmost band is red, keep the buoy to the right when inbound. [p1-4]",
+      "citations": [
+        {
+          "page_start": 3,
+          "page_end": 4,
+          "title": "Untitled section",
+          "distance": 0.5068
+        },
+        {
+          "page_start": 4,
+          "page_end": 4,
+          "title": "Untitled section",
+          "distance": 0.5583
+        }
+      ]
+    },
+    {
+      "query": "What causes a seaplane to weathervane?",
+      "difficulty": "medium",
+      "passed": true,
+      "grounded": true,
+      "term_score": 1.0,
+      "term_hits": [
+        "weathervane",
+        "wind",
+        "yaw",
+        "nose"
+      ],
+      "latency_ms": 3446.2,
+      "answer": "The tendency for a seaplane to weathervane is caused by the wind, which makes the airplane yaw until the nose points into the wind [p11-p12]. This is more pronounced in seaplanes with conventional (tailwheel) gear compared to those with tricycle landing gear [p11-p12].",
+      "citations": [
+        {
+          "page_start": 11,
+          "page_end": 12,
+          "title": "WATER EFFECTS ON OPERATIONS",
+          "distance": 0.4922
+        },
+        {
+          "page_start": 12,
+          "page_end": 12,
+          "title": "Untitled section",
+          "distance": 0.566
+        },
+        {
+          "page_start": 7,
+          "page_end": 8,
+          "title": "Untitled section",
+          "distance": 0.6142
+        }
+      ]
+    },
+    {
+      "query": "What are the differences between flying boats and floatplanes?",
+      "difficulty": "hard",
+      "passed": true,
+      "grounded": true,
+      "term_score": 1.0,
+      "term_hits": [
+        "flying boat",
+        "floatplane",
+        "hull",
+        "fuselage",
+        "pontoon"
+      ],
+      "latency_ms": 3918.4,
+      "answer": "Flying boats, also called hull seaplanes, have a fuselage that serves as their main landing gear, often supplemented with wingtip floats and sponsons to stabilize the hull. Floatplanes, on the other hand, are conventional landplanes fitted with separate floats (pontoons) in place of wheels, and their fuselage is supported well above the water\u2019s surface [p5-p6]. Some amphibious seaplanes have retractable wheels for land operations.",
+      "citations": [
+        {
+          "page_start": 5,
+          "page_end": 5,
+          "title": "SEAPLANE CHARACTERISTICS",
+          "distance": 0.5244
+        },
+        {
+          "page_start": 5,
+          "page_end": 6,
+          "title": "SEAPLANE CHARACTERISTICS",
+          "distance": 0.5795
+        }
+      ]
+    },
+    {
+      "query": "What regulations apply when a seaplane is on water?",
+      "difficulty": "hard",
+      "passed": true,
+      "grounded": true,
+      "term_score": 0.5,
+      "term_hits": [
+        "USCG",
+        "vessel"
+      ],
+      "latency_ms": 4079.5,
+      "answer": "According to United States Coast Guard (USCG) regulations, any seaplane operating on the water is required to comply with USCG navigation rules applicable to vessels [p2]. Additionally, Title 14 CFR parts 1, 61, and 91 apply, recognizing the unique characteristics of water operations and addressing specific regulations like 61.31 and 91.107 [p1-p2].",
+      "citations": [
+        {
+          "page_start": 1,
+          "page_end": 1,
+          "title": "PRIVILEGES AND LIMITATIONS | SEAPLANE REGULATIONS",
+          "distance": 0.4691
+        },
+        {
+          "page_start": 2,
+          "page_end": 2,
+          "title": "RULES OF THE SEA | 91.115 should ensure compliance with the USCG | INLAND AND INTERNATIONAL WATERS",
+          "distance": 0.4901
+        },
+        {
+          "page_start": 1,
+          "page_end": 2,
+          "title": "Untitled section",
+          "distance": 0.4965
+        },
+        {
+          "page_start": 12,
+          "page_end": 12,
+          "title": "Untitled section",
+          "distance": 0.4053
+        }
+      ]
+    },
+    {
+      "query": "How does buoyancy work for seaplane floats?",
+      "difficulty": "hard",
+      "passed": true,
+      "grounded": true,
+      "term_score": 0.75,
+      "term_hits": [
+        "buoyancy",
+        "displace",
+        "weight"
+      ],
+      "latency_ms": 3778.9,
+      "answer": "Buoyancy works for seaplane floats by displacing an amount of water equal to the weight of the seaplane. [p6-p7] At very low speeds, the entire length of the floats supports the seaplane\u2019s weight through this displacement. As speed increases, aerodynamic lift contributes, but hydrodynamic lift, generated by the movement through the water, becomes the primary force supporting the seaplane.",
+      "citations": [
+        {
+          "page_start": 6,
+          "page_end": 7,
+          "title": "Untitled section",
+          "distance": 0.4308
+        }
+      ]
+    },
+    {
+      "query": "What is the engine horsepower requirement for a seaplane?",
+      "difficulty": "adversarial",
+      "passed": true,
+      "grounded": false,
+      "term_score": null,
+      "term_hits": [],
+      "latency_ms": 1813.1,
+      "answer": "I don't have enough information in the provided documents to answer that.",
+      "citations": [
+        {
+          "page_start": 1,
+          "page_end": 1,
+          "title": "PRIVILEGES AND LIMITATIONS | SEAPLANE REGULATIONS",
+          "distance": 0.5364
+        },
+        {
+          "page_start": 12,
+          "page_end": 12,
+          "title": "Untitled section",
+          "distance": 0.5818
+        },
+        {
+          "page_start": 1,
+          "page_end": 2,
+          "title": "Untitled section",
+          "distance": 0.6154
+        }
+      ]
+    },
+    {
+      "query": "How do you file a flight plan for a seaplane?",
+      "difficulty": "adversarial",
+      "passed": true,
+      "grounded": false,
+      "term_score": null,
+      "term_hits": [],
+      "latency_ms": 1522.8,
+      "answer": "I don't have enough information in the provided documents to answer that.",
+      "citations": [
+        {
+          "page_start": 1,
+          "page_end": 1,
+          "title": "PRIVILEGES AND LIMITATIONS | SEAPLANE REGULATIONS",
+          "distance": 0.5419
+        },
+        {
+          "page_start": 8,
+          "page_end": 9,
+          "title": "SEAPLANE FLIGHT PRINCIPLES",
+          "distance": 0.6225
+        },
+        {
+          "page_start": 5,
+          "page_end": 5,
+          "title": "SEAPLANE CHARACTERISTICS",
+          "distance": 0.6256
+        }
+      ]
+    }
+  ]
+}
