@@ -1,0 +1,15 @@
+CHUNK: 88
+CHUNK_ID: de301104eb2b15bf1353a742bb082de7
+TITLE: METAR KGGG 161753Z COR).
+PAGE_START: 24
+PAGE_END: 26
+METADATA: {'page_start': 24, 'page_end': 26}
+
+include wind data, variable visibility, beginning and ending times of particular phenomenon,
+pressure information, and various other information deemed necessary. An example of a
+remark regarding weather phenomenon that does not fit in any other category would be:
+OCNL LTGICCG. This translates as occasional lightning in the clouds and from cloud to ground.
+Automated stations also use the remarks section to indicate the equipment needs
+maintenance.
+Example:
+METAR KGGG 161753Z AUTO 14021G26KT 3/4SM +TSRA BR BKN008 OVC012CB

@@ -20,7 +20,7 @@ import shutil
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
-
+from tools.chroma_client import get_collection
 import chromadb
 import ollama
 import numpy as np
@@ -530,7 +530,8 @@ def embed_texts(model: str, texts: list[str], *, kind: str = "passage", show_pro
             for w_i, w in enumerate(windows, start=1):
                 if show_progress:
                     print(f"  embedding window {w_i}/{len(windows)}")
-                response = ollama.embed(model=model, input=[w], truncate=True)
+                safe_w = " ".join(w.split()[:400])  # hard cap ~400 words to stay under bge token limit
+                response = ollama.embed(model=model, input=[safe_w], truncate=True)
                 window_vecs.append(extract_embeddings(response)[0])
 
         mat = np.asarray(window_vecs, dtype=np.float64)
@@ -542,9 +543,7 @@ def embed_texts(model: str, texts: list[str], *, kind: str = "passage", show_pro
     return out_vectors
 
 
-def get_collection(persist_dir: Path, collection_name: str):
-    client = chromadb.PersistentClient(path=str(persist_dir))
-    return client.get_or_create_collection(name=collection_name)
+
 
 
 def ingest_pdf(pdf_path: Path, persist_dir: Path, collection_name: str, model: str, chunk_words: int, overlap: int) -> None:

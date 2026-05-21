@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS images (
 
 CREATE_CHUNKS = """
 CREATE TABLE IF NOT EXISTS chunks (
-    id              TEXT PRIMARY KEY,          -- uuid, also used as Chroma chunk_id
+    id              TEXT PRIMARY KEY ON CONFLICT REPLACE,  -- deterministic hash, upsert-safe
     doc_id          TEXT NOT NULL REFERENCES documents(id),
     page_id         TEXT NOT NULL REFERENCES pages(id),
     page_text_id    TEXT NOT NULL REFERENCES page_texts(id),
@@ -101,6 +101,9 @@ CREATE TABLE IF NOT EXISTS chunks (
     page_start      INTEGER,                   -- first page number spanned
     page_end        INTEGER,                   -- last page number spanned
     chunker_version TEXT,                      -- e.g. "semantic_v1"
+    strategy        TEXT NOT NULL DEFAULT 'flat',  -- "flat" | "parent_child"
+    level           TEXT NOT NULL DEFAULT 'flat',  -- "flat" | "parent" | "child"
+    parent_id       TEXT,                      -- FK to parent chunk if level=child; NULL otherwise
     config_json     TEXT,                      -- JSON of chunker params (target_words, overlap, …)
     embedded        INTEGER NOT NULL DEFAULT 0, -- 1 = vector is in Chroma
     created_at      TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
@@ -126,13 +129,20 @@ CREATE TABLE IF NOT EXISTS retrieval_logs (
 """
 
 # Indexes for the most common lookup patterns
+# The UNIQUE index on documents.pdf_checksum enforces the "one row per PDF
+# content hash" invariant that upsert_document() relies on. Without it a
+# duplicate insert (or a stale/corrupted upsert path) could silently produce
+# two rows for the same PDF — or, worse, mask a wipe-and-reinsert as success.
 CREATE_INDEXES = """
+CREATE UNIQUE INDEX IF NOT EXISTS idx_documents_checksum_unique ON documents(pdf_checksum);
 CREATE INDEX IF NOT EXISTS idx_pages_doc_id         ON pages(doc_id);
 CREATE INDEX IF NOT EXISTS idx_page_texts_page_id   ON page_texts(page_id);
 CREATE INDEX IF NOT EXISTS idx_page_texts_selected  ON page_texts(page_id, is_selected);
 CREATE INDEX IF NOT EXISTS idx_chunks_doc_id        ON chunks(doc_id);
 CREATE INDEX IF NOT EXISTS idx_chunks_page_id       ON chunks(page_id);
 CREATE INDEX IF NOT EXISTS idx_chunks_embedded      ON chunks(embedded);
+CREATE INDEX IF NOT EXISTS idx_chunks_parent_id     ON chunks(parent_id);
+CREATE INDEX IF NOT EXISTS idx_chunks_level         ON chunks(level);
 CREATE INDEX IF NOT EXISTS idx_ingestion_runs_doc   ON ingestion_runs(doc_id);
 CREATE INDEX IF NOT EXISTS idx_images_page_id       ON images(page_id);
 """
