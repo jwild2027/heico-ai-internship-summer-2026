@@ -22,6 +22,9 @@ from typing import Any
 import ollama
 
 MODEL = os.getenv("OLLAMA_DOC_MODEL", "gemma3:4b")
+# Default prompt and chunking heuristics used when summarizing document chunks.
+# `DEFAULT_CHUNK_WORDS` is an approximate target for chunk size; large PDFs
+# will be split with an overlap to preserve context near boundaries.
 DEFAULT_PROMPT = (
     "Summarize this document chunk for later retrieval. "
     "Return only valid JSON with keys: title, summary, keywords, entities, page_notes. "
@@ -32,6 +35,7 @@ DEFAULT_CHUNK_OVERLAP = 40
 DEFAULT_MIN_SCORE = 1
 NOISE_LINE_MIN_OCCURRENCES = 3
 NOISE_LINE_MAX_LEN = 80
+# Regular expressions used to detect page footers/headers and document headings.
 
 PAGE_MARKER_RE = re.compile(r"^\s*(page\s*)?\d+(\s*/\s*\d+)?\s*$", re.IGNORECASE)
 HEADING_RE = re.compile(
@@ -106,6 +110,7 @@ def pick_pdf_file() -> Path:
             "Run again with --pdf PATH_TO_FILE.pdf."
         ) from error
 
+    # Use a minimal Tk file picker when no --pdf was provided.
     root = tk.Tk()
     root.withdraw()
     root.attributes("-topmost", True)
@@ -136,6 +141,9 @@ def resolve_pdf_path(pdf_arg: Path | None) -> Path:
 
 
 def extract_pages(pdf_path: Path) -> list[dict[str, Any]]:
+    # Extract text from each PDF page using pypdf. Returns a list of dicts
+    # with `page` and `text` keys so downstream logic is independent of the
+    # PDF library used (we can swap scrapers and still call `run_ingest_with_pages`).
     try:
         from pypdf import PdfReader
     except ModuleNotFoundError as error:
@@ -155,12 +163,15 @@ def extract_pages(pdf_path: Path) -> list[dict[str, Any]]:
 
 
 def normalize_line(line: str) -> str:
+    # Collapse whitespace and strip stray numeric-only lines (page numbers)
     line = re.sub(r"\s+", " ", line).strip()
     line = re.sub(r"^\d+\s*$", "", line).strip()
     return line
 
 
 def find_repeated_noise_lines(pages: list[dict[str, Any]]) -> set[str]:
+    # Identify lines that appear on many pages (headers/footers, watermarks).
+    # These often pollute extracted text and should be removed before chunking.
     counts: dict[str, int] = {}
     page_count = len(pages)
 
@@ -183,6 +194,8 @@ def find_repeated_noise_lines(pages: list[dict[str, Any]]) -> set[str]:
 
 
 def clean_page_text(page_text: str, repeated_noise: set[str]) -> str:
+    # Remove page markers, blank lines, and any repeated noise discovered
+    # across the document. Returns cleaned page text preserving paragraph breaks.
     cleaned_lines: list[str] = []
     for raw_line in page_text.splitlines():
         line = normalize_line(raw_line)
@@ -197,6 +210,8 @@ def clean_page_text(page_text: str, repeated_noise: set[str]) -> str:
 
 
 def split_into_paragraphs(page_text: str) -> list[str]:
+    # Prefer splitting on blank-line gaps; if the PDF had no blank lines use
+    # single-line splits as a fallback so we still get sensible blocks.
     paragraphs = [part.strip() for part in re.split(r"\n\s*\n+", page_text) if part.strip()]
     if len(paragraphs) == 1:
         # Preserve line-based structure when PDFs do not include blank lines.
@@ -208,12 +223,17 @@ def is_heading(line: str) -> bool:
     line = normalize_line(line)
     if not line:
         return False
+    # Heuristic: short lines that match uppercase-style headings or numbered
+    # section patterns are treated as headings and start new sections.
     if len(line.split()) <= 10 and HEADING_RE.match(line):
         return True
     return False
 
 
 def build_structure_aware_sections(pages: list[dict[str, Any]], repeated_noise: set[str]) -> list[dict[str, Any]]:
+    # Build higher-level sections by grouping paragraphs under detected
+    # headings. This produces longer sections than raw page paragraphs and
+    # keeps related text together for better chunking and summarization.
     sections: list[dict[str, Any]] = []
     current_section: dict[str, Any] | None = None
 
@@ -265,10 +285,14 @@ def build_structure_aware_sections(pages: list[dict[str, Any]], repeated_noise: 
 
 
 def split_words(text: str) -> list[str]:
+    # Simple tokenization by whitespace; used for chunk-windowing by word
+    # counts to avoid pulling in heavy tokenizer dependencies at this stage.
     return re.findall(r"\S+", text)
 
 
 def score_section_text(text: str, query_terms: list[str]) -> int:
+    # Lightweight relevance scoring used as a first-pass filter: count
+    # occurrences of query prompt terms in the section text.
     lowered = text.lower()
     score = 0
     for term in query_terms:
@@ -277,6 +301,9 @@ def score_section_text(text: str, query_terms: list[str]) -> int:
 
 
 def build_query_terms(prompt: str) -> list[str]:
+    # Extract candidate query terms from the summarization prompt. These are
+    # used to remove sections unlikely to be useful for retrieval (cheap
+    # heuristic before calling the model).
     terms = [term.lower() for term in re.findall(r"[A-Za-z0-9_][A-Za-z0-9_\-]+", prompt)]
     stopwords = {
         "this", "that", "with", "from", "into", "only", "valid", "json", "keys",
@@ -304,6 +331,8 @@ def chunk_sections(
     records: list[ChunkRecord] = []
     chunk_id = 1
 
+    # Convert each structured section into one or more chunk windows using a
+    # sliding window of size `chunk_words` and step determined by `overlap`.
     for section in sections:
         text = str(section["text"]).strip()
         if not text:
@@ -355,6 +384,9 @@ def chunk_sections(
 
 
 def extract_json_text(content: str) -> str:
+    # Models sometimes return prose containing JSON or fenced JSON blocks.
+    # This extracts the first JSON-looking substring so we can robustly parse
+    # the model output even when it includes commentary.
     text = content.strip()
 
     fenced = re.search(r"```(?:json)?\s*(.*?)```", text, flags=re.DOTALL | re.IGNORECASE)
@@ -370,6 +402,10 @@ def extract_json_text(content: str) -> str:
 
 
 def summarize_chunk(chunk: ChunkRecord, prompt: str, model: str) -> dict[str, Any]:
+    # Call the Ollama model to summarize a chunk. We send a short system
+    # instruction to constrain output to JSON and then attempt to extract and
+    # parse any JSON the model returns. If parsing fails we fall back to
+    # packing the raw content into a minimal structure.
     response = ollama.chat(
         model=model,
         messages=[
@@ -423,6 +459,8 @@ def summarize_chunk(chunk: ChunkRecord, prompt: str, model: str) -> dict[str, An
 
 
 def deduplicate_chunks(chunks: list[ChunkRecord]) -> list[ChunkRecord]:
+    # Remove exact-duplicate chunk texts (case-insensitive, normalized
+    # whitespace) to avoid sending redundant prompts to the model.
     seen: set[str] = set()
     deduped: list[ChunkRecord] = []
     for chunk in chunks:
