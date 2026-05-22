@@ -683,7 +683,7 @@ def extract_pages_pymupdf(
 
     with fitz.open(str(pdf_path)) as doc:
         for index, page in enumerate(doc, start=1):
-            native_text = page.get_text("text") or ""
+            native_text = (page.get_text("text") or "").strip()
             ocr_text = ""
             ocr_used = False
             selected_text = native_text
@@ -735,7 +735,7 @@ def extract_pages_pymupdf(
             pages.append(
                 {
                     "page": index,
-                    "text": selected_text,
+                    "text": selected_text.strip(),
                     "ocr_used": ocr_used,
                     "native_text": native_text,
                     "ocr_text": ocr_text,
