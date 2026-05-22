@@ -140,37 +140,30 @@ class RAGDatabase:
         return [dict(r) for r in rows]
 
     def clear_document_content(self, doc_id: str) -> dict[str, int]:
-        """Delete pages, page_texts, images, and chunks for a doc, keeping
-        the document row + its ingestion_runs history.
-
-        Use this at the start of a re-ingest so rows don't accumulate across
-        runs. Returns a count of rows deleted per table so the caller can log
-        what was cleared.
-        """
         counts = {"chunks": 0, "page_texts": 0, "images": 0, "pages": 0}
         with self._conn:
             counts["chunks"] = self._conn.execute(
                 "DELETE FROM chunks WHERE doc_id=?", (doc_id,)
             ).rowcount
 
-            page_ids = [
-                r["id"] for r in self._conn.execute(
-                    "SELECT id FROM pages WHERE doc_id=?", (doc_id,)
-                ).fetchall()
-            ]
-            if page_ids:
-                placeholders = ",".join("?" * len(page_ids))
-                counts["page_texts"] = self._conn.execute(
-                    f"DELETE FROM page_texts WHERE page_id IN ({placeholders})",
-                    page_ids,
-                ).rowcount
-                counts["images"] = self._conn.execute(
-                    f"DELETE FROM images WHERE page_id IN ({placeholders})",
-                    page_ids,
-                ).rowcount
-                counts["pages"] = self._conn.execute(
-                    f"DELETE FROM pages WHERE id IN ({placeholders})", page_ids
-                ).rowcount
+        counts["page_texts"] = self._conn.execute(
+            """DELETE FROM page_texts WHERE page_id IN (
+                SELECT id FROM pages WHERE doc_id=?
+            )""",
+            (doc_id,),
+        ).rowcount
+
+        counts["images"] = self._conn.execute(
+            """DELETE FROM images WHERE page_id IN (
+                SELECT id FROM pages WHERE doc_id=?
+            )""",
+            (doc_id,),
+        ).rowcount
+
+        counts["pages"] = self._conn.execute(
+            "DELETE FROM pages WHERE doc_id=?", (doc_id,)
+        ).rowcount
+
         return counts
 
     def delete_document(self, doc_id: str) -> None:
