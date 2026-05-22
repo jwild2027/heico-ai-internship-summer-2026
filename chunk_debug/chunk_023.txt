@@ -1,15 +1,17 @@
 CHUNK: 23
-CHUNK_ID: a09e9940aeff2b1429b49f3509860b3d
-TITLE: Untitled section
-PAGE_START: 14
-PAGE_END: 14
-METADATA: {'page_start': 14, 'page_end': 14}
+CHUNK_ID: fa8a02d1aa0c21f6af5dc284a09d0d2a
+TITLE: 5.2.3.4. Zero Trust Architecture (ZTA)
+PAGE_START: 92
+PAGE_END: 92
+METADATA: {'page_start': 92, 'page_end': 92}
 
-in Class D airspace.
-Class E Airspace
-Class E airspace is the controlled airspace not classified as Class A, B, C, or D airspace. A large
-amount of the airspace over the United States is designated as Class E airspace. This provides
-sufficient airspace for the safe control and separation of aircraft during IFR operations. Chapter 3 of
-the Aeronautical Information Manual (AIM) explains the various types of Class E airspace.
-Sectional and other charts depict all locations of Class E airspace with bases below 14,500 feet MSL.
-In areas
+with varying maturity levels to support their environment.  
+• Implementing zero trust principles into an existing environment may require more 
+investments in time, resources, and technical ability.  
+OT-Specific Recommendations and Guidance  
+Some OT components (e.g., PLCs, controllers, HMI) may not support 
+the technologies or protocols required to fully integrate with a ZTA 
+implementation. As a result, a ZTA implementation might not be 
+practical for some OT devices. Instead, organizations should consider 
+applying a ZTA to compatible devices, such as those typically found at 
+the functionally higher levels of the OT

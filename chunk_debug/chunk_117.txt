@@ -1,16 +1,19 @@
 CHUNK: 117
-CHUNK_ID: 40d7333b8641453c4243338cd2bd6ba3
-TITLE: Untitled section
-PAGE_START: 30
-PAGE_END: 30
-METADATA: {'page_start': 30, 'page_end': 30}
+CHUNK_ID: 47c94728dbfbb1a4ea585b287df7cc0c
+TITLE: 6.2.1.3. Network Segmentation and Isolation (PR.AC-5)
+PAGE_START: 119
+PAGE_END: 119
+METADATA: {'page_start': 119, 'page_end': 119}
 
-thrust is available
-for climbing. Aircraft designers go to great lengths to minimize the weight, since it has such a
-marked effect on the factors pertaining to performance.
-A change in an aircraft’s weight produces a twofold effect on climb performance. An increase in
-altitude also increases the power required and decreases the power available. Therefore, the climb
-performance of an aircraft diminishes with altitude.
-Measurement of Atmosphere Pressure
-To provide a common reference, the International Standard Atmosphere (ISA) has been established.
-These standard conditions are the basis for most
+Section 5.  
+While VLANs can be a cost-effective solution for OT network 
+segmentation, organizations should consider utilizing physically separate 
+switches for segmenting high-criticality devices, such as those that 
+support safety systems.  
+When configuring network isolation devices, organizations may find it 
+difficult to determine which network traffic is necessary for proper OT 
+operations. In these situations, organizations might consider temporarily 
+allowing and recording all communication between the network 
+segments. This can provide reviewable logs to identify and document 
+authorized communication for implementing network isolation rules. 
+This activity may also reveal previously

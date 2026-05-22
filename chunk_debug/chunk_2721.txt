@@ -1,0 +1,20 @@
+CHUNK: 2721
+CHUNK_ID: 01e1e0031f65326dce9386066bf3b6f7
+TITLE: SC-3 SECURITY FUNCTION ISOLATION
+PAGE_START: 320
+PAGE_END: 321
+METADATA: {'page_start': 320, 'page_end': 321}
+
+non-kernel 
+code, security function isolation is often achieved through file system protections that protect 
+the code on disk and address space protections that protect executing code. Systems can restrict 
+access to security functions using access control mechanisms and by implementing least privilege
+
+NIST SP 800-53, REV. 5                                                                                     SECURITY AND PRIVACY CONTROLS FOR INFORMATION SYSTEMS AND ORGANIZATIONS                                                    
+_________________________________________________________________________________________________ 
+CHAPTER THREE 
+ 
+ PAGE 294 
+This publication is available free of charge from: https://doi.org/10.6028/NIST.SP.800-53r5 
+capabilities. While the ideal is for all code within the defined security function isolation boundary 
+to only contain security-relevant code,

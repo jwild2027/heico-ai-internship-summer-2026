@@ -1,15 +1,16 @@
 CHUNK: 160
-CHUNK_ID: afa16f2b292b3b8aea789c69a689befc
-TITLE: Untitled section
-PAGE_START: 35
-PAGE_END: 37
-METADATA: {'page_start': 35, 'page_end': 37}
+CHUNK_ID: 4821787e50b666ab2bde74287887a46c
+TITLE: 6.2.1.4.5. Password Authentication
+PAGE_START: 123
+PAGE_END: 124
+METADATA: {'page_start': 123, 'page_end': 124}
 
-Fuel burn is
-the most common weight change that takes place during flight. As fuel is used, the aircraft
-becomes lighter and performance is improved, but this could have a negative effect on
-balance. In small UA operations, weight change during flight may occur when expendable
-items are used on board (e.g., a jettisonable load).
-Adverse balance conditions (i.e., weight distribution) may affect flight characteristics in much the same
-manner as those mentioned for an excess weight condition. Limits for the location of the center of
-gravity (CG) may be
+arguably the most common and simplest form of 
+authentication, numerous vulnerabilities are associated with the use of and reliance on password-
+only authentication. For example, systems are often delivered with default passwords that can be 
+easily guessed, discovered, or researched. Another weakness is the ease of third-party 
+eavesdropping. Passwords typed at a keyboard can be visually observed by others or recorded 
+using keystroke loggers.  
+Some network services and protocols transmit passwords as plaintext (unencrypted), allowing 
+any network capture tool to expose the passwords. Additionally, passwords may be shared and 
+not

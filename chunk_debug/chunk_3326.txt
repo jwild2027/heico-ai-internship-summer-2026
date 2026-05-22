@@ -1,0 +1,20 @@
+CHUNK: 3326
+CHUNK_ID: 4d776922783ff8003f0a44c630781a2d
+TITLE: SI-15 INFORMATION OUTPUT FILTERING
+PAGE_START: 382
+PAGE_END: 382
+METADATA: {'page_start': 382, 'page_end': 382}
+
+programs or applications. Information output filtering focuses on detecting extraneous content, 
+preventing such extraneous content from being displayed, and then alerting monitoring tools 
+that anomalous behavior has been discovered. 
+Related Controls:  SI-3, SI-4, SI-11. 
+Control Enhancements:  None. 
+References:  None. 
+SI-16 
+MEMORY PROTECTION 
+Control:  Implement the following controls to protect the system memory from unauthorized 
+code execution: [Assignment: organization-defined controls]. 
+Discussion:  Some adversaries launch attacks with the intent of executing code in non-executable 
+regions of memory or in memory locations that are prohibited. Controls employed to protect 
+memory include data execution

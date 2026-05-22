@@ -1,0 +1,8 @@
+CHUNK: 2145
+CHUNK_ID: 7969e4df659e4d52428140cec83b2955
+TITLE: SA-6 SOFTWARE USAGE RESTRICTIONS (part 1/6)
+PAGE_START: 284
+PAGE_END: 297
+METADATA: {'page_start': 284, 'page_end': 297}
+
+to simplify system design and implementation. In order to protect user-domain resources from arbitrary active entities, no resource is shared unless that sharing has been explicitly requested and granted. The need for resource sharing can be motivated by the design principle of least common mechanism in the case of internal entities or driven by stakeholder requirements. However, internal sharing is carefully designed to avoid performance and covert storage and timing channel problems. Sharing via common mechanism can increase the susceptibility of data and information to unauthorized access, disclosure, use, or

@@ -1,0 +1,17 @@
+CHUNK: 2712
+CHUNK_ID: a86af378668f6a7295ab9c0613697965
+TITLE: SC-2 SEPARATION OF SYSTEM AND USER FUNCTIONALITY
+PAGE_START: 320
+PAGE_END: 321
+METADATA: {'page_start': 320, 'page_end': 321}
+
+design objective is 
+that the specific portions of systems that provide information security are of minimal size 
+and complexity. Minimizing the number of nonsecurity functions in the security-relevant 
+system components allows designers and implementers to focus only on those functions 
+which are necessary to provide the desired security capability (typically access enforcement). 
+By minimizing the nonsecurity functions within the isolation boundaries, the amount of code 
+that is trusted to enforce security policies is significantly reduced, thus contributing to 
+understandability. 
+Related Controls:  None. 
+(4) SECURITY FUNCTION ISOLATION | MODULE COUPLING AND

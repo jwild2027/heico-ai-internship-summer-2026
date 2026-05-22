@@ -1,13 +1,15 @@
 CHUNK: 94
-CHUNK_ID: ee93348fd978e3f6ba917cd008c868a9
-TITLE: 18/17 A2970 RMK PRESFR
-PAGE_START: 26
-PAGE_END: 27
-METADATA: {'page_start': 26, 'page_end': 27}
+CHUNK_ID: acd8ea6284866c47c4e415794dfa4d1f
+TITLE: 6.2.1.1. Logical Access Controls (PR.AC)
+PAGE_START: 115
+PAGE_END: 115
+METADATA: {'page_start': 115, 'page_end': 115}
 
-given in the sixnumber code with the first two being the date, the last four being the time. Time is always
-given in UTC as denoted by the Z following the time block.
-4. Valid period dates and times—The TAF valid period (0812/0912) follows the date/time of
-forecast origin group. Scheduled 24 and 30 hour TAFs are issued four times per day, at 0000,
-0600, 1200, and 1800Z. The first two digits (08) are the day of the month for the start of the
-TAF. The next two digits (12)
+control (ABAC) is an access control approach in which 
+access is determined based on the attributes associated with subjects (requesters) and the objects 
+being accessed. Each object and subject has a set of associated attributes, such as location, time 
+of creation, and access rights. Access to an object is authorized or denied depending on whether 
+the required (e.g., policy-defined) correlation can be made between the attributes of that object 
+and the requesting subject.  
+For federal employees and contractors, Personal Identity Verification (PIV), used in accordance 
+with FIPS 201, may be

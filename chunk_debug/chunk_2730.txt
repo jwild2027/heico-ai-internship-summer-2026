@@ -1,0 +1,21 @@
+CHUNK: 2730
+CHUNK_ID: 465088adc1ac341da97b324459bc599b
+TITLE: SC-4 INFORMATION IN SHARED SYSTEM RESOURCES
+PAGE_START: 322
+PAGE_END: 322
+METADATA: {'page_start': 322, 'page_end': 322}
+
+the design and avoiding any dependence by lower layers on the functionality or 
+correctness of higher layers. 
+Discussion:  The implementation of layered structures with minimized interactions among 
+security functions and non-looping layers (i.e., lower-layer functions do not depend on 
+higher-layer functions) enables the isolation of security functions and the management of 
+complexity. 
+Related Controls:  None. 
+References:  None. 
+SC-4 
+INFORMATION IN SHARED SYSTEM RESOURCES 
+Control:  Prevent unauthorized and unintended information transfer via shared system 
+resources. 
+Discussion:  Preventing unauthorized and unintended information transfer via shared system 
+resources stops information produced by the

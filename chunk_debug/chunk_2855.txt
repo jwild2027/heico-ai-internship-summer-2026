@@ -1,0 +1,20 @@
+CHUNK: 2855
+CHUNK_ID: 658bbe530faff7cb1d8a8974889d178d
+TITLE: SC-9 TRANSMISSION CONFIDENTIALITY
+PAGE_START: 333
+PAGE_END: 333
+METADATA: {'page_start': 333, 'page_end': 333}
+
+Terminating network 
+connections associated with specific communications sessions includes de-allocating TCP/IP 
+address or port pairs at the operating system level and de-allocating the networking assignments 
+at the application level if multiple application sessions are using a single operating system-level 
+network connection. Periods of inactivity may be established by organizations and include time 
+periods by type of network access or for specific network accesses. 
+Related Controls:  AC-17, SC-23. 
+Control Enhancements:  None. 
+References:  None. 
+SC-11 TRUSTED PATH 
+Control:  
+a. Provide a [Selection: physically; logically] isolated trusted communications path for 
+communications between the

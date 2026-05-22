@@ -1,0 +1,13 @@
+CHUNK: 3265
+CHUNK_ID: 4c17ecb93809a50d4614fd2846f8f8f6
+TITLE: SI-9 INFORMATION INPUT RESTRICTIONS
+PAGE_START: 376
+PAGE_END: 377
+METADATA: {'page_start': 376, 'page_end': 377}
+
+Protocols (TCP) when 
+packets are dropped (which could be due to invalid packet input). TCP assumes packet losses 
+are due to congestion, while packets lost over 802.11 links are typically dropped due to noise 
+or collisions on the link. If TCP makes a congestion response, it takes the wrong action in 
+response to a collision event. Adversaries may be able to use what appear to be acceptable 
+individual behaviors of the protocols in concert to achieve adverse effects through suitable

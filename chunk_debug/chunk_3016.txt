@@ -1,0 +1,18 @@
+CHUNK: 3016
+CHUNK_ID: 590f8a7a29f32e9b36e0e4ca28c79269
+TITLE: SC-33 TRANSMISSION PREPARATION INTEGRITY
+PAGE_START: 348
+PAGE_END: 348
+METADATA: {'page_start': 348, 'page_end': 348}
+
+read-only media 
+provided that integrity can be adequately protected from the point of initial writing to the 
+insertion of the memory into the system, and there are reliable hardware protections against 
+reprogramming the memory while installed in organizational systems. 
+Related Controls:  AC-3, SI-7, SI-14. 
+Control Enhancements: 
+(1) NON-MODIFIABLE EXECUTABLE PROGRAMS | NO WRITABLE STORAGE 
+Employ [Assignment: organization-defined system components] with no writeable storage 
+that is persistent across component restart or power on/off. 
+Discussion:  Disallowing writeable storage eliminates the possibility of malicious code 
+insertion via persistent, writeable storage within the designated

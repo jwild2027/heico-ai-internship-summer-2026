@@ -1,0 +1,18 @@
+CHUNK: 2957
+CHUNK_ID: 51747158af7a1a8de487cd2bdf5004f3
+TITLE: SC-24 FAIL IN KNOWN STATE
+PAGE_START: 342
+PAGE_END: 342
+METADATA: {'page_start': 342, 'page_end': 342}
+
+use of [Assignment: organization-defined certificate authorities] for 
+verification of the establishment of protected sessions. 
+Discussion:  Reliance on certificate authorities for the establishment of secure sessions 
+includes the use of Transport Layer Security (TLS) certificates. These certificates, after 
+verification by their respective certificate authorities, facilitate the establishment of 
+protected sessions between web clients and web servers. 
+Related Controls:  SC-12, SC-13. 
+References:  [SP 800-52], [SP 800-77], [SP 800-95], [SP 800-113]. 
+SC-24 FAIL IN KNOWN STATE 
+Control:   Fail to a [Assignment: organization-defined known system state] for the following 
+failures on the indicated components

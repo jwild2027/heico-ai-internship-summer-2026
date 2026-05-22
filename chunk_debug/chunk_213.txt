@@ -1,13 +1,17 @@
 CHUNK: 213
-CHUNK_ID: fc32b3eb525c9a6108a1870019b5f880
-TITLE: Untitled section
-PAGE_START: 49
-PAGE_END: 49
-METADATA: {'page_start': 49, 'page_end': 49}
+CHUNK_ID: ba049b972b7c76589288c5d008c5e093
+TITLE: 6.2.6.1. Logging (PR.PT-1)
+PAGE_START: 135
+PAGE_END: 135
+METADATA: {'page_start': 135, 'page_end': 135}
 
-of any airport, either towered or non-towered, it is important for a
-remote pilot to understand radio communications of manned aircraft in the area. Although 14 CFR
-part 107 only requires the remote pilot to receive authorization to operate in certain airport areas, it
-can be a good operating practice to have a radio that will allow the remote pilot to monitor the
-appropriate frequencies in the area. The remote pilot should refrain from transmitting over any
-active aviation frequency unless there is an emergency situation.
+not informed by a 
+shared time source. The internal clocks of each device should be 
+synchronized with a primary clock to support event correlation between 
+devices. Log entries should also produce a consistent timestamp format 
+(e.g., time zone format, string format, daylight saving).  
+The collection and event forwarding functions may impact the 
+performance of the OT device. Depending on the frequency of events 
+being logged, the log size may grow quickly and result in increasing 
+space utilization. Disk space and memory are limited on most OT 
+devices, so adequate storage

@@ -1,0 +1,8 @@
+CHUNK: 2440
+CHUNK_ID: ffa65a03e6ca166cd57aea1888465563
+TITLE: SA-8 SECURITY AND PRIVACY ENGINEERING PRINCIPLES (part 4/6)
+PAGE_START: 284
+PAGE_END: 297
+METADATA: {'page_start': 284, 'page_end': 297}
+
+a trusted lower-level component that attests to the trustworthiness of the next higher-level components so that a transitive chain of trust can be established. At the root, a component attests to itself, which usually involves an axiomatic or environmentally enforced assumption about its integrity. Results of the self-analyses can be used to guard against externally induced errors, internal malfunction, or transient errors. By following this principle, some simple malfunctions or errors can be detected without allowing the effects of the error or malfunction to propagate outside of the component. Further,

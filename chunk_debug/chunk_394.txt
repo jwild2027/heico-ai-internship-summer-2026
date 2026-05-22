@@ -1,0 +1,20 @@
+CHUNK: 394
+CHUNK_ID: 0c6509e60cd15599d8fc0844b9488208
+TITLE: AC-24 ACCESS CONTROL DECISIONS
+PAGE_START: 84
+PAGE_END: 84
+METADATA: {'page_start': 84, 'page_end': 84}
+
+and distributed systems, 
+different entities may make access control decisions and enforce access. 
+Related Controls:  AC-2, AC-3. 
+ 
+Control Enhancements: 
+(1) ACCESS CONTROL DECISIONS | TRANSMIT ACCESS AUTHORIZATION INFORMATION  
+Transmit [Assignment: organization-defined access authorization information] using 
+[Assignment: organization-defined controls] to [Assignment: organization-defined 
+systems] that enforce access control decisions. 
+Discussion:  Authorization processes and access control decisions may occur in separate 
+parts of systems or in separate systems. In such instances, authorization information is 
+transmitted securely (e.g., using cryptographic mechanisms) so that timely access control 
+decisions can be enforced at the appropriate locations.

@@ -1,0 +1,15 @@
+CHUNK: 474
+CHUNK_ID: 0b36008a06c27f5a90134fc5e28629ef
+TITLE: AU-4 AUDIT LOG STORAGE CAPACITY
+PAGE_START: 95
+PAGE_END: 96
+METADATA: {'page_start': 95, 'page_end': 96}
+
+to a different system, 
+system component, or media other than the system or system component conducting the 
+logging. 
+Discussion:  Audit log transfer, also known as off-loading, is a common process in systems 
+with limited audit log storage capacity and thus supports availability of the audit logs. The 
+initial audit log storage is only used in a transitory fashion until the system can communicate 
+with the secondary or alternate system allocated to audit log storage, at which point the 
+audit logs are transferred. Transferring audit logs to alternate storage is similar

@@ -1,0 +1,20 @@
+CHUNK: 2866
+CHUNK_ID: 48d8f1a74902fccd57e0a82e12532d57
+TITLE: SC-11 TRUSTED PATH
+PAGE_START: 333
+PAGE_END: 333
+METADATA: {'page_start': 333, 'page_end': 333}
+
+communication lines that carry national security information. 
+Related Controls:  None. 
+References:  [FIPS 140-3], [FIPS 197], [SP 800-52], [SP 800-77], [SP 800-81-2], [SP 800-113], [SP 
+800-177], [IR 8023]. 
+SC-9 
+TRANSMISSION CONFIDENTIALITY 
+[Withdrawn: Incorporated into SC-8.] 
+SC-10 NETWORK DISCONNECT 
+Control:  Terminate the network connection associated with a communications session at the 
+end of the session or after [Assignment: organization-defined time period] of inactivity.  
+Discussion:  Network disconnect applies to internal and external networks. Terminating network 
+connections associated with specific communications sessions includes de-allocating TCP/IP 
+address or port pairs at the operating system level

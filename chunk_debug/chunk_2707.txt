@@ -1,0 +1,20 @@
+CHUNK: 2707
+CHUNK_ID: 92461f0159f6ee1b442cd704895b3b24
+TITLE: SC-2 SEPARATION OF SYSTEM AND USER FUNCTIONALITY
+PAGE_START: 320
+PAGE_END: 321
+METADATA: {'page_start': 320, 'page_end': 321}
+
+non-kernel 
+code, security function isolation is often achieved through file system protections that protect 
+the code on disk and address space protections that protect executing code. Systems can restrict 
+access to security functions using access control mechanisms and by implementing least privilege
+
+NIST SP 800-53, REV. 5                                                                                     SECURITY AND PRIVACY CONTROLS FOR INFORMATION SYSTEMS AND ORGANIZATIONS                                                    
+_________________________________________________________________________________________________ 
+CHAPTER THREE 
+ 
+ PAGE 294 
+This publication is available free of charge from: https://doi.org/10.6028/NIST.SP.800-53r5 
+capabilities. While the ideal is for all code within the defined security function isolation boundary 
+to only contain security-relevant code,

@@ -1,15 +1,20 @@
 CHUNK: 80
-CHUNK_ID: accf08fbfc90b39c957aaf629298cc39
-TITLE: METAR KGGG 161753Z COR).
-PAGE_START: 24
-PAGE_END: 26
-METADATA: {'page_start': 24, 'page_end': 26}
+CHUNK_ID: 572558de2992b0395309f3f1708fb59a
+TITLE: 6.1.1.1. Mapping Data Flows (ID.AM-3)
+PAGE_START: 109
+PAGE_END: 109
+METADATA: {'page_start': 109, 'page_end': 109}
 
-is greater than 99
-knots, in which case it is indicated by three digits. If the winds are gusting, the letter “G”
-follows the wind speed (G26KT). After the letter “G,” the peak gust recorded is provided. If
-the wind direction varies more than 60° and the wind speed is greater than six knots, a
-separate group of numbers, separated by a “V,” will indicate the extremes of the wind
-directions.
-6. Visibility—the prevailing visibility (3⁄4 SM) is reported in statute miles as denoted by the letters
-“SM.” It is
+for analysis to identify anomalies.  
+OT-Specific Recommendations and Guidance  
+Organizations should consider the impact of the use of automated data 
+flow mapping tools that use active scanning or require network 
+monitoring tools (e.g., in-line network probes) on OT systems. Impacts 
+could be due to the nature of the information, the volume of network 
+traffic, or the momentary disconnection of manufacturing system 
+components from the network. Consider using data flow mapping tools 
+that utilize these methods during planned downtime.  
+6.1.1.2. 
+Network Architecture Documentation (Supports the Outcome of 
+ID.AM)  
+Network architecture documentation
