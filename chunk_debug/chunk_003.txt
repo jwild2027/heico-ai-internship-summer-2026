@@ -1,22 +1,26 @@
 CHUNK: 3
-CHUNK_ID: 7c44a4b046d13aefeb58b540ad528cc0
-TITLE: Untitled section
-PAGE_START: 1
-PAGE_END: 8
-METADATA: {'page_start': 1, 'page_end': 8}
+CHUNK_ID: c8aa912fc76bbc44c4657e3647e77a82
+TITLE: 5.2.3.1. Network Architecture
+PAGE_START: 88
+PAGE_END: 89
+METADATA: {'page_start': 88, 'page_end': 89}
 
-from the Federal Aviation Administration (FAA) .............................................. 1
-FAA Reference Material ...................................................................................................................... 1
-Chapter 1: Applicable Regulations .......................................................................................... 3
-Chapter 2: Airspace Classification, Operating Requirements, and Flight Restrictions .............. 5
-Introduction ......................................................................................................................................... 5
-Controlled Airspace ............................................................................................................................. 5
-Uncontrolled Airspace ......................................................................................................................... 6
-Special Use Airspace ............................................................................................................................ 6
-Other Airspace Areas ........................................................................................................................... 9
-Air Traffic Control and the National Airspace System ....................................................................... 12
-Visual Flight Rules (VFR) Terms & Symbols ....................................................................................... 12
-Notices to Airmen (NOTAMs) ............................................................................................................ 13
-Chapter 3a: Aviation Weather Sources ................................................................................. 15
-Introduction ....................................................................................................................................... 15
-Surface Aviation Weather Observations
+also 
+consider using an industry-recognized model to organize their OT network segmentation, such as 
+the Purdue model [Williams], ISA-95 levels [IEC62264], the three-tier IIoT system architecture 
+[IIRA19], or a combination of these models.
+
+NIST SP 800-82r3 
+ 
+Guide to Operational Technology (OT) Security 
+September 2023 
+ 
+  
+72 
+Additional, organizations may consider incorporating a DMZ as an enforcement boundary 
+between network segments, as depicted in Fig. 16. Implementing network segmentation utilizing 
+levels, tiers, or zones allows organizations to control access to sensitive information and 
+components while also considering operational performance and safety. 
+ 
+ 
+Fig.

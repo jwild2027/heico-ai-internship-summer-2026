@@ -1,0 +1,15 @@
+CHUNK: 2871
+CHUNK_ID: 5b9dba5a840abbbea35ff10cfd5e1563
+TITLE: SC-12 CRYPTOGRAPHIC KEY ESTABLISHMENT AND MANAGEMENT
+PAGE_START: 334
+PAGE_END: 334
+METADATA: {'page_start': 334, 'page_end': 334}
+
+including during system logons. The original implementations of trusted paths employed 
+an out-of-band signal to initiate the path, such as using the <BREAK> key, which does not 
+transmit characters that can be spoofed. In later implementations, a key combination that could 
+not be hijacked was used (e.g., the <CTRL> + <ALT> + <DEL> keys). Such key combinations, 
+however, are platform-specific and may not provide a trusted path implementation in every case. 
+The enforcement of trusted communications paths is provided by a specific implementation that 
+meets the reference monitor concept. 
+Related

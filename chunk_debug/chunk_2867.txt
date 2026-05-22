@@ -1,0 +1,20 @@
+CHUNK: 2867
+CHUNK_ID: 4c6ef45f91afd57623c25e4053b4eb90
+TITLE: SC-11 TRUSTED PATH
+PAGE_START: 333
+PAGE_END: 333
+METADATA: {'page_start': 333, 'page_end': 333}
+
+Terminating network 
+connections associated with specific communications sessions includes de-allocating TCP/IP 
+address or port pairs at the operating system level and de-allocating the networking assignments 
+at the application level if multiple application sessions are using a single operating system-level 
+network connection. Periods of inactivity may be established by organizations and include time 
+periods by type of network access or for specific network accesses. 
+Related Controls:  AC-17, SC-23. 
+Control Enhancements:  None. 
+References:  None. 
+SC-11 TRUSTED PATH 
+Control:  
+a. Provide a [Selection: physically; logically] isolated trusted communications path for 
+communications between the

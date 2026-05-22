@@ -1,0 +1,8 @@
+CHUNK: 2407
+CHUNK_ID: 563ad03aa3730d2dbfb562cf5e7d1501
+TITLE: SA-8 SECURITY AND PRIVACY ENGINEERING PRINCIPLES (part 2/6)
+PAGE_START: 284
+PAGE_END: 297
+METADATA: {'page_start': 284, 'page_end': 297}
+
+The principle of hierarchical protection states that a component need not be protected from more trustworthy components. In the degenerate case of the most trusted component, it protects itself from all other components. For example, if an operating system kernel is deemed the most trustworthy component in a system, then it protects itself from all untrusted applications it supports, but the applications, conversely, do not need to protect themselves from the kernel. The trustworthiness of users is a consideration for applying the principle of hierarchical protection. A trusted system need

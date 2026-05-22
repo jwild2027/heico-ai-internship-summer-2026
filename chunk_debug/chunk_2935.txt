@@ -1,0 +1,20 @@
+CHUNK: 2935
+CHUNK_ID: c1dfac1e3ce6eda85f56bb3087e4fe69
+TITLE: SC-20 SECURE NAME/ADDRESS RESOLUTION SERVICE (AUTHORITATIVE SOURCE)
+PAGE_START: 340
+PAGE_END: 340
+METADATA: {'page_start': 340, 'page_end': 340}
+
+SECURE NAME/ADDRESS RESOLUTION SERVICE (AUTHORITATIVE SOURCE) | CHILD SUBSPACES  
+[Withdrawn: Incorporated into SC-20.] 
+(2) SECURE NAME/ADDRESS RESOLUTION SERVICE (AUTHORITATIVE SOURCE) | DATA ORIGIN AND 
+INTEGRITY 
+Provide data origin and integrity protection artifacts for internal name/address resolution 
+queries. 
+Discussion:  None. 
+Related Controls:  None. 
+References:  [FIPS 140-3], [FIPS 186-4], [SP 800-81-2]. 
+SC-21 SECURE NAME/ADDRESS RESOLUTION SERVICE (RECURSIVE OR CACHING RESOLVER) 
+Control:  Request and perform data origin authentication and data integrity verification on the 
+name/address resolution responses the system receives from authoritative sources. 
+Discussion:  Each client of name resolution services either performs this

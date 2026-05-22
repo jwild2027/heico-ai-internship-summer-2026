@@ -1,17 +1,16 @@
 CHUNK: 115
-CHUNK_ID: ef7f4ac6fa32cab9448a03f9d1ee7da1
-TITLE: Untitled section
-PAGE_START: 30
-PAGE_END: 30
-METADATA: {'page_start': 30, 'page_end': 30}
+CHUNK_ID: 899a89b0db6fe9da79bff8b435201287
+TITLE: 6.2.1.3. Network Segmentation and Isolation (PR.AC-5)
+PAGE_START: 119
+PAGE_END: 119
+METADATA: {'page_start': 119, 'page_end': 119}
 
-aircraft to accomplish certain things that make
-it useful for certain purposes.
-The primary factors most affected by performance are the takeoff and landing distance, rate of climb,
-ceiling, payload, range, speed, maneuverability, stability, and fuel economy.
-Climb Performance Factors
-Since weight, altitude and configuration changes affect excess thrust and power, they also affect
-climb performance. Climb performance is directly dependent upon the ability to produce either
-excess thrust or excess power.
-Weight has a very pronounced effect on aircraft performance. If weight is added to an aircraft, it
-must
+segmentation helps enforce security policies and segmented 
+traffic at the Ethernet layer and facilitates network isolation.  
+For network isolation, organizations typically utilize their mapped data flows to identify required 
+communications between segments. Network isolation devices, such as gateways (including 
+unidirectional gateways or data-diodes) and firewalls, are then configured to enforce these 
+communication restrictions by monitoring all communication traffic and only permitting 
+explicitly authorized communication between segments.  
+Supplemental guidance for access controls can be found in the following documents:  
+• NIST SP 800-41, Rev. 1, Guidelines on Firewalls and Firewall Policy

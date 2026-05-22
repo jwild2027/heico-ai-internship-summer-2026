@@ -1,14 +1,17 @@
 CHUNK: 76
-CHUNK_ID: 88b2ba9199f3496b0acc718087c20282
-TITLE: Untitled section
-PAGE_START: 22
-PAGE_END: 24
-METADATA: {'page_start': 22, 'page_end': 24}
+CHUNK_ID: d483166872cda59cf3d58b7f3cfc68ed
+TITLE: 5.3.7.2. Cybersecurity Capability Considerations
+PAGE_START: 100
+PAGE_END: 102
+METADATA: {'page_start': 100, 'page_end': 102}
 
-be found by searching various websites such as DUATS and NOAA's Aviation Weather
-Aviation Digital Data Services (ADDS).
-3. Date and time of report—depicted in a six-digit group (161753Z). The first two digits are the
-date. The last four digits are the time of the METAR/SPECI, which is always given in
-coordinated universal time (UTC). A “Z” is appended to the end of the time to denote the
-time is given in Zulu time (UTC) as opposed to local time.
-4. Modifier—denotes that the METAR/SPECI came from an automated source
+their cybersecurity objectives. Additionally, organizations should 
+consider whether the operational and safety impacts for IIoT differ from the operational and 
+safety impacts for other OT devices. For example, IIoT devices may support a separate data 
+monitoring (i.e., read-only capability) for the environment and have minimal impact on 
+operational controls or safety, which may allow organizations to implement security operations 
+differently than those established for OT devices.  
+ 
+Cybersecurity Architecture Models  
+Building on the concepts and guidance from Sections 5.1, 5.2, and 5.3, the following subsections 
+expand on the general OT and

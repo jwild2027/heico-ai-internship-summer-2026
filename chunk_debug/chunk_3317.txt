@@ -1,0 +1,19 @@
+CHUNK: 3317
+CHUNK_ID: 863af39b781a83731e62d457b325b68f
+TITLE: SI-14 NON-PERSISTENCE
+PAGE_START: 381
+PAGE_END: 381
+METADATA: {'page_start': 381, 'page_end': 381}
+
+defined by the recovery time periods of organizations. 
+Related Controls:  CP-6, CP-7, CP-9. 
+References:  None. 
+SI-14 
+NON-PERSISTENCE 
+Control:  Implement non-persistent [Assignment: organization-defined system components and 
+services] that are initiated in a known state and terminated [Selection (one or more): upon end of 
+session of use; periodically at [Assignment: organization-defined frequency]]. 
+Discussion:  Implementation of non-persistent components and services mitigates risk from 
+advanced persistent threats (APTs) by reducing the targeting capability of adversaries (i.e., 
+window of opportunity and available attack surface) to initiate and complete attacks. By 
+implementing the concept of non-persistence

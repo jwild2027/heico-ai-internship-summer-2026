@@ -1,0 +1,22 @@
+CHUNK: 3316
+CHUNK_ID: 8e8803e22ad5f48395a2a0fbf08a3152
+TITLE: SI-14 NON-PERSISTENCE
+PAGE_START: 381
+PAGE_END: 381
+METADATA: {'page_start': 381, 'page_end': 381}
+
+standby to active mode can 
+occur upon the detection of component failures. 
+Related Controls:  None. 
+(5) PREDICTABLE FAILURE PREVENTION | FAILOVER CAPABILITY 
+Provide [Selection: real-time; near real-time] [Assignment: organization-defined failover 
+capability] for the system. 
+Discussion:  Failover refers to the automatic switchover to an alternate system upon the 
+failure of the primary system. Failover capability includes incorporating mirrored system 
+operations at alternate processing sites or periodic data mirroring at regular intervals 
+defined by the recovery time periods of organizations. 
+Related Controls:  CP-6, CP-7, CP-9. 
+References:  None. 
+SI-14 
+NON-PERSISTENCE 
+Control:  Implement non-persistent

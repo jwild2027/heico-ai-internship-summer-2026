@@ -1,0 +1,17 @@
+CHUNK: 521
+CHUNK_ID: cfd66895d91cbfadb414b2e974c9b938
+TITLE: AU-8 TIME STAMPS
+PAGE_START: 100
+PAGE_END: 100
+METADATA: {'page_start': 100, 'page_end': 100}
+
+in audit records. The report generation capability provided by the 
+system can generate customizable reports. Time ordering of audit records can be an issue if the 
+granularity of the timestamp in the record is insufficient. 
+Related Controls:  AC-2, AU-2, AU-3, AU-4, AU-5, AU-6, AU-12, AU-16, CM-5, IA-5, IR-4, PM-12, SI-
+4. 
+Control Enhancements: 
+(1) AUDIT RECORD REDUCTION AND REPORT GENERATION | AUTOMATIC PROCESSING  
+Provide and implement the capability to process, sort, and search audit records for events 
+of interest based on the following content: [Assignment: organization-defined fields within 
+audit records].

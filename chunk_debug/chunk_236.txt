@@ -1,16 +1,20 @@
 CHUNK: 236
-CHUNK_ID: c969e63cdbd00ad1bf9a86fd06751f6d
-TITLE: Untitled section
-PAGE_START: 54
-PAGE_END: 54
-METADATA: {'page_start': 54, 'page_end': 54}
+CHUNK_ID: 8927d26daba792cbccb7b892929451b7
+TITLE: 6.3.2.3. Malicious Code Detection (DE.CM-4)
+PAGE_START: 148
+PAGE_END: 149
+METADATA: {'page_start': 148, 'page_end': 149}
 
-and relationship or work problems can
-produce a cumulative level of stress that exceeds a person’s ability to cope with the situation. When
-stress reaches these levels, performance falls off rapidly. Pilots experiencing this level of stress are
-not safe and should not exercise their airman privileges. Pilots who suspect they are suffering from
-chronic stress should consult a physician.
-Fatigue
-Fatigue is frequently associated with pilot error. Some of the effects of fatigue include degradation
-of attention and concentration, impaired coordination, and decreased ability to communicate.
-These factors seriously
+if possible. 
+• Manual scanning and signature updates should be performed 
+while the system is not critical for operations.  
+• Redundancy should be considered for critical systems that require 
+ongoing antivirus updates such that signature updates can be 
+performed without impacting operations (e.g., consoles and 
+HMIs).  
+• When configuring file exclusion lists, determine which control 
+application files should not be scanned during production time 
+because of possible OT system malfunction or performance 
+degradation.  
+CISA provides a recommended practice for updating antivirus in OT 
+environments.

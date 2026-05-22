@@ -1,0 +1,21 @@
+CHUNK: 3324
+CHUNK_ID: c365e28c31fb54c74031d7647ff55861
+TITLE: SI-15 INFORMATION OUTPUT FILTERING
+PAGE_START: 382
+PAGE_END: 382
+METADATA: {'page_start': 382, 'page_end': 382}
+
+their reconnaissance and lateral movement through the system. 
+Related Controls:  None. 
+(3) NON-PERSISTENCE | NON-PERSISTENT CONNECTIVITY 
+Establish connections to the system on demand and terminate connections after 
+[Selection: completion of a request; a period of non-use]. 
+Discussion:  Persistent connections to systems can provide advanced adversaries with paths 
+to move laterally through systems and potentially position themselves closer to high value 
+assets. Limiting the availability of such connections impedes the adversary’s ability to move 
+freely through organizational systems. 
+Related Controls:  SC-10. 
+References:  None. 
+SI-15 
+INFORMATION OUTPUT FILTERING 
+Control:  Validate information output

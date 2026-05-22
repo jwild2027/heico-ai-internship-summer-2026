@@ -1,0 +1,18 @@
+CHUNK: 534
+CHUNK_ID: 4a03f11eafeaeb80efd8c462e5e0cba5
+TITLE: AU-9 PROTECTION OF AUDIT INFORMATION
+PAGE_START: 101
+PAGE_END: 102
+METADATA: {'page_start': 101, 'page_end': 102}
+
+information and 
+audit tools. 
+Discussion:  Cryptographic mechanisms used for protecting the integrity of audit information 
+include signed hash functions using asymmetric cryptography. This enables the distribution 
+of the public key to verify the hash information while maintaining the confidentiality of the 
+secret key used to generate the hash. 
+Related Controls:  AU-10, SC-12, SC-13. 
+(4) PROTECTION OF AUDIT INFORMATION | ACCESS BY SUBSET OF PRIVILEGED USERS  
+Authorize access to management of audit logging functionality to only [Assignment: 
+organization-defined subset of privileged users or roles]. 
+Discussion:  Individuals or roles with privileged access

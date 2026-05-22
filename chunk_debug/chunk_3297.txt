@@ -1,0 +1,17 @@
+CHUNK: 3297
+CHUNK_ID: a694b009b8f1aa2e9ed8438f8300c791
+TITLE: SI-12 INFORMATION MANAGEMENT AND RETENTION
+PAGE_START: 378
+PAGE_END: 379
+METADATA: {'page_start': 378, 'page_end': 379}
+
+Related Controls:  AC-3, AC-6. 
+(6) INFORMATION INPUT VALIDATION | INJECTION PREVENTION 
+Prevent untrusted data injections. 
+Discussion: Untrusted data injections may be prevented using a parameterized interface or 
+output escaping (output encoding). Parameterized interfaces separate data from code so 
+that injections of malicious or unintended data cannot change the semantics of commands 
+being sent. Output escaping uses specified characters to inform the interpreter’s parser 
+whether data is trusted. Prevention of untrusted data injections are with respect to the 
+information inputs defined by the organization in the base control (SI-10). 
+Related Controls:

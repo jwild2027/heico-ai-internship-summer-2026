@@ -1,0 +1,16 @@
+CHUNK: 2954
+CHUNK_ID: 748bc65bc6aaecfbfe77b0d039252c5f
+TITLE: SC-23 SESSION AUTHENTICITY
+PAGE_START: 341
+PAGE_END: 341
+METADATA: {'page_start': 341, 'page_end': 341}
+
+the validity of transmitted 
+information. Authenticity protection includes protecting against “man-in-the-middle” attacks, 
+session hijacking, and the insertion of false information into sessions. 
+Related Controls:  AU-10, SC-8, SC-10, SC-11. 
+Control Enhancements: 
+(1) SESSION AUTHENTICITY | INVALIDATE SESSION IDENTIFIERS AT LOGOUT 
+Invalidate session identifiers upon user logout or other session termination. 
+Discussion:  Invalidating session identifiers at logout curtails the ability of adversaries to 
+capture and continue to employ previously valid session IDs.

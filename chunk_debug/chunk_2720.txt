@@ -1,0 +1,15 @@
+CHUNK: 2720
+CHUNK_ID: cbe4522f59b91549123d1484c8c6e46e
+TITLE: SC-3 SECURITY FUNCTION ISOLATION
+PAGE_START: 320
+PAGE_END: 321
+METADATA: {'page_start': 320, 'page_end': 321}
+
+security functions from nonsecurity functions. 
+Discussion:  Security functions are isolated from nonsecurity functions by means of an isolation 
+boundary implemented within a system via partitions and domains. The isolation boundary 
+controls access to and protects the integrity of the hardware, software, and firmware that 
+perform system security functions. Systems implement code separation in many ways, such as 
+through the provision of security kernels via processor rings or processor modes. For non-kernel 
+code, security function isolation is often achieved through file system protections that protect 
+the code on disk and address

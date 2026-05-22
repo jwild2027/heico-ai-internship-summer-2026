@@ -1,0 +1,8 @@
+CHUNK: 2403
+CHUNK_ID: 188d9991b82f6db25f6b9a6bcf33b0ca
+TITLE: SA-8 SECURITY AND PRIVACY ENGINEERING PRINCIPLES (part 2/6)
+PAGE_START: 284
+PAGE_END: 297
+METADATA: {'page_start': 284, 'page_end': 297}
+
+base), which is located at the lowest layer of the system, is the most trustworthy component. The principle of hierarchical trust, however, does not prohibit the use of overly trustworthy components. There may be cases in a system of low trustworthiness where it is reasonable to employ a highly trustworthy component rather than one that is less trustworthy (e.g., due to availability or other cost-benefit driver). For such a case, any dependency of the highly trustworthy component upon a less trustworthy component does not degrade the trustworthiness of the resulting

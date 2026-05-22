@@ -1,0 +1,19 @@
+CHUNK: 393
+CHUNK_ID: 9d6432235ac4e4c8c1192822ee74dce5
+TITLE: AC-24 ACCESS CONTROL DECISIONS
+PAGE_START: 84
+PAGE_END: 84
+METADATA: {'page_start': 84, 'page_end': 84}
+
+to each access request prior to access 
+enforcement. 
+Discussion:  Access control decisions (also known as authorization decisions) occur when 
+authorization information is applied to specific accesses. In contrast, access enforcement occurs 
+when systems enforce access control decisions. While it is common to have access control 
+decisions and access enforcement implemented by the same entity, it is not required, and it is 
+not always an optimal implementation choice. For some architectures and distributed systems, 
+different entities may make access control decisions and enforce access. 
+Related Controls:  AC-2, AC-3. 
+ 
+Control Enhancements: 
+(1)

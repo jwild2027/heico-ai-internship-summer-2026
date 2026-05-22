@@ -1,25 +1,17 @@
 CHUNK: 8
-CHUNK_ID: d1e0a1ffe6ce8ffd45ffb5784563ba49
-TITLE: Untitled section
-PAGE_START: 1
-PAGE_END: 8
-METADATA: {'page_start': 1, 'page_end': 8}
+CHUNK_ID: 61d34a5e7dd99024c0524bba5a1c8a66
+TITLE: 5.2.3.2. Centralized Logging
+PAGE_START: 90
+PAGE_END: 90
+METADATA: {'page_start': 90, 'page_end': 90}
 
-53
-Hazard and Risk ................................................................................................................................. 53
-Human Factors................................................................................................................................... 56
-The Decision-Making Process ............................................................................................................ 57
-Decision-Making in a Dynamic Environment .................................................................................... 59
-Situational Awareness ....................................................................................................................... 63
-Chapter 11: Airport Operations ............................................................................................ 65
-Introduction ....................................................................................................................................... 65
-Types of Airports ............................................................................................................................... 65
-Sources for Airport Data .................................................................................................................... 65
-Latitude and Longitude (Meridians and Parallels) ............................................................................ 68
-
-Remote Pilot – Small Unmanned Aircraft Systems Study Guide
-v
-Antenna Towers ................................................................................................................................ 69
-Chapter 12: Maintenance and Preflight Inspection Procedures ............................................ 71
-Appendix 1: Study References .............................................................................................. 74
-Appendix 2: Registration and Marking Requirements for Small
+configuration is essential to properly securing the 
+network segments. Firewall rulesets should be established to only permit 
+connections between adjacent levels, tiers, or zones. For example, 
+organizations that utilize a Purdue model architecture should implement 
+firewall rules and connection paths that prevent Level 4 devices from 
+directly communicating with Level 2, 1, or 0 devices. A similar concept 
+would be applied to ISA/IEC 62443 and IIC architectures.  
+One area of considerable variation in practice associated with firewall 
+rules is the control of outbound traffic from the control network. 
+Allowing outbound

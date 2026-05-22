@@ -1,0 +1,16 @@
+CHUNK: 2659
+CHUNK_ID: d3a72bfdc1a9dea139a79d1f30d72512
+TITLE: SA-18 TAMPER RESISTANCE AND DETECTION
+PAGE_START: 315
+PAGE_END: 315
+METADATA: {'page_start': 315, 'page_end': 315}
+
+by the module are 
+directly operated upon by the functions within the module. Elements external to a module 
+that may be affected by the module’s operation are indirectly accessed through interaction 
+(e.g., via a function call) with the module that contains those elements. Another aspect of 
+internal least privilege is that the scope of a given module or component includes only those 
+system elements that are necessary for its functionality, and the access modes to the 
+elements (e.g., read, write) are minimal. 
+Related Controls:  AC-5, AC-6, SA-8. 
+(8) DEVELOPER SECURITY

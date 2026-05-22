@@ -1,0 +1,18 @@
+CHUNK: 3034
+CHUNK_ID: f25ebf5891628c86f560ea52fe4612d9
+TITLE: SC-36 DISTRIBUTED PROCESSING AND STORAGE
+PAGE_START: 349
+PAGE_END: 349
+METADATA: {'page_start': 349, 'page_end': 349}
+
+distributed processing and storage does not assume a single 
+primary processing or storage location. Therefore, it allows for parallel processing and storage. 
+Related Controls:  CP-6, CP-7, PL-8, SC-32. 
+Control Enhancements: 
+(1) DISTRIBUTED PROCESSING AND STORAGE | POLLING TECHNIQUES 
+(a) Employ polling techniques to identify potential faults, errors, or compromises to the 
+following processing and storage components: [Assignment: organization-defined 
+distributed processing and storage components]; and 
+(b) Take the following actions in response to identified faults, errors, or compromises: 
+[Assignment: organization-defined actions]. 
+Discussion:  Distributed processing and/or storage may be used to reduce

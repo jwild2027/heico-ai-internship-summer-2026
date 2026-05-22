@@ -1,0 +1,20 @@
+CHUNK: 3238
+CHUNK_ID: 724e5bef59c34d3b5c67fd7883b880be
+TITLE: SI-7 SOFTWARE, FIRMWARE, AND INFORMATION INTEGRITY
+PAGE_START: 372
+PAGE_END: 374
+METADATA: {'page_start': 372, 'page_end': 374}
+
+when 
+unauthorized modifications to critical security files occur. 
+Related Controls:  None. 
+(6) SOFTWARE, FIRMWARE, AND INFORMATION INTEGRITY | CRYPTOGRAPHIC PROTECTION  
+Implement cryptographic mechanisms to detect unauthorized changes to software, 
+firmware, and information. 
+Discussion:  Cryptographic mechanisms used to protect integrity include digital signatures 
+and the computation and application of signed hashes using asymmetric cryptography, 
+protecting the confidentiality of the key used to generate the hash, and using the public key 
+to verify the hash information. Organizations that employ cryptographic mechanisms also 
+consider cryptographic key management solutions. 
+Related Controls:  SC-12, SC-13. 
+(7)

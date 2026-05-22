@@ -1,0 +1,22 @@
+CHUNK: 3020
+CHUNK_ID: 031c059c21bcac14f927c4ea2c0ea952
+TITLE: SC-34 NON-MODIFIABLE EXECUTABLE PROGRAMS
+PAGE_START: 348
+PAGE_END: 348
+METADATA: {'page_start': 348, 'page_end': 348}
+
+experiences a denial of 
+service. 
+Related Controls:  None. 
+References:  [FIPS 199], [IR 8179]. 
+SC-33 TRANSMISSION PREPARATION INTEGRITY 
+[Withdrawn: Incorporated into SC-8.] 
+SC-34 NON-MODIFIABLE EXECUTABLE PROGRAMS 
+ 
+Control:  For [Assignment: organization-defined system components], load and execute: 
+a. The operating environment from hardware-enforced, read-only media; and 
+b. The following applications from hardware-enforced, read-only media: [Assignment: 
+organization-defined applications]. 
+Discussion:  The operating environment for a system contains the code that hosts applications, 
+including operating systems, executives, or virtual machine monitors (i.e., hypervisors). It can 
+also include certain applications that run directly on hardware platforms. Hardware-enforced,

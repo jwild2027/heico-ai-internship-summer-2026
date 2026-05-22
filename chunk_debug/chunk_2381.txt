@@ -1,0 +1,8 @@
+CHUNK: 2381
+CHUNK_ID: 1b64222fd753a115ad447fbe38e658a7
+TITLE: SA-8 SECURITY AND PRIVACY ENGINEERING PRINCIPLES (part 1/6)
+PAGE_START: 284
+PAGE_END: 297
+METADATA: {'page_start': 284, 'page_end': 297}
+
+to higher layers, some layers can be self-contained and not dependent on lower layers. While a partial ordering of all functions in a given system may not be possible, if circular dependencies are constrained to occur within layers, the inherent problems of circularity can be more easily managed. Partially ordered dependencies and system layering contribute significantly to the simplicity and coherency of the system design. Partially ordered dependencies also facilitate system testing and analysis. Related Controls: None. (5) SECURITY AND PRIVACY ENGINEERING PRINCIPLES | EFFICIENTLY MEDIATED ACCESS Implement the security

@@ -1,0 +1,20 @@
+CHUNK: 3052
+CHUNK_ID: 6a6390ca837fac0c463940252cca1f38
+TITLE: SC-39 PROCESS ISOLATION
+PAGE_START: 351
+PAGE_END: 352
+METADATA: {'page_start': 351, 'page_end': 352}
+
+functions includes user identities, 
+element uses, suppliers, supply chain processes, functional requirements, security requirements, 
+system design specifications, testing and evaluation protocols, and security control 
+implementation details. 
+Related Controls:  CA-2, CA-7, PL-1, PM-9, PM-12, RA-2, RA-3, RA-5, SC-7, SR-3, SR-7. 
+Control Enhancements:  None. 
+References:  None. 
+SC-39 PROCESS ISOLATION 
+ 
+Control:  Maintain a separate execution domain for each executing system process. 
+Discussion:  Systems can maintain separate execution domains for each executing process by 
+assigning each process a separate address space. Each system process has a distinct address 
+space so that communication between processes
