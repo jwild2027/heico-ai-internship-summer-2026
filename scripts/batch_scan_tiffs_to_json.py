@@ -19,6 +19,13 @@ Examples:
         --db-path local_data/db/tiff_scans.db \
         --no-hash \
         --limit 25
+
+    python scripts/batch_scan_tiffs_to_json.py \
+        --input-dir local_data/sample_tiffs \
+        --input-list local_data/changed_tiffs.txt \
+        --output-dir local_data/json_scans_incremental \
+        --db-path local_data/db/tiff_scans_incremental.db \
+        --ocr
 """
 
 from __future__ import annotations
@@ -71,10 +78,42 @@ class BatchScanResult:
 def iter_tiff_files(input_dir: str | Path, *, recursive: bool = True) -> Iterable[Path]:
     """Yield TIFF files under input_dir in stable sorted order."""
 
-    root = Path(input_dir)
+    root = Path(input_dir).resolve()
     pattern = "**/*" if recursive else "*"
     candidates = (p for p in root.glob(pattern) if p.is_file())
     yield from sorted(p for p in candidates if p.suffix.lower() in TIFF_EXTENSIONS)
+
+
+def iter_tiff_files_from_list(input_list: str | Path, *, input_dir: str | Path | None = None) -> list[Path]:
+    """Return TIFF files from a newline-separated path list.
+
+    Blank lines and lines beginning with # are ignored. Relative paths are
+    resolved under input_dir when provided, otherwise under the current working
+    directory. Non-TIFF paths are ignored so the list can safely include notes
+    or accidental non-image entries.
+    """
+
+    list_path = Path(input_list)
+    if not list_path.exists():
+        raise FileNotFoundError(f"Input list does not exist: {list_path}")
+
+    base = Path(input_dir).resolve() if input_dir is not None else Path.cwd().resolve()
+    files: list[Path] = []
+    seen: set[Path] = set()
+    for raw_line in list_path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        candidate = Path(line)
+        if not candidate.is_absolute():
+            candidate = base / candidate
+        candidate = candidate.resolve()
+        if candidate.suffix.lower() not in TIFF_EXTENSIONS:
+            continue
+        if candidate not in seen:
+            seen.add(candidate)
+            files.append(candidate)
+    return sorted(files)
 
 
 def report_output_path(tiff_path: Path, *, input_dir: Path, output_dir: Path) -> Path:
@@ -125,6 +164,7 @@ def scan_folder_to_json(
     *,
     input_dir: str | Path,
     output_dir: str | Path,
+    input_list: str | Path | None = None,
     db_path: str | Path | None = None,
     hash_file: bool = True,
     parse_filename: bool = True,
@@ -145,14 +185,17 @@ def scan_folder_to_json(
     that can be printed, tested, or written to JSON.
     """
 
-    input_root = Path(input_dir)
+    input_root = Path(input_dir).resolve()
     output_root = Path(output_dir)
     if not input_root.exists():
         raise FileNotFoundError(f"Input directory does not exist: {input_root}")
     if not input_root.is_dir():
         raise NotADirectoryError(f"Input path is not a directory: {input_root}")
 
-    files = list(iter_tiff_files(input_root, recursive=recursive))
+    if input_list is not None:
+        files = iter_tiff_files_from_list(input_list, input_dir=input_root)
+    else:
+        files = list(iter_tiff_files(input_root, recursive=recursive))
     if limit is not None:
         files = files[: max(limit, 0)]
 
@@ -243,6 +286,15 @@ def parse_args() -> argparse.Namespace:
         help="Folder containing raw .tif/.tiff files. Default: local_data/sample_tiffs",
     )
     parser.add_argument(
+        "--input-list",
+        default=None,
+        help=(
+            "Optional newline-separated list of TIFF files to scan. "
+            "Relative paths are resolved under --input-dir. Useful with "
+            "scripts/list_changed_tiffs_for_scan.py."
+        ),
+    )
+    parser.add_argument(
         "--output-dir",
         default="local_data/json_scans",
         help="Folder where .scan.json files are written. Default: local_data/json_scans",
@@ -278,6 +330,7 @@ def main() -> int:
     result = scan_folder_to_json(
         input_dir=args.input_dir,
         output_dir=args.output_dir,
+        input_list=args.input_list,
         db_path=db_path,
         hash_file=not args.no_hash,
         parse_filename=not args.no_filename_parse,
