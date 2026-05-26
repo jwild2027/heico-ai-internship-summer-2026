@@ -20,8 +20,8 @@ ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from db.storage import RAGDatabase
-from db.ingest_bridge import ingest_pdf_to_db
+from src.db.storage import RAGDatabase
+from src.db.ingest_bridge import ingest_pdf_to_db
 import tools.pymupdf_bge_chroma_cli as base
 
 

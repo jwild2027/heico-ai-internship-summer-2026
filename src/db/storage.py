@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 
-from db.schema import ALL_TABLES, CREATE_INDEXES
+from src.db.schema import ALL_TABLES, CREATE_INDEXES
 
 
 def _new_id() -> str:

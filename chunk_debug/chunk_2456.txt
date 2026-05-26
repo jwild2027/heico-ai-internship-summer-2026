@@ -1,8 +1,0 @@
-CHUNK: 2456
-CHUNK_ID: c0cf0746c92453bdad32417a62c3c62b
-TITLE: SA-8 SECURITY AND PRIVACY ENGINEERING PRINCIPLES (part 5/6)
-PAGE_START: 284
-PAGE_END: 297
-METADATA: {'page_start': 284, 'page_end': 297}
-
-state) and then either shutdown or replace the service or component that failed such that secure operations may resume. Failure of a component may or may not be detectable to the components using it. The principle of secure failure indicates that components fail in a state that denies rather than grants access. For example, a nominally “atomic” operation interrupted before completion does not violate security policy and is designed to handle interruption events by employing higher-level atomicity and rollback mechanisms (e.g., transactions). If a service is being used, its atomicity

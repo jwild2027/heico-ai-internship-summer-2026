@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from tools.langchain_adapter import ask
+from src.rag.langchain_adapter import ask
 
 DEFAULT_OUT_DIR = Path("results")
 SEPARATOR       = "─" * 60
@@ -232,7 +232,7 @@ def replay_session(session_path: Path) -> None:
 
 def parse_args() -> argparse.Namespace:
     import tools.pymupdf_bge_chroma_cli as base
-    from tools.langchain_adapter import (
+    from src.rag.langchain_adapter import (
         DEFAULT_LLM_MODEL, DEFAULT_EMBED_MODEL,
         DEFAULT_COLLECTION, DEFAULT_PERSIST_DIR, DEFAULT_TOP_K,
     )

@@ -1,8 +1,0 @@
-CHUNK: 2135
-CHUNK_ID: e6fc6f34a6d33a2a27fd3283d8d601c9
-TITLE: SA-6 SOFTWARE USAGE RESTRICTIONS (part 1/6)
-PAGE_START: 284
-PAGE_END: 297
-METADATA: {'page_start': 284, 'page_end': 297}
-
-[POPEK74]. Mechanism minimization implies that different components of a system refrain from using the same mechanism to access a system resource. Every shared mechanism (especially a mechanism involving shared variables) represents a potential information path between users and is designed with care to ensure that it does not unintentionally compromise security [SALTZER75]. Implementing the principle of least common mechanism helps to reduce the adverse consequences of sharing the system state among different programs. A single program that corrupts a shared state (including shared variables) has the potential to corrupt other

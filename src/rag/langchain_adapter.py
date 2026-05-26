@@ -238,7 +238,7 @@ def ask(
 
     if control_ids:
         try:
-            from db.storage import RAGDatabase
+            from src.db.storage import RAGDatabase
             _db_direct = RAGDatabase("rag.db")
             for cid in control_ids:
                 direct_hits = _db_direct.search_chunks_by_title(cid, level="child")
@@ -289,7 +289,7 @@ def ask(
 
     # Parent expansion
     try:
-        from db.storage import RAGDatabase
+        from src.db.storage import RAGDatabase
         _db = RAGDatabase("rag.db")
         parent_ids_to_fetch = []
         for item in reranked:

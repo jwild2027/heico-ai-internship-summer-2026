@@ -1,8 +1,0 @@
-CHUNK: 2375
-CHUNK_ID: 5b3221ece49a653ab355ecf934f597eb
-TITLE: SA-8 SECURITY AND PRIVACY ENGINEERING PRINCIPLES (part 1/6)
-PAGE_START: 284
-PAGE_END: 297
-METADATA: {'page_start': 284, 'page_end': 297}
-
-[POPEK74]. Mechanism minimization implies that different components of a system refrain from using the same mechanism to access a system resource. Every shared mechanism (especially a mechanism involving shared variables) represents a potential information path between users and is designed with care to ensure that it does not unintentionally compromise security [SALTZER75]. Implementing the principle of least common mechanism helps to reduce the adverse consequences of sharing the system state among different programs. A single program that corrupts a shared state (including shared variables) has the potential to corrupt other

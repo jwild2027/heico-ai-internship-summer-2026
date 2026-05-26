@@ -74,7 +74,7 @@ def db_conn(db_path) -> sqlite3.Connection:
 
 @pytest.fixture(scope="session")
 def pages_3(pdf_path_3) -> list[dict[str, Any]]:
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     return bench.extract_pages_pymupdf(
         pdf_path_3,
         debug_dir=Path("ocr_debug"),
@@ -85,7 +85,7 @@ def pages_3(pdf_path_3) -> list[dict[str, Any]]:
 
 @pytest.fixture(scope="session")
 def pages_2(pdf_path_2) -> list[dict[str, Any]]:
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     return bench.extract_pages_pymupdf(
         pdf_path_2,
         debug_dir=Path("ocr_debug"),
@@ -97,7 +97,7 @@ def pages_2(pdf_path_2) -> list[dict[str, Any]]:
 @pytest.fixture(scope="session")
 def parents_children_3(pages_3, pdf_path_3):
     """Run parent_child chunker on test-3 pages once for the whole session."""
-    from tools.parent_child_chunker import build_parent_child_chunks
+    from src.chunking.parent_child_chunker import build_parent_child_chunks
     parents, children = build_parent_child_chunks(
         pages_3, source_name=pdf_path_3.stem
     )
@@ -168,7 +168,7 @@ def db_children_3(db_conn, doc_id_3) -> list[sqlite3.Row]:
 # TEST 1 — choose_strategy returns parent_child for test-3
 # ===========================================================================
 def test_01_strategy_parent_child_for_test3(pages_3):
-    from tools.chunking_strategy import choose_strategy
+    from src.chunking.chunking_strategy import choose_strategy
     strategy, reason = choose_strategy(pages_3)
     assert strategy == "parent_child", (
         f"Expected 'parent_child' for test-3, got '{strategy}' — reason: {reason}"
@@ -179,7 +179,7 @@ def test_01_strategy_parent_child_for_test3(pages_3):
 # TEST 2 — choose_strategy returns a reason string
 # ===========================================================================
 def test_02_strategy_returns_reason(pages_3):
-    from tools.chunking_strategy import choose_strategy
+    from src.chunking.chunking_strategy import choose_strategy
     strategy, reason = choose_strategy(pages_3)
     assert isinstance(reason, str) and len(reason) > 0, \
         "choose_strategy must return a non-empty reason string"
@@ -189,7 +189,7 @@ def test_02_strategy_returns_reason(pages_3):
 # TEST 3 — choose_strategy is deterministic
 # ===========================================================================
 def test_03_strategy_is_deterministic(pages_3):
-    from tools.chunking_strategy import choose_strategy
+    from src.chunking.chunking_strategy import choose_strategy
     results = [choose_strategy(pages_3) for _ in range(3)]
     assert len({r[0] for r in results}) == 1, \
         "choose_strategy returned different strategies on repeated calls"
@@ -488,7 +488,7 @@ def test_27_known_facts_in_children(term, children_3):
 # TEST 28 — chunking is deterministic across two runs
 # ===========================================================================
 def test_28_chunking_is_deterministic(pages_3, pdf_path_3):
-    from tools.parent_child_chunker import build_parent_child_chunks
+    from src.chunking.parent_child_chunker import build_parent_child_chunks
     parents_a, children_a = build_parent_child_chunks(
         pages_3, source_name=pdf_path_3.stem
     )
@@ -508,7 +508,7 @@ def test_28_chunking_is_deterministic(pages_3, pdf_path_3):
 # ===========================================================================
 def test_29_chunking_completes_in_time(pages_3, pdf_path_3):
     import time
-    from tools.parent_child_chunker import build_parent_child_chunks
+    from src.chunking.parent_child_chunker import build_parent_child_chunks
     t0 = time.perf_counter()
     build_parent_child_chunks(pages_3, source_name=pdf_path_3.stem)
     elapsed = time.perf_counter() - t0
@@ -751,7 +751,7 @@ def test_49_db_parent_title_stored(db_parents_3):
 # TEST 50 — DB: summarize() output matches actual counts
 # ===========================================================================
 def test_50_summarize_output_matches_counts(parents_3, children_3):
-    from tools.parent_child_chunker import summarize
+    from src.chunking.parent_child_chunker import summarize
     summary = summarize(parents_3, children_3)
     assert isinstance(summary, str), "summarize() must return a string"
     assert str(len(parents_3)) in summary, \

@@ -48,7 +48,7 @@ def pdf_path_3(request) -> Path:
 @pytest.fixture(scope="session")
 def pages_2(pdf_path_2) -> list[dict[str, Any]]:
     """Extract pages from test-2 once for the whole session."""
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     return bench.extract_pages_pymupdf(
         pdf_path_2,
         debug_dir=Path("ocr_debug"),
@@ -60,7 +60,7 @@ def pages_2(pdf_path_2) -> list[dict[str, Any]]:
 @pytest.fixture(scope="session")
 def pages_3(pdf_path_3) -> list[dict[str, Any]]:
     """Extract pages from test-3 once for the whole session."""
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     return bench.extract_pages_pymupdf(
         pdf_path_3,
         debug_dir=Path("ocr_debug"),
@@ -474,7 +474,7 @@ def test_29_no_none_in_text_fields(pages_2, pages_3):
 # TEST 30 — No exception on test-2 extraction
 # ===========================================================================
 def test_30_no_exception_test2(pdf_path_2):
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     try:
         pages = bench.extract_pages_pymupdf(
             pdf_path_2,
@@ -491,7 +491,7 @@ def test_30_no_exception_test2(pdf_path_2):
 # TEST 31 — No exception on test-3 extraction
 # ===========================================================================
 def test_31_no_exception_test3(pdf_path_3):
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     try:
         pages = bench.extract_pages_pymupdf(
             pdf_path_3,
@@ -508,7 +508,7 @@ def test_31_no_exception_test3(pdf_path_3):
 # TEST 32 — FileNotFoundError on missing PDF
 # ===========================================================================
 def test_32_file_not_found_raises_clearly():
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     with pytest.raises((FileNotFoundError, Exception)) as exc_info:
         bench.extract_pages_pymupdf(
             Path("nonexistent_file_abc123.pdf"),
@@ -525,7 +525,7 @@ def test_32_file_not_found_raises_clearly():
 # TEST 33 — Extraction completes test-3 in under 180 seconds
 # ===========================================================================
 def test_33_extraction_completes_within_time_limit(pdf_path_3):
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     t0 = time.perf_counter()
     bench.extract_pages_pymupdf(
         pdf_path_3,
@@ -542,7 +542,7 @@ def test_33_extraction_completes_within_time_limit(pdf_path_3):
 # TEST 34 — Output is consistent across two calls (no randomness)
 # ===========================================================================
 def test_34_extraction_is_deterministic(pdf_path_3):
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     kwargs = dict(debug_dir=Path("ocr_debug"), ocr_debug=False, save_images=False)
     pages_a = bench.extract_pages_pymupdf(pdf_path_3, **kwargs)
     pages_b = bench.extract_pages_pymupdf(pdf_path_3, **kwargs)

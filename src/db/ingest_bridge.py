@@ -12,8 +12,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 import tools.pymupdf_bge_chroma_cli as base
-import rag_benchmark as bench
-from db.storage import RAGDatabase
+import src.benchmarks.rag_benchmark as bench
+from src.db.storage import RAGDatabase
 
 
 def ingest_pdf_to_db(
@@ -111,7 +111,7 @@ def ingest_pdf_to_db(
             if img_path.exists():
                 db.insert_image(page_id, "render", img_path, dpi=base.OCR_DPI)
 
-        from tools.chunking_strategy import choose_strategy, profile_document
+        from src.chunking.chunking_strategy import choose_strategy, profile_document
         strategy, reason = choose_strategy(pages)
         profile = profile_document(pages)
         print(f"[chunk] Strategy: {strategy}  ({reason})")
@@ -122,7 +122,7 @@ def ingest_pdf_to_db(
 
         if strategy == "parent_child":
             # Pass pdf_path so the chunker can try outline-based chunking first
-            from tools.parent_child_chunker import build_parent_child_chunks, summarize
+            from src.chunking.parent_child_chunker import build_parent_child_chunks, summarize
             parents, children = build_parent_child_chunks(
                 pages, source_name=pdf_path.stem, pdf_path=pdf_path,
             )

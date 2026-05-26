@@ -1,0 +1,16 @@
+# HEICO local/generated RAG data
+rag.db
+*.sqlite
+*.sqlite3
+*.db-wal
+*.db-shm
+chroma_db/
+chunk_debug/
+ocr_debug/
+results/
+local_data/
+
+# Source documents / controlled files should not be committed
+*.tif
+*.tiff
+*.pdf

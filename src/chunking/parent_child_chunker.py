@@ -18,8 +18,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 import tools.pymupdf_bge_chroma_cli as base
-from tools.heading_detectors import select_detector, HeadingDetector
-from tools.outline_chunker import (
+from src.chunking.heading_detectors import select_detector, HeadingDetector
+from src.chunking.outline_chunker import (
     extract_outline, outline_is_usable, build_outline_chunks,
 )
 
@@ -306,6 +306,6 @@ def summarize(parents: list[ParentChunk], children: list[ChildChunk]) -> str:
 
 # Backwards-compat shim
 def extract_nist_control_title(text: str) -> str | None:
-    from tools.heading_detectors import NISTControlDetector
+    from src.chunking.heading_detectors import NISTControlDetector
     detector = NISTControlDetector()
     return detector.extract_title(text)

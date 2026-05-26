@@ -11,7 +11,7 @@ import shutil
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
-from tools.chroma_client import get_collection
+from src.vector.chroma_client import get_collection
 import chromadb
 import ollama
 import numpy as np
