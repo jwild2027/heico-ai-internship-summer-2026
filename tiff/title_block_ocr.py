@@ -194,6 +194,29 @@ def preprocess_for_ocr(image: Image.Image, *, max_width: int = 3200) -> Image.Im
     return gray.point(lambda pixel: 255 if pixel > 180 else 0, mode="1")
 
 
+def _decode_tesseract_output(value: bytes | str | None) -> str:
+    """Decode Tesseract output without crashing on Windows code-page bytes.
+
+    On Windows, ``subprocess.run(..., text=True)`` uses the active locale
+    encoding, often cp1252. Some OCR output contains bytes that are invalid
+    for that codec, which can raise ``UnicodeDecodeError`` inside a subprocess
+    reader thread. We capture bytes and decode with replacement instead.
+    """
+
+    if value is None:
+        return ""
+    if isinstance(value, str):
+        return value
+
+    for encoding in ("utf-8", "cp1252", "latin-1"):
+        try:
+            return value.decode(encoding)
+        except UnicodeDecodeError:
+            continue
+
+    return value.decode("utf-8", errors="replace")
+
+
 def run_tesseract_on_image(
     image_path: str | Path,
     *,
@@ -218,7 +241,7 @@ def run_tesseract_on_image(
             cmd,
             check=False,
             capture_output=True,
-            text=True,
+            text=False,
             timeout=timeout_seconds,
         )
     except subprocess.TimeoutExpired:
@@ -226,8 +249,8 @@ def run_tesseract_on_image(
     except OSError as exc:
         return "", str(exc)
 
-    text = (proc.stdout or "").strip()
-    error = (proc.stderr or "").strip() or None
+    text = _decode_tesseract_output(proc.stdout).strip()
+    error = _decode_tesseract_output(proc.stderr).strip() or None
     if proc.returncode != 0:
         return text, error or f"Tesseract exited with code {proc.returncode}"
     return text, error

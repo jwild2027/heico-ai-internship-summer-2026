@@ -74,12 +74,19 @@ CREATE TABLE IF NOT EXISTS tiff_manual_metadata (
     manufacturer TEXT,
     manual_title TEXT,
     document_code TEXT,
+    publication_number TEXT,
+    component_title TEXT,
+    section_title TEXT,
     figure_title TEXT,
     figure_number TEXT,
     effectivity TEXT,
     ata_code TEXT,
     page_number INTEGER,
+    page_label TEXT,
+    issue_date TEXT,
     revision_date TEXT,
+    revision_label TEXT,
+    part_numbers_json TEXT,
     callouts_json TEXT,
     metadata_confidence REAL NOT NULL DEFAULT 0.0,
     updated_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
@@ -129,12 +136,41 @@ CREATE_TIFF_INDEXES = [
     "CREATE INDEX IF NOT EXISTS idx_tiff_revision ON tiff_drawing_metadata(revision);",
     "CREATE INDEX IF NOT EXISTS idx_tiff_classification ON tiff_drawing_metadata(classification);",
     "CREATE INDEX IF NOT EXISTS idx_tiff_manual_document_code ON tiff_manual_metadata(document_code);",
+    "CREATE INDEX IF NOT EXISTS idx_tiff_manual_publication_number ON tiff_manual_metadata(publication_number);",
+    "CREATE INDEX IF NOT EXISTS idx_tiff_manual_section_title ON tiff_manual_metadata(section_title);",
     "CREATE INDEX IF NOT EXISTS idx_tiff_manual_ata_code ON tiff_manual_metadata(ata_code);",
     "CREATE INDEX IF NOT EXISTS idx_tiff_manual_figure_number ON tiff_manual_metadata(figure_number);",
     "CREATE INDEX IF NOT EXISTS idx_tiff_document_type ON tiff_document_classification(detected_type);",
     "CREATE INDEX IF NOT EXISTS idx_tiff_ocr_file_region ON tiff_ocr_texts(file_id, region_type);",
 ]
 
+
+
+
+def _table_columns(conn: sqlite3.Connection, table_name: str) -> set[str]:
+    rows = conn.execute(f"PRAGMA table_info({table_name})").fetchall()
+    return {str(row[1]) for row in rows}
+
+
+def _ensure_column(conn: sqlite3.Connection, table_name: str, column_name: str, column_definition: str) -> None:
+    if column_name not in _table_columns(conn, table_name):
+        conn.execute(f"ALTER TABLE {table_name} ADD COLUMN {column_name} {column_definition}")
+
+
+def _migrate_tiff_manual_metadata(conn: sqlite3.Connection) -> None:
+    # Older prototype DBs only had the first manual/IPL fields. Add the newer
+    # manual-page fields in-place so users do not need to delete local DBs.
+    columns = {
+        "publication_number": "TEXT",
+        "component_title": "TEXT",
+        "section_title": "TEXT",
+        "page_label": "TEXT",
+        "issue_date": "TEXT",
+        "revision_label": "TEXT",
+        "part_numbers_json": "TEXT",
+    }
+    for column_name, column_definition in columns.items():
+        _ensure_column(conn, "tiff_manual_metadata", column_name, column_definition)
 
 def connect(db_path: str | Path) -> sqlite3.Connection:
     conn = sqlite3.connect(str(db_path))
@@ -152,6 +188,7 @@ def init_tiff_schema(conn: sqlite3.Connection) -> None:
         conn.execute(CREATE_TIFF_DOCUMENT_CLASSIFICATION)
         conn.execute(CREATE_TIFF_OCR_TEXTS)
         conn.execute(CREATE_TIFF_SCAN_REPORTS)
+        _migrate_tiff_manual_metadata(conn)
         for statement in CREATE_TIFF_INDEXES:
             conn.execute(statement)
 
@@ -412,20 +449,29 @@ def upsert_scan_report(conn: sqlite3.Connection, report: dict[str, Any]) -> str:
             """
             INSERT INTO tiff_manual_metadata (
                 file_id, document_type, manufacturer, manual_title, document_code,
+                publication_number, component_title, section_title,
                 figure_title, figure_number, effectivity, ata_code, page_number,
-                revision_date, callouts_json, metadata_confidence
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                page_label, issue_date, revision_date, revision_label,
+                part_numbers_json, callouts_json, metadata_confidence
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(file_id) DO UPDATE SET
                 document_type=excluded.document_type,
                 manufacturer=excluded.manufacturer,
                 manual_title=excluded.manual_title,
                 document_code=excluded.document_code,
+                publication_number=excluded.publication_number,
+                component_title=excluded.component_title,
+                section_title=excluded.section_title,
                 figure_title=excluded.figure_title,
                 figure_number=excluded.figure_number,
                 effectivity=excluded.effectivity,
                 ata_code=excluded.ata_code,
                 page_number=excluded.page_number,
+                page_label=excluded.page_label,
+                issue_date=excluded.issue_date,
                 revision_date=excluded.revision_date,
+                revision_label=excluded.revision_label,
+                part_numbers_json=excluded.part_numbers_json,
                 callouts_json=excluded.callouts_json,
                 metadata_confidence=excluded.metadata_confidence,
                 updated_at=strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
@@ -436,12 +482,19 @@ def upsert_scan_report(conn: sqlite3.Connection, report: dict[str, Any]) -> str:
                 manual.get("manufacturer"),
                 manual.get("manual_title"),
                 manual.get("document_code"),
+                manual.get("publication_number"),
+                manual.get("component_title"),
+                manual.get("section_title"),
                 manual.get("figure_title"),
                 manual.get("figure_number"),
                 manual.get("effectivity"),
                 manual.get("ata_code"),
                 manual.get("page_number"),
+                manual.get("page_label"),
+                manual.get("issue_date"),
                 manual.get("revision_date"),
+                manual.get("revision_label"),
+                _json_dumps(manual.get("part_numbers") or []),
                 _json_dumps(manual.get("callouts") or []),
                 float(manual.get("metadata_confidence") or 0.0),
             ),
@@ -577,12 +630,19 @@ def list_tiff_files(conn: sqlite3.Connection, limit: int = 50) -> list[dict[str,
             mm.manufacturer,
             mm.manual_title,
             mm.document_code,
+            mm.publication_number,
+            mm.component_title,
+            mm.section_title,
             mm.figure_title,
             mm.figure_number,
             mm.effectivity,
             mm.ata_code,
             mm.page_number,
+            mm.page_label,
+            mm.issue_date,
             mm.revision_date,
+            mm.revision_label,
+            mm.part_numbers_json,
             mm.metadata_confidence AS manual_metadata_confidence
         FROM tiff_files f
         LEFT JOIN tiff_technical_metadata tm ON tm.file_id = f.id

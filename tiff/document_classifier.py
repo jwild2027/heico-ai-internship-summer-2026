@@ -42,8 +42,16 @@ def classify_document(
     signals: list[str] = []
     upper_text = (ocr_text or "").upper()
 
+    cleaned_text = (ocr_text or "").strip()
     manual_score = manual_metadata.metadata_confidence if manual_metadata else 0.0
     drawing_score = drawing_metadata.metadata_confidence if drawing_metadata else 0.0
+
+    if not cleaned_text and manual_score == 0.0 and drawing_score == 0.0:
+        return DocumentClassification(
+            detected_type="blank_page",
+            confidence=0.9,
+            signals=["no_ocr_text"],
+        )
 
     if manual_metadata:
         if manual_metadata.manual_title:
@@ -54,6 +62,14 @@ def classify_document(
             signals.append("ata_code")
         if manual_metadata.document_code:
             signals.append("manual_document_code")
+        if getattr(manual_metadata, "publication_number", None):
+            signals.append("publication_number")
+        if getattr(manual_metadata, "section_title", None):
+            signals.append("section_title")
+        if getattr(manual_metadata, "component_title", None):
+            signals.append("component_title")
+        if getattr(manual_metadata, "part_numbers", None):
+            signals.append("part_numbers")
 
     if drawing_metadata:
         if drawing_metadata.drawing_number:
