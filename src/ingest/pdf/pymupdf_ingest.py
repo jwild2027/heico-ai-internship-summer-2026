@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from backend.doc_ingest import (  # noqa: E402
+from src.backend_legacy.doc_ingest import (  # noqa: E402
     DEFAULT_CHUNK_OVERLAP,
     DEFAULT_CHUNK_WORDS,
     DEFAULT_PROMPT,

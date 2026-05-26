@@ -1,8 +1,0 @@
-CHUNK: 2457
-CHUNK_ID: 03a01c81a936ad3fd04198133a1b6af6
-TITLE: SA-8 SECURITY AND PRIVACY ENGINEERING PRINCIPLES (part 5/6)
-PAGE_START: 284
-PAGE_END: 297
-METADATA: {'page_start': 284, 'page_end': 297}
-
-handle interruption events by employing higher-level atomicity and rollback mechanisms (e.g., transactions). If a service is being used, its atomicity properties are well-documented and characterized so that the component availing itself of that service can detect and handle interruption events appropriately. For example, a system is designed to gracefully respond to disconnection and support resynchronization and data consistency after disconnection. Failure protection strategies that employ replication of policy enforcement mechanisms, sometimes called defense in depth, can allow the system to continue in a secure state even when one mechanism has

@@ -1,8 +1,0 @@
-CHUNK: 2414
-CHUNK_ID: 2af0256a61ae3c3f8bce2369e39fae9e
-TITLE: SA-8 SECURITY AND PRIVACY ENGINEERING PRINCIPLES (part 3/6)
-PAGE_START: 284
-PAGE_END: 297
-METADATA: {'page_start': 284, 'page_end': 297}
-
-a sufficiently fine granularity of privilege decomposition. For example, in the case of an audit mechanism, there may be an interface for the audit manager, who configures the audit settings; an interface for the audit operator, who ensures that audit data is safely collected and stored; and, finally, yet another interface for the audit reviewer, who only has need to view the audit data that has been collected but no need to perform operations on that data. In addition to its manifestations at the system interface, least privilege can be

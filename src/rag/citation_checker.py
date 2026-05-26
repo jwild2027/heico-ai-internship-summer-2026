@@ -377,7 +377,7 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
 
-    from tools.langchain_adapter import ask
+    from src.rag.langchain_adapter import ask
 
     print(f"Query: {args.query}\n")
     print("Retrieving and generating answer...")

@@ -561,8 +561,8 @@ def dump_chunks_to_disk(chunks, dump_dir):
 def ingest_pdf(pdf_path, persist_dir, collection_name, model, chunk_words, overlap,
                ocr_debug_dir, chunk_debug_dir, ocr_debug=True, save_images=True,
                db_path=DEFAULT_DB_PATH):
-    from db.storage import RAGDatabase
-    from db.ingest_bridge import ingest_pdf_to_db
+    from src.db.storage import RAGDatabase
+    from src.db.ingest_bridge import ingest_pdf_to_db
     db = RAGDatabase(db_path)
     ingest_pdf_to_db(pdf_path=pdf_path, db=db, persist_dir=persist_dir,
                      collection_name=collection_name, model=model,
@@ -593,7 +593,7 @@ def main() -> None:
         run_retrieval_benchmark(args)
         return
     if args.command == "status":
-        from db.storage import RAGDatabase
+        from src.db.storage import RAGDatabase
         db = RAGDatabase(args.db_path)
         s = db.status()
         print(f"DB: {s['db_path']}")

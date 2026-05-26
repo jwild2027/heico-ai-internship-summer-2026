@@ -79,7 +79,7 @@ def db_conn(db_path) -> sqlite3.Connection:
 
 @pytest.fixture(scope="session")
 def db(db_path):
-    from db.storage import RAGDatabase
+    from src.db.storage import RAGDatabase
     d = RAGDatabase(db_path)
     yield d
     d.close()

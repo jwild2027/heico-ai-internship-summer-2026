@@ -20,10 +20,10 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 try:
-    from tools.langchain_adapter import ask, DEFAULT_LLM_MODEL, DEFAULT_EMBED_MODEL
-    from tools.langchain_adapter import DEFAULT_COLLECTION, DEFAULT_PERSIST_DIR
-    from tools.langchain_adapter import DEFAULT_TOP_K, DEFAULT_FETCH_K, DEFAULT_USE_HYDE
-    from tools.citation_checker import check_answer, format_checked_answer
+    from src.rag.langchain_adapter import ask, DEFAULT_LLM_MODEL, DEFAULT_EMBED_MODEL
+    from src.rag.langchain_adapter import DEFAULT_COLLECTION, DEFAULT_PERSIST_DIR
+    from src.rag.langchain_adapter import DEFAULT_TOP_K, DEFAULT_FETCH_K, DEFAULT_USE_HYDE
+    from src.rag.citation_checker import check_answer, format_checked_answer
     import tools.pymupdf_bge_chroma_cli as base
     PIPELINE_AVAILABLE = True
 except Exception as e:

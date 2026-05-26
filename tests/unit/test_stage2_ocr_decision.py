@@ -88,7 +88,7 @@ def db_conn(db_path) -> sqlite3.Connection:
 
 @pytest.fixture(scope="session")
 def pages_3(pdf_path_3) -> list[dict[str, Any]]:
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     return bench.extract_pages_pymupdf(
         pdf_path_3,
         debug_dir=Path("ocr_debug"),
@@ -99,7 +99,7 @@ def pages_3(pdf_path_3) -> list[dict[str, Any]]:
 
 @pytest.fixture(scope="session")
 def pages_2(pdf_path_2) -> list[dict[str, Any]]:
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     return bench.extract_pages_pymupdf(
         pdf_path_2,
         debug_dir=Path("ocr_debug"),
@@ -200,7 +200,7 @@ def test_02_low_quality_pages_trigger_ocr(page_map_3):
 # ===========================================================================
 def test_03_ocr_decision_is_deterministic(pdf_path_3):
     """Running extraction twice on the same PDF produces identical ocr_used per page."""
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     kwargs = dict(debug_dir=Path("ocr_debug"), ocr_debug=False, save_images=False)
     run_a = bench.extract_pages_pymupdf(pdf_path_3, **kwargs)
     run_b = bench.extract_pages_pymupdf(pdf_path_3, **kwargs)
@@ -598,7 +598,7 @@ def test_23_selected_text_not_whitespace(db_conn, doc_id_3):
 # ===========================================================================
 def test_24_ocr_quality_score_function_range():
     """ocr_quality_score() must always return a float in [0.0, 1.0]."""
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     test_inputs = [
         "",
         "   ",
@@ -622,7 +622,7 @@ def test_24_ocr_quality_score_function_range():
 # ===========================================================================
 def test_25_quality_score_orders_correctly():
     """Clean prose must score higher than random noise."""
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     clean = (
         "Density altitude is pressure altitude corrected for nonstandard temperature. "
         "As temperature increases above standard, density altitude increases. "
@@ -648,7 +648,7 @@ def test_25_quality_score_orders_correctly():
 # ===========================================================================
 def test_26_quality_score_penalizes_repeated_chars():
     """Text with 4+ repeated characters must score lower than clean prose."""
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     clean = "The pilot must maintain visual line of sight at all times."
     repeated = "aaaaaaaaaa bbbbbbbbbbb ccccccccccc dddddddddddd"
     assert bench.ocr_quality_score(clean) > bench.ocr_quality_score(repeated), \
@@ -659,7 +659,7 @@ def test_26_quality_score_penalizes_repeated_chars():
 # TEST 27 — merge_page_text: returns empty when both inputs empty
 # ===========================================================================
 def test_27_merge_empty_both():
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     result = bench.merge_page_text("", "", ocr_confidence=0.0, ocr_quality=0.0)
     assert result == "", f"Expected empty string, got: '{result}'"
 
@@ -668,7 +668,7 @@ def test_27_merge_empty_both():
 # TEST 28 — merge_page_text: returns OCR when native empty
 # ===========================================================================
 def test_28_merge_native_empty_returns_ocr():
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     ocr = "This is OCR text from a scanned page with good content."
     result = bench.merge_page_text("", ocr, ocr_confidence=90.0, ocr_quality=0.8)
     assert result.strip() == bench.base.normalize_text(ocr).strip(), \
@@ -679,7 +679,7 @@ def test_28_merge_native_empty_returns_ocr():
 # TEST 29 — merge_page_text: returns native when OCR empty
 # ===========================================================================
 def test_29_merge_ocr_empty_returns_native():
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     native = "This is clean native PDF text with full content."
     result = bench.merge_page_text(native, "", ocr_confidence=0.0, ocr_quality=0.0)
     assert result.strip() == bench.base.normalize_text(native).strip(), \
@@ -691,7 +691,7 @@ def test_29_merge_ocr_empty_returns_native():
 # ===========================================================================
 def test_30_merge_low_confidence_returns_native():
     """When OCR confidence < 60, native text must be returned."""
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     native = "Clean native text from the PDF renderer."
     ocr    = "OCR text that is shorter."
     result = bench.merge_page_text(
@@ -706,7 +706,7 @@ def test_30_merge_low_confidence_returns_native():
 # ===========================================================================
 def test_31_merge_high_confidence_ocr_wins_when_longer():
     """When OCR is 30%+ longer and confidence >= 60, OCR must be returned."""
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     native = "Short native text."
     ocr    = (
         "Much longer OCR text that recovered significantly more content "
@@ -724,7 +724,7 @@ def test_31_merge_high_confidence_ocr_wins_when_longer():
 # ===========================================================================
 def test_32_merge_identical_inputs_no_duplication():
     """When native and OCR text are identical, result must not be doubled."""
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     text = "The airspace classification system divides airspace into classes."
     result = bench.merge_page_text(
         text, text, ocr_confidence=95.0, ocr_quality=0.9
@@ -742,7 +742,7 @@ def test_32_merge_identical_inputs_no_duplication():
 # ===========================================================================
 def test_33_merge_never_concatenates():
     """Result length must never exceed max(native, ocr) length by more than 10%."""
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     native = "Native text content here with some words for testing purposes."
     ocr    = "OCR text content here with some words for testing purposes too."
     result = bench.merge_page_text(
@@ -860,7 +860,7 @@ def test_38_doc_isolation_no_cross_contamination(db_conn, doc_id_2, doc_id_3):
 # ===========================================================================
 def test_39_strategy_consistent_across_runs(pdf_path_3):
     """Two extraction runs must agree on strategy for every page."""
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     kwargs = dict(debug_dir=Path("ocr_debug"), ocr_debug=False, save_images=False)
     run_a = bench.extract_pages_pymupdf(pdf_path_3, **kwargs)
     run_b = bench.extract_pages_pymupdf(pdf_path_3, **kwargs)
@@ -1004,7 +1004,7 @@ def test_46_selected_text_not_longer_than_inputs(pages_3):
 # ===========================================================================
 def test_47_quality_score_is_deterministic():
     """ocr_quality_score() must return the same value on repeated calls."""
-    import rag_benchmark as bench
+    import src.benchmarks.rag_benchmark as bench
     text = (
         "The remote pilot must ensure the small unmanned aircraft system "
         "operates within the constraints of Class G airspace below 400 feet AGL."

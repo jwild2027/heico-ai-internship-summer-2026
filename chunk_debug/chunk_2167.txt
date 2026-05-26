@@ -1,8 +1,0 @@
-CHUNK: 2167
-CHUNK_ID: ebec789add61e4703c48e383c06bc663
-TITLE: SA-6 SOFTWARE USAGE RESTRICTIONS (part 2/6)
-PAGE_START: 284
-PAGE_END: 297
-METADATA: {'page_start': 284, 'page_end': 297}
-
-The principle of hierarchical protection states that a component need not be protected from more trustworthy components. In the degenerate case of the most trusted component, it protects itself from all other components. For example, if an operating system kernel is deemed the most trustworthy component in a system, then it protects itself from all untrusted applications it supports, but the applications, conversely, do not need to protect themselves from the kernel. The trustworthiness of users is a consideration for applying the principle of hierarchical protection. A trusted system need

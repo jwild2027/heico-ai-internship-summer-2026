@@ -4,7 +4,7 @@
 Usage: run this file the same way you'd run `doc_ingest.py`.
 """
 from pathlib import Path
-from backend.doc_ingest import parse_args, resolve_pdf_path, run_ingest
+from src.backend_legacy.doc_ingest import parse_args, resolve_pdf_path, run_ingest
 
 
 def main() -> None:
