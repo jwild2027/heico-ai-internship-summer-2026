@@ -191,8 +191,10 @@ def scan_tiff_to_dict(
         ocr_metadata=ocr_drawing_metadata,
     )
 
-    # Classify from OCR text when available; otherwise use filename text as a weak hint.
-    classifier_text = ocr_text or _filename_to_parse_text(path)
+    # Classify from OCR text when OCR ran. If OCR ran and found no text, treat
+    # the page as a blank/unknown image instead of classifying from a numeric
+    # filename like 00000002.tif. If OCR did not run, the filename remains a weak hint.
+    classifier_text = ocr_text if ocr_result is not None else _filename_to_parse_text(path)
     classification = classify_document(
         ocr_text=classifier_text,
         drawing_metadata=merged_drawing_metadata,
