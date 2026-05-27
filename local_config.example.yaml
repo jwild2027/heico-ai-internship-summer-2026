@@ -1,0 +1,12 @@
+# Local TIFF/RAG defaults. Copy to local_config.yaml and edit as needed.
+db_path: local_data/db/tiff_search.db
+embed_model: bge-m3:latest
+llm_model: gemma3:12B
+ollama_url: http://127.0.0.1:11434
+top_k: 8
+answer_mode: auto
+retrieval_mode: hybrid
+use_llm: true
+use_embeddings: true
+force_llm: false
+force_embeddings: false

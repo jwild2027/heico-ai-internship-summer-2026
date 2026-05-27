@@ -22,6 +22,12 @@ from pathlib import Path
 from typing import Iterable
 
 from tiff.search_index import collapse_ws, normalize_part_number
+from tiff.part_filters import is_bad_nomenclature, is_probable_real_part_number
+
+try:
+    from tiff.ocr_cleanup import clean_part_nomenclature
+except Exception:  # pragma: no cover - optional cleanup layer
+    clean_part_nomenclature = None
 
 
 CATALOG_SCHEMA_VERSION = 1
@@ -177,32 +183,15 @@ def create_part_catalog_schema(conn: sqlite3.Connection, reset: bool = False) ->
 def is_ata_reference_number(value: str | None) -> bool:
     """Return True for ATA/figure reference values that should not be catalog parts."""
 
-    if not value:
-        return False
-    display = collapse_ws(value).upper()
-    if re.fullmatch(r"\d{2}[-\s]\d{2}[-\s]\d{2}[-\s][A-Z0-9]{1,4}", display):
-        return True
-    if re.fullmatch(r"\d{2}[-\s]\d{2}[-\s]\d{2}", display):
-        return True
-    return False
+    from tiff.part_filters import is_ata_reference_number as shared_filter
+
+    return shared_filter(value)
 
 
 def is_probable_catalog_part(value: str | None) -> bool:
     """Filter obvious non-part references before catalog extraction."""
 
-    if not value:
-        return False
-    display = collapse_ws(value).upper()
-    norm = normalize_part_number(display)
-    if not norm:
-        return False
-    if is_ata_reference_number(display):
-        return False
-    if len(norm) < 5:
-        return False
-    if any(ch.isalpha() for ch in norm):
-        return True
-    return len(norm) >= 8 and bool(re.search(r"[-/.\s]", display))
+    return is_probable_real_part_number(value)
 
 
 def split_ocr_lines(text: str | None) -> list[str]:
@@ -278,8 +267,13 @@ def clean_nomenclature(candidate: str | None) -> tuple[str | None, str | None]:
     text = collapse_ws(text)
     text, qty = extract_trailing_quantity(text)
     text = re.sub(r"[|]{2,}", " ", text)
-    text = collapse_ws(text.strip(" |:;,.")).upper()
-    if not looks_like_nomenclature(text):
+    text = collapse_ws(text.strip(" |:;,."))
+    if clean_part_nomenclature is not None:
+        cleaned_text = clean_part_nomenclature(text)
+        text = cleaned_text or ""
+    else:
+        text = text.upper()
+    if not looks_like_nomenclature(text) or is_bad_nomenclature(text):
         return None, qty
     return text, qty
 
@@ -289,6 +283,8 @@ def looks_like_nomenclature(value: str | None) -> bool:
         return False
     text = collapse_ws(value).strip(" |:;,.()").upper()
     if len(text) < 3 or len(text) > 96:
+        return False
+    if is_bad_nomenclature(text):
         return False
     if not any(ch.isalpha() for ch in text):
         return False
@@ -460,17 +456,32 @@ def build_part_catalog(db_path: Path | str, reset: bool = True) -> PartCatalogSu
     conn.row_factory = sqlite3.Row
     try:
         create_part_catalog_schema(conn, reset=reset)
-        page_rows = conn.execute(
-            """
-            SELECT
-                p.page_id, p.manual_id, p.page_sequence, p.page_label, p.ata_code,
-                p.tiff_path, p.ocr_text_path, p.ocr_text,
-                pm.part_number_display, pm.part_number_normalized
-            FROM part_mentions pm
-            JOIN pages p ON p.page_id = pm.page_id
-            ORDER BY p.manual_id, p.page_sequence, pm.part_number_normalized
-            """
-        ).fetchall()
+        if table_exists(conn, "ocr_clean_pages"):
+            page_rows = conn.execute(
+                """
+                SELECT
+                    p.page_id, p.manual_id, p.page_sequence, p.page_label, p.ata_code,
+                    p.tiff_path, p.ocr_text_path,
+                    COALESCE(oc.clean_ocr_text, p.ocr_text) AS ocr_text,
+                    pm.part_number_display, pm.part_number_normalized
+                FROM part_mentions pm
+                JOIN pages p ON p.page_id = pm.page_id
+                LEFT JOIN ocr_clean_pages oc ON oc.page_id = p.page_id
+                ORDER BY p.manual_id, p.page_sequence, pm.part_number_normalized
+                """
+            ).fetchall()
+        else:
+            page_rows = conn.execute(
+                """
+                SELECT
+                    p.page_id, p.manual_id, p.page_sequence, p.page_label, p.ata_code,
+                    p.tiff_path, p.ocr_text_path, p.ocr_text,
+                    pm.part_number_display, pm.part_number_normalized
+                FROM part_mentions pm
+                JOIN pages p ON p.page_id = pm.page_id
+                ORDER BY p.manual_id, p.page_sequence, pm.part_number_normalized
+                """
+            ).fetchall()
 
         sequence = 0
         seen_keys: set[tuple[str, str, str]] = set()
