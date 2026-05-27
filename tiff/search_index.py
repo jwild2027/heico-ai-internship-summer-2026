@@ -19,6 +19,9 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable
 
+from tiff.part_filters import is_ata_reference_number as _is_ata_reference_number
+from tiff.part_filters import is_probable_real_part_number
+
 
 SQLITE_SCHEMA_VERSION = 1
 
@@ -196,32 +199,18 @@ def coerce_string(value: Any) -> str | None:
 
 
 def is_probable_ata_code(value: str) -> bool:
-    return bool(re.fullmatch(r"\d{2}[-\s]\d{2}[-\s]\d{2}", value.strip()))
+    return _is_ata_reference_number(value)
 
 
 def is_probable_part_number(value: str) -> bool:
     """Heuristic for search routing and extraction.
 
-    This is intentionally conservative to avoid turning ATA codes and manual
-    publication numbers into too many false part-number hits. The raw OCR text
-    remains keyword-searchable even when a candidate is not added to the parts
-    table.
+    This now rejects ATA/figure/page references such as 25-21-00-46 before
+    they enter part_mentions. The raw OCR remains keyword-searchable even when
+    a candidate is not added to the parts table.
     """
 
-    display = collapse_ws(value).upper()
-    norm = normalize_part_number(display)
-    if not norm:
-        return False
-    if is_probable_ata_code(display):
-        return False
-    has_digit = any(ch.isdigit() for ch in norm)
-    has_alpha = any(ch.isalpha() for ch in norm)
-    if not has_digit:
-        return False
-    if has_alpha and len(norm) >= 4:
-        return True
-    # Most aircraft part numbers we care about here are longer than ATA codes.
-    return len(norm) >= 8
+    return is_probable_real_part_number(value)
 
 
 def extract_part_mentions(text: str, context_chars: int = 80) -> list[dict[str, str]]:
@@ -727,9 +716,36 @@ def search_db(db_path: Path, query: str, limit: int = 20, mode: str = "auto") ->
         part_norm = normalize_part_number(query)
         query_is_part_like = is_probable_part_number(query)
         has_part_catalog = _table_exists(conn, "part_catalog")
+        has_part_catalog_clean = _table_exists(conn, "part_catalog_mentions_clean")
 
         if mode in {"auto", "part"} and part_norm and (query_is_part_like or mode == "part"):
-            if has_part_catalog:
+            if has_part_catalog_clean:
+                sql = """
+                    SELECT
+                        p.*,
+                        pm.part_number_display AS matched_part_number,
+                        pm.part_number_normalized AS matched_part_number_normalized,
+                        pm.context AS context,
+                        pcmc.clean_nomenclature AS part_nomenclature,
+                        pcmc.item_number AS part_item_number,
+                        pcmc.quantity AS part_quantity,
+                        pcmc.figure_number AS part_figure_number,
+                        pcmc.confidence AS part_confidence,
+                        pcmc.evidence_text AS part_evidence_text
+                    FROM part_mentions pm
+                    JOIN pages p ON p.page_id = pm.page_id
+                    LEFT JOIN part_catalog_mentions_clean pcmc
+                      ON pcmc.page_id = pm.page_id
+                     AND pcmc.part_number_normalized = pm.part_number_normalized
+                    WHERE pm.part_number_normalized = ?
+                    ORDER BY
+                        CASE WHEN pcmc.clean_nomenclature IS NOT NULL AND pcmc.clean_nomenclature <> '' THEN 0 ELSE 1 END,
+                        COALESCE(pcmc.quality_score, 0) DESC,
+                        p.manual_id,
+                        p.page_sequence
+                    LIMIT ?
+                """
+            elif has_part_catalog:
                 sql = """
                     SELECT
                         p.*,
