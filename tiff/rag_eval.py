@@ -13,8 +13,13 @@ from typing import Any, Iterable
 from .rag_answer import RagAnswer, answer_question, format_source_label
 from .rag_retriever import RagSource
 
+try:
+    from .rag_eval_questions import EXPANDED_RAG_EVAL_QUESTIONS
+except Exception:  # pragma: no cover - fallback only protects partial installs.
+    EXPANDED_RAG_EVAL_QUESTIONS = []
 
-DEFAULT_EVAL_QUESTIONS: list[dict[str, Any]] = [
+
+_FALLBACK_EVAL_QUESTIONS: list[dict[str, Any]] = [
     {
         "id": "part_lookup_001",
         "question": "What is part number 120-37313-001?",
@@ -22,6 +27,8 @@ DEFAULT_EVAL_QUESTIONS: list[dict[str, Any]] = [
         "expected_sources": ["Page 1056"],
         "answer_mode": "auto",
         "retrieval_mode": "auto",
+        "expected_llm_used": False,
+        "expected_embeddings_used": False,
     },
     {
         "id": "nomenclature_lookup_001",
@@ -29,6 +36,7 @@ DEFAULT_EVAL_QUESTIONS: list[dict[str, Any]] = [
         "expected_terms": ["120-37313-001", "120-36843-001", "120-37313-535"],
         "answer_mode": "auto",
         "retrieval_mode": "auto",
+        "expected_llm_used": False,
     },
     {
         "id": "structured_summary_001",
@@ -47,6 +55,8 @@ DEFAULT_EVAL_QUESTIONS: list[dict[str, Any]] = [
     },
 ]
 
+DEFAULT_EVAL_QUESTIONS: list[dict[str, Any]] = EXPANDED_RAG_EVAL_QUESTIONS or _FALLBACK_EVAL_QUESTIONS
+
 
 @dataclass(frozen=True)
 class EvalQuestion:
@@ -54,6 +64,8 @@ class EvalQuestion:
     question: str
     expected_terms: tuple[str, ...] = ()
     expected_sources: tuple[str, ...] = ()
+    expected_llm_used: bool | None = None
+    expected_embeddings_used: bool | None = None
     answer_mode: str = "auto"
     retrieval_mode: str = "auto"
     top_k: int | None = None
@@ -82,6 +94,9 @@ class EvalRecord:
     missing_terms: tuple[str, ...] = ()
     expected_sources: tuple[str, ...] = ()
     missing_sources: tuple[str, ...] = ()
+    expected_llm_used: bool | None = None
+    expected_embeddings_used: bool | None = None
+    expectation_errors: tuple[str, ...] = ()
     status: str = "manual_review"
     warnings: tuple[str, ...] = ()
     sources: tuple[dict[str, Any], ...] = field(default_factory=tuple)
@@ -104,10 +119,31 @@ CSV_FIELDS = [
     "missing_terms",
     "expected_sources",
     "missing_sources",
+    "expected_llm_used",
+    "expected_embeddings_used",
+    "expectation_errors",
     "warnings",
     "notes",
     "answer",
 ]
+
+
+def _optional_bool(data: dict[str, Any], *keys: str) -> bool | None:
+    for key in keys:
+        if key not in data or data.get(key) is None:
+            continue
+        value = data.get(key)
+        if isinstance(value, bool):
+            return value
+        if isinstance(value, (int, float)):
+            return bool(value)
+        text = str(value).strip().lower()
+        if text in {"1", "true", "yes", "y", "on"}:
+            return True
+        if text in {"0", "false", "no", "n", "off"}:
+            return False
+        return bool(value)
+    return None
 
 
 def question_from_dict(data: dict[str, Any], *, index: int = 0) -> EvalQuestion:
@@ -120,13 +156,15 @@ def question_from_dict(data: dict[str, Any], *, index: int = 0) -> EvalQuestion:
         question=question,
         expected_terms=tuple(str(x) for x in data.get("expected_terms", []) or []),
         expected_sources=tuple(str(x) for x in data.get("expected_sources", []) or []),
+        expected_llm_used=_optional_bool(data, "expected_llm_used", "expect_llm_used"),
+        expected_embeddings_used=_optional_bool(data, "expected_embeddings_used", "expect_embeddings_used"),
         answer_mode=str(data.get("answer_mode") or "auto"),
         retrieval_mode=str(data.get("retrieval_mode") or "auto"),
         top_k=int(data["top_k"]) if data.get("top_k") is not None else None,
         force_llm=bool(data.get("force_llm", False)),
         force_embeddings=bool(data.get("force_embeddings", False)),
-        use_llm=bool(data["use_llm"]) if data.get("use_llm") is not None else None,
-        use_embeddings=bool(data["use_embeddings"]) if data.get("use_embeddings") is not None else None,
+        use_llm=_optional_bool(data, "use_llm"),
+        use_embeddings=_optional_bool(data, "use_embeddings"),
         manual_review=bool(data.get("manual_review", False)),
         notes=str(data.get("notes") or ""),
     )
@@ -154,7 +192,7 @@ def load_eval_questions(path: str | Path | None = None) -> list[EvalQuestion]:
 def write_default_eval_questions(path: str | Path) -> Path:
     out_path = Path(path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(DEFAULT_EVAL_QUESTIONS, indent=2), encoding="utf-8")
+    out_path.write_text(json.dumps({"questions": DEFAULT_EVAL_QUESTIONS}, indent=2) + "\n", encoding="utf-8")
     return out_path
 
 
@@ -171,6 +209,8 @@ def source_to_eval_dict(source: RagSource, *, index: int) -> dict[str, Any]:
         "page_sequence": source.page_sequence,
         "part_number": source.matched_part_number,
         "nomenclature": source.part_nomenclature,
+        "rescarta_url": getattr(source, "rescarta_url", None),
+        "source_url": getattr(source, "source_url", None),
         "tiff_path": source.tiff_path,
         "ocr_text_path": source.ocr_text_path,
     }
@@ -186,19 +226,36 @@ def _haystack_for_answer(answer: RagAnswer) -> str:
         parts.append(source.evidence_text or "")
         parts.append(source.tiff_path or "")
         parts.append(source.ocr_text_path or "")
+        parts.append(getattr(source, "rescarta_url", None) or "")
+        parts.append(getattr(source, "source_url", None) or "")
         parts.append(str(idx))
     return "\n".join(parts).upper()
 
 
-def judge_answer(answer: RagAnswer, question: EvalQuestion) -> tuple[str, tuple[str, ...], tuple[str, ...]]:
+def _expectation_errors(answer: RagAnswer, question: EvalQuestion) -> tuple[str, ...]:
+    errors: list[str] = []
+    if question.expected_llm_used is not None and answer.used_llm != question.expected_llm_used:
+        errors.append(f"LLM used expected {question.expected_llm_used} got {answer.used_llm}")
+    if question.expected_embeddings_used is not None and answer.used_embeddings != question.expected_embeddings_used:
+        errors.append(
+            f"Embeddings used expected {question.expected_embeddings_used} got {answer.used_embeddings}"
+        )
+    return tuple(errors)
+
+
+def judge_answer(answer: RagAnswer, question: EvalQuestion) -> tuple[str, tuple[str, ...], tuple[str, ...], tuple[str, ...]]:
     haystack = _haystack_for_answer(answer)
     missing_terms = tuple(term for term in question.expected_terms if str(term).upper() not in haystack)
     missing_sources = tuple(term for term in question.expected_sources if str(term).upper() not in haystack)
-    if missing_terms or missing_sources:
-        return "fail", missing_terms, missing_sources
-    if question.manual_review or answer.used_llm:
-        return "manual_review", missing_terms, missing_sources
-    return "pass", missing_terms, missing_sources
+    expectation_errors = _expectation_errors(answer, question)
+    if missing_terms or missing_sources or expectation_errors:
+        return "fail", missing_terms, missing_sources, expectation_errors
+    if question.manual_review:
+        return "manual_review", missing_terms, missing_sources, expectation_errors
+    has_automatic_check = bool(question.expected_terms or question.expected_sources or question.expected_llm_used is not None or question.expected_embeddings_used is not None)
+    if has_automatic_check:
+        return "pass", missing_terms, missing_sources, expectation_errors
+    return "manual_review", missing_terms, missing_sources, expectation_errors
 
 
 def evaluate_question(
@@ -231,7 +288,7 @@ def evaluate_question(
         force_embeddings=question.force_embeddings,
     )
     elapsed = time.perf_counter() - start
-    status, missing_terms, missing_sources = judge_answer(answer, question)
+    status, missing_terms, missing_sources, expectation_errors = judge_answer(answer, question)
     return EvalRecord(
         id=question.id,
         question=question.question,
@@ -248,6 +305,9 @@ def evaluate_question(
         missing_terms=missing_terms,
         expected_sources=question.expected_sources,
         missing_sources=missing_sources,
+        expected_llm_used=question.expected_llm_used,
+        expected_embeddings_used=question.expected_embeddings_used,
+        expectation_errors=expectation_errors,
         status=status,
         warnings=answer.warnings,
         sources=tuple(source_to_eval_dict(source, index=i) for i, source in enumerate(answer.sources, start=1)),
@@ -298,6 +358,9 @@ def record_to_dict(record: EvalRecord) -> dict[str, Any]:
         "missing_terms": list(record.missing_terms),
         "expected_sources": list(record.expected_sources),
         "missing_sources": list(record.missing_sources),
+        "expected_llm_used": record.expected_llm_used,
+        "expected_embeddings_used": record.expected_embeddings_used,
+        "expectation_errors": list(record.expectation_errors),
         "status": record.status,
         "warnings": list(record.warnings),
         "sources": list(record.sources),
@@ -321,7 +384,14 @@ def write_eval_csv(records: Iterable[EvalRecord], path: str | Path) -> Path:
         for record in records:
             row = record_to_dict(record)
             row["elapsed_seconds"] = f"{record.elapsed_seconds:.4f}"
-            for key in ["expected_terms", "missing_terms", "expected_sources", "missing_sources", "warnings"]:
+            for key in [
+                "expected_terms",
+                "missing_terms",
+                "expected_sources",
+                "missing_sources",
+                "expectation_errors",
+                "warnings",
+            ]:
                 row[key] = "; ".join(str(x) for x in row.get(key, []))
             writer.writerow({field: row.get(field, "") for field in CSV_FIELDS})
     return out_path
@@ -348,7 +418,8 @@ def write_eval_html(records: Iterable[EvalRecord], path: str | Path) -> Path:
             f"<strong>LLM:</strong> {record.llm_used} <strong>Embeddings:</strong> {record.embeddings_used} "
             f"<strong>Elapsed:</strong> {record.elapsed_seconds:.2f}s <strong>Sources:</strong> {record.source_count}</p>"
             f"<p><strong>Missing terms:</strong> {html.escape('; '.join(record.missing_terms) or '-')}<br>"
-            f"<strong>Missing sources:</strong> {html.escape('; '.join(record.missing_sources) or '-')}</p>"
+            f"<strong>Missing sources:</strong> {html.escape('; '.join(record.missing_sources) or '-')}<br>"
+            f"<strong>Expectation errors:</strong> {html.escape('; '.join(record.expectation_errors) or '-')}</p>"
             f"<pre>{html.escape(record.answer)}</pre>"
             f"<h3>Sources</h3><ol>{''.join(source_lines)}</ol>"
             "</section>"

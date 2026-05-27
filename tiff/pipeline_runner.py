@@ -1,15 +1,14 @@
 """Utilities for running the local TIFF search/RAG backend pipeline.
 
-This module intentionally shells out to the existing scripts instead of
-reimplementing their logic. That keeps the wrapper small and makes it useful as
-an orchestration layer for the current SQLite/Ollama MVP.
+The runner shells out to the existing scripts instead of reimplementing their
+logic. That keeps the orchestration layer small and makes it useful for the
+current SQLite/Ollama MVP.
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass, field
 from pathlib import Path
-import os
 import subprocess
 import sys
 import time
@@ -40,7 +39,9 @@ class PipelineConfig:
     skip_rag_chunks: bool = False
     skip_embeddings: bool = False
     skip_qa: bool = False
+    skip_qa_triage: bool = False
     skip_eval: bool = False
+    skip_source_audit: bool = False
     python_executable: str = field(default_factory=lambda: sys.executable or "python")
 
 
@@ -62,20 +63,10 @@ def _strip_quotes(value: str) -> str:
 
 
 def read_simple_yaml(path: str | Path) -> dict[str, str]:
-    """Read a small flat YAML config file without requiring PyYAML.
-
-    The local_config.yaml file used in this repo is expected to be simple:
-
-        db_path: local_data/db/tiff_search.db
-        embed_model: bge-m3:latest
-
-    Nested objects and lists are intentionally ignored here.
-    """
-
+    """Read a small flat YAML config file without requiring PyYAML."""
     config_path = Path(path)
     if not config_path.exists():
         return {}
-
     values: dict[str, str] = {}
     for raw_line in config_path.read_text(encoding="utf-8").splitlines():
         line = raw_line.strip()
@@ -91,12 +82,14 @@ def read_simple_yaml(path: str | Path) -> dict[str, str]:
 
 def config_from_file(path: str | Path = "local_config.yaml") -> PipelineConfig:
     """Create a PipelineConfig using defaults plus values from local_config.yaml."""
-
     raw = read_simple_yaml(path)
     embed_model = raw.get("embed_model") or raw.get("embedding_model") or raw.get("rag_embed_model")
     return PipelineConfig(
         db_path=raw.get("db_path", PipelineConfig.db_path),
-        rescarta_export_dir=raw.get("rescarta_export_dir", raw.get("rescarta_export_root", PipelineConfig.rescarta_export_dir)),
+        rescarta_export_dir=raw.get(
+            "rescarta_export_dir",
+            raw.get("rescarta_export_root", PipelineConfig.rescarta_export_dir),
+        ),
         embed_model=embed_model or PipelineConfig.embed_model,
         config_path=str(path),
         questions_path=raw.get("questions_path", raw.get("eval_questions_path", PipelineConfig.questions_path)),
@@ -105,7 +98,6 @@ def config_from_file(path: str | Path = "local_config.yaml") -> PipelineConfig:
 
 def merge_config(base: PipelineConfig, **overrides: object) -> PipelineConfig:
     """Return a copy of base with non-None override values applied."""
-
     values = dict(base.__dict__)
     for key, value in overrides.items():
         if value is not None:
@@ -119,7 +111,6 @@ def _python_cmd(config: PipelineConfig, script: str, *args: str) -> tuple[str, .
 
 def build_pipeline_steps(config: PipelineConfig) -> list[PipelineStep]:
     """Build the default backend pipeline command list."""
-
     steps: list[PipelineStep] = []
 
     if not config.skip_search_index:
@@ -196,10 +187,48 @@ def build_pipeline_steps(config: PipelineConfig) -> list[PipelineStep]:
         steps.append(
             PipelineStep(
                 name="part_catalog_qa",
-                description="Write part catalog QA reports.",
+                description="Write raw part catalog QA reports.",
                 command=_python_cmd(config, *qa_args),
             )
         )
+
+        if not config.skip_qa_triage:
+            steps.append(
+                PipelineStep(
+                    name="part_catalog_qa_triage",
+                    description="Apply command-line QA severity triage and rewrite the normal QA CSV/JSON report.",
+                    command=_python_cmd(
+                        config,
+                        "scripts/triage_part_catalog_qa.py",
+                        "--replace-all-report",
+                        "--limit",
+                        "12",
+                    ),
+                )
+            )
+
+    if not config.skip_source_audit:
+        source_audit_args = [
+            "scripts/audit_source_links.py",
+            "--strict",
+            "--write-json",
+            "--json-output",
+            "local_data/source_links/source_link_audit.json",
+            "--print-limit",
+            "5",
+        ]
+        if config_path.exists():
+            source_audit_args.extend(["--config", config.config_path])
+        else:
+            source_audit_args.extend(["--db-path", config.db_path])
+        steps.append(
+            PipelineStep(
+                name="source_link_audit",
+                description="Verify every indexed page has auditable TIFF/OCR/ResCarta source links.",
+                command=_python_cmd(config, *source_audit_args),
+            )
+        )
+
 
     if not config.skip_eval:
         if not questions_path.exists():
@@ -221,7 +250,7 @@ def build_pipeline_steps(config: PipelineConfig) -> list[PipelineStep]:
             eval_args.extend(["--config", config.config_path])
         else:
             eval_args.extend(["--db-path", config.db_path, "--embed-model", config.embed_model])
-        eval_args.extend(["--questions", config.questions_path])
+        eval_args.extend(["--questions", config.questions_path, "--no-refresh-manifest"])
         steps.append(
             PipelineStep(
                 name="rag_eval",
@@ -235,7 +264,6 @@ def build_pipeline_steps(config: PipelineConfig) -> list[PipelineStep]:
 
 def format_command(command: Sequence[str]) -> str:
     """Format a command for human-readable logs."""
-
     parts: list[str] = []
     for part in command:
         if any(ch.isspace() for ch in part):
@@ -252,20 +280,14 @@ def run_pipeline(
     continue_on_error: bool = False,
     cwd: str | Path | None = None,
 ) -> list[PipelineRunResult]:
-    """Run the configured backend pipeline.
-
-    If dry_run is True, commands are printed by the caller but not executed.
-    """
-
+    """Run the configured backend pipeline."""
     results: list[PipelineRunResult] = []
     steps = build_pipeline_steps(config)
     run_cwd = str(cwd) if cwd is not None else None
-
     for step in steps:
         if dry_run:
             results.append(PipelineRunResult(step=step, returncode=0, skipped=True, elapsed_seconds=0.0))
             continue
-
         started = time.perf_counter()
         completed = subprocess.run(step.command, cwd=run_cwd, check=False)
         elapsed = time.perf_counter() - started
@@ -273,11 +295,9 @@ def run_pipeline(
         results.append(result)
         if completed.returncode != 0 and not continue_on_error:
             break
-
     return results
 
 
 def successful(results: Iterable[PipelineRunResult]) -> bool:
     """Return True if every executed step succeeded."""
-
     return all(item.returncode == 0 for item in results)

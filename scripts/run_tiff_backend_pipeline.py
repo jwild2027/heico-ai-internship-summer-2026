@@ -1,10 +1,5 @@
 #!/usr/bin/env python
-"""Run the local TIFF backend rebuild/evaluation pipeline.
-
-This is a convenience wrapper around the existing scripts. It rebuilds the
-current backend artifacts from the ResCarta staging export, runs QA/eval, and
-writes a small JSON run manifest for audit/debugging.
-"""
+"""Run the local TIFF backend rebuild/evaluation pipeline."""
 
 from __future__ import annotations
 
@@ -48,8 +43,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-part-catalog", action="store_true", help="Skip OCR cleanup and part catalog rebuild.")
     parser.add_argument("--skip-rag-chunks", action="store_true", help="Skip RAG chunk rebuild.")
     parser.add_argument("--skip-embeddings", action="store_true", help="Skip embedding rebuild.")
-    parser.add_argument("--skip-qa", action="store_true", help="Skip part catalog QA report.")
+    parser.add_argument("--skip-qa", action="store_true", help="Skip part catalog QA report and QA triage.")
+    parser.add_argument("--skip-qa-triage", action="store_true", help="Run raw QA but skip the QA severity triage step.")
     parser.add_argument("--skip-eval", action="store_true", help="Skip RAG evaluation report.")
+    parser.add_argument("--skip-source-audit", action="store_true", help="Skip source-link audit checks.")
     parser.add_argument("--continue-on-error", action="store_true", help="Continue running later steps after a failed step.")
     parser.add_argument("--dry-run", action="store_true", help="Print commands without running them.")
     parser.add_argument("--manifest-dir", default=DEFAULT_MANIFEST_DIR, help="Directory for pipeline run manifests.")
@@ -59,7 +56,6 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-
     config = config_from_file(args.config)
     config = merge_config(
         config,
@@ -73,10 +69,12 @@ def main() -> int:
         skip_rag_chunks=True if args.skip_rag_chunks else None,
         skip_embeddings=True if args.skip_embeddings else None,
         skip_qa=True if args.skip_qa else None,
+        skip_qa_triage=True if args.skip_qa_triage else None,
         skip_eval=True if args.skip_eval else None,
+        skip_source_audit=True if args.skip_source_audit else None,
     )
-
     steps = build_pipeline_steps(config)
+
     print("TIFF backend pipeline")
     print(f"  DB: {config.db_path}")
     print(f"  ResCarta export dir: {config.rescarta_export_dir}")
@@ -85,7 +83,6 @@ def main() -> int:
     print(f"  Eval questions: {config.questions_path}")
     print(f"  Steps: {len(steps)}")
     print("")
-
     for index, step in enumerate(steps, start=1):
         print(f"[{index}/{len(steps)}] {step.name}")
         if step.description:
@@ -93,7 +90,6 @@ def main() -> int:
         print(f"  {format_command(step.command)}")
 
     started_at = _utc_iso()
-
     if args.dry_run:
         print("\nDry run only. No commands executed.")
         if not args.skip_manifest:
@@ -121,7 +117,6 @@ def main() -> int:
         print(f"  {result.step.name}: {status} ({elapsed:.2f}s)")
 
     ok = successful(results)
-
     if not args.skip_manifest:
         manifest = build_pipeline_manifest(
             config=config,
@@ -138,7 +133,6 @@ def main() -> int:
     if ok:
         print("\nPipeline complete.")
         return 0
-
     print("\nPipeline stopped with errors.")
     return 1
 
