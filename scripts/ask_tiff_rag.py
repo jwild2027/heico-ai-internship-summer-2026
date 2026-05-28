@@ -12,6 +12,7 @@ if str(REPO_ROOT) not in sys.path:
 from tiff.local_config import bool_from_config, int_from_config, load_local_config  # noqa: E402
 from tiff.ollama_client import DEFAULT_OLLAMA_URL  # noqa: E402
 from tiff.rag_answer import answer_question, format_source_label  # noqa: E402
+from tiff.rag_ata_answer import build_ata_section_answer, looks_like_ata_query  # noqa: E402
 
 
 def main() -> int:
@@ -29,6 +30,8 @@ def main() -> int:
     parser.add_argument("--force-embeddings", action="store_true", help="Run semantic/vector retrieval even if auto routing would not require it")
     parser.add_argument("--no-llm", action="store_true", help="Use extractive source-only answer without calling the chat model")
     parser.add_argument("--no-embeddings", action="store_true", help="Use exact/keyword retrieval only")
+    parser.add_argument("--organization-export-dir", default=None, help="Directory containing exported organization JSON files")
+    parser.add_argument("--skip-ata-organization", action="store_true", help="Disable deterministic ATA lookup from organization export")
     args = parser.parse_args()
 
     cfg = load_local_config(args.config)
@@ -43,8 +46,24 @@ def main() -> int:
     use_embeddings = False if args.no_embeddings else bool_from_config(cfg.get("use_embeddings"), default=True)
     force_llm = bool(args.force_llm or bool_from_config(cfg.get("force_llm"), default=False))
     force_embeddings = bool(args.force_embeddings or bool_from_config(cfg.get("force_embeddings"), default=False))
-
     question = " ".join(args.question).strip()
+
+    export_dir = args.organization_export_dir or str(
+        cfg.get("organization_export_dir") or "local_data/organization/export"
+    )
+    if not args.skip_ata_organization and looks_like_ata_query(question):
+        try:
+            ata_answer = build_ata_section_answer(export_dir, question, page_limit=max(5, int(top_k)))
+        except FileNotFoundError:
+            ata_answer = None
+        if ata_answer is not None:
+            print(f"Question: {question}")
+            print("LLM used: False")
+            print("Embeddings used: False")
+            print("\nAnswer:\n")
+            print(ata_answer.answer)
+            return 0
+
     result = answer_question(
         Path(db_path),
         question,
@@ -59,14 +78,13 @@ def main() -> int:
         force_llm=force_llm,
         force_embeddings=force_embeddings,
     )
-
     print(f"Question: {result.question}")
     print(f"LLM used: {result.used_llm}")
     print(f"Embeddings used: {result.used_embeddings}")
     if result.warnings:
         print("Warnings:")
         for warning in result.warnings:
-            print(f"  - {warning}")
+            print(f" - {warning}")
     print("\nAnswer:\n")
     print(result.answer)
     if result.sources:

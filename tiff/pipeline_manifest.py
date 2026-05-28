@@ -13,6 +13,10 @@ DEFAULT_MANIFEST_DIR = "local_data/pipeline_runs"
 DEFAULT_EVAL_JSON = "local_data/evals/rag_eval_results.json"
 DEFAULT_QA_JSON = "local_data/qa/part_catalog_qa_all.json"
 DEFAULT_SOURCE_LINK_AUDIT_JSON = "local_data/source_links/source_link_audit.json"
+DEFAULT_INCREMENTAL_SMOKE_JSON = "local_data/incremental_smoke/changed_page_smoke.json"
+DEFAULT_OCR_COVERAGE_AUDIT_JSON = "local_data/ocr/ocr_coverage_audit.json"
+DEFAULT_DOCUMENT_ORGANIZATION_AUDIT_JSON = "local_data/organization/document_organization_audit.json"
+DEFAULT_DOCUMENT_ORGANIZATION_EXPORT_JSON = "local_data/organization/export/organization_summary.json"
 
 COUNT_TABLES = (
     "manuals",
@@ -217,6 +221,143 @@ def summarize_source_link_audit_json(data: Any) -> dict[str, Any]:
     return summary
 
 
+
+
+
+
+def summarize_ocr_coverage_audit_json(data: Any) -> dict[str, Any]:
+    """Summarize OCR coverage audit JSON for pipeline status/quality."""
+    if not isinstance(data, Mapping):
+        return {}
+
+    keys = (
+        "source_links_table_exists",
+        "total_source_links",
+        "distinct_manuals",
+        "pages_total",
+        "missing_ocr_paths",
+        "missing_ocr_files",
+        "unreadable_ocr_files",
+        "readable_ocr_files",
+        "nonempty_ocr_files",
+        "empty_ocr_files",
+        "short_ocr_files",
+        "total_ocr_chars",
+        "min_chars",
+        "local_ocr_paths_ready",
+        "has_empty_or_short_ocr",
+    )
+    summary = {key: data.get(key) for key in keys if key in data}
+    warnings = data.get("warnings")
+    if isinstance(warnings, list):
+        summary["warnings"] = len(warnings)
+    sample_rows = data.get("sample_rows")
+    if isinstance(sample_rows, list):
+        summary["sample_rows"] = len(sample_rows)
+    return summary
+
+
+
+
+def summarize_document_organization_audit_json(data: Any) -> dict[str, Any]:
+    """Summarize logical document organization audit JSON for status/quality."""
+    if not isinstance(data, Mapping):
+        return {}
+
+    keys = (
+        "source_table",
+        "source_table_exists",
+        "pages_total",
+        "source_links_total",
+        "manuals_total",
+        "ata_groups_total",
+        "pages_with_ata",
+        "pages_without_ata",
+        "pages_with_source_links",
+        "part_mentions_total",
+        "distinct_parts_total",
+        "pages_with_parts",
+        "empty_ocr_pages",
+        "logical_tree_ready",
+    )
+    summary = {key: data.get(key) for key in keys if key in data}
+    warnings = data.get("warnings")
+    if isinstance(warnings, list):
+        summary["warnings"] = len(warnings)
+    top_ata = data.get("top_ata_groups")
+    if isinstance(top_ata, list):
+        summary["top_ata_groups"] = len(top_ata)
+    top_parts = data.get("top_parts")
+    if isinstance(top_parts, list):
+        summary["top_parts"] = len(top_parts)
+    return summary
+
+
+def summarize_document_organization_export_json(data: Any) -> dict[str, Any]:
+    """Summarize UI/API-ready logical organization export JSON for status/quality."""
+    if not isinstance(data, Mapping):
+        return {}
+
+    keys = (
+        "ready",
+        "page_count",
+        "manual_count",
+        "ata_group_count",
+        "pages_with_ata",
+        "pages_without_ata",
+        "source_link_count",
+        "pages_with_source_links",
+        "part_count",
+        "part_mention_count",
+        "pages_with_parts",
+        "empty_ocr_page_count",
+    )
+    summary = {key: data.get(key) for key in keys if key in data}
+    files = data.get("files_written")
+    if isinstance(files, list):
+        summary["files_written"] = len(files)
+    warnings = data.get("warnings")
+    if isinstance(warnings, list):
+        summary["warnings"] = len(warnings)
+    return summary
+
+
+def summarize_incremental_smoke_json(data: Any) -> dict[str, Any]:
+    """Summarize the changed-page incremental smoke-test JSON."""
+    if not isinstance(data, Mapping):
+        return {}
+
+    failed_commands = data.get("failed_commands")
+    errors = data.get("errors")
+    warnings = data.get("warnings")
+    source_page = data.get("source_page")
+
+    summary: dict[str, Any] = {
+        "ok": bool(data.get("ok")),
+        "dry_run": bool(data.get("dry_run")),
+        "changed_list_count": data.get("changed_list_count"),
+        "new_files": data.get("new_files"),
+        "changed_files": data.get("changed_files"),
+        "unchanged_files": data.get("unchanged_files"),
+        "state_committed": bool(data.get("state_committed")),
+        "backend_command_planned": bool(data.get("backend_command_planned")),
+        "changed_page_command_used": bool(data.get("changed_page_command_used")),
+        "full_backend_command_used": bool(data.get("full_backend_command_used")),
+        "ocr_command_skipped": bool(data.get("ocr_command_skipped")),
+        "failed_commands": len(failed_commands) if isinstance(failed_commands, list) else 0,
+        "errors": len(errors) if isinstance(errors, list) else 0,
+        "warnings": len(warnings) if isinstance(warnings, list) else 0,
+        "work_dir": data.get("work_dir"),
+        "changed_list": data.get("changed_list"),
+    }
+    if isinstance(source_page, Mapping):
+        summary["source_page_id"] = source_page.get("page_id")
+        summary["source_manual_id"] = source_page.get("manual_id")
+        summary["source_ata_code"] = source_page.get("ata_code")
+        summary["source_page_label"] = source_page.get("page_label")
+    return summary
+
+
 def _result_to_dict(result: Any) -> dict[str, Any]:
     step = getattr(result, "step", None)
     command = tuple(getattr(step, "command", ()) or ())
@@ -247,6 +388,10 @@ def build_pipeline_manifest(
     eval_json = DEFAULT_EVAL_JSON
     qa_json = DEFAULT_QA_JSON
     source_link_audit_json = DEFAULT_SOURCE_LINK_AUDIT_JSON
+    incremental_smoke_json = DEFAULT_INCREMENTAL_SMOKE_JSON
+    ocr_coverage_json = DEFAULT_OCR_COVERAGE_AUDIT_JSON
+    document_organization_json = DEFAULT_DOCUMENT_ORGANIZATION_AUDIT_JSON
+    document_organization_export_json = DEFAULT_DOCUMENT_ORGANIZATION_EXPORT_JSON
     return {
         "manifest_version": 1,
         "run_id": utc_now_iso(),
@@ -272,10 +417,18 @@ def build_pipeline_manifest(
             "source_links_csv": "local_data/source_links/rescarta_mapping_report.csv",
             "source_links_json": "local_data/source_links/rescarta_mapping_report.json",
             "source_link_audit_json": source_link_audit_json,
+            "incremental_smoke_json": incremental_smoke_json,
+            "ocr_coverage_json": ocr_coverage_json,
+            "document_organization_json": document_organization_json,
+            "document_organization_export_json": document_organization_export_json,
         },
         "eval_summary": summarize_eval_json(read_json_file(eval_json)),
         "qa_summary": summarize_qa_json(read_json_file(qa_json)),
         "source_link_summary": summarize_source_link_audit_json(read_json_file(source_link_audit_json)),
+        "incremental_summary": summarize_incremental_smoke_json(read_json_file(incremental_smoke_json)),
+        "ocr_coverage_summary": summarize_ocr_coverage_audit_json(read_json_file(ocr_coverage_json)),
+        "document_organization_summary": summarize_document_organization_audit_json(read_json_file(document_organization_json)),
+        "document_organization_export_summary": summarize_document_organization_export_json(read_json_file(document_organization_export_json)),
     }
 
 
@@ -345,6 +498,125 @@ def refresh_manifest_eval_summary(
     return written
 
 
+
+
+def refresh_manifest_incremental_summary(
+    *,
+    incremental_json: str | Path = DEFAULT_INCREMENTAL_SMOKE_JSON,
+    manifest_path: str | Path = f"{DEFAULT_MANIFEST_DIR}/latest_backend_pipeline.json",
+) -> list[Path]:
+    """Refresh incremental smoke-test summary fields in the latest manifest."""
+    manifest_file = Path(manifest_path)
+    if not manifest_file.exists():
+        return []
+
+    manifest_payload = read_json_file(manifest_file)
+    if not isinstance(manifest_payload, dict):
+        return []
+
+    incremental_json_path = Path(incremental_json)
+    manifest_payload["incremental_summary"] = summarize_incremental_smoke_json(read_json_file(incremental_json_path))
+
+    artifacts = manifest_payload.get("artifacts")
+    if not isinstance(artifacts, dict):
+        artifacts = {}
+    artifacts["incremental_smoke_json"] = str(incremental_json_path)
+    manifest_payload["artifacts"] = artifacts
+
+    written: list[Path] = []
+    payload = json.dumps(manifest_payload, indent=2, sort_keys=True) + "\n"
+    manifest_file.parent.mkdir(parents=True, exist_ok=True)
+    manifest_file.write_text(payload, encoding="utf-8")
+    written.append(manifest_file)
+
+    run_id = str(manifest_payload.get("run_id") or "").strip()
+    if run_id:
+        timestamped = manifest_file.parent / f"tiff_backend_pipeline_{run_id}.json"
+        if timestamped != manifest_file:
+            timestamped.write_text(payload, encoding="utf-8")
+            written.append(timestamped)
+    return written
+
+
+
+
+def refresh_manifest_ocr_coverage_summary(
+    *,
+    ocr_coverage_json: str | Path = DEFAULT_OCR_COVERAGE_AUDIT_JSON,
+    manifest_path: str | Path = f"{DEFAULT_MANIFEST_DIR}/latest_backend_pipeline.json",
+) -> list[Path]:
+    """Refresh OCR-coverage summary fields in the latest manifest."""
+    manifest_file = Path(manifest_path)
+    if not manifest_file.exists():
+        return []
+
+    manifest_payload = read_json_file(manifest_file)
+    if not isinstance(manifest_payload, dict):
+        return []
+
+    ocr_json_path = Path(ocr_coverage_json)
+    manifest_payload["ocr_coverage_summary"] = summarize_ocr_coverage_audit_json(read_json_file(ocr_json_path))
+
+    artifacts = manifest_payload.get("artifacts")
+    if not isinstance(artifacts, dict):
+        artifacts = {}
+    artifacts["ocr_coverage_json"] = str(ocr_json_path)
+    manifest_payload["artifacts"] = artifacts
+
+    written: list[Path] = []
+    payload = json.dumps(manifest_payload, indent=2, sort_keys=True) + "\n"
+    manifest_file.parent.mkdir(parents=True, exist_ok=True)
+    manifest_file.write_text(payload, encoding="utf-8")
+    written.append(manifest_file)
+
+    run_id = str(manifest_payload.get("run_id") or "").strip()
+    if run_id:
+        timestamped = manifest_file.parent / f"tiff_backend_pipeline_{run_id}.json"
+        if timestamped != manifest_file:
+            timestamped.write_text(payload, encoding="utf-8")
+            written.append(timestamped)
+    return written
+
+
+
+
+def refresh_manifest_document_organization_summary(
+    *,
+    document_organization_json: str | Path = DEFAULT_DOCUMENT_ORGANIZATION_AUDIT_JSON,
+    manifest_path: str | Path = f"{DEFAULT_MANIFEST_DIR}/latest_backend_pipeline.json",
+) -> list[Path]:
+    """Refresh logical document organization summary fields in the latest manifest."""
+    manifest_file = Path(manifest_path)
+    if not manifest_file.exists():
+        return []
+
+    manifest_payload = read_json_file(manifest_file)
+    if not isinstance(manifest_payload, dict):
+        return []
+
+    org_json_path = Path(document_organization_json)
+    manifest_payload["document_organization_summary"] = summarize_document_organization_audit_json(read_json_file(org_json_path))
+
+    artifacts = manifest_payload.get("artifacts")
+    if not isinstance(artifacts, dict):
+        artifacts = {}
+    artifacts["document_organization_json"] = str(org_json_path)
+    manifest_payload["artifacts"] = artifacts
+
+    written: list[Path] = []
+    payload = json.dumps(manifest_payload, indent=2, sort_keys=True) + "\n"
+    manifest_file.parent.mkdir(parents=True, exist_ok=True)
+    manifest_file.write_text(payload, encoding="utf-8")
+    written.append(manifest_file)
+
+    run_id = str(manifest_payload.get("run_id") or "").strip()
+    if run_id:
+        timestamped = manifest_file.parent / f"tiff_backend_pipeline_{run_id}.json"
+        if timestamped != manifest_file:
+            timestamped.write_text(payload, encoding="utf-8")
+            written.append(timestamped)
+    return written
+
 def format_manifest_summary(manifest: Mapping[str, Any]) -> str:
     """Return a concise human-readable manifest summary."""
     lines = [
@@ -394,6 +666,64 @@ def format_manifest_summary(manifest: Mapping[str, Any]) -> str:
         placeholder_count = source_link_summary.get("local_or_placeholder_rescarta_urls")
         if placeholder_count is not None:
             lines.append(f"    Local/placeholder ResCarta URLs: {placeholder_count}")
+
+    ocr_coverage_summary = manifest.get("ocr_coverage_summary") or {}
+    if isinstance(ocr_coverage_summary, Mapping) and ocr_coverage_summary:
+        lines.append("  OCR coverage summary:")
+        lines.append(f"    Total source-linked pages: {ocr_coverage_summary.get('total_source_links', '-')}")
+        lines.append(f"    Local OCR paths ready: {ocr_coverage_summary.get('local_ocr_paths_ready', '-')}")
+        lines.append(f"    Missing OCR paths: {ocr_coverage_summary.get('missing_ocr_paths', '-')}")
+        lines.append(f"    Missing OCR files: {ocr_coverage_summary.get('missing_ocr_files', '-')}")
+        lines.append(f"    Unreadable OCR files: {ocr_coverage_summary.get('unreadable_ocr_files', '-')}")
+        lines.append(f"    Non-empty OCR files: {ocr_coverage_summary.get('nonempty_ocr_files', '-')}")
+        lines.append(f"    Empty OCR files: {ocr_coverage_summary.get('empty_ocr_files', '-')}")
+        lines.append(f"    Short OCR files: {ocr_coverage_summary.get('short_ocr_files', '-')}")
+        lines.append(f"    Empty/short OCR review needed: {ocr_coverage_summary.get('has_empty_or_short_ocr', '-')}")
+
+
+    document_organization_summary = manifest.get("document_organization_summary") or {}
+    if isinstance(document_organization_summary, Mapping) and document_organization_summary:
+        lines.append("  Document organization summary:")
+        lines.append(f"    Logical tree ready: {document_organization_summary.get('logical_tree_ready', '-')}")
+        lines.append(f"    Manuals: {document_organization_summary.get('manuals_total', '-')}")
+        lines.append(f"    Pages: {document_organization_summary.get('pages_total', '-')}")
+        lines.append(f"    ATA groups: {document_organization_summary.get('ata_groups_total', '-')}")
+        lines.append(f"    Pages without ATA: {document_organization_summary.get('pages_without_ata', '-')}")
+        lines.append(f"    Distinct parts: {document_organization_summary.get('distinct_parts_total', '-')}")
+        lines.append(f"    Part mentions: {document_organization_summary.get('part_mentions_total', '-')}")
+        lines.append(f"    Pages with parts: {document_organization_summary.get('pages_with_parts', '-')}")
+        lines.append(f"    Empty OCR pages in tree: {document_organization_summary.get('empty_ocr_pages', '-')}")
+
+    document_organization_export_summary = manifest.get("document_organization_export_summary") or {}
+    if isinstance(document_organization_export_summary, Mapping) and document_organization_export_summary:
+        lines.append("  Document organization export summary:")
+        lines.append(f"    Export ready: {document_organization_export_summary.get('ready', '-')}")
+        lines.append(f"    Manuals: {document_organization_export_summary.get('manual_count', '-')}")
+        lines.append(f"    Pages: {document_organization_export_summary.get('page_count', '-')}")
+        lines.append(f"    ATA groups: {document_organization_export_summary.get('ata_group_count', '-')}")
+        lines.append(f"    Distinct parts: {document_organization_export_summary.get('part_count', '-')}")
+        lines.append(f"    Part mentions: {document_organization_export_summary.get('part_mention_count', '-')}")
+        lines.append(f"    Files written: {document_organization_export_summary.get('files_written', '-')}")
+        lines.append(f"    Empty OCR pages exported: {document_organization_export_summary.get('empty_ocr_page_count', '-')}")
+
+    incremental_summary = manifest.get("incremental_summary") or {}
+    if isinstance(incremental_summary, Mapping) and incremental_summary:
+        lines.append("  Incremental smoke summary:")
+        lines.append(f"    Status OK: {incremental_summary.get('ok', '-')}")
+        lines.append(f"    Changed list count: {incremental_summary.get('changed_list_count', '-')}")
+        lines.append(f"    Changed files: {incremental_summary.get('changed_files', '-')}")
+        lines.append(f"    State committed: {incremental_summary.get('state_committed', '-')}")
+        lines.append(f"    Changed-page command used: {incremental_summary.get('changed_page_command_used', '-')}")
+        lines.append(f"    Full backend command used: {incremental_summary.get('full_backend_command_used', '-')}")
+        lines.append(f"    OCR skipped: {incremental_summary.get('ocr_command_skipped', '-')}")
+        lines.append(f"    Errors: {incremental_summary.get('errors', '-')}")
+        if incremental_summary.get("source_page_id"):
+            lines.append(
+                "    Sample page: "
+                f"{incremental_summary.get('source_page_id')} "
+                f"ATA {incremental_summary.get('source_ata_code', '-')} "
+                f"page {incremental_summary.get('source_page_label', '-')}"
+            )
 
     steps = manifest.get("steps") or []
     if isinstance(steps, list):

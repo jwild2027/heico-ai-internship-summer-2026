@@ -94,3 +94,58 @@ def test_format_changed_page_smoke_report_is_command_line_first() -> None:
     assert "Status: OK" in text
     assert "Changed-page backend planned: True" in text
     assert "Used full backend rebuild: False" in text
+
+
+def test_build_smoke_pipeline_config_overrides_alias_fields(tmp_path: Path) -> None:
+    from tiff.incremental_pipeline import IncrementalPipelineConfig
+    from tiff.incremental_changed_page_smoke import build_smoke_pipeline_config, SmokePreparedChange, SmokeSourcePage
+
+    base = IncrementalPipelineConfig(
+        config_path="local_config.yaml",
+        tiff_root="local_data/sample_tiffs",
+        root="local_data/sample_tiffs",
+        state_db="local_data/db/tiff_incremental_state.db",
+        state_db_path="local_data/db/tiff_incremental_state.db",
+        changed_list="local_data/changed_tiffs.txt",
+        changed_list_path="local_data/changed_tiffs.txt",
+        scan_db="local_data/db/tiff_scans_full.db",
+        scan_db_path="local_data/db/tiff_scans_full.db",
+        db_path="local_data/db/tiff_search.db",
+        search_db_path="local_data/db/tiff_search.db",
+        rescarta_export_dir="local_data/rescarta_exports",
+        embed_model="bge-m3:latest",
+        questions="local_data/evals/rag_eval_questions.json",
+        backend_mode="changed-pages",
+    )
+    prepared = SmokePreparedChange(
+        source_page=SmokeSourcePage(
+            page_id="p1",
+            manual_id="m1",
+            page_label="101",
+            ata_code="25-21-00",
+            tiff_path="source.tif",
+            ocr_text_path="source.txt",
+            rescarta_url="http://localhost/r/p1",
+            source_url="http://localhost/r/p1",
+        ),
+        work_dir=str(tmp_path),
+        temp_tiff_root=str(tmp_path / "sample_tiffs"),
+        temp_tiff_path=str(tmp_path / "sample_tiffs" / "source.tif"),
+        temp_state_db=str(tmp_path / "state.db"),
+        temp_changed_list=str(tmp_path / "changed_tiffs.txt"),
+        initial_state_rows=1,
+    )
+
+    cfg = build_smoke_pipeline_config(base, prepared)
+
+    assert cfg.tiff_root == prepared.temp_tiff_root
+    assert cfg.root == prepared.temp_tiff_root
+    assert cfg.state_db == prepared.temp_state_db
+    assert cfg.state_db_path == prepared.temp_state_db
+    assert cfg.changed_list == prepared.temp_changed_list
+    assert cfg.changed_list_path == prepared.temp_changed_list
+    assert cfg.scan_db == str(tmp_path / "scan.db")
+    assert cfg.scan_db_path == str(tmp_path / "scan.db")
+    assert cfg.db_path == "local_data/db/tiff_search.db"
+    assert cfg.search_db_path == "local_data/db/tiff_search.db"
+    assert cfg.backend_mode == "changed-pages"

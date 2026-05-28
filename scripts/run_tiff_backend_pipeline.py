@@ -47,6 +47,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-qa-triage", action="store_true", help="Run raw QA but skip the QA severity triage step.")
     parser.add_argument("--skip-eval", action="store_true", help="Skip RAG evaluation report.")
     parser.add_argument("--skip-source-audit", action="store_true", help="Skip source-link audit checks.")
+    parser.add_argument("--skip-ocr-coverage-audit", action="store_true", help="Skip OCR coverage audit checks.")
+    parser.add_argument("--skip-document-organization-audit", action="store_true", help="Skip logical document organization audit checks.")
+    parser.add_argument("--skip-document-organization-export", action="store_true", help="Skip writing logical organization JSON export artifacts.")
     parser.add_argument("--continue-on-error", action="store_true", help="Continue running later steps after a failed step.")
     parser.add_argument("--dry-run", action="store_true", help="Print commands without running them.")
     parser.add_argument("--manifest-dir", default=DEFAULT_MANIFEST_DIR, help="Directory for pipeline run manifests.")
@@ -72,6 +75,9 @@ def main() -> int:
         skip_qa_triage=True if args.skip_qa_triage else None,
         skip_eval=True if args.skip_eval else None,
         skip_source_audit=True if args.skip_source_audit else None,
+        skip_ocr_coverage_audit=True if args.skip_ocr_coverage_audit else None,
+        skip_document_organization_audit=True if args.skip_document_organization_audit else None,
+        skip_document_organization_export=True if args.skip_document_organization_export else None,
     )
     steps = build_pipeline_steps(config)
 
