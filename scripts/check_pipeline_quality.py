@@ -35,10 +35,29 @@ def main() -> int:
     parser.add_argument("--max-missing-source-ocr-files", type=int, default=0)
     parser.add_argument("--max-missing-source-urls", type=int, default=0)
     parser.add_argument("--max-source-sample-misses", type=int, default=0)
+    parser.add_argument("--max-missing-ocr-paths", type=int, default=0)
+    parser.add_argument("--max-missing-ocr-files", type=int, default=0)
+    parser.add_argument("--max-unreadable-ocr-files", type=int, default=0)
+    parser.add_argument("--max-empty-ocr-files", type=int, default=0)
+    parser.add_argument("--max-short-ocr-files", type=int, default=0)
+    parser.add_argument("--max-org-pages-without-ata", type=int, default=0)
+    parser.add_argument("--min-org-distinct-parts", type=int, default=1)
+    parser.add_argument("--min-org-part-mentions", type=int, default=1)
+    parser.add_argument("--min-org-export-files", type=int, default=5)
+    parser.add_argument(
+        "--require-complete-ocr-text",
+        action="store_true",
+        help="Fail on empty/short OCR files. Keep off until blank/separator pages have been reviewed.",
+    )
     parser.add_argument(
         "--require-real-rescarta",
         action="store_true",
         help="Fail unless ResCarta URLs are real non-local deep links. Keep off until the company URL format is known.",
+    )
+    parser.add_argument(
+        "--require-incremental-smoke",
+        action="store_true",
+        help="Fail unless a passing changed-page incremental smoke-test summary is present in the manifest.",
     )
     parser.add_argument("--strict", action="store_true", help="Compatibility flag; failures already return nonzero.")
     parser.add_argument("--write-html", action="store_true", help="Also write the legacy HTML quality report.")
@@ -55,7 +74,18 @@ def main() -> int:
         max_missing_source_ocr_files=args.max_missing_source_ocr_files,
         max_missing_source_urls=args.max_missing_source_urls,
         max_source_sample_queries_without_results=args.max_source_sample_misses,
+        max_missing_ocr_paths=args.max_missing_ocr_paths,
+        max_missing_ocr_files=args.max_missing_ocr_files,
+        max_unreadable_ocr_files=args.max_unreadable_ocr_files,
+        max_empty_ocr_files=args.max_empty_ocr_files,
+        max_short_ocr_files=args.max_short_ocr_files,
+        max_org_pages_without_ata=args.max_org_pages_without_ata,
+        min_org_distinct_parts=args.min_org_distinct_parts,
+        min_org_part_mentions=args.min_org_part_mentions,
+        min_org_export_files=args.min_org_export_files,
+        require_complete_ocr_text=args.require_complete_ocr_text,
         require_real_rescarta=args.require_real_rescarta,
+        require_incremental_smoke=args.require_incremental_smoke,
     )
     result = check_pipeline_manifest_file(args.manifest, thresholds=thresholds)
     output_dir = Path(args.output_dir)

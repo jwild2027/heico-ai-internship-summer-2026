@@ -6,6 +6,7 @@ from tiff.pipeline_manifest import (
     build_pipeline_manifest,
     format_manifest_summary,
     summarize_source_link_audit_json,
+    summarize_ocr_coverage_audit_json,
 )
 from tiff.pipeline_quality import QualityGateThresholds, check_pipeline_manifest, format_quality_gate_result
 from tiff.pipeline_runner import PipelineConfig, PipelineRunResult, PipelineStep, build_pipeline_steps
@@ -18,6 +19,7 @@ def _good_manifest() -> dict:
         "steps": [
             {"name": "search_index", "returncode": 0},
             {"name": "source_link_audit", "returncode": 0},
+            {"name": "ocr_coverage_audit", "returncode": 0},
             {"name": "rag_eval", "returncode": 0},
         ],
         "sqlite_counts": {
@@ -54,6 +56,19 @@ def _good_manifest() -> dict:
             "ready_for_real_rescarta_deeplinks": False,
             "local_or_placeholder_rescarta_urls": 509,
         },
+        "ocr_coverage_summary": {
+            "source_links_table_exists": True,
+            "total_source_links": 509,
+            "pages_total": 509,
+            "missing_ocr_paths": 0,
+            "missing_ocr_files": 0,
+            "unreadable_ocr_files": 0,
+            "nonempty_ocr_files": 495,
+            "empty_ocr_files": 14,
+            "short_ocr_files": 0,
+            "local_ocr_paths_ready": True,
+            "has_empty_or_short_ocr": True,
+        },
     }
 
 
@@ -79,11 +94,35 @@ def test_pipeline_adds_source_link_audit_before_rag_eval(tmp_path: Path) -> None
     assert "local_data/source_links/source_link_audit.json" in audit.command
 
 
+def test_pipeline_adds_ocr_coverage_audit_before_rag_eval(tmp_path: Path) -> None:
+    questions = tmp_path / "questions.json"
+    questions.write_text("[]", encoding="utf-8")
+    config_file = tmp_path / "missing-local-config.yaml"
+    config = PipelineConfig(
+        python_executable="python",
+        config_path=str(config_file),
+        questions_path=str(questions),
+    )
+
+    steps = build_pipeline_steps(config)
+    names = [step.name for step in steps]
+
+    assert "ocr_coverage_audit" in names
+    assert names.index("source_link_audit") < names.index("ocr_coverage_audit") < names.index("rag_eval")
+    audit = steps[names.index("ocr_coverage_audit")]
+    assert audit.command[:2] == ("python", "scripts/audit_ocr_coverage.py")
+    assert "--strict" in audit.command
+    assert "--write-json" in audit.command
+    assert "--fail-on-empty-ocr" not in audit.command
+    assert "local_data/ocr/ocr_coverage_audit.json" in audit.command
+
+
 def test_pipeline_can_skip_source_link_audit() -> None:
     config = PipelineConfig(
         python_executable="python",
         skip_search_index=True,
         skip_source_audit=True,
+        skip_ocr_coverage_audit=True,
         skip_part_catalog=True,
         skip_rag_chunks=True,
         skip_embeddings=True,
@@ -119,6 +158,31 @@ def test_summarize_source_link_audit_json_keeps_readiness_fields() -> None:
     assert "sample_rows" not in summary
 
 
+def test_summarize_ocr_coverage_audit_json_keeps_warning_fields() -> None:
+    summary = summarize_ocr_coverage_audit_json(
+        {
+            "total_source_links": 509,
+            "pages_total": 509,
+            "missing_ocr_paths": 0,
+            "missing_ocr_files": 0,
+            "unreadable_ocr_files": 0,
+            "nonempty_ocr_files": 495,
+            "empty_ocr_files": 14,
+            "short_ocr_files": 0,
+            "local_ocr_paths_ready": True,
+            "has_empty_or_short_ocr": True,
+            "warnings": ["empty OCR"],
+            "sample_rows": [{"page_id": "p1"}],
+        }
+    )
+
+    assert summary["total_source_links"] == 509
+    assert summary["local_ocr_paths_ready"] is True
+    assert summary["empty_ocr_files"] == 14
+    assert summary["warnings"] == 1
+    assert summary["sample_rows"] == 1
+
+
 def test_manifest_summary_prints_source_link_summary() -> None:
     text = format_manifest_summary(_good_manifest())
 
@@ -126,6 +190,8 @@ def test_manifest_summary_prints_source_link_summary() -> None:
     assert "Total links: 509" in text
     assert "Local source review ready: True" in text
     assert "Real ResCarta deep-link ready: False" in text
+    assert "OCR coverage summary:" in text
+    assert "Empty OCR files: 14" in text
 
 
 def test_quality_gate_passes_local_source_ready_with_placeholder_rescarta() -> None:
@@ -136,6 +202,16 @@ def test_quality_gate_passes_local_source_ready_with_placeholder_rescarta() -> N
     assert "source_local_review_ready" in text
     assert "source_real_rescarta_ready" in text
     assert "Status: OK" in text
+
+
+def test_quality_gate_allows_empty_ocr_by_default_but_can_require_complete_text() -> None:
+    result = check_pipeline_manifest(_good_manifest())
+    assert result.status == "ok"
+
+    strict = check_pipeline_manifest(_good_manifest(), thresholds=QualityGateThresholds(require_complete_ocr_text=True))
+    assert strict.status == "fail"
+    failed = {check.name for check in strict.checks if check.status == "FAIL"}
+    assert "ocr_empty_files" in failed
 
 
 def test_quality_gate_fails_when_source_links_are_missing() -> None:
@@ -167,6 +243,7 @@ def test_manifest_artifacts_include_source_link_audit_json() -> None:
         db_path="missing.db",
         skip_search_index=True,
         skip_source_audit=True,
+        skip_ocr_coverage_audit=True,
         skip_part_catalog=True,
         skip_rag_chunks=True,
         skip_embeddings=True,
@@ -185,4 +262,6 @@ def test_manifest_artifacts_include_source_link_audit_json() -> None:
     )
 
     assert manifest["artifacts"]["source_link_audit_json"] == "local_data/source_links/source_link_audit.json"
+    assert manifest["artifacts"]["ocr_coverage_json"] == "local_data/ocr/ocr_coverage_audit.json"
     assert "source_link_summary" in manifest
+    assert "ocr_coverage_summary" in manifest

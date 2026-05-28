@@ -42,6 +42,9 @@ class PipelineConfig:
     skip_qa_triage: bool = False
     skip_eval: bool = False
     skip_source_audit: bool = False
+    skip_ocr_coverage_audit: bool = False
+    skip_document_organization_audit: bool = False
+    skip_document_organization_export: bool = False
     python_executable: str = field(default_factory=lambda: sys.executable or "python")
 
 
@@ -229,6 +232,75 @@ def build_pipeline_steps(config: PipelineConfig) -> list[PipelineStep]:
             )
         )
 
+
+
+    if not config.skip_ocr_coverage_audit:
+        ocr_audit_args = [
+            "scripts/audit_ocr_coverage.py",
+            "--strict",
+            "--write-json",
+            "--json-output",
+            "local_data/ocr/ocr_coverage_audit.json",
+            "--sample-limit",
+            "12",
+            "--no-refresh-manifest",
+        ]
+        if config_path.exists():
+            ocr_audit_args.extend(["--config", config.config_path])
+        else:
+            ocr_audit_args.extend(["--db-path", config.db_path])
+        steps.append(
+            PipelineStep(
+                name="ocr_coverage_audit",
+                description="Verify source-linked pages have readable OCR text files and flag empty OCR pages for review.",
+                command=_python_cmd(config, *ocr_audit_args),
+            )
+        )
+
+
+    if not config.skip_document_organization_audit:
+        org_audit_args = [
+            "scripts/audit_document_organization.py",
+            "--strict",
+            "--write-json",
+            "--json-output",
+            "local_data/organization/document_organization_audit.json",
+            "--top-ata",
+            "20",
+            "--top-parts",
+            "20",
+            "--no-refresh-manifest",
+        ]
+        if config_path.exists():
+            org_audit_args.extend(["--config", config.config_path])
+        else:
+            org_audit_args.extend(["--db-path", config.db_path])
+        steps.append(
+            PipelineStep(
+                name="document_organization_audit",
+                description="Verify the logical manual/ATA/part organization layer is ready.",
+                command=_python_cmd(config, *org_audit_args),
+            )
+        )
+
+    if not config.skip_document_organization_export:
+        org_export_args = [
+            "scripts/export_document_organization.py",
+            "--strict",
+            "--output-dir",
+            "local_data/organization/export",
+        ]
+        if config_path.exists():
+            org_export_args.extend(["--config", config.config_path])
+        else:
+            org_export_args.extend(["--db-path", config.db_path])
+        steps.append(
+            PipelineStep(
+                name="document_organization_export",
+                description="Write UI/API-ready logical organization JSON artifacts.",
+                command=_python_cmd(config, *org_export_args),
+            )
+        )
 
     if not config.skip_eval:
         if not questions_path.exists():

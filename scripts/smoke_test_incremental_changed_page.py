@@ -17,6 +17,7 @@ from tiff.incremental_changed_page_smoke import (  # noqa: E402
     run_changed_page_smoke_test,
     write_changed_page_smoke_json,
 )
+from tiff.pipeline_manifest import refresh_manifest_incremental_summary  # noqa: E402
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -26,8 +27,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--sample-part", default="120-37313-001")
     parser.add_argument("--dry-run", action="store_true", help="Plan the smoke test but do not execute changed-page backend commands.")
     parser.add_argument("--keep-work-dir", action="store_true", help="Do not remove the smoke work directory before preparing the test.")
-    parser.add_argument("--write-json", action="store_true")
+    parser.add_argument("--write-json", action="store_true", help="Write smoke-test JSON for status/quality integration.")
     parser.add_argument("--json-output", default="local_data/incremental_smoke/changed_page_smoke.json")
+    parser.add_argument("--no-refresh-manifest", action="store_true", help="Do not refresh latest pipeline manifest after writing JSON.")
     args = parser.parse_args(argv)
 
     report = run_changed_page_smoke_test(
@@ -43,6 +45,14 @@ def main(argv: list[str] | None = None) -> int:
         path = write_changed_page_smoke_json(report, args.json_output)
         print()
         print(f"JSON: {path}")
+        if not args.no_refresh_manifest:
+            refreshed = refresh_manifest_incremental_summary(incremental_json=path)
+            if refreshed:
+                print("Refreshed pipeline manifest incremental summary:")
+                for item in refreshed:
+                    print(f"  {item}")
+            else:
+                print("Pipeline manifest not refreshed; no readable latest manifest was found.")
 
     return 0 if report.ok else 1
 

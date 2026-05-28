@@ -233,18 +233,36 @@ def build_smoke_pipeline_config(
     *,
     backend_mode: str = "changed-pages",
 ) -> IncrementalPipelineConfig:
+    """Build the one-file smoke-test incremental config.
+
+    ``IncrementalPipelineConfig`` still has backward-compatible alias fields
+    such as ``root``, ``state_db_path``, ``changed_list_path``,
+    ``scan_db_path``, and ``search_db_path``. ``load_pipeline_config()`` calls
+    ``__post_init__()`` after applying overrides, so primary fields can be
+    overwritten by stale alias values if only the primary names are supplied.
+
+    Pass both the current field names and their aliases so the smoke test really
+    scans the temporary one-file TIFF root instead of the real sample tree.
+    """
+
+    smoke_scan_db = str(Path(prepared.work_dir) / "scan.db")
     cfg = load_pipeline_config(
         base.config_path,
         tiff_root=prepared.temp_tiff_root,
+        root=prepared.temp_tiff_root,
         state_db=prepared.temp_state_db,
+        state_db_path=prepared.temp_state_db,
         changed_list=prepared.temp_changed_list,
+        changed_list_path=prepared.temp_changed_list,
         hash_mode=base.hash_mode,
         db_path=base.db_path,
+        search_db_path=base.db_path,
         rescarta_export_dir=base.rescarta_export_dir,
         embed_model=base.embed_model,
         questions=base.questions,
         json_dir=str(Path(prepared.work_dir) / "json_scans"),
-        scan_db=str(Path(prepared.work_dir) / "scan.db"),
+        scan_db=smoke_scan_db,
+        scan_db_path=smoke_scan_db,
         tesseract_cmd=base.tesseract_cmd,
         backend_mode=backend_mode,
     )
