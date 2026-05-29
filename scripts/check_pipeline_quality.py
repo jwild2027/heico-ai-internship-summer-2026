@@ -82,6 +82,11 @@ def main() -> int:
     parser.add_argument("--max-graph-pages-without-context", type=int, default=0)
     parser.add_argument("--max-graph-pages-without-source-links", type=int, default=0)
     parser.add_argument("--max-graph-context-generation-errors", type=int, default=0)
+    parser.add_argument(
+        "--require-source-package-traceability",
+        action="store_true",
+        help="Fail unless raw source package ZIP -> organization/page/source traceability is present and passing.",
+    )
     parser.add_argument("--strict", action="store_true", help="Compatibility flag; failures already return nonzero.")
     parser.add_argument("--write-html", action="store_true", help="Also write the legacy HTML quality report.")
     parser.add_argument("--open", action="store_true", help="Open the generated HTML quality report. Implies --write-html.")
@@ -113,6 +118,7 @@ def main() -> int:
         require_user_query_tests=args.require_user_query_tests,
         require_realistic_query_trace=args.require_realistic_query_trace,
         require_slow_realistic_query_trace=args.require_slow_realistic_query_trace,
+        require_source_package_traceability=args.require_source_package_traceability,
         max_graph_pages_without_context=args.max_graph_pages_without_context,
         max_graph_pages_without_source_links=args.max_graph_pages_without_source_links,
         max_graph_context_generation_errors=args.max_graph_context_generation_errors,

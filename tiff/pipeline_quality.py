@@ -14,6 +14,7 @@ import json
 from typing import Any, Mapping
 
 from tiff.document_graph_quality import GraphQualityThresholds, build_graph_quality_result
+from tiff.source_package_quality import build_source_package_quality_result
 
 DEFAULT_MANIFEST_PATH = "local_data/pipeline_runs/latest_backend_pipeline.json"
 
@@ -47,6 +48,7 @@ class QualityGateThresholds:
     require_user_query_tests: bool = False
     require_realistic_query_trace: bool = False
     require_slow_realistic_query_trace: bool = False
+    require_source_package_traceability: bool = False
     max_graph_pages_without_context: int = 0
     max_graph_pages_without_source_links: int = 0
     max_graph_context_generation_errors: int = 0
@@ -496,6 +498,57 @@ def check_pipeline_manifest(
         f"Organization export counts: pages={org_export_pages}, parts={org_export_parts}, mentions={org_export_mentions}.",
     )
 
+    source_package_quality = build_source_package_quality_result()
+    source_package_summary = source_package_quality.summary
+    source_package_present = _as_bool(source_package_summary.get("source_package_traceability_present"))
+    source_package_status = str(source_package_summary.get("source_package_traceability_status") or "missing")
+    source_package_zip_tiffs = _as_int(source_package_summary.get("source_package_zip_tiff_files"))
+    source_package_org_pages = _as_int(source_package_summary.get("source_package_organization_pages"))
+    source_package_matched_pages = _as_int(source_package_summary.get("source_package_matched_pages"))
+    source_package_zip_only_pages = _as_int(source_package_summary.get("source_package_zip_only_pages"))
+    source_package_org_only_pages = _as_int(source_package_summary.get("source_package_organization_only_pages"))
+    source_package_dup_zip = _as_int(source_package_summary.get("source_package_duplicate_zip_page_numbers"))
+    source_package_dup_org = _as_int(source_package_summary.get("source_package_duplicate_organization_page_numbers"))
+    source_package_metadata_xml = _as_bool(source_package_summary.get("source_package_metadata_xml_present"))
+
+    _add_check(
+        checks,
+        "source_package_traceability_summary",
+        source_package_present or not limits.require_source_package_traceability,
+        "Source-package traceability quality summary is present."
+        if source_package_present
+        else "Source-package traceability is optional unless --require-source-package-traceability is set; run scripts/audit_source_package_traceability.py --write-json and scripts/check_source_package_quality.py --write-json.",
+    )
+    if source_package_present or limits.require_source_package_traceability:
+        _add_check(
+            checks,
+            "source_package_traceability_status",
+            source_package_status == "ok",
+            f"Source-package traceability status is {source_package_status}.",
+        )
+        _add_check(
+            checks,
+            "source_package_page_match",
+            source_package_zip_tiffs >= 1
+            and source_package_org_pages >= 1
+            and source_package_matched_pages >= min(source_package_zip_tiffs, source_package_org_pages)
+            and source_package_zip_only_pages == 0
+            and source_package_org_only_pages == 0,
+            f"Source-package pages: zip_tiffs={source_package_zip_tiffs}, org_pages={source_package_org_pages}, matched={source_package_matched_pages}, zip_only={source_package_zip_only_pages}, org_only={source_package_org_only_pages}.",
+        )
+        _add_check(
+            checks,
+            "source_package_metadata_xml",
+            source_package_metadata_xml,
+            "metadata.xml is present in the raw source package." if source_package_metadata_xml else "metadata.xml is missing from the raw source package.",
+        )
+        _add_check(
+            checks,
+            "source_package_duplicate_pages",
+            source_package_dup_zip == 0 and source_package_dup_org == 0,
+            f"Duplicate source package pages: zip={source_package_dup_zip}, organization={source_package_dup_org}.",
+        )
+
     graph_thresholds = GraphQualityThresholds(
         max_pages_without_context=limits.max_graph_pages_without_context,
         max_pages_without_source_links=limits.max_graph_pages_without_source_links,
@@ -723,6 +776,14 @@ def check_pipeline_manifest(
         "realistic_query_check_total": realistic_query_check_total,
         "realistic_query_check_fail": realistic_query_check_fail,
         "realistic_query_slow_cases": realistic_query_slow_cases,
+        "source_package_traceability_present": source_package_present,
+        "source_package_traceability_status": source_package_status,
+        "source_package_zip_tiff_files": source_package_zip_tiffs,
+        "source_package_organization_pages": source_package_org_pages,
+        "source_package_matched_pages": source_package_matched_pages,
+        "source_package_zip_only_pages": source_package_zip_only_pages,
+        "source_package_organization_only_pages": source_package_org_only_pages,
+        "source_package_metadata_xml_present": source_package_metadata_xml,
         "incremental_smoke_present": incremental_present,
         "incremental_smoke_ok": incremental_ok if incremental_present else None,
         "incremental_changed_list_count": incremental_changed_count if incremental_present else None,
