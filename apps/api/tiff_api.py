@@ -1,109 +1,129 @@
-"""FastAPI app for the local TIFF/RAG backend.
+"""FastAPI app for the TIFF/RAG backend boundary.
 
 Run locally with:
-    python -m uvicorn apps.api.tiff_api:app --reload
 
-This app is read-only except for the /ask endpoint, which shells out to the
-existing scripts/ask_tiff_rag.py command. It does not rebuild OCR or mutate the
-index database.
+    python -m uvicorn apps.api.tiff_api:app --reload --host 127.0.0.1 --port 8000
+
+This app currently reads the local MVP artifacts.  The route contract is meant
+to survive the later migration to PostgreSQL/OpenSearch/Qdrant.
 """
 
 from __future__ import annotations
 
-from pathlib import Path
 from typing import Any
 
-try:
-    from fastapi import FastAPI, HTTPException, Query
-    from pydantic import BaseModel, Field
-except ImportError as exc:  # pragma: no cover - only hit when dependency missing
-    raise SystemExit(
-        "FastAPI dependencies are missing. Install them with: "
-        "python -m pip install fastapi uvicorn"
-    ) from exc
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, Field
 
 from tiff.api_backend import (
+    api_status,
     ask_question,
-    check_api_ready,
-    find_ata,
-    find_page,
-    find_part,
-    get_organization_summary,
-    get_status,
-    load_api_data,
-    make_paths,
+    ata_lookup,
+    organization_summary,
+    page_lookup,
+    part_lookup,
+    submit_feedback,
+    summarize_feedback,
+    trace_page,
+    trace_part,
+    trace_vector_payload,
 )
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
-
 app = FastAPI(
-    title="HEICO TIFF/RAG API",
+    title="TIFF RAG API",
     version="0.1.0",
-    description="Read-only API over the local TIFF organization/RAG backend.",
+    description="API boundary for TIFF search, graph traceability, source-backed RAG, and feedback.",
 )
 
 
 class AskRequest(BaseModel):
     question: str = Field(..., min_length=1)
-    timeout_seconds: int = Field(180, ge=10, le=600)
+    config: str = "local_config.yaml"
+    timeout_seconds: int = 240
 
 
-@app.get("/health")
-def health() -> dict[str, Any]:
-    return check_api_ready(make_paths(repo_root=REPO_ROOT))
+class FeedbackRequest(BaseModel):
+    question: str = Field(..., min_length=1)
+    rating: str = Field(..., description="up, down, neutral, or 1-5")
+    category: str = "other"
+    reason: str = ""
+    answer_id: str | None = None
+    answer_text: str | None = None
+    metadata: dict[str, Any] = Field(default_factory=dict)
 
 
 @app.get("/status")
-def status() -> dict[str, Any]:
-    data = _load()
-    return get_status(data)
+def get_status() -> dict[str, Any]:
+    return api_status()
 
 
 @app.get("/organization/summary")
-def organization_summary() -> dict[str, Any]:
-    data = _load()
-    return get_organization_summary(data)
+def get_organization_summary() -> dict[str, Any]:
+    return organization_summary()
 
 
-@app.get("/organization/part/{part_number}")
-def organization_part(part_number: str, limit_pages: int = Query(10, ge=1, le=100)) -> dict[str, Any]:
-    data = _load()
-    row = find_part(data, part_number, limit_pages=limit_pages)
-    if row is None:
-        raise HTTPException(status_code=404, detail=f"Part not found: {part_number}")
-    return row
-
-
-@app.get("/organization/ata/{ata_code}")
-def organization_ata(ata_code: str, limit_pages: int = Query(10, ge=1, le=100)) -> dict[str, Any]:
-    data = _load()
-    row = find_ata(data, ata_code, limit_pages=limit_pages)
-    if row is None:
-        raise HTTPException(status_code=404, detail=f"ATA not found: {ata_code}")
-    return row
-
-
-@app.get("/organization/page/{page_id}")
-def organization_page(page_id: str) -> dict[str, Any]:
-    data = _load()
-    row = find_page(data, page_id)
-    if row is None:
-        raise HTTPException(status_code=404, detail=f"Page not found: {page_id}")
-    return row
-
-
-@app.post("/ask")
-def ask(request: AskRequest) -> dict[str, Any]:
-    result = ask_question(
-        request.question,
-        repo_root=REPO_ROOT,
-        config_path="local_config.yaml",
-        timeout_seconds=request.timeout_seconds,
-    )
-    if not result["ok"]:
-        raise HTTPException(status_code=500, detail=result)
+@app.get("/organization/parts/{part_number}")
+def get_part(part_number: str, limit: int = 8) -> dict[str, Any]:
+    result = part_lookup(part_number, limit=limit)
+    if result.get("status") == "not_found":
+        raise HTTPException(status_code=404, detail=f"part not found: {part_number}")
     return result
 
 
-def _load():
-    return load_api_data(make_paths(repo_root=REPO_ROOT))
+@app.get("/organization/pages/{page_id}")
+def get_page(page_id: str, limit: int = 8) -> dict[str, Any]:
+    result = page_lookup(page_id, limit=limit)
+    if result.get("status") == "not_found":
+        raise HTTPException(status_code=404, detail=f"page not found: {page_id}")
+    return result
+
+
+@app.get("/organization/ata/{ata_code}")
+def get_ata(ata_code: str, limit: int = 12) -> dict[str, Any]:
+    result = ata_lookup(ata_code, limit=limit)
+    if result.get("status") == "not_found":
+        raise HTTPException(status_code=404, detail=f"ATA section not found: {ata_code}")
+    return result
+
+
+@app.get("/trace/part/{part_number}")
+def get_part_trace(part_number: str, limit: int = 8) -> dict[str, Any]:
+    return trace_part(part_number, limit=limit)
+
+
+@app.get("/trace/page/{page_id}")
+def get_page_trace(page_id: str, limit: int = 8) -> dict[str, Any]:
+    return trace_page(page_id, limit=limit)
+
+
+@app.get("/trace/vector")
+def get_vector_trace(page_id: str, chunk_id: str | None = None, score: float | None = None, limit: int = 8) -> dict[str, Any]:
+    return trace_vector_payload(page_id=page_id, chunk_id=chunk_id, score=score, limit=limit)
+
+
+@app.post("/ask")
+def post_ask(request: AskRequest) -> dict[str, Any]:
+    result = ask_question(
+        request.question,
+        config=request.config,
+        timeout_seconds=request.timeout_seconds,
+    )
+    return result.to_jsonable()
+
+
+@app.post("/feedback")
+def post_feedback(request: FeedbackRequest) -> dict[str, Any]:
+    return submit_feedback(
+        question=request.question,
+        rating=request.rating,
+        category=request.category,
+        reason=request.reason,
+        answer_id=request.answer_id,
+        answer_text=request.answer_text,
+        metadata=request.metadata,
+    )
+
+
+@app.get("/feedback/summary")
+def get_feedback_summary() -> dict[str, Any]:
+    return summarize_feedback()

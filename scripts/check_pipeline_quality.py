@@ -59,6 +59,29 @@ def main() -> int:
         action="store_true",
         help="Fail unless a passing changed-page incremental smoke-test summary is present in the manifest.",
     )
+    parser.add_argument(
+        "--no-require-graph-quality",
+        action="store_true",
+        help="Do not fail when graph/context quality artifacts are missing.",
+    )
+    parser.add_argument(
+        "--require-user-query-tests",
+        action="store_true",
+        help="Fail unless scripts/run_user_query_tests.py results are present and all passing.",
+    )
+    parser.add_argument(
+        "--require-realistic-query-trace",
+        action="store_true",
+        help="Fail unless scripts/run_realistic_query_trace_tests.py results are present and all passing.",
+    )
+    parser.add_argument(
+        "--require-slow-realistic-query-trace",
+        action="store_true",
+        help="Fail unless the realistic query trace results include the slow LLM/RAG case.",
+    )
+    parser.add_argument("--max-graph-pages-without-context", type=int, default=0)
+    parser.add_argument("--max-graph-pages-without-source-links", type=int, default=0)
+    parser.add_argument("--max-graph-context-generation-errors", type=int, default=0)
     parser.add_argument("--strict", action="store_true", help="Compatibility flag; failures already return nonzero.")
     parser.add_argument("--write-html", action="store_true", help="Also write the legacy HTML quality report.")
     parser.add_argument("--open", action="store_true", help="Open the generated HTML quality report. Implies --write-html.")
@@ -86,6 +109,13 @@ def main() -> int:
         require_complete_ocr_text=args.require_complete_ocr_text,
         require_real_rescarta=args.require_real_rescarta,
         require_incremental_smoke=args.require_incremental_smoke,
+        require_graph_quality=not args.no_require_graph_quality,
+        require_user_query_tests=args.require_user_query_tests,
+        require_realistic_query_trace=args.require_realistic_query_trace,
+        require_slow_realistic_query_trace=args.require_slow_realistic_query_trace,
+        max_graph_pages_without_context=args.max_graph_pages_without_context,
+        max_graph_pages_without_source_links=args.max_graph_pages_without_source_links,
+        max_graph_context_generation_errors=args.max_graph_context_generation_errors,
     )
     result = check_pipeline_manifest_file(args.manifest, thresholds=thresholds)
     output_dir = Path(args.output_dir)

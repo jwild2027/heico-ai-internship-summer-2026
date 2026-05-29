@@ -25,13 +25,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", default="local_data/organization/graph", help="Output graph directory.")
     parser.add_argument("--strict", action="store_true", help="Fail if required organization export files are missing or empty.")
     parser.add_argument("--sample-limit", type=int, default=8, help="Number of node/edge type examples to print.")
+    parser.add_argument("--context-file", default="local_data/organization/context/page_contexts.json", help="Optional page-context JSON file to include as graph page_context nodes.")
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
     try:
-        result = export_graph(args.export_dir, args.output_dir, strict=args.strict)
+        result = export_graph(args.export_dir, args.output_dir, strict=args.strict, context_file=args.context_file)
     except Exception as exc:  # pragma: no cover - CLI safety
         print("Document organization graph export")
         print("  Status: FAILED")
@@ -46,6 +47,7 @@ def main() -> int:
     print(f"  Status: {result.status}")
     print(f"  Export dir: {args.export_dir}")
     print(f"  Output dir: {output_dir}")
+    print(f"  Context file: {args.context_file}")
     print("\nGraph counts:")
     print(f"  Nodes: {result.summary['graph_counts']['nodes']}")
     print(f"  Edges: {result.summary['graph_counts']['edges']}")
