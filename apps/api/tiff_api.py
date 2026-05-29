@@ -15,7 +15,7 @@ from typing import Any
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
-from tiff.api_backend import (
+from tiff.api_adapter_services import (
     api_status,
     ask_question,
     ata_lookup,
