@@ -13,6 +13,8 @@ from pathlib import Path
 import json
 from typing import Any, Mapping
 
+from tiff.document_graph_quality import GraphQualityThresholds, build_graph_quality_result
+
 DEFAULT_MANIFEST_PATH = "local_data/pipeline_runs/latest_backend_pipeline.json"
 
 
@@ -41,6 +43,13 @@ class QualityGateThresholds:
     require_complete_ocr_text: bool = False
     require_real_rescarta: bool = False
     require_incremental_smoke: bool = False
+    require_graph_quality: bool = True
+    require_user_query_tests: bool = False
+    require_realistic_query_trace: bool = False
+    require_slow_realistic_query_trace: bool = False
+    max_graph_pages_without_context: int = 0
+    max_graph_pages_without_source_links: int = 0
+    max_graph_context_generation_errors: int = 0
 
 
 @dataclass(frozen=True)
@@ -487,6 +496,107 @@ def check_pipeline_manifest(
         f"Organization export counts: pages={org_export_pages}, parts={org_export_parts}, mentions={org_export_mentions}.",
     )
 
+    graph_thresholds = GraphQualityThresholds(
+        max_pages_without_context=limits.max_graph_pages_without_context,
+        max_pages_without_source_links=limits.max_graph_pages_without_source_links,
+        max_context_generation_errors=limits.max_graph_context_generation_errors,
+        require_user_query_tests=limits.require_user_query_tests,
+        require_realistic_query_trace_tests=limits.require_realistic_query_trace,
+        require_slow_realistic_query_trace=limits.require_slow_realistic_query_trace,
+    )
+    graph_quality = build_graph_quality_result(thresholds=graph_thresholds)
+    graph_summary = graph_quality.summary
+    graph_present = bool(graph_summary.get("graph_present"))
+    graph_page_nodes = _as_int(graph_summary.get("page_nodes"))
+    graph_context_nodes = _as_int(graph_summary.get("page_context_nodes"))
+    graph_source_link_nodes = _as_int(graph_summary.get("source_link_nodes"))
+    graph_pages_without_context = _as_int(graph_summary.get("pages_without_context"))
+    graph_pages_without_source_links = _as_int(graph_summary.get("pages_without_source_links"))
+    graph_context_generation_errors = _as_int(graph_summary.get("context_generation_errors"))
+    graph_empty_ocr_contexts = _as_int(graph_summary.get("empty_ocr_contexts"))
+    graph_part_trace_ok = _as_bool(graph_summary.get("part_traceability_sample_ok"))
+    graph_page_trace_ok = _as_bool(graph_summary.get("page_traceability_sample_ok"))
+    graph_vector_trace_ok = _as_bool(graph_summary.get("vector_payload_traceability_sample_ok"))
+    graph_user_query_present = _as_bool(graph_summary.get("user_query_results_present"))
+    graph_user_query_fail = _as_int(graph_summary.get("user_query_fail"))
+    graph_user_query_total = _as_int(graph_summary.get("user_query_total"))
+    realistic_query_present = _as_bool(graph_summary.get("realistic_query_results_present"))
+    realistic_query_total = _as_int(graph_summary.get("realistic_query_total"))
+    realistic_query_fail = _as_int(graph_summary.get("realistic_query_fail"))
+    realistic_query_check_total = _as_int(graph_summary.get("realistic_query_check_total"))
+    realistic_query_check_fail = _as_int(graph_summary.get("realistic_query_check_fail"))
+    realistic_query_slow_cases = _as_int(graph_summary.get("realistic_query_slow_cases"))
+
+    _add_check(
+        checks,
+        "document_graph_quality_summary",
+        graph_present or not limits.require_graph_quality,
+        "Document graph quality artifacts are present."
+        if graph_present
+        else "Document graph quality artifacts are missing; run scripts/export_document_organization_graph.py --strict and scripts/check_document_graph_quality.py --write-json.",
+    )
+    if graph_present or limits.require_graph_quality:
+        _add_check(
+            checks,
+            "document_graph_context_coverage",
+            graph_context_nodes >= graph_page_nodes and graph_pages_without_context <= limits.max_graph_pages_without_context,
+            f"Graph context coverage: page_context_nodes={graph_context_nodes}, page_nodes={graph_page_nodes}, pages_without_context={graph_pages_without_context}; max missing context is {limits.max_graph_pages_without_context}.",
+        )
+        _add_check(
+            checks,
+            "document_graph_source_coverage",
+            graph_source_link_nodes >= graph_page_nodes and graph_pages_without_source_links <= limits.max_graph_pages_without_source_links,
+            f"Graph source coverage: source_link_nodes={graph_source_link_nodes}, page_nodes={graph_page_nodes}, pages_without_source_links={graph_pages_without_source_links}; max missing source links is {limits.max_graph_pages_without_source_links}.",
+        )
+        _add_check(
+            checks,
+            "document_graph_context_generation_errors",
+            graph_context_generation_errors <= limits.max_graph_context_generation_errors,
+            f"Graph context generation errors={graph_context_generation_errors}; empty OCR contexts={graph_empty_ocr_contexts} are tracked separately.",
+        )
+        _add_check(
+            checks,
+            "document_graph_part_traceability",
+            graph_part_trace_ok,
+            "Sample part traces to pages/source links/AI context." if graph_part_trace_ok else "Sample part traceability failed.",
+        )
+        _add_check(
+            checks,
+            "document_graph_page_traceability",
+            graph_page_trace_ok,
+            "Sample page traces to document/ATA/source/context." if graph_page_trace_ok else "Sample page traceability failed.",
+        )
+        _add_check(
+            checks,
+            "document_graph_vector_traceability",
+            graph_vector_trace_ok,
+            "Simulated Qdrant vector payload resolves to page/source/context." if graph_vector_trace_ok else "Simulated vector payload traceability failed.",
+        )
+        _add_check(
+            checks,
+            "user_query_regression_results",
+            (graph_user_query_present and graph_user_query_fail == 0 and graph_user_query_total > 0) or not limits.require_user_query_tests,
+            f"User-query regression results: present={graph_user_query_present}, total={graph_user_query_total}, fail={graph_user_query_fail}."
+            if graph_user_query_present
+            else "User-query regression results are optional unless --require-user-query-tests is set.",
+        )
+        _add_check(
+            checks,
+            "realistic_query_trace_results",
+            (realistic_query_present and realistic_query_total > 0 and realistic_query_fail == 0 and realistic_query_check_fail == 0) or not limits.require_realistic_query_trace,
+            f"Realistic query trace results: present={realistic_query_present}, cases={realistic_query_total}, failed_cases={realistic_query_fail}, checks={realistic_query_check_total}, failed_checks={realistic_query_check_fail}."
+            if realistic_query_present
+            else "Realistic query trace results are optional unless --require-realistic-query-trace is set.",
+        )
+        _add_check(
+            checks,
+            "realistic_query_trace_slow_case",
+            realistic_query_slow_cases > 0 or not limits.require_slow_realistic_query_trace,
+            f"Realistic query trace slow cases included: {realistic_query_slow_cases}."
+            if realistic_query_slow_cases > 0
+            else "Slow realistic query trace case is optional unless --require-slow-realistic-query-trace is set.",
+        )
+
     incremental_summary = _as_mapping(manifest.get("incremental_summary"))
     incremental_present = bool(incremental_summary)
     incremental_ok = _as_bool(incremental_summary.get("ok"))
@@ -593,6 +703,26 @@ def check_pipeline_manifest(
         "document_organization_export_pages": org_export_pages,
         "document_organization_export_parts": org_export_parts,
         "document_organization_export_mentions": org_export_mentions,
+        "document_graph_quality_present": graph_present,
+        "document_graph_page_nodes": graph_page_nodes,
+        "document_graph_context_nodes": graph_context_nodes,
+        "document_graph_source_link_nodes": graph_source_link_nodes,
+        "document_graph_pages_without_context": graph_pages_without_context,
+        "document_graph_pages_without_source_links": graph_pages_without_source_links,
+        "document_graph_context_generation_errors": graph_context_generation_errors,
+        "document_graph_empty_ocr_contexts": graph_empty_ocr_contexts,
+        "document_graph_part_traceability_ok": graph_part_trace_ok,
+        "document_graph_page_traceability_ok": graph_page_trace_ok,
+        "document_graph_vector_traceability_ok": graph_vector_trace_ok,
+        "user_query_results_present": graph_user_query_present,
+        "user_query_total": graph_user_query_total,
+        "user_query_fail": graph_user_query_fail,
+        "realistic_query_results_present": realistic_query_present,
+        "realistic_query_total": realistic_query_total,
+        "realistic_query_fail": realistic_query_fail,
+        "realistic_query_check_total": realistic_query_check_total,
+        "realistic_query_check_fail": realistic_query_check_fail,
+        "realistic_query_slow_cases": realistic_query_slow_cases,
         "incremental_smoke_present": incremental_present,
         "incremental_smoke_ok": incremental_ok if incremental_present else None,
         "incremental_changed_list_count": incremental_changed_count if incremental_present else None,
