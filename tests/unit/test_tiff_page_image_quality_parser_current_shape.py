@@ -39,17 +39,87 @@ def test_current_audit_shape_parses_readable_and_figure_counts(tmp_path: Path) -
             "table": 10,
         },
     }
+
     audit_path = tmp_path / "audit.json"
     nodes_path = tmp_path / "nodes.json"
     edges_path = tmp_path / "edges.json"
+
     audit_path.write_text(json.dumps(audit), encoding="utf-8")
     nodes_path.write_text(json.dumps([{} for _ in range(513)]), encoding="utf-8")
     edges_path.write_text(json.dumps([{} for _ in range(1018)]), encoding="utf-8")
 
-    report = build_page_image_recognition_quality(audit_path, graph_nodes_path=nodes_path, graph_edges_path=edges_path)
+    report = build_page_image_recognition_quality(
+        audit_path,
+        graph_nodes_path=nodes_path,
+        graph_edges_path=edges_path,
+    )
     summary = report["summary"]
 
     assert report["status"] == "OK"
     assert summary["page_image_readable_images"] == 509
     assert summary["page_image_likely_figure_pages"] == 493
     assert summary["page_image_likely_table_pages"] == 331
+
+
+def test_generated_flat_summary_shape_parses_counts_signals_and_overlay_paths(tmp_path: Path) -> None:
+    nodes_path = tmp_path / "nodes.json"
+    edges_path = tmp_path / "edges.json"
+    nodes_path.write_text(json.dumps([{} for _ in range(513)]), encoding="utf-8")
+    edges_path.write_text(json.dumps([{} for _ in range(1018)]), encoding="utf-8")
+
+    audit = {
+        "summary": {
+            "status": "OK",
+            "pages_checked": 509,
+            "images_readable": 509,
+            "missing_image_paths": 0,
+            "missing_image_files": 0,
+            "unreadable_images": 0,
+            "blank_pages": 14,
+            "likely_visual_pages": 493,
+            "likely_table_grid_pages": 331,
+            "likely_figure_or_diagram_pages": 493,
+            "likely_image_heavy_pages": 0,
+            "likely_text_heavy_pages": 2,
+            "average_ink_ratio": 0.068,
+            "median_ink_ratio": 0.055,
+            "total_large_components": 17735,
+            "classification_counts": {
+                "likely_table_or_grid": 331,
+                "likely_figure_or_diagram": 162,
+                "likely_blank": 14,
+                "likely_text_or_parts_list": 2,
+            },
+            "role_counts": {
+                "parts_list": 290,
+                "figure": 157,
+                "procedure": 28,
+                "blank": 14,
+                "front_matter": 10,
+                "table": 10,
+            },
+            "overlay_nodes_path": str(nodes_path),
+            "overlay_edges_path": str(edges_path),
+        },
+        "records": [],
+    }
+
+    audit_path = tmp_path / "audit.json"
+    audit_path.write_text(json.dumps(audit), encoding="utf-8")
+
+    report = build_page_image_recognition_quality(audit_path)
+    summary = report["summary"]
+
+    assert report["status"] == "OK"
+    assert summary["page_image_pages_checked"] == 509
+    assert summary["page_image_readable_images"] == 509
+    assert summary["page_image_blank_pages"] == 14
+    assert summary["page_image_likely_visual_pages"] == 493
+    assert summary["page_image_likely_figure_pages"] == 493
+    assert summary["page_image_likely_table_pages"] == 331
+    assert summary["page_image_avg_ink_ratio"] > 0
+    assert summary["page_image_total_large_components"] > 0
+    assert summary["page_image_classified_pages"] == 509
+    assert summary["page_image_role_pages"] == 509
+    assert summary["page_image_graph_overlay_nodes"] == 513
+    assert summary["page_image_graph_overlay_edges"] == 1018
