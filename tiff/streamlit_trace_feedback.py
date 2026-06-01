@@ -69,26 +69,17 @@ def find_first_ata(text: str) -> str | None:
 
 
 def infer_trace_target(question: str, answer: str = "") -> dict[str, str]:
-    """Infer the most likely trace target from question/answer text.
-
-    Preference order is page ID, part number, then ATA code.  Page IDs are the
-    most specific source object; part numbers are usually the most common user
-    entrypoint; ATA is a broader fallback.
-    """
-
     combined = f"{question or ''}\n{answer or ''}"
     page_id = find_first_page_id(combined)
     if page_id:
         return {"type": "page", "value": page_id}
-    part = find_first_part(combined)
-    if part:
-        return {"type": "part", "value": part}
-    ata = find_first_ata(combined)
-    if ata:
-        return {"type": "ata", "value": ata}
-    return {"type": "", "value": ""}
-
-
+    ata_code = find_first_ata(combined)
+    if ata_code:
+        return {"type": "ata", "value": ata_code}
+    part_number = find_first_part(combined)
+    if part_number:
+        return {"type": "part", "value": part_number}
+    return {"type": None, "value": None}
 def payload_summary(payload: Mapping[str, Any] | None) -> dict[str, Any]:
     """Extract the fields most useful for top-level UI summaries."""
 
