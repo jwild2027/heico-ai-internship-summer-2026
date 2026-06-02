@@ -1039,6 +1039,73 @@ Return this exact markdown structure:
 """
 
     ocr_block = ocr_assist_text.strip() if ocr_assist_text else "No OCR text was available for grounding."
+    if version in {"visual_text_v2_4", "v2_4", "v2.4", "strict_v2_4"}:
+        return f"""You are reading ONE scanned aircraft technical manual page image.
+
+Goal: produce short, reviewable visual context. Be conservative.
+
+Rules:
+- Return ONLY the markdown headings shown below. Do not add extra prose before or after.
+- Do not copy instructions, examples, field names, OCR markers, source URLs, file paths, page_id, page role, image classification, or routing metadata into visible evidence sections.
+- Image-visible evidence goes in visible sections.
+- OCR/context-only help goes only in OCR/context assist notes.
+- If a field is not visible or not readable, write NONE or unreadable. Do not guess.
+- Do not apologize or say you cannot read images.
+- Keep each section compact. Prefer exact visible words over narrative.
+- Tables: if a grid/list is visible but cells are blurry, describe the grid/list and use unreadable for cells. Do not invent rows.
+
+Routing context, not page text:
+page_id={page_id}
+manual={manual or 'unknown'}
+ata={ata_code or 'unknown'}
+page_role={role or 'unknown'}
+image_class={image_class or 'unknown'}
+known_parts={part_text or 'none'}
+source={source.get('source_url') or 'none'}
+
+OCR/context assist. Use for grounding only. Do not copy unless visually confirmed:
+--- OCR CONTEXT START ---
+{ocr_block}
+--- OCR CONTEXT END ---
+
+# Page visual text
+## Page type
+unknown
+
+## Visible title/header
+NONE
+
+## Transcribed visible text
+NONE
+
+## Visual summary
+NONE
+
+## OCR/context assist notes
+NONE
+
+## Tables
+NONE
+
+## Figures/diagrams
+NONE
+
+## Charts/graphs
+NONE
+
+## Labels/callouts/part numbers
+NONE
+
+## Warnings/notes
+NONE
+
+## Uncertain/unreadable
+NONE
+
+## Model caution
+Derived visual context only; verify critical facts against source TIFF/OCR evidence.
+"""
+
     if version in {"visual_text_v2_2", "v2_2", "v2.2", "strict_v2_2"}:
         return f"""You are reading a scanned aircraft technical manual page image and producing a source-review note.
 
@@ -1334,7 +1401,7 @@ def normalize_visual_text_markdown(markdown: str, *, prompt_version: str = DEFAU
     """Return markdown with every v2 section present in a stable order."""
 
     raw = str(markdown or "").strip()
-    if str(prompt_version or "").lower() not in {"visual_text_v2", "v2", "strict_v2", "strict", "visual_text_v2_1", "v2_1", "v2.1", "strict_v2_1", "visual_text_v2_2", "v2_2", "v2.2", "strict_v2_2"}:
+    if str(prompt_version or "").lower() not in {"visual_text_v2", "v2", "strict_v2", "strict", "visual_text_v2_1", "v2_1", "v2.1", "strict_v2_1", "visual_text_v2_2", "v2_2", "v2.2", "strict_v2_2", "visual_text_v2_4", "v2_4", "v2.4", "strict_v2_4"}:
         return raw
     sections = parse_visual_text_sections(raw)
     lines = ["# Page visual text", ""]
@@ -1467,7 +1534,9 @@ def score_visual_text_markdown(markdown: str, *, prompt_version: str = DEFAULT_P
     summary_words = _word_count(summary)
     transcribed_words = _word_count(visible_text)
     prompt_key = str(prompt_version or "").lower()
-    if prompt_key in {"visual_text_v2_2", "v2_2", "v2.2", "strict_v2_2"}:
+    if prompt_key in {"visual_text_v2_4", "v2_4", "v2.4", "strict_v2_4"}:
+        prompt_label = "visual_text_v2_4"
+    elif prompt_key in {"visual_text_v2_2", "v2_2", "v2.2", "strict_v2_2"}:
         prompt_label = "visual_text_v2_2"
     elif prompt_key in {"visual_text_v2_1", "v2_1", "v2.1", "strict_v2_1"}:
         prompt_label = "visual_text_v2_1"
@@ -1731,6 +1800,7 @@ def build_visual_text_summary(
         "v2_records": 0,
         "v2_1_records": 0,
         "v2_2_records": 0,
+        "v2_4_records": 0,
         "required_sections_present": 0,
         "has_transcribed_visible_text": 0,
         "has_tables_section": 0,
@@ -1758,14 +1828,16 @@ def build_visual_text_summary(
         class_counts[_text(record.get("image_classification") or "unknown")] = class_counts.get(_text(record.get("image_classification") or "unknown"), 0) + 1
         scores = _as_dict(record.get("visual_text_scores"))
         score_prompt = _text(scores.get("prompt_version") or record.get("prompt_version")).lower()
-        if score_prompt in {"visual_text_v2", "v2", "strict_v2", "strict", "visual_text_v2_1", "v2_1", "v2.1", "strict_v2_1", "visual_text_v2_2", "v2_2", "v2.2", "strict_v2_2"}:
+        if score_prompt in {"visual_text_v2", "v2", "strict_v2", "strict", "visual_text_v2_1", "v2_1", "v2.1", "strict_v2_1", "visual_text_v2_2", "v2_2", "v2.2", "strict_v2_2", "visual_text_v2_4", "v2_4", "v2.4", "strict_v2_4"}:
             score_counts["v2_records"] += 1
         if score_prompt == "visual_text_v2_1":
             score_counts["v2_1_records"] += 1
         if score_prompt == "visual_text_v2_2":
             score_counts["v2_2_records"] += 1
+        if score_prompt == "visual_text_v2_4":
+            score_counts["v2_4_records"] += 1
         for key in tuple(score_counts):
-            if key in {"v2_records", "v2_1_records", "v2_2_records"}:
+            if key in {"v2_records", "v2_1_records", "v2_2_records", "v2_4_records"}:
                 continue
             if bool(scores.get(key)):
                 score_counts[key] += 1
@@ -1835,6 +1907,7 @@ def build_visual_text_summary(
         "visual_text_v2_records": score_counts["v2_records"],
         "visual_text_v2_1_records": score_counts["v2_1_records"],
         "visual_text_v2_2_records": score_counts["v2_2_records"],
+        "visual_text_v2_4_records": score_counts["v2_4_records"],
         "visual_text_required_sections_records": score_counts["required_sections_present"],
         "visual_text_transcribed_records": score_counts["has_transcribed_visible_text"],
         "visual_text_table_section_records": score_counts["has_tables_section"],
@@ -2074,8 +2147,13 @@ def run_visual_text_extraction(
         warnings=warnings,
         graph_nodes=graph_nodes,
         graph_edges=graph_edges,
-        provider_name=client.provider_name,
-        model_name=client.model_name,
+        # ``client`` is only the optional caller-provided client. In normal CLI runs it is
+        # None because the runner builds ``base_client`` internally. Fishnet refactoring
+        # introduced ``base_client`` for the primary attempt and per-layer clients for
+        # rescue attempts, so final summary metadata must come from ``base_client``
+        # instead of the optional argument.
+        provider_name=getattr(base_client, "provider_name", options.provider),
+        model_name=getattr(base_client, "model_name", options.model),
     )
 
     _write_visual_text_artifacts(paths, records, graph_nodes, graph_edges, options.write_graph_overlay)
@@ -2131,9 +2209,9 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument(
         "--prompt-version",
-        choices=("visual_text_v1", "visual_text_v2", "visual_text_v2_1", "visual_text_v2_2", "v1", "v2", "v2_1", "v2_2"),
+        choices=("visual_text_v1", "visual_text_v2", "visual_text_v2_1", "visual_text_v2_2", "visual_text_v2_4", "v1", "v2", "v2_1", "v2_2", "v2_4"),
         default=DEFAULT_PROMPT_VERSION,
-        help="Prompt/output format version. visual_text_v2_2 is the current strict OCR-assisted visual extraction prompt.",
+        help="Prompt/output format version. visual_text_v2_4 is the compact anti-leak visual extraction prompt.",
     )
     parser.add_argument("--no-ocr-assist", action="store_true", help="Do not include existing OCR text in the visual model prompt.")
     parser.add_argument("--ocr-max-chars", type=int, default=DEFAULT_OCR_MAX_CHARS, help="Maximum OCR characters included in the v2 prompt.")

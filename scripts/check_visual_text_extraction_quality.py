@@ -33,6 +33,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--disallow-planned", action="store_true", help="Require real model output instead of planned dry-run records.")
     parser.add_argument("--require-v2", action="store_true", help="Require accepted records to use the strict visual_text_v2 prompt/output format.")
     parser.add_argument("--require-v2-2", action="store_true", help="Require accepted records to use the visual_text_v2_2 prompt/output format.")
+    parser.add_argument("--require-v2-4", action="store_true", help="Require accepted records to use the visual_text_v2_4 compact anti-leak prompt/output format.")
     parser.add_argument("--min-required-section-records", type=int, default=0, help="Minimum records with every required v2 section present.")
     parser.add_argument("--max-summary-heavy-records", type=int, default=None, help="Maximum records flagged as summary-heavy.")
     parser.add_argument("--max-hallucination-risk-records", type=int, default=None, help="Maximum records flagged with hallucination-risk wording.")
@@ -53,6 +54,7 @@ def main() -> int:
         "allow_partial_status": args.allow_partial_status,
         "require_v2": args.require_v2,
         "require_v2_2": args.require_v2_2,
+        "require_v2_4": args.require_v2_4,
         "min_required_section_records": args.min_required_section_records,
         "max_summary_heavy_records": args.max_summary_heavy_records,
         "max_hallucination_risk_records": args.max_hallucination_risk_records,
