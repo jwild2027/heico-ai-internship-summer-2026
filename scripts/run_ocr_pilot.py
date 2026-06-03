@@ -1,22 +1,20 @@
 #!/usr/bin/env python3
-"""Run a safe OCR pilot on a small TIFF sample."""
-
+"""Run a safe OCR pilot on a TIFF sample with streaming progress."""
 from __future__ import annotations
 
 from pathlib import Path
 import argparse
-import json
 import sys
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from tiff.ocr_pilot import run_ocr_pilot
+from tiff.ocr_pilot_progress import run_ocr_pilot_with_progress
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Run a small, isolated OCR pilot on TIFF pages.")
+    parser = argparse.ArgumentParser(description="Run an isolated OCR pilot on TIFF pages.")
     src = parser.add_mutually_exclusive_group(required=True)
     src.add_argument("--zip", dest="zip_path", help="Source ZIP containing TIFF pages")
     src.add_argument("--root", help="Source root directory containing TIFF pages")
@@ -31,31 +29,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--timeout-seconds", type=int, default=120)
     parser.add_argument("--force", action="store_true", help="Regenerate OCR outputs even if pilot OCR exists")
     parser.add_argument("--write-json", action="store_true", help="Accepted for consistency; pilot always writes JSON report files")
+    parser.add_argument("--no-progress", action="store_true", help="Disable per-page progress output")
+    parser.add_argument("--progress-every", type=int, default=1, help="Print progress every N pages; default is every page")
     return parser
 
 
-def main(argv: list[str] | None = None) -> int:
-    args = build_parser().parse_args(argv)
-    try:
-        summary = run_ocr_pilot(
-            zip_path=args.zip_path,
-            root=args.root,
-            export_dir=args.export_dir,
-            output_dir=args.output_dir,
-            limit=args.limit,
-            offset=args.offset,
-            engine=args.engine,
-            tesseract_cmd=args.tesseract_cmd,
-            lang=args.lang,
-            psm=args.psm,
-            timeout_seconds=args.timeout_seconds,
-            force=args.force,
-            repo_root=REPO_ROOT,
-        )
-    except Exception as exc:
-        print(f"OCR pilot failed: {exc}", file=sys.stderr)
-        return 2
-
+def _print_summary(summary) -> None:
     print("OCR pilot")
     print(f"  Status: {summary.status}")
     print(f"  Source: {summary.source}")
@@ -85,7 +64,6 @@ def main(argv: list[str] | None = None) -> int:
             print(f"  {key}: {value}")
     else:
         print("  none")
-
     if summary.sample_records:
         print("")
         print("Sample records:")
@@ -100,13 +78,11 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"     OCR: {row.get('ocr_path')}")
             if row.get("tiff_path"):
                 print(f"     TIFF: {row.get('tiff_path')}")
-
     if summary.warnings:
         print("")
         print("Warnings:")
         for warning in summary.warnings:
             print(f"  - {warning}")
-
     print("")
     print("Files written:")
     for label, path in summary.files_written.items():
@@ -114,6 +90,34 @@ def main(argv: list[str] | None = None) -> int:
     print("")
     print("Next useful audit:")
     print(f"  python scripts/audit_ocr_depth.py --export-dir {summary.output_dir} --write-json --json-output local_data/ocr/ocr_pilot_depth_audit.json")
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = build_parser().parse_args(argv)
+    try:
+        summary = run_ocr_pilot_with_progress(
+            zip_path=args.zip_path,
+            root=args.root,
+            export_dir=args.export_dir,
+            output_dir=args.output_dir,
+            limit=args.limit,
+            offset=args.offset,
+            engine=args.engine,
+            tesseract_cmd=args.tesseract_cmd,
+            lang=args.lang,
+            psm=args.psm,
+            timeout_seconds=args.timeout_seconds,
+            force=args.force,
+            repo_root=REPO_ROOT,
+            progress=not args.no_progress,
+            progress_every=args.progress_every,
+        )
+    except Exception as exc:
+        print(f"OCR pilot failed: {exc}", file=sys.stderr)
+        return 2
+
+    print("")
+    _print_summary(summary)
     return 0 if summary.status == "OK" else 1
 
 
