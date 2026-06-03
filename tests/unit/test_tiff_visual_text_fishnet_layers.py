@@ -149,3 +149,29 @@ def test_fishnet_rescues_page_after_primary_failure(tmp_path: Path) -> None:
     assert summary["fishnet_failed_records"] == 0
     assert summary["fishnet_attempt_total"] == 2
     assert summary["fishnet_layer_counts"]["rescue_768"] == 1
+
+
+def test_fishnet_cli_style_run_without_injected_client_writes_summary(tmp_path: Path) -> None:
+    """Regression: CLI runs pass client=None and must summarize from base_client."""
+    paths = _write_page_cards(tmp_path)
+    options = ExtractionOptions(
+        provider="mock",
+        model="mock-vision",
+        max_pages=1,
+        overwrite=True,
+        max_image_edge=1024,
+        timeout_seconds=600,
+        prompt_version="visual_text_v2_2",
+        safety_layers=parse_visual_text_safety_layers("rescue_768:768:1200"),
+        progress=False,
+    )
+
+    result = run_visual_text_extraction(paths, options)
+
+    assert result.status == "OK"
+    assert result.summary["provider"] == "mock"
+    assert result.summary["model"] == "mock-vision-model"
+    assert paths.summary_path.exists()
+    written_summary = json.loads(paths.summary_path.read_text(encoding="utf-8"))
+    assert written_summary["provider"] == "mock"
+    assert written_summary["records"] == 1

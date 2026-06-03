@@ -121,6 +121,7 @@ def build_visual_text_extraction_quality(
     allow_partial_status: bool = False,
     require_v2: bool = False,
     require_v2_2: bool = False,
+    require_v2_4: bool = False,
     min_required_section_records: int = 0,
     max_summary_heavy_records: int | None = None,
     max_hallucination_risk_records: int | None = None,
@@ -151,6 +152,7 @@ def build_visual_text_extraction_quality(
     avg_chars = _to_float(summary.get("visual_text_avg_chars"))
     v2_records = _to_int(summary.get("visual_text_v2_records"))
     v2_2_records = _to_int(summary.get("visual_text_v2_2_records"))
+    v2_4_records = _to_int(summary.get("visual_text_v2_4_records"))
     required_section_records = _to_int(summary.get("visual_text_required_sections_records"))
     transcribed_records = _to_int(summary.get("visual_text_transcribed_records"))
     table_row_records = _to_int(summary.get("visual_text_table_row_records"))
@@ -193,6 +195,7 @@ def build_visual_text_extraction_quality(
         "visual_text_ocr_assist_enabled": summary.get("ocr_assist_enabled"),
         "visual_text_v2_records": v2_records,
         "visual_text_v2_2_records": v2_2_records,
+        "visual_text_v2_4_records": v2_4_records,
         "visual_text_required_sections_records": required_section_records,
         "visual_text_transcribed_records": transcribed_records,
         "visual_text_table_row_records": table_row_records,
@@ -206,6 +209,7 @@ def build_visual_text_extraction_quality(
         "visual_text_refusal_like_records": refusal_like_records,
         "visual_text_require_v2": require_v2,
         "visual_text_require_v2_2": require_v2_2,
+        "visual_text_require_v2_4": require_v2_4,
         "visual_text_min_required_section_records": min_required_section_records,
         "visual_text_max_summary_heavy_records": max_summary_heavy_records,
         "visual_text_max_hallucination_risk_records": max_hallucination_risk_records,
@@ -270,6 +274,11 @@ def build_visual_text_extraction_quality(
             f"v2_2_records={v2_2_records}; accepted_records={accepted_records}; require_v2_2={require_v2_2}.",
         ),
         _check(
+            "visual_text_v2_4_records",
+            (not require_v2_4) or (v2_4_records >= accepted_records and accepted_records >= min_records),
+            f"v2_4_records={v2_4_records}; accepted_records={accepted_records}; require_v2_4={require_v2_4}.",
+        ),
+        _check(
             "visual_text_required_sections",
             required_section_records >= min_required_section_records,
             f"required-section records={required_section_records}; minimum={min_required_section_records}.",
@@ -320,6 +329,7 @@ def write_visual_text_extraction_quality(
     allow_partial_status: bool = False,
     require_v2: bool = False,
     require_v2_2: bool = False,
+    require_v2_4: bool = False,
     min_required_section_records: int = 0,
     max_summary_heavy_records: int | None = None,
     max_hallucination_risk_records: int | None = None,
@@ -336,6 +346,7 @@ def write_visual_text_extraction_quality(
         allow_partial_status=allow_partial_status,
         require_v2=require_v2,
         require_v2_2=require_v2_2,
+        require_v2_4=require_v2_4,
         min_required_section_records=min_required_section_records,
         max_summary_heavy_records=max_summary_heavy_records,
         max_hallucination_risk_records=max_hallucination_risk_records,
