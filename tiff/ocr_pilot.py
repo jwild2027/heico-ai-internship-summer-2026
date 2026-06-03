@@ -1,27 +1,26 @@
 """Safe OCR pilot utilities for TIFF source packages.
 
-The pilot is intentionally isolated from the production/search database.  It
+The pilot is intentionally isolated from the production/search database. It
 extracts or copies a small TIFF sample into a pilot folder, optionally runs a
 configured OCR engine, classifies the generated text with the OCR-depth rules,
 and writes a resumable report that can be reviewed before any large baseline OCR
 job is attempted.
 """
-
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
-from typing import Any
+from typing import Any, TextIO
 import json
-import math
 import os
 import re
 import shutil
 import subprocess
+import sys
 import time
 import zipfile
 
-try:  # The OCR-depth module already exists in the project.
+try:
     from tiff.ocr_depth_audit import OcrDepthThresholds, classify_ocr_text
 except Exception:  # pragma: no cover - only for partial installs during dev
     @dataclass(frozen=True)
@@ -29,22 +28,35 @@ except Exception:  # pragma: no cover - only for partial installs during dev
         short_max_chars: int = 120
         full_page_min_chars: int = 300
 
-    def classify_ocr_text(text: str, thresholds: OcrDepthThresholds | None = None) -> tuple[str, dict[str, Any]]:  # type: ignore[no-redef]
+    def classify_ocr_text(  # type: ignore[no-redef]
+        text: str,
+        thresholds: OcrDepthThresholds | None = None,
+    ) -> tuple[str, dict[str, Any]]:
         text = text.strip()
         if not text:
-            return "empty_ocr", {"visible_chars": 0, "line_count": 0, "word_count": 0, "part_number_hits": 0}
+            return "empty_ocr", {
+                "visible_chars": 0,
+                "line_count": 0,
+                "word_count": 0,
+                "part_number_hits": 0,
+            }
         words = re.findall(r"\w+", text)
-        return "likely_full_page" if len(text) >= 300 else "short_ocr", {
-            "visible_chars": len(text),
-            "line_count": len([x for x in text.splitlines() if x.strip()]),
-            "word_count": len(words),
-            "part_number_hits": 0,
-        }
-
+        return (
+            "likely_full_page" if len(text) >= 300 else "short_ocr",
+            {
+                "visible_chars": len(text),
+                "line_count": len([x for x in text.splitlines() if x.strip()]),
+                "word_count": len(words),
+                "part_number_hits": 0,
+            },
+        )
 
 TIFF_EXTS = {".tif", ".tiff"}
 TEXT_EXTS = {".txt"}
-PART_RE = re.compile(r"\b(?:[A-Z]{1,4}\d{2,6}-\d{1,4}|\d{2,4}-\d{3,6}-\d{1,4}|\d{3,6}/\d{3,6})\b", re.I)
+PART_RE = re.compile(
+    r"\b(?:[A-Z]{1,4}\d{2,6}-\d{1,4}|\d{2,4}-\d{3,6}-\d{1,4}|\d{3,6}/\d{3,6})\b",
+    re.I,
+)
 
 
 @dataclass
@@ -130,26 +142,40 @@ def _as_pages(obj: Any) -> list[dict[str, Any]]:
     return []
 
 
-def source_pages_from_zip(zip_path: str | Path, *, limit: int | None = None, offset: int = 0) -> list[OcrPilotSourcePage]:
+def source_pages_from_zip(
+    zip_path: str | Path,
+    *,
+    limit: int | None = None,
+    offset: int = 0,
+) -> list[OcrPilotSourcePage]:
     pages: list[OcrPilotSourcePage] = []
     with zipfile.ZipFile(zip_path) as zf:
-        names = [info.filename for info in zf.infolist() if not info.is_dir() and Path(info.filename).suffix.lower() in TIFF_EXTS]
-    names = sorted(names, key=natural_key)
-    selected = names[offset : offset + limit if limit is not None else None]
-    for idx, name in enumerate(selected, start=offset + 1):
-        pages.append(
-            OcrPilotSourcePage(
-                page_id=f"zip_page_{idx:06d}",
-                source_name=name,
-                tiff_path=None,
-                existing_ocr_path=None,
-                page_label=str(idx),
+        names = [
+            info.filename
+            for info in zf.infolist()
+            if not info.is_dir() and Path(info.filename).suffix.lower() in TIFF_EXTS
+        ]
+        names = sorted(names, key=natural_key)
+        selected = names[offset : offset + limit if limit is not None else None]
+        for idx, name in enumerate(selected, start=offset + 1):
+            pages.append(
+                OcrPilotSourcePage(
+                    page_id=f"zip_page_{idx:06d}",
+                    source_name=name,
+                    tiff_path=None,
+                    existing_ocr_path=None,
+                    page_label=str(idx),
+                )
             )
-        )
     return pages
 
 
-def source_pages_from_root(root: str | Path, *, limit: int | None = None, offset: int = 0) -> list[OcrPilotSourcePage]:
+def source_pages_from_root(
+    root: str | Path,
+    *,
+    limit: int | None = None,
+    offset: int = 0,
+) -> list[OcrPilotSourcePage]:
     root_path = Path(root)
     tiffs: list[Path] = []
     texts_by_stem: dict[str, Path] = {}
@@ -171,14 +197,22 @@ def source_pages_from_root(root: str | Path, *, limit: int | None = None, offset
                 page_id=f"root_page_{idx:06d}",
                 source_name=rel,
                 tiff_path=str(path),
-                existing_ocr_path=str(texts_by_stem[path.stem.lower()]) if path.stem.lower() in texts_by_stem else None,
+                existing_ocr_path=str(texts_by_stem[path.stem.lower()])
+                if path.stem.lower() in texts_by_stem
+                else None,
                 page_label=str(idx),
             )
         )
     return pages
 
 
-def source_pages_from_export(export_dir: str | Path, *, limit: int | None = None, offset: int = 0, repo_root: str | Path | None = None) -> list[OcrPilotSourcePage]:
+def source_pages_from_export(
+    export_dir: str | Path,
+    *,
+    limit: int | None = None,
+    offset: int = 0,
+    repo_root: str | Path | None = None,
+) -> list[OcrPilotSourcePage]:
     export_path = Path(export_dir)
     page_index_path = export_path / "page_index.json"
     data = json.loads(page_index_path.read_text(encoding="utf-8"))
@@ -225,7 +259,51 @@ def _safe_name(name: str) -> str:
     return stem or "page"
 
 
-def _extract_or_copy_tiff(page: OcrPilotSourcePage, *, zip_path: str | Path | None, pages_dir: Path, force: bool) -> Path | None:
+def _format_duration(seconds: float) -> str:
+    seconds = max(0.0, float(seconds))
+    if seconds < 60:
+        return f"{seconds:.0f}s"
+    minutes, sec = divmod(int(round(seconds)), 60)
+    if minutes < 60:
+        return f"{minutes}m {sec:02d}s"
+    hours, minutes = divmod(minutes, 60)
+    return f"{hours}h {minutes:02d}m {sec:02d}s"
+
+
+def _progress_should_emit(index: int, total: int, every: int) -> bool:
+    every = max(1, int(every or 1))
+    return index == 1 or index == total or index % every == 0
+
+
+def _emit_progress(
+    *,
+    stream: TextIO,
+    index: int,
+    total: int,
+    record: OcrPilotRecord,
+    started: float,
+) -> None:
+    elapsed = time.monotonic() - started
+    avg = elapsed / index if index else 0.0
+    eta = avg * (total - index) if total > index else 0.0
+    classification = record.classification or "-"
+    print(
+        "OCR progress: "
+        f"[{index}/{total}] {record.page_id} "
+        f"status={record.status} class={classification} chars={record.visible_chars} "
+        f"page_time={record.elapsed_seconds:.1f}s avg={avg:.1f}s eta={_format_duration(eta)}",
+        file=stream,
+        flush=True,
+    )
+
+
+def _extract_or_copy_tiff(
+    page: OcrPilotSourcePage,
+    *,
+    zip_path: str | Path | None,
+    pages_dir: Path,
+    force: bool,
+) -> Path | None:
     pages_dir.mkdir(parents=True, exist_ok=True)
     out_name = f"{page.page_id}_{_safe_name(page.source_name)}.tif"
     out_path = pages_dir / out_name
@@ -271,7 +349,15 @@ def _write_page_index(output_dir: Path, records: list[OcrPilotRecord]) -> Path:
     return path
 
 
-def _run_tesseract(tiff_path: Path, ocr_path: Path, *, tesseract_cmd: str, lang: str, psm: int | None, timeout_seconds: int) -> tuple[int, list[str], str | None]:
+def _run_tesseract(
+    tiff_path: Path,
+    ocr_path: Path,
+    *,
+    tesseract_cmd: str,
+    lang: str,
+    psm: int | None,
+    timeout_seconds: int,
+) -> tuple[int, list[str], str | None]:
     base = ocr_path.with_suffix("")
     cmd = [tesseract_cmd, str(tiff_path), str(base), "-l", lang]
     if psm is not None:
@@ -298,9 +384,11 @@ def _run_tesseract(tiff_path: Path, ocr_path: Path, *, tesseract_cmd: str, lang:
     return completed.returncode, cmd, None
 
 
-def _classify_output_text(text: str, thresholds: OcrDepthThresholds | None = None) -> tuple[str, dict[str, Any]]:
+def _classify_output_text(
+    text: str,
+    thresholds: OcrDepthThresholds | None = None,
+) -> tuple[str, dict[str, Any]]:
     classification, metrics = classify_ocr_text(text, thresholds or OcrDepthThresholds())
-    # Normalize both old/new metric names from OCR-depth implementations.
     return classification, {
         "visible_chars": int(metrics.get("visible_chars", metrics.get("chars", 0)) or 0),
         "line_count": int(metrics.get("line_count", metrics.get("lines", 0)) or 0),
@@ -325,6 +413,9 @@ def run_ocr_pilot(
     force: bool = False,
     repo_root: str | Path | None = None,
     sample_limit: int = 10,
+    progress: bool = False,
+    progress_every: int = 1,
+    progress_stream: TextIO | None = None,
 ) -> OcrPilotSummary:
     repo_root = Path(repo_root) if repo_root is not None else Path.cwd()
     output_path = Path(output_dir)
@@ -355,8 +446,18 @@ def run_ocr_pilot(
 
     records: list[OcrPilotRecord] = []
     started = time.monotonic()
+    total_pages = len(pages)
+    stream = progress_stream or sys.stdout
 
-    for page in pages:
+    if progress:
+        print(
+            "OCR progress: "
+            f"selected_pages={total_pages} engine={engine_used} output_dir={output_path}",
+            file=stream,
+            flush=True,
+        )
+
+    for page_index, page in enumerate(pages, start=1):
         per_started = time.monotonic()
         tiff_out = _extract_or_copy_tiff(page, zip_path=zip_path, pages_dir=pages_dir, force=force)
         ocr_out = ocr_dir / f"{page.page_id}_{_safe_name(page.source_name)}.txt"
@@ -400,28 +501,36 @@ def run_ocr_pilot(
         if text or ocr_out.exists():
             classification, metrics = _classify_output_text(text)
 
-        records.append(
-            OcrPilotRecord(
-                page_id=page.page_id,
-                source_name=page.source_name,
-                status=status,
-                engine=engine_used,
-                tiff_path=str(tiff_out) if tiff_out else None,
-                ocr_path=str(ocr_out) if ocr_out.exists() else None,
-                existing_ocr_path=page.existing_ocr_path,
-                page_label=page.page_label,
-                ata_code=page.ata_code,
-                elapsed_seconds=round(time.monotonic() - per_started, 3),
-                returncode=returncode,
-                classification=classification,
-                visible_chars=metrics["visible_chars"],
-                line_count=metrics["line_count"],
-                word_count=metrics["word_count"],
-                part_count=metrics["part_count"],
-                error=err,
-                command=cmd,
-            )
+        record = OcrPilotRecord(
+            page_id=page.page_id,
+            source_name=page.source_name,
+            status=status,
+            engine=engine_used,
+            tiff_path=str(tiff_out) if tiff_out else None,
+            ocr_path=str(ocr_out) if ocr_out.exists() else None,
+            existing_ocr_path=page.existing_ocr_path,
+            page_label=page.page_label,
+            ata_code=page.ata_code,
+            elapsed_seconds=round(time.monotonic() - per_started, 3),
+            returncode=returncode,
+            classification=classification,
+            visible_chars=metrics["visible_chars"],
+            line_count=metrics["line_count"],
+            word_count=metrics["word_count"],
+            part_count=metrics["part_count"],
+            error=err,
+            command=cmd,
         )
+        records.append(record)
+
+        if progress and _progress_should_emit(page_index, total_pages, progress_every):
+            _emit_progress(
+                stream=stream,
+                index=page_index,
+                total=total_pages,
+                record=record,
+                started=started,
+            )
 
     by_status: dict[str, int] = {}
     by_class: dict[str, int] = {}
