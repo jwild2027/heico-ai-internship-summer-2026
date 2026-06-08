@@ -30,15 +30,24 @@ def test_build_graph_has_part_to_page_crosslinks():
         ],
         "source_citations": [{"citation_id": "cit1", "candidate_id": "c1", "page_id": "t_p_120_1176_p000003", "source_url": "http://x/3"}],
         "page_trust_traits": [{"page_id": "t_p_120_1176_p000003", "evidence_layer": "source_trace", "trust_tier": "A"}],
+        "page_context_records": [
+            {"context_id": "page_context:t_p_120_1176_p000003", "page_id": "t_p_120_1176_p000003", "page_id_resolved": "zip_page_000003", "role": "parts_list", "summary": "Applicability page listing passenger seat parts", "topics": ["parts list", "passenger seat"], "highlighted_parts": ["120-50645-009"], "confidence": "high", "can_answer_directly": False, "can_support_answer": True, "canonical_source_truth": False}
+        ],
+        "page_context_topics": [{"context_id": "page_context:t_p_120_1176_p000003", "page_id": "t_p_120_1176_p000003", "topic": "passenger seat"}],
+        "page_context_highlighted_parts": [{"context_id": "page_context:t_p_120_1176_p000003", "page_id": "t_p_120_1176_p000003", "part_number": "120-50645-009"}],
     }
     graph = build_explorer_graph(rows)
     summary = graph["summary"]
     assert summary["page_nodes"] == 2
     assert summary["part_nodes"] >= 1
     assert summary["candidate_nodes"] == 2
+    assert summary["page_context_nodes"] == 1
     edge_types = summary["edge_type_counts"]
     assert edge_types["PART_ON_PAGE"] >= 2
     assert edge_types["HAS_CANDIDATE"] == 2
+    assert edge_types["HAS_CONTEXT"] == 1
+    assert edge_types["TAGGED_AS"] >= 1
+    assert edge_types["HIGHLIGHTS_PART"] >= 1
 
 
 def test_render_html_embeds_expected_app_text():
