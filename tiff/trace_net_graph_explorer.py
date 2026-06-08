@@ -15,7 +15,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
-VERSION = "trace_net_graph_explorer_v1"
+VERSION = "trace_net_graph_explorer_v1_3_context_overlay"
 DEFAULT_OUTPUT_DIR = Path("local_data/organization/trace_net/graph_explorer")
 PART_PATTERNS = [
     re.compile(r"\b\d{3}-\d{5}-\d{3}\b"),
@@ -218,6 +218,21 @@ def load_postgres_rows(database_url: str, max_candidates: int = 2500) -> Dict[st
             "page_trust_traits",
             ["trait_id", "page_id", "evidence_layer", "trust_tier", "rag_action", "usable_confidence", "payload"],
         ) if _table_exists(conn, "page_trust_traits") else []
+        rows["page_context_records"] = _select_dicts(
+            conn,
+            "page_context_records",
+            ["context_id", "page_id", "page_id_resolved", "page_number", "role", "summary", "topics", "highlighted_parts", "confidence", "confidence_score", "context_model", "prompt_version", "trust_scope", "rag_role", "can_answer_directly", "can_support_answer", "requires_citation", "canonical_source_truth", "payload"],
+        ) if _table_exists(conn, "page_context_records") else []
+        rows["page_context_topics"] = _select_dicts(
+            conn,
+            "page_context_topics",
+            ["context_id", "page_id", "topic", "payload"],
+        ) if _table_exists(conn, "page_context_topics") else []
+        rows["page_context_highlighted_parts"] = _select_dicts(
+            conn,
+            "page_context_highlighted_parts",
+            ["context_id", "page_id", "part_number", "payload"],
+        ) if _table_exists(conn, "page_context_highlighted_parts") else []
         rows["graph_nodes"] = _select_dicts(conn, "graph_nodes", ["node_id", "node_type", "label", "payload"], limit=200000) if _table_exists(conn, "graph_nodes") else []
         rows["graph_edges"] = _select_dicts(conn, "graph_edges", ["edge_id", "source_id", "target_id", "edge_type", "payload"], limit=300000) if _table_exists(conn, "graph_edges") else []
     return rows
@@ -276,6 +291,89 @@ def build_explorer_graph(
             tiff_id = _node_id("tiff", page_id)
             _add_node(nodes, ExplorerNode(tiff_id, "tiff", "TIFF", size=10, payload={"tiff_path": row.get("tiff_path")}))
             _connect(edges, _node_id("page", page_id), tiff_id, "HAS_TIFF", 1.5)
+
+    # Page context overlay: semantic helper nodes, not source truth.
+    # These records are collapsed local graph helpers. They connect pages to summaries,
+    # topics, and highlighted parts so users can jump between semantic context and
+    # source-backed page/candidate evidence.
+    context_topics: Dict[str, List[str]] = defaultdict(list)
+    for topic_row in rows.get("page_context_topics", []):
+        cid = _as_text(topic_row.get("context_id"))
+        topic = _as_text(topic_row.get("topic"))
+        if cid and topic and topic not in context_topics[cid]:
+            context_topics[cid].append(topic)
+
+    context_parts: Dict[str, List[str]] = defaultdict(list)
+    for part_row in rows.get("page_context_highlighted_parts", []):
+        cid = _as_text(part_row.get("context_id"))
+        part = _as_text(part_row.get("part_number"))
+        if cid and part and part not in context_parts[cid]:
+            context_parts[cid].append(part)
+
+    for row in rows.get("page_context_records", []):
+        raw_page_id = _as_text(row.get("page_id_resolved") or row.get("page_id"))
+        page_id = canonical_page_id(raw_page_id, fallback_doc=fallback_doc)
+        page_node = _node_id("page", page_id)
+        if page_node not in nodes:
+            continue
+        context_id = _as_text(row.get("context_id")) or _node_id("page_context", page_id)
+        if not context_id.startswith("page_context:"):
+            context_id = _node_id("page_context", context_id)
+        role = _as_text(row.get("role") or "context")
+        summary_text = _as_text(row.get("summary"))
+        confidence = _as_text(row.get("confidence") or "unknown")
+        topics_value = _json_loads(row.get("topics")) or []
+        highlighted_value = _json_loads(row.get("highlighted_parts")) or []
+        topics = list(context_topics.get(context_id, [])) or [str(t) for t in topics_value if str(t).strip()]
+        highlighted_parts = list(context_parts.get(context_id, [])) or [str(p) for p in highlighted_value if str(p).strip()]
+        label = f"Context: {role}"
+        _add_node(
+            nodes,
+            ExplorerNode(
+                id=context_id,
+                type="page_context",
+                label=label,
+                size=16,
+                weight=1.6,
+                payload={
+                    "context_id": context_id,
+                    "page_id": page_id,
+                    "role": role,
+                    "summary": summary_text,
+                    "topics": topics[:30],
+                    "highlighted_parts": highlighted_parts[:40],
+                    "confidence": confidence,
+                    "confidence_score": row.get("confidence_score"),
+                    "context_model": row.get("context_model"),
+                    "prompt_version": row.get("prompt_version"),
+                    "trust_scope": row.get("trust_scope"),
+                    "rag_role": row.get("rag_role"),
+                    "can_answer_directly": row.get("can_answer_directly"),
+                    "can_support_answer": row.get("can_support_answer"),
+                    "requires_citation": row.get("requires_citation"),
+                    "canonical_source_truth": row.get("canonical_source_truth"),
+                },
+            ),
+        )
+        _connect(edges, page_node, context_id, "HAS_CONTEXT", 2.0)
+        _connect(edges, context_id, page_node, "SUMMARIZES", 0.8)
+
+        if role:
+            role_node = _node_id("page_role", role)
+            _add_node(nodes, ExplorerNode(role_node, "page_role", role, size=14, payload={"role": role}))
+            _connect(edges, context_id, role_node, "HAS_ROLE", 0.8)
+
+        for topic in topics[:20]:
+            topic_id = _node_id("topic", topic.lower().strip())
+            _add_node(nodes, ExplorerNode(topic_id, "topic", topic, size=10, weight=0.7, payload={"topic": topic}))
+            _connect(edges, context_id, topic_id, "TAGGED_AS", 0.7)
+            _connect(edges, page_node, topic_id, "PAGE_TAGGED_AS", 0.25)
+
+        for part in highlighted_parts[:max_parts_per_candidate]:
+            part_node = _node_id("part", part)
+            _add_node(nodes, ExplorerNode(part_node, "part", part, size=9, weight=0.8, payload={"part_number": part, "from_page_context": True}))
+            _connect(edges, context_id, part_node, "HIGHLIGHTS_PART", 1.0)
+            _connect(edges, part_node, page_node, "CONTEXT_PART_ON_PAGE", 0.9)
 
     # OCR classifications.
     for row in rows.get("ocr_records", []):
@@ -435,6 +533,8 @@ def build_explorer_graph(
         "part_nodes": type_counts.get("part", 0),
         "candidate_nodes": type_counts.get("candidate", 0),
         "citation_nodes": type_counts.get("citation", 0),
+        "page_context_nodes": type_counts.get("page_context", 0),
+        "topic_nodes": type_counts.get("topic", 0),
         "max_part_nodes": max_part_nodes,
         "max_parts_per_candidate": max_parts_per_candidate,
     }
