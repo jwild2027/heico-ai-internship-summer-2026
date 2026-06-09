@@ -1,0 +1,192 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>TRACE-Net Search Result Grouper v1</title>
+<style>
+body{font-family:Arial,sans-serif;margin:24px;line-height:1.45;color:#17202a}pre{background:#f6f8fa;padding:8px;white-space:pre-wrap;border-radius:6px}p{margin:0 0 8px}.card{border:1px solid #ddd;border-radius:8px;padding:12px;margin:12px 0}.muted{color:#666}
+</style></head><body>
+<h1>TRACE-Net Search Result Grouper v1</h1>
+<p># TRACE-Net Search Result Grouper v1</p>
+<pre></pre>
+<p>Status: **OK**  Version: `trace_net_search_grouper_v1`</p>
+<pre></pre>
+<p>## Summary</p>
+<pre></pre>
+<pre>| Metric | Value |</pre>
+<pre>|---|---|</pre>
+<pre>| search_result_records | 8 |</pre>
+<pre>| grouped_page_records | 6 |</pre>
+<pre>| pages_found | 6 |</pre>
+<pre>| supporting_result_records | 8 |</pre>
+<pre>| unsafe_grouped_records | 0 |</pre>
+<pre>| excluded_grouped_records | 0 |</pre>
+<pre>| groups_with_multiple_buckets | 1 |</pre>
+<pre>| groups_with_citations | 6 |</pre>
+<pre>| top_group_score | 21.283721 |</pre>
+<pre></pre>
+<p>## Grouped page results</p>
+<pre></pre>
+<pre>| Rank | Page | Group score | Buckets | Layers | Support | Matches | Source URL |</pre>
+<pre>|---|---|---|---|---|---|---|---|</pre>
+<pre>| 1 | t_p_120_1176_p000021 | 21.283721 | source_text_evidence | source_text | 1 | terms=vendor | http://localhost:8080/rescarta/t_p_120_1176/000021 |</pre>
+<pre>| 2 | t_p_120_1176_p000005 | 18.146892 | source_text_evidence, derived_context | source_text, table_tile_text_refined | 3 | terms=vendor | http://localhost:8080/rescarta/t_p_120_1176/000005 |</pre>
+<pre>| 3 | t_p_120_1176_p000024 | 14.346892 | source_text_evidence | source_text | 1 | terms=vendor | http://localhost:8080/rescarta/t_p_120_1176/000024 |</pre>
+<pre>| 4 | t_p_120_1176_p000243 | 14.346892 | source_text_evidence | source_text | 1 | terms=vendor | http://localhost:8080/rescarta/t_p_120_1176/000243 |</pre>
+<pre>| 5 | t_p_120_1176_p000362 | 14.346892 | source_text_evidence | source_text | 1 | terms=vendor | http://localhost:8080/rescarta/t_p_120_1176/000362 |</pre>
+<pre>| 6 | t_p_120_1176_p000020 | 14.251892 | source_text_evidence | source_text | 1 | terms=vendor | http://localhost:8080/rescarta/t_p_120_1176/000020 |</pre>
+<pre></pre>
+<p>## Supporting evidence samples</p>
+<pre></pre>
+<p>### 1. t_p_120_1176_p000021 — score 21.283721</p>
+<pre></pre>
+<p>Buckets: `source_text_evidence`</p>
+<p>Source URL: `http://localhost:8080/rescarta/t_p_120_1176/000021`</p>
+<pre></pre>
+<p>- rank=1 score=18.383721 bucket=`source_text_evidence` layer=`source_text` trust=`A`</p>
+<p>  - matched terms: vendor</p>
+<p>  - preview: Source text evidence for page t_p_120_1176_p000021.</p>
+<p>This chunk is source-backed OCR/page-context text and can be searched as source text evidence.</p>
+<p>Document: t_p_120_1176.</p>
+<p>ATA: 25-21-00.</p>
+<p>Source URL: http://localhost:8080/rescarta/t_p_120_1176/000021.</p>
+<p>TIFF path: local_data\rescarta_exports\t_p_120_1176\pages\000021_00000021.tif.</p>
+<p>OCR path: local_data\rescarta_exports\t_p_120_1176\ocr\000021_00000021.txt.</p>
+<p>OCR text:</p>
+<p>[bottom_right_title_block]</p>
+<p>AWJITERRAL Ne NE were OF ed el Lett | Re EO ee ret s~ iw…</p>
+<pre></pre>
+<p>### 2. t_p_120_1176_p000005 — score 18.146892</p>
+<pre></pre>
+<p>Buckets: `source_text_evidence, derived_context`</p>
+<p>Source URL: `http://localhost:8080/rescarta/t_p_120_1176/000005`</p>
+<pre></pre>
+<p>- rank=2 score=11.446892 bucket=`source_text_evidence` layer=`source_text` trust=`A`</p>
+<p>  - matched terms: vendor</p>
+<p>  - preview: Source text evidence for page t_p_120_1176_p000005.</p>
+<p>This chunk is source-backed OCR/page-context text and can be searched as source text evidence.</p>
+<p>Document: t_p_120_1176.</p>
+<p>ATA: 25-21-00.</p>
+<p>Source URL: http://localhost:8080/rescarta/t_p_120_1176/000005.</p>
+<p>TIFF path: local_data\rescarta_exports\t_p_120_1176\pages\000005_00000005.tif.</p>
+<p>OCR path: local_data\rescarta_exports\t_p_120_1176\ocr\000005_00000005.txt.</p>
+<p>OCR text:</p>
+<p>[bottom_right_title_block]</p>
+<p>0 20-2 1-UU (VI SEP IUIIO</p>
+<p>8 25-21-00 702 Sep 30/98</p>
+<p>8 25-2…</p>
+<p>- rank=7 score=8.832892 bucket=`derived_context` layer=`table_tile_text_refined` trust=`B`</p>
+<p>  - matched terms: vendor</p>
+<p>  - preview: Derived context for page t_p_120_1176_p000005.</p>
+<p>Evidence layer: table_tile_text_refined.</p>
+<p>This context is derived evidence, not canonical source truth.</p>
+<p>Table tile: t_p_120_1176_p000005_tile_001.</p>
+<p>Filtered index/section labels: 25-Vendors, 25-Numerical.</p>
+<p>Extracted tile text:</p>
+<p>[bottom_right_title_block]</p>
+<p>0 20-2 1-UU (VI SEP IUIIO</p>
+<p>8 25-21-00 702 Sep 30/98</p>
+<p>8 25-21-00 703 Sep 30/98</p>
+<p>8 25-21-00 704 blank Sep 30/98</p>
+<p>8 Parts List 1001 Sep 30/98</p>
+<p>8 Parts List 1002 Sep 30/98</p>
+<p>8 Parts List 1003 Sep 30/98</p>
+<p>8 Parts Li…</p>
+<p>- rank=8 score=8.832892 bucket=`derived_context` layer=`table_tile_text_refined` trust=`B`</p>
+<p>  - matched terms: vendor</p>
+<p>  - preview: Derived context for page t_p_120_1176_p000005.</p>
+<p>Evidence layer: table_tile_text_refined.</p>
+<p>This context is derived evidence, not canonical source truth.</p>
+<p>Table tile: t_p_120_1176_p000005_tile_002.</p>
+<p>Filtered index/section labels: 25-Numerical, 25-Vendors.</p>
+<p>Extracted tile text:</p>
+<p>8 25-Numerical Index 1009 Jan 15/01</p>
+<p>8 25-Numerical Index 1010 Jan 15/01</p>
+<p>8 25-Numerical Index 1011 Jan 15/01</p>
+<p>1 are indicated by an asterisk (*). Pages deleted by the</p>
+<p>Jeleted by the previous revision are indicated by (del).</p>
+<p>&#x27;5-LIS…</p>
+<pre></pre>
+<p>### 3. t_p_120_1176_p000024 — score 14.346892</p>
+<pre></pre>
+<p>Buckets: `source_text_evidence`</p>
+<p>Source URL: `http://localhost:8080/rescarta/t_p_120_1176/000024`</p>
+<pre></pre>
+<p>- rank=3 score=11.446892 bucket=`source_text_evidence` layer=`source_text` trust=`A`</p>
+<p>  - matched terms: vendor</p>
+<p>  - preview: Source text evidence for page t_p_120_1176_p000024.</p>
+<p>This chunk is source-backed OCR/page-context text and can be searched as source text evidence.</p>
+<p>Document: t_p_120_1176.</p>
+<p>ATA: 25-21-00.</p>
+<p>Source URL: http://localhost:8080/rescarta/t_p_120_1176/000024.</p>
+<p>TIFF path: local_data\rescarta_exports\t_p_120_1176\pages\000024_00000024.tif.</p>
+<p>OCR path: local_data\rescarta_exports\t_p_120_1176\ocr\000024_00000024.txt.</p>
+<p>OCR text:</p>
+<p>[bottom_right_title_block]</p>
+<p>- 25-21 -00 Page 1005/1006</p>
+<p>Sep 30/98</p>
+<pre></pre>
+<p>[bottom_strip]</p>
+<p>EFFE…</p>
+<pre></pre>
+<p>### 4. t_p_120_1176_p000243 — score 14.346892</p>
+<pre></pre>
+<p>Buckets: `source_text_evidence`</p>
+<p>Source URL: `http://localhost:8080/rescarta/t_p_120_1176/000243`</p>
+<pre></pre>
+<p>- rank=4 score=11.446892 bucket=`source_text_evidence` layer=`source_text` trust=`A`</p>
+<p>  - matched terms: vendor</p>
+<p>  - preview: Source text evidence for page t_p_120_1176_p000243.</p>
+<p>This chunk is source-backed OCR/page-context text and can be searched as source text evidence.</p>
+<p>Document: t_p_120_1176.</p>
+<p>ATA: 25-21-00.</p>
+<p>Source URL: http://localhost:8080/rescarta/t_p_120_1176/000243.</p>
+<p>TIFF path: local_data\rescarta_exports\t_p_120_1176\pages\000243_00000243.tif.</p>
+<p>OCR path: local_data\rescarta_exports\t_p_120_1176\ocr\000243_00000243.txt.</p>
+<p>OCR text:</p>
+<p>[bottom_right_title_block]</p>
+<p>TS</p>
+<p>20-45851-003/503)</p>
+<p>!</p>
+<p>25-21-00 Page 1184</p>
+<p>Sep 30/98</p>
+<pre></pre>
+<p>[bot…</p>
+<pre></pre>
+<p>### 5. t_p_120_1176_p000362 — score 14.346892</p>
+<pre></pre>
+<p>Buckets: `source_text_evidence`</p>
+<p>Source URL: `http://localhost:8080/rescarta/t_p_120_1176/000362`</p>
+<pre></pre>
+<p>- rank=5 score=11.446892 bucket=`source_text_evidence` layer=`source_text` trust=`A`</p>
+<p>  - matched terms: vendor</p>
+<p>  - preview: Source text evidence for page t_p_120_1176_p000362.</p>
+<p>This chunk is source-backed OCR/page-context text and can be searched as source text evidence.</p>
+<p>Document: t_p_120_1176.</p>
+<p>ATA: 25-21-00.</p>
+<p>Source URL: http://localhost:8080/rescarta/t_p_120_1176/000362.</p>
+<p>TIFF path: local_data\rescarta_exports\t_p_120_1176\pages\000362_00000362.tif.</p>
+<p>OCR path: local_data\rescarta_exports\t_p_120_1176\ocr\000362_00000362.txt.</p>
+<p>OCR text:</p>
+<p>[bottom_right_title_block]</p>
+<p>IE LIST</p>
+<p>T 120035 THRU 120048, 120052,</p>
+<p>ND 120059</p>
+<p>T 120049…</p>
+<pre></pre>
+<p>### 6. t_p_120_1176_p000020 — score 14.251892</p>
+<pre></pre>
+<p>Buckets: `source_text_evidence`</p>
+<p>Source URL: `http://localhost:8080/rescarta/t_p_120_1176/000020`</p>
+<pre></pre>
+<p>- rank=6 score=11.351892 bucket=`source_text_evidence` layer=`source_text` trust=`A`</p>
+<p>  - matched terms: vendor</p>
+<p>  - preview: Source text evidence for page t_p_120_1176_p000020.</p>
+<p>This chunk is source-backed OCR/page-context text and can be searched as source text evidence.</p>
+<p>Document: t_p_120_1176.</p>
+<p>ATA: 25-21-00.</p>
+<p>Source URL: http://localhost:8080/rescarta/t_p_120_1176/000020.</p>
+<p>TIFF path: local_data\rescarta_exports\t_p_120_1176\pages\000020_00000020.tif.</p>
+<p>OCR path: local_data\rescarta_exports\t_p_120_1176\ocr\000020_00000020.txt.</p>
+<p>OCR text:</p>
+<p>[bottom_right_title_block]</p>
+<p>ERENT Tey Sr res eg wi Wwe ONE rien ee iw wat eit.</p>
+<p>dered…</p>
+</body></html>

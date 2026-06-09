@@ -1,0 +1,132 @@
+{
+  "checks": [
+    {
+      "detail": "summary=True; records=True",
+      "name": "artifacts_present",
+      "ok": true
+    },
+    {
+      "detail": "status=OK",
+      "name": "status_ok",
+      "ok": true
+    },
+    {
+      "detail": "summary=3; jsonl=3; minimum=1",
+      "name": "records",
+      "ok": true
+    },
+    {
+      "detail": "summary=3; jsonl=3",
+      "name": "record_count_match",
+      "ok": true
+    },
+    {
+      "detail": "pages summary=3; scan=3; minimum=1",
+      "name": "pages",
+      "ok": true
+    },
+    {
+      "detail": "component_records=3; minimum=1",
+      "name": "component_breakdowns",
+      "ok": true
+    },
+    {
+      "detail": "missing_components=0; max=0",
+      "name": "missing_components",
+      "ok": true
+    },
+    {
+      "detail": "rank_comparison=3; minimum=1",
+      "name": "rank_comparison",
+      "ok": true
+    },
+    {
+      "detail": "weights_policy_version=trace_net_weights_policy_v1",
+      "name": "weights_policy_present",
+      "ok": true
+    },
+    {
+      "detail": "feedback_adjusted summary=2; scan=2; minimum=0",
+      "name": "feedback_adjusted_records",
+      "ok": true
+    },
+    {
+      "detail": "cap_hits summary=1; scan=1; minimum=0",
+      "name": "feedback_cap_hit_records",
+      "ok": true
+    },
+    {
+      "detail": "shortfalls summary=1; scan=1; minimum=0",
+      "name": "demotion_shortfall_records",
+      "ok": true
+    },
+    {
+      "detail": "unsafe=0; max=0",
+      "name": "unsafe_records",
+      "ok": true
+    },
+    {
+      "detail": "excluded=0; max=0",
+      "name": "excluded_records",
+      "ok": true
+    },
+    {
+      "detail": "mutations=0; max=0",
+      "name": "source_truth_mutations",
+      "ok": true
+    },
+    {
+      "detail": "context_warning summary=0; scan=0; max=0",
+      "name": "context_warning_signals_ignored",
+      "ok": true
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "weighted_calibration_component_breakdown_records": 3,
+    "weighted_calibration_context_warning_signals_used": 0,
+    "weighted_calibration_context_warning_signals_used_scan": 0,
+    "weighted_calibration_demotion_shortfall_records": 1,
+    "weighted_calibration_demotion_shortfall_scan": 1,
+    "weighted_calibration_evidence_diversity_overrode_feedback_records": 1,
+    "weighted_calibration_evidence_diversity_overrode_feedback_scan": 1,
+    "weighted_calibration_excluded_records": 0,
+    "weighted_calibration_feedback_adjusted_records": 2,
+    "weighted_calibration_feedback_adjusted_scan": 2,
+    "weighted_calibration_feedback_cap_hit_records": 1,
+    "weighted_calibration_feedback_cap_hit_scan": 1,
+    "weighted_calibration_feedback_signals_used": 2,
+    "weighted_calibration_graph_edges": 25,
+    "weighted_calibration_graph_nodes": 19,
+    "weighted_calibration_groups_boosted": 1,
+    "weighted_calibration_groups_demoted": 1,
+    "weighted_calibration_jsonl_records": 3,
+    "weighted_calibration_missing_component_records": 0,
+    "weighted_calibration_pages": 3,
+    "weighted_calibration_pages_scan": 3,
+    "weighted_calibration_query_fingerprint": "part_number:120-50645-009",
+    "weighted_calibration_rank_changed_records": 0,
+    "weighted_calibration_rank_changed_scan": 0,
+    "weighted_calibration_rank_comparison_records": 3,
+    "weighted_calibration_recommendations": [
+      "weighted_simulation_kept_unsafe_results_out",
+      "context_warning_feedback_ignored_for_ranking",
+      "feedback_adjusted_scores_without_rank_change_review_margins_before_tuning",
+      "feedback_cap_hit_review_repeated_or_expert_feedback_before_increasing_penalty",
+      "evidence_diversity_preserved_rank_despite_negative_feedback",
+      "do_not_apply_weighted_ranking_until_regression_queries_pass"
+    ],
+    "weighted_calibration_records": 3,
+    "weighted_calibration_records_path": "local_data\\organization\\trace_net\\weighted_search_calibration\\trace_net_weighted_search_calibration_records.jsonl",
+    "weighted_calibration_records_present": true,
+    "weighted_calibration_source_truth_mutations": 0,
+    "weighted_calibration_status": "OK",
+    "weighted_calibration_summary_path": "local_data\\organization\\trace_net\\weighted_search_calibration\\trace_net_weighted_search_calibration_summary.json",
+    "weighted_calibration_summary_present": true,
+    "weighted_calibration_top_page_after": "t_p_120_1176_p000003",
+    "weighted_calibration_top_page_before": "t_p_120_1176_p000003",
+    "weighted_calibration_unsafe_records": 0,
+    "weighted_calibration_version": "trace_net_weighted_search_calibration_v1",
+    "weighted_calibration_weights_policy_version": "trace_net_weights_policy_v1"
+  }
+}

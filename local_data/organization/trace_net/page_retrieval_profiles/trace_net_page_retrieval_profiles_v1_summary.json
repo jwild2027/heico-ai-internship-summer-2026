@@ -1,0 +1,51 @@
+{
+  "generated_at_utc": "2026-06-08T17:52:53Z",
+  "read_only": true,
+  "record_count": 509,
+  "rejected_record_count": 0,
+  "schema_version": "trace_net_page_retrieval_profiles_v1",
+  "summary": {
+    "answer_capable_profile_count": 0,
+    "authority_counts": {
+      "page_route_only": 509
+    },
+    "bucket_counts": {
+      "page_retrieval_profile": 509
+    },
+    "claim_proof_profile_count": 0,
+    "context_v2_profile_count": 50,
+    "embedding_answer_authority_allowed_count": 0,
+    "missing_embedding_candidate_id_count": 0,
+    "missing_embedding_text_count": 0,
+    "missing_page_id_count": 0,
+    "missing_profile_id_count": 0,
+    "page_count": 509,
+    "profile_count": 509,
+    "profiles_with_embedding_text_count": 509,
+    "profiles_with_nomenclature_count": 11,
+    "profiles_with_parts_count": 11,
+    "profiles_with_query_tunnel_terms_count": 509,
+    "profiles_with_retrieval_cues_count": 509,
+    "rejected_count": 0,
+    "required_page_missing_count": 0,
+    "required_page_missing_ids": [],
+    "requires_citation_false_count": 0,
+    "requires_source_resolution_false_count": 0,
+    "schema_version": "trace_net_page_retrieval_profiles_v1",
+    "source_trace_profile_count": 509,
+    "source_truth_mutation_profile_count": 0,
+    "source_truth_profile_count": 0
+  },
+  "trace_net_boundary_rules": {
+    "all_answer_use_requires_citation": true,
+    "all_answer_use_requires_source_resolution": true,
+    "page_profiles_are_route_only": true,
+    "page_profiles_are_source_truth": false,
+    "page_profiles_can_answer_directly": false,
+    "page_profiles_can_prove_claims": false,
+    "postgres_graph_trust_citation_remain_authority": true,
+    "qdrant_is_index_not_authority": true,
+    "source_truth_mutations_allowed": false
+  },
+  "unsafe_profile_count": 0
+}

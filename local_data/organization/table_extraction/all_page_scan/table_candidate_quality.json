@@ -1,0 +1,55 @@
+{
+  "checks": [
+    {
+      "message": "summary=True; plan_jsonl=True.",
+      "name": "table_candidate_artifacts_present",
+      "ok": true
+    },
+    {
+      "message": "status=OK.",
+      "name": "table_candidate_status",
+      "ok": true
+    },
+    {
+      "message": "records summary=509, jsonl=509; minimum=509.",
+      "name": "table_candidate_records",
+      "ok": true
+    },
+    {
+      "message": "records=509; expected=509.",
+      "name": "table_candidate_expected_pages",
+      "ok": true
+    },
+    {
+      "message": "candidate_records=331; minimum=1.",
+      "name": "table_candidate_candidates",
+      "ok": true
+    },
+    {
+      "message": "missing_image_records=0; max=0.",
+      "name": "table_candidate_missing_images",
+      "ok": true
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "table_candidate_candidates": 331,
+    "table_candidate_expected_pages": 509,
+    "table_candidate_high_candidates": 314,
+    "table_candidate_medium_candidates": 17,
+    "table_candidate_missing_image_records": 0,
+    "table_candidate_plan_present": true,
+    "table_candidate_records": 509,
+    "table_candidate_repair_plan_jsonl_path": "local_data\\organization\\table_extraction\\all_page_scan\\trace_net_repair_plan.jsonl",
+    "table_candidate_review_candidates": 164,
+    "table_candidate_route_counts": {
+      "skip_non_table": 14,
+      "table_candidate_review_route": 164,
+      "table_crop_tile_repair_route_high": 314,
+      "table_crop_tile_repair_route_medium": 17
+    },
+    "table_candidate_skip_records": 14,
+    "table_candidate_status": "OK",
+    "table_candidate_summary_present": true
+  }
+}

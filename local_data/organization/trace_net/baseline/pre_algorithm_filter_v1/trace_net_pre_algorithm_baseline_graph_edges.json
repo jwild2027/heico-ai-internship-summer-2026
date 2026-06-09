@@ -1,0 +1,62 @@
+[
+  {
+    "source": "baseline:run",
+    "target": "baseline:metric:pages",
+    "type": "HAS_BASELINE_METRIC"
+  },
+  {
+    "source": "baseline:run",
+    "target": "baseline:metric:ocr_records",
+    "type": "HAS_BASELINE_METRIC"
+  },
+  {
+    "source": "baseline:run",
+    "target": "baseline:metric:ocr_text_records",
+    "type": "HAS_BASELINE_METRIC"
+  },
+  {
+    "source": "baseline:run",
+    "target": "baseline:metric:graph_nodes",
+    "type": "HAS_BASELINE_METRIC"
+  },
+  {
+    "source": "baseline:run",
+    "target": "baseline:metric:graph_edges",
+    "type": "HAS_BASELINE_METRIC"
+  },
+  {
+    "source": "baseline:run",
+    "target": "baseline:metric:graph_orphan_edges",
+    "type": "HAS_BASELINE_METRIC"
+  },
+  {
+    "source": "baseline:run",
+    "target": "baseline:metric:rag_candidate_records",
+    "type": "HAS_BASELINE_METRIC"
+  },
+  {
+    "source": "baseline:run",
+    "target": "baseline:metric:rag_candidate_unsafe_records",
+    "type": "HAS_BASELINE_METRIC"
+  },
+  {
+    "source": "baseline:run",
+    "target": "baseline:metric:rag_candidate_missing_source_url",
+    "type": "HAS_BASELINE_METRIC"
+  },
+  {
+    "source": "baseline:run",
+    "target": "baseline:metric:rag_candidate_missing_trust_tier",
+    "type": "HAS_BASELINE_METRIC"
+  },
+  {
+    "source": "baseline:run",
+    "target": "baseline:metric:source_citations",
+    "type": "HAS_BASELINE_METRIC"
+  },
+  {
+    "source": "baseline:run",
+    "target": "baseline:metric:citations_missing_source_url",
+    "type": "HAS_BASELINE_METRIC"
+  }
+]

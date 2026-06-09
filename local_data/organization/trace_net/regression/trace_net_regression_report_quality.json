@@ -1,0 +1,102 @@
+{
+  "checks": [
+    {
+      "detail": "summary=True; records=True",
+      "name": "artifacts_present",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "detail": "status='OK'",
+      "name": "status_ok",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "detail": "cases=7; minimum=7",
+      "name": "case_count",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "detail": "summary=7; jsonl=7; mismatch=0; max=0",
+      "name": "record_count_match",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "detail": "failing=0; max=0",
+      "name": "failing_cases",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "detail": "unsafe_answer=0; max=0",
+      "name": "unsafe_answer_cases",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "detail": "weighted_unsafe=0; max=0",
+      "name": "weighted_unsafe_cases",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "detail": "mutations=0; max=0",
+      "name": "source_truth_mutations",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "detail": "context_warning_used=0; max=0",
+      "name": "context_warning_used",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "detail": "review=2; minimum=0",
+      "name": "review_cases",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "detail": "graph_nodes=18; cases=7",
+      "name": "graph_nodes",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "detail": "graph_edges=25; cases=7",
+      "name": "graph_edges",
+      "ok": true,
+      "status": "OK"
+    }
+  ],
+  "created_at": "2026-06-03T19:59:54Z",
+  "regression_case_fail_count": 0,
+  "regression_cases": 7,
+  "regression_context_warning_used_case_count": 0,
+  "regression_failing_case_ids": [],
+  "regression_graph_edges": 25,
+  "regression_graph_nodes": 18,
+  "regression_jsonl_records": 7,
+  "regression_records_path": "local_data\\organization\\trace_net\\regression\\trace_net_regression_report_cases.jsonl",
+  "regression_records_present": true,
+  "regression_review_case_count": 2,
+  "regression_review_case_ids": [
+    "passenger_seat",
+    "vendor_list"
+  ],
+  "regression_source_truth_mutation_case_count": 0,
+  "regression_status": "OK",
+  "regression_summary_path": "local_data\\organization\\trace_net\\regression\\trace_net_regression_report_summary.json",
+  "regression_summary_present": true,
+  "regression_tie_case_count": 1,
+  "regression_top_changed_case_count": 1,
+  "regression_total_answer_pages": 41,
+  "regression_total_evidence_records": 61,
+  "regression_unsafe_answer_case_count": 0,
+  "regression_weighted_unsafe_case_count": 0,
+  "status": "OK"
+}

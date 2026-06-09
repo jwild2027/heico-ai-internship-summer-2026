@@ -1,0 +1,91 @@
+{
+  "checks": [
+    {
+      "message": "Report present at local_data\\organization\\trace_net\\confidence\\trace_lc_stage4_policy_simulation.json: True.",
+      "name": "stage4_report_present",
+      "ok": true
+    },
+    {
+      "message": "Report status is 'OK'.",
+      "name": "stage4_status",
+      "ok": true
+    },
+    {
+      "message": "Report version is 'trace_lc_stage4_policy_simulation_v1'.",
+      "name": "stage4_version",
+      "ok": true
+    },
+    {
+      "message": "records=1813; minimum=1813.",
+      "name": "stage4_records",
+      "ok": true
+    },
+    {
+      "message": "pages=509; minimum=509.",
+      "name": "stage4_pages",
+      "ok": true
+    },
+    {
+      "message": "policy_layers=6; minimum=6.",
+      "name": "stage4_policy_layers",
+      "ok": true
+    },
+    {
+      "message": "policy_present=True.",
+      "name": "stage4_policy_present",
+      "ok": true
+    },
+    {
+      "message": "unsafe_policy_rag_include_records=0; max=0.",
+      "name": "stage4_no_unsafe_policy_rag",
+      "ok": true
+    },
+    {
+      "message": "source_trace_policy_A_records=509; minimum=509.",
+      "name": "stage4_source_trace_policy_A",
+      "ok": true
+    },
+    {
+      "message": "table_candidate_direct_rag_records=0; max=0.",
+      "name": "stage4_no_table_candidate_direct_rag",
+      "ok": true
+    },
+    {
+      "message": "visual_text_above_B_records=0; max=0.",
+      "name": "stage4_visual_text_conservative",
+      "ok": true
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "trace_lc_stage4_eval_path": "local_data\\organization\\trace_net\\confidence\\trace_lc_stage4_policy_simulation.json",
+    "trace_lc_stage4_pages": 509,
+    "trace_lc_stage4_policy_layers": 6,
+    "trace_lc_stage4_policy_rag_action_counts": {
+      "exclude_from_rag": 86,
+      "exclude_until_table_text_exists": 286,
+      "exclude_until_table_tiles_exist": 509,
+      "include_as_derived_context": 61,
+      "include_as_source_evidence": 509,
+      "include_as_verified_part_evidence": 362
+    },
+    "trace_lc_stage4_policy_rag_include_records": 932,
+    "trace_lc_stage4_policy_trust_tier_counts": {
+      "A": 901,
+      "B": 648,
+      "C": 264
+    },
+    "trace_lc_stage4_policy_version": "trace_lc_confidence_policy_v1",
+    "trace_lc_stage4_rag_action_changed_records": 179,
+    "trace_lc_stage4_records": 1813,
+    "trace_lc_stage4_repair_action_changed_records": 181,
+    "trace_lc_stage4_report_present": true,
+    "trace_lc_stage4_source_trace_policy_A_records": 509,
+    "trace_lc_stage4_status": "OK",
+    "trace_lc_stage4_table_candidate_direct_rag_records": 0,
+    "trace_lc_stage4_trust_changed_records": 362,
+    "trace_lc_stage4_unsafe_policy_rag_include_records": 0,
+    "trace_lc_stage4_version": "trace_lc_stage4_policy_simulation_v1",
+    "trace_lc_stage4_visual_text_above_B_records": 0
+  }
+}

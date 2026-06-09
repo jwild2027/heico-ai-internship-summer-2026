@@ -1,0 +1,72 @@
+{
+  "status": "OK",
+  "summary": {
+    "context_records": 509,
+    "pages_with_context": 509,
+    "context_graph_nodes": 509,
+    "has_context_edges": 1018,
+    "tagged_as_edges": 1609,
+    "highlights_part_edges": 1546,
+    "missing_page_resolutions": 0,
+    "direct_answer_context_records": 0,
+    "canonical_source_truth_context_records": 0,
+    "source_truth_mutation_records": 0
+  },
+  "checks": [
+    {
+      "name": "status_ok",
+      "status": "OK",
+      "detail": "status=OK"
+    },
+    {
+      "name": "context_records",
+      "status": "OK",
+      "detail": "contexts=509; minimum=509"
+    },
+    {
+      "name": "pages_with_context",
+      "status": "OK",
+      "detail": "pages_with_context=509; minimum=509"
+    },
+    {
+      "name": "context_graph_nodes",
+      "status": "OK",
+      "detail": "context_graph_nodes=509; minimum=509"
+    },
+    {
+      "name": "has_context_edges",
+      "status": "OK",
+      "detail": "has_context_edges=1018; minimum=509"
+    },
+    {
+      "name": "tagged_as_edges",
+      "status": "OK",
+      "detail": "tagged_as_edges=1609; minimum=1"
+    },
+    {
+      "name": "highlights_part_edges",
+      "status": "OK",
+      "detail": "highlights_part_edges=1546; minimum=1"
+    },
+    {
+      "name": "missing_page_resolutions",
+      "status": "OK",
+      "detail": "missing_page_resolutions=0; max=0"
+    },
+    {
+      "name": "direct_answer_context",
+      "status": "OK",
+      "detail": "direct_answer_context=0; max=0"
+    },
+    {
+      "name": "canonical_source_truth_context",
+      "status": "OK",
+      "detail": "canonical_source_truth_context=0; max=0"
+    },
+    {
+      "name": "source_truth_mutations",
+      "status": "OK",
+      "detail": "source_truth_mutations=0; max=0"
+    }
+  ]
+}

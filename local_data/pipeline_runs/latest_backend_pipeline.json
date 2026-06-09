@@ -1,0 +1,988 @@
+{
+  "api_adapter_quality_status": "ok",
+  "api_adapter_quality_summary": {
+    "api_backend_quality": null,
+    "api_graph_nodes": 3788,
+    "api_page_contexts": 509,
+    "api_page_probe_ok": true,
+    "api_part_probe_ok": true,
+    "api_part_probe_pages": null,
+    "api_ready_present": true,
+    "api_ready_status": "ok",
+    "api_source_links": 509,
+    "api_vector_trace_probe_ok": true,
+    "storage_adapter_mode": "local_artifacts",
+    "storage_adapter_org_summary_present": true,
+    "storage_adapter_page_probe_found": true,
+    "storage_adapter_page_probe_source": true,
+    "storage_adapter_part_probe_found": true,
+    "storage_adapter_part_probe_pages": 28,
+    "storage_adapter_quality_status": "ok",
+    "storage_adapter_ready_present": true,
+    "storage_adapter_status": "ok"
+  },
+  "api_contract_quality_summary": {
+    "api_contract_ask_ok": false,
+    "api_contract_base_url": "http://127.0.0.1:8000",
+    "api_contract_fail": 0,
+    "api_contract_feedback_round_trip_ok": false,
+    "api_contract_feedback_summary_ok": false,
+    "api_contract_mode": "in_process",
+    "api_contract_page_lookup_ok": false,
+    "api_contract_part_lookup_ok": false,
+    "api_contract_pass": 11,
+    "api_contract_results_present": true,
+    "api_contract_slow_cases": 0,
+    "api_contract_slow_pass": 0,
+    "api_contract_status": "ok",
+    "api_contract_status_endpoint_ok": false,
+    "api_contract_total": 11,
+    "api_contract_trace_vector_ok": false,
+    "status": "fail"
+  },
+  "artifacts": {
+    "document_organization_export_json": "local_data/organization/export/organization_summary.json",
+    "document_organization_json": "local_data/organization/document_organization_audit.json",
+    "eval_csv": "local_data/evals/rag_eval_results.csv",
+    "eval_json": "local_data/evals/rag_eval_results.json",
+    "incremental_smoke_json": "local_data/incremental_smoke/changed_page_smoke.json",
+    "ocr_coverage_json": "local_data/ocr/ocr_coverage_audit.json",
+    "qa_csv": "local_data/qa/part_catalog_qa_all.csv",
+    "qa_json": "local_data/qa/part_catalog_qa_all.json",
+    "source_link_audit_json": "local_data/source_links/source_link_audit.json",
+    "source_links_csv": "local_data/source_links/rescarta_mapping_report.csv",
+    "source_links_json": "local_data/source_links/rescarta_mapping_report.json"
+  },
+  "config": {
+    "config_path": "local_config.yaml",
+    "db_path": "local_data/db/tiff_search.db",
+    "embed_model": "bge-m3:latest",
+    "questions_path": "local_data/evals/rag_eval_questions.json",
+    "rescarta_export_dir": "local_data/rescarta_exports"
+  },
+  "document_organization_export_summary": {
+    "ata_group_count": 5,
+    "empty_ocr_page_count": 14,
+    "files_written": 5,
+    "manual_count": 1,
+    "page_count": 509,
+    "pages_with_ata": 509,
+    "pages_with_parts": 364,
+    "pages_with_source_links": 509,
+    "pages_without_ata": 0,
+    "part_count": 386,
+    "part_mention_count": 981,
+    "ready": true,
+    "source_link_count": 509,
+    "warnings": 2
+  },
+  "document_organization_summary": {
+    "ata_groups_total": 5,
+    "distinct_parts_total": 386,
+    "empty_ocr_pages": 14,
+    "logical_tree_ready": true,
+    "manuals_total": 1,
+    "pages_total": 509,
+    "pages_with_ata": 509,
+    "pages_with_parts": 364,
+    "pages_with_source_links": 509,
+    "pages_without_ata": 0,
+    "part_mentions_total": 981,
+    "source_links_total": 509,
+    "source_table": "source_links",
+    "source_table_exists": true,
+    "top_ata_groups": 5,
+    "top_parts": 20,
+    "warnings": 2
+  },
+  "dry_run": false,
+  "ended_at": "2026-05-28T16:35:27+00:00",
+  "eval_summary": {
+    "embeddings_used": 5,
+    "llm_used": 1,
+    "questions": 21,
+    "status_counts": {
+      "manual_review": 1,
+      "pass": 20
+    }
+  },
+  "graph_quality_summary": {
+    "context_generation_errors": 0,
+    "context_records": 509,
+    "edges_total": 14143,
+    "empty_ocr_contexts": 14,
+    "graph_dir": "local_data\\organization\\graph",
+    "graph_present": true,
+    "has_context_edges": 509,
+    "has_source_link_edges": 509,
+    "highlights_part_edges": 1070,
+    "nodes_total": 3788,
+    "page_context_nodes": 509,
+    "page_nodes": 509,
+    "page_traceability_sample_ok": true,
+    "pages_without_ata": 0,
+    "pages_without_context": 0,
+    "pages_without_document": 0,
+    "pages_without_source_links": 0,
+    "part_nodes": 386,
+    "part_traceability_sample_ok": true,
+    "realistic_query_check_fail": 0,
+    "realistic_query_check_pass": 14,
+    "realistic_query_check_total": 14,
+    "realistic_query_fail": 0,
+    "realistic_query_pass": 8,
+    "realistic_query_results_present": true,
+    "realistic_query_slow_cases": 1,
+    "realistic_query_total": 8,
+    "source_link_nodes": 509,
+    "tagged_as_edges": 1706,
+    "topic_nodes": 228,
+    "user_query_fail": 0,
+    "user_query_pass": 10,
+    "user_query_results_present": true,
+    "user_query_total": 10,
+    "vector_payload_traceability_sample_ok": true
+  },
+  "incremental_summary": {
+    "backend_command_planned": true,
+    "changed_files": 1,
+    "changed_list": "local_data\\incremental_smoke\\changed_tiffs.txt",
+    "changed_list_count": 1,
+    "changed_page_command_used": true,
+    "dry_run": false,
+    "errors": 0,
+    "failed_commands": 0,
+    "full_backend_command_used": false,
+    "new_files": 0,
+    "ocr_command_skipped": true,
+    "ok": true,
+    "source_ata_code": "11-00-66",
+    "source_manual_id": "t_p_120_1176",
+    "source_page_id": "t_p_120_1176_p000042",
+    "source_page_label": "1021",
+    "state_committed": true,
+    "unchanged_files": 0,
+    "warnings": 0,
+    "work_dir": "local_data\\incremental_smoke"
+  },
+  "manifest_version": 1,
+  "ocr_coverage_summary": {
+    "distinct_manuals": 1,
+    "empty_ocr_files": 14,
+    "has_empty_or_short_ocr": true,
+    "local_ocr_paths_ready": true,
+    "min_chars": 20,
+    "missing_ocr_files": 0,
+    "missing_ocr_paths": 0,
+    "nonempty_ocr_files": 495,
+    "pages_total": 509,
+    "readable_ocr_files": 509,
+    "sample_rows": 12,
+    "short_ocr_files": 0,
+    "source_links_table_exists": true,
+    "total_ocr_chars": 444363,
+    "total_source_links": 509,
+    "unreadable_ocr_files": 0,
+    "warnings": 1
+  },
+  "page_image_recognition_quality": {
+    "checks": [
+      {
+        "message": "Page image-recognition audit JSON is present at local_data\\organization\\image_recognition\\page_image_recognition_audit.json.",
+        "name": "page_image_audit_present",
+        "status": "OK"
+      },
+      {
+        "message": "Page image-recognition audit status is ok .",
+        "name": "page_image_audit_status",
+        "status": "OK"
+      },
+      {
+        "message": "Pages checked=509; minimum is 1.",
+        "name": "page_image_pages_checked",
+        "status": "OK"
+      },
+      {
+        "message": "Readable images=509/509.",
+        "name": "page_image_readable_coverage",
+        "status": "OK"
+      },
+      {
+        "message": "Missing image paths=0; max allowed=0.",
+        "name": "page_image_missing_paths",
+        "status": "OK"
+      },
+      {
+        "message": "Missing image files=0; max allowed=0.",
+        "name": "page_image_missing_files",
+        "status": "OK"
+      },
+      {
+        "message": "Unreadable images=0; max allowed=0.",
+        "name": "page_image_unreadable",
+        "status": "OK"
+      },
+      {
+        "message": "Blank/nearly blank pages=14; max allowed=20.",
+        "name": "page_image_blank_count",
+        "status": "OK"
+      },
+      {
+        "message": "Classified pages=509; pages checked=509.",
+        "name": "page_image_classification_counts",
+        "status": "OK"
+      },
+      {
+        "message": "Role pages=509; unknown roles=0; pages checked=509.",
+        "name": "page_image_role_counts",
+        "status": "OK"
+      },
+      {
+        "message": "Likely visual pages=493; likely figure/diagram pages=493.",
+        "name": "page_image_visual_signals",
+        "status": "OK"
+      },
+      {
+        "message": "Likely table/grid pages=331; table/grid classifications=331.",
+        "name": "page_image_table_signals",
+        "status": "OK"
+      },
+      {
+        "message": "Average ink ratio=0.0680; large components=17735.",
+        "name": "page_image_ink_signal",
+        "status": "OK"
+      },
+      {
+        "message": "Graph overlay nodes present=True count=513.",
+        "name": "page_image_graph_overlay_nodes",
+        "status": "OK"
+      },
+      {
+        "message": "Graph overlay edges present=True count=1018.",
+        "name": "page_image_graph_overlay_edges",
+        "status": "OK"
+      }
+    ],
+    "status": "OK",
+    "summary": {
+      "page_image_avg_ink_ratio": 0.067984,
+      "page_image_blank_pages": 14,
+      "page_image_class_likely_blank": 14,
+      "page_image_class_likely_figure_or_diagram": 162,
+      "page_image_class_likely_table_or_grid": 331,
+      "page_image_class_likely_text_or_parts_list": 2,
+      "page_image_classified_pages": 509,
+      "page_image_graph_overlay_edges": 1018,
+      "page_image_graph_overlay_edges_path": "local_data\\organization\\image_recognition\\image_recognition_graph_edges.json",
+      "page_image_graph_overlay_edges_present": true,
+      "page_image_graph_overlay_nodes": 513,
+      "page_image_graph_overlay_nodes_path": "local_data\\organization\\image_recognition\\image_recognition_graph_nodes.json",
+      "page_image_graph_overlay_nodes_present": true,
+      "page_image_likely_figure_pages": 493,
+      "page_image_likely_image_heavy_pages": 0,
+      "page_image_likely_table_pages": 331,
+      "page_image_likely_text_pages": 285,
+      "page_image_likely_visual_pages": 493,
+      "page_image_median_ink_ratio": 0.070403,
+      "page_image_missing_image_files": 0,
+      "page_image_missing_image_paths": 0,
+      "page_image_pages_checked": 509,
+      "page_image_readable_images": 509,
+      "page_image_recognition_audit_path": "local_data\\organization\\image_recognition\\page_image_recognition_audit.json",
+      "page_image_recognition_audit_present": true,
+      "page_image_recognition_audit_status": "ok",
+      "page_image_role_blank": 14,
+      "page_image_role_figure": 157,
+      "page_image_role_front_matter": 10,
+      "page_image_role_pages": 509,
+      "page_image_role_parts_list": 290,
+      "page_image_role_procedure": 28,
+      "page_image_role_table": 10,
+      "page_image_role_unknown": 0,
+      "page_image_total_large_components": 17735,
+      "page_image_unreadable_images": 0
+    }
+  },
+  "page_image_recognition_quality_summary": {
+    "page_image_avg_ink_ratio": 0.067984,
+    "page_image_blank_pages": 14,
+    "page_image_class_likely_blank": 14,
+    "page_image_class_likely_figure_or_diagram": 162,
+    "page_image_class_likely_table_or_grid": 331,
+    "page_image_class_likely_text_or_parts_list": 2,
+    "page_image_classified_pages": 509,
+    "page_image_graph_overlay_edges": 1018,
+    "page_image_graph_overlay_edges_path": "local_data\\organization\\image_recognition\\image_recognition_graph_edges.json",
+    "page_image_graph_overlay_edges_present": true,
+    "page_image_graph_overlay_nodes": 513,
+    "page_image_graph_overlay_nodes_path": "local_data\\organization\\image_recognition\\image_recognition_graph_nodes.json",
+    "page_image_graph_overlay_nodes_present": true,
+    "page_image_likely_figure_pages": 493,
+    "page_image_likely_image_heavy_pages": 0,
+    "page_image_likely_table_pages": 331,
+    "page_image_likely_text_pages": 0,
+    "page_image_likely_visual_pages": 493,
+    "page_image_median_ink_ratio": 0.070403,
+    "page_image_missing_image_files": 0,
+    "page_image_missing_image_paths": 0,
+    "page_image_pages_checked": 509,
+    "page_image_readable_images": 0,
+    "page_image_recognition_audit_path": "local_data\\organization\\image_recognition\\page_image_recognition_audit.json",
+    "page_image_recognition_audit_present": true,
+    "page_image_recognition_audit_status": "ok",
+    "page_image_recognition_quality_json": "local_data\\organization\\image_recognition\\page_image_recognition_quality.json",
+    "page_image_recognition_quality_present": true,
+    "page_image_recognition_quality_status": "fail",
+    "page_image_role_blank": 14,
+    "page_image_role_figure": 157,
+    "page_image_role_front_matter": 10,
+    "page_image_role_pages": 509,
+    "page_image_role_parts_list": 290,
+    "page_image_role_procedure": 28,
+    "page_image_role_table": 10,
+    "page_image_role_unknown": 0,
+    "page_image_total_large_components": 17735,
+    "page_image_unreadable_images": 0
+  },
+  "page_image_recognition_summary": {
+    "page_image_avg_ink_ratio": 0.067984,
+    "page_image_blank_pages": 14,
+    "page_image_class_likely_blank": 14,
+    "page_image_class_likely_figure_or_diagram": 162,
+    "page_image_class_likely_table_or_grid": 331,
+    "page_image_class_likely_text_or_parts_list": 2,
+    "page_image_classified_pages": 509,
+    "page_image_graph_overlay_edges": 1018,
+    "page_image_graph_overlay_edges_path": "local_data\\organization\\image_recognition\\image_recognition_graph_edges.json",
+    "page_image_graph_overlay_edges_present": true,
+    "page_image_graph_overlay_nodes": 513,
+    "page_image_graph_overlay_nodes_path": "local_data\\organization\\image_recognition\\image_recognition_graph_nodes.json",
+    "page_image_graph_overlay_nodes_present": true,
+    "page_image_likely_figure_pages": 493,
+    "page_image_likely_image_heavy_pages": 0,
+    "page_image_likely_table_pages": 331,
+    "page_image_likely_text_pages": 285,
+    "page_image_likely_visual_pages": 493,
+    "page_image_median_ink_ratio": 0.070403,
+    "page_image_missing_image_files": 0,
+    "page_image_missing_image_paths": 0,
+    "page_image_pages_checked": 509,
+    "page_image_readable_images": 509,
+    "page_image_recognition_audit_path": "local_data\\organization\\image_recognition\\page_image_recognition_audit.json",
+    "page_image_recognition_audit_present": true,
+    "page_image_recognition_audit_status": "ok",
+    "page_image_role_blank": 14,
+    "page_image_role_figure": 157,
+    "page_image_role_front_matter": 10,
+    "page_image_role_pages": 509,
+    "page_image_role_parts_list": 290,
+    "page_image_role_procedure": 28,
+    "page_image_role_table": 10,
+    "page_image_role_unknown": 0,
+    "page_image_total_large_components": 17735,
+    "page_image_unreadable_images": 0
+  },
+  "page_visual_object_quality_summary": {
+    "page_visual_audit_present": true,
+    "page_visual_audit_status": "ok",
+    "page_visual_blank_role_pages": 14,
+    "page_visual_figure_role_pages": 157,
+    "page_visual_graph_has_context_edges": 509,
+    "page_visual_graph_highlights_part_edges": 1070,
+    "page_visual_graph_page_context_nodes": 509,
+    "page_visual_graph_tagged_as_edges": 1706,
+    "page_visual_likely_figure_pages": 455,
+    "page_visual_likely_table_pages": 59,
+    "page_visual_likely_visual_pages": 494,
+    "page_visual_pages_checked": 509,
+    "page_visual_pages_with_context": 509,
+    "page_visual_pages_with_figure_refs": 453,
+    "page_visual_pages_with_illustration_refs": 494,
+    "page_visual_pages_with_image_terms": 6,
+    "page_visual_pages_with_ocr_text": 495,
+    "page_visual_pages_with_sheet_refs": 372,
+    "page_visual_pages_with_source_url": 509,
+    "page_visual_pages_with_table_refs": 55,
+    "page_visual_pages_without_context": 0,
+    "page_visual_pages_without_ocr_text": 14,
+    "page_visual_parts_list_role_pages": 290,
+    "page_visual_procedure_role_pages": 28,
+    "page_visual_table_role_pages": 10,
+    "page_visual_total_figure_refs": 1218,
+    "page_visual_total_illustration_refs": 932,
+    "page_visual_total_part_refs": 1791,
+    "page_visual_total_sheet_refs": 619,
+    "page_visual_total_table_refs": 146,
+    "page_visual_warnings": 1,
+    "status": "ok"
+  },
+  "pipeline": "tiff_backend_pipeline",
+  "qa_summary": {
+    "by_original_severity": {
+      "info": 57,
+      "ok": 43,
+      "review": 205
+    },
+    "by_report": {
+      "nomenclature_groups": 100,
+      "part_nomenclature_conflicts": 100,
+      "parts_missing_nomenclature": 100,
+      "suspicious_part_ata": 5
+    },
+    "by_severity": {
+      "info": 113,
+      "ok": 43,
+      "review": 149
+    },
+    "by_triage_action": {
+      "keep": 43,
+      "keep_as_info": 97,
+      "manual_review": 149,
+      "suppress_from_review_queue": 16
+    },
+    "by_triage_category": {
+      "compound_part_reference": 40,
+      "info": 57,
+      "non_part_figure_or_sheet_reference": 5,
+      "non_part_reference_or_noise": 10,
+      "non_part_slash_reference": 1,
+      "ok": 43,
+      "real_part_catalog_review": 75,
+      "real_part_nomenclature_conflict": 74
+    },
+    "needs_review": 149,
+    "review_queue_rows": 149,
+    "rows": 305,
+    "suppressed_from_review_queue": 16
+  },
+  "quality_summaries": {
+    "api_contract_quality": {
+      "api_contract_ask_ok": false,
+      "api_contract_base_url": "http://127.0.0.1:8000",
+      "api_contract_fail": 0,
+      "api_contract_feedback_round_trip_ok": false,
+      "api_contract_feedback_summary_ok": false,
+      "api_contract_mode": "in_process",
+      "api_contract_page_lookup_ok": false,
+      "api_contract_part_lookup_ok": false,
+      "api_contract_pass": 11,
+      "api_contract_results_present": true,
+      "api_contract_slow_cases": 0,
+      "api_contract_slow_pass": 0,
+      "api_contract_status": "ok",
+      "api_contract_status_endpoint_ok": false,
+      "api_contract_total": 11,
+      "api_contract_trace_vector_ok": false,
+      "status": "fail"
+    },
+    "page_image_recognition": {
+      "checks": [
+        {
+          "message": "Page image-recognition audit JSON is present at local_data\\organization\\image_recognition\\page_image_recognition_audit.json.",
+          "name": "page_image_audit_present",
+          "status": "OK"
+        },
+        {
+          "message": "Page image-recognition audit status is ok .",
+          "name": "page_image_audit_status",
+          "status": "OK"
+        },
+        {
+          "message": "Pages checked=509; minimum is 1.",
+          "name": "page_image_pages_checked",
+          "status": "OK"
+        },
+        {
+          "message": "Readable images=509/509.",
+          "name": "page_image_readable_coverage",
+          "status": "OK"
+        },
+        {
+          "message": "Missing image paths=0; max allowed=0.",
+          "name": "page_image_missing_paths",
+          "status": "OK"
+        },
+        {
+          "message": "Missing image files=0; max allowed=0.",
+          "name": "page_image_missing_files",
+          "status": "OK"
+        },
+        {
+          "message": "Unreadable images=0; max allowed=0.",
+          "name": "page_image_unreadable",
+          "status": "OK"
+        },
+        {
+          "message": "Blank/nearly blank pages=14; max allowed=20.",
+          "name": "page_image_blank_count",
+          "status": "OK"
+        },
+        {
+          "message": "Classified pages=509; pages checked=509.",
+          "name": "page_image_classification_counts",
+          "status": "OK"
+        },
+        {
+          "message": "Role pages=509; unknown roles=0; pages checked=509.",
+          "name": "page_image_role_counts",
+          "status": "OK"
+        },
+        {
+          "message": "Likely visual pages=493; likely figure/diagram pages=493.",
+          "name": "page_image_visual_signals",
+          "status": "OK"
+        },
+        {
+          "message": "Likely table/grid pages=331; table/grid classifications=331.",
+          "name": "page_image_table_signals",
+          "status": "OK"
+        },
+        {
+          "message": "Average ink ratio=0.0680; large components=17735.",
+          "name": "page_image_ink_signal",
+          "status": "OK"
+        },
+        {
+          "message": "Graph overlay nodes present=True count=513.",
+          "name": "page_image_graph_overlay_nodes",
+          "status": "OK"
+        },
+        {
+          "message": "Graph overlay edges present=True count=1018.",
+          "name": "page_image_graph_overlay_edges",
+          "status": "OK"
+        }
+      ],
+      "status": "OK",
+      "summary": {
+        "page_image_avg_ink_ratio": 0.067984,
+        "page_image_blank_pages": 14,
+        "page_image_class_likely_blank": 14,
+        "page_image_class_likely_figure_or_diagram": 162,
+        "page_image_class_likely_table_or_grid": 331,
+        "page_image_class_likely_text_or_parts_list": 2,
+        "page_image_classified_pages": 509,
+        "page_image_graph_overlay_edges": 1018,
+        "page_image_graph_overlay_edges_path": "local_data\\organization\\image_recognition\\image_recognition_graph_edges.json",
+        "page_image_graph_overlay_edges_present": true,
+        "page_image_graph_overlay_nodes": 513,
+        "page_image_graph_overlay_nodes_path": "local_data\\organization\\image_recognition\\image_recognition_graph_nodes.json",
+        "page_image_graph_overlay_nodes_present": true,
+        "page_image_likely_figure_pages": 493,
+        "page_image_likely_image_heavy_pages": 0,
+        "page_image_likely_table_pages": 331,
+        "page_image_likely_text_pages": 285,
+        "page_image_likely_visual_pages": 493,
+        "page_image_median_ink_ratio": 0.070403,
+        "page_image_missing_image_files": 0,
+        "page_image_missing_image_paths": 0,
+        "page_image_pages_checked": 509,
+        "page_image_readable_images": 509,
+        "page_image_recognition_audit_path": "local_data\\organization\\image_recognition\\page_image_recognition_audit.json",
+        "page_image_recognition_audit_present": true,
+        "page_image_recognition_audit_status": "ok",
+        "page_image_role_blank": 14,
+        "page_image_role_figure": 157,
+        "page_image_role_front_matter": 10,
+        "page_image_role_pages": 509,
+        "page_image_role_parts_list": 290,
+        "page_image_role_procedure": 28,
+        "page_image_role_table": 10,
+        "page_image_role_unknown": 0,
+        "page_image_total_large_components": 17735,
+        "page_image_unreadable_images": 0
+      }
+    },
+    "page_image_recognition_quality": {
+      "checks": [
+        {
+          "message": "Page image-recognition audit JSON is present at local_data\\organization\\image_recognition\\page_image_recognition_audit.json.",
+          "name": "page_image_audit_present",
+          "status": "OK"
+        },
+        {
+          "message": "Page image-recognition audit status is ok.",
+          "name": "page_image_audit_status",
+          "status": "OK"
+        },
+        {
+          "message": "Pages checked=509; minimum is 1.",
+          "name": "page_image_pages_checked",
+          "status": "OK"
+        },
+        {
+          "message": "Readable images=0/509.",
+          "name": "page_image_readable_coverage",
+          "status": "FAIL"
+        },
+        {
+          "message": "Missing image paths=0; max allowed=0.",
+          "name": "page_image_missing_paths",
+          "status": "OK"
+        },
+        {
+          "message": "Missing image files=0; max allowed=0.",
+          "name": "page_image_missing_files",
+          "status": "OK"
+        },
+        {
+          "message": "Unreadable images=0; max allowed=0.",
+          "name": "page_image_unreadable",
+          "status": "OK"
+        },
+        {
+          "message": "Blank/nearly blank pages=14; max allowed=20.",
+          "name": "page_image_blank_count",
+          "status": "OK"
+        },
+        {
+          "message": "Classified pages=509; pages checked=509.",
+          "name": "page_image_classification_counts",
+          "status": "OK"
+        },
+        {
+          "message": "Role pages=509; unknown roles=0; pages checked=509.",
+          "name": "page_image_role_counts",
+          "status": "OK"
+        },
+        {
+          "message": "Likely visual pages=493; likely figure/diagram pages=0.",
+          "name": "page_image_visual_signals",
+          "status": "FAIL"
+        },
+        {
+          "message": "Likely table/grid pages=331; table/grid classifications=331.",
+          "name": "page_image_table_signals",
+          "status": "OK"
+        },
+        {
+          "message": "Average ink ratio=0.0680; large components=17735.",
+          "name": "page_image_ink_signal",
+          "status": "OK"
+        },
+        {
+          "message": "Graph overlay nodes present=True count=513.",
+          "name": "page_image_graph_overlay_nodes",
+          "status": "OK"
+        },
+        {
+          "message": "Graph overlay edges present=True count=1018.",
+          "name": "page_image_graph_overlay_edges",
+          "status": "OK"
+        }
+      ],
+      "status": "FAIL",
+      "summary": {
+        "page_image_avg_ink_ratio": 0.067984,
+        "page_image_blank_pages": 14,
+        "page_image_class_likely_blank": 14,
+        "page_image_class_likely_figure_or_diagram": 162,
+        "page_image_class_likely_table_or_grid": 331,
+        "page_image_class_likely_text_or_parts_list": 2,
+        "page_image_classified_pages": 509,
+        "page_image_graph_overlay_edges": 1018,
+        "page_image_graph_overlay_edges_path": "local_data\\organization\\image_recognition\\image_recognition_graph_edges.json",
+        "page_image_graph_overlay_edges_present": true,
+        "page_image_graph_overlay_nodes": 513,
+        "page_image_graph_overlay_nodes_path": "local_data\\organization\\image_recognition\\image_recognition_graph_nodes.json",
+        "page_image_graph_overlay_nodes_present": true,
+        "page_image_likely_figure_pages": 0,
+        "page_image_likely_image_heavy_pages": 0,
+        "page_image_likely_table_pages": 331,
+        "page_image_likely_text_pages": 0,
+        "page_image_likely_visual_pages": 493,
+        "page_image_median_ink_ratio": 0.070403,
+        "page_image_missing_image_files": 0,
+        "page_image_missing_image_paths": 0,
+        "page_image_pages_checked": 509,
+        "page_image_readable_images": 0,
+        "page_image_recognition_audit_path": "local_data\\organization\\image_recognition\\page_image_recognition_audit.json",
+        "page_image_recognition_audit_present": true,
+        "page_image_recognition_audit_status": "ok",
+        "page_image_role_blank": 14,
+        "page_image_role_figure": 157,
+        "page_image_role_front_matter": 10,
+        "page_image_role_pages": 509,
+        "page_image_role_parts_list": 290,
+        "page_image_role_procedure": 28,
+        "page_image_role_table": 10,
+        "page_image_role_unknown": 0,
+        "page_image_total_large_components": 17735,
+        "page_image_unreadable_images": 0
+      }
+    },
+    "page_visual_object_quality": {
+      "page_visual_audit_present": true,
+      "page_visual_audit_status": "ok",
+      "page_visual_blank_role_pages": 14,
+      "page_visual_figure_role_pages": 157,
+      "page_visual_graph_has_context_edges": 509,
+      "page_visual_graph_highlights_part_edges": 1070,
+      "page_visual_graph_page_context_nodes": 509,
+      "page_visual_graph_tagged_as_edges": 1706,
+      "page_visual_likely_figure_pages": 455,
+      "page_visual_likely_table_pages": 59,
+      "page_visual_likely_visual_pages": 494,
+      "page_visual_pages_checked": 509,
+      "page_visual_pages_with_context": 509,
+      "page_visual_pages_with_figure_refs": 453,
+      "page_visual_pages_with_illustration_refs": 494,
+      "page_visual_pages_with_image_terms": 6,
+      "page_visual_pages_with_ocr_text": 495,
+      "page_visual_pages_with_sheet_refs": 372,
+      "page_visual_pages_with_source_url": 509,
+      "page_visual_pages_with_table_refs": 55,
+      "page_visual_pages_without_context": 0,
+      "page_visual_pages_without_ocr_text": 14,
+      "page_visual_parts_list_role_pages": 290,
+      "page_visual_procedure_role_pages": 28,
+      "page_visual_table_role_pages": 10,
+      "page_visual_total_figure_refs": 1218,
+      "page_visual_total_illustration_refs": 932,
+      "page_visual_total_part_refs": 1791,
+      "page_visual_total_sheet_refs": 619,
+      "page_visual_total_table_refs": 146,
+      "page_visual_warnings": 1,
+      "status": "ok"
+    }
+  },
+  "run_id": "20260528T163527Z",
+  "source_link_summary": {
+    "distinct_manuals": 1,
+    "local_or_placeholder_rescarta_urls": 509,
+    "missing_ocr_files": 0,
+    "missing_ocr_path": 0,
+    "missing_rescarta_url": 0,
+    "missing_source_url": 0,
+    "missing_tiff_files": 0,
+    "missing_tiff_path": 0,
+    "pages_total": 509,
+    "pages_without_source_links": 0,
+    "ready_for_local_source_review": true,
+    "ready_for_real_rescarta_deeplinks": false,
+    "rescarta_urls_with_template_braces": 0,
+    "sample_queries_checked": 2,
+    "sample_queries_without_results": 0,
+    "source_url_file_fallbacks": 0,
+    "total_links": 509,
+    "warnings": 1
+  },
+  "source_package_quality_summary": {
+    "source_package_duplicate_organization_page_numbers": 0,
+    "source_package_duplicate_zip_page_numbers": 0,
+    "source_package_export_dir": "local_data/organization/export",
+    "source_package_matched_pages": 509,
+    "source_package_metadata_xml_present": true,
+    "source_package_organization_only_pages": 0,
+    "source_package_organization_pages": 509,
+    "source_package_organization_pages_with_tiff_paths": 509,
+    "source_package_traceability_present": true,
+    "source_package_traceability_status": "ok",
+    "source_package_warnings": [],
+    "source_package_zip_only_pages": 0,
+    "source_package_zip_path": "C:/Users/juswil/Documents/00000027/metadata.zip",
+    "source_package_zip_tiff_files": 509
+  },
+  "sqlite_counts": {
+    "manuals": 1,
+    "ocr_clean_pages": 509,
+    "pages": 509,
+    "part_catalog": 1019,
+    "part_catalog_clean": 504,
+    "part_mentions": 1409,
+    "rag_chunks": 538,
+    "rag_embeddings": 538,
+    "source_links": 509
+  },
+  "started_at": "2026-05-28T16:34:44+00:00",
+  "status": "ok",
+  "steps": [
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/build_tiff_search_index.py",
+        "--rescarta-export-dir",
+        "local_data/rescarta_exports",
+        "--output-db",
+        "local_data/db/tiff_search.db"
+      ],
+      "description": "Build SQLite search index from ResCarta staging export.",
+      "elapsed_seconds": 1.269713900052011,
+      "name": "search_index",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/rebuild_clean_part_catalog.py",
+        "--db-path",
+        "local_data/db/tiff_search.db"
+      ],
+      "description": "Clean OCR and rebuild the part catalog/nomenclature tables.",
+      "elapsed_seconds": 1.4812179999426007,
+      "name": "part_catalog",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/build_rag_chunks.py",
+        "--db-path",
+        "local_data/db/tiff_search.db"
+      ],
+      "description": "Build RAG chunks from cleaned OCR/search records.",
+      "elapsed_seconds": 0.38583530008327216,
+      "name": "rag_chunks",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/build_rag_embeddings.py",
+        "--db-path",
+        "local_data/db/tiff_search.db",
+        "--model",
+        "bge-m3:latest"
+      ],
+      "description": "Build local Ollama embeddings for RAG chunks.",
+      "elapsed_seconds": 0.39939479995518923,
+      "name": "rag_embeddings",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/report_part_catalog_qa.py",
+        "--config",
+        "local_config.yaml"
+      ],
+      "description": "Write raw part catalog QA reports.",
+      "elapsed_seconds": 0.34696530003566295,
+      "name": "part_catalog_qa",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/triage_part_catalog_qa.py",
+        "--replace-all-report",
+        "--limit",
+        "12"
+      ],
+      "description": "Apply command-line QA severity triage and rewrite the normal QA CSV/JSON report.",
+      "elapsed_seconds": 0.38439160003326833,
+      "name": "part_catalog_qa_triage",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/audit_source_links.py",
+        "--strict",
+        "--write-json",
+        "--json-output",
+        "local_data/source_links/source_link_audit.json",
+        "--print-limit",
+        "5",
+        "--config",
+        "local_config.yaml"
+      ],
+      "description": "Verify every indexed page has auditable TIFF/OCR/ResCarta source links.",
+      "elapsed_seconds": 0.3442549000028521,
+      "name": "source_link_audit",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/audit_ocr_coverage.py",
+        "--strict",
+        "--write-json",
+        "--json-output",
+        "local_data/ocr/ocr_coverage_audit.json",
+        "--sample-limit",
+        "12",
+        "--no-refresh-manifest",
+        "--config",
+        "local_config.yaml"
+      ],
+      "description": "Verify source-linked pages have readable OCR text files and flag empty OCR pages for review.",
+      "elapsed_seconds": 0.5539943999610841,
+      "name": "ocr_coverage_audit",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/audit_document_organization.py",
+        "--strict",
+        "--write-json",
+        "--json-output",
+        "local_data/organization/document_organization_audit.json",
+        "--top-ata",
+        "20",
+        "--top-parts",
+        "20",
+        "--no-refresh-manifest",
+        "--config",
+        "local_config.yaml"
+      ],
+      "description": "Verify the logical manual/ATA/part organization layer is ready.",
+      "elapsed_seconds": 0.45283850003033876,
+      "name": "document_organization_audit",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/export_document_organization.py",
+        "--strict",
+        "--output-dir",
+        "local_data/organization/export",
+        "--config",
+        "local_config.yaml"
+      ],
+      "description": "Write UI/API-ready logical organization JSON artifacts.",
+      "elapsed_seconds": 0.4538181000389159,
+      "name": "document_organization_export",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/evaluate_rag_questions.py",
+        "--config",
+        "local_config.yaml",
+        "--questions",
+        "local_data/evals/rag_eval_questions.json",
+        "--no-refresh-manifest"
+      ],
+      "description": "Run repeatable RAG evaluation questions.",
+      "elapsed_seconds": 36.68505540001206,
+      "name": "rag_eval",
+      "returncode": 0,
+      "skipped": false
+    }
+  ],
+  "summary": {
+    "page_image_blank_pages": 14,
+    "page_image_graph_overlay_edges": 1018,
+    "page_image_graph_overlay_nodes": 513,
+    "page_image_likely_table_pages": 331,
+    "page_image_likely_visual_pages": 493,
+    "page_image_pages_checked": 509,
+    "page_image_readable_images": 0,
+    "page_image_recognition_quality_present": true,
+    "page_image_recognition_quality_status": "fail"
+  }
+}

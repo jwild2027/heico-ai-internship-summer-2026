@@ -1,0 +1,214 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:07:50Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000263.tif",
+    "relative_path": "00000263.tif"
+  },
+  "file": {
+    "file_name": "00000263.tif",
+    "extension": ".tif",
+    "file_size_bytes": 56208,
+    "modified_time_utc": "2026-05-22T19:14:55Z",
+    "sha256": "6a12dbb4a46d3c1a8b6b45b42abc1f95dc0b0b14f3acf9dd1796dba27244c177"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.94,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "part_numbers",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": null,
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "120TP250059.MCE",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "115 P A 1",
+    "section_title": null,
+    "figure_title": "250 -",
+    "figure_number": "51",
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": 1204,
+    "page_label": "1204",
+    "issue_date": "Jan 15/01",
+    "revision_date": "Jan 15/01",
+    "revision_label": null,
+    "part_numbers": [
+      "120-41825-007"
+    ],
+    "callouts": [
+      "A 90"
+    ],
+    "metadata_confidence": 0.94
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\n150 160 oo\n80\n115 80\n120 80\n110 80\n100 , |\n115 P A 1\n90 90 Ps Ai 0\n100 100 Vind 125\n130\u00b0 | Xe\n115 110\n120TP250059.MCE\n20-41825-007/017)\n|\n25 21 00 Page 1204\nT.P. 120/1176 Jan 15/01\n\n[bottom_strip]\n<\u2014 \u00a50 90 an\nJe | er (B) 115 Hy \\ |\n260 AA 100 100 veo Vind 125\nKo 110 ~\n270 115 110\non\n250 \u2014\n120TP250059.MCE\n| Double Passenger Seat (120-41825-007/017)\nFigure 51\nSheet 1\nEFFECTIVITY: ALL\n25 21 00 Page 1204\nT.P. 120/1176 Jan 15/01\n\n[top_strip]\n-< ENMIBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n(- SSS . SN\ness \\ WN >\nWey\n\n[right_strip]\n. 40\n) 0\n20\nmS 30\noN ~\nGe\nB\nS\nSF\nSPI\u2014\u00ae\na 140\n170\n80 4\ni\nA 90\n100 99] 125\n130\u00b0 , 4\\\u201d YS\n4 .\n120TP250059.MCE\n00 Page 1204\n5 Jan 15/01",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "150 160 oo\n80\n115 80\n120 80\n110 80\n100 , |\n115 P A 1\n90 90 Ps Ai 0\n100 100 Vind 125\n130\u00b0 | Xe\n115 110\n120TP250059.MCE\n20-41825-007/017)\n|\n25 21 00 Page 1204\nT.P. 120/1176 Jan 15/01",
+        "char_count": 180,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "<\u2014 \u00a50 90 an\nJe | er (B) 115 Hy \\ |\n260 AA 100 100 veo Vind 125\nKo 110 ~\n270 115 110\non\n250 \u2014\n120TP250059.MCE\n| Double Passenger Seat (120-41825-007/017)\nFigure 51\nSheet 1\nEFFECTIVITY: ALL\n25 21 00 Page 1204\nT.P. 120/1176 Jan 15/01",
+        "char_count": 230,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< ENMIBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n(- SSS . SN\ness \\ WN >\nWey",
+        "char_count": 86,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": ". 40\n) 0\n20\nmS 30\noN ~\nGe\nB\nS\nSF\nSPI\u2014\u00ae\na 140\n170\n80 4\ni\nA 90\n100 99] 125\n130\u00b0 , 4\\\u201d YS\n4 .\n120TP250059.MCE\n00 Page 1204\n5 Jan 15/01",
+        "char_count": 131,
+        "error": "Image too small to scale!! (1x36 vs min width of 3)\r\nLine cannot be recognized!!"
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": null,
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "120TP250059.MCE",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "115 P A 1",
+      "section_title": null,
+      "figure_title": "250 -",
+      "figure_number": "51",
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": 1204,
+      "page_label": "1204",
+      "issue_date": "Jan 15/01",
+      "revision_date": "Jan 15/01",
+      "revision_label": null,
+      "part_numbers": [
+        "120-41825-007"
+      ],
+      "callouts": [
+        "A 90"
+      ],
+      "metadata_confidence": 0.94
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

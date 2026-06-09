@@ -1,0 +1,98 @@
+{
+  "algorithm_policy_jobs": 9,
+  "algorithm_policy_path": "local_data\\organization\\communities\\community_algorithm_policy.json",
+  "algorithm_policy_present": true,
+  "confidence_avg_risk": 0.055957,
+  "confidence_avg_support": 0.83376,
+  "confidence_avg_usable": 0.787436,
+  "confidence_hard_gate_blocked_records": 0,
+  "confidence_score_records": 1813,
+  "confidence_thresholds": {
+    "A": 0.9,
+    "B": 0.7,
+    "C": 0.45
+  },
+  "confidence_tier_counts": {
+    "B": 1617,
+    "C": 172,
+    "D": 24
+  },
+  "confidence_tier_disagreement_records": 1379,
+  "confidence_version": "trace_lc_v1",
+  "confidence_weights": {
+    "extraction_layer": 0.05,
+    "graph_support": 0.25,
+    "ocr_support": 0.2,
+    "part_catalog": 0.2,
+    "source_trace": 0.3
+  },
+  "consensus_version": "trace_net_evidence_consensus_v1_2",
+  "graph_edges": 8556,
+  "graph_edges_path": "local_data\\organization\\trace_net\\evidence_consensus\\evidence_consensus_graph_edges.json",
+  "graph_nodes": 2251,
+  "graph_nodes_path": "local_data\\organization\\trace_net\\evidence_consensus\\evidence_consensus_graph_nodes.json",
+  "graph_support_status_counts": {
+    "strong_support": 1545,
+    "unsupported": 14,
+    "weak_support": 254
+  },
+  "hallucination_status_counts": {
+    "low_risk": 1789,
+    "medium_risk": 24
+  },
+  "layer_counts": {
+    "part_catalog": 364,
+    "source_trace": 509,
+    "table_candidate": 509,
+    "table_tile_text_refined": 120,
+    "table_tiles": 286,
+    "visual_text": 25
+  },
+  "pages_covered": 509,
+  "pages_loaded": 509,
+  "part_catalog_records": 364,
+  "rag_action_counts": {
+    "exclude_from_rag": 265,
+    "exclude_until_table_text_exists": 286,
+    "exclude_until_table_tiles_exist": 331,
+    "include_as_derived_context": 60,
+    "include_as_source_evidence": 509,
+    "include_as_verified_part_evidence": 362
+  },
+  "rag_include_records": 931,
+  "records": 1813,
+  "records_path": "local_data\\organization\\trace_net\\evidence_consensus\\evidence_consensus_records.jsonl",
+  "repair_action_counts": {
+    "human_review": 2,
+    "none": 931,
+    "ocr_graph_validation_or_human_review": 25,
+    "review_table_candidate": 178,
+    "run_table_crop_tile": 331,
+    "run_table_tile_ocr": 286,
+    "run_table_tile_ocr_or_human_review": 60
+  },
+  "review_action_counts": {
+    "human_review": 265,
+    "none": 871,
+    "not_required_yet": 617,
+    "optional_review": 60
+  },
+  "review_html_path": "local_data\\organization\\trace_net\\evidence_consensus\\evidence_consensus_review.html",
+  "source_trace_records": 509,
+  "source_trace_status_counts": {
+    "source_verified": 1813
+  },
+  "source_untraceable_records": 0,
+  "status": "OK",
+  "summary_path": "local_data\\organization\\trace_net\\evidence_consensus\\evidence_consensus_summary.json",
+  "table_candidate_records": 509,
+  "table_tile_records": 286,
+  "table_tile_text_refined_records": 120,
+  "trust_tier_counts": {
+    "A": 931,
+    "B": 286,
+    "C": 596
+  },
+  "unsafe_rag_include_records": 0,
+  "visual_text_records": 25
+}

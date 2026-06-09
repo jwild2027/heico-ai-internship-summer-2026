@@ -1,0 +1,144 @@
+{
+  "checks": [
+    {
+      "message": "summary=True; records=True.",
+      "name": "evidence_consensus_artifacts_present",
+      "ok": true
+    },
+    {
+      "message": "status='OK'.",
+      "name": "evidence_consensus_status",
+      "ok": true
+    },
+    {
+      "message": "records summary=1813, jsonl=1813; minimum=1813.",
+      "name": "evidence_consensus_records",
+      "ok": true
+    },
+    {
+      "message": "pages_loaded=509; minimum=509.",
+      "name": "evidence_consensus_pages",
+      "ok": true
+    },
+    {
+      "message": "layer_counts={'part_catalog': 364, 'source_trace': 509, 'table_candidate': 509, 'table_tile_text_refined': 120, 'table_tiles': 286, 'visual_text': 25}.",
+      "name": "evidence_consensus_layers",
+      "ok": true
+    },
+    {
+      "message": "trust_tier_counts={'A': 931, 'B': 286, 'C': 596}.",
+      "name": "evidence_consensus_trust_tiers",
+      "ok": true
+    },
+    {
+      "message": "confidence_score_records=1813; missing_confidence_records=0; confidence_tier_counts={'B': 1617, 'C': 172, 'D': 24}.",
+      "name": "evidence_consensus_confidence_scores",
+      "ok": true
+    },
+    {
+      "message": "rag_action_counts={'exclude_from_rag': 265, 'exclude_until_table_text_exists': 286, 'exclude_until_table_tiles_exist': 331, 'include_as_derived_context': 60, 'include_as_source_evidence': 509, 'include_as_verified_part_evidence': 362}.",
+      "name": "evidence_consensus_rag_actions",
+      "ok": true
+    },
+    {
+      "message": "repair_action_counts={'human_review': 2, 'none': 931, 'ocr_graph_validation_or_human_review': 25, 'review_table_candidate': 178, 'run_table_crop_tile': 331, 'run_table_tile_ocr': 286, 'run_table_tile_ocr_or_human_review': 60}.",
+      "name": "evidence_consensus_repair_actions",
+      "ok": true
+    },
+    {
+      "message": "source_trace_records=509; expected at least 509.",
+      "name": "evidence_consensus_source_trace",
+      "ok": true
+    },
+    {
+      "message": "unsafe_rag_include_records summary=0, record_scan=0; expected 0.",
+      "name": "evidence_consensus_no_unsafe_rag",
+      "ok": true
+    },
+    {
+      "message": "visual_text_records=25; minimum=25.",
+      "name": "evidence_consensus_visual_text_records",
+      "ok": true
+    },
+    {
+      "message": "table_tile_records=286; minimum=286.",
+      "name": "evidence_consensus_table_tile_records",
+      "ok": true
+    },
+    {
+      "message": "table_tile_text_refined_records=120; minimum=120.",
+      "name": "evidence_consensus_table_tile_text_refined_records",
+      "ok": true
+    },
+    {
+      "message": "graph_nodes=2251; file_nodes=2251.",
+      "name": "evidence_consensus_graph_nodes",
+      "ok": true
+    },
+    {
+      "message": "graph_edges=8556; file_edges=8556.",
+      "name": "evidence_consensus_graph_edges",
+      "ok": true
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "evidence_consensus_confidence_avg_usable": 0.787436,
+    "evidence_consensus_confidence_score_records": 1813,
+    "evidence_consensus_confidence_tier_counts": {
+      "B": 1617,
+      "C": 172,
+      "D": 24
+    },
+    "evidence_consensus_confidence_tier_disagreement_records": 1379,
+    "evidence_consensus_graph_edges": 8556,
+    "evidence_consensus_graph_nodes": 2251,
+    "evidence_consensus_jsonl_records": 1813,
+    "evidence_consensus_layer_counts": {
+      "part_catalog": 364,
+      "source_trace": 509,
+      "table_candidate": 509,
+      "table_tile_text_refined": 120,
+      "table_tiles": 286,
+      "visual_text": 25
+    },
+    "evidence_consensus_pages_loaded": 509,
+    "evidence_consensus_part_catalog_records": 364,
+    "evidence_consensus_rag_action_counts": {
+      "exclude_from_rag": 265,
+      "exclude_until_table_text_exists": 286,
+      "exclude_until_table_tiles_exist": 331,
+      "include_as_derived_context": 60,
+      "include_as_source_evidence": 509,
+      "include_as_verified_part_evidence": 362
+    },
+    "evidence_consensus_records": 1813,
+    "evidence_consensus_records_missing_confidence": 0,
+    "evidence_consensus_records_path": "local_data\\organization\\trace_net\\evidence_consensus\\evidence_consensus_records.jsonl",
+    "evidence_consensus_records_present": true,
+    "evidence_consensus_repair_action_counts": {
+      "human_review": 2,
+      "none": 931,
+      "ocr_graph_validation_or_human_review": 25,
+      "review_table_candidate": 178,
+      "run_table_crop_tile": 331,
+      "run_table_tile_ocr": 286,
+      "run_table_tile_ocr_or_human_review": 60
+    },
+    "evidence_consensus_source_trace_records": 509,
+    "evidence_consensus_status": "OK",
+    "evidence_consensus_summary_path": "local_data\\organization\\trace_net\\evidence_consensus\\evidence_consensus_summary.json",
+    "evidence_consensus_summary_present": true,
+    "evidence_consensus_table_candidate_records": 509,
+    "evidence_consensus_table_tile_records": 286,
+    "evidence_consensus_table_tile_text_refined_records": 120,
+    "evidence_consensus_trust_tier_counts": {
+      "A": 931,
+      "B": 286,
+      "C": 596
+    },
+    "evidence_consensus_unsafe_rag_include_records": 0,
+    "evidence_consensus_unsafe_rag_record_scan": 0,
+    "evidence_consensus_visual_text_records": 25
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "directories_seen": 4,
+  "duplicate_filenames": 0,
+  "duplicate_stems": 509,
+  "empty_file_extension_counts": {
+    ".txt": 14
+  },
+  "empty_files": 14,
+  "extension_counts": {
+    ".json": 511,
+    ".tif": 509,
+    ".txt": 509
+  },
+  "files_seen": 1529,
+  "issues": [
+    {
+      "category": "duplicate_stems",
+      "count": 509,
+      "examples": [],
+      "message": "Same file stem appears multiple times. Page matching should use full path plus source metadata, not stem alone.",
+      "severity": "info"
+    },
+    {
+      "category": "empty_files",
+      "count": 14,
+      "examples": [
+        "t_p_120_1176\\ocr\\000002_00000002.txt",
+        "t_p_120_1176\\ocr\\000012_00000012.txt",
+        "t_p_120_1176\\ocr\\000025_00000025.txt",
+        "t_p_120_1176\\ocr\\000035_00000035.txt",
+        "t_p_120_1176\\ocr\\000079_00000079.txt",
+        "t_p_120_1176\\ocr\\000091_00000091.txt",
+        "t_p_120_1176\\ocr\\000103_00000103.txt",
+        "t_p_120_1176\\ocr\\000111_00000111.txt",
+        "t_p_120_1176\\ocr\\000121_00000121.txt",
+        "t_p_120_1176\\ocr\\000187_00000187.txt",
+        "t_p_120_1176\\ocr\\000195_00000195.txt",
+        "t_p_120_1176\\ocr\\000201_00000201.txt"
+      ],
+      "message": "Some files are zero bytes. Inspect these before scaling, because empty TIFF/OCR/metadata files can break source review or OCR import.",
+      "severity": "review"
+    }
+  ],
+  "likely_rescarta_layout": true,
+  "max_depth": 2,
+  "max_files_limit": 250000,
+  "metadata_files": 511,
+  "ocr_stems_without_tiff": 0,
+  "ocr_text_files": 509,
+  "ok": true,
+  "other_files": 0,
+  "other_image_files": 0,
+  "pdf_files": 0,
+  "root": "local_data\\rescarta_exports",
+  "sample_duplicate_filenames": [],
+  "sample_empty_files": [
+    "t_p_120_1176\\ocr\\000002_00000002.txt",
+    "t_p_120_1176\\ocr\\000012_00000012.txt",
+    "t_p_120_1176\\ocr\\000025_00000025.txt",
+    "t_p_120_1176\\ocr\\000035_00000035.txt",
+    "t_p_120_1176\\ocr\\000079_00000079.txt",
+    "t_p_120_1176\\ocr\\000091_00000091.txt",
+    "t_p_120_1176\\ocr\\000103_00000103.txt",
+    "t_p_120_1176\\ocr\\000111_00000111.txt",
+    "t_p_120_1176\\ocr\\000121_00000121.txt",
+    "t_p_120_1176\\ocr\\000187_00000187.txt",
+    "t_p_120_1176\\ocr\\000195_00000195.txt",
+    "t_p_120_1176\\ocr\\000201_00000201.txt"
+  ],
+  "sample_ocr_files": [
+    "t_p_120_1176\\ocr\\000001_00000001.txt",
+    "t_p_120_1176\\ocr\\000002_00000002.txt",
+    "t_p_120_1176\\ocr\\000003_00000003.txt",
+    "t_p_120_1176\\ocr\\000004_00000004.txt",
+    "t_p_120_1176\\ocr\\000005_00000005.txt",
+    "t_p_120_1176\\ocr\\000006_00000006.txt",
+    "t_p_120_1176\\ocr\\000007_00000007.txt",
+    "t_p_120_1176\\ocr\\000008_00000008.txt",
+    "t_p_120_1176\\ocr\\000009_00000009.txt",
+    "t_p_120_1176\\ocr\\000010_00000010.txt",
+    "t_p_120_1176\\ocr\\000011_00000011.txt",
+    "t_p_120_1176\\ocr\\000012_00000012.txt"
+  ],
+  "sample_ocr_stems_without_tiff": [],
+  "sample_tiff_files": [
+    "t_p_120_1176\\pages\\000001_00000001.tif",
+    "t_p_120_1176\\pages\\000002_00000002.tif",
+    "t_p_120_1176\\pages\\000003_00000003.tif",
+    "t_p_120_1176\\pages\\000004_00000004.tif",
+    "t_p_120_1176\\pages\\000005_00000005.tif",
+    "t_p_120_1176\\pages\\000006_00000006.tif",
+    "t_p_120_1176\\pages\\000007_00000007.tif",
+    "t_p_120_1176\\pages\\000008_00000008.tif",
+    "t_p_120_1176\\pages\\000009_00000009.tif",
+    "t_p_120_1176\\pages\\000010_00000010.tif",
+    "t_p_120_1176\\pages\\000011_00000011.tif",
+    "t_p_120_1176\\pages\\000012_00000012.tif"
+  ],
+  "sample_tiff_stems_without_ocr": [],
+  "tiff_files": 509,
+  "tiff_stems_without_ocr": 0,
+  "top_level_counts": {
+    "t_p_120_1176": 1529
+  },
+  "total_bytes": 23602127,
+  "truncated": false
+}

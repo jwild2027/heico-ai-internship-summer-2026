@@ -1,0 +1,206 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:02:27Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000021.tif",
+    "relative_path": "00000021.tif"
+  },
+  "file": {
+    "file_name": "00000021.tif",
+    "extension": ".tif",
+    "file_size_bytes": 43928,
+    "modified_time_utc": "2026-05-22T19:14:53Z",
+    "sha256": "6e8e20ab11f2a5010e591c2a3c9aa8b66715e5c0bf308abc17f7021b1ce6a8f2"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3205,
+    "height_px": 4146,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "maintenance_manual_ipl",
+    "confidence": 0.58,
+    "signals": [
+      "manual_title",
+      "component_title",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "maintenance_manual_ipl",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": null,
+    "publication_number": null,
+    "component_title": "-, 110E-, 110K1, 110P1-, 110P2-, 110S-, 110A-",
+    "section_title": null,
+    "figure_title": null,
+    "figure_number": null,
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": 1002,
+    "page_label": "1002",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [
+      "NAS"
+    ],
+    "metadata_confidence": 0.58
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\nAWJITERRAL Ne NE were OF ed el Lett | Re EO ee ret s~ iw\njustrated but included in the parts list will appear\ninto one of the following categories:\n-, 110E-, 110K1, 110P1-, 110P2-, 110S-, 110A-,\nNAS.\nImbers not falling into the preceding categories.\n1e VENDOR column, the relevant NATO supply\nJRAER - assigned code will be shown.\n25-21 -00 Page 1002\nSep 30/98\n\n[bottom_strip]\n(a) EMBRAER part numbers: AG-, PE-, 110-, 110E-, 110K1, 110P1-, 110P2-, 110S-, 110A-,\n120-, 121-, 200-, 201-, 4A.\n(b) Military standard part numbers: AN, MS, NAS.\n(d) Vendor part numbers: Remaining part numbers not falling into the preceding categories.\nNOTE: Vendor part numbers carry, in the VENDOR column, the relevant NATO supply\ncode, if any. Otherwise, an EMBRAER - assigned code will be shown.\nEFFECTIVITY: ALL\n25 21 00 Page 1002\nSep 30/98\n\n[top_strip]\n-<\u20ac EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n(4) TTL REG Column.\nThis column indicates the total number of items required per airplane.\n4. Electrical Reference Designation Index\n\n[right_strip]\n1 electronic components\nnent by an item number\nquence.\ng between the parts list\nthe parts list will appear\ncategories:\n-, 110P2-, 110S-, 110A-,\ne preceding categories.\ne relevant NATO supply\nwill be shown.\n-00 Page 1002\nSep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1602,
+          2404,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "AWJITERRAL Ne NE were OF ed el Lett | Re EO ee ret s~ iw\njustrated but included in the parts list will appear\ninto one of the following categories:\n-, 110E-, 110K1, 110P1-, 110P2-, 110S-, 110A-,\nNAS.\nImbers not falling into the preceding categories.\n1e VENDOR column, the relevant NATO supply\nJRAER - assigned code will be shown.\n25-21 -00 Page 1002\nSep 30/98",
+        "char_count": 359,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2902,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "(a) EMBRAER part numbers: AG-, PE-, 110-, 110E-, 110K1, 110P1-, 110P2-, 110S-, 110A-,\n120-, 121-, 200-, 201-, 4A.\n(b) Military standard part numbers: AN, MS, NAS.\n(d) Vendor part numbers: Remaining part numbers not falling into the preceding categories.\nNOTE: Vendor part numbers carry, in the VENDOR column, the relevant NATO supply\ncode, if any. Otherwise, an EMBRAER - assigned code will be shown.\nEFFECTIVITY: ALL\n25 21 00 Page 1002\nSep 30/98",
+        "char_count": 446,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3205,
+          746
+        ],
+        "status": "ok",
+        "text": "-<\u20ac EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n(4) TTL REG Column.\nThis column indicates the total number of items required per airplane.\n4. Electrical Reference Designation Index",
+        "char_count": 191,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2179,
+          0,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "1 electronic components\nnent by an item number\nquence.\ng between the parts list\nthe parts list will appear\ncategories:\n-, 110P2-, 110S-, 110A-,\ne preceding categories.\ne relevant NATO supply\nwill be shown.\n-00 Page 1002\nSep 30/98",
+        "char_count": 229,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "maintenance_manual_ipl",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": null,
+      "publication_number": null,
+      "component_title": "-, 110E-, 110K1, 110P1-, 110P2-, 110S-, 110A-",
+      "section_title": null,
+      "figure_title": null,
+      "figure_number": null,
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": 1002,
+      "page_label": "1002",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [
+        "NAS"
+      ],
+      "metadata_confidence": 0.58
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

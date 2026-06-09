@@ -1,0 +1,219 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:12:56Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000501.tif",
+    "relative_path": "00000501.tif"
+  },
+  "file": {
+    "file_name": "00000501.tif",
+    "extension": ".tif",
+    "file_size_bytes": 42469,
+    "modified_time_utc": "2026-05-22T19:14:57Z",
+    "sha256": "8282f7eed09ebac19e1dfcaf948d980d74b4c9aa339b5b068a530ad48d1b6fb8"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.98,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "120TP250103.MCE",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "OPTION A EPOXY RESIN",
+    "section_title": null,
+    "figure_title": "epair to Armrest Latch",
+    "figure_number": "611",
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": 627,
+    "page_label": "627",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [
+      "OPTION A EPOXY RESIN",
+      "OPTION B",
+      "REPAIR PART",
+      "OPTION C",
+      "EPOXY RESIN",
+      "Y REPAIR PART"
+    ],
+    "metadata_confidence": 0.98
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\nOPTION A EPOXY RESIN\n4 REPAIR PART\nOPTION B\n120TP250103.MCE\nepair to Armrest Latch\nFigure 611\n3 00 Page 627\nT.P. 120/1176 Sep 30/98\n\n[bottom_strip]\nREPAIR PART ~~\nREPAIR PART\nOPTION C\nOPTION B\n120TP250103.MCE\nTypical Repair to Armrest Latch\nFigure 611\nEFFECTIVITY: ALL\n25 21 00 Page 627\nT.P. 120/1176 Sep 30/98\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\noN a PN\nRS a aa Lo) / /\nemo, a ee yes | /\n\n[right_strip]\n\u201c7 an Y\nae Ws\n\u201c7 eNO\na \u201c oS /\n4i~\n&\nEPOXY RESIN\ny REPAIR PART\nOPTION B\n120TP250103.MCE\n\u00bb-21-00\nPage 627\n-P. 120/1176 Sep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "OPTION A EPOXY RESIN\n4 REPAIR PART\nOPTION B\n120TP250103.MCE\nepair to Armrest Latch\nFigure 611\n3 00 Page 627\nT.P. 120/1176 Sep 30/98",
+        "char_count": 131,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "REPAIR PART ~~\nREPAIR PART\nOPTION C\nOPTION B\n120TP250103.MCE\nTypical Repair to Armrest Latch\nFigure 611\nEFFECTIVITY: ALL\n25 21 00 Page 627\nT.P. 120/1176 Sep 30/98",
+        "char_count": 162,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\noN a PN\nRS a aa Lo) / /\nemo, a ee yes | /",
+        "char_count": 99,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "\u201c7 an Y\nae Ws\n\u201c7 eNO\na \u201c oS /\n4i~\n&\nEPOXY RESIN\ny REPAIR PART\nOPTION B\n120TP250103.MCE\n\u00bb-21-00\nPage 627\n-P. 120/1176 Sep 30/98",
+        "char_count": 126,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "120TP250103.MCE",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "OPTION A EPOXY RESIN",
+      "section_title": null,
+      "figure_title": "epair to Armrest Latch",
+      "figure_number": "611",
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": 627,
+      "page_label": "627",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [
+        "OPTION A EPOXY RESIN",
+        "OPTION B",
+        "REPAIR PART",
+        "OPTION C",
+        "EPOXY RESIN",
+        "Y REPAIR PART"
+      ],
+      "metadata_confidence": 0.98
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

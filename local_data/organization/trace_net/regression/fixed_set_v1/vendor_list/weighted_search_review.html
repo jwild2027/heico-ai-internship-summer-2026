@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8"><title>TRACE-Net Weighted Search Simulation</title>
+<style>body{font-family:Arial,sans-serif;margin:24px;line-height:1.4}table{border-collapse:collapse;width:100%;margin:12px 0}td,th{border:1px solid #ddd;padding:6px;vertical-align:top}th{background:#f3f3f3}pre{white-space:pre-wrap;background:#f7f7f7;padding:12px}</style></head><body><pre># TRACE-Net Weighted Search Simulation v1
+
+Status: **OK**  Version: `trace_net_weighted_search_simulation_v1`
+
+## Summary
+
+| Metric | Value |
+|---|---|
+| query_fingerprint | query:vendor_list |
+| weights_policy_version | trace_net_weights_policy_v1 |
+| grouped_input_records | 6 |
+| weighted_group_records | 6 |
+| feedback_enabled | True |
+| matching_feedback_signal_records | 0 |
+| feedback_signals_used | 0 |
+| groups_with_feedback_adjustment | 0 |
+| rank_changed_records | 5 |
+| unsafe_weighted_records | 0 |
+| excluded_weighted_records | 0 |
+| source_truth_mutation_records | 0 |
+| context_warning_signals_used | 0 |
+| top_page_before | t_p_120_1176_p000021 |
+| top_page_after | t_p_120_1176_p000005 |
+
+## Weighted ranking
+
+| Weighted rank | Original rank | Page | Weighted score | Current group | Bucket | Diversity | Exact | Confidence | Feedback | Buckets |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 2 | t_p_120_1176_p000005 | 39.883642 | 18.146892 | 8.0 | 4.0 | 14.0 | 2.43675 | 0.0 | source_text_evidence, derived_context |
+| 2 | 5 | t_p_120_1176_p000362 | 32.883642 | 14.346892 | 5.0 | 0.0 | 14.0 | 2.43675 | 0.0 | source_text_evidence |
+| 3 | 1 | t_p_120_1176_p000021 | 27.677971 | 21.283721 | 5.0 | 0.0 | 2.0 | 2.29425 | 0.0 | source_text_evidence |
+| 4 | 3 | t_p_120_1176_p000024 | 20.883642 | 14.346892 | 5.0 | 0.0 | 2.0 | 2.43675 | 0.0 | source_text_evidence |
+| 5 | 4 | t_p_120_1176_p000243 | 20.883642 | 14.346892 | 5.0 | 0.0 | 2.0 | 2.43675 | 0.0 | source_text_evidence |
+| 6 | 6 | t_p_120_1176_p000020 | 20.646142 | 14.251892 | 5.0 | 0.0 | 2.0 | 2.29425 | 0.0 | source_text_evidence |
+
+## Feedback adjustments
+
+| Page | Feedback adjustment | Signals |
+|---|---|---|
+| None | 0 | No validated feedback signals applied |
+</pre></body></html>

@@ -1,0 +1,43 @@
+[
+  {
+    "id": "graph_audit:run",
+    "label": "TRACE-Net graph traversal audit",
+    "status": "OK",
+    "type": "graph_audit_run"
+  },
+  {
+    "id": "graph_audit:postgres_graph",
+    "label": "Postgres graph",
+    "type": "postgres_graph"
+  },
+  {
+    "id": "graph_audit:metric:postgres_pages",
+    "label": "postgres_pages",
+    "type": "graph_audit_metric",
+    "value": 509
+  },
+  {
+    "id": "graph_audit:metric:postgres_graph_nodes",
+    "label": "postgres_graph_nodes",
+    "type": "graph_audit_metric",
+    "value": 30865
+  },
+  {
+    "id": "graph_audit:metric:postgres_graph_edges",
+    "label": "postgres_graph_edges",
+    "type": "graph_audit_metric",
+    "value": 112316
+  },
+  {
+    "id": "graph_audit:metric:component_count",
+    "label": "component_count",
+    "type": "graph_audit_metric",
+    "value": 3
+  },
+  {
+    "id": "graph_audit:metric:largest_component_nodes",
+    "label": "largest_component_nodes",
+    "type": "graph_audit_metric",
+    "value": 30807
+  }
+]

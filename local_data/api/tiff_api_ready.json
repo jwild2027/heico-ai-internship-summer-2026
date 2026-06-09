@@ -1,0 +1,44 @@
+{
+  "status": "OK",
+  "api_status": {
+    "status": "ok",
+    "pipeline_status": "ok",
+    "graph_quality_status": "ok",
+    "storage_mode": "adapter",
+    "graph": {
+      "present": true,
+      "nodes_total": 3788,
+      "edges_total": 14143,
+      "page_nodes": 509,
+      "page_context_nodes": 509,
+      "source_link_nodes": 509,
+      "pages_without_context": 0,
+      "pages_without_source_links": 0
+    },
+    "query_tests": {
+      "user_query_present": true,
+      "user_query_total": 10,
+      "user_query_fail": 0,
+      "realistic_present": true,
+      "realistic_total": 8,
+      "realistic_fail": 0
+    }
+  },
+  "part_probe": {
+    "part_number": "120-37313-001",
+    "status": "ok",
+    "pages_total": 28,
+    "nomenclature": "HOLDER, MAGAZINE"
+  },
+  "page_probe": {
+    "page_id": "t_p_120_1176_p000083",
+    "status": "ok",
+    "source_link_present": true,
+    "context_present": true
+  },
+  "vector_trace_probe": {
+    "page_id": "t_p_120_1176_p000495",
+    "status": "OK"
+  },
+  "suggested_server_command": "python -m uvicorn apps.api.tiff_api:app --reload --host 127.0.0.1 --port 8000"
+}

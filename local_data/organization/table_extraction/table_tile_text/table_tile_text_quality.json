@@ -1,0 +1,74 @@
+{
+  "checks": [
+    {
+      "message": "summary=True; records=True.",
+      "name": "table_tile_text_artifacts_present",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "message": "status=OK require_status_ok=True.",
+      "name": "table_tile_text_status",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "message": "records jsonl=120; minimum=120.",
+      "name": "table_tile_text_records",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "message": "records summary=120; jsonl=120.",
+      "name": "table_tile_text_record_count_match",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "message": "ok_records=120; minimum=1.",
+      "name": "table_tile_text_ok_records",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "message": "error_records=0; max=0.",
+      "name": "table_tile_text_error_records",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "message": "tile_text_char_total=39648; minimum=0.",
+      "name": "table_tile_text_chars",
+      "ok": true,
+      "status": "OK"
+    },
+    {
+      "message": "part_number_records=69; minimum=0.",
+      "name": "table_tile_text_part_numbers",
+      "ok": true,
+      "status": "OK"
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "table_tile_text_catalog_supported_records": 42,
+    "table_tile_text_chars": 39648,
+    "table_tile_text_empty_records": 0,
+    "table_tile_text_error_records": 0,
+    "table_tile_text_graph_edges": 824,
+    "table_tile_text_graph_nodes": 385,
+    "table_tile_text_jsonl_records": 120,
+    "table_tile_text_model": "page-ocr-baseline",
+    "table_tile_text_ok_records": 120,
+    "table_tile_text_pages": 20,
+    "table_tile_text_part_number_records": 69,
+    "table_tile_text_planned_records": 0,
+    "table_tile_text_provider": "page_ocr",
+    "table_tile_text_records": 120,
+    "table_tile_text_records_path": "local_data/organization/table_extraction/table_tile_text/table_tile_text_records.jsonl",
+    "table_tile_text_records_present": true,
+    "table_tile_text_status": "OK",
+    "table_tile_text_summary_path": "local_data/organization/table_extraction/table_tile_text/table_tile_text_summary.json",
+    "table_tile_text_summary_present": true
+  }
+}

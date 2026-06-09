@@ -1,0 +1,240 @@
+{
+  "base_url": "http://127.0.0.1:8000",
+  "case_results": [
+    {
+      "case_id": "status_endpoint",
+      "elapsed_seconds": 0.8137222998775542,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"graph\": {\"edges_total\": 14143, \"nodes_total\": 3788, \"page_context_nodes\": 509, \"page_nodes\": 509, \"pages_without_context\": 0, \"pages_without_source_links\": 0, \"present\": true, \"source_link_nodes\": 509}, \"graph_quality_status\": \"ok\", \"pipeline_status\": \"ok\", \"query_tests\": {\"realistic_fail\": 0, \"realistic_present\": true, \"realistic_total\": 8, \"user_query_fail\": 0, \"user_query_present\": true, \"user_query_total\": 10}, \"status\": \"ok\", \"storage_mode\": \"adapter\"}",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "organization_summary_endpoint",
+      "elapsed_seconds": 0.005042300093919039,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"paths\": {\"graph_dir\": \"local_data\\\\organization\\\\graph\", \"organization_export_dir\": \"local_data\\\\organization\\\\export\"}, \"status\": \"ok\", \"summary\": {\"ata_group_count\": 5, \"compound_part_references_suppressed\": 310, \"db_path\": \"local_data\\\\db\\\\tiff_search.db\", \"empty_ocr_page_count\": 14, \"files_written\": [\"local_data\\\\organization\\\\export\\\\manual_ata_tree.json\", \"local_data\\\\organization\\\\export\\\\ata_tree.json\", \"local_data\\\\organization\\\\export\\\\part_tree.json\", \"local_data\\\\organization\\\\export\\\\page_index.json\", \"local_data\\\\organization\\\\export\\\\organization_summary.json\"], \"manual_count\"",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "part_lookup_120_37313_001",
+      "elapsed_seconds": 0.024894899921491742,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"nomenclature\": \"HOLDER, MAGAZINE\", \"pages\": [{\"ata\": \"11-00-66\", \"context_present\": true, \"context_score\": 0.9, \"context_summary\": \"This page appears to be a parts list from a maintenance manual, containing numerous part numbers and associated codes.\", \"document\": \"T.P. 120/1176\", \"label\": \"1021\", \"node\": {\"ata\": \"11-00-66\", \"ata_code\": \"11-00-66\", \"empty_ocr\": false, \"manual\": \"T.P. 120/1176\", \"manual_id\": \"t_p_120_1176\", \"ocr_text_path\": \"local_data\\\\rescarta_exports\\\\t_p_120_1176\\\\ocr\\\\000042_00000042.txt\", \"page_id\": \"t_p_120_1176_p000042\", \"page_label\": \"1021\", \"page_sequence\": 42, \"par",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "page_lookup_000083",
+      "elapsed_seconds": 0.028330500004813075,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"page\": {\"ata\": \"25-21-00\", \"context_present\": true, \"context_score\": 0.9, \"context_summary\": \"This page appears to be an illustrated parts list for aircraft components, detailing part numbers and stock information.\", \"document\": \"T.P. 120/1176\", \"label\": \"1056\", \"node\": {\"ata\": \"25-21-00\", \"ata_code\": \"25-21-00\", \"empty_ocr\": false, \"manual\": \"T.P. 120/1176\", \"manual_id\": \"t_p_120_1176\", \"ocr_text_path\": \"local_data\\\\rescarta_exports\\\\t_p_120_1176\\\\ocr\\\\000083_00000083.txt\", \"page_id\": \"t_p_120_1176_p000083\", \"page_label\": \"1056\", \"page_sequence\": 83, \"part_numbers\": [\"120-37313-001\"], \"publ",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "ata_lookup_25_21_00",
+      "elapsed_seconds": 0.016370899975299835,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"ata\": {\"label\": \"25-21-00\", \"manual\": \"T.P. 120/1176\"}, \"pages\": [{\"ata\": \"25-21-00\", \"context_present\": true, \"context_score\": 0.9, \"context_summary\": \"This page appears to be a revision notice and title block for a technical manual, superseding an earlier version.\", \"document\": \"T.P. 120/1176\", \"label\": \"1\", \"node\": {\"ata\": \"25-21-00\", \"ata_code\": \"25-21-00\", \"empty_ocr\": false, \"manual\": \"T.P. 120/1176\", \"manual_id\": \"t_p_120_1176\", \"ocr_text_path\": \"local_data\\\\rescarta_exports\\\\t_p_120_1176\\\\ocr\\\\000001_00000001.txt\", \"page_id\": \"t_p_120_1176_p000001\", \"page_label\": \"1\", \"page_sequence\"",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "trace_part_120_37313_001",
+      "elapsed_seconds": 0.07462910003960133,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"edge_count\": 14143, \"edge_type_counts\": {\"APPEARS_ON\": 981, \"BELONGS_TO_ATA\": 509, \"BELONGS_TO_DOCUMENT\": 509, \"CONTAINS_PAGE\": 509, \"FOUND_ON\": 981, \"HAS_ATA_SECTION\": 5, \"HAS_CONTEXT\": 509, \"HAS_MENTION\": 981, \"HAS_NOMENCLATURE\": 386, \"HAS_PAGE\": 509, \"HAS_PART_MENTION\": 981, \"HAS_SOURCE_LINK\": 509, \"HAS_TIFF\": 509, \"HIGHLIGHTS_PART\": 1070, \"MENTIONS_PART\": 981, \"OPENS\": 509, \"POINTS_TO_TIFF\": 509, \"REFERS_TO_PART\": 981, \"SUMMARIZES\": 509, \"TAGGED_AS\": 1706}, \"errors\": [], \"graph_dir\": \"local_data\\\\organization\\\\graph\", \"node_count\": 3788, \"node_type_counts\": {\"ata_section\": 5, \"document\":",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "trace_page_000083",
+      "elapsed_seconds": 0.06483839987777174,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"edge_count\": 14143, \"edge_type_counts\": {\"APPEARS_ON\": 981, \"BELONGS_TO_ATA\": 509, \"BELONGS_TO_DOCUMENT\": 509, \"CONTAINS_PAGE\": 509, \"FOUND_ON\": 981, \"HAS_ATA_SECTION\": 5, \"HAS_CONTEXT\": 509, \"HAS_MENTION\": 981, \"HAS_NOMENCLATURE\": 386, \"HAS_PAGE\": 509, \"HAS_PART_MENTION\": 981, \"HAS_SOURCE_LINK\": 509, \"HAS_TIFF\": 509, \"HIGHLIGHTS_PART\": 1070, \"MENTIONS_PART\": 981, \"OPENS\": 509, \"POINTS_TO_TIFF\": 509, \"REFERS_TO_PART\": 981, \"SUMMARIZES\": 509, \"TAGGED_AS\": 1706}, \"errors\": [], \"graph_dir\": \"local_data\\\\organization\\\\graph\", \"node_count\": 3788, \"node_type_counts\": {\"ata_section\": 5, \"document\":",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "trace_vector_payload_000495",
+      "elapsed_seconds": 0.0709788000676781,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"edge_count\": 14143, \"edge_type_counts\": {\"APPEARS_ON\": 981, \"BELONGS_TO_ATA\": 509, \"BELONGS_TO_DOCUMENT\": 509, \"CONTAINS_PAGE\": 509, \"FOUND_ON\": 981, \"HAS_ATA_SECTION\": 5, \"HAS_CONTEXT\": 509, \"HAS_MENTION\": 981, \"HAS_NOMENCLATURE\": 386, \"HAS_PAGE\": 509, \"HAS_PART_MENTION\": 981, \"HAS_SOURCE_LINK\": 509, \"HAS_TIFF\": 509, \"HIGHLIGHTS_PART\": 1070, \"MENTIONS_PART\": 981, \"OPENS\": 509, \"POINTS_TO_TIFF\": 509, \"REFERS_TO_PART\": 981, \"SUMMARIZES\": 509, \"TAGGED_AS\": 1706}, \"errors\": [], \"graph_dir\": \"local_data\\\\organization\\\\graph\", \"node_count\": 3788, \"node_type_counts\": {\"ata_section\": 5, \"document\":",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "ask_exact_part_120_37313_001",
+      "elapsed_seconds": 0.3355370999779552,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"answer_text\": \"Question: What is part number 120-37313-001?\\nLLM used: False\\nEmbeddings used: False\\n\\nAnswer:\\n\\n120-37313-001 is listed as HOLDER, MAGAZINE.\\n\\nPrimary nomenclature source:\\n1. T.P. 120/1176 - ATA 25-21-00 - Page 1056\\n ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000083\\n Source URL: http://localhost:8080/rescarta/t_p_120_1176/000083\\n TIFF: local_data\\\\rescarta_exports\\\\t_p_120_1176\\\\pages\\\\000083_00000083.tif\\n OCR: local_data\\\\rescarta_exports\\\\t_p_120_1176\\\\ocr\\\\000083_00000083.txt\\n Evidence: 01 200 | 120-37313-001 . HOLDER, MAGAZINE . 000.0.0:eee = VS4956 1",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "feedback_round_trip",
+      "elapsed_seconds": 0.008252999978139997,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"feedback_id\": \"fb_8052665179673512925\", \"status\": \"ok\", \"summary\": {\"by_category\": {\"None\": 1, \"api_contract_test\": 1, \"useful\": 3}, \"by_rating\": {\"thumbs_up\": 1, \"up\": 4}, \"latest\": [{\"answer_elapsed_seconds\": 0.279, \"answer_returncode\": 0, \"answer_text\": \"Question: What is part number 120-37313-001?\\nLLM used: False\\nEmbeddings used: False\\n\\nAnswer:\\n\\n120-37313-001 is listed as HOLDER, MAGAZINE.\\n\\nPrimary nomenclature source:\\n1. T.P. 120/1176 - ATA 25-21-00 - Page 1056\\n ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000083\\n Source URL: http://localhost:8080/rescarta/t_p_120_11",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "feedback_summary_endpoint",
+      "elapsed_seconds": 0.028389399871230125,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"by_category\": {\"None\": 1, \"api_contract_test\": 1, \"useful\": 3}, \"by_rating\": {\"thumbs_up\": 1, \"up\": 4}, \"latest\": [{\"answer_elapsed_seconds\": 0.279, \"answer_returncode\": 0, \"answer_text\": \"Question: What is part number 120-37313-001?\\nLLM used: False\\nEmbeddings used: False\\n\\nAnswer:\\n\\n120-37313-001 is listed as HOLDER, MAGAZINE.\\n\\nPrimary nomenclature source:\\n1. T.P. 120/1176 - ATA 25-21-00 - Page 1056\\n ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000083\\n Source URL: http://localhost:8080/rescarta/t_p_120_1176/000083\\n TIFF: local_data\\\\rescarta_exports\\\\t_p_120_1176\\\\pages\\\\",
+      "slow": false,
+      "status": "pass"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "status_endpoint",
+      "elapsed_seconds": 0.8137222998775542,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"graph\": {\"edges_total\": 14143, \"nodes_total\": 3788, \"page_context_nodes\": 509, \"page_nodes\": 509, \"pages_without_context\": 0, \"pages_without_source_links\": 0, \"present\": true, \"source_link_nodes\": 509}, \"graph_quality_status\": \"ok\", \"pipeline_status\": \"ok\", \"query_tests\": {\"realistic_fail\": 0, \"realistic_present\": true, \"realistic_total\": 8, \"user_query_fail\": 0, \"user_query_present\": true, \"user_query_total\": 10}, \"status\": \"ok\", \"storage_mode\": \"adapter\"}",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "organization_summary_endpoint",
+      "elapsed_seconds": 0.005042300093919039,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"paths\": {\"graph_dir\": \"local_data\\\\organization\\\\graph\", \"organization_export_dir\": \"local_data\\\\organization\\\\export\"}, \"status\": \"ok\", \"summary\": {\"ata_group_count\": 5, \"compound_part_references_suppressed\": 310, \"db_path\": \"local_data\\\\db\\\\tiff_search.db\", \"empty_ocr_page_count\": 14, \"files_written\": [\"local_data\\\\organization\\\\export\\\\manual_ata_tree.json\", \"local_data\\\\organization\\\\export\\\\ata_tree.json\", \"local_data\\\\organization\\\\export\\\\part_tree.json\", \"local_data\\\\organization\\\\export\\\\page_index.json\", \"local_data\\\\organization\\\\export\\\\organization_summary.json\"], \"manual_count\"",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "part_lookup_120_37313_001",
+      "elapsed_seconds": 0.024894899921491742,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"nomenclature\": \"HOLDER, MAGAZINE\", \"pages\": [{\"ata\": \"11-00-66\", \"context_present\": true, \"context_score\": 0.9, \"context_summary\": \"This page appears to be a parts list from a maintenance manual, containing numerous part numbers and associated codes.\", \"document\": \"T.P. 120/1176\", \"label\": \"1021\", \"node\": {\"ata\": \"11-00-66\", \"ata_code\": \"11-00-66\", \"empty_ocr\": false, \"manual\": \"T.P. 120/1176\", \"manual_id\": \"t_p_120_1176\", \"ocr_text_path\": \"local_data\\\\rescarta_exports\\\\t_p_120_1176\\\\ocr\\\\000042_00000042.txt\", \"page_id\": \"t_p_120_1176_p000042\", \"page_label\": \"1021\", \"page_sequence\": 42, \"par",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "page_lookup_000083",
+      "elapsed_seconds": 0.028330500004813075,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"page\": {\"ata\": \"25-21-00\", \"context_present\": true, \"context_score\": 0.9, \"context_summary\": \"This page appears to be an illustrated parts list for aircraft components, detailing part numbers and stock information.\", \"document\": \"T.P. 120/1176\", \"label\": \"1056\", \"node\": {\"ata\": \"25-21-00\", \"ata_code\": \"25-21-00\", \"empty_ocr\": false, \"manual\": \"T.P. 120/1176\", \"manual_id\": \"t_p_120_1176\", \"ocr_text_path\": \"local_data\\\\rescarta_exports\\\\t_p_120_1176\\\\ocr\\\\000083_00000083.txt\", \"page_id\": \"t_p_120_1176_p000083\", \"page_label\": \"1056\", \"page_sequence\": 83, \"part_numbers\": [\"120-37313-001\"], \"publ",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "ata_lookup_25_21_00",
+      "elapsed_seconds": 0.016370899975299835,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"ata\": {\"label\": \"25-21-00\", \"manual\": \"T.P. 120/1176\"}, \"pages\": [{\"ata\": \"25-21-00\", \"context_present\": true, \"context_score\": 0.9, \"context_summary\": \"This page appears to be a revision notice and title block for a technical manual, superseding an earlier version.\", \"document\": \"T.P. 120/1176\", \"label\": \"1\", \"node\": {\"ata\": \"25-21-00\", \"ata_code\": \"25-21-00\", \"empty_ocr\": false, \"manual\": \"T.P. 120/1176\", \"manual_id\": \"t_p_120_1176\", \"ocr_text_path\": \"local_data\\\\rescarta_exports\\\\t_p_120_1176\\\\ocr\\\\000001_00000001.txt\", \"page_id\": \"t_p_120_1176_p000001\", \"page_label\": \"1\", \"page_sequence\"",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "trace_part_120_37313_001",
+      "elapsed_seconds": 0.07462910003960133,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"edge_count\": 14143, \"edge_type_counts\": {\"APPEARS_ON\": 981, \"BELONGS_TO_ATA\": 509, \"BELONGS_TO_DOCUMENT\": 509, \"CONTAINS_PAGE\": 509, \"FOUND_ON\": 981, \"HAS_ATA_SECTION\": 5, \"HAS_CONTEXT\": 509, \"HAS_MENTION\": 981, \"HAS_NOMENCLATURE\": 386, \"HAS_PAGE\": 509, \"HAS_PART_MENTION\": 981, \"HAS_SOURCE_LINK\": 509, \"HAS_TIFF\": 509, \"HIGHLIGHTS_PART\": 1070, \"MENTIONS_PART\": 981, \"OPENS\": 509, \"POINTS_TO_TIFF\": 509, \"REFERS_TO_PART\": 981, \"SUMMARIZES\": 509, \"TAGGED_AS\": 1706}, \"errors\": [], \"graph_dir\": \"local_data\\\\organization\\\\graph\", \"node_count\": 3788, \"node_type_counts\": {\"ata_section\": 5, \"document\":",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "trace_page_000083",
+      "elapsed_seconds": 0.06483839987777174,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"edge_count\": 14143, \"edge_type_counts\": {\"APPEARS_ON\": 981, \"BELONGS_TO_ATA\": 509, \"BELONGS_TO_DOCUMENT\": 509, \"CONTAINS_PAGE\": 509, \"FOUND_ON\": 981, \"HAS_ATA_SECTION\": 5, \"HAS_CONTEXT\": 509, \"HAS_MENTION\": 981, \"HAS_NOMENCLATURE\": 386, \"HAS_PAGE\": 509, \"HAS_PART_MENTION\": 981, \"HAS_SOURCE_LINK\": 509, \"HAS_TIFF\": 509, \"HIGHLIGHTS_PART\": 1070, \"MENTIONS_PART\": 981, \"OPENS\": 509, \"POINTS_TO_TIFF\": 509, \"REFERS_TO_PART\": 981, \"SUMMARIZES\": 509, \"TAGGED_AS\": 1706}, \"errors\": [], \"graph_dir\": \"local_data\\\\organization\\\\graph\", \"node_count\": 3788, \"node_type_counts\": {\"ata_section\": 5, \"document\":",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "trace_vector_payload_000495",
+      "elapsed_seconds": 0.0709788000676781,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"edge_count\": 14143, \"edge_type_counts\": {\"APPEARS_ON\": 981, \"BELONGS_TO_ATA\": 509, \"BELONGS_TO_DOCUMENT\": 509, \"CONTAINS_PAGE\": 509, \"FOUND_ON\": 981, \"HAS_ATA_SECTION\": 5, \"HAS_CONTEXT\": 509, \"HAS_MENTION\": 981, \"HAS_NOMENCLATURE\": 386, \"HAS_PAGE\": 509, \"HAS_PART_MENTION\": 981, \"HAS_SOURCE_LINK\": 509, \"HAS_TIFF\": 509, \"HIGHLIGHTS_PART\": 1070, \"MENTIONS_PART\": 981, \"OPENS\": 509, \"POINTS_TO_TIFF\": 509, \"REFERS_TO_PART\": 981, \"SUMMARIZES\": 509, \"TAGGED_AS\": 1706}, \"errors\": [], \"graph_dir\": \"local_data\\\\organization\\\\graph\", \"node_count\": 3788, \"node_type_counts\": {\"ata_section\": 5, \"document\":",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "ask_exact_part_120_37313_001",
+      "elapsed_seconds": 0.3355370999779552,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"answer_text\": \"Question: What is part number 120-37313-001?\\nLLM used: False\\nEmbeddings used: False\\n\\nAnswer:\\n\\n120-37313-001 is listed as HOLDER, MAGAZINE.\\n\\nPrimary nomenclature source:\\n1. T.P. 120/1176 - ATA 25-21-00 - Page 1056\\n ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000083\\n Source URL: http://localhost:8080/rescarta/t_p_120_1176/000083\\n TIFF: local_data\\\\rescarta_exports\\\\t_p_120_1176\\\\pages\\\\000083_00000083.tif\\n OCR: local_data\\\\rescarta_exports\\\\t_p_120_1176\\\\ocr\\\\000083_00000083.txt\\n Evidence: 01 200 | 120-37313-001 . HOLDER, MAGAZINE . 000.0.0:eee = VS4956 1",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "feedback_round_trip",
+      "elapsed_seconds": 0.008252999978139997,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"feedback_id\": \"fb_8052665179673512925\", \"status\": \"ok\", \"summary\": {\"by_category\": {\"None\": 1, \"api_contract_test\": 1, \"useful\": 3}, \"by_rating\": {\"thumbs_up\": 1, \"up\": 4}, \"latest\": [{\"answer_elapsed_seconds\": 0.279, \"answer_returncode\": 0, \"answer_text\": \"Question: What is part number 120-37313-001?\\nLLM used: False\\nEmbeddings used: False\\n\\nAnswer:\\n\\n120-37313-001 is listed as HOLDER, MAGAZINE.\\n\\nPrimary nomenclature source:\\n1. T.P. 120/1176 - ATA 25-21-00 - Page 1056\\n ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000083\\n Source URL: http://localhost:8080/rescarta/t_p_120_11",
+      "slow": false,
+      "status": "pass"
+    },
+    {
+      "case_id": "feedback_summary_endpoint",
+      "elapsed_seconds": 0.028389399871230125,
+      "error": null,
+      "http_status": 200,
+      "missing_expected_text": null,
+      "response_preview": "{\"by_category\": {\"None\": 1, \"api_contract_test\": 1, \"useful\": 3}, \"by_rating\": {\"thumbs_up\": 1, \"up\": 4}, \"latest\": [{\"answer_elapsed_seconds\": 0.279, \"answer_returncode\": 0, \"answer_text\": \"Question: What is part number 120-37313-001?\\nLLM used: False\\nEmbeddings used: False\\n\\nAnswer:\\n\\n120-37313-001 is listed as HOLDER, MAGAZINE.\\n\\nPrimary nomenclature source:\\n1. T.P. 120/1176 - ATA 25-21-00 - Page 1056\\n ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000083\\n Source URL: http://localhost:8080/rescarta/t_p_120_1176/000083\\n TIFF: local_data\\\\rescarta_exports\\\\t_p_120_1176\\\\pages\\\\",
+      "slow": false,
+      "status": "pass"
+    }
+  ],
+  "elapsed_seconds": 1.473028999986127,
+  "fail": 0,
+  "mode": "in_process",
+  "mode_label": "in-process",
+  "pass": 11,
+  "slow_cases": 0,
+  "slow_pass": 0,
+  "status": "ok",
+  "status_counts": {
+    "fail": 0,
+    "pass": 11
+  },
+  "total": 11
+}

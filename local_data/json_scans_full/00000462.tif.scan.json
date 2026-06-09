@@ -1,0 +1,213 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:12:04Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000462.tif",
+    "relative_path": "00000462.tif"
+  },
+  "file": {
+    "file_name": "00000462.tif",
+    "extension": ".tif",
+    "file_size_bytes": 21835,
+    "modified_time_utc": "2026-05-22T19:14:56Z",
+    "sha256": "d3916353aecad7b518e57674584f95f2f48cb28cc299c587ea1d876501c20cb1"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3205,
+    "height_px": 4146,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.98,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "T.P. 120/1176",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "- ITEM NOT ILLUSTRATED",
+    "section_title": null,
+    "figure_title": "Snack Folding Table",
+    "figure_number": "112",
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": 1399,
+    "page_label": "1399",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [
+      "NUMBER TO ASSY",
+      "ATTACHING PARTS",
+      "TO ASSY"
+    ],
+    "metadata_confidence": 0.98
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "top_strip",
+    "combined_text": "[bottom_right_title_block]\n< Folding Table\nigure 112\nSheet 3\n- 25-21 -00 Page 1399\nT.P. 120/1176 Sep 30/98\n\n[bottom_strip]\n\u2014 ITEM NOT ILLUSTRATED\nSnack Folding Table\nFigure 112\nSheet 3\nEFFECTIVITY: ALL\n25 21 00 Page 1399\nT.P. 120/1176 Sep 30/98\n\n[top_strip]\n< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nAIRLINE EFF | UNITS\nFIG. ITEM| PARTNUMBER | STOCK Nae vEODE FROM | PER\nNUMBER TO ASSY\n112\nATTACHING PARTS\n\n[right_strip]\nEFF | UNITS\nCODE. FROM, PER\nTO ASSY\nhese VS4956 2\nwees VS4956 2\nlec VS4956 1\n_|\n\u00bb-21-00\nPage 1399\n120/1176 Sep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1602,
+          2404,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "< Folding Table\nigure 112\nSheet 3\n- 25-21 -00 Page 1399\nT.P. 120/1176 Sep 30/98",
+        "char_count": 79,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2902,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "\u2014 ITEM NOT ILLUSTRATED\nSnack Folding Table\nFigure 112\nSheet 3\nEFFECTIVITY: ALL\n25 21 00 Page 1399\nT.P. 120/1176 Sep 30/98",
+        "char_count": 121,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3205,
+          746
+        ],
+        "status": "ok",
+        "text": "< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nAIRLINE EFF | UNITS\nFIG. ITEM| PARTNUMBER | STOCK Nae vEODE FROM | PER\nNUMBER TO ASSY\n112\nATTACHING PARTS",
+        "char_count": 162,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2179,
+          0,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "EFF | UNITS\nCODE. FROM, PER\nTO ASSY\nhese VS4956 2\nwees VS4956 2\nlec VS4956 1\n_|\n\u00bb-21-00\nPage 1399\n120/1176 Sep 30/98",
+        "char_count": 116,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "T.P. 120/1176",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "- ITEM NOT ILLUSTRATED",
+      "section_title": null,
+      "figure_title": "Snack Folding Table",
+      "figure_number": "112",
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": 1399,
+      "page_label": "1399",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [
+        "NUMBER TO ASSY",
+        "ATTACHING PARTS",
+        "TO ASSY"
+      ],
+      "metadata_confidence": 0.98
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

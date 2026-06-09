@@ -1,0 +1,131 @@
+{
+  "checks": [
+    {
+      "expected": "final-gate",
+      "name": "answer_mode",
+      "passed": true,
+      "value": "final-gate"
+    },
+    {
+      "expected": "hybrid-simulate",
+      "name": "retrieval_mode",
+      "passed": true,
+      "value": "hybrid-simulate"
+    },
+    {
+      "expected": "PASS",
+      "name": "query_matches_final_answer_gate",
+      "passed": true,
+      "value": "PASS"
+    },
+    {
+      "expected": ">= 1",
+      "name": "min_final_claims",
+      "passed": true,
+      "value": 7
+    },
+    {
+      "expected": 0,
+      "name": "all_final_claims_cited",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "no_retrieval_only_final_claims",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "no_missing_page_ids",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "no_missing_citations",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "no_missing_authority",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "no_local_path_leaks",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "no_raw_bytes_repr",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "no_boilerplate_leak",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "no_source_truth_mutation",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "no_llm_freeform_answer",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": true,
+      "name": "default_ask_unchanged",
+      "passed": true,
+      "value": true
+    },
+    {
+      "expected": true,
+      "name": "ocr_uncertainty_note_present",
+      "passed": true,
+      "value": true
+    },
+    {
+      "expected": "PASS",
+      "name": "final_answer_gate_quality_pass",
+      "passed": true,
+      "value": "PASS"
+    },
+    {
+      "expected": "FINAL_ANSWER_GATE_APPROVED",
+      "name": "final_answer_gate_approved",
+      "passed": true,
+      "value": "FINAL_ANSWER_GATE_APPROVED"
+    },
+    {
+      "expected": true,
+      "name": "ask_final_answer_allowed",
+      "passed": true,
+      "value": true
+    },
+    {
+      "expected": true,
+      "name": "final_answer_gate_allowed",
+      "passed": true,
+      "value": true
+    },
+    {
+      "expected": 1024,
+      "name": "embedding_dim",
+      "passed": true,
+      "value": 1024
+    }
+  ],
+  "status": "PASS"
+}

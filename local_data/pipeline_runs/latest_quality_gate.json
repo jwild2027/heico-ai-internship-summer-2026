@@ -1,0 +1,404 @@
+{
+  "checks": [
+    {
+      "message": "Pipeline manifest status is ok.",
+      "name": "pipeline_status",
+      "status": "OK"
+    },
+    {
+      "message": "All pipeline steps completed successfully.",
+      "name": "pipeline_steps",
+      "status": "OK"
+    },
+    {
+      "message": "source_link_audit step is present in the pipeline manifest.",
+      "name": "source_link_audit_step",
+      "status": "OK"
+    },
+    {
+      "message": "ocr_coverage_audit step is present in the pipeline manifest.",
+      "name": "ocr_coverage_audit_step",
+      "status": "OK"
+    },
+    {
+      "message": "document_organization_audit step is present in the pipeline manifest.",
+      "name": "document_organization_audit_step",
+      "status": "OK"
+    },
+    {
+      "message": "document_organization_export step is present in the pipeline manifest.",
+      "name": "document_organization_export_step",
+      "status": "OK"
+    },
+    {
+      "message": "manuals has 1 rows; minimum is 1.",
+      "name": "table_count_manuals",
+      "status": "OK"
+    },
+    {
+      "message": "pages has 509 rows; minimum is 1.",
+      "name": "table_count_pages",
+      "status": "OK"
+    },
+    {
+      "message": "part_mentions has 1409 rows; minimum is 1.",
+      "name": "table_count_part_mentions",
+      "status": "OK"
+    },
+    {
+      "message": "part_catalog_clean has 504 rows; minimum is 1.",
+      "name": "table_count_part_catalog_clean",
+      "status": "OK"
+    },
+    {
+      "message": "rag_chunks has 538 rows; minimum is 1.",
+      "name": "table_count_rag_chunks",
+      "status": "OK"
+    },
+    {
+      "message": "rag_embeddings has 538 rows; minimum is 1.",
+      "name": "table_count_rag_embeddings",
+      "status": "OK"
+    },
+    {
+      "message": "source_links has 509 rows; minimum is 1.",
+      "name": "table_count_source_links",
+      "status": "OK"
+    },
+    {
+      "message": "RAG eval failures: 0; max allowed: 0.",
+      "name": "eval_failures",
+      "status": "OK"
+    },
+    {
+      "message": "RAG eval manual-review rows: 1; review threshold: 1.",
+      "name": "eval_manual_review",
+      "status": "OK"
+    },
+    {
+      "message": "QA review rows: 149; review threshold: 250.",
+      "name": "qa_review_rows",
+      "status": "OK"
+    },
+    {
+      "message": "Suspicious part/ATA rows: 5; review threshold: 10.",
+      "name": "suspicious_part_ata",
+      "status": "OK"
+    },
+    {
+      "message": "Source-link audit summary is present.",
+      "name": "source_link_summary",
+      "status": "OK"
+    },
+    {
+      "message": "Local source review is ready.",
+      "name": "source_local_review_ready",
+      "status": "OK"
+    },
+    {
+      "message": "Pages without source links: 0; max allowed: 0.",
+      "name": "source_pages_without_links",
+      "status": "OK"
+    },
+    {
+      "message": "Source rows missing TIFF paths: 0; max allowed: 0.",
+      "name": "source_missing_tiff_paths",
+      "status": "OK"
+    },
+    {
+      "message": "Source rows missing OCR paths: 0; max allowed: 0.",
+      "name": "source_missing_ocr_paths",
+      "status": "OK"
+    },
+    {
+      "message": "Source rows missing source URLs: 0; max allowed: 0.",
+      "name": "source_missing_source_urls",
+      "status": "OK"
+    },
+    {
+      "message": "Missing TIFF files on disk: 0; max allowed: 0.",
+      "name": "source_missing_tiff_files",
+      "status": "OK"
+    },
+    {
+      "message": "Missing OCR files on disk: 0; max allowed: 0.",
+      "name": "source_missing_ocr_files",
+      "status": "OK"
+    },
+    {
+      "message": "Source-audit sample queries without results: 0; max allowed: 0.",
+      "name": "source_sample_queries",
+      "status": "OK"
+    },
+    {
+      "message": "Real ResCarta deep links are not required yet; placeholder/local URLs are allowed for the local MVP.",
+      "name": "source_real_rescarta_ready",
+      "status": "OK"
+    },
+    {
+      "message": "OCR coverage audit summary is present.",
+      "name": "ocr_coverage_summary",
+      "status": "OK"
+    },
+    {
+      "message": "Local OCR paths/files are ready.",
+      "name": "ocr_local_paths_ready",
+      "status": "OK"
+    },
+    {
+      "message": "Source-linked pages missing OCR paths: 0; max allowed: 0.",
+      "name": "ocr_missing_paths",
+      "status": "OK"
+    },
+    {
+      "message": "Source-linked pages missing OCR files: 0; max allowed: 0.",
+      "name": "ocr_missing_files",
+      "status": "OK"
+    },
+    {
+      "message": "Unreadable OCR files: 0; max allowed: 0.",
+      "name": "ocr_unreadable_files",
+      "status": "OK"
+    },
+    {
+      "message": "Empty/short OCR review is allowed for local MVP: empty=14, short=0. Use --require-complete-ocr-text to make this strict.",
+      "name": "ocr_empty_or_short_review",
+      "status": "OK"
+    },
+    {
+      "message": "Document organization audit summary is present.",
+      "name": "document_organization_summary",
+      "status": "OK"
+    },
+    {
+      "message": "Logical document organization tree is ready.",
+      "name": "document_organization_ready",
+      "status": "OK"
+    },
+    {
+      "message": "Logical organization manuals: 1; minimum is 1.",
+      "name": "document_organization_manuals",
+      "status": "OK"
+    },
+    {
+      "message": "ATA groups=5, pages_without_ata=0; max pages without ATA is 0.",
+      "name": "document_organization_ata",
+      "status": "OK"
+    },
+    {
+      "message": "Distinct parts=386, part mentions=981; minimums are 1 and 1.",
+      "name": "document_organization_parts",
+      "status": "OK"
+    },
+    {
+      "message": "Document organization export summary is present.",
+      "name": "document_organization_export_summary",
+      "status": "OK"
+    },
+    {
+      "message": "Document organization export artifacts are ready.",
+      "name": "document_organization_export_ready",
+      "status": "OK"
+    },
+    {
+      "message": "Organization export wrote 5 files; minimum is 5.",
+      "name": "document_organization_export_files",
+      "status": "OK"
+    },
+    {
+      "message": "Organization export counts: pages=509, parts=386, mentions=981.",
+      "name": "document_organization_export_counts",
+      "status": "OK"
+    },
+    {
+      "message": "Source-package traceability quality summary is present.",
+      "name": "source_package_traceability_summary",
+      "status": "OK"
+    },
+    {
+      "message": "Source-package traceability status is ok.",
+      "name": "source_package_traceability_status",
+      "status": "OK"
+    },
+    {
+      "message": "Source-package pages: zip_tiffs=509, org_pages=509, matched=509, zip_only=0, org_only=0.",
+      "name": "source_package_page_match",
+      "status": "OK"
+    },
+    {
+      "message": "metadata.xml is present in the raw source package.",
+      "name": "source_package_metadata_xml",
+      "status": "OK"
+    },
+    {
+      "message": "Duplicate source package pages: zip=0, organization=0.",
+      "name": "source_package_duplicate_pages",
+      "status": "OK"
+    },
+    {
+      "message": "Document graph quality artifacts are present.",
+      "name": "document_graph_quality_summary",
+      "status": "OK"
+    },
+    {
+      "message": "Graph context coverage: page_context_nodes=509, page_nodes=509, pages_without_context=0; max missing context is 0.",
+      "name": "document_graph_context_coverage",
+      "status": "OK"
+    },
+    {
+      "message": "Graph source coverage: source_link_nodes=509, page_nodes=509, pages_without_source_links=0; max missing source links is 0.",
+      "name": "document_graph_source_coverage",
+      "status": "OK"
+    },
+    {
+      "message": "Graph context generation errors=0; empty OCR contexts=14 are tracked separately.",
+      "name": "document_graph_context_generation_errors",
+      "status": "OK"
+    },
+    {
+      "message": "Sample part traces to pages/source links/AI context.",
+      "name": "document_graph_part_traceability",
+      "status": "OK"
+    },
+    {
+      "message": "Sample page traces to document/ATA/source/context.",
+      "name": "document_graph_page_traceability",
+      "status": "OK"
+    },
+    {
+      "message": "Simulated Qdrant vector payload resolves to page/source/context.",
+      "name": "document_graph_vector_traceability",
+      "status": "OK"
+    },
+    {
+      "message": "User-query regression results: present=True, total=10, fail=0.",
+      "name": "user_query_regression_results",
+      "status": "OK"
+    },
+    {
+      "message": "Realistic query trace results: present=True, cases=8, failed_cases=0, checks=14, failed_checks=0.",
+      "name": "realistic_query_trace_results",
+      "status": "OK"
+    },
+    {
+      "message": "Realistic query trace slow cases included: 1.",
+      "name": "realistic_query_trace_slow_case",
+      "status": "OK"
+    },
+    {
+      "message": "Incremental smoke summary is present.",
+      "name": "incremental_smoke_summary",
+      "status": "OK"
+    },
+    {
+      "message": "Changed-page incremental smoke test passed.",
+      "name": "incremental_smoke_ok",
+      "status": "OK"
+    },
+    {
+      "message": "Smoke test changed files/list count: changed_files=1, changed_list_count=1; expected 1 and 1.",
+      "name": "incremental_smoke_changed_count",
+      "status": "OK"
+    },
+    {
+      "message": "Smoke test used changed-page backend and avoided full rebuild.",
+      "name": "incremental_smoke_backend_path",
+      "status": "OK"
+    },
+    {
+      "message": "Incremental state commit behavior matched dry-run/real-run expectations.",
+      "name": "incremental_smoke_state_commit",
+      "status": "OK"
+    },
+    {
+      "message": "Smoke test skipped OCR as expected.",
+      "name": "incremental_smoke_ocr_skipped",
+      "status": "OK"
+    },
+    {
+      "message": "Smoke test errors=0, failed_commands=0; expected 0 and 0.",
+      "name": "incremental_smoke_errors",
+      "status": "OK"
+    }
+  ],
+  "manifest_path": "local_data/pipeline_runs/latest_backend_pipeline.json",
+  "status": "ok",
+  "summary": {
+    "document_graph_context_generation_errors": 0,
+    "document_graph_context_nodes": 509,
+    "document_graph_empty_ocr_contexts": 14,
+    "document_graph_page_nodes": 509,
+    "document_graph_page_traceability_ok": true,
+    "document_graph_pages_without_context": 0,
+    "document_graph_pages_without_source_links": 0,
+    "document_graph_part_traceability_ok": true,
+    "document_graph_quality_present": true,
+    "document_graph_source_link_nodes": 509,
+    "document_graph_vector_traceability_ok": true,
+    "document_organization_ata_groups": 5,
+    "document_organization_distinct_parts": 386,
+    "document_organization_empty_ocr_pages": 14,
+    "document_organization_export_files": 5,
+    "document_organization_export_mentions": 981,
+    "document_organization_export_pages": 509,
+    "document_organization_export_parts": 386,
+    "document_organization_export_present": true,
+    "document_organization_export_ready": true,
+    "document_organization_manuals": 1,
+    "document_organization_pages": 509,
+    "document_organization_pages_with_parts": 364,
+    "document_organization_pages_without_ata": 0,
+    "document_organization_part_mentions": 981,
+    "document_organization_present": true,
+    "document_organization_ready": true,
+    "eval_failures": 0,
+    "eval_manual_review": 1,
+    "incremental_changed_files": 1,
+    "incremental_changed_list_count": 1,
+    "incremental_changed_page_command_used": true,
+    "incremental_full_backend_command_used": false,
+    "incremental_smoke_errors": 0,
+    "incremental_smoke_ok": true,
+    "incremental_smoke_present": true,
+    "incremental_state_committed": true,
+    "ocr_coverage_present": true,
+    "ocr_empty_files": 14,
+    "ocr_local_paths_ready": true,
+    "ocr_missing_files": 0,
+    "ocr_missing_paths": 0,
+    "ocr_nonempty_files": 495,
+    "ocr_short_files": 0,
+    "ocr_unreadable_files": 0,
+    "pipeline_status": "ok",
+    "qa_review_rows": 149,
+    "realistic_query_check_fail": 0,
+    "realistic_query_check_total": 14,
+    "realistic_query_fail": 0,
+    "realistic_query_results_present": true,
+    "realistic_query_slow_cases": 1,
+    "realistic_query_total": 8,
+    "run_id": "20260528T163527Z",
+    "source_local_review_ready": true,
+    "source_missing_ocr_files": 0,
+    "source_missing_ocr_paths": 0,
+    "source_missing_source_urls": 0,
+    "source_missing_tiff_files": 0,
+    "source_missing_tiff_paths": 0,
+    "source_package_matched_pages": 509,
+    "source_package_metadata_xml_present": true,
+    "source_package_organization_only_pages": 0,
+    "source_package_organization_pages": 509,
+    "source_package_traceability_present": true,
+    "source_package_traceability_status": "ok",
+    "source_package_zip_only_pages": 0,
+    "source_package_zip_tiff_files": 509,
+    "source_pages_without_links": 0,
+    "source_placeholder_rescarta_urls": 509,
+    "source_real_rescarta_ready": false,
+    "source_sample_queries_without_results": 0,
+    "suspicious_part_ata": 5,
+    "user_query_fail": 0,
+    "user_query_results_present": true,
+    "user_query_total": 10
+  }
+}

@@ -1,0 +1,1059 @@
+<!doctype html><html><head><meta charset='utf-8'><title>TIFF RAG Model Eval</title><style>body{font-family:Arial,sans-serif;margin:24px}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccc;padding:6px;vertical-align:top}pre{white-space:pre-wrap}</style></head><body><h1>TIFF RAG Model Evaluation</h1><pre>{
+  &quot;total&quot;: 20,
+  &quot;by_status&quot;: {
+    &quot;pass&quot;: 14,
+    &quot;manual_review&quot;: 6
+  },
+  &quot;by_model&quot;: {
+    &quot;gemma3:12B&quot;: {
+      &quot;count&quot;: 10,
+      &quot;pass&quot;: 7,
+      &quot;fail&quot;: 0,
+      &quot;manual_review&quot;: 3,
+      &quot;llm_used&quot;: 3,
+      &quot;embeddings_used&quot;: 5,
+      &quot;elapsed_seconds&quot;: 240.7622384999413
+    },
+    &quot;llama3.1:8b&quot;: {
+      &quot;count&quot;: 10,
+      &quot;pass&quot;: 7,
+      &quot;fail&quot;: 0,
+      &quot;manual_review&quot;: 3,
+      &quot;llm_used&quot;: 3,
+      &quot;embeddings_used&quot;: 5,
+      &quot;elapsed_seconds&quot;: 70.97072229976766
+    }
+  }
+}</pre><table><thead><tr><th>Model</th><th>Question ID</th><th>Status</th><th>Elapsed</th><th>LLM</th><th>Embeddings</th><th>Sources</th><th>Answer</th></tr></thead><tbody><tr><td>gemma3:12B</td><td>part_lookup_120_37313_001</td><td>pass</td><td>0.34s</td><td>False</td><td>False</td><td>8</td><td><pre>120-37313-001 is listed as HOLDER, MAGAZINE.
+
+Primary nomenclature source:
+1. T.P. 120/1176 - ATA 25-21-00 - Page 1056
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000083
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000083
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000083_00000083.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000083_00000083.txt
+   Evidence: 01 200 | 120-37313-001 . HOLDER, MAGAZINE . 000.0.0:eee = VS4956 1 EFF | UNITS ODE. FROM PER
+
+Additional pages where this part number appears:
+- T.P. 120/1176 - ATA 11-00-66 - Page 1021
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000042
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000042
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000042_00000042.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000042_00000042.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1059
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000086
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000086
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000086_00000086.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000086_00000086.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1065
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000096
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000096
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000096_00000096.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000096_00000096.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1067
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000098
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000098
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000098_00000098.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000098_00000098.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1070
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000105
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000105
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000105_00000105.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000105_00000105.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1073
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000112
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000112
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000112_00000112.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000112_00000112.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1139
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000182
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000182
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000182_00000182.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000182_00000182.txt
+
+Note: additional appearance pages show where the part number is mentioned; the primary source above is the source used for the nomenclature.</pre></td></tr>
+<tr><td>gemma3:12B</td><td>part_lookup_120_36843_001</td><td>pass</td><td>0.37s</td><td>False</td><td>False</td><td>8</td><td><pre>120-36843-001 is listed as HOLDER, MAGAZINE.
+
+Primary nomenclature source:
+1. T.P. 120/1176 - ATA 25-21-00 - Page 1082
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000125
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000125
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000125_00000125.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000125_00000125.txt
+   Evidence: 190 | 120-36843-001 . HOLDER, MAGAZINE . 00c0 eee. = VES4956 1 -ITEM NOT ILLUSTRATED Single Passenger Seat (120-42547-003/503)
+
+Additional pages where this part number appears:
+- T.P. 120/1176 - ATA 11-00-66 - Page 1021
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000042
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000042
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000042_00000042.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000042_00000042.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1079
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000122
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000122
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000122_00000122.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000122_00000122.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1086
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000129
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000129
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000129_00000129.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000129_00000129.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1089
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000132
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000132
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000132_00000132.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000132_00000132.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1103
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000146
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000146
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000146_00000146.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000146_00000146.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1109
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000152
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000152
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000152_00000152.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000152_00000152.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1112
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000155
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000155
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000155_00000155.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000155_00000155.txt
+
+Note: additional appearance pages show where the part number is mentioned; the primary source above is the source used for the nomenclature.</pre></td></tr>
+<tr><td>gemma3:12B</td><td>nomenclature_locate_magazine_holder</td><td>pass</td><td>0.34s</td><td>False</td><td>False</td><td>26</td><td><pre>I found these part numbers matching that nomenclature:
+- 120-36843-001: HOLDER, MAGAZINE
+- 120-37313-001: HOLDER, MAGAZINE
+- 120-37313-535: HOLDER, MAGAZINE
+
+Match 1: 120-36843-001 � HOLDER, MAGAZINE
+
+Matching catalog source:
+- T.P. 120/1176 - ATA 25-21-00 - Page 1082
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000125
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000125
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000125_00000125.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000125_00000125.txt
+   Evidence: 190 | 120-36843-001 . HOLDER, MAGAZINE . 00c0 eee. = VES4956 1 -ITEM NOT ILLUSTRATED Single Passenger Seat (120-42547-003/503)
+
+Additional pages where 120-36843-001 appears:
+- T.P. 120/1176 - ATA 11-00-66 - Page 1021
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000042
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000042
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000042_00000042.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000042_00000042.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1079
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000122
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000122
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000122_00000122.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000122_00000122.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1086
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000129
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000129
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000129_00000129.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000129_00000129.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1089
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000132
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000132
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000132_00000132.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000132_00000132.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1103
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000146
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000146
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000146_00000146.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000146_00000146.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1109
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000152
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000152
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000152_00000152.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000152_00000152.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1112
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000155
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000155
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000155_00000155.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000155_00000155.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1121
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000164
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000164
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000164_00000164.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000164_00000164.txt
+
+Match 2: 120-37313-001 � HOLDER, MAGAZINE
+
+Matching catalog source:
+- T.P. 120/1176 - ATA 25-21-00 - Page 1056
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000083
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000083
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000083_00000083.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000083_00000083.txt
+   Evidence: 01 200 | 120-37313-001 . HOLDER, MAGAZINE . 000.0.0:eee = VS4956 1 EFF | UNITS ODE. FROM PER
+
+Additional pages where 120-37313-001 appears:
+- T.P. 120/1176 - ATA 25-21-00 - Page 1059
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000086
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000086
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000086_00000086.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000086_00000086.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1065
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000096
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000096
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000096_00000096.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000096_00000096.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1067
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000098
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000098
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000098_00000098.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000098_00000098.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1070
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000105
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000105
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000105_00000105.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000105_00000105.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1073
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000112
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000112
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000112_00000112.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000112_00000112.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1139
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000182
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000182
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000182_00000182.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000182_00000182.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1143
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000190
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000190
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000190_00000190.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000190_00000190.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 193
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000193
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000193
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000193_00000193.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000193_00000193.txt
+
+Match 3: 120-37313-535 � HOLDER, MAGAZINE
+
+Matching catalog source:
+- T.P. 120/1176 - ATA 25-21-00 - Page 193
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000193
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000193
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000193_00000193.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000193_00000193.txt
+   Evidence: -171 | 120-37313-535 . HOLDER, MAGAZINE . 00.0.:eee VWS4956 | 302/312 2 EFF | UNITS ODE. FROM | PER
+
+Note: the matching catalog source identifies the part number for the nomenclature; the additional pages show where that part number is mentioned.</pre></td></tr>
+<tr><td>gemma3:12B</td><td>structured_summary_magazine_holder</td><td>pass</td><td>5.68s</td><td>False</td><td>True</td><td>12</td><td><pre>The local sources identify 3 part numbers matching HOLDER, MAGAZINE:
+
+1. 120-37313-001 - HOLDER, MAGAZINE
+   Primary catalog source:
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1056
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000083
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000083
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000083_00000083.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000083_00000083.txt
+     Evidence: 01 200 | 120-37313-001 . HOLDER, MAGAZINE . 000.0.0:eee = VS4956 1 EFF | UNITS ODE. FROM PER
+   Additional pages where 120-37313-001 appears:
+   - T.P. 120/1176 - ATA 11-00-66 - Page 1021
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000042
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000042
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000042_00000042.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000042_00000042.txt
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1059
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000086
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000086
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000086_00000086.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000086_00000086.txt
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1065
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000096
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000096
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000096_00000096.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000096_00000096.txt
+
+2. 120-36843-001 - HOLDER, MAGAZINE
+   Primary catalog source:
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1082
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000125
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000125
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000125_00000125.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000125_00000125.txt
+     Evidence: 190 | 120-36843-001 . HOLDER, MAGAZINE . 00c0 eee. = VES4956 1 -ITEM NOT ILLUSTRATED Single Passenger Seat (120-42547-003/503)
+   Additional pages where 120-36843-001 appears:
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1079
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000122
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000122
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000122_00000122.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000122_00000122.txt
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1086
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000129
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000129
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000129_00000129.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000129_00000129.txt
+   Note: at least one local source marks this part as ITEM NOT ILLUSTRATED.
+
+3. 120-37313-535 - HOLDER, MAGAZINE
+   Primary catalog source:
+   - T.P. 120/1176 - ATA 25-21-00 - Page 193
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000193
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000193
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000193_00000193.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000193_00000193.txt
+     Evidence: -171 | 120-37313-535 . HOLDER, MAGAZINE . 00.0.:eee VWS4956 | 302/312 2 EFF | UNITS ODE. FROM | PER
+
+Supplemental related pages from keyword/vector retrieval:
+- T.P. 120/1176 - ATA 25-21-00 - Page 1236 (keyword-or)
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000295
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000295
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000295_00000295.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000295_00000295.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1163 (keyword-or)
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000222
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000222
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000222_00000222.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000222_00000222.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1188 (keyword-or)
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000247
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000247
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000247_00000247.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000247_00000247.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1146 (keyword-or)
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000197
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000197
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000197_00000197.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000197_00000197.txt
+
+Note: primary catalog sources prove the part-number/nomenclature relationship. Additional pages only show where the exact part number appears. Supplemental keyword/vector pages are related context, not catalog proof.</pre></td></tr>
+<tr><td>gemma3:12B</td><td>compare_magazine_holder_parts</td><td>pass</td><td>0.88s</td><td>False</td><td>True</td><td>12</td><td><pre>The local sources identify 3 part numbers matching HOLDER, MAGAZINE:
+
+1. 120-37313-001 - HOLDER, MAGAZINE
+   Primary catalog source:
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1056
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000083
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000083
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000083_00000083.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000083_00000083.txt
+     Evidence: 01 200 | 120-37313-001 . HOLDER, MAGAZINE . 000.0.0:eee = VS4956 1 EFF | UNITS ODE. FROM PER
+   Additional pages where 120-37313-001 appears:
+   - T.P. 120/1176 - ATA 11-00-66 - Page 1021
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000042
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000042
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000042_00000042.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000042_00000042.txt
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1059
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000086
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000086
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000086_00000086.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000086_00000086.txt
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1065
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000096
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000096
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000096_00000096.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000096_00000096.txt
+
+2. 120-36843-001 - HOLDER, MAGAZINE
+   Primary catalog source:
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1082
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000125
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000125
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000125_00000125.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000125_00000125.txt
+     Evidence: 190 | 120-36843-001 . HOLDER, MAGAZINE . 00c0 eee. = VES4956 1 -ITEM NOT ILLUSTRATED Single Passenger Seat (120-42547-003/503)
+   Additional pages where 120-36843-001 appears:
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1079
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000122
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000122
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000122_00000122.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000122_00000122.txt
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1086
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000129
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000129
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000129_00000129.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000129_00000129.txt
+   Note: at least one local source marks this part as ITEM NOT ILLUSTRATED.
+
+3. 120-37313-535 - HOLDER, MAGAZINE
+   Primary catalog source:
+   - T.P. 120/1176 - ATA 25-21-00 - Page 193
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000193
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000193
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000193_00000193.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000193_00000193.txt
+     Evidence: -171 | 120-37313-535 . HOLDER, MAGAZINE . 00.0.:eee VWS4956 | 302/312 2 EFF | UNITS ODE. FROM | PER
+
+Supplemental related pages from keyword/vector retrieval:
+- T.P. 120/1176 - ATA 25-21-00 - Page 1002 (keyword-or)
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000021
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000021
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000021_00000021.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000021_00000021.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1001 (keyword-or)
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000020
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000020
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000020_00000020.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000020_00000020.txt
+- T.P. 120/1176 - ATA 51-70-01 - Page 609 (keyword-or)
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000483
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000483
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000483_00000483.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000483_00000483.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1236 (keyword-or)
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000295
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000295
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000295_00000295.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000295_00000295.txt
+
+Note: primary catalog sources prove the part-number/nomenclature relationship. Additional pages only show where the exact part number appears. Supplemental keyword/vector pages are related context, not catalog proof.</pre></td></tr>
+<tr><td>gemma3:12B</td><td>part_lookup_am03078_22</td><td>pass</td><td>0.41s</td><td>False</td><td>False</td><td>8</td><td><pre>AM03078-22 is listed as ASHTRAY OOO CTS.
+
+Primary nomenclature source:
+1. T.P. 120/1176 - ATA 25-21-00 - Page 1250
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000309
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000309
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000309_00000309.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000309_00000309.txt
+   Evidence: 170 | AM03078-22 ASHTRAY ooo cts 065846 2 -ITEM NOT ILLUSTRATED Double Passenger Seat (120-36834-523)
+
+Additional pages where this part number appears:
+- T.P. 120/1176 - ATA 25-21-00 - Page 1037
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000058
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000058
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000058_00000058.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000058_00000058.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1067
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000098
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000098
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000098_00000098.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000098_00000098.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1106
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000149
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000149
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000149_00000149.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000149_00000149.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1115
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000158
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000158
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000158_00000158.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000158_00000158.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1118
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000161
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000161
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000161_00000161.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000161_00000161.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1125
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000168
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000168
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000168_00000168.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000168_00000168.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1127
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000170
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000170
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000170_00000170.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000170_00000170.txt
+
+Note: additional appearance pages show where the part number is mentioned; the primary source above is the source used for the nomenclature.</pre></td></tr>
+<tr><td>gemma3:12B</td><td>locate_am03078_22</td><td>pass</td><td>0.37s</td><td>False</td><td>False</td><td>8</td><td><pre>AM03078-22 is listed as ASHTRAY OOO CTS.
+
+Primary nomenclature source:
+1. T.P. 120/1176 - ATA 25-21-00 - Page 1250
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000309
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000309
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000309_00000309.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000309_00000309.txt
+   Evidence: 170 | AM03078-22 ASHTRAY ooo cts 065846 2 -ITEM NOT ILLUSTRATED Double Passenger Seat (120-36834-523)
+
+Additional pages where this part number appears:
+- T.P. 120/1176 - ATA 25-21-00 - Page 1037
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000058
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000058
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000058_00000058.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000058_00000058.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1067
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000098
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000098
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000098_00000098.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000098_00000098.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1106
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000149
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000149
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000149_00000149.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000149_00000149.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1115
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000158
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000158
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000158_00000158.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000158_00000158.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1118
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000161
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000161
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000161_00000161.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000161_00000161.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1125
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000168
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000168
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000168_00000168.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000168_00000168.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1127
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000170
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000170
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000170_00000170.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000170_00000170.txt
+
+Note: additional appearance pages show where the part number is mentioned; the primary source above is the source used for the nomenclature.</pre></td></tr>
+<tr><td>gemma3:12B</td><td>summary_passenger_seat_back_crack_reinforcement</td><td>manual_review</td><td>43.06s</td><td>True</td><td>True</td><td>24</td><td><pre>Passenger seat back crack reinforcement is discussed on pages 621, 622, 625, 629, and 617 [13, 15, 19, 17, 20].
+
+*   **Page 621 [13]:** Describes a typical repair to passenger seat back cracks, including a figure (Figure 605) and referencing effectivity for all aircraft. It mentions &quot;FRONT REINFORCEMENT&quot;.
+*   **Page 622 [15]:** Shows lay-up damaged sections and references a typical repair to cracks in triple seats.
+*   **Page 625 [19]:** Illustrates a passenger seat leg replacement with a figure (Figure 609) and effectivity for all aircraft.
+*   **Page 629 [17]:** Depicts a typical repair to a passenger seat leg with a figure (Figure 613) and effectivity for all aircraft.
+*   **Page 617 [20]:** Shows a typical repair to laterals of passenger seats with a figure (Figure 601) and effectivity for all aircraft.</pre></td></tr>
+<tr><td>gemma3:12B</td><td>summary_passenger_seat_back</td><td>manual_review</td><td>85.05s</td><td>True</td><td>True</td><td>24</td><td><pre>Here&#x27;s a summary of the available information regarding passenger seat backs, based on the provided sources:
+
+**General Structure &amp; Components:**
+
+*   The backrest structure consists of a rigid composite structure attached to the seat structure. A molded foam cushion is glued to this structure, then covered with fitted upholstery [18].
+
+**Specific Seat Types &amp; Components:**
+
+*   **Single Passenger Seat:** Part number 120-41824-007/507 is mentioned on page 1066 [21].
+*   **Double Passenger Seat:** Part numbers 120-36834-505 [19] and 120-36834-517 [23] are associated with double passenger seats.
+*   **Laterals:** Page 617 discusses laterals for passenger seats, referencing part number 120TP250004.MCE [14]. Page 622 references part number 120TP250009.MCE for single passenger seat laterals [15].
+*   **Leg:** Page 629 mentions a passenger seat leg, referencing part number 120CMM250104.MCE [16].
+*   **Fixed Cover:** Page 623 references part number 120TP250010.MG for repair to the fixed cover of a single passenger seat [17].
+*   **Magazine Holder:** Page 1157 references part number 120-37313-001 [24].
+
+**Cracks &amp; Repairs:**
+
+*   Page 621 discusses typical repairs to passenger seat back cracks, referencing part numbers 120TP250008.MCE [13].
+
+**Note:** The sources primarily describe components and repair procedures rather than providing detailed specifications for the passenger seat back itself.</pre></td></tr>
+<tr><td>gemma3:12B</td><td>ata_summary_25_21_00</td><td>manual_review</td><td>104.24s</td><td>True</td><td>True</td><td>24</td><td><pre>Here&#x27;s a summary of the information extracted from the provided sources, presented with citations:
+
+**General Observations &amp; ATA Codes:**
+
+*   The documents primarily deal with records containing ATA codes (Administrative Task Assignment codes) related to various processes. These codes appear frequently within the evidence, indicating specific tasks or actions.
+*   Multiple ATA codes are present, including: 25-21-00, 11-00-66, and others. These codes likely represent different types of administrative tasks.
+
+**Specific Data Points (with Citations):**
+
+*   **Page 1019:** Contains ATA code 25-21 and 11-00-66 (Source 23).
+*   **Page 1021:**  Includes ATA codes 25-21 and 11-00-66, along with references to 120-37313-505 and 120-37313-509 (Source 23).
+*   **Page 1029:**  Features ATA code 25-21 and a series of numerical values (Source 20).
+*   **Page 1033:**  Includes ATA code 25-21 and references to 120-47462-003 and 120-48023-001 (Source 21).
+*   **Page 1037:**  Features ATA code 25-21 and references to 120-36839-003 (Source 19).
+*   **Page 1049:**  Includes ATA code 25-21 and references to MS24693-C28 (Source 18).
+*   **Page 1015:**  Features ATA code 25-21 and references to 120-31626-001 and 120-33774-001 (Source 24).
+
+**Numerical Data:**
+
+The evidence sections contain numerous numerical values, often associated with the ATA codes. These numbers likely represent quantities, measurements, or identifiers related to the tasks described by the ATA codes. Examples include: 210, 180, 190, 50, -2, 130, 100, 280, 290, -161, -172, -201, -203, -171, 110, 120, 200, 10, and many more.
+
+
+
+**Note:** Without further context, the precise meaning of the ATA codes and the numerical data remains unclear.</pre></td></tr>
+<tr><td>llama3.1:8b</td><td>part_lookup_120_37313_001</td><td>pass</td><td>0.76s</td><td>False</td><td>False</td><td>8</td><td><pre>120-37313-001 is listed as HOLDER, MAGAZINE.
+
+Primary nomenclature source:
+1. T.P. 120/1176 - ATA 25-21-00 - Page 1056
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000083
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000083
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000083_00000083.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000083_00000083.txt
+   Evidence: 01 200 | 120-37313-001 . HOLDER, MAGAZINE . 000.0.0:eee = VS4956 1 EFF | UNITS ODE. FROM PER
+
+Additional pages where this part number appears:
+- T.P. 120/1176 - ATA 11-00-66 - Page 1021
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000042
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000042
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000042_00000042.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000042_00000042.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1059
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000086
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000086
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000086_00000086.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000086_00000086.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1065
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000096
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000096
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000096_00000096.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000096_00000096.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1067
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000098
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000098
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000098_00000098.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000098_00000098.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1070
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000105
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000105
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000105_00000105.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000105_00000105.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1073
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000112
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000112
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000112_00000112.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000112_00000112.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1139
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000182
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000182
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000182_00000182.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000182_00000182.txt
+
+Note: additional appearance pages show where the part number is mentioned; the primary source above is the source used for the nomenclature.</pre></td></tr>
+<tr><td>llama3.1:8b</td><td>part_lookup_120_36843_001</td><td>pass</td><td>0.65s</td><td>False</td><td>False</td><td>8</td><td><pre>120-36843-001 is listed as HOLDER, MAGAZINE.
+
+Primary nomenclature source:
+1. T.P. 120/1176 - ATA 25-21-00 - Page 1082
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000125
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000125
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000125_00000125.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000125_00000125.txt
+   Evidence: 190 | 120-36843-001 . HOLDER, MAGAZINE . 00c0 eee. = VES4956 1 -ITEM NOT ILLUSTRATED Single Passenger Seat (120-42547-003/503)
+
+Additional pages where this part number appears:
+- T.P. 120/1176 - ATA 11-00-66 - Page 1021
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000042
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000042
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000042_00000042.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000042_00000042.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1079
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000122
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000122
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000122_00000122.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000122_00000122.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1086
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000129
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000129
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000129_00000129.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000129_00000129.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1089
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000132
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000132
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000132_00000132.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000132_00000132.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1103
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000146
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000146
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000146_00000146.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000146_00000146.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1109
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000152
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000152
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000152_00000152.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000152_00000152.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1112
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000155
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000155
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000155_00000155.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000155_00000155.txt
+
+Note: additional appearance pages show where the part number is mentioned; the primary source above is the source used for the nomenclature.</pre></td></tr>
+<tr><td>llama3.1:8b</td><td>nomenclature_locate_magazine_holder</td><td>pass</td><td>0.64s</td><td>False</td><td>False</td><td>26</td><td><pre>I found these part numbers matching that nomenclature:
+- 120-36843-001: HOLDER, MAGAZINE
+- 120-37313-001: HOLDER, MAGAZINE
+- 120-37313-535: HOLDER, MAGAZINE
+
+Match 1: 120-36843-001 � HOLDER, MAGAZINE
+
+Matching catalog source:
+- T.P. 120/1176 - ATA 25-21-00 - Page 1082
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000125
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000125
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000125_00000125.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000125_00000125.txt
+   Evidence: 190 | 120-36843-001 . HOLDER, MAGAZINE . 00c0 eee. = VES4956 1 -ITEM NOT ILLUSTRATED Single Passenger Seat (120-42547-003/503)
+
+Additional pages where 120-36843-001 appears:
+- T.P. 120/1176 - ATA 11-00-66 - Page 1021
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000042
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000042
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000042_00000042.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000042_00000042.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1079
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000122
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000122
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000122_00000122.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000122_00000122.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1086
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000129
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000129
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000129_00000129.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000129_00000129.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1089
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000132
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000132
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000132_00000132.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000132_00000132.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1103
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000146
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000146
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000146_00000146.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000146_00000146.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1109
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000152
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000152
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000152_00000152.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000152_00000152.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1112
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000155
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000155
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000155_00000155.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000155_00000155.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1121
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000164
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000164
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000164_00000164.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000164_00000164.txt
+
+Match 2: 120-37313-001 � HOLDER, MAGAZINE
+
+Matching catalog source:
+- T.P. 120/1176 - ATA 25-21-00 - Page 1056
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000083
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000083
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000083_00000083.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000083_00000083.txt
+   Evidence: 01 200 | 120-37313-001 . HOLDER, MAGAZINE . 000.0.0:eee = VS4956 1 EFF | UNITS ODE. FROM PER
+
+Additional pages where 120-37313-001 appears:
+- T.P. 120/1176 - ATA 25-21-00 - Page 1059
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000086
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000086
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000086_00000086.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000086_00000086.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1065
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000096
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000096
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000096_00000096.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000096_00000096.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1067
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000098
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000098
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000098_00000098.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000098_00000098.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1070
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000105
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000105
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000105_00000105.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000105_00000105.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1073
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000112
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000112
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000112_00000112.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000112_00000112.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1139
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000182
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000182
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000182_00000182.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000182_00000182.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1143
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000190
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000190
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000190_00000190.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000190_00000190.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 193
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000193
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000193
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000193_00000193.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000193_00000193.txt
+
+Match 3: 120-37313-535 � HOLDER, MAGAZINE
+
+Matching catalog source:
+- T.P. 120/1176 - ATA 25-21-00 - Page 193
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000193
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000193
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000193_00000193.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000193_00000193.txt
+   Evidence: -171 | 120-37313-535 . HOLDER, MAGAZINE . 00.0.:eee VWS4956 | 302/312 2 EFF | UNITS ODE. FROM | PER
+
+Note: the matching catalog source identifies the part number for the nomenclature; the additional pages show where that part number is mentioned.</pre></td></tr>
+<tr><td>llama3.1:8b</td><td>structured_summary_magazine_holder</td><td>pass</td><td>9.32s</td><td>False</td><td>True</td><td>12</td><td><pre>The local sources identify 3 part numbers matching HOLDER, MAGAZINE:
+
+1. 120-37313-001 - HOLDER, MAGAZINE
+   Primary catalog source:
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1056
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000083
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000083
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000083_00000083.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000083_00000083.txt
+     Evidence: 01 200 | 120-37313-001 . HOLDER, MAGAZINE . 000.0.0:eee = VS4956 1 EFF | UNITS ODE. FROM PER
+   Additional pages where 120-37313-001 appears:
+   - T.P. 120/1176 - ATA 11-00-66 - Page 1021
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000042
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000042
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000042_00000042.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000042_00000042.txt
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1059
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000086
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000086
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000086_00000086.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000086_00000086.txt
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1065
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000096
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000096
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000096_00000096.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000096_00000096.txt
+
+2. 120-36843-001 - HOLDER, MAGAZINE
+   Primary catalog source:
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1082
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000125
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000125
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000125_00000125.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000125_00000125.txt
+     Evidence: 190 | 120-36843-001 . HOLDER, MAGAZINE . 00c0 eee. = VES4956 1 -ITEM NOT ILLUSTRATED Single Passenger Seat (120-42547-003/503)
+   Additional pages where 120-36843-001 appears:
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1079
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000122
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000122
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000122_00000122.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000122_00000122.txt
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1086
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000129
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000129
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000129_00000129.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000129_00000129.txt
+   Note: at least one local source marks this part as ITEM NOT ILLUSTRATED.
+
+3. 120-37313-535 - HOLDER, MAGAZINE
+   Primary catalog source:
+   - T.P. 120/1176 - ATA 25-21-00 - Page 193
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000193
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000193
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000193_00000193.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000193_00000193.txt
+     Evidence: -171 | 120-37313-535 . HOLDER, MAGAZINE . 00.0.:eee VWS4956 | 302/312 2 EFF | UNITS ODE. FROM | PER
+
+Supplemental related pages from keyword/vector retrieval:
+- T.P. 120/1176 - ATA 25-21-00 - Page 1236 (keyword-or)
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000295
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000295
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000295_00000295.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000295_00000295.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1163 (keyword-or)
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000222
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000222
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000222_00000222.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000222_00000222.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1188 (keyword-or)
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000247
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000247
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000247_00000247.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000247_00000247.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1146 (keyword-or)
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000197
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000197
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000197_00000197.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000197_00000197.txt
+
+Note: primary catalog sources prove the part-number/nomenclature relationship. Additional pages only show where the exact part number appears. Supplemental keyword/vector pages are related context, not catalog proof.</pre></td></tr>
+<tr><td>llama3.1:8b</td><td>compare_magazine_holder_parts</td><td>pass</td><td>1.67s</td><td>False</td><td>True</td><td>12</td><td><pre>The local sources identify 3 part numbers matching HOLDER, MAGAZINE:
+
+1. 120-37313-001 - HOLDER, MAGAZINE
+   Primary catalog source:
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1056
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000083
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000083
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000083_00000083.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000083_00000083.txt
+     Evidence: 01 200 | 120-37313-001 . HOLDER, MAGAZINE . 000.0.0:eee = VS4956 1 EFF | UNITS ODE. FROM PER
+   Additional pages where 120-37313-001 appears:
+   - T.P. 120/1176 - ATA 11-00-66 - Page 1021
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000042
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000042
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000042_00000042.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000042_00000042.txt
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1059
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000086
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000086
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000086_00000086.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000086_00000086.txt
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1065
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000096
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000096
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000096_00000096.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000096_00000096.txt
+
+2. 120-36843-001 - HOLDER, MAGAZINE
+   Primary catalog source:
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1082
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000125
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000125
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000125_00000125.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000125_00000125.txt
+     Evidence: 190 | 120-36843-001 . HOLDER, MAGAZINE . 00c0 eee. = VES4956 1 -ITEM NOT ILLUSTRATED Single Passenger Seat (120-42547-003/503)
+   Additional pages where 120-36843-001 appears:
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1079
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000122
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000122
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000122_00000122.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000122_00000122.txt
+   - T.P. 120/1176 - ATA 25-21-00 - Page 1086
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000129
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000129
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000129_00000129.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000129_00000129.txt
+   Note: at least one local source marks this part as ITEM NOT ILLUSTRATED.
+
+3. 120-37313-535 - HOLDER, MAGAZINE
+   Primary catalog source:
+   - T.P. 120/1176 - ATA 25-21-00 - Page 193
+     ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000193
+     Source URL: http://localhost:8080/rescarta/t_p_120_1176/000193
+     TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000193_00000193.tif
+     OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000193_00000193.txt
+     Evidence: -171 | 120-37313-535 . HOLDER, MAGAZINE . 00.0.:eee VWS4956 | 302/312 2 EFF | UNITS ODE. FROM | PER
+
+Supplemental related pages from keyword/vector retrieval:
+- T.P. 120/1176 - ATA 25-21-00 - Page 1002 (keyword-or)
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000021
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000021
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000021_00000021.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000021_00000021.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1001 (keyword-or)
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000020
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000020
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000020_00000020.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000020_00000020.txt
+- T.P. 120/1176 - ATA 51-70-01 - Page 609 (keyword-or)
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000483
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000483
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000483_00000483.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000483_00000483.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1236 (keyword-or)
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000295
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000295
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000295_00000295.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000295_00000295.txt
+
+Note: primary catalog sources prove the part-number/nomenclature relationship. Additional pages only show where the exact part number appears. Supplemental keyword/vector pages are related context, not catalog proof.</pre></td></tr>
+<tr><td>llama3.1:8b</td><td>part_lookup_am03078_22</td><td>pass</td><td>0.63s</td><td>False</td><td>False</td><td>8</td><td><pre>AM03078-22 is listed as ASHTRAY OOO CTS.
+
+Primary nomenclature source:
+1. T.P. 120/1176 - ATA 25-21-00 - Page 1250
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000309
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000309
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000309_00000309.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000309_00000309.txt
+   Evidence: 170 | AM03078-22 ASHTRAY ooo cts 065846 2 -ITEM NOT ILLUSTRATED Double Passenger Seat (120-36834-523)
+
+Additional pages where this part number appears:
+- T.P. 120/1176 - ATA 25-21-00 - Page 1037
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000058
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000058
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000058_00000058.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000058_00000058.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1067
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000098
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000098
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000098_00000098.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000098_00000098.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1106
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000149
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000149
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000149_00000149.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000149_00000149.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1115
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000158
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000158
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000158_00000158.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000158_00000158.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1118
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000161
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000161
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000161_00000161.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000161_00000161.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1125
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000168
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000168
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000168_00000168.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000168_00000168.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1127
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000170
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000170
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000170_00000170.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000170_00000170.txt
+
+Note: additional appearance pages show where the part number is mentioned; the primary source above is the source used for the nomenclature.</pre></td></tr>
+<tr><td>llama3.1:8b</td><td>locate_am03078_22</td><td>pass</td><td>0.72s</td><td>False</td><td>False</td><td>8</td><td><pre>AM03078-22 is listed as ASHTRAY OOO CTS.
+
+Primary nomenclature source:
+1. T.P. 120/1176 - ATA 25-21-00 - Page 1250
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000309
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000309
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000309_00000309.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000309_00000309.txt
+   Evidence: 170 | AM03078-22 ASHTRAY ooo cts 065846 2 -ITEM NOT ILLUSTRATED Double Passenger Seat (120-36834-523)
+
+Additional pages where this part number appears:
+- T.P. 120/1176 - ATA 25-21-00 - Page 1037
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000058
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000058
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000058_00000058.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000058_00000058.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1067
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000098
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000098
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000098_00000098.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000098_00000098.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1106
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000149
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000149
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000149_00000149.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000149_00000149.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1115
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000158
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000158
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000158_00000158.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000158_00000158.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1118
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000161
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000161
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000161_00000161.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000161_00000161.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1125
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000168
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000168
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000168_00000168.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000168_00000168.txt
+- T.P. 120/1176 - ATA 25-21-00 - Page 1127
+   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000170
+   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000170
+   TIFF: local_data\rescarta_exports\t_p_120_1176\pages\000170_00000170.tif
+   OCR: local_data\rescarta_exports\t_p_120_1176\ocr\000170_00000170.txt
+
+Note: additional appearance pages show where the part number is mentioned; the primary source above is the source used for the nomenclature.</pre></td></tr>
+<tr><td>llama3.1:8b</td><td>summary_passenger_seat_back_crack_reinforcement</td><td>manual_review</td><td>26.80s</td><td>True</td><td>True</td><td>24</td><td><pre>The pages that discuss passenger seat back crack reinforcement are:
+
+* Page 621 of T.P. 120/1176 - ATA 25-21-00 [1]
+* Page 613 of T.P. 120/1176 - ATA 51-25-00 [2]
+
+According to these pages, the typical repair for a passenger seat back crack involves reinforcing the leg with doublers and fasteners.
+
+Page 621 states: &quot;Typical Repair to Passenger Seat Back Crack Figure 605... REINFORCEMENT 120TP250008.MCE&quot; [3]
+
+Page 613 states: &quot;fre ls any CraCk In te leg, locate the end of tne CraCk ana 8 in). on in the leg. the leg and reinforcing doublers (4) over the repair dou- es in the reinforcing doublers as a guide...&quot; [4]
+
+Note that these pages are marked as semantic OCR context, which means they contain illustrations and diagrams related to the topic.
+
+References:
+
+[1] T.P. 120/1176 - ATA 25-21-00 - Page 621
+[2] T.P. 120/1176 - ATA 51-25-00 - Page 613
+[3] SOURCE 13: T.P. 120/1176 - ATA 25-21-00 - Page 621
+[4] SOURCE 16: T.P. 120/1176 - ATA 51-25-00 - Page 613</pre></td></tr>
+<tr><td>llama3.1:8b</td><td>summary_passenger_seat_back</td><td>manual_review</td><td>11.83s</td><td>True</td><td>True</td><td>24</td><td><pre>Based on the provided sources, here is a summary of the available information about passenger seat back:
+
+* The passenger seat back structure consists of a rigid composite structure attached to the seat structure and molded foam cushion (Source 18).
+* The backrest structure is covered with fitted upholstery (Source 18).
+* There are different types of passenger seats, including single and double seats (Sources 19, 23, 24).
+* Passenger seats may have various features such as folding tables, magazine holders, and snack trays (Sources 20, 22).
+
+No specific part numbers or nomenclature for the passenger seat back is mentioned in the provided sources.
+
+Note: The sources are primarily maintenance manuals and repair guides, which do not typically provide detailed information on part numbers or nomenclature.</pre></td></tr>
+<tr><td>llama3.1:8b</td><td>ata_summary_25_21_00</td><td>manual_review</td><td>17.95s</td><td>True</td><td>True</td><td>24</td><td><pre>The source evidence for ATA 25-21-00 is summarized as follows:
+
+* Page 1004 of T.P. 120/1176 [SOURCE 1] mentions ATA 25-21-00.
+* Pages 611, 613, and 612 of T.P. 120/1176 [SOURCE 2, SOURCE 3, and SOURCE 4] mention ATA 51-25-00, but not ATA 25-21-00.
+* Page 1001 of T.P. 120/1176 [SOURCE 5] mentions ATA 25-21-00.
+* Pages 603, 403, 404, 606, and 605 of T.P. 120/1176 [SOURCE 6, SOURCE 7, SOURCE 8, SOURCE 9, and SOURCE 10] mention ATA 25-21-00.
+* The semantic OCR context in pages 1035, 1009, 1011, 1013, 1025, 1049, 1037, 1029, 1033, and 1019 of T.P. 120/1176 [SOURCE 13 to SOURCE 22] contains various references to ATA 25-21-00.
+
+No primary cleaned nomenclature source or primary catalog nomenclature source is found in the provided sources.</pre></td></tr></tbody></table></body></html>

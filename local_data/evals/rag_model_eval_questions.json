@@ -1,0 +1,138 @@
+[
+  {
+    "id": "part_lookup_120_37313_001",
+    "question": "What is part number 120-37313-001?",
+    "answer_mode": "auto",
+    "retrieval_mode": "auto",
+    "top_k": 8,
+    "expected_terms": [
+      "120-37313-001",
+      "HOLDER, MAGAZINE"
+    ],
+    "expected_sources": [
+      "Page 1056"
+    ],
+    "notes": ""
+  },
+  {
+    "id": "part_lookup_120_36843_001",
+    "question": "What is part number 120-36843-001?",
+    "answer_mode": "auto",
+    "retrieval_mode": "auto",
+    "top_k": 8,
+    "expected_terms": [
+      "120-36843-001",
+      "HOLDER, MAGAZINE"
+    ],
+    "expected_sources": [
+      "Page 1082"
+    ],
+    "notes": ""
+  },
+  {
+    "id": "nomenclature_locate_magazine_holder",
+    "question": "Where is magazine holder shown?",
+    "answer_mode": "auto",
+    "retrieval_mode": "auto",
+    "top_k": 8,
+    "expected_terms": [
+      "120-36843-001",
+      "120-37313-001",
+      "120-37313-535"
+    ],
+    "expected_sources": [],
+    "notes": ""
+  },
+  {
+    "id": "structured_summary_magazine_holder",
+    "question": "Summarize the sources related to magazine holder parts.",
+    "answer_mode": "summarize",
+    "retrieval_mode": "hybrid",
+    "top_k": 8,
+    "expected_terms": [
+      "120-36843-001",
+      "120-37313-001",
+      "120-37313-535",
+      "HOLDER, MAGAZINE"
+    ],
+    "expected_sources": [],
+    "notes": ""
+  },
+  {
+    "id": "compare_magazine_holder_parts",
+    "question": "Compare the magazine holder part numbers.",
+    "answer_mode": "compare",
+    "retrieval_mode": "hybrid",
+    "top_k": 8,
+    "expected_terms": [
+      "120-36843-001",
+      "120-37313-001"
+    ],
+    "expected_sources": [],
+    "notes": ""
+  },
+  {
+    "id": "part_lookup_am03078_22",
+    "question": "What is part number AM03078-22?",
+    "answer_mode": "auto",
+    "retrieval_mode": "auto",
+    "top_k": 8,
+    "expected_terms": [
+      "AM03078-22",
+      "ASHTRAY"
+    ],
+    "expected_sources": [],
+    "notes": ""
+  },
+  {
+    "id": "locate_am03078_22",
+    "question": "Which pages mention AM03078-22?",
+    "answer_mode": "auto",
+    "retrieval_mode": "auto",
+    "top_k": 8,
+    "expected_terms": [
+      "AM03078-22"
+    ],
+    "expected_sources": [],
+    "notes": ""
+  },
+  {
+    "id": "summary_passenger_seat_back_crack_reinforcement",
+    "question": "Which pages discuss passenger seat back crack reinforcement, and what do they say?",
+    "answer_mode": "summarize",
+    "retrieval_mode": "hybrid",
+    "top_k": 12,
+    "expected_terms": [
+      "Page 621",
+      "passenger seat back"
+    ],
+    "expected_sources": [],
+    "notes": "LLM summary; usually needs manual review even when expected terms are present."
+  },
+  {
+    "id": "summary_passenger_seat_back",
+    "question": "Summarize the available source information about passenger seat back.",
+    "answer_mode": "summarize",
+    "retrieval_mode": "hybrid",
+    "top_k": 12,
+    "expected_terms": [
+      "passenger",
+      "seat",
+      "back"
+    ],
+    "expected_sources": [],
+    "notes": "Broad LLM summary; review source quality manually."
+  },
+  {
+    "id": "ata_summary_25_21_00",
+    "question": "Summarize the source evidence for ATA 25-21-00.",
+    "answer_mode": "summarize",
+    "retrieval_mode": "hybrid",
+    "top_k": 12,
+    "expected_terms": [
+      "25-21-00"
+    ],
+    "expected_sources": [],
+    "notes": ""
+  }
+]

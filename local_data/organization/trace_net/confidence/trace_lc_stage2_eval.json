@@ -1,0 +1,986 @@
+{
+  "agreement_rate": 0.239382,
+  "avg_risk_score": 0.055957,
+  "avg_support_score": 0.83376,
+  "avg_usable_confidence": 0.787436,
+  "blocked_high_confidence_records": 0,
+  "blocked_high_confidence_samples": [],
+  "confidence_higher_records": 424,
+  "confidence_lower_records": 955,
+  "confidence_tier_counts": {
+    "B": 1617,
+    "C": 172,
+    "D": 24
+  },
+  "confusion_matrix": {
+    "A": {
+      "A": 0,
+      "B": 907,
+      "C": 24,
+      "D": 0
+    },
+    "B": {
+      "A": 0,
+      "B": 286,
+      "C": 0,
+      "D": 0
+    },
+    "C": {
+      "A": 0,
+      "B": 424,
+      "C": 148,
+      "D": 24
+    },
+    "D": {
+      "A": 0,
+      "B": 0,
+      "C": 0,
+      "D": 0
+    }
+  },
+  "consensus_records_path": "local_data\\organization\\trace_net\\evidence_consensus\\evidence_consensus_records.jsonl",
+  "consensus_status": "OK",
+  "consensus_summary_path": "local_data\\organization\\trace_net\\evidence_consensus\\evidence_consensus_summary.json",
+  "created_at": "2026-06-02T19:29:14Z",
+  "current_trust_tier_counts": {
+    "A": 931,
+    "B": 286,
+    "C": 596
+  },
+  "demotion_candidate_samples": [
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000002",
+      "rag_action": "include_as_source_evidence",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000002:source_trace",
+      "trust_tier": "A",
+      "usable_confidence": 0.67925
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000012",
+      "rag_action": "include_as_source_evidence",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000012:source_trace",
+      "trust_tier": "A",
+      "usable_confidence": 0.67925
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000025",
+      "rag_action": "include_as_source_evidence",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000025:source_trace",
+      "trust_tier": "A",
+      "usable_confidence": 0.67925
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000035",
+      "rag_action": "include_as_source_evidence",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000035:source_trace",
+      "trust_tier": "A",
+      "usable_confidence": 0.67925
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000079",
+      "rag_action": "include_as_source_evidence",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000079:source_trace",
+      "trust_tier": "A",
+      "usable_confidence": 0.67925
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000091",
+      "rag_action": "include_as_source_evidence",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000091:source_trace",
+      "trust_tier": "A",
+      "usable_confidence": 0.67925
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000103",
+      "rag_action": "include_as_source_evidence",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000103:source_trace",
+      "trust_tier": "A",
+      "usable_confidence": 0.67925
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000111",
+      "rag_action": "include_as_source_evidence",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000111:source_trace",
+      "trust_tier": "A",
+      "usable_confidence": 0.67925
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000121",
+      "rag_action": "include_as_source_evidence",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000121:source_trace",
+      "trust_tier": "A",
+      "usable_confidence": 0.67925
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000187",
+      "rag_action": "include_as_source_evidence",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000187:source_trace",
+      "trust_tier": "A",
+      "usable_confidence": 0.67925
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000195",
+      "rag_action": "include_as_source_evidence",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000195:source_trace",
+      "trust_tier": "A",
+      "usable_confidence": 0.67925
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000201",
+      "rag_action": "include_as_source_evidence",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000201:source_trace",
+      "trust_tier": "A",
+      "usable_confidence": 0.67925
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000217",
+      "rag_action": "include_as_source_evidence",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000217:source_trace",
+      "trust_tier": "A",
+      "usable_confidence": 0.67925
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000335",
+      "rag_action": "include_as_source_evidence",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000335:source_trace",
+      "trust_tier": "A",
+      "usable_confidence": 0.67925
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "table_tile_text_refined",
+      "page_id": "t_p_120_1176_p000007",
+      "rag_action": "include_as_derived_context",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000007:table_tile_text_refined",
+      "trust_tier": "A",
+      "usable_confidence": 0.64125
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "table_tile_text_refined",
+      "page_id": "t_p_120_1176_p000008",
+      "rag_action": "include_as_derived_context",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000008:table_tile_text_refined",
+      "trust_tier": "A",
+      "usable_confidence": 0.64125
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "table_tile_text_refined",
+      "page_id": "t_p_120_1176_p000008",
+      "rag_action": "include_as_derived_context",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000008:table_tile_text_refined",
+      "trust_tier": "A",
+      "usable_confidence": 0.64125
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "table_tile_text_refined",
+      "page_id": "t_p_120_1176_p000009",
+      "rag_action": "include_as_derived_context",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000009:table_tile_text_refined",
+      "trust_tier": "A",
+      "usable_confidence": 0.64125
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "table_tile_text_refined",
+      "page_id": "t_p_120_1176_p000010",
+      "rag_action": "include_as_derived_context",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000010:table_tile_text_refined",
+      "trust_tier": "A",
+      "usable_confidence": 0.64125
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "table_tile_text_refined",
+      "page_id": "t_p_120_1176_p000028",
+      "rag_action": "include_as_derived_context",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000028:table_tile_text_refined",
+      "trust_tier": "A",
+      "usable_confidence": 0.64125
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "table_tile_text_refined",
+      "page_id": "t_p_120_1176_p000030",
+      "rag_action": "include_as_derived_context",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000030:table_tile_text_refined",
+      "trust_tier": "A",
+      "usable_confidence": 0.64125
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "table_tile_text_refined",
+      "page_id": "t_p_120_1176_p000032",
+      "rag_action": "include_as_derived_context",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000032:table_tile_text_refined",
+      "trust_tier": "A",
+      "usable_confidence": 0.64125
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "table_tile_text_refined",
+      "page_id": "t_p_120_1176_p000036",
+      "rag_action": "include_as_derived_context",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000036:table_tile_text_refined",
+      "trust_tier": "A",
+      "usable_confidence": 0.64125
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "table_tile_text_refined",
+      "page_id": "t_p_120_1176_p000037",
+      "rag_action": "include_as_derived_context",
+      "reason": "current rule includes, confidence tier is C/D",
+      "record_id": "t_p_120_1176_p000037:table_tile_text_refined",
+      "trust_tier": "A",
+      "usable_confidence": 0.64125
+    }
+  ],
+  "disagreement_records": 1379,
+  "exact_match_records": 434,
+  "interpretation": {
+    "recommendation": "calibrate_layer_specific_thresholds_before_using_scores_for_routing",
+    "routing_changed": false,
+    "stage": "advisory_comparison_only"
+  },
+  "largest_disagreement_samples": [
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000001",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000001:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.855,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.81225
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000002",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000002:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.715,
+      "tier_delta": -2,
+      "trust_tier": "A",
+      "usable_confidence": 0.67925
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000003",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000003:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.855,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.81225
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000004",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000004:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.805,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.76475
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000005",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000005:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.855,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.81225
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000006",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000006:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.855,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.81225
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000007",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000007:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.855,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.81225
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000008",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000008:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.855,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.81225
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000009",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000009:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.855,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.81225
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000010",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000010:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.855,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.81225
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000011",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000011:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.805,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.76475
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000012",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000012:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.715,
+      "tier_delta": -2,
+      "trust_tier": "A",
+      "usable_confidence": 0.67925
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000013",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000013:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.805,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.76475
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000014",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000014:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.805,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.76475
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000015",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000015:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.805,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.76475
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000016",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000016:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.805,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.76475
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000017",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000017:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.855,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.81225
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000018",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000018:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.805,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.76475
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000019",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000019:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.805,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.76475
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000020",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000020:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.805,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.76475
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000021",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000021:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.805,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.76475
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000022",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000022:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.805,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.76475
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000023",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000023:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.805,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.76475
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000024",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000024:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.855,
+      "tier_delta": -1,
+      "trust_tier": "A",
+      "usable_confidence": 0.81225
+    },
+    {
+      "confidence_tier": "C",
+      "evidence_layer": "source_trace",
+      "page_id": "t_p_120_1176_p000025",
+      "rag_action": "include_as_source_evidence",
+      "record_id": "t_p_120_1176_p000025:source_trace",
+      "risk_score": 0.05,
+      "support_score": 0.715,
+      "tier_delta": -2,
+      "trust_tier": "A",
+      "usable_confidence": 0.67925
+    }
+  ],
+  "missing_confidence_records": 0,
+  "pages_loaded": 509,
+  "per_layer": {
+    "part_catalog": {
+      "agreement_rate": 0.0,
+      "avg_risk_score": 0.05,
+      "avg_support_score": 0.916896,
+      "avg_usable_confidence": 0.871051,
+      "confidence_higher": 2,
+      "confidence_lower": 362,
+      "confidence_tier_counts": {
+        "B": 364
+      },
+      "current_tier_counts": {
+        "A": 362,
+        "C": 2
+      },
+      "disagreements": 364,
+      "exact_matches": 0,
+      "records": 364,
+      "rule_excludes_confidence_high": 2,
+      "rule_includes_confidence_low": 0
+    },
+    "source_trace": {
+      "agreement_rate": 0.0,
+      "avg_risk_score": 0.05,
+      "avg_support_score": 0.838281,
+      "avg_usable_confidence": 0.796367,
+      "confidence_higher": 0,
+      "confidence_lower": 509,
+      "confidence_tier_counts": {
+        "B": 495,
+        "C": 14
+      },
+      "current_tier_counts": {
+        "A": 509
+      },
+      "disagreements": 509,
+      "exact_matches": 0,
+      "records": 509,
+      "rule_excludes_confidence_high": 0,
+      "rule_includes_confidence_low": 14
+    },
+    "table_candidate": {
+      "agreement_rate": 0.180747,
+      "avg_risk_score": 0.05,
+      "avg_support_score": 0.786454,
+      "avg_usable_confidence": 0.747131,
+      "confidence_higher": 417,
+      "confidence_lower": 0,
+      "confidence_tier_counts": {
+        "B": 417,
+        "C": 92
+      },
+      "current_tier_counts": {
+        "C": 509
+      },
+      "disagreements": 417,
+      "exact_matches": 92,
+      "records": 509,
+      "rule_excludes_confidence_high": 417,
+      "rule_includes_confidence_low": 0
+    },
+    "table_tile_text_refined": {
+      "agreement_rate": 0.466667,
+      "avg_risk_score": 0.05,
+      "avg_support_score": 0.763958,
+      "avg_usable_confidence": 0.72576,
+      "confidence_higher": 4,
+      "confidence_lower": 60,
+      "confidence_tier_counts": {
+        "B": 54,
+        "C": 66
+      },
+      "current_tier_counts": {
+        "A": 60,
+        "C": 60
+      },
+      "disagreements": 64,
+      "exact_matches": 56,
+      "records": 120,
+      "rule_excludes_confidence_high": 4,
+      "rule_includes_confidence_low": 10
+    },
+    "table_tiles": {
+      "agreement_rate": 1.0,
+      "avg_risk_score": 0.05,
+      "avg_support_score": 0.838129,
+      "avg_usable_confidence": 0.796223,
+      "confidence_higher": 0,
+      "confidence_lower": 0,
+      "confidence_tier_counts": {
+        "B": 286
+      },
+      "current_tier_counts": {
+        "B": 286
+      },
+      "disagreements": 0,
+      "exact_matches": 286,
+      "records": 286,
+      "rule_excludes_confidence_high": 286,
+      "rule_includes_confidence_low": 0
+    },
+    "visual_text": {
+      "agreement_rate": 0.0,
+      "avg_risk_score": 0.482,
+      "avg_support_score": 0.7795,
+      "avg_usable_confidence": 0.404285,
+      "confidence_higher": 1,
+      "confidence_lower": 24,
+      "confidence_tier_counts": {
+        "B": 1,
+        "D": 24
+      },
+      "current_tier_counts": {
+        "C": 25
+      },
+      "disagreements": 25,
+      "exact_matches": 0,
+      "records": 25,
+      "rule_excludes_confidence_high": 1,
+      "rule_includes_confidence_low": 0
+    }
+  },
+  "promotion_candidate_samples": [
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "part_catalog",
+      "page_id": "t_p_120_1176_p000078",
+      "rag_action": "exclude_from_rag",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000078:part_catalog",
+      "trust_tier": "C",
+      "usable_confidence": 0.767125
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "part_catalog",
+      "page_id": "t_p_120_1176_p000491",
+      "rag_action": "exclude_from_rag",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000491:part_catalog",
+      "trust_tier": "C",
+      "usable_confidence": 0.767125
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "visual_text",
+      "page_id": "t_p_120_1176_p000001",
+      "rag_action": "exclude_from_rag",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000001:visual_text",
+      "trust_tier": "C",
+      "usable_confidence": 0.767125
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000001",
+      "rag_action": "exclude_from_rag",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000001:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.703
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000003",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000003:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.798
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000004",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000004:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.7505
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000005",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000005:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.798
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000006",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000006:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.798
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000007",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000007:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.798
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000008",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000008:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.798
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000009",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000009:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.798
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000010",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000010:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.798
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000011",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000011:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.7505
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000013",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000013:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.7505
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000014",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000014:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.7505
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000015",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000015:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.7505
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000016",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000016:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.7505
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000017",
+      "rag_action": "exclude_from_rag",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000017:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.703
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000020",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000020:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.7505
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000021",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000021:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.7505
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000022",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000022:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.7505
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000023",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000023:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.7505
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000024",
+      "rag_action": "exclude_from_rag",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000024:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.703
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000026",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000026:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.7505
+    },
+    {
+      "confidence_tier": "B",
+      "evidence_layer": "table_candidate",
+      "page_id": "t_p_120_1176_p000027",
+      "rag_action": "exclude_until_table_tiles_exist",
+      "reason": "current rule excludes, confidence tier is A/B",
+      "record_id": "t_p_120_1176_p000027:table_candidate",
+      "trust_tier": "C",
+      "usable_confidence": 0.7505
+    }
+  ],
+  "records": 1813,
+  "rule_excludes_confidence_high_records": 710,
+  "rule_includes_confidence_low_records": 24,
+  "scored_records": 1813,
+  "source_trace_confidence_below_A_records": 509,
+  "status": "OK",
+  "version": "trace_lc_stage2_eval_v1",
+  "within_one_tier_rate": 0.986762,
+  "within_one_tier_records": 1789
+}

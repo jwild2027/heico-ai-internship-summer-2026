@@ -1,0 +1,83 @@
+{
+  "tiff_image_pages_v1_future": {
+    "payload_indexes": [
+      "page_id",
+      "document_id",
+      "ata_code",
+      "image_hash",
+      "page_role"
+    ],
+    "payload_schema": {
+      "ata_code": "keyword",
+      "document_id": "keyword",
+      "image_hash": "keyword",
+      "page_id": "keyword",
+      "page_role": "keyword",
+      "source_image_uri": "keyword",
+      "updated_at": "datetime",
+      "visibility_scope": "keyword"
+    },
+    "purpose": "Image embeddings for diagrams, empty OCR pages, uploaded images, and visual similarity.",
+    "status": "future_optional",
+    "vectors": {
+      "distance": "Cosine",
+      "size": 1024
+    }
+  },
+  "tiff_page_contexts_v1": {
+    "payload_indexes": [
+      "page_context_id",
+      "page_id",
+      "document_id",
+      "ata_code",
+      "page_role",
+      "topics",
+      "highlighted_parts"
+    ],
+    "payload_schema": {
+      "ata_code": "keyword",
+      "document_id": "keyword",
+      "highlighted_parts": "keyword[]",
+      "page_context_id": "keyword",
+      "page_id": "keyword",
+      "page_role": "keyword",
+      "score": "float",
+      "source_ocr_hash": "keyword",
+      "topics": "keyword[]",
+      "updated_at": "datetime",
+      "visibility_scope": "keyword"
+    },
+    "vectors": {
+      "distance": "Cosine",
+      "size": 1024
+    }
+  },
+  "tiff_rag_chunks_v1": {
+    "payload_indexes": [
+      "chunk_id",
+      "page_id",
+      "document_id",
+      "ata_code",
+      "source_link_id",
+      "part_numbers",
+      "chunk_type"
+    ],
+    "payload_schema": {
+      "ata_code": "keyword",
+      "chunk_id": "keyword",
+      "chunk_type": "keyword",
+      "document_id": "keyword",
+      "ocr_hash": "keyword",
+      "page_id": "keyword",
+      "part_numbers": "keyword[]",
+      "source_link_id": "keyword",
+      "text_hash": "keyword",
+      "updated_at": "datetime",
+      "visibility_scope": "keyword"
+    },
+    "vectors": {
+      "distance": "Cosine",
+      "size": 1024
+    }
+  }
+}

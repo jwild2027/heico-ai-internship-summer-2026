@@ -1,0 +1,361 @@
+{
+  "artifacts": {
+    "document_organization_export_json": "local_data/organization/export/organization_summary.json",
+    "document_organization_json": "local_data/organization/document_organization_audit.json",
+    "eval_csv": "local_data/evals/rag_eval_results.csv",
+    "eval_json": "local_data/evals/rag_eval_results.json",
+    "incremental_smoke_json": "local_data/incremental_smoke/changed_page_smoke.json",
+    "ocr_coverage_json": "local_data/ocr/ocr_coverage_audit.json",
+    "qa_csv": "local_data\\qa\\part_catalog_qa_all.csv",
+    "qa_json": "local_data\\qa\\part_catalog_qa_all.json",
+    "source_link_audit_json": "local_data/source_links/source_link_audit.json",
+    "source_links_csv": "local_data/source_links/rescarta_mapping_report.csv",
+    "source_links_json": "local_data/source_links/rescarta_mapping_report.json"
+  },
+  "config": {
+    "config_path": "local_config.yaml",
+    "db_path": "local_data/db/tiff_search.db",
+    "embed_model": "bge-m3:latest",
+    "questions_path": "local_data/evals/rag_eval_questions.json",
+    "rescarta_export_dir": "local_data/rescarta_exports"
+  },
+  "document_organization_export_summary": {
+    "ata_group_count": 5,
+    "empty_ocr_page_count": 14,
+    "files_written": 4,
+    "manual_count": 1,
+    "page_count": 509,
+    "pages_with_ata": 509,
+    "pages_with_parts": 454,
+    "pages_with_source_links": 509,
+    "pages_without_ata": 0,
+    "part_count": 636,
+    "part_mention_count": 1409,
+    "ready": true,
+    "source_link_count": 509,
+    "warnings": 1
+  },
+  "document_organization_summary": {
+    "ata_groups_total": 5,
+    "distinct_parts_total": 386,
+    "empty_ocr_pages": 14,
+    "logical_tree_ready": true,
+    "manuals_total": 1,
+    "pages_total": 509,
+    "pages_with_ata": 509,
+    "pages_with_parts": 364,
+    "pages_with_source_links": 509,
+    "pages_without_ata": 0,
+    "part_mentions_total": 981,
+    "source_links_total": 509,
+    "source_table": "source_links",
+    "source_table_exists": true,
+    "top_ata_groups": 5,
+    "top_parts": 20,
+    "warnings": 2
+  },
+  "dry_run": false,
+  "ended_at": "2026-05-28T16:14:05+00:00",
+  "eval_summary": {
+    "embeddings_used": 5,
+    "llm_used": 1,
+    "questions": 21,
+    "status_counts": {
+      "manual_review": 1,
+      "pass": 20
+    }
+  },
+  "incremental_summary": {
+    "backend_command_planned": true,
+    "changed_files": 1,
+    "changed_list": "local_data\\incremental_smoke\\changed_tiffs.txt",
+    "changed_list_count": 1,
+    "changed_page_command_used": true,
+    "dry_run": false,
+    "errors": 0,
+    "failed_commands": 0,
+    "full_backend_command_used": false,
+    "new_files": 0,
+    "ocr_command_skipped": true,
+    "ok": true,
+    "source_ata_code": "11-00-66",
+    "source_manual_id": "t_p_120_1176",
+    "source_page_id": "t_p_120_1176_p000042",
+    "source_page_label": "1021",
+    "state_committed": true,
+    "unchanged_files": 0,
+    "warnings": 0,
+    "work_dir": "local_data\\incremental_smoke"
+  },
+  "manifest_version": 1,
+  "ocr_coverage_summary": {
+    "distinct_manuals": 1,
+    "empty_ocr_files": 14,
+    "has_empty_or_short_ocr": true,
+    "local_ocr_paths_ready": true,
+    "min_chars": 20,
+    "missing_ocr_files": 0,
+    "missing_ocr_paths": 0,
+    "nonempty_ocr_files": 495,
+    "pages_total": 509,
+    "readable_ocr_files": 509,
+    "sample_rows": 12,
+    "short_ocr_files": 0,
+    "source_links_table_exists": true,
+    "total_ocr_chars": 444363,
+    "total_source_links": 509,
+    "unreadable_ocr_files": 0,
+    "warnings": 1
+  },
+  "pipeline": "tiff_backend_pipeline",
+  "qa_summary": {
+    "by_original_severity": {
+      "info": 57,
+      "ok": 43,
+      "review": 205
+    },
+    "by_report": {
+      "nomenclature_groups": 100,
+      "part_nomenclature_conflicts": 100,
+      "parts_missing_nomenclature": 100,
+      "suspicious_part_ata": 5
+    },
+    "by_severity": {
+      "info": 113,
+      "ok": 43,
+      "review": 149
+    },
+    "by_triage_action": {
+      "keep": 43,
+      "keep_as_info": 97,
+      "manual_review": 149,
+      "suppress_from_review_queue": 16
+    },
+    "by_triage_category": {
+      "compound_part_reference": 40,
+      "info": 57,
+      "non_part_figure_or_sheet_reference": 5,
+      "non_part_reference_or_noise": 10,
+      "non_part_slash_reference": 1,
+      "ok": 43,
+      "real_part_catalog_review": 75,
+      "real_part_nomenclature_conflict": 74
+    },
+    "needs_review": 149,
+    "review_queue_rows": 149,
+    "rows": 305,
+    "suppressed_from_review_queue": 16
+  },
+  "run_id": "20260528T161405Z",
+  "source_link_summary": {
+    "distinct_manuals": 1,
+    "local_or_placeholder_rescarta_urls": 509,
+    "missing_ocr_files": 0,
+    "missing_ocr_path": 0,
+    "missing_rescarta_url": 0,
+    "missing_source_url": 0,
+    "missing_tiff_files": 0,
+    "missing_tiff_path": 0,
+    "pages_total": 509,
+    "pages_without_source_links": 0,
+    "ready_for_local_source_review": true,
+    "ready_for_real_rescarta_deeplinks": false,
+    "rescarta_urls_with_template_braces": 0,
+    "sample_queries_checked": 2,
+    "sample_queries_without_results": 0,
+    "source_url_file_fallbacks": 0,
+    "total_links": 509,
+    "warnings": 1
+  },
+  "sqlite_counts": {
+    "manuals": 1,
+    "ocr_clean_pages": 509,
+    "pages": 509,
+    "part_catalog": 1019,
+    "part_catalog_clean": 504,
+    "part_mentions": 1409,
+    "rag_chunks": 538,
+    "rag_embeddings": 538,
+    "source_links": 509
+  },
+  "started_at": "2026-05-28T16:13:22+00:00",
+  "status": "ok",
+  "steps": [
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/build_tiff_search_index.py",
+        "--rescarta-export-dir",
+        "local_data/rescarta_exports",
+        "--output-db",
+        "local_data/db/tiff_search.db"
+      ],
+      "description": "Build SQLite search index from ResCarta staging export.",
+      "elapsed_seconds": 1.115719800000079,
+      "name": "search_index",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/rebuild_clean_part_catalog.py",
+        "--db-path",
+        "local_data/db/tiff_search.db"
+      ],
+      "description": "Clean OCR and rebuild the part catalog/nomenclature tables.",
+      "elapsed_seconds": 1.304024099954404,
+      "name": "part_catalog",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/build_rag_chunks.py",
+        "--db-path",
+        "local_data/db/tiff_search.db"
+      ],
+      "description": "Build RAG chunks from cleaned OCR/search records.",
+      "elapsed_seconds": 0.33938359993044287,
+      "name": "rag_chunks",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/build_rag_embeddings.py",
+        "--db-path",
+        "local_data/db/tiff_search.db",
+        "--model",
+        "bge-m3:latest"
+      ],
+      "description": "Build local Ollama embeddings for RAG chunks.",
+      "elapsed_seconds": 0.2771313999546692,
+      "name": "rag_embeddings",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/report_part_catalog_qa.py",
+        "--config",
+        "local_config.yaml"
+      ],
+      "description": "Write raw part catalog QA reports.",
+      "elapsed_seconds": 0.27014169993344694,
+      "name": "part_catalog_qa",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/triage_part_catalog_qa.py",
+        "--replace-all-report",
+        "--limit",
+        "12"
+      ],
+      "description": "Apply command-line QA severity triage and rewrite the normal QA CSV/JSON report.",
+      "elapsed_seconds": 0.2637687000678852,
+      "name": "part_catalog_qa_triage",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/audit_source_links.py",
+        "--strict",
+        "--write-json",
+        "--json-output",
+        "local_data/source_links/source_link_audit.json",
+        "--print-limit",
+        "5",
+        "--config",
+        "local_config.yaml"
+      ],
+      "description": "Verify every indexed page has auditable TIFF/OCR/ResCarta source links.",
+      "elapsed_seconds": 0.29812729998957366,
+      "name": "source_link_audit",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/audit_ocr_coverage.py",
+        "--strict",
+        "--write-json",
+        "--json-output",
+        "local_data/ocr/ocr_coverage_audit.json",
+        "--sample-limit",
+        "12",
+        "--no-refresh-manifest",
+        "--config",
+        "local_config.yaml"
+      ],
+      "description": "Verify source-linked pages have readable OCR text files and flag empty OCR pages for review.",
+      "elapsed_seconds": 0.4044333000201732,
+      "name": "ocr_coverage_audit",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/audit_document_organization.py",
+        "--strict",
+        "--write-json",
+        "--json-output",
+        "local_data/organization/document_organization_audit.json",
+        "--top-ata",
+        "20",
+        "--top-parts",
+        "20",
+        "--no-refresh-manifest",
+        "--config",
+        "local_config.yaml"
+      ],
+      "description": "Verify the logical manual/ATA/part organization layer is ready.",
+      "elapsed_seconds": 0.3553450000472367,
+      "name": "document_organization_audit",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/export_document_organization.py",
+        "--strict",
+        "--output-dir",
+        "local_data/organization/export",
+        "--config",
+        "local_config.yaml"
+      ],
+      "description": "Write UI/API-ready logical organization JSON artifacts.",
+      "elapsed_seconds": 0.36460030009038746,
+      "name": "document_organization_export",
+      "returncode": 0,
+      "skipped": false
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/evaluate_rag_questions.py",
+        "--config",
+        "local_config.yaml",
+        "--questions",
+        "local_data/evals/rag_eval_questions.json",
+        "--no-refresh-manifest"
+      ],
+      "description": "Run repeatable RAG evaluation questions.",
+      "elapsed_seconds": 37.42643290001433,
+      "name": "rag_eval",
+      "returncode": 0,
+      "skipped": false
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "checks": [
+    {
+      "detail": "summary=True; simulation=True; evidence=True",
+      "name": "artifacts_present",
+      "status": "OK"
+    },
+    {
+      "detail": "answer_md=True; answer_html=True",
+      "name": "answer_artifacts_present",
+      "status": "OK"
+    },
+    {
+      "detail": "status=OK",
+      "name": "status_ok",
+      "status": "OK"
+    },
+    {
+      "detail": "pages=3; minimum=1",
+      "name": "simulated_pages",
+      "status": "OK"
+    },
+    {
+      "detail": "summary=8; jsonl=8; minimum=1",
+      "name": "evidence_records",
+      "status": "OK"
+    },
+    {
+      "detail": "signals_used=2; minimum=1",
+      "name": "feedback_signals_used",
+      "status": "OK"
+    },
+    {
+      "detail": "groups_adjusted=2; minimum=1",
+      "name": "groups_adjusted",
+      "status": "OK"
+    },
+    {
+      "detail": "rank_changed=2; minimum=1",
+      "name": "rank_changed",
+      "status": "OK"
+    },
+    {
+      "detail": "unsafe=0; max=0",
+      "name": "unsafe_groups",
+      "status": "OK"
+    },
+    {
+      "detail": "excluded=0; max=0",
+      "name": "excluded_groups",
+      "status": "OK"
+    },
+    {
+      "detail": "mutations=0; max=0",
+      "name": "source_truth_mutations",
+      "status": "OK"
+    },
+    {
+      "detail": "context_warning_signals_used=0; max=0",
+      "name": "context_warning_signals_ignored",
+      "status": "OK"
+    },
+    {
+      "detail": "graph_nodes=13; pages=3",
+      "name": "graph_nodes",
+      "status": "OK"
+    },
+    {
+      "detail": "graph_edges=15; pages=3",
+      "name": "graph_edges",
+      "status": "OK"
+    },
+    {
+      "detail": "answer_changed=True",
+      "name": "answer_changed",
+      "status": "OK"
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "feedback_ask_answer_changed": true,
+    "feedback_ask_answer_html_present": true,
+    "feedback_ask_answer_md_present": true,
+    "feedback_ask_context_warning_signals_used": 0,
+    "feedback_ask_current_answer_pages": 3,
+    "feedback_ask_evidence_jsonl_records": 8,
+    "feedback_ask_excluded_groups": 0,
+    "feedback_ask_feedback_signals_used": 2,
+    "feedback_ask_graph_edges": 15,
+    "feedback_ask_graph_nodes": 13,
+    "feedback_ask_groups_adjusted": 2,
+    "feedback_ask_groups_boosted": 1,
+    "feedback_ask_groups_demoted": 1,
+    "feedback_ask_missing_ocr_path_groups": 0,
+    "feedback_ask_missing_source_url_groups": 0,
+    "feedback_ask_missing_tiff_path_groups": 0,
+    "feedback_ask_query_fingerprint": "part_number:120-50645-009",
+    "feedback_ask_rank_changed_records": 2,
+    "feedback_ask_sim_summary_present": true,
+    "feedback_ask_simulated_answer_pages": 3,
+    "feedback_ask_simulated_evidence_records": 8,
+    "feedback_ask_simulation_path": "local_data\\organization\\trace_net\\feedback_ask_simulation\\trace_net_feedback_ask_simulation.json",
+    "feedback_ask_simulation_present": true,
+    "feedback_ask_source_truth_mutations": 0,
+    "feedback_ask_status": "OK",
+    "feedback_ask_summary_path": "local_data\\organization\\trace_net\\feedback_ask_simulation\\trace_net_feedback_ask_simulation_summary.json",
+    "feedback_ask_top_page_after": "t_p_120_1176_p000003",
+    "feedback_ask_top_page_before": "t_p_120_1176_p000003",
+    "feedback_ask_unsafe_groups": 0,
+    "feedback_ask_version": "trace_net_feedback_ask_simulation_v1"
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:02:16Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000013.tif",
+    "relative_path": "00000013.tif"
+  },
+  "file": {
+    "file_name": "00000013.tif",
+    "extension": ".tif",
+    "file_size_bytes": 17197,
+    "modified_time_utc": "2026-05-22T19:14:53Z",
+    "sha256": "98ab693f2742d50f9aa84ae324eec13a89d8101b8880a117acb28f825ebe81b8"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 2550,
+    "height_px": 3299,
+    "dpi_x": 300.0,
+    "dpi_y": 300.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "maintenance_manual_ipl",
+    "confidence": 0.55,
+    "signals": [
+      "manual_title",
+      "component_title",
+      "revision",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": "ISED",
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.25
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "ocr",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "maintenance_manual_ipl",
+    "manufacturer": "EMBRAER",
+    "manual_title": "COMPONENT MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": null,
+    "publication_number": null,
+    "component_title": "=S IN THE MANUAL, AND ENTER NUMBER, DATE INSERTED",
+    "section_title": null,
+    "figure_title": null,
+    "figure_number": null,
+    "effectivity": null,
+    "ata_code": null,
+    "page_number": null,
+    "page_label": null,
+    "issue_date": null,
+    "revision_date": null,
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [
+      "RETAIN THIS RECORD IN FRONT OF MANUAL",
+      "AND INITIALS",
+      "RECORD OF REVISIONS",
+      "INTENANCE MANUAL",
+      "ED PARTS LIST"
+    ],
+    "metadata_confidence": 0.42
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\n=S IN THE MANUAL, AND ENTER NUMBER, DATE INSERTED\n\n[bottom_strip]\nRETAIN THIS RECORD IN FRONT OF MANUAL.\nON RECEIPT OF REVISION, INSERT REVISED PAGES IN THE MANUAL, AND ENTER NUMBER, DATE INSERTED\nAND INITIALS.\n\n[top_strip]\n< EMBRAER COMPONENT MAINTENANCE MANUAL\nWITH ILLUSTRATED PARTS LIST\nRECORD OF REVISIONS\nNo. ISSUED INSERTED No. ISSUED INSERTED\n\n[right_strip]\nINTENANCE MANUAL\nED PARTS LIST\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\nENTER NUMBER, DATE INSERTED",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1275,
+          1913,
+          2550,
+          3299
+        ],
+        "status": "ok",
+        "text": "=S IN THE MANUAL, AND ENTER NUMBER, DATE INSERTED",
+        "char_count": 49,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2309,
+          2550,
+          3299
+        ],
+        "status": "ok",
+        "text": "RETAIN THIS RECORD IN FRONT OF MANUAL.\nON RECEIPT OF REVISION, INSERT REVISED PAGES IN THE MANUAL, AND ENTER NUMBER, DATE INSERTED\nAND INITIALS.",
+        "char_count": 144,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          2550,
+          593
+        ],
+        "status": "ok",
+        "text": "< EMBRAER COMPONENT MAINTENANCE MANUAL\nWITH ILLUSTRATED PARTS LIST\nRECORD OF REVISIONS\nNo. ISSUED INSERTED No. ISSUED INSERTED",
+        "char_count": 126,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          1734,
+          0,
+          2550,
+          3299
+        ],
+        "status": "ok",
+        "text": "INTENANCE MANUAL\nED PARTS LIST\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\nENTER NUMBER, DATE INSERTED",
+        "char_count": 114,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": "ISED",
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0.2
+    },
+    "parsed_manual_metadata": {
+      "document_type": "maintenance_manual_ipl",
+      "manufacturer": "EMBRAER",
+      "manual_title": "COMPONENT MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": null,
+      "publication_number": null,
+      "component_title": "=S IN THE MANUAL, AND ENTER NUMBER, DATE INSERTED",
+      "section_title": null,
+      "figure_title": null,
+      "figure_number": null,
+      "effectivity": null,
+      "ata_code": null,
+      "page_number": null,
+      "page_label": null,
+      "issue_date": null,
+      "revision_date": null,
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [
+        "RETAIN THIS RECORD IN FRONT OF MANUAL",
+        "AND INITIALS",
+        "RECORD OF REVISIONS",
+        "INTENANCE MANUAL",
+        "ED PARTS LIST"
+      ],
+      "metadata_confidence": 0.42
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": "ISED",
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0.2
+    }
+  }
+}

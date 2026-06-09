@@ -1,0 +1,48 @@
+{
+  "artifacts_written": 5,
+  "generated_at": "2026-06-01T12:56:52.145911+00:00",
+  "notes": [
+    "Draft only; does not connect to production services.",
+    "PostgreSQL stores graph/catalog/source/feedback/quality metadata, not TIFF bytes.",
+    "Qdrant payloads must include page_id/chunk_id for graph traceability.",
+    "OpenSearch indexes denormalized OCR/chunk/context text for keyword retrieval."
+  ],
+  "opensearch_indices": [
+    "tiff_pages_v1",
+    "tiff_rag_chunks_v1",
+    "tiff_page_contexts_v1",
+    "tiff_parts_v1"
+  ],
+  "output_dir": "local_data\\architecture\\production_schema",
+  "postgres_tables": [
+    "documents",
+    "ata_sections",
+    "pages",
+    "source_files",
+    "source_links",
+    "ocr_records",
+    "parts",
+    "nomenclature",
+    "part_mentions",
+    "page_contexts",
+    "topics",
+    "page_context_topics",
+    "rag_chunks",
+    "rag_retrieval_events",
+    "user_questions",
+    "answers",
+    "answer_sources",
+    "user_feedback",
+    "qa_findings",
+    "file_state",
+    "pipeline_runs",
+    "quality_snapshots"
+  ],
+  "qdrant_collections": [
+    "tiff_rag_chunks_v1",
+    "tiff_page_contexts_v1",
+    "tiff_image_pages_v1_future"
+  ],
+  "schema_version": "tiff_storage_schema_v0_1",
+  "status": "OK"
+}

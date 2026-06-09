@@ -1,0 +1,222 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:02:18Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000014.tif",
+    "relative_path": "00000014.tif"
+  },
+  "file": {
+    "file_name": "00000014.tif",
+    "extension": ".tif",
+    "file_size_bytes": 21854,
+    "modified_time_utc": "2026-05-22T19:14:53Z",
+    "sha256": "77ae5e20f592a235de49f539402d8120f20e256289dd48969e91821b41a9a0f0"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 2550,
+    "height_px": 3299,
+    "dpi_x": 300.0,
+    "dpi_y": 300.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "maintenance_manual_ipl",
+    "confidence": 0.55,
+    "signals": [
+      "manual_title",
+      "component_title",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "maintenance_manual_ipl",
+    "manufacturer": "EMBRAER",
+    "manual_title": "COMPONENT MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": null,
+    "publication_number": null,
+    "component_title": "MALLY ISSUED TO PROVIDE GENERAL INFORMATION",
+    "section_title": null,
+    "figure_title": null,
+    "figure_number": null,
+    "effectivity": null,
+    "ata_code": null,
+    "page_number": null,
+    "page_label": null,
+    "issue_date": null,
+    "revision_date": null,
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [
+      "SERVICE BULLETIN RECORD",
+      "INTENANCE MANUAL",
+      "ED PARTS LIST",
+      "DATE OF",
+      "SLOTIVES INCORPORATION",
+      "INTO MANUAL",
+      "OVIDE GENERAL INFORMATION",
+      "ADDITIONAL PROCEDURAL OR",
+      "TO THE EQUIPMENT USERS"
+    ],
+    "metadata_confidence": 0.42
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\nMALLY ISSUED TO PROVIDE GENERAL INFORMATION.\nLETINS MAY CONTAIN ADDITIONAL PROCEDURAL OR\nUST BE DISSEMINATED TO THE EQUIPMENT USERS.\nTINS ARE LISTED ALONG WITH THE SERVICE BULLETINS\n\n[bottom_strip]\nNOTE: INFORMATION BULLETINS (IB) ARE NORMALLY ISSUED TO PROVIDE GENERAL INFORMATION.\nHOWEVER, CERTAIN INFORMATION BULLETINS MAY CONTAIN ADDITIONAL PROCEDURAL OR\nMODIFICATION INFORMATION WHICH MUST BE DISSEMINATED TO THE EQUIPMENT USERS.\nTHEREFORE, THESE INFORMATION BULLETINS ARE LISTED ALONG WITH THE SERVICE BULLETINS\nUNDER \u201cOTHER DIRECTIVES\u201d.\n\n[top_strip]\n< EMBRAER COMPONENT MAINTENANCE MANUAL\nWITH ILLUSTRATED PARTS LIST\nSERVICE BULLETIN RECORD\nSERVICE OTHER DATE OF SERVICE OTHER DATE OF\nBULLETIN INCORPORATION BULLETIN INCORPORATION\n\n[right_strip]\nINTENANCE MANUAL\nED PARTS LIST\nDATE OF\nSLOTIVES INCORPORATION\nINTO MANUAL\nOVIDE GENERAL INFORMATION.\nADDITIONAL PROCEDURAL OR\n) TO THE EQUIPMENT USERS.\n3 WITH THE SERVICE BULLETINS",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1275,
+          1913,
+          2550,
+          3299
+        ],
+        "status": "ok",
+        "text": "MALLY ISSUED TO PROVIDE GENERAL INFORMATION.\nLETINS MAY CONTAIN ADDITIONAL PROCEDURAL OR\nUST BE DISSEMINATED TO THE EQUIPMENT USERS.\nTINS ARE LISTED ALONG WITH THE SERVICE BULLETINS",
+        "char_count": 181,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2309,
+          2550,
+          3299
+        ],
+        "status": "ok",
+        "text": "NOTE: INFORMATION BULLETINS (IB) ARE NORMALLY ISSUED TO PROVIDE GENERAL INFORMATION.\nHOWEVER, CERTAIN INFORMATION BULLETINS MAY CONTAIN ADDITIONAL PROCEDURAL OR\nMODIFICATION INFORMATION WHICH MUST BE DISSEMINATED TO THE EQUIPMENT USERS.\nTHEREFORE, THESE INFORMATION BULLETINS ARE LISTED ALONG WITH THE SERVICE BULLETINS\nUNDER \u201cOTHER DIRECTIVES\u201d.",
+        "char_count": 345,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          2550,
+          593
+        ],
+        "status": "ok",
+        "text": "< EMBRAER COMPONENT MAINTENANCE MANUAL\nWITH ILLUSTRATED PARTS LIST\nSERVICE BULLETIN RECORD\nSERVICE OTHER DATE OF SERVICE OTHER DATE OF\nBULLETIN INCORPORATION BULLETIN INCORPORATION",
+        "char_count": 180,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          1734,
+          0,
+          2550,
+          3299
+        ],
+        "status": "ok",
+        "text": "INTENANCE MANUAL\nED PARTS LIST\nDATE OF\nSLOTIVES INCORPORATION\nINTO MANUAL\nOVIDE GENERAL INFORMATION.\nADDITIONAL PROCEDURAL OR\n) TO THE EQUIPMENT USERS.\n3 WITH THE SERVICE BULLETINS",
+        "char_count": 180,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "maintenance_manual_ipl",
+      "manufacturer": "EMBRAER",
+      "manual_title": "COMPONENT MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": null,
+      "publication_number": null,
+      "component_title": "MALLY ISSUED TO PROVIDE GENERAL INFORMATION",
+      "section_title": null,
+      "figure_title": null,
+      "figure_number": null,
+      "effectivity": null,
+      "ata_code": null,
+      "page_number": null,
+      "page_label": null,
+      "issue_date": null,
+      "revision_date": null,
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [
+        "SERVICE BULLETIN RECORD",
+        "INTENANCE MANUAL",
+        "ED PARTS LIST",
+        "DATE OF",
+        "SLOTIVES INCORPORATION",
+        "INTO MANUAL",
+        "OVIDE GENERAL INFORMATION",
+        "ADDITIONAL PROCEDURAL OR",
+        "TO THE EQUIPMENT USERS"
+      ],
+      "metadata_confidence": 0.42
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

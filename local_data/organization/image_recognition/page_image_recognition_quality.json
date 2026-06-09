@@ -1,0 +1,118 @@
+{
+  "checks": [
+    {
+      "message": "Page image-recognition audit JSON is present at local_data\\organization\\image_recognition\\page_image_recognition_audit.json.",
+      "name": "page_image_audit_present",
+      "status": "OK"
+    },
+    {
+      "message": "Page image-recognition audit status is ok .",
+      "name": "page_image_audit_status",
+      "status": "OK"
+    },
+    {
+      "message": "Pages checked=509; minimum is 1.",
+      "name": "page_image_pages_checked",
+      "status": "OK"
+    },
+    {
+      "message": "Readable images=509/509.",
+      "name": "page_image_readable_coverage",
+      "status": "OK"
+    },
+    {
+      "message": "Missing image paths=0; max allowed=0.",
+      "name": "page_image_missing_paths",
+      "status": "OK"
+    },
+    {
+      "message": "Missing image files=0; max allowed=0.",
+      "name": "page_image_missing_files",
+      "status": "OK"
+    },
+    {
+      "message": "Unreadable images=0; max allowed=0.",
+      "name": "page_image_unreadable",
+      "status": "OK"
+    },
+    {
+      "message": "Blank/nearly blank pages=14; max allowed=20.",
+      "name": "page_image_blank_count",
+      "status": "OK"
+    },
+    {
+      "message": "Classified pages=509; pages checked=509.",
+      "name": "page_image_classification_counts",
+      "status": "OK"
+    },
+    {
+      "message": "Role pages=509; unknown roles=0; pages checked=509.",
+      "name": "page_image_role_counts",
+      "status": "OK"
+    },
+    {
+      "message": "Likely visual pages=493; likely figure/diagram pages=493.",
+      "name": "page_image_visual_signals",
+      "status": "OK"
+    },
+    {
+      "message": "Likely table/grid pages=331; table/grid classifications=331.",
+      "name": "page_image_table_signals",
+      "status": "OK"
+    },
+    {
+      "message": "Average ink ratio=0.0680; large components=17735.",
+      "name": "page_image_ink_signal",
+      "status": "OK"
+    },
+    {
+      "message": "Graph overlay nodes present=True count=513.",
+      "name": "page_image_graph_overlay_nodes",
+      "status": "OK"
+    },
+    {
+      "message": "Graph overlay edges present=True count=1018.",
+      "name": "page_image_graph_overlay_edges",
+      "status": "OK"
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "page_image_avg_ink_ratio": 0.067984,
+    "page_image_blank_pages": 14,
+    "page_image_class_likely_blank": 14,
+    "page_image_class_likely_figure_or_diagram": 162,
+    "page_image_class_likely_table_or_grid": 331,
+    "page_image_class_likely_text_or_parts_list": 2,
+    "page_image_classified_pages": 509,
+    "page_image_graph_overlay_edges": 1018,
+    "page_image_graph_overlay_edges_path": "local_data\\organization\\image_recognition\\image_recognition_graph_edges.json",
+    "page_image_graph_overlay_edges_present": true,
+    "page_image_graph_overlay_nodes": 513,
+    "page_image_graph_overlay_nodes_path": "local_data\\organization\\image_recognition\\image_recognition_graph_nodes.json",
+    "page_image_graph_overlay_nodes_present": true,
+    "page_image_likely_figure_pages": 493,
+    "page_image_likely_image_heavy_pages": 0,
+    "page_image_likely_table_pages": 331,
+    "page_image_likely_text_pages": 285,
+    "page_image_likely_visual_pages": 493,
+    "page_image_median_ink_ratio": 0.070403,
+    "page_image_missing_image_files": 0,
+    "page_image_missing_image_paths": 0,
+    "page_image_pages_checked": 509,
+    "page_image_readable_images": 509,
+    "page_image_recognition_audit_path": "local_data\\organization\\image_recognition\\page_image_recognition_audit.json",
+    "page_image_recognition_audit_present": true,
+    "page_image_recognition_audit_status": "ok",
+    "page_image_role_blank": 14,
+    "page_image_role_figure": 157,
+    "page_image_role_front_matter": 10,
+    "page_image_role_pages": 509,
+    "page_image_role_parts_list": 290,
+    "page_image_role_procedure": 28,
+    "page_image_role_table": 10,
+    "page_image_role_unknown": 0,
+    "page_image_total_large_components": 17735,
+    "page_image_unreadable_images": 0
+  }
+}

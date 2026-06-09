@@ -1,0 +1,359 @@
+{
+  "confidence": {
+    "formula": "support_score = weighted(source_trace, graph_support, ocr_support, part_catalog, extraction_layer); usable_confidence = support_score * (1 - risk_score)",
+    "layers": {
+      "part_catalog": {
+        "default_rag_action": "include_as_verified_part_evidence",
+        "hard_blocks": [
+          "catalog_conflict",
+          "invalid_part_pattern",
+          "source_untraceable"
+        ],
+        "hard_promotions": [
+          "catalog_verified_and_source_trace_verified",
+          "same_page_part_mention_present"
+        ],
+        "max_auto_tier": "A",
+        "min_rag_tier": "A",
+        "note": "Catalog support dominates verified part evidence.",
+        "purpose": "verified_part_evidence",
+        "thresholds": {
+          "A": 0.82,
+          "B": 0.66,
+          "C": 0.42
+        },
+        "weights": {
+          "extraction_layer": 0.05,
+          "graph_support": 0.2,
+          "ocr_support": 0.1,
+          "part_catalog": 0.4,
+          "source_trace": 0.25
+        }
+      },
+      "source_text_evidence": {
+        "default_rag_action": "include_as_source_text_evidence",
+        "hard_blocks": [
+          "source_untraceable",
+          "missing_ocr_text",
+          "unsafe_candidate"
+        ],
+        "hard_promotions": [
+          "ocr_text_present_and_source_trace_verified"
+        ],
+        "max_auto_tier": "A",
+        "min_rag_tier": "B",
+        "note": "Source text is source-backed OCR/page text; OCR signal should dominate but source trace remains required.",
+        "purpose": "source_backed_text_evidence",
+        "thresholds": {
+          "A": 0.8,
+          "B": 0.65,
+          "C": 0.45
+        },
+        "weights": {
+          "extraction_layer": 0.05,
+          "graph_support": 0.2,
+          "ocr_support": 0.4,
+          "part_catalog": 0.05,
+          "source_trace": 0.3
+        }
+      },
+      "source_trace": {
+        "default_rag_action": "include_as_source_evidence",
+        "hard_blocks": [
+          "missing_page",
+          "missing_tiff",
+          "missing_source_url",
+          "source_untraceable"
+        ],
+        "hard_promotions": [
+          "source_trace_verified",
+          "page_exists_and_source_paths_present"
+        ],
+        "max_auto_tier": "A",
+        "min_rag_tier": "A",
+        "note": "Source trace proves page/source existence, not claim truth; OCR/catalog absence should not demote source truth.",
+        "purpose": "source_truth",
+        "thresholds": {
+          "A": 0.75,
+          "B": 0.6,
+          "C": 0.4
+        },
+        "weights": {
+          "extraction_layer": 0.05,
+          "graph_support": 0.2,
+          "ocr_support": 0.05,
+          "part_catalog": 0.0,
+          "source_trace": 0.7
+        }
+      },
+      "table_candidate": {
+        "default_rag_action": "exclude_until_table_tiles_exist",
+        "hard_blocks": [
+          "graph_gate_blocked",
+          "layout_gate_blocked",
+          "figure_without_table_trait",
+          "source_untraceable"
+        ],
+        "hard_promotions": [
+          "passed_graph_gate_and_passed_layout_gate"
+        ],
+        "max_auto_tier": "B",
+        "min_rag_tier": null,
+        "note": "High confidence means process priority, not factual/RAG truth.",
+        "purpose": "routing_signal",
+        "thresholds": {
+          "A": 0.9,
+          "B": 0.66,
+          "C": 0.4
+        },
+        "weights": {
+          "extraction_layer": 0.4,
+          "graph_support": 0.4,
+          "ocr_support": 0.05,
+          "part_catalog": 0.0,
+          "source_trace": 0.15
+        }
+      },
+      "table_tile_text_refined": {
+        "default_rag_action": "include_as_derived_context",
+        "hard_blocks": [
+          "index_label_as_part",
+          "metadata_leakage",
+          "prompt_template_leakage",
+          "source_untraceable",
+          "unjoined_derived_context"
+        ],
+        "hard_promotions": [
+          "catalog_supported_part_numbers_found_and_source_trace_verified"
+        ],
+        "max_auto_tier": "A",
+        "min_rag_tier": "B",
+        "note": "A-tier inside this layer can still route as derived context only, not canonical source truth.",
+        "purpose": "derived_table_text_and_part_evidence",
+        "thresholds": {
+          "A": 0.82,
+          "B": 0.64,
+          "C": 0.4
+        },
+        "weights": {
+          "extraction_layer": 0.1,
+          "graph_support": 0.2,
+          "ocr_support": 0.1,
+          "part_catalog": 0.35,
+          "source_trace": 0.25
+        }
+      },
+      "table_tiles": {
+        "default_rag_action": "exclude_until_table_text_exists",
+        "hard_blocks": [
+          "missing_tile_images",
+          "missing_preprocessed_image",
+          "source_untraceable"
+        ],
+        "hard_promotions": [
+          "tile_images_created_and_source_trace_verified"
+        ],
+        "max_auto_tier": "B",
+        "min_rag_tier": null,
+        "note": "Tiles prove preprocessing happened; table text still needs extraction/refinement before RAG.",
+        "purpose": "preprocessing_artifact",
+        "thresholds": {
+          "A": 0.9,
+          "B": 0.65,
+          "C": 0.4
+        },
+        "weights": {
+          "extraction_layer": 0.5,
+          "graph_support": 0.25,
+          "ocr_support": 0.0,
+          "part_catalog": 0.0,
+          "source_trace": 0.25
+        }
+      },
+      "visual_text": {
+        "default_rag_action": "include_as_derived_context",
+        "hard_blocks": [
+          "metadata_leakage",
+          "prompt_template_leakage",
+          "refusal_like",
+          "section_bleed_unrepaired",
+          "source_untraceable"
+        ],
+        "hard_promotions": [
+          "low_risk_and_graph_support_strong_and_source_trace_verified"
+        ],
+        "max_auto_tier": "B",
+        "min_rag_tier": "B",
+        "note": "Vision model output remains conservative and should not become canonical source truth.",
+        "purpose": "model_derived_visual_context",
+        "thresholds": {
+          "A": 0.92,
+          "B": 0.74,
+          "C": 0.45
+        },
+        "weights": {
+          "extraction_layer": 0.15,
+          "graph_support": 0.3,
+          "ocr_support": 0.2,
+          "part_catalog": 0.1,
+          "source_trace": 0.25
+        }
+      }
+    },
+    "weight_keys": [
+      "source_trace",
+      "graph_support",
+      "ocr_support",
+      "part_catalog",
+      "extraction_layer"
+    ]
+  },
+  "created_at": "2026-06-03T16:15:36Z",
+  "feedback_ranking": {
+    "cap_max": 15.0,
+    "cap_min": -15.0,
+    "eligible_only_when": [
+      "context_status_valid",
+      "policy_signal_eligible_true"
+    ],
+    "expert_multiplier": 2.0,
+    "ignore_when": [
+      "context_warning",
+      "needs_review",
+      "source_truth_mutation_requested"
+    ],
+    "note": "Feedback can reorder close safe results but cannot prove source truth or include unsafe records.",
+    "reason_weights": {
+      "answer_correct": 6.0,
+      "answer_too_vague": -3.0,
+      "citation_not_supporting_answer": -7.0,
+      "citation_useful": 4.0,
+      "expected_page_boost": 8.0,
+      "source_helpful": 5.0,
+      "wrong_page": -8.0,
+      "wrong_part": -10.0
+    }
+  },
+  "global_safety_gates": [
+    "source_untraceable_records_must_not_enter_rag",
+    "metadata_leakage_records_must_not_enter_rag",
+    "prompt_template_leakage_records_must_not_enter_rag",
+    "refusal_like_records_must_not_enter_rag",
+    "D_tier_records_must_not_enter_rag",
+    "routing_only_layers_must_not_enter_rag_directly",
+    "feedback_must_not_mutate_source_truth",
+    "context_warning_feedback_must_not_adjust_ranking"
+  ],
+  "mode": "advisory_config_only",
+  "notes": [
+    "This policy does not apply weights to production ranking by itself.",
+    "Downstream modules must opt in explicitly and pass quality gates.",
+    "Confidence, retrieval ranking, and feedback adjustment weights are intentionally separate.",
+    "Only TRACE-Net RAG-eligible candidates should be searched, embedded, or ranked for answers."
+  ],
+  "purpose": "versioned_weight_policy_for_trace_net_confidence_retrieval_and_feedback",
+  "retrieval_ranking": {
+    "bucket_bonuses": {
+      "derived_context": 3.0,
+      "source_evidence": 2.0,
+      "source_text_evidence": 5.0,
+      "verified_part_evidence": 8.0
+    },
+    "confidence_bonus": {
+      "multiplier": 3.0,
+      "source": "usable_confidence"
+    },
+    "evidence_diversity": {
+      "max_bucket_bonus": 12.0,
+      "note": "Pages supported by multiple safe evidence buckets should outrank equally matching single-evidence pages.",
+      "per_bucket_bonus": 4.0
+    },
+    "exact_match_bonuses": {
+      "all_query_terms_matched": 10.0,
+      "exact_page_id_match": 25.0,
+      "exact_part_number_match": 20.0,
+      "exact_phrase_match": 8.0,
+      "per_matched_term": 2.0
+    },
+    "group_score_formula": "best_chunk_score + evidence_diversity_bonus + exact_match_bonus + bucket_bonus + confidence_bonus + feedback_adjustment"
+  },
+  "risk_combination": {
+    "method": "max",
+    "note": "Use max risk rather than average so one severe failure is not averaged away."
+  },
+  "risk_scores": {
+    "catalog_conflict": 0.8,
+    "context_warning_feedback": 0.6,
+    "graph_conflict": 0.7,
+    "hallucination_risk_high": 0.7,
+    "hallucination_risk_low": 0.4,
+    "low_risk": 0.05,
+    "metadata_leakage": 1.0,
+    "noisy_ocr_or_tile_text": 0.3,
+    "prompt_template_leakage": 1.0,
+    "refusal_like": 0.95,
+    "source_untraceable": 1.0,
+    "unsupported_specific_claim": 0.5
+  },
+  "rollout": {
+    "production_ranking_changed": false,
+    "recommended_next": "simulate_weighted_search_before_applying_any_ranking_changes",
+    "source_truth_mutation_allowed": false,
+    "stage": "policy_config_only"
+  },
+  "status": "OK",
+  "validation": {
+    "checks": [
+      "OK version: trace_net_weights_policy_v1",
+      "OK required_layers: 7 present",
+      "OK weights[part_catalog]: sum=1.0",
+      "OK thresholds[part_catalog]: A=0.82 B=0.66 C=0.42",
+      "OK weights[source_text_evidence]: sum=1.0",
+      "OK thresholds[source_text_evidence]: A=0.8 B=0.65 C=0.45",
+      "OK weights[source_trace]: sum=1.0",
+      "OK thresholds[source_trace]: A=0.75 B=0.6 C=0.4",
+      "OK weights[table_candidate]: sum=1.0",
+      "OK thresholds[table_candidate]: A=0.9 B=0.66 C=0.4",
+      "OK weights[table_tile_text_refined]: sum=1.0",
+      "OK thresholds[table_tile_text_refined]: A=0.82 B=0.64 C=0.4",
+      "OK weights[table_tiles]: sum=1.0",
+      "OK thresholds[table_tiles]: A=0.9 B=0.65 C=0.4",
+      "OK weights[visual_text]: sum=1.0",
+      "OK thresholds[visual_text]: A=0.92 B=0.74 C=0.45",
+      "OK source_trace_policy: max=A and source evidence action",
+      "OK source_text_policy: OCR-weighted source text evidence present",
+      "OK visual_text_policy: conservative max=B and prompt leakage hard block",
+      "OK table_candidate_policy: routing/preprocessing only, no direct RAG",
+      "OK table_tiles_policy: routing/preprocessing only, no direct RAG",
+      "OK table_tile_text_policy: B+ routes as derived context",
+      "OK risk_scores: count=12",
+      "OK risk_combination: max",
+      "OK retrieval_bucket_bonuses: required buckets present",
+      "OK feedback_reason_weights: positive and negative signs sane",
+      "OK feedback_caps: -15.0..15.0",
+      "OK feedback_context_validation: valid-only and warning ignored",
+      "OK global_safety_gates: count=8",
+      "OK rollout: config only, no production ranking/source truth mutation"
+    ],
+    "errors": [],
+    "metrics": {
+      "error_count": 0,
+      "feedback_reason_count": 8,
+      "global_safety_gate_count": 8,
+      "layer_count": 7,
+      "missing_layers": [],
+      "retrieval_bucket_bonus_count": 4,
+      "risk_score_count": 12,
+      "weight_sums": {
+        "part_catalog": 1.0,
+        "source_text_evidence": 1.0,
+        "source_trace": 1.0,
+        "table_candidate": 1.0,
+        "table_tile_text_refined": 1.0,
+        "table_tiles": 1.0,
+        "visual_text": 1.0
+      }
+    }
+  },
+  "version": "trace_net_weights_policy_v1"
+}

@@ -1,0 +1,219 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:12:51Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000496.tif",
+    "relative_path": "00000496.tif"
+  },
+  "file": {
+    "file_name": "00000496.tif",
+    "extension": ".tif",
+    "file_size_bytes": 35218,
+    "modified_time_utc": "2026-05-22T19:14:57Z",
+    "sha256": "938ebe31679a14910b7d8da702ce5deabf8e02d0b2185abf750b2401195c4188"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.98,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "120TP250009.MCE",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "A3 - POS 2 +452",
+    "section_title": null,
+    "figure_title": "Typical Repair to Cracks in Triple Passenger Seat Laterals",
+    "figure_number": "606",
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": 622,
+    "page_label": "622",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [
+      "A4 - POS 2 459",
+      "A5 - POS 1 02302",
+      "A6 - POS 1 02902",
+      "LAY UP DAMAGED AB -- POS 109902",
+      "SECTION B B",
+      "VIEW A"
+    ],
+    "metadata_confidence": 0.98
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\nAl - POS 1 09302\nSZ | no - Pos 1 or009\n>\nA3 - POS 2 +452\nA4 - POS 2 459\nA5 - POS 1 02302\nA6 - POS 1 02902\n120TP250009.MCE\nle Passenger Seat Laterals\n3506\no 0 0 Page 622\nT.P. 120/1176 Sep 30/98\n\n[bottom_strip]\nf j PVT FT NAN at\nA5 - POS 1 02302\nLAY UP DAMAGED AB -\u2014 POS 109902\nSECTION B B\n120TP250009.MCE\nTypical Repair to Cracks in Triple Passenger Seat Laterals\nFigure 606\nEFFECTIVITY: ALL\n25 21 00 Page 622\nT.P. 120/1176 Sep 30/98\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n\n[right_strip]\nVIEW A\n11 - POS 1 02302\n2 \u2014- POS 1 02902\n3 - POS 2 14452\n4- POS 2 452\n5 \u2014 POS 1 02302\n6 - POS 1 02902\n120TP250009.MCE\nrals\n00 Page 622\n1176 Sep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "Al - POS 1 09302\nSZ | no - Pos 1 or009\n>\nA3 - POS 2 +452\nA4 - POS 2 459\nA5 - POS 1 02302\nA6 - POS 1 02902\n120TP250009.MCE\nle Passenger Seat Laterals\n3506\no 0 0 Page 622\nT.P. 120/1176 Sep 30/98",
+        "char_count": 192,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "f j PVT FT NAN at\nA5 - POS 1 02302\nLAY UP DAMAGED AB -\u2014 POS 109902\nSECTION B B\n120TP250009.MCE\nTypical Repair to Cracks in Triple Passenger Seat Laterals\nFigure 606\nEFFECTIVITY: ALL\n25 21 00 Page 622\nT.P. 120/1176 Sep 30/98",
+        "char_count": 223,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST",
+        "char_count": 57,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "VIEW A\n11 - POS 1 02302\n2 \u2014- POS 1 02902\n3 - POS 2 14452\n4- POS 2 452\n5 \u2014 POS 1 02302\n6 - POS 1 02902\n120TP250009.MCE\nrals\n00 Page 622\n1176 Sep 30/98",
+        "char_count": 149,
+        "error": "Image too small to scale!! (1x36 vs min width of 3)\r\nLine cannot be recognized!!"
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "120TP250009.MCE",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "A3 - POS 2 +452",
+      "section_title": null,
+      "figure_title": "Typical Repair to Cracks in Triple Passenger Seat Laterals",
+      "figure_number": "606",
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": 622,
+      "page_label": "622",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [
+        "A4 - POS 2 459",
+        "A5 - POS 1 02302",
+        "A6 - POS 1 02902",
+        "LAY UP DAMAGED AB -- POS 109902",
+        "SECTION B B",
+        "VIEW A"
+      ],
+      "metadata_confidence": 0.98
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

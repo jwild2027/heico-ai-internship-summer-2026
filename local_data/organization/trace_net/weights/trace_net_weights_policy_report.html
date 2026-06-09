@@ -1,0 +1,125 @@
+<!doctype html>
+<html><head><meta charset='utf-8'><title>TRACE-Net Weights Policy v1</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 24px; line-height: 1.4; }
+pre { background: #f6f8fa; padding: 6px; overflow-x: auto; }
+code { background: #f6f8fa; padding: 1px 3px; }
+</style></head><body><h1>TRACE-Net Weights Policy v1</h1>
+
+<p>Status: **OK**</p>
+<p>Version: `trace_net_weights_policy_v1`</p>
+
+<h2>Purpose</h2>
+
+<p>This policy stores the first official TRACE-Net weight recommendations for confidence scoring, retrieval ranking, and validated feedback adjustments.</p>
+
+<p>It is **configuration only**. It does not change production ranking or source truth by itself.</p>
+
+<h2>Confidence layer weights</h2>
+
+<pre>| Layer | Source | Graph | OCR | Catalog | Extraction | A | B | C | Max tier | RAG action |</pre>
+<p>|---|---:|---:|---:|---:|---:|---:|---:|---:|---|---|</p>
+<pre>| source_trace | 0.70 | 0.20 | 0.05 | 0.00 | 0.05 | 0.75 | 0.6 | 0.4 | A | include_as_source_evidence |</pre>
+<pre>| source_text_evidence | 0.30 | 0.20 | 0.40 | 0.05 | 0.05 | 0.8 | 0.65 | 0.45 | A | include_as_source_text_evidence |</pre>
+<pre>| part_catalog | 0.25 | 0.20 | 0.10 | 0.40 | 0.05 | 0.82 | 0.66 | 0.42 | A | include_as_verified_part_evidence |</pre>
+<pre>| table_tile_text_refined | 0.25 | 0.20 | 0.10 | 0.35 | 0.10 | 0.82 | 0.64 | 0.4 | A | include_as_derived_context |</pre>
+<pre>| visual_text | 0.25 | 0.30 | 0.20 | 0.10 | 0.15 | 0.92 | 0.74 | 0.45 | B | include_as_derived_context |</pre>
+<pre>| table_candidate | 0.15 | 0.40 | 0.05 | 0.00 | 0.40 | 0.9 | 0.66 | 0.4 | B | exclude_until_table_tiles_exist |</pre>
+<pre>| table_tiles | 0.25 | 0.25 | 0.00 | 0.00 | 0.50 | 0.9 | 0.65 | 0.4 | B | exclude_until_table_text_exists |</pre>
+
+<h2>Retrieval ranking weights</h2>
+
+<p>Bucket bonuses:</p>
+<p>• `derived_context`: +3.0</p>
+<p>• `source_evidence`: +2.0</p>
+<p>• `source_text_evidence`: +5.0</p>
+<p>• `verified_part_evidence`: +8.0</p>
+
+<p>Exact-match bonuses:</p>
+<p>• `all_query_terms_matched`: +10.0</p>
+<p>• `exact_page_id_match`: +25.0</p>
+<p>• `exact_part_number_match`: +20.0</p>
+<p>• `exact_phrase_match`: +8.0</p>
+<p>• `per_matched_term`: +2.0</p>
+
+<h2>Feedback ranking weights</h2>
+
+<p>• `answer_correct`: +6</p>
+<p>• `answer_too_vague`: -3</p>
+<p>• `citation_not_supporting_answer`: -7</p>
+<p>• `citation_useful`: +4</p>
+<p>• `expected_page_boost`: +8</p>
+<p>• `source_helpful`: +5</p>
+<p>• `wrong_page`: -8</p>
+<p>• `wrong_part`: -10</p>
+<p>• feedback cap: `-15.0` to `15.0`</p>
+
+<h2>Risk scores</h2>
+
+<p>• `catalog_conflict`: 0.8</p>
+<p>• `context_warning_feedback`: 0.6</p>
+<p>• `graph_conflict`: 0.7</p>
+<p>• `hallucination_risk_high`: 0.7</p>
+<p>• `hallucination_risk_low`: 0.4</p>
+<p>• `low_risk`: 0.05</p>
+<p>• `metadata_leakage`: 1.0</p>
+<p>• `noisy_ocr_or_tile_text`: 0.3</p>
+<p>• `prompt_template_leakage`: 1.0</p>
+<p>• `refusal_like`: 0.95</p>
+<p>• `source_untraceable`: 1.0</p>
+<p>• `unsupported_specific_claim`: 0.5</p>
+
+<h2>Global safety gates</h2>
+
+<p>• `source_untraceable_records_must_not_enter_rag`</p>
+<p>• `metadata_leakage_records_must_not_enter_rag`</p>
+<p>• `prompt_template_leakage_records_must_not_enter_rag`</p>
+<p>• `refusal_like_records_must_not_enter_rag`</p>
+<p>• `D_tier_records_must_not_enter_rag`</p>
+<p>• `routing_only_layers_must_not_enter_rag_directly`</p>
+<p>• `feedback_must_not_mutate_source_truth`</p>
+<p>• `context_warning_feedback_must_not_adjust_ranking`</p>
+
+<h2>Validation checks</h2>
+
+<p>• OK version: trace_net_weights_policy_v1</p>
+<p>• OK required_layers: 7 present</p>
+<p>• OK weights[part_catalog]: sum=1.0</p>
+<p>• OK thresholds[part_catalog]: A=0.82 B=0.66 C=0.42</p>
+<p>• OK weights[source_text_evidence]: sum=1.0</p>
+<p>• OK thresholds[source_text_evidence]: A=0.8 B=0.65 C=0.45</p>
+<p>• OK weights[source_trace]: sum=1.0</p>
+<p>• OK thresholds[source_trace]: A=0.75 B=0.6 C=0.4</p>
+<p>• OK weights[table_candidate]: sum=1.0</p>
+<p>• OK thresholds[table_candidate]: A=0.9 B=0.66 C=0.4</p>
+<p>• OK weights[table_tile_text_refined]: sum=1.0</p>
+<p>• OK thresholds[table_tile_text_refined]: A=0.82 B=0.64 C=0.4</p>
+<p>• OK weights[table_tiles]: sum=1.0</p>
+<p>• OK thresholds[table_tiles]: A=0.9 B=0.65 C=0.4</p>
+<p>• OK weights[visual_text]: sum=1.0</p>
+<p>• OK thresholds[visual_text]: A=0.92 B=0.74 C=0.45</p>
+<p>• OK source_trace_policy: max=A and source evidence action</p>
+<p>• OK source_text_policy: OCR-weighted source text evidence present</p>
+<p>• OK visual_text_policy: conservative max=B and prompt leakage hard block</p>
+<p>• OK table_candidate_policy: routing/preprocessing only, no direct RAG</p>
+<p>• OK table_tiles_policy: routing/preprocessing only, no direct RAG</p>
+<p>• OK table_tile_text_policy: B+ routes as derived context</p>
+<p>• OK risk_scores: count=12</p>
+<p>• OK risk_combination: max</p>
+<p>• OK retrieval_bucket_bonuses: required buckets present</p>
+<p>• OK feedback_reason_weights: positive and negative signs sane</p>
+<p>• OK feedback_caps: -15.0..15.0</p>
+<p>• OK feedback_context_validation: valid-only and warning ignored</p>
+<p>• OK global_safety_gates: count=8</p>
+<p>• OK rollout: config only, no production ranking/source truth mutation</p>
+
+<h2>Metrics</h2>
+
+<p>• **error_count**: `0`</p>
+<p>• **feedback_reason_count**: `8`</p>
+<p>• **global_safety_gate_count**: `8`</p>
+<p>• **layer_count**: `7`</p>
+<p>• **missing_layers**: `[]`</p>
+<p>• **retrieval_bucket_bonus_count**: `4`</p>
+<p>• **risk_score_count**: `12`</p>
+<p>• **weight_sums**: `{&#x27;part_catalog&#x27;: 1.0, &#x27;source_text_evidence&#x27;: 1.0, &#x27;source_trace&#x27;: 1.0, &#x27;table_candidate&#x27;: 1.0, &#x27;table_tile_text_refined&#x27;: 1.0, &#x27;table_tiles&#x27;: 1.0, &#x27;visual_text&#x27;: 1.0}`</p></body></html>

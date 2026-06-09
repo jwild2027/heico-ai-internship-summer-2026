@@ -1,0 +1,98 @@
+{
+  "checks": [
+    {
+      "message": "Page visual/object audit JSON is present at local_data\\organization\\page_visual_objects_audit.json.",
+      "name": "page_visual_audit_present",
+      "ok": true
+    },
+    {
+      "message": "Page visual/object audit status is OK.",
+      "name": "page_visual_audit_status",
+      "ok": true
+    },
+    {
+      "message": "Pages checked=509; minimum is 1.",
+      "name": "page_visual_pages_checked",
+      "ok": true
+    },
+    {
+      "message": "Pages with context=509/509; pages without context=0.",
+      "name": "page_visual_context_coverage",
+      "ok": true
+    },
+    {
+      "message": "Pages with source URLs=509/509.",
+      "name": "page_visual_source_coverage",
+      "ok": true
+    },
+    {
+      "message": "Pages without visible OCR text=14; max allowed=20.",
+      "name": "page_visual_ocr_visibility",
+      "ok": true
+    },
+    {
+      "message": "Role counts sum=509; pages checked=509.",
+      "name": "page_visual_role_counts",
+      "ok": true
+    },
+    {
+      "message": "Likely visual pages=494; pages with figure refs=453.",
+      "name": "page_visual_visual_signals",
+      "ok": true
+    },
+    {
+      "message": "Table-role pages=10; likely table pages=59; pages with table refs=55.",
+      "name": "page_visual_table_signals",
+      "ok": true
+    },
+    {
+      "message": "Graph page_context nodes=509; pages checked=509.",
+      "name": "page_visual_graph_context_nodes",
+      "ok": true
+    },
+    {
+      "message": "Graph HAS_CONTEXT edges=509; pages checked=509.",
+      "name": "page_visual_graph_has_context_edges",
+      "ok": true
+    },
+    {
+      "message": "TAGGED_AS edges=1706; HIGHLIGHTS_PART edges=1070.",
+      "name": "page_visual_graph_context_edges",
+      "ok": true
+    }
+  ],
+  "status": "ok",
+  "summary": {
+    "page_visual_audit_present": true,
+    "page_visual_audit_status": "ok",
+    "page_visual_blank_role_pages": 14,
+    "page_visual_figure_role_pages": 157,
+    "page_visual_graph_has_context_edges": 509,
+    "page_visual_graph_highlights_part_edges": 1070,
+    "page_visual_graph_page_context_nodes": 509,
+    "page_visual_graph_tagged_as_edges": 1706,
+    "page_visual_likely_figure_pages": 455,
+    "page_visual_likely_table_pages": 59,
+    "page_visual_likely_visual_pages": 494,
+    "page_visual_pages_checked": 509,
+    "page_visual_pages_with_context": 509,
+    "page_visual_pages_with_figure_refs": 453,
+    "page_visual_pages_with_illustration_refs": 494,
+    "page_visual_pages_with_image_terms": 6,
+    "page_visual_pages_with_ocr_text": 495,
+    "page_visual_pages_with_sheet_refs": 372,
+    "page_visual_pages_with_source_url": 509,
+    "page_visual_pages_with_table_refs": 55,
+    "page_visual_pages_without_context": 0,
+    "page_visual_pages_without_ocr_text": 14,
+    "page_visual_parts_list_role_pages": 290,
+    "page_visual_procedure_role_pages": 28,
+    "page_visual_table_role_pages": 10,
+    "page_visual_total_figure_refs": 1218,
+    "page_visual_total_illustration_refs": 932,
+    "page_visual_total_part_refs": 1791,
+    "page_visual_total_sheet_refs": 619,
+    "page_visual_total_table_refs": 146,
+    "page_visual_warnings": 1
+  }
+}

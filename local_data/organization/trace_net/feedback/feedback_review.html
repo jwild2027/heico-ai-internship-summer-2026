@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset='utf-8'><title>TRACE-Net Feedback Graph</title><style>body{font-family:Arial,sans-serif;margin:24px;line-height:1.4}pre{background:#f6f8fa;padding:4px;white-space:pre-wrap}table{border-collapse:collapse}td,th{border:1px solid #ddd;padding:4px}</style></head><body><pre># TRACE-Net Feedback Graph v1</pre>
+<pre></pre>
+<p>Status: **OK**</p>
+<pre></pre>
+<pre>## Summary</pre>
+<p>- **feedback_events**: 3</p>
+<p>- **thumbs_up_events**: 1</p>
+<p>- **thumbs_down_events**: 2</p>
+<p>- **neutral_events**: 0</p>
+<p>- **affected_page_count**: 2</p>
+<p>- **affected_candidate_count**: 0</p>
+<p>- **policy_signal_records**: 2</p>
+<p>- **policy_signal_eligible_events**: 1</p>
+<p>- **context_valid_events**: 1</p>
+<p>- **context_warning_events**: 2</p>
+<p>- **query_mismatch_events**: 0</p>
+<p>- **affected_page_not_in_answer_events**: 0</p>
+<p>- **advisory_only_events**: 3</p>
+<p>- **source_truth_mutation_records**: 0</p>
+<pre></pre>
+<pre>## Recent feedback events</pre>
+<pre></pre>
+<pre>| Created | Rating | Context | Query | Affected pages | Reasons | Comment |</pre>
+<pre>|---|---|---|---|---|---|---|</pre>
+<pre>| 2026-06-03T14:55:40Z | thumbs_down | unknown | `seat bottom backrest` | t_p_120_1176_p000320 | citation_not_supporting_answer, wrong_page | p000003 was the useful evidence for this part. |</pre>
+<pre>| 2026-06-03T14:55:49Z | thumbs_up | unknown | `seat bottom backrest` | t_p_120_1176_p000003 | answer_correct | This page supported the answer. |</pre>
+<pre>| 2026-06-03T15:05:43Z | thumbs_down | valid | `120-50645-009` | t_p_120_1176_p000320 | citation_not_supporting_answer, wrong_page | p000003 was the useful evidence for this part. |</pre>
+<pre></pre>
+<pre>## Advisory policy signals</pre>
+<pre></pre>
+<pre>| Signal | Query fingerprint | Page | Strength | Events | Reasons |</pre>
+<pre>|---|---|---|---:|---:|---|</pre>
+<pre>| boost_for_query | `part_number:120-50645-009` | t_p_120_1176_p000003 | 0.5 | 1 | expected_page:1 |</pre>
+<pre>| demote_for_query | `part_number:120-50645-009` | t_p_120_1176_p000320 | 1.0 | 1 | citation_not_supporting_answer:1, wrong_page:1 |</pre></body></html>

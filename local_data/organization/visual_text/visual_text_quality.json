@@ -1,0 +1,144 @@
+{
+  "checks": [
+    {
+      "message": "summary=True; records=True; corpus=True.",
+      "name": "visual_text_artifacts_present",
+      "ok": true
+    },
+    {
+      "message": "Visual text extraction status is 'OK'; allow_partial_status=False; max_error_records=0.",
+      "name": "visual_text_status",
+      "ok": true
+    },
+    {
+      "message": "records summary=10, jsonl=10; minimum is 1.",
+      "name": "visual_text_records",
+      "ok": true
+    },
+    {
+      "message": "accepted records=10; minimum is 1; allow_planned=False.",
+      "name": "visual_text_accepted_records",
+      "ok": true
+    },
+    {
+      "message": "pages_with_visual_text=10; minimum is 1.",
+      "name": "visual_text_pages_with_text",
+      "ok": true
+    },
+    {
+      "message": "error_records=0; max allowed=0.",
+      "name": "visual_text_errors",
+      "ok": true
+    },
+    {
+      "message": "visual_text_char_total=14420; corpus_chars=17585.",
+      "name": "visual_text_chars",
+      "ok": true
+    },
+    {
+      "message": "v2_records=10; accepted_records=10; require_v2=True.",
+      "name": "visual_text_v2_records",
+      "ok": true
+    },
+    {
+      "message": "v2_2_records=0; accepted_records=10; require_v2_2=False.",
+      "name": "visual_text_v2_2_records",
+      "ok": true
+    },
+    {
+      "message": "v2_4_records=10; accepted_records=10; require_v2_4=True.",
+      "name": "visual_text_v2_4_records",
+      "ok": true
+    },
+    {
+      "message": "required-section records=10; minimum=10.",
+      "name": "visual_text_required_sections",
+      "ok": true
+    },
+    {
+      "message": "summary-heavy records=10; max=None.",
+      "name": "visual_text_summary_heavy",
+      "ok": true
+    },
+    {
+      "message": "hallucination-risk records=10; max=None.",
+      "name": "visual_text_hallucination_risk",
+      "ok": true
+    },
+    {
+      "message": "refusal-like records=0; max=0.",
+      "name": "visual_text_refusal_like",
+      "ok": true
+    },
+    {
+      "message": "metadata-leakage records=0; markers=0; max=0.",
+      "name": "visual_text_metadata_leakage",
+      "ok": true
+    },
+    {
+      "message": "graph nodes present=True; nodes=11; accepted_records=10.",
+      "name": "visual_text_graph_overlay_nodes",
+      "ok": true
+    },
+    {
+      "message": "graph edges present=True; edges=30; accepted_records=10.",
+      "name": "visual_text_graph_overlay_edges",
+      "ok": true
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "visual_text_accepted_records": 10,
+    "visual_text_allow_partial_status": false,
+    "visual_text_avg_chars": 1442.0,
+    "visual_text_char_total": 14420,
+    "visual_text_corpus_chars": 17585,
+    "visual_text_corpus_md_path": "local_data\\organization\\visual_text\\visual_text_corpus.md",
+    "visual_text_corpus_present": true,
+    "visual_text_error_records": 0,
+    "visual_text_graph_edges": 30,
+    "visual_text_graph_edges_path": "local_data\\organization\\visual_text\\visual_text_graph_edges.json",
+    "visual_text_graph_edges_present": true,
+    "visual_text_graph_nodes": 11,
+    "visual_text_graph_nodes_path": "local_data\\organization\\visual_text\\visual_text_graph_nodes.json",
+    "visual_text_graph_nodes_present": true,
+    "visual_text_hallucination_risk_records": 10,
+    "visual_text_label_callout_records": 0,
+    "visual_text_max_hallucination_risk_records": null,
+    "visual_text_max_metadata_leakage_records": 0,
+    "visual_text_max_refusal_like_records": 0,
+    "visual_text_max_summary_heavy_records": null,
+    "visual_text_metadata_leakage_marker_total": 0,
+    "visual_text_metadata_leakage_records": 0,
+    "visual_text_min_required_section_records": 10,
+    "visual_text_model": "llava:13b",
+    "visual_text_ocr_assist_enabled": true,
+    "visual_text_ocr_context_note_records": 10,
+    "visual_text_ok_records": 10,
+    "visual_text_pages_with_visual_text": 10,
+    "visual_text_part_number_records": 0,
+    "visual_text_planned_records": 0,
+    "visual_text_prompt_version": "visual_text_v2_4",
+    "visual_text_provider": "ollama",
+    "visual_text_records": 10,
+    "visual_text_records_path": "local_data\\organization\\visual_text\\visual_text_extraction.jsonl",
+    "visual_text_records_present": true,
+    "visual_text_refusal_like_records": 0,
+    "visual_text_require_v2": true,
+    "visual_text_require_v2_2": false,
+    "visual_text_require_v2_4": true,
+    "visual_text_required_sections_records": 10,
+    "visual_text_selected_pages": 10,
+    "visual_text_status": "ok",
+    "visual_text_status_accepted": true,
+    "visual_text_summary_heavy_records": 10,
+    "visual_text_summary_path": "local_data\\organization\\visual_text\\visual_text_extraction_summary.json",
+    "visual_text_summary_present": true,
+    "visual_text_table_row_records": 0,
+    "visual_text_total_page_cards": 509,
+    "visual_text_transcribed_records": 0,
+    "visual_text_v2_2_records": 0,
+    "visual_text_v2_4_records": 10,
+    "visual_text_v2_records": 10
+  }
+}

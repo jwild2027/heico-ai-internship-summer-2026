@@ -1,0 +1,34 @@
+{
+  "ata_group_count": 5,
+  "compound_part_references_suppressed": 310,
+  "db_path": "local_data\\db\\tiff_search.db",
+  "empty_ocr_page_count": 14,
+  "files_written": [
+    "local_data\\organization\\export\\manual_ata_tree.json",
+    "local_data\\organization\\export\\ata_tree.json",
+    "local_data\\organization\\export\\part_tree.json",
+    "local_data\\organization\\export\\page_index.json",
+    "local_data\\organization\\export\\organization_summary.json"
+  ],
+  "manual_count": 1,
+  "output_dir": "local_data\\organization\\export",
+  "page_count": 509,
+  "pages_with_ata": 509,
+  "pages_with_parts": 364,
+  "pages_with_source_links": 509,
+  "pages_without_ata": 0,
+  "part_count": 386,
+  "part_mention_count": 981,
+  "part_tree_source": "clean_catalog_allowlist",
+  "raw_mentions_excluded_from_part_tree": 428,
+  "raw_part_count": 636,
+  "raw_part_mention_count": 1409,
+  "ready": true,
+  "source_link_count": 509,
+  "source_table": "source_links",
+  "source_table_exists": true,
+  "warnings": [
+    "14 pages have empty OCR text and remain visible in the organization export",
+    "428 raw part mentions were excluded from the exported logical part tree because they are compound references or not in the clean catalog"
+  ]
+}

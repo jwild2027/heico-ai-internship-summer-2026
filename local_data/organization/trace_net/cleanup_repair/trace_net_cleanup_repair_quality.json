@@ -1,0 +1,85 @@
+{
+  "checks": [
+    {
+      "message": "summary=True; records=True.",
+      "name": "trace_net_cleanup_repair_artifacts_present",
+      "ok": true
+    },
+    {
+      "message": "repair summary status is 'OK'.",
+      "name": "trace_net_cleanup_repair_status",
+      "ok": true
+    },
+    {
+      "message": "input records=25; minimum=25.",
+      "name": "trace_net_cleanup_repair_input_records",
+      "ok": true
+    },
+    {
+      "message": "repaired records=24; minimum=1.",
+      "name": "trace_net_cleanup_repair_repaired_records",
+      "ok": true
+    },
+    {
+      "message": "remaining prompt-template leakage records=0; max=0.",
+      "name": "trace_net_cleanup_repair_remaining_prompt_template",
+      "ok": true
+    },
+    {
+      "message": "remaining section-bleed records=0; max=None.",
+      "name": "trace_net_cleanup_repair_remaining_section_bleed",
+      "ok": true
+    },
+    {
+      "message": "improved trust-tier records=16; minimum=None.",
+      "name": "trace_net_cleanup_repair_improved_tiers",
+      "ok": true
+    },
+    {
+      "message": "applied_to_clean_records=True.",
+      "name": "trace_net_cleanup_repair_applied",
+      "ok": true
+    }
+  ],
+  "created_at": "2026-06-02T15:55:50Z",
+  "status": "OK",
+  "summary": {
+    "applied_to_clean_records": true,
+    "backups": [
+      "local_data\\organization\\visual_text\\visual_text_extraction_clean.jsonl.20260602T155544Z.bak",
+      "local_data\\organization\\visual_text\\visual_text_clean_summary.json.20260602T155544Z.bak",
+      "local_data\\organization\\visual_text\\visual_text_clean_corpus.md.20260602T155544Z.bak",
+      "local_data\\organization\\visual_text\\visual_text_clean_review.md.20260602T155544Z.bak",
+      "local_data\\organization\\visual_text\\visual_text_clean_review.html.20260602T155544Z.bak"
+    ],
+    "changed_records": 9,
+    "clean_records_path": "local_data\\organization\\visual_text\\visual_text_extraction_clean.jsonl",
+    "created_at": "2026-06-02T15:55:44Z",
+    "improved_trust_tier_records": 16,
+    "records": 25,
+    "records_path": "local_data\\organization\\trace_net\\cleanup_repair\\trace_net_cleanup_repaired_records.jsonl",
+    "remaining_prompt_template_leakage_records": 0,
+    "remaining_section_bleed_records": 0,
+    "repair_plan_path": "local_data\\organization\\trace_net\\trace_net_repair_plan.jsonl",
+    "repair_version": "trace_net_cleanup_repair_v1",
+    "repaired_records": 24,
+    "route": "prompt_cleanup_repair_route",
+    "selected_records": 24,
+    "selected_trust_tier_counts_after": {
+      "C": 24
+    },
+    "selected_trust_tier_counts_before": {
+      "C": 8,
+      "D": 16
+    },
+    "status": "OK",
+    "trust_tier_counts_after": {
+      "C": 25
+    },
+    "trust_tier_counts_before": {
+      "C": 9,
+      "D": 16
+    },
+    "usable_for_rag_records_after": 0
+  }
+}

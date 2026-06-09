@@ -1,0 +1,218 @@
+{
+  "checks": [
+    {
+      "actual": "CITATION_DRAFT_ONLY",
+      "expected": "CITATION_DRAFT_ONLY",
+      "name": "answer_status",
+      "passed": true
+    },
+    {
+      "actual": false,
+      "expected": false,
+      "name": "final_answer_allowed_false",
+      "passed": true
+    },
+    {
+      "actual": false,
+      "expected": false,
+      "name": "llm_freeform_answer_allowed_false",
+      "passed": true
+    },
+    {
+      "actual": 12,
+      "expected": ">=1",
+      "name": "min_claims",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "all_claims_cited",
+      "passed": true
+    },
+    {
+      "actual": 12,
+      "expected": 12,
+      "name": "cited_claim_count_equals_claim_count",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "context_pack_quality_pass",
+      "passed": true
+    },
+    {
+      "actual": "CONTEXT_PACK_ONLY",
+      "expected": "CONTEXT_PACK_ONLY",
+      "name": "context_pack_answer_status",
+      "passed": true
+    },
+    {
+      "actual": 1024,
+      "expected": 1024,
+      "name": "embedding_dim",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "retrieval_only_claim_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "page_profile_claim_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "context_helper_claim_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "source_evidence_claim_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "claim_without_authority_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "claim_without_page_id_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "claim_without_citation_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "direct_answer_allowed_claim_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "claim_proof_direct_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "final_answer_allowed_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "llm_freeform_answer_allowed_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "missing_source_resolution_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "missing_authority_gate_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "missing_citation_requirement_count",
+      "passed": true
+    }
+  ],
+  "status": "PASS",
+  "summary": {
+    "answer_status": "CITATION_DRAFT_ONLY",
+    "authority_counts": {
+      "ocr_text_claim_with_citation": 7,
+      "part_page_relationship": 5
+    },
+    "blocked_record_count": 0,
+    "bucket_counts": {
+      "source_text_evidence": 7,
+      "verified_part_evidence": 5
+    },
+    "citation_count": 12,
+    "citation_ids": [
+      "cite:source_text:t_p_120_1176_p000001:092378ba20",
+      "cite:source_text:t_p_120_1176_p000005:b877a53578",
+      "cite:source_text:t_p_120_1176_p000007:a45d2eefa2",
+      "cite:source_text:t_p_120_1176_p000008:90254eaa5b",
+      "cite:source_text:t_p_120_1176_p000010:e92a4efc6c",
+      "cite:source_text:t_p_120_1176_p000013:e2f10387d0",
+      "cite:source_text:t_p_120_1176_p000048:c10c9ea562",
+      "cite:verified_part:t_p_120_1176_p000001:6b5fcfa2c7",
+      "cite:verified_part:t_p_120_1176_p000005:4d1f47ce9f",
+      "cite:verified_part:t_p_120_1176_p000007:3268a463c9",
+      "cite:verified_part:t_p_120_1176_p000008:5842aa1580",
+      "cite:verified_part:t_p_120_1176_p000010:17440aeda8"
+    ],
+    "cited_claim_count": 12,
+    "claim_count": 12,
+    "claim_proof_direct_count": 0,
+    "claim_without_authority_count": 0,
+    "claim_without_citation_count": 0,
+    "claim_without_page_id_count": 0,
+    "context_helper_claim_count": 0,
+    "context_pack_answer_status": "CONTEXT_PACK_ONLY",
+    "context_pack_answer_support_record_count": 15,
+    "context_pack_group_count": 8,
+    "context_pack_quality_status": "PASS",
+    "context_pack_record_count": 27,
+    "direct_answer_allowed_claim_count": 0,
+    "draft_status": "CITATION_DRAFT_ONLY",
+    "embedding_dim": 1024,
+    "embedding_mode": "ollama",
+    "embedding_model_name": "bge-m3:latest",
+    "final_answer_allowed": false,
+    "final_answer_allowed_count": 0,
+    "llm_freeform_answer_allowed": false,
+    "llm_freeform_answer_allowed_count": 0,
+    "missing_authority_gate_count": 0,
+    "missing_citation_requirement_count": 0,
+    "missing_source_resolution_count": 0,
+    "page_count": 7,
+    "page_ids": [
+      "t_p_120_1176_p000001",
+      "t_p_120_1176_p000005",
+      "t_p_120_1176_p000007",
+      "t_p_120_1176_p000008",
+      "t_p_120_1176_p000010",
+      "t_p_120_1176_p000013",
+      "t_p_120_1176_p000048"
+    ],
+    "page_profile_claim_count": 0,
+    "query": "Which pages discuss manual revision history?",
+    "retrieval_only_claim_count": 0,
+    "retrieval_only_note_count": 11,
+    "schema_version": "trace_net_citation_answer_draft_v1",
+    "source_evidence_claim_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "uncited_claim_count": 0
+  }
+}

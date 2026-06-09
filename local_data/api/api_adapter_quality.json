@@ -1,0 +1,92 @@
+{
+  "checks": [
+    {
+      "message": "API readiness report present at local_data\\api\\tiff_api_ready.json.",
+      "name": "api_ready_report_present",
+      "status": "OK"
+    },
+    {
+      "message": "API readiness status is 'ok'.",
+      "name": "api_ready_status",
+      "status": "OK"
+    },
+    {
+      "message": "API backend quality status is None.",
+      "name": "api_backend_quality",
+      "status": "OK"
+    },
+    {
+      "message": "API readiness has nonzero graph/page-context/source-link counts.",
+      "name": "api_graph_counts",
+      "status": "OK"
+    },
+    {
+      "message": "API part probe ok=True pages=None.",
+      "name": "api_part_probe",
+      "status": "OK"
+    },
+    {
+      "message": "API page probe ok=True.",
+      "name": "api_page_probe",
+      "status": "OK"
+    },
+    {
+      "message": "API vector trace probe ok=True.",
+      "name": "api_vector_trace_probe",
+      "status": "OK"
+    },
+    {
+      "message": "Storage-adapter readiness report present at local_data\\api\\storage_adapter_ready.json.",
+      "name": "storage_adapter_ready_report_present",
+      "status": "OK"
+    },
+    {
+      "message": "Storage-adapter readiness status is 'ok'.",
+      "name": "storage_adapter_status",
+      "status": "OK"
+    },
+    {
+      "message": "Storage adapter can read organization summary.",
+      "name": "storage_adapter_org_summary",
+      "status": "OK"
+    },
+    {
+      "message": "Storage adapter part probe found=True pages=28.",
+      "name": "storage_adapter_part_probe",
+      "status": "OK"
+    },
+    {
+      "message": "Storage adapter page probe found=True source=True.",
+      "name": "storage_adapter_page_probe",
+      "status": "OK"
+    },
+    {
+      "message": "Storage adapter quality status is 'ok'.",
+      "name": "storage_adapter_quality_status",
+      "status": "OK"
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "api_backend_quality": null,
+    "api_graph_nodes": 3788,
+    "api_page_contexts": 509,
+    "api_page_probe_ok": true,
+    "api_part_probe_ok": true,
+    "api_part_probe_pages": null,
+    "api_ready_present": true,
+    "api_ready_status": "ok",
+    "api_source_links": 509,
+    "api_vector_trace_probe_ok": true,
+    "storage_adapter_mode": "local_artifacts",
+    "storage_adapter_org_summary_present": true,
+    "storage_adapter_page_probe_found": true,
+    "storage_adapter_page_probe_source": true,
+    "storage_adapter_part_probe_found": true,
+    "storage_adapter_part_probe_pages": 28,
+    "storage_adapter_quality_status": "ok",
+    "storage_adapter_ready_present": true,
+    "storage_adapter_status": "ok"
+  },
+  "warnings": []
+}

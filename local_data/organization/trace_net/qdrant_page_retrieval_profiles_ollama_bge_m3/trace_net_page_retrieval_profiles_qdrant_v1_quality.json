@@ -1,0 +1,132 @@
+{
+  "checks": [
+    {
+      "actual": 509,
+      "expected": ">= 509",
+      "name": "min_loaded_points",
+      "passed": true
+    },
+    {
+      "actual": 509,
+      "expected": ">= 509",
+      "name": "min_pages_with_points",
+      "passed": true
+    },
+    {
+      "actual": 509,
+      "expected": ">= 509",
+      "name": "min_source_trace_points",
+      "passed": true
+    },
+    {
+      "actual": 50,
+      "expected": ">= 50",
+      "name": "min_context_v2_points",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "rejected_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "answer_capable_payload_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "claim_proof_payload_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "source_truth_payload_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "source_truth_mutation_payload_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "requires_source_resolution_false_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "requires_citation_false_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "missing_page_id_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "missing_profile_id_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "missing_embedding_candidate_id_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "qdrant_source_truth_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 509,
+      "expected": 509,
+      "name": "qdrant_count_matches_loaded_points",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "profile_quality_pass",
+      "passed": true
+    }
+  ],
+  "generated_at_utc": "2026-06-08T19:18:26Z",
+  "manifest_path": "local_data\\organization\\trace_net\\qdrant_page_retrieval_profiles_ollama_bge_m3\\trace_net_page_retrieval_profiles_qdrant_v1_manifest.json",
+  "schema_version": "trace_net_page_retrieval_profiles_qdrant_v1",
+  "status": "PASS",
+  "summary": {
+    "answer_capable_payload_count": 0,
+    "claim_proof_payload_count": 0,
+    "context_v2_point_count": 50,
+    "embedding_answer_authority_allowed_count": 0,
+    "missing_embedding_candidate_id_count": 0,
+    "missing_page_id_count": 0,
+    "missing_profile_id_count": 0,
+    "page_count": 509,
+    "page_profile_point_count": 509,
+    "point_count": 509,
+    "profile_quality_status": "PASS",
+    "qdrant_count": 509,
+    "qdrant_source_truth_count": 0,
+    "rejected_count": 0,
+    "requires_citation_false_count": 0,
+    "requires_source_resolution_false_count": 0,
+    "schema_version": "trace_net_page_retrieval_profiles_qdrant_v1",
+    "source_trace_point_count": 509,
+    "source_truth_mutation_payload_count": 0,
+    "source_truth_payload_count": 0
+  }
+}

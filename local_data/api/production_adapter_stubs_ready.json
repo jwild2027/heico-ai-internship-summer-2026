@@ -1,0 +1,37 @@
+{
+  "status": "OK",
+  "mode": "production_stubs",
+  "schema_dir": "local_data/architecture/production_schema",
+  "postgres_configured": false,
+  "opensearch_configured": false,
+  "qdrant_configured": false,
+  "rescarta_configured": false,
+  "schema_artifacts_present": true,
+  "checks": [
+    {
+      "name": "postgres_configured",
+      "ok": false,
+      "message": "postgres is not configured yet. This is expected before production services are available."
+    },
+    {
+      "name": "opensearch_configured",
+      "ok": false,
+      "message": "opensearch is not configured yet. This is expected before production services are available."
+    },
+    {
+      "name": "qdrant_configured",
+      "ok": false,
+      "message": "qdrant is not configured yet. This is expected before production services are available."
+    },
+    {
+      "name": "rescarta_configured",
+      "ok": false,
+      "message": "rescarta is not configured yet. This is expected before production services are available."
+    },
+    {
+      "name": "production_schema_artifacts_present",
+      "ok": true,
+      "message": "Production schema artifacts are present."
+    }
+  ]
+}

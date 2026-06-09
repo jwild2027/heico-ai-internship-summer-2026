@@ -1,0 +1,107 @@
+{
+  "checks": [
+    {
+      "detail": "summary=True; results=True",
+      "name": "artifacts_present",
+      "ok": true
+    },
+    {
+      "detail": "status=OK",
+      "name": "status_ok",
+      "ok": true
+    },
+    {
+      "detail": "summary=3; jsonl=3; minimum=1",
+      "name": "groups",
+      "ok": true
+    },
+    {
+      "detail": "summary=3; jsonl=3",
+      "name": "record_count_match",
+      "ok": true
+    },
+    {
+      "detail": "matching=2; minimum=1",
+      "name": "matching_feedback_signals",
+      "ok": true
+    },
+    {
+      "detail": "signals_used summary=2; scan=2; minimum=1",
+      "name": "feedback_signals_used",
+      "ok": true
+    },
+    {
+      "detail": "groups_adjusted=2; minimum=1",
+      "name": "groups_adjusted",
+      "ok": true
+    },
+    {
+      "detail": "rank_changed=2; minimum=1",
+      "name": "rank_changed",
+      "ok": true
+    },
+    {
+      "detail": "unsafe summary=0; scan=0; max=0",
+      "name": "unsafe_results",
+      "ok": true
+    },
+    {
+      "detail": "excluded summary=0; scan=0; max=0",
+      "name": "excluded_results",
+      "ok": true
+    },
+    {
+      "detail": "mutations summary=0; scan=0; max=0",
+      "name": "source_truth_mutations",
+      "ok": true
+    },
+    {
+      "detail": "context_warning_signals_used=0; max=0",
+      "name": "context_warning_signals_ignored",
+      "ok": true
+    },
+    {
+      "detail": "graph_nodes=10; records=3",
+      "name": "graph_nodes",
+      "ok": true
+    },
+    {
+      "detail": "graph_edges=11; records=3",
+      "name": "graph_edges",
+      "ok": true
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "feedback_search_sim_context_warning_signals_used": 0,
+    "feedback_search_sim_excluded_results": 0,
+    "feedback_search_sim_excluded_scan": 0,
+    "feedback_search_sim_feedback_signals_used": 2,
+    "feedback_search_sim_feedback_signals_used_scan": 2,
+    "feedback_search_sim_graph_edges": 11,
+    "feedback_search_sim_graph_nodes": 10,
+    "feedback_search_sim_grouped_input_records": 3,
+    "feedback_search_sim_groups_adjusted": 2,
+    "feedback_search_sim_groups_adjusted_scan": 2,
+    "feedback_search_sim_groups_boosted": 1,
+    "feedback_search_sim_groups_demoted": 1,
+    "feedback_search_sim_jsonl_records": 3,
+    "feedback_search_sim_matching_feedback_signals": 2,
+    "feedback_search_sim_query_fingerprint": "part_number:120-50645-009",
+    "feedback_search_sim_rank_changed_records": 2,
+    "feedback_search_sim_rank_changed_scan": 2,
+    "feedback_search_sim_records": 3,
+    "feedback_search_sim_results_path": "local_data\\organization\\trace_net\\feedback_search_simulation\\trace_net_feedback_search_simulation_results.jsonl",
+    "feedback_search_sim_results_present": true,
+    "feedback_search_sim_source_truth_mutation_scan": 0,
+    "feedback_search_sim_source_truth_mutations": 0,
+    "feedback_search_sim_status": "OK",
+    "feedback_search_sim_summary_path": "local_data\\organization\\trace_net\\feedback_search_simulation\\trace_net_feedback_search_simulation_summary.json",
+    "feedback_search_sim_summary_present": true,
+    "feedback_search_sim_top_page_after": "t_p_120_1176_p000003",
+    "feedback_search_sim_top_page_before": "t_p_120_1176_p000003",
+    "feedback_search_sim_unsafe_results": 0,
+    "feedback_search_sim_unsafe_scan": 0,
+    "feedback_search_sim_version": "trace_net_feedback_search_simulation_v1"
+  }
+}

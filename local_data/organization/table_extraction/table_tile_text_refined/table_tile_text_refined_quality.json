@@ -1,0 +1,84 @@
+{
+  "checks": [
+    {
+      "message": "summary=True; records=True",
+      "name": "artifacts_present",
+      "status": "OK"
+    },
+    {
+      "message": "status=OK; require_status_ok=True",
+      "name": "status_ok",
+      "status": "OK"
+    },
+    {
+      "message": "records jsonl=120; minimum=120",
+      "name": "records",
+      "status": "OK"
+    },
+    {
+      "message": "records summary=120; jsonl=120",
+      "name": "record_count_match",
+      "status": "OK"
+    },
+    {
+      "message": "error_records=0; max=0",
+      "name": "error_records",
+      "status": "OK"
+    },
+    {
+      "message": "canonical part records=34; minimum=0",
+      "name": "canonical_part_records",
+      "status": "OK"
+    },
+    {
+      "message": "catalog supported records=30; minimum=1",
+      "name": "catalog_supported_records",
+      "status": "OK"
+    },
+    {
+      "message": "index labels in canonical parts=0; max=0",
+      "name": "index_labels_filtered",
+      "status": "OK"
+    },
+    {
+      "message": "graph_nodes=431",
+      "name": "graph_nodes",
+      "status": "OK"
+    },
+    {
+      "message": "graph_edges=737",
+      "name": "graph_edges",
+      "status": "OK"
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "table_tile_text_refined_ata_code_records": 40,
+    "table_tile_text_refined_canonical_part_records": 34,
+    "table_tile_text_refined_catalog_supported_records": 30,
+    "table_tile_text_refined_error_records": 0,
+    "table_tile_text_refined_filtered_non_part_records": 71,
+    "table_tile_text_refined_graph_edges": 737,
+    "table_tile_text_refined_graph_nodes": 431,
+    "table_tile_text_refined_index_label_records": 59,
+    "table_tile_text_refined_index_labels_in_canonical_parts": 0,
+    "table_tile_text_refined_jsonl_records": 120,
+    "table_tile_text_refined_ok_records": 120,
+    "table_tile_text_refined_pages": 20,
+    "table_tile_text_refined_probable_part_records": 20,
+    "table_tile_text_refined_rag_action_counts": {
+      "exclude_from_rag": 90,
+      "include_as_derived_context": 30
+    },
+    "table_tile_text_refined_records": 120,
+    "table_tile_text_refined_records_path": "local_data/organization/table_extraction/table_tile_text_refined/table_tile_text_refined_records.jsonl",
+    "table_tile_text_refined_records_present": true,
+    "table_tile_text_refined_status": "OK",
+    "table_tile_text_refined_summary_path": "local_data/organization/table_extraction/table_tile_text_refined/table_tile_text_refined_summary.json",
+    "table_tile_text_refined_summary_present": true,
+    "table_tile_text_refined_trust_tier_counts": {
+      "B": 30,
+      "C": 90
+    }
+  }
+}

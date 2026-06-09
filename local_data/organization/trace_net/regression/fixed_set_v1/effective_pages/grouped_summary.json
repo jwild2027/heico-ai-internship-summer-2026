@@ -1,0 +1,763 @@
+{
+  "bucket_counts": {
+    "derived_context": 2,
+    "source_text_evidence": 7
+  },
+  "created_at": "2026-06-03T19:59:21Z",
+  "evidence_layer_counts": {
+    "source_text": 7,
+    "table_tile_text_refined": 2
+  },
+  "excluded_grouped_records": 0,
+  "grouped_page_records": 7,
+  "groups_with_citations": 7,
+  "groups_with_multiple_buckets": 2,
+  "groups_with_multiple_layers": 2,
+  "groups_with_ocr_path": 7,
+  "groups_with_source_url": 7,
+  "groups_with_tiff_path": 7,
+  "pages_found": 7,
+  "paths": {
+    "graph_edges": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_graph_edges.json",
+    "graph_nodes": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_graph_nodes.json",
+    "grouped_results": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_results.json",
+    "grouped_results_jsonl": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_results.jsonl",
+    "review_html": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_review.html",
+    "review_md": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_review.md",
+    "summary": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_summary.json"
+  },
+  "samples": [
+    {
+      "ata_codes": [
+        "25-21-00"
+      ],
+      "average_score": 20.597559,
+      "average_usable_confidence": 0.77425,
+      "best_rank": 1,
+      "best_score": 24.759781,
+      "citation_count": 3,
+      "citations": [
+        {
+          "citation_id": "cite:source_text:t_p_120_1176_p000005:b877a53578",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 5** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000005",
+          "citation_short": "",
+          "evidence_layer": "source_text",
+          "rag_bucket": "source_text_evidence"
+        },
+        {
+          "citation_id": "cite:derived_context:t_p_120_1176_p000005:913e581455",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 5** — `derived_context` / `table_tile_text_refined` / trust `B` / confidence `0.755` — source: http://localhost:8080/rescarta/t_p_120_1176/000005",
+          "citation_short": "",
+          "evidence_layer": "table_tile_text_refined",
+          "rag_bucket": "derived_context"
+        },
+        {
+          "citation_id": "cite:derived_context:t_p_120_1176_p000005:0993c7a0bb",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 5** — `derived_context` / `table_tile_text_refined` / trust `B` / confidence `0.755` — source: http://localhost:8080/rescarta/t_p_120_1176/000005",
+          "citation_short": "",
+          "evidence_layer": "table_tile_text_refined",
+          "rag_bucket": "derived_context"
+        }
+      ],
+      "document_ids": [
+        "t_p_120_1176"
+      ],
+      "evidence_layers": [
+        "source_text",
+        "table_tile_text_refined"
+      ],
+      "excluded_supporting_results": 0,
+      "group_id": "search_group:t_p_120_1176_p000005",
+      "group_score": 31.709781,
+      "has_ocr_path": true,
+      "has_source_url": true,
+      "has_tiff_path": true,
+      "matched_pages": [],
+      "matched_part_numbers": [],
+      "matched_terms": [
+        "effective",
+        "pages"
+      ],
+      "max_usable_confidence": 0.81225,
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000005_00000005.txt",
+      "page_id": "t_p_120_1176_p000005",
+      "page_roles": [],
+      "rag_actions": [
+        "include_as_source_evidence",
+        "include_as_derived_context"
+      ],
+      "rag_buckets": [
+        "source_text_evidence",
+        "derived_context"
+      ],
+      "rank": 1,
+      "result_count": 3,
+      "safe_group": true,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000005",
+      "supporting_result_count": 3,
+      "supporting_results": [
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000005",
+          "chunk_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000005",
+          "citation_id": "cite:source_text:t_p_120_1176_p000005:b877a53578",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 5** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000005",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "source_text",
+          "final_rag_action": "include_as_source_evidence",
+          "final_trust_tier": "A",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "effective",
+            "pages"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000005_00000005.txt",
+          "page_id": "t_p_120_1176_p000005",
+          "rag_bucket": "source_text_evidence",
+          "rank": 1,
+          "safe_result": true,
+          "score": 24.759781,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000005",
+          "text_preview": "Source text evidence for page t_p_120_1176_p000005.\nThis chunk is source-backed OCR/page-context text and can be searched as source text evidence.\nDocument: t_p_120_1176.\nATA: 25-21-00.\nSource URL: http://localhost:8080/rescarta/t_p_120_1176/000005.\nTIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000005_00000005.tif.\nOCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000005_00000005.txt.\nOCR text:\n[bottom_right_title_block]\n0 20-2 1-UU (VI SEP IUIIO\n8 25-21-00 702 Sep 30/98\n8 25-2…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000005_00000005.tif",
+          "usable_confidence": 0.81225
+        },
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:derived_context:table_tile_text_refined_t_p_120_1176_p000005_tile_t_p_120_1176_p000005_tile_002",
+          "chunk_id": "rag_candidate:derived_context:table_tile_text_refined_t_p_120_1176_p000005_tile_t_p_120_1176_p000005_tile_002",
+          "citation_id": "cite:derived_context:t_p_120_1176_p000005:913e581455",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 5** — `derived_context` / `table_tile_text_refined` / trust `B` / confidence `0.755` — source: http://localhost:8080/rescarta/t_p_120_1176/000005",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "table_tile_text_refined",
+          "final_rag_action": "include_as_derived_context",
+          "final_trust_tier": "B",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "effective",
+            "pages"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000005_00000005.txt",
+          "page_id": "t_p_120_1176_p000005",
+          "rag_bucket": "derived_context",
+          "rank": 8,
+          "safe_result": true,
+          "score": 18.579635,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000005",
+          "text_preview": "Derived context for page t_p_120_1176_p000005.\nEvidence layer: table_tile_text_refined.\nThis context is derived evidence, not canonical source truth.\nTable tile: t_p_120_1176_p000005_tile_002.\nFiltered index/section labels: 25-Numerical, 25-Vendors.\nExtracted tile text:\n8 25-Numerical Index 1009 Jan 15/01\n8 25-Numerical Index 1010 Jan 15/01\n8 25-Numerical Index 1011 Jan 15/01\n1 are indicated by an asterisk (*). Pages deleted by the\nJeleted by the previous revision are indicated by (del).\n'5-LIS…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000005_00000005.tif",
+          "usable_confidence": 0.75525
+        },
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:derived_context:table_tile_text_refined_t_p_120_1176_p000005_tile_t_p_120_1176_p000005_tile_003",
+          "chunk_id": "rag_candidate:derived_context:table_tile_text_refined_t_p_120_1176_p000005_tile_t_p_120_1176_p000005_tile_003",
+          "citation_id": "cite:derived_context:t_p_120_1176_p000005:0993c7a0bb",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 5** — `derived_context` / `table_tile_text_refined` / trust `B` / confidence `0.755` — source: http://localhost:8080/rescarta/t_p_120_1176/000005",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "table_tile_text_refined",
+          "final_rag_action": "include_as_derived_context",
+          "final_trust_tier": "B",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "effective",
+            "pages"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000005_00000005.txt",
+          "page_id": "t_p_120_1176_p000005",
+          "rag_bucket": "derived_context",
+          "rank": 9,
+          "safe_result": true,
+          "score": 18.45326,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000005",
+          "text_preview": "Derived context for page t_p_120_1176_p000005.\nEvidence layer: table_tile_text_refined.\nThis context is derived evidence, not canonical source truth.\nTable tile: t_p_120_1176_p000005_tile_003.\nFiltered index/section labels: 25-Numerical, 25-LIST.\nExtracted tile text:\n25-21-00 605 Sep 30/98 25-Numerical Index 1010 Jan 15/01\n25-21-00 606 Sep 30/98 25-Numerical Index 1011 Jan 15/01\nPages revised or added by the current revision are indicated by an asterisk (*). Pages deleted by the\ncurrent revisio…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000005_00000005.tif",
+          "usable_confidence": 0.75525
+        }
+      ],
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000005_00000005.tif",
+      "trust_tiers": [
+        "A",
+        "B"
+      ],
+      "unsafe_supporting_results": 0
+    },
+    {
+      "ata_codes": [
+        "25-21-00"
+      ],
+      "average_score": 21.606521,
+      "average_usable_confidence": 0.78375,
+      "best_rank": 2,
+      "best_score": 24.759781,
+      "citation_count": 2,
+      "citations": [
+        {
+          "citation_id": "cite:source_text:t_p_120_1176_p000006:d913ab91e5",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 6** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000006",
+          "citation_short": "",
+          "evidence_layer": "source_text",
+          "rag_bucket": "source_text_evidence"
+        },
+        {
+          "citation_id": "cite:derived_context:t_p_120_1176_p000006:bf9cd24d82",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 6** — `derived_context` / `table_tile_text_refined` / trust `B` / confidence `0.755` — source: http://localhost:8080/rescarta/t_p_120_1176/000006",
+          "citation_short": "",
+          "evidence_layer": "table_tile_text_refined",
+          "rag_bucket": "derived_context"
+        }
+      ],
+      "document_ids": [
+        "t_p_120_1176"
+      ],
+      "evidence_layers": [
+        "source_text",
+        "table_tile_text_refined"
+      ],
+      "excluded_supporting_results": 0,
+      "group_id": "search_group:t_p_120_1176_p000006",
+      "group_score": 31.559781,
+      "has_ocr_path": true,
+      "has_source_url": true,
+      "has_tiff_path": true,
+      "matched_pages": [],
+      "matched_part_numbers": [],
+      "matched_terms": [
+        "effective",
+        "pages"
+      ],
+      "max_usable_confidence": 0.81225,
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000006_00000006.txt",
+      "page_id": "t_p_120_1176_p000006",
+      "page_roles": [],
+      "rag_actions": [
+        "include_as_source_evidence",
+        "include_as_derived_context"
+      ],
+      "rag_buckets": [
+        "source_text_evidence",
+        "derived_context"
+      ],
+      "rank": 2,
+      "result_count": 2,
+      "safe_group": true,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000006",
+      "supporting_result_count": 2,
+      "supporting_results": [
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000006",
+          "chunk_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000006",
+          "citation_id": "cite:source_text:t_p_120_1176_p000006:d913ab91e5",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 6** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000006",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "source_text",
+          "final_rag_action": "include_as_source_evidence",
+          "final_trust_tier": "A",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "effective",
+            "pages"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000006_00000006.txt",
+          "page_id": "t_p_120_1176_p000006",
+          "rag_bucket": "source_text_evidence",
+          "rank": 2,
+          "safe_result": true,
+          "score": 24.759781,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000006",
+          "text_preview": "Source text evidence for page t_p_120_1176_p000006.\nThis chunk is source-backed OCR/page-context text and can be searched as source text evidence.\nDocument: t_p_120_1176.\nATA: 25-21-00.\nSource URL: http://localhost:8080/rescarta/t_p_120_1176/000006.\nTIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000006_00000006.tif.\nOCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000006_00000006.txt.\nOCR text:\n[bottom_right_title_block]\neee ier wey VNIVw\n9- IPL 1062 Sep 30/98\n9- IPL 1063 Sep 3…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000006_00000006.tif",
+          "usable_confidence": 0.81225
+        },
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:derived_context:table_tile_text_refined_t_p_120_1176_p000006_tile_t_p_120_1176_p000006_tile_002",
+          "chunk_id": "rag_candidate:derived_context:table_tile_text_refined_t_p_120_1176_p000006_tile_t_p_120_1176_p000006_tile_002",
+          "citation_id": "cite:derived_context:t_p_120_1176_p000006:bf9cd24d82",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 6** — `derived_context` / `table_tile_text_refined` / trust `B` / confidence `0.755` — source: http://localhost:8080/rescarta/t_p_120_1176/000006",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "table_tile_text_refined",
+          "final_rag_action": "include_as_derived_context",
+          "final_trust_tier": "B",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "effective",
+            "pages"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000006_00000006.txt",
+          "page_id": "t_p_120_1176_p000006",
+          "rag_bucket": "derived_context",
+          "rank": 10,
+          "safe_result": true,
+          "score": 18.45326,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000006",
+          "text_preview": "Derived context for page t_p_120_1176_p000006.\nEvidence layer: table_tile_text_refined.\nThis context is derived evidence, not canonical source truth.\nTable tile: t_p_120_1176_p000006_tile_002.\nFiltered index/section labels: 40-NUMeElNCal, 20-IFL, 25-Numerical, 25-IPL.\nExtracted tile text:\n9- IPL 1068D blank Jan 15/01\n9- IPL 1069 Sep 30/98\n9- IPL 1070 Sep 30/98\n9- IPL 1071 Jan 15/01\nicated by an asterisk (*). Pages deleted by the\ny the previous revision are indicated by (del).\n5T OF EFFECTIVE PA…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000006_00000006.tif",
+          "usable_confidence": 0.75525
+        }
+      ],
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000006_00000006.tif",
+      "trust_tiers": [
+        "A",
+        "B"
+      ],
+      "unsafe_supporting_results": 0
+    },
+    {
+      "ata_codes": [
+        "25-21-00"
+      ],
+      "average_score": 24.759781,
+      "average_usable_confidence": 0.81225,
+      "best_rank": 3,
+      "best_score": 24.759781,
+      "citation_count": 1,
+      "citations": [
+        {
+          "citation_id": "cite:source_text:t_p_120_1176_p000007:a45d2eefa2",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 7** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000007",
+          "citation_short": "",
+          "evidence_layer": "source_text",
+          "rag_bucket": "source_text_evidence"
+        }
+      ],
+      "document_ids": [
+        "t_p_120_1176"
+      ],
+      "evidence_layers": [
+        "source_text"
+      ],
+      "excluded_supporting_results": 0,
+      "group_id": "search_group:t_p_120_1176_p000007",
+      "group_score": 27.909781,
+      "has_ocr_path": true,
+      "has_source_url": true,
+      "has_tiff_path": true,
+      "matched_pages": [],
+      "matched_part_numbers": [],
+      "matched_terms": [
+        "effective",
+        "pages"
+      ],
+      "max_usable_confidence": 0.81225,
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000007_00000007.txt",
+      "page_id": "t_p_120_1176_p000007",
+      "page_roles": [],
+      "rag_actions": [
+        "include_as_source_evidence"
+      ],
+      "rag_buckets": [
+        "source_text_evidence"
+      ],
+      "rank": 3,
+      "result_count": 1,
+      "safe_group": true,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000007",
+      "supporting_result_count": 1,
+      "supporting_results": [
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000007",
+          "chunk_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000007",
+          "citation_id": "cite:source_text:t_p_120_1176_p000007:a45d2eefa2",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 7** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000007",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "source_text",
+          "final_rag_action": "include_as_source_evidence",
+          "final_trust_tier": "A",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "effective",
+            "pages"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000007_00000007.txt",
+          "page_id": "t_p_120_1176_p000007",
+          "rag_bucket": "source_text_evidence",
+          "rank": 3,
+          "safe_result": true,
+          "score": 24.759781,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000007",
+          "text_preview": "Source text evidence for page t_p_120_1176_p000007.\nThis chunk is source-backed OCR/page-context text and can be searched as source text evidence.\nDocument: t_p_120_1176.\nATA: 25-21-00.\nSource URL: http://localhost:8080/rescarta/t_p_120_1176/000007.\nTIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000007_00000007.tif.\nOCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000007_00000007.txt.\nOCR text:\n[bottom_right_title_block]\n0 40-1FL Viaé OEP IUIIO\n8 25-IPL 1128 Sep 30/98\n8 25-IPL…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000007_00000007.tif",
+          "usable_confidence": 0.81225
+        }
+      ],
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000007_00000007.tif",
+      "trust_tiers": [
+        "A"
+      ],
+      "unsafe_supporting_results": 0
+    },
+    {
+      "ata_codes": [
+        "25-21-00"
+      ],
+      "average_score": 24.759781,
+      "average_usable_confidence": 0.81225,
+      "best_rank": 4,
+      "best_score": 24.759781,
+      "citation_count": 1,
+      "citations": [
+        {
+          "citation_id": "cite:source_text:t_p_120_1176_p000008:90254eaa5b",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 8** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000008",
+          "citation_short": "",
+          "evidence_layer": "source_text",
+          "rag_bucket": "source_text_evidence"
+        }
+      ],
+      "document_ids": [
+        "t_p_120_1176"
+      ],
+      "evidence_layers": [
+        "source_text"
+      ],
+      "excluded_supporting_results": 0,
+      "group_id": "search_group:t_p_120_1176_p000008",
+      "group_score": 27.909781,
+      "has_ocr_path": true,
+      "has_source_url": true,
+      "has_tiff_path": true,
+      "matched_pages": [],
+      "matched_part_numbers": [],
+      "matched_terms": [
+        "effective",
+        "pages"
+      ],
+      "max_usable_confidence": 0.81225,
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000008_00000008.txt",
+      "page_id": "t_p_120_1176_p000008",
+      "page_roles": [],
+      "rag_actions": [
+        "include_as_source_evidence"
+      ],
+      "rag_buckets": [
+        "source_text_evidence"
+      ],
+      "rank": 4,
+      "result_count": 1,
+      "safe_group": true,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000008",
+      "supporting_result_count": 1,
+      "supporting_results": [
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000008",
+          "chunk_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000008",
+          "citation_id": "cite:source_text:t_p_120_1176_p000008:90254eaa5b",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 8** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000008",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "source_text",
+          "final_rag_action": "include_as_source_evidence",
+          "final_trust_tier": "A",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "effective",
+            "pages"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000008_00000008.txt",
+          "page_id": "t_p_120_1176_p000008",
+          "rag_bucket": "source_text_evidence",
+          "rank": 4,
+          "safe_result": true,
+          "score": 24.759781,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000008",
+          "text_preview": "Source text evidence for page t_p_120_1176_p000008.\nThis chunk is source-backed OCR/page-context text and can be searched as source text evidence.\nDocument: t_p_120_1176.\nATA: 25-21-00.\nSource URL: http://localhost:8080/rescarta/t_p_120_1176/000008.\nTIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000008_00000008.tif.\nOCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000008_00000008.txt.\nOCR text:\n[bottom_right_title_block]\neee iMe wey VNVw\n9- IPL 1188 Sep 30/98\n9- IPL 1189 Sep 30…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000008_00000008.tif",
+          "usable_confidence": 0.81225
+        }
+      ],
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000008_00000008.tif",
+      "trust_tiers": [
+        "A"
+      ],
+      "unsafe_supporting_results": 0
+    },
+    {
+      "ata_codes": [
+        "25-21-00"
+      ],
+      "average_score": 24.759781,
+      "average_usable_confidence": 0.81225,
+      "best_rank": 5,
+      "best_score": 24.759781,
+      "citation_count": 1,
+      "citations": [
+        {
+          "citation_id": "cite:source_text:t_p_120_1176_p000009:674b80461a",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 9** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000009",
+          "citation_short": "",
+          "evidence_layer": "source_text",
+          "rag_bucket": "source_text_evidence"
+        }
+      ],
+      "document_ids": [
+        "t_p_120_1176"
+      ],
+      "evidence_layers": [
+        "source_text"
+      ],
+      "excluded_supporting_results": 0,
+      "group_id": "search_group:t_p_120_1176_p000009",
+      "group_score": 27.909781,
+      "has_ocr_path": true,
+      "has_source_url": true,
+      "has_tiff_path": true,
+      "matched_pages": [],
+      "matched_part_numbers": [],
+      "matched_terms": [
+        "effective",
+        "pages"
+      ],
+      "max_usable_confidence": 0.81225,
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000009_00000009.txt",
+      "page_id": "t_p_120_1176_p000009",
+      "page_roles": [],
+      "rag_actions": [
+        "include_as_source_evidence"
+      ],
+      "rag_buckets": [
+        "source_text_evidence"
+      ],
+      "rank": 5,
+      "result_count": 1,
+      "safe_group": true,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000009",
+      "supporting_result_count": 1,
+      "supporting_results": [
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000009",
+          "chunk_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000009",
+          "citation_id": "cite:source_text:t_p_120_1176_p000009:674b80461a",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 9** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000009",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "source_text",
+          "final_rag_action": "include_as_source_evidence",
+          "final_trust_tier": "A",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "effective",
+            "pages"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000009_00000009.txt",
+          "page_id": "t_p_120_1176_p000009",
+          "rag_bucket": "source_text_evidence",
+          "rank": 5,
+          "safe_result": true,
+          "score": 24.759781,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000009",
+          "text_preview": "Source text evidence for page t_p_120_1176_p000009.\nThis chunk is source-backed OCR/page-context text and can be searched as source text evidence.\nDocument: t_p_120_1176.\nATA: 25-21-00.\nSource URL: http://localhost:8080/rescarta/t_p_120_1176/000009.\nTIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000009_00000009.tif.\nOCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000009_00000009.txt.\nOCR text:\n[bottom_right_title_block]\n0 40-1FL 1200 SEP IUIIO\n8 25-IPL 1266 Sep 30/98\n8 25-IPL…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000009_00000009.tif",
+          "usable_confidence": 0.81225
+        }
+      ],
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000009_00000009.tif",
+      "trust_tiers": [
+        "A"
+      ],
+      "unsafe_supporting_results": 0
+    },
+    {
+      "ata_codes": [
+        "25-21-00"
+      ],
+      "average_score": 24.759781,
+      "average_usable_confidence": 0.81225,
+      "best_rank": 6,
+      "best_score": 24.759781,
+      "citation_count": 1,
+      "citations": [
+        {
+          "citation_id": "cite:source_text:t_p_120_1176_p000010:e92a4efc6c",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 10** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000010",
+          "citation_short": "",
+          "evidence_layer": "source_text",
+          "rag_bucket": "source_text_evidence"
+        }
+      ],
+      "document_ids": [
+        "t_p_120_1176"
+      ],
+      "evidence_layers": [
+        "source_text"
+      ],
+      "excluded_supporting_results": 0,
+      "group_id": "search_group:t_p_120_1176_p000010",
+      "group_score": 27.909781,
+      "has_ocr_path": true,
+      "has_source_url": true,
+      "has_tiff_path": true,
+      "matched_pages": [],
+      "matched_part_numbers": [],
+      "matched_terms": [
+        "effective",
+        "pages"
+      ],
+      "max_usable_confidence": 0.81225,
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000010_00000010.txt",
+      "page_id": "t_p_120_1176_p000010",
+      "page_roles": [],
+      "rag_actions": [
+        "include_as_source_evidence"
+      ],
+      "rag_buckets": [
+        "source_text_evidence"
+      ],
+      "rank": 6,
+      "result_count": 1,
+      "safe_group": true,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000010",
+      "supporting_result_count": 1,
+      "supporting_results": [
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000010",
+          "chunk_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000010",
+          "citation_id": "cite:source_text:t_p_120_1176_p000010:e92a4efc6c",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 10** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000010",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "source_text",
+          "final_rag_action": "include_as_source_evidence",
+          "final_trust_tier": "A",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "effective",
+            "pages"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000010_00000010.txt",
+          "page_id": "t_p_120_1176_p000010",
+          "rag_bucket": "source_text_evidence",
+          "rank": 6,
+          "safe_result": true,
+          "score": 24.759781,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000010",
+          "text_preview": "Source text evidence for page t_p_120_1176_p000010.\nThis chunk is source-backed OCR/page-context text and can be searched as source text evidence.\nDocument: t_p_120_1176.\nATA: 25-21-00.\nSource URL: http://localhost:8080/rescarta/t_p_120_1176/000010.\nTIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000010_00000010.tif.\nOCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000010_00000010.txt.\nOCR text:\n[bottom_right_title_block]\neee twee Ayr lM\n9-IPL * 1338 Apr 10/06\n9- IPL 1339 Sep 30…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000010_00000010.tif",
+          "usable_confidence": 0.81225
+        }
+      ],
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000010_00000010.tif",
+      "trust_tiers": [
+        "A"
+      ],
+      "unsafe_supporting_results": 0
+    },
+    {
+      "ata_codes": [
+        "25-21-00"
+      ],
+      "average_score": 24.664781,
+      "average_usable_confidence": 0.76475,
+      "best_rank": 7,
+      "best_score": 24.664781,
+      "citation_count": 1,
+      "citations": [
+        {
+          "citation_id": "cite:source_text:t_p_120_1176_p000011:b2a9adf933",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 11** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.765` — source: http://localhost:8080/rescarta/t_p_120_1176/000011",
+          "citation_short": "",
+          "evidence_layer": "source_text",
+          "rag_bucket": "source_text_evidence"
+        }
+      ],
+      "document_ids": [
+        "t_p_120_1176"
+      ],
+      "evidence_layers": [
+        "source_text"
+      ],
+      "excluded_supporting_results": 0,
+      "group_id": "search_group:t_p_120_1176_p000011",
+      "group_score": 27.814781,
+      "has_ocr_path": true,
+      "has_source_url": true,
+      "has_tiff_path": true,
+      "matched_pages": [],
+      "matched_part_numbers": [],
+      "matched_terms": [
+        "effective",
+        "pages"
+      ],
+      "max_usable_confidence": 0.76475,
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000011_00000011.txt",
+      "page_id": "t_p_120_1176_p000011",
+      "page_roles": [],
+      "rag_actions": [
+        "include_as_source_evidence"
+      ],
+      "rag_buckets": [
+        "source_text_evidence"
+      ],
+      "rank": 7,
+      "result_count": 1,
+      "safe_group": true,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000011",
+      "supporting_result_count": 1,
+      "supporting_results": [
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000011",
+          "chunk_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000011",
+          "citation_id": "cite:source_text:t_p_120_1176_p000011:b2a9adf933",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 11** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.765` — source: http://localhost:8080/rescarta/t_p_120_1176/000011",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "source_text",
+          "final_rag_action": "include_as_source_evidence",
+          "final_trust_tier": "A",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "effective",
+            "pages"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000011_00000011.txt",
+          "page_id": "t_p_120_1176_p000011",
+          "rag_bucket": "source_text_evidence",
+          "rank": 7,
+          "safe_result": true,
+          "score": 24.664781,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000011",
+          "text_preview": "Source text evidence for page t_p_120_1176_p000011.\nThis chunk is source-backed OCR/page-context text and can be searched as source text evidence.\nDocument: t_p_120_1176.\nATA: 25-21-00.\nSource URL: http://localhost:8080/rescarta/t_p_120_1176/000011.\nTIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000011_00000011.tif.\nOCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000011_00000011.txt.\nOCR text:\n[bottom_right_title_block]\n0\n6\n6\n2\n8\n6\n6\n8\n8\n8\n8\n8\n8\n1\n1\n1 are indicated by an aster…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000011_00000011.tif",
+          "usable_confidence": 0.76475
+        }
+      ],
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000011_00000011.tif",
+      "trust_tiers": [
+        "A"
+      ],
+      "unsafe_supporting_results": 0
+    }
+  ],
+  "search_citations_path": "local_data\\organization\\trace_net\\citations\\trace_net_search_source_citations.jsonl",
+  "search_result_records": 10,
+  "search_results_path": "local_data\\organization\\trace_net\\search\\trace_net_search_results.jsonl",
+  "source_citations_path": "local_data\\organization\\trace_net\\citations\\trace_net_source_citations.jsonl",
+  "status": "OK",
+  "supporting_result_records": 10,
+  "top_best_score": 24.759781,
+  "top_group_score": 31.709781,
+  "unsafe_grouped_records": 0,
+  "version": "trace_net_search_grouper_v1"
+}

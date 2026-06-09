@@ -1,0 +1,329 @@
+[
+  {
+    "source": "weight_policy:trace_net_weights_policy_v1",
+    "target": "weight_layer:part_catalog",
+    "type": "HAS_CONFIDENCE_LAYER_POLICY"
+  },
+  {
+    "source": "weight_layer:part_catalog",
+    "target": "weight:part_catalog:extraction_layer",
+    "type": "HAS_WEIGHT",
+    "weight": 0.05
+  },
+  {
+    "source": "weight_layer:part_catalog",
+    "target": "weight:part_catalog:graph_support",
+    "type": "HAS_WEIGHT",
+    "weight": 0.2
+  },
+  {
+    "source": "weight_layer:part_catalog",
+    "target": "weight:part_catalog:ocr_support",
+    "type": "HAS_WEIGHT",
+    "weight": 0.1
+  },
+  {
+    "source": "weight_layer:part_catalog",
+    "target": "weight:part_catalog:part_catalog",
+    "type": "HAS_WEIGHT",
+    "weight": 0.4
+  },
+  {
+    "source": "weight_layer:part_catalog",
+    "target": "weight:part_catalog:source_trace",
+    "type": "HAS_WEIGHT",
+    "weight": 0.25
+  },
+  {
+    "source": "weight_policy:trace_net_weights_policy_v1",
+    "target": "weight_layer:source_text_evidence",
+    "type": "HAS_CONFIDENCE_LAYER_POLICY"
+  },
+  {
+    "source": "weight_layer:source_text_evidence",
+    "target": "weight:source_text_evidence:extraction_layer",
+    "type": "HAS_WEIGHT",
+    "weight": 0.05
+  },
+  {
+    "source": "weight_layer:source_text_evidence",
+    "target": "weight:source_text_evidence:graph_support",
+    "type": "HAS_WEIGHT",
+    "weight": 0.2
+  },
+  {
+    "source": "weight_layer:source_text_evidence",
+    "target": "weight:source_text_evidence:ocr_support",
+    "type": "HAS_WEIGHT",
+    "weight": 0.4
+  },
+  {
+    "source": "weight_layer:source_text_evidence",
+    "target": "weight:source_text_evidence:part_catalog",
+    "type": "HAS_WEIGHT",
+    "weight": 0.05
+  },
+  {
+    "source": "weight_layer:source_text_evidence",
+    "target": "weight:source_text_evidence:source_trace",
+    "type": "HAS_WEIGHT",
+    "weight": 0.3
+  },
+  {
+    "source": "weight_policy:trace_net_weights_policy_v1",
+    "target": "weight_layer:source_trace",
+    "type": "HAS_CONFIDENCE_LAYER_POLICY"
+  },
+  {
+    "source": "weight_layer:source_trace",
+    "target": "weight:source_trace:extraction_layer",
+    "type": "HAS_WEIGHT",
+    "weight": 0.05
+  },
+  {
+    "source": "weight_layer:source_trace",
+    "target": "weight:source_trace:graph_support",
+    "type": "HAS_WEIGHT",
+    "weight": 0.2
+  },
+  {
+    "source": "weight_layer:source_trace",
+    "target": "weight:source_trace:ocr_support",
+    "type": "HAS_WEIGHT",
+    "weight": 0.05
+  },
+  {
+    "source": "weight_layer:source_trace",
+    "target": "weight:source_trace:part_catalog",
+    "type": "HAS_WEIGHT",
+    "weight": 0.0
+  },
+  {
+    "source": "weight_layer:source_trace",
+    "target": "weight:source_trace:source_trace",
+    "type": "HAS_WEIGHT",
+    "weight": 0.7
+  },
+  {
+    "source": "weight_policy:trace_net_weights_policy_v1",
+    "target": "weight_layer:table_candidate",
+    "type": "HAS_CONFIDENCE_LAYER_POLICY"
+  },
+  {
+    "source": "weight_layer:table_candidate",
+    "target": "weight:table_candidate:extraction_layer",
+    "type": "HAS_WEIGHT",
+    "weight": 0.4
+  },
+  {
+    "source": "weight_layer:table_candidate",
+    "target": "weight:table_candidate:graph_support",
+    "type": "HAS_WEIGHT",
+    "weight": 0.4
+  },
+  {
+    "source": "weight_layer:table_candidate",
+    "target": "weight:table_candidate:ocr_support",
+    "type": "HAS_WEIGHT",
+    "weight": 0.05
+  },
+  {
+    "source": "weight_layer:table_candidate",
+    "target": "weight:table_candidate:part_catalog",
+    "type": "HAS_WEIGHT",
+    "weight": 0.0
+  },
+  {
+    "source": "weight_layer:table_candidate",
+    "target": "weight:table_candidate:source_trace",
+    "type": "HAS_WEIGHT",
+    "weight": 0.15
+  },
+  {
+    "source": "weight_policy:trace_net_weights_policy_v1",
+    "target": "weight_layer:table_tile_text_refined",
+    "type": "HAS_CONFIDENCE_LAYER_POLICY"
+  },
+  {
+    "source": "weight_layer:table_tile_text_refined",
+    "target": "weight:table_tile_text_refined:extraction_layer",
+    "type": "HAS_WEIGHT",
+    "weight": 0.1
+  },
+  {
+    "source": "weight_layer:table_tile_text_refined",
+    "target": "weight:table_tile_text_refined:graph_support",
+    "type": "HAS_WEIGHT",
+    "weight": 0.2
+  },
+  {
+    "source": "weight_layer:table_tile_text_refined",
+    "target": "weight:table_tile_text_refined:ocr_support",
+    "type": "HAS_WEIGHT",
+    "weight": 0.1
+  },
+  {
+    "source": "weight_layer:table_tile_text_refined",
+    "target": "weight:table_tile_text_refined:part_catalog",
+    "type": "HAS_WEIGHT",
+    "weight": 0.35
+  },
+  {
+    "source": "weight_layer:table_tile_text_refined",
+    "target": "weight:table_tile_text_refined:source_trace",
+    "type": "HAS_WEIGHT",
+    "weight": 0.25
+  },
+  {
+    "source": "weight_policy:trace_net_weights_policy_v1",
+    "target": "weight_layer:table_tiles",
+    "type": "HAS_CONFIDENCE_LAYER_POLICY"
+  },
+  {
+    "source": "weight_layer:table_tiles",
+    "target": "weight:table_tiles:extraction_layer",
+    "type": "HAS_WEIGHT",
+    "weight": 0.5
+  },
+  {
+    "source": "weight_layer:table_tiles",
+    "target": "weight:table_tiles:graph_support",
+    "type": "HAS_WEIGHT",
+    "weight": 0.25
+  },
+  {
+    "source": "weight_layer:table_tiles",
+    "target": "weight:table_tiles:ocr_support",
+    "type": "HAS_WEIGHT",
+    "weight": 0.0
+  },
+  {
+    "source": "weight_layer:table_tiles",
+    "target": "weight:table_tiles:part_catalog",
+    "type": "HAS_WEIGHT",
+    "weight": 0.0
+  },
+  {
+    "source": "weight_layer:table_tiles",
+    "target": "weight:table_tiles:source_trace",
+    "type": "HAS_WEIGHT",
+    "weight": 0.25
+  },
+  {
+    "source": "weight_policy:trace_net_weights_policy_v1",
+    "target": "weight_layer:visual_text",
+    "type": "HAS_CONFIDENCE_LAYER_POLICY"
+  },
+  {
+    "source": "weight_layer:visual_text",
+    "target": "weight:visual_text:extraction_layer",
+    "type": "HAS_WEIGHT",
+    "weight": 0.15
+  },
+  {
+    "source": "weight_layer:visual_text",
+    "target": "weight:visual_text:graph_support",
+    "type": "HAS_WEIGHT",
+    "weight": 0.3
+  },
+  {
+    "source": "weight_layer:visual_text",
+    "target": "weight:visual_text:ocr_support",
+    "type": "HAS_WEIGHT",
+    "weight": 0.2
+  },
+  {
+    "source": "weight_layer:visual_text",
+    "target": "weight:visual_text:part_catalog",
+    "type": "HAS_WEIGHT",
+    "weight": 0.1
+  },
+  {
+    "source": "weight_layer:visual_text",
+    "target": "weight:visual_text:source_trace",
+    "type": "HAS_WEIGHT",
+    "weight": 0.25
+  },
+  {
+    "source": "weight_policy:trace_net_weights_policy_v1",
+    "target": "weight_policy:feedback_ranking",
+    "type": "HAS_FEEDBACK_POLICY"
+  },
+  {
+    "source": "weight_policy:feedback_ranking",
+    "target": "feedback_weight:answer_correct",
+    "type": "HAS_FEEDBACK_WEIGHT",
+    "weight": 6.0
+  },
+  {
+    "source": "weight_policy:feedback_ranking",
+    "target": "feedback_weight:answer_too_vague",
+    "type": "HAS_FEEDBACK_WEIGHT",
+    "weight": -3.0
+  },
+  {
+    "source": "weight_policy:feedback_ranking",
+    "target": "feedback_weight:citation_not_supporting_answer",
+    "type": "HAS_FEEDBACK_WEIGHT",
+    "weight": -7.0
+  },
+  {
+    "source": "weight_policy:feedback_ranking",
+    "target": "feedback_weight:citation_useful",
+    "type": "HAS_FEEDBACK_WEIGHT",
+    "weight": 4.0
+  },
+  {
+    "source": "weight_policy:feedback_ranking",
+    "target": "feedback_weight:expected_page_boost",
+    "type": "HAS_FEEDBACK_WEIGHT",
+    "weight": 8.0
+  },
+  {
+    "source": "weight_policy:feedback_ranking",
+    "target": "feedback_weight:source_helpful",
+    "type": "HAS_FEEDBACK_WEIGHT",
+    "weight": 5.0
+  },
+  {
+    "source": "weight_policy:feedback_ranking",
+    "target": "feedback_weight:wrong_page",
+    "type": "HAS_FEEDBACK_WEIGHT",
+    "weight": -8.0
+  },
+  {
+    "source": "weight_policy:feedback_ranking",
+    "target": "feedback_weight:wrong_part",
+    "type": "HAS_FEEDBACK_WEIGHT",
+    "weight": -10.0
+  },
+  {
+    "source": "weight_policy:trace_net_weights_policy_v1",
+    "target": "weight_policy:retrieval_ranking",
+    "type": "HAS_RETRIEVAL_POLICY"
+  },
+  {
+    "source": "weight_policy:retrieval_ranking",
+    "target": "retrieval_bucket_bonus:derived_context",
+    "type": "HAS_BUCKET_BONUS",
+    "weight": 3.0
+  },
+  {
+    "source": "weight_policy:retrieval_ranking",
+    "target": "retrieval_bucket_bonus:source_evidence",
+    "type": "HAS_BUCKET_BONUS",
+    "weight": 2.0
+  },
+  {
+    "source": "weight_policy:retrieval_ranking",
+    "target": "retrieval_bucket_bonus:source_text_evidence",
+    "type": "HAS_BUCKET_BONUS",
+    "weight": 5.0
+  },
+  {
+    "source": "weight_policy:retrieval_ranking",
+    "target": "retrieval_bucket_bonus:verified_part_evidence",
+    "type": "HAS_BUCKET_BONUS",
+    "weight": 8.0
+  }
+]

@@ -1,0 +1,112 @@
+{
+  "checks": [
+    {
+      "detail": "summary=True; results=True",
+      "name": "artifacts_present",
+      "ok": true
+    },
+    {
+      "detail": "status=OK",
+      "name": "status_ok",
+      "ok": true
+    },
+    {
+      "detail": "summary=3; jsonl=3; minimum=1",
+      "name": "groups",
+      "ok": true
+    },
+    {
+      "detail": "summary=3; jsonl=3",
+      "name": "record_count_match",
+      "ok": true
+    },
+    {
+      "detail": "pages summary=3; scan=3; minimum=1",
+      "name": "pages",
+      "ok": true
+    },
+    {
+      "detail": "rank_comparison_records=3; minimum=1",
+      "name": "rank_comparison",
+      "ok": true
+    },
+    {
+      "detail": "weights_policy_version=trace_net_weights_policy_v1",
+      "name": "weights_policy_present",
+      "ok": true
+    },
+    {
+      "detail": "signals_used summary=2; scan=2; minimum=0",
+      "name": "feedback_signals_used",
+      "ok": true
+    },
+    {
+      "detail": "groups_adjusted=2; minimum=0",
+      "name": "groups_adjusted",
+      "ok": true
+    },
+    {
+      "detail": "rank_changed=0; minimum=0",
+      "name": "rank_changed",
+      "ok": true
+    },
+    {
+      "detail": "unsafe summary=0; scan=0; max=0",
+      "name": "unsafe_results",
+      "ok": true
+    },
+    {
+      "detail": "excluded summary=0; scan=0; max=0",
+      "name": "excluded_results",
+      "ok": true
+    },
+    {
+      "detail": "mutations summary=0; scan=0; max=0",
+      "name": "source_truth_mutations",
+      "ok": true
+    },
+    {
+      "detail": "context_warning_signals_used summary=0; scan=0; max=0",
+      "name": "context_warning_signals_ignored",
+      "ok": true
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "weighted_search_context_warning_signals_used": 0,
+    "weighted_search_context_warning_signals_used_scan": 0,
+    "weighted_search_excluded_results": 0,
+    "weighted_search_excluded_scan": 0,
+    "weighted_search_feedback_enabled": true,
+    "weighted_search_feedback_signals_used": 2,
+    "weighted_search_feedback_signals_used_scan": 2,
+    "weighted_search_graph_edges": 16,
+    "weighted_search_graph_nodes": 14,
+    "weighted_search_grouped_input_records": 3,
+    "weighted_search_groups_adjusted": 2,
+    "weighted_search_groups_adjusted_scan": 2,
+    "weighted_search_jsonl_records": 3,
+    "weighted_search_matching_feedback_signals": 2,
+    "weighted_search_pages": 3,
+    "weighted_search_pages_scan": 3,
+    "weighted_search_query_fingerprint": "part_number:120-50645-009",
+    "weighted_search_rank_changed_records": 0,
+    "weighted_search_rank_changed_scan": 0,
+    "weighted_search_rank_comparison_records": 3,
+    "weighted_search_records": 3,
+    "weighted_search_results_path": "local_data\\organization\\trace_net\\weighted_search\\trace_net_weighted_search_simulation_results.jsonl",
+    "weighted_search_results_present": true,
+    "weighted_search_source_truth_mutation_scan": 0,
+    "weighted_search_source_truth_mutations": 0,
+    "weighted_search_status": "OK",
+    "weighted_search_summary_path": "local_data\\organization\\trace_net\\weighted_search\\trace_net_weighted_search_simulation_summary.json",
+    "weighted_search_summary_present": true,
+    "weighted_search_top_page_after": "t_p_120_1176_p000003",
+    "weighted_search_top_page_before": "t_p_120_1176_p000003",
+    "weighted_search_top_page_changed": false,
+    "weighted_search_unsafe_results": 0,
+    "weighted_search_unsafe_scan": 0,
+    "weighted_search_version": "trace_net_weighted_search_simulation_v1",
+    "weighted_search_weights_policy_version": "trace_net_weights_policy_v1"
+  }
+}

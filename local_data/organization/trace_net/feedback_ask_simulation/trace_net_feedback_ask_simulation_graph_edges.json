@@ -1,0 +1,79 @@
+[
+  {
+    "source": "trace_net:feedback_ask_simulation",
+    "target": "query:part_number:120-50645-009",
+    "type": "SIMULATES_ASK_FOR"
+  },
+  {
+    "source": "trace_net:feedback_ask_simulation",
+    "target": "feedback_ask_page:t_p_120_1176_p000003",
+    "type": "HAS_SIMULATED_PAGE_RESULT"
+  },
+  {
+    "source": "feedback_ask_page:t_p_120_1176_p000003",
+    "target": "page:t_p_120_1176_p000003",
+    "type": "REFERS_TO_PAGE"
+  },
+  {
+    "delta": 4.0,
+    "source": "feedback_signal:c44938758539",
+    "target": "feedback_ask_page:t_p_120_1176_p000003",
+    "type": "ADJUSTS_SIMULATED_PAGE"
+  },
+  {
+    "source": "feedback_ask_page:t_p_120_1176_p000003",
+    "target": "rag_bucket:derived_context",
+    "type": "HAS_EVIDENCE_BUCKET"
+  },
+  {
+    "source": "feedback_ask_page:t_p_120_1176_p000003",
+    "target": "rag_bucket:source_text_evidence",
+    "type": "HAS_EVIDENCE_BUCKET"
+  },
+  {
+    "source": "feedback_ask_page:t_p_120_1176_p000003",
+    "target": "rag_bucket:verified_part_evidence",
+    "type": "HAS_EVIDENCE_BUCKET"
+  },
+  {
+    "source": "trace_net:feedback_ask_simulation",
+    "target": "feedback_ask_page:t_p_120_1176_p000319",
+    "type": "HAS_SIMULATED_PAGE_RESULT"
+  },
+  {
+    "source": "feedback_ask_page:t_p_120_1176_p000319",
+    "target": "page:t_p_120_1176_p000319",
+    "type": "REFERS_TO_PAGE"
+  },
+  {
+    "source": "feedback_ask_page:t_p_120_1176_p000319",
+    "target": "rag_bucket:source_text_evidence",
+    "type": "HAS_EVIDENCE_BUCKET"
+  },
+  {
+    "source": "trace_net:feedback_ask_simulation",
+    "target": "feedback_ask_page:t_p_120_1176_p000320",
+    "type": "HAS_SIMULATED_PAGE_RESULT"
+  },
+  {
+    "source": "feedback_ask_page:t_p_120_1176_p000320",
+    "target": "page:t_p_120_1176_p000320",
+    "type": "REFERS_TO_PAGE"
+  },
+  {
+    "delta": -12.0,
+    "source": "feedback_signal:7de9478188c9",
+    "target": "feedback_ask_page:t_p_120_1176_p000320",
+    "type": "ADJUSTS_SIMULATED_PAGE"
+  },
+  {
+    "source": "feedback_ask_page:t_p_120_1176_p000320",
+    "target": "rag_bucket:source_text_evidence",
+    "type": "HAS_EVIDENCE_BUCKET"
+  },
+  {
+    "source": "feedback_ask_page:t_p_120_1176_p000320",
+    "target": "rag_bucket:verified_part_evidence",
+    "type": "HAS_EVIDENCE_BUCKET"
+  }
+]

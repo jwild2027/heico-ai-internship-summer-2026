@@ -1,0 +1,160 @@
+{
+  "candidate_type_counts": {
+    "derived_context": 60,
+    "source_evidence": 509,
+    "source_text_evidence": 495,
+    "verified_part_evidence": 362
+  },
+  "checks": [
+    {
+      "detail": "summary=True; all_candidates=True",
+      "name": "artifacts_present",
+      "ok": true
+    },
+    {
+      "detail": "status='OK'",
+      "name": "status_ok",
+      "ok": true
+    },
+    {
+      "detail": "records summary=1426; jsonl=1426; minimum=1426",
+      "name": "records",
+      "ok": true
+    },
+    {
+      "detail": "pages=509; minimum=509",
+      "name": "pages",
+      "ok": true
+    },
+    {
+      "detail": "source jsonl=509; summary=509",
+      "name": "source_count_match",
+      "ok": true
+    },
+    {
+      "detail": "source_text jsonl=495; summary=495",
+      "name": "source_text_count_match",
+      "ok": true
+    },
+    {
+      "detail": "verified jsonl=362; summary=362",
+      "name": "verified_count_match",
+      "ok": true
+    },
+    {
+      "detail": "derived jsonl=60; summary=60",
+      "name": "derived_count_match",
+      "ok": true
+    },
+    {
+      "detail": "unsafe summary=0; scan=0; max=0",
+      "name": "unsafe_candidates",
+      "ok": true
+    },
+    {
+      "detail": "empty_text summary=0; scan=0; max=0",
+      "name": "empty_text",
+      "ok": true
+    },
+    {
+      "detail": "table_candidate_indexed=0; max=0",
+      "name": "no_table_candidate_indexed",
+      "ok": true
+    },
+    {
+      "detail": "table_tiles_indexed=0; max=0",
+      "name": "no_table_tiles_indexed",
+      "ok": true
+    },
+    {
+      "detail": "source_candidates=509; minimum=509",
+      "name": "source_candidates",
+      "ok": true
+    },
+    {
+      "detail": "source_text_candidates=495; minimum=495",
+      "name": "source_text_candidates",
+      "ok": true
+    },
+    {
+      "detail": "source_text_ocr_joined summary=495; scan=495; minimum=495",
+      "name": "source_text_ocr_joined",
+      "ok": true
+    },
+    {
+      "detail": "verified_part_candidates=362; minimum=360",
+      "name": "verified_part_candidates",
+      "ok": true
+    },
+    {
+      "detail": "derived_candidates=60; minimum=60",
+      "name": "derived_candidates",
+      "ok": true
+    },
+    {
+      "detail": "derived_joined summary=60; scan=60; minimum=60",
+      "name": "derived_joined_records",
+      "ok": true
+    },
+    {
+      "detail": "derived_unjoined summary=0; scan=0; max=0",
+      "name": "derived_unjoined_records",
+      "ok": true
+    },
+    {
+      "detail": "graph_nodes=1949",
+      "name": "graph_nodes",
+      "ok": true
+    },
+    {
+      "detail": "graph_edges=7134",
+      "name": "graph_edges",
+      "ok": true
+    }
+  ],
+  "derived_context_candidate_records": 60,
+  "derived_context_catalog_supported_records": 30,
+  "derived_context_joined_records": 60,
+  "derived_context_joined_scan": 60,
+  "derived_context_unjoined_records": 0,
+  "derived_context_unjoined_scan": 0,
+  "empty_text_records": 0,
+  "empty_text_scan": 0,
+  "evidence_layer_counts": {
+    "part_catalog": 362,
+    "source_text": 495,
+    "source_trace": 509,
+    "table_tile_text_refined": 60
+  },
+  "graph_edges": 7134,
+  "graph_nodes": 1949,
+  "rag_bucket_counts": {
+    "derived_context": 60,
+    "source_evidence": 509,
+    "source_text_evidence": 495,
+    "verified_part_evidence": 362
+  },
+  "rag_candidate_jsonl_records": 1426,
+  "rag_candidate_pages": 509,
+  "rag_candidate_records": 1426,
+  "rag_candidate_records_present": true,
+  "rag_candidate_status": "OK",
+  "rag_candidate_summary_present": true,
+  "rag_candidate_version": "trace_net_rag_candidate_index_v1_2_source_text",
+  "records_path": "local_data\\organization\\trace_net\\rag_candidates\\rag_candidate_chunks.jsonl",
+  "source_candidate_records": 509,
+  "source_text_candidate_records": 495,
+  "source_text_ocr_joined_records": 495,
+  "source_text_ocr_joined_scan": 495,
+  "status": "OK",
+  "summary_path": "local_data\\organization\\trace_net\\rag_candidates\\rag_candidate_summary.json",
+  "table_candidate_indexed_records": 0,
+  "table_tiles_indexed_records": 0,
+  "trust_tier_counts": {
+    "A": 1396,
+    "B": 30
+  },
+  "unsafe_candidate_records": 0,
+  "unsafe_candidate_scan": 0,
+  "verified_part_candidate_records": 362
+}

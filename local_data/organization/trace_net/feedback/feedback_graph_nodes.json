@@ -1,0 +1,139 @@
+[
+  {
+    "id": "feedback_graph",
+    "label": "TRACE-Net Feedback Graph",
+    "type": "FeedbackGraph"
+  },
+  {
+    "advisory_only": true,
+    "created_at": "2026-06-03T14:55:40Z",
+    "id": "feedback:edb5b7c6c9292f10",
+    "label": "feedback:edb5b7c6c9292f10",
+    "query_fingerprint": "query:seat_bottom_backrest",
+    "rating": "thumbs_down",
+    "review_status": "pending",
+    "type": "FeedbackEvent",
+    "validation_warnings": []
+  },
+  {
+    "id": "context_status:unknown",
+    "label": "unknown",
+    "type": "FeedbackContextStatus"
+  },
+  {
+    "id": "query:919a0c17a2161ed7",
+    "label": "query:seat_bottom_backrest",
+    "query_fingerprint": "query:seat_bottom_backrest",
+    "type": "QueryFingerprint"
+  },
+  {
+    "id": "rating:thumbs_down",
+    "label": "thumbs_down",
+    "type": "FeedbackRating"
+  },
+  {
+    "id": "ask_run:fd5c7b8129061be4",
+    "label": "ask:e207ddc63347",
+    "type": "AskRun"
+  },
+  {
+    "id": "answer:1be18863c1c6825b",
+    "label": "answer:e207ddc63347",
+    "type": "AnswerDraft"
+  },
+  {
+    "id": "reason:citation_not_supporting_answer",
+    "label": "citation_not_supporting_answer",
+    "type": "FeedbackReason"
+  },
+  {
+    "id": "reason:wrong_page",
+    "label": "wrong_page",
+    "type": "FeedbackReason"
+  },
+  {
+    "id": "page:t_p_120_1176_p000320",
+    "label": "t_p_120_1176_p000320",
+    "type": "Page"
+  },
+  {
+    "id": "page:t_p_120_1176_p000003",
+    "label": "t_p_120_1176_p000003",
+    "type": "Page"
+  },
+  {
+    "advisory_only": true,
+    "created_at": "2026-06-03T14:55:49Z",
+    "id": "feedback:a10726cbe884f16f",
+    "label": "feedback:a10726cbe884f16f",
+    "query_fingerprint": "query:seat_bottom_backrest",
+    "rating": "thumbs_up",
+    "review_status": "pending",
+    "type": "FeedbackEvent",
+    "validation_warnings": []
+  },
+  {
+    "id": "rating:thumbs_up",
+    "label": "thumbs_up",
+    "type": "FeedbackRating"
+  },
+  {
+    "id": "reason:answer_correct",
+    "label": "answer_correct",
+    "type": "FeedbackReason"
+  },
+  {
+    "advisory_only": true,
+    "context_status": "valid",
+    "created_at": "2026-06-03T15:05:43Z",
+    "id": "feedback:a23f6b0ade0844e3",
+    "label": "feedback:a23f6b0ade0844e3",
+    "policy_signal_eligible": true,
+    "query_fingerprint": "part_number:120-50645-009",
+    "rating": "thumbs_down",
+    "review_status": "pending",
+    "type": "FeedbackEvent",
+    "validation_warnings": []
+  },
+  {
+    "id": "context_status:valid",
+    "label": "valid",
+    "type": "FeedbackContextStatus"
+  },
+  {
+    "id": "query:03ea3b4c4f0070a8",
+    "label": "part_number:120-50645-009",
+    "query_fingerprint": "part_number:120-50645-009",
+    "type": "QueryFingerprint"
+  },
+  {
+    "id": "ask_run:5d367c78c3f213d6",
+    "label": "ask:e0744f98af6d",
+    "type": "AskRun"
+  },
+  {
+    "id": "answer:8f8759cef25fc0d4",
+    "label": "answer:e0744f98af6d",
+    "type": "AnswerDraft"
+  },
+  {
+    "advisory_only": true,
+    "id": "feedback_signal:c44938758539",
+    "label": "boost_for_query",
+    "page_id": "t_p_120_1176_p000003",
+    "query_fingerprint": "part_number:120-50645-009",
+    "signal": "boost_for_query",
+    "strength": 0.5,
+    "type": "FeedbackPolicySignal"
+  },
+  {
+    "advisory_only": true,
+    "id": "feedback_signal:7de9478188c9",
+    "label": "demote_for_query",
+    "page_id": "t_p_120_1176_p000320",
+    "query_fingerprint": "part_number:120-50645-009",
+    "signal": "demote_for_query",
+    "strength": 1.0,
+    "type": "FeedbackPolicySignal"
+  }
+]

@@ -1,0 +1,90 @@
+{
+  "checks": [
+    {
+      "detail": "summary=True; grouped_jsonl=True",
+      "name": "artifacts_present",
+      "ok": true
+    },
+    {
+      "detail": "status=OK",
+      "name": "status_ok",
+      "ok": true
+    },
+    {
+      "detail": "summary=3; jsonl=3; minimum=1",
+      "name": "grouped_records",
+      "ok": true
+    },
+    {
+      "detail": "summary=3; jsonl=3",
+      "name": "group_count_match",
+      "ok": true
+    },
+    {
+      "detail": "pages_found=3; minimum=1",
+      "name": "pages",
+      "ok": true
+    },
+    {
+      "detail": "supporting_results_scan=8; minimum=1",
+      "name": "supporting_results",
+      "ok": true
+    },
+    {
+      "detail": "groups_with_support=3; groups=3",
+      "name": "groups_have_support",
+      "ok": true
+    },
+    {
+      "detail": "unsafe summary=0; scan=0; max=0",
+      "name": "unsafe_groups",
+      "ok": true
+    },
+    {
+      "detail": "excluded summary=0; scan=0; max=0",
+      "name": "excluded_groups",
+      "ok": true
+    },
+    {
+      "detail": "multiple_bucket_groups=2; minimum=1",
+      "name": "groups_with_multiple_buckets",
+      "ok": true
+    },
+    {
+      "detail": "groups_with_citations=3; minimum=0",
+      "name": "groups_with_citations",
+      "ok": true
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "search_group_excluded_grouped_records": 0,
+    "search_group_excluded_grouped_records_scan": 0,
+    "search_group_grouped_page_records": 3,
+    "search_group_groups_with_citations": 3,
+    "search_group_groups_with_citations_scan": 3,
+    "search_group_groups_with_multiple_buckets": 2,
+    "search_group_groups_with_multiple_buckets_scan": 2,
+    "search_group_groups_with_ocr_path": 3,
+    "search_group_groups_with_source_url": 3,
+    "search_group_groups_with_support": 3,
+    "search_group_groups_with_tiff_path": 3,
+    "search_group_jsonl_records": 3,
+    "search_group_missing_ocr_path_scan": 0,
+    "search_group_missing_source_url_scan": 0,
+    "search_group_missing_tiff_path_scan": 0,
+    "search_group_pages_found": 3,
+    "search_group_results_path": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_results.jsonl",
+    "search_group_results_present": true,
+    "search_group_search_result_records": 8,
+    "search_group_status": "OK",
+    "search_group_summary_path": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_summary.json",
+    "search_group_summary_present": true,
+    "search_group_supporting_result_records": 8,
+    "search_group_supporting_result_records_scan": 8,
+    "search_group_top_group_score": 65.581557,
+    "search_group_unsafe_grouped_records": 0,
+    "search_group_unsafe_grouped_records_scan": 0,
+    "search_group_version": "trace_net_search_grouper_v1"
+  }
+}

@@ -1,0 +1,203 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:02:21Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000016.tif",
+    "relative_path": "00000016.tif"
+  },
+  "file": {
+    "file_name": "00000016.tif",
+    "extension": ".tif",
+    "file_size_bytes": 42853,
+    "modified_time_utc": "2026-05-22T19:14:53Z",
+    "sha256": "39a6709102ab643ff1e913c57ef86c92c29e7233bb83c8ddbb6b2eab8ea7cbc7"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3562,
+    "height_px": 4608,
+    "dpi_x": 419.0,
+    "dpi_y": 419.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "maintenance_manual_ipl",
+    "confidence": 0.64,
+    "signals": [
+      "manual_title",
+      "ata_code",
+      "component_title",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "maintenance_manual_ipl",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": null,
+    "publication_number": null,
+    "component_title": "-<\u20ac EMBRAER",
+    "section_title": null,
+    "figure_title": null,
+    "figure_number": null,
+    "effectivity": "ALL 25-2 1 -00",
+    "ata_code": "25-21-00",
+    "page_number": 2,
+    "page_label": "2",
+    "issue_date": "Sep 30/08",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [],
+    "metadata_confidence": 0.64
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "top_strip",
+    "combined_text": "[bottom_right_title_block]\n25-21-00 _.....\n\n[bottom_strip]\nEFFECTIVITY: ALL 25-2 1 -00\nSep 30/08\n\n[top_strip]\n-<\u20ac EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nG. The backrest structure consists of a rigid composite structure attached to the seat structure and\nmolded foam cushion is glued to this structure, then covered with fitted upholstery, which, in turn,\nis secured with Velcro fastener.\nH. The seat bottom cushion is made of molded foam and is covered by the upholstery which is\n\n[right_strip]\no the seat structure and\noholstery, which, in turn,\nthe upholstery which is\nsnack folding table oper-\noly.\nlocated at the center of\nst be released to extend\nsing the lock located on\n00 Page 2\nSep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1781,
+          2672,
+          3562,
+          4608
+        ],
+        "status": "ok",
+        "text": "25-21-00 _.....",
+        "char_count": 15,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          3225,
+          3562,
+          4608
+        ],
+        "status": "ok",
+        "text": "EFFECTIVITY: ALL 25-2 1 -00\nSep 30/08",
+        "char_count": 37,
+        "error": "Image too small to scale!! (2x36 vs min width of 3)\r\nLine cannot be recognized!!"
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3562,
+          829
+        ],
+        "status": "ok",
+        "text": "-<\u20ac EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nG. The backrest structure consists of a rigid composite structure attached to the seat structure and\nmolded foam cushion is glued to this structure, then covered with fitted upholstery, which, in turn,\nis secured with Velcro fastener.\nH. The seat bottom cushion is made of molded foam and is covered by the upholstery which is",
+        "char_count": 385,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2422,
+          0,
+          3562,
+          4608
+        ],
+        "status": "ok",
+        "text": "o the seat structure and\noholstery, which, in turn,\nthe upholstery which is\nsnack folding table oper-\noly.\nlocated at the center of\nst be released to extend\nsing the lock located on\n00 Page 2\nSep 30/98",
+        "char_count": 201,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "maintenance_manual_ipl",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": null,
+      "publication_number": null,
+      "component_title": "-<\u20ac EMBRAER",
+      "section_title": null,
+      "figure_title": null,
+      "figure_number": null,
+      "effectivity": "ALL 25-2 1 -00",
+      "ata_code": "25-21-00",
+      "page_number": 2,
+      "page_label": "2",
+      "issue_date": "Sep 30/08",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [],
+      "metadata_confidence": 0.64
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

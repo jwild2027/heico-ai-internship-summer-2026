@@ -1,0 +1,32 @@
+[
+  {
+    "source": "graph_audit:run",
+    "target": "graph_audit:postgres_graph",
+    "type": "AUDITED"
+  },
+  {
+    "source": "graph_audit:run",
+    "target": "graph_audit:metric:postgres_pages",
+    "type": "HAS_METRIC"
+  },
+  {
+    "source": "graph_audit:run",
+    "target": "graph_audit:metric:postgres_graph_nodes",
+    "type": "HAS_METRIC"
+  },
+  {
+    "source": "graph_audit:run",
+    "target": "graph_audit:metric:postgres_graph_edges",
+    "type": "HAS_METRIC"
+  },
+  {
+    "source": "graph_audit:run",
+    "target": "graph_audit:metric:component_count",
+    "type": "HAS_METRIC"
+  },
+  {
+    "source": "graph_audit:run",
+    "target": "graph_audit:metric:largest_component_nodes",
+    "type": "HAS_METRIC"
+  }
+]

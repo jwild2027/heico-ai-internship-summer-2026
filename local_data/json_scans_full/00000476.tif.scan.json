@@ -1,0 +1,222 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:12:23Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000476.tif",
+    "relative_path": "00000476.tif"
+  },
+  "file": {
+    "file_name": "00000476.tif",
+    "extension": ".tif",
+    "file_size_bytes": 43035,
+    "modified_time_utc": "2026-05-22T19:14:57Z",
+    "sha256": "521ae4ff0fe18f4d26d13232668fdd9e655ffaaf2f82afa61298ca0ff0359d81"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.98,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "part_number",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": "SPECIFICATION",
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.25
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "ocr",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "T.P. 120/1176",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "P/N SPECIFICATION",
+    "section_title": null,
+    "figure_title": "113\u00b0F/min and temperatures up to 302 + 41\u00b0F (150 + 5\u00b0C",
+    "figure_number": "601",
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": 602,
+    "page_label": "602",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [
+      "P/N SPECIFICATION",
+      "SUPPLIER HEXCEL",
+      "METHYL ETHYL KETONE - T-M-261",
+      "ERIAL",
+      "ECIFICATION",
+      "MEP15-006",
+      "T-M-261"
+    ],
+    "metadata_confidence": 0.98
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\nP/N SPECIFICATION\n1-38-F 155-117 MEP15-006\n- T-M-261\nR3523-4-( ) -\n0 NA or EA9396 -\n5 may be used.\n25 2 1 00 Page 602\nT.P. 120/1176 Sep 30/98\n\n[bottom_strip]\nGLASS FABRIC PREIMPREGNATED| 7781-38-F155-117 MEP15-006\nWITH EPOXY RESIN, STYLE 7781,\nSUPPLIER HEXCEL\nMETHYL ETHYL KETONE - T-M-261\nFASTENER CR3523-4-( ) -\nSANDPAPER NO. 80 - -\nRESIN E9320 NA or EA9396 -\nNOTE: Equivalent substitutes for the listed items may be used.\nEFFECTIVITY: ALL\n25 2 1 00 Page 602\nT.P. 120/1176 Sep 30/98\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nB. Ovens and heating blankets should be capable of maintaining controlled heatup rate of 1 to\n113\u00b0F/min and temperatures up to 302 + 41\u00b0F (150 + 5\u00b0C).\n4. Typical Repair to Laterals of Passenger Seats (figure 601)\nA Danair Vit eannt (D/A] 190A ATVTONO nfh1\\\n\n[right_strip]\nled heatup rate of 1 to\nERIAL\n2024T3 0.125 inch\n2024-0 0.040 inch\n1\u20ac passenger seat using\nECIFICATION\nMEP15-006\nT-M-261\n00 Page 602\n1176 Sep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "P/N SPECIFICATION\n1-38-F 155-117 MEP15-006\n- T-M-261\nR3523-4-( ) -\n0 NA or EA9396 -\n5 may be used.\n25 2 1 00 Page 602\nT.P. 120/1176 Sep 30/98",
+        "char_count": 141,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "GLASS FABRIC PREIMPREGNATED| 7781-38-F155-117 MEP15-006\nWITH EPOXY RESIN, STYLE 7781,\nSUPPLIER HEXCEL\nMETHYL ETHYL KETONE - T-M-261\nFASTENER CR3523-4-( ) -\nSANDPAPER NO. 80 - -\nRESIN E9320 NA or EA9396 -\nNOTE: Equivalent substitutes for the listed items may be used.\nEFFECTIVITY: ALL\n25 2 1 00 Page 602\nT.P. 120/1176 Sep 30/98",
+        "char_count": 326,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nB. Ovens and heating blankets should be capable of maintaining controlled heatup rate of 1 to\n113\u00b0F/min and temperatures up to 302 + 41\u00b0F (150 + 5\u00b0C).\n4. Typical Repair to Laterals of Passenger Seats (figure 601)\nA Danair Vit eannt (D/A] 190A ATVTONO nfh1\\",
+        "char_count": 314,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "led heatup rate of 1 to\nERIAL\n2024T3 0.125 inch\n2024-0 0.040 inch\n1\u20ac passenger seat using\nECIFICATION\nMEP15-006\nT-M-261\n00 Page 602\n1176 Sep 30/98",
+        "char_count": 146,
+        "error": "Image too small to scale!! (1x36 vs min width of 3)\r\nLine cannot be recognized!!"
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": "SPECIFICATION",
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0.2
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "T.P. 120/1176",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "P/N SPECIFICATION",
+      "section_title": null,
+      "figure_title": "113\u00b0F/min and temperatures up to 302 + 41\u00b0F (150 + 5\u00b0C",
+      "figure_number": "601",
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": 602,
+      "page_label": "602",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [
+        "P/N SPECIFICATION",
+        "SUPPLIER HEXCEL",
+        "METHYL ETHYL KETONE - T-M-261",
+        "ERIAL",
+        "ECIFICATION",
+        "MEP15-006",
+        "T-M-261"
+      ],
+      "metadata_confidence": 0.98
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": "SPECIFICATION",
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0.2
+    }
+  }
+}

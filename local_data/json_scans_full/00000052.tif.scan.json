@@ -1,0 +1,223 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:03:13Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000052.tif",
+    "relative_path": "00000052.tif"
+  },
+  "file": {
+    "file_name": "00000052.tif",
+    "extension": ".tif",
+    "file_size_bytes": 54815,
+    "modified_time_utc": "2026-05-22T19:14:53Z",
+    "sha256": "705cb63f1050b86540725821b5dec8220f63ab8ac38c445654eb173262a88362"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3205,
+    "height_px": 4146,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.9,
+    "signals": [
+      "manual_title",
+      "ata_code",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "part_numbers",
+      "part_number",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": "UNITS",
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.25
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "ocr",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "T.P. 120/1176",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "Z20-21-UU-0U 14U0 1 Z20-21-UU-9U TZU TU",
+    "section_title": null,
+    "figure_title": null,
+    "figure_number": null,
+    "effectivity": "ALL 2 5 2 1 00",
+    "ata_code": "25-21-00",
+    "page_number": 1031,
+    "page_label": "1031",
+    "issue_date": "Jan 15/01",
+    "revision_date": "Jan 15/01",
+    "revision_label": null,
+    "part_numbers": [
+      "120-43539-001",
+      "120-42660-001",
+      "120-42547-019"
+    ],
+    "callouts": [
+      "Z20-21-UU-0U 14U0 1 Z20-21-UU-9U TZU TU",
+      "PER STOCK PER STOCK",
+      "PER STOCK"
+    ],
+    "metadata_confidence": 0.9
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\n25-21-00-54 160 2\n25-21 -00-55 160 2\n25-21-00-112 60 1\n120-43539-001\n25-21 -00-88 120 2\n25-21 -00-89 120 2\n25-21 -00-90 120 10\n25-21-00-92 120 2\n25-21 -00-93 120 2\n25-21-00-94 120 2\n25-21 -00-95 120 2\n25-21 -00-96 120 2\n25-21 -00-98 120 2\n25-21 -00-99 120 2\n25-21-00-100 120 2\n25-21-00-102 120 2\n25-21-00-103 120 2\n25-21-00-104 120 2\n25-21-00\nPage 1031\n- T.P. 120/1176 Jan 15/01\n\n[bottom_strip]\nZ20-21-UU-0U 14U0 1 Z20-21-UU-9U TZU TU\n25-21-00-51 140 1 25-21-00-92 120 2\n25-21-00-52 140 1 25-21-00-93 120 2\n25-21-00-53 140 1 25-21-00-94 120 2\n25-21-00-54 140 1 25-21-00-95 120 2\n25-21-00-55 140 1 25-21-00-96 120 2\n120-42660-001 25-21-00-98 120 2\n25-21-00-01 1 1 25-21 -00-99 120 2\n25-21-00-02 1 1 25-21-00-100 120 2\n| 25-21-00-02A 190 1 25-21-00-102 120 2\n25-21-00-04 1 1 25-21-00-103 120 2\n25-21-00-06 1 1 25-21-00-104 120 2\nEFFECTIVITY: ALL 2 5 2 1 00\n= ||\nPage 1031\nT.P. 120/1176 Jan 15/01\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nPART NUMBER UNITS AIRLINE PART NUMBER UNITS AIRLINE\nPER STOCK PER STOCK\nCH-SEC-UN-FIG | ITEM) ASSY NUMBER CH-SEC-UN-FIG | ITEM] ASSY NUMBER\n120-42547-019 120-42660-001\n25-21-00-11 140 1 25-21-00-07 1 1\n\n[right_strip]\noof [in\nPER STOCK\nIG] ITEM] ASSY NUMBER\n[ 1 1\n) 1 1\n) 1 1\n2 1 1\n3 1 9\nf 1 1\n) 1 1\n) 190 2\nIA} 210 2\n) 190 2\nJA} 180 2\n2 190 2\n3 200 2\n) 190\n) 190 2\n2 190 2\n3 190 2\nf 190 2\n) 190 2\n[ 190 2\n3 160 2\n) 160 2\n) 190 2\n3 190 2\nf 160 2\n) 160 2\n|2 60 1\n3 120 2\n] 120 2\n) 120 10\n2 120 2\n3 120 2\nf 120 2\n) 120 2\n) 120 2\n3 120 2\n7] 120 2\n0} 120 2\n2 120 2\n3} 120 2\n4 120 2\n\u00bb-21-00\nPage 1031\n120/1176 Jan 15/01",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1602,
+          2404,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "25-21-00-54 160 2\n25-21 -00-55 160 2\n25-21-00-112 60 1\n120-43539-001\n25-21 -00-88 120 2\n25-21 -00-89 120 2\n25-21 -00-90 120 10\n25-21-00-92 120 2\n25-21 -00-93 120 2\n25-21-00-94 120 2\n25-21 -00-95 120 2\n25-21 -00-96 120 2\n25-21 -00-98 120 2\n25-21 -00-99 120 2\n25-21-00-100 120 2\n25-21-00-102 120 2\n25-21-00-103 120 2\n25-21-00-104 120 2\n25-21-00\nPage 1031\n- T.P. 120/1176 Jan 15/01",
+        "char_count": 378,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2902,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "Z20-21-UU-0U 14U0 1 Z20-21-UU-9U TZU TU\n25-21-00-51 140 1 25-21-00-92 120 2\n25-21-00-52 140 1 25-21-00-93 120 2\n25-21-00-53 140 1 25-21-00-94 120 2\n25-21-00-54 140 1 25-21-00-95 120 2\n25-21-00-55 140 1 25-21-00-96 120 2\n120-42660-001 25-21-00-98 120 2\n25-21-00-01 1 1 25-21 -00-99 120 2\n25-21-00-02 1 1 25-21-00-100 120 2\n| 25-21-00-02A 190 1 25-21-00-102 120 2\n25-21-00-04 1 1 25-21-00-103 120 2\n25-21-00-06 1 1 25-21-00-104 120 2\nEFFECTIVITY: ALL 2 5 2 1 00\n= ||\nPage 1031\nT.P. 120/1176 Jan 15/01",
+        "char_count": 498,
+        "error": "Image too small to scale!! (2x36 vs min width of 3)\r\nLine cannot be recognized!!"
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3205,
+          746
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nPART NUMBER UNITS AIRLINE PART NUMBER UNITS AIRLINE\nPER STOCK PER STOCK\nCH-SEC-UN-FIG | ITEM) ASSY NUMBER CH-SEC-UN-FIG | ITEM] ASSY NUMBER\n120-42547-019 120-42660-001\n25-21-00-11 140 1 25-21-00-07 1 1",
+        "char_count": 259,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2179,
+          0,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "oof [in\nPER STOCK\nIG] ITEM] ASSY NUMBER\n[ 1 1\n) 1 1\n) 1 1\n2 1 1\n3 1 9\nf 1 1\n) 1 1\n) 190 2\nIA} 210 2\n) 190 2\nJA} 180 2\n2 190 2\n3 200 2\n) 190\n) 190 2\n2 190 2\n3 190 2\nf 190 2\n) 190 2\n[ 190 2\n3 160 2\n) 160 2\n) 190 2\n3 190 2\nf 160 2\n) 160 2\n|2 60 1\n3 120 2\n] 120 2\n) 120 10\n2 120 2\n3 120 2\nf 120 2\n) 120 2\n) 120 2\n3 120 2\n7] 120 2\n0} 120 2\n2 120 2\n3} 120 2\n4 120 2\n\u00bb-21-00\nPage 1031\n120/1176 Jan 15/01",
+        "char_count": 396,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": "UNITS",
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0.2
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "T.P. 120/1176",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "Z20-21-UU-0U 14U0 1 Z20-21-UU-9U TZU TU",
+      "section_title": null,
+      "figure_title": null,
+      "figure_number": null,
+      "effectivity": "ALL 2 5 2 1 00",
+      "ata_code": "25-21-00",
+      "page_number": 1031,
+      "page_label": "1031",
+      "issue_date": "Jan 15/01",
+      "revision_date": "Jan 15/01",
+      "revision_label": null,
+      "part_numbers": [
+        "120-43539-001",
+        "120-42660-001",
+        "120-42547-019"
+      ],
+      "callouts": [
+        "Z20-21-UU-0U 14U0 1 Z20-21-UU-9U TZU TU",
+        "PER STOCK PER STOCK",
+        "PER STOCK"
+      ],
+      "metadata_confidence": 0.9
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": "UNITS",
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0.2
+    }
+  }
+}

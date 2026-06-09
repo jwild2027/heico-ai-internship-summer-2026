@@ -1,0 +1,215 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:07:30Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000248.tif",
+    "relative_path": "00000248.tif"
+  },
+  "file": {
+    "file_name": "00000248.tif",
+    "extension": ".tif",
+    "file_size_bytes": 59514,
+    "modified_time_utc": "2026-05-22T19:14:55Z",
+    "sha256": "fc01e0a16e01494ff40f642bc43440d27d90d65f0af7cf6dfcefd931d3962c8f"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "maintenance_manual_ipl",
+    "confidence": 0.92,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "manual_document_code",
+      "component_title",
+      "part_numbers",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "maintenance_manual_ipl",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "120TP250053.MCE",
+    "publication_number": null,
+    "component_title": "\u2018\\ 100 A",
+    "section_title": null,
+    "figure_title": "270-\u00b0",
+    "figure_number": "46",
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": 1189,
+    "page_label": "1189",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [
+      "120-45851-005"
+    ],
+    "callouts": [
+      "M10 199",
+      "SN A"
+    ],
+    "metadata_confidence": 0.92
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\n150 \\ 170\n160\ni\n120 89 80\nse 110 | 80\n\u2018\\ 100 A\n: wan\n(B) 110 | A A\n100 100 Bg\n130 | 120\nM10 199 }\n120TP250053.MCE\nSeat (120-45851-005/505)\n-igure 46\nSheet 1\n25-21 -00 Page 1189\nSep 30/98\n\n[bottom_strip]\nxa 90\u00b0 op\u201d\niL \u00a9 td Le |\n300 |Z 100 100\n130 \\ / 120\n290 100\n|\n270-\u00b0\n120TP250053.MCE\nDouble Passenger Seat (120-45851-005/505)\nFigure 46\nSheet 1\nEFFECTIVITY: ALL\n25 21 00 Page 1189\nSep 30/98\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nSN A\n\u201cSSS BQO 0\nSS \u201cS\n500 IY Q <a\n\n[right_strip]\n40\n30 9\n. 20\n>\n30\n~\nSS\nSF |\n\u00ae\nJ Eon.\n\u00b0 170\n160\n0\n| 80 80\n110 80\n90 / e477 110\n400 ii 7]\n130 in 120\n\"10 G0 .\nan\n505)\n_|\n-21 -00 Page 1189\nSep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "150 \\ 170\n160\ni\n120 89 80\nse 110 | 80\n\u2018\\ 100 A\n: wan\n(B) 110 | A A\n100 100 Bg\n130 | 120\nM10 199 }\n120TP250053.MCE\nSeat (120-45851-005/505)\n-igure 46\nSheet 1\n25-21 -00 Page 1189\nSep 30/98",
+        "char_count": 186,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "xa 90\u00b0 op\u201d\niL \u00a9 td Le |\n300 |Z 100 100\n130 \\ / 120\n290 100\n|\n270-\u00b0\n120TP250053.MCE\nDouble Passenger Seat (120-45851-005/505)\nFigure 46\nSheet 1\nEFFECTIVITY: ALL\n25 21 00 Page 1189\nSep 30/98",
+        "char_count": 188,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nSN A\n\u201cSSS BQO 0\nSS \u201cS\n500 IY Q <a",
+        "char_count": 91,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "40\n30 9\n. 20\n>\n30\n~\nSS\nSF |\n\u00ae\nJ Eon.\n\u00b0 170\n160\n0\n| 80 80\n110 80\n90 / e477 110\n400 ii 7]\n130 in 120\n\"10 G0 .\nan\n505)\n_|\n-21 -00 Page 1189\nSep 30/98",
+        "char_count": 146,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "maintenance_manual_ipl",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "120TP250053.MCE",
+      "publication_number": null,
+      "component_title": "\u2018\\ 100 A",
+      "section_title": null,
+      "figure_title": "270-\u00b0",
+      "figure_number": "46",
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": 1189,
+      "page_label": "1189",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [
+        "120-45851-005"
+      ],
+      "callouts": [
+        "M10 199",
+        "SN A"
+      ],
+      "metadata_confidence": 0.92
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

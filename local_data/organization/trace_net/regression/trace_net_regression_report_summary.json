@@ -1,0 +1,56 @@
+{
+  "answer_evidence_total": 61,
+  "answer_page_total": 41,
+  "ask_status_counts": {
+    "OK": 7
+  },
+  "case_records": 7,
+  "cases_path": "local_data\\organization\\trace_net\\regression\\trace_net_regression_report_cases.jsonl",
+  "cases_requiring_review": [
+    "passenger_seat",
+    "vendor_list"
+  ],
+  "cases_with_tie_heavy_scores": [
+    "passenger_seat"
+  ],
+  "cases_with_top_page_changes": [
+    "vendor_list"
+  ],
+  "context_warning_signals_used_total": 0,
+  "created_at": "2026-06-03T19:59:43Z",
+  "excluded_weighted_record_total": 0,
+  "failed_cases": 0,
+  "feedback_signal_cases": 1,
+  "flag_counts": {
+    "feedback_signals_used": 1,
+    "tie_heavy_top_scores": 1,
+    "weighted_rank_changes": 1,
+    "weighted_top_page_changed": 1
+  },
+  "graph_edges": 25,
+  "graph_edges_path": "local_data\\organization\\trace_net\\regression\\trace_net_regression_report_graph_edges.json",
+  "graph_nodes": 18,
+  "graph_nodes_path": "local_data\\organization\\trace_net\\regression\\trace_net_regression_report_graph_nodes.json",
+  "output_dir": "local_data\\organization\\trace_net\\regression",
+  "passed_cases": 7,
+  "rank_changed_cases": 1,
+  "recommendations": [
+    "fixed_regression_set_safe_for_current_outputs",
+    "review_weighted_top_page_changes_before_applying_weighted_ranking",
+    "review_tie_heavy_queries_for_additional_tie_breakers",
+    "validated_feedback_path_exercised_in_regression_set",
+    "do_not_apply_weighted_ranking_without_regression_review"
+  ],
+  "regression_dir": "local_data\\organization\\trace_net\\regression\\fixed_set_v1",
+  "report_html_path": "local_data\\organization\\trace_net\\regression\\trace_net_regression_report.html",
+  "report_md_path": "local_data\\organization\\trace_net\\regression\\trace_net_regression_report.md",
+  "review_needed_cases": 2,
+  "source_truth_mutation_total": 0,
+  "status": "OK",
+  "summary_path": "local_data\\organization\\trace_net\\regression\\trace_net_regression_report_summary.json",
+  "tie_heavy_cases": 1,
+  "top_page_changed_cases": 1,
+  "unsafe_answer_group_total": 0,
+  "unsafe_weighted_record_total": 0,
+  "version": "trace_net_regression_report_v1"
+}

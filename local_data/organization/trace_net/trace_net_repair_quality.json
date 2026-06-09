@@ -1,0 +1,103 @@
+{
+  "checks": [
+    {
+      "message": "summary=True; plan=True; repairs=True.",
+      "name": "trace_net_repair_artifacts_present",
+      "status": "OK"
+    },
+    {
+      "message": "repair plan status is 'ok'.",
+      "name": "trace_net_repair_status",
+      "status": "OK"
+    },
+    {
+      "message": "records=25; minimum=25.",
+      "name": "trace_net_repair_records",
+      "status": "OK"
+    },
+    {
+      "message": "records=25; expected=25.",
+      "name": "trace_net_repair_expected_pages",
+      "status": "OK"
+    },
+    {
+      "message": "auto_repair_candidate_records=24; minimum=1.",
+      "name": "trace_net_repair_auto_candidates",
+      "status": "OK"
+    },
+    {
+      "message": "unplanned_problem_records=0; max=0.",
+      "name": "trace_net_repair_unplanned_problems",
+      "status": "OK"
+    },
+    {
+      "message": "repair_route_counts={'human_review_route': 1, 'ocr_graph_validation_review_route': 1, 'table_candidate_review_route': 6, 'table_crop_tile_repair_route_high': 4, 'table_crop_tile_repair_route_medium': 13}.",
+      "name": "trace_net_repair_route_counts",
+      "status": "OK"
+    },
+    {
+      "message": "repair_action_counts={'review_table_candidate_before_extraction': 6, 'run_ocr_graph_validation': 1, 'send_to_human_review': 1, 'send_to_table_crop_tile_route': 17}.",
+      "name": "trace_net_repair_action_counts",
+      "status": "OK"
+    },
+    {
+      "message": "graph nodes=95.",
+      "name": "trace_net_repair_graph_nodes",
+      "status": "OK"
+    },
+    {
+      "message": "graph edges=334.",
+      "name": "trace_net_repair_graph_edges",
+      "status": "OK"
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "trace_net_repair_action_counts": {
+      "review_table_candidate_before_extraction": 6,
+      "run_ocr_graph_validation": 1,
+      "send_to_human_review": 1,
+      "send_to_table_crop_tile_route": 17
+    },
+    "trace_net_repair_auto_repair_candidate_records": 24,
+    "trace_net_repair_cleanup_repair_records": 0,
+    "trace_net_repair_expected_pages": 25,
+    "trace_net_repair_graph_edges": 334,
+    "trace_net_repair_graph_nodes": 95,
+    "trace_net_repair_human_review_records": 25,
+    "trace_net_repair_ocr_graph_validation_records": 1,
+    "trace_net_repair_plan_jsonl_path": "local_data\\organization\\trace_net\\trace_net_repair_plan.jsonl",
+    "trace_net_repair_plan_path": "local_data\\organization\\trace_net\\trace_net_repair_plan.json",
+    "trace_net_repair_plan_present": true,
+    "trace_net_repair_rag_excluded_records": 25,
+    "trace_net_repair_records": 25,
+    "trace_net_repair_records_present": true,
+    "trace_net_repair_review_trait_counts": {
+      "hallucination_risk": 13,
+      "needs_human_review": 25,
+      "prompt_template_repaired": 16,
+      "section_bleed_repaired": 15,
+      "summary_heavy": 1,
+      "suspicious_phrase": 3,
+      "table_expected_but_not_extracted": 23
+    },
+    "trace_net_repair_route_counts": {
+      "human_review_route": 1,
+      "ocr_graph_validation_review_route": 1,
+      "table_candidate_review_route": 6,
+      "table_crop_tile_repair_route_high": 4,
+      "table_crop_tile_repair_route_medium": 13
+    },
+    "trace_net_repair_status": "ok",
+    "trace_net_repair_summary_path": "local_data\\organization\\trace_net\\trace_net_repair_summary.json",
+    "trace_net_repair_summary_present": true,
+    "trace_net_repair_table_candidate_review_records": 6,
+    "trace_net_repair_table_repair_high_records": 4,
+    "trace_net_repair_table_repair_medium_records": 13,
+    "trace_net_repair_table_repair_records": 17,
+    "trace_net_repair_trust_tier_counts": {
+      "C": 25
+    },
+    "trace_net_repair_unplanned_problem_records": 0
+  }
+}

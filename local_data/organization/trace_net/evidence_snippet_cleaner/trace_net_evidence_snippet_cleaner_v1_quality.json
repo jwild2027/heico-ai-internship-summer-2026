@@ -1,0 +1,252 @@
+{
+  "checks": [
+    {
+      "expected": ">=1",
+      "name": "min_clean_snippets",
+      "passed": true,
+      "value": 7
+    },
+    {
+      "expected": 0,
+      "name": "all_clean_snippets_cited",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "all_clean_snippets_have_page_id",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "all_clean_snippets_have_citation",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "all_clean_snippets_have_clean_text",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "no_trace_net_boilerplate",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "no_local_path_or_url_leaks",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "no_raw_bytes_repr",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "no_forbidden_markers",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "no_retrieval_only_clean_claims",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "page_profile_clean_claim_count",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "context_helper_clean_claim_count",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "source_evidence_clean_claim_count",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "derived_context_clean_claim_count",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "claims_have_authority",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "no_direct_answer_claims",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "no_direct_claim_proof",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "no_source_truth_mutation",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "final_answer_still_blocked",
+      "passed": true,
+      "value": {
+        "count": 0,
+        "flag": false
+      }
+    },
+    {
+      "expected": 0,
+      "name": "llm_freeform_still_blocked",
+      "passed": true,
+      "value": {
+        "count": 0,
+        "flag": false
+      }
+    },
+    {
+      "expected": 0,
+      "name": "source_resolution_required",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "authority_gate_required",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "citation_requirement_required",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": "PASS",
+      "name": "snippet_claims_quality_status",
+      "passed": true,
+      "value": "PASS"
+    },
+    {
+      "expected": "PASS",
+      "name": "context_pack_quality_status",
+      "passed": true,
+      "value": "PASS"
+    },
+    {
+      "expected": "SNIPPET_CLAIMS_ONLY",
+      "name": "snippet_claims_answer_status",
+      "passed": true,
+      "value": "SNIPPET_CLAIMS_ONLY"
+    },
+    {
+      "expected": "CONTEXT_PACK_ONLY",
+      "name": "context_pack_answer_status",
+      "passed": true,
+      "value": "CONTEXT_PACK_ONLY"
+    },
+    {
+      "expected": 1024,
+      "name": "embedding_dim",
+      "passed": true,
+      "value": 1024
+    }
+  ],
+  "quality_path": "local_data\\organization\\trace_net\\evidence_snippet_cleaner\\trace_net_evidence_snippet_cleaner_v1_quality.json",
+  "report_path": "local_data\\organization\\trace_net\\evidence_snippet_cleaner\\trace_net_evidence_snippet_cleaner_v1.json",
+  "schema_version": "trace_net_evidence_snippet_cleaner_v1",
+  "status": "PASS",
+  "summary": {
+    "answer_status": "CLEAN_SNIPPETS_ONLY",
+    "authority_counts": {
+      "ocr_text_claim_with_citation": 7
+    },
+    "blocked_clean_snippet_count": 5,
+    "boilerplate_snippet_count": 0,
+    "bucket_counts": {
+      "source_text_evidence": 7
+    },
+    "citation_count": 7,
+    "citation_ids": [
+      "cite:source_text:t_p_120_1176_p000001:092378ba20",
+      "cite:source_text:t_p_120_1176_p000005:b877a53578",
+      "cite:source_text:t_p_120_1176_p000007:a45d2eefa2",
+      "cite:source_text:t_p_120_1176_p000008:90254eaa5b",
+      "cite:source_text:t_p_120_1176_p000010:e92a4efc6c",
+      "cite:source_text:t_p_120_1176_p000013:e2f10387d0",
+      "cite:source_text:t_p_120_1176_p000048:c10c9ea562"
+    ],
+    "cited_clean_snippet_count": 7,
+    "claim_proof_direct_count": 0,
+    "claim_without_authority_count": 0,
+    "clean_snippet_claim_count": 7,
+    "clean_snippet_present_count": 7,
+    "context_helper_clean_claim_count": 0,
+    "context_pack_answer_status": "CONTEXT_PACK_ONLY",
+    "context_pack_quality_status": "PASS",
+    "derived_context_clean_claim_count": 0,
+    "direct_answer_allowed_claim_count": 0,
+    "embedding_dim": 1024,
+    "embedding_mode": "ollama",
+    "embedding_model_name": "bge-m3:latest",
+    "final_answer_allowed": false,
+    "final_answer_allowed_count": 0,
+    "forbidden_marker_count": 0,
+    "llm_freeform_answer_allowed": false,
+    "llm_freeform_answer_allowed_count": 0,
+    "local_path_leak_count": 0,
+    "missing_authority_gate_count": 0,
+    "missing_citation_count": 0,
+    "missing_citation_requirement_count": 0,
+    "missing_clean_snippet_count": 0,
+    "missing_page_id_count": 0,
+    "missing_source_resolution_count": 0,
+    "page_count": 7,
+    "page_ids": [
+      "t_p_120_1176_p000001",
+      "t_p_120_1176_p000005",
+      "t_p_120_1176_p000007",
+      "t_p_120_1176_p000008",
+      "t_p_120_1176_p000010",
+      "t_p_120_1176_p000013",
+      "t_p_120_1176_p000048"
+    ],
+    "page_profile_clean_claim_count": 0,
+    "query": "Which pages discuss manual revision history?",
+    "raw_bytes_repr_count": 0,
+    "retrieval_only_clean_claim_count": 0,
+    "schema_version": "trace_net_evidence_snippet_cleaner_v1",
+    "snippet_claims_answer_status": "SNIPPET_CLAIMS_ONLY",
+    "snippet_claims_quality_status": "PASS",
+    "source_evidence_clean_claim_count": 0,
+    "source_path_read_count": 7,
+    "source_snippet_claim_count": 12,
+    "source_text_evidence_clean_claim_count": 7,
+    "source_truth_mutation_allowed_count": 0,
+    "uncited_clean_snippet_count": 0,
+    "verified_part_evidence_clean_claim_count": 0
+  }
+}

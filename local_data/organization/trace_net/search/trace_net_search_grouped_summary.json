@@ -1,0 +1,909 @@
+{
+  "bucket_counts": {
+    "source_text_evidence": 10
+  },
+  "created_at": "2026-06-03T19:59:32Z",
+  "evidence_layer_counts": {
+    "source_text": 10
+  },
+  "excluded_grouped_records": 0,
+  "grouped_page_records": 10,
+  "groups_with_citations": 10,
+  "groups_with_multiple_buckets": 0,
+  "groups_with_multiple_layers": 0,
+  "groups_with_ocr_path": 10,
+  "groups_with_source_url": 10,
+  "groups_with_tiff_path": 10,
+  "pages_found": 10,
+  "paths": {
+    "graph_edges": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_graph_edges.json",
+    "graph_nodes": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_graph_nodes.json",
+    "grouped_results": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_results.json",
+    "grouped_results_jsonl": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_results.jsonl",
+    "review_html": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_review.html",
+    "review_md": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_review.md",
+    "summary": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_summary.json"
+  },
+  "samples": [
+    {
+      "ata_codes": [
+        "25-21-00"
+      ],
+      "average_score": 21.539877,
+      "average_usable_confidence": 0.81225,
+      "best_rank": 1,
+      "best_score": 21.539877,
+      "citation_count": 1,
+      "citations": [
+        {
+          "citation_id": "cite:source_text:t_p_120_1176_p000082:2c376eb354",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 82** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000082",
+          "citation_short": "",
+          "evidence_layer": "source_text",
+          "rag_bucket": "source_text_evidence"
+        }
+      ],
+      "document_ids": [
+        "t_p_120_1176"
+      ],
+      "evidence_layers": [
+        "source_text"
+      ],
+      "excluded_supporting_results": 0,
+      "group_id": "search_group:t_p_120_1176_p000082",
+      "group_score": 24.689877,
+      "has_ocr_path": true,
+      "has_source_url": true,
+      "has_tiff_path": true,
+      "matched_pages": [],
+      "matched_part_numbers": [],
+      "matched_terms": [
+        "passenger",
+        "seat"
+      ],
+      "max_usable_confidence": 0.81225,
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000082_00000082.txt",
+      "page_id": "t_p_120_1176_p000082",
+      "page_roles": [],
+      "rag_actions": [
+        "include_as_source_evidence"
+      ],
+      "rag_buckets": [
+        "source_text_evidence"
+      ],
+      "rank": 1,
+      "result_count": 1,
+      "safe_group": true,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000082",
+      "supporting_result_count": 1,
+      "supporting_results": [
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000082",
+          "chunk_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000082",
+          "citation_id": "cite:source_text:t_p_120_1176_p000082:2c376eb354",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 82** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000082",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "source_text",
+          "final_rag_action": "include_as_source_evidence",
+          "final_trust_tier": "A",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "passenger",
+            "seat"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000082_00000082.txt",
+          "page_id": "t_p_120_1176_p000082",
+          "rag_bucket": "source_text_evidence",
+          "rank": 1,
+          "safe_result": true,
+          "score": 21.539877,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000082",
+          "text_preview": "Source text evidence for page t_p_120_1176_p000082.\nThis chunk is source-backed OCR/page-context text and can be searched as source text evidence.\nDocument: t_p_120_1176.\nATA: 25-21-00.\nSource URL: http://localhost:8080/rescarta/t_p_120_1176/000082.\nTIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000082_00000082.tif.\nOCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000082_00000082.txt.\nOCR text:\n[bottom_right_title_block]\nING PARTS\nIRT, FASTENER BUTTON MALE ... 4\nNER BUTTON, MAL…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000082_00000082.tif",
+          "usable_confidence": 0.81225
+        }
+      ],
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000082_00000082.tif",
+      "trust_tiers": [
+        "A"
+      ],
+      "unsafe_supporting_results": 0
+    },
+    {
+      "ata_codes": [
+        "25-21-00"
+      ],
+      "average_score": 21.539877,
+      "average_usable_confidence": 0.81225,
+      "best_rank": 2,
+      "best_score": 21.539877,
+      "citation_count": 1,
+      "citations": [
+        {
+          "citation_id": "cite:source_text:t_p_120_1176_p000092:9d02c0cbdf",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 92** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000092",
+          "citation_short": "",
+          "evidence_layer": "source_text",
+          "rag_bucket": "source_text_evidence"
+        }
+      ],
+      "document_ids": [
+        "t_p_120_1176"
+      ],
+      "evidence_layers": [
+        "source_text"
+      ],
+      "excluded_supporting_results": 0,
+      "group_id": "search_group:t_p_120_1176_p000092",
+      "group_score": 24.689877,
+      "has_ocr_path": true,
+      "has_source_url": true,
+      "has_tiff_path": true,
+      "matched_pages": [],
+      "matched_part_numbers": [],
+      "matched_terms": [
+        "passenger",
+        "seat"
+      ],
+      "max_usable_confidence": 0.81225,
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000092_00000092.txt",
+      "page_id": "t_p_120_1176_p000092",
+      "page_roles": [],
+      "rag_actions": [
+        "include_as_source_evidence"
+      ],
+      "rag_buckets": [
+        "source_text_evidence"
+      ],
+      "rank": 2,
+      "result_count": 1,
+      "safe_group": true,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000092",
+      "supporting_result_count": 1,
+      "supporting_results": [
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000092",
+          "chunk_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000092",
+          "citation_id": "cite:source_text:t_p_120_1176_p000092:9d02c0cbdf",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 92** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000092",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "source_text",
+          "final_rag_action": "include_as_source_evidence",
+          "final_trust_tier": "A",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "passenger",
+            "seat"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000092_00000092.txt",
+          "page_id": "t_p_120_1176_p000092",
+          "rag_bucket": "source_text_evidence",
+          "rank": 2,
+          "safe_result": true,
+          "score": 21.539877,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000092",
+          "text_preview": "Source text evidence for page t_p_120_1176_p000092.\nThis chunk is source-backed OCR/page-context text and can be searched as source text evidence.\nDocument: t_p_120_1176.\nATA: 25-21-00.\nSource URL: http://localhost:8080/rescarta/t_p_120_1176/000092.\nTIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000092_00000092.tif.\nOCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000092_00000092.txt.\nOCR text:\n[bottom_right_title_block]\nIRT, FASTENER BUTTON MALE ... 4\nNER BUTTON, MALE.........…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000092_00000092.tif",
+          "usable_confidence": 0.81225
+        }
+      ],
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000092_00000092.tif",
+      "trust_tiers": [
+        "A"
+      ],
+      "unsafe_supporting_results": 0
+    },
+    {
+      "ata_codes": [
+        "25-21-00"
+      ],
+      "average_score": 21.539877,
+      "average_usable_confidence": 0.81225,
+      "best_rank": 3,
+      "best_score": 21.539877,
+      "citation_count": 1,
+      "citations": [
+        {
+          "citation_id": "cite:source_text:t_p_120_1176_p000098:8e20942b13",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 98** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000098",
+          "citation_short": "",
+          "evidence_layer": "source_text",
+          "rag_bucket": "source_text_evidence"
+        }
+      ],
+      "document_ids": [
+        "t_p_120_1176"
+      ],
+      "evidence_layers": [
+        "source_text"
+      ],
+      "excluded_supporting_results": 0,
+      "group_id": "search_group:t_p_120_1176_p000098",
+      "group_score": 24.689877,
+      "has_ocr_path": true,
+      "has_source_url": true,
+      "has_tiff_path": true,
+      "matched_pages": [],
+      "matched_part_numbers": [],
+      "matched_terms": [
+        "passenger",
+        "seat"
+      ],
+      "max_usable_confidence": 0.81225,
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000098_00000098.txt",
+      "page_id": "t_p_120_1176_p000098",
+      "page_roles": [],
+      "rag_actions": [
+        "include_as_source_evidence"
+      ],
+      "rag_buckets": [
+        "source_text_evidence"
+      ],
+      "rank": 3,
+      "result_count": 1,
+      "safe_group": true,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000098",
+      "supporting_result_count": 1,
+      "supporting_results": [
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000098",
+          "chunk_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000098",
+          "citation_id": "cite:source_text:t_p_120_1176_p000098:8e20942b13",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 98** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000098",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "source_text",
+          "final_rag_action": "include_as_source_evidence",
+          "final_trust_tier": "A",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "passenger",
+            "seat"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000098_00000098.txt",
+          "page_id": "t_p_120_1176_p000098",
+          "rag_bucket": "source_text_evidence",
+          "rank": 3,
+          "safe_result": true,
+          "score": 21.539877,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000098",
+          "text_preview": "Source text evidence for page t_p_120_1176_p000098.\nThis chunk is source-backed OCR/page-context text and can be searched as source text evidence.\nDocument: t_p_120_1176.\nATA: 25-21-00.\nSource URL: http://localhost:8080/rescarta/t_p_120_1176/000098.\nTIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000098_00000098.tif.\nOCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000098_00000098.txt.\nOCR text:\n[bottom_right_title_block]\nING PARTS\nRT, FASTENER BUTTON MALE... 4\nNER BUTTON, MALE.…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000098_00000098.tif",
+          "usable_confidence": 0.81225
+        }
+      ],
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000098_00000098.tif",
+      "trust_tiers": [
+        "A"
+      ],
+      "unsafe_supporting_results": 0
+    },
+    {
+      "ata_codes": [
+        "25-21-00"
+      ],
+      "average_score": 21.539877,
+      "average_usable_confidence": 0.81225,
+      "best_rank": 4,
+      "best_score": 21.539877,
+      "citation_count": 1,
+      "citations": [
+        {
+          "citation_id": "cite:source_text:t_p_120_1176_p000122:c86e2a907b",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 122** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000122",
+          "citation_short": "",
+          "evidence_layer": "source_text",
+          "rag_bucket": "source_text_evidence"
+        }
+      ],
+      "document_ids": [
+        "t_p_120_1176"
+      ],
+      "evidence_layers": [
+        "source_text"
+      ],
+      "excluded_supporting_results": 0,
+      "group_id": "search_group:t_p_120_1176_p000122",
+      "group_score": 24.689877,
+      "has_ocr_path": true,
+      "has_source_url": true,
+      "has_tiff_path": true,
+      "matched_pages": [],
+      "matched_part_numbers": [],
+      "matched_terms": [
+        "passenger",
+        "seat"
+      ],
+      "max_usable_confidence": 0.81225,
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000122_00000122.txt",
+      "page_id": "t_p_120_1176_p000122",
+      "page_roles": [],
+      "rag_actions": [
+        "include_as_source_evidence"
+      ],
+      "rag_buckets": [
+        "source_text_evidence"
+      ],
+      "rank": 4,
+      "result_count": 1,
+      "safe_group": true,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000122",
+      "supporting_result_count": 1,
+      "supporting_results": [
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000122",
+          "chunk_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000122",
+          "citation_id": "cite:source_text:t_p_120_1176_p000122:c86e2a907b",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 122** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000122",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "source_text",
+          "final_rag_action": "include_as_source_evidence",
+          "final_trust_tier": "A",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "passenger",
+            "seat"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000122_00000122.txt",
+          "page_id": "t_p_120_1176_p000122",
+          "rag_bucket": "source_text_evidence",
+          "rank": 4,
+          "safe_result": true,
+          "score": 21.539877,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000122",
+          "text_preview": "Source text evidence for page t_p_120_1176_p000122.\nThis chunk is source-backed OCR/page-context text and can be searched as source text evidence.\nDocument: t_p_120_1176.\nATA: 25-21-00.\nSource URL: http://localhost:8080/rescarta/t_p_120_1176/000122.\nTIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000122_00000122.tif.\nOCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000122_00000122.txt.\nOCR text:\n[bottom_right_title_block]\nNER BUTTON, MALE...................... E075221 4\nING PART…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000122_00000122.tif",
+          "usable_confidence": 0.81225
+        }
+      ],
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000122_00000122.tif",
+      "trust_tiers": [
+        "A"
+      ],
+      "unsafe_supporting_results": 0
+    },
+    {
+      "ata_codes": [
+        "25-21-00"
+      ],
+      "average_score": 21.539877,
+      "average_usable_confidence": 0.81225,
+      "best_rank": 5,
+      "best_score": 21.539877,
+      "citation_count": 1,
+      "citations": [
+        {
+          "citation_id": "cite:source_text:t_p_120_1176_p000128:6613a81ae8",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 128** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000128",
+          "citation_short": "",
+          "evidence_layer": "source_text",
+          "rag_bucket": "source_text_evidence"
+        }
+      ],
+      "document_ids": [
+        "t_p_120_1176"
+      ],
+      "evidence_layers": [
+        "source_text"
+      ],
+      "excluded_supporting_results": 0,
+      "group_id": "search_group:t_p_120_1176_p000128",
+      "group_score": 24.689877,
+      "has_ocr_path": true,
+      "has_source_url": true,
+      "has_tiff_path": true,
+      "matched_pages": [],
+      "matched_part_numbers": [],
+      "matched_terms": [
+        "passenger",
+        "seat"
+      ],
+      "max_usable_confidence": 0.81225,
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000128_00000128.txt",
+      "page_id": "t_p_120_1176_p000128",
+      "page_roles": [],
+      "rag_actions": [
+        "include_as_source_evidence"
+      ],
+      "rag_buckets": [
+        "source_text_evidence"
+      ],
+      "rank": 5,
+      "result_count": 1,
+      "safe_group": true,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000128",
+      "supporting_result_count": 1,
+      "supporting_results": [
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000128",
+          "chunk_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000128",
+          "citation_id": "cite:source_text:t_p_120_1176_p000128:6613a81ae8",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 128** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000128",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "source_text",
+          "final_rag_action": "include_as_source_evidence",
+          "final_trust_tier": "A",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "passenger",
+            "seat"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000128_00000128.txt",
+          "page_id": "t_p_120_1176_p000128",
+          "rag_bucket": "source_text_evidence",
+          "rank": 5,
+          "safe_result": true,
+          "score": 21.539877,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000128",
+          "text_preview": "Source text evidence for page t_p_120_1176_p000128.\nThis chunk is source-backed OCR/page-context text and can be searched as source text evidence.\nDocument: t_p_120_1176.\nATA: 25-21-00.\nSource URL: http://localhost:8080/rescarta/t_p_120_1176/000128.\nTIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000128_00000128.tif.\nOCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000128_00000128.txt.\nOCR text:\n[bottom_right_title_block]\nIRT, FASTENER BUTTON MALE ... 4\nNER BUTTON, MALE.........…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000128_00000128.tif",
+          "usable_confidence": 0.81225
+        }
+      ],
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000128_00000128.tif",
+      "trust_tiers": [
+        "A"
+      ],
+      "unsafe_supporting_results": 0
+    },
+    {
+      "ata_codes": [
+        "25-21-00"
+      ],
+      "average_score": 21.539877,
+      "average_usable_confidence": 0.81225,
+      "best_rank": 6,
+      "best_score": 21.539877,
+      "citation_count": 1,
+      "citations": [
+        {
+          "citation_id": "cite:source_text:t_p_120_1176_p000134:1ba69edf8a",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 134** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000134",
+          "citation_short": "",
+          "evidence_layer": "source_text",
+          "rag_bucket": "source_text_evidence"
+        }
+      ],
+      "document_ids": [
+        "t_p_120_1176"
+      ],
+      "evidence_layers": [
+        "source_text"
+      ],
+      "excluded_supporting_results": 0,
+      "group_id": "search_group:t_p_120_1176_p000134",
+      "group_score": 24.689877,
+      "has_ocr_path": true,
+      "has_source_url": true,
+      "has_tiff_path": true,
+      "matched_pages": [],
+      "matched_part_numbers": [],
+      "matched_terms": [
+        "passenger",
+        "seat"
+      ],
+      "max_usable_confidence": 0.81225,
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000134_00000134.txt",
+      "page_id": "t_p_120_1176_p000134",
+      "page_roles": [],
+      "rag_actions": [
+        "include_as_source_evidence"
+      ],
+      "rag_buckets": [
+        "source_text_evidence"
+      ],
+      "rank": 6,
+      "result_count": 1,
+      "safe_group": true,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000134",
+      "supporting_result_count": 1,
+      "supporting_results": [
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000134",
+          "chunk_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000134",
+          "citation_id": "cite:source_text:t_p_120_1176_p000134:1ba69edf8a",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 134** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000134",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "source_text",
+          "final_rag_action": "include_as_source_evidence",
+          "final_trust_tier": "A",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "passenger",
+            "seat"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000134_00000134.txt",
+          "page_id": "t_p_120_1176_p000134",
+          "rag_bucket": "source_text_evidence",
+          "rank": 6,
+          "safe_result": true,
+          "score": 21.539877,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000134",
+          "text_preview": "Source text evidence for page t_p_120_1176_p000134.\nThis chunk is source-backed OCR/page-context text and can be searched as source text evidence.\nDocument: t_p_120_1176.\nATA: 25-21-00.\nSource URL: http://localhost:8080/rescarta/t_p_120_1176/000134.\nTIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000134_00000134.tif.\nOCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000134_00000134.txt.\nOCR text:\n[bottom_right_title_block]\nXRT, FASTENER BUTTOM MALE . 4\nNER BUTTON, MALE........00.…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000134_00000134.tif",
+          "usable_confidence": 0.81225
+        }
+      ],
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000134_00000134.tif",
+      "trust_tiers": [
+        "A"
+      ],
+      "unsafe_supporting_results": 0
+    },
+    {
+      "ata_codes": [
+        "25-21-00"
+      ],
+      "average_score": 21.539877,
+      "average_usable_confidence": 0.81225,
+      "best_rank": 7,
+      "best_score": 21.539877,
+      "citation_count": 1,
+      "citations": [
+        {
+          "citation_id": "cite:source_text:t_p_120_1176_p000140:7154448a87",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 140** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000140",
+          "citation_short": "",
+          "evidence_layer": "source_text",
+          "rag_bucket": "source_text_evidence"
+        }
+      ],
+      "document_ids": [
+        "t_p_120_1176"
+      ],
+      "evidence_layers": [
+        "source_text"
+      ],
+      "excluded_supporting_results": 0,
+      "group_id": "search_group:t_p_120_1176_p000140",
+      "group_score": 24.689877,
+      "has_ocr_path": true,
+      "has_source_url": true,
+      "has_tiff_path": true,
+      "matched_pages": [],
+      "matched_part_numbers": [],
+      "matched_terms": [
+        "passenger",
+        "seat"
+      ],
+      "max_usable_confidence": 0.81225,
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000140_00000140.txt",
+      "page_id": "t_p_120_1176_p000140",
+      "page_roles": [],
+      "rag_actions": [
+        "include_as_source_evidence"
+      ],
+      "rag_buckets": [
+        "source_text_evidence"
+      ],
+      "rank": 7,
+      "result_count": 1,
+      "safe_group": true,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000140",
+      "supporting_result_count": 1,
+      "supporting_results": [
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000140",
+          "chunk_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000140",
+          "citation_id": "cite:source_text:t_p_120_1176_p000140:7154448a87",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 140** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000140",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "source_text",
+          "final_rag_action": "include_as_source_evidence",
+          "final_trust_tier": "A",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "passenger",
+            "seat"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000140_00000140.txt",
+          "page_id": "t_p_120_1176_p000140",
+          "rag_bucket": "source_text_evidence",
+          "rank": 7,
+          "safe_result": true,
+          "score": 21.539877,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000140",
+          "text_preview": "Source text evidence for page t_p_120_1176_p000140.\nThis chunk is source-backed OCR/page-context text and can be searched as source text evidence.\nDocument: t_p_120_1176.\nATA: 25-21-00.\nSource URL: http://localhost:8080/rescarta/t_p_120_1176/000140.\nTIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000140_00000140.tif.\nOCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000140_00000140.txt.\nOCR text:\n[bottom_right_title_block]\nXRT, FASTENER BUTTON MALE ... 4\nNER BUTTON, MALE........0…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000140_00000140.tif",
+          "usable_confidence": 0.81225
+        }
+      ],
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000140_00000140.tif",
+      "trust_tiers": [
+        "A"
+      ],
+      "unsafe_supporting_results": 0
+    },
+    {
+      "ata_codes": [
+        "25-21-00"
+      ],
+      "average_score": 21.539877,
+      "average_usable_confidence": 0.81225,
+      "best_rank": 8,
+      "best_score": 21.539877,
+      "citation_count": 1,
+      "citations": [
+        {
+          "citation_id": "cite:source_text:t_p_120_1176_p000228:ced8b8e8ae",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 228** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000228",
+          "citation_short": "",
+          "evidence_layer": "source_text",
+          "rag_bucket": "source_text_evidence"
+        }
+      ],
+      "document_ids": [
+        "t_p_120_1176"
+      ],
+      "evidence_layers": [
+        "source_text"
+      ],
+      "excluded_supporting_results": 0,
+      "group_id": "search_group:t_p_120_1176_p000228",
+      "group_score": 24.689877,
+      "has_ocr_path": true,
+      "has_source_url": true,
+      "has_tiff_path": true,
+      "matched_pages": [],
+      "matched_part_numbers": [],
+      "matched_terms": [
+        "passenger",
+        "seat"
+      ],
+      "max_usable_confidence": 0.81225,
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000228_00000228.txt",
+      "page_id": "t_p_120_1176_p000228",
+      "page_roles": [],
+      "rag_actions": [
+        "include_as_source_evidence"
+      ],
+      "rag_buckets": [
+        "source_text_evidence"
+      ],
+      "rank": 8,
+      "result_count": 1,
+      "safe_group": true,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000228",
+      "supporting_result_count": 1,
+      "supporting_results": [
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000228",
+          "chunk_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000228",
+          "citation_id": "cite:source_text:t_p_120_1176_p000228:ced8b8e8ae",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 228** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000228",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "source_text",
+          "final_rag_action": "include_as_source_evidence",
+          "final_trust_tier": "A",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "passenger",
+            "seat"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000228_00000228.txt",
+          "page_id": "t_p_120_1176_p000228",
+          "rag_bucket": "source_text_evidence",
+          "rank": 8,
+          "safe_result": true,
+          "score": 21.539877,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000228",
+          "text_preview": "Source text evidence for page t_p_120_1176_p000228.\nThis chunk is source-backed OCR/page-context text and can be searched as source text evidence.\nDocument: t_p_120_1176.\nATA: 25-21-00.\nSource URL: http://localhost:8080/rescarta/t_p_120_1176/000228.\nTIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000228_00000228.tif.\nOCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000228_00000228.txt.\nOCR text:\n[bottom_right_title_block]\nING PARTS\nSeat (120-42548-001/501)\n-igure 39\nSheet 2\n25-2…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000228_00000228.tif",
+          "usable_confidence": 0.81225
+        }
+      ],
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000228_00000228.tif",
+      "trust_tiers": [
+        "A"
+      ],
+      "unsafe_supporting_results": 0
+    },
+    {
+      "ata_codes": [
+        "25-21-00"
+      ],
+      "average_score": 21.539877,
+      "average_usable_confidence": 0.81225,
+      "best_rank": 9,
+      "best_score": 21.539877,
+      "citation_count": 1,
+      "citations": [
+        {
+          "citation_id": "cite:source_text:t_p_120_1176_p000240:8a60523ebf",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 240** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000240",
+          "citation_short": "",
+          "evidence_layer": "source_text",
+          "rag_bucket": "source_text_evidence"
+        }
+      ],
+      "document_ids": [
+        "t_p_120_1176"
+      ],
+      "evidence_layers": [
+        "source_text"
+      ],
+      "excluded_supporting_results": 0,
+      "group_id": "search_group:t_p_120_1176_p000240",
+      "group_score": 24.689877,
+      "has_ocr_path": true,
+      "has_source_url": true,
+      "has_tiff_path": true,
+      "matched_pages": [],
+      "matched_part_numbers": [],
+      "matched_terms": [
+        "passenger",
+        "seat"
+      ],
+      "max_usable_confidence": 0.81225,
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000240_00000240.txt",
+      "page_id": "t_p_120_1176_p000240",
+      "page_roles": [],
+      "rag_actions": [
+        "include_as_source_evidence"
+      ],
+      "rag_buckets": [
+        "source_text_evidence"
+      ],
+      "rank": 9,
+      "result_count": 1,
+      "safe_group": true,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000240",
+      "supporting_result_count": 1,
+      "supporting_results": [
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000240",
+          "chunk_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000240",
+          "citation_id": "cite:source_text:t_p_120_1176_p000240:8a60523ebf",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 240** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000240",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "source_text",
+          "final_rag_action": "include_as_source_evidence",
+          "final_trust_tier": "A",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "passenger",
+            "seat"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000240_00000240.txt",
+          "page_id": "t_p_120_1176_p000240",
+          "rag_bucket": "source_text_evidence",
+          "rank": 9,
+          "safe_result": true,
+          "score": 21.539877,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000240",
+          "text_preview": "Source text evidence for page t_p_120_1176_p000240.\nThis chunk is source-backed OCR/page-context text and can be searched as source text evidence.\nDocument: t_p_120_1176.\nATA: 25-21-00.\nSource URL: http://localhost:8080/rescarta/t_p_120_1176/000240.\nTIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000240_00000240.tif.\nOCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000240_00000240.txt.\nOCR text:\n[bottom_right_title_block]\nING PARTS\nSeat (120-45851-001/501)\n-igure 43\nSheet 2\n25-2…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000240_00000240.tif",
+          "usable_confidence": 0.81225
+        }
+      ],
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000240_00000240.tif",
+      "trust_tiers": [
+        "A"
+      ],
+      "unsafe_supporting_results": 0
+    },
+    {
+      "ata_codes": [
+        "25-21-00"
+      ],
+      "average_score": 21.539877,
+      "average_usable_confidence": 0.81225,
+      "best_rank": 10,
+      "best_score": 21.539877,
+      "citation_count": 1,
+      "citations": [
+        {
+          "citation_id": "cite:source_text:t_p_120_1176_p000246:2b88b9c60f",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 246** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000246",
+          "citation_short": "",
+          "evidence_layer": "source_text",
+          "rag_bucket": "source_text_evidence"
+        }
+      ],
+      "document_ids": [
+        "t_p_120_1176"
+      ],
+      "evidence_layers": [
+        "source_text"
+      ],
+      "excluded_supporting_results": 0,
+      "group_id": "search_group:t_p_120_1176_p000246",
+      "group_score": 24.689877,
+      "has_ocr_path": true,
+      "has_source_url": true,
+      "has_tiff_path": true,
+      "matched_pages": [],
+      "matched_part_numbers": [],
+      "matched_terms": [
+        "passenger",
+        "seat"
+      ],
+      "max_usable_confidence": 0.81225,
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000246_00000246.txt",
+      "page_id": "t_p_120_1176_p000246",
+      "page_roles": [],
+      "rag_actions": [
+        "include_as_source_evidence"
+      ],
+      "rag_buckets": [
+        "source_text_evidence"
+      ],
+      "rank": 10,
+      "result_count": 1,
+      "safe_group": true,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000246",
+      "supporting_result_count": 1,
+      "supporting_results": [
+        {
+          "ata_code": "25-21-00",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000246",
+          "chunk_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000246",
+          "citation_id": "cite:source_text:t_p_120_1176_p000246:2b88b9c60f",
+          "citation_markdown": "**t_p_120_1176 / ATA 25-21-00 / page 246** — `source_text_evidence` / `source_text` / trust `A` / confidence `0.812` — source: http://localhost:8080/rescarta/t_p_120_1176/000246",
+          "citation_short": "",
+          "document_id": "t_p_120_1176",
+          "evidence_layer": "source_text",
+          "final_rag_action": "include_as_source_evidence",
+          "final_trust_tier": "A",
+          "matched_pages": [],
+          "matched_part_numbers": [],
+          "matched_terms": [
+            "passenger",
+            "seat"
+          ],
+          "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000246_00000246.txt",
+          "page_id": "t_p_120_1176_p000246",
+          "rag_bucket": "source_text_evidence",
+          "rank": 10,
+          "safe_result": true,
+          "score": 21.539877,
+          "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000246",
+          "text_preview": "Source text evidence for page t_p_120_1176_p000246.\nThis chunk is source-backed OCR/page-context text and can be searched as source text evidence.\nDocument: t_p_120_1176.\nATA: 25-21-00.\nSource URL: http://localhost:8080/rescarta/t_p_120_1176/000246.\nTIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000246_00000246.tif.\nOCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000246_00000246.txt.\nOCR text:\n[bottom_right_title_block]\nING PARTS\nSeat (120-45851-007/507)\n-igure 45\nSheet 2\n25-2…",
+          "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000246_00000246.tif",
+          "usable_confidence": 0.81225
+        }
+      ],
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000246_00000246.tif",
+      "trust_tiers": [
+        "A"
+      ],
+      "unsafe_supporting_results": 0
+    }
+  ],
+  "search_citations_path": "local_data\\organization\\trace_net\\citations\\trace_net_search_source_citations.jsonl",
+  "search_result_records": 10,
+  "search_results_path": "local_data\\organization\\trace_net\\search\\trace_net_search_results.jsonl",
+  "source_citations_path": "local_data\\organization\\trace_net\\citations\\trace_net_source_citations.jsonl",
+  "status": "OK",
+  "supporting_result_records": 10,
+  "top_best_score": 21.539877,
+  "top_group_score": 24.689877,
+  "unsafe_grouped_records": 0,
+  "version": "trace_net_search_grouper_v1"
+}

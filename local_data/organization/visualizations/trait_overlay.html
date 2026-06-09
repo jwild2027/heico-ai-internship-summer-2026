@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HEICO TIFF trait overlay</title>
+<style>
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --panel-2: #1f2937;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --line: #334155;
+  --accent: #38bdf8;
+  --good: #34d399;
+  --warn: #fbbf24;
+  --bad: #fb7185;
+  --page: #60a5fa;
+  --part: #c084fc;
+  --source: #22c55e;
+  --trait: #f59e0b;
+  --context: #14b8a6;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Inter, Segoe UI, Arial, sans-serif; background: var(--bg); color: var(--text); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header { padding: 28px 34px 18px; border-bottom: 1px solid var(--line); background: linear-gradient(135deg, #111827, #172554); }
+header h1 { margin: 0 0 8px; font-size: 28px; }
+header p { margin: 0; color: var(--muted); max-width: 980px; line-height: 1.5; }
+main { padding: 24px 34px 48px; }
+.nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.nav a { padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(15,23,42,.65); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+.stat-card, .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px; box-shadow: 0 12px 30px rgba(0,0,0,.18); }
+.stat-value { font-size: 26px; font-weight: 750; }
+.stat-label { margin-top: 4px; color: var(--muted); font-size: 13px; }
+.stat-hint { margin-top: 8px; color: #64748b; font-size: 12px; min-height: 16px; }
+.section { margin-top: 26px; }
+.section h2 { margin: 0 0 12px; font-size: 22px; }
+.section h3 { margin: 0 0 10px; font-size: 17px; }
+.flow { display: grid; grid-template-columns: repeat(5, minmax(150px, 1fr)); gap: 12px; align-items: stretch; }
+.flow-node { min-height: 100px; border-radius: 18px; padding: 14px; border: 1px solid var(--line); background: var(--panel); position: relative; }
+.flow-node:after { content: "→"; position: absolute; right: -15px; top: 38%; color: var(--muted); font-size: 20px; }
+.flow-node:last-child:after { content: ""; }
+.flow-title { font-weight: 750; margin-bottom: 6px; }
+.flow-sub { color: var(--muted); font-size: 13px; line-height: 1.4; }
+.badge { display: inline-block; padding: 3px 8px; border: 1px solid var(--line); border-radius: 999px; margin: 2px 4px 2px 0; color: var(--text); background: #0b1220; font-size: 12px; }
+.badge.good { border-color: rgba(52,211,153,.6); color: #bbf7d0; }
+.badge.warn { border-color: rgba(251,191,36,.6); color: #fde68a; }
+.badge.trait { border-color: rgba(245,158,11,.7); color: #fef3c7; }
+.badge.part { border-color: rgba(192,132,252,.7); color: #e9d5ff; }
+.controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; margin-bottom: 18px; }
+input, select { width: 100%; padding: 9px 10px; border-radius: 10px; border: 1px solid var(--line); background: #0b1220; color: var(--text); }
+.page-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(86px, 1fr)); gap: 8px; }
+.page-tile { min-height: 76px; border-radius: 12px; border: 1px solid var(--line); padding: 8px; cursor: pointer; background: #1e293b; }
+.page-tile:hover { outline: 2px solid var(--accent); }
+.page-num { font-weight: 750; font-size: 12px; }
+.page-role { color: var(--muted); font-size: 11px; margin-top: 4px; }
+.page-meta { color: #64748b; font-size: 10px; margin-top: 4px; }
+.role-parts-list { background: linear-gradient(135deg, #1d4ed8, #0f172a); }
+.role-figure { background: linear-gradient(135deg, #7e22ce, #0f172a); }
+.role-table { background: linear-gradient(135deg, #b45309, #0f172a); }
+.role-procedure { background: linear-gradient(135deg, #15803d, #0f172a); }
+.role-blank { background: linear-gradient(135deg, #475569, #0f172a); }
+.role-front-matter { background: linear-gradient(135deg, #0f766e, #0f172a); }
+.role-unknown { background: #1f2937; }
+.details { margin-top: 20px; white-space: pre-wrap; font-size: 13px; color: #cbd5e1; }
+.bar-row { display: grid; grid-template-columns: minmax(170px, 300px) 1fr 54px; gap: 10px; align-items: center; margin: 7px 0; }
+.bar-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #cbd5e1; }
+.bar-track { height: 12px; background: #020617; border-radius: 999px; border: 1px solid var(--line); overflow: hidden; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, #38bdf8, #818cf8); border-radius: 999px; }
+.bar-value { text-align: right; color: var(--muted); font-size: 12px; }
+.neighborhood { display: grid; grid-template-columns: 1fr; gap: 14px; }
+.network-card { border: 1px solid var(--line); border-radius: 18px; padding: 16px; background: var(--panel); overflow: hidden; }
+.network-title { font-weight: 750; margin-bottom: 12px; }
+.network-lanes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; align-items: start; }
+.lane-title { color: var(--muted); font-size: 12px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .05em; }
+.node-pill { border: 1px solid var(--line); border-radius: 12px; padding: 8px; margin-bottom: 8px; background: #0b1220; font-size: 12px; word-break: break-word; }
+.node-pill.page { border-color: rgba(96,165,250,.8); }
+.node-pill.part { border-color: rgba(192,132,252,.8); }
+.node-pill.source { border-color: rgba(34,197,94,.8); }
+.node-pill.trait { border-color: rgba(245,158,11,.8); }
+.node-pill.context { border-color: rgba(20,184,166,.8); }
+.footer-note { color: var(--muted); font-size: 12px; margin-top: 26px; }
+@media (max-width: 900px) { .flow, .network-lanes { grid-template-columns: 1fr; } .flow-node:after { content: "↓"; right: 50%; top: auto; bottom: -18px; } .flow-node:last-child:after { content: ""; } }
+</style>
+
+</head>
+<body>
+<header>
+<h1>HEICO TIFF trait overlay</h1>
+<p>Local visual report generated from the HEICO TIFF document graph and entity-trait overlay artifacts.</p>
+<div class="nav">
+<a href="index.html">Overview</a>
+<a href="page_grid.html">509-page grid</a>
+<a href="trait_overlay.html">Trait overlay</a>
+<a href="neighborhoods.html">Sample neighborhoods</a>
+</div>
+</header>
+<main>
+
+<div class="grid">
+<div class="stat-card"><div class="stat-value">11980</div><div class="stat-label">assertions</div><div class="stat-hint">Entity -&gt; Assertion -&gt; Trait</div></div>
+<div class="stat-card"><div class="stat-value">963</div><div class="stat-label">trait nodes</div><div class="stat-hint">deduped reusable traits</div></div>
+<div class="stat-card"><div class="stat-value">4</div><div class="stat-label">evidence sources</div><div class="stat-hint">where traits came from</div></div>
+<div class="stat-card"><div class="stat-value">1199</div><div class="stat-label">derived assertions</div><div class="stat-hint">combo/game-effect traits</div></div>
+</div>
+
+<div class="section grid">
+  <div class="panel"><h3>Assertions by trait type</h3><div class="bar-row"><div class="bar-label" title="context">context</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-value">4324</div></div>
+<div class="bar-row"><div class="bar-label" title="visual">visual</div><div class="bar-track"><div class="bar-fill" style="width:37%"></div></div><div class="bar-value">1616</div></div>
+<div class="bar-row"><div class="bar-label" title="quality">quality</div><div class="bar-track"><div class="bar-fill" style="width:36%"></div></div><div class="bar-value">1585</div></div>
+<div class="bar-row"><div class="bar-label" title="hierarchy">hierarchy</div><div class="bar-track"><div class="bar-fill" style="width:23%"></div></div><div class="bar-value">1018</div></div>
+<div class="bar-row"><div class="bar-label" title="source">source</div><div class="bar-track"><div class="bar-fill" style="width:23%"></div></div><div class="bar-value">1018</div></div>
+<div class="bar-row"><div class="bar-label" title="catalog">catalog</div><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><div class="bar-value">984</div></div>
+<div class="bar-row"><div class="bar-label" title="structure">structure</div><div class="bar-track"><div class="bar-fill" style="width:21%"></div></div><div class="bar-value">912</div></div>
+<div class="bar-row"><div class="bar-label" title="image_recognition">image_recognition</div><div class="bar-track"><div class="bar-fill" style="width:11%"></div></div><div class="bar-value">509</div></div>
+<div class="bar-row"><div class="bar-label" title="ocr">ocr</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">14</div></div></div>
+  <div class="panel"><h3>Assertions by scope</h3><div class="bar-row"><div class="bar-label" title="direct">direct</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-value">10781</div></div>
+<div class="bar-row"><div class="bar-label" title="derived">derived</div><div class="bar-track"><div class="bar-fill" style="width:11%"></div></div><div class="bar-value">1199</div></div></div>
+  <div class="panel"><h3>Assertions by entity type</h3><div class="bar-row"><div class="bar-label" title="page">page</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-value">9821</div></div>
+<div class="bar-row"><div class="bar-label" title="part">part</div><div class="bar-track"><div class="bar-fill" style="width:21%"></div></div><div class="bar-value">2142</div></div>
+<div class="bar-row"><div class="bar-label" title="ata_section">ata_section</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">15</div></div>
+<div class="bar-row"><div class="bar-label" title="document">document</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">2</div></div></div>
+  <div class="panel"><h3>Top trait keys</h3><div class="bar-row"><div class="bar-label" title="context:topic">context:topic</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-value">1706</div></div>
+<div class="bar-row"><div class="bar-label" title="context:highlighted_part">context:highlighted_part</div><div class="bar-track"><div class="bar-fill" style="width:93%"></div></div><div class="bar-value">1600</div></div>
+<div class="bar-row"><div class="bar-label" title="hierarchy:parent_type">hierarchy:parent_type</div><div class="bar-track"><div class="bar-fill" style="width:59%"></div></div><div class="bar-value">1018</div></div>
+<div class="bar-row"><div class="bar-label" title="structure:entity_kind">structure:entity_kind</div><div class="bar-track"><div class="bar-fill" style="width:52%"></div></div><div class="bar-value">901</div></div>
+<div class="bar-row"><div class="bar-label" title="context:has_page_context">context:has_page_context</div><div class="bar-track"><div class="bar-fill" style="width:29%"></div></div><div class="bar-value">509</div></div>
+<div class="bar-row"><div class="bar-label" title="context:page_role">context:page_role</div><div class="bar-track"><div class="bar-fill" style="width:29%"></div></div><div class="bar-value">509</div></div>
+<div class="bar-row"><div class="bar-label" title="image_recognition:image_class">image_recognition:image_class</div><div class="bar-track"><div class="bar-fill" style="width:29%"></div></div><div class="bar-value">509</div></div>
+<div class="bar-row"><div class="bar-label" title="quality:answer_ready_page">quality:answer_ready_page</div><div class="bar-track"><div class="bar-fill" style="width:29%"></div></div><div class="bar-value">509</div></div>
+<div class="bar-row"><div class="bar-label" title="source:has_source_link">source:has_source_link</div><div class="bar-track"><div class="bar-fill" style="width:29%"></div></div><div class="bar-value">509</div></div>
+<div class="bar-row"><div class="bar-label" title="source:has_tiff">source:has_tiff</div><div class="bar-track"><div class="bar-fill" style="width:29%"></div></div><div class="bar-value">509</div></div>
+<div class="bar-row"><div class="bar-label" title="visual:likely_figure_or_diagram">visual:likely_figure_or_diagram</div><div class="bar-track"><div class="bar-fill" style="width:28%"></div></div><div class="bar-value">493</div></div>
+<div class="bar-row"><div class="bar-label" title="visual:likely_visual">visual:likely_visual</div><div class="bar-track"><div class="bar-fill" style="width:28%"></div></div><div class="bar-value">493</div></div>
+<div class="bar-row"><div class="bar-label" title="catalog:appears_on_pages">catalog:appears_on_pages</div><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><div class="bar-value">386</div></div>
+<div class="bar-row"><div class="bar-label" title="catalog:has_nomenclature">catalog:has_nomenclature</div><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><div class="bar-value">386</div></div>
+<div class="bar-row"><div class="bar-label" title="quality:high_confidence_part">quality:high_confidence_part</div><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><div class="bar-value">386</div></div>
+<div class="bar-row"><div class="bar-label" title="quality:source_traceable_part">quality:source_traceable_part</div><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><div class="bar-value">386</div></div>
+<div class="bar-row"><div class="bar-label" title="visual:likely_table_or_grid">visual:likely_table_or_grid</div><div class="bar-track"><div class="bar-fill" style="width:19%"></div></div><div class="bar-value">331</div></div>
+<div class="bar-row"><div class="bar-label" title="quality:high_confidence_parts_list_page">quality:high_confidence_parts_list_page</div><div class="bar-track"><div class="bar-fill" style="width:16%"></div></div><div class="bar-value">290</div></div>
+<div class="bar-row"><div class="bar-label" title="visual:likely_text_or_parts_list">visual:likely_text_or_parts_list</div><div class="bar-track"><div class="bar-fill" style="width:16%"></div></div><div class="bar-value">285</div></div>
+<div class="bar-row"><div class="bar-label" title="catalog:appears_on_multiple_pages">catalog:appears_on_multiple_pages</div><div class="bar-track"><div class="bar-fill" style="width:12%"></div></div><div class="bar-value">212</div></div>
+<div class="bar-row"><div class="bar-label" title="ocr:ocr_state">ocr:ocr_state</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">14</div></div>
+<div class="bar-row"><div class="bar-label" title="quality:verified_blank_page">quality:verified_blank_page</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">14</div></div>
+<div class="bar-row"><div class="bar-label" title="visual:likely_blank">visual:likely_blank</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">14</div></div>
+<div class="bar-row"><div class="bar-label" title="structure:has_pages">structure:has_pages</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">6</div></div>
+<div class="bar-row"><div class="bar-label" title="structure:ata_code">structure:ata_code</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">5</div></div></div>
+</div>
+
+<div class="section panel">
+<h2>Top individual traits</h2>
+<div class="bar-row"><div class="bar-label" title="context:has_page_context=true">context:has_page_context=true</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-value">509</div></div>
+<div class="bar-row"><div class="bar-label" title="hierarchy:parent_type=ata_section">hierarchy:parent_type=ata_section</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-value">509</div></div>
+<div class="bar-row"><div class="bar-label" title="hierarchy:parent_type=document">hierarchy:parent_type=document</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-value">509</div></div>
+<div class="bar-row"><div class="bar-label" title="quality:answer_ready_page=true">quality:answer_ready_page=true</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-value">509</div></div>
+<div class="bar-row"><div class="bar-label" title="source:has_source_link=true">source:has_source_link=true</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-value">509</div></div>
+<div class="bar-row"><div class="bar-label" title="source:has_tiff=true">source:has_tiff=true</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-value">509</div></div>
+<div class="bar-row"><div class="bar-label" title="structure:entity_kind=page">structure:entity_kind=page</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-value">509</div></div>
+<div class="bar-row"><div class="bar-label" title="visual:likely_figure_or_diagram=true">visual:likely_figure_or_diagram=true</div><div class="bar-track"><div class="bar-fill" style="width:96%"></div></div><div class="bar-value">493</div></div>
+<div class="bar-row"><div class="bar-label" title="visual:likely_visual=true">visual:likely_visual=true</div><div class="bar-track"><div class="bar-fill" style="width:96%"></div></div><div class="bar-value">493</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=parts_list">context:topic=parts_list</div><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div><div class="bar-value">451</div></div>
+<div class="bar-row"><div class="bar-label" title="catalog:appears_on_pages=true">catalog:appears_on_pages=true</div><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div><div class="bar-value">386</div></div>
+<div class="bar-row"><div class="bar-label" title="catalog:has_nomenclature=true">catalog:has_nomenclature=true</div><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div><div class="bar-value">386</div></div>
+<div class="bar-row"><div class="bar-label" title="quality:high_confidence_part=true">quality:high_confidence_part=true</div><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div><div class="bar-value">386</div></div>
+<div class="bar-row"><div class="bar-label" title="quality:source_traceable_part=true">quality:source_traceable_part=true</div><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div><div class="bar-value">386</div></div>
+<div class="bar-row"><div class="bar-label" title="structure:entity_kind=part">structure:entity_kind=part</div><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div><div class="bar-value">386</div></div>
+<div class="bar-row"><div class="bar-label" title="image_recognition:image_class=likely_table_or_grid">image_recognition:image_class=likely_table_or_grid</div><div class="bar-track"><div class="bar-fill" style="width:65%"></div></div><div class="bar-value">331</div></div>
+<div class="bar-row"><div class="bar-label" title="visual:likely_table_or_grid=true">visual:likely_table_or_grid=true</div><div class="bar-track"><div class="bar-fill" style="width:65%"></div></div><div class="bar-value">331</div></div>
+<div class="bar-row"><div class="bar-label" title="context:page_role=parts_list">context:page_role=parts_list</div><div class="bar-track"><div class="bar-fill" style="width:56%"></div></div><div class="bar-value">290</div></div>
+<div class="bar-row"><div class="bar-label" title="quality:high_confidence_parts_list_page=true">quality:high_confidence_parts_list_page=true</div><div class="bar-track"><div class="bar-fill" style="width:56%"></div></div><div class="bar-value">290</div></div>
+<div class="bar-row"><div class="bar-label" title="visual:likely_text_or_parts_list=true">visual:likely_text_or_parts_list=true</div><div class="bar-track"><div class="bar-fill" style="width:55%"></div></div><div class="bar-value">285</div></div>
+<div class="bar-row"><div class="bar-label" title="catalog:appears_on_multiple_pages=true">catalog:appears_on_multiple_pages=true</div><div class="bar-track"><div class="bar-fill" style="width:41%"></div></div><div class="bar-value">212</div></div>
+<div class="bar-row"><div class="bar-label" title="image_recognition:image_class=likely_figure_or_diagram">image_recognition:image_class=likely_figure_or_diagram</div><div class="bar-track"><div class="bar-fill" style="width:31%"></div></div><div class="bar-value">162</div></div>
+<div class="bar-row"><div class="bar-label" title="context:page_role=figure">context:page_role=figure</div><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div><div class="bar-value">157</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=seats">context:topic=seats</div><div class="bar-track"><div class="bar-fill" style="width:21%"></div></div><div class="bar-value">108</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=maintenance">context:topic=maintenance</div><div class="bar-track"><div class="bar-fill" style="width:20%"></div></div><div class="bar-value">105</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=seat_structure">context:topic=seat_structure</div><div class="bar-track"><div class="bar-fill" style="width:18%"></div></div><div class="bar-value">95</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=seat">context:topic=seat</div><div class="bar-track"><div class="bar-fill" style="width:17%"></div></div><div class="bar-value">89</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=figure">context:topic=figure</div><div class="bar-track"><div class="bar-fill" style="width:15%"></div></div><div class="bar-value">77</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=illustration">context:topic=illustration</div><div class="bar-track"><div class="bar-fill" style="width:12%"></div></div><div class="bar-value">63</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=aircraft">context:topic=aircraft</div><div class="bar-track"><div class="bar-fill" style="width:8%"></div></div><div class="bar-value">45</div></div>
+<div class="bar-row"><div class="bar-label" title="context:highlighted_part=vs4956">context:highlighted_part=vs4956</div><div class="bar-track"><div class="bar-fill" style="width:7%"></div></div><div class="bar-value">37</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=armrest">context:topic=armrest</div><div class="bar-track"><div class="bar-fill" style="width:6%"></div></div><div class="bar-value">35</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=maintenance_manual">context:topic=maintenance_manual</div><div class="bar-track"><div class="bar-fill" style="width:6%"></div></div><div class="bar-value">34</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=effectivity">context:topic=effectivity</div><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div><div class="bar-value">30</div></div>
+<div class="bar-row"><div class="bar-label" title="context:highlighted_part=120-37313-001">context:highlighted_part=120-37313-001</div><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div><div class="bar-value">28</div></div>
+<div class="bar-row"><div class="bar-label" title="context:page_role=procedure">context:page_role=procedure</div><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div><div class="bar-value">28</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=25-21-00">context:topic=25-21-00</div><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div><div class="bar-value">28</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=fasteners">context:topic=fasteners</div><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div><div class="bar-value">28</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=single_passenger_seat">context:topic=single_passenger_seat</div><div class="bar-track"><div class="bar-fill" style="width:4%"></div></div><div class="bar-value">25</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=ata_code_25-21-00">context:topic=ata_code_25-21-00</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">20</div></div>
+<div class="bar-row"><div class="bar-label" title="context:highlighted_part=120-36843-001">context:highlighted_part=120-36843-001</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">19</div></div>
+<div class="bar-row"><div class="bar-label" title="context:highlighted_part=120-48023-001">context:highlighted_part=120-48023-001</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">19</div></div>
+<div class="bar-row"><div class="bar-label" title="context:highlighted_part=120-48024-001">context:highlighted_part=120-48024-001</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">19</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=seat_assembly">context:topic=seat_assembly</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">17</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=codes">context:topic=codes</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">16</div></div>
+<div class="bar-row"><div class="bar-label" title="context:highlighted_part=1002-f">context:highlighted_part=1002-f</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">15</div></div>
+<div class="bar-row"><div class="bar-label" title="context:topic=illustrated_parts">context:topic=illustrated_parts</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">15</div></div>
+<div class="bar-row"><div class="bar-label" title="context:highlighted_part=120-40636-001">context:highlighted_part=120-40636-001</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">14</div></div>
+<div class="bar-row"><div class="bar-label" title="context:highlighted_part=am03078-22">context:highlighted_part=am03078-22</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">14</div></div>
+<div class="bar-row"><div class="bar-label" title="context:page_role=blank">context:page_role=blank</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-value">14</div></div>
+</div>
+
+<div class="footer-note">
+The trait overlay is a game-style character system: traits attach to entities through assertion nodes, and assertion nodes keep source/method/evidence metadata.
+</div>
+
+</main>
+</body>
+</html>

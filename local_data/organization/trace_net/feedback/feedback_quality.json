@@ -1,0 +1,87 @@
+{
+  "checks": [
+    {
+      "detail": "summary=True; events=True",
+      "name": "artifacts_present",
+      "ok": true
+    },
+    {
+      "detail": "status=OK",
+      "name": "status_ok",
+      "ok": true
+    },
+    {
+      "detail": "events=3; minimum=3",
+      "name": "feedback_events",
+      "ok": true
+    },
+    {
+      "detail": "summary=3; jsonl=3",
+      "name": "event_count_match",
+      "ok": true
+    },
+    {
+      "detail": "advisory=3; events=3; require=True",
+      "name": "advisory_only",
+      "ok": true
+    },
+    {
+      "detail": "mutations=0; max=0",
+      "name": "no_source_truth_mutations",
+      "ok": true
+    },
+    {
+      "detail": "context_warning_events=2; max=2",
+      "name": "context_warning_events",
+      "ok": true
+    },
+    {
+      "detail": "eligible=1; minimum=1",
+      "name": "policy_signal_eligible_events",
+      "ok": true
+    },
+    {
+      "detail": "signals=2; minimum=1",
+      "name": "policy_signals",
+      "ok": true
+    },
+    {
+      "detail": "nodes=21; summary=21",
+      "name": "graph_nodes",
+      "ok": true
+    },
+    {
+      "detail": "edges=32; summary=32",
+      "name": "graph_edges",
+      "ok": true
+    }
+  ],
+  "events_path": "local_data\\organization\\trace_net\\feedback\\feedback_events.jsonl",
+  "feedback_advisory_only_events": 3,
+  "feedback_affected_page_not_in_answer_events": 0,
+  "feedback_answer_linked_event_records": 3,
+  "feedback_ask_linked_event_records": 3,
+  "feedback_context_valid_events": 1,
+  "feedback_context_warning_events": 2,
+  "feedback_events": 3,
+  "feedback_events_present": true,
+  "feedback_expected_page_not_in_answer_events": 0,
+  "feedback_graph_edges": 32,
+  "feedback_graph_nodes": 21,
+  "feedback_neutral_events": 0,
+  "feedback_policy_signal_eligible_events": 1,
+  "feedback_policy_signals": 2,
+  "feedback_query_mismatch_events": 0,
+  "feedback_require_advisory_only": true,
+  "feedback_source_truth_mutation_records": 0,
+  "feedback_status": "OK",
+  "feedback_summary_events": 3,
+  "feedback_summary_present": true,
+  "feedback_thumb_down_events": 2,
+  "feedback_thumb_up_events": 1,
+  "feedback_unlinked_ask_events": 0,
+  "policy_signals_path": "local_data\\organization\\trace_net\\feedback\\feedback_policy_signals.jsonl",
+  "status": "OK",
+  "summary_path": "local_data\\organization\\trace_net\\feedback\\feedback_summary.json",
+  "version": "trace_net_feedback_quality_v1_1"
+}

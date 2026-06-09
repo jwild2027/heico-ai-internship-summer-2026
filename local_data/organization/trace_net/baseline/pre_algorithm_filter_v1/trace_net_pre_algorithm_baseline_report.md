@@ -1,0 +1,39 @@
+# TRACE-Net Pre-Algorithm Baseline Metrics v1
+
+Status: **OK**
+Version: `trace_net_pre_algorithm_baseline_v1`
+
+This is a read-only baseline snapshot before applying a new algorithm filter or ranking mode.
+
+## Summary
+- **status**: OK
+- **version**: trace_net_pre_algorithm_baseline_v1
+- **created_at**: 2026-06-03T19:53:13Z
+- **pages**: 509
+- **ocr_records**: 509
+- **ocr_text_records**: 495
+- **graph_nodes**: 30865
+- **graph_edges**: 112316
+- **graph_orphan_edges**: 0
+- **rag_candidate_records**: 1426
+- **rag_candidate_unsafe_records**: 0
+- **rag_candidate_missing_source_url**: 0
+- **rag_candidate_missing_trust_tier**: 0
+- **source_citations**: 1426
+- **citations_missing_source_url**: 0
+
+## RAG bucket counts
+- derived_context: 60
+- source_evidence: 509
+- source_text_evidence: 495
+- verified_part_evidence: 362
+
+## OCR classification counts
+- likely_full_page: 343
+- noisy_or_unknown: 152
+- empty_ocr: 14
+
+## Feedback counts
+- feedback_events: 3
+- feedback_policy_signals: 2
+- feedback_policy_signal_eligible_records: 1

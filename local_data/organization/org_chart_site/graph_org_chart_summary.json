@@ -1,0 +1,52 @@
+{
+  "artifact_paths": {
+    "export_dir": "local_data\\organization\\export",
+    "graph_dir": "local_data\\organization\\graph",
+    "image_recognition_dir": "local_data\\organization\\image_recognition",
+    "organization_dir": "local_data\\organization",
+    "page_cards_source": "local_data\\organization\\entity_traits\\page_character_cards.json",
+    "part_cards_source": "local_data\\organization\\entity_traits\\part_character_cards.json",
+    "trait_dir": "local_data\\organization\\entity_traits"
+  },
+  "counts": {
+    "ata_sections": {
+      "unknown": 509
+    },
+    "image_classes": {
+      "likely_blank": 14,
+      "likely_figure_or_diagram": 162,
+      "likely_table_or_grid": 331,
+      "likely_text_or_parts_list": 2,
+      "visual:likely_blank=true": 14,
+      "visual:likely_figure_or_diagram=true": 493,
+      "visual:likely_table_or_grid=true": 331,
+      "visual:likely_text_or_parts_list=true": 285,
+      "visual:likely_visual=true": 493
+    },
+    "roles": {
+      "blank": 14,
+      "figure": 157,
+      "front_matter": 10,
+      "parts_list": 290,
+      "procedure": 28,
+      "table": 10
+    }
+  },
+  "status": "ok",
+  "summary": {
+    "ata_sections": 1,
+    "documents": 1,
+    "graph_edges": 14143,
+    "graph_nodes": 3788,
+    "page_part_links": 981,
+    "pages": 509,
+    "pages_with_derived_traits": 509,
+    "pages_with_ocr_path": 0,
+    "pages_with_parts": 364,
+    "pages_with_source_url": 509,
+    "pages_with_tiff_path": 509,
+    "parts": 386,
+    "trait_assertions": 0,
+    "trait_nodes": 0
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "checks": [
+    {
+      "detail": "pages=509; minimum=509",
+      "name": "pages",
+      "ok": true
+    },
+    {
+      "detail": "ocr_records=509; minimum=509",
+      "name": "ocr_records",
+      "ok": true
+    },
+    {
+      "detail": "rag_candidates=1426; minimum=1426",
+      "name": "rag_candidates",
+      "ok": true
+    },
+    {
+      "detail": "citations=1426; minimum=1426",
+      "name": "citations",
+      "ok": true
+    },
+    {
+      "detail": "unsafe=0; max=0",
+      "name": "unsafe_rag_candidates",
+      "ok": true
+    },
+    {
+      "detail": "missing_candidate_source_url=0; max=None",
+      "name": "missing_candidate_source_url",
+      "ok": true
+    },
+    {
+      "detail": "missing_citation_source_url=0; max=0",
+      "name": "missing_citation_source_url",
+      "ok": true
+    },
+    {
+      "detail": "load_runs=1; minimum=1",
+      "name": "load_runs",
+      "ok": true
+    }
+  ],
+  "postgres_citation_missing_source_url": 0,
+  "postgres_citation_records": 1426,
+  "postgres_evidence_consensus_records": 1813,
+  "postgres_feedback_events": 3,
+  "postgres_feedback_policy_signals": 2,
+  "postgres_graph_edges": 112316,
+  "postgres_graph_nodes": 30865,
+  "postgres_load_runs": 1,
+  "postgres_ocr_records": 509,
+  "postgres_ocr_text_records": 495,
+  "postgres_pages": 509,
+  "postgres_quality_runs": 58,
+  "postgres_rag_candidate_missing_source_url": 0,
+  "postgres_rag_candidate_records": 1426,
+  "postgres_rag_candidate_safe_records": 1426,
+  "postgres_rag_eligibility_records": 1813,
+  "postgres_stage5_records": 1813,
+  "postgres_unsafe_rag_candidate_records": 0,
+  "status": "OK",
+  "version": "trace_net_postgres_loader_v1"
+}

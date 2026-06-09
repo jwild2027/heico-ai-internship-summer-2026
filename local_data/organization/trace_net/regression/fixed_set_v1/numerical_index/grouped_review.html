@@ -1,0 +1,205 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>TRACE-Net Search Result Grouper v1</title>
+<style>
+body{font-family:Arial,sans-serif;margin:24px;line-height:1.45;color:#17202a}pre{background:#f6f8fa;padding:8px;white-space:pre-wrap;border-radius:6px}p{margin:0 0 8px}.card{border:1px solid #ddd;border-radius:8px;padding:12px;margin:12px 0}.muted{color:#666}
+</style></head><body>
+<h1>TRACE-Net Search Result Grouper v1</h1>
+<p># TRACE-Net Search Result Grouper v1</p>
+<pre></pre>
+<p>Status: **OK**  Version: `trace_net_search_grouper_v1`</p>
+<pre></pre>
+<p>## Summary</p>
+<pre></pre>
+<pre>| Metric | Value |</pre>
+<pre>|---|---|</pre>
+<pre>| search_result_records | 10 |</pre>
+<pre>| grouped_page_records | 4 |</pre>
+<pre>| pages_found | 4 |</pre>
+<pre>| supporting_result_records | 10 |</pre>
+<pre>| unsafe_grouped_records | 0 |</pre>
+<pre>| excluded_grouped_records | 0 |</pre>
+<pre>| groups_with_multiple_buckets | 2 |</pre>
+<pre>| groups_with_citations | 4 |</pre>
+<pre>| top_group_score | 29.009533 |</pre>
+<pre></pre>
+<p>## Grouped page results</p>
+<pre></pre>
+<pre>| Rank | Page | Group score | Buckets | Layers | Support | Matches | Source URL |</pre>
+<pre>|---|---|---|---|---|---|---|---|</pre>
+<pre>| 1 | t_p_120_1176_p000005 | 29.009533 | source_text_evidence, derived_context | source_text, table_tile_text_refined | 4 | terms=numerical, index | http://localhost:8080/rescarta/t_p_120_1176/000005 |</pre>
+<pre>| 2 | t_p_120_1176_p000006 | 28.935605 | source_text_evidence, derived_context | source_text, table_tile_text_refined | 4 | terms=numerical, index | http://localhost:8080/rescarta/t_p_120_1176/000006 |</pre>
+<pre>| 3 | t_p_120_1176_p000020 | 18.792258 | source_text_evidence | source_text | 1 | terms=numerical, index | http://localhost:8080/rescarta/t_p_120_1176/000020 |</pre>
+<pre>| 4 | t_p_120_1176_p000001 | 9.976164 | source_text_evidence | source_text | 1 | terms=index | http://localhost:8080/rescarta/t_p_120_1176/000001 |</pre>
+<pre></pre>
+<p>## Supporting evidence samples</p>
+<pre></pre>
+<p>### 1. t_p_120_1176_p000005 — score 29.009533</p>
+<pre></pre>
+<p>Buckets: `source_text_evidence, derived_context`</p>
+<p>Source URL: `http://localhost:8080/rescarta/t_p_120_1176/000005`</p>
+<pre></pre>
+<p>- rank=1 score=21.909533 bucket=`source_text_evidence` layer=`source_text` trust=`A`</p>
+<p>  - matched terms: numerical, index</p>
+<p>  - preview: Source text evidence for page t_p_120_1176_p000005.</p>
+<p>This chunk is source-backed OCR/page-context text and can be searched as source text evidence.</p>
+<p>Document: t_p_120_1176.</p>
+<p>ATA: 25-21-00.</p>
+<p>Source URL: http://localhost:8080/rescarta/t_p_120_1176/000005.</p>
+<p>TIFF path: local_data\rescarta_exports\t_p_120_1176\pages\000005_00000005.tif.</p>
+<p>OCR path: local_data\rescarta_exports\t_p_120_1176\ocr\000005_00000005.txt.</p>
+<p>OCR text:</p>
+<p>[bottom_right_title_block]</p>
+<p>0 20-2 1-UU (VI SEP IUIIO</p>
+<p>8 25-21-00 702 Sep 30/98</p>
+<p>8 25-2…</p>
+<p>- rank=3 score=19.138961 bucket=`derived_context` layer=`table_tile_text_refined` trust=`B`</p>
+<p>  - matched terms: numerical, index</p>
+<p>  - preview: Derived context for page t_p_120_1176_p000005.</p>
+<p>Evidence layer: table_tile_text_refined.</p>
+<p>This context is derived evidence, not canonical source truth.</p>
+<p>Table tile: t_p_120_1176_p000005_tile_002.</p>
+<p>Filtered index/section labels: 25-Numerical, 25-Vendors.</p>
+<p>Extracted tile text:</p>
+<p>8 25-Numerical Index 1009 Jan 15/01</p>
+<p>8 25-Numerical Index 1010 Jan 15/01</p>
+<p>8 25-Numerical Index 1011 Jan 15/01</p>
+<p>1 are indicated by an asterisk (*). Pages deleted by the</p>
+<p>Jeleted by the previous revision are indicated by (del).</p>
+<p>&#x27;5-LIS…</p>
+<p>- rank=5 score=18.809176 bucket=`derived_context` layer=`table_tile_text_refined` trust=`B`</p>
+<p>  - matched terms: numerical, index</p>
+<p>  - preview: Derived context for page t_p_120_1176_p000005.</p>
+<p>Evidence layer: table_tile_text_refined.</p>
+<p>This context is derived evidence, not canonical source truth.</p>
+<p>Table tile: t_p_120_1176_p000005_tile_001.</p>
+<p>Filtered index/section labels: 25-Vendors, 25-Numerical.</p>
+<p>Extracted tile text:</p>
+<p>[bottom_right_title_block]</p>
+<p>0 20-2 1-UU (VI SEP IUIIO</p>
+<p>8 25-21-00 702 Sep 30/98</p>
+<p>8 25-21-00 703 Sep 30/98</p>
+<p>8 25-21-00 704 blank Sep 30/98</p>
+<p>8 Parts List 1001 Sep 30/98</p>
+<p>8 Parts List 1002 Sep 30/98</p>
+<p>8 Parts List 1003 Sep 30/98</p>
+<p>8 Parts Li…</p>
+<p>- rank=7 score=18.166248 bucket=`derived_context` layer=`table_tile_text_refined` trust=`B`</p>
+<p>  - matched terms: numerical, index</p>
+<p>  - preview: Derived context for page t_p_120_1176_p000005.</p>
+<p>Evidence layer: table_tile_text_refined.</p>
+<p>This context is derived evidence, not canonical source truth.</p>
+<p>Table tile: t_p_120_1176_p000005_tile_003.</p>
+<p>Filtered index/section labels: 25-Numerical, 25-LIST.</p>
+<p>Extracted tile text:</p>
+<p>25-21-00 605 Sep 30/98 25-Numerical Index 1010 Jan 15/01</p>
+<p>25-21-00 606 Sep 30/98 25-Numerical Index 1011 Jan 15/01</p>
+<p>Pages revised or added by the current revision are indicated by an asterisk (*). Pages deleted by the</p>
+<p>current revisio…</p>
+<pre></pre>
+<p>### 2. t_p_120_1176_p000006 — score 28.935605</p>
+<pre></pre>
+<p>Buckets: `source_text_evidence, derived_context`</p>
+<p>Source URL: `http://localhost:8080/rescarta/t_p_120_1176/000006`</p>
+<pre></pre>
+<p>- rank=2 score=21.835605 bucket=`source_text_evidence` layer=`source_text` trust=`A`</p>
+<p>  - matched terms: numerical, index</p>
+<p>  - preview: Source text evidence for page t_p_120_1176_p000006.</p>
+<p>This chunk is source-backed OCR/page-context text and can be searched as source text evidence.</p>
+<p>Document: t_p_120_1176.</p>
+<p>ATA: 25-21-00.</p>
+<p>Source URL: http://localhost:8080/rescarta/t_p_120_1176/000006.</p>
+<p>TIFF path: local_data\rescarta_exports\t_p_120_1176\pages\000006_00000006.tif.</p>
+<p>OCR path: local_data\rescarta_exports\t_p_120_1176\ocr\000006_00000006.txt.</p>
+<p>OCR text:</p>
+<p>[bottom_right_title_block]</p>
+<p>eee ier wey VNIVw</p>
+<p>9- IPL 1062 Sep 30/98</p>
+<p>9- IPL 1063 Sep 3…</p>
+<p>- rank=4 score=19.045267 bucket=`derived_context` layer=`table_tile_text_refined` trust=`B`</p>
+<p>  - matched terms: numerical, index</p>
+<p>  - preview: Derived context for page t_p_120_1176_p000006.</p>
+<p>Evidence layer: table_tile_text_refined.</p>
+<p>This context is derived evidence, not canonical source truth.</p>
+<p>Table tile: t_p_120_1176_p000006_tile_002.</p>
+<p>Filtered index/section labels: 40-NUMeElNCal, 20-IFL, 25-Numerical, 25-IPL.</p>
+<p>Extracted tile text:</p>
+<p>9- IPL 1068D blank Jan 15/01</p>
+<p>9- IPL 1069 Sep 30/98</p>
+<p>9- IPL 1070 Sep 30/98</p>
+<p>9- IPL 1071 Jan 15/01</p>
+<p>icated by an asterisk (*). Pages deleted by the</p>
+<p>y the previous revision are indicated by (del).</p>
+<p>5T OF EFFECTIVE PA…</p>
+<p>- rank=6 score=18.809176 bucket=`derived_context` layer=`table_tile_text_refined` trust=`B`</p>
+<p>  - matched terms: numerical, index</p>
+<p>  - preview: Derived context for page t_p_120_1176_p000006.</p>
+<p>Evidence layer: table_tile_text_refined.</p>
+<p>This context is derived evidence, not canonical source truth.</p>
+<p>Table tile: t_p_120_1176_p000006_tile_003.</p>
+<p>Filtered index/section labels: 25-Numerical, 25-IPL, 25-LIST.</p>
+<p>Extracted tile text:</p>
+<p>25-Numerical Index 1045 Jan 15/01 25-IPL 1069 Sep 30/98</p>
+<p>25-Numerical Index 1046 Jan 15/01 25-IPL 1070 Sep 30/98</p>
+<p>25-Numerical Index 1047 Jan 15/01 25-IPL 1071 Jan 15/01</p>
+<p>Pages revised or added by the current revision are indi…</p>
+<p>- rank=8 score=18.166248 bucket=`derived_context` layer=`table_tile_text_refined` trust=`B`</p>
+<p>  - matched terms: numerical, index</p>
+<p>  - preview: Derived context for page t_p_120_1176_p000006.</p>
+<p>Evidence layer: table_tile_text_refined.</p>
+<p>This context is derived evidence, not canonical source truth.</p>
+<p>Table tile: t_p_120_1176_p000006_tile_004.</p>
+<p>Filtered index/section labels: 25-Numerical.</p>
+<p>Extracted tile text:</p>
+<p>25-Numerical Index 1012 Jan 15/01 25-Numerical Index 1048 Jan 15/01</p>
+<p>[right_strip]</p>
+<p>PAGE DATE</p>
+<p>1048 Jan 15/01</p>
+<p>1049 Jan 15/01</p>
+<p>1050 Jan 15/01</p>
+<p>1051 Jan 15/01</p>
+<p>1052 Jan 15/01</p>
+<p>1052A Jan 15/01</p>
+<p>1052B Jan 15/01</p>
+<p>1052C Jan 15/01</p>
+<p>1052D Jan 15/01</p>
+<p>1052E Jan…</p>
+<pre></pre>
+<p>### 3. t_p_120_1176_p000020 — score 18.792258</p>
+<pre></pre>
+<p>Buckets: `source_text_evidence`</p>
+<p>Source URL: `http://localhost:8080/rescarta/t_p_120_1176/000020`</p>
+<pre></pre>
+<p>- rank=9 score=15.642258 bucket=`source_text_evidence` layer=`source_text` trust=`A`</p>
+<p>  - matched terms: numerical, index</p>
+<p>  - preview: Source text evidence for page t_p_120_1176_p000020.</p>
+<p>This chunk is source-backed OCR/page-context text and can be searched as source text evidence.</p>
+<p>Document: t_p_120_1176.</p>
+<p>ATA: 25-21-00.</p>
+<p>Source URL: http://localhost:8080/rescarta/t_p_120_1176/000020.</p>
+<p>TIFF path: local_data\rescarta_exports\t_p_120_1176\pages\000020_00000020.tif.</p>
+<p>OCR path: local_data\rescarta_exports\t_p_120_1176\ocr\000020_00000020.txt.</p>
+<p>OCR text:</p>
+<p>[bottom_right_title_block]</p>
+<p>ERENT Tey Sr res eg wi Wwe ONE rien ee iw wat eit.</p>
+<p>dered…</p>
+<pre></pre>
+<p>### 4. t_p_120_1176_p000001 — score 9.976164</p>
+<pre></pre>
+<p>Buckets: `source_text_evidence`</p>
+<p>Source URL: `http://localhost:8080/rescarta/t_p_120_1176/000001`</p>
+<pre></pre>
+<p>- rank=10 score=7.076164 bucket=`source_text_evidence` layer=`source_text` trust=`A`</p>
+<p>  - matched terms: index</p>
+<p>  - preview: Source text evidence for page t_p_120_1176_p000001.</p>
+<p>This chunk is source-backed OCR/page-context text and can be searched as source text evidence.</p>
+<p>Document: t_p_120_1176.</p>
+<p>ATA: 25-21-00.</p>
+<p>Source URL: http://localhost:8080/rescarta/t_p_120_1176/000001.</p>
+<p>TIFF path: local_data\rescarta_exports\t_p_120_1176\pages\000001_00000001.tif.</p>
+<p>OCR path: local_data\rescarta_exports\t_p_120_1176\ocr\000001_00000001.txt.</p>
+<p>OCR text:</p>
+<p>[bottom_right_title_block]</p>
+<p>IN SUPERSEDES T.-P. 120/1176</p>
+<p>6 SEPTEMBER 1997</p>
+<p>30 SEPTEMBE…</p>
+</body></html>

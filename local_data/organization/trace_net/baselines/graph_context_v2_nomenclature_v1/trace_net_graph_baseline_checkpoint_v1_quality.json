@@ -1,0 +1,118 @@
+{
+  "checks": [
+    {
+      "actual": "trace_net_graph_baseline_checkpoint_v1",
+      "detail": "",
+      "expected": "trace_net_graph_baseline_checkpoint_v1",
+      "name": "schema_version",
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "detail": "",
+      "expected": true,
+      "name": "read_only",
+      "status": "PASS"
+    },
+    {
+      "actual": 509,
+      "detail": "",
+      "expected": ">= 509",
+      "name": "page_count",
+      "status": "PASS"
+    },
+    {
+      "actual": 1075,
+      "detail": "",
+      "expected": ">= 442",
+      "name": "part_node_count",
+      "status": "PASS"
+    },
+    {
+      "actual": 151,
+      "detail": "",
+      "expected": ">= 151",
+      "name": "nomenclature_node_count",
+      "status": "PASS"
+    },
+    {
+      "actual": 386,
+      "detail": "",
+      "expected": ">= 386",
+      "name": "has_nomenclature_edge_count",
+      "status": "PASS"
+    },
+    {
+      "actual": 50,
+      "detail": "",
+      "expected": ">= 50",
+      "name": "page_context_v2_page_count",
+      "status": "PASS"
+    },
+    {
+      "actual": 50,
+      "detail": "",
+      "expected": ">= 50",
+      "name": "has_context_v2_edge_count",
+      "status": "PASS"
+    },
+    {
+      "actual": [],
+      "detail": "all pages in 1-50 have context-v2",
+      "expected": [],
+      "name": "required_context_v2_missing_pages",
+      "status": "PASS"
+    },
+    {
+      "actual": 1426,
+      "detail": "",
+      "expected": ">= 0",
+      "name": "rag_candidate_count",
+      "status": "PASS"
+    },
+    {
+      "actual": 1426,
+      "detail": "",
+      "expected": ">= 0",
+      "name": "source_citation_count",
+      "status": "PASS"
+    },
+    {
+      "actual": 0,
+      "detail": "",
+      "expected": "<= 0",
+      "name": "unsafe_embedding_candidate_count",
+      "status": "PASS"
+    },
+    {
+      "actual": "PASS",
+      "detail": "",
+      "expected": "PASS",
+      "name": "graph_explorer_v2_nomenclature_quality_status",
+      "status": "PASS"
+    }
+  ],
+  "generated_at_utc": "2026-06-08T16:46:41Z",
+  "schema_version": "trace_net_graph_baseline_checkpoint_v1_quality",
+  "status": "PASS",
+  "summary": {
+    "checkpoint_name": "trace_net_graph_ui_context_v2_nomenclature_baseline_v1",
+    "checkpoint_sha256": "c6f9e662a92820c55af1adb7c7430e226e5e6f42902c202a5aa5962548963ae0",
+    "failed_check_count": 0,
+    "generated_at_utc": "2026-06-08T16:46:35Z",
+    "has_context_v2_edge_count": 50,
+    "has_nomenclature_edge_count": 386,
+    "nomenclature_node_count": 151,
+    "page_context_v2_page_count": 50,
+    "page_count": 509,
+    "part_node_count": 1075,
+    "quality_check_count": 13,
+    "rag_candidate_count": 1426,
+    "read_only": true,
+    "required_context_v2_missing_page_count": 0,
+    "schema_version": "trace_net_graph_baseline_checkpoint_v1",
+    "source_citation_count": 1426,
+    "status": "PASS",
+    "unsafe_embedding_candidate_count": 0
+  }
+}

@@ -1,0 +1,845 @@
+{
+  "ask_integration": false,
+  "cases": [
+    {
+      "candidate_hit_count": 8,
+      "case_id": "manual_revision_history",
+      "checks": [
+        {
+          "actual": "manual_revision_history",
+          "expected": "manual_revision_history",
+          "name": "query_result_exists",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": "route_to_revision_source_page",
+          "expected": "route_to_revision_source_page",
+          "name": "intent_matches",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "ranked_group_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "candidate_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "page_profile_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "resolved_candidate_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "resolved_page_profile_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "ranked_groups_retrieval_safe",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "unsafe_count_zero",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "direct_answer_allowed_count_zero",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "claim_proof_allowed_count_zero",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "source_truth_mutation_allowed_count_zero",
+          "passed": true,
+          "severity": "error"
+        }
+      ],
+      "claim_proof_allowed_count": 0,
+      "description": "Manual revision/title-block routing should still return source-backed retrieval groups.",
+      "direct_answer_allowed_count": 0,
+      "group_page_ids": [
+        "t_p_120_1176_p000004",
+        "t_p_120_1176_p000001",
+        "t_p_120_1176_p000329",
+        "t_p_120_1176_p000095",
+        "t_p_120_1176_p000308",
+        "t_p_120_1176_p000399",
+        "t_p_120_1176_p000094",
+        "t_p_120_1176_p000427"
+      ],
+      "hit_authorities": [
+        "ocr_text_claim_with_citation",
+        "page_route_only",
+        "retrieval_helper_only"
+      ],
+      "hit_buckets": [
+        "context_retrieval_helper",
+        "page_retrieval_profile",
+        "source_text_evidence"
+      ],
+      "intent": "route_to_revision_source_page",
+      "missing_result": false,
+      "page_profile_hit_count": 8,
+      "query": "T.P. 120/1176 Revision 4 Embraer manual revision history title block supersedes",
+      "query_id": "manual_revision_history",
+      "ranked_group_count": 8,
+      "resolved_candidate_hit_count": 8,
+      "resolved_page_profile_hit_count": 8,
+      "source_truth_mutation_allowed_count": 0,
+      "status": "PASS",
+      "top_hybrid_score": 1.906505,
+      "top_page_id": "t_p_120_1176_p000004",
+      "unsafe_result_count": 0
+    },
+    {
+      "candidate_hit_count": 8,
+      "case_id": "ata_25_21_placards",
+      "checks": [
+        {
+          "actual": "ata_25_21_placards",
+          "expected": "ata_25_21_placards",
+          "name": "query_result_exists",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": "route_to_ata_or_page_evidence",
+          "expected": "route_to_ata_or_page_evidence",
+          "name": "intent_matches",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "ranked_group_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "candidate_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "page_profile_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "resolved_candidate_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "resolved_page_profile_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "ranked_groups_retrieval_safe",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "unsafe_count_zero",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "direct_answer_allowed_count_zero",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "claim_proof_allowed_count_zero",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "source_truth_mutation_allowed_count_zero",
+          "passed": true,
+          "severity": "error"
+        }
+      ],
+      "claim_proof_allowed_count": 0,
+      "description": "ATA placard/label routing should still produce hybrid page and candidate hits.",
+      "direct_answer_allowed_count": 0,
+      "group_page_ids": [
+        "t_p_120_1176_p000026",
+        "t_p_120_1176_p000033",
+        "t_p_120_1176_p000034",
+        "t_p_120_1176_p000045",
+        "t_p_120_1176_p000066",
+        "t_p_120_1176_p000068",
+        "t_p_120_1176_p000050",
+        "t_p_120_1176_p000499"
+      ],
+      "hit_authorities": [
+        "page_route_only",
+        "part_page_relationship",
+        "retrieval_helper_only"
+      ],
+      "hit_buckets": [
+        "context_retrieval_helper",
+        "page_retrieval_profile",
+        "verified_part_evidence"
+      ],
+      "intent": "route_to_ata_or_page_evidence",
+      "missing_result": false,
+      "page_profile_hit_count": 8,
+      "query": "ATA 25-21-00 placards decals warning labels cabin interior equipment manual",
+      "query_id": "ata_25_21_placards",
+      "ranked_group_count": 8,
+      "resolved_candidate_hit_count": 8,
+      "resolved_page_profile_hit_count": 8,
+      "source_truth_mutation_allowed_count": 0,
+      "status": "PASS",
+      "top_hybrid_score": 1.676837,
+      "top_page_id": "t_p_120_1176_p000026",
+      "unsafe_result_count": 0
+    },
+    {
+      "candidate_hit_count": 8,
+      "case_id": "part_nomenclature_lookup",
+      "checks": [
+        {
+          "actual": "part_nomenclature_lookup",
+          "expected": "part_nomenclature_lookup",
+          "name": "query_result_exists",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": "route_to_part_and_nomenclature_evidence",
+          "expected": "route_to_part_and_nomenclature_evidence",
+          "name": "intent_matches",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "ranked_group_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "candidate_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "page_profile_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "resolved_candidate_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "resolved_page_profile_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "ranked_groups_retrieval_safe",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "unsafe_count_zero",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "direct_answer_allowed_count_zero",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "claim_proof_allowed_count_zero",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "source_truth_mutation_allowed_count_zero",
+          "passed": true,
+          "severity": "error"
+        }
+      ],
+      "claim_proof_allowed_count": 0,
+      "description": "Part/nomenclature lookup should keep returning resolved candidate and page-profile hits.",
+      "direct_answer_allowed_count": 0,
+      "group_page_ids": [
+        "t_p_120_1176_p000023",
+        "t_p_120_1176_p000494",
+        "t_p_120_1176_p000073",
+        "t_p_120_1176_p000267",
+        "t_p_120_1176_p000307",
+        "t_p_120_1176_p000152",
+        "t_p_120_1176_p000432",
+        "t_p_120_1176_p000074"
+      ],
+      "hit_authorities": [
+        "ocr_text_claim_with_citation",
+        "page_route_only",
+        "part_page_relationship"
+      ],
+      "hit_buckets": [
+        "page_retrieval_profile",
+        "source_text_evidence",
+        "verified_part_evidence"
+      ],
+      "intent": "route_to_part_and_nomenclature_evidence",
+      "missing_result": false,
+      "page_profile_hit_count": 8,
+      "query": "part number item quantity nomenclature figure table source evidence",
+      "query_id": "part_nomenclature_lookup",
+      "ranked_group_count": 8,
+      "resolved_candidate_hit_count": 8,
+      "resolved_page_profile_hit_count": 8,
+      "source_truth_mutation_allowed_count": 0,
+      "status": "PASS",
+      "top_hybrid_score": 1.064011,
+      "top_page_id": "t_p_120_1176_p000023",
+      "unsafe_result_count": 0
+    },
+    {
+      "candidate_hit_count": 8,
+      "case_id": "source_trace_page_000001",
+      "checks": [
+        {
+          "actual": "source_trace_page_000001",
+          "expected": "source_trace_page_000001",
+          "name": "query_result_exists",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": "route_to_page_source_trace",
+          "expected": "route_to_page_source_trace",
+          "name": "intent_matches",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "ranked_group_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "candidate_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "page_profile_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "resolved_candidate_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "resolved_page_profile_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "ranked_groups_retrieval_safe",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "unsafe_count_zero",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "direct_answer_allowed_count_zero",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "claim_proof_allowed_count_zero",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "source_truth_mutation_allowed_count_zero",
+          "passed": true,
+          "severity": "error"
+        }
+      ],
+      "claim_proof_allowed_count": 0,
+      "description": "Source trace query should still resolve page/candidate hits without allowing direct answers.",
+      "direct_answer_allowed_count": 0,
+      "group_page_ids": [
+        "t_p_120_1176_p000370",
+        "t_p_120_1176_p000131",
+        "t_p_120_1176_p000001",
+        "t_p_120_1176_p000501",
+        "t_p_120_1176_p000002",
+        "t_p_120_1176_p000192",
+        "t_p_120_1176_p000101",
+        "t_p_120_1176_p000183"
+      ],
+      "hit_authorities": [
+        "page_route_only",
+        "source_exists_only"
+      ],
+      "hit_buckets": [
+        "page_retrieval_profile",
+        "source_evidence"
+      ],
+      "intent": "route_to_page_source_trace",
+      "missing_result": false,
+      "page_profile_hit_count": 8,
+      "query": "source trace page 000001 ResCarta TIFF OCR technical manual page evidence",
+      "query_id": "source_trace_page_000001",
+      "ranked_group_count": 8,
+      "resolved_candidate_hit_count": 8,
+      "resolved_page_profile_hit_count": 8,
+      "source_truth_mutation_allowed_count": 0,
+      "status": "PASS",
+      "top_hybrid_score": 2.095823,
+      "top_page_id": "t_p_120_1176_p000370",
+      "unsafe_result_count": 0
+    },
+    {
+      "candidate_hit_count": 8,
+      "case_id": "technical_publication_evidence",
+      "checks": [
+        {
+          "actual": "technical_publication_evidence",
+          "expected": "technical_publication_evidence",
+          "name": "query_result_exists",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": "route_to_source_backed_candidates",
+          "expected": "route_to_source_backed_candidates",
+          "name": "intent_matches",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "ranked_group_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "candidate_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "page_profile_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "resolved_candidate_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 8,
+          "expected": ">=3",
+          "name": "resolved_page_profile_hit_count_min",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "ranked_groups_retrieval_safe",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "unsafe_count_zero",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "direct_answer_allowed_count_zero",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "claim_proof_allowed_count_zero",
+          "passed": true,
+          "severity": "error"
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "source_truth_mutation_allowed_count_zero",
+          "passed": true,
+          "severity": "error"
+        }
+      ],
+      "claim_proof_allowed_count": 0,
+      "description": "Technical publication/source-citation query should keep safe hybrid routing behavior.",
+      "direct_answer_allowed_count": 0,
+      "group_page_ids": [
+        "t_p_120_1176_p000265",
+        "t_p_120_1176_p000399",
+        "t_p_120_1176_p000371",
+        "t_p_120_1176_p000229",
+        "t_p_120_1176_p000429",
+        "t_p_120_1176_p000123",
+        "t_p_120_1176_p000508",
+        "t_p_120_1176_p000102"
+      ],
+      "hit_authorities": [
+        "ocr_text_claim_with_citation",
+        "page_route_only"
+      ],
+      "hit_buckets": [
+        "page_retrieval_profile",
+        "source_text_evidence"
+      ],
+      "intent": "route_to_source_backed_candidates",
+      "missing_result": false,
+      "page_profile_hit_count": 8,
+      "query": "Embraer aircraft technical publication manual evidence source citation page reference",
+      "query_id": "technical_publication_evidence",
+      "ranked_group_count": 8,
+      "resolved_candidate_hit_count": 8,
+      "resolved_page_profile_hit_count": 8,
+      "source_truth_mutation_allowed_count": 0,
+      "status": "PASS",
+      "top_hybrid_score": 1.095577,
+      "top_page_id": "t_p_120_1176_p000265",
+      "unsafe_result_count": 0
+    }
+  ],
+  "generated_at_utc": "2026-06-08T20:07:52Z",
+  "hybrid_report_path": "local_data\\organization\\trace_net\\hybrid_retrieval_sim\\trace_net_hybrid_retrieval_sim_v1.json",
+  "hybrid_report_sha256": "ce4d9b393a5903ee0664d98a1c2fd9b3d433a01c780b0ef6cab117f0ab503909",
+  "quality": {
+    "checks": [
+      {
+        "actual": 5,
+        "expected": ">=5",
+        "name": "regression_case_count_min",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 1.0,
+        "expected": ">=1.0",
+        "name": "case_pass_rate_min",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 5,
+        "expected": ">=5",
+        "name": "cases_with_results_min",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 5,
+        "expected": ">=5",
+        "name": "cases_with_candidate_hits_min",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 5,
+        "expected": ">=5",
+        "name": "cases_with_page_profile_hits_min",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 40,
+        "expected": ">=25",
+        "name": "total_ranked_group_count_min",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 40,
+        "expected": ">=25",
+        "name": "total_candidate_hit_count_min",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 40,
+        "expected": ">=25",
+        "name": "total_page_profile_hit_count_min",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "required_case_missing_count_zero",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "case_fail_count_zero",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": "PASS",
+        "expected": "PASS",
+        "name": "hybrid_quality_status_pass",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "case_unsafe_result_count_zero",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "case_direct_answer_allowed_count_zero",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "case_claim_proof_allowed_count_zero",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "case_source_truth_mutation_allowed_count_zero",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "hybrid_unsafe_result_count_zero",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "hybrid_unsafe_hit_payload_count_zero",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "hybrid_direct_answer_allowed_result_count_zero",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "hybrid_claim_proof_allowed_without_authority_count_zero",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "hybrid_source_truth_mutation_allowed_count_zero",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 1476,
+        "expected": 1476,
+        "name": "candidate_collection_count_exact",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 509,
+        "expected": 509,
+        "name": "page_profile_collection_count_exact",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "actual": 1024,
+        "expected": 1024,
+        "name": "embedding_dim_exact",
+        "passed": true,
+        "severity": "error"
+      }
+    ],
+    "status": "PASS"
+  },
+  "read_only": true,
+  "regression_set_name": "trace_net_default_hybrid_retrieval_regression_set_v1",
+  "regression_set_sha256": "056f3ec264be3f0b09eafb3fdf360de3d99c0b111f2d3d215afd8a519763c869",
+  "schema_version": "trace_net_regression_eval_v1",
+  "simulation_only": true,
+  "status": "PASS",
+  "summary": {
+    "candidate_collection_count": 1476,
+    "case_claim_proof_allowed_count": 0,
+    "case_direct_answer_allowed_count": 0,
+    "case_fail_count": 0,
+    "case_pass_count": 5,
+    "case_pass_rate": 1.0,
+    "case_source_truth_mutation_allowed_count": 0,
+    "case_unsafe_result_count": 0,
+    "cases_with_candidate_hits_count": 5,
+    "cases_with_grouped_results_count": 5,
+    "cases_with_page_profile_hits_count": 5,
+    "cases_with_results_count": 5,
+    "embedding_dim": 1024,
+    "embedding_mode": "ollama",
+    "embedding_model_name": "bge-m3:latest",
+    "hybrid_candidate_hit_count": 40,
+    "hybrid_claim_proof_allowed_without_authority_count": 0,
+    "hybrid_direct_answer_allowed_result_count": 0,
+    "hybrid_grouped_result_count": 40,
+    "hybrid_page_profile_hit_count": 40,
+    "hybrid_quality_status": "PASS",
+    "hybrid_report_status": "PASS",
+    "hybrid_resolved_candidate_hit_count": 40,
+    "hybrid_resolved_page_profile_hit_count": 40,
+    "hybrid_source_truth_mutation_allowed_count": 0,
+    "hybrid_unsafe_hit_payload_count": 0,
+    "hybrid_unsafe_result_count": 0,
+    "page_profile_collection_count": 509,
+    "regression_case_count": 5,
+    "regression_set_name": "trace_net_default_hybrid_retrieval_regression_set_v1",
+    "required_case_missing_count": 0,
+    "schema_version": "trace_net_regression_eval_v1",
+    "total_candidate_hit_count": 40,
+    "total_page_profile_hit_count": 40,
+    "total_ranked_group_count": 40,
+    "total_resolved_candidate_hit_count": 40,
+    "total_resolved_page_profile_hit_count": 40
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "status": "OK",
+  "summary": {
+    "pages": 509,
+    "trust_overlay_records": 6865,
+    "page_trust_trait_records": 3971,
+    "rag_candidate_records": 1426,
+    "pages_with_trust_traits": 509,
+    "rag_candidate_missing_trust_tier": 0,
+    "source_trace_A_records": 509,
+    "source_text_A_records": 495,
+    "verified_part_A_records": 362,
+    "derived_context_records": 60,
+    "unsafe_trusted_rag_records": 0,
+    "trust_tier_counts": {
+      "A": 4129,
+      "C": 1788,
+      "B": 948
+    },
+    "evidence_layer_counts": {
+      "part_catalog": 1454,
+      "source_text": 495,
+      "source_trace": 2036,
+      "table_candidate": 1527,
+      "table_tiles": 858,
+      "table_tile_text_refined": 420,
+      "visual_text": 75
+    },
+    "source_truth_mutation_records": 0
+  },
+  "checks": [
+    {
+      "name": "pages",
+      "status": "OK",
+      "message": "pages=509; minimum=509"
+    },
+    {
+      "name": "trust_records",
+      "status": "OK",
+      "message": "trust_records=6865; minimum=1426"
+    },
+    {
+      "name": "page_trust_traits",
+      "status": "OK",
+      "message": "page_trust_traits=3971; minimum=509"
+    },
+    {
+      "name": "pages_with_trust_traits",
+      "status": "OK",
+      "message": "pages_with_trust_traits=509; minimum=509"
+    },
+    {
+      "name": "source_trace_A",
+      "status": "OK",
+      "message": "source_trace_A=509; minimum=509"
+    },
+    {
+      "name": "source_text_A",
+      "status": "OK",
+      "message": "source_text_A=495; minimum=495"
+    },
+    {
+      "name": "verified_part_A",
+      "status": "OK",
+      "message": "verified_part_A=362; minimum=360"
+    },
+    {
+      "name": "derived_context_records",
+      "status": "OK",
+      "message": "derived_context=60; minimum=60"
+    },
+    {
+      "name": "missing_candidate_trust_tier",
+      "status": "OK",
+      "message": "missing_candidate_trust_tier=0; max=0"
+    },
+    {
+      "name": "unsafe_trusted_rag",
+      "status": "OK",
+      "message": "unsafe_trusted=0; max=0"
+    },
+    {
+      "name": "source_truth_mutations",
+      "status": "OK",
+      "message": "source_truth_mutations=0; max=0"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "status": "OK",
+  "created_at": "2026-06-02T17:48:11Z",
+  "requested_algorithm": "leiden",
+  "algorithm_used": "leidenalg_rbconfiguration",
+  "resolution": 1.0,
+  "min_edge_weight": 0.0,
+  "leiden_available": true,
+  "algorithm_info": {
+    "leiden_available": true,
+    "modularity": 0.34000571524770495,
+    "quality": 7784.788862732492
+  },
+  "pages_loaded": 509,
+  "projection_nodes": 1856,
+  "projection_edges": 12363,
+  "node_type_counts": {
+    "page": 509,
+    "ata_section": 5,
+    "document": 1,
+    "part": 386,
+    "trait": 949,
+    "trust_or_review_trait": 1,
+    "trace_net_route": 4,
+    "table_trait": 1
+  },
+  "edge_type_counts": {
+    "PAGE_ATA": 509,
+    "PAGE_DOCUMENT": 509,
+    "PAGE_PART": 981,
+    "PAGE_TRAIT": 8294,
+    "PAGE_TRUST_REVIEW_TRAIT": 25,
+    "PAGE_ROUTE": 509,
+    "PAGE_TABLE_TRAIT": 286,
+    "PART_CO_OCCURS_ON_PAGE": 1250
+  },
+  "community_count": 18,
+  "communities_with_pages": 18,
+  "largest_community_pages": 191,
+  "largest_community_nodes": 374,
+  "singleton_communities": 0,
+  "overlay_nodes": 1874,
+  "overlay_edges": 1856
+}

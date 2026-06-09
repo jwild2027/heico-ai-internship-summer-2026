@@ -1,0 +1,69 @@
+{
+  "checks": [
+    {
+      "message": "Trait overlay summary present at local_data\\organization\\entity_traits\\trait_graph_summary.json.",
+      "name": "entity_trait_summary_present",
+      "status": "OK"
+    },
+    {
+      "message": "Trait overlay status is ok.",
+      "name": "entity_trait_overlay_status",
+      "status": "OK"
+    },
+    {
+      "message": "Trait assertions=11980; minimum is 1.",
+      "name": "entity_trait_assertions",
+      "status": "OK"
+    },
+    {
+      "message": "Trait nodes=963; minimum is 1.",
+      "name": "entity_trait_nodes",
+      "status": "OK"
+    },
+    {
+      "message": "Evidence source nodes=4; minimum is 1.",
+      "name": "entity_trait_evidence_sources",
+      "status": "OK"
+    },
+    {
+      "message": "Trait assertion, trait, and evidence edges are present for assertions.",
+      "name": "entity_trait_edges",
+      "status": "OK"
+    },
+    {
+      "message": "Page cards=509; minimum is 1.",
+      "name": "entity_trait_page_cards",
+      "status": "OK"
+    },
+    {
+      "message": "Pages without traits=0; max allowed=0.",
+      "name": "entity_trait_page_trait_coverage",
+      "status": "OK"
+    },
+    {
+      "message": "Derived trait assertions=1199; expected at least 1.",
+      "name": "entity_trait_derived_traits",
+      "status": "OK"
+    }
+  ],
+  "status": "ok",
+  "summary": {
+    "entity_trait_assertion_nodes": 11980,
+    "entity_trait_assertions": 11980,
+    "entity_trait_asserts_trait_edges": 11980,
+    "entity_trait_derived_assertions": 1199,
+    "entity_trait_derived_from_edges": 11980,
+    "entity_trait_edges": 48938,
+    "entity_trait_evidence_source_nodes": 4,
+    "entity_trait_graph_parts": 386,
+    "entity_trait_has_assertion_edges": 11980,
+    "entity_trait_has_trait_edges": 11980,
+    "entity_trait_inherits_edges": 1018,
+    "entity_trait_nodes": 963,
+    "entity_trait_overlay_present": true,
+    "entity_trait_overlay_status": "ok",
+    "entity_trait_page_cards": 509,
+    "entity_trait_pages_without_traits": 0,
+    "entity_trait_part_cards": 386
+  }
+}

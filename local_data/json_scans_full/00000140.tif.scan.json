@@ -1,0 +1,228 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:05:13Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000140.tif",
+    "relative_path": "00000140.tif"
+  },
+  "file": {
+    "file_name": "00000140.tif",
+    "extension": ".tif",
+    "file_size_bytes": 52309,
+    "modified_time_utc": "2026-05-22T19:14:54Z",
+    "sha256": "fc9c1d2c38f25d99408273c133ec5dc10fd1adca30366c90548aae047e1e2da5"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "maintenance_manual_ipl",
+    "confidence": 0.8,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "component_title",
+      "part_numbers",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "maintenance_manual_ipl",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": null,
+    "publication_number": null,
+    "component_title": "XRT, FASTENER BUTTON MALE ... 4",
+    "section_title": null,
+    "figure_title": "-ITEM NOT ILLUSTRATED",
+    "figure_number": "15",
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": 1097,
+    "page_label": "1097",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [
+      "120-45850-007",
+      "120-40636-001",
+      "120-40636-003",
+      "120-41474-001",
+      "120-41475-001",
+      "120-41475-003",
+      "120-42547-019",
+      "120-45850-507"
+    ],
+    "callouts": [
+      "NUMBER TO ASSY",
+      "TO ASSY"
+    ],
+    "metadata_confidence": 0.8
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\nXRT, FASTENER BUTTON MALE ... 4\nNER BUTTON, MALE........00..000.... E075221 4\nFR, MAGAZINE... eee \u00bb=VS4956 1\ni ASSY., - ARMREST.......0....0.000... VS4956 1\ni ASSY., - ARMREST.......0....0.000... VS4956 1\n2, TRIM REAR-FIXED ARMREST... VS4956 1\n2, TRIM FRONT... \u00a7=VS4956 1\n2, TRIM FRONT... \u00a7=VS4956 1\nSeat (120-45850-007/507)\n-igure 15\nSheet 2\n25-21 -00 Page 1097\nSep 30/98\n\n[bottom_strip]\nTOU | AMIQSU/0-3U0 \u00bb ASTI RAY oo. ees EOOO046 1\n160 | 120-40636-001 . LINING ASSY., - ARMREST ..........0000000.... VS4956 1\n170 | 120-40636-003 . LINING ASSY., - ARMREST ..........0000000.... VS4956 1\n180 | 120-41474-001 . COVER, TRIM REAR-FIXED ARMREST... VS4956 1\n190 | 120-41475-001 . COVER, TRIM FRONT... = VWS4956 1\n200 | 120-41475-003 . COVER, TRIM FRONT... = VWS4956 1\n210 | 120-42547-019 . SECTION , PVC... eee. VS4956 1\n-ITEM NOT ILLUSTRATED\nSingle Passenger Seat (120-45850-007/507)\nFigure 15\nSheet 2\nEFFECTIVITY: ALL 25-21 -00\nPage 1097\nSep 30/98\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nAIRLINE EFF | UNITS\nFIG. ITEM| PARTNUMBER | STOCK vase EODE. FROM | PER\nNUMBER TO ASSY\n15 - | 120-45850-007 SINGLE PASSENGER SEAT ASSY ............ VS4956 |071/171| REF\n- | 120-45850-507 SINGLE PASSENGER SEAT ASSY ............ VS4956 | 172/999] REF\n\n[right_strip]\nEFF | UNITS\nTO ASSY\nwee. V8S4956 1071/171| REF\nvee. WS4956 | 172/999) REF\nE\nLeese. WS4956 | 071/171 1\nE\nlesen VS4956 | 172/999 1\neve. WS4956 1\nLessee WS4956 1\nesc VS4956 1\neee. WS4956 A 1\neee WS4956 1\neeceeeeeenes 172/333 2\neeceeeeeenes 334/999 1\neeseee neces 172/333 1\necceeeeeeees 334/999 1\nlesen. WS4956 1\nVIALE ... 4\nlessee EO75221 4\nlessee. WS4956 1\nLessee, E065846 1\niss. WS4956 1\nlessee. WS4956 1\nREST... VS4956 1\nesses WS4956 1\nleseeeee. VWS4956 1\nlesen. V54956 1\n07)\n_|\n\u00bb-21-00\nPage 1097\nSep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "XRT, FASTENER BUTTON MALE ... 4\nNER BUTTON, MALE........00..000.... E075221 4\nFR, MAGAZINE... eee \u00bb=VS4956 1\ni ASSY., - ARMREST.......0....0.000... VS4956 1\ni ASSY., - ARMREST.......0....0.000... VS4956 1\n2, TRIM REAR-FIXED ARMREST... VS4956 1\n2, TRIM FRONT... \u00a7=VS4956 1\n2, TRIM FRONT... \u00a7=VS4956 1\nSeat (120-45850-007/507)\n-igure 15\nSheet 2\n25-21 -00 Page 1097\nSep 30/98",
+        "char_count": 372,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "TOU | AMIQSU/0-3U0 \u00bb ASTI RAY oo. ees EOOO046 1\n160 | 120-40636-001 . LINING ASSY., - ARMREST ..........0000000.... VS4956 1\n170 | 120-40636-003 . LINING ASSY., - ARMREST ..........0000000.... VS4956 1\n180 | 120-41474-001 . COVER, TRIM REAR-FIXED ARMREST... VS4956 1\n190 | 120-41475-001 . COVER, TRIM FRONT... = VWS4956 1\n200 | 120-41475-003 . COVER, TRIM FRONT... = VWS4956 1\n210 | 120-42547-019 . SECTION , PVC... eee. VS4956 1\n-ITEM NOT ILLUSTRATED\nSingle Passenger Seat (120-45850-007/507)\nFigure 15\nSheet 2\nEFFECTIVITY: ALL 25-21 -00\nPage 1097\nSep 30/98",
+        "char_count": 558,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nAIRLINE EFF | UNITS\nFIG. ITEM| PARTNUMBER | STOCK vase EODE. FROM | PER\nNUMBER TO ASSY\n15 - | 120-45850-007 SINGLE PASSENGER SEAT ASSY ............ VS4956 |071/171| REF\n- | 120-45850-507 SINGLE PASSENGER SEAT ASSY ............ VS4956 | 172/999] REF",
+        "char_count": 306,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "EFF | UNITS\nTO ASSY\nwee. V8S4956 1071/171| REF\nvee. WS4956 | 172/999) REF\nE\nLeese. WS4956 | 071/171 1\nE\nlesen VS4956 | 172/999 1\neve. WS4956 1\nLessee WS4956 1\nesc VS4956 1\neee. WS4956 A 1\neee WS4956 1\neeceeeeeenes 172/333 2\neeceeeeeenes 334/999 1\neeseee neces 172/333 1\necceeeeeeees 334/999 1\nlesen. WS4956 1\nVIALE ... 4\nlessee EO75221 4\nlessee. WS4956 1\nLessee, E065846 1\niss. WS4956 1\nlessee. WS4956 1\nREST... VS4956 1\nesses WS4956 1\nleseeeee. VWS4956 1\nlesen. V54956 1\n07)\n_|\n\u00bb-21-00\nPage 1097\nSep 30/98",
+        "char_count": 506,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "maintenance_manual_ipl",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": null,
+      "publication_number": null,
+      "component_title": "XRT, FASTENER BUTTON MALE ... 4",
+      "section_title": null,
+      "figure_title": "-ITEM NOT ILLUSTRATED",
+      "figure_number": "15",
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": 1097,
+      "page_label": "1097",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [
+        "120-45850-007",
+        "120-40636-001",
+        "120-40636-003",
+        "120-41474-001",
+        "120-41475-001",
+        "120-41475-003",
+        "120-42547-019",
+        "120-45850-507"
+      ],
+      "callouts": [
+        "NUMBER TO ASSY",
+        "TO ASSY"
+      ],
+      "metadata_confidence": 0.8
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

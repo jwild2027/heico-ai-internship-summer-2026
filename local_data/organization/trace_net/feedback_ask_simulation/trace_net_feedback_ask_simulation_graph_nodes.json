@@ -1,0 +1,76 @@
+[
+  {
+    "id": "trace_net:feedback_ask_simulation",
+    "status": "OK",
+    "type": "feedback_ask_simulation",
+    "version": "trace_net_feedback_ask_simulation_v1"
+  },
+  {
+    "id": "query:part_number:120-50645-009",
+    "label": "120-50645-009",
+    "type": "query_fingerprint"
+  },
+  {
+    "id": "feedback_ask_page:t_p_120_1176_p000003",
+    "page_id": "t_p_120_1176_p000003",
+    "rank": 1,
+    "score": 69.581557,
+    "type": "feedback_ask_page_result"
+  },
+  {
+    "id": "page:t_p_120_1176_p000003",
+    "page_id": "t_p_120_1176_p000003",
+    "type": "page"
+  },
+  {
+    "delta": 4.0,
+    "id": "feedback_signal:c44938758539",
+    "signal": "boost_for_query",
+    "type": "feedback_policy_signal"
+  },
+  {
+    "id": "rag_bucket:derived_context",
+    "label": "derived_context",
+    "type": "rag_bucket"
+  },
+  {
+    "id": "rag_bucket:source_text_evidence",
+    "label": "source_text_evidence",
+    "type": "rag_bucket"
+  },
+  {
+    "id": "rag_bucket:verified_part_evidence",
+    "label": "verified_part_evidence",
+    "type": "rag_bucket"
+  },
+  {
+    "id": "feedback_ask_page:t_p_120_1176_p000319",
+    "page_id": "t_p_120_1176_p000319",
+    "rank": 2,
+    "score": 50.251892,
+    "type": "feedback_ask_page_result"
+  },
+  {
+    "id": "page:t_p_120_1176_p000319",
+    "page_id": "t_p_120_1176_p000319",
+    "type": "page"
+  },
+  {
+    "id": "feedback_ask_page:t_p_120_1176_p000320",
+    "page_id": "t_p_120_1176_p000320",
+    "rank": 3,
+    "score": 49.631557,
+    "type": "feedback_ask_page_result"
+  },
+  {
+    "id": "page:t_p_120_1176_p000320",
+    "page_id": "t_p_120_1176_p000320",
+    "type": "page"
+  },
+  {
+    "delta": -12.0,
+    "id": "feedback_signal:7de9478188c9",
+    "signal": "demote_for_query",
+    "type": "feedback_policy_signal"
+  }
+]
