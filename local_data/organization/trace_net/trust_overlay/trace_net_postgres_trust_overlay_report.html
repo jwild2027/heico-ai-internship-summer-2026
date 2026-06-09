@@ -1,0 +1,31 @@
+<!doctype html>
+<html><head><meta charset='utf-8'><title>TRACE-Net Postgres Trust Overlay</title>
+<style>body{font-family:Arial,sans-serif;margin:24px} table{border-collapse:collapse} th,td{border:1px solid #ccc;padding:6px 10px;text-align:left} pre{background:#f5f5f5;padding:12px}</style></head>
+<body>
+<h1>TRACE-Net Postgres Trust Overlay</h1>
+<p>Status: <b>OK</b> &nbsp; Version: <code>trace_net_postgres_trust_overlay_v1</code></p>
+<table><tr><th>pages</th><td>509</td></tr><tr><th>rag_candidate_records</th><td>1426</td></tr><tr><th>trust_overlay_records</th><td>6865</td></tr><tr><th>page_trust_trait_records</th><td>3971</td></tr><tr><th>pages_with_trust_traits</th><td>509</td></tr><tr><th>rag_candidate_trust_updates</th><td>1426</td></tr><tr><th>rag_candidate_missing_trust_tier</th><td>0</td></tr><tr><th>source_trace_A_records</th><td>509</td></tr><tr><th>source_text_A_records</th><td>495</td></tr><tr><th>verified_part_A_records</th><td>362</td></tr><tr><th>derived_context_records</th><td>60</td></tr><tr><th>unsafe_trusted_rag_records</th><td>0</td></tr><tr><th>source_truth_mutation_records</th><td>0</td></tr></table>
+<h2>Trust tiers</h2><pre>{
+  &quot;A&quot;: 4129,
+  &quot;B&quot;: 948,
+  &quot;C&quot;: 1788
+}</pre>
+<h2>RAG buckets</h2><pre>{
+  &quot;&quot;: 3626,
+  &quot;derived_context&quot;: 120,
+  &quot;excluded&quot;: 882,
+  &quot;source_evidence&quot;: 1018,
+  &quot;source_text_evidence&quot;: 495,
+  &quot;verified_part_evidence&quot;: 724
+}</pre>
+<h2>Evidence layers</h2><pre>{
+  &quot;part_catalog&quot;: 1454,
+  &quot;source_text&quot;: 495,
+  &quot;source_trace&quot;: 2036,
+  &quot;table_candidate&quot;: 1527,
+  &quot;table_tile_text_refined&quot;: 420,
+  &quot;table_tiles&quot;: 858,
+  &quot;visual_text&quot;: 75
+}</pre>
+<p>This overlay normalizes trust tiers for SQL/graph testing. It does not mutate source truth, RAG eligibility, or production ranking.</p>
+</body></html>

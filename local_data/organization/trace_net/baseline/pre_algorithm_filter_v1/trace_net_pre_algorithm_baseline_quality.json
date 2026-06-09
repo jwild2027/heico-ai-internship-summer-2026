@@ -1,0 +1,74 @@
+{
+  "checks": [
+    {
+      "detail": "pages=509; minimum=509",
+      "name": "pages",
+      "ok": true
+    },
+    {
+      "detail": "ocr_records=509; minimum=509",
+      "name": "ocr_records",
+      "ok": true
+    },
+    {
+      "detail": "ocr_text_records=495; minimum=495",
+      "name": "ocr_text_records",
+      "ok": true
+    },
+    {
+      "detail": "graph_nodes=30865; minimum=1",
+      "name": "graph_nodes",
+      "ok": true
+    },
+    {
+      "detail": "graph_edges=112316; minimum=1",
+      "name": "graph_edges",
+      "ok": true
+    },
+    {
+      "detail": "orphan_edges=0; max=0",
+      "name": "graph_orphan_edges",
+      "ok": true
+    },
+    {
+      "detail": "rag_candidates=1426; minimum=1426",
+      "name": "rag_candidate_records",
+      "ok": true
+    },
+    {
+      "detail": "unsafe=0; max=0",
+      "name": "unsafe_rag_candidates",
+      "ok": true
+    },
+    {
+      "detail": "missing_candidate_source_url=0; max=0",
+      "name": "missing_candidate_source_url",
+      "ok": true
+    },
+    {
+      "detail": "citations=1426; minimum=1426",
+      "name": "citations",
+      "ok": true
+    },
+    {
+      "detail": "missing_citation_source_url=0; max=0",
+      "name": "missing_citation_source_url",
+      "ok": true
+    }
+  ],
+  "citations_missing_source_url": 0,
+  "created_at": "2026-06-03T19:53:13Z",
+  "graph_edges": 112316,
+  "graph_nodes": 30865,
+  "graph_orphan_edges": 0,
+  "ocr_records": 509,
+  "ocr_text_records": 495,
+  "pages": 509,
+  "rag_candidate_missing_source_url": 0,
+  "rag_candidate_missing_trust_tier": 0,
+  "rag_candidate_records": 1426,
+  "rag_candidate_unsafe_records": 0,
+  "source_citations": 1426,
+  "status": "OK",
+  "version": "trace_net_pre_algorithm_baseline_v1"
+}

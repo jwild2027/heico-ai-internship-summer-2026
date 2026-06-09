@@ -1,0 +1,103 @@
+{
+  "checks": [
+    {
+      "detail": "policy=True; summary=True",
+      "name": "artifacts_present",
+      "status": "OK"
+    },
+    {
+      "detail": "status='OK'",
+      "name": "status_ok",
+      "status": "OK"
+    },
+    {
+      "detail": "version='trace_net_weights_policy_v1'",
+      "name": "version",
+      "status": "OK"
+    },
+    {
+      "detail": "errors=0; max=0",
+      "name": "validation_errors",
+      "status": "OK"
+    },
+    {
+      "detail": "layers=7; minimum=7",
+      "name": "layer_count",
+      "status": "OK"
+    },
+    {
+      "detail": "missing=[]",
+      "name": "required_layers",
+      "status": "OK"
+    },
+    {
+      "detail": "present=True; rag=include_as_source_text_evidence",
+      "name": "source_text_policy",
+      "status": "OK"
+    },
+    {
+      "detail": "missing_buckets=[]",
+      "name": "retrieval_weights",
+      "status": "OK"
+    },
+    {
+      "detail": "reasons=8; cap=-15.0..15.0",
+      "name": "feedback_weights",
+      "status": "OK"
+    },
+    {
+      "detail": "eligible=['context_status_valid', 'policy_signal_eligible_true']; ignore=['context_warning', 'needs_review', 'source_truth_mutation_requested']",
+      "name": "feedback_context_validation",
+      "status": "OK"
+    },
+    {
+      "detail": "production_ranking_changed=False; source_truth_mutation_allowed=False",
+      "name": "no_production_changes",
+      "status": "OK"
+    },
+    {
+      "detail": "missing=[]",
+      "name": "global_safety_gates",
+      "status": "OK"
+    },
+    {
+      "detail": "graph_nodes=57",
+      "name": "graph_nodes",
+      "status": "OK"
+    },
+    {
+      "detail": "graph_edges=56",
+      "name": "graph_edges",
+      "status": "OK"
+    }
+  ],
+  "failures": [],
+  "feedback_reason_count": 8,
+  "global_safety_gate_count": 8,
+  "graph_edges": 56,
+  "graph_nodes": 57,
+  "policy_layers": 7,
+  "policy_path": "local_data\\organization\\trace_net\\weights\\trace_net_weights_policy.json",
+  "policy_present": true,
+  "policy_status": "OK",
+  "policy_version": "trace_net_weights_policy_v1",
+  "production_ranking_changed": false,
+  "retrieval_bucket_bonus_count": 4,
+  "risk_score_count": 12,
+  "source_truth_mutation_allowed": false,
+  "status": "OK",
+  "summary_path": "local_data\\organization\\trace_net\\weights\\trace_net_weights_policy_summary.json",
+  "summary_present": true,
+  "validation_error_count": 0,
+  "validation_errors": [],
+  "version": "trace_net_weights_policy_v1",
+  "weight_sums": {
+    "part_catalog": 1.0,
+    "source_text_evidence": 1.0,
+    "source_trace": 1.0,
+    "table_candidate": 1.0,
+    "table_tile_text_refined": 1.0,
+    "table_tiles": 1.0,
+    "visual_text": 1.0
+  }
+}

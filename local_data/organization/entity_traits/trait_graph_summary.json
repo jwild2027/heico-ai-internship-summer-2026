@@ -1,0 +1,57 @@
+{
+  "graph_dir": "local_data/organization/graph",
+  "image_audit_path": "local_data/organization/image_recognition/page_image_recognition_audit.json",
+  "input_counts": {
+    "graph_edges": 14143,
+    "graph_nodes": 3788,
+    "image_audit_records": 509,
+    "image_audit_records_matched_to_pages": 509,
+    "page_visual_records": 0,
+    "page_visual_records_matched_to_pages": 0,
+    "pages": 509,
+    "parts": 386
+  },
+  "overlay_counts": {
+    "assertions": 11980,
+    "assertions_by_entity_type": {
+      "ata_section": 15,
+      "document": 2,
+      "page": 9821,
+      "part": 2142
+    },
+    "assertions_by_trait_type": {
+      "catalog": 984,
+      "context": 4324,
+      "hierarchy": 1018,
+      "image_recognition": 509,
+      "ocr": 14,
+      "quality": 1585,
+      "source": 1018,
+      "structure": 912,
+      "visual": 1616
+    },
+    "derived_assertions": 1199,
+    "edge_types": {
+      "ASSERTS_TRAIT": 11980,
+      "DERIVED_FROM": 11980,
+      "HAS_TRAIT": 11980,
+      "HAS_TRAIT_ASSERTION": 11980,
+      "INHERITS_TRAITS_FROM": 1018
+    },
+    "edges": 48938,
+    "evidence_source_nodes": 4,
+    "node_types": {
+      "evidence_source": 4,
+      "trait": 963,
+      "trait_assertion": 11980
+    },
+    "nodes": 12947,
+    "page_cards": 509,
+    "part_cards": 386,
+    "trait_assertion_nodes": 11980,
+    "trait_nodes": 963
+  },
+  "page_visual_audit_path": "local_data/organization/page_visual_objects_audit.json",
+  "status": "OK",
+  "warnings": []
+}

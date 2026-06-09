@@ -1,0 +1,695 @@
+{
+  "checks": [
+    {
+      "message": "clean_summary=True; clean_records=True.",
+      "name": "visual_text_clean_artifacts_present",
+      "ok": true
+    },
+    {
+      "message": "records summary=25, jsonl=25; minimum=25.",
+      "name": "visual_text_clean_records",
+      "ok": true
+    },
+    {
+      "message": "Clean summary status is 'OK'.",
+      "name": "visual_text_clean_status",
+      "ok": true
+    },
+    {
+      "message": "error_records=0; max=0.",
+      "name": "visual_text_clean_errors",
+      "ok": true
+    },
+    {
+      "message": "metadata_leakage_records=0; max=0.",
+      "name": "visual_text_clean_metadata_leakage",
+      "ok": true
+    },
+    {
+      "message": "refusal_like_records=0; max=0.",
+      "name": "visual_text_clean_refusal_like",
+      "ok": true
+    },
+    {
+      "message": "prompt_template_leakage_records=16; max=0.",
+      "name": "visual_text_clean_prompt_template_leakage",
+      "ok": false
+    },
+    {
+      "message": "section_bleed_records=15; max=None.",
+      "name": "visual_text_clean_section_bleed",
+      "ok": true
+    },
+    {
+      "message": "trust_tier_D=16; max=0.",
+      "name": "visual_text_clean_trust_d",
+      "ok": false
+    },
+    {
+      "message": "usable_for_rag_records=0; minimum=0.",
+      "name": "visual_text_clean_usable_for_rag",
+      "ok": true
+    }
+  ],
+  "created_at": "2026-06-02T13:32:10Z",
+  "records_path": "local_data\\organization\\visual_text\\visual_text_extraction_clean.jsonl",
+  "records_present": true,
+  "status": "FAIL",
+  "summary": {
+    "accepted_records": 25,
+    "clean_records": 25,
+    "cleanup_version": "visual_text_v2_3_cleanup",
+    "created_at": "2026-06-02T13:31:55Z",
+    "error_records": 0,
+    "flagged_records": [
+      {
+        "page_id": "t_p_120_1176_p000001",
+        "prompt_template_leakage_markers": [],
+        "section_bleed_markers": [
+          "OCR/context assist notes",
+          "Page type",
+          "Visible title/header",
+          "Visual summary"
+        ],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": false,
+        "trust_reasons": [
+          "section_bleed_risk"
+        ],
+        "trust_tier": "C",
+        "unsupported_part_numbers": [
+          "120/1176",
+          "25-21-00",
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000003",
+        "prompt_template_leakage_markers": [],
+        "section_bleed_markers": [],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "hallucination_risk",
+          "table_expected_but_not_extracted"
+        ],
+        "trust_tier": "C",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000004",
+        "prompt_template_leakage_markers": [
+          "fields_source_review_instruction",
+          "template_labels_instruction"
+        ],
+        "section_bleed_markers": [],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "prompt_template_leakage_risk"
+        ],
+        "trust_tier": "D",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000005",
+        "prompt_template_leakage_markers": [],
+        "section_bleed_markers": [
+          "Charts/graphs",
+          "Figures/diagrams",
+          "Labels/callouts/part numbers",
+          "OCR/context assist notes",
+          "Page type",
+          "Tables",
+          "Uncertain/unreadable",
+          "Visible title/header",
+          "Visual summary",
+          "Warnings/notes"
+        ],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "section_bleed_risk",
+          "hallucination_risk",
+          "table_expected_but_not_extracted"
+        ],
+        "trust_tier": "C",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000006",
+        "prompt_template_leakage_markers": [
+          "bullet_list_instruction",
+          "fields_source_review_instruction",
+          "if_none_visible_instruction",
+          "template_labels_instruction",
+          "visible_warnings_instruction"
+        ],
+        "section_bleed_markers": [],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "prompt_template_leakage_risk"
+        ],
+        "trust_tier": "D",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000007",
+        "prompt_template_leakage_markers": [
+          "visible_warnings_instruction"
+        ],
+        "section_bleed_markers": [
+          "Model caution",
+          "Page type",
+          "Visible title/header",
+          "Visual summary"
+        ],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "prompt_template_leakage_risk"
+        ],
+        "trust_tier": "D",
+        "unsupported_part_numbers": [
+          "25-21-00",
+          "OCR/CONTEXT",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000008",
+        "prompt_template_leakage_markers": [
+          "fields_source_review_instruction",
+          "template_labels_instruction",
+          "visible_warnings_instruction"
+        ],
+        "section_bleed_markers": [],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "prompt_template_leakage_risk"
+        ],
+        "trust_tier": "D",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000009",
+        "prompt_template_leakage_markers": [
+          "fields_source_review_instruction"
+        ],
+        "section_bleed_markers": [],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "prompt_template_leakage_risk"
+        ],
+        "trust_tier": "D",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000010",
+        "prompt_template_leakage_markers": [
+          "fields_source_review_instruction"
+        ],
+        "section_bleed_markers": [],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "prompt_template_leakage_risk"
+        ],
+        "trust_tier": "D",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000011",
+        "prompt_template_leakage_markers": [
+          "bullet_list_instruction",
+          "fields_source_review_instruction",
+          "if_none_visible_instruction",
+          "no_bullet_list_instruction",
+          "template_labels_instruction"
+        ],
+        "section_bleed_markers": [],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "prompt_template_leakage_risk"
+        ],
+        "trust_tier": "D",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000013",
+        "prompt_template_leakage_markers": [
+          "fields_source_review_instruction",
+          "template_labels_instruction"
+        ],
+        "section_bleed_markers": [
+          "Charts/graphs",
+          "Figures/diagrams",
+          "Labels/callouts/part numbers",
+          "Model caution",
+          "OCR/context assist notes",
+          "Page type",
+          "Tables",
+          "Transcribed visible text",
+          "Uncertain/unreadable",
+          "Visible title/header",
+          "Warnings/notes"
+        ],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "prompt_template_leakage_risk"
+        ],
+        "trust_tier": "D",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000014",
+        "prompt_template_leakage_markers": [
+          "template_labels_instruction"
+        ],
+        "section_bleed_markers": [
+          "Figures/diagrams",
+          "Labels/callouts/part numbers",
+          "OCR/context assist notes",
+          "Page type",
+          "Tables",
+          "Transcribed visible text",
+          "Uncertain/unreadable",
+          "Visible title/header",
+          "Warnings/notes"
+        ],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "prompt_template_leakage_risk"
+        ],
+        "trust_tier": "D",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000015",
+        "prompt_template_leakage_markers": [
+          "fields_source_review_instruction"
+        ],
+        "section_bleed_markers": [
+          "Figures/diagrams",
+          "Labels/callouts/part numbers",
+          "OCR/context assist notes",
+          "Page type",
+          "Tables",
+          "Uncertain/unreadable",
+          "Visible title/header",
+          "Visual summary",
+          "Warnings/notes"
+        ],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "prompt_template_leakage_risk"
+        ],
+        "trust_tier": "D",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000016",
+        "prompt_template_leakage_markers": [
+          "fields_source_review_instruction"
+        ],
+        "section_bleed_markers": [
+          "Charts/graphs",
+          "Figures/diagrams",
+          "Labels/callouts/part numbers",
+          "Model caution",
+          "Page type",
+          "Tables",
+          "Uncertain/unreadable",
+          "Visible title/header",
+          "Warnings/notes"
+        ],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "prompt_template_leakage_risk"
+        ],
+        "trust_tier": "D",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000017",
+        "prompt_template_leakage_markers": [
+          "fields_source_review_instruction",
+          "template_labels_instruction",
+          "visible_warnings_instruction"
+        ],
+        "section_bleed_markers": [],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "prompt_template_leakage_risk"
+        ],
+        "trust_tier": "D",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000018",
+        "prompt_template_leakage_markers": [
+          "fields_source_review_instruction"
+        ],
+        "section_bleed_markers": [
+          "Figures/diagrams",
+          "OCR/context assist notes",
+          "Page type",
+          "Tables",
+          "Uncertain/unreadable",
+          "Visible title/header",
+          "Visual summary",
+          "Warnings/notes"
+        ],
+        "suspicious_phrase_markers": [
+          "everything_you_need"
+        ],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "prompt_template_leakage_risk"
+        ],
+        "trust_tier": "D",
+        "unsupported_part_numbers": [
+          "120/1176",
+          "2-5-11-00",
+          "25-21-00",
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000019",
+        "prompt_template_leakage_markers": [],
+        "section_bleed_markers": [
+          "Page type",
+          "Visible title/header",
+          "Visual summary"
+        ],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": false,
+        "trust_reasons": [
+          "section_bleed_risk",
+          "hallucination_risk"
+        ],
+        "trust_tier": "C",
+        "unsupported_part_numbers": [
+          "25-21-00",
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000020",
+        "prompt_template_leakage_markers": [],
+        "section_bleed_markers": [
+          "Page type",
+          "Visible title/header",
+          "Visual summary"
+        ],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "section_bleed_risk",
+          "table_expected_but_not_extracted"
+        ],
+        "trust_tier": "C",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000021",
+        "prompt_template_leakage_markers": [],
+        "section_bleed_markers": [
+          "Figures/diagrams",
+          "Labels/callouts/part numbers",
+          "OCR/context assist notes",
+          "Page type",
+          "Tables",
+          "Uncertain/unreadable",
+          "Visible title/header",
+          "Visual summary",
+          "Warnings/notes"
+        ],
+        "suspicious_phrase_markers": [
+          "electrical_equipment_generic",
+          "martini_mauritzio"
+        ],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "section_bleed_risk",
+          "hallucination_risk",
+          "suspicious_phrase_risk",
+          "table_expected_but_not_extracted"
+        ],
+        "trust_tier": "C",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000022",
+        "prompt_template_leakage_markers": [],
+        "section_bleed_markers": [
+          "Figures/diagrams",
+          "Labels/callouts/part numbers",
+          "Page type",
+          "Tables",
+          "Uncertain/unreadable",
+          "Visible title/header",
+          "Visual summary",
+          "Warnings/notes"
+        ],
+        "suspicious_phrase_markers": [
+          "generic_aeronautical_standard"
+        ],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "section_bleed_risk",
+          "hallucination_risk",
+          "suspicious_phrase_risk",
+          "table_expected_but_not_extracted"
+        ],
+        "trust_tier": "C",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000023",
+        "prompt_template_leakage_markers": [
+          "fields_source_review_instruction"
+        ],
+        "section_bleed_markers": [
+          "Charts/graphs",
+          "Figures/diagrams",
+          "Labels/callouts/part numbers",
+          "Page type",
+          "Tables",
+          "Uncertain/unreadable",
+          "Visible title/header",
+          "Warnings/notes"
+        ],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "prompt_template_leakage_risk"
+        ],
+        "trust_tier": "D",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000024",
+        "prompt_template_leakage_markers": [],
+        "section_bleed_markers": [
+          "Charts/graphs",
+          "Figures/diagrams",
+          "Labels/callouts/part numbers",
+          "Page type",
+          "Tables",
+          "Uncertain/unreadable",
+          "Visible title/header",
+          "Visual summary",
+          "Warnings/notes"
+        ],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "section_bleed_risk",
+          "hallucination_risk",
+          "table_expected_but_not_extracted"
+        ],
+        "trust_tier": "C",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000026",
+        "prompt_template_leakage_markers": [
+          "fields_source_review_instruction",
+          "template_labels_instruction"
+        ],
+        "section_bleed_markers": [],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "prompt_template_leakage_risk"
+        ],
+        "trust_tier": "D",
+        "unsupported_part_numbers": [
+          "25-21-00",
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000027",
+        "prompt_template_leakage_markers": [
+          "fields_source_review_instruction"
+        ],
+        "section_bleed_markers": [],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "prompt_template_leakage_risk"
+        ],
+        "trust_tier": "D",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      },
+      {
+        "page_id": "t_p_120_1176_p000028",
+        "prompt_template_leakage_markers": [],
+        "section_bleed_markers": [
+          "Charts/graphs",
+          "Figures/diagrams",
+          "Labels/callouts/part numbers",
+          "OCR/context assist notes",
+          "Page type",
+          "Tables",
+          "Uncertain/unreadable",
+          "Visible title/header",
+          "Visual summary",
+          "Warnings/notes"
+        ],
+        "suspicious_phrase_markers": [],
+        "table_expected_but_not_extracted": true,
+        "trust_reasons": [
+          "section_bleed_risk",
+          "hallucination_risk",
+          "table_expected_but_not_extracted"
+        ],
+        "trust_tier": "C",
+        "unsupported_part_numbers": [
+          "OCR/CONTEXT",
+          "OCR/CONTEXT-ONLY",
+          "TIFF/OCR"
+        ]
+      }
+    ],
+    "hallucination_risk_records": 13,
+    "metadata_leakage_records": 0,
+    "ok_records": 25,
+    "prompt_template_leakage_marker_total": 31,
+    "prompt_template_leakage_records": 16,
+    "records": 25,
+    "refusal_like_records": 0,
+    "required_section_records": 25,
+    "requires_human_review_records": 25,
+    "section_bleed_marker_total": 114,
+    "section_bleed_records": 15,
+    "status": "OK",
+    "status_counts": {
+      "ok": 25
+    },
+    "summary_heavy_records": 1,
+    "suspicious_phrase_records": 3,
+    "table_expected_missing_records": 23,
+    "table_expected_records": 23,
+    "table_row_records": 0,
+    "trust_tier_counts": {
+      "C": 9,
+      "D": 16
+    },
+    "unsupported_part_number_records": 25,
+    "usable_for_rag_records": 0,
+    "visual_part_number_records": 25
+  },
+  "summary_path": "local_data\\organization\\visual_text\\visual_text_clean_summary.json",
+  "summary_present": true
+}

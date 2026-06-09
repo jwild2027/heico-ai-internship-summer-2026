@@ -1,0 +1,127 @@
+[
+  {
+    "source": "weighted_search_calibration:current",
+    "target": "weighted_calibration:t_p_120_1176_p000003",
+    "type": "HAS_CALIBRATION_RECORD"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000003",
+    "target": "page:t_p_120_1176_p000003",
+    "type": "CALIBRATES_PAGE"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000003",
+    "target": "rag_bucket:verified_part_evidence",
+    "type": "HAS_RAG_BUCKET"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000003",
+    "target": "rag_bucket:source_text_evidence",
+    "type": "HAS_RAG_BUCKET"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000003",
+    "target": "rag_bucket:derived_context",
+    "type": "HAS_RAG_BUCKET"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000003",
+    "target": "weighted_reason:validated_feedback_boost",
+    "type": "HAS_REASON"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000003",
+    "target": "weighted_reason:verified_part_evidence_present",
+    "type": "HAS_REASON"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000003",
+    "target": "weighted_reason:source_text_evidence_present",
+    "type": "HAS_REASON"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000003",
+    "target": "weighted_reason:derived_context_present",
+    "type": "HAS_REASON"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000003",
+    "target": "weighted_reason:multiple_evidence_buckets",
+    "type": "HAS_REASON"
+  },
+  {
+    "source": "weighted_search_calibration:current",
+    "target": "weighted_calibration:t_p_120_1176_p000320",
+    "type": "HAS_CALIBRATION_RECORD"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000320",
+    "target": "page:t_p_120_1176_p000320",
+    "type": "CALIBRATES_PAGE"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000320",
+    "target": "rag_bucket:verified_part_evidence",
+    "type": "HAS_RAG_BUCKET"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000320",
+    "target": "rag_bucket:source_text_evidence",
+    "type": "HAS_RAG_BUCKET"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000320",
+    "target": "weighted_reason:validated_feedback_demote",
+    "type": "HAS_REASON"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000320",
+    "target": "weighted_reason:feedback_cap_hit",
+    "type": "HAS_REASON"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000320",
+    "target": "weighted_reason:verified_part_evidence_present",
+    "type": "HAS_REASON"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000320",
+    "target": "weighted_reason:source_text_evidence_present",
+    "type": "HAS_REASON"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000320",
+    "target": "weighted_reason:multiple_evidence_buckets",
+    "type": "HAS_REASON"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000320",
+    "target": "weighted_reason:demoted_but_rank_preserved",
+    "type": "HAS_REASON"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000320",
+    "target": "weighted_reason:additional_demotion_required_for_next_rank",
+    "type": "HAS_REASON"
+  },
+  {
+    "source": "weighted_search_calibration:current",
+    "target": "weighted_calibration:t_p_120_1176_p000319",
+    "type": "HAS_CALIBRATION_RECORD"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000319",
+    "target": "page:t_p_120_1176_p000319",
+    "type": "CALIBRATES_PAGE"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000319",
+    "target": "rag_bucket:source_text_evidence",
+    "type": "HAS_RAG_BUCKET"
+  },
+  {
+    "source": "weighted_calibration:t_p_120_1176_p000319",
+    "target": "weighted_reason:source_text_evidence_present",
+    "type": "HAS_REASON"
+  }
+]

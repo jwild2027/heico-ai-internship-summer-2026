@@ -1,0 +1,372 @@
+{
+  "summary": {
+    "total": 8,
+    "status_counts": {
+      "pass": 8
+    },
+    "pass": 8,
+    "fail": 0,
+    "check_total": 14,
+    "check_pass": 14,
+    "check_fail": 0,
+    "category_status_counts": {
+      "part_prompt_to_graph": {
+        "pass": 2
+      },
+      "nomenclature_to_graph": {
+        "pass": 1
+      },
+      "ata_to_graph": {
+        "pass": 1
+      },
+      "page_to_graph": {
+        "pass": 1
+      },
+      "vector_to_graph": {
+        "pass": 1
+      },
+      "context_to_graph": {
+        "pass": 1
+      },
+      "rag_vector_to_graph_slow": {
+        "pass": 1
+      }
+    },
+    "elapsed_seconds": 33.75
+  },
+  "results": [
+    {
+      "id": "part_prompt_120_37313_001_to_graph",
+      "category": "part_prompt_to_graph",
+      "description": "User asks for a part, answer must be exact and trace through graph to source/context.",
+      "user_prompt": "I have part number 120-37313-001. What is it and where is the source evidence?",
+      "status": "pass",
+      "elapsed_seconds": 0.618,
+      "checks": [
+        {
+          "label": "rag_exact_part_prompt",
+          "command": [
+            "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+            "scripts/ask_tiff_rag.py",
+            "--config",
+            "local_config.yaml",
+            "I have part number 120-37313-001. What is it and where is the source evidence?"
+          ],
+          "status": "pass",
+          "elapsed_seconds": 0.348,
+          "returncode": 0,
+          "missing_expected": [],
+          "forbidden_found": [],
+          "stdout_preview": "Question: I have part number 120-37313-001. What is it and where is the source evidence?\nLLM used: False\nEmbeddings used: False\n\nAnswer:\n\n120-37313-001 is listed as HOLDER, MAGAZINE.\n\nPrimary nomenclature source:\n1. T.P. 120/1176 - ATA 25-21-00 - Page 1056\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000083\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000083\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000083_00000083.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000083_00000083.txt\n   Evidence: 01 200 | 120-37313-001 . HOLDER, MAGAZINE . 000.0.0:eee = VS4956 1 EFF | UNITS ODE. FROM PER\n\nAdditional pages where this part number appears:\n- T.P. 120/1176 - ATA 11-00-66 - Page 1021\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000042\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000042\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000042_00000042.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000042_00000042.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1059\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000086\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000086\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000086_00000086.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000086_00000086.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1065\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000096\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000096\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000096_00000096.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000096_00000096.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1067\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000098\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000098\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000098_00000098.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000098_00000098.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1070\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000105\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000105\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000105_00000105.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000105_00000105.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1073\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000112\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000112\n   TIFF: local_data\\resca\n...<truncated>",
+          "stderr_preview": ""
+        },
+        {
+          "label": "graph_part_trace",
+          "command": [
+            "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+            "scripts/trace_document_graph.py",
+            "--part",
+            "120-37313-001",
+            "--strict"
+          ],
+          "status": "pass",
+          "elapsed_seconds": 0.27,
+          "returncode": 0,
+          "missing_expected": [],
+          "forbidden_found": [],
+          "stdout_preview": "Document graph traceability\n  Status: OK\n  Graph dir: local_data\\organization\\graph\n  Nodes: 3788\n  Edges: 14143\n\nTrace: part_to_sources\n  Status: OK\n  Trace a part to its pages, source links, and AI page context.\n  Summary:\n    part_number: 120-37313-001\n    part_node: part:120_37313_001\n    nomenclature: HOLDER, MAGAZINE\n    total_pages_found: 28\n    sample_pages_shown: 8\n    sample_pages_with_source_links: 8\n    sample_pages_with_context: 8\n  Path:\n    1. Start part part | part:120_37313_001 | 120-37313-001\n    2. Canonical nomenclature --HAS_NOMENCLATURE--> nomenclature | nomenclature:holder_magazine | HOLDER, MAGAZINE\n    3. Appearance page 1 --APPEARS_ON--> page | page:t_p_120_1176_p000193 | T.P. 120/1176 page 193\n    4. Page 1 document --BELONGS_TO_DOCUMENT--> document | document:t_p_120_1176 | T.P. 120/1176\n    5. Page 1 ATA --BELONGS_TO_ATA--> ata_section | ata_section:t_p_120_1176_25_21_00 | ATA 25-21-00\n    6. Page 1 source link --HAS_SOURCE_LINK--> source_link | source_link:t_p_120_1176_p000193 | source for t_p_120_1176_p000193\n    7. Page 1 AI context --HAS_CONTEXT--> page_context | page_context:t_p_120_1176_p000193 | This page details a double passenger seat and associated magazine holders, including part numbers and stock information,\n       score: 0.9\n       summary: This page details a double passenger seat and associated magazine holders, including part numbers and stock information, presented as Figure 30A.\n    8. Appearance page 2 --APPEARS_ON--> page | page:t_p_120_1176_p000042 | T.P. 120/1176 page 1021\n    9. Page 2 document --BELONGS_TO_DOCUMENT--> document | document:t_p_120_1176 | T.P. 120/1176\n    10. Page 2 ATA --BELONGS_TO_ATA--> ata_section | ata_section:t_p_120_1176_11_00_66 | ATA 11-00-66\n    11. Page 2 source link --HAS_SOURCE_LINK--> source_link | source_link:t_p_120_1176_p000042 | source for t_p_120_1176_p000042\n    12. Page 2 AI context --HAS_CONTEXT--> page_context | page_context:t_p_120_1176_p000042 | This page appears to be a parts list from a maintenance manual, containing numerous part numbers and associated codes.\n       score: 0.9\n       summary: This page appears to be a parts list from a maintenance manual, containing numerous part numbers and associated codes.\n    13. Appearance page 3 --APPEARS_ON--> page | page:t_p_120_1176_p000083 | T.P. 120/1176 page 1056\n    14. Page 3 document --BELONGS_TO_DOCUMENT--> document | document:t_p_120_1176 | T.P. 120/1176\n    15. Page 3 ATA --BELONGS_TO_ATA--> ata_section | ata_\n...<truncated>",
+          "stderr_preview": ""
+        }
+      ]
+    },
+    {
+      "id": "part_prompt_am03078_22_to_graph",
+      "category": "part_prompt_to_graph",
+      "description": "User asks for AM03078-22, exact answer must trace to pages/source/context.",
+      "user_prompt": "Can you identify AM03078-22 and show me where it appears?",
+      "status": "pass",
+      "elapsed_seconds": 0.568,
+      "checks": [
+        {
+          "label": "rag_exact_part_prompt",
+          "command": [
+            "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+            "scripts/ask_tiff_rag.py",
+            "--config",
+            "local_config.yaml",
+            "Can you identify AM03078-22 and show me where it appears?"
+          ],
+          "status": "pass",
+          "elapsed_seconds": 0.285,
+          "returncode": 0,
+          "missing_expected": [],
+          "forbidden_found": [],
+          "stdout_preview": "Question: Can you identify AM03078-22 and show me where it appears?\nLLM used: False\nEmbeddings used: False\n\nAnswer:\n\nAM03078-22 is listed as ASHTRAY OOO CTS.\n\nPrimary nomenclature source:\n1. T.P. 120/1176 - ATA 25-21-00 - Page 1250\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000309\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000309\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000309_00000309.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000309_00000309.txt\n   Evidence: 170 | AM03078-22 ASHTRAY ooo cts 065846 2 -ITEM NOT ILLUSTRATED Double Passenger Seat (120-36834-523)\n\nAdditional pages where this part number appears:\n- T.P. 120/1176 - ATA 25-21-00 - Page 1037\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000058\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000058\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000058_00000058.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000058_00000058.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1067\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000098\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000098\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000098_00000098.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000098_00000098.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1106\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000149\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000149\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000149_00000149.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000149_00000149.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1115\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000158\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000158\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000158_00000158.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000158_00000158.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1118\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000161\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000161\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000161_00000161.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000161_00000161.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1125\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000168\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000168\n   TIFF: local_data\\rescarta_exports\\t_p_\n...<truncated>",
+          "stderr_preview": ""
+        },
+        {
+          "label": "graph_part_trace",
+          "command": [
+            "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+            "scripts/trace_document_graph.py",
+            "--part",
+            "AM03078-22",
+            "--strict"
+          ],
+          "status": "pass",
+          "elapsed_seconds": 0.283,
+          "returncode": 0,
+          "missing_expected": [],
+          "forbidden_found": [],
+          "stdout_preview": "Document graph traceability\n  Status: OK\n  Graph dir: local_data\\organization\\graph\n  Nodes: 3788\n  Edges: 14143\n\nTrace: part_to_sources\n  Status: OK\n  Trace a part to its pages, source links, and AI page context.\n  Summary:\n    part_number: AM03078-22\n    part_node: part:am03078_22\n    nomenclature: ASHTRAY OOO CTS\n    total_pages_found: 14\n    sample_pages_shown: 8\n    sample_pages_with_source_links: 8\n    sample_pages_with_context: 8\n  Path:\n    1. Start part part | part:am03078_22 | AM03078-22\n    2. Canonical nomenclature --HAS_NOMENCLATURE--> nomenclature | nomenclature:ashtray_ooo_cts | ASHTRAY OOO CTS\n    3. Appearance page 1 --APPEARS_ON--> page | page:t_p_120_1176_p000333 | T.P. 120/1176 page 333\n    4. Page 1 document --BELONGS_TO_DOCUMENT--> document | document:t_p_120_1176 | T.P. 120/1176\n    5. Page 1 ATA --BELONGS_TO_ATA--> ata_section | ata_section:t_p_120_1176_25_21_00 | ATA 25-21-00\n    6. Page 1 source link --HAS_SOURCE_LINK--> source_link | source_link:t_p_120_1176_p000333 | source for t_p_120_1176_p000333\n    7. Page 1 AI context --HAS_CONTEXT--> page_context | page_context:t_p_120_1176_p000333 | This page presents a parts list and figure (76A) for a triple passenger seat assembly, including part numbers and stock \n       score: 0.9\n       summary: This page presents a parts list and figure (76A) for a triple passenger seat assembly, including part numbers and stock information.\n    8. Appearance page 2 --APPEARS_ON--> page | page:t_p_120_1176_p000058 | T.P. 120/1176 page 1037\n    9. Page 2 document --BELONGS_TO_DOCUMENT--> document | document:t_p_120_1176 | T.P. 120/1176\n    10. Page 2 ATA --BELONGS_TO_ATA--> ata_section | ata_section:t_p_120_1176_25_21_00 | ATA 25-21-00\n    11. Page 2 source link --HAS_SOURCE_LINK--> source_link | source_link:t_p_120_1176_p000058 | source for t_p_120_1176_p000058\n    12. Page 2 AI context --HAS_CONTEXT--> page_context | page_context:t_p_120_1176_p000058 | This page appears to be a parts list from a maintenance manual, listing numerous part numbers and associated data.\n       score: 0.9\n       summary: This page appears to be a parts list from a maintenance manual, listing numerous part numbers and associated data.\n    13. Appearance page 3 --APPEARS_ON--> page | page:t_p_120_1176_p000098 | T.P. 120/1176 page 1067\n    14. Page 3 document --BELONGS_TO_DOCUMENT--> document | document:t_p_120_1176 | T.P. 120/1176\n    15. Page 3 ATA --BELONGS_TO_ATA--> ata_section | ata_section:t_p_120_1176_25_21_00 | ATA\n...<truncated>",
+          "stderr_preview": ""
+        }
+      ]
+    },
+    {
+      "id": "nomenclature_prompt_holder_magazine_to_parts",
+      "category": "nomenclature_to_graph",
+      "description": "User searches by part name, system should find matching parts and graph evidence.",
+      "user_prompt": "Where is HOLDER, MAGAZINE mentioned?",
+      "status": "pass",
+      "elapsed_seconds": 0.611,
+      "checks": [
+        {
+          "label": "rag_nomenclature_lookup",
+          "command": [
+            "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+            "scripts/ask_tiff_rag.py",
+            "--config",
+            "local_config.yaml",
+            "Where is HOLDER, MAGAZINE mentioned?"
+          ],
+          "status": "pass",
+          "elapsed_seconds": 0.363,
+          "returncode": 0,
+          "missing_expected": [],
+          "forbidden_found": [],
+          "stdout_preview": "Question: Where is HOLDER, MAGAZINE mentioned?\nLLM used: False\nEmbeddings used: False\n\nAnswer:\n\nI found these part numbers matching that nomenclature:\n- 120-36843-001: HOLDER, MAGAZINE\n- 120-37313-001: HOLDER, MAGAZINE\n- 120-37313-535: HOLDER, MAGAZINE\n\nMatch 1: 120-36843-001 \ufffd HOLDER, MAGAZINE\n\nMatching catalog source:\n- T.P. 120/1176 - ATA 25-21-00 - Page 1082\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000125\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000125\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000125_00000125.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000125_00000125.txt\n   Evidence: 190 | 120-36843-001 . HOLDER, MAGAZINE . 00c0 eee. = VES4956 1 -ITEM NOT ILLUSTRATED Single Passenger Seat (120-42547-003/503)\n\nAdditional pages where 120-36843-001 appears:\n- T.P. 120/1176 - ATA 11-00-66 - Page 1021\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000042\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000042\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000042_00000042.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000042_00000042.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1079\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000122\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000122\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000122_00000122.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000122_00000122.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1086\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000129\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000129\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000129_00000129.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000129_00000129.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1089\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000132\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000132\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000132_00000132.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000132_00000132.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1103\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000146\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000146\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000146_00000146.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000146_00000146.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1109\n   ResCarta: htt\n...<truncated>",
+          "stderr_preview": ""
+        },
+        {
+          "label": "graph_part_trace_one_match",
+          "command": [
+            "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+            "scripts/trace_document_graph.py",
+            "--part",
+            "120-37313-001",
+            "--strict"
+          ],
+          "status": "pass",
+          "elapsed_seconds": 0.247,
+          "returncode": 0,
+          "missing_expected": [],
+          "forbidden_found": [],
+          "stdout_preview": "Document graph traceability\n  Status: OK\n  Graph dir: local_data\\organization\\graph\n  Nodes: 3788\n  Edges: 14143\n\nTrace: part_to_sources\n  Status: OK\n  Trace a part to its pages, source links, and AI page context.\n  Summary:\n    part_number: 120-37313-001\n    part_node: part:120_37313_001\n    nomenclature: HOLDER, MAGAZINE\n    total_pages_found: 28\n    sample_pages_shown: 8\n    sample_pages_with_source_links: 8\n    sample_pages_with_context: 8\n  Path:\n    1. Start part part | part:120_37313_001 | 120-37313-001\n    2. Canonical nomenclature --HAS_NOMENCLATURE--> nomenclature | nomenclature:holder_magazine | HOLDER, MAGAZINE\n    3. Appearance page 1 --APPEARS_ON--> page | page:t_p_120_1176_p000193 | T.P. 120/1176 page 193\n    4. Page 1 document --BELONGS_TO_DOCUMENT--> document | document:t_p_120_1176 | T.P. 120/1176\n    5. Page 1 ATA --BELONGS_TO_ATA--> ata_section | ata_section:t_p_120_1176_25_21_00 | ATA 25-21-00\n    6. Page 1 source link --HAS_SOURCE_LINK--> source_link | source_link:t_p_120_1176_p000193 | source for t_p_120_1176_p000193\n    7. Page 1 AI context --HAS_CONTEXT--> page_context | page_context:t_p_120_1176_p000193 | This page details a double passenger seat and associated magazine holders, including part numbers and stock information,\n       score: 0.9\n       summary: This page details a double passenger seat and associated magazine holders, including part numbers and stock information, presented as Figure 30A.\n    8. Appearance page 2 --APPEARS_ON--> page | page:t_p_120_1176_p000042 | T.P. 120/1176 page 1021\n    9. Page 2 document --BELONGS_TO_DOCUMENT--> document | document:t_p_120_1176 | T.P. 120/1176\n    10. Page 2 ATA --BELONGS_TO_ATA--> ata_section | ata_section:t_p_120_1176_11_00_66 | ATA 11-00-66\n    11. Page 2 source link --HAS_SOURCE_LINK--> source_link | source_link:t_p_120_1176_p000042 | source for t_p_120_1176_p000042\n    12. Page 2 AI context --HAS_CONTEXT--> page_context | page_context:t_p_120_1176_p000042 | This page appears to be a parts list from a maintenance manual, containing numerous part numbers and associated codes.\n       score: 0.9\n       summary: This page appears to be a parts list from a maintenance manual, containing numerous part numbers and associated codes.\n    13. Appearance page 3 --APPEARS_ON--> page | page:t_p_120_1176_p000083 | T.P. 120/1176 page 1056\n    14. Page 3 document --BELONGS_TO_DOCUMENT--> document | document:t_p_120_1176 | T.P. 120/1176\n    15. Page 3 ATA --BELONGS_TO_ATA--> ata_section | ata_\n...<truncated>",
+          "stderr_preview": ""
+        }
+      ]
+    },
+    {
+      "id": "ata_prompt_25_21_00_to_sources",
+      "category": "ata_to_graph",
+      "description": "User asks for ATA evidence; organization route and graph trace should agree.",
+      "user_prompt": "Find evidence for ATA 25-21-00 and show source pages.",
+      "status": "pass",
+      "elapsed_seconds": 0.657,
+      "checks": [
+        {
+          "label": "rag_ata_lookup",
+          "command": [
+            "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+            "scripts/ask_tiff_rag.py",
+            "--config",
+            "local_config.yaml",
+            "Find evidence for ATA 25-21-00 and show source pages."
+          ],
+          "status": "pass",
+          "elapsed_seconds": 0.394,
+          "returncode": 0,
+          "missing_expected": [],
+          "forbidden_found": [],
+          "stdout_preview": "Question: Find evidence for ATA 25-21-00 and show source pages.\nLLM used: False\nEmbeddings used: False\n\nAnswer:\n\nATA 25-21-00 is present in the local organization tree.\nManual: T.P. 120/1176\nPages: 501\nLogical parts in section: 382\n\nSample source pages:\n1. page=t_p_120_1176_p000001 label=1 parts=3\n   Source: http://localhost:8080/rescarta/t_p_120_1176/000001\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000001_00000001.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000001_00000001.txt\n2. page=t_p_120_1176_p000003 label=i/ii parts=53\n   Source: http://localhost:8080/rescarta/t_p_120_1176/000003\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000003_00000003.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000003_00000003.txt\n3. page=t_p_120_1176_p000005 label=1 parts=1\n   Source: http://localhost:8080/rescarta/t_p_120_1176/000005\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000005_00000005.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000005_00000005.txt\n4. page=t_p_120_1176_p000006 label=2 parts=3\n   Source: http://localhost:8080/rescarta/t_p_120_1176/000006\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000006_00000006.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000006_00000006.txt\n5. page=t_p_120_1176_p000007 label=3 parts=1\n   Source: http://localhost:8080/rescarta/t_p_120_1176/000007\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000007_00000007.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000007_00000007.txt\n6. page=t_p_120_1176_p000008 label=4 parts=2\n   Source: http://localhost:8080/rescarta/t_p_120_1176/000008\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000008_00000008.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000008_00000008.txt\n7. page=t_p_120_1176_p000009 label=5 parts=1\n   Source: http://localhost:8080/rescarta/t_p_120_1176/000009\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000009_00000009.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000009_00000009.txt\n8. page=t_p_120_1176_p000010 label=6 parts=2\n   Source: http://localhost:8080/rescarta/t_p_120_1176/000010\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000010_00000010.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000010_00000010.txt\n... 493 more pages not shown\n\nNote: this answer comes from the exported logical organization tree, not the LLM.",
+          "stderr_preview": ""
+        },
+        {
+          "label": "graph_ata_trace",
+          "command": [
+            "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+            "scripts/trace_document_graph.py",
+            "--ata",
+            "25-21-00",
+            "--max-pages",
+            "8",
+            "--strict"
+          ],
+          "status": "pass",
+          "elapsed_seconds": 0.263,
+          "returncode": 0,
+          "missing_expected": [],
+          "forbidden_found": [],
+          "stdout_preview": "Document graph traceability\n  Status: OK\n  Graph dir: local_data\\organization\\graph\n  Nodes: 3788\n  Edges: 14143\n\nTrace: ata_to_sources\n  Status: OK\n  Trace an ATA section to pages, source links, AI page context, and sampled parts.\n  Summary:\n    ata_code: 25-21-00\n    ata_node: ata_section:t_p_120_1176_25_21_00\n    document: T.P. 120/1176\n    total_pages_found: 501\n    sample_pages_shown: 8\n    sample_pages_with_source_links: 8\n    sample_pages_with_context: 8\n    distinct_parts_in_ata: 382\n  Path:\n    1. Start ATA section ata_section | ata_section:t_p_120_1176_25_21_00 | ATA 25-21-00\n    2. Owning document --HAS_ATA_SECTION--> document | document:t_p_120_1176 | T.P. 120/1176\n    3. ATA page 1 --CONTAINS_PAGE--> page | page:t_p_120_1176_p000001 | T.P. 120/1176 page 1\n    4. Page 1 source link --HAS_SOURCE_LINK--> source_link | source_link:t_p_120_1176_p000001 | source for t_p_120_1176_p000001\n    5. Page 1 AI context --HAS_CONTEXT--> page_context | page_context:t_p_120_1176_p000001 | This page appears to be a revision notice and title block for a technical manual, superseding an earlier version.\n       score: 0.9\n       summary: This page appears to be a revision notice and title block for a technical manual, superseding an earlier version.\n    6. Page 1 mentioned part 1 --MENTIONS_PART--> part | part:12_227_901 | 12.227-901\n    7. Page 1 mentioned part 2 --MENTIONS_PART--> part | part:3927_7517 | 3927-7517\n    8. Page 1 mentioned part 3 --MENTIONS_PART--> part | part:3927_7546 | 3927-7546\n    9. ATA page 2 --CONTAINS_PAGE--> page | page:t_p_120_1176_p000004 | T.P. 120/1176 page 1\n    10. Page 2 source link --HAS_SOURCE_LINK--> source_link | source_link:t_p_120_1176_p000004 | source for t_p_120_1176_p000004\n    11. Page 2 AI context --HAS_CONTEXT--> page_context | page_context:t_p_120_1176_p000004 | This page introduces the maintenance manual, outlining its purpose and scope related to passenger cabin disassembly.\n       score: 0.9\n       summary: This page introduces the maintenance manual, outlining its purpose and scope related to passenger cabin disassembly.\n    12. ATA page 3 --CONTAINS_PAGE--> page | page:t_p_120_1176_p000005 | T.P. 120/1176 page 1\n    13. Page 3 source link --HAS_SOURCE_LINK--> source_link | source_link:t_p_120_1176_p000005 | source for t_p_120_1176_p000005\n    14. Page 3 AI context --HAS_CONTEXT--> page_context | page_context:t_p_120_1176_p000005 | This page appears to be a parts list and index page from a maintenance manual, list\n...<truncated>",
+          "stderr_preview": ""
+        }
+      ]
+    },
+    {
+      "id": "page_prompt_000083_to_part_context_source",
+      "category": "page_to_graph",
+      "description": "Known source page should traverse to document, ATA, source, context, part, and nomenclature.",
+      "user_prompt": "For page t_p_120_1176_p000083, what document, section, source, and part context do we have?",
+      "status": "pass",
+      "elapsed_seconds": 0.275,
+      "checks": [
+        {
+          "label": "graph_page_trace",
+          "command": [
+            "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+            "scripts/trace_document_graph.py",
+            "--page",
+            "t_p_120_1176_p000083",
+            "--strict"
+          ],
+          "status": "pass",
+          "elapsed_seconds": 0.275,
+          "returncode": 0,
+          "missing_expected": [],
+          "forbidden_found": [],
+          "stdout_preview": "Document graph traceability\n  Status: OK\n  Graph dir: local_data\\organization\\graph\n  Nodes: 3788\n  Edges: 14143\n\nTrace: page_trace\n  Status: OK\n  Trace a page to document, ATA, parts, nomenclature, source, and AI context.\n  Summary:\n    page_id: t_p_120_1176_p000083\n    page_node: page:t_p_120_1176_p000083\n    document: T.P. 120/1176\n    ata: ATA 25-21-00\n    source_link_present: True\n    context_present: True\n    context_score: 0.9\n    parts_sampled: 1\n  Path:\n    1. Start page page | page:t_p_120_1176_p000083 | T.P. 120/1176 page 1056\n    2. Document --BELONGS_TO_DOCUMENT--> document | document:t_p_120_1176 | T.P. 120/1176\n    3. ATA section --BELONGS_TO_ATA--> ata_section | ata_section:t_p_120_1176_25_21_00 | ATA 25-21-00\n    4. Source link --HAS_SOURCE_LINK--> source_link | source_link:t_p_120_1176_p000083 | source for t_p_120_1176_p000083\n    5. AI context --HAS_CONTEXT--> page_context | page_context:t_p_120_1176_p000083 | This page appears to be an illustrated parts list for aircraft components, detailing part numbers and stock information.\n       score: 0.9\n       summary: This page appears to be an illustrated parts list for aircraft components, detailing part numbers and stock information.\n    6. Mentioned part 1 --MENTIONS_PART--> part | part:120_37313_001 | 120-37313-001\n    7. Part 1 nomenclature --HAS_NOMENCLATURE--> nomenclature | nomenclature:holder_magazine | HOLDER, MAGAZINE",
+          "stderr_preview": ""
+        }
+      ]
+    },
+    {
+      "id": "vector_payload_page_000495_to_graph_context",
+      "category": "vector_to_graph",
+      "description": "Simulated Qdrant payload must resolve to graph document/source/context.",
+      "user_prompt": "Vector retrieval found page t_p_120_1176_p000495 for a seat-back repair question. Can we trace it?",
+      "status": "pass",
+      "elapsed_seconds": 0.238,
+      "checks": [
+        {
+          "label": "simulated_qdrant_payload_trace",
+          "command": [
+            "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+            "scripts/trace_document_graph.py",
+            "--vector-page",
+            "t_p_120_1176_p000495",
+            "--vector-chunk",
+            "chunk_t_p_120_1176_p000495_001",
+            "--vector-score",
+            "0.635",
+            "--strict"
+          ],
+          "status": "pass",
+          "elapsed_seconds": 0.238,
+          "returncode": 0,
+          "missing_expected": [],
+          "forbidden_found": [],
+          "stdout_preview": "Document graph traceability\n  Status: OK\n  Graph dir: local_data\\organization\\graph\n  Nodes: 3788\n  Edges: 14143\n\nTrace: vector_candidate_to_graph\n  Status: OK\n  Simulated vector result payload page_id -> page -> graph/source/context trace.\n  Summary:\n    vector_payload_page_id: t_p_120_1176_p000495\n    vector_payload_chunk_id: chunk_t_p_120_1176_p000495_001\n    vector_payload_score: 0.635\n    page_id: t_p_120_1176_p000495\n    page_node: page:t_p_120_1176_p000495\n    document: T.P. 120/1176\n    ata: ATA 25-21-00\n    source_link_present: True\n    context_present: True\n    context_score: 0.9\n    parts_sampled: 0\n  Path:\n    1. Simulated Qdrant payload vector_payload | vector_payload:chunk_t_p_120_1176_p000495_001 | Qdrant returned page_id=t_p_120_1176_p000495, chunk_id=chunk_t_p_120_1176_p000495_001, score=0.635\n       page_id: t_p_120_1176_p000495\n       chunk_id: chunk_t_p_120_1176_p000495_001\n       score: 0.635\n       note: Future Qdrant payload should include chunk_id/page_id so PostgreSQL graph can resolve source context.\n    2. Start page page | page:t_p_120_1176_p000495 | T.P. 120/1176 page 621\n    3. Document --BELONGS_TO_DOCUMENT--> document | document:t_p_120_1176 | T.P. 120/1176\n    4. ATA section --BELONGS_TO_ATA--> ata_section | ata_section:t_p_120_1176_25_21_00 | ATA 25-21-00\n    5. Source link --HAS_SOURCE_LINK--> source_link | source_link:t_p_120_1176_p000495 | source for t_p_120_1176_p000495\n    6. AI context --HAS_CONTEXT--> page_context | page_context:t_p_120_1176_p000495 | This page illustrates a typical repair procedure for a passenger seat back crack and includes part numbers and figure re\n       score: 0.9\n       summary: This page illustrates a typical repair procedure for a passenger seat back crack and includes part numbers and figure references.",
+          "stderr_preview": ""
+        }
+      ]
+    },
+    {
+      "id": "context_prompt_page_000495",
+      "category": "context_to_graph",
+      "description": "User asks about AI context for a vector-retrieved page.",
+      "user_prompt": "What is page t_p_120_1176_p000495 about?",
+      "status": "pass",
+      "elapsed_seconds": 0.447,
+      "checks": [
+        {
+          "label": "context_inspection",
+          "command": [
+            "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+            "scripts/inspect_page_contexts.py",
+            "--page",
+            "t_p_120_1176_p000495",
+            "--limit",
+            "5"
+          ],
+          "status": "pass",
+          "elapsed_seconds": 0.184,
+          "returncode": 0,
+          "missing_expected": [],
+          "forbidden_found": [],
+          "stdout_preview": "Page context inspection\n  Status: OK\n  Context file: local_data\\organization\\context\\page_contexts.json\n  Graph summary: local_data\\organization\\graph\\graph_summary.json\n\nCounts:\n  Contexts: 509\n  Contexts with warnings: 0\n  Contexts with errors: 14\n  Highlighted parts: 1600\n  Unique highlighted parts: 700\n\nRole counts:\n  blank: 14\n  figure: 157\n  front_matter: 10\n  parts_list: 290\n  procedure: 28\n  table: 10\n\nConfidence counts:\n  high: 484\n  low: 14\n  medium: 11\n\nTop topics:\n  parts list: 451\n  seats: 108\n  maintenance: 105\n  seat structure: 95\n  seat: 89\n  figure: 77\n  illustration: 63\n  aircraft: 45\n  armrest: 35\n  maintenance manual: 34\n  effectivity: 30\n  25-21-00: 28\n  fasteners: 28\n  single passenger seat: 25\n  ATA code 25-21-00: 19\n  seat assembly: 17\n  codes: 16\n  illustrated parts: 15\n  ocr page: 14\n  passenger seat: 12\n\nGraph linkage:\n  page_context nodes: 509\n  HAS_CONTEXT edges: 509\n  TAGGED_AS edges: 1706\n  HIGHLIGHTS_PART edges: 1070\n\nSample contexts:\n  1. t_p_120_1176_p000495 | role=figure | confidence=high\n     This page illustrates a typical repair procedure for a passenger seat back crack and includes part numbers and figure references.\n     topics: seat repair, crack repair, passenger seat\n     parts: 120TP250008.MCE",
+          "stderr_preview": ""
+        },
+        {
+          "label": "graph_vector_trace",
+          "command": [
+            "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+            "scripts/trace_document_graph.py",
+            "--vector-page",
+            "t_p_120_1176_p000495",
+            "--vector-chunk",
+            "chunk_t_p_120_1176_p000495_001",
+            "--vector-score",
+            "0.635",
+            "--strict"
+          ],
+          "status": "pass",
+          "elapsed_seconds": 0.262,
+          "returncode": 0,
+          "missing_expected": [],
+          "forbidden_found": [],
+          "stdout_preview": "Document graph traceability\n  Status: OK\n  Graph dir: local_data\\organization\\graph\n  Nodes: 3788\n  Edges: 14143\n\nTrace: vector_candidate_to_graph\n  Status: OK\n  Simulated vector result payload page_id -> page -> graph/source/context trace.\n  Summary:\n    vector_payload_page_id: t_p_120_1176_p000495\n    vector_payload_chunk_id: chunk_t_p_120_1176_p000495_001\n    vector_payload_score: 0.635\n    page_id: t_p_120_1176_p000495\n    page_node: page:t_p_120_1176_p000495\n    document: T.P. 120/1176\n    ata: ATA 25-21-00\n    source_link_present: True\n    context_present: True\n    context_score: 0.9\n    parts_sampled: 0\n  Path:\n    1. Simulated Qdrant payload vector_payload | vector_payload:chunk_t_p_120_1176_p000495_001 | Qdrant returned page_id=t_p_120_1176_p000495, chunk_id=chunk_t_p_120_1176_p000495_001, score=0.635\n       page_id: t_p_120_1176_p000495\n       chunk_id: chunk_t_p_120_1176_p000495_001\n       score: 0.635\n       note: Future Qdrant payload should include chunk_id/page_id so PostgreSQL graph can resolve source context.\n    2. Start page page | page:t_p_120_1176_p000495 | T.P. 120/1176 page 621\n    3. Document --BELONGS_TO_DOCUMENT--> document | document:t_p_120_1176 | T.P. 120/1176\n    4. ATA section --BELONGS_TO_ATA--> ata_section | ata_section:t_p_120_1176_25_21_00 | ATA 25-21-00\n    5. Source link --HAS_SOURCE_LINK--> source_link | source_link:t_p_120_1176_p000495 | source for t_p_120_1176_p000495\n    6. AI context --HAS_CONTEXT--> page_context | page_context:t_p_120_1176_p000495 | This page illustrates a typical repair procedure for a passenger seat back crack and includes part numbers and figure re\n       score: 0.9\n       summary: This page illustrates a typical repair procedure for a passenger seat back crack and includes part numbers and figure references.",
+          "stderr_preview": ""
+        }
+      ]
+    },
+    {
+      "id": "slow_rag_summary_passenger_seat_back_to_graph",
+      "category": "rag_vector_to_graph_slow",
+      "description": "Broad RAG prompt should use embeddings/LLM and trace a known vector candidate to source/context.",
+      "user_prompt": "Summarize passenger seat back crack reinforcement using source evidence.",
+      "status": "pass",
+      "elapsed_seconds": 30.337,
+      "checks": [
+        {
+          "label": "rag_broad_summary",
+          "command": [
+            "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+            "scripts/ask_tiff_rag.py",
+            "--config",
+            "local_config.yaml",
+            "Summarize passenger seat back crack reinforcement using source evidence."
+          ],
+          "status": "pass",
+          "elapsed_seconds": 30.009,
+          "returncode": 0,
+          "missing_expected": [],
+          "forbidden_found": [],
+          "stdout_preview": "Question: Summarize passenger seat back crack reinforcement using source evidence.\nLLM used: True\nEmbeddings used: True\n\nAnswer:\n\nPassenger seat back cracks are reinforced with reinforcing doublers [9, 10, 11, 12, 13]. The repair involves locating the end of the crack and applying reinforcing doublers over the repair area [10, 11, 13]. Fasteners are used to secure the reinforcing doublers to the leg [13]. Refer to SRM chapters 51-25-00 for drilling, 51-40-04 for fastener edge margin, and 51-70-05 for typical repair [10, 11, 13].\n\nSources:\n1. T.P. 120/1176 - ATA 25-21-00 - Page 621\n   Type: keyword-or  Score: 73.3069\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000495\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000495\n   TIFF URI: file:///C:/Users/juswil/Documents/GitHub/heico-ai-internship-summer-2026/local_data/rescarta_exports/t_p_120_1176/pages/000495_00000495.tif\n   OCR URI: file:///C:/Users/juswil/Documents/GitHub/heico-ai-internship-summer-2026/local_data/rescarta_exports/t_p_120_1176/ocr/000495_00000495.txt\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000495_00000495.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000495_00000495.txt\n2. T.P. 120/1176 - ATA 25-21-00 - Page 630\n   Type: keyword-or  Score: 62.6962\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000504\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000504\n   TIFF URI: file:///C:/Users/juswil/Documents/GitHub/heico-ai-internship-summer-2026/local_data/rescarta_exports/t_p_120_1176/pages/000504_00000504.tif\n   OCR URI: file:///C:/Users/juswil/Documents/GitHub/heico-ai-internship-summer-2026/local_data/rescarta_exports/t_p_120_1176/ocr/000504_00000504.txt\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000504_00000504.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000504_00000504.txt\n3. T.P. 120/1176 - ATA 51-25-00 - Page 611\n   Type: keyword-or  Score: 61.7240\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000485\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000485\n   TIFF URI: file:///C:/Users/juswil/Documents/GitHub/heico-ai-internship-summer-2026/local_data/rescarta_exports/t_p_120_1176/pages/000485_00000485.tif\n   OCR URI: file:///C:/Users/juswil/Documents/GitHub/heico-ai-internship-summer-2026/local_data/rescarta_exports/t_p_120_1176/ocr/000485_00000485.txt\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000485_00000485.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1\n...<truncated>",
+          "stderr_preview": ""
+        },
+        {
+          "label": "known_vector_source_trace",
+          "command": [
+            "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+            "scripts/trace_document_graph.py",
+            "--vector-page",
+            "t_p_120_1176_p000495",
+            "--vector-chunk",
+            "chunk_t_p_120_1176_p000495_001",
+            "--vector-score",
+            "0.635",
+            "--strict"
+          ],
+          "status": "pass",
+          "elapsed_seconds": 0.328,
+          "returncode": 0,
+          "missing_expected": [],
+          "forbidden_found": [],
+          "stdout_preview": "Document graph traceability\n  Status: OK\n  Graph dir: local_data\\organization\\graph\n  Nodes: 3788\n  Edges: 14143\n\nTrace: vector_candidate_to_graph\n  Status: OK\n  Simulated vector result payload page_id -> page -> graph/source/context trace.\n  Summary:\n    vector_payload_page_id: t_p_120_1176_p000495\n    vector_payload_chunk_id: chunk_t_p_120_1176_p000495_001\n    vector_payload_score: 0.635\n    page_id: t_p_120_1176_p000495\n    page_node: page:t_p_120_1176_p000495\n    document: T.P. 120/1176\n    ata: ATA 25-21-00\n    source_link_present: True\n    context_present: True\n    context_score: 0.9\n    parts_sampled: 0\n  Path:\n    1. Simulated Qdrant payload vector_payload | vector_payload:chunk_t_p_120_1176_p000495_001 | Qdrant returned page_id=t_p_120_1176_p000495, chunk_id=chunk_t_p_120_1176_p000495_001, score=0.635\n       page_id: t_p_120_1176_p000495\n       chunk_id: chunk_t_p_120_1176_p000495_001\n       score: 0.635\n       note: Future Qdrant payload should include chunk_id/page_id so PostgreSQL graph can resolve source context.\n    2. Start page page | page:t_p_120_1176_p000495 | T.P. 120/1176 page 621\n    3. Document --BELONGS_TO_DOCUMENT--> document | document:t_p_120_1176 | T.P. 120/1176\n    4. ATA section --BELONGS_TO_ATA--> ata_section | ata_section:t_p_120_1176_25_21_00 | ATA 25-21-00\n    5. Source link --HAS_SOURCE_LINK--> source_link | source_link:t_p_120_1176_p000495 | source for t_p_120_1176_p000495\n    6. AI context --HAS_CONTEXT--> page_context | page_context:t_p_120_1176_p000495 | This page illustrates a typical repair procedure for a passenger seat back crack and includes part numbers and figure re\n       score: 0.9\n       summary: This page illustrates a typical repair procedure for a passenger seat back crack and includes part numbers and figure references.",
+          "stderr_preview": ""
+        }
+      ]
+    }
+  ]
+}

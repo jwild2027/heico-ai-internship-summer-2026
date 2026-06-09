@@ -1,0 +1,217 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:12:49Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000495.tif",
+    "relative_path": "00000495.tif"
+  },
+  "file": {
+    "file_name": "00000495.tif",
+    "extension": ".tif",
+    "file_size_bytes": 25136,
+    "modified_time_utc": "2026-05-22T19:14:57Z",
+    "sha256": "dcd77c0b60235fa92ab496b00c569e4d144f5d04652950a065d8635794efb858"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.98,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "120TP250008.MCE",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "+ FF + + +",
+    "section_title": null,
+    "figure_title": "Passenger Seat Back Crack",
+    "figure_number": "605",
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": 621,
+    "page_label": "621",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [
+      "FORCEMENT",
+      "FRONT REINFORCEMENT",
+      "NER CR 3523-4-",
+      "INFORCEMENT",
+      "J BOTH SIDES"
+    ],
+    "metadata_confidence": 0.98
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\n+ + + + +\n+ + + + +\nf \u2014_\u2014 / \u2014\u2014 + \u2014\n+ + + + +\n+ FF + + +\nFORCEMENT\n120TP250008.MCE\n) Passenger Seat Back Crack\nFigure 605\n25 21 00 Page 621\nT.P. 120/1176 Sep 30/98\n\n[bottom_strip]\n\u201c| + + +t FF + + FF\nFRONT REINFORCEMENT\n120TP250008.MCE\nTypical Repair to Passenger Seat Back Crack\nFigure 605\nEFFECTIVITY: ALL\n25 21 00 Page 621\nT.P. 120/1176 Sep 30/98\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n\n[right_strip]\nNER CR 3523-4-()\nINFORCEMENT\nJ BOTH SIDES\n+\n+\n+\n+\n120TP250008.MCE\nCrack\n-21\n) 00 Page 621\n.P. 120/1176 Sep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "+ + + + +\n+ + + + +\nf \u2014_\u2014 / \u2014\u2014 + \u2014\n+ + + + +\n+ FF + + +\nFORCEMENT\n120TP250008.MCE\n) Passenger Seat Back Crack\nFigure 605\n25 21 00 Page 621\nT.P. 120/1176 Sep 30/98",
+        "char_count": 162,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "\u201c| + + +t FF + + FF\nFRONT REINFORCEMENT\n120TP250008.MCE\nTypical Repair to Passenger Seat Back Crack\nFigure 605\nEFFECTIVITY: ALL\n25 21 00 Page 621\nT.P. 120/1176 Sep 30/98",
+        "char_count": 169,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST",
+        "char_count": 57,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "NER CR 3523-4-()\nINFORCEMENT\nJ BOTH SIDES\n+\n+\n+\n+\n120TP250008.MCE\nCrack\n-21\n) 00 Page 621\n.P. 120/1176 Sep 30/98",
+        "char_count": 112,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "120TP250008.MCE",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "+ FF + + +",
+      "section_title": null,
+      "figure_title": "Passenger Seat Back Crack",
+      "figure_number": "605",
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": 621,
+      "page_label": "621",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [
+        "FORCEMENT",
+        "FRONT REINFORCEMENT",
+        "NER CR 3523-4-",
+        "INFORCEMENT",
+        "J BOTH SIDES"
+      ],
+      "metadata_confidence": 0.98
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "checks": [
+    {
+      "message": "summary=True; results=True",
+      "name": "artifacts_present",
+      "ok": true
+    },
+    {
+      "message": "status=OK require_status_ok=True",
+      "name": "status_ok",
+      "ok": true
+    },
+    {
+      "message": "results=5; minimum=1",
+      "name": "result_records",
+      "ok": true
+    },
+    {
+      "message": "summary=5; json/jsonl=5",
+      "name": "result_count_match",
+      "ok": true
+    },
+    {
+      "message": "searched_records=422; minimum=1",
+      "name": "searched_records",
+      "ok": true
+    },
+    {
+      "message": "unsafe_results summary=0; scan=0; max=0",
+      "name": "unsafe_results",
+      "ok": true
+    },
+    {
+      "message": "excluded_results summary=0; scan=0; max=0",
+      "name": "excluded_results",
+      "ok": true
+    },
+    {
+      "message": "source_results=0; minimum=0",
+      "name": "source_results",
+      "ok": true
+    },
+    {
+      "message": "verified_part_results=2; minimum=1",
+      "name": "verified_part_results",
+      "ok": true
+    },
+    {
+      "message": "derived_results=3; minimum=0",
+      "name": "derived_results",
+      "ok": true
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "trace_net_search_bucket_counts": {
+      "derived_context": 3,
+      "verified_part_evidence": 2
+    },
+    "trace_net_search_candidate_records": 931,
+    "trace_net_search_derived_results": 3,
+    "trace_net_search_effective_query": "120-50645-009",
+    "trace_net_search_excluded_results": 0,
+    "trace_net_search_jsonl_records": 5,
+    "trace_net_search_pages_found": 2,
+    "trace_net_search_query": "120-50645-009",
+    "trace_net_search_result_records": 5,
+    "trace_net_search_results_path": "local_data\\organization\\trace_net\\search\\trace_net_search_results.json",
+    "trace_net_search_results_present": true,
+    "trace_net_search_safe_candidate_records": 931,
+    "trace_net_search_searched_records": 422,
+    "trace_net_search_source_results": 0,
+    "trace_net_search_status": "OK",
+    "trace_net_search_summary_path": "local_data\\organization\\trace_net\\search\\trace_net_search_summary.json",
+    "trace_net_search_summary_present": true,
+    "trace_net_search_top_score": 59.222476,
+    "trace_net_search_unsafe_results": 0,
+    "trace_net_search_verified_part_results": 2
+  }
+}

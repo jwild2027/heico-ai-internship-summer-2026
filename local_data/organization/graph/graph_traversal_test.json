@@ -1,0 +1,164 @@
+{
+  "status": "OK",
+  "errors": [],
+  "warnings": [],
+  "graph_dir": "local_data\\organization\\graph",
+  "node_count": 3788,
+  "edge_count": 14143,
+  "node_type_counts": {
+    "ata_section": 5,
+    "document": 1,
+    "nomenclature": 151,
+    "page": 509,
+    "page_context": 509,
+    "part": 386,
+    "part_mention": 981,
+    "source_file": 509,
+    "source_link": 509,
+    "topic": 228
+  },
+  "edge_type_counts": {
+    "APPEARS_ON": 981,
+    "BELONGS_TO_ATA": 509,
+    "BELONGS_TO_DOCUMENT": 509,
+    "CONTAINS_PAGE": 509,
+    "FOUND_ON": 981,
+    "HAS_ATA_SECTION": 5,
+    "HAS_CONTEXT": 509,
+    "HAS_MENTION": 981,
+    "HAS_NOMENCLATURE": 386,
+    "HAS_PAGE": 509,
+    "HAS_PART_MENTION": 981,
+    "HAS_SOURCE_LINK": 509,
+    "HAS_TIFF": 509,
+    "HIGHLIGHTS_PART": 1070,
+    "MENTIONS_PART": 981,
+    "OPENS": 509,
+    "POINTS_TO_TIFF": 509,
+    "REFERS_TO_PART": 981,
+    "SUMMARIZES": 509,
+    "TAGGED_AS": 1706
+  },
+  "document": {
+    "id": "document:t_p_120_1176",
+    "type": "document",
+    "label": "T.P. 120/1176"
+  },
+  "page": {
+    "id": "page:t_p_120_1176_p000042",
+    "type": "page",
+    "label": "T.P. 120/1176 page 1021"
+  },
+  "part": {
+    "id": "part:120_37313_001",
+    "type": "part",
+    "label": "120-37313-001"
+  },
+  "nomenclature": {
+    "id": "nomenclature:holder_magazine",
+    "type": "nomenclature",
+    "label": "HOLDER, MAGAZINE"
+  },
+  "context": {
+    "id": "page_context:t_p_120_1176_p000042",
+    "type": "page_context",
+    "label": "This page appears to be a parts list from a maintenance manual, containing numerous part numbers and associated codes."
+  },
+  "document_to_page": [
+    {
+      "edge_type": "HAS_PAGE",
+      "node": {
+        "id": "page:t_p_120_1176_p000042",
+        "type": "page",
+        "label": "T.P. 120/1176 page 1021"
+      }
+    }
+  ],
+  "page_to_part": [
+    {
+      "edge_type": "MENTIONS_PART",
+      "node": {
+        "id": "part:120_37313_001",
+        "type": "part",
+        "label": "120-37313-001"
+      }
+    }
+  ],
+  "part_to_name": [
+    {
+      "edge_type": "HAS_NOMENCLATURE",
+      "node": {
+        "id": "nomenclature:holder_magazine",
+        "type": "nomenclature",
+        "label": "HOLDER, MAGAZINE"
+      }
+    }
+  ],
+  "page_to_context": [
+    {
+      "edge_type": "HAS_CONTEXT",
+      "node": {
+        "id": "page_context:t_p_120_1176_p000042",
+        "type": "page_context",
+        "label": "This page appears to be a parts list from a maintenance manual, containing numerous part numbers and associated codes."
+      }
+    }
+  ],
+  "part_to_context_pages": [
+    {
+      "page_id": "page:t_p_120_1176_p000042",
+      "page_label": "1021",
+      "edge_type": "APPEARS_ON",
+      "has_context": true,
+      "context_id": "page_context:t_p_120_1176_p000042",
+      "context_summary": "This page appears to be a parts list from a maintenance manual, containing numerous part numbers and associated codes.",
+      "context_score": 0.9,
+      "has_source_link": true,
+      "source_label": "source for t_p_120_1176_p000042"
+    },
+    {
+      "page_id": "page:t_p_120_1176_p000083",
+      "page_label": "1056",
+      "edge_type": "APPEARS_ON",
+      "has_context": true,
+      "context_id": "page_context:t_p_120_1176_p000083",
+      "context_summary": "This page appears to be an illustrated parts list for aircraft components, detailing part numbers and stock information.",
+      "context_score": 0.9,
+      "has_source_link": true,
+      "source_label": "source for t_p_120_1176_p000083"
+    },
+    {
+      "page_id": "page:t_p_120_1176_p000086",
+      "page_label": "1059",
+      "edge_type": "APPEARS_ON",
+      "has_context": true,
+      "context_id": "page_context:t_p_120_1176_p000086",
+      "context_summary": "This page presents a code list and parts list for various components, including magazine holders, with associated part numbers and codes.",
+      "context_score": 0.9,
+      "has_source_link": true,
+      "source_label": "source for t_p_120_1176_p000086"
+    },
+    {
+      "page_id": "page:t_p_120_1176_p000096",
+      "page_label": "1065",
+      "edge_type": "APPEARS_ON",
+      "has_context": true,
+      "context_id": "page_context:t_p_120_1176_p000096",
+      "context_summary": "This page presents a parts list with code ranges and associated part numbers, including a single passenger seat and magazine holder.",
+      "context_score": 0.9,
+      "has_source_link": true,
+      "source_label": "source for t_p_120_1176_p000096"
+    },
+    {
+      "page_id": "page:t_p_120_1176_p000098",
+      "page_label": "1067",
+      "edge_type": "APPEARS_ON",
+      "has_context": true,
+      "context_id": "page_context:t_p_120_1176_p000098",
+      "context_summary": "This page is a parts list for a single passenger seat assembly, including part numbers, descriptions, and quantities.",
+      "context_score": 0.9,
+      "has_source_link": true,
+      "source_label": "source for t_p_120_1176_p000098"
+    }
+  ]
+}

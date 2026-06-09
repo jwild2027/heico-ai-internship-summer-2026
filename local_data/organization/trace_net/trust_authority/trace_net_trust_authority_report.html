@@ -1,0 +1,33 @@
+<!doctype html>
+<html><head><meta charset='utf-8'><title>TRACE-Net Trust Authority</title>
+<style>body{font-family:Arial,sans-serif;margin:24px} table{border-collapse:collapse} th,td{border:1px solid #ccc;padding:6px 10px;text-align:left} pre{background:#f5f5f5;padding:12px}</style></head>
+<body>
+<h1>TRACE-Net Trust Semantics / Trust Authority v1</h1>
+<p>Status: <b>OK</b> &nbsp; Version: <code>trace_net_trust_authority_v1</code></p>
+<p>This report explains what each trust tier is allowed to mean. It is an overlay: it does not mutate source truth, RAG eligibility, feedback, or production ranking.</p>
+<table><tr><th>pages</th><td>509</td></tr><tr><th>rag_candidate_records</th><td>1426</td></tr><tr><th>trust_authority_records</th><td>1426</td></tr><tr><th>missing_authority_records</th><td>0</td></tr><tr><th>missing_candidate_trust_tier</th><td>0</td></tr><tr><th>source_evidence_authority_records</th><td>509</td></tr><tr><th>source_text_authority_records</th><td>495</td></tr><tr><th>verified_part_authority_records</th><td>362</td></tr><tr><th>derived_context_authority_records</th><td>60</td></tr><tr><th>source_evidence_direct_answer_records</th><td>0</td></tr><tr><th>derived_context_direct_answer_records</th><td>0</td></tr><tr><th>derived_context_canonical_source_truth_records</th><td>0</td></tr><tr><th>unsafe_authority_records</th><td>0</td></tr><tr><th>source_truth_mutation_records</th><td>0</td></tr></table>
+<h2>Trust scopes</h2><pre>{
+  &quot;part_catalog&quot;: 362,
+  &quot;source_text&quot;: 495,
+  &quot;source_trace&quot;: 509,
+  &quot;table_tile_text_refined&quot;: 60
+}</pre>
+<h2>Evidence authority</h2><pre>{
+  &quot;derived_context&quot;: 60,
+  &quot;source_backed_ocr_text&quot;: 495,
+  &quot;source_truth&quot;: 509,
+  &quot;verified_part_reference&quot;: 362
+}</pre>
+<h2>Claim authority</h2><pre>{
+  &quot;ocr_text_claim_with_citation&quot;: 495,
+  &quot;part_page_relationship&quot;: 362,
+  &quot;source_exists_only&quot;: 509,
+  &quot;supporting_context_only&quot;: 60
+}</pre>
+<h2>RAG roles</h2><pre>{
+  &quot;derived_context_only&quot;: 60,
+  &quot;source_citation_evidence&quot;: 509,
+  &quot;source_text_context&quot;: 495,
+  &quot;verified_part_evidence&quot;: 362
+}</pre>
+</body></html>

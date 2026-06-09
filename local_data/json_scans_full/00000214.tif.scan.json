@@ -1,0 +1,210 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:06:46Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000214.tif",
+    "relative_path": "00000214.tif"
+  },
+  "file": {
+    "file_name": "00000214.tif",
+    "extension": ".tif",
+    "file_size_bytes": 53347,
+    "modified_time_utc": "2026-05-22T19:14:55Z",
+    "sha256": "d70e140589bbfeaf7175753e5982d3ab34d6d97cc2df3b9f66b5fb828f8986c0"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.98,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "part_numbers",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "120CMM251002.MCE",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "240 | LEE 60 60 94",
+    "section_title": null,
+    "figure_title": "210\u00b0",
+    "figure_number": "35A",
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": null,
+    "page_label": null,
+    "issue_date": "Jan 15/01",
+    "revision_date": "Jan 15/01",
+    "revision_label": null,
+    "part_numbers": [
+      "120-61382-501"
+    ],
+    "callouts": [],
+    "metadata_confidence": 0.98
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\n\u201c\n80 40 40\na 70 40\n40 60\n-* 50 50 / g os Ai 0\nB) d Ler, |\n60 60 Oe, J]\n90 % 80\n7 | @\n60\n120CMM251002.MCE\ner Seat (120-61382-501)\nigure 35A\nSheet 1\n25 21 00 Page 1158A\nT.P. 120/1176 Jan 15/01\n\n[bottom_strip]\n/ | | ; Db 70 / | %ec 50 |\n240 | LEE 60 60 94 .\n| 70 \u00ab|\n4 60\n2307 &~ 999\n210\u00b0\n120CMM251002.MCE\nDouble Passenger Seat (120-61382-501)\nFigure 35A\nSheet 1\nEFFECTIVITY: ALL\n25 21 00 Page 1158A\nT.P. 120/1176 Jan 15/01\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nSoy-\nNON ~~\n| AD rn ~\n\n[right_strip]\n30\n20\n\\_\n30\n\\\n! J @o\n<<\u201c\nSF |\n\u00ae\n| aa\n>\n130\n120\n40 49\n70 40\n0 By AA\n60 60 9 be A .\n70 ah ~\nSO\n120CMM251002.MCE\n1)\n_|\n21 -00 Page 1158A\n120/1176 Jan 15/01",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "\u201c\n80 40 40\na 70 40\n40 60\n-* 50 50 / g os Ai 0\nB) d Ler, |\n60 60 Oe, J]\n90 % 80\n7 | @\n60\n120CMM251002.MCE\ner Seat (120-61382-501)\nigure 35A\nSheet 1\n25 21 00 Page 1158A\nT.P. 120/1176 Jan 15/01",
+        "char_count": 190,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "/ | | ; Db 70 / | %ec 50 |\n240 | LEE 60 60 94 .\n| 70 \u00ab|\n4 60\n2307 &~ 999\n210\u00b0\n120CMM251002.MCE\nDouble Passenger Seat (120-61382-501)\nFigure 35A\nSheet 1\nEFFECTIVITY: ALL\n25 21 00 Page 1158A\nT.P. 120/1176 Jan 15/01",
+        "char_count": 212,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nSoy-\nNON ~~\n| AD rn ~",
+        "char_count": 79,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "30\n20\n\\_\n30\n\\\n! J @o\n<<\u201c\nSF |\n\u00ae\n| aa\n>\n130\n120\n40 49\n70 40\n0 By AA\n60 60 9 be A .\n70 ah ~\nSO\n120CMM251002.MCE\n1)\n_|\n21 -00 Page 1158A\n120/1176 Jan 15/01",
+        "char_count": 152,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "120CMM251002.MCE",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "240 | LEE 60 60 94",
+      "section_title": null,
+      "figure_title": "210\u00b0",
+      "figure_number": "35A",
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": null,
+      "page_label": null,
+      "issue_date": "Jan 15/01",
+      "revision_date": "Jan 15/01",
+      "revision_label": null,
+      "part_numbers": [
+        "120-61382-501"
+      ],
+      "callouts": [],
+      "metadata_confidence": 0.98
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

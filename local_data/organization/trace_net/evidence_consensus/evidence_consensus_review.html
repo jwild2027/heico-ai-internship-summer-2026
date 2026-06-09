@@ -1,0 +1,628 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>TRACE-Net Evidence Consensus</title>
+<style>
+body{font-family:Segoe UI,Arial,sans-serif;margin:24px;background:#faf7f2;color:#172033;line-height:1.45}
+h1,h2,h3{color:#172033}.card{background:#fff;border:1px solid #e0d2c1;border-radius:12px;padding:16px;margin:12px 0}
+ul{background:#fff;border:1px solid #eadcca;border-radius:10px;padding:12px 24px}.sub{margin-left:20px;color:#46536b}
+code{background:#f0ece6;padding:2px 5px;border-radius:4px}strong{font-weight:700}
+</style></head><body>
+<h1>TRACE-Net Evidence Consensus Router v1.2</h1>
+<h2>Summary</h2>
+<ul>
+<li>**records**: 1813</li>
+<li>**pages_loaded**: 509</li>
+<li>**pages_covered**: 509</li>
+<li>**source_trace_records**: 509</li>
+<li>**visual_text_records**: 25</li>
+<li>**table_candidate_records**: 509</li>
+<li>**table_tile_records**: 286</li>
+<li>**table_tile_text_refined_records**: 120</li>
+<li>**part_catalog_records**: 364</li>
+<li>**rag_include_records**: 931</li>
+<li>**unsafe_rag_include_records**: 0</li>
+<li>**source_untraceable_records**: 0</li>
+</ul>
+<h2>Trust tiers</h2>
+<ul>
+<li>A: 931</li>
+<li>B: 286</li>
+<li>C: 596</li>
+</ul>
+<h2>TRACE-LC confidence</h2>
+<ul>
+<li>confidence version: trace_lc_v1</li>
+<li>scored records: 1813</li>
+<li>average usable confidence: 0.787436</li>
+<li>average support score: 0.83376</li>
+<li>average risk score: 0.055957</li>
+<li>score/trust-tier disagreement records: 1379</li>
+<li>confidence tier B: 1617</li>
+<li>confidence tier C: 172</li>
+<li>confidence tier D: 24</li>
+</ul>
+<h2>RAG actions</h2>
+<ul>
+<li>exclude_from_rag: 265</li>
+<li>exclude_until_table_text_exists: 286</li>
+<li>exclude_until_table_tiles_exist: 331</li>
+<li>include_as_derived_context: 60</li>
+<li>include_as_source_evidence: 509</li>
+<li>include_as_verified_part_evidence: 362</li>
+</ul>
+<h2>Sample records</h2>
+<h3>t_p_120_1176_p000001 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `page_part_mentions_present`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.81225`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.855` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>page has 3 part catalog/mention signals</li>
+</ul>
+<h3>t_p_120_1176_p000002 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_empty_or_unavailable`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `not_applicable`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.67925`</li>
+<li>TRACE-LC confidence tier: `C`</li>
+<li>TRACE-LC support/risk: `0.715` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>no visible OCR text found for this page</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>no part claim or page part catalog signal</li>
+</ul>
+<h3>t_p_120_1176_p000003 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `page_part_mentions_present`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.81225`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.855` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>page has 53 part catalog/mention signals</li>
+</ul>
+<h3>t_p_120_1176_p000004 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `not_applicable`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.76475`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.805` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>no part claim or page part catalog signal</li>
+</ul>
+<h3>t_p_120_1176_p000005 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `page_part_mentions_present`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.81225`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.855` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>page has 1 part catalog/mention signals</li>
+</ul>
+<h3>t_p_120_1176_p000006 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `page_part_mentions_present`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.81225`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.855` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>page has 3 part catalog/mention signals</li>
+</ul>
+<h3>t_p_120_1176_p000007 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `page_part_mentions_present`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.81225`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.855` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>page has 1 part catalog/mention signals</li>
+</ul>
+<h3>t_p_120_1176_p000008 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `page_part_mentions_present`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.81225`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.855` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>page has 2 part catalog/mention signals</li>
+</ul>
+<h3>t_p_120_1176_p000009 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `page_part_mentions_present`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.81225`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.855` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>page has 1 part catalog/mention signals</li>
+</ul>
+<h3>t_p_120_1176_p000010 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `page_part_mentions_present`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.81225`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.855` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>page has 2 part catalog/mention signals</li>
+</ul>
+<h3>t_p_120_1176_p000011 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `not_applicable`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.76475`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.805` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>no part claim or page part catalog signal</li>
+</ul>
+<h3>t_p_120_1176_p000012 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_empty_or_unavailable`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `not_applicable`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.67925`</li>
+<li>TRACE-LC confidence tier: `C`</li>
+<li>TRACE-LC support/risk: `0.715` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>no visible OCR text found for this page</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>no part claim or page part catalog signal</li>
+</ul>
+<h3>t_p_120_1176_p000013 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `not_applicable`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.76475`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.805` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>no part claim or page part catalog signal</li>
+</ul>
+<h3>t_p_120_1176_p000014 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `not_applicable`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.76475`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.805` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>no part claim or page part catalog signal</li>
+</ul>
+<h3>t_p_120_1176_p000015 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `not_applicable`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.76475`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.805` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>no part claim or page part catalog signal</li>
+</ul>
+<h3>t_p_120_1176_p000016 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `not_applicable`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.76475`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.805` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>no part claim or page part catalog signal</li>
+</ul>
+<h3>t_p_120_1176_p000017 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `page_part_mentions_present`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.81225`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.855` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>page has 1 part catalog/mention signals</li>
+</ul>
+<h3>t_p_120_1176_p000018 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `not_applicable`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.76475`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.805` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>no part claim or page part catalog signal</li>
+</ul>
+<h3>t_p_120_1176_p000019 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `not_applicable`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.76475`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.805` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>no part claim or page part catalog signal</li>
+</ul>
+<h3>t_p_120_1176_p000020 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `not_applicable`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.76475`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.805` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>no part claim or page part catalog signal</li>
+</ul>
+<h3>t_p_120_1176_p000021 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `not_applicable`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.76475`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.805` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>no part claim or page part catalog signal</li>
+</ul>
+<h3>t_p_120_1176_p000022 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `not_applicable`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.76475`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.805` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>no part claim or page part catalog signal</li>
+</ul>
+<h3>t_p_120_1176_p000023 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `not_applicable`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.76475`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.805` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>no part claim or page part catalog signal</li>
+</ul>
+<h3>t_p_120_1176_p000024 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_available`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `page_part_mentions_present`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.81225`</li>
+<li>TRACE-LC confidence tier: `B`</li>
+<li>TRACE-LC support/risk: `0.855` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>OCR text exists, but this layer has no claim text to compare</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>page has 1 part catalog/mention signals</li>
+</ul>
+<h3>t_p_120_1176_p000025 / source_trace</h3>
+<ul>
+<li>Trust tier: **A**</li>
+<li>RAG action: `include_as_source_evidence`</li>
+<li>Repair action: `none`</li>
+<li>Source trace: `source_verified`</li>
+<li>OCR support: `ocr_empty_or_unavailable`</li>
+<li>Graph support: `strong_support`</li>
+<li>Part catalog support: `not_applicable`</li>
+<li>Hallucination risk: `low_risk`</li>
+<li>TRACE-LC usable confidence: `0.67925`</li>
+<li>TRACE-LC confidence tier: `C`</li>
+<li>TRACE-LC support/risk: `0.715` / `0.05`</li>
+<li>Reasons:</li>
+<li class='sub'>source URL present</li>
+<li class='sub'>TIFF path present and file exists</li>
+<li class='sub'>OCR path present and file exists</li>
+<li class='sub'>no visible OCR text found for this page</li>
+<li class='sub'>page exists in page index</li>
+<li class='sub'>page has ATA code</li>
+<li class='sub'>page has source URL</li>
+<li class='sub'>no part claim or page part catalog signal</li>
+</ul>
+</body></html>

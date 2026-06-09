@@ -1,0 +1,166 @@
+{
+  "status": "OK",
+  "source": {
+    "kind": "zip",
+    "path": "C:\\Users\\juswil\\Documents\\00000027\\metadata.zip"
+  },
+  "scan": {
+    "elapsed_seconds": 0.012,
+    "files_seen": 510,
+    "directories_seen": 0,
+    "truncated": false,
+    "total_bytes": 21875659,
+    "total_gib": 0.0204
+  },
+  "counts": {
+    "tiff_files": 509,
+    "ocr_text_files": 0,
+    "metadata_files": 1,
+    "pdf_files": 0,
+    "other_image_files": 0,
+    "other_files": 0,
+    "empty_files": 0
+  },
+  "bytes": {
+    "tiff_bytes": 21669039,
+    "ocr_text_bytes": 0,
+    "metadata_bytes": 206620
+  },
+  "tiff_stats": {
+    "avg_bytes": 42571.79,
+    "median_bytes": 44166,
+    "min_bytes": 3239,
+    "max_bytes": 77604,
+    "p90_bytes": 56330.0,
+    "sampled_sizes": 509,
+    "total_tiff_bytes": 21669039
+  },
+  "ocr_pairing": {
+    "available": true,
+    "tiff_stems": 509,
+    "ocr_stems": 0,
+    "tiff_stems_without_ocr_count": 509,
+    "ocr_stems_without_tiff_count": 0,
+    "tiff_stems_without_ocr_examples": [
+      "00000001",
+      "00000002",
+      "00000003",
+      "00000004",
+      "00000005",
+      "00000006",
+      "00000007",
+      "00000008",
+      "00000009",
+      "00000010"
+    ],
+    "ocr_stems_without_tiff_examples": []
+  },
+  "duplicates": {
+    "duplicate_filenames": 0,
+    "duplicate_stems": 0,
+    "stem_tracking_truncated": false
+  },
+  "extension_counts": {
+    ".tif": 509,
+    ".xml": 1
+  },
+  "top_level_counts": {
+    "metadata.xml": 1,
+    "00000001.tif": 1,
+    "00000002.tif": 1,
+    "00000003.tif": 1,
+    "00000004.tif": 1,
+    "00000005.tif": 1,
+    "00000006.tif": 1,
+    "00000007.tif": 1,
+    "00000008.tif": 1,
+    "00000009.tif": 1,
+    "00000010.tif": 1,
+    "00000011.tif": 1,
+    "00000012.tif": 1,
+    "00000013.tif": 1,
+    "00000014.tif": 1,
+    "00000015.tif": 1,
+    "00000016.tif": 1,
+    "00000017.tif": 1,
+    "00000018.tif": 1,
+    "00000019.tif": 1
+  },
+  "scale_estimate": {
+    "target_total_tb": 5.0,
+    "target_total_tib_bytes": 5497558138880,
+    "estimated_pages": 129136175,
+    "batch_size_pages": 5000,
+    "estimated_batches": 25828,
+    "current_sample_pages": 509,
+    "current_sample_batches": 1
+  },
+  "storage_estimate": {
+    "ocr_text_bytes_range": [
+      129136175000,
+      645680875000
+    ],
+    "opensearch_bytes_range": [
+      258272350000,
+      2582723500000
+    ],
+    "qdrant_bytes_range": [
+      1033089400000,
+      7748170500000
+    ],
+    "postgres_catalog_bytes_range": [
+      258272350000,
+      1291361750000
+    ],
+    "assumptions": {
+      "ocr_text_bytes_per_page": "1 KB to 5 KB",
+      "opensearch_multiplier": "2x to 4x OCR text",
+      "qdrant_chunks_per_page": "1 to 3",
+      "qdrant_bytes_per_chunk": "8 KB to 20 KB",
+      "postgres_catalog_bytes_per_page": "2 KB to 10 KB"
+    }
+  },
+  "processing_estimate": {
+    "worker_count": 1,
+    "ocr_hours": 35871.16,
+    "page_context_llm_hours": 430453.92,
+    "embedding_hours": 8967.79,
+    "assumptions": {
+      "ocr_seconds_per_page": 1.0,
+      "context_seconds_per_page": 12.0,
+      "embedding_seconds_per_page": 0.25,
+      "note": "Estimates are linear and do not include file-server bottlenecks, retries, QA, or queue overhead."
+    }
+  },
+  "samples": {
+    "tiff_files": [
+      "00000001.tif",
+      "00000002.tif",
+      "00000003.tif",
+      "00000004.tif",
+      "00000005.tif",
+      "00000006.tif",
+      "00000007.tif",
+      "00000008.tif",
+      "00000009.tif",
+      "00000010.tif"
+    ],
+    "ocr_files": [],
+    "metadata_files": [
+      "metadata.xml"
+    ],
+    "empty_files": []
+  },
+  "warnings": [
+    "No OCR .txt files found; OCR may need to be imported/generated separately."
+  ],
+  "errors": [],
+  "readiness_notes": [
+    "This is a read-only inventory; it does not OCR, index, embed, or open TIFF image bytes.",
+    "Use this report to size the first baseline pass before starting heavy processing.",
+    "Do not store TIFF bytes in PostgreSQL, OpenSearch, or Qdrant; store paths, metadata, text, and vectors.",
+    "After baseline, switch to changed-file feeds or metadata comparison for incremental updates.",
+    "No OCR text files were found in this source; OCR must be imported from another export or generated.",
+    "Estimated page count is very high; avoid full-page LLM context generation and use selective/on-demand context."
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:04:33Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000108.tif",
+    "relative_path": "00000108.tif"
+  },
+  "file": {
+    "file_name": "00000108.tif",
+    "extension": ".tif",
+    "file_size_bytes": 43964,
+    "modified_time_utc": "2026-05-22T19:14:54Z",
+    "sha256": "04553b5379814d956d91a5e1ce123f5379ad60bb7ce701c21eb21a4f31a1dd32"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 1.0,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "ata_code",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "part_numbers",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "T.P. 120/1176",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "ER, MAGAZINE ............ EE \u00a7=VS4956 1",
+    "section_title": null,
+    "figure_title": "\u201c149 | IUUZ-F \u00bb-PASTEINER DUTILTON, MIALE..................... BUFOLZZ | a",
+    "figure_number": "25",
+    "effectivity": "ALL",
+    "ata_code": "25-21-00",
+    "page_number": null,
+    "page_label": null,
+    "issue_date": "Jan 15/01",
+    "revision_date": "Jan 15/01",
+    "revision_label": null,
+    "part_numbers": [
+      "120-61381-501",
+      "120-61410-001",
+      "120-29067-029"
+    ],
+    "callouts": [
+      "HING PARTS",
+      "NUMBER TO ASSY",
+      "TO ASSY"
+    ],
+    "metadata_confidence": 1.0
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\nER, MAGAZINE ............ ee \u00a7=VS4956 1\nHING PARTS\n=-NER BUTTON, MALE.................... E075221 2\n-, SNACK FOLDING, ASSY\n-IGURE 25-21-00-113).....0. ~=VS4956 1\ner Seat (120-61381-501)\n-igure 6A\nSheet 2\n25 21 00 Page 1072A\nT.P. 120/1176 Jan 15/01\n\n[bottom_strip]\n\u201c149 | IUUZ-F \u00bb-PASTEINER DUTILTON, MIALE..................... BUFOLZZ | a\n150 | 120-61410-001 . TABLE, SNACK FOLDING, ASSY\n(SEE FIGURE 25-21-00-113)......0...... \u00bb=VS4956 1\n-ITEM NOT ILLUSTRATED\nSingle Passenger Seat (120-61381-501)\nFigure 6A\nSheet 2\nEFFECTIVITY: ALL 25-21 -00\nPage 1072A\nT.P. 120/1176 Jan 15/01\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nAIRLINE EFF | UNITS\nFIG. ITEM PARTNUMBER | STOCK ase eODE. FROM; PER\nNUMBER TO ASSY\nO6A - | 120-61381-501 SINGLE PASSENGER SEAT ASSY ............ VS4956 | 339/999] REF\n1 | 120-29067-029 . STRUCTURE, ASSY. (SEE FIGURE\n\n[right_strip]\nEFF | UNITS\nEOE. FROM | PER\nTO ASSY\n\"cee VE4956 | 339/999] REF\nRE\nlevee VS4956 1\neee WS 4956 1\nice. VS4956 1\nTo. = VS4956 1\nisc. VS4956 1\neee VS4956 1\nieee V54956 2\nlessees VW54956 1\neee WS4956 1\nlets EO75221 2\nices VS4956 1\n)\n_|\n\u00bb-21-00\nPage 1072A\n120/1176 Jan 15/01",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "ER, MAGAZINE ............ ee \u00a7=VS4956 1\nHING PARTS\n=-NER BUTTON, MALE.................... E075221 2\n-, SNACK FOLDING, ASSY\n-IGURE 25-21-00-113).....0. ~=VS4956 1\ner Seat (120-61381-501)\n-igure 6A\nSheet 2\n25 21 00 Page 1072A\nT.P. 120/1176 Jan 15/01",
+        "char_count": 247,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "\u201c149 | IUUZ-F \u00bb-PASTEINER DUTILTON, MIALE..................... BUFOLZZ | a\n150 | 120-61410-001 . TABLE, SNACK FOLDING, ASSY\n(SEE FIGURE 25-21-00-113)......0...... \u00bb=VS4956 1\n-ITEM NOT ILLUSTRATED\nSingle Passenger Seat (120-61381-501)\nFigure 6A\nSheet 2\nEFFECTIVITY: ALL 25-21 -00\nPage 1072A\nT.P. 120/1176 Jan 15/01",
+        "char_count": 313,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nAIRLINE EFF | UNITS\nFIG. ITEM PARTNUMBER | STOCK ase eODE. FROM; PER\nNUMBER TO ASSY\nO6A - | 120-61381-501 SINGLE PASSENGER SEAT ASSY ............ VS4956 | 339/999] REF\n1 | 120-29067-029 . STRUCTURE, ASSY. (SEE FIGURE",
+        "char_count": 274,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "EFF | UNITS\nEOE. FROM | PER\nTO ASSY\n\"cee VE4956 | 339/999] REF\nRE\nlevee VS4956 1\neee WS 4956 1\nice. VS4956 1\nTo. = VS4956 1\nisc. VS4956 1\neee VS4956 1\nieee V54956 2\nlessees VW54956 1\neee WS4956 1\nlets EO75221 2\nices VS4956 1\n)\n_|\n\u00bb-21-00\nPage 1072A\n120/1176 Jan 15/01",
+        "char_count": 267,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "T.P. 120/1176",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "ER, MAGAZINE ............ EE \u00a7=VS4956 1",
+      "section_title": null,
+      "figure_title": "\u201c149 | IUUZ-F \u00bb-PASTEINER DUTILTON, MIALE..................... BUFOLZZ | a",
+      "figure_number": "25",
+      "effectivity": "ALL",
+      "ata_code": "25-21-00",
+      "page_number": null,
+      "page_label": null,
+      "issue_date": "Jan 15/01",
+      "revision_date": "Jan 15/01",
+      "revision_label": null,
+      "part_numbers": [
+        "120-61381-501",
+        "120-61410-001",
+        "120-29067-029"
+      ],
+      "callouts": [
+        "HING PARTS",
+        "NUMBER TO ASSY",
+        "TO ASSY"
+      ],
+      "metadata_confidence": 1.0
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

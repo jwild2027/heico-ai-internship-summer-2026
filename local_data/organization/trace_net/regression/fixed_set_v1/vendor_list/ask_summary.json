@@ -1,0 +1,123 @@
+{
+  "artifacts": {
+    "answer_html": "local_data\\organization\\trace_net\\answers\\trace_net_answer_draft.html",
+    "answer_json": "local_data\\organization\\trace_net\\answers\\trace_net_answer_draft.json",
+    "answer_md": "local_data\\organization\\trace_net\\answers\\trace_net_answer_draft.md",
+    "answer_summary": "local_data\\organization\\trace_net\\answers\\trace_net_answer_summary.json",
+    "ask_report_html": "local_data\\organization\\trace_net\\ask\\trace_net_ask_report.html",
+    "ask_report_md": "local_data\\organization\\trace_net\\ask\\trace_net_ask_report.md",
+    "ask_stages": "local_data\\organization\\trace_net\\ask\\trace_net_ask_stages.jsonl",
+    "ask_summary": "local_data\\organization\\trace_net\\ask\\trace_net_ask_summary.json",
+    "citation_summary": "local_data\\organization\\trace_net\\citations\\trace_net_source_citation_summary.json",
+    "feedback_ask_simulation_html": "local_data\\organization\\trace_net\\feedback_ask_simulation\\trace_net_feedback_ask_simulation_answer.html",
+    "feedback_ask_simulation_md": "local_data\\organization\\trace_net\\feedback_ask_simulation\\trace_net_feedback_ask_simulation_answer.md",
+    "feedback_ask_simulation_summary": "local_data\\organization\\trace_net\\feedback_ask_simulation\\trace_net_feedback_ask_simulation_summary.json",
+    "feedback_search_simulation_summary": "local_data\\organization\\trace_net\\feedback_search_simulation\\trace_net_feedback_search_simulation_summary.json",
+    "group_summary": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_summary.json",
+    "search_summary": "local_data\\organization\\trace_net\\search\\trace_net_search_summary.json"
+  },
+  "created_at": "2026-06-03T19:59:27Z",
+  "effective_query": "vendor list",
+  "options": {
+    "bucket": "",
+    "dry_run": false,
+    "feedback_boost_weight": 8.0,
+    "feedback_demote_weight": 12.0,
+    "feedback_mode": "off",
+    "feedback_review_penalty": 4.0,
+    "feedback_top_k": 20,
+    "open": false,
+    "page_id": "",
+    "part_number": "",
+    "query": "vendor list",
+    "top_k": 10
+  },
+  "stages": [
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts\\search_trace_net_rag_candidates.py",
+        "--query",
+        "vendor list",
+        "--top-k",
+        "10"
+      ],
+      "elapsed_seconds": 0.485,
+      "name": "search",
+      "return_code": 0,
+      "status": "OK",
+      "stderr_tail": "",
+      "stdout_tail": "TRACE-Net local RAG candidate search\n  Status: OK\n  Output dir: local_data\\organization\\trace_net\\search\n  Query:\n    query: vendor list\n    part_number: \n    page_id: \n    effective_query: vendor list\n  Summary:\n    candidate_records: 1426\n    safe_candidate_records: 1426\n    searched_records: 1426\n    result_records: 8\n    pages_found: 6\n    top_score: 18.383721\n    unsafe_result_records: 0\n    excluded_result_records: 0\n  Buckets: {'derived_context': 2, 'source_text_evidence': 6}\n  Top results:\n    1. score=18.383721 page=t_p_120_1176_p000021 bucket=source_text_evidence layer=source_text terms=vendor\n    2. score=11.446892 page=t_p_120_1176_p000005 bucket=source_text_evidence layer=source_text terms=vendor\n    3. score=11.446892 page=t_p_120_1176_p000024 bucket=source_text_evidence layer=source_text terms=vendor\n    4. score=11.446892 page=t_p_120_1176_p000243 bucket=source_text_evidence layer=source_text terms=vendor\n    5. score=11.446892 page=t_p_120_1176_p000362 bucket=source_text_evidence layer=source_text terms=vendor\n    6. score=11.351892 page=t_p_120_1176_p000020 bucket=source_text_evidence layer=source_text terms=vendor\n    7. score=8.832892 page=t_p_120_1176_p000005 bucket=derived_context layer=table_tile_text_refined terms=vendor\n    8. score=8.832892 page=t_p_120_1176_p000005 bucket=derived_context layer=table_tile_text_refined terms=vendor\nFiles written:\n  candidates: local_data\\organization\\trace_net\\rag_candidates\\rag_candidate_chunks.jsonl\n  results: local_data\\organization\\trace_net\\search\\trace_net_search_results.json\n  results_jsonl: local_data\\organization\\trace_net\\search\\trace_net_search_results.jsonl\n  summary: local_data\\organization\\trace_net\\search\\trace_net_search_summary.json\n  review_md: local_data\\organization\\trace_net\\search\\trace_net_search_review.md\n  review_html: local_data\\organization\\trace_net\\search\\trace_net_search_review.html\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts\\build_trace_net_source_citations.py"
+      ],
+      "elapsed_seconds": 0.334,
+      "name": "citations",
+      "return_code": 0,
+      "status": "OK",
+      "stderr_tail": "",
+      "stdout_tail": "TRACE-Net source citation formatter\n  Status: OK\n  Output dir: local_data\\organization\\trace_net\\citations\n  Summary:\n    candidate_records: 1426\n    citation_records: 1426\n    pages: 509\n    search_result_records: 8\n    search_results_with_citations: 8\n    unsafe_citation_records: 0\n    missing_source_url_records: 0\n    missing_tiff_path_records: 0\n    missing_ocr_path_records: 0\nFiles written:\n  citations: local_data\\organization\\trace_net\\citations\\trace_net_source_citations.jsonl\n  search_with_citations: local_data\\organization\\trace_net\\citations\\trace_net_search_results_with_citations.jsonl\n  summary: local_data\\organization\\trace_net\\citations\\trace_net_source_citation_summary.json\n  review_html: local_data\\organization\\trace_net\\citations\\trace_net_source_citation_review.html\n  graph_nodes: local_data\\organization\\trace_net\\citations\\trace_net_source_citation_graph_nodes.json\n  graph_edges: local_data\\organization\\trace_net\\citations\\trace_net_source_citation_graph_edges.json\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts\\group_trace_net_search_results.py"
+      ],
+      "elapsed_seconds": 0.218,
+      "name": "group",
+      "return_code": 0,
+      "status": "OK",
+      "stderr_tail": "",
+      "stdout_tail": "TRACE-Net search result grouper\n  Status: OK\n  Output dir: local_data\\organization\\trace_net\\search\n  Summary:\n    search_result_records: 8\n    grouped_page_records: 6\n    pages_found: 6\n    supporting_result_records: 8\n    unsafe_grouped_records: 0\n    excluded_grouped_records: 0\n    groups_with_multiple_buckets: 1\n    groups_with_citations: 6\n    top_group_score: 21.283721\n  Buckets: {'derived_context': 1, 'source_text_evidence': 6}\n  Top groups:\n    1. score=21.283721 page=t_p_120_1176_p000021 buckets=source_text_evidence support=1\n    2. score=18.146892 page=t_p_120_1176_p000005 buckets=source_text_evidence,derived_context support=3\n    3. score=14.346892 page=t_p_120_1176_p000024 buckets=source_text_evidence support=1\n    4. score=14.346892 page=t_p_120_1176_p000243 buckets=source_text_evidence support=1\n    5. score=14.346892 page=t_p_120_1176_p000362 buckets=source_text_evidence support=1\n    6. score=14.251892 page=t_p_120_1176_p000020 buckets=source_text_evidence support=1\nFiles written:\n  grouped_results: local_data\\organization\\trace_net\\search\\trace_net_search_grouped_results.json\n  grouped_results_jsonl: local_data\\organization\\trace_net\\search\\trace_net_search_grouped_results.jsonl\n  summary: local_data\\organization\\trace_net\\search\\trace_net_search_grouped_summary.json\n  review_md: local_data\\organization\\trace_net\\search\\trace_net_search_grouped_review.md\n  review_html: local_data\\organization\\trace_net\\search\\trace_net_search_grouped_review.html\n  graph_nodes: local_data\\organization\\trace_net\\search\\trace_net_search_grouped_graph_nodes.json\n  graph_edges: local_data\\organization\\trace_net\\search\\trace_net_search_grouped_graph_edges.json\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts\\compose_trace_net_answer.py"
+      ],
+      "elapsed_seconds": 0.214,
+      "name": "answer",
+      "return_code": 0,
+      "status": "OK",
+      "stderr_tail": "",
+      "stdout_tail": "TRACE-Net answer composer\n  Status: OK\n  Output dir: local_data\\organization\\trace_net\\answers\n  Summary:\n    query: vendor list\n    answer_page_records: 6\n    answer_evidence_records: 8\n    unsafe_answer_groups: 0\n    groups_with_citations: 6\n    missing_source_url_groups: 0\n    missing_tiff_path_groups: 0\n    missing_ocr_path_groups: 0\nFiles written:\n  answer_json: local_data\\organization\\trace_net\\answers\\trace_net_answer_draft.json\n  answer_md: local_data\\organization\\trace_net\\answers\\trace_net_answer_draft.md\n  answer_html: local_data\\organization\\trace_net\\answers\\trace_net_answer_draft.html\n  evidence_jsonl: local_data\\organization\\trace_net\\answers\\trace_net_answer_evidence.jsonl\n  summary: local_data\\organization\\trace_net\\answers\\trace_net_answer_summary.json\n  graph_nodes: local_data\\organization\\trace_net\\answers\\trace_net_answer_graph_nodes.json\n  graph_edges: local_data\\organization\\trace_net\\answers\\trace_net_answer_graph_edges.json\n"
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "answer_evidence_records": 8,
+    "answer_page_records": 6,
+    "citation_records": 1426,
+    "feedback_ask_answer_changed": true,
+    "feedback_ask_context_warning_signals_used": 0,
+    "feedback_ask_excluded_groups": 0,
+    "feedback_ask_feedback_signals_used": 2,
+    "feedback_ask_groups_adjusted": 2,
+    "feedback_ask_rank_changed_records": 2,
+    "feedback_ask_simulated_answer_pages": 3,
+    "feedback_ask_simulated_evidence_records": 8,
+    "feedback_ask_source_truth_mutations": 0,
+    "feedback_ask_status": "OK",
+    "feedback_ask_unsafe_groups": 0,
+    "feedback_search_context_warning_signals_used": 0,
+    "feedback_search_feedback_signals_used": 2,
+    "feedback_search_groups_adjusted": 2,
+    "feedback_search_rank_changed_records": 2,
+    "feedback_search_status": "OK",
+    "feedback_search_unsafe_results": 0,
+    "grouped_page_records": 6,
+    "grouped_supporting_result_records": 8,
+    "missing_ocr_path_groups": 0,
+    "missing_source_url_groups": 0,
+    "missing_tiff_path_groups": 0,
+    "search_pages_found": 6,
+    "search_result_records": 8,
+    "search_results_with_citations": 8,
+    "unsafe_answer_groups": 0
+  },
+  "version": "trace_net_ask_v1_1_feedback_mode",
+  "warnings": []
+}

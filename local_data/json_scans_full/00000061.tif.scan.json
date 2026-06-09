@@ -1,0 +1,216 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:03:28Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000061.tif",
+    "relative_path": "00000061.tif"
+  },
+  "file": {
+    "file_name": "00000061.tif",
+    "extension": ".tif",
+    "file_size_bytes": 55555,
+    "modified_time_utc": "2026-05-22T19:14:53Z",
+    "sha256": "cbf100dadc9f46067114f1f46bd5a4f253aeed9d59c70610c89ce8a0d1f73546"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3205,
+    "height_px": 4146,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.86,
+    "signals": [
+      "manual_title",
+      "ata_code",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "part_number",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": "UNITS",
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.25
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "ocr",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "T.P. 120/1176",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "20-2 1-Q0-535 00 1 20-2 1-Q0-31 160 3",
+    "section_title": null,
+    "figure_title": null,
+    "figure_number": null,
+    "effectivity": "ALL 2 5 2 1 0 0",
+    "ata_code": "25-21-00",
+    "page_number": 1040,
+    "page_label": "1040",
+    "issue_date": "Jan 15/01",
+    "revision_date": "Jan 15/01",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [
+      "PER STOCK PER STOCK",
+      "AN4-25A AN5-16A",
+      "PER STOCK",
+      "NI ASSY NUMBER"
+    ],
+    "metadata_confidence": 0.86
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\n2972 ITVUTLEN 1Ov Vv\n25-21-00-29A} -207 4\n25-21-00-30 -187 4\n25-21-00-30 160 3\n25-21-00-30A} 150 3\n25-21-00-30A] -176 4\n25-21-00-31 -187 4\n25-21-00-31 160 3\n25-21-00-31A}] 180 3\n25-21-00-31A] -207 4\n25-21-00-32 -187 4\n25-21-00-32 160 3\n25-21-00-33 -187 4\n25-21-00-33 160 3\n25-21-00-34 -187 4\n25-21-00-34 160 3\n25-21-00-43 -187 4\n25-21-00-44 -187 4\n25-21-00-45 -187 4\n25-21-00\nPage 1040\nT.P. 120/1176 Jan 15/01\n\n[bottom_strip]\n20-2 1-Q0-535 00 1 20-2 1-Q0-31 160 3\n25-21-00-84 60 1 25-21-00-31A] 180 3\n25-21-00-85 60 1 25-21-00-31A| -207 4\n25-21-00-86 60 1 25-21-00-32 -187 4\n25-21-00-87 60 1 25-21-00-32 160 3\n25-21-00-88 60 1 25-21-00-33 -187 4\n25-21-00-89 60 1 25-21-00-33 160 3\n25-21-00-90 60 1 25-21-00-34 -187 4\n25-21-00-91 60 1 25-21-00-34 160 3\n25-21-00-92 60 1 25-21-00-43 -187 4\n25-21-00-93 60 1 25-21-00-44 -187 4\n25-21-00-94 60 1 25-21-00-45 -187 4\nEFFECTIVITY: ALL 2 5 2 1 0 0\n= =\nPage 1040\nT.P. 120/1176 Jan 15/01\n\n[top_strip]\n-<\u20ac EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nPART NUMBER UNITS AIRLINE PART NUMBER UNITS AIRLINE\nPER STOCK PER STOCK\nCH-SEC-UN-FIG | ITEM) ASSY NUMBER CH-SEC-UN-FIG | ITEM] ASSY NUMBER\nAN4-25A AN5-16A\n| 25-21-00-35 130 1 25-21-00-95 60 1\n\n[right_strip]\nPER STOCK\nNi ASSY NUMBER\n) 1\n) 1\n) 1\n) 1\n) 1\n) 1\n) 1\n) 1\n) 1\n) 1\n) 1\n) 1\n2\n) 3\n2\n) 2\n2\n) 2\n) 3\n2\n4\n) 3\n) 3\n4\n4\n) 3\n) 3\n4\n4\n) 3\n) 3\n4\n4\n) 3\n4\n) 3\n4\n) 3\n4\n4\n4\n-00\nPage 1040\n6 Jan 15/01",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1602,
+          2404,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "2972 ITVUTLEN 1Ov Vv\n25-21-00-29A} -207 4\n25-21-00-30 -187 4\n25-21-00-30 160 3\n25-21-00-30A} 150 3\n25-21-00-30A] -176 4\n25-21-00-31 -187 4\n25-21-00-31 160 3\n25-21-00-31A}] 180 3\n25-21-00-31A] -207 4\n25-21-00-32 -187 4\n25-21-00-32 160 3\n25-21-00-33 -187 4\n25-21-00-33 160 3\n25-21-00-34 -187 4\n25-21-00-34 160 3\n25-21-00-43 -187 4\n25-21-00-44 -187 4\n25-21-00-45 -187 4\n25-21-00\nPage 1040\nT.P. 120/1176 Jan 15/01",
+        "char_count": 409,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2902,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "20-2 1-Q0-535 00 1 20-2 1-Q0-31 160 3\n25-21-00-84 60 1 25-21-00-31A] 180 3\n25-21-00-85 60 1 25-21-00-31A| -207 4\n25-21-00-86 60 1 25-21-00-32 -187 4\n25-21-00-87 60 1 25-21-00-32 160 3\n25-21-00-88 60 1 25-21-00-33 -187 4\n25-21-00-89 60 1 25-21-00-33 160 3\n25-21-00-90 60 1 25-21-00-34 -187 4\n25-21-00-91 60 1 25-21-00-34 160 3\n25-21-00-92 60 1 25-21-00-43 -187 4\n25-21-00-93 60 1 25-21-00-44 -187 4\n25-21-00-94 60 1 25-21-00-45 -187 4\nEFFECTIVITY: ALL 2 5 2 1 0 0\n= =\nPage 1040\nT.P. 120/1176 Jan 15/01",
+        "char_count": 500,
+        "error": "Image too small to scale!! (2x36 vs min width of 3)\r\nLine cannot be recognized!!\r\nImage too small to scale!! (2x36 vs min width of 3)\r\nLine cannot be recognized!!"
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3205,
+          746
+        ],
+        "status": "ok",
+        "text": "-<\u20ac EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nPART NUMBER UNITS AIRLINE PART NUMBER UNITS AIRLINE\nPER STOCK PER STOCK\nCH-SEC-UN-FIG | ITEM) ASSY NUMBER CH-SEC-UN-FIG | ITEM] ASSY NUMBER\nAN4-25A AN5-16A\n| 25-21-00-35 130 1 25-21-00-95 60 1",
+        "char_count": 251,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2179,
+          0,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "PER STOCK\nNi ASSY NUMBER\n) 1\n) 1\n) 1\n) 1\n) 1\n) 1\n) 1\n) 1\n) 1\n) 1\n) 1\n) 1\n2\n) 3\n2\n) 2\n2\n) 2\n) 3\n2\n4\n) 3\n) 3\n4\n4\n) 3\n) 3\n4\n4\n) 3\n) 3\n4\n4\n) 3\n4\n) 3\n4\n) 3\n4\n4\n4\n-00\nPage 1040\n6 Jan 15/01",
+        "char_count": 182,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": "UNITS",
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0.2
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "T.P. 120/1176",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "20-2 1-Q0-535 00 1 20-2 1-Q0-31 160 3",
+      "section_title": null,
+      "figure_title": null,
+      "figure_number": null,
+      "effectivity": "ALL 2 5 2 1 0 0",
+      "ata_code": "25-21-00",
+      "page_number": 1040,
+      "page_label": "1040",
+      "issue_date": "Jan 15/01",
+      "revision_date": "Jan 15/01",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [
+        "PER STOCK PER STOCK",
+        "AN4-25A AN5-16A",
+        "PER STOCK",
+        "NI ASSY NUMBER"
+      ],
+      "metadata_confidence": 0.86
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": "UNITS",
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0.2
+    }
+  }
+}

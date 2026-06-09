@@ -1,0 +1,216 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:10:08Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000370.tif",
+    "relative_path": "00000370.tif"
+  },
+  "file": {
+    "file_name": "00000370.tif",
+    "extension": ".tif",
+    "file_size_bytes": 37359,
+    "modified_time_utc": "2026-05-22T19:14:56Z",
+    "sha256": "e3f8f05c031707aac27c6c43a66c6c5804c257caddd014c07d39f775c33ef89e"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3205,
+    "height_px": 4146,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 1.0,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "part_numbers",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "120TP250082.MCE",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "A / /",
+    "section_title": null,
+    "figure_title": "Double Passenger Seat Structure (120-29068-01 7/027/039/059",
+    "figure_number": "88",
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": 1307,
+    "page_label": "1307",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [
+      "120-29068-017"
+    ],
+    "callouts": [
+      "A / /",
+      "LO 7"
+    ],
+    "metadata_confidence": 1.0
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\nA / /\n2\nj/}\n/ |\n/ I\n_\nNe SS\n240\n\\\n1201P250082,MCE |\nActure (120-29068-017/027/039/059)\n-igure 88\nSheet 1\n25 21 00 Page 1307\nT.P. 120/1176 Sep 30/98\n\n[bottom_strip]\nW\\O*\u201c en,\nSN / of j |\nSL] ]\nSN / | J 240\nen ee eee\n/ / /\n\u201c o /\nLO 7\n1201P250082, MCE |\nDouble Passenger Seat Structure (120-29068-01 7/027/039/059)\nFigure 88\nSheet 1\nEFFECTIVITY: ALL\n25 21 00 Page 1307\nT.P. 120/1176 Sep 30/98\n\n[top_strip]\n< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n100\n110\n10 \\ 7 VY 100\n\n[right_strip]\n100\n- 110\n100\na 110\nwe a 120\nWy 130\nSS ; 220\n200\n)\n120TP250082.MCE |\n)127/039/059)\n|\n- 21 -00 Page 1307\n120/1176 Sep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1602,
+          2404,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "A / /\n2\nj/}\n/ |\n/ I\n_\nNe SS\n240\n\\\n1201P250082,MCE |\nActure (120-29068-017/027/039/059)\n-igure 88\nSheet 1\n25 21 00 Page 1307\nT.P. 120/1176 Sep 30/98",
+        "char_count": 147,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2902,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "W\\O*\u201c en,\nSN / of j |\nSL] ]\nSN / | J 240\nen ee eee\n/ / /\n\u201c o /\nLO 7\n1201P250082, MCE |\nDouble Passenger Seat Structure (120-29068-01 7/027/039/059)\nFigure 88\nSheet 1\nEFFECTIVITY: ALL\n25 21 00 Page 1307\nT.P. 120/1176 Sep 30/98",
+        "char_count": 225,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3205,
+          746
+        ],
+        "status": "ok",
+        "text": "< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n100\n110\n10 \\ 7 VY 100",
+        "char_count": 78,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2179,
+          0,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "100\n- 110\n100\na 110\nwe a 120\nWy 130\nSS ; 220\n200\n)\n120TP250082.MCE |\n)127/039/059)\n|\n- 21 -00 Page 1307\n120/1176 Sep 30/98",
+        "char_count": 122,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "120TP250082.MCE",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "A / /",
+      "section_title": null,
+      "figure_title": "Double Passenger Seat Structure (120-29068-01 7/027/039/059",
+      "figure_number": "88",
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": 1307,
+      "page_label": "1307",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [
+        "120-29068-017"
+      ],
+      "callouts": [
+        "A / /",
+        "LO 7"
+      ],
+      "metadata_confidence": 1.0
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

@@ -1,0 +1,44 @@
+# TRACE-Net Weighted Search Simulation v1
+
+Status: **OK**  Version: `trace_net_weighted_search_simulation_v1`
+
+## Summary
+
+| Metric | Value |
+|---|---|
+| query_fingerprint | query:passenger_seat |
+| weights_policy_version | trace_net_weights_policy_v1 |
+| grouped_input_records | 10 |
+| weighted_group_records | 10 |
+| feedback_enabled | True |
+| matching_feedback_signal_records | 0 |
+| feedback_signals_used | 0 |
+| groups_with_feedback_adjustment | 0 |
+| rank_changed_records | 0 |
+| unsafe_weighted_records | 0 |
+| excluded_weighted_records | 0 |
+| source_truth_mutation_records | 0 |
+| context_warning_signals_used | 0 |
+| top_page_before | t_p_120_1176_p000082 |
+| top_page_after | t_p_120_1176_p000082 |
+
+## Weighted ranking
+
+| Weighted rank | Original rank | Page | Weighted score | Current group | Bucket | Diversity | Exact | Confidence | Feedback | Buckets |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | t_p_120_1176_p000082 | 42.976627 | 24.689877 | 5.0 | 0.0 | 14.0 | 2.43675 | 0.0 | source_text_evidence |
+| 2 | 2 | t_p_120_1176_p000092 | 42.976627 | 24.689877 | 5.0 | 0.0 | 14.0 | 2.43675 | 0.0 | source_text_evidence |
+| 3 | 3 | t_p_120_1176_p000098 | 42.976627 | 24.689877 | 5.0 | 0.0 | 14.0 | 2.43675 | 0.0 | source_text_evidence |
+| 4 | 4 | t_p_120_1176_p000122 | 42.976627 | 24.689877 | 5.0 | 0.0 | 14.0 | 2.43675 | 0.0 | source_text_evidence |
+| 5 | 5 | t_p_120_1176_p000128 | 42.976627 | 24.689877 | 5.0 | 0.0 | 14.0 | 2.43675 | 0.0 | source_text_evidence |
+| 6 | 6 | t_p_120_1176_p000134 | 42.976627 | 24.689877 | 5.0 | 0.0 | 14.0 | 2.43675 | 0.0 | source_text_evidence |
+| 7 | 7 | t_p_120_1176_p000140 | 42.976627 | 24.689877 | 5.0 | 0.0 | 14.0 | 2.43675 | 0.0 | source_text_evidence |
+| 8 | 8 | t_p_120_1176_p000228 | 42.976627 | 24.689877 | 5.0 | 0.0 | 14.0 | 2.43675 | 0.0 | source_text_evidence |
+| 9 | 9 | t_p_120_1176_p000240 | 42.976627 | 24.689877 | 5.0 | 0.0 | 14.0 | 2.43675 | 0.0 | source_text_evidence |
+| 10 | 10 | t_p_120_1176_p000246 | 42.976627 | 24.689877 | 5.0 | 0.0 | 14.0 | 2.43675 | 0.0 | source_text_evidence |
+
+## Feedback adjustments
+
+| Page | Feedback adjustment | Signals |
+|---|---|---|
+| None | 0 | No validated feedback signals applied |

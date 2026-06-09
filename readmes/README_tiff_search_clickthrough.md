@@ -1,4 +1,4 @@
-# TIFF Search Click-Through HTML
+ch# TIFF Search Click-Through HTML
 
 This add-on creates a local HTML page with the top search results. Each result has clickable links for the TIFF page and OCR text file.
 

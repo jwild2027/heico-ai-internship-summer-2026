@@ -1,0 +1,213 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:12:59Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000504.tif",
+    "relative_path": "00000504.tif"
+  },
+  "file": {
+    "file_name": "00000504.tif",
+    "extension": ".tif",
+    "file_size_bytes": 29454,
+    "modified_time_utc": "2026-05-22T19:14:57Z",
+    "sha256": "cf1ca62b16178cefe155e3a2abcef410b324ec89b18525fea6d109952c8056de"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.98,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "120CMM250106.MCE",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "REPAIR SLEEVE",
+    "section_title": null,
+    "figure_title": "i Typical Repair to Metal Seat Back Frame",
+    "figure_number": "614",
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": 630,
+    "page_label": "630",
+    "issue_date": "Jan 15/01",
+    "revision_date": "Jan 15/01",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [
+      "REPAIR SLEEVE",
+      "SAL",
+      "CRACK"
+    ],
+    "metadata_confidence": 0.98
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\n| | |\nJ\n_ 129.54\n(5.10)\n215.90\n(8.50) >\nREPAIR SLEEVE\n__ 177.80\n(7.00)\n120CMM250106.MCE\n| Seat Back Frame\n514\n25 21 00 Page 630\nT.P. 120/1176 Jan 15/01\n\n[bottom_strip]\nSZ (0.656) F (8.50) |\n109.20 REPAIR SLEEVE\n(4.30)\nDIMENSIONS: (in) woo\n120CMM250106.MCE\ni Typical Repair to Metal Seat Back Frame\nFigure 614\nEFFECTIVITY: ALL\n25 21 00 Page 630\nT.P. 120/1176 Jan 15/01\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n| ~~ DETAILA\nSN \\ f SSA\n\n[right_strip]\nA>\n{ SAL\ni so\n\\ SN\n| ~~\n|\n_\n/ \u201cey\ni \u201cwy\n/ sO\n/ ~~.\n/\nSMe\nB\n'B\nCRACK\n\u201c\nREPAIR SLEEVE\n120CMM250106.MCE\n-00\nPage 630\n1176 Jan 15/01",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "| | |\nJ\n_ 129.54\n(5.10)\n215.90\n(8.50) >\nREPAIR SLEEVE\n__ 177.80\n(7.00)\n120CMM250106.MCE\n| Seat Back Frame\n514\n25 21 00 Page 630\nT.P. 120/1176 Jan 15/01",
+        "char_count": 151,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "SZ (0.656) F (8.50) |\n109.20 REPAIR SLEEVE\n(4.30)\nDIMENSIONS: (in) woo\n120CMM250106.MCE\ni Typical Repair to Metal Seat Back Frame\nFigure 614\nEFFECTIVITY: ALL\n25 21 00 Page 630\nT.P. 120/1176 Jan 15/01",
+        "char_count": 199,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n| ~~ DETAILA\nSN \\ f SSA",
+        "char_count": 81,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "A>\n{ SAL\ni so\n\\ SN\n| ~~\n|\n_\n/ \u201cey\ni \u201cwy\n/ sO\n/ ~~.\n/\nSMe\nB\n'B\nCRACK\n\u201c\nREPAIR SLEEVE\n120CMM250106.MCE\n-00\nPage 630\n1176 Jan 15/01",
+        "char_count": 128,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "120CMM250106.MCE",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "REPAIR SLEEVE",
+      "section_title": null,
+      "figure_title": "i Typical Repair to Metal Seat Back Frame",
+      "figure_number": "614",
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": 630,
+      "page_label": "630",
+      "issue_date": "Jan 15/01",
+      "revision_date": "Jan 15/01",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [
+        "REPAIR SLEEVE",
+        "SAL",
+        "CRACK"
+      ],
+      "metadata_confidence": 0.98
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

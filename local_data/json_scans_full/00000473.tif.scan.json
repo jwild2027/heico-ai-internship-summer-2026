@@ -1,0 +1,202 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:12:19Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000473.tif",
+    "relative_path": "00000473.tif"
+  },
+  "file": {
+    "file_name": "00000473.tif",
+    "extension": ".tif",
+    "file_size_bytes": 39932,
+    "modified_time_utc": "2026-05-22T19:14:57Z",
+    "sha256": "a5dc03e8d8ce65085999364f186a1819159509d1e0000012937e93b0cdf7d1cb"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3205,
+    "height_px": 4146,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "maintenance_manual_ipl",
+    "confidence": 0.58,
+    "signals": [
+      "manual_title",
+      "component_title",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "maintenance_manual_ipl",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": null,
+    "publication_number": null,
+    "component_title": "-<\u20ac EMBRAER",
+    "section_title": null,
+    "figure_title": null,
+    "figure_number": null,
+    "effectivity": "ALL 25 -2 1 -00",
+    "ata_code": null,
+    "page_number": 404,
+    "page_label": "404",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [],
+    "metadata_confidence": 0.58
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "top_strip",
+    "combined_text": "[bottom_right_title_block]\n25-21 -00 Page 404\n\n[bottom_strip]\nEFFECTIVITY: ALL 25 -2 1 -00\nSep 30/8\n\n[top_strip]\n-<\u20ac EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n(5) It is recommended that the machine be loaded to about 70% of its rated capacity. Loads of\nhigher than 70% may impair the cleaning efficiency and accelerate abrasion on the fabric.\nUnderloading may lead to the impairment of the flame retardant properties due to detergent\nabsorption or excessive shrinkage.\n\n[right_strip]\nrated capacity. Loads of\nabrasion on the fabric.\nperties due to detergent\nh as sorbitan mono-ole-\ng/l detergent. The addi-\nig pump to the cage ina\nnt manufacturer for the\n| the filter for 7 - 10 min-\ns; centrifuged.\n'3 - 5 minutes from the\nhe cage. This solvent is\nart is the next cycle. The\n-00 Page 404\nSep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1602,
+          2404,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "25-21 -00 Page 404",
+        "char_count": 18,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2902,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "EFFECTIVITY: ALL 25 -2 1 -00\nSep 30/8",
+        "char_count": 37,
+        "error": "Image too small to scale!! (2x36 vs min width of 3)\r\nLine cannot be recognized!!\r\nImage too small to scale!! (2x36 vs min width of 3)\r\nLine cannot be recognized!!"
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3205,
+          746
+        ],
+        "status": "ok",
+        "text": "-<\u20ac EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n(5) It is recommended that the machine be loaded to about 70% of its rated capacity. Loads of\nhigher than 70% may impair the cleaning efficiency and accelerate abrasion on the fabric.\nUnderloading may lead to the impairment of the flame retardant properties due to detergent\nabsorption or excessive shrinkage.",
+        "char_count": 368,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2179,
+          0,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "rated capacity. Loads of\nabrasion on the fabric.\nperties due to detergent\nh as sorbitan mono-ole-\ng/l detergent. The addi-\nig pump to the cage ina\nnt manufacturer for the\n| the filter for 7 - 10 min-\ns; centrifuged.\n'3 - 5 minutes from the\nhe cage. This solvent is\nart is the next cycle. The\n-00 Page 404\nSep 30/98",
+        "char_count": 314,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "maintenance_manual_ipl",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": null,
+      "publication_number": null,
+      "component_title": "-<\u20ac EMBRAER",
+      "section_title": null,
+      "figure_title": null,
+      "figure_number": null,
+      "effectivity": "ALL 25 -2 1 -00",
+      "ata_code": null,
+      "page_number": 404,
+      "page_label": "404",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [],
+      "metadata_confidence": 0.58
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

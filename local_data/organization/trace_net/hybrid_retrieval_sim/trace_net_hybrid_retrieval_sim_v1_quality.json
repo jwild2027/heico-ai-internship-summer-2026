@@ -1,0 +1,234 @@
+{
+  "checks": [
+    {
+      "actual": 5,
+      "expected": ">=5",
+      "name": "hybrid_query_count_min",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 5,
+      "expected": ">=5",
+      "name": "queries_with_results_min",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 40,
+      "expected": ">=25",
+      "name": "grouped_result_count_min",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 40,
+      "expected": ">=25",
+      "name": "candidate_hit_count_min",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 40,
+      "expected": ">=25",
+      "name": "page_profile_hit_count_min",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 40,
+      "expected": ">=25",
+      "name": "resolved_candidate_hit_count_min",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 40,
+      "expected": ">=25",
+      "name": "resolved_page_profile_hit_count_min",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "missing_page_id_count_zero",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "unsafe_result_count_zero",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "unsafe_hit_payload_count_zero",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "direct_answer_allowed_result_count_zero",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "claim_proof_allowed_without_authority_count_zero",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_count_zero",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "answer_capable_page_profile_hit_count_zero",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "context_helper_answer_allowed_hit_count_zero",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "source_evidence_answer_allowed_hit_count_zero",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "requires_source_resolution_false_count_zero",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "requires_citation_false_count_zero",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "requires_authority_gate_false_count_zero",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 1476,
+      "expected": ">=1476",
+      "name": "candidate_collection_count_min",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 509,
+      "expected": ">=509",
+      "name": "page_profile_collection_count_min",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 1476,
+      "expected": 1476,
+      "name": "candidate_collection_count_exact",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 509,
+      "expected": 509,
+      "name": "page_profile_collection_count_exact",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": 1024,
+      "expected": 1024,
+      "name": "embedding_dim_exact",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "vector_smoke_status_pass",
+      "passed": true,
+      "severity": "error"
+    }
+  ],
+  "schema_version": "trace_net_hybrid_retrieval_sim_v1",
+  "status": "PASS",
+  "summary": {
+    "answer_capable_page_profile_hit_count": 0,
+    "authority_counts": {
+      "ocr_text_claim_with_citation": 16,
+      "page_route_only": 40,
+      "part_page_relationship": 11,
+      "retrieval_helper_only": 5,
+      "source_exists_only": 8
+    },
+    "bucket_counts": {
+      "context_retrieval_helper": 5,
+      "page_retrieval_profile": 40,
+      "source_evidence": 8,
+      "source_text_evidence": 16,
+      "verified_part_evidence": 11
+    },
+    "candidate_artifact_count": 1476,
+    "candidate_collection": "trace_net_embedding_candidates_v1",
+    "candidate_collection_count": 1476,
+    "candidate_hit_count": 40,
+    "claim_proof_allowed_without_authority_count": 0,
+    "context_helper_answer_allowed_hit_count": 0,
+    "direct_answer_allowed_result_count": 0,
+    "embedding_dim": 1024,
+    "embedding_mode": "ollama",
+    "embedding_model_name": "bge-m3:latest",
+    "grouped_result_count": 40,
+    "hybrid_query_count": 5,
+    "missing_page_id_count": 0,
+    "page_profile_artifact_count": 509,
+    "page_profile_collection": "trace_net_page_retrieval_profiles_v1",
+    "page_profile_collection_count": 509,
+    "page_profile_hit_count": 40,
+    "queries_with_candidate_hits_count": 5,
+    "queries_with_page_profile_hits_count": 5,
+    "queries_with_results_count": 5,
+    "requires_authority_gate_false_count": 0,
+    "requires_citation_false_count": 0,
+    "requires_source_resolution_false_count": 0,
+    "resolved_candidate_hit_count": 40,
+    "resolved_page_profile_hit_count": 40,
+    "schema_version": "trace_net_hybrid_retrieval_sim_v1",
+    "source_evidence_answer_allowed_hit_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "total_hit_count": 80,
+    "unique_group_page_count": 38,
+    "unresolved_candidate_hit_count": 0,
+    "unresolved_page_profile_hit_count": 0,
+    "unsafe_hit_payload_count": 0,
+    "unsafe_reason_counts": {},
+    "unsafe_result_count": 0,
+    "vector_smoke_status": "PASS"
+  }
+}

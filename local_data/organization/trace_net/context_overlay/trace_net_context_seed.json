@@ -1,0 +1,444 @@
+{
+  "overlay_version": "trace_net_context_overlay_v1",
+  "snapshot_id": "trace_net_context_overlay:current_architecture_v1",
+  "title": "TRACE-Net architecture and local data summary context",
+  "description": "Lightweight operator/context overlay for the local TRACE-Net prototype. This is not source evidence and must not be treated as answer-authoritative manual content.",
+  "source_kind": "chat_handoff_and_diagram_summary",
+  "source_refs": [
+    "trace_net_project_handoff_for_new_chat.md",
+    "mermaid-diagram (3).png",
+    "mermaid-diagram (4).png",
+    "mermaid-diagram (5).png",
+    "mermaid-diagram (6).png",
+    "mermaid-diagram (7).png",
+    "mermaid-diagram (8).png",
+    "mermaid-diagram (9).png"
+  ],
+  "payload": {
+    "intended_use": [
+      "operator_context",
+      "architecture_memory",
+      "pipeline_explorer_context",
+      "future_admin_rag_context"
+    ],
+    "blocked_use": [
+      "manual_answer_evidence",
+      "source_text_evidence",
+      "verified_part_evidence",
+      "direct_llm_answer_authority"
+    ],
+    "architecture_summary": "Raw TIFF/source files become source-traceable page/OCR records, then graph-backed evidence candidates. Evidence candidates pass through consensus, confidence/risk scoring, layer-specific trust policy, and Stage 5b RAG eligibility before they can be indexed for future retrieval."
+  },
+  "items": [
+    {
+      "item_type": "system_goal",
+      "item_key": "five_tb_server_architecture_test",
+      "title": "5TB server architecture test",
+      "summary": "The current 509-page TIFF/OCR project is a small-scale architecture test for a future 5TB document intelligence server.",
+      "payload": {
+        "target_pipeline": "tiff_to_ocr_to_postgres_graph_to_embeddings_to_answer"
+      }
+    },
+    {
+      "item_type": "architecture_invariant",
+      "item_key": "truth_recall_presentation_split",
+      "title": "Truth, recall, and presentation split",
+      "summary": "Files are storage, Postgres is truth/control, graph is structure, vector DB is recall, LLM is presentation, and citations are mandatory.",
+      "payload": {
+        "files": "raw and derived artifact storage",
+        "postgres": "metadata, graph, decisions, eligibility, citations",
+        "vector_db": "rebuildable recall index",
+        "llm": "answer composition only"
+      }
+    },
+    {
+      "item_type": "source_package",
+      "item_key": "metadata_zip_509_tiff_pages",
+      "title": "metadata.zip source package",
+      "summary": "Local package contains metadata.zip, 509 TIFF pages, and metadata.xml/source metadata used to build the source trace graph.",
+      "payload": {
+        "page_count": 509,
+        "source_archive": "metadata.zip",
+        "source_metadata": "metadata.xml"
+      }
+    },
+    {
+      "item_type": "pipeline_stage",
+      "item_key": "local_rescarta_package",
+      "title": "Local ResCarta-style source package",
+      "summary": "Normalizes local package paths, TIFF paths, OCR paths, and source URLs before source/OCR audit.",
+      "payload": {
+        "stage_order": 10
+      }
+    },
+    {
+      "item_type": "pipeline_stage",
+      "item_key": "source_ocr_audits",
+      "title": "Source + OCR audits",
+      "summary": "Checks source traceability, OCR coverage, and package matching before document organization.",
+      "payload": {
+        "stage_order": 20
+      }
+    },
+    {
+      "item_type": "pipeline_stage",
+      "item_key": "document_organization",
+      "title": "Document organization layer",
+      "summary": "Builds manual tree, ATA groups, page index, part catalog, and part mentions.",
+      "payload": {
+        "stage_order": 30
+      }
+    },
+    {
+      "item_type": "pipeline_stage",
+      "item_key": "core_source_graph",
+      "title": "Core source graph",
+      "summary": "Anchors Document, ATA Section, Page, Source Link, TIFF, OCR, Part Mention, and Canonical Part nodes.",
+      "payload": {
+        "stage_order": 40,
+        "core_node_types": [
+          "Document",
+          "ATA Section",
+          "Page",
+          "Source Link",
+          "TIFF Source File",
+          "OCR Text/File",
+          "Part Mention",
+          "Canonical Part"
+        ]
+      }
+    },
+    {
+      "item_type": "pipeline_stage",
+      "item_key": "page_character_card",
+      "title": "Page character card",
+      "summary": "Per-page routing summary of source, OCR, role, image class, parts, and traits.",
+      "payload": {
+        "stage_order": 50
+      }
+    },
+    {
+      "item_type": "pipeline_stage",
+      "item_key": "trace_net_router",
+      "title": "TRACE-Net router",
+      "summary": "Routes page candidates into source trace, visual text, table candidate, table crop/tile, table tile text, and part catalog paths.",
+      "payload": {
+        "stage_order": 60
+      }
+    },
+    {
+      "item_type": "overlay",
+      "item_key": "page_context_overlay",
+      "title": "Page context overlay",
+      "summary": "Adds page roles, page summaries, highlighted parts, and page context nodes. This is routing/context only, not source truth.",
+      "payload": {
+        "expected_page_contexts": 509,
+        "expected_has_context_edges": 509,
+        "expected_tagged_as_edges": 1706,
+        "expected_highlights_part_edges": 1070
+      }
+    },
+    {
+      "item_type": "overlay",
+      "item_key": "image_recognition_overlay",
+      "title": "Image recognition overlay",
+      "summary": "Adds visual classes such as table/grid, figure, blank, ink ratio, and visual/layout signals.",
+      "payload": {
+        "authority": "routing_signal_only"
+      }
+    },
+    {
+      "item_type": "overlay",
+      "item_key": "entity_trait_overlay",
+      "title": "Entity-trait overlay",
+      "summary": "Creates page character cards, part character cards, and trait assertions for graph/routing support.",
+      "payload": {
+        "authority": "supporting_context_only"
+      }
+    },
+    {
+      "item_type": "route",
+      "item_key": "source_trace_route",
+      "title": "Source trace route",
+      "summary": "Deterministic graph traversal over source URL, TIFF, OCR, and page graph links.",
+      "payload": {
+        "allowed_rag_action": "include_as_source_evidence"
+      }
+    },
+    {
+      "item_type": "route",
+      "item_key": "visual_text_route",
+      "title": "Visual text route",
+      "summary": "Uses LLaVA/visual extraction as OCR assist, with cleanup/repair and strict leakage/risk checks.",
+      "payload": {
+        "allowed_rag_action": "derived_context_only_when_policy_allows",
+        "max_trust_tier": "B"
+      }
+    },
+    {
+      "item_type": "route",
+      "item_key": "table_candidate_route",
+      "title": "Table candidate route",
+      "summary": "Finds likely table pages from graph traits and image layout. Candidate status is only a routing signal until tiles/text exist.",
+      "payload": {
+        "allowed_rag_action": "no_direct_rag"
+      }
+    },
+    {
+      "item_type": "route",
+      "item_key": "table_crop_tile_route",
+      "title": "Table crop/tile route",
+      "summary": "Creates table tile images after graph gate and layout gate. Tile images are preprocessing artifacts, not direct RAG material.",
+      "payload": {
+        "allowed_rag_action": "exclude_until_table_text_exists"
+      }
+    },
+    {
+      "item_type": "route",
+      "item_key": "table_tile_text_route",
+      "title": "Table tile text route",
+      "summary": "Extracts and refines text from table tiles using OCR baseline, part filtering, catalog support, index labels, and ATA codes.",
+      "payload": {
+        "allowed_rag_action": "include_as_derived_context_when_supported"
+      }
+    },
+    {
+      "item_type": "route",
+      "item_key": "part_catalog_route",
+      "title": "Part catalog route",
+      "summary": "Verifies part mentions against canonical part catalog and nomenclature records.",
+      "payload": {
+        "allowed_rag_action": "include_as_verified_part_evidence"
+      }
+    },
+    {
+      "item_type": "pipeline_stage",
+      "item_key": "evidence_consensus_router",
+      "title": "Evidence consensus router",
+      "summary": "Collects page+layer+artifact evidence candidates and checks OCR support, graph support, part catalog support, source traceability, and hallucination/leakage risk.",
+      "payload": {
+        "stage_order": 70
+      }
+    },
+    {
+      "item_type": "pipeline_stage",
+      "item_key": "trace_lc_confidence_policy",
+      "title": "TRACE-LC confidence policy",
+      "summary": "Computes support score, risk score, usable confidence, and confidence tier A/B/C/D before layer-specific policy is applied.",
+      "payload": {
+        "stage_order": 80,
+        "formula": "usable_confidence = support_score * (1 - risk_score)"
+      }
+    },
+    {
+      "item_type": "pipeline_stage",
+      "item_key": "stage5b_controlled_decision",
+      "title": "Stage 5b controlled decision view",
+      "summary": "Applies layer-specific policy to assign RAG, repair, and review actions. This is the gate before RAG eligibility.",
+      "payload": {
+        "stage_order": 90
+      }
+    },
+    {
+      "item_type": "pipeline_stage",
+      "item_key": "rag_eligibility_builder",
+      "title": "RAG eligibility builder",
+      "summary": "Splits controlled decision records into source evidence, verified part evidence, derived context, and excluded pools.",
+      "payload": {
+        "stage_order": 100
+      }
+    },
+    {
+      "item_type": "pipeline_stage",
+      "item_key": "future_rag_candidate_indexer",
+      "title": "Future RAG candidate indexer",
+      "summary": "Future BM25/vector/graph retrieval layer should index only RAG-eligible candidates with stable source and citation identity.",
+      "payload": {
+        "stage_order": 110
+      }
+    },
+    {
+      "item_type": "policy_rule",
+      "item_key": "source_trace_policy",
+      "title": "Source truth policy",
+      "summary": "source_trace can reach max A and may be used as source evidence when source links and page/OCR traceability are valid.",
+      "payload": {
+        "layer": "source_trace",
+        "max_tier": "A",
+        "rag_bucket": "source_evidence"
+      }
+    },
+    {
+      "item_type": "policy_rule",
+      "item_key": "part_catalog_policy",
+      "title": "Verified part policy",
+      "summary": "part_catalog can reach max A and may be used as verified part evidence when catalog support is present.",
+      "payload": {
+        "layer": "part_catalog",
+        "max_tier": "A",
+        "rag_bucket": "verified_part_evidence"
+      }
+    },
+    {
+      "item_type": "policy_rule",
+      "item_key": "table_candidate_policy",
+      "title": "Table candidate routing policy",
+      "summary": "table_candidate is a routing signal and cannot go directly to RAG; it must create table tiles first.",
+      "payload": {
+        "layer": "table_candidate",
+        "rag_bucket": "none",
+        "blocked_until": "table_tiles_exist"
+      }
+    },
+    {
+      "item_type": "policy_rule",
+      "item_key": "table_tiles_policy",
+      "title": "Table tile preprocessing policy",
+      "summary": "table_tiles are preprocessing artifacts and cannot go directly to RAG; text must be extracted/refined first.",
+      "payload": {
+        "layer": "table_tiles",
+        "rag_bucket": "none",
+        "blocked_until": "table_text_exists"
+      }
+    },
+    {
+      "item_type": "policy_rule",
+      "item_key": "table_tile_text_refined_policy",
+      "title": "Derived table text policy",
+      "summary": "table_tile_text_refined may be A/B/C within its layer but only enters RAG as derived context, not source truth.",
+      "payload": {
+        "layer": "table_tile_text_refined",
+        "rag_bucket": "derived_context"
+      }
+    },
+    {
+      "item_type": "policy_rule",
+      "item_key": "visual_text_policy",
+      "title": "Model-derived visual policy",
+      "summary": "visual_text is model-derived, max B, and has hard blocks for prompt leakage, metadata leakage, refusal-like output, and hallucination risk.",
+      "payload": {
+        "layer": "visual_text",
+        "max_tier": "B",
+        "rag_bucket": "derived_context_when_safe"
+      }
+    },
+    {
+      "item_type": "rag_bucket",
+      "item_key": "source_evidence_pool",
+      "title": "Source evidence pool",
+      "summary": "Stage 5b/RAG eligibility pool for source-traceable page/source records.",
+      "payload": {
+        "record_count": 509,
+        "future_index": "source_citation_index"
+      }
+    },
+    {
+      "item_type": "rag_bucket",
+      "item_key": "verified_part_evidence_pool",
+      "title": "Verified part evidence pool",
+      "summary": "Stage 5b/RAG eligibility pool for part records with catalog support.",
+      "payload": {
+        "record_count": 362,
+        "future_index": "part_evidence_index"
+      }
+    },
+    {
+      "item_type": "rag_bucket",
+      "item_key": "derived_context_pool",
+      "title": "Derived context pool",
+      "summary": "Stage 5b/RAG eligibility pool for safe derived context, useful for routing and supporting context but not source truth.",
+      "payload": {
+        "record_count": 60,
+        "future_index": "derived_context_index"
+      }
+    },
+    {
+      "item_type": "rag_bucket",
+      "item_key": "excluded_pool",
+      "title": "Excluded pool",
+      "summary": "Records excluded from RAG and sent to repair/review queue.",
+      "payload": {
+        "record_count": 882,
+        "future_index": "repair_review_queue"
+      }
+    },
+    {
+      "item_type": "graph_schema",
+      "item_key": "page_hub_schema",
+      "title": "Page hub graph schema",
+      "summary": "Page is the central graph hub connecting source links, TIFF, OCR, part mentions, context, image recognition, tables, visual text, repair plans, evidence consensus, and RAG eligibility.",
+      "payload": {
+        "hub_node_type": "Page"
+      }
+    },
+    {
+      "item_type": "future_requirement",
+      "item_key": "embedding_records_from_eligible_candidates_only",
+      "title": "Embeddings only from eligible candidates",
+      "summary": "Future embeddings/vector DB should be rebuildable from Postgres and should index only approved RAG candidates with stable candidate, page, source, and citation IDs.",
+      "payload": {
+        "blocked_inputs": [
+          "excluded_records",
+          "raw_table_candidates",
+          "raw_visual_text",
+          "unverified_model_output"
+        ]
+      }
+    }
+  ],
+  "metrics": [
+    {"metric_key": "pages", "metric_value": 509, "metric_unit": "records", "metric_label": "Pages"},
+    {"metric_key": "ocr_records", "metric_value": 509, "metric_unit": "records", "metric_label": "OCR records"},
+    {"metric_key": "ocr_text_records", "metric_value": 495, "metric_unit": "records", "metric_label": "OCR text records"},
+    {"metric_key": "graph_nodes", "metric_value": 30865, "metric_unit": "records", "metric_label": "Graph nodes"},
+    {"metric_key": "graph_edges", "metric_value": 112316, "metric_unit": "records", "metric_label": "Graph edges"},
+    {"metric_key": "safe_rag_candidates", "metric_value": 1426, "metric_unit": "records", "metric_label": "Safe RAG candidates"},
+    {"metric_key": "citations", "metric_value": 1426, "metric_unit": "records", "metric_label": "Citations"},
+    {"metric_key": "evidence_consensus_records", "metric_value": 1813, "metric_unit": "records", "metric_label": "Evidence consensus records"},
+    {"metric_key": "stage5b_decision_records", "metric_value": 1813, "metric_unit": "records", "metric_label": "Stage 5b decision records"},
+    {"metric_key": "rag_eligibility_records", "metric_value": 1813, "metric_unit": "records", "metric_label": "RAG eligibility records"},
+    {"metric_key": "feedback_events", "metric_value": 3, "metric_unit": "records", "metric_label": "Feedback events"},
+    {"metric_key": "feedback_policy_signals", "metric_value": 2, "metric_unit": "records", "metric_label": "Feedback policy signals"}
+  ],
+  "edges": [
+    {"source_key": "five_tb_server_architecture_test", "edge_type": "USES_ARCHITECTURE_INVARIANT", "target_key": "truth_recall_presentation_split"},
+    {"source_key": "metadata_zip_509_tiff_pages", "edge_type": "NEXT_STAGE", "target_key": "local_rescarta_package"},
+    {"source_key": "local_rescarta_package", "edge_type": "NEXT_STAGE", "target_key": "source_ocr_audits"},
+    {"source_key": "source_ocr_audits", "edge_type": "NEXT_STAGE", "target_key": "document_organization"},
+    {"source_key": "document_organization", "edge_type": "NEXT_STAGE", "target_key": "core_source_graph"},
+    {"source_key": "core_source_graph", "edge_type": "CREATES_PAGE_CONTEXT", "target_key": "page_character_card"},
+    {"source_key": "page_character_card", "edge_type": "ROUTES_TO", "target_key": "trace_net_router"},
+    {"source_key": "core_source_graph", "edge_type": "HAS_OVERLAY", "target_key": "page_context_overlay"},
+    {"source_key": "core_source_graph", "edge_type": "HAS_OVERLAY", "target_key": "image_recognition_overlay"},
+    {"source_key": "core_source_graph", "edge_type": "HAS_OVERLAY", "target_key": "entity_trait_overlay"},
+    {"source_key": "trace_net_router", "edge_type": "ROUTE", "target_key": "source_trace_route"},
+    {"source_key": "trace_net_router", "edge_type": "ROUTE", "target_key": "visual_text_route"},
+    {"source_key": "trace_net_router", "edge_type": "ROUTE", "target_key": "table_candidate_route"},
+    {"source_key": "trace_net_router", "edge_type": "ROUTE", "target_key": "table_crop_tile_route"},
+    {"source_key": "trace_net_router", "edge_type": "ROUTE", "target_key": "table_tile_text_route"},
+    {"source_key": "trace_net_router", "edge_type": "ROUTE", "target_key": "part_catalog_route"},
+    {"source_key": "source_trace_route", "edge_type": "SUBMITS_CANDIDATES_TO", "target_key": "evidence_consensus_router"},
+    {"source_key": "visual_text_route", "edge_type": "SUBMITS_CANDIDATES_TO", "target_key": "evidence_consensus_router"},
+    {"source_key": "table_candidate_route", "edge_type": "SUBMITS_CANDIDATES_TO", "target_key": "evidence_consensus_router"},
+    {"source_key": "table_crop_tile_route", "edge_type": "SUBMITS_CANDIDATES_TO", "target_key": "evidence_consensus_router"},
+    {"source_key": "table_tile_text_route", "edge_type": "SUBMITS_CANDIDATES_TO", "target_key": "evidence_consensus_router"},
+    {"source_key": "part_catalog_route", "edge_type": "SUBMITS_CANDIDATES_TO", "target_key": "evidence_consensus_router"},
+    {"source_key": "evidence_consensus_router", "edge_type": "NEXT_STAGE", "target_key": "trace_lc_confidence_policy"},
+    {"source_key": "trace_lc_confidence_policy", "edge_type": "NEXT_STAGE", "target_key": "stage5b_controlled_decision"},
+    {"source_key": "stage5b_controlled_decision", "edge_type": "NEXT_STAGE", "target_key": "rag_eligibility_builder"},
+    {"source_key": "rag_eligibility_builder", "edge_type": "PRODUCES_BUCKET", "target_key": "source_evidence_pool"},
+    {"source_key": "rag_eligibility_builder", "edge_type": "PRODUCES_BUCKET", "target_key": "verified_part_evidence_pool"},
+    {"source_key": "rag_eligibility_builder", "edge_type": "PRODUCES_BUCKET", "target_key": "derived_context_pool"},
+    {"source_key": "rag_eligibility_builder", "edge_type": "PRODUCES_BUCKET", "target_key": "excluded_pool"},
+    {"source_key": "source_evidence_pool", "edge_type": "FEEDS", "target_key": "future_rag_candidate_indexer"},
+    {"source_key": "verified_part_evidence_pool", "edge_type": "FEEDS", "target_key": "future_rag_candidate_indexer"},
+    {"source_key": "derived_context_pool", "edge_type": "FEEDS", "target_key": "future_rag_candidate_indexer"},
+    {"source_key": "future_rag_candidate_indexer", "edge_type": "MUST_OBEY", "target_key": "embedding_records_from_eligible_candidates_only"},
+    {"source_key": "source_trace_policy", "edge_type": "ALLOWS_BUCKET", "target_key": "source_evidence_pool"},
+    {"source_key": "part_catalog_policy", "edge_type": "ALLOWS_BUCKET", "target_key": "verified_part_evidence_pool"},
+    {"source_key": "table_tile_text_refined_policy", "edge_type": "ALLOWS_BUCKET", "target_key": "derived_context_pool"},
+    {"source_key": "visual_text_policy", "edge_type": "MAY_ALLOW_BUCKET", "target_key": "derived_context_pool"},
+    {"source_key": "table_candidate_policy", "edge_type": "BLOCKS_DIRECT_RAG_TO", "target_key": "excluded_pool"},
+    {"source_key": "table_tiles_policy", "edge_type": "BLOCKS_DIRECT_RAG_TO", "target_key": "excluded_pool"}
+  ]
+}

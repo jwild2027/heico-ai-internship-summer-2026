@@ -1,0 +1,210 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:11:19Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000426.tif",
+    "relative_path": "00000426.tif"
+  },
+  "file": {
+    "file_name": "00000426.tif",
+    "extension": ".tif",
+    "file_size_bytes": 38517,
+    "modified_time_utc": "2026-05-22T19:14:56Z",
+    "sha256": "e050c51cb92ed0c93a9451feff263091e165aaada429bd08bde0f79cec47f780"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3205,
+    "height_px": 4146,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 1.0,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "part_numbers",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "120TP250093.MCE",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "OSA , / / / 240",
+    "section_title": null,
+    "figure_title": "ae A /",
+    "figure_number": "102",
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": 1363,
+    "page_label": "1363",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [
+      "120-29068-025"
+    ],
+    "callouts": [],
+    "metadata_confidence": 1.0
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\n1\nZoe\n( /\ni\n\\~\nr\n\u201840\n120TP250093.MCE\nt Structure (120-29068-025/027)\nigure 102\nSheet 1\n25 21 00 Page 1363\nT.P. 120/1176 Sep 30/98\n\n[bottom_strip]\na i: fi H |\nOSA , / / / 240\neo vA J J\nae A /\n120TP250093.MCE\nDouble Passenger Seat Structure (120-29068-025/027)\nFigure 102\nSheet 1\nEFFECTIVITY: ALL 25-21 -00\nPage 1363\nT.P. 120/1176 Sep 30/98\n\n[top_strip]\n< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n100\n100\n210 _ YL\n\n[right_strip]\n_ 100\n2 110\n100\nva 110\nwy 130\n\u2014 220\nOe 2 J\nS)), 200\n)\n120TP250093.MCE\n)25/027)\n_|\n- 21 -00 Page 1363\n120/1176 Sep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1602,
+          2404,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "1\nZoe\n( /\ni\n\\~\nr\n\u201840\n120TP250093.MCE\nt Structure (120-29068-025/027)\nigure 102\nSheet 1\n25 21 00 Page 1363\nT.P. 120/1176 Sep 30/98",
+        "char_count": 129,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2902,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "a i: fi H |\nOSA , / / / 240\neo vA J J\nae A /\n120TP250093.MCE\nDouble Passenger Seat Structure (120-29068-025/027)\nFigure 102\nSheet 1\nEFFECTIVITY: ALL 25-21 -00\nPage 1363\nT.P. 120/1176 Sep 30/98",
+        "char_count": 192,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3205,
+          746
+        ],
+        "status": "ok",
+        "text": "< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n100\n100\n210 _ YL",
+        "char_count": 73,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2179,
+          0,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "_ 100\n2 110\n100\nva 110\nwy 130\n\u2014 220\nOe 2 J\nS)), 200\n)\n120TP250093.MCE\n)25/027)\n_|\n- 21 -00 Page 1363\n120/1176 Sep 30/98",
+        "char_count": 119,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "120TP250093.MCE",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "OSA , / / / 240",
+      "section_title": null,
+      "figure_title": "ae A /",
+      "figure_number": "102",
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": 1363,
+      "page_label": "1363",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [
+        "120-29068-025"
+      ],
+      "callouts": [],
+      "metadata_confidence": 1.0
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

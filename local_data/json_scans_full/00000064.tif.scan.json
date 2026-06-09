@@ -1,0 +1,214 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:03:32Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000064.tif",
+    "relative_path": "00000064.tif"
+  },
+  "file": {
+    "file_name": "00000064.tif",
+    "extension": ".tif",
+    "file_size_bytes": 55494,
+    "modified_time_utc": "2026-05-22T19:14:53Z",
+    "sha256": "861c0593338515e0c69e2dead566f0dc4256728e2a445f2251e57d2413e8dc0e"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3205,
+    "height_px": 4146,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.86,
+    "signals": [
+      "manual_title",
+      "ata_code",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "part_number",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": "UNITS",
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.25
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "ocr",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "T.P. 120/1176",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "20-2 1-UU-94 TAQ ZZ Z20-21-UU-99 OU ZZ",
+    "section_title": null,
+    "figure_title": null,
+    "figure_number": null,
+    "effectivity": "ALL 2 5 2 1 00",
+    "ata_code": "25-21-00",
+    "page_number": 1043,
+    "page_label": "1043",
+    "issue_date": "Jan 15/01",
+    "revision_date": "Jan 15/01",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [
+      "PER STOCK PER STOCK",
+      "AN960-516 AN960-516",
+      "PER STOCK"
+    ],
+    "metadata_confidence": 0.86
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\n25-21 -00-89 50 2\n25-21 -00-90 50 2\n25-21 -00-91 50 2\n25-21 -00-92 50 2\n25-21 -00-93 50 2\n25-21 -00-94 50 2\n25-21 -00-95 50 2\n25-21 -00-96 50 2\n25-21 -00-97 50 2\n25-21 -00-98 50 2\n25-21 -00-99 50 2\n25-21 -00-100 50 2\n25-21-00-101 50 2\n25-21-00-102 50 2\n25-21 -00-103 50 2\n25-21-00-104 50 2\n25-21 -00-105 50 2\n25-21 -00-106 50 2\n25-21-00\nPage 1043\nT.P. 120/1176 Jan 15/01\n\n[bottom_strip]\n20-2 1-UU-94 TAQ Zz Z20-21-UU-99 OU Zz\n25-21-00-95 40 2 25-21-00-96 50 2\n25-21-00-95 170 2 25-21-00-97 50 2\n25-21-00-96 40 2 25-21-00-98 50 2\n25-21-00-96 170 2 25-21-00-99 50 2\n25-21-00-97 40 2 25-21-00-100 50 2\n25-21-00-97 170 2 25-21-00-101 50 2\n25-21-00-98 40 2 25-21-00-102 50 2\n25-21-00-98 170 2 25-21-00-103 50 2\n25-21-00-99 40 2 25-21-00-104 50 2\n25-21-00-99 170 2 25-21-00-105 50 2\n25-21-00-100 40 2 25-21-00-106 50 2\nEFFECTIVITY: ALL 2 5 2 1 00\n= ||\nPage 1043\nT.P. 120/1176 Jan 15/01\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nPART NUMBER UNITS AIRLINE PART NUMBER UNITS AIRLINE\nPER STOCK PER STOCK\nCH-SEC-UN-FIG | ITEM) ASSY NUMBER CH-SEC-UN-FIG | ITEM] ASSY NUMBER\nAN960-516 AN960-516\n25-21-00-79 120 2 25-21-00-100 170 2\n\n[right_strip]\noof [in\nPER STOCK\nIG] ITEM] ASSY NUMBER\n0} 170 2\n)1 40 2\n)1 140 2\n2 40 2\n2 170 2\n)3 40 2\n3 170 2\n4 40 2\n4 170 2\n)5 40 2\n5 170 2\n6 40 2\n6} 170 2\n) 50 2\n) 50 2\n| 50 2\n2 50 2\n3 50 2\n4 50 2\n) 50 2\n3 50 2\n/ 50 2\n3 50 2\n) 50 2\n) 50 2\n| 50 2\n2 50 2\n3 50 2\n4 50 2\n) 50 2\n5 50 2\n[ 50 2\n3 50 2\n] 50 2\n)0 50 2\n1 50 2\n)2 50 2\n)3 50 2\n4 50 2\n)5 50 2\n6 50 2\n\u00bb-21-00\nPage 1043\n120/1176 Jan 15/01",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1602,
+          2404,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "25-21 -00-89 50 2\n25-21 -00-90 50 2\n25-21 -00-91 50 2\n25-21 -00-92 50 2\n25-21 -00-93 50 2\n25-21 -00-94 50 2\n25-21 -00-95 50 2\n25-21 -00-96 50 2\n25-21 -00-97 50 2\n25-21 -00-98 50 2\n25-21 -00-99 50 2\n25-21 -00-100 50 2\n25-21-00-101 50 2\n25-21-00-102 50 2\n25-21 -00-103 50 2\n25-21-00-104 50 2\n25-21 -00-105 50 2\n25-21 -00-106 50 2\n25-21-00\nPage 1043\nT.P. 120/1176 Jan 15/01",
+        "char_count": 370,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2902,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "20-2 1-UU-94 TAQ Zz Z20-21-UU-99 OU Zz\n25-21-00-95 40 2 25-21-00-96 50 2\n25-21-00-95 170 2 25-21-00-97 50 2\n25-21-00-96 40 2 25-21-00-98 50 2\n25-21-00-96 170 2 25-21-00-99 50 2\n25-21-00-97 40 2 25-21-00-100 50 2\n25-21-00-97 170 2 25-21-00-101 50 2\n25-21-00-98 40 2 25-21-00-102 50 2\n25-21-00-98 170 2 25-21-00-103 50 2\n25-21-00-99 40 2 25-21-00-104 50 2\n25-21-00-99 170 2 25-21-00-105 50 2\n25-21-00-100 40 2 25-21-00-106 50 2\nEFFECTIVITY: ALL 2 5 2 1 00\n= ||\nPage 1043\nT.P. 120/1176 Jan 15/01",
+        "char_count": 492,
+        "error": "Image too small to scale!! (2x36 vs min width of 3)\r\nLine cannot be recognized!!"
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3205,
+          746
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nPART NUMBER UNITS AIRLINE PART NUMBER UNITS AIRLINE\nPER STOCK PER STOCK\nCH-SEC-UN-FIG | ITEM) ASSY NUMBER CH-SEC-UN-FIG | ITEM] ASSY NUMBER\nAN960-516 AN960-516\n25-21-00-79 120 2 25-21-00-100 170 2",
+        "char_count": 254,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2179,
+          0,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "oof [in\nPER STOCK\nIG] ITEM] ASSY NUMBER\n0} 170 2\n)1 40 2\n)1 140 2\n2 40 2\n2 170 2\n)3 40 2\n3 170 2\n4 40 2\n4 170 2\n)5 40 2\n5 170 2\n6 40 2\n6} 170 2\n) 50 2\n) 50 2\n| 50 2\n2 50 2\n3 50 2\n4 50 2\n) 50 2\n3 50 2\n/ 50 2\n3 50 2\n) 50 2\n) 50 2\n| 50 2\n2 50 2\n3 50 2\n4 50 2\n) 50 2\n5 50 2\n[ 50 2\n3 50 2\n] 50 2\n)0 50 2\n1 50 2\n)2 50 2\n)3 50 2\n4 50 2\n)5 50 2\n6 50 2\n\u00bb-21-00\nPage 1043\n120/1176 Jan 15/01",
+        "char_count": 380,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": "UNITS",
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0.2
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "T.P. 120/1176",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "20-2 1-UU-94 TAQ ZZ Z20-21-UU-99 OU ZZ",
+      "section_title": null,
+      "figure_title": null,
+      "figure_number": null,
+      "effectivity": "ALL 2 5 2 1 00",
+      "ata_code": "25-21-00",
+      "page_number": 1043,
+      "page_label": "1043",
+      "issue_date": "Jan 15/01",
+      "revision_date": "Jan 15/01",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [
+        "PER STOCK PER STOCK",
+        "AN960-516 AN960-516",
+        "PER STOCK"
+      ],
+      "metadata_confidence": 0.86
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": "UNITS",
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0.2
+    }
+  }
+}

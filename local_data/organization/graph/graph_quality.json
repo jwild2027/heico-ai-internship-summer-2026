@@ -1,0 +1,122 @@
+{
+  "checks": [
+    {
+      "message": "Graph artifacts are present in local_data\\organization\\graph.",
+      "name": "graph_artifacts_present",
+      "status": "OK"
+    },
+    {
+      "message": "Page nodes=509; minimum is 1.",
+      "name": "graph_page_nodes",
+      "status": "OK"
+    },
+    {
+      "message": "Part nodes=386; minimum is 1.",
+      "name": "graph_part_nodes",
+      "status": "OK"
+    },
+    {
+      "message": "Source-link nodes=509; minimum is 1.",
+      "name": "graph_source_links",
+      "status": "OK"
+    },
+    {
+      "message": "Pages without source links=0; max allowed is 0.",
+      "name": "graph_source_link_coverage",
+      "status": "OK"
+    },
+    {
+      "message": "Pages without document edges=0; max allowed is 0.",
+      "name": "graph_document_coverage",
+      "status": "OK"
+    },
+    {
+      "message": "Pages without ATA edges=0; max allowed is 0.",
+      "name": "graph_ata_coverage",
+      "status": "OK"
+    },
+    {
+      "message": "Page context nodes=509, page nodes=509, pages without context=0; max missing context is 0.",
+      "name": "graph_context_coverage",
+      "status": "OK"
+    },
+    {
+      "message": "Page-context records=509, page nodes=509.",
+      "name": "page_context_records",
+      "status": "OK"
+    },
+    {
+      "message": "Page-context generation errors=0; empty OCR contexts=14. Empty OCR contexts are allowed.",
+      "name": "page_context_generation_errors",
+      "status": "OK"
+    },
+    {
+      "message": "Sample part traces to source-linked pages with AI context.",
+      "name": "part_traceability_sample",
+      "status": "OK"
+    },
+    {
+      "message": "Sample page traces to document, ATA, source link, and AI context.",
+      "name": "page_traceability_sample",
+      "status": "OK"
+    },
+    {
+      "message": "Simulated Qdrant page_id payload resolves to graph document/source/context.",
+      "name": "vector_payload_traceability_sample",
+      "status": "OK"
+    },
+    {
+      "message": "User-query regression results pass: total=10, pass=10, fail=0.",
+      "name": "user_query_regression_results",
+      "status": "OK"
+    },
+    {
+      "message": "Realistic query trace results pass: cases=8, failed_cases=0, checks=14, failed_checks=0, slow_cases=1.",
+      "name": "realistic_query_trace_results",
+      "status": "OK"
+    },
+    {
+      "message": "Realistic query trace slow cases included: 1.",
+      "name": "realistic_query_trace_slow_case",
+      "status": "OK"
+    }
+  ],
+  "status": "ok",
+  "summary": {
+    "context_generation_errors": 0,
+    "context_records": 509,
+    "edges_total": 14143,
+    "empty_ocr_contexts": 14,
+    "graph_dir": "local_data\\organization\\graph",
+    "graph_present": true,
+    "has_context_edges": 509,
+    "has_source_link_edges": 509,
+    "highlights_part_edges": 1070,
+    "nodes_total": 3788,
+    "page_context_nodes": 509,
+    "page_nodes": 509,
+    "page_traceability_sample_ok": true,
+    "pages_without_ata": 0,
+    "pages_without_context": 0,
+    "pages_without_document": 0,
+    "pages_without_source_links": 0,
+    "part_nodes": 386,
+    "part_traceability_sample_ok": true,
+    "realistic_query_check_fail": 0,
+    "realistic_query_check_pass": 14,
+    "realistic_query_check_total": 14,
+    "realistic_query_fail": 0,
+    "realistic_query_pass": 8,
+    "realistic_query_results_present": true,
+    "realistic_query_slow_cases": 1,
+    "realistic_query_total": 8,
+    "source_link_nodes": 509,
+    "tagged_as_edges": 1706,
+    "topic_nodes": 228,
+    "user_query_fail": 0,
+    "user_query_pass": 10,
+    "user_query_results_present": true,
+    "user_query_total": 10,
+    "vector_payload_traceability_sample_ok": true
+  }
+}

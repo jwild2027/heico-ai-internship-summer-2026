@@ -1,0 +1,216 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:05:19Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000145.tif",
+    "relative_path": "00000145.tif"
+  },
+  "file": {
+    "file_name": "00000145.tif",
+    "extension": ".tif",
+    "file_size_bytes": 48559,
+    "modified_time_utc": "2026-05-22T19:14:54Z",
+    "sha256": "2bd0ab49f7f7c65b2a0b4c530e1c3c1fa27523c454f3a02b6c41994d8534a952"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "maintenance_manual_ipl",
+    "confidence": 0.98,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "ata_code",
+      "manual_document_code",
+      "component_title",
+      "part_numbers",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "maintenance_manual_ipl",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "120TP250030.MCE",
+    "publication_number": null,
+    "component_title": "S J 210",
+    "section_title": null,
+    "figure_title": "600 =) 250",
+    "figure_number": "17",
+    "effectivity": "ALL 2 -21-",
+    "ata_code": "25-21-00",
+    "page_number": 1102,
+    "page_label": "1102",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [
+      "120-36833-001"
+    ],
+    "callouts": [
+      "S J 210",
+      "NO 40"
+    ],
+    "metadata_confidence": 0.98
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\nS J 210\n230 a\n240 | ib\n|\n2507 \u00e9\n120TP250030.MCE\n120-36833-001)\n7\n25-21-00 Page 1102\nSep 30/98\n\n[bottom_strip]\n600 =) 250 :\nSingle Passenger Seat (120-36833-001) |\nFigure 17\nSheet 1\nEFFECTIVITY: ALL 2 -21-\n| 25-21-00 po\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n60\n60 \\|\n\n[right_strip]\n0\nNO 40\ncB\n[L&\n7\noO\n210\n230 a\nia\n120TP250030.MCE\n-00 Page 1102\nSep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "S J 210\n230 a\n240 | ib\n|\n2507 \u00e9\n120TP250030.MCE\n120-36833-001)\n7\n25-21-00 Page 1102\nSep 30/98",
+        "char_count": 93,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "600 =) 250 :\nSingle Passenger Seat (120-36833-001) |\nFigure 17\nSheet 1\nEFFECTIVITY: ALL 2 -21-\n| 25-21-00 po",
+        "char_count": 108,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n60\n60 \\|",
+        "char_count": 66,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "0\nNO 40\ncB\n[L&\n7\noO\n210\n230 a\nia\n120TP250030.MCE\n-00 Page 1102\nSep 30/98",
+        "char_count": 72,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "maintenance_manual_ipl",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "120TP250030.MCE",
+      "publication_number": null,
+      "component_title": "S J 210",
+      "section_title": null,
+      "figure_title": "600 =) 250",
+      "figure_number": "17",
+      "effectivity": "ALL 2 -21-",
+      "ata_code": "25-21-00",
+      "page_number": 1102,
+      "page_label": "1102",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [
+        "120-36833-001"
+      ],
+      "callouts": [
+        "S J 210",
+        "NO 40"
+      ],
+      "metadata_confidence": 0.98
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

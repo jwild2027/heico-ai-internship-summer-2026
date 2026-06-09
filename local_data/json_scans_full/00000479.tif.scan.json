@@ -1,0 +1,212 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:12:28Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000479.tif",
+    "relative_path": "00000479.tif"
+  },
+  "file": {
+    "file_name": "00000479.tif",
+    "extension": ".tif",
+    "file_size_bytes": 42780,
+    "modified_time_utc": "2026-05-22T19:14:57Z",
+    "sha256": "c26f49e993b0608254b3cc4555f3ececf198e24931b90f4b245568c712c2077b"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.8,
+    "signals": [
+      "manual_title",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "T.P. 120/1176",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "ANIOVIUS ANG ANIOOIY T/O SIVIE 200",
+    "section_title": null,
+    "figure_title": null,
+    "figure_number": null,
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": 605,
+    "page_label": "605",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [
+      "ANIOVIUS ANG ANIOOIY T/O SIVIE 200",
+      "LY553",
+      "HY 951"
+    ],
+    "metadata_confidence": 0.8
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "right_strip",
+    "combined_text": "[bottom_right_title_block]\nANIOVIUS ANG ANIOOIY T/O SIVIe 200\nLY553\nHY 951\nted items may be used.\nns 5B, 5C, 5D, and 5E. See item 6 A for repair materials.\nerature or 1 hour at 149\u00b0F (65\u00b0C).\n25 21 00 Page 605\nT.P. 120/1176 Sep 30/98\n\n[bottom_strip]\nB. Repair Instruction.\n(1) Repeat instructions described in items 5B, 5C, 5D, and 5E. See item 6 A for repair materials.\n(2) Curing time: 24 hours at room temperature or 1 hour at 149\u00b0F (65\u00b0C).\nEFFECTIVITY: ALL\n25 21 00 Page 605\nT.P. 120/1176 Sep 30/98\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n(6) Apply vacuum of 22.0 in.Hg (0.745 bars).\n(7) Allow the repair to cure at the room temperature, or accelerate the cure by applying heat until\nthe temperature reaches 176\u00b0F (80\u00b0C).\n\n[right_strip]\nite the cure by applying heat until\nrners to produce a smooth finish\nsive on the passenger seat back.\nJ2 A2B 0.040\" in thickness and\nt back shape.\npe.\na pitch of 0.63 in.\n506)\nN\n584\n53901/5 style 285\n53\n51\nSee item 6 A for repair materials.\n\u00b0F (65\u00b0C).\n_|\n) 2 1 00 Page 605\n.P. 120/1176 Sep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "ANIOVIUS ANG ANIOOIY T/O SIVIe 200\nLY553\nHY 951\nted items may be used.\nns 5B, 5C, 5D, and 5E. See item 6 A for repair materials.\nerature or 1 hour at 149\u00b0F (65\u00b0C).\n25 21 00 Page 605\nT.P. 120/1176 Sep 30/98",
+        "char_count": 205,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "B. Repair Instruction.\n(1) Repeat instructions described in items 5B, 5C, 5D, and 5E. See item 6 A for repair materials.\n(2) Curing time: 24 hours at room temperature or 1 hour at 149\u00b0F (65\u00b0C).\nEFFECTIVITY: ALL\n25 21 00 Page 605\nT.P. 120/1176 Sep 30/98",
+        "char_count": 252,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n(6) Apply vacuum of 22.0 in.Hg (0.745 bars).\n(7) Allow the repair to cure at the room temperature, or accelerate the cure by applying heat until\nthe temperature reaches 176\u00b0F (80\u00b0C).",
+        "char_count": 240,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "ite the cure by applying heat until\nrners to produce a smooth finish\nsive on the passenger seat back.\nJ2 A2B 0.040\" in thickness and\nt back shape.\npe.\na pitch of 0.63 in.\n506)\nN\n584\n53901/5 style 285\n53\n51\nSee item 6 A for repair materials.\n\u00b0F (65\u00b0C).\n_|\n) 2 1 00 Page 605\n.P. 120/1176 Sep 30/98",
+        "char_count": 295,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "T.P. 120/1176",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "ANIOVIUS ANG ANIOOIY T/O SIVIE 200",
+      "section_title": null,
+      "figure_title": null,
+      "figure_number": null,
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": 605,
+      "page_label": "605",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [
+        "ANIOVIUS ANG ANIOOIY T/O SIVIE 200",
+        "LY553",
+        "HY 951"
+      ],
+      "metadata_confidence": 0.8
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

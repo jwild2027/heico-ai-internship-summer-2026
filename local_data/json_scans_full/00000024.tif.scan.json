@@ -1,0 +1,213 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:02:31Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000024.tif",
+    "relative_path": "00000024.tif"
+  },
+  "file": {
+    "file_name": "00000024.tif",
+    "extension": ".tif",
+    "file_size_bytes": 27766,
+    "modified_time_utc": "2026-05-22T19:14:53Z",
+    "sha256": "d5010a6ac1c5f07e33825b8a89f705248f875bd1a8064e305fd1f6bfa5d74ea6"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3205,
+    "height_px": 4146,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_vendors_page",
+    "confidence": 0.68,
+    "signals": [
+      "manual_title",
+      "section_title",
+      "component_title",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_vendors_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": null,
+    "publication_number": null,
+    "component_title": "< EMBRAER",
+    "section_title": "VENDORS",
+    "figure_title": null,
+    "figure_number": null,
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": 1005,
+    "page_label": "1005/1006",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [
+      "VENDOR NAMES AND ADDRESSES",
+      "CAKC",
+      "ESSES",
+      "IDUSTRIAL ENGELBRECHT"
+    ],
+    "metadata_confidence": 0.68
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "right_strip",
+    "combined_text": "[bottom_right_title_block]\n- 25-21 -00 Page 1005/1006\nSep 30/98\n\n[bottom_strip]\nEFFECTIVITY: ALL 25-21 -00 Page 1005/1006\nSep 30/98\n\n[top_strip]\n< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nVENDORS\u2019 NAMES AND ADDRESSES\nVENDOR NAMES AND ADDRESSES\nCAKC\n\n[right_strip]\nS\nESSES\n_URGICA LTDA.\nIL\nIDUSTRIAL ENGELBRECHT\nERONAUTICA S.A\nIM\n- SP - BRASI\n345-1598\nyA.\n1 00 Page 1005/1006\nSep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1602,
+          2404,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "- 25-21 -00 Page 1005/1006\nSep 30/98",
+        "char_count": 36,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2902,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "EFFECTIVITY: ALL 25-21 -00 Page 1005/1006\nSep 30/98",
+        "char_count": 51,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3205,
+          746
+        ],
+        "status": "ok",
+        "text": "< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nVENDORS\u2019 NAMES AND ADDRESSES\nVENDOR NAMES AND ADDRESSES\nCAKC",
+        "char_count": 117,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2179,
+          0,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "S\nESSES\n_URGICA LTDA.\nIL\nIDUSTRIAL ENGELBRECHT\nERONAUTICA S.A\nIM\n- SP - BRASI\n345-1598\nyA.\n1 00 Page 1005/1006\nSep 30/98",
+        "char_count": 120,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_vendors_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": null,
+      "publication_number": null,
+      "component_title": "< EMBRAER",
+      "section_title": "VENDORS",
+      "figure_title": null,
+      "figure_number": null,
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": 1005,
+      "page_label": "1005/1006",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [
+        "VENDOR NAMES AND ADDRESSES",
+        "CAKC",
+        "ESSES",
+        "IDUSTRIAL ENGELBRECHT"
+      ],
+      "metadata_confidence": 0.68
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "ata_codes_total": 42,
+  "canonical_part_numbers_total": 184,
+  "catalog_supported_part_numbers_total": 138,
+  "created_at": "2026-06-02T18:53:03Z",
+  "error_records": 0,
+  "filtered_non_part_tokens_total": 490,
+  "graph_edges": 737,
+  "graph_nodes": 431,
+  "index_labels_total": 193,
+  "ok_records": 120,
+  "pages": 20,
+  "rag_action_counts": {
+    "exclude_from_rag": 90,
+    "include_as_derived_context": 30
+  },
+  "records": 120,
+  "records_with_ata_codes": 40,
+  "records_with_canonical_parts": 34,
+  "records_with_catalog_supported_parts": 30,
+  "records_with_filtered_non_part_tokens": 71,
+  "records_with_index_labels": 59,
+  "records_with_probable_parts": 20,
+  "status": "OK",
+  "status_counts": {
+    "ok": 120
+  },
+  "token_type_counts": {
+    "ata_code": 42,
+    "catalog_supported_part_number": 138,
+    "index_label": 193,
+    "noise": 255,
+    "unsupported_part_candidate": 46
+  },
+  "trace_net_table_tile_text_refiner_version": "trace_net_table_tile_text_refiner_v1",
+  "trust_tier_counts": {
+    "B": 30,
+    "C": 90
+  },
+  "unsupported_part_candidates_total": 46
+}

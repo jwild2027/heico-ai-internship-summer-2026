@@ -1,0 +1,469 @@
+{
+  "base_formula": {
+    "note": "Layer-specific hard gates and promotions override the generic formula for routing decisions.",
+    "support_score": "sum(weight_i * layer_score_i)",
+    "usable_confidence": "support_score * (1 - risk_score)"
+  },
+  "default_policy": {
+    "derived_context_layers": [
+      "visual_text",
+      "table_tile_text_refined"
+    ],
+    "rag_blocked_actions": [
+      "exclude_from_rag",
+      "exclude_until_table_text_exists",
+      "exclude_until_table_tiles_exist"
+    ],
+    "rag_safe_actions": [
+      "include_as_source_evidence",
+      "include_as_verified_part_evidence",
+      "include_as_derived_context"
+    ],
+    "routing_only_layers": [
+      "table_candidate",
+      "table_tiles"
+    ],
+    "source_truth_layers": [
+      "source_trace"
+    ],
+    "verified_fact_layers": [
+      "part_catalog"
+    ]
+  },
+  "description": "Layer-specific TRACE-LC confidence policy generated from Stage 2 evaluation.",
+  "global_default_thresholds": {
+    "A": 0.9,
+    "B": 0.7,
+    "C": 0.45
+  },
+  "global_default_weights": {
+    "extraction_layer": 0.05,
+    "graph_support": 0.25,
+    "ocr_support": 0.2,
+    "part_catalog": 0.2,
+    "source_trace": 0.3
+  },
+  "global_hard_safety_gates": [
+    "source_untraceable_records_must_not_enter_rag",
+    "metadata_leakage_records_must_not_enter_rag",
+    "prompt_template_leakage_records_must_not_enter_rag",
+    "refusal_like_records_must_not_enter_rag",
+    "D_tier_records_must_not_enter_rag",
+    "community_algorithms_must_not_prove_source_truth"
+  ],
+  "layers": {
+    "part_catalog": {
+      "base_weights": {
+        "extraction_layer": 0.05,
+        "graph_support": 0.2,
+        "ocr_support": 0.1,
+        "part_catalog": 0.4,
+        "source_trace": 0.25
+      },
+      "confidence_use": "rank_part_evidence_strength_and_review_edge_cases",
+      "default_rag_action": "include_as_verified_part_evidence",
+      "default_repair_action": "none",
+      "hard_blocks": [
+        "catalog_conflict",
+        "invalid_part_pattern",
+        "source_untraceable"
+      ],
+      "hard_demotions": [
+        "unsupported_part_candidate_only",
+        "catalog_conflict"
+      ],
+      "hard_promotions": [
+        "catalog_verified and source_trace_verified",
+        "same_page_part_mention_present"
+      ],
+      "layer": "part_catalog",
+      "max_auto_trust_tier": "A",
+      "min_rag_tier": "A",
+      "notes": [
+        "Catalog evidence is allowed to be A when source trace and catalog support agree.",
+        "Generic confidence marked catalog records as B because it lacked layer-specific promotions."
+      ],
+      "policy_role": "promotes_catalog_supported_part_mentions",
+      "purpose": "verified_part_evidence",
+      "required_supports_for_A": [
+        "source_trace_verified",
+        "part_catalog_verified",
+        "graph_support_strong"
+      ],
+      "required_supports_for_B": [
+        "valid_part_pattern",
+        "source_trace_verified"
+      ],
+      "routing_authority": "rule_tier_controls_until_claim_level_calibration",
+      "stage2_metrics": {
+        "agreement_rate": 0.0,
+        "avg_risk_score": 0.05,
+        "avg_support_score": 0.916896,
+        "avg_usable_confidence": 0.871051,
+        "confidence_higher": 2,
+        "confidence_lower": 362,
+        "confidence_tier_counts": {
+          "B": 364
+        },
+        "current_tier_counts": {
+          "A": 362,
+          "C": 2
+        },
+        "disagreements": 364,
+        "exact_matches": 0,
+        "records": 364,
+        "rule_excludes_confidence_high": 2,
+        "rule_includes_confidence_low": 0
+      },
+      "thresholds": {
+        "A": 0.82,
+        "B": 0.66,
+        "C": 0.42
+      }
+    },
+    "source_trace": {
+      "base_weights": {
+        "extraction_layer": 0.05,
+        "graph_support": 0.2,
+        "ocr_support": 0.05,
+        "part_catalog": 0.0,
+        "source_trace": 0.7
+      },
+      "confidence_use": "calibrate_source_completeness_not_claim_truth",
+      "default_rag_action": "include_as_source_evidence",
+      "default_repair_action": "none",
+      "hard_blocks": [
+        "missing_page",
+        "missing_tiff",
+        "missing_source_url",
+        "source_untraceable"
+      ],
+      "hard_demotions": [
+        "source_trace.status not in source_verified,local_source_verified,source_link_only"
+      ],
+      "hard_promotions": [
+        "source_trace.status in source_verified,local_source_verified",
+        "page_exists and tiff_exists and source_url_present"
+      ],
+      "layer": "source_trace",
+      "max_auto_trust_tier": "A",
+      "min_rag_tier": "A",
+      "notes": [
+        "Stage 2 showed all source_trace records were below confidence A under the generic formula.",
+        "This layer is not a claim extraction layer, so OCR/catalog absence must not demote source truth."
+      ],
+      "policy_role": "proves_page_source_exists",
+      "purpose": "source_truth",
+      "required_supports_for_A": [
+        "source_trace_verified",
+        "graph_support_strong",
+        "tiff_file_exists",
+        "source_url_present"
+      ],
+      "required_supports_for_B": [],
+      "routing_authority": "rule_tier_controls_routing_confidence_is_diagnostic",
+      "stage2_metrics": {
+        "agreement_rate": 0.0,
+        "avg_risk_score": 0.05,
+        "avg_support_score": 0.838281,
+        "avg_usable_confidence": 0.796367,
+        "confidence_higher": 0,
+        "confidence_lower": 509,
+        "confidence_tier_counts": {
+          "B": 495,
+          "C": 14
+        },
+        "current_tier_counts": {
+          "A": 509
+        },
+        "disagreements": 509,
+        "exact_matches": 0,
+        "records": 509,
+        "rule_excludes_confidence_high": 0,
+        "rule_includes_confidence_low": 14
+      },
+      "thresholds": {
+        "A": 0.75,
+        "B": 0.6,
+        "C": 0.4
+      }
+    },
+    "table_candidate": {
+      "base_weights": {
+        "extraction_layer": 0.35,
+        "graph_support": 0.35,
+        "ocr_support": 0.05,
+        "part_catalog": 0.05,
+        "source_trace": 0.2
+      },
+      "confidence_use": "prioritize_table_candidate_review_not_rag_truth",
+      "default_rag_action": "exclude_until_table_tiles_exist",
+      "default_repair_action": "run_table_crop_tile",
+      "hard_blocks": [
+        "graph_gate_blocked",
+        "layout_gate_blocked",
+        "figure_without_table_trait"
+      ],
+      "hard_demotions": [
+        "candidate_review_only",
+        "skip_non_table"
+      ],
+      "hard_promotions": [
+        "passed_graph_gate and passed_layout_gate"
+      ],
+      "layer": "table_candidate",
+      "max_auto_trust_tier": "B",
+      "min_rag_tier": null,
+      "notes": [
+        "Table candidates are routing artifacts; they should not enter RAG directly.",
+        "High confidence here means process priority, not factual confidence."
+      ],
+      "policy_role": "routes_pages_to_table_crop_tile_or_review",
+      "purpose": "routing_signal",
+      "required_supports_for_A": [],
+      "required_supports_for_B": [
+        "source_trace_verified",
+        "table_candidate_signal"
+      ],
+      "routing_authority": "route_grouping_controls_operations",
+      "stage2_metrics": {
+        "agreement_rate": 0.180747,
+        "avg_risk_score": 0.05,
+        "avg_support_score": 0.786454,
+        "avg_usable_confidence": 0.747131,
+        "confidence_higher": 417,
+        "confidence_lower": 0,
+        "confidence_tier_counts": {
+          "B": 417,
+          "C": 92
+        },
+        "current_tier_counts": {
+          "C": 509
+        },
+        "disagreements": 417,
+        "exact_matches": 92,
+        "records": 509,
+        "rule_excludes_confidence_high": 417,
+        "rule_includes_confidence_low": 0
+      },
+      "thresholds": {
+        "A": 0.9,
+        "B": 0.66,
+        "C": 0.4
+      }
+    },
+    "table_tile_text_refined": {
+      "base_weights": {
+        "extraction_layer": 0.1,
+        "graph_support": 0.2,
+        "ocr_support": 0.1,
+        "part_catalog": 0.35,
+        "source_trace": 0.25
+      },
+      "confidence_use": "decide_A_B_C_for_refined_table_text",
+      "default_rag_action": "include_as_derived_context",
+      "default_repair_action": "run_table_tile_ocr_or_human_review",
+      "hard_blocks": [
+        "index_label_as_part",
+        "metadata_leakage",
+        "prompt_template_leakage",
+        "source_untraceable"
+      ],
+      "hard_demotions": [
+        "only_index_labels_found",
+        "only_unsupported_part_candidates_found"
+      ],
+      "hard_promotions": [
+        "catalog_supported_part_numbers_found and source_trace_verified"
+      ],
+      "layer": "table_tile_text_refined",
+      "max_auto_trust_tier": "A",
+      "min_rag_tier": "B",
+      "notes": [
+        "B tier is appropriate for derived table context even when not canonical source truth.",
+        "A tier should require catalog support and source trace; C tier remains review/exclude."
+      ],
+      "policy_role": "gates_refined_tile_text_before_rag",
+      "purpose": "derived_table_text_and_part_evidence",
+      "required_supports_for_A": [
+        "catalog_supported_part_number",
+        "source_trace_verified",
+        "graph_support_strong"
+      ],
+      "required_supports_for_B": [
+        "catalog_supported_part_number",
+        "source_trace_verified"
+      ],
+      "routing_authority": "hybrid_rule_and_confidence_after_more_validation",
+      "stage2_metrics": {
+        "agreement_rate": 0.466667,
+        "avg_risk_score": 0.05,
+        "avg_support_score": 0.763958,
+        "avg_usable_confidence": 0.72576,
+        "confidence_higher": 4,
+        "confidence_lower": 60,
+        "confidence_tier_counts": {
+          "B": 54,
+          "C": 66
+        },
+        "current_tier_counts": {
+          "A": 60,
+          "C": 60
+        },
+        "disagreements": 64,
+        "exact_matches": 56,
+        "records": 120,
+        "rule_excludes_confidence_high": 4,
+        "rule_includes_confidence_low": 10
+      },
+      "thresholds": {
+        "A": 0.82,
+        "B": 0.64,
+        "C": 0.4
+      }
+    },
+    "table_tiles": {
+      "base_weights": {
+        "extraction_layer": 0.5,
+        "graph_support": 0.25,
+        "ocr_support": 0.0,
+        "part_catalog": 0.0,
+        "source_trace": 0.25
+      },
+      "confidence_use": "verify_tiles_exist_before_tile_text_ocr",
+      "default_rag_action": "exclude_until_table_text_exists",
+      "default_repair_action": "run_table_tile_ocr",
+      "hard_blocks": [
+        "missing_tile_images",
+        "missing_preprocessed_image",
+        "source_untraceable"
+      ],
+      "hard_demotions": [
+        "tile_generation_failed"
+      ],
+      "hard_promotions": [
+        "tile_images_created and source_trace_verified"
+      ],
+      "layer": "table_tiles",
+      "max_auto_trust_tier": "B",
+      "min_rag_tier": null,
+      "notes": [
+        "Table tiles are not text evidence yet; they trigger the next OCR/extraction step.",
+        "Stage 2 showed perfect agreement for table_tiles, so this policy preserves current behavior."
+      ],
+      "policy_role": "proves_table_regions_were_cut_for_extraction",
+      "purpose": "preprocessing_artifact",
+      "required_supports_for_A": [],
+      "required_supports_for_B": [
+        "source_trace_verified",
+        "tile_images_created"
+      ],
+      "routing_authority": "route_grouping_controls_operations",
+      "stage2_metrics": {
+        "agreement_rate": 1.0,
+        "avg_risk_score": 0.05,
+        "avg_support_score": 0.838129,
+        "avg_usable_confidence": 0.796223,
+        "confidence_higher": 0,
+        "confidence_lower": 0,
+        "confidence_tier_counts": {
+          "B": 286
+        },
+        "current_tier_counts": {
+          "B": 286
+        },
+        "disagreements": 0,
+        "exact_matches": 286,
+        "records": 286,
+        "rule_excludes_confidence_high": 286,
+        "rule_includes_confidence_low": 0
+      },
+      "thresholds": {
+        "A": 0.9,
+        "B": 0.65,
+        "C": 0.4
+      }
+    },
+    "visual_text": {
+      "base_weights": {
+        "extraction_layer": 0.25,
+        "graph_support": 0.25,
+        "ocr_support": 0.15,
+        "part_catalog": 0.1,
+        "source_trace": 0.25
+      },
+      "confidence_use": "identify_safe_derived_context_and_high_risk_visual_claims",
+      "default_rag_action": "include_as_derived_context",
+      "default_repair_action": "ocr_graph_validation_or_human_review",
+      "hard_blocks": [
+        "metadata_leakage",
+        "prompt_template_leakage",
+        "refusal_like",
+        "section_bleed_unrepaired"
+      ],
+      "hard_demotions": [
+        "hallucination_risk",
+        "suspicious_phrase",
+        "unsupported_specific_claim"
+      ],
+      "hard_promotions": [
+        "low_risk and graph_support_strong and source_trace_verified"
+      ],
+      "layer": "visual_text",
+      "max_auto_trust_tier": "B",
+      "min_rag_tier": "B",
+      "notes": [
+        "Visual text remains derived context, not canonical source truth.",
+        "Stage 2 showed high risk and low average confidence for visual_text."
+      ],
+      "policy_role": "keeps_vision_model_output_conservative",
+      "purpose": "model_derived_visual_context",
+      "required_supports_for_A": [],
+      "required_supports_for_B": [
+        "source_trace_verified",
+        "graph_support_not_conflict",
+        "low_or_medium_risk"
+      ],
+      "routing_authority": "rule_tier_controls_until_claim_level_review",
+      "stage2_metrics": {
+        "agreement_rate": 0.0,
+        "avg_risk_score": 0.482,
+        "avg_support_score": 0.7795,
+        "avg_usable_confidence": 0.404285,
+        "confidence_higher": 1,
+        "confidence_lower": 24,
+        "confidence_tier_counts": {
+          "B": 1,
+          "D": 24
+        },
+        "current_tier_counts": {
+          "C": 25
+        },
+        "disagreements": 25,
+        "exact_matches": 0,
+        "records": 25,
+        "rule_excludes_confidence_high": 1,
+        "rule_includes_confidence_low": 0
+      },
+      "thresholds": {
+        "A": 0.92,
+        "B": 0.74,
+        "C": 0.45
+      }
+    }
+  },
+  "recommended_next_step": "use_policy_for_advisory_layer_specific_tier_eval_before_routing",
+  "stage2_summary": {
+    "agreement_rate": 0.239382,
+    "avg_usable_confidence": 0.787436,
+    "disagreement_records": 1379,
+    "rule_excludes_confidence_high_records": 710,
+    "rule_includes_confidence_low_records": 24,
+    "source_trace_confidence_below_A_records": 509,
+    "stage2_eval_path": "local_data\\organization\\trace_net\\confidence\\trace_lc_stage2_eval.json",
+    "stage2_present": true,
+    "within_one_tier_rate": 0.986762
+  },
+  "status": "OK",
+  "version": "trace_lc_confidence_policy_v1"
+}

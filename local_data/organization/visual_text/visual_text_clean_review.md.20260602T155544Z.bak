@@ -1,0 +1,1307 @@
+# Visual text v2.3 cleanup review
+
+Status: **OK**
+
+Records: 25
+Usable for RAG: 0
+Requires review: 25
+Prompt-template leakage records: 16
+Section-bleed records: 15
+Metadata-leakage records: 0
+
+## t_p_120_1176_p000001
+
+- status: ok
+- trust_tier: C
+- reasons: section_bleed_risk
+- prompt_template_leakage: False
+- section_bleed: True
+- table_expected_missing: False
+- hallucination_risk: False
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+text
+
+## Visible title/header
+Passenger Seats Component Maintenance Manual with Illustrated Parts List
+This page is part of a technical manual related to passenger seats, providing information on component maintenance with illustrated parts lists. It supersedes an earlier version and contains references to figures, diagrams, tables, and parts lists.
+
+## Transcribed visible text
+The page is dated 25-21-00 and is part of T.P. 120/1176.
+- It mentions that the manual supersedes an earlier version.
+- There are references to figures, diagrams, tables, and parts lists.
+- The text includes a note about the revision notice and title block for the technical manual.
+
+## Visual summary
+No additional visual summary available.
+
+## OCR/context assist notes
+No OCR/context-only notes reported.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+No readable labels, callouts, item numbers, part numbers, or references detected.
+
+## Warnings/notes
+No visible warnings, cautions, notes, revision notes, or procedural notes detected.
+
+## Uncertain/unreadable
+No uncertain or unreadable visual regions reported.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000003
+
+- status: ok
+- trust_tier: C
+- reasons: hallucination_risk, table_expected_but_not_extracted
+- prompt_template_leakage: False
+- section_bleed: False
+- table_expected_missing: True
+- hallucination_risk: True
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+parts_list
+
+## Visible title/header
+No additional readable text transcribed from the image.
+
+## Transcribed visible text
+120-36833-501, 120-36833-511, 120-36833-519, 120-36834-509, 120-36834-517, 120-36835-501, 120-41824-007, 120-41824-501, 120-41824-509, 120-41825-503, 120-41825-517, 120-42547-007, 120-42547-507, 120-42548-007, 120-45850-003, 120-45850-503, 120-45851-003, 120-45851-501, 120-45851-503, 120-46137-501, 120-50645-007, 120-50645-009, 120-50645-015, 120-50645-017, 120-50645-023, 120-50645-025, 120-50648-001, 120-50648-003, 120-50648-005, 120-50648-007, 120-50648-009, 120-50648-519, 120-50648-531
+
+## Visual summary
+This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing applicability.
+
+## OCR/context assist notes
+No OCR/context-only notes reported.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No additional visible figures or diagrams.
+
+## Charts/graphs
+No additional visible charts or graphs.
+
+## Labels/callouts/part numbers
+120-36833-501, 120-36833-511, 120-36833-519, 120-36834-509, 120-36834-517, 120-36835-501, 120-41824-007, 120-41824-501, 120-41824-509, 120-41825-503, 120-41825-517, 120-42547-007, 120-42547-507, 120-42548-007, 120-45850-003, 120-45850-503, 120-45851-003, 120-45851-501, 120-45851-503, 120-46137-501, 120-50645-007, 120-50645-009, 120-50645-015, 120-50645-017, 120-50645-023, 120-50645-025, 120-50648-001, 120-50648-003, 120-50648-005, 120-50648-007, 120-50648-009, 120-50648-519, 120-50648-531
+
+## Warnings/notes
+No additional visible warnings or notes.
+
+## Uncertain/unreadable
+No additional unreadable text detected.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000004
+
+- status: ok
+- trust_tier: D
+- reasons: prompt_template_leakage_risk
+- prompt_template_leakage: True
+- section_bleed: False
+- table_expected_missing: True
+- hallucination_risk: False
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+unknown
+
+## Visible title/header
+No readable title or header detected.
+
+## Transcribed visible text
+No additional readable text transcribed from the image.
+
+## Visual summary
+This page introduces the maintenance manual, outlining its purpose and scope related to passenger cabin disassembly.
+
+## OCR/context assist notes
+No OCR/context-only notes reported.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+No reliable labels/callouts extracted after prompt-template cleanup. Source review required.
+
+## Warnings/notes
+No visible warnings, cautions, notes, revision notes, or procedural notes.
+
+## Uncertain/unreadable
+Prompt-template text was removed; source review recommended.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000005
+
+- status: ok
+- trust_tier: C
+- reasons: section_bleed_risk, hallucination_risk, table_expected_but_not_extracted
+- prompt_template_leakage: False
+- section_bleed: True
+- table_expected_missing: True
+- hallucination_risk: True
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+parts_list
+
+## Visible title/header
+No readable title or header detected.
+This page appears to be a parts list and index page from a maintenance manual, listing various part numbers and index entries with associated dates.
+
+## Transcribed visible text
+25-Numerical
+- Unreadable
+
+## Visual summary
+No additional visual summary available.
+
+## OCR/context assist notes
+No OCR/context-only notes reported.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+25-Numerical
+
+## Warnings/notes
+No visible warnings, cautions, notes, revision notes, or procedural notes.
+
+## Uncertain/unreadable
+Unreadable
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000006
+
+- status: ok
+- trust_tier: D
+- reasons: prompt_template_leakage_risk
+- prompt_template_leakage: True
+- section_bleed: False
+- table_expected_missing: True
+- hallucination_risk: True
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+parts_list
+
+## Visible title/header
+No additional readable text transcribed from the image.
+
+## Transcribed visible text
+20-IFL, 25-Numerical, 40-NUMeElNCal
+
+## Visual summary
+This page appears to be a list of effective pages within a maintenance manual, detailing revision history and page numbers with associated dates.
+
+## OCR/context assist notes
+No OCR/context-only notes reported.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+No reliable labels/callouts extracted after prompt-template cleanup. Source review required.
+
+## Warnings/notes
+No reliable warnings/notes extracted after prompt-template cleanup. Source review required.
+
+## Uncertain/unreadable
+Prompt-template text was removed; source review recommended.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000007
+
+- status: ok
+- trust_tier: D
+- reasons: prompt_template_leakage_risk
+- prompt_template_leakage: True
+- section_bleed: True
+- table_expected_missing: True
+- hallucination_risk: False
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+parts_list
+
+## Visible title/header
+Effective Pages List
+This page is a list of effective pages within a maintenance manual, detailing revisions and deletions with associated part numbers and dates.
+
+## Transcribed visible text
+25-21-00
+- 40-1FL
+- Unreadable
+
+## Visual summary
+No additional visual summary available.
+
+## OCR/context assist notes
+- OCR ASSIST START
+- No OCR text was available for grounding.
+- OCR ASSIST END
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+- 40-1FL
+
+## Warnings/notes
+No reliable warnings/notes extracted after prompt-template cleanup. Source review required.
+
+## Uncertain/unreadable
+Unreadable
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000008
+
+- status: ok
+- trust_tier: D
+- reasons: prompt_template_leakage_risk
+- prompt_template_leakage: True
+- section_bleed: False
+- table_expected_missing: True
+- hallucination_risk: True
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+parts_list
+
+## Visible title/header
+No additional readable text transcribed from the image.
+
+## Transcribed visible text
+No additional readable text transcribed from the image.
+
+## Visual summary
+This page appears to be a list of effective pages within a maintenance manual, detailing revisions and deletions with associated dates and part numbers.
+
+## OCR/context assist notes
+No OCR/context-only hints, conflicts, or "No OCR/context-only notes reported."
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+No reliable labels/callouts extracted after prompt-template cleanup. Source review required.
+
+## Warnings/notes
+No reliable warnings/notes extracted after prompt-template cleanup. Source review required.
+
+## Uncertain/unreadable
+Prompt-template text was removed; source review recommended.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000009
+
+- status: ok
+- trust_tier: D
+- reasons: prompt_template_leakage_risk
+- prompt_template_leakage: True
+- section_bleed: False
+- table_expected_missing: True
+- hallucination_risk: False
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+parts_list
+
+## Visible title/header
+No additional readable text transcribed from the image.
+
+## Transcribed visible text
+No additional readable text transcribed from the image.
+
+## Visual summary
+This page is a list of effective pages within a maintenance manual, detailing part numbers and revision dates.
+
+## OCR/context assist notes
+No OCR/context-only hints reported.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+No additional part numbers, labels, callouts, or quantities are visible on the page.
+
+## Warnings/notes
+No additional warnings, notes, cautions, or procedural information is visible on the page.
+
+## Uncertain/unreadable
+Prompt-template text was removed; source review recommended.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000010
+
+- status: ok
+- trust_tier: D
+- reasons: prompt_template_leakage_risk
+- prompt_template_leakage: True
+- section_bleed: False
+- table_expected_missing: True
+- hallucination_risk: True
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+table
+
+## Visible title/header
+No additional readable text transcribed from the image.
+
+## Transcribed visible text
+No additional readable text transcribed from the image.
+
+## Visual summary
+This page appears to be a list of effective pages within a maintenance manual, detailing revisions and dates.
+
+## OCR/context assist notes
+No OCR/context-only hints, conflicts, or "No OCR/context-only notes reported."
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+No additional labels, callouts, item numbers, part numbers, quantities, references are visible on the page.
+
+## Warnings/notes
+No additional warnings, cautions, notes, revision notes, or procedural notes are visible on the page.
+
+## Uncertain/unreadable
+Prompt-template text was removed; source review recommended.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000011
+
+- status: ok
+- trust_tier: D
+- reasons: prompt_template_leakage_risk
+- prompt_template_leakage: True
+- section_bleed: False
+- table_expected_missing: True
+- hallucination_risk: False
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+table
+
+## Visible title/header
+Effective pages list
+
+## Transcribed visible text
+No additional readable text transcribed from the image.
+
+## Visual summary
+This page is a list of effective pages for the technical manual, detailing revision indicators and listing IPL part numbers with dates.
+
+## OCR/context assist notes
+No OCR/context-only hints, conflicts, or "No OCR/context-only notes reported."
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+No reliable labels/callouts extracted after prompt-template cleanup. Source review required.
+
+## Warnings/notes
+No reliable warnings/notes extracted after prompt-template cleanup. Source review required.
+
+## Uncertain/unreadable
+Prompt-template text was removed; source review recommended.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000013
+
+- status: ok
+- trust_tier: D
+- reasons: prompt_template_leakage_risk
+- prompt_template_leakage: True
+- section_bleed: True
+- table_expected_missing: True
+- hallucination_risk: False
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+blank
+
+## Visible title/header
+No readable title or header detected.
+
+## Transcribed visible text
+No additional readable text transcribed from the image.
+
+## Visual summary
+This page is a record of revisions for the component maintenance manual, instructing users on how to insert updated pages and track changes.
+
+## OCR/context assist notes
+No OCR/context-only notes reported.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+No reliable labels/callouts extracted after prompt-template cleanup. Source review required.
+
+## Warnings/notes
+No visible warnings, cautions, notes, revision notes, or procedural notes.
+
+## Uncertain/unreadable
+Prompt-template text was removed; source review recommended.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000014
+
+- status: ok
+- trust_tier: D
+- reasons: prompt_template_leakage_risk
+- prompt_template_leakage: True
+- section_bleed: True
+- table_expected_missing: True
+- hallucination_risk: True
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+mixed
+
+## Visible title/header
+No readable title or header detected.
+
+## Transcribed visible text
+No additional readable text transcribed from the image.
+
+## Visual summary
+This page appears to be a maintenance manual with a section titled "Service Bulletin Distribution." It outlines the purpose and distribution of service bulletins, which are used to communicate important information about aircraft maintenance or safety issues.
+
+## OCR/context assist notes
+The OCR was unable to transcribe any text from this image.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+No reliable labels/callouts extracted after prompt-template cleanup. Source review required.
+
+## Warnings/notes
+No visible warnings, cautions, notes, revision notes, or procedural notes.
+
+## Uncertain/unreadable
+The image is too blurry to transcribe any text with certainty.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000015
+
+- status: ok
+- trust_tier: D
+- reasons: prompt_template_leakage_risk
+- prompt_template_leakage: True
+- section_bleed: True
+- table_expected_missing: True
+- hallucination_risk: False
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+parts_list
+
+## Visible title/header
+Passenger Seat Assembly
+This page describes the design and components of a passenger seat, including its backrest, armrests, seat cushion, and a folding table.
+
+## Transcribed visible text
+The passenger seat assembly consists of a single passenger seat with the following components:
+  - Backrest
+  - Armrests
+  - Seat cushion
+  - Seat folding table
+
+## Visual summary
+No additional visual summary available.
+
+## OCR/context assist notes
+No OCR/context-only notes reported.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+None visible.
+
+## Warnings/notes
+No additional readable text transcribed from the image.
+
+## Uncertain/unreadable
+Prompt-template text was removed; source review recommended.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000016
+
+- status: ok
+- trust_tier: D
+- reasons: prompt_template_leakage_risk
+- prompt_template_leakage: True
+- section_bleed: True
+- table_expected_missing: True
+- hallucination_risk: True
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+text
+
+## Visible title/header
+No readable title or header detected.
+
+## Transcribed visible text
+- The backrest and seat bottom cushions are made of materials that meet the requirements for flammability, durability, and comfort.
+- The cushions are attached to the seat frame using a combination of bolts and clips.
+- The attachment method ensures that the cushions remain securely in place during normal use.
+
+## Visual summary
+No additional visual summary available.
+
+## OCR/context assist notes
+OCR suggests there may be more text on the page, but it is not clearly visible in the image provided.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+No additional labels, callouts, item numbers, part numbers, quantities, references are visible in the image provided.
+
+## Warnings/notes
+No visible warnings, cautions, notes, revision notes, or procedural notes.
+
+## Uncertain/unreadable
+Prompt-template text was removed; source review recommended.
+
+## Model caution
+The information extracted from this page should be verified against the source TIFF/OCR evidence for accuracy.
+
+## t_p_120_1176_p000017
+
+- status: ok
+- trust_tier: D
+- reasons: prompt_template_leakage_risk
+- prompt_template_leakage: True
+- section_bleed: False
+- table_expected_missing: True
+- hallucination_risk: False
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+parts_list
+
+## Visible title/header
+No additional readable text transcribed from the image.
+
+## Transcribed visible text
+No additional readable text transcribed from the image.
+
+## Visual summary
+This page is a parts list and figure illustrating a single passenger seat, specifically the seat bottom and backrest.
+
+## OCR/context assist notes
+No OCR/context-only hints, conflicts, or "No OCR/context-only notes reported."
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No additional visible figures, diagrams, labels, callouts, arrows, and relationships.
+
+## Charts/graphs
+No additional visible charts or graphs detected.
+
+## Labels/callouts/part numbers
+No reliable labels/callouts extracted after prompt-template cleanup. Source review required.
+
+## Warnings/notes
+No reliable warnings/notes extracted after prompt-template cleanup. Source review required.
+
+## Uncertain/unreadable
+Prompt-template text was removed; source review recommended.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000018
+
+- status: ok
+- trust_tier: D
+- reasons: prompt_template_leakage_risk
+- prompt_template_leakage: True
+- section_bleed: True
+- table_expected_missing: True
+- hallucination_risk: False
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+parts_list
+
+## Visible title/header
+No additional readable text transcribed from the image.
+The image shows a diagram of an airplane seat, indicating its design and components. It is part of a technical manual for aircraft seating arrangements.
+
+## Transcribed visible text
+"EVERYTHING YOU NEED TO KNOW ABOUT THE SEAT"
+- "2-5-11-00"
+- "T.P. 120/1176"
+- "ATA 25-21-00"
+- "parts_list"
+- "MCE"
+- "figure 2."
+
+## Visual summary
+No additional visual summary available.
+
+## OCR/context assist notes
+No OCR/context-only hints, conflicts, or notes reported.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+The image contains a diagram of an airplane seat with visible labels and callouts indicating the different parts and their functions.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+"120TP250002.MCE"
+- "figure 2."
+
+## Warnings/notes
+No additional warnings, notes, or procedural notes are visible in the image.
+
+## Uncertain/unreadable
+Prompt-template text was removed; source review recommended.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000019
+
+- status: ok
+- trust_tier: C
+- reasons: section_bleed_risk, hallucination_risk
+- prompt_template_leakage: False
+- section_bleed: True
+- table_expected_missing: False
+- hallucination_risk: True
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+figure
+
+## Visible title/header
+Passenger Seat
+The image shows a diagram of an airplane passenger seat, including details such as the seat bottom and backrests. It is labeled with "ATA 25-21-00," indicating it may be related to aircraft technical manuals or regulations.
+
+## Transcribed visible text
+Unreadable
+
+## Visual summary
+No additional visual summary available.
+
+## OCR/context assist notes
+- No OCR/context-only hints reported.
+
+## Tables
+- No readable table detected.
+
+## Figures/diagrams
+- The image is a diagram of an airplane passenger seat, showing the structure and design of the seat components.
+
+## Charts/graphs
+- No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+- The visible labels include "Passenger Seat" and references to ATA 25-21-00, which is a standard related to aircraft seating.
+
+## Warnings/notes
+- No visible warnings or notes on the page.
+
+## Uncertain/unreadable
+- The image is blurry, making some text unreadable.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000020
+
+- status: ok
+- trust_tier: C
+- reasons: section_bleed_risk, table_expected_but_not_extracted
+- prompt_template_leakage: False
+- section_bleed: True
+- table_expected_missing: True
+- hallucination_risk: False
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+parts_list
+
+## Visible title/header
+Parts List
+This page displays a list of aircraft parts, organized in a table format with columns for part number, description, and quantity.
+
+## Transcribed visible text
+The document is titled "Parts List"
+- There are several columns with headings such as "Part Number", "Description", and "Quantity".
+- The page contains a table with rows of parts listed, including part numbers and descriptions.
+
+## Visual summary
+No additional visual summary available.
+
+## OCR/context assist notes
+- OCR was unable to transcribe the text from this image.
+
+## Tables
+- The table is visible but the cells are blurry and unreadable.
+
+## Figures/diagrams
+- No readable figure or diagram detected.
+
+## Charts/graphs
+- No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+- The part numbers are visible but the descriptions are blurry and unreadable.
+
+## Warnings/notes
+- There are no visible warnings, cautions, notes, revision notes, or procedural notes on this page.
+
+## Uncertain/unreadable
+- The text is too small to read clearly.
+
+## Model caution
+- Due to the unreadable text and blurry images, it's difficult to provide accurate information about the parts listed in this document. Verification against source TIFF/OCR evidence would be necessary for any critical facts.
+
+## t_p_120_1176_p000021
+
+- status: ok
+- trust_tier: C
+- reasons: section_bleed_risk, hallucination_risk, suspicious_phrase_risk, table_expected_but_not_extracted
+- prompt_template_leakage: False
+- section_bleed: True
+- table_expected_missing: True
+- hallucination_risk: True
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+parts_list
+
+## Visible title/header
+EMBRAER MARTINI MAURITZIO
+This page appears to be from an aircraft maintenance manual, specifically for EMBRAER equipment. However, due to the unreadable text, no additional details can be provided about the content of the manual.
+
+## Transcribed visible text
+The document is a "EMBRAER MARTINI MAURITZIO" manual.
+- It contains an "ELECTRICAL EQUIPMENT INSTALLATION INDICATOR".
+- There are "ELECTRICAL CIRCUIT BREAKER" and "ELECTRICAL SWITCHING DEVICE" sections.
+- The manual also includes a "MAINTENANCE MANUAL".
+- It is noted that the document is "UNREADABLE".
+
+## Visual summary
+No additional visual summary available.
+
+## OCR/context assist notes
+No OCR/context-only hints were reported.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+No additional labels, callouts, item numbers, part numbers, quantities, references are visible in the image.
+
+## Warnings/notes
+The text is unreadable, so no warnings or notes can be provided based on this page.
+
+## Uncertain/unreadable
+The entire page is unreadable due to the quality of the image and the OCR's inability to transcribe the text accurately.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000022
+
+- status: ok
+- trust_tier: C
+- reasons: section_bleed_risk, hallucination_risk, suspicious_phrase_risk, table_expected_but_not_extracted
+- prompt_template_leakage: False
+- section_bleed: True
+- table_expected_missing: True
+- hallucination_risk: True
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+text
+
+## Visible title/header
+AERONAUTICAL STANDARD MANUALS
+This page seems to provide guidelines for assembling aircraft parts, with specific instructions regarding the left and right hand orientation of certain components.
+
+## Transcribed visible text
+The page is titled "AERONAUTICAL STANDARD MANUALS"
+- There are two columns of text, with the left column being longer than the right.
+- The text appears to be a list or instructions related to aircraft assembly and maintenance.
+- The visible text includes phrases such as "successful assembly", "left hand orientation", and "right hand orientation".
+
+## Visual summary
+No additional visual summary available.
+
+## OCR/context assist notes
+The OCR was unable to transcribe any text from this image.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+No additional labels, callouts, item numbers, part numbers, quantities, references are visible in the image.
+
+## Warnings/notes
+There are no visible warnings, cautions, notes, revision notes, or procedural notes on this page.
+
+## Uncertain/unreadable
+The text is too small and blurry to transcribe accurately.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000023
+
+- status: ok
+- trust_tier: D
+- reasons: prompt_template_leakage_risk
+- prompt_template_leakage: True
+- section_bleed: True
+- table_expected_missing: True
+- hallucination_risk: False
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+text
+
+## Visible title/header
+No readable title or header detected.
+
+## Transcribed visible text
+- The page is a technical manual page with instructions and information related to aircraft maintenance.
+- There are several numbered points listed on the page, which provide guidelines or procedures for specific tasks or situations.
+- The numbers range from 1 to 15, indicating different sections or steps within the manual.
+- Each point is a separate instruction or note that pertains to various aspects of aircraft maintenance and operation.
+
+## Visual summary
+No additional visual summary available.
+
+## OCR/context assist notes
+OCR was unable to transcribe any text from this image.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+No additional readable labels, callouts, item numbers, part numbers, quantities, references.
+
+## Warnings/notes
+No visible warnings, cautions, notes, revision notes, or procedural notes.
+
+## Uncertain/unreadable
+Prompt-template text was removed; source review recommended.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000024
+
+- status: ok
+- trust_tier: C
+- reasons: section_bleed_risk, hallucination_risk, table_expected_but_not_extracted
+- prompt_template_leakage: False
+- section_bleed: True
+- table_expected_missing: True
+- hallucination_risk: True
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+parts_list
+
+## Visible title/header
+Aircraft Technical Manual - Vendor Information and Parts List
+This page from the aircraft technical manual provides a list of vendors and their respective addresses.
+
+## Transcribed visible text
+Unreadable
+
+## Visual summary
+No additional visual summary available.
+
+## OCR/context assist notes
+OCR suggests "AIRCRAFT TRUSTEE" as a possible title, but it is not clearly visible on the image.
+- The text appears to be a list of vendor names and addresses, but due to the quality of the image, specific details are unreadable.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+Uncertain/unreadable.
+
+## Warnings/notes
+Uncertain/unreadable.
+
+## Uncertain/unreadable
+The text on this page is too small and blurry to transcribe accurately, making it difficult to provide a detailed description of the content.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000026
+
+- status: ok
+- trust_tier: D
+- reasons: prompt_template_leakage_risk
+- prompt_template_leakage: True
+- section_bleed: False
+- table_expected_missing: True
+- hallucination_risk: False
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+unknown
+
+## Visible title/header
+Numerical Index
+
+## Transcribed visible text
+No additional readable text transcribed from the image.
+
+## Visual summary
+This page is a title page from the maintenance manual, indicating it covers ATA code 25-21-00 and includes an illustrated parts list.
+
+## OCR/context assist notes
+No OCR/context-only notes reported.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+No reliable labels/callouts extracted after prompt-template cleanup. Source review required.
+
+## Warnings/notes
+No visible warnings, cautions, notes, revision notes, or procedural notes.
+
+## Uncertain/unreadable
+Prompt-template text was removed; source review recommended.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000027
+
+- status: ok
+- trust_tier: D
+- reasons: prompt_template_leakage_risk
+- prompt_template_leakage: True
+- section_bleed: False
+- table_expected_missing: True
+- hallucination_risk: True
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+parts_list
+
+## Visible title/header
+No additional readable text transcribed from the image.
+
+## Transcribed visible text
+No additional readable text transcribed from the image.
+
+## Visual summary
+This page appears to be a parts list from a maintenance manual, listing numerous part numbers and associated data.
+
+## OCR/context assist notes
+No OCR/context-only notes reported.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+No additional part numbers, labels, callouts, or quantities are visible on this page.
+
+## Warnings/notes
+No additional warnings, notes, cautions, or procedural information is visible on this page.
+
+## Uncertain/unreadable
+Prompt-template text was removed; source review recommended.
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.
+
+## t_p_120_1176_p000028
+
+- status: ok
+- trust_tier: C
+- reasons: section_bleed_risk, hallucination_risk, table_expected_but_not_extracted
+- prompt_template_leakage: False
+- section_bleed: True
+- table_expected_missing: True
+- hallucination_risk: True
+- metadata_leakage: False
+- refusal_like: False
+
+# Page visual text
+
+## Page type
+parts_list
+
+## Visible title/header
+No readable title or header detected.
+This page appears to be a parts list from a maintenance manual, listing numerous part numbers and associated data.
+
+## Transcribed visible text
+1002-F
+- 20-Z21-U0-STAT
+- Unreadable
+
+## Visual summary
+No additional visual summary available.
+
+## OCR/context assist notes
+No OCR/context-only notes reported.
+
+## Tables
+No readable table detected.
+
+## Figures/diagrams
+No readable figure or diagram detected.
+
+## Charts/graphs
+No readable chart or graph detected.
+
+## Labels/callouts/part numbers
+1002-F, 20-Z21-U0-STAT
+
+## Warnings/notes
+No visible warnings, cautions, notes, revision notes, or procedural notes.
+
+## Uncertain/unreadable
+Unreadable
+
+## Model caution
+Use this visual extraction as derived context. Verify critical facts against source TIFF/OCR evidence.

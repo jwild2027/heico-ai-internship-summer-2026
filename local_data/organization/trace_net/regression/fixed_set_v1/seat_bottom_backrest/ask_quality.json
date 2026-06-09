@@ -1,0 +1,68 @@
+{
+  "ask_answer_evidence_records": 10,
+  "ask_answer_page_records": 10,
+  "ask_feedback_answer_changed": true,
+  "ask_feedback_ask_status": "OK",
+  "ask_feedback_context_warning_signals_used": 0,
+  "ask_feedback_groups_adjusted": 2,
+  "ask_feedback_mode": "off",
+  "ask_feedback_rank_changed_records": 2,
+  "ask_feedback_signals_used": 2,
+  "ask_feedback_stage_count": 0,
+  "ask_feedback_unsafe_groups": 0,
+  "ask_query": "seat bottom backrest",
+  "ask_stage_count": 4,
+  "ask_stage_failures": 0,
+  "ask_status": "OK",
+  "ask_unsafe_answer_groups": 0,
+  "ask_version": "trace_net_ask_v1_1_feedback_mode",
+  "checks": [
+    {
+      "detail": "summary_path=local_data\\organization\\trace_net\\ask\\trace_net_ask_summary.json; present=True",
+      "name": "ask_summary_present",
+      "status": "OK"
+    },
+    {
+      "detail": "status=OK",
+      "name": "ask_status",
+      "status": "OK"
+    },
+    {
+      "detail": "stages=4",
+      "name": "ask_stages_present",
+      "status": "OK"
+    },
+    {
+      "detail": "stage_failures=0",
+      "name": "ask_stages_ok",
+      "status": "OK"
+    },
+    {
+      "detail": "answer_page_records=10; minimum=1",
+      "name": "answer_pages",
+      "status": "OK"
+    },
+    {
+      "detail": "answer_evidence_records=10; minimum=1",
+      "name": "evidence_records",
+      "status": "OK"
+    },
+    {
+      "detail": "unsafe_answer_groups=0; max=0",
+      "name": "unsafe_answer_groups",
+      "status": "OK"
+    },
+    {
+      "detail": "answer_md=local_data\\organization\\trace_net\\answers\\trace_net_answer_draft.md; answer_html=local_data\\organization\\trace_net\\answers\\trace_net_answer_draft.html",
+      "name": "answer_artifacts",
+      "status": "OK"
+    },
+    {
+      "detail": "feedback_mode=off; expected=off",
+      "name": "feedback_mode",
+      "status": "OK"
+    }
+  ],
+  "status": "OK",
+  "summary_path": "local_data\\organization\\trace_net\\ask\\trace_net_ask_summary.json"
+}

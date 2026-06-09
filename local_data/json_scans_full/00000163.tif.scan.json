@@ -1,0 +1,217 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:05:41Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000163.tif",
+    "relative_path": "00000163.tif"
+  },
+  "file": {
+    "file_name": "00000163.tif",
+    "extension": ".tif",
+    "file_size_bytes": 47822,
+    "modified_time_utc": "2026-05-22T19:14:54Z",
+    "sha256": "1ba7a88926c36d8d8ee4811bc815514b5cab6d9d8b80406352fbf2e933ada0a7"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.84,
+    "signals": [
+      "manual_title",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "part_numbers",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "120TP250036.MCE",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "SS 200 240",
+    "section_title": null,
+    "figure_title": null,
+    "figure_number": null,
+    "effectivity": "ALL 25-2 1 -00 age 1120",
+    "ata_code": null,
+    "page_number": 1120,
+    "page_label": "1120",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [
+      "120-36833-005"
+    ],
+    "callouts": [
+      "SS 200 240",
+      "NO 30",
+      "LL&"
+    ],
+    "metadata_confidence": 0.84
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\n190\nSS 200 240\n210 |\n220 | ub\n240 \u2014 : RY\n(Sy\na\n240 ~~ :\n120TP250036.MCE ~\n120-36833-005)\n3\n25-21 -00 Page 1120\nT.P. 120/1176 Sep 30/98\n\n[bottom_strip]\nr 180 . _N : |\n240 ~*~) a9 .\nSingle Passenger Seat (120-36833-005) 7\n\u2018Sheet 1\nEFFECTIVITY: ALL 25-2 1 -00 age 1120\nT.P. 120/1176 Sep 30/98\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nAin \\\n50\nNo,\n\n[right_strip]\n0\nNO 30\nNN\n1B\nLL&\naa\n/ \u00a9\n200\n210 a\nia\n120TP250036. MCE _\n-00 Page 1120\n6 Sep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "190\nSS 200 240\n210 |\n220 | ub\n240 \u2014 : RY\n(Sy\na\n240 ~~ :\n120TP250036.MCE ~\n120-36833-005)\n3\n25-21 -00 Page 1120\nT.P. 120/1176 Sep 30/98",
+        "char_count": 134,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "r 180 . _N : |\n240 ~*~) a9 .\nSingle Passenger Seat (120-36833-005) 7\n\u2018Sheet 1\nEFFECTIVITY: ALL 25-2 1 -00 age 1120\nT.P. 120/1176 Sep 30/98",
+        "char_count": 138,
+        "error": "Image too small to scale!! (2x36 vs min width of 3)\r\nLine cannot be recognized!!"
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nAin \\\n50\nNo,",
+        "char_count": 70,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "0\nNO 30\nNN\n1B\nLL&\naa\n/ \u00a9\n200\n210 a\nia\n120TP250036. MCE _\n-00 Page 1120\n6 Sep 30/98",
+        "char_count": 82,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "120TP250036.MCE",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "SS 200 240",
+      "section_title": null,
+      "figure_title": null,
+      "figure_number": null,
+      "effectivity": "ALL 25-2 1 -00 age 1120",
+      "ata_code": null,
+      "page_number": 1120,
+      "page_label": "1120",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [
+        "120-36833-005"
+      ],
+      "callouts": [
+        "SS 200 240",
+        "NO 30",
+        "LL&"
+      ],
+      "metadata_confidence": 0.84
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:12:10Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000467.tif",
+    "relative_path": "00000467.tif"
+  },
+  "file": {
+    "file_name": "00000467.tif",
+    "extension": ".tif",
+    "file_size_bytes": 49822,
+    "modified_time_utc": "2026-05-22T19:14:56Z",
+    "sha256": "a198c99ab211bf9434e1c7d1e9f388ce118d07d683b5bdf5bf5660240b1619f1"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3205,
+    "height_px": 4146,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "maintenance_manual_ipl",
+    "confidence": 0.76,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "component_title",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "maintenance_manual_ipl",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": null,
+    "publication_number": null,
+    "component_title": "ENE OS NO J NE IN NIN NN I EN INNIS II INO NIE OIE YEE INE EOE NOOSE IEDR NIA",
+    "section_title": null,
+    "figure_title": "bolt (130), two bushings (100), and washer (115",
+    "figure_number": "76",
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": 301,
+    "page_label": "301",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [
+      "DISASSEMBLY"
+    ],
+    "metadata_confidence": 0.76
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "right_strip",
+    "combined_text": "[bottom_right_title_block]\ne 115), bolts (120, and 125), and bushing (100).\nbolt (130), two bushings (100), and washer (115).\ny (detail B of figure 76 of the Illustrated Parts List)\n), bolts (90 and 110), and bushing (140).\n), bolt (100) and two bushings (140).\n25-21 -00 Page 301\nSep 30/98\n\n[bottom_strip]\nENE OS NO J NE IN NIN NN I EN INNIS II INO NIE OIE YEE INE EOE NOOSE IEDR NIA\nE. Seat Belt (80) of Triple Seat Disassembly (detail B of figure 76 of the Illustrated Parts List)\n(1) On the boards:\n(a) Remove nut (150), washer (120), bolts (90 and 110), and bushing (140).\n(2) Between seats:\n(a) Remove nut (150), washer (130), bolt (100) and two bushings (140).\nEFFECTIVITY: ALL\n25-21 -00 Page 301\nSep 30/98\n\n[top_strip]\n< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nDISASSEMBLY\n1. Tools Required\n\n[right_strip]\nres on the unit according to the\nne the extent of the malfunction.\n/ or defective part. The following\nly.\nred in this manual and for expla-\nuration, the text is common to all\no facilitate subsequent assembly\nthe Illustrated Parts List)\nand bushing (100).\nof the Illustrated Parts List)\n125), and bushing (100).\ns (100), and washer (115).\nf the Illustrated Parts List)\nd bushing (140).\nshings (140).\n\u00bb-21-00\n) 21 Page 301\nSep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1602,
+          2404,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "e 115), bolts (120, and 125), and bushing (100).\nbolt (130), two bushings (100), and washer (115).\ny (detail B of figure 76 of the Illustrated Parts List)\n), bolts (90 and 110), and bushing (140).\n), bolt (100) and two bushings (140).\n25-21 -00 Page 301\nSep 30/98",
+        "char_count": 263,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2902,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "ENE OS NO J NE IN NIN NN I EN INNIS II INO NIE OIE YEE INE EOE NOOSE IEDR NIA\nE. Seat Belt (80) of Triple Seat Disassembly (detail B of figure 76 of the Illustrated Parts List)\n(1) On the boards:\n(a) Remove nut (150), washer (120), bolts (90 and 110), and bushing (140).\n(2) Between seats:\n(a) Remove nut (150), washer (130), bolt (100) and two bushings (140).\nEFFECTIVITY: ALL\n25-21 -00 Page 301\nSep 30/98",
+        "char_count": 406,
+        "error": "Image too small to scale!! (2x36 vs min width of 3)\r\nLine cannot be recognized!!"
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3205,
+          746
+        ],
+        "status": "ok",
+        "text": "< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nDISASSEMBLY\n1. Tools Required",
+        "char_count": 86,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2179,
+          0,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "res on the unit according to the\nne the extent of the malfunction.\n/ or defective part. The following\nly.\nred in this manual and for expla-\nuration, the text is common to all\no facilitate subsequent assembly\nthe Illustrated Parts List)\nand bushing (100).\nof the Illustrated Parts List)\n125), and bushing (100).\ns (100), and washer (115).\nf the Illustrated Parts List)\nd bushing (140).\nshings (140).\n\u00bb-21-00\n) 21 Page 301\nSep 30/98",
+        "char_count": 430,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "maintenance_manual_ipl",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": null,
+      "publication_number": null,
+      "component_title": "ENE OS NO J NE IN NIN NN I EN INNIS II INO NIE OIE YEE INE EOE NOOSE IEDR NIA",
+      "section_title": null,
+      "figure_title": "bolt (130), two bushings (100), and washer (115",
+      "figure_number": "76",
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": 301,
+      "page_label": "301",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [
+        "DISASSEMBLY"
+      ],
+      "metadata_confidence": 0.76
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

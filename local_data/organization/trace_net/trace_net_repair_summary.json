@@ -1,0 +1,73 @@
+{
+  "auto_repair_candidate_records": 24,
+  "clean_record_count": 25,
+  "cleanup_repair_records": 0,
+  "expected_pages": 25,
+  "extractor_counts": {
+    "grit_table_crop_tile_extractor_planned": 17,
+    "human_review_queue": 1,
+    "ocr_catalog_graph_validator": 1,
+    "table_candidate_review_queue": 6
+  },
+  "human_review_records": 25,
+  "ocr_graph_validation_records": 1,
+  "paths": {
+    "clean_records": "local_data\\organization\\visual_text\\visual_text_extraction_clean.jsonl",
+    "output_dir": "local_data\\organization\\trace_net",
+    "trust_assertions": "local_data\\organization\\trust_traits\\trust_trait_assertions.jsonl",
+    "trust_summary": "local_data\\organization\\trust_traits\\trust_trait_summary.json"
+  },
+  "priority_counts": {
+    "high": 23,
+    "medium": 2
+  },
+  "rag_excluded_records": 25,
+  "rag_included_records": 0,
+  "reason_counts": {
+    "hallucination_or_suspicious_phrase_needs_grounding": 1,
+    "hallucination_risk": 13,
+    "prompt_template_repaired": 16,
+    "section_bleed_repaired": 15,
+    "summary_heavy": 1,
+    "suspicious_phrase": 3,
+    "table_expected_but_not_extracted": 23,
+    "table_expected_but_rows_missing": 17,
+    "trust_tier_c_without_specific_auto_repair": 1,
+    "weak_table_signal_needs_route_review": 6
+  },
+  "records": 25,
+  "repair_action_counts": {
+    "review_table_candidate_before_extraction": 6,
+    "run_ocr_graph_validation": 1,
+    "send_to_human_review": 1,
+    "send_to_table_crop_tile_route": 17
+  },
+  "repair_route_counts": {
+    "human_review_route": 1,
+    "ocr_graph_validation_review_route": 1,
+    "table_candidate_review_route": 6,
+    "table_crop_tile_repair_route_high": 4,
+    "table_crop_tile_repair_route_medium": 13
+  },
+  "rerun_model_records": 0,
+  "review_trait_counts": {
+    "hallucination_risk": 13,
+    "needs_human_review": 25,
+    "prompt_template_repaired": 16,
+    "section_bleed_repaired": 15,
+    "summary_heavy": 1,
+    "suspicious_phrase": 3,
+    "table_expected_but_not_extracted": 23
+  },
+  "status": "OK",
+  "table_candidate_review_records": 6,
+  "table_repair_high_records": 4,
+  "table_repair_medium_records": 13,
+  "table_repair_records": 17,
+  "trace_net_repair_version": "trace_net_repair_v0_2_table_refinement",
+  "trust_signal_page_count": 25,
+  "trust_tier_counts": {
+    "C": 25
+  },
+  "unplanned_problem_records": 0
+}

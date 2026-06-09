@@ -1,0 +1,1798 @@
+[
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000001",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000001",
+    "target": "trace_repair:t_p_120_1176_p000001",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000001",
+    "target": "visual_text:t_p_120_1176_p000001",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000001",
+    "target": "trace_repair:t_p_120_1176_p000001",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000001",
+    "target": "trace_repair_route:human_review_route",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000001",
+    "target": "trace_repair_action:send_to_human_review",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000001",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000001",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000001",
+    "target": "trait:review:visual_text:section_bleed_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "trust_tier_c_without_specific_auto_repair",
+    "source": "trace_repair:t_p_120_1176_p000001",
+    "target": "trace_repair_action:send_to_human_review",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000003",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000003",
+    "target": "trace_repair:t_p_120_1176_p000003",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000003",
+    "target": "visual_text:t_p_120_1176_p000003",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000003",
+    "target": "trace_repair:t_p_120_1176_p000003",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000003",
+    "target": "trace_repair_route:table_crop_tile_repair_route_medium",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000003",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000003",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000003",
+    "target": "trait:review:visual_text:hallucination_risk",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000003",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000003",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "table_expected_but_rows_missing",
+    "source": "trace_repair:t_p_120_1176_p000003",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "hallucination_or_suspicious_phrase_needs_grounding",
+    "source": "trace_repair:t_p_120_1176_p000003",
+    "target": "trace_repair_action:run_ocr_graph_validation",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000003",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000004",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000004",
+    "target": "trace_repair:t_p_120_1176_p000004",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000004",
+    "target": "visual_text:t_p_120_1176_p000004",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000004",
+    "target": "trace_repair:t_p_120_1176_p000004",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000004",
+    "target": "trace_repair_route:table_candidate_review_route",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000004",
+    "target": "trace_repair_action:review_table_candidate_before_extraction",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000004",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000004",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000004",
+    "target": "trait:review:visual_text:prompt_template_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000004",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "weak_table_signal_needs_route_review",
+    "source": "trace_repair:t_p_120_1176_p000004",
+    "target": "trace_repair_action:review_table_candidate_before_extraction",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000004",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000005",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000005",
+    "target": "trace_repair:t_p_120_1176_p000005",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000005",
+    "target": "visual_text:t_p_120_1176_p000005",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000005",
+    "target": "trace_repair:t_p_120_1176_p000005",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000005",
+    "target": "trace_repair_route:table_crop_tile_repair_route_medium",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000005",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000005",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000005",
+    "target": "trait:review:visual_text:hallucination_risk",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000005",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000005",
+    "target": "trait:review:visual_text:section_bleed_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000005",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "table_expected_but_rows_missing",
+    "source": "trace_repair:t_p_120_1176_p000005",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "hallucination_or_suspicious_phrase_needs_grounding",
+    "source": "trace_repair:t_p_120_1176_p000005",
+    "target": "trace_repair_action:run_ocr_graph_validation",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000005",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000006",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000006",
+    "target": "trace_repair:t_p_120_1176_p000006",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000006",
+    "target": "visual_text:t_p_120_1176_p000006",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000006",
+    "target": "trace_repair:t_p_120_1176_p000006",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000006",
+    "target": "trace_repair_route:table_crop_tile_repair_route_medium",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000006",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000006",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000006",
+    "target": "trait:review:visual_text:hallucination_risk",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000006",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000006",
+    "target": "trait:review:visual_text:prompt_template_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000006",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "table_expected_but_rows_missing",
+    "source": "trace_repair:t_p_120_1176_p000006",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "hallucination_or_suspicious_phrase_needs_grounding",
+    "source": "trace_repair:t_p_120_1176_p000006",
+    "target": "trace_repair_action:run_ocr_graph_validation",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000006",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000007",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000007",
+    "target": "trace_repair:t_p_120_1176_p000007",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000007",
+    "target": "visual_text:t_p_120_1176_p000007",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000007",
+    "target": "trace_repair:t_p_120_1176_p000007",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000007",
+    "target": "trace_repair_route:table_crop_tile_repair_route_medium",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000007",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000007",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000007",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000007",
+    "target": "trait:review:visual_text:prompt_template_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000007",
+    "target": "trait:review:visual_text:section_bleed_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000007",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "table_expected_but_rows_missing",
+    "source": "trace_repair:t_p_120_1176_p000007",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000007",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000008",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000008",
+    "target": "trace_repair:t_p_120_1176_p000008",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000008",
+    "target": "visual_text:t_p_120_1176_p000008",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000008",
+    "target": "trace_repair:t_p_120_1176_p000008",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000008",
+    "target": "trace_repair_route:table_crop_tile_repair_route_medium",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000008",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000008",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000008",
+    "target": "trait:review:visual_text:hallucination_risk",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000008",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000008",
+    "target": "trait:review:visual_text:prompt_template_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000008",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "table_expected_but_rows_missing",
+    "source": "trace_repair:t_p_120_1176_p000008",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "hallucination_or_suspicious_phrase_needs_grounding",
+    "source": "trace_repair:t_p_120_1176_p000008",
+    "target": "trace_repair_action:run_ocr_graph_validation",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000008",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000009",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000009",
+    "target": "trace_repair:t_p_120_1176_p000009",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000009",
+    "target": "visual_text:t_p_120_1176_p000009",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000009",
+    "target": "trace_repair:t_p_120_1176_p000009",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000009",
+    "target": "trace_repair_route:table_crop_tile_repair_route_medium",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000009",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000009",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000009",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000009",
+    "target": "trait:review:visual_text:prompt_template_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000009",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "table_expected_but_rows_missing",
+    "source": "trace_repair:t_p_120_1176_p000009",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000009",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000010",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000010",
+    "target": "trace_repair:t_p_120_1176_p000010",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000010",
+    "target": "visual_text:t_p_120_1176_p000010",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000010",
+    "target": "trace_repair:t_p_120_1176_p000010",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000010",
+    "target": "trace_repair_route:table_crop_tile_repair_route_high",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000010",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000010",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000010",
+    "target": "trait:review:visual_text:hallucination_risk",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000010",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000010",
+    "target": "trait:review:visual_text:prompt_template_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000010",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "high",
+    "reason": "table_expected_but_rows_missing",
+    "source": "trace_repair:t_p_120_1176_p000010",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "hallucination_or_suspicious_phrase_needs_grounding",
+    "source": "trace_repair:t_p_120_1176_p000010",
+    "target": "trace_repair_action:run_ocr_graph_validation",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000010",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000011",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000011",
+    "target": "trace_repair:t_p_120_1176_p000011",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000011",
+    "target": "visual_text:t_p_120_1176_p000011",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000011",
+    "target": "trace_repair:t_p_120_1176_p000011",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000011",
+    "target": "trace_repair_route:table_crop_tile_repair_route_high",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000011",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000011",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000011",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000011",
+    "target": "trait:review:visual_text:prompt_template_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000011",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "high",
+    "reason": "table_expected_but_rows_missing",
+    "source": "trace_repair:t_p_120_1176_p000011",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000011",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000013",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000013",
+    "target": "trace_repair:t_p_120_1176_p000013",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000013",
+    "target": "visual_text:t_p_120_1176_p000013",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000013",
+    "target": "trace_repair:t_p_120_1176_p000013",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000013",
+    "target": "trace_repair_route:table_candidate_review_route",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000013",
+    "target": "trace_repair_action:review_table_candidate_before_extraction",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000013",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000013",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000013",
+    "target": "trait:review:visual_text:prompt_template_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000013",
+    "target": "trait:review:visual_text:section_bleed_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000013",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "weak_table_signal_needs_route_review",
+    "source": "trace_repair:t_p_120_1176_p000013",
+    "target": "trace_repair_action:review_table_candidate_before_extraction",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000013",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000014",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000014",
+    "target": "trace_repair:t_p_120_1176_p000014",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000014",
+    "target": "visual_text:t_p_120_1176_p000014",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000014",
+    "target": "trace_repair:t_p_120_1176_p000014",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000014",
+    "target": "trace_repair_route:table_candidate_review_route",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000014",
+    "target": "trace_repair_action:review_table_candidate_before_extraction",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000014",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000014",
+    "target": "trait:review:visual_text:hallucination_risk",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000014",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000014",
+    "target": "trait:review:visual_text:prompt_template_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000014",
+    "target": "trait:review:visual_text:section_bleed_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000014",
+    "target": "trait:review:visual_text:summary_heavy",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000014",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "weak_table_signal_needs_route_review",
+    "source": "trace_repair:t_p_120_1176_p000014",
+    "target": "trace_repair_action:review_table_candidate_before_extraction",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "hallucination_or_suspicious_phrase_needs_grounding",
+    "source": "trace_repair:t_p_120_1176_p000014",
+    "target": "trace_repair_action:run_ocr_graph_validation",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "medium",
+    "reason": "summary_heavy_output_needs_tighter_context",
+    "source": "trace_repair:t_p_120_1176_p000014",
+    "target": "trace_repair_action:rerun_or_rewrite_visual_summary",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000014",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000015",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000015",
+    "target": "trace_repair:t_p_120_1176_p000015",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000015",
+    "target": "visual_text:t_p_120_1176_p000015",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000015",
+    "target": "trace_repair:t_p_120_1176_p000015",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000015",
+    "target": "trace_repair_route:table_crop_tile_repair_route_medium",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000015",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000015",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000015",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000015",
+    "target": "trait:review:visual_text:prompt_template_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000015",
+    "target": "trait:review:visual_text:section_bleed_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000015",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "table_expected_but_rows_missing",
+    "source": "trace_repair:t_p_120_1176_p000015",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000015",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000016",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000016",
+    "target": "trace_repair:t_p_120_1176_p000016",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000016",
+    "target": "visual_text:t_p_120_1176_p000016",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000016",
+    "target": "trace_repair:t_p_120_1176_p000016",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000016",
+    "target": "trace_repair_route:table_candidate_review_route",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000016",
+    "target": "trace_repair_action:review_table_candidate_before_extraction",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000016",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000016",
+    "target": "trait:review:visual_text:hallucination_risk",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000016",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000016",
+    "target": "trait:review:visual_text:prompt_template_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000016",
+    "target": "trait:review:visual_text:section_bleed_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000016",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "weak_table_signal_needs_route_review",
+    "source": "trace_repair:t_p_120_1176_p000016",
+    "target": "trace_repair_action:review_table_candidate_before_extraction",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "hallucination_or_suspicious_phrase_needs_grounding",
+    "source": "trace_repair:t_p_120_1176_p000016",
+    "target": "trace_repair_action:run_ocr_graph_validation",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000016",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000017",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000017",
+    "target": "trace_repair:t_p_120_1176_p000017",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000017",
+    "target": "visual_text:t_p_120_1176_p000017",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000017",
+    "target": "trace_repair:t_p_120_1176_p000017",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000017",
+    "target": "trace_repair_route:table_crop_tile_repair_route_medium",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000017",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000017",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000017",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000017",
+    "target": "trait:review:visual_text:prompt_template_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000017",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "table_expected_but_rows_missing",
+    "source": "trace_repair:t_p_120_1176_p000017",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000017",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000018",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000018",
+    "target": "trace_repair:t_p_120_1176_p000018",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000018",
+    "target": "visual_text:t_p_120_1176_p000018",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000018",
+    "target": "trace_repair:t_p_120_1176_p000018",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000018",
+    "target": "trace_repair_route:table_crop_tile_repair_route_medium",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000018",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000018",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000018",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000018",
+    "target": "trait:review:visual_text:prompt_template_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000018",
+    "target": "trait:review:visual_text:section_bleed_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000018",
+    "target": "trait:review:visual_text:suspicious_phrase",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000018",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "table_expected_but_rows_missing",
+    "source": "trace_repair:t_p_120_1176_p000018",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "hallucination_or_suspicious_phrase_needs_grounding",
+    "source": "trace_repair:t_p_120_1176_p000018",
+    "target": "trace_repair_action:run_ocr_graph_validation",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000018",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000019",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000019",
+    "target": "trace_repair:t_p_120_1176_p000019",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000019",
+    "target": "visual_text:t_p_120_1176_p000019",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000019",
+    "target": "trace_repair:t_p_120_1176_p000019",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000019",
+    "target": "trace_repair_route:ocr_graph_validation_review_route",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000019",
+    "target": "trace_repair_action:run_ocr_graph_validation",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000019",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000019",
+    "target": "trait:review:visual_text:hallucination_risk",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000019",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000019",
+    "target": "trait:review:visual_text:section_bleed_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "hallucination_or_suspicious_phrase_needs_grounding",
+    "source": "trace_repair:t_p_120_1176_p000019",
+    "target": "trace_repair_action:run_ocr_graph_validation",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "medium",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000019",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000020",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000020",
+    "target": "trace_repair:t_p_120_1176_p000020",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000020",
+    "target": "visual_text:t_p_120_1176_p000020",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000020",
+    "target": "trace_repair:t_p_120_1176_p000020",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000020",
+    "target": "trace_repair_route:table_crop_tile_repair_route_high",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000020",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000020",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000020",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000020",
+    "target": "trait:review:visual_text:section_bleed_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000020",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "high",
+    "reason": "table_expected_but_rows_missing",
+    "source": "trace_repair:t_p_120_1176_p000020",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000020",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000021",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000021",
+    "target": "trace_repair:t_p_120_1176_p000021",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000021",
+    "target": "visual_text:t_p_120_1176_p000021",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000021",
+    "target": "trace_repair:t_p_120_1176_p000021",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000021",
+    "target": "trace_repair_route:table_crop_tile_repair_route_medium",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000021",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000021",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000021",
+    "target": "trait:review:visual_text:hallucination_risk",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000021",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000021",
+    "target": "trait:review:visual_text:section_bleed_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000021",
+    "target": "trait:review:visual_text:suspicious_phrase",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000021",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "table_expected_but_rows_missing",
+    "source": "trace_repair:t_p_120_1176_p000021",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "hallucination_or_suspicious_phrase_needs_grounding",
+    "source": "trace_repair:t_p_120_1176_p000021",
+    "target": "trace_repair_action:run_ocr_graph_validation",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000021",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000022",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000022",
+    "target": "trace_repair:t_p_120_1176_p000022",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000022",
+    "target": "visual_text:t_p_120_1176_p000022",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000022",
+    "target": "trace_repair:t_p_120_1176_p000022",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000022",
+    "target": "trace_repair_route:table_candidate_review_route",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000022",
+    "target": "trace_repair_action:review_table_candidate_before_extraction",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000022",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000022",
+    "target": "trait:review:visual_text:hallucination_risk",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000022",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000022",
+    "target": "trait:review:visual_text:section_bleed_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000022",
+    "target": "trait:review:visual_text:suspicious_phrase",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000022",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "weak_table_signal_needs_route_review",
+    "source": "trace_repair:t_p_120_1176_p000022",
+    "target": "trace_repair_action:review_table_candidate_before_extraction",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "hallucination_or_suspicious_phrase_needs_grounding",
+    "source": "trace_repair:t_p_120_1176_p000022",
+    "target": "trace_repair_action:run_ocr_graph_validation",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000022",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000023",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000023",
+    "target": "trace_repair:t_p_120_1176_p000023",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000023",
+    "target": "visual_text:t_p_120_1176_p000023",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000023",
+    "target": "trace_repair:t_p_120_1176_p000023",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000023",
+    "target": "trace_repair_route:table_crop_tile_repair_route_high",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000023",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000023",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000023",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000023",
+    "target": "trait:review:visual_text:prompt_template_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000023",
+    "target": "trait:review:visual_text:section_bleed_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000023",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "high",
+    "reason": "table_expected_but_rows_missing",
+    "source": "trace_repair:t_p_120_1176_p000023",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000023",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000024",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000024",
+    "target": "trace_repair:t_p_120_1176_p000024",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000024",
+    "target": "visual_text:t_p_120_1176_p000024",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000024",
+    "target": "trace_repair:t_p_120_1176_p000024",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000024",
+    "target": "trace_repair_route:table_crop_tile_repair_route_medium",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000024",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000024",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000024",
+    "target": "trait:review:visual_text:hallucination_risk",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000024",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000024",
+    "target": "trait:review:visual_text:section_bleed_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000024",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "table_expected_but_rows_missing",
+    "source": "trace_repair:t_p_120_1176_p000024",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "hallucination_or_suspicious_phrase_needs_grounding",
+    "source": "trace_repair:t_p_120_1176_p000024",
+    "target": "trace_repair_action:run_ocr_graph_validation",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000024",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000026",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000026",
+    "target": "trace_repair:t_p_120_1176_p000026",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000026",
+    "target": "visual_text:t_p_120_1176_p000026",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000026",
+    "target": "trace_repair:t_p_120_1176_p000026",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000026",
+    "target": "trace_repair_route:table_candidate_review_route",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000026",
+    "target": "trace_repair_action:review_table_candidate_before_extraction",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000026",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000026",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000026",
+    "target": "trait:review:visual_text:prompt_template_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000026",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "weak_table_signal_needs_route_review",
+    "source": "trace_repair:t_p_120_1176_p000026",
+    "target": "trace_repair_action:review_table_candidate_before_extraction",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000026",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000027",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000027",
+    "target": "trace_repair:t_p_120_1176_p000027",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000027",
+    "target": "visual_text:t_p_120_1176_p000027",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000027",
+    "target": "trace_repair:t_p_120_1176_p000027",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000027",
+    "target": "trace_repair_route:table_crop_tile_repair_route_medium",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000027",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000027",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000027",
+    "target": "trait:review:visual_text:hallucination_risk",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000027",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000027",
+    "target": "trait:review:visual_text:prompt_template_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000027",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "table_expected_but_rows_missing",
+    "source": "trace_repair:t_p_120_1176_p000027",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "hallucination_or_suspicious_phrase_needs_grounding",
+    "source": "trace_repair:t_p_120_1176_p000027",
+    "target": "trace_repair_action:run_ocr_graph_validation",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000027",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "source": "trace_net:repair_planner",
+    "target": "trace_repair:t_p_120_1176_p000028",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000028",
+    "target": "trace_repair:t_p_120_1176_p000028",
+    "type": "HAS_TRACE_NET_REPAIR_PLAN"
+  },
+  {
+    "source": "page:t_p_120_1176_p000028",
+    "target": "visual_text:t_p_120_1176_p000028",
+    "type": "HAS_VISUAL_TEXT"
+  },
+  {
+    "source": "visual_text:t_p_120_1176_p000028",
+    "target": "trace_repair:t_p_120_1176_p000028",
+    "type": "HAS_REPAIR_PLAN"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000028",
+    "target": "trace_repair_route:table_crop_tile_repair_route_medium",
+    "type": "USES_REPAIR_ROUTE"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000028",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "RECOMMENDS_REPAIR_ACTION"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000028",
+    "target": "trait:trust:visual_text:c",
+    "type": "CURRENT_TRUST_TIER"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000028",
+    "target": "trait:review:visual_text:hallucination_risk",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000028",
+    "target": "trait:review:visual_text:needs_human_review",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000028",
+    "target": "trait:review:visual_text:section_bleed_repaired",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "source": "trace_repair:t_p_120_1176_p000028",
+    "target": "trait:review:visual_text:table_expected_but_not_extracted",
+    "type": "REPAIRS_REVIEW_TRAIT"
+  },
+  {
+    "priority": "medium",
+    "reason": "table_expected_but_rows_missing",
+    "source": "trace_repair:t_p_120_1176_p000028",
+    "target": "trace_repair_action:send_to_table_crop_tile_route",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "hallucination_or_suspicious_phrase_needs_grounding",
+    "source": "trace_repair:t_p_120_1176_p000028",
+    "target": "trace_repair_action:run_ocr_graph_validation",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  },
+  {
+    "priority": "high",
+    "reason": "derived_visual_text_not_yet_rag_safe",
+    "source": "trace_repair:t_p_120_1176_p000028",
+    "target": "trace_repair_action:keep_in_human_review_queue",
+    "type": "HAS_ACTION_QUEUE_ITEM"
+  }
+]

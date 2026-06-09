@@ -1,0 +1,59 @@
+[
+  {
+    "source": "trace_net:feedback_search_simulation",
+    "target": "query:part_number:120-50645-009",
+    "type": "SIMULATES_QUERY"
+  },
+  {
+    "source": "trace_net:feedback_search_simulation",
+    "target": "search_group:t_p_120_1176_p000003",
+    "type": "HAS_SIMULATED_GROUP"
+  },
+  {
+    "source": "search_group:t_p_120_1176_p000003",
+    "target": "t_p_120_1176_p000003",
+    "type": "GROUPS_PAGE"
+  },
+  {
+    "delta": 4.0,
+    "source": "feedback_signal:c44938758539",
+    "target": "search_group:t_p_120_1176_p000003",
+    "type": "ADJUSTS_GROUP"
+  },
+  {
+    "source": "trace_net:feedback_search_simulation",
+    "target": "search_group:t_p_120_1176_p000319",
+    "type": "HAS_SIMULATED_GROUP"
+  },
+  {
+    "source": "search_group:t_p_120_1176_p000319",
+    "target": "t_p_120_1176_p000319",
+    "type": "GROUPS_PAGE"
+  },
+  {
+    "source": "trace_net:feedback_search_simulation",
+    "target": "search_group:t_p_120_1176_p000320",
+    "type": "HAS_SIMULATED_GROUP"
+  },
+  {
+    "source": "search_group:t_p_120_1176_p000320",
+    "target": "t_p_120_1176_p000320",
+    "type": "GROUPS_PAGE"
+  },
+  {
+    "delta": -12.0,
+    "source": "feedback_signal:7de9478188c9",
+    "target": "search_group:t_p_120_1176_p000320",
+    "type": "ADJUSTS_GROUP"
+  },
+  {
+    "source": "query:part_number:120-50645-009",
+    "target": "feedback_signal:c44938758539",
+    "type": "HAS_FEEDBACK_SIGNAL"
+  },
+  {
+    "source": "query:part_number:120-50645-009",
+    "target": "feedback_signal:7de9478188c9",
+    "type": "HAS_FEEDBACK_SIGNAL"
+  }
+]

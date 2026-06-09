@@ -1,0 +1,438 @@
+[
+  {
+    "id": "weight_policy:trace_net_weights_policy_v1",
+    "kind": "trace_net_weight_policy",
+    "label": "TRACE-Net Weights Policy",
+    "version": "trace_net_weights_policy_v1"
+  },
+  {
+    "default_rag_action": "include_as_verified_part_evidence",
+    "id": "weight_layer:part_catalog",
+    "kind": "confidence_weight_layer",
+    "label": "part_catalog",
+    "max_auto_tier": "A",
+    "purpose": "verified_part_evidence"
+  },
+  {
+    "feature": "extraction_layer",
+    "id": "weight:part_catalog:extraction_layer",
+    "kind": "confidence_weight",
+    "label": "extraction_layer=0.05",
+    "layer": "part_catalog",
+    "weight": 0.05
+  },
+  {
+    "feature": "graph_support",
+    "id": "weight:part_catalog:graph_support",
+    "kind": "confidence_weight",
+    "label": "graph_support=0.2",
+    "layer": "part_catalog",
+    "weight": 0.2
+  },
+  {
+    "feature": "ocr_support",
+    "id": "weight:part_catalog:ocr_support",
+    "kind": "confidence_weight",
+    "label": "ocr_support=0.1",
+    "layer": "part_catalog",
+    "weight": 0.1
+  },
+  {
+    "feature": "part_catalog",
+    "id": "weight:part_catalog:part_catalog",
+    "kind": "confidence_weight",
+    "label": "part_catalog=0.4",
+    "layer": "part_catalog",
+    "weight": 0.4
+  },
+  {
+    "feature": "source_trace",
+    "id": "weight:part_catalog:source_trace",
+    "kind": "confidence_weight",
+    "label": "source_trace=0.25",
+    "layer": "part_catalog",
+    "weight": 0.25
+  },
+  {
+    "default_rag_action": "include_as_source_text_evidence",
+    "id": "weight_layer:source_text_evidence",
+    "kind": "confidence_weight_layer",
+    "label": "source_text_evidence",
+    "max_auto_tier": "A",
+    "purpose": "source_backed_text_evidence"
+  },
+  {
+    "feature": "extraction_layer",
+    "id": "weight:source_text_evidence:extraction_layer",
+    "kind": "confidence_weight",
+    "label": "extraction_layer=0.05",
+    "layer": "source_text_evidence",
+    "weight": 0.05
+  },
+  {
+    "feature": "graph_support",
+    "id": "weight:source_text_evidence:graph_support",
+    "kind": "confidence_weight",
+    "label": "graph_support=0.2",
+    "layer": "source_text_evidence",
+    "weight": 0.2
+  },
+  {
+    "feature": "ocr_support",
+    "id": "weight:source_text_evidence:ocr_support",
+    "kind": "confidence_weight",
+    "label": "ocr_support=0.4",
+    "layer": "source_text_evidence",
+    "weight": 0.4
+  },
+  {
+    "feature": "part_catalog",
+    "id": "weight:source_text_evidence:part_catalog",
+    "kind": "confidence_weight",
+    "label": "part_catalog=0.05",
+    "layer": "source_text_evidence",
+    "weight": 0.05
+  },
+  {
+    "feature": "source_trace",
+    "id": "weight:source_text_evidence:source_trace",
+    "kind": "confidence_weight",
+    "label": "source_trace=0.3",
+    "layer": "source_text_evidence",
+    "weight": 0.3
+  },
+  {
+    "default_rag_action": "include_as_source_evidence",
+    "id": "weight_layer:source_trace",
+    "kind": "confidence_weight_layer",
+    "label": "source_trace",
+    "max_auto_tier": "A",
+    "purpose": "source_truth"
+  },
+  {
+    "feature": "extraction_layer",
+    "id": "weight:source_trace:extraction_layer",
+    "kind": "confidence_weight",
+    "label": "extraction_layer=0.05",
+    "layer": "source_trace",
+    "weight": 0.05
+  },
+  {
+    "feature": "graph_support",
+    "id": "weight:source_trace:graph_support",
+    "kind": "confidence_weight",
+    "label": "graph_support=0.2",
+    "layer": "source_trace",
+    "weight": 0.2
+  },
+  {
+    "feature": "ocr_support",
+    "id": "weight:source_trace:ocr_support",
+    "kind": "confidence_weight",
+    "label": "ocr_support=0.05",
+    "layer": "source_trace",
+    "weight": 0.05
+  },
+  {
+    "feature": "part_catalog",
+    "id": "weight:source_trace:part_catalog",
+    "kind": "confidence_weight",
+    "label": "part_catalog=0.0",
+    "layer": "source_trace",
+    "weight": 0.0
+  },
+  {
+    "feature": "source_trace",
+    "id": "weight:source_trace:source_trace",
+    "kind": "confidence_weight",
+    "label": "source_trace=0.7",
+    "layer": "source_trace",
+    "weight": 0.7
+  },
+  {
+    "default_rag_action": "exclude_until_table_tiles_exist",
+    "id": "weight_layer:table_candidate",
+    "kind": "confidence_weight_layer",
+    "label": "table_candidate",
+    "max_auto_tier": "B",
+    "purpose": "routing_signal"
+  },
+  {
+    "feature": "extraction_layer",
+    "id": "weight:table_candidate:extraction_layer",
+    "kind": "confidence_weight",
+    "label": "extraction_layer=0.4",
+    "layer": "table_candidate",
+    "weight": 0.4
+  },
+  {
+    "feature": "graph_support",
+    "id": "weight:table_candidate:graph_support",
+    "kind": "confidence_weight",
+    "label": "graph_support=0.4",
+    "layer": "table_candidate",
+    "weight": 0.4
+  },
+  {
+    "feature": "ocr_support",
+    "id": "weight:table_candidate:ocr_support",
+    "kind": "confidence_weight",
+    "label": "ocr_support=0.05",
+    "layer": "table_candidate",
+    "weight": 0.05
+  },
+  {
+    "feature": "part_catalog",
+    "id": "weight:table_candidate:part_catalog",
+    "kind": "confidence_weight",
+    "label": "part_catalog=0.0",
+    "layer": "table_candidate",
+    "weight": 0.0
+  },
+  {
+    "feature": "source_trace",
+    "id": "weight:table_candidate:source_trace",
+    "kind": "confidence_weight",
+    "label": "source_trace=0.15",
+    "layer": "table_candidate",
+    "weight": 0.15
+  },
+  {
+    "default_rag_action": "include_as_derived_context",
+    "id": "weight_layer:table_tile_text_refined",
+    "kind": "confidence_weight_layer",
+    "label": "table_tile_text_refined",
+    "max_auto_tier": "A",
+    "purpose": "derived_table_text_and_part_evidence"
+  },
+  {
+    "feature": "extraction_layer",
+    "id": "weight:table_tile_text_refined:extraction_layer",
+    "kind": "confidence_weight",
+    "label": "extraction_layer=0.1",
+    "layer": "table_tile_text_refined",
+    "weight": 0.1
+  },
+  {
+    "feature": "graph_support",
+    "id": "weight:table_tile_text_refined:graph_support",
+    "kind": "confidence_weight",
+    "label": "graph_support=0.2",
+    "layer": "table_tile_text_refined",
+    "weight": 0.2
+  },
+  {
+    "feature": "ocr_support",
+    "id": "weight:table_tile_text_refined:ocr_support",
+    "kind": "confidence_weight",
+    "label": "ocr_support=0.1",
+    "layer": "table_tile_text_refined",
+    "weight": 0.1
+  },
+  {
+    "feature": "part_catalog",
+    "id": "weight:table_tile_text_refined:part_catalog",
+    "kind": "confidence_weight",
+    "label": "part_catalog=0.35",
+    "layer": "table_tile_text_refined",
+    "weight": 0.35
+  },
+  {
+    "feature": "source_trace",
+    "id": "weight:table_tile_text_refined:source_trace",
+    "kind": "confidence_weight",
+    "label": "source_trace=0.25",
+    "layer": "table_tile_text_refined",
+    "weight": 0.25
+  },
+  {
+    "default_rag_action": "exclude_until_table_text_exists",
+    "id": "weight_layer:table_tiles",
+    "kind": "confidence_weight_layer",
+    "label": "table_tiles",
+    "max_auto_tier": "B",
+    "purpose": "preprocessing_artifact"
+  },
+  {
+    "feature": "extraction_layer",
+    "id": "weight:table_tiles:extraction_layer",
+    "kind": "confidence_weight",
+    "label": "extraction_layer=0.5",
+    "layer": "table_tiles",
+    "weight": 0.5
+  },
+  {
+    "feature": "graph_support",
+    "id": "weight:table_tiles:graph_support",
+    "kind": "confidence_weight",
+    "label": "graph_support=0.25",
+    "layer": "table_tiles",
+    "weight": 0.25
+  },
+  {
+    "feature": "ocr_support",
+    "id": "weight:table_tiles:ocr_support",
+    "kind": "confidence_weight",
+    "label": "ocr_support=0.0",
+    "layer": "table_tiles",
+    "weight": 0.0
+  },
+  {
+    "feature": "part_catalog",
+    "id": "weight:table_tiles:part_catalog",
+    "kind": "confidence_weight",
+    "label": "part_catalog=0.0",
+    "layer": "table_tiles",
+    "weight": 0.0
+  },
+  {
+    "feature": "source_trace",
+    "id": "weight:table_tiles:source_trace",
+    "kind": "confidence_weight",
+    "label": "source_trace=0.25",
+    "layer": "table_tiles",
+    "weight": 0.25
+  },
+  {
+    "default_rag_action": "include_as_derived_context",
+    "id": "weight_layer:visual_text",
+    "kind": "confidence_weight_layer",
+    "label": "visual_text",
+    "max_auto_tier": "B",
+    "purpose": "model_derived_visual_context"
+  },
+  {
+    "feature": "extraction_layer",
+    "id": "weight:visual_text:extraction_layer",
+    "kind": "confidence_weight",
+    "label": "extraction_layer=0.15",
+    "layer": "visual_text",
+    "weight": 0.15
+  },
+  {
+    "feature": "graph_support",
+    "id": "weight:visual_text:graph_support",
+    "kind": "confidence_weight",
+    "label": "graph_support=0.3",
+    "layer": "visual_text",
+    "weight": 0.3
+  },
+  {
+    "feature": "ocr_support",
+    "id": "weight:visual_text:ocr_support",
+    "kind": "confidence_weight",
+    "label": "ocr_support=0.2",
+    "layer": "visual_text",
+    "weight": 0.2
+  },
+  {
+    "feature": "part_catalog",
+    "id": "weight:visual_text:part_catalog",
+    "kind": "confidence_weight",
+    "label": "part_catalog=0.1",
+    "layer": "visual_text",
+    "weight": 0.1
+  },
+  {
+    "feature": "source_trace",
+    "id": "weight:visual_text:source_trace",
+    "kind": "confidence_weight",
+    "label": "source_trace=0.25",
+    "layer": "visual_text",
+    "weight": 0.25
+  },
+  {
+    "id": "weight_policy:feedback_ranking",
+    "kind": "feedback_weight_policy",
+    "label": "Feedback Ranking Weights"
+  },
+  {
+    "id": "feedback_weight:answer_correct",
+    "kind": "feedback_reason_weight",
+    "label": "answer_correct=6.0",
+    "reason": "answer_correct",
+    "weight": 6.0
+  },
+  {
+    "id": "feedback_weight:answer_too_vague",
+    "kind": "feedback_reason_weight",
+    "label": "answer_too_vague=-3.0",
+    "reason": "answer_too_vague",
+    "weight": -3.0
+  },
+  {
+    "id": "feedback_weight:citation_not_supporting_answer",
+    "kind": "feedback_reason_weight",
+    "label": "citation_not_supporting_answer=-7.0",
+    "reason": "citation_not_supporting_answer",
+    "weight": -7.0
+  },
+  {
+    "id": "feedback_weight:citation_useful",
+    "kind": "feedback_reason_weight",
+    "label": "citation_useful=4.0",
+    "reason": "citation_useful",
+    "weight": 4.0
+  },
+  {
+    "id": "feedback_weight:expected_page_boost",
+    "kind": "feedback_reason_weight",
+    "label": "expected_page_boost=8.0",
+    "reason": "expected_page_boost",
+    "weight": 8.0
+  },
+  {
+    "id": "feedback_weight:source_helpful",
+    "kind": "feedback_reason_weight",
+    "label": "source_helpful=5.0",
+    "reason": "source_helpful",
+    "weight": 5.0
+  },
+  {
+    "id": "feedback_weight:wrong_page",
+    "kind": "feedback_reason_weight",
+    "label": "wrong_page=-8.0",
+    "reason": "wrong_page",
+    "weight": -8.0
+  },
+  {
+    "id": "feedback_weight:wrong_part",
+    "kind": "feedback_reason_weight",
+    "label": "wrong_part=-10.0",
+    "reason": "wrong_part",
+    "weight": -10.0
+  },
+  {
+    "id": "weight_policy:retrieval_ranking",
+    "kind": "retrieval_weight_policy",
+    "label": "Retrieval Ranking Weights"
+  },
+  {
+    "bonus": 3.0,
+    "bucket": "derived_context",
+    "id": "retrieval_bucket_bonus:derived_context",
+    "kind": "retrieval_bucket_bonus",
+    "label": "derived_context=+3.0"
+  },
+  {
+    "bonus": 2.0,
+    "bucket": "source_evidence",
+    "id": "retrieval_bucket_bonus:source_evidence",
+    "kind": "retrieval_bucket_bonus",
+    "label": "source_evidence=+2.0"
+  },
+  {
+    "bonus": 5.0,
+    "bucket": "source_text_evidence",
+    "id": "retrieval_bucket_bonus:source_text_evidence",
+    "kind": "retrieval_bucket_bonus",
+    "label": "source_text_evidence=+5.0"
+  },
+  {
+    "bonus": 8.0,
+    "bucket": "verified_part_evidence",
+    "id": "retrieval_bucket_bonus:verified_part_evidence",
+    "kind": "retrieval_bucket_bonus",
+    "label": "verified_part_evidence=+8.0"
+  }
+]

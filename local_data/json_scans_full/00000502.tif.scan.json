@@ -1,0 +1,211 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:12:57Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000502.tif",
+    "relative_path": "00000502.tif"
+  },
+  "file": {
+    "file_name": "00000502.tif",
+    "extension": ".tif",
+    "file_size_bytes": 34815,
+    "modified_time_utc": "2026-05-22T19:14:57Z",
+    "sha256": "146edb2a89d7eabb35dee2ccde60df6965e27f76fc796d25b691a2044bfbf0b1"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.98,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "120TP250105.MCE",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "LAMINATION OF LAYERS",
+    "section_title": null,
+    "figure_title": "Typical Repair to Damage Seat Armrest Stop (Pre-Mod. $.B. 120-25-0224",
+    "figure_number": "612",
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": 628,
+    "page_label": "628",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [
+      "LAMINATION OF LAYERS",
+      "VIEW A"
+    ],
+    "metadata_confidence": 0.98
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\n) 34 | 25.40 vane\n5 1.00\n675 (1.00)\nLAMINATION OF LAYERS\nVIEW A\n120TP250105.MCE\n| Stop (Pre-Mod. S.B. 120-25-0224)\n312\n25 21 00 Page 628\nT.P. 120/1176 Sep 30/98\n\n[bottom_strip]\nae Lys Lys\n8 - 0\u00b0/ 90\u00b0\nLAMINATION OF LAYERS\nVIEW A\nDIMENSIONS: \u2122\n(in)\n120TP250105.MCE\nTypical Repair to Damage Seat Armrest Stop (Pre-Mod. $.B. 120-25-0224)\nFigure 612\nEFFECTIVITY: ALL\n25 21 00 Page 628\nT.P. 120/1176 Sep 30/98\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nNN ao PN\n~~ a a KOI / /\n} aN aa eae ees! /\n\n[right_strip]\nran f\\\nves /\nA\n> Q\n25.40\n) (1.00) MIN.\nWL\n- LAYERS\n120TP250105.MCE\n0-25-0224)\n00 Page 628\n1176 Sep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": ") 34 | 25.40 vane\n5 1.00\n675 (1.00)\nLAMINATION OF LAYERS\nVIEW A\n120TP250105.MCE\n| Stop (Pre-Mod. S.B. 120-25-0224)\n312\n25 21 00 Page 628\nT.P. 120/1176 Sep 30/98",
+        "char_count": 160,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "ae Lys Lys\n8 - 0\u00b0/ 90\u00b0\nLAMINATION OF LAYERS\nVIEW A\nDIMENSIONS: \u2122\n(in)\n120TP250105.MCE\nTypical Repair to Damage Seat Armrest Stop (Pre-Mod. $.B. 120-25-0224)\nFigure 612\nEFFECTIVITY: ALL\n25 21 00 Page 628\nT.P. 120/1176 Sep 30/98",
+        "char_count": 226,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nNN ao PN\n~~ a a KOI / /\n} aN aa eae ees! /",
+        "char_count": 100,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "ran f\\\nves /\nA\n> Q\n25.40\n) (1.00) MIN.\nWL\n- LAYERS\n120TP250105.MCE\n0-25-0224)\n00 Page 628\n1176 Sep 30/98",
+        "char_count": 104,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "120TP250105.MCE",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "LAMINATION OF LAYERS",
+      "section_title": null,
+      "figure_title": "Typical Repair to Damage Seat Armrest Stop (Pre-Mod. $.B. 120-25-0224",
+      "figure_number": "612",
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": 628,
+      "page_label": "628",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [
+        "LAMINATION OF LAYERS",
+        "VIEW A"
+      ],
+      "metadata_confidence": 0.98
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

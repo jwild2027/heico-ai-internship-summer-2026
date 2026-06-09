@@ -1,0 +1,197 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T16:16:08Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000001.tif",
+    "relative_path": "00000001.tif"
+  },
+  "file": {
+    "file_name": "00000001.tif",
+    "extension": ".tif",
+    "file_size_bytes": 16245,
+    "modified_time_utc": "2026-05-22T19:14:53Z",
+    "sha256": "09bfd29f1d493133d8c9b3760581d78d133c5f93a7a908027bee51f896a0bc0b"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 2550,
+    "height_px": 3299,
+    "dpi_x": 300.0,
+    "dpi_y": 300.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_page",
+    "confidence": 0.43,
+    "signals": [
+      "ata_code",
+      "manual_document_code",
+      "revision"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": "4",
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.25
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "ocr",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": null,
+    "document_code": "AVWWW.EMBRAER",
+    "figure_title": null,
+    "figure_number": null,
+    "effectivity": null,
+    "ata_code": "25-21-00",
+    "page_number": null,
+    "revision_date": null,
+    "callouts": [
+      "REVISION 4 - 10 APRIL 2006",
+      "IMBRAER",
+      "CE MANUAL",
+      "SEPTEMBER 1998"
+    ],
+    "metadata_confidence": 0.43
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\nIN SUPERSEDES T.-P. 120/1176\n6 SEPTEMBER 1997\n30 SEPTEMBER 1998\nREVISION 4 - 10 APRIL 2006\nIMBRAER\nIRA DE AERONAUTICA S.A.\nXA POSTAL 8050 - TELEFONE: (55) (12) 3927-7517\n- SAO JOSE DOS CAMPOS - SAO PAULO - BRASIL\ncom.br / http:/Avwww.embraer.com\n\n[bottom_strip]\n30 SEPTEMBER 1998\nREVISION 4 - 10 APRIL 2006\n-\u00e2\u201a\u00ac EMBRAER\nEMPRESA BRASILEIRA DE AERONAUTICA S.A.\nAV. BRIGADEIRO FARIA LIMA, 2.170 - CAIXA POSTAL 8050 - TELEFONE: (55) (12) 3927-7517\nFAX: (55) (12) 3927-7546 - CEP 12.227-901 - SAO JOSE DOS CAMPOS - SAO PAULO - BRASIL\ne-mail:distrib@embraer.com.br / http:/Avww.embraer.com\n\n[top_strip]\nT.P. 120/1176\n\n[right_strip]\nT.P. 7120/1176\n'S\nCE MANUAL\n5 LIST\n20/1176\n25-21-00\n|. SEPTEMBER 1998\nREVISION 4 - 10 APRIL 2006\n. S.A.\n-FONE: (55) (12) 3927-7517\n-OS - SAO PAULO - BRASIL",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1275,
+          1913,
+          2550,
+          3299
+        ],
+        "status": "ok",
+        "text": "IN SUPERSEDES T.-P. 120/1176\n6 SEPTEMBER 1997\n30 SEPTEMBER 1998\nREVISION 4 - 10 APRIL 2006\nIMBRAER\nIRA DE AERONAUTICA S.A.\nXA POSTAL 8050 - TELEFONE: (55) (12) 3927-7517\n- SAO JOSE DOS CAMPOS - SAO PAULO - BRASIL\ncom.br / http:/Avwww.embraer.com",
+        "char_count": 245,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2309,
+          2550,
+          3299
+        ],
+        "status": "ok",
+        "text": "30 SEPTEMBER 1998\nREVISION 4 - 10 APRIL 2006\n-\u00e2\u201a\u00ac EMBRAER\nEMPRESA BRASILEIRA DE AERONAUTICA S.A.\nAV. BRIGADEIRO FARIA LIMA, 2.170 - CAIXA POSTAL 8050 - TELEFONE: (55) (12) 3927-7517\nFAX: (55) (12) 3927-7546 - CEP 12.227-901 - SAO JOSE DOS CAMPOS - SAO PAULO - BRASIL\ne-mail:distrib@embraer.com.br / http:/Avww.embraer.com",
+        "char_count": 321,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          2550,
+          593
+        ],
+        "status": "ok",
+        "text": "T.P. 120/1176",
+        "char_count": 13,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          1734,
+          0,
+          2550,
+          3299
+        ],
+        "status": "ok",
+        "text": "T.P. 7120/1176\n'S\nCE MANUAL\n5 LIST\n20/1176\n25-21-00\n|. SEPTEMBER 1998\nREVISION 4 - 10 APRIL 2006\n. S.A.\n-FONE: (55) (12) 3927-7517\n-OS - SAO PAULO - BRASIL",
+        "char_count": 155,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": "4",
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0.2
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": null,
+      "document_code": "AVWWW.EMBRAER",
+      "figure_title": null,
+      "figure_number": null,
+      "effectivity": null,
+      "ata_code": "25-21-00",
+      "page_number": null,
+      "revision_date": null,
+      "callouts": [
+        "REVISION 4 - 10 APRIL 2006",
+        "IMBRAER",
+        "CE MANUAL",
+        "SEPTEMBER 1998"
+      ],
+      "metadata_confidence": 0.43
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": "4",
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0.2
+    }
+  }
+}

@@ -1,0 +1,295 @@
+{
+  "status": "OK",
+  "context_file": "local_data\\organization\\context\\page_contexts.json",
+  "graph_summary_file": "local_data\\organization\\graph\\graph_summary.json",
+  "total_contexts": 509,
+  "contexts_with_warnings": 0,
+  "contexts_with_errors": 14,
+  "role_counts": {
+    "blank": 14,
+    "figure": 157,
+    "front_matter": 10,
+    "parts_list": 290,
+    "procedure": 28,
+    "table": 10
+  },
+  "confidence_counts": {
+    "high": 484,
+    "low": 14,
+    "medium": 11
+  },
+  "warning_counts": {},
+  "topic_counts": {
+    "parts list": 451,
+    "seats": 108,
+    "maintenance": 105,
+    "seat structure": 95,
+    "seat": 89,
+    "figure": 77,
+    "illustration": 63,
+    "aircraft": 45,
+    "armrest": 35,
+    "maintenance manual": 34,
+    "effectivity": 30,
+    "25-21-00": 28,
+    "fasteners": 28,
+    "single passenger seat": 25,
+    "ATA code 25-21-00": 19,
+    "seat assembly": 17,
+    "codes": 16,
+    "illustrated parts": 15,
+    "ocr page": 14,
+    "passenger seat": 12
+  },
+  "highlighted_part_count": 1600,
+  "unique_highlighted_parts": 700,
+  "graph_page_context_nodes": 509,
+  "graph_has_context_edges": 509,
+  "graph_tagged_as_edges": 1706,
+  "graph_highlights_part_edges": 1070,
+  "selected_contexts": [
+    {
+      "page_id": "t_p_120_1176_p000042",
+      "page_label": "1021",
+      "manual": "T.P. 120/1176",
+      "ata": "11-00-66",
+      "page_role": "parts_list",
+      "confidence": "high",
+      "summary": "This page appears to be a parts list from a maintenance manual, containing numerous part numbers and associated codes.",
+      "topics": [
+        "parts list",
+        "maintenance",
+        "aircraft",
+        "technical manual"
+      ],
+      "important_parts": [
+        "120-36843-001",
+        "120-37313-001",
+        "120-37313-535",
+        "120-37313-505",
+        "120-37313-509"
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "page_id": "t_p_120_1176_p000001",
+      "page_label": "1",
+      "manual": "T.P. 120/1176",
+      "ata": "25-21-00",
+      "page_role": "front_matter",
+      "confidence": "high",
+      "summary": "This page appears to be a revision notice and title block for a technical manual, superseding an earlier version.",
+      "topics": [
+        "revision control",
+        "manual title block",
+        "embraer"
+      ],
+      "important_parts": [
+        "12.227-901",
+        "3927-7517",
+        "3927-7546"
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "page_id": "t_p_120_1176_p000002",
+      "page_label": "2",
+      "manual": "T.P. 120/1176",
+      "ata": "25-21-00",
+      "page_role": "blank",
+      "confidence": "low",
+      "summary": "Page 2 from T.P. 120/1176 in ATA 25-21-00 has empty OCR text.",
+      "topics": [
+        "25-21-00",
+        "ocr page"
+      ],
+      "important_parts": [],
+      "warnings": [],
+      "errors": [
+        "empty OCR text"
+      ]
+    },
+    {
+      "page_id": "t_p_120_1176_p000003",
+      "page_label": "i/ii",
+      "manual": "T.P. 120/1176",
+      "ata": "25-21-00",
+      "page_role": "parts_list",
+      "confidence": "high",
+      "summary": "This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing applicability.",
+      "topics": [
+        "parts list",
+        "applicability",
+        "maintenance manual"
+      ],
+      "important_parts": [
+        "120-36833-501",
+        "120-36833-511",
+        "120-36833-519",
+        "120-36834-509",
+        "120-36834-517",
+        "120-36835-501",
+        "120-41824-007",
+        "120-41824-501",
+        "120-41824-509",
+        "120-41825-007",
+        "120-41825-503",
+        "120-41825-517",
+        "120-42547-007",
+        "120-42547-507",
+        "120-42548-007",
+        "120-45850-003",
+        "120-45850-503",
+        "120-45851-003",
+        "120-45851-503",
+        "120-46137-501",
+        "120-50645-007",
+        "120-50645-009",
+        "120-50645-015",
+        "120-50645-017"
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "page_id": "t_p_120_1176_p000004",
+      "page_label": "1",
+      "manual": "T.P. 120/1176",
+      "ata": "25-21-00",
+      "page_role": "front_matter",
+      "confidence": "high",
+      "summary": "This page introduces the maintenance manual, outlining its purpose and scope related to passenger cabin disassembly.",
+      "topics": [
+        "introduction",
+        "maintenance manual",
+        "disassembly",
+        "passenger cabin"
+      ],
+      "important_parts": [],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "page_id": "t_p_120_1176_p000005",
+      "page_label": "1",
+      "manual": "T.P. 120/1176",
+      "ata": "25-21-00",
+      "page_role": "parts_list",
+      "confidence": "high",
+      "summary": "This page appears to be a parts list and index page from a maintenance manual, listing various part numbers and index entries with associated dates.",
+      "topics": [
+        "parts list",
+        "index",
+        "maintenance manual",
+        "ATA code 25-21-00"
+      ],
+      "important_parts": [
+        "25-21-00",
+        "25-Vendors",
+        "25-Numerical"
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "page_id": "t_p_120_1176_p000006",
+      "page_label": "2",
+      "manual": "T.P. 120/1176",
+      "ata": "25-21-00",
+      "page_role": "parts_list",
+      "confidence": "high",
+      "summary": "This page appears to be a list of effective pages within a maintenance manual, detailing revision history and page numbers with associated dates.",
+      "topics": [
+        "maintenance manual",
+        "revision history",
+        "page list",
+        "parts list"
+      ],
+      "important_parts": [
+        "20-IFL",
+        "25-Numerical",
+        "40-NUMeElNCal"
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "page_id": "t_p_120_1176_p000007",
+      "page_label": "3",
+      "manual": "T.P. 120/1176",
+      "ata": "25-21-00",
+      "page_role": "parts_list",
+      "confidence": "high",
+      "summary": "This page is a list of effective pages within a maintenance manual, detailing revisions and deletions with associated part numbers and dates.",
+      "topics": [
+        "maintenance manual",
+        "parts list",
+        "revisions",
+        "page numbering"
+      ],
+      "important_parts": [
+        "40-1FL",
+        "25-IPL 1095",
+        "25-IPL 1134",
+        "25-IPL 1140",
+        "25-IPL 1140A"
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "page_id": "t_p_120_1176_p000008",
+      "page_label": "4",
+      "manual": "T.P. 120/1176",
+      "ata": "25-21-00",
+      "page_role": "parts_list",
+      "confidence": "high",
+      "summary": "This page appears to be a list of effective pages within a maintenance manual, detailing revisions and deletions with associated dates and part numbers.",
+      "topics": [
+        "maintenance manual",
+        "parts list",
+        "revisions",
+        "page numbering"
+      ],
+      "important_parts": [
+        "20-IFL",
+        "40-IFL",
+        "25-IPL"
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "page_id": "t_p_120_1176_p000009",
+      "page_label": "5",
+      "manual": "T.P. 120/1176",
+      "ata": "25-21-00",
+      "page_role": "parts_list",
+      "confidence": "high",
+      "summary": "This page is a list of effective pages within a maintenance manual, detailing part numbers and revision dates.",
+      "topics": [
+        "parts list",
+        "revision history",
+        "maintenance manual"
+      ],
+      "important_parts": [
+        "40-1FL",
+        "25-IPL",
+        "1233",
+        "1272",
+        "1272A",
+        "1272B",
+        "1272C",
+        "1272D",
+        "1273",
+        "1274",
+        "1275"
+      ],
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "issues": []
+}

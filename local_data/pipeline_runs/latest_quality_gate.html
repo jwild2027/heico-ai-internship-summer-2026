@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TIFF Pipeline Quality Gate</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 0.35rem 0.5rem; text-align: left; vertical-align: top; }
+    th { background: #f3f3f3; }
+    .status { font-size: 1.4rem; font-weight: bold; }
+    pre { background: #f7f7f7; padding: 1rem; overflow: auto; }
+  </style>
+</head>
+<body>
+  <h1>TIFF Pipeline Quality Gate</h1>
+  <p class="status">Status: OK</p>
+  <p>Manifest: local_data/pipeline_runs/latest_backend_pipeline.json</p>
+  <h2>Summary</h2>
+  <pre>{
+  &quot;eval_failures&quot;: 0,
+  &quot;eval_manual_review&quot;: 1,
+  &quot;pipeline_status&quot;: &quot;ok&quot;,
+  &quot;qa_review_rows&quot;: 205,
+  &quot;run_id&quot;: &quot;20260527T182228Z&quot;,
+  &quot;sqlite_counts&quot;: {
+    &quot;manuals&quot;: 1,
+    &quot;ocr_clean_pages&quot;: 509,
+    &quot;pages&quot;: 509,
+    &quot;part_catalog&quot;: 1019,
+    &quot;part_catalog_clean&quot;: 504,
+    &quot;part_mentions&quot;: 1409,
+    &quot;rag_chunks&quot;: 538,
+    &quot;rag_embeddings&quot;: 538,
+    &quot;source_links&quot;: 509
+  },
+  &quot;suspicious_part_ata&quot;: 5
+}</pre>
+  <h2>Checks</h2>
+  <table>
+    <thead><tr><th>Status</th><th>Check</th><th>Actual</th><th>Expected</th><th>Details</th></tr></thead>
+    <tbody><tr><td>ok</td><td>pipeline_status</td><td>ok</td><td>ok</td><td>Pipeline manifest status is ok.</td></tr><tr><td>ok</td><td>pipeline_steps</td><td>[]</td><td>[]</td><td>All pipeline steps completed successfully.</td></tr><tr><td>ok</td><td>table_count_manuals</td><td>1</td><td>&gt;= 1</td><td>manuals has 1 rows; minimum is 1.</td></tr><tr><td>ok</td><td>table_count_pages</td><td>509</td><td>&gt;= 1</td><td>pages has 509 rows; minimum is 1.</td></tr><tr><td>ok</td><td>table_count_part_mentions</td><td>1409</td><td>&gt;= 1</td><td>part_mentions has 1409 rows; minimum is 1.</td></tr><tr><td>ok</td><td>table_count_part_catalog_clean</td><td>504</td><td>&gt;= 1</td><td>part_catalog_clean has 504 rows; minimum is 1.</td></tr><tr><td>ok</td><td>table_count_rag_chunks</td><td>538</td><td>&gt;= 1</td><td>rag_chunks has 538 rows; minimum is 1.</td></tr><tr><td>ok</td><td>table_count_rag_embeddings</td><td>538</td><td>&gt;= 1</td><td>rag_embeddings has 538 rows; minimum is 1.</td></tr><tr><td>ok</td><td>table_count_source_links</td><td>509</td><td>&gt;= 1</td><td>source_links has 509 rows; minimum is 1.</td></tr><tr><td>ok</td><td>eval_failures</td><td>0</td><td>&lt;= 0</td><td>RAG eval failures: 0; max allowed: 0.</td></tr><tr><td>ok</td><td>eval_manual_review</td><td>1</td><td>&lt;= 1</td><td>RAG eval manual-review rows: 1; review threshold: 1.</td></tr><tr><td>ok</td><td>qa_review_rows</td><td>205</td><td>&lt;= 250</td><td>QA review rows: 205; review threshold: 250.</td></tr><tr><td>ok</td><td>suspicious_part_ata</td><td>5</td><td>&lt;= 10</td><td>Suspicious part/ATA rows: 5; review threshold: 10.</td></tr></tbody>
+  </table>
+</body>
+</html>

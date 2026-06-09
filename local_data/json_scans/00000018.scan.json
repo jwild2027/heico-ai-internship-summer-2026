@@ -1,0 +1,194 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T15:33:03Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\uploads\\00000018.tif",
+    "relative_path": "00000018.tif"
+  },
+  "file": {
+    "file_name": "00000018.tif",
+    "extension": ".tif",
+    "file_size_bytes": 38656,
+    "modified_time_utc": "2026-05-26T15:33:01Z",
+    "sha256": "aeb66b86579e3652c6080682649121b8c86dc681d79bcbd04a07f30c5ce40fbe"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3562,
+    "height_px": 4608,
+    "dpi_x": 419.0,
+    "dpi_y": 419.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "maintenance_manual_ipl",
+    "confidence": 1.0,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "ata_code",
+      "manual_document_code",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "maintenance_manual_ipl",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "120TP250002.MCE",
+    "figure_title": "Double Passenger Seat",
+    "figure_number": "2",
+    "effectivity": "ALL",
+    "ata_code": "25-21-00",
+    "page_number": 4,
+    "revision_date": "Sep 30/98",
+    "callouts": [
+      "ASHTRAY"
+    ],
+    "metadata_confidence": 1.0
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\nA\n120TP250002.MCE\njer Seat\n25-21-00...\nSep 30/98\n\n[bottom_strip]\n120TP250002.MCE\nDouble Passenger Seat\nFigure 2\nEFFECTIVITY: ALL\n25-21-00 _....\nSep 30/98\n\n[top_strip]\n-<\u00e2\u201a\u00ac EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n\n[right_strip]\n-KRESTS\n~~\n~~\nASHTRAY\n120TP250002.MCE\n0 0 Page 4\nSep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1781,
+          2672,
+          3562,
+          4608
+        ],
+        "status": "ok",
+        "text": "A\n120TP250002.MCE\njer Seat\n25-21-00...\nSep 30/98",
+        "char_count": 48,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          3225,
+          3562,
+          4608
+        ],
+        "status": "ok",
+        "text": "120TP250002.MCE\nDouble Passenger Seat\nFigure 2\nEFFECTIVITY: ALL\n25-21-00 _....\nSep 30/98",
+        "char_count": 88,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3562,
+          829
+        ],
+        "status": "ok",
+        "text": "-<\u00e2\u201a\u00ac EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST",
+        "char_count": 60,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2422,
+          0,
+          3562,
+          4608
+        ],
+        "status": "ok",
+        "text": "-KRESTS\n~~\n~~\nASHTRAY\n120TP250002.MCE\n0 0 Page 4\nSep 30/98",
+        "char_count": 58,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "maintenance_manual_ipl",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "120TP250002.MCE",
+      "figure_title": "Double Passenger Seat",
+      "figure_number": "2",
+      "effectivity": "ALL",
+      "ata_code": "25-21-00",
+      "page_number": 4,
+      "revision_date": "Sep 30/98",
+      "callouts": [
+        "ASHTRAY"
+      ],
+      "metadata_confidence": 1.0
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

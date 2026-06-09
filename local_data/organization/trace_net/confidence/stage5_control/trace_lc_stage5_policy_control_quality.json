@@ -1,0 +1,100 @@
+{
+  "checks": [
+    {
+      "detail": "summary=True; records=True",
+      "name": "stage5_artifacts_present",
+      "ok": true
+    },
+    {
+      "detail": "status='OK'",
+      "name": "stage5_status",
+      "ok": true
+    },
+    {
+      "detail": "records summary=1813; jsonl=1813; minimum=1813",
+      "name": "stage5_records",
+      "ok": true
+    },
+    {
+      "detail": "pages=509; minimum=509",
+      "name": "stage5_pages",
+      "ok": true
+    },
+    {
+      "detail": "policy_controlled_records=993; minimum=993",
+      "name": "stage5_policy_controlled_records",
+      "ok": true
+    },
+    {
+      "detail": "controlled_layers=['part_catalog', 'source_trace', 'table_tile_text_refined']; missing=[]",
+      "name": "stage5_required_controlled_layers",
+      "ok": true
+    },
+    {
+      "detail": "unsafe_final_rag_include_records=0; max=0",
+      "name": "stage5_no_unsafe_final_rag",
+      "ok": true
+    },
+    {
+      "detail": "source_trace_final_A_records=509; minimum=509",
+      "name": "stage5_source_trace_final_A",
+      "ok": true
+    },
+    {
+      "detail": "part_catalog_final_A_records=362; minimum=360",
+      "name": "stage5_part_catalog_final_A",
+      "ok": true
+    },
+    {
+      "detail": "table_candidate_direct_rag_records=0; max=0",
+      "name": "stage5_no_table_candidate_direct_rag",
+      "ok": true
+    },
+    {
+      "detail": "visual_text_controlled_records=0; max=0",
+      "name": "stage5_visual_text_not_controlled",
+      "ok": true
+    },
+    {
+      "detail": "table_tile_text_refined_controlled_records=120; minimum=120",
+      "name": "stage5_table_tile_text_refined_controlled",
+      "ok": true
+    },
+    {
+      "detail": "table_tile_text_refined_derived_context_records=60; minimum=30",
+      "name": "stage5_table_tile_text_refined_derived_context",
+      "ok": true
+    },
+    {
+      "detail": "table_tile_text_refined_direct_verified_records=0; max=0",
+      "name": "stage5_table_tile_text_refined_not_direct_verified",
+      "ok": true
+    }
+  ],
+  "control_json_path": "local_data\\organization\\trace_net\\confidence\\stage5_control\\trace_lc_stage5_policy_control_summary.json",
+  "control_records_path": "local_data\\organization\\trace_net\\confidence\\stage5_control\\trace_lc_stage5_policy_control_records.jsonl",
+  "records_present": true,
+  "stage5_controlled_layers": [
+    "part_catalog",
+    "source_trace",
+    "table_tile_text_refined"
+  ],
+  "stage5_jsonl_records": 1813,
+  "stage5_pages": 509,
+  "stage5_part_catalog_final_A_records": 362,
+  "stage5_policy_controlled_records": 993,
+  "stage5_recommendation": "stage5b_safe_for_downstream_controlled_decision_view",
+  "stage5_records": 1813,
+  "stage5_rule_controlled_records": 820,
+  "stage5_source_trace_final_A_records": 509,
+  "stage5_status": "OK",
+  "stage5_table_candidate_direct_rag_records": 0,
+  "stage5_table_tile_text_refined_controlled_records": 120,
+  "stage5_table_tile_text_refined_derived_context_records": 60,
+  "stage5_table_tile_text_refined_direct_verified_records": 0,
+  "stage5_unsafe_final_rag_include_records": 0,
+  "stage5_version": "trace_lc_stage5b_policy_control_v1",
+  "stage5_visual_text_controlled_records": 0,
+  "status": "OK",
+  "summary_present": true
+}

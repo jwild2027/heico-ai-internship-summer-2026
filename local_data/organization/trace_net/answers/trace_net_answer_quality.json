@@ -1,0 +1,84 @@
+{
+  "checks": [
+    {
+      "detail": "summary=True; answer_json=True; md=True; html=True; evidence=True",
+      "name": "artifacts_present",
+      "status": "OK"
+    },
+    {
+      "detail": "status=OK",
+      "name": "status_ok",
+      "status": "OK"
+    },
+    {
+      "detail": "answer_page_records=3; minimum=1",
+      "name": "answer_pages",
+      "status": "OK"
+    },
+    {
+      "detail": "summary=8; jsonl=8; minimum=1",
+      "name": "evidence_records",
+      "status": "OK"
+    },
+    {
+      "detail": "unsafe_answer_groups=0; max=0",
+      "name": "unsafe_groups",
+      "status": "OK"
+    },
+    {
+      "detail": "groups_with_citations=3; minimum=1",
+      "name": "citation_groups",
+      "status": "OK"
+    },
+    {
+      "detail": "missing_source_url_groups=0; max=0",
+      "name": "missing_source_url",
+      "status": "OK"
+    },
+    {
+      "detail": "missing_tiff_path_groups=0; max=0",
+      "name": "missing_tiff_path",
+      "status": "OK"
+    },
+    {
+      "detail": "missing_ocr_path_groups=0; max=0",
+      "name": "missing_ocr_path",
+      "status": "OK"
+    },
+    {
+      "detail": "answer_text_chars=713",
+      "name": "answer_text",
+      "status": "OK"
+    },
+    {
+      "detail": "graph_nodes=18",
+      "name": "graph_nodes",
+      "status": "OK"
+    },
+    {
+      "detail": "graph_edges=20",
+      "name": "graph_edges",
+      "status": "OK"
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "answer_evidence_jsonl_records": 8,
+    "answer_evidence_records": 8,
+    "answer_graph_edges": 20,
+    "answer_graph_nodes": 18,
+    "answer_groups_with_citations": 3,
+    "answer_html_present": true,
+    "answer_json_path": "local_data\\organization\\trace_net\\answers\\trace_net_answer_draft.json",
+    "answer_json_present": true,
+    "answer_md_present": true,
+    "answer_missing_ocr_path_groups": 0,
+    "answer_missing_source_url_groups": 0,
+    "answer_missing_tiff_path_groups": 0,
+    "answer_page_records": 3,
+    "answer_status": "OK",
+    "answer_summary_path": "local_data\\organization\\trace_net\\answers\\trace_net_answer_summary.json",
+    "answer_summary_present": true,
+    "answer_unsafe_groups": 0
+  }
+}

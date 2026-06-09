@@ -1,0 +1,202 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:02:28Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000022.tif",
+    "relative_path": "00000022.tif"
+  },
+  "file": {
+    "file_name": "00000022.tif",
+    "extension": ".tif",
+    "file_size_bytes": 38295,
+    "modified_time_utc": "2026-05-22T19:14:53Z",
+    "sha256": "c7c9d50ca89da42c9ae427b012cd99bc23c29411ba318ece09e22fb6f1c13151"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3205,
+    "height_px": 4146,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "maintenance_manual_ipl",
+    "confidence": 0.58,
+    "signals": [
+      "manual_title",
+      "component_title",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "maintenance_manual_ipl",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": null,
+    "publication_number": null,
+    "component_title": "< EMBRAER",
+    "section_title": null,
+    "figure_title": null,
+    "figure_number": null,
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": 1003,
+    "page_label": "1003",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [],
+    "metadata_confidence": 0.58
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\nS are employed in the Detailed Parts List:\njeable with...) - Indicates parts that are interchangeable\nopposites when shown after the description.\nart usage in relation to its left hand or right hand next to\nnbly).\n25-21 -00 Page 1003\nSep 30/98\n\n[bottom_strip]\n4 INTERCH WTH (Interchangeable with...) - Indicates parts that are interchangeable\nwith one another.\n5 LHorRH- Indicates mirror opposites when shown after the description.\n6 LEFT or RIGHT - Indicates part usage in relation to its left hand or right hand next to\nhigher assembly.\n7 NHA- (Next to higher assembly).\nEFFECTIVITY: ALL\n25 21 00 Page 1003\nSep 30/98\n\n[top_strip]\n< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n(3) ARLINE STOCK NUMBER Column.\nRefer to paragraph 3, item C.\n(4) NOMENCLATURE Column.\n\n[right_strip]\nadequately define the items.\nslationships.\ns to the next higher assembly in\nailed parts for the sub-\n=mbly\nts for the subassembly\nsubassembly\netailed Parts List:\ns parts that are interchangeable\nafter the description.\nits left hand or right hand next to\n\u00bb-21-00\n) 21 Page 1003\nSep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1602,
+          2404,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "S are employed in the Detailed Parts List:\njeable with...) - Indicates parts that are interchangeable\nopposites when shown after the description.\nart usage in relation to its left hand or right hand next to\nnbly).\n25-21 -00 Page 1003\nSep 30/98",
+        "char_count": 243,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2902,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "4 INTERCH WTH (Interchangeable with...) - Indicates parts that are interchangeable\nwith one another.\n5 LHorRH- Indicates mirror opposites when shown after the description.\n6 LEFT or RIGHT - Indicates part usage in relation to its left hand or right hand next to\nhigher assembly.\n7 NHA- (Next to higher assembly).\nEFFECTIVITY: ALL\n25 21 00 Page 1003\nSep 30/98",
+        "char_count": 358,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3205,
+          746
+        ],
+        "status": "ok",
+        "text": "< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n(3) ARLINE STOCK NUMBER Column.\nRefer to paragraph 3, item C.\n(4) NOMENCLATURE Column.",
+        "char_count": 143,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2179,
+          0,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "adequately define the items.\nslationships.\ns to the next higher assembly in\nailed parts for the sub-\n=mbly\nts for the subassembly\nsubassembly\netailed Parts List:\ns parts that are interchangeable\nafter the description.\nits left hand or right hand next to\n\u00bb-21-00\n) 21 Page 1003\nSep 30/98",
+        "char_count": 286,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "maintenance_manual_ipl",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": null,
+      "publication_number": null,
+      "component_title": "< EMBRAER",
+      "section_title": null,
+      "figure_title": null,
+      "figure_number": null,
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": 1003,
+      "page_label": "1003",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [],
+      "metadata_confidence": 0.58
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "checks": [
+    {
+      "detail": "Report present at local_data\\organization\\trace_net\\confidence\\trace_lc_stage2_eval.json: True.",
+      "name": "report_present",
+      "ok": true
+    },
+    {
+      "detail": "Report status is OK.",
+      "name": "status_ok",
+      "ok": true
+    },
+    {
+      "detail": "records=1813; minimum=1813.",
+      "name": "records",
+      "ok": true
+    },
+    {
+      "detail": "missing confidence records=0; max=0.",
+      "name": "all_records_scored",
+      "ok": true
+    },
+    {
+      "detail": "layers=6; minimum=6.",
+      "name": "layers",
+      "ok": true
+    },
+    {
+      "detail": "disagreement_records=1379.",
+      "name": "has_disagreement_metric",
+      "ok": true
+    },
+    {
+      "detail": "per_layer entries=6.",
+      "name": "has_per_layer_metrics",
+      "ok": true
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "trace_lc_stage2_agreement_rate": 0.239382,
+    "trace_lc_stage2_avg_usable_confidence": 0.787436,
+    "trace_lc_stage2_blocked_high_confidence_records": 0,
+    "trace_lc_stage2_confidence_higher_records": 424,
+    "trace_lc_stage2_confidence_lower_records": 955,
+    "trace_lc_stage2_disagreement_records": 1379,
+    "trace_lc_stage2_eval_path": "local_data\\organization\\trace_net\\confidence\\trace_lc_stage2_eval.json",
+    "trace_lc_stage2_layers": 6,
+    "trace_lc_stage2_missing_confidence_records": 0,
+    "trace_lc_stage2_records": 1813,
+    "trace_lc_stage2_report_present": true,
+    "trace_lc_stage2_rule_excludes_confidence_high_records": 710,
+    "trace_lc_stage2_rule_includes_confidence_low_records": 24,
+    "trace_lc_stage2_scored_records": 1813,
+    "trace_lc_stage2_source_trace_confidence_below_A_records": 509,
+    "trace_lc_stage2_status": "OK",
+    "trace_lc_stage2_within_one_tier_rate": 0.986762
+  }
+}

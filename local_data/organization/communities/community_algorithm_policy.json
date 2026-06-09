@@ -1,0 +1,339 @@
+{
+  "algorithms": [
+    {
+      "algorithm": "no_community",
+      "algorithm_available": true,
+      "algorithm_error": null,
+      "communities_with_pages": 509,
+      "community_count": 509,
+      "community_size_entropy": 8.991522,
+      "community_size_gini": 0.0,
+      "hallucination_concentration_top3": 0.230769,
+      "hallucination_trait_purity": 1.0,
+      "image_class_purity": 1.0,
+      "largest_community_pages": 1,
+      "largest_community_ratio": 0.001965,
+      "mean_internal_page_edge_density": 0.0,
+      "modularity_score": null,
+      "page_role_purity": 1.0,
+      "page_sequence_locality": 0.0,
+      "pages_covered": 509,
+      "repair_batching_score": 0.701813,
+      "retrieval_expansion_score": 0.65,
+      "review_concentration_top3": 0.12,
+      "route_purity": 1.0,
+      "singleton_communities": 509,
+      "table_repair_concentration_top3": 0.009063,
+      "table_route_purity": 1.0,
+      "table_trait_purity": 1.0,
+      "trust_tier_purity": 1.0
+    },
+    {
+      "algorithm": "route_grouping",
+      "algorithm_available": true,
+      "algorithm_error": null,
+      "communities_with_pages": 4,
+      "community_count": 4,
+      "community_size_entropy": 1.262761,
+      "community_size_gini": 0.514244,
+      "hallucination_concentration_top3": 1.0,
+      "hallucination_trait_purity": 0.97446,
+      "image_class_purity": 1.0,
+      "largest_community_pages": 314,
+      "largest_community_ratio": 0.616896,
+      "mean_internal_page_edge_density": 0.0,
+      "modularity_score": null,
+      "page_role_purity": 1.0,
+      "page_sequence_locality": 0.692887,
+      "pages_covered": 509,
+      "repair_batching_score": 0.959966,
+      "retrieval_expansion_score": 0.885198,
+      "review_concentration_top3": 1.0,
+      "route_purity": 1.0,
+      "singleton_communities": 0,
+      "table_repair_concentration_top3": 1.0,
+      "table_route_purity": 1.0,
+      "table_trait_purity": 0.954813,
+      "trust_tier_purity": 1.0
+    },
+    {
+      "algorithm": "networkx_greedy_modularity",
+      "algorithm_available": true,
+      "algorithm_error": null,
+      "communities_with_pages": 17,
+      "community_count": 17,
+      "community_size_entropy": 1.991594,
+      "community_size_gini": 0.809893,
+      "hallucination_concentration_top3": 0.846154,
+      "hallucination_trait_purity": 0.97446,
+      "image_class_purity": 1.0,
+      "largest_community_pages": 277,
+      "largest_community_ratio": 0.544204,
+      "mean_internal_page_edge_density": 0.0,
+      "modularity_score": 0.2986685803331636,
+      "page_role_purity": 1.0,
+      "page_sequence_locality": 0.692692,
+      "pages_covered": 509,
+      "repair_batching_score": 0.896215,
+      "retrieval_expansion_score": 0.846756,
+      "review_concentration_top3": 0.88,
+      "route_purity": 1.0,
+      "singleton_communities": 6,
+      "table_repair_concentration_top3": 0.906344,
+      "table_route_purity": 0.917485,
+      "table_trait_purity": 0.958743,
+      "trust_tier_purity": 1.0
+    },
+    {
+      "algorithm": "leiden",
+      "algorithm_available": true,
+      "algorithm_error": null,
+      "communities_with_pages": 18,
+      "community_count": 18,
+      "community_size_entropy": 2.973418,
+      "community_size_gini": 0.65346,
+      "hallucination_concentration_top3": 0.769231,
+      "hallucination_trait_purity": 0.97446,
+      "image_class_purity": 1.0,
+      "largest_community_pages": 194,
+      "largest_community_ratio": 0.381139,
+      "mean_internal_page_edge_density": 0.0,
+      "modularity_score": 8574.936746744315,
+      "page_role_purity": 1.0,
+      "page_sequence_locality": 0.655245,
+      "pages_covered": 509,
+      "repair_batching_score": 0.845149,
+      "retrieval_expansion_score": 0.899821,
+      "review_concentration_top3": 0.88,
+      "route_purity": 1.0,
+      "singleton_communities": 3,
+      "table_repair_concentration_top3": 0.516616,
+      "table_route_purity": 0.852652,
+      "table_trait_purity": 0.954813,
+      "trust_tier_purity": 1.0
+    }
+  ],
+  "created_at": "2026-06-02T18:08:49Z",
+  "jobs": {
+    "broad_retrieval_expansion": {
+      "algorithm_family": "semantic_neighborhood",
+      "allowed_algorithms": [
+        "leiden",
+        "route_grouping",
+        "networkx_greedy_modularity",
+        "no_community"
+      ],
+      "backup_algorithm": "route_grouping",
+      "disallowed_algorithms": [],
+      "notes": [
+        "leiden retrieval score=0.899821",
+        "selected retrieval score=0.899821",
+        "Use only to expand candidates; every answer still needs deterministic source trace."
+      ],
+      "reason": "Selected by best retrieval_expansion_score from community ablation metrics.",
+      "score": 0.899821,
+      "selected_algorithm": "leiden",
+      "source_of_truth": false,
+      "uses_communities": true
+    },
+    "community_summaries": {
+      "algorithm_family": "semantic_neighborhood",
+      "allowed_algorithms": [
+        "leiden",
+        "networkx_greedy_modularity",
+        "route_grouping"
+      ],
+      "backup_algorithm": "route_grouping",
+      "disallowed_algorithms": [],
+      "notes": [
+        "Community summaries are exploration aids, not evidence proof.",
+        "Each community summary must retain source page IDs."
+      ],
+      "reason": "Community summaries should use semantic neighborhoods; prefer Leiden when available.",
+      "score": 0.899821,
+      "selected_algorithm": "leiden",
+      "source_of_truth": false,
+      "uses_communities": true
+    },
+    "cross_document_exploration_future": {
+      "algorithm_family": "semantic_neighborhood",
+      "allowed_algorithms": [
+        "leiden",
+        "networkx_greedy_modularity"
+      ],
+      "backup_algorithm": "route_grouping",
+      "disallowed_algorithms": [],
+      "notes": [
+        "Only relevant when more than one document/manual has been ingested.",
+        "Use canonical bridge nodes like parts, ATA codes, topics, and traits."
+      ],
+      "reason": "Cross-document relatedness benefits from semantic communities once multiple documents exist.",
+      "score": 0.899821,
+      "selected_algorithm": "leiden",
+      "source_of_truth": false,
+      "uses_communities": true
+    },
+    "exact_page_lookup": {
+      "algorithm_family": "source_trace",
+      "allowed_algorithms": [
+        "deterministic_graph_traversal"
+      ],
+      "backup_algorithm": "page_index_lookup",
+      "disallowed_algorithms": [
+        "leiden",
+        "networkx_greedy_modularity",
+        "route_grouping"
+      ],
+      "notes": [
+        "Exact source tracing must use deterministic graph traversal, not community expansion.",
+        "Communities may suggest related neighborhoods but cannot prove source evidence."
+      ],
+      "reason": "Exact page lookup should resolve Page -> Document/ATA/Source/TIFF/OCR directly.",
+      "score": null,
+      "selected_algorithm": "deterministic_graph_traversal",
+      "source_of_truth": true,
+      "uses_communities": false
+    },
+    "exact_part_lookup": {
+      "algorithm_family": "source_trace",
+      "allowed_algorithms": [
+        "deterministic_graph_traversal"
+      ],
+      "backup_algorithm": "exact_keyword_catalog_lookup",
+      "disallowed_algorithms": [
+        "leiden",
+        "networkx_greedy_modularity",
+        "route_grouping"
+      ],
+      "notes": [
+        "Exact source tracing must use deterministic graph traversal, not community expansion.",
+        "Communities may suggest related neighborhoods but cannot prove source evidence."
+      ],
+      "reason": "Exact part lookup needs source-proof paths through Part -> PartMention -> Page -> Source.",
+      "score": null,
+      "selected_algorithm": "deterministic_graph_traversal",
+      "source_of_truth": true,
+      "uses_communities": false
+    },
+    "review_queue_batching": {
+      "algorithm_family": "operational_batching",
+      "allowed_algorithms": [
+        "route_grouping",
+        "leiden",
+        "networkx_greedy_modularity"
+      ],
+      "backup_algorithm": "leiden",
+      "disallowed_algorithms": [],
+      "notes": [
+        "Primary grouping: route/trust/review traits.",
+        "Secondary grouping: Leiden community inside each route when helpful."
+      ],
+      "reason": "Human review should batch by repair route first; Leiden can be used inside a route for secondary grouping.",
+      "score": 0.959966,
+      "selected_algorithm": "route_grouping",
+      "source_of_truth": false,
+      "uses_communities": false
+    },
+    "source_trace": {
+      "algorithm_family": "source_trace",
+      "allowed_algorithms": [
+        "deterministic_graph_traversal"
+      ],
+      "backup_algorithm": "source_link_index_lookup",
+      "disallowed_algorithms": [
+        "leiden",
+        "networkx_greedy_modularity",
+        "route_grouping"
+      ],
+      "notes": [
+        "Exact source tracing must use deterministic graph traversal, not community expansion.",
+        "Communities may suggest related neighborhoods but cannot prove source evidence."
+      ],
+      "reason": "Source evidence must remain deterministic and auditable.",
+      "score": null,
+      "selected_algorithm": "deterministic_graph_traversal",
+      "source_of_truth": true,
+      "uses_communities": false
+    },
+    "table_extraction_batching": {
+      "algorithm_family": "operational_batching",
+      "allowed_algorithms": [
+        "route_grouping"
+      ],
+      "backup_algorithm": "route_grouping",
+      "disallowed_algorithms": [],
+      "notes": [
+        "Use table_high/table_medium/table_candidate_review/skip_non_table rather than Leiden for execution queues.",
+        "Graph and layout gates remain the final check before cutting or OCR."
+      ],
+      "reason": "Table extraction follows explicit TRACE-Net routes and gates; route grouping is intentionally preferred.",
+      "score": 0.959966,
+      "selected_algorithm": "route_grouping",
+      "source_of_truth": false,
+      "uses_communities": false
+    },
+    "trace_net_repair_batching": {
+      "algorithm_family": "operational_batching",
+      "allowed_algorithms": [
+        "route_grouping",
+        "leiden",
+        "networkx_greedy_modularity",
+        "no_community"
+      ],
+      "backup_algorithm": "deterministic_graph_traversal",
+      "disallowed_algorithms": [],
+      "notes": [
+        "route_grouping repair score=0.959966",
+        "selected repair score=0.959966",
+        "Use this for queues like table extraction, cleanup repair, OCR validation, and human review batching."
+      ],
+      "reason": "Selected by best repair_batching_score from community ablation metrics.",
+      "score": 0.959966,
+      "selected_algorithm": "route_grouping",
+      "source_of_truth": false,
+      "uses_communities": false
+    }
+  },
+  "policy_version": "trace_net_algorithm_policy_v1",
+  "rules": [
+    {
+      "detail": "Exact page, part, and source-trace jobs use deterministic graph traversal regardless of community scores.",
+      "rule": "source_trace_never_uses_communities"
+    },
+    {
+      "detail": "TRACE-Net repair/review queues use the measured best repair-batching algorithm, currently route_grouping in the 509-page run.",
+      "rule": "repair_uses_best_batching_metric"
+    },
+    {
+      "detail": "Broad retrieval expansion uses the measured best retrieval-expansion algorithm, currently Leiden in the 509-page run.",
+      "rule": "retrieval_uses_best_expansion_metric"
+    },
+    {
+      "detail": "Leiden/other communities may expand candidates but cannot prove final answers without source-trace paths.",
+      "rule": "communities_expand_candidates_only"
+    }
+  ],
+  "source_ablation_report": "local_data\\organization\\communities\\community_ablation_eval.json",
+  "status": "OK",
+  "summary": {
+    "available_algorithms": [
+      "no_community",
+      "route_grouping",
+      "networkx_greedy_modularity",
+      "leiden"
+    ],
+    "best_repair_batching_algorithm": "route_grouping",
+    "best_repair_batching_score": 0.959966,
+    "best_retrieval_expansion_algorithm": "leiden",
+    "best_retrieval_expansion_score": 0.899821,
+    "leiden_available": true,
+    "leiden_vs_route_repair_delta": -0.114817,
+    "leiden_vs_route_retrieval_delta": 0.014623,
+    "pages_loaded": 509,
+    "policy_repair_batching_algorithm": "route_grouping",
+    "policy_retrieval_expansion_algorithm": "leiden",
+    "policy_source_trace_algorithm": "deterministic_graph_traversal",
+    "projection_edges": 12363,
+    "projection_nodes": 1856
+  }
+}

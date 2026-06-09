@@ -1,0 +1,225 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:02:50Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000038.tif",
+    "relative_path": "00000038.tif"
+  },
+  "file": {
+    "file_name": "00000038.tif",
+    "extension": ".tif",
+    "file_size_bytes": 55354,
+    "modified_time_utc": "2026-05-22T19:14:53Z",
+    "sha256": "f1e5cdc190a911666b7e3cb909842cc8a54da8a96ff0f332e3151b0b4ffbce9b"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.9,
+    "signals": [
+      "manual_title",
+      "ata_code",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "part_numbers",
+      "part_number",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": "UNITS",
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.25
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "ocr",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "T.P. 120/1176",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "TLU-94409-UU | 20-21 240",
+    "section_title": null,
+    "figure_title": null,
+    "figure_number": null,
+    "effectivity": "ALL",
+    "ata_code": "25-21-00",
+    "page_number": 1017,
+    "page_label": "1017",
+    "issue_date": "Jan 15/01",
+    "revision_date": "Jan 15/01",
+    "revision_label": null,
+    "part_numbers": [
+      "120-35881-001",
+      "120-34489-001"
+    ],
+    "callouts": [
+      "PER STOCK PER STOCK",
+      "UNITS AIRLINE",
+      "PER STOCK",
+      "J2 200 1",
+      "I6 200 1"
+    ],
+    "metadata_confidence": 0.9
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\n120-34891 -001\n25-21 -00-17 -241 1\n25-21 -00-23 220 1\n25-21 -00-56 220 1\n25-21 -00-61 220 1\n120-34891 -003\n25-21 -00-17 240 1\n25-21 -00-20 230 1\n25-21 -00-23 -221 1\n25-21 -00-56 230 2\n25-21 -00-58 220 2\n25-21 -00-61 230 2\n120-35881 -001\n25-21 -00-87 70 1\n25-2 1-00-88 70 1\n25-21 -00-89 70 1\n25-21 -00-90 70 1\n25-21 -00-91 70 1\n25 21 00 Page 1017\nT.P. 120/1176 Jan 15/01\n\n[bottom_strip]\nTLU-94409-UU | 20-21 240 |\n25-21-00-87 170 1 25-21-00-20 230 1\n25-21-00-88 200 1 25-21-00-23 -221 1\n25-21-00-89 200 1 25-21-00-56 230 2\n25-21-00-90 200 1 25-21-00-58 220 2\n25-21-00-91 170 1 25-21-00-61 230 2\n25-21-00-92 200 1 120-35881-001\n25-21-00-93 200 1 25-21-00-87 70 1\n25-21-00-94 200 1 25-21-00-88 70 1\n25-21-00-95 200 1 25-21-00-89 70 1\n25-21-00-96 200 1 25-21-00-90 70 1\n25-21-00-97 200 1 25-21-00-91 70 1\nEFFECTIVITY: ALL 25-21 -00\nPage 1017\nT.P. 120/1176 Jan 15/01\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nPART NUMBER UNITS AIRLINE PART NUMBER UNITS AIRLINE\nPER STOCK PER STOCK\nCH-SEC-UN-FIG | ITEM] ASSY NUMBER CH-SEC-UN-FIG | ITEM] ASSY NUMBER\n120-34291 -001 120-34489-001\n25-21-00-93 90 1 25-2 1-00-98 200 1\n\n[right_strip]\nUNITS AIRLINE\nPER STOCK\nIG | ITEM] ASSY NUMBER\n3 200 1\n:) 200 1\n0 200 1\n1 170 1\nJ2 200 1\n3 200 1\n34 200 1\n95 200 1\nI6 200 1\n[ 220 1\n) 250 1\n3 230 1\n5 260 2\n3 250 2\n1 190 2\n10 1 1\n10 230 1\n) 240 1\n3 230 1\n10 30 1\n( -241 1\n3 220 1\n5 220 1\n1 220 1\n( 240 1\n) 230 1\n3 -221 1\n5 230 2\n3 220 2\n1 230 2\n( 10 1\n3 10 1\n:) 10 1\n) 10 1\n1 10 1\n\u00bb-21-00\n) Page 1017\n120/1176 Jan 15/01",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "120-34891 -001\n25-21 -00-17 -241 1\n25-21 -00-23 220 1\n25-21 -00-56 220 1\n25-21 -00-61 220 1\n120-34891 -003\n25-21 -00-17 240 1\n25-21 -00-20 230 1\n25-21 -00-23 -221 1\n25-21 -00-56 230 2\n25-21 -00-58 220 2\n25-21 -00-61 230 2\n120-35881 -001\n25-21 -00-87 70 1\n25-2 1-00-88 70 1\n25-21 -00-89 70 1\n25-21 -00-90 70 1\n25-21 -00-91 70 1\n25 21 00 Page 1017\nT.P. 120/1176 Jan 15/01",
+        "char_count": 369,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "TLU-94409-UU | 20-21 240 |\n25-21-00-87 170 1 25-21-00-20 230 1\n25-21-00-88 200 1 25-21-00-23 -221 1\n25-21-00-89 200 1 25-21-00-56 230 2\n25-21-00-90 200 1 25-21-00-58 220 2\n25-21-00-91 170 1 25-21-00-61 230 2\n25-21-00-92 200 1 120-35881-001\n25-21-00-93 200 1 25-21-00-87 70 1\n25-21-00-94 200 1 25-21-00-88 70 1\n25-21-00-95 200 1 25-21-00-89 70 1\n25-21-00-96 200 1 25-21-00-90 70 1\n25-21-00-97 200 1 25-21-00-91 70 1\nEFFECTIVITY: ALL 25-21 -00\nPage 1017\nT.P. 120/1176 Jan 15/01",
+        "char_count": 475,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nPART NUMBER UNITS AIRLINE PART NUMBER UNITS AIRLINE\nPER STOCK PER STOCK\nCH-SEC-UN-FIG | ITEM] ASSY NUMBER CH-SEC-UN-FIG | ITEM] ASSY NUMBER\n120-34291 -001 120-34489-001\n25-21-00-93 90 1 25-2 1-00-98 200 1",
+        "char_count": 262,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "UNITS AIRLINE\nPER STOCK\nIG | ITEM] ASSY NUMBER\n3 200 1\n:) 200 1\n0 200 1\n1 170 1\nJ2 200 1\n3 200 1\n34 200 1\n95 200 1\nI6 200 1\n[ 220 1\n) 250 1\n3 230 1\n5 260 2\n3 250 2\n1 190 2\n10 1 1\n10 230 1\n) 240 1\n3 230 1\n10 30 1\n( -241 1\n3 220 1\n5 220 1\n1 220 1\n( 240 1\n) 230 1\n3 -221 1\n5 230 2\n3 220 2\n1 230 2\n( 10 1\n3 10 1\n:) 10 1\n) 10 1\n1 10 1\n\u00bb-21-00\n) Page 1017\n120/1176 Jan 15/01",
+        "char_count": 368,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": "UNITS",
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0.2
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "T.P. 120/1176",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "TLU-94409-UU | 20-21 240",
+      "section_title": null,
+      "figure_title": null,
+      "figure_number": null,
+      "effectivity": "ALL",
+      "ata_code": "25-21-00",
+      "page_number": 1017,
+      "page_label": "1017",
+      "issue_date": "Jan 15/01",
+      "revision_date": "Jan 15/01",
+      "revision_label": null,
+      "part_numbers": [
+        "120-35881-001",
+        "120-34489-001"
+      ],
+      "callouts": [
+        "PER STOCK PER STOCK",
+        "UNITS AIRLINE",
+        "PER STOCK",
+        "J2 200 1",
+        "I6 200 1"
+      ],
+      "metadata_confidence": 0.9
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": "UNITS",
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0.2
+    }
+  }
+}

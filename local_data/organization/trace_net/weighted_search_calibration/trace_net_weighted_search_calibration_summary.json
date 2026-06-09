@@ -1,0 +1,100 @@
+{
+  "component_stats": {
+    "base_score": {
+      "avg": 50.505002,
+      "max": 52.581557,
+      "min": 46.351892,
+      "nonzero_records": 3
+    },
+    "bucket_bonus": {
+      "avg": 11.333333,
+      "max": 16.0,
+      "min": 5.0,
+      "nonzero_records": 3
+    },
+    "confidence_bonus": {
+      "avg": 2.5175,
+      "max": 2.643375,
+      "min": 2.29425,
+      "nonzero_records": 3
+    },
+    "evidence_diversity_bonus": {
+      "avg": 4.0,
+      "max": 8.0,
+      "min": 0.0,
+      "nonzero_records": 2
+    },
+    "exact_match_bonus": {
+      "avg": 22.0,
+      "max": 22.0,
+      "min": 22.0,
+      "nonzero_records": 3
+    },
+    "feedback_adjustment": {
+      "avg": -3.0,
+      "max": 6.0,
+      "min": -15.0,
+      "nonzero_records": 2
+    }
+  },
+  "context_warning_signals_used": 0,
+  "created_at": "2026-06-03T19:56:50Z",
+  "demotion_shortfall_records": 1,
+  "dominant_component_counts": {
+    "base_score": 3,
+    "bucket_bonus": 2,
+    "exact_match_bonus": 3,
+    "feedback_adjustment": 1
+  },
+  "evidence_diversity_overrode_feedback_records": 1,
+  "excluded_records": 0,
+  "feedback_cap_hit_records": 1,
+  "feedback_direction_counts": {
+    "boost": 1,
+    "demote": 1,
+    "none": 1
+  },
+  "feedback_enabled": true,
+  "feedback_signals_used": 2,
+  "graph_edges": 25,
+  "graph_nodes": 19,
+  "groups_boosted": 1,
+  "groups_demoted": 1,
+  "groups_with_feedback_adjustment": 2,
+  "matching_feedback_signal_records": 2,
+  "pages": 3,
+  "query_fingerprint": "part_number:120-50645-009",
+  "rank_changed_records": 0,
+  "rank_comparison_records": 3,
+  "reason_counts": {
+    "additional_demotion_required_for_next_rank": 1,
+    "demoted_but_rank_preserved": 1,
+    "derived_context_present": 1,
+    "feedback_cap_hit": 1,
+    "multiple_evidence_buckets": 2,
+    "source_text_evidence_present": 3,
+    "validated_feedback_boost": 1,
+    "validated_feedback_demote": 1,
+    "verified_part_evidence_present": 2
+  },
+  "recommendations": [
+    "weighted_simulation_kept_unsafe_results_out",
+    "context_warning_feedback_ignored_for_ranking",
+    "feedback_adjusted_scores_without_rank_change_review_margins_before_tuning",
+    "feedback_cap_hit_review_repeated_or_expert_feedback_before_increasing_penalty",
+    "evidence_diversity_preserved_rank_despite_negative_feedback",
+    "do_not_apply_weighted_ranking_until_regression_queries_pass"
+  ],
+  "records": 3,
+  "source_truth_mutation_records": 0,
+  "status": "OK",
+  "top_page_after": "t_p_120_1176_p000003",
+  "top_page_before": "t_p_120_1176_p000003",
+  "top_page_changed": false,
+  "unsafe_records": 0,
+  "version": "trace_net_weighted_search_calibration_v1",
+  "weighted_results_path": "local_data\\organization\\trace_net\\weighted_search\\trace_net_weighted_search_simulation_results.jsonl",
+  "weighted_summary_path": "local_data\\organization\\trace_net\\weighted_search\\trace_net_weighted_search_simulation_summary.json",
+  "weights_policy_path": "local_data\\organization\\trace_net\\weights\\trace_net_weights_policy.json",
+  "weights_policy_version": "trace_net_weights_policy_v1"
+}

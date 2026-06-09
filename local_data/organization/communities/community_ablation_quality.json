@@ -1,0 +1,68 @@
+{
+  "checks": [
+    {
+      "message": "Report present at local_data\\organization\\communities\\community_ablation_eval.json: True.",
+      "name": "community_ablation_report_present",
+      "ok": true
+    },
+    {
+      "message": "Report status is OK.",
+      "name": "community_ablation_status",
+      "ok": true
+    },
+    {
+      "message": "pages_loaded=509; minimum=509.",
+      "name": "community_ablation_pages",
+      "ok": true
+    },
+    {
+      "message": "available algorithms=4; minimum=4.",
+      "name": "community_ablation_algorithms",
+      "ok": true
+    },
+    {
+      "message": "leiden_available=True; require_leiden=True.",
+      "name": "community_ablation_leiden_available",
+      "ok": true
+    },
+    {
+      "message": "projection_edges=12363; expected > 0.",
+      "name": "community_ablation_projection_edges",
+      "ok": true
+    },
+    {
+      "message": "best_repair_batching_score=0.959966.",
+      "name": "community_ablation_best_repair_score",
+      "ok": true
+    },
+    {
+      "message": "algorithms=['leiden', 'networkx_greedy_modularity', 'no_community', 'route_grouping'] includes no_community.",
+      "name": "community_ablation_has_no_community_baseline",
+      "ok": true
+    },
+    {
+      "message": "algorithms=['leiden', 'networkx_greedy_modularity', 'no_community', 'route_grouping'] includes route_grouping.",
+      "name": "community_ablation_has_route_grouping_baseline",
+      "ok": true
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "community_ablation_algorithm_count": 4,
+    "community_ablation_available_algorithm_count": 4,
+    "community_ablation_best_repair_batching_algorithm": "route_grouping",
+    "community_ablation_best_repair_batching_score": 0.959966,
+    "community_ablation_best_retrieval_expansion_algorithm": "leiden",
+    "community_ablation_best_retrieval_expansion_score": 0.899821,
+    "community_ablation_eval_path": "local_data\\organization\\communities\\community_ablation_eval.json",
+    "community_ablation_leiden_available": true,
+    "community_ablation_leiden_vs_route_repair_delta": -0.114817,
+    "community_ablation_leiden_vs_route_retrieval_delta": 0.014623,
+    "community_ablation_pages_loaded": 509,
+    "community_ablation_projection_edges": 12363,
+    "community_ablation_projection_nodes": 1856,
+    "community_ablation_report_present": true,
+    "community_ablation_require_leiden": true,
+    "community_ablation_status": "OK"
+  }
+}

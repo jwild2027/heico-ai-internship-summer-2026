@@ -1,0 +1,230 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:06:20Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000193.tif",
+    "relative_path": "00000193.tif"
+  },
+  "file": {
+    "file_name": "00000193.tif",
+    "extension": ".tif",
+    "file_size_bytes": 43689,
+    "modified_time_utc": "2026-05-22T19:14:54Z",
+    "sha256": "5cf30f8a2501d2b41423f4d3ca1356c3dc024c4e8f070aab6fd80782637c8ede"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.98,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "part_numbers",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "T.P. 120/1176",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "-ITEM NOT ILLUSTRATED",
+    "section_title": null,
+    "figure_title": "-ITEM NOT ILLUSTRATED",
+    "figure_number": "30A",
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": null,
+    "page_label": null,
+    "issue_date": "Jan 15/01",
+    "revision_date": "Jan 15/01",
+    "revision_label": null,
+    "part_numbers": [
+      "120-50648-531",
+      "120-61548-503",
+      "120-37313-001",
+      "120-37313-535"
+    ],
+    "callouts": [
+      "NUMBER TO ASSY",
+      "TO ASSY",
+      "VS4956 2",
+      "V15653 4",
+      "VS4956 1",
+      "VS4956"
+    ],
+    "metadata_confidence": 0.98
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "top_strip",
+    "combined_text": "[bottom_right_title_block]\nIo\n503 and 120-50648-531/533)\nA\n25 21 00 Page 1144B\nT.P. 120/1176 Jan 15/01\n\n[bottom_strip]\n-ITEM NOT ILLUSTRATED\nDouble Passenger Seat (120-61548-503 and 120-50648-531/533)\nFigure 30A\nSheet 3\nEFFECTIVITY: ALL\n25 21 00 Page 1144B\nT.P. 120/1176 Jan 15/01\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nAIRLINE EFF | UNITS\nFIG. ITEM; PARTNUMBER | STOCK Maer EODE. FROM; PER\nNUMBER TO ASSY\n30A = 170 | 120-37313-001 . HOLDER, MAGAZINE.......000.0.0:eee = VS4956 2\n-171 | 120-37313-535 . HOLDER, MAGAZINE.......00.0.::eee VWS4956 | 302/312 2\n\n[right_strip]\nEFF | UNITS\nODE. FROM | PER\nTO ASSY\nVS4956 2\nVS4956 | 302/312 2\nVS4956 | 313/999 2\nVS4956 | 302/312 2\n=075221 4\nV15653 4\n4\n4\nVS4956 2\nVS4956 2\n=065846 2\nVS4956 2\nVS4956 1\nVS4956 2\n2\nVS4956\nVS4956 2\n14\n2\n1/533)\n-00\nPage 1144B\n6 Jan 15/01",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "Io\n503 and 120-50648-531/533)\nA\n25 21 00 Page 1144B\nT.P. 120/1176 Jan 15/01",
+        "char_count": 75,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "-ITEM NOT ILLUSTRATED\nDouble Passenger Seat (120-61548-503 and 120-50648-531/533)\nFigure 30A\nSheet 3\nEFFECTIVITY: ALL\n25 21 00 Page 1144B\nT.P. 120/1176 Jan 15/01",
+        "char_count": 161,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nAIRLINE EFF | UNITS\nFIG. ITEM; PARTNUMBER | STOCK Maer EODE. FROM; PER\nNUMBER TO ASSY\n30A = 170 | 120-37313-001 . HOLDER, MAGAZINE.......000.0.0:eee = VS4956 2\n-171 | 120-37313-535 . HOLDER, MAGAZINE.......00.0.::eee VWS4956 | 302/312 2",
+        "char_count": 294,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "EFF | UNITS\nODE. FROM | PER\nTO ASSY\nVS4956 2\nVS4956 | 302/312 2\nVS4956 | 313/999 2\nVS4956 | 302/312 2\n=075221 4\nV15653 4\n4\n4\nVS4956 2\nVS4956 2\n=065846 2\nVS4956 2\nVS4956 1\nVS4956 2\n2\nVS4956\nVS4956 2\n14\n2\n1/533)\n-00\nPage 1144B\n6 Jan 15/01",
+        "char_count": 236,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "T.P. 120/1176",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "-ITEM NOT ILLUSTRATED",
+      "section_title": null,
+      "figure_title": "-ITEM NOT ILLUSTRATED",
+      "figure_number": "30A",
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": null,
+      "page_label": null,
+      "issue_date": "Jan 15/01",
+      "revision_date": "Jan 15/01",
+      "revision_label": null,
+      "part_numbers": [
+        "120-50648-531",
+        "120-61548-503",
+        "120-37313-001",
+        "120-37313-535"
+      ],
+      "callouts": [
+        "NUMBER TO ASSY",
+        "TO ASSY",
+        "VS4956 2",
+        "V15653 4",
+        "VS4956 1",
+        "VS4956"
+      ],
+      "metadata_confidence": 0.98
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

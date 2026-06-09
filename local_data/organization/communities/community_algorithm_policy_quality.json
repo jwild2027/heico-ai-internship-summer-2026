@@ -1,0 +1,95 @@
+{
+  "checks": [
+    {
+      "detail": "Policy present at local_data\\organization\\communities\\community_algorithm_policy.json: True.",
+      "name": "algorithm_policy_present",
+      "status": "OK"
+    },
+    {
+      "detail": "Policy status is OK.",
+      "name": "algorithm_policy_status",
+      "status": "OK"
+    },
+    {
+      "detail": "job count=9; minimum=5.",
+      "name": "algorithm_policy_jobs",
+      "status": "OK"
+    },
+    {
+      "detail": "source_trace job is present.",
+      "name": "algorithm_policy_source_trace_job",
+      "status": "OK"
+    },
+    {
+      "detail": "trace_net_repair_batching job is present.",
+      "name": "algorithm_policy_repair_job",
+      "status": "OK"
+    },
+    {
+      "detail": "broad_retrieval_expansion job is present.",
+      "name": "algorithm_policy_retrieval_job",
+      "status": "OK"
+    },
+    {
+      "detail": "table_extraction_batching job is present.",
+      "name": "algorithm_policy_table_batching_job",
+      "status": "OK"
+    },
+    {
+      "detail": "community_summaries job is present.",
+      "name": "algorithm_policy_community_summary_job",
+      "status": "OK"
+    },
+    {
+      "detail": "deterministic source-trace jobs with wrong algorithm=[].",
+      "name": "algorithm_policy_deterministic_source_trace",
+      "status": "OK"
+    },
+    {
+      "detail": "repair selected=route_grouping; expected route_grouping.",
+      "name": "algorithm_policy_route_repair",
+      "status": "OK"
+    },
+    {
+      "detail": "table selected=route_grouping; expected route_grouping.",
+      "name": "algorithm_policy_route_table_batching",
+      "status": "OK"
+    },
+    {
+      "detail": "retrieval selected=leiden; expected leiden.",
+      "name": "algorithm_policy_leiden_retrieval",
+      "status": "OK"
+    },
+    {
+      "detail": "community summaries selected=leiden; expected leiden.",
+      "name": "algorithm_policy_leiden_community_summaries",
+      "status": "OK"
+    },
+    {
+      "detail": "source/page/part community use=False.",
+      "name": "algorithm_policy_no_communities_for_truth",
+      "status": "OK"
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "algorithm_policy_best_repair_score": 0.959966,
+    "algorithm_policy_best_retrieval_score": 0.899821,
+    "algorithm_policy_community_summaries_algorithm": "leiden",
+    "algorithm_policy_jobs": 9,
+    "algorithm_policy_leiden_available": true,
+    "algorithm_policy_page_lookup_algorithm": "deterministic_graph_traversal",
+    "algorithm_policy_part_lookup_algorithm": "deterministic_graph_traversal",
+    "algorithm_policy_path": "local_data\\organization\\communities\\community_algorithm_policy.json",
+    "algorithm_policy_present": true,
+    "algorithm_policy_repair_batching_algorithm": "route_grouping",
+    "algorithm_policy_require_deterministic_source_trace": true,
+    "algorithm_policy_require_leiden_for_retrieval": true,
+    "algorithm_policy_require_route_for_repair": true,
+    "algorithm_policy_retrieval_expansion_algorithm": "leiden",
+    "algorithm_policy_source_trace_algorithm": "deterministic_graph_traversal",
+    "algorithm_policy_status": "OK",
+    "algorithm_policy_table_batching_algorithm": "route_grouping",
+    "algorithm_policy_version": "trace_net_algorithm_policy_v1"
+  }
+}

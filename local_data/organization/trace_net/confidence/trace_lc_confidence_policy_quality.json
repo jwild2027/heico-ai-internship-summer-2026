@@ -1,0 +1,85 @@
+{
+  "checks": [
+    {
+      "message": "Policy present at local_data\\organization\\trace_net\\confidence\\trace_lc_confidence_policy.json: True.",
+      "name": "policy_present",
+      "ok": true
+    },
+    {
+      "message": "Policy status is 'OK'.",
+      "name": "policy_status",
+      "ok": true
+    },
+    {
+      "message": "Policy version is 'trace_lc_confidence_policy_v1'.",
+      "name": "policy_version",
+      "ok": true
+    },
+    {
+      "message": "Layer count=6; minimum=6.",
+      "name": "policy_layers",
+      "ok": true
+    },
+    {
+      "message": "source_trace policy max=A rag=include_as_source_evidence.",
+      "name": "source_trace_policy",
+      "ok": true
+    },
+    {
+      "message": "source_trace hard blocks=['missing_page', 'missing_tiff', 'missing_source_url', 'source_untraceable'].",
+      "name": "source_trace_hard_blocks",
+      "ok": true
+    },
+    {
+      "message": "table_tile_text_refined min_rag=B rag=include_as_derived_context.",
+      "name": "table_tile_text_policy",
+      "ok": true
+    },
+    {
+      "message": "table_tile_text_refined required B supports=['catalog_supported_part_number', 'source_trace_verified'].",
+      "name": "table_tile_text_supports",
+      "ok": true
+    },
+    {
+      "message": "visual_text max=B thresholds={'A': 0.92, 'B': 0.74, 'C': 0.45}.",
+      "name": "visual_text_conservative",
+      "ok": true
+    },
+    {
+      "message": "visual_text hard blocks=['metadata_leakage', 'prompt_template_leakage', 'refusal_like', 'section_bleed_unrepaired'].",
+      "name": "visual_text_hard_blocks",
+      "ok": true
+    },
+    {
+      "message": "table_candidate purpose=routing_signal min_rag=None.",
+      "name": "table_candidate_routing_only",
+      "ok": true
+    },
+    {
+      "message": "table_candidate default rag=exclude_until_table_tiles_exist.",
+      "name": "table_candidate_no_direct_rag",
+      "ok": true
+    },
+    {
+      "message": "global safety gates=['source_untraceable_records_must_not_enter_rag', 'metadata_leakage_records_must_not_enter_rag', 'prompt_template_leakage_records_must_not_enter_rag', 'refusal_like_records_must_not_enter_rag', 'D_tier_records_must_not_enter_rag', 'community_algorithms_must_not_prove_source_truth'].",
+      "name": "global_safety_gates",
+      "ok": true
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "trace_lc_policy_layers": 6,
+    "trace_lc_policy_part_catalog_max_tier": "A",
+    "trace_lc_policy_path": "local_data\\organization\\trace_net\\confidence\\trace_lc_confidence_policy.json",
+    "trace_lc_policy_present": true,
+    "trace_lc_policy_source_trace_max_tier": "A",
+    "trace_lc_policy_stage2_agreement_rate": 0.239382,
+    "trace_lc_policy_stage2_present": true,
+    "trace_lc_policy_stage2_within_one_tier_rate": 0.986762,
+    "trace_lc_policy_status": "OK",
+    "trace_lc_policy_table_candidate_purpose": "routing_signal",
+    "trace_lc_policy_table_tile_text_min_rag_tier": "B",
+    "trace_lc_policy_version": "trace_lc_confidence_policy_v1",
+    "trace_lc_policy_visual_text_max_tier": "B"
+  }
+}

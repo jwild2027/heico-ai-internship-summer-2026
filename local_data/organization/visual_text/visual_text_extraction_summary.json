@@ -1,0 +1,72 @@
+{
+  "created_at": "2026-06-02T14:31:04Z",
+  "error_records": 0,
+  "fishnet_attempt_total": 26,
+  "fishnet_failed_records": 0,
+  "fishnet_layer_counts": {
+    "primary": 24,
+    "rescue_768": 1
+  },
+  "fishnet_rescued_records": 1,
+  "fishnet_safety_layer_count": 2,
+  "fishnet_safety_layers": [
+    "rescue_768",
+    "rescue_512"
+  ],
+  "fishnet_safety_layers_enabled": true,
+  "graph_overlay_edges": 75,
+  "graph_overlay_nodes": 26,
+  "image_classification_counts": {
+    "likely_figure_or_diagram": 5,
+    "likely_table_or_grid": 19,
+    "likely_text_or_parts_list": 1
+  },
+  "model": "llava:13b",
+  "ocr_assist_enabled": true,
+  "ocr_max_chars": 4000,
+  "ok_records": 25,
+  "page_role_counts": {
+    "figure": 1,
+    "front_matter": 6,
+    "parts_list": 13,
+    "procedure": 1,
+    "table": 4
+  },
+  "pages_with_visual_text": 25,
+  "planned_records": 0,
+  "prompt_version": "visual_text_v2_2",
+  "provider": "ollama",
+  "records": 25,
+  "retry_error_pages_only": false,
+  "selected_pages": 25,
+  "skipped_blank_records": 0,
+  "skipped_missing_image_records": 0,
+  "status": "OK",
+  "status_counts": {
+    "ok": 25
+  },
+  "total_page_cards": 509,
+  "visual_text_avg_chars": 1419.32,
+  "visual_text_char_total": 35483,
+  "visual_text_figure_description_records": 4,
+  "visual_text_hallucination_risk_records": 13,
+  "visual_text_label_callout_records": 12,
+  "visual_text_metadata_leakage_marker_total": 0,
+  "visual_text_metadata_leakage_records": 0,
+  "visual_text_ocr_context_note_records": 25,
+  "visual_text_part_number_records": 10,
+  "visual_text_refusal_like_records": 0,
+  "visual_text_required_sections_records": 25,
+  "visual_text_summary_heavy_records": 2,
+  "visual_text_table_row_records": 0,
+  "visual_text_table_section_records": 2,
+  "visual_text_too_short_records": 0,
+  "visual_text_transcribed_records": 15,
+  "visual_text_uncertain_records": 13,
+  "visual_text_v2_1_records": 0,
+  "visual_text_v2_2_records": 25,
+  "visual_text_v2_4_records": 0,
+  "visual_text_v2_records": 25,
+  "visual_text_visible_part_number_total": 60,
+  "warnings": []
+}

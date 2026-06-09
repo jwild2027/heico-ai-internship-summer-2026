@@ -1,0 +1,64 @@
+{
+  "status": "OK",
+  "summary": {
+    "leiden_summary_present": true,
+    "leiden_communities_present": true,
+    "leiden_projection_present": true,
+    "leiden_status": "OK",
+    "leiden_requested_algorithm": "leiden",
+    "leiden_algorithm_used": "leidenalg_rbconfiguration",
+    "leiden_available": true,
+    "leiden_pages_loaded": 509,
+    "leiden_projection_nodes": 1856,
+    "leiden_projection_edges": 12363,
+    "leiden_community_count": 18,
+    "leiden_communities_jsonl_count": 18,
+    "leiden_communities_with_pages": 18,
+    "leiden_largest_community_pages": 191,
+    "leiden_overlay_nodes": 1874,
+    "leiden_overlay_edges": 1856,
+    "leiden_require_leiden": true
+  },
+  "checks": [
+    {
+      "name": "leiden_artifacts_present",
+      "ok": true,
+      "detail": "summary=True; communities=True."
+    },
+    {
+      "name": "leiden_status",
+      "ok": true,
+      "detail": "status=OK."
+    },
+    {
+      "name": "leiden_pages",
+      "ok": true,
+      "detail": "pages_loaded=509; minimum=509."
+    },
+    {
+      "name": "leiden_projection_edges",
+      "ok": true,
+      "detail": "projection_edges=12363; minimum=1."
+    },
+    {
+      "name": "leiden_communities",
+      "ok": true,
+      "detail": "communities=18; jsonl=18; minimum=1."
+    },
+    {
+      "name": "leiden_communities_with_pages",
+      "ok": true,
+      "detail": "communities_with_pages=18."
+    },
+    {
+      "name": "leiden_overlay_graph",
+      "ok": true,
+      "detail": "overlay_nodes=1874; overlay_edges=1856."
+    },
+    {
+      "name": "leiden_algorithm_available",
+      "ok": true,
+      "detail": "algorithm_used=leidenalg_rbconfiguration; leiden_available=True; require_leiden=True."
+    }
+  ]
+}

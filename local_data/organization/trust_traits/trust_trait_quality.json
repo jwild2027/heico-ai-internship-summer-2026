@@ -1,0 +1,73 @@
+{
+  "checks": [
+    {
+      "message": "summary=True; assertions=True; nodes=True; edges=True.",
+      "name": "trust_trait_artifacts_present",
+      "ok": true
+    },
+    {
+      "message": "Trust overlay status is 'OK'.",
+      "name": "trust_trait_status",
+      "ok": true
+    },
+    {
+      "message": "records=25, assertions_jsonl=196; minimum records=25.",
+      "name": "trust_trait_records",
+      "ok": true
+    },
+    {
+      "message": "pages=25; expected=25.",
+      "name": "trust_trait_page_count",
+      "ok": true
+    },
+    {
+      "message": "nodes=256, trait_nodes=9; minimum trait_nodes=1.",
+      "name": "trust_trait_nodes",
+      "ok": true
+    },
+    {
+      "message": "edges=809, has_visual_text_edges=25, pages=25.",
+      "name": "trust_trait_edges",
+      "ok": true
+    },
+    {
+      "message": "assertions=196, visual_text_context_nodes=25, pages=25.",
+      "name": "trust_trait_assertions",
+      "ok": true
+    }
+  ],
+  "created_at": "2026-06-02T15:56:05Z",
+  "status": "OK",
+  "summary": {
+    "trust_trait_assertions": 196,
+    "trust_trait_assertions_path": "local_data\\organization\\trust_traits\\trust_trait_assertions.jsonl",
+    "trust_trait_edges": 809,
+    "trust_trait_graph_edges_path": "local_data\\organization\\trust_traits\\trust_trait_graph_edges.json",
+    "trust_trait_graph_nodes_path": "local_data\\organization\\trust_traits\\trust_trait_graph_nodes.json",
+    "trust_trait_has_visual_text_edges": 25,
+    "trust_trait_nodes": 256,
+    "trust_trait_overlay_present": true,
+    "trust_trait_pages": 25,
+    "trust_trait_rag_trait_counts": {
+      "exclude_visual_text": 25
+    },
+    "trust_trait_records": 25,
+    "trust_trait_review_trait_counts": {
+      "hallucination_risk": 13,
+      "needs_human_review": 25,
+      "prompt_template_repaired": 16,
+      "section_bleed_repaired": 15,
+      "summary_heavy": 1,
+      "suspicious_phrase": 3,
+      "table_expected_but_not_extracted": 23
+    },
+    "trust_trait_status": "OK",
+    "trust_trait_summary_path": "local_data\\organization\\trust_traits\\trust_trait_summary.json",
+    "trust_trait_tier_A": 0,
+    "trust_trait_tier_B": 0,
+    "trust_trait_tier_C": 25,
+    "trust_trait_tier_D": 0,
+    "trust_trait_trait_nodes": 9,
+    "trust_trait_visual_text_context_nodes": 25
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:12:38Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000486.tif",
+    "relative_path": "00000486.tif"
+  },
+  "file": {
+    "file_name": "00000486.tif",
+    "extension": ".tif",
+    "file_size_bytes": 42724,
+    "modified_time_utc": "2026-05-22T19:14:57Z",
+    "sha256": "4969b71f91821d968c04d93c43f40b1abef57dc6bb306fbb15b2032e9f5a1cee"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.86,
+    "signals": [
+      "manual_title",
+      "ata_code",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "T.P. 120/1176",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "-< EMBRAER",
+    "section_title": null,
+    "figure_title": null,
+    "figure_number": null,
+    "effectivity": "ALL",
+    "ata_code": "51-25-00",
+    "page_number": 612,
+    "page_label": "612",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [
+      "MATERIAL",
+      "PLATE 2024-T3"
+    ],
+    "metadata_confidence": 0.86
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_right_title_block",
+    "combined_text": "[bottom_right_title_block]\n> leg.\nand reinforcing doublers (3) over the repair dou-\n> reinforcing doublers as a guide, and the new\nM chapters: 51-25-00 for Drilling, 51-40-04 for\nstener Edge Margin, and 51-70-05 for Typical\norcing doubler (3) to the leg using fasteners (4\nfor Selection of Rivet Length.\n25 21 00 Page 612\nT.P. 120/1176 Sep 30/98\n\n[bottom_strip]\nPAN Vet PEE MAI OE OT Ne oT CATE\n(e) Attach the repair doublers (2) and reinforcing doubler (3) to the leg using fasteners (4\nand 5). Refer to SRM chapter 51-40-07 for Selection of Rivet Length.\nEFFECTIVITY: ALL\n25 21 00 Page 612\nT.P. 120/1176 Sep 30/98\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nB. Double Passenger Seat Leg Repair.\n(1) Repair Materials.\n| PART | QTY. | MATERIAL |\n\n[right_strip]\nMATERIAL\nPLATE 2024-T3\n1 (0.040 in)\nibove.\nfer to SRM (Structural\noval.\nthe end of the crack and\n(3) over the repair dou-\nS a guide, and the new\nor Drilling, 51-40-04 for\n1d 51-70-05 for Typical\n> leg using fasteners (4\nsngth.\n00 Page 612\n1176 Sep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "> leg.\nand reinforcing doublers (3) over the repair dou-\n> reinforcing doublers as a guide, and the new\nM chapters: 51-25-00 for Drilling, 51-40-04 for\nstener Edge Margin, and 51-70-05 for Typical\norcing doubler (3) to the leg using fasteners (4\nfor Selection of Rivet Length.\n25 21 00 Page 612\nT.P. 120/1176 Sep 30/98",
+        "char_count": 318,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "PAN Vet PEE MAI OE OT Ne oT CATE\n(e) Attach the repair doublers (2) and reinforcing doubler (3) to the leg using fasteners (4\nand 5). Refer to SRM chapter 51-40-07 for Selection of Rivet Length.\nEFFECTIVITY: ALL\n25 21 00 Page 612\nT.P. 120/1176 Sep 30/98",
+        "char_count": 253,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nB. Double Passenger Seat Leg Repair.\n(1) Repair Materials.\n| PART | QTY. | MATERIAL |",
+        "char_count": 143,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "MATERIAL\nPLATE 2024-T3\n1 (0.040 in)\nibove.\nfer to SRM (Structural\noval.\nthe end of the crack and\n(3) over the repair dou-\nS a guide, and the new\nor Drilling, 51-40-04 for\n1d 51-70-05 for Typical\n> leg using fasteners (4\nsngth.\n00 Page 612\n1176 Sep 30/98",
+        "char_count": 253,
+        "error": "Image too small to scale!! (1x36 vs min width of 3)\r\nLine cannot be recognized!!"
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "T.P. 120/1176",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "-< EMBRAER",
+      "section_title": null,
+      "figure_title": null,
+      "figure_number": null,
+      "effectivity": "ALL",
+      "ata_code": "51-25-00",
+      "page_number": 612,
+      "page_label": "612",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [
+        "MATERIAL",
+        "PLATE 2024-T3"
+      ],
+      "metadata_confidence": 0.86
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

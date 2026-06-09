@@ -1,0 +1,230 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:04:25Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000101.tif",
+    "relative_path": "00000101.tif"
+  },
+  "file": {
+    "file_name": "00000101.tif",
+    "extension": ".tif",
+    "file_size_bytes": 50514,
+    "modified_time_utc": "2026-05-22T19:14:54Z",
+    "sha256": "5cc1b430fe8314fcc95fefda7d235f2acfcf1e5f95ba8bf34748e38a52c4a3c0"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 0.98,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "part_numbers",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "T.P. 120/1176",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "Y., LIFE JACKET.............. VS4956 1",
+    "section_title": null,
+    "figure_title": "-ITEM NOT ILLUSTRATED",
+    "figure_number": "5A",
+    "effectivity": "ALL",
+    "ata_code": null,
+    "page_number": null,
+    "page_label": null,
+    "issue_date": "Jan 15/01",
+    "revision_date": "Jan 15/01",
+    "revision_label": null,
+    "part_numbers": [
+      "120-41824-297",
+      "120-42547-019",
+      "120-61547-507",
+      "120-41824-343"
+    ],
+    "callouts": [
+      "ATTACHING PARTS",
+      "NUMBER TO ASSY",
+      "TO ASSY",
+      "VS4956 1",
+      "VS4956 2",
+      "E0/75221 4"
+    ],
+    "metadata_confidence": 0.98
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "right_strip",
+    "combined_text": "[bottom_right_title_block]\nY., LIFE JACKET.............. VS4956 1\nTS\nTENER BUTTON MALE... 4\n\u201cTON, MALE.................. E075221 4\nTS\n107 and 120-41824-297/343)\n\\\n25 21 00 Page 1068B\nT.P. 120/1176 Jan 15/01\n\n[bottom_strip]\n150 | 120-42547-019 . SECTION, PVC uu. eee WVS4956 1\nATTACHING PARTS\n-ITEM NOT ILLUSTRATED\nSingle Passenger Seat (120-61547-507 and 120-41824-297/343)\nFigure 5A\nSheet 2\nEFFECTIVITY: ALL 25-21 -00\nPage 1068B\nT.P. 120/1176 Jan 15/01\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nAIRLINE EFF | UNITS\nFIG. ITEM | PARTNUMBER | STOCK voter eODE. FROM} PER\nNUMBER TO ASSY\nOSA - | 120-61547-507 SINGLE PASSENGER SEAT ASSY ............. VWS4956 | 302/999} REF\n- | 120-41824-343 SINGLE PASSENGER SEAT ASSY ............. VWS4956 | 302/312} REF\n\n[right_strip]\nEFF | UNITS\nCODE. FROM | PER\nTO ASSY\nVS4956 | 302/999) REF\nVS4956 | 302/312) REF\nVS4956 | 313/999} REF\nVS4956 | 302/999 1\nVS4956 | 302/312 1\nVS4956 | 313/999 1\nVS4956 | 302/312 1\nVS4956 | 302/312 1\nVS4956 | 313/999 1\nVS4956 1\nVS4956 1\nVS4956 1\n2\n2\n2\nVS4956 2\n1\n1\nVS4956 1\n4\nE0/75221 4\nVS4956 1\n3\n3\n343)\n-00\nPage 1068B\n6 Jan 15/01",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "Y., LIFE JACKET.............. VS4956 1\nTS\nTENER BUTTON MALE... 4\n\u201cTON, MALE.................. E075221 4\nTS\n107 and 120-41824-297/343)\n\\\n25 21 00 Page 1068B\nT.P. 120/1176 Jan 15/01",
+        "char_count": 179,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "150 | 120-42547-019 . SECTION, PVC uu. eee WVS4956 1\nATTACHING PARTS\n-ITEM NOT ILLUSTRATED\nSingle Passenger Seat (120-61547-507 and 120-41824-297/343)\nFigure 5A\nSheet 2\nEFFECTIVITY: ALL 25-21 -00\nPage 1068B\nT.P. 120/1176 Jan 15/01",
+        "char_count": 230,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nAIRLINE EFF | UNITS\nFIG. ITEM | PARTNUMBER | STOCK voter eODE. FROM} PER\nNUMBER TO ASSY\nOSA - | 120-61547-507 SINGLE PASSENGER SEAT ASSY ............. VWS4956 | 302/999} REF\n- | 120-41824-343 SINGLE PASSENGER SEAT ASSY ............. VWS4956 | 302/312} REF",
+        "char_count": 313,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "EFF | UNITS\nCODE. FROM | PER\nTO ASSY\nVS4956 | 302/999) REF\nVS4956 | 302/312) REF\nVS4956 | 313/999} REF\nVS4956 | 302/999 1\nVS4956 | 302/312 1\nVS4956 | 313/999 1\nVS4956 | 302/312 1\nVS4956 | 302/312 1\nVS4956 | 313/999 1\nVS4956 1\nVS4956 1\nVS4956 1\n2\n2\n2\nVS4956 2\n1\n1\nVS4956 1\n4\nE0/75221 4\nVS4956 1\n3\n3\n343)\n-00\nPage 1068B\n6 Jan 15/01",
+        "char_count": 329,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "T.P. 120/1176",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "Y., LIFE JACKET.............. VS4956 1",
+      "section_title": null,
+      "figure_title": "-ITEM NOT ILLUSTRATED",
+      "figure_number": "5A",
+      "effectivity": "ALL",
+      "ata_code": null,
+      "page_number": null,
+      "page_label": null,
+      "issue_date": "Jan 15/01",
+      "revision_date": "Jan 15/01",
+      "revision_label": null,
+      "part_numbers": [
+        "120-41824-297",
+        "120-42547-019",
+        "120-61547-507",
+        "120-41824-343"
+      ],
+      "callouts": [
+        "ATTACHING PARTS",
+        "NUMBER TO ASSY",
+        "TO ASSY",
+        "VS4956 1",
+        "VS4956 2",
+        "E0/75221 4"
+      ],
+      "metadata_confidence": 0.98
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

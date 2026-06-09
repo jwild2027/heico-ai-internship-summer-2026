@@ -1,0 +1,1225 @@
+{
+  "artifact_baseline": {
+    "files": {
+      "trace_net_graph_explorer.html": {
+        "exists": true,
+        "relative_path": "local_data/organization/trace_net/graph_explorer/trace_net_graph_explorer.html",
+        "sha256": "b71e7e3d29e1c7b5e2d34b729d80f2266c9aed04727250ed99d8d443556b331a",
+        "size_bytes": 8685902
+      },
+      "trace_net_graph_explorer_data.json": {
+        "exists": true,
+        "json_keys": [
+          "edges",
+          "nodes",
+          "summary",
+          "version"
+        ],
+        "relative_path": "local_data/organization/trace_net/graph_explorer/trace_net_graph_explorer_data.json",
+        "sha256": "3442eb8e01503418fb5e7fc4c76a95d1180604c06087a7d23ff67e1083ca252d",
+        "size_bytes": 10309987,
+        "summary_keys": [
+          "candidate_nodes",
+          "citation_nodes",
+          "context_v2_has_context_v2_edges_added",
+          "context_v2_page_context_v2_nodes_added",
+          "context_v2_page_payloads_with_context_v2",
+          "context_v2_table_records_read",
+          "edge_type_counts",
+          "edges",
+          "has_context_v2_edges",
+          "has_nomenclature_edges",
+          "max_part_nodes",
+          "max_parts_per_candidate",
+          "node_type_counts",
+          "nodes",
+          "nomenclature_has_nomenclature_edges_added",
+          "nomenclature_nodes",
+          "nomenclature_nomenclature_nodes_added",
+          "nomenclature_part_nodes_from_graph",
+          "nomenclature_part_page_edges_from_graph",
+          "page_context_nodes",
+          "page_context_v2_nodes",
+          "page_nodes",
+          "part_nodes",
+          "required_context_v2_missing_page_count",
+          "required_context_v2_missing_pages",
+          "required_context_v2_page_range",
+          "status",
+          "topic_nodes",
+          "version"
+        ]
+      },
+      "trace_net_graph_explorer_edges.json": {
+        "exists": true,
+        "json_list_count": 16598,
+        "relative_path": "local_data/organization/trace_net/graph_explorer/trace_net_graph_explorer_edges.json",
+        "sha256": "e582d6e8debe8b6acc26c2a25fa0ef0081f806e4d810bcba2b09f29931a0989d",
+        "size_bytes": 5326796
+      },
+      "trace_net_graph_explorer_nodes.json": {
+        "exists": true,
+        "json_list_count": 5045,
+        "relative_path": "local_data/organization/trace_net/graph_explorer/trace_net_graph_explorer_nodes.json",
+        "sha256": "bc258e0db3ef6da6ed8063a93266895628ec90a1b2b89c6ad5ba37b282ad7952",
+        "size_bytes": 4531609
+      },
+      "trace_net_graph_explorer_summary.json": {
+        "exists": true,
+        "json_keys": [
+          "candidate_nodes",
+          "citation_nodes",
+          "context_v2_has_context_v2_edges_added",
+          "context_v2_page_context_v2_nodes_added",
+          "context_v2_page_payloads_with_context_v2",
+          "context_v2_table_records_read",
+          "edge_type_counts",
+          "edges",
+          "has_context_v2_edges",
+          "has_nomenclature_edges",
+          "max_part_nodes",
+          "max_parts_per_candidate",
+          "node_type_counts",
+          "nodes",
+          "nomenclature_has_nomenclature_edges_added",
+          "nomenclature_nodes",
+          "nomenclature_nomenclature_nodes_added",
+          "nomenclature_part_nodes_from_graph",
+          "nomenclature_part_page_edges_from_graph",
+          "page_context_nodes",
+          "page_context_v2_nodes",
+          "page_nodes",
+          "part_nodes",
+          "required_context_v2_missing_page_count",
+          "required_context_v2_missing_pages",
+          "required_context_v2_page_range",
+          "status",
+          "topic_nodes",
+          "version"
+        ],
+        "relative_path": "local_data/organization/trace_net/graph_explorer/trace_net_graph_explorer_summary.json",
+        "sha256": "65a2424d9fdcb3434e4eb12d80430bb60cb40d7b1cd94b5a8e5db8100ffc148b",
+        "size_bytes": 1710,
+        "status": "OK"
+      },
+      "trace_net_graph_explorer_v2_nomenclature_quality.json": {
+        "exists": true,
+        "json_keys": [
+          "context_v2_page_count",
+          "edges",
+          "failures",
+          "has_context_v2_edges",
+          "has_nomenclature_edges",
+          "nodes",
+          "nomenclature_nodes",
+          "page_context_v2_nodes",
+          "page_nodes",
+          "part_nodes",
+          "required_context_v2_missing_page_count",
+          "required_context_v2_missing_pages",
+          "required_context_v2_page_range",
+          "status",
+          "summary_version",
+          "version"
+        ],
+        "relative_path": "local_data/organization/trace_net/graph_explorer/trace_net_graph_explorer_v2_nomenclature_quality.json",
+        "sha256": "4746ce2dac2df117b7422d28defbb179e843414ffffae98d7f6f169b9b7ef585",
+        "size_bytes": 582,
+        "status": "PASS"
+      }
+    },
+    "graph_explorer_dir": "local_data/organization/trace_net/graph_explorer",
+    "graph_explorer_v2_nomenclature_quality": {
+      "context_v2_page_count": 50,
+      "edges": 16598,
+      "failures": [],
+      "has_context_v2_edges": 50,
+      "has_nomenclature_edges": 386,
+      "nodes": 5045,
+      "nomenclature_nodes": 151,
+      "page_context_v2_nodes": 50,
+      "page_nodes": 509,
+      "part_nodes": 442,
+      "required_context_v2_missing_page_count": 0,
+      "required_context_v2_missing_pages": [],
+      "required_context_v2_page_range": "1-50",
+      "status": "PASS",
+      "summary_version": "trace_net_graph_explorer_v1_3_context_v2_nomenclature_fix",
+      "version": "trace_net_graph_explorer_v1_3_context_v2_nomenclature_quality"
+    }
+  },
+  "checkpoint_name": "trace_net_graph_ui_context_v2_nomenclature_baseline_v1",
+  "checkpoint_sha256": "c6f9e662a92820c55af1adb7c7430e226e5e6f42902c202a5aa5962548963ae0",
+  "core_table_presence": {
+    "graph_edges": {
+      "columns": [
+        "edge_id",
+        "source_id",
+        "target_id",
+        "edge_type",
+        "payload",
+        "created_at",
+        "updated_at"
+      ],
+      "exists": true,
+      "row_count": 108572
+    },
+    "graph_nodes": {
+      "columns": [
+        "node_id",
+        "node_type",
+        "label",
+        "payload",
+        "created_at",
+        "updated_at"
+      ],
+      "exists": true,
+      "row_count": 30761
+    },
+    "page_context_v2_records": {
+      "columns": [
+        "context_id",
+        "page_id",
+        "document_id",
+        "role",
+        "subrole",
+        "confidence",
+        "short_summary",
+        "retrieval_summary",
+        "answerable_questions",
+        "retrieval_cues",
+        "important_entities",
+        "component_families",
+        "important_parts",
+        "nearby_context",
+        "source_grounding",
+        "authority",
+        "not_good_for",
+        "generation_provider",
+        "generation_model",
+        "prompt_version",
+        "status",
+        "payload",
+        "updated_at"
+      ],
+      "exists": true,
+      "row_count": 50
+    },
+    "pages": {
+      "columns": [
+        "page_id",
+        "document_id",
+        "page_number",
+        "page_label",
+        "ata_code",
+        "source_url",
+        "tiff_path",
+        "ocr_path",
+        "payload",
+        "created_at",
+        "updated_at"
+      ],
+      "exists": true,
+      "row_count": 509
+    }
+  },
+  "generated_at_utc": "2026-06-08T16:46:35Z",
+  "graph_baseline": {
+    "edge_type_counts": {
+      "ADJUSTS_GROUP": 2,
+      "ADJUSTS_SIMULATED_PAGE": 2,
+      "ANSWERS_WITH_PAGE": 3,
+      "APPEARS_ON": 981,
+      "ASSERTS_POLICY_RAG_ACTION": 1813,
+      "ASSERTS_POLICY_TRUST": 1813,
+      "ASSERTS_RAG_ACTION": 1727,
+      "ASSERTS_TRAIT": 12176,
+      "ASSERTS_TRUST_TIER": 1727,
+      "BELONGS_TO_ATA": 509,
+      "BELONGS_TO_DOCUMENT": 509,
+      "CALIBRATES_PAGE": 3,
+      "CATALOG_SUPPORTED_PART": 138,
+      "CLASSIFIED_AS_VISUAL": 509,
+      "CONTAINS_PAGE": 509,
+      "CURRENT_TRUST_TIER": 25,
+      "DERIVED_FROM": 14450,
+      "EXPECTS_PAGE": 2,
+      "FEEDBACK_ON_ANSWER": 3,
+      "FEEDBACK_ON_ASK_RUN": 3,
+      "FLAGS_AFFECTED_PAGE": 3,
+      "FOUND_ON": 981,
+      "GROUPS_PAGE": 3,
+      "HAS_ACTION_QUEUE_ITEM": 63,
+      "HAS_ATA_SECTION": 5,
+      "HAS_BUCKET": 16,
+      "HAS_BUCKET_BONUS": 4,
+      "HAS_CALIBRATION_RECORD": 3,
+      "HAS_CITATION": 8,
+      "HAS_CONFIDENCE_LAYER_POLICY": 7,
+      "HAS_CONFIDENCE_POLICY_DECISION": 1813,
+      "HAS_CONTEXT_STATUS": 3,
+      "HAS_CONTEXT_V2": 50,
+      "HAS_EVIDENCE_BUCKET": 6,
+      "HAS_EVIDENCE_CONSENSUS": 1713,
+      "HAS_FEEDBACK_EVENT": 3,
+      "HAS_FEEDBACK_POLICY": 1,
+      "HAS_FEEDBACK_SIGNAL": 2,
+      "HAS_FEEDBACK_WEIGHT": 8,
+      "HAS_GROUP": 3,
+      "HAS_IMAGE_ANALYSIS": 509,
+      "HAS_INDEX_LABEL": 193,
+      "HAS_MENTION": 981,
+      "HAS_NOMENCLATURE": 386,
+      "HAS_PAGE": 509,
+      "HAS_PAGE_RESULT": 3,
+      "HAS_PART_MENTION": 981,
+      "HAS_POLICY_SIGNAL": 2,
+      "HAS_QUERY_FINGERPRINT": 3,
+      "HAS_RAG_BUCKET": 6,
+      "HAS_RATING": 3,
+      "HAS_REASON": 1356,
+      "HAS_REFINED_TABLE_TILE_TEXT": 120,
+      "HAS_REPAIR_PLAN": 50,
+      "HAS_RETRIEVAL_POLICY": 1,
+      "HAS_SIMULATED_GROUP": 3,
+      "HAS_SIMULATED_PAGE_RESULT": 3,
+      "HAS_SOURCE_LINK": 509,
+      "HAS_TABLE_CANDIDATE_SCAN": 509,
+      "HAS_TABLE_TILE": 1716,
+      "HAS_TABLE_TILE_CONTEXT": 286,
+      "HAS_TABLE_TILE_TEXT": 130,
+      "HAS_TABLE_TILE_TEXT_CONTEXT": 20,
+      "HAS_TIFF": 509,
+      "HAS_TRACE_NET_PLAN": 509,
+      "HAS_TRACE_NET_REPAIR_PLAN": 25,
+      "HAS_TRAIT": 12176,
+      "HAS_TRAIT_ASSERTION": 12176,
+      "HAS_VISUAL_TEXT": 75,
+      "HAS_WEIGHT": 35,
+      "HAS_WEIGHTED_GROUP": 10,
+      "INHERITS_TRAITS_FROM": 1018,
+      "IN_LEIDEN_COMMUNITY": 1856,
+      "MENTIONS_PART": 981,
+      "MENTIONS_PART_CANDIDATE": 474,
+      "None": 23728,
+      "OPENS": 509,
+      "POINTS_TO_TIFF": 509,
+      "RANKS_PAGE": 10,
+      "RECOMMENDS_EXTRACTOR": 509,
+      "RECOMMENDS_REPAIR_ACTION": 1752,
+      "REFERS_TO_PAGE": 3,
+      "REFERS_TO_PART": 981,
+      "REFINED_AS": 120,
+      "REPAIRS_REVIEW_TRAIT": 96,
+      "SIGNAL_FOR_PAGE": 2,
+      "SIMULATES_ASK_FOR": 1,
+      "SIMULATES_QUERY": 2,
+      "SUMMARIZES_VISUAL_CONTENT_OF": 25,
+      "SUPPORTED_BY": 8,
+      "SUPPORTED_BY_BUCKET": 6,
+      "SUPPORTED_BY_CHUNK": 8,
+      "UNSUPPORTED_PART_CANDIDATE": 46,
+      "USES_REPAIR_ROUTE": 25,
+      "USES_ROUTE": 509,
+      "USES_WEIGHTS_POLICY": 1
+    },
+    "graph_edge_count": 108572,
+    "graph_node_count": 30761,
+    "has_context_v2_edge_count": 50,
+    "has_nomenclature_edge_count": 386,
+    "node_type_counts": {
+      "AnswerDraft": 2,
+      "AskRun": 2,
+      "FeedbackContextStatus": 2,
+      "FeedbackEvent": 3,
+      "FeedbackGraph": 1,
+      "FeedbackRating": 2,
+      "FeedbackReason": 3,
+      "QueryFingerprint": 2,
+      "answer_page_result": 3,
+      "ata_section": 10,
+      "citation_kind": 4,
+      "confidence_policy_decision": 1813,
+      "confidence_weight": 35,
+      "confidence_weight_layer": 7,
+      "document": 1,
+      "evidence_artifact": 5,
+      "evidence_consensus": 1713,
+      "evidence_source": 7,
+      "feedback_ask_page_result": 3,
+      "feedback_ask_simulation": 1,
+      "feedback_policy_signal": 2,
+      "feedback_reason_weight": 8,
+      "feedback_search_simulation": 1,
+      "feedback_weight_policy": 1,
+      "index_label": 63,
+      "leiden_community": 18,
+      "nomenclature": 151,
+      "page": 522,
+      "page_context_v2": 50,
+      "page_image_analysis": 509,
+      "part": 1075,
+      "part_candidate": 226,
+      "part_mention": 981,
+      "query_fingerprint": 2,
+      "rag_bucket": 4,
+      "rag_candidate_bucket": 4,
+      "rag_candidate_chunk": 1426,
+      "rag_candidate_index_root": 1,
+      "rag_eligibility_root": 1,
+      "rag_evidence_record": 1813,
+      "rag_pool": 4,
+      "retrieval_bucket_bonus": 4,
+      "retrieval_weight_policy": 1,
+      "search_group_overlay": 1,
+      "search_page_group": 3,
+      "search_result": 8,
+      "source_citation": 1426,
+      "source_citation_root": 1,
+      "source_file": 509,
+      "source_link": 509,
+      "table_candidate": 509,
+      "table_candidate_scan": 1,
+      "table_tile": 1716,
+      "table_tile_context": 286,
+      "table_tile_run": 1,
+      "table_tile_text": 120,
+      "table_tile_text_context": 30,
+      "table_tile_text_refined": 120,
+      "table_tile_text_refiner_run": 1,
+      "table_tile_text_run": 1,
+      "table_trait": 1,
+      "topic": 278,
+      "trace_net_answer": 1,
+      "trace_net_extractor": 3,
+      "trace_net_page_plan": 509,
+      "trace_net_planner": 1,
+      "trace_net_reason": 5,
+      "trace_net_repair_action": 13,
+      "trace_net_repair_plan": 25,
+      "trace_net_repair_planner": 1,
+      "trace_net_repair_route": 5,
+      "trace_net_route": 7,
+      "trace_net_weight_policy": 1,
+      "trait": 1953,
+      "trait_assertion": 12176,
+      "visual_text_context": 25,
+      "visual_type": 4,
+      "weighted_calibration_reason": 9,
+      "weighted_search_calibration": 1,
+      "weighted_search_calibration_record": 3,
+      "weighted_search_group": 10,
+      "weighted_search_simulation": 1,
+      "weights_policy": 1
+    },
+    "nomenclature_node_count": 151,
+    "page_context_v2_page_count": 50,
+    "page_context_v2_record_count": 50,
+    "page_count": 509,
+    "page_node_count": 522,
+    "part_node_count": 1075,
+    "required_context_v2_coverage": {
+      "covered_page_count": 50,
+      "covered_page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "details": {
+        "1": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000001"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000001"
+          ]
+        },
+        "10": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000010"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000010"
+          ]
+        },
+        "11": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000011"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000011"
+          ]
+        },
+        "12": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000012"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000012"
+          ]
+        },
+        "13": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000013"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000013"
+          ]
+        },
+        "14": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000014"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000014"
+          ]
+        },
+        "15": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000015"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000015"
+          ]
+        },
+        "16": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000016"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000016"
+          ]
+        },
+        "17": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000017"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000017"
+          ]
+        },
+        "18": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000018"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000018"
+          ]
+        },
+        "19": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000019"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000019"
+          ]
+        },
+        "2": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000002"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000002"
+          ]
+        },
+        "20": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000020"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000020"
+          ]
+        },
+        "21": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000021"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000021"
+          ]
+        },
+        "22": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000022"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000022"
+          ]
+        },
+        "23": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000023"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000023"
+          ]
+        },
+        "24": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000024"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000024"
+          ]
+        },
+        "25": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000025"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000025"
+          ]
+        },
+        "26": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000026"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000026"
+          ]
+        },
+        "27": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000027"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000027"
+          ]
+        },
+        "28": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000028"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000028"
+          ]
+        },
+        "29": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000029"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000029"
+          ]
+        },
+        "3": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000003"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000003"
+          ]
+        },
+        "30": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000030"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000030"
+          ]
+        },
+        "31": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000031"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000031"
+          ]
+        },
+        "32": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000032"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000032"
+          ]
+        },
+        "33": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000033"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000033"
+          ]
+        },
+        "34": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000034"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000034"
+          ]
+        },
+        "35": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000035"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000035"
+          ]
+        },
+        "36": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000036"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000036"
+          ]
+        },
+        "37": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000037"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000037"
+          ]
+        },
+        "38": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000038"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000038"
+          ]
+        },
+        "39": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000039"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000039"
+          ]
+        },
+        "4": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000004"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000004"
+          ]
+        },
+        "40": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000040"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000040"
+          ]
+        },
+        "41": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000041"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000041"
+          ]
+        },
+        "42": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000042"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000042"
+          ]
+        },
+        "43": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000043"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000043"
+          ]
+        },
+        "44": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000044"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000044"
+          ]
+        },
+        "45": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000045"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000045"
+          ]
+        },
+        "46": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000046"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000046"
+          ]
+        },
+        "47": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000047"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000047"
+          ]
+        },
+        "48": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000048"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000048"
+          ]
+        },
+        "49": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000049"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000049"
+          ]
+        },
+        "5": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000005"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000005"
+          ]
+        },
+        "50": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000050"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000050"
+          ]
+        },
+        "6": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000006"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000006"
+          ]
+        },
+        "7": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000007"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000007"
+          ]
+        },
+        "8": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000008"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000008"
+          ]
+        },
+        "9": {
+          "covered": true,
+          "known_page_ids": [
+            "zip_page_000009"
+          ],
+          "matched_context_ids": [
+            "t_p_120_1176_p000009"
+          ]
+        }
+      },
+      "missing_page_count": 0,
+      "missing_page_numbers": [],
+      "required_page_count": 50,
+      "required_page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ]
+    }
+  },
+  "inputs": {
+    "database_url_masked": "postgresql://tracenet:***@localhost:5432/tracenet_dev",
+    "graph_explorer_dir": "local_data/organization/trace_net/graph_explorer",
+    "output_dir": "local_data/organization/trace_net/baselines/graph_context_v2_nomenclature_v1",
+    "required_first_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50
+    ]
+  },
+  "next_step": {
+    "allowed_use": "turn PageContextV2 into safe routing/helper records; do not answer directly from summaries",
+    "name": "context_retrieval_helper_records_v1"
+  },
+  "read_only": true,
+  "retrieval_safety_baseline": {
+    "candidate_authority_counts": {},
+    "candidate_bucket_counts": {},
+    "candidate_trust_tier_counts": {
+      "A": 1396,
+      "B": 30
+    },
+    "evidence_consensus_count": 1813,
+    "notes": [],
+    "rag_candidate_count": 1426,
+    "rag_eligibility_count": 1813,
+    "source_citation_count": 1426,
+    "tables": {
+      "evidence_consensus_records": {
+        "columns": [
+          "record_id",
+          "page_id",
+          "evidence_layer",
+          "trust_tier",
+          "rag_action",
+          "repair_action",
+          "usable_confidence",
+          "payload",
+          "created_at",
+          "updated_at"
+        ],
+        "exists": true,
+        "row_count": 1813
+      },
+      "feedback_events": {
+        "columns": [
+          "feedback_id",
+          "ask_run_id",
+          "query_fingerprint",
+          "rating",
+          "reason_codes",
+          "affected_page_ids",
+          "expected_page_ids",
+          "context_status",
+          "policy_signal_eligible",
+          "payload",
+          "created_at",
+          "updated_at"
+        ],
+        "exists": true,
+        "row_count": 3
+      },
+      "feedback_policy_signals": {
+        "columns": [
+          "signal_id",
+          "feedback_id",
+          "query_fingerprint",
+          "page_id",
+          "signal_type",
+          "weight",
+          "reason",
+          "context_status",
+          "payload",
+          "created_at",
+          "updated_at"
+        ],
+        "exists": true,
+        "row_count": 2
+      },
+      "page_trust_traits": {
+        "columns": [
+          "trait_id",
+          "page_id",
+          "evidence_layer",
+          "rag_bucket",
+          "trust_tier",
+          "rag_action",
+          "record_count",
+          "safe_for_rag_count",
+          "payload",
+          "updated_at"
+        ],
+        "exists": true,
+        "row_count": 3971
+      },
+      "rag_candidate_chunks": {
+        "columns": [
+          "candidate_id",
+          "page_id",
+          "candidate_type",
+          "rag_bucket",
+          "evidence_layer",
+          "trust_tier",
+          "usable_confidence",
+          "text",
+          "source_url",
+          "tiff_path",
+          "ocr_path",
+          "safe_for_rag",
+          "payload",
+          "created_at",
+          "updated_at"
+        ],
+        "exists": true,
+        "row_count": 1426
+      },
+      "rag_eligibility_records": {
+        "columns": [
+          "record_id",
+          "page_id",
+          "rag_bucket",
+          "rag_action",
+          "trust_tier",
+          "evidence_layer",
+          "safe_for_rag",
+          "payload",
+          "created_at",
+          "updated_at"
+        ],
+        "exists": true,
+        "row_count": 1813
+      },
+      "source_citations": {
+        "columns": [
+          "citation_id",
+          "candidate_id",
+          "page_id",
+          "citation_text",
+          "source_url",
+          "tiff_path",
+          "ocr_path",
+          "payload",
+          "created_at",
+          "updated_at"
+        ],
+        "exists": true,
+        "row_count": 1426
+      },
+      "trust_authority_records": {
+        "columns": [
+          "authority_id",
+          "candidate_id",
+          "page_id",
+          "rag_bucket",
+          "evidence_layer",
+          "trust_tier",
+          "trust_scope",
+          "evidence_authority",
+          "claim_authority",
+          "rag_role",
+          "can_answer_directly",
+          "can_support_answer",
+          "requires_citation",
+          "requires_source_trace",
+          "source_truth_mutation_allowed",
+          "canonical_source_truth",
+          "safe_for_rag",
+          "source_url",
+          "tiff_path",
+          "ocr_path",
+          "usable_confidence",
+          "payload",
+          "updated_at"
+        ],
+        "exists": true,
+        "row_count": 1426
+      },
+      "trust_tier_overlay_records": {
+        "columns": [],
+        "exists": false,
+        "row_count": null
+      }
+    },
+    "unsafe_embedding_candidate_count": 0
+  },
+  "schema_version": "trace_net_graph_baseline_checkpoint_v1",
+  "trace_net_boundary": {
+    "feedback_can_mutate_source_truth": false,
+    "nomenclature_role": "part_metadata_display_and_graph_navigation",
+    "page_context_v2_can_answer_directly": false,
+    "page_context_v2_role": "retrieval_helper_only",
+    "source_truth_authority": "postgres_graph_plus_source_citation_plus_trust_authority",
+    "vector_indexes_are_authoritative": false
+  }
+}

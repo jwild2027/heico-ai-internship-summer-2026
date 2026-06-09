@@ -1,0 +1,204 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:02:30Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000023.tif",
+    "relative_path": "00000023.tif"
+  },
+  "file": {
+    "file_name": "00000023.tif",
+    "extension": ".tif",
+    "file_size_bytes": 51059,
+    "modified_time_utc": "2026-05-22T19:14:53Z",
+    "sha256": "357a5e9f20f6f5325780899202c379b8986cd2995c3286945228ca93dd3d8fe6"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3205,
+    "height_px": 4146,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_contents_page",
+    "confidence": 0.74,
+    "signals": [
+      "manual_title",
+      "ata_code",
+      "section_title",
+      "component_title",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": "column of parts for which",
+    "classification": null,
+    "metadata_confidence": 0.15
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "ocr",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_contents_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": null,
+    "publication_number": null,
+    "component_title": "-<\u20ac EMBRAER",
+    "section_title": "CONTENTS",
+    "figure_title": null,
+    "figure_number": null,
+    "effectivity": "ALL",
+    "ata_code": "25-21-00",
+    "page_number": 1004,
+    "page_label": "1004",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [],
+    "callouts": [],
+    "metadata_confidence": 0.74
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "top_strip",
+    "combined_text": "[bottom_right_title_block]\nis column, indicates the total of identical items,\n=m), which is required per assembly.\ne abbreviation REF is inserted in this column.\nsed as information source for procurement.\nappears in this column.\n25-21-00 Page 1004\nSep 30/98\n\n[bottom_strip]\nNOTE: Referenced items must not be used as information source for procurement.\nThe abbreviation AR (as required) also appears in this column.\nEFFECTIVITY: ALL\n25 21 00 Page 1004\nSep 30/98\n\n[top_strip]\n-<\u20ac EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n8 (WHEN EXHAUSTED USE ...) - Used in the description column of parts for which\nthe existing stocks should be exhausted before the newer designed part is issued.\n9 (USE UNTIL EXHAUSTED, NOT REPLACED) - Used in description column of parts\nthat have no replacement and existing stocks will not be replenished.\n\n[right_strip]\numn of parts for which\nsigned part is issued.\nscription column of parts\nenished.\nof parts for which a cer-\n_ when not in stock, may\nsemblies or installations\nre.\ncontents.\nters (A), (B), (C), etc., of\nssembly is applicable to\n\u00bb total of identical items,\ner assembly.\niserted in this column.\ne for procurement.\n-00 Page 1004\nSep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1602,
+          2404,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "is column, indicates the total of identical items,\n=m), which is required per assembly.\ne abbreviation REF is inserted in this column.\nsed as information source for procurement.\nappears in this column.\n25-21-00 Page 1004\nSep 30/98",
+        "char_count": 230,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2902,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "NOTE: Referenced items must not be used as information source for procurement.\nThe abbreviation AR (as required) also appears in this column.\nEFFECTIVITY: ALL\n25 21 00 Page 1004\nSep 30/98",
+        "char_count": 187,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3205,
+          746
+        ],
+        "status": "ok",
+        "text": "-<\u20ac EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\n8 (WHEN EXHAUSTED USE ...) - Used in the description column of parts for which\nthe existing stocks should be exhausted before the newer designed part is issued.\n9 (USE UNTIL EXHAUSTED, NOT REPLACED) - Used in description column of parts\nthat have no replacement and existing stocks will not be replenished.",
+        "char_count": 365,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2179,
+          0,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "umn of parts for which\nsigned part is issued.\nscription column of parts\nenished.\nof parts for which a cer-\n_ when not in stock, may\nsemblies or installations\nre.\ncontents.\nters (A), (B), (C), etc., of\nssembly is applicable to\n\u00bb total of identical items,\ner assembly.\niserted in this column.\ne for procurement.\n-00 Page 1004\nSep 30/98",
+        "char_count": 333,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": "column of parts for which",
+      "classification": null,
+      "metadata_confidence": 0.1
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_contents_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": null,
+      "publication_number": null,
+      "component_title": "-<\u20ac EMBRAER",
+      "section_title": "CONTENTS",
+      "figure_title": null,
+      "figure_number": null,
+      "effectivity": "ALL",
+      "ata_code": "25-21-00",
+      "page_number": 1004,
+      "page_label": "1004",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [],
+      "callouts": [],
+      "metadata_confidence": 0.74
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": "column of parts for which",
+      "classification": null,
+      "metadata_confidence": 0.1
+    }
+  }
+}

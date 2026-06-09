@@ -1,0 +1,218 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:09:39Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000348.tif",
+    "relative_path": "00000348.tif"
+  },
+  "file": {
+    "file_name": "00000348.tif",
+    "extension": ".tif",
+    "file_size_bytes": 45251,
+    "modified_time_utc": "2026-05-22T19:14:56Z",
+    "sha256": "5a7877c3e0cf221455b2136d39144a6a776210d1fe229cd09b9538152e255e53"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3205,
+    "height_px": 4146,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 1.0,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "part_numbers",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "1201P250076.MCE",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "VO 90",
+    "section_title": null,
+    "figure_title": "E) ae",
+    "figure_number": "81",
+    "effectivity": "ALL 2 2 1",
+    "ata_code": null,
+    "page_number": 1285,
+    "page_label": "1285",
+    "issue_date": "Jan 15/01",
+    "revision_date": "Jan 15/01",
+    "revision_label": null,
+    "part_numbers": [
+      "120-29067-003"
+    ],
+    "callouts": [
+      "VO 90",
+      "N 150",
+      "SON 155"
+    ],
+    "metadata_confidence": 1.0
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\n|\n|\nKee\n120\nVO 90\n.\u00ae a a\neee\nSst Ls 155\nN 150\nwe\n1201P250076.MCE\ntructure (120-29067-003/021/031)\n-igure 81\nSheet 1\nPage 1285\nT.P. 120/1176 Jan 15/01\n\n[bottom_strip]\n7 NON \\ HO LU\nNO e aN \u2014 a\nSON 155\n200 cS?\n\\ 150\n(E) ae\n_ 1201P250076.MCE\nSingle Passenger Seat Structure (120-29067-003/021/031)\nFigure 81\nSheet 1\nEFFECTIVITY: ALL 2 2 1\no 00 Page 1285\nT.P. 120/1176 Jan 15/01\n\n[top_strip]\n< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nVii\n\n[right_strip]\nf)) 140\n>\n120 130 110\n60\n\\\n\\\n40\na\n) 8 eS 50\n|\n@\n|\n|\n10 \u2014\u00a7\n\u201c\na \u201ca\nra a\u201c\na\n155\n150\na\n120TP250076.MCE\n3/021/031)\n) 00 Page 1285\n120/1176 Jan 15/01",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1602,
+          2404,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "|\n|\nKee\n120\nVO 90\n.\u00ae a a\neee\nSst Ls 155\nN 150\nwe\n1201P250076.MCE\ntructure (120-29067-003/021/031)\n-igure 81\nSheet 1\nPage 1285\nT.P. 120/1176 Jan 15/01",
+        "char_count": 149,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2902,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "7 NON \\ HO LU\nNO e aN \u2014 a\nSON 155\n200 cS?\n\\ 150\n(E) ae\n_ 1201P250076.MCE\nSingle Passenger Seat Structure (120-29067-003/021/031)\nFigure 81\nSheet 1\nEFFECTIVITY: ALL 2 2 1\no 00 Page 1285\nT.P. 120/1176 Jan 15/01",
+        "char_count": 208,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3205,
+          746
+        ],
+        "status": "ok",
+        "text": "< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nVii",
+        "char_count": 60,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2179,
+          0,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "f)) 140\n>\n120 130 110\n60\n\\\n\\\n40\na\n) 8 eS 50\n|\n@\n|\n|\n10 \u2014\u00a7\n\u201c\na \u201ca\nra a\u201c\na\n155\n150\na\n120TP250076.MCE\n3/021/031)\n) 00 Page 1285\n120/1176 Jan 15/01",
+        "char_count": 143,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "1201P250076.MCE",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "VO 90",
+      "section_title": null,
+      "figure_title": "E) ae",
+      "figure_number": "81",
+      "effectivity": "ALL 2 2 1",
+      "ata_code": null,
+      "page_number": 1285,
+      "page_label": "1285",
+      "issue_date": "Jan 15/01",
+      "revision_date": "Jan 15/01",
+      "revision_label": null,
+      "part_numbers": [
+        "120-29067-003"
+      ],
+      "callouts": [
+        "VO 90",
+        "N 150",
+        "SON 155"
+      ],
+      "metadata_confidence": 1.0
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

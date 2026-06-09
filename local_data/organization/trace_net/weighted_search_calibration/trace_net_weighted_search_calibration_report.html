@@ -1,0 +1,58 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>TRACE-Net Weighted Search Calibration Report</title>
+<style>body{font-family:Arial,sans-serif;margin:2rem;line-height:1.45}code{background:#f4f4f4;padding:0.1rem 0.25rem}table{border-collapse:collapse}td,th{border:1px solid #ccc;padding:0.25rem 0.5rem}</style>
+</head><body><pre># TRACE-Net Weighted Search Calibration Report<br>
+<br>
+Status: **OK**<br>
+Version: `trace_net_weighted_search_calibration_v1`<br>
+<br>
+## Summary<br>
+- **query_fingerprint**: part_number:120-50645-009<br>
+- **weights_policy_version**: trace_net_weights_policy_v1<br>
+- **records**: 3<br>
+- **pages**: 3<br>
+- **feedback_signals_used**: 2<br>
+- **groups_with_feedback_adjustment**: 2<br>
+- **groups_boosted**: 1<br>
+- **groups_demoted**: 1<br>
+- **rank_changed_records**: 0<br>
+- **feedback_cap_hit_records**: 1<br>
+- **demotion_shortfall_records**: 1<br>
+- **evidence_diversity_overrode_feedback_records**: 1<br>
+- **unsafe_records**: 0<br>
+- **excluded_records**: 0<br>
+- **source_truth_mutation_records**: 0<br>
+- **context_warning_signals_used**: 0<br>
+- **top_page_before**: t_p_120_1176_p000003<br>
+- **top_page_after**: t_p_120_1176_p000003<br>
+<br>
+## Component statistics<br>
+| Component | Average | Min | Max | Nonzero records |<br>
+|---|---|---|---|---|<br>
+| base_score | 50.505002 | 46.351892 | 52.581557 | 3 |<br>
+| bucket_bonus | 11.333333 | 5.0 | 16.0 | 3 |<br>
+| evidence_diversity_bonus | 4.0 | 0.0 | 8.0 | 2 |<br>
+| exact_match_bonus | 22.0 | 22.0 | 22.0 | 3 |<br>
+| confidence_bonus | 2.5175 | 2.29425 | 2.643375 | 3 |<br>
+| feedback_adjustment | -3.0 | -15.0 | 6.0 | 2 |<br>
+<br>
+## Ranking records<br>
+| Weighted rank | Original rank | Page | Score | Feedback | Buckets | Margin next | Demotion needed | Reasons |<br>
+|---|---|---|---|---|---|---|---|---|<br>
+| 1 | 1 | t_p_120_1176_p000003 | 107.224932 | 6.0 | verified_part_evidence, source_text_evidence, derived_context | 28.0285 | 28.028501 | validated_feedback_boost, verified_part_evidence_present, source_text_evidence_present, derived_context_present, multiple_evidence_buckets |<br>
+| 2 | 2 | t_p_120_1176_p000320 | 79.196432 | -15.0 | verified_part_evidence, source_text_evidence | 3.55029 | 3.550291 | validated_feedback_demote, feedback_cap_hit, verified_part_evidence_present, source_text_evidence_present, multiple_evidence_buckets, demoted_but_rank_preserved, additional_demotion_required_for_next_rank |<br>
+| 3 | 3 | t_p_120_1176_p000319 | 75.646142 | 0.0 | source_text_evidence | None | None | source_text_evidence_present |<br>
+<br>
+## Feedback cap hit records<br>
+| Page | Feedback | Lower page | Additional demotion needed | Buckets |<br>
+|---|---|---|---|---|<br>
+| t_p_120_1176_p000320 | -15.0 | t_p_120_1176_p000319 | 3.550291 | verified_part_evidence, source_text_evidence |<br>
+<br>
+## Recommendations<br>
+- `weighted_simulation_kept_unsafe_results_out`<br>
+- `context_warning_feedback_ignored_for_ranking`<br>
+- `feedback_adjusted_scores_without_rank_change_review_margins_before_tuning`<br>
+- `feedback_cap_hit_review_repeated_or_expert_feedback_before_increasing_penalty`<br>
+- `evidence_diversity_preserved_rank_despite_negative_feedback`<br>
+- `do_not_apply_weighted_ranking_until_regression_queries_pass`<br>
+</pre></body></html>

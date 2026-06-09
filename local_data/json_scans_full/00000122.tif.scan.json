@@ -1,0 +1,221 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:04:50Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000122.tif",
+    "relative_path": "00000122.tif"
+  },
+  "file": {
+    "file_name": "00000122.tif",
+    "extension": ".tif",
+    "file_size_bytes": 46693,
+    "modified_time_utc": "2026-05-22T19:14:54Z",
+    "sha256": "e0797dfbb38d887ee467f855d0912716d327bc105529a09063b3a8247564b5ef"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3199,
+    "height_px": 4141,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "maintenance_manual_ipl",
+    "confidence": 0.86,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "ata_code",
+      "component_title",
+      "part_numbers",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.05
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "none",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "maintenance_manual_ipl",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": null,
+    "publication_number": null,
+    "component_title": "NER BUTTON, MALE...................... E075221 4",
+    "section_title": null,
+    "figure_title": "ING PARTS",
+    "figure_number": "9",
+    "effectivity": "ALL 00",
+    "ata_code": "25-21-00",
+    "page_number": 1079,
+    "page_label": "1079",
+    "issue_date": "Sep 30/98",
+    "revision_date": "Sep 30/98",
+    "revision_label": null,
+    "part_numbers": [
+      "120-42547-001",
+      "120-36843-001",
+      "120-42547-501"
+    ],
+    "callouts": [
+      "ING PARTS",
+      "NUMBER TO ASSY",
+      "TO ASSY"
+    ],
+    "metadata_confidence": 0.86
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "top_strip",
+    "combined_text": "[bottom_right_title_block]\nNER BUTTON, MALE...................... E075221 4\nING PARTS\nSeat (120-42547-001/501)\nFigure 9\nSheet 2\n25-21-00 Page 1079\nSep 30/98\n\n[bottom_strip]\n190 | 120-36843-001 . HOLDER, MAGAZINE................0cceee = VS4956 1\n-ITEM NOT ILLUSTRATED\nSingle Passenger Seat (120-42547-001/501)\nFigure 9\nSheet 2\nEFFECTIVITY: ALL 00\n25 21 Page 1079\nSep 30/98\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nAIRLINE EFF | UNITS\nFIG. ITEM| PARTNUMBER | STOCK vase EODE. FROM | PER\nNUMBER TO ASSY\n09 - | 120-42547-001 SINGLE PASSENGER SEAT ASSY ............. VS4956 A REF\n- | 120-42547-501 SINGLE PASSENGER SEAT ASSY ............ VS4956 | 172/999] REF\n414907, AXQAAN Nn4d TARIC AQNIAMK CHI MINIM ACCY\n\n[right_strip]\nEFF | UNITS\nODE. FROM; PER\nTO ASSY\nvee VS4956 A REF\nves VWS4956 | 172/999] REF\nlec. VS4956 1\nE\nLecce. WS4956 A 1\nE\nLessee. WS4956 | 172/999 1\neceeeee. WS4956 1\neee. WS4956 1\nec WS4956 1\ncece. VS4956 B 1\neee WS4956 1\nlesen. VS4956 1\nVIALE ... 4\nhese. EO75221 4\nlevee WG4956 1\nhese. V15653 3\nlesen. WS4956 1\n01)\n_|\n\u00bb-21-00\nPage 1079\nSep 30/98",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1599,
+          2401,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "NER BUTTON, MALE...................... E075221 4\nING PARTS\nSeat (120-42547-001/501)\nFigure 9\nSheet 2\n25-21-00 Page 1079\nSep 30/98",
+        "char_count": 129,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2898,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "190 | 120-36843-001 . HOLDER, MAGAZINE................0cceee = VS4956 1\n-ITEM NOT ILLUSTRATED\nSingle Passenger Seat (120-42547-001/501)\nFigure 9\nSheet 2\nEFFECTIVITY: ALL 00\n25 21 Page 1079\nSep 30/98",
+        "char_count": 198,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3199,
+          745
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nAIRLINE EFF | UNITS\nFIG. ITEM| PARTNUMBER | STOCK vase EODE. FROM | PER\nNUMBER TO ASSY\n09 - | 120-42547-001 SINGLE PASSENGER SEAT ASSY ............. VS4956 A REF\n- | 120-42547-501 SINGLE PASSENGER SEAT ASSY ............ VS4956 | 172/999] REF\n414907, AXQAAN Nn4d TARIC AQNIAMK CHI MINIM ACCY",
+        "char_count": 348,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2175,
+          0,
+          3199,
+          4141
+        ],
+        "status": "ok",
+        "text": "EFF | UNITS\nODE. FROM; PER\nTO ASSY\nvee VS4956 A REF\nves VWS4956 | 172/999] REF\nlec. VS4956 1\nE\nLecce. WS4956 A 1\nE\nLessee. WS4956 | 172/999 1\neceeeee. WS4956 1\neee. WS4956 1\nec WS4956 1\ncece. VS4956 B 1\neee WS4956 1\nlesen. VS4956 1\nVIALE ... 4\nhese. EO75221 4\nlevee WG4956 1\nhese. V15653 3\nlesen. WS4956 1\n01)\n_|\n\u00bb-21-00\nPage 1079\nSep 30/98",
+        "char_count": 340,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    },
+    "parsed_manual_metadata": {
+      "document_type": "maintenance_manual_ipl",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": null,
+      "publication_number": null,
+      "component_title": "NER BUTTON, MALE...................... E075221 4",
+      "section_title": null,
+      "figure_title": "ING PARTS",
+      "figure_number": "9",
+      "effectivity": "ALL 00",
+      "ata_code": "25-21-00",
+      "page_number": 1079,
+      "page_label": "1079",
+      "issue_date": "Sep 30/98",
+      "revision_date": "Sep 30/98",
+      "revision_label": null,
+      "part_numbers": [
+        "120-42547-001",
+        "120-36843-001",
+        "120-42547-501"
+      ],
+      "callouts": [
+        "ING PARTS",
+        "NUMBER TO ASSY",
+        "TO ASSY"
+      ],
+      "metadata_confidence": 0.86
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": null,
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0
+    }
+  }
+}

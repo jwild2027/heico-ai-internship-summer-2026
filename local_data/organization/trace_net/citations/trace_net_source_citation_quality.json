@@ -1,0 +1,80 @@
+{
+  "checks": [
+    {
+      "detail": "summary=True; citations=True",
+      "name": "artifacts_present",
+      "ok": true
+    },
+    {
+      "detail": "status=OK",
+      "name": "status_ok",
+      "ok": true
+    },
+    {
+      "detail": "citation_records=1426; minimum=1426",
+      "name": "citation_records",
+      "ok": true
+    },
+    {
+      "detail": "summary=1426; jsonl=1426",
+      "name": "citation_record_count_match",
+      "ok": true
+    },
+    {
+      "detail": "pages=509; minimum=509",
+      "name": "pages",
+      "ok": true
+    },
+    {
+      "detail": "unsafe=0; max=0",
+      "name": "unsafe_citations",
+      "ok": true
+    },
+    {
+      "detail": "source_traceable=1426; minimum=1426",
+      "name": "source_traceable",
+      "ok": true
+    },
+    {
+      "detail": "search_results_with_citations=8; minimum=0",
+      "name": "search_results_with_citations",
+      "ok": true
+    },
+    {
+      "detail": "missing_source_url=0; max=0",
+      "name": "missing_source_url",
+      "ok": true
+    },
+    {
+      "detail": "citation_text_records=1426; citations=1426",
+      "name": "citation_text_records",
+      "ok": true
+    }
+  ],
+  "citation_bucket_counts": {
+    "derived_context": 60,
+    "source_evidence": 509,
+    "source_text_evidence": 495,
+    "verified_part_evidence": 362
+  },
+  "citation_jsonl_records": 1426,
+  "citation_kind_counts": {
+    "derived_context": 60,
+    "source": 509,
+    "source_text": 495,
+    "verified_part": 362
+  },
+  "citation_missing_ocr_path_records": 0,
+  "citation_missing_source_url_records": 0,
+  "citation_missing_tiff_path_records": 0,
+  "citation_pages": 509,
+  "citation_records": 1426,
+  "citation_records_present": true,
+  "citation_search_results_with_citations": 8,
+  "citation_source_traceable_records": 1426,
+  "citation_summary_present": true,
+  "citation_unsafe_records": 0,
+  "citations_path": "local_data\\organization\\trace_net\\citations\\trace_net_source_citations.jsonl",
+  "status": "OK",
+  "summary_path": "local_data\\organization\\trace_net\\citations\\trace_net_source_citation_summary.json"
+}

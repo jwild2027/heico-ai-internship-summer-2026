@@ -1,0 +1,56 @@
+{
+  "checks": [
+    {
+      "message": "Source-package traceability report is present at local_data/batch_audit/source_package_traceability.json.",
+      "name": "source_package_traceability_present",
+      "status": "OK"
+    },
+    {
+      "message": "Source-package traceability status is ok.",
+      "name": "source_package_traceability_status",
+      "status": "OK"
+    },
+    {
+      "message": "ZIP TIFF files=509, organization pages=509; minimums are 1 and 1.",
+      "name": "source_package_page_counts",
+      "status": "OK"
+    },
+    {
+      "message": "metadata.xml is present in the raw source package.",
+      "name": "source_package_metadata_xml",
+      "status": "OK"
+    },
+    {
+      "message": "Matched pages=509; ZIP-only=0; organization-only=0.",
+      "name": "source_package_page_match",
+      "status": "OK"
+    },
+    {
+      "message": "Duplicate ZIP page numbers=0; duplicate organization page numbers=0.",
+      "name": "source_package_duplicate_pages",
+      "status": "OK"
+    },
+    {
+      "message": "Organization pages with TIFF paths=509/509.",
+      "name": "source_package_org_tiff_paths",
+      "status": "OK"
+    }
+  ],
+  "status": "ok",
+  "summary": {
+    "source_package_duplicate_organization_page_numbers": 0,
+    "source_package_duplicate_zip_page_numbers": 0,
+    "source_package_export_dir": "local_data/organization/export",
+    "source_package_matched_pages": 509,
+    "source_package_metadata_xml_present": true,
+    "source_package_organization_only_pages": 0,
+    "source_package_organization_pages": 509,
+    "source_package_organization_pages_with_tiff_paths": 509,
+    "source_package_traceability_present": true,
+    "source_package_traceability_status": "ok",
+    "source_package_warnings": [],
+    "source_package_zip_only_pages": 0,
+    "source_package_zip_path": "C:/Users/juswil/Documents/00000027/metadata.zip",
+    "source_package_zip_tiff_files": 509
+  }
+}

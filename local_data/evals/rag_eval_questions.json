@@ -1,0 +1,312 @@
+{
+  "questions": [
+    {
+      "id": "exact_part_120_37313_001",
+      "question": "What is part number 120-37313-001?",
+      "expected_terms": [
+        "120-37313-001",
+        "HOLDER, MAGAZINE"
+      ],
+      "answer_mode": "auto",
+      "retrieval_mode": "auto",
+      "use_llm": false,
+      "use_embeddings": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": false,
+      "notes": "Golden exact part lookup; should avoid LLM/vector work."
+    },
+    {
+      "id": "exact_part_120_36843_001",
+      "question": "What is part number 120-36843-001?",
+      "expected_terms": [
+        "120-36843-001",
+        "HOLDER, MAGAZINE"
+      ],
+      "answer_mode": "auto",
+      "retrieval_mode": "auto",
+      "use_llm": false,
+      "use_embeddings": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": false,
+      "notes": "Second known magazine-holder exact lookup."
+    },
+    {
+      "id": "exact_part_120_37313_535",
+      "question": "What is part number 120-37313-535?",
+      "expected_terms": [
+        "120-37313-535",
+        "HOLDER, MAGAZINE"
+      ],
+      "answer_mode": "auto",
+      "retrieval_mode": "auto",
+      "use_llm": false,
+      "use_embeddings": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": false,
+      "notes": "Third known magazine-holder part from reverse lookup."
+    },
+    {
+      "id": "exact_part_am03078_22",
+      "question": "What is AM03078-22?",
+      "expected_terms": [
+        "AM03078-22"
+      ],
+      "answer_mode": "auto",
+      "retrieval_mode": "auto",
+      "use_llm": false,
+      "use_embeddings": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": false,
+      "notes": "Non-120-prefixed part/reference from the current eval set."
+    },
+    {
+      "id": "locate_am03078_22",
+      "question": "Which pages mention AM03078-22?",
+      "expected_terms": [
+        "AM03078-22"
+      ],
+      "answer_mode": "auto",
+      "retrieval_mode": "auto",
+      "use_llm": false,
+      "use_embeddings": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": false,
+      "notes": "Mention lookup should return source evidence without model generation."
+    },
+    {
+      "id": "source_pages_120_37313_001",
+      "question": "Which source pages mention part number 120-37313-001?",
+      "expected_terms": [
+        "120-37313-001"
+      ],
+      "answer_mode": "auto",
+      "retrieval_mode": "auto",
+      "use_llm": false,
+      "use_embeddings": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": false,
+      "notes": "Checks source-page lookup for the golden part."
+    },
+    {
+      "id": "exact_part_120_48023_001",
+      "question": "What is part number 120-48023-001?",
+      "expected_terms": [
+        "120-48023-001"
+      ],
+      "answer_mode": "auto",
+      "retrieval_mode": "auto",
+      "use_llm": false,
+      "use_embeddings": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": false,
+      "notes": "Real-looking catalog-review part; exact lookup should return source evidence."
+    },
+    {
+      "id": "exact_part_120_48024_001",
+      "question": "What is part number 120-48024-001?",
+      "expected_terms": [
+        "120-48024-001"
+      ],
+      "answer_mode": "auto",
+      "retrieval_mode": "auto",
+      "use_llm": false,
+      "use_embeddings": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": false,
+      "notes": "Companion catalog-review part."
+    },
+    {
+      "id": "exact_part_120_29068_001",
+      "question": "What is part number 120-29068-001?",
+      "expected_terms": [
+        "120-29068-001"
+      ],
+      "answer_mode": "auto",
+      "retrieval_mode": "auto",
+      "use_llm": false,
+      "use_embeddings": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": false,
+      "notes": "Common 120-29068 family exact lookup."
+    },
+    {
+      "id": "exact_part_120_36834_003",
+      "question": "What is part number 120-36834-003?",
+      "expected_terms": [
+        "120-36834-003"
+      ],
+      "answer_mode": "auto",
+      "retrieval_mode": "auto",
+      "use_llm": false,
+      "use_embeddings": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": false,
+      "notes": "Real part from the current QA review queue."
+    },
+    {
+      "id": "exact_part_120_50648_001",
+      "question": "What is part number 120-50648-001?",
+      "expected_terms": [
+        "120-50648-001"
+      ],
+      "answer_mode": "auto",
+      "retrieval_mode": "auto",
+      "use_llm": false,
+      "use_embeddings": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": false,
+      "notes": "Real part from the current QA review queue."
+    },
+    {
+      "id": "exact_part_120_61382_001",
+      "question": "What is part number 120-61382-001?",
+      "expected_terms": [
+        "120-61382-001"
+      ],
+      "answer_mode": "auto",
+      "retrieval_mode": "auto",
+      "use_llm": false,
+      "use_embeddings": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": false,
+      "notes": "Later catalog-page part family coverage."
+    },
+    {
+      "id": "exact_part_cr3523_5",
+      "question": "What is CR3523-5?",
+      "expected_terms": [
+        "CR3523-5"
+      ],
+      "answer_mode": "auto",
+      "retrieval_mode": "auto",
+      "use_llm": false,
+      "use_embeddings": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": false,
+      "notes": "Short vendor-style part/reference coverage."
+    },
+    {
+      "id": "exact_part_pe64005_1",
+      "question": "What is PE64005-1?",
+      "expected_terms": [
+        "PE64005-1"
+      ],
+      "answer_mode": "auto",
+      "retrieval_mode": "auto",
+      "use_llm": false,
+      "use_embeddings": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": false,
+      "notes": "PE-style part/reference coverage."
+    },
+    {
+      "id": "nomenclature_locate_magazine_holder",
+      "question": "Where is magazine holder shown?",
+      "expected_terms": [
+        "HOLDER, MAGAZINE",
+        "120-37313-001",
+        "120-36843-001"
+      ],
+      "answer_mode": "auto",
+      "retrieval_mode": "auto",
+      "use_llm": false,
+      "use_embeddings": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": false,
+      "notes": "Reverse nomenclature lookup should stay deterministic and grouped by part number."
+    },
+    {
+      "id": "nomenclature_holder_magazine_exact",
+      "question": "Which parts are related to HOLDER, MAGAZINE?",
+      "expected_terms": [
+        "HOLDER, MAGAZINE",
+        "120-37313-001",
+        "120-36843-001"
+      ],
+      "answer_mode": "auto",
+      "retrieval_mode": "auto",
+      "use_llm": false,
+      "use_embeddings": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": false,
+      "notes": "Reverse part-name lookup using aircraft-style nomenclature order."
+    },
+    {
+      "id": "structured_summary_magazine_holder",
+      "question": "Summarize the sources related to magazine holder parts.",
+      "expected_terms": [
+        "HOLDER, MAGAZINE",
+        "120-37313-001",
+        "120-36843-001"
+      ],
+      "answer_mode": "summarize",
+      "retrieval_mode": "hybrid",
+      "use_llm": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": true,
+      "notes": "Structured part summary should use retrieval but avoid open-ended LLM generation."
+    },
+    {
+      "id": "compare_magazine_holder_parts",
+      "question": "Compare the magazine holder part numbers.",
+      "expected_terms": [
+        "HOLDER, MAGAZINE",
+        "120-37313-001",
+        "120-36843-001"
+      ],
+      "answer_mode": "summarize",
+      "retrieval_mode": "hybrid",
+      "use_llm": false,
+      "expected_llm_used": false,
+      "expected_embeddings_used": true,
+      "notes": "Comparison wording should still use citation-safe structured grouping."
+    },
+    {
+      "id": "retrieval_ata_25_21_00_no_llm",
+      "question": "Find source evidence for ATA 25-21-00.",
+      "expected_terms": [
+        "25-21-00"
+      ],
+      "answer_mode": "summarize",
+      "retrieval_mode": "hybrid",
+      "use_llm": false,
+      "force_embeddings": true,
+      "expected_llm_used": false,
+      "expected_embeddings_used": true,
+      "notes": "Retrieval-only ATA evidence check; avoids adding another manual-review LLM row."
+    },
+    {
+      "id": "retrieval_passenger_seat_back_no_llm",
+      "question": "Find source pages about passenger seat back.",
+      "expected_terms": [
+        "passenger",
+        "seat",
+        "back"
+      ],
+      "answer_mode": "summarize",
+      "retrieval_mode": "hybrid",
+      "use_llm": false,
+      "force_embeddings": true,
+      "expected_llm_used": false,
+      "expected_embeddings_used": true,
+      "notes": "Retrieval-only broad-topic check for passenger seat back evidence."
+    },
+    {
+      "id": "broad_summary_passenger_seat_back_crack_reinforcement",
+      "question": "Which pages discuss passenger seat back crack reinforcement, and what do they say?",
+      "expected_terms": [
+        "passenger",
+        "seat",
+        "back"
+      ],
+      "answer_mode": "auto",
+      "retrieval_mode": "hybrid",
+      "force_llm": true,
+      "force_embeddings": true,
+      "expected_llm_used": true,
+      "expected_embeddings_used": true,
+      "manual_review": true,
+      "notes": "The one normal-pipeline broad LLM question. It should be reviewed, not auto-passed."
+    }
+  ]
+}

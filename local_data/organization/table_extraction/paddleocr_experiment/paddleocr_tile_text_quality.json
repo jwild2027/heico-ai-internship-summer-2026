@@ -1,0 +1,66 @@
+{
+  "checks": [
+    {
+      "message": "summary=True; records=True.",
+      "name": "paddleocr_artifacts_present",
+      "ok": true
+    },
+    {
+      "message": "status=OK; require_status_ok=True.",
+      "name": "paddleocr_status",
+      "ok": true
+    },
+    {
+      "message": "records jsonl=10; minimum=10.",
+      "name": "paddleocr_records",
+      "ok": true
+    },
+    {
+      "message": "ok_records=10; minimum=10.",
+      "name": "paddleocr_ok_records",
+      "ok": true
+    },
+    {
+      "message": "error_records=0; max=0.",
+      "name": "paddleocr_error_records",
+      "ok": true
+    },
+    {
+      "message": "part_number_records=10; minimum=1.",
+      "name": "paddleocr_part_number_records",
+      "ok": true
+    },
+    {
+      "message": "graph_nodes=12.",
+      "name": "paddleocr_graph_nodes",
+      "ok": true
+    },
+    {
+      "message": "graph_edges=30.",
+      "name": "paddleocr_graph_edges",
+      "ok": true
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "paddleocr_cell_text_records": 10,
+    "paddleocr_empty_records": 0,
+    "paddleocr_error_records": 0,
+    "paddleocr_graph_edges": 30,
+    "paddleocr_graph_nodes": 12,
+    "paddleocr_html_table_records": 10,
+    "paddleocr_model": "mock-pp-structurev3",
+    "paddleocr_ok_records": 10,
+    "paddleocr_pages": 2,
+    "paddleocr_part_number_records": 10,
+    "paddleocr_planned_records": 0,
+    "paddleocr_provider": "mock",
+    "paddleocr_records": 10,
+    "paddleocr_records_path": "local_data\\organization\\table_extraction\\paddleocr_experiment\\paddleocr_tile_text_records.jsonl",
+    "paddleocr_records_present": true,
+    "paddleocr_status": "OK",
+    "paddleocr_summary_path": "local_data\\organization\\table_extraction\\paddleocr_experiment\\paddleocr_tile_text_summary.json",
+    "paddleocr_summary_present": true,
+    "paddleocr_text_chars": 1930
+  }
+}

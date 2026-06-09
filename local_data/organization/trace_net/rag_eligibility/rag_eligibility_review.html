@@ -1,0 +1,218 @@
+<!doctype html><html><head><meta charset='utf-8'><title>TRACE-Net RAG Eligibility</title><style>body{font-family:Arial,sans-serif;margin:24px;line-height:1.35}table{border-collapse:collapse;margin:12px 0;width:100%}th,td{border:1px solid #ddd;padding:6px;vertical-align:top}th{background:#f6f6f6;text-align:left}pre{background:#f6f6f6;padding:10px;overflow:auto}code{background:#f6f6f6;padding:1px 3px}</style></head><body><h1>TRACE-Net RAG Eligibility v1</h1>
+<p><b>Status:</b> OK &nbsp; <b>Version:</b> <code>trace_net_rag_eligibility_v1</code></p>
+<h2>Summary</h2><table><tbody>
+<tr><th>records</th><td>1813</td></tr>
+<tr><th>pages</th><td>509</td></tr>
+<tr><th>rag_eligible_records</th><td>931</td></tr>
+<tr><th>rag_excluded_records</th><td>882</td></tr>
+<tr><th>source_evidence_records</th><td>509</td></tr>
+<tr><th>verified_part_evidence_records</th><td>362</td></tr>
+<tr><th>derived_context_records</th><td>60</td></tr>
+<tr><th>unsafe_rag_eligible_records</th><td>0</td></tr>
+<tr><th>stage5_controlled_records</th><td>993</td></tr>
+<tr><th>graph_nodes</th><td>2348</td></tr>
+<tr><th>graph_edges</th><td>10882</td></tr>
+</tbody></table>
+<h2>Counts</h2>
+<h3>rag_bucket_counts</h3><pre>{
+  &quot;derived_context&quot;: 60,
+  &quot;excluded&quot;: 882,
+  &quot;source_evidence&quot;: 509,
+  &quot;verified_part_evidence&quot;: 362
+}</pre>
+<h3>rag_action_counts</h3><pre>{
+  &quot;exclude_from_rag&quot;: 265,
+  &quot;exclude_until_table_text_exists&quot;: 286,
+  &quot;exclude_until_table_tiles_exist&quot;: 331,
+  &quot;include_as_derived_context&quot;: 60,
+  &quot;include_as_source_evidence&quot;: 509,
+  &quot;include_as_verified_part_evidence&quot;: 362
+}</pre>
+<h3>trust_tier_counts</h3><pre>{
+  &quot;A&quot;: 901,
+  &quot;B&quot;: 316,
+  &quot;C&quot;: 596
+}</pre>
+<h3>evidence_layer_counts</h3><pre>{
+  &quot;part_catalog&quot;: 364,
+  &quot;source_trace&quot;: 509,
+  &quot;table_candidate&quot;: 509,
+  &quot;table_tile_text_refined&quot;: 120,
+  &quot;table_tiles&quot;: 286,
+  &quot;visual_text&quot;: 25
+}</pre>
+<h2>Source evidence samples</h2>
+<table><thead><tr><th>Page</th><th>Layer</th><th>Trust</th><th>RAG action</th><th>Confidence</th><th>Reasons</th></tr></thead><tbody>
+<tr><td>t_p_120_1176_p000001</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000002</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.67925</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000003</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000004</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.76475</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000005</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000006</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000007</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000008</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000009</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000010</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000011</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.76475</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000012</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.67925</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000013</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.76475</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000014</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.76475</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000015</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.76475</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000016</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.76475</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000017</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000018</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.76475</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000019</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.76475</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000020</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.76475</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000021</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.76475</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000022</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.76475</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000023</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.76475</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000024</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000025</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.67925</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000026</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.76475</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000027</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.76475</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000028</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000029</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000030</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000031</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000032</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000033</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000034</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000035</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.67925</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000036</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000037</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000038</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000039</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+<tr><td>t_p_120_1176_p000040</td><td>source_trace</td><td>A</td><td><code>include_as_source_evidence</code></td><td>0.81225</td><td>source_trace_or_source_evidence_selected; safe_for_source_index</td></tr>
+</tbody></table>
+<h2>Verified part evidence samples</h2>
+<table><thead><tr><th>Page</th><th>Layer</th><th>Trust</th><th>RAG action</th><th>Confidence</th><th>Reasons</th></tr></thead><tbody>
+<tr><td>t_p_120_1176_p000001</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000003</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000005</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000006</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000007</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000008</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000009</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000010</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000017</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000024</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000028</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000029</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000030</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000031</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000032</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000033</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000034</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000036</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000037</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000038</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000039</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000040</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000041</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000042</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000043</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000044</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000045</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000046</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000047</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000048</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000049</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000050</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000051</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000052</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000053</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000054</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000055</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000056</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000057</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+<tr><td>t_p_120_1176_p000058</td><td>part_catalog</td><td>A</td><td><code>include_as_verified_part_evidence</code></td><td>0.871625</td><td>verified_part_evidence_selected; safe_for_verified_part_index</td></tr>
+</tbody></table>
+<h2>Derived context samples</h2>
+<table><thead><tr><th>Page</th><th>Layer</th><th>Trust</th><th>RAG action</th><th>Confidence</th><th>Reasons</th></tr></thead><tbody>
+<tr><td>t_p_120_1176_p000003</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000003</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000003</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000003</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000003</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000003</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000005</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.75525</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000005</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.75525</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000005</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.75525</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000006</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.75525</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000006</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.75525</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000006</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.75525</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000007</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.75525</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000007</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.64125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000008</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.64125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000008</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.75525</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000008</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.64125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000009</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.75525</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000009</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.64125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000010</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.75525</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000010</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.64125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000028</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000028</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.75525</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000028</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.64125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000029</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000029</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000029</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.75525</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000029</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.71725</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000029</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.71725</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000030</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000030</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000030</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000030</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000030</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.64125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000031</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000031</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000031</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000031</td><td>table_tile_text_refined</td><td>B</td><td><code>include_as_derived_context</code></td><td>0.71725</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000032</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+<tr><td>t_p_120_1176_p000032</td><td>table_tile_text_refined</td><td>A</td><td><code>include_as_derived_context</code></td><td>0.881125</td><td>refined_table_tile_text_selected; derived_context_only; not_canonical_source_truth</td></tr>
+</tbody></table>
+<h2>Excluded samples</h2>
+<table><thead><tr><th>Page</th><th>Layer</th><th>Trust</th><th>RAG action</th><th>Confidence</th><th>Reasons</th></tr></thead><tbody>
+<tr><td>t_p_120_1176_p000078</td><td>part_catalog</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.767125</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000491</td><td>part_catalog</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.767125</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000001</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.767125</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000003</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.40375</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000004</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.37875</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000005</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.40375</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000006</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.40375</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000007</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.40375</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000008</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.40375</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000009</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.40375</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000010</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.40375</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000011</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.37875</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000013</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.37875</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000014</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.37875</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000015</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.37875</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000016</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.37875</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000017</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.40375</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000018</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.37875</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000019</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.37875</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000020</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.37875</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000021</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.37875</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000022</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.37875</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000023</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.37875</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000024</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.40375</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000026</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.37875</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000027</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.37875</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000028</td><td>visual_text</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.40375</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000001</td><td>table_candidate</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.703</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000002</td><td>table_candidate</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.505875</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000003</td><td>table_candidate</td><td>C</td><td><code>exclude_until_table_tiles_exist</code></td><td>0.798</td><td>table_candidate_requires_tiles</td></tr>
+<tr><td>t_p_120_1176_p000004</td><td>table_candidate</td><td>C</td><td><code>exclude_until_table_tiles_exist</code></td><td>0.7505</td><td>table_candidate_requires_tiles</td></tr>
+<tr><td>t_p_120_1176_p000005</td><td>table_candidate</td><td>C</td><td><code>exclude_until_table_tiles_exist</code></td><td>0.798</td><td>table_candidate_requires_tiles</td></tr>
+<tr><td>t_p_120_1176_p000006</td><td>table_candidate</td><td>C</td><td><code>exclude_until_table_tiles_exist</code></td><td>0.798</td><td>table_candidate_requires_tiles</td></tr>
+<tr><td>t_p_120_1176_p000007</td><td>table_candidate</td><td>C</td><td><code>exclude_until_table_tiles_exist</code></td><td>0.798</td><td>table_candidate_requires_tiles</td></tr>
+<tr><td>t_p_120_1176_p000008</td><td>table_candidate</td><td>C</td><td><code>exclude_until_table_tiles_exist</code></td><td>0.798</td><td>table_candidate_requires_tiles</td></tr>
+<tr><td>t_p_120_1176_p000009</td><td>table_candidate</td><td>C</td><td><code>exclude_until_table_tiles_exist</code></td><td>0.798</td><td>table_candidate_requires_tiles</td></tr>
+<tr><td>t_p_120_1176_p000010</td><td>table_candidate</td><td>C</td><td><code>exclude_until_table_tiles_exist</code></td><td>0.798</td><td>table_candidate_requires_tiles</td></tr>
+<tr><td>t_p_120_1176_p000011</td><td>table_candidate</td><td>C</td><td><code>exclude_until_table_tiles_exist</code></td><td>0.7505</td><td>table_candidate_requires_tiles</td></tr>
+<tr><td>t_p_120_1176_p000012</td><td>table_candidate</td><td>C</td><td><code>exclude_from_rag</code></td><td>0.505875</td><td>excluded_by_stage5_decision</td></tr>
+<tr><td>t_p_120_1176_p000013</td><td>table_candidate</td><td>C</td><td><code>exclude_until_table_tiles_exist</code></td><td>0.7505</td><td>table_candidate_requires_tiles</td></tr>
+</tbody></table>
+<h2>Unsafe samples</h2>
+<table><thead><tr><th>Page</th><th>Layer</th><th>Trust</th><th>RAG action</th><th>Confidence</th><th>Reasons</th></tr></thead><tbody>
+</tbody></table></body></html>

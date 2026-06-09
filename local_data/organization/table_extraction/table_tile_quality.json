@@ -1,0 +1,72 @@
+{
+  "checks": [
+    {
+      "detail": "summary=True; plan_jsonl=True.",
+      "name": "table_tile_artifacts_present",
+      "ok": true
+    },
+    {
+      "detail": "status=OK require_status_ok=True.",
+      "name": "table_tile_status",
+      "ok": true
+    },
+    {
+      "detail": "records=17; minimum=17.",
+      "name": "table_tile_records",
+      "ok": true
+    },
+    {
+      "detail": "selected_pages=17; expected=17.",
+      "name": "table_tile_expected_pages",
+      "ok": true
+    },
+    {
+      "detail": "ok_records=17; minimum=17.",
+      "name": "table_tile_ok_records",
+      "ok": true
+    },
+    {
+      "detail": "tile_images=102; minimum=102.",
+      "name": "table_tile_images",
+      "ok": true
+    },
+    {
+      "detail": "missing_image_records=0; max=0.",
+      "name": "table_tile_missing_images",
+      "ok": true
+    },
+    {
+      "detail": "graph_nodes=137.",
+      "name": "table_tile_graph_nodes",
+      "ok": true
+    },
+    {
+      "detail": "graph_edges=136.",
+      "name": "table_tile_graph_edges",
+      "ok": true
+    }
+  ],
+  "status": "OK",
+  "summary": {
+    "table_tile_average_crop_area_ratio": 0.820676,
+    "table_tile_error_records": 0,
+    "table_tile_full_preprocessed_images": 17,
+    "table_tile_graph_edges": 136,
+    "table_tile_graph_nodes": 137,
+    "table_tile_images": 102,
+    "table_tile_missing_image_records": 0,
+    "table_tile_ok_records": 17,
+    "table_tile_plan_jsonl_path": "local_data/organization/table_extraction/table_tile_plan.jsonl",
+    "table_tile_plan_present": true,
+    "table_tile_records": 17,
+    "table_tile_review_html_path": "local_data/organization/table_extraction/table_tile_review.html",
+    "table_tile_route_counts": {
+      "table_crop_tile_repair_route_high": 4,
+      "table_crop_tile_repair_route_medium": 13
+    },
+    "table_tile_selected_pages": 17,
+    "table_tile_status": "OK",
+    "table_tile_summary_path": "local_data/organization/table_extraction/table_tile_summary.json",
+    "table_tile_summary_present": true
+  }
+}

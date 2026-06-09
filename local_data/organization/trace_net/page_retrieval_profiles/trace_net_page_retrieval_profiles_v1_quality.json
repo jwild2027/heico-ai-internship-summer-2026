@@ -1,0 +1,158 @@
+{
+  "checks": [
+    {
+      "actual": 509,
+      "expected": ">= 509",
+      "name": "min_profile_records",
+      "passed": true
+    },
+    {
+      "actual": 509,
+      "expected": ">= 509",
+      "name": "min_pages_with_profiles",
+      "passed": true
+    },
+    {
+      "actual": 509,
+      "expected": ">= 509",
+      "name": "min_source_trace_pages",
+      "passed": true
+    },
+    {
+      "actual": 50,
+      "expected": ">= 50",
+      "name": "min_context_v2_pages",
+      "passed": true
+    },
+    {
+      "actual": 509,
+      "expected": ">= 50",
+      "name": "min_profiles_with_retrieval_cues",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "required_pages_present",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "unsafe_profile_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "missing_page_id_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "missing_embedding_candidate_id_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "missing_embedding_text_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "answer_capable_profile_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "claim_proof_profile_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "source_truth_profile_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "source_truth_mutation_profile_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "requires_source_resolution_false_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "requires_citation_false_count_zero",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "baseline_quality_pass",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "embedding_candidate_quality_pass",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "context_helper_quality_pass",
+      "passed": true
+    }
+  ],
+  "generated_at_utc": "2026-06-08T17:53:00Z",
+  "profiles_path": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+  "schema_version": "trace_net_page_retrieval_profiles_v1",
+  "status": "PASS",
+  "summary": {
+    "answer_capable_profile_count": 0,
+    "authority_counts": {
+      "page_route_only": 509
+    },
+    "baseline_quality_status": "PASS",
+    "bucket_counts": {
+      "page_retrieval_profile": 509
+    },
+    "claim_proof_profile_count": 0,
+    "context_helper_quality_status": "PASS",
+    "context_v2_profile_count": 50,
+    "embedding_answer_authority_allowed_count": 0,
+    "embedding_candidate_quality_status": "PASS",
+    "missing_embedding_candidate_id_count": 0,
+    "missing_embedding_text_count": 0,
+    "missing_page_id_count": 0,
+    "missing_profile_id_count": 0,
+    "page_count": 509,
+    "profile_count": 509,
+    "profiles_with_embedding_text_count": 509,
+    "profiles_with_nomenclature_count": 11,
+    "profiles_with_parts_count": 11,
+    "profiles_with_query_tunnel_terms_count": 509,
+    "profiles_with_retrieval_cues_count": 509,
+    "rejected_count": 0,
+    "required_page_missing_count": 0,
+    "required_page_missing_ids": [],
+    "requires_citation_false_count": 0,
+    "requires_source_resolution_false_count": 0,
+    "schema_version": "trace_net_page_retrieval_profiles_v1",
+    "source_trace_profile_count": 509,
+    "source_truth_mutation_profile_count": 0,
+    "source_truth_profile_count": 0,
+    "unsafe_profile_count": 0
+  }
+}

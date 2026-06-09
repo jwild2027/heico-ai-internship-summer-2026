@@ -1,0 +1,43 @@
+{
+  "schema_version": "tiff_scan_report.v1",
+  "generated_at_utc": "2026-05-26T14:14:40Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\uploads\\00000020.tif",
+    "relative_path": "00000020.tif"
+  },
+  "file": {
+    "file_name": "00000020.tif",
+    "extension": ".tif",
+    "file_size_bytes": 47733,
+    "modified_time_utc": "2026-05-26T14:14:40Z",
+    "sha256": "dd3d0eab95213423e9df2fe6848e031d954cccf16feae0c4f1df6c9c575e5792"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3205,
+    "height_px": 4146,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": false,
+    "status": "not_run",
+    "note": "Title-block OCR is not wired yet. This report uses TIFF technical metadata and filename-based parsing only."
+  }
+}

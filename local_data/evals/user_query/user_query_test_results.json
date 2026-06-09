@@ -1,0 +1,205 @@
+{
+  "summary": {
+    "total": 10,
+    "status_counts": {
+      "pass": 10
+    },
+    "pass": 10,
+    "fail": 0,
+    "timeout": 0,
+    "elapsed_seconds": 2.586
+  },
+  "results": [
+    {
+      "id": "org_part_120_37313_001",
+      "category": "organization",
+      "description": "Organization export part lookup for 120-37313-001.",
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/query_document_organization.py",
+        "--part",
+        "120-37313-001",
+        "--strict"
+      ],
+      "status": "pass",
+      "elapsed_seconds": 0.257,
+      "returncode": 0,
+      "missing_expected": [],
+      "forbidden_found": [],
+      "stdout_preview": "Document organization query\n  Export dir: local_data\\organization\\export\n  Files present:\n    manual_ata_tree.json: True\n    ata_tree.json: True\n    part_tree.json: True\n    page_index.json: True\n    organization_summary.json: True\n  Counts:\n    Manuals: 1\n    Pages: 509\n    Ata Groups: 5\n    Parts: 386\n    Part Mentions: 981\n\nPart query: 120-37313-001\n  1. 120-37313-001 | HOLDER, MAGAZINE | pages=28 mentions=28\n       - page=t_p_120_1176_p000042 ata=11-00-66 label=1021 source=http://localhost:8080/rescarta/t_p_120_1176/000042\n       - page=t_p_120_1176_p000083 ata=25-21-00 label=1056 source=http://localhost:8080/rescarta/t_p_120_1176/000083\n       - page=t_p_120_1176_p000086 ata=25-21-00 label=1059 source=http://localhost:8080/rescarta/t_p_120_1176/000086\n       - page=t_p_120_1176_p000096 ata=25-21-00 label=1065 source=http://localhost:8080/rescarta/t_p_120_1176/000096\n       - page=t_p_120_1176_p000098 ata=25-21-00 label=1067 source=http://localhost:8080/rescarta/t_p_120_1176/000098",
+      "stderr_preview": ""
+    },
+    {
+      "id": "org_part_am03078_22",
+      "category": "organization",
+      "description": "Organization export part lookup for AM03078-22.",
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/query_document_organization.py",
+        "--part",
+        "AM03078-22",
+        "--strict"
+      ],
+      "status": "pass",
+      "elapsed_seconds": 0.223,
+      "returncode": 0,
+      "missing_expected": [],
+      "forbidden_found": [],
+      "stdout_preview": "Document organization query\n  Export dir: local_data\\organization\\export\n  Files present:\n    manual_ata_tree.json: True\n    ata_tree.json: True\n    part_tree.json: True\n    page_index.json: True\n    organization_summary.json: True\n  Counts:\n    Manuals: 1\n    Pages: 509\n    Ata Groups: 5\n    Parts: 386\n    Part Mentions: 981\n\nPart query: AM03078-22\n  1. AM03078-22 | ASHTRAY OOO CTS | pages=14 mentions=14\n       - page=t_p_120_1176_p000058 ata=25-21-00 label=1037 source=http://localhost:8080/rescarta/t_p_120_1176/000058\n       - page=t_p_120_1176_p000098 ata=25-21-00 label=1067 source=http://localhost:8080/rescarta/t_p_120_1176/000098\n       - page=t_p_120_1176_p000149 ata=25-21-00 label=1106 source=http://localhost:8080/rescarta/t_p_120_1176/000149\n       - page=t_p_120_1176_p000158 ata=25-21-00 label=1115 source=http://localhost:8080/rescarta/t_p_120_1176/000158\n       - page=t_p_120_1176_p000161 ata=25-21-00 label=1118 source=http://localhost:8080/rescarta/t_p_120_1176/000161",
+      "stderr_preview": ""
+    },
+    {
+      "id": "org_ata_25_21_00",
+      "category": "organization",
+      "description": "Organization export ATA browse for ATA 25-21-00.",
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/query_document_organization.py",
+        "--ata",
+        "25-21-00",
+        "--strict"
+      ],
+      "status": "pass",
+      "elapsed_seconds": 0.198,
+      "returncode": 0,
+      "missing_expected": [],
+      "forbidden_found": [],
+      "stdout_preview": "Document organization query\n  Export dir: local_data\\organization\\export\n  Files present:\n    manual_ata_tree.json: True\n    ata_tree.json: True\n    part_tree.json: True\n    page_index.json: True\n    organization_summary.json: True\n  Counts:\n    Manuals: 1\n    Pages: 509\n    Ata Groups: 5\n    Parts: 386\n    Part Mentions: 981\n\nATA query: 25-21-00\n  1. ATA 25-21-00 | manual=T.P. 120/1176 | pages=501 parts=382",
+      "stderr_preview": ""
+    },
+    {
+      "id": "org_page_source_000042",
+      "category": "organization",
+      "description": "Organization export page/source lookup for p000042.",
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/query_document_organization.py",
+        "--page",
+        "t_p_120_1176_p000042",
+        "--strict"
+      ],
+      "status": "pass",
+      "elapsed_seconds": 0.214,
+      "returncode": 0,
+      "missing_expected": [],
+      "forbidden_found": [],
+      "stdout_preview": "Document organization query\n  Export dir: local_data\\organization\\export\n  Files present:\n    manual_ata_tree.json: True\n    ata_tree.json: True\n    part_tree.json: True\n    page_index.json: True\n    organization_summary.json: True\n  Counts:\n    Manuals: 1\n    Pages: 509\n    Ata Groups: 5\n    Parts: 386\n    Part Mentions: 981\n\nPage query: t_p_120_1176_p000042\n  1. t_p_120_1176_p000042 | ATA 11-00-66 | page 1021\n       Source: http://localhost:8080/rescarta/t_p_120_1176/000042\n       TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000042_00000042.tif\n       OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000042_00000042.txt",
+      "stderr_preview": ""
+    },
+    {
+      "id": "graph_part_to_context",
+      "category": "graph",
+      "description": "Graph traversal from part to page, nomenclature, context, and source link.",
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/test_document_graph_traversal.py",
+        "--part",
+        "120-37313-001",
+        "--strict"
+      ],
+      "status": "pass",
+      "elapsed_seconds": 0.236,
+      "returncode": 0,
+      "missing_expected": [],
+      "forbidden_found": [],
+      "stdout_preview": "Document graph traversal test\n  Status: OK\n  Graph dir: local_data\\organization\\graph\n  Nodes: 3788\n  Edges: 14143\n\nSelected traversal:\n  Document: document | document:t_p_120_1176 | T.P. 120/1176\n    --HAS_PAGE--> page | page:t_p_120_1176_p000042 | T.P. 120/1176 page 1021\n    --MENTIONS_PART--> part | part:120_37313_001 | 120-37313-001\n    --HAS_NOMENCLATURE--> nomenclature | nomenclature:holder_magazine | HOLDER, MAGAZINE\n  Back to AI context from the selected page:\n    --HAS_CONTEXT--> page_context | page_context:t_p_120_1176_p000042 | This page appears to be a parts list from a maintenance manual, containing numerous part numbers and associated codes.\n      score=0.90\n      summary=This page appears to be a parts list from a maintenance manual, containing numerous part numbers and associated codes.\n\nPart -> pages -> AI context/source sample:\n  1. page=page:t_p_120_1176_p000042 label=1021 context=True score=0.90 source_link=True\n     context: This page appears to be a parts list from a maintenance manual, containing numerous part numbers and associated codes.\n  2. page=page:t_p_120_1176_p000083 label=1056 context=True score=0.90 source_link=True\n     context: This page appears to be an illustrated parts list for aircraft components, detailing part numbers and stock information.\n  3. page=page:t_p_120_1176_p000086 label=1059 context=True score=0.90 source_link=True\n     context: This page presents a code list and parts list for various components, including magazine holders, with associated part numbers and codes.\n  4. page=page:t_p_120_1176_p000096 label=1065 context=True score=0.90 source_link=True\n     context: This page presents a parts list with code ranges and associated part numbers, including a single passenger seat and magazine holder.\n  5. page=page:t_p_120_1176_p000098 label=1067 context=True score=0.90 source_link=True\n     context: This page is a parts list for a single passenger seat assembly, including part numbers, descriptions, and quantities.",
+      "stderr_preview": ""
+    },
+    {
+      "id": "context_page_000042",
+      "category": "context",
+      "description": "Page context inspection for a known part-list page.",
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/inspect_page_contexts.py",
+        "--page",
+        "t_p_120_1176_p000042",
+        "--limit",
+        "5"
+      ],
+      "status": "pass",
+      "elapsed_seconds": 0.184,
+      "returncode": 0,
+      "missing_expected": [],
+      "forbidden_found": [],
+      "stdout_preview": "Page context inspection\n  Status: OK\n  Context file: local_data\\organization\\context\\page_contexts.json\n  Graph summary: local_data\\organization\\graph\\graph_summary.json\n\nCounts:\n  Contexts: 509\n  Contexts with warnings: 0\n  Contexts with errors: 14\n  Highlighted parts: 1600\n  Unique highlighted parts: 700\n\nRole counts:\n  blank: 14\n  figure: 157\n  front_matter: 10\n  parts_list: 290\n  procedure: 28\n  table: 10\n\nConfidence counts:\n  high: 484\n  low: 14\n  medium: 11\n\nTop topics:\n  parts list: 451\n  seats: 108\n  maintenance: 105\n  seat structure: 95\n  seat: 89\n  figure: 77\n  illustration: 63\n  aircraft: 45\n  armrest: 35\n  maintenance manual: 34\n  effectivity: 30\n  25-21-00: 28\n  fasteners: 28\n  single passenger seat: 25\n  ATA code 25-21-00: 19\n  seat assembly: 17\n  codes: 16\n  illustrated parts: 15\n  ocr page: 14\n  passenger seat: 12\n\nGraph linkage:\n  page_context nodes: 509\n  HAS_CONTEXT edges: 509\n  TAGGED_AS edges: 1706\n  HIGHLIGHTS_PART edges: 1070\n\nSample contexts:\n  1. t_p_120_1176_p000042 | role=parts_list | confidence=high\n     This page appears to be a parts list from a maintenance manual, containing numerous part numbers and associated codes.\n     topics: parts list, maintenance, aircraft, technical manual\n     parts: 120-36843-001, 120-37313-001, 120-37313-535, 120-37313-505, 120-37313-509",
+      "stderr_preview": ""
+    },
+    {
+      "id": "rag_exact_part_120_37313_001",
+      "category": "rag",
+      "description": "Deterministic RAG exact part lookup for 120-37313-001.",
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/ask_tiff_rag.py",
+        "--config",
+        "local_config.yaml",
+        "What is part number 120-37313-001?"
+      ],
+      "status": "pass",
+      "elapsed_seconds": 0.301,
+      "returncode": 0,
+      "missing_expected": [],
+      "forbidden_found": [],
+      "stdout_preview": "Question: What is part number 120-37313-001?\nLLM used: False\nEmbeddings used: False\n\nAnswer:\n\n120-37313-001 is listed as HOLDER, MAGAZINE.\n\nPrimary nomenclature source:\n1. T.P. 120/1176 - ATA 25-21-00 - Page 1056\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000083\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000083\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000083_00000083.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000083_00000083.txt\n   Evidence: 01 200 | 120-37313-001 . HOLDER, MAGAZINE . 000.0.0:eee = VS4956 1 EFF | UNITS ODE. FROM PER\n\nAdditional pages where this part number appears:\n- T.P. 120/1176 - ATA 11-00-66 - Page 1021\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000042\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000042\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000042_00000042.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000042_00000042.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1059\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000086\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000086\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000086_00000086.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000086_00000086.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1065\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000096\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000096\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000096_00000096.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000096_00000096.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1067\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000098\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000098\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000098_00000098.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000098_00000098.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1070\n   ResCarta: http://l\n...<truncated>",
+      "stderr_preview": ""
+    },
+    {
+      "id": "rag_exact_part_am03078_22",
+      "category": "rag",
+      "description": "Deterministic RAG exact part lookup for AM03078-22.",
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/ask_tiff_rag.py",
+        "--config",
+        "local_config.yaml",
+        "What is part number AM03078-22?"
+      ],
+      "status": "pass",
+      "elapsed_seconds": 0.304,
+      "returncode": 0,
+      "missing_expected": [],
+      "forbidden_found": [],
+      "stdout_preview": "Question: What is part number AM03078-22?\nLLM used: False\nEmbeddings used: False\n\nAnswer:\n\nAM03078-22 is listed as ASHTRAY OOO CTS.\n\nPrimary nomenclature source:\n1. T.P. 120/1176 - ATA 25-21-00 - Page 1250\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000309\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000309\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000309_00000309.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000309_00000309.txt\n   Evidence: 170 | AM03078-22 ASHTRAY ooo cts 065846 2 -ITEM NOT ILLUSTRATED Double Passenger Seat (120-36834-523)\n\nAdditional pages where this part number appears:\n- T.P. 120/1176 - ATA 25-21-00 - Page 1037\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000058\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000058\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000058_00000058.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000058_00000058.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1067\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000098\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000098\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000098_00000098.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000098_00000098.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1106\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000149\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000149\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000149_00000149.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000149_00000149.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1115\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000158\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000158\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000158_00000158.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000158_00000158.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1118\n   ResCarta: http:/\n...<truncated>",
+      "stderr_preview": ""
+    },
+    {
+      "id": "rag_nomenclature_holder_magazine",
+      "category": "rag",
+      "description": "Reverse nomenclature lookup for HOLDER, MAGAZINE.",
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/ask_tiff_rag.py",
+        "--config",
+        "local_config.yaml",
+        "Where is HOLDER, MAGAZINE mentioned?"
+      ],
+      "status": "pass",
+      "elapsed_seconds": 0.328,
+      "returncode": 0,
+      "missing_expected": [],
+      "forbidden_found": [],
+      "stdout_preview": "Question: Where is HOLDER, MAGAZINE mentioned?\nLLM used: False\nEmbeddings used: False\n\nAnswer:\n\nI found these part numbers matching that nomenclature:\n- 120-36843-001: HOLDER, MAGAZINE\n- 120-37313-001: HOLDER, MAGAZINE\n- 120-37313-535: HOLDER, MAGAZINE\n\nMatch 1: 120-36843-001 \ufffd HOLDER, MAGAZINE\n\nMatching catalog source:\n- T.P. 120/1176 - ATA 25-21-00 - Page 1082\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000125\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000125\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000125_00000125.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000125_00000125.txt\n   Evidence: 190 | 120-36843-001 . HOLDER, MAGAZINE . 00c0 eee. = VES4956 1 -ITEM NOT ILLUSTRATED Single Passenger Seat (120-42547-003/503)\n\nAdditional pages where 120-36843-001 appears:\n- T.P. 120/1176 - ATA 11-00-66 - Page 1021\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000042\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000042\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000042_00000042.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000042_00000042.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1079\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000122\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000122\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000122_00000122.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000122_00000122.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1086\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000129\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000129\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000129_00000129.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000129_00000129.txt\n- T.P. 120/1176 - ATA 25-21-00 - Page 1089\n   ResCarta: http://localhost:8080/rescarta/t_p_120_1176/000132\n   Source URL: http://localhost:8080/rescarta/t_p_120_1176/000132\n   TIFF: local_data\\rescarta_e\n...<truncated>",
+      "stderr_preview": ""
+    },
+    {
+      "id": "rag_ata_25_21_00",
+      "category": "rag",
+      "description": "ATA evidence lookup through organization-tree routing.",
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/ask_tiff_rag.py",
+        "--config",
+        "local_config.yaml",
+        "Find evidence for ATA 25-21-00."
+      ],
+      "status": "pass",
+      "elapsed_seconds": 0.341,
+      "returncode": 0,
+      "missing_expected": [],
+      "forbidden_found": [],
+      "stdout_preview": "Question: Find evidence for ATA 25-21-00.\nLLM used: False\nEmbeddings used: False\n\nAnswer:\n\nATA 25-21-00 is present in the local organization tree.\nManual: T.P. 120/1176\nPages: 501\nLogical parts in section: 382\n\nSample source pages:\n1. page=t_p_120_1176_p000001 label=1 parts=3\n   Source: http://localhost:8080/rescarta/t_p_120_1176/000001\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000001_00000001.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000001_00000001.txt\n2. page=t_p_120_1176_p000003 label=i/ii parts=53\n   Source: http://localhost:8080/rescarta/t_p_120_1176/000003\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000003_00000003.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000003_00000003.txt\n3. page=t_p_120_1176_p000005 label=1 parts=1\n   Source: http://localhost:8080/rescarta/t_p_120_1176/000005\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000005_00000005.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000005_00000005.txt\n4. page=t_p_120_1176_p000006 label=2 parts=3\n   Source: http://localhost:8080/rescarta/t_p_120_1176/000006\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000006_00000006.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000006_00000006.txt\n5. page=t_p_120_1176_p000007 label=3 parts=1\n   Source: http://localhost:8080/rescarta/t_p_120_1176/000007\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000007_00000007.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000007_00000007.txt\n6. page=t_p_120_1176_p000008 label=4 parts=2\n   Source: http://localhost:8080/rescarta/t_p_120_1176/000008\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000008_00000008.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000008_00000008.txt\n7. page=t_p_120_1176_p000009 label=5 parts=1\n   Source: http://localhost:8080/rescarta/t_p_120_1176/000009\n   TIFF: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000009_00000009.tif\n   OCR: local_data\\rescarta_exports\\t_p_120_1\n...<truncated>",
+      "stderr_preview": ""
+    }
+  ]
+}

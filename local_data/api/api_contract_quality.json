@@ -1,0 +1,78 @@
+{
+  "checks": [
+    {
+      "message": "API contract results are present at local_data\\api\\api_contract_results.json.",
+      "name": "api_contract_results_present",
+      "status": "OK"
+    },
+    {
+      "message": "API contract report status is ok.",
+      "name": "api_contract_results_status",
+      "status": "OK"
+    },
+    {
+      "message": "API contract total cases=11; minimum is 1.",
+      "name": "api_contract_cases",
+      "status": "OK"
+    },
+    {
+      "message": "API contract failed cases=0; expected 0.",
+      "name": "api_contract_failures",
+      "status": "OK"
+    },
+    {
+      "message": "Status endpoint contract passed.",
+      "name": "api_contract_status_endpoint",
+      "status": "OK"
+    },
+    {
+      "message": "Part lookup endpoint contract passed.",
+      "name": "api_contract_part_lookup",
+      "status": "OK"
+    },
+    {
+      "message": "Page lookup endpoint contract passed.",
+      "name": "api_contract_page_lookup",
+      "status": "OK"
+    },
+    {
+      "message": "Vector trace endpoint contract passed.",
+      "name": "api_contract_trace_vector",
+      "status": "OK"
+    },
+    {
+      "message": "Ask endpoint contract passed.",
+      "name": "api_contract_ask_endpoint",
+      "status": "OK"
+    },
+    {
+      "message": "Feedback round-trip endpoint contract passed.",
+      "name": "api_contract_feedback_round_trip",
+      "status": "OK"
+    },
+    {
+      "message": "Feedback summary endpoint contract passed.",
+      "name": "api_contract_feedback_summary",
+      "status": "OK"
+    }
+  ],
+  "status": "ok",
+  "summary": {
+    "api_contract_ask_ok": true,
+    "api_contract_base_url": "http://127.0.0.1:8000",
+    "api_contract_fail": 0,
+    "api_contract_feedback_round_trip_ok": true,
+    "api_contract_feedback_summary_ok": true,
+    "api_contract_mode": "in_process",
+    "api_contract_page_lookup_ok": true,
+    "api_contract_part_lookup_ok": true,
+    "api_contract_pass": 11,
+    "api_contract_results_present": true,
+    "api_contract_slow_cases": 0,
+    "api_contract_slow_pass": 0,
+    "api_contract_status": "ok",
+    "api_contract_status_endpoint_ok": true,
+    "api_contract_total": 11,
+    "api_contract_trace_vector_ok": true
+  }
+}

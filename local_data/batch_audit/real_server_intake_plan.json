@@ -1,0 +1,233 @@
+{
+  "readiness_notes": [
+    "Use this ZIP/package as the raw source baseline for the current 509-page sample.",
+    "Do not store TIFF bytes in PostgreSQL, OpenSearch, or Qdrant; store IDs, paths, text, metadata, and vectors.",
+    "First production pass should be read-only inventory first, then OCR/import, then extraction/indexing in batches.",
+    "After baseline, switch to changed-file feeds or metadata comparison for incremental updates.",
+    "OCR is not inside the ZIP; production workflow must import existing OCR from ResCarta or generate OCR.",
+    "Raw TIFF package matches the organization export by normalized page number."
+  ],
+  "scale_estimate": {
+    "assumed_context_seconds_per_page": 12.0,
+    "batch_size_pages": 5000,
+    "estimated_context_hours_one_worker": 430453.95666666667,
+    "estimated_inventory_batches": 25828,
+    "estimated_pages_at_target_size": 129136187,
+    "sample_avg_tiff_bytes": 42571.78585461689,
+    "sample_tiff_files": 509,
+    "sample_total_tiff_bytes": 21669039,
+    "target_total_bytes": 5497558138880,
+    "warnings": [
+      "sample TIFF pages are small; 5 TB estimate may imply tens of millions of pages",
+      "source package has no OCR; production intake must import or generate OCR text"
+    ]
+  },
+  "source_package": {
+    "avg_tiff_bytes": 42571.78585461689,
+    "duplicate_page_numbers": 0,
+    "json_files": 0,
+    "max_tiff_bytes": 77604,
+    "median_tiff_bytes": 44166.0,
+    "metadata_xml_present": true,
+    "min_tiff_bytes": 3239,
+    "ocr_text_files": 0,
+    "other_files": 0,
+    "sample_metadata_files": [
+      "metadata.xml"
+    ],
+    "sample_tiff_files": [
+      "00000001.tif",
+      "00000002.tif",
+      "00000003.tif",
+      "00000004.tif",
+      "00000005.tif",
+      "00000006.tif",
+      "00000007.tif",
+      "00000008.tif",
+      "00000009.tif",
+      "00000010.tif"
+    ],
+    "status": "ok",
+    "tiff_files": 509,
+    "tiff_total_bytes": 21669039,
+    "total_bytes": 21875659,
+    "total_entries": 510,
+    "warnings": [
+      "no OCR .txt files found in ZIP; OCR may need to be imported/generated separately"
+    ],
+    "xml_files": 1,
+    "zip_path": "C:\\Users\\juswil\\Documents\\00000027\\metadata.zip"
+  },
+  "stages": [
+    {
+      "goal": "List files, count pages, record path/size/modified time/hash, and avoid OCR/index work.",
+      "name": "read_only_inventory",
+      "stage": 1,
+      "success_checks": [
+        "file manifest written",
+        "TIFF count known",
+        "duplicates and empty files reported"
+      ]
+    },
+    {
+      "goal": "Determine which pages already have OCR and which need OCR generation.",
+      "name": "ocr_coverage_plan",
+      "stage": 2,
+      "success_checks": [
+        "missing OCR count",
+        "empty OCR count",
+        "OCR backlog"
+      ]
+    },
+    {
+      "goal": "Process pages in resumable batches and commit state only after downstream work succeeds.",
+      "name": "batched_baseline_processing",
+      "stage": 3,
+      "success_checks": [
+        "batch manifest",
+        "retry queue",
+        "safe commit state"
+      ]
+    },
+    {
+      "goal": "Write PostgreSQL graph/catalog, OpenSearch OCR index, Qdrant vectors, source links, and page contexts.",
+      "name": "index_and_graph_writers",
+      "stage": 4,
+      "success_checks": [
+        "source coverage",
+        "context coverage",
+        "vector-to-graph traceability"
+      ]
+    },
+    {
+      "goal": "Run OCR/source/graph/realistic-query quality checks after each batch and full baseline.",
+      "name": "quality_gate",
+      "stage": 5,
+      "success_checks": [
+        "quality status OK",
+        "user query tests pass",
+        "realistic trace tests pass"
+      ]
+    },
+    {
+      "goal": "Process only new/changed/missing files using file state or a server change feed.",
+      "name": "incremental_mode",
+      "stage": 6,
+      "success_checks": [
+        "changed-page path used",
+        "full rebuild avoided",
+        "state commit safe"
+      ]
+    }
+  ],
+  "status": "ok",
+  "traceability": {
+    "duplicate_organization_page_numbers": 0,
+    "duplicate_zip_page_numbers": 0,
+    "export_dir": "local_data/organization/export",
+    "matched_pages_by_number": 509,
+    "metadata_xml_present": true,
+    "organization_pages": 509,
+    "organization_pages_with_tiff_paths": 509,
+    "organization_pages_without_zip_tiff": 0,
+    "sample_matches": [
+      {
+        "ata_code": "25-21-00",
+        "page_id": "t_p_120_1176_p000001",
+        "page_label": "1",
+        "page_number": 1,
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000001",
+        "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000001_00000001.tif",
+        "zip_entry": "00000001.tif"
+      },
+      {
+        "ata_code": "25-21-00",
+        "page_id": "t_p_120_1176_p000002",
+        "page_label": "2",
+        "page_number": 2,
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000002",
+        "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000002_00000002.tif",
+        "zip_entry": "00000002.tif"
+      },
+      {
+        "ata_code": "25-21-00",
+        "page_id": "t_p_120_1176_p000003",
+        "page_label": "i/ii",
+        "page_number": 3,
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000003",
+        "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000003_00000003.tif",
+        "zip_entry": "00000003.tif"
+      },
+      {
+        "ata_code": "25-21-00",
+        "page_id": "t_p_120_1176_p000004",
+        "page_label": "1",
+        "page_number": 4,
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000004",
+        "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000004_00000004.tif",
+        "zip_entry": "00000004.tif"
+      },
+      {
+        "ata_code": "25-21-00",
+        "page_id": "t_p_120_1176_p000005",
+        "page_label": "1",
+        "page_number": 5,
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000005",
+        "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000005_00000005.tif",
+        "zip_entry": "00000005.tif"
+      },
+      {
+        "ata_code": "25-21-00",
+        "page_id": "t_p_120_1176_p000006",
+        "page_label": "2",
+        "page_number": 6,
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000006",
+        "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000006_00000006.tif",
+        "zip_entry": "00000006.tif"
+      },
+      {
+        "ata_code": "25-21-00",
+        "page_id": "t_p_120_1176_p000007",
+        "page_label": "3",
+        "page_number": 7,
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000007",
+        "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000007_00000007.tif",
+        "zip_entry": "00000007.tif"
+      },
+      {
+        "ata_code": "25-21-00",
+        "page_id": "t_p_120_1176_p000008",
+        "page_label": "4",
+        "page_number": 8,
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000008",
+        "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000008_00000008.tif",
+        "zip_entry": "00000008.tif"
+      },
+      {
+        "ata_code": "25-21-00",
+        "page_id": "t_p_120_1176_p000009",
+        "page_label": "5",
+        "page_number": 9,
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000009",
+        "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000009_00000009.tif",
+        "zip_entry": "00000009.tif"
+      },
+      {
+        "ata_code": "25-21-00",
+        "page_id": "t_p_120_1176_p000010",
+        "page_label": "6",
+        "page_number": 10,
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000010",
+        "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000010_00000010.tif",
+        "zip_entry": "00000010.tif"
+      }
+    ],
+    "sample_org_only": [],
+    "sample_zip_only": [],
+    "status": "ok",
+    "warnings": [],
+    "zip_path": "C:/Users/juswil/Documents/00000027/metadata.zip",
+    "zip_tiff_files": 509,
+    "zip_tiffs_without_organization_page": 0
+  }
+}

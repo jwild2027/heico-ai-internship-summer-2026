@@ -1,0 +1,298 @@
+{
+  "current_page_order": [
+    "t_p_120_1176_p000003",
+    "t_p_120_1176_p000320",
+    "t_p_120_1176_p000319"
+  ],
+  "simulated_page_order": [
+    "t_p_120_1176_p000003",
+    "t_p_120_1176_p000319",
+    "t_p_120_1176_p000320"
+  ],
+  "simulated_pages": [
+    {
+      "base_group_score": 65.581557,
+      "base_rank": 1,
+      "citation_count": 5,
+      "evidence_buckets": [
+        "derived_context",
+        "source_text_evidence",
+        "verified_part_evidence"
+      ],
+      "feedback_review_required": false,
+      "feedback_score_delta": 4.0,
+      "feedback_signal_count": 1,
+      "feedback_signal_types": [
+        "boost_for_query"
+      ],
+      "feedback_signals": [
+        {
+          "delta": 4.0,
+          "event_count": 1,
+          "net_score": 0.5,
+          "reason_counts": {
+            "expected_page": 1
+          },
+          "requires_review": false,
+          "signal": "boost_for_query",
+          "signal_id": "feedback_signal:c44938758539",
+          "strength": 0.5
+        }
+      ],
+      "matched_parts": [
+        "120-50645-009"
+      ],
+      "matched_terms": [
+        "120-50645-009"
+      ],
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000003_00000003.txt",
+      "page_id": "t_p_120_1176_p000003",
+      "rank": 1,
+      "rank_delta": 0,
+      "safe_group_after_feedback": true,
+      "simulated_group_score": 69.581557,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000003",
+      "supporting_evidence": [
+        {
+          "bucket": "verified_part_evidence",
+          "candidate_id": "rag_candidate:verified_part_evidence:part_catalog_t_p_120_1176_p000003",
+          "layer": "part_catalog",
+          "matched_parts": [],
+          "matched_terms": [
+            "120-50645-009"
+          ],
+          "rank": 1,
+          "score": 52.581557,
+          "text_preview": "Verified part evidence for page t_p_120_1176_p000003. This record comes from the verified part evidence pool and is source-traceable. ATA: 25-21-00. Page/catalog part signals: 120-36833-501, 120-36833-511, 120-36833-519, 120-36834-509, 120-36834-517, 120-36835-501, 120-41824-007…",
+          "trust_tier": "",
+          "usable_confidence": 0.871625
+        },
+        {
+          "bucket": "source_text_evidence",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000003",
+          "layer": "source_text",
+          "matched_parts": [],
+          "matched_terms": [
+            "120-50645-009"
+          ],
+          "rank": 2,
+          "score": 52.019485,
+          "text_preview": "Source text evidence for page t_p_120_1176_p000003. This chunk is source-backed OCR/page-context text and can be searched as source text evidence. Document: t_p_120_1176. ATA: 25-21-00. Source URL: http://localhost:8080/rescarta/t_p_120_1176/000003. TIFF path: local_data\\rescart…",
+          "trust_tier": "",
+          "usable_confidence": 0.81225
+        },
+        {
+          "bucket": "derived_context",
+          "candidate_id": "rag_candidate:derived_context:table_tile_text_refined_t_p_120_1176_p000003_tile_t_p_120_1176_p000003_tile_001",
+          "layer": "table_tile_text_refined",
+          "matched_parts": [],
+          "matched_terms": [
+            "120-50645-009"
+          ],
+          "rank": 3,
+          "score": 50.657235,
+          "text_preview": "Derived context for page t_p_120_1176_p000003. Evidence layer: table_tile_text_refined. This context is derived evidence, not canonical source truth. Table tile: t_p_120_1176_p000003_tile_001. Catalog-supported parts found in tile text: 120-45851-501, 120-45851-503, 120-50645-00…",
+          "trust_tier": "",
+          "usable_confidence": 0.881125
+        },
+        {
+          "bucket": "derived_context",
+          "candidate_id": "rag_candidate:derived_context:table_tile_text_refined_t_p_120_1176_p000003_tile_t_p_120_1176_p000003_tile_005",
+          "layer": "table_tile_text_refined",
+          "matched_parts": [],
+          "matched_terms": [
+            "120-50645-009"
+          ],
+          "rank": 4,
+          "score": 50.657235,
+          "text_preview": "Derived context for page t_p_120_1176_p000003. Evidence layer: table_tile_text_refined. This context is derived evidence, not canonical source truth. Table tile: t_p_120_1176_p000003_tile_005. Catalog-supported parts found in tile text: 120-41825-503, 120-41825-517, 120-42547-00…",
+          "trust_tier": "",
+          "usable_confidence": 0.881125
+        },
+        {
+          "bucket": "derived_context",
+          "candidate_id": "rag_candidate:derived_context:table_tile_text_refined_t_p_120_1176_p000003_tile_t_p_120_1176_p000003_tile_006",
+          "layer": "table_tile_text_refined",
+          "matched_parts": [],
+          "matched_terms": [
+            "120-50645-009"
+          ],
+          "rank": 5,
+          "score": 50.657235,
+          "text_preview": "Derived context for page t_p_120_1176_p000003. Evidence layer: table_tile_text_refined. This context is derived evidence, not canonical source truth. Table tile: t_p_120_1176_p000003_tile_006. Catalog-supported parts found in tile text: 120-50645-009, 120-50645-017, 120-50645-02…",
+          "trust_tier": "",
+          "usable_confidence": 0.881125
+        }
+      ],
+      "supporting_result_count": 5,
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000003_00000003.tif",
+      "unsafe": false
+    },
+    {
+      "base_group_score": 50.251892,
+      "base_rank": 3,
+      "citation_count": 1,
+      "evidence_buckets": [
+        "source_text_evidence"
+      ],
+      "feedback_review_required": false,
+      "feedback_score_delta": 0.0,
+      "feedback_signal_count": 0,
+      "feedback_signal_types": [],
+      "feedback_signals": [],
+      "matched_parts": [
+        "120-50645-009"
+      ],
+      "matched_terms": [
+        "120-50645-009"
+      ],
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000319_00000319.txt",
+      "page_id": "t_p_120_1176_p000319",
+      "rank": 2,
+      "rank_delta": 1,
+      "safe_group_after_feedback": true,
+      "simulated_group_score": 50.251892,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000319",
+      "supporting_evidence": [
+        {
+          "bucket": "source_text_evidence",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000319",
+          "layer": "source_text",
+          "matched_parts": [],
+          "matched_terms": [
+            "120-50645-009"
+          ],
+          "rank": 1,
+          "score": 46.351892,
+          "text_preview": "Source text evidence for page t_p_120_1176_p000319. This chunk is source-backed OCR/page-context text and can be searched as source text evidence. Document: t_p_120_1176. ATA: 25-21-00. Source URL: http://localhost:8080/rescarta/t_p_120_1176/000319. TIFF path: local_data\\rescart…",
+          "trust_tier": "",
+          "usable_confidence": 0.76475
+        }
+      ],
+      "supporting_result_count": 1,
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000319_00000319.tif",
+      "unsafe": false
+    },
+    {
+      "base_group_score": 61.631557,
+      "base_rank": 2,
+      "citation_count": 2,
+      "evidence_buckets": [
+        "source_text_evidence",
+        "verified_part_evidence"
+      ],
+      "feedback_review_required": true,
+      "feedback_score_delta": -12.0,
+      "feedback_signal_count": 1,
+      "feedback_signal_types": [
+        "demote_for_query"
+      ],
+      "feedback_signals": [
+        {
+          "delta": -12.0,
+          "event_count": 1,
+          "net_score": -1.0,
+          "reason_counts": {
+            "citation_not_supporting_answer": 1,
+            "wrong_page": 1
+          },
+          "requires_review": true,
+          "signal": "demote_for_query",
+          "signal_id": "feedback_signal:7de9478188c9",
+          "strength": 1.0
+        }
+      ],
+      "matched_parts": [
+        "120-50645-009"
+      ],
+      "matched_terms": [
+        "120-50645-009"
+      ],
+      "ocr_path": "local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000320_00000320.txt",
+      "page_id": "t_p_120_1176_p000320",
+      "rank": 3,
+      "rank_delta": -1,
+      "safe_group_after_feedback": true,
+      "simulated_group_score": 49.631557,
+      "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000320",
+      "supporting_evidence": [
+        {
+          "bucket": "verified_part_evidence",
+          "candidate_id": "rag_candidate:verified_part_evidence:part_catalog_t_p_120_1176_p000320",
+          "layer": "part_catalog",
+          "matched_parts": [],
+          "matched_terms": [
+            "120-50645-009"
+          ],
+          "rank": 1,
+          "score": 52.581557,
+          "text_preview": "Verified part evidence for page t_p_120_1176_p000320. This record comes from the verified part evidence pool and is source-traceable. ATA: 25-21-00. Page/catalog part signals: 120-50645-009, 120-50645-019. Source URL: http://localhost:8080/rescarta/t_p_120_1176/000320.",
+          "trust_tier": "",
+          "usable_confidence": 0.871625
+        },
+        {
+          "bucket": "source_text_evidence",
+          "candidate_id": "rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000320",
+          "layer": "source_text",
+          "matched_parts": [],
+          "matched_terms": [
+            "120-50645-009"
+          ],
+          "rank": 2,
+          "score": 49.962807,
+          "text_preview": "Source text evidence for page t_p_120_1176_p000320. This chunk is source-backed OCR/page-context text and can be searched as source text evidence. Document: t_p_120_1176. ATA: 25-21-00. Source URL: http://localhost:8080/rescarta/t_p_120_1176/000320. TIFF path: local_data\\rescart…",
+          "trust_tier": "",
+          "usable_confidence": 0.81225
+        }
+      ],
+      "supporting_result_count": 2,
+      "tiff_path": "local_data\\rescarta_exports\\t_p_120_1176\\pages\\000320_00000320.tif",
+      "unsafe": false
+    }
+  ],
+  "summary": {
+    "answer_changed": true,
+    "context_warning_signals_used": 0,
+    "created_at": "2026-06-03T16:45:50Z",
+    "current_answer_evidence_records": 8,
+    "current_answer_page_records": 3,
+    "current_answer_status": "OK",
+    "current_grouped_records": 3,
+    "excluded_simulated_answer_groups": 0,
+    "feedback_search_sim_group_records": 3,
+    "feedback_signals_used": 2,
+    "graph_edges": 15,
+    "graph_nodes": 13,
+    "groups_adjusted": 2,
+    "groups_boosted": 1,
+    "groups_demoted": 1,
+    "groups_with_citations": 3,
+    "matching_feedback_signals": 2,
+    "missing_ocr_path_groups": 0,
+    "missing_source_url_groups": 0,
+    "missing_tiff_path_groups": 0,
+    "page_order_changed": true,
+    "pages_with_multiple_buckets": 2,
+    "paths": {
+      "answer_html": "local_data\\organization\\trace_net\\feedback_ask_simulation\\trace_net_feedback_ask_simulation_answer.html",
+      "answer_md": "local_data\\organization\\trace_net\\feedback_ask_simulation\\trace_net_feedback_ask_simulation_answer.md",
+      "current_answer": "local_data\\organization\\trace_net\\answers\\trace_net_answer_draft.json",
+      "current_grouped_results": "local_data\\organization\\trace_net\\search\\trace_net_search_grouped_results.jsonl",
+      "feedback_search_simulation_results": "local_data\\organization\\trace_net\\feedback_search_simulation\\trace_net_feedback_search_simulation_results.jsonl",
+      "simulation": "local_data\\organization\\trace_net\\feedback_ask_simulation\\trace_net_feedback_ask_simulation.json"
+    },
+    "query": "120-50645-009",
+    "query_fingerprint": "part_number:120-50645-009",
+    "rank_changed_records": 2,
+    "recommendation": "simulation_only_review_before_enabling_feedback_aware_ask",
+    "simulated_answer_evidence_records": 8,
+    "simulated_answer_page_records": 3,
+    "source_truth_mutation_records": 0,
+    "status": "OK",
+    "top_page_after": "t_p_120_1176_p000003",
+    "top_page_before": "t_p_120_1176_p000003",
+    "top_page_changed": false,
+    "unsafe_simulated_answer_groups": 0,
+    "version": "trace_net_feedback_ask_simulation_v1"
+  }
+}

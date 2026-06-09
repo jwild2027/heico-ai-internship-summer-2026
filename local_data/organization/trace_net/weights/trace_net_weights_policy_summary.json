@@ -1,0 +1,37 @@
+{
+  "confidence_layers": [
+    "part_catalog",
+    "source_text_evidence",
+    "source_trace",
+    "table_candidate",
+    "table_tile_text_refined",
+    "table_tiles",
+    "visual_text"
+  ],
+  "created_at": "2026-06-03T16:15:36Z",
+  "feedback_reason_count": 8,
+  "global_safety_gate_count": 8,
+  "graph_edges": 56,
+  "graph_nodes": 57,
+  "layer_count": 7,
+  "policy_path": "local_data\\organization\\trace_net\\weights\\trace_net_weights_policy.json",
+  "production_ranking_changed": false,
+  "report_html_path": "local_data\\organization\\trace_net\\weights\\trace_net_weights_policy_report.html",
+  "report_md_path": "local_data\\organization\\trace_net\\weights\\trace_net_weights_policy_report.md",
+  "required_layers_present": true,
+  "retrieval_bucket_bonus_count": 4,
+  "risk_score_count": 12,
+  "source_truth_mutation_allowed": false,
+  "status": "OK",
+  "validation_error_count": 0,
+  "version": "trace_net_weights_policy_v1",
+  "weight_sums": {
+    "part_catalog": 1.0,
+    "source_text_evidence": 1.0,
+    "source_trace": 1.0,
+    "table_candidate": 1.0,
+    "table_tile_text_refined": 1.0,
+    "table_tiles": 1.0,
+    "visual_text": 1.0
+  }
+}

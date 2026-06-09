@@ -1,0 +1,231 @@
+{
+  "schema_version": "tiff_scan_report.v3",
+  "generated_at_utc": "2026-05-26T17:10:01Z",
+  "scan_status": "ok",
+  "source": {
+    "type": "single_tiff_upload_or_file",
+    "path": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\sample_tiffs\\00000364.tif",
+    "relative_path": "00000364.tif"
+  },
+  "file": {
+    "file_name": "00000364.tif",
+    "extension": ".tif",
+    "file_size_bytes": 47291,
+    "modified_time_utc": "2026-05-22T19:14:56Z",
+    "sha256": "66ddcacd6b979413f9ebce6282c3be170c783b1a89c913d52839c440c77eb852"
+  },
+  "tiff": {
+    "page_count": 1,
+    "width_px": 3205,
+    "height_px": 4146,
+    "dpi_x": 377.0,
+    "dpi_y": 377.0,
+    "color_mode": "1",
+    "compression": "group4",
+    "read_error": null
+  },
+  "document_classification": {
+    "detected_type": "manual_cover_page",
+    "confidence": 1.0,
+    "signals": [
+      "manual_title",
+      "figure_number",
+      "manual_document_code",
+      "publication_number",
+      "component_title",
+      "part_numbers",
+      "part_number",
+      "ocr_contains_maintenance_manual",
+      "ocr_contains_illustrated_parts"
+    ]
+  },
+  "drawing_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": "STOCK",
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0.25
+  },
+  "drawing_metadata_sources": {
+    "drawing_number": "none",
+    "document_number": "none",
+    "part_number": "ocr",
+    "revision": "none",
+    "sheet_number": "none",
+    "sheet_count": "none",
+    "title": "none",
+    "classification": "none"
+  },
+  "manual_metadata": {
+    "document_type": "manual_cover_page",
+    "manufacturer": "EMBRAER",
+    "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+    "document_code": "000000000.00",
+    "publication_number": "T.P. 120/1176",
+    "component_title": "CTURE, ARMREST .........00000000.0.. VS4956 1",
+    "section_title": null,
+    "figure_title": "-ITEM NOT ILLUSTRATED",
+    "figure_number": "86",
+    "effectivity": "ALL 25 21 00",
+    "ata_code": null,
+    "page_number": 1301,
+    "page_label": "1301",
+    "issue_date": "Apr 10/06",
+    "revision_date": "Apr 10/06",
+    "revision_label": null,
+    "part_numbers": [
+      "120-29067-007",
+      "120-29093-001",
+      "120-34293-003",
+      "120-34293-001",
+      "120-31565-002",
+      "120-20970-001",
+      "120-36060-001",
+      "120-29073-001"
+    ],
+    "callouts": [
+      "NUMBER TO ASSY",
+      "TO ASSY"
+    ],
+    "metadata_confidence": 1.0
+  },
+  "filename_metadata": {
+    "drawing_number": null,
+    "document_number": null,
+    "part_number": null,
+    "revision": null,
+    "sheet_number": null,
+    "sheet_count": null,
+    "title": null,
+    "classification": null,
+    "metadata_confidence": 0
+  },
+  "ocr": {
+    "enabled": true,
+    "status": "ok",
+    "engine": "tesseract",
+    "tesseract_path": "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+    "lang": "eng",
+    "page_index": 0,
+    "best_region": "bottom_strip",
+    "combined_text": "[bottom_right_title_block]\nLOCKING 0.0... eee. VG4956 1 172/999 1\nCTURE, ARMREST .........00000000.0.. VS4956 1\nCTURE, ARMREST ........000000000.00.. VS4956 1\nat Structure (120-29067-007)\n-igure 86\nSheet 2\n25 21 00 Page 1301\nT.P. 120/1176 Apr 10/06\n\n[bottom_strip]\n140 | 120-29093-001 . SUPPORT, ATTACH... eee. \u00a7=VS4956 1\n150 | 120-34293-003 . SUPPORT, ATTACH... eee. \u00a7=VS4956 1\n-151 | 120-34293-001 . SUPPORT, ATTACH ...........ceee = V\u00a7S4956 1\n160 | 120-31565-002 LATE, ATTACH .....crrcccccccccccccccee, VS4956 1\n170 | 120-20970-001 . STRUCTURE, ARMREST..........0.00000.... VWS4956 1\n-171 | 120-36060-001 . STRUCTURE, ARMREST .......000.. =VS4956 1\n-ITEM NOT ILLUSTRATED\nSingle Passenger Seat Structure (120-29067-007)\nFigure 86\nSheet 2\nEFFECTIVITY: ALL 25 21 00\n{| =\nPage 1301\nT.P. 120/1176 Apr 10/06\n\n[top_strip]\n-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nAIRLINE EFF | UNITS\nFIG. ITEM | PARTNUMBER STOCK Nese veODE. FROM| PER\nNUMBER TO ASSY\n86 - | 120-29067-007 STRUCTURE ASSY ........ etter VS4956 A REF\n1 | 120-29073-001 . STRUCTURE, LATERAL LEG.................... VS4956 1\n\n[right_strip]\nEFF | UNITS\nTO ASSY\nwees VS4956 A REF\nwee VS4956 028 1\ndee VS4956 B 1\neeeeeeeeeaees 172/999 1\ndee WS4956 | 172/999 1\nhice VS4956 | 172/999 1\n-007)\n\u00bb-21-00\n) Page 1301\n120/1176 Apr 10/06",
+    "regions": [
+      {
+        "region_name": "bottom_right_title_block",
+        "page_index": 0,
+        "bbox": [
+          1602,
+          2404,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "LOCKING 0.0... eee. VG4956 1 172/999 1\nCTURE, ARMREST .........00000000.0.. VS4956 1\nCTURE, ARMREST ........000000000.00.. VS4956 1\nat Structure (120-29067-007)\n-igure 86\nSheet 2\n25 21 00 Page 1301\nT.P. 120/1176 Apr 10/06",
+        "char_count": 221,
+        "error": null
+      },
+      {
+        "region_name": "bottom_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          2902,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "140 | 120-29093-001 . SUPPORT, ATTACH... eee. \u00a7=VS4956 1\n150 | 120-34293-003 . SUPPORT, ATTACH... eee. \u00a7=VS4956 1\n-151 | 120-34293-001 . SUPPORT, ATTACH ...........ceee = V\u00a7S4956 1\n160 | 120-31565-002 LATE, ATTACH .....crrcccccccccccccccee, VS4956 1\n170 | 120-20970-001 . STRUCTURE, ARMREST..........0.00000.... VWS4956 1\n-171 | 120-36060-001 . STRUCTURE, ARMREST .......000.. =VS4956 1\n-ITEM NOT ILLUSTRATED\nSingle Passenger Seat Structure (120-29067-007)\nFigure 86\nSheet 2\nEFFECTIVITY: ALL 25 21 00\n{| =\nPage 1301\nT.P. 120/1176 Apr 10/06",
+        "char_count": 539,
+        "error": null
+      },
+      {
+        "region_name": "top_strip",
+        "page_index": 0,
+        "bbox": [
+          0,
+          0,
+          3205,
+          746
+        ],
+        "status": "ok",
+        "text": "-< EMBRAER\nMAINTENANCE MANUAL WITH\nILLUSTRATED PARTS LIST\nAIRLINE EFF | UNITS\nFIG. ITEM | PARTNUMBER STOCK Nese veODE. FROM| PER\nNUMBER TO ASSY\n86 - | 120-29067-007 STRUCTURE ASSY ........ etter VS4956 A REF\n1 | 120-29073-001 . STRUCTURE, LATERAL LEG.................... VS4956 1",
+        "char_count": 279,
+        "error": null
+      },
+      {
+        "region_name": "right_strip",
+        "page_index": 0,
+        "bbox": [
+          2179,
+          0,
+          3205,
+          4146
+        ],
+        "status": "ok",
+        "text": "EFF | UNITS\nTO ASSY\nwees VS4956 A REF\nwee VS4956 028 1\ndee VS4956 B 1\neeeeeeeeeaees 172/999 1\ndee WS4956 | 172/999 1\nhice VS4956 | 172/999 1\n-007)\n\u00bb-21-00\n) Page 1301\n120/1176 Apr 10/06",
+        "char_count": 185,
+        "error": null
+      }
+    ],
+    "error": null,
+    "parsed_drawing_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": "STOCK",
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0.2
+    },
+    "parsed_manual_metadata": {
+      "document_type": "manual_cover_page",
+      "manufacturer": "EMBRAER",
+      "manual_title": "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+      "document_code": "000000000.00",
+      "publication_number": "T.P. 120/1176",
+      "component_title": "CTURE, ARMREST .........00000000.0.. VS4956 1",
+      "section_title": null,
+      "figure_title": "-ITEM NOT ILLUSTRATED",
+      "figure_number": "86",
+      "effectivity": "ALL 25 21 00",
+      "ata_code": null,
+      "page_number": 1301,
+      "page_label": "1301",
+      "issue_date": "Apr 10/06",
+      "revision_date": "Apr 10/06",
+      "revision_label": null,
+      "part_numbers": [
+        "120-29067-007",
+        "120-29093-001",
+        "120-34293-003",
+        "120-34293-001",
+        "120-31565-002",
+        "120-20970-001",
+        "120-36060-001",
+        "120-29073-001"
+      ],
+      "callouts": [
+        "NUMBER TO ASSY",
+        "TO ASSY"
+      ],
+      "metadata_confidence": 1.0
+    },
+    "parsed_metadata": {
+      "drawing_number": null,
+      "document_number": null,
+      "part_number": "STOCK",
+      "revision": null,
+      "sheet_number": null,
+      "sheet_count": null,
+      "title": null,
+      "classification": null,
+      "metadata_confidence": 0.2
+    }
+  }
+}

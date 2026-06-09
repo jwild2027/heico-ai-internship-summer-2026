@@ -1,0 +1,334 @@
+{
+  "tiff_page_contexts_v1": {
+    "mappings": {
+      "dynamic": "strict",
+      "properties": {
+        "ata_code": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "confidence": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "context_status": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "document_id": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "generated_at": {
+          "type": "date"
+        },
+        "highlighted_parts": {
+          "type": "keyword"
+        },
+        "long_summary": {
+          "analyzer": "technical_text",
+          "type": "text"
+        },
+        "model_name": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "page_context_id": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "page_id": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "page_role": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "prompt_version": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "score": {
+          "type": "float"
+        },
+        "short_summary": {
+          "analyzer": "technical_text",
+          "type": "text"
+        },
+        "source_ocr_hash": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "topics": {
+          "type": "keyword"
+        }
+      }
+    },
+    "settings": {
+      "analysis": {
+        "analyzer": {
+          "technical_text": {
+            "filter": [
+              "lowercase",
+              "asciifolding"
+            ],
+            "tokenizer": "standard",
+            "type": "custom"
+          }
+        },
+        "normalizer": {
+          "lowercase_keyword": {
+            "filter": [
+              "lowercase",
+              "asciifolding"
+            ],
+            "type": "custom"
+          }
+        }
+      },
+      "number_of_replicas": 1,
+      "number_of_shards": 3
+    }
+  },
+  "tiff_pages_v1": {
+    "mappings": {
+      "dynamic": "strict",
+      "properties": {
+        "ata_code": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "document_id": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "manual_title": {
+          "analyzer": "technical_text",
+          "type": "text"
+        },
+        "nomenclature": {
+          "analyzer": "technical_text",
+          "type": "text"
+        },
+        "ocr_depth_classification": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "ocr_hash": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "ocr_text": {
+          "analyzer": "technical_text",
+          "type": "text"
+        },
+        "page_id": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "page_label": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "page_number": {
+          "type": "integer"
+        },
+        "page_role": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "part_numbers": {
+          "type": "keyword"
+        },
+        "rescarta_url": {
+          "index": false,
+          "type": "keyword"
+        },
+        "source_link_id": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "source_url": {
+          "index": false,
+          "type": "keyword"
+        },
+        "topics": {
+          "type": "keyword"
+        },
+        "updated_at": {
+          "type": "date"
+        }
+      }
+    },
+    "settings": {
+      "analysis": {
+        "analyzer": {
+          "technical_text": {
+            "filter": [
+              "lowercase",
+              "asciifolding"
+            ],
+            "tokenizer": "standard",
+            "type": "custom"
+          }
+        },
+        "normalizer": {
+          "lowercase_keyword": {
+            "filter": [
+              "lowercase",
+              "asciifolding"
+            ],
+            "type": "custom"
+          }
+        }
+      },
+      "number_of_replicas": 1,
+      "number_of_shards": 3
+    }
+  },
+  "tiff_parts_v1": {
+    "mappings": {
+      "dynamic": "strict",
+      "properties": {
+        "ata_codes": {
+          "type": "keyword"
+        },
+        "display_part_number": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "document_ids": {
+          "type": "keyword"
+        },
+        "nomenclature": {
+          "analyzer": "technical_text",
+          "type": "text"
+        },
+        "normalized_part_number": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "page_ids": {
+          "type": "keyword"
+        },
+        "part_id": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "source_count": {
+          "type": "integer"
+        },
+        "updated_at": {
+          "type": "date"
+        }
+      }
+    },
+    "settings": {
+      "analysis": {
+        "analyzer": {
+          "technical_text": {
+            "filter": [
+              "lowercase",
+              "asciifolding"
+            ],
+            "tokenizer": "standard",
+            "type": "custom"
+          }
+        },
+        "normalizer": {
+          "lowercase_keyword": {
+            "filter": [
+              "lowercase",
+              "asciifolding"
+            ],
+            "type": "custom"
+          }
+        }
+      },
+      "number_of_replicas": 1,
+      "number_of_shards": 3
+    }
+  },
+  "tiff_rag_chunks_v1": {
+    "mappings": {
+      "dynamic": "strict",
+      "properties": {
+        "ata_code": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "chunk_id": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "chunk_index": {
+          "type": "integer"
+        },
+        "chunk_type": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "document_id": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "page_id": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "part_numbers": {
+          "type": "keyword"
+        },
+        "qdrant_collection": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "qdrant_point_id": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "source_link_id": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "text": {
+          "analyzer": "technical_text",
+          "type": "text"
+        },
+        "text_hash": {
+          "normalizer": "lowercase_keyword",
+          "type": "keyword"
+        },
+        "updated_at": {
+          "type": "date"
+        }
+      }
+    },
+    "settings": {
+      "analysis": {
+        "analyzer": {
+          "technical_text": {
+            "filter": [
+              "lowercase",
+              "asciifolding"
+            ],
+            "tokenizer": "standard",
+            "type": "custom"
+          }
+        },
+        "normalizer": {
+          "lowercase_keyword": {
+            "filter": [
+              "lowercase",
+              "asciifolding"
+            ],
+            "type": "custom"
+          }
+        }
+      },
+      "number_of_replicas": 1,
+      "number_of_shards": 3
+    }
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "status": "OK",
+  "graph_dir": "local_data\\organization\\graph",
+  "node_count": 3788,
+  "edge_count": 14143,
+  "node_type_counts": {
+    "ata_section": 5,
+    "document": 1,
+    "nomenclature": 151,
+    "page": 509,
+    "page_context": 509,
+    "part": 386,
+    "part_mention": 981,
+    "source_file": 509,
+    "source_link": 509,
+    "topic": 228
+  },
+  "edge_type_counts": {
+    "APPEARS_ON": 981,
+    "BELONGS_TO_ATA": 509,
+    "BELONGS_TO_DOCUMENT": 509,
+    "CONTAINS_PAGE": 509,
+    "FOUND_ON": 981,
+    "HAS_ATA_SECTION": 5,
+    "HAS_CONTEXT": 509,
+    "HAS_MENTION": 981,
+    "HAS_NOMENCLATURE": 386,
+    "HAS_PAGE": 509,
+    "HAS_PART_MENTION": 981,
+    "HAS_SOURCE_LINK": 509,
+    "HAS_TIFF": 509,
+    "HIGHLIGHTS_PART": 1070,
+    "MENTIONS_PART": 981,
+    "OPENS": 509,
+    "POINTS_TO_TIFF": 509,
+    "REFERS_TO_PART": 981,
+    "SUMMARIZES": 509,
+    "TAGGED_AS": 1706
+  },
+  "warnings": [],
+  "errors": [],
+  "traces": [
+    {
+      "id": "page_trace",
+      "description": "Trace a page to document, ATA, parts, nomenclature, source, and AI context.",
+      "status": "OK",
+      "summary": {
+        "page_id": "t_p_120_1176_p000083",
+        "page_node": "page:t_p_120_1176_p000083",
+        "document": "T.P. 120/1176",
+        "ata": "ATA 25-21-00",
+        "source_link_present": true,
+        "context_present": true,
+        "context_score": 0.9,
+        "parts_sampled": 1
+      },
+      "steps": [
+        {
+          "label": "Start page",
+          "edge_type": null,
+          "node_id": "page:t_p_120_1176_p000083",
+          "node_type": "page",
+          "node_label": "T.P. 120/1176 page 1056",
+          "properties": {}
+        },
+        {
+          "label": "Document",
+          "edge_type": "BELONGS_TO_DOCUMENT",
+          "node_id": "document:t_p_120_1176",
+          "node_type": "document",
+          "node_label": "T.P. 120/1176",
+          "properties": {}
+        },
+        {
+          "label": "ATA section",
+          "edge_type": "BELONGS_TO_ATA",
+          "node_id": "ata_section:t_p_120_1176_25_21_00",
+          "node_type": "ata_section",
+          "node_label": "ATA 25-21-00",
+          "properties": {}
+        },
+        {
+          "label": "Source link",
+          "edge_type": "HAS_SOURCE_LINK",
+          "node_id": "source_link:t_p_120_1176_p000083",
+          "node_type": "source_link",
+          "node_label": "source for t_p_120_1176_p000083",
+          "properties": {}
+        },
+        {
+          "label": "AI context",
+          "edge_type": "HAS_CONTEXT",
+          "node_id": "page_context:t_p_120_1176_p000083",
+          "node_type": "page_context",
+          "node_label": "This page appears to be an illustrated parts list for aircraft components, detailing part numbers and stock information.",
+          "properties": {
+            "score": 0.9,
+            "summary": "This page appears to be an illustrated parts list for aircraft components, detailing part numbers and stock information."
+          }
+        },
+        {
+          "label": "Mentioned part 1",
+          "edge_type": "MENTIONS_PART",
+          "node_id": "part:120_37313_001",
+          "node_type": "part",
+          "node_label": "120-37313-001",
+          "properties": {}
+        },
+        {
+          "label": "Part 1 nomenclature",
+          "edge_type": "HAS_NOMENCLATURE",
+          "node_id": "nomenclature:holder_magazine",
+          "node_type": "nomenclature",
+          "node_label": "HOLDER, MAGAZINE",
+          "properties": {}
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    }
+  ]
+}

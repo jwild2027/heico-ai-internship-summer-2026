@@ -1,0 +1,133 @@
+{
+  "checks": [
+    {
+      "detail": "summary=True; all_records=True",
+      "name": "artifacts_present",
+      "ok": true
+    },
+    {
+      "detail": "status='OK'",
+      "name": "status_ok",
+      "ok": true
+    },
+    {
+      "detail": "records summary=1813; jsonl=1813; minimum=1813",
+      "name": "records",
+      "ok": true
+    },
+    {
+      "detail": "pages=509; minimum=509",
+      "name": "pages",
+      "ok": true
+    },
+    {
+      "detail": "source jsonl=509; summary=509",
+      "name": "source_pool_count_match",
+      "ok": true
+    },
+    {
+      "detail": "verified jsonl=362; summary=362",
+      "name": "verified_part_pool_count_match",
+      "ok": true
+    },
+    {
+      "detail": "derived jsonl=60; summary=60",
+      "name": "derived_pool_count_match",
+      "ok": true
+    },
+    {
+      "detail": "excluded jsonl=882; summary=882",
+      "name": "excluded_pool_count_match",
+      "ok": true
+    },
+    {
+      "detail": "unsafe summary=0; scan=0; max=0",
+      "name": "unsafe_rag_eligible",
+      "ok": true
+    },
+    {
+      "detail": "table_candidate_eligible=0; max=0",
+      "name": "no_table_candidate_eligible",
+      "ok": true
+    },
+    {
+      "detail": "table_tiles_eligible=0; max=0",
+      "name": "no_table_tiles_eligible",
+      "ok": true
+    },
+    {
+      "detail": "source_evidence_records=509; minimum=509",
+      "name": "source_evidence_records",
+      "ok": true
+    },
+    {
+      "detail": "verified_part_records=362; minimum=360",
+      "name": "verified_part_records",
+      "ok": true
+    },
+    {
+      "detail": "derived_context_records=60; minimum=60",
+      "name": "derived_context_records",
+      "ok": true
+    },
+    {
+      "detail": "graph_nodes=2348",
+      "name": "graph_nodes",
+      "ok": true
+    },
+    {
+      "detail": "graph_edges=10882",
+      "name": "graph_edges",
+      "ok": true
+    }
+  ],
+  "derived_context_records": 60,
+  "evidence_layer_counts": {
+    "part_catalog": 364,
+    "source_trace": 509,
+    "table_candidate": 509,
+    "table_tile_text_refined": 120,
+    "table_tiles": 286,
+    "visual_text": 25
+  },
+  "excluded_records": 882,
+  "graph_edges": 10882,
+  "graph_nodes": 2348,
+  "rag_action_counts": {
+    "exclude_from_rag": 265,
+    "exclude_until_table_text_exists": 286,
+    "exclude_until_table_tiles_exist": 331,
+    "include_as_derived_context": 60,
+    "include_as_source_evidence": 509,
+    "include_as_verified_part_evidence": 362
+  },
+  "rag_bucket_counts": {
+    "derived_context": 60,
+    "excluded": 882,
+    "source_evidence": 509,
+    "verified_part_evidence": 362
+  },
+  "rag_eligibility_jsonl_records": 1813,
+  "rag_eligibility_pages": 509,
+  "rag_eligibility_records": 1813,
+  "rag_eligibility_records_present": true,
+  "rag_eligibility_status": "OK",
+  "rag_eligibility_summary_present": true,
+  "rag_eligibility_version": "trace_net_rag_eligibility_v1",
+  "rag_eligible_records": 931,
+  "rag_excluded_records": 882,
+  "records_path": "local_data\\organization\\trace_net\\rag_eligibility\\rag_eligibility_records.jsonl",
+  "source_evidence_records": 509,
+  "status": "OK",
+  "summary_path": "local_data\\organization\\trace_net\\rag_eligibility\\rag_eligibility_summary.json",
+  "table_candidate_eligible_records": 0,
+  "table_tiles_eligible_records": 0,
+  "trust_tier_counts": {
+    "A": 901,
+    "B": 316,
+    "C": 596
+  },
+  "unsafe_rag_eligible_record_scan": 0,
+  "unsafe_rag_eligible_records": 0,
+  "verified_part_evidence_records": 362
+}
