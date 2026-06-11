@@ -1,0 +1,41 @@
+# TRACE-Net Visual Ink / Layout Calibrator v1
+
+**Status:** VISUAL_INK_LAYOUT_CALIBRATION_BUILT
+**Quality:** PASS
+
+## What this does
+
+This is a math-based visual routing layer. It uses ink ratio, line counts, connected components, grid score, and existing page roles to calibrate visual/table/chart/figure routing before any vision model is used.
+
+It is route-only: it cannot answer directly, prove claims, or mutate source truth.
+
+## Summary
+
+- calibrated_page_count: 509
+- ink_metric_page_count: 509
+- blank_page_count: 14
+- confirmed_blank_page_count: 14
+- ink_blank_candidate_count: 14
+- sparse_ink_page_count: 0
+- text_heavy_page_count: 39
+- table_or_grid_page_count: 19
+- parts_list_or_diagram_page_count: 290
+- figure_or_diagram_page_count: 276
+- chart_or_plot_page_count: 160
+- reclassified_page_count: 301
+- chart_candidate_demoted_count: 39
+- needs_vision_model_count: 436
+- needs_human_review_count: 437
+- visual_answer_allowed_count: 0
+- source_truth_mutation_allowed_count: 0
+
+## Layout classes
+
+- blank: 14
+- chart_or_plot: 160
+- mixed_table_and_diagram: 37
+- parts_list_or_illustrated_parts: 239
+- parts_list_table: 14
+- table_or_grid: 5
+- text_heavy: 39
+- unknown_visual_layout: 1

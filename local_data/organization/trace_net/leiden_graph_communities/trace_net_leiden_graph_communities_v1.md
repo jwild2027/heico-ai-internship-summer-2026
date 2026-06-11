@@ -1,0 +1,50 @@
+# TRACE-Net Leiden Graph Communities v1
+
+**Status:** LEIDEN_GRAPH_COMMUNITIES_BUILT
+**Quality:** PASS
+**Algorithm used:** leiden
+**Leiden used:** True
+
+## Summary
+
+- Nodes: 32446
+- Edges: 35907
+- Community graph edges: 33936
+- Communities: 229
+- Page nodes with community: 509
+- PartCandidate nodes with community: 301
+- TableCell nodes with community: 3090
+- Orphan edges: 0
+- Source truth mutations allowed: 0
+
+## Top communities
+
+- **tracenet_community_00001**: Part family community 120-29066 — 785 nodes, 23 pages
+- **tracenet_community_00002**: Part family community 120-36833 — 762 nodes, 20 pages
+- **tracenet_community_00003**: Part family community 120-38579 — 705 nodes, 26 pages
+- **tracenet_community_00004**: Part family community 120-20970 — 587 nodes, 13 pages
+- **tracenet_community_00005**: Part family community 120-29068 — 469 nodes, 13 pages
+- **tracenet_community_00006**: Part family community 120-29067 — 465 nodes, 13 pages
+- **tracenet_community_00007**: Part family community 120-29070 — 436 nodes, 17 pages
+- **tracenet_community_00008**: Part family community 120-41825 — 401 nodes, 8 pages
+- **tracenet_community_00009**: Part family community 120-36833 — 383 nodes, 23 pages
+- **tracenet_community_00010**: Part family community 120-36833 — 359 nodes, 18 pages
+- **tracenet_community_00011**: Part family community 120-46137 — 351 nodes, 9 pages
+- **tracenet_community_00012**: Part family community 120-29072 — 351 nodes, 6 pages
+- **tracenet_community_00013**: Part family community 120-29068 — 351 nodes, 7 pages
+- **tracenet_community_00014**: Part family community 120-36834 — 350 nodes, 12 pages
+- **tracenet_community_00015**: Part family community 120-37313 — 349 nodes, 33 pages
+- **tracenet_community_00016**: Part family community 120-29068 — 345 nodes, 7 pages
+- **tracenet_community_00017**: Part family community 120-41824 — 345 nodes, 11 pages
+- **tracenet_community_00018**: Part family community 120-29068 — 344 nodes, 8 pages
+- **tracenet_community_00019**: Table evidence community (1 page(s)) — 336 nodes, 1 pages
+- **tracenet_community_00020**: Part family community 120-29069 — 296 nodes, 5 pages
+- **tracenet_community_00021**: Part family community 120-29068 — 292 nodes, 10 pages
+- **tracenet_community_00022**: Part family community 120-29068 — 292 nodes, 8 pages
+- **tracenet_community_00023**: Table evidence community (1 page(s)) — 292 nodes, 1 pages
+- **tracenet_community_00024**: Part family community 120-29067 — 290 nodes, 7 pages
+- **tracenet_community_00025**: Part family community 120-43539 — 285 nodes, 5 pages
+
+## Safety note
+
+Communities are retrieval/review helpers only. They do not prove claims, answer directly, or mutate source truth.

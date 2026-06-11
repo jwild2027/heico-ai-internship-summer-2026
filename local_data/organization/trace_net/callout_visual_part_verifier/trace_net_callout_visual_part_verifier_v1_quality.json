@@ -1,0 +1,101 @@
+{
+  "checks": [
+    {
+      "expected": ">= 1",
+      "name": "min_verifier_records",
+      "observed": 509,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "min_clean_callouts",
+      "observed": 6018,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "min_random_numbers_suppressed",
+      "observed": 3080,
+      "passed": true
+    },
+    {
+      "expected": ">= 0",
+      "name": "min_callout_to_table_row_links",
+      "observed": 519,
+      "passed": true
+    },
+    {
+      "expected": ">= 0",
+      "name": "min_catalog_verified_visual_parts",
+      "observed": 931,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "min_records_with_graph_attachment_plans",
+      "observed": 509,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "unsafe_visual_evidence_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "visual_answer_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "unverified_visual_claim_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    }
+  ],
+  "created_at": "2026-06-10T15:00:56Z",
+  "schema_version": "trace_net_callout_visual_part_verifier_v1",
+  "status": "PASS",
+  "summary": {
+    "answer_status": "CALLOUT_VISUAL_PART_VERIFICATION_ONLY",
+    "authority_counts": {
+      "visual_callout_part_verification_retrieval_only": 509
+    },
+    "callout_to_table_row_link_count": 519,
+    "callout_verifier_record_count": 509,
+    "catalog_part_count": 301,
+    "catalog_verified_visual_part_count": 931,
+    "clean_callout_count": 6018,
+    "diagrams_needing_human_review_count": 471,
+    "final_answer_allowed": false,
+    "linked_visual_part_candidate_count": 940,
+    "page_count": 509,
+    "rag_bucket_counts": {
+      "visual_callout_part_verification_helper": 509
+    },
+    "random_number_suppressed_count": 3080,
+    "raw_callout_candidate_count": 9098,
+    "records_with_graph_attachment_plan_count": 509,
+    "retrieval_only_record_count": 509,
+    "schema_version": "trace_net_callout_visual_part_verifier_v1",
+    "source_truth_mutation_allowed_count": 0,
+    "source_visual_record_count": 509,
+    "table_supported_visual_part_count": 106,
+    "trust_tier_counts": {
+      "B": 38,
+      "C": 471
+    },
+    "unsafe_visual_evidence_count": 0,
+    "unverified_visual_claim_count": 0,
+    "visual_answer_allowed_count": 0,
+    "visual_part_link_count": 940
+  }
+}

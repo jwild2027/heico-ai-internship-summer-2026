@@ -1,0 +1,89 @@
+<html><body><pre># TRACE-Net Human Review Queue Triage / Dedup v1
+
+**Status:** HUMAN_REVIEW_TRIAGE_BUILT
+**Quality:** PASS
+**Generated:** 2026-06-10T17:38:17+00:00
+
+## Summary
+
+- input_review_task_count: 2891
+- triage_card_count: 544
+- deduped_task_count: 2347
+- deduplication_ratio: 0.81183
+- critical_task_input_count: 1
+- critical_task_preserved_count: 1
+- high_priority_triage_card_count: 479
+- medium_priority_triage_card_count: 8
+- low_priority_triage_card_count: 57
+- multi_task_triage_card_count: 488
+- missing_page_id_count: 0
+- unsafe_triage_card_count: 0
+- triage_card_can_answer_directly_count: 0
+- triage_card_can_prove_claims_count: 0
+- source_truth_mutation_allowed_count: 0
+
+## Top Triage Cards
+
+| Priority | Card type | Group | Tasks | Reason |
+|---|---|---|---:|---|
+| critical | critical_review_card | feedback_memory:review_prompt_injection_feedback:answer:trace_net_final_answer_gate_v1 | 1 | Feedback memory flagged a possible prompt-injection or instruction-manipulation comment. |
+| high | page_table_visual_review_card | t_p_120_1176_p000003 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Fishnet disposition &#x27;review_required&#x27; includes review actions: review_repaired_table_cells, hu |
+| high | page_table_visual_review_card | t_p_120_1176_p000031 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000092 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000368 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_table_visual_review_card | t_p_120_1176_p000032 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000040 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000140 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000179 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000297 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000364 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000173 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000276 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000343 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000352 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000384 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_table_visual_review_card | t_p_120_1176_p000030 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_table_visual_review_card | t_p_120_1176_p000036 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000050 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000098 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000330 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000337 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000340 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000358 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000424 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000042 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000046 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000380 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000396 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000416 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000436 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000440 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000039 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000043 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000053 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000054 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000056 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000101 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000105 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000118 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000167 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000193 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000279 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000285 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000300 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000303 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000306 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000334 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000346 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000361 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000372 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000376 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000392 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000400 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000408 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000420 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000428 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000432 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000444 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+| high | page_visual_review_card | t_p_120_1176_p000447 | 6 | Callout/visual part verifier found unverified callout or visual-part relationships. \| Detected 20 callout candidate(s) that may include random numbers or unverified labels. \| Fishn |
+</pre></body></html>

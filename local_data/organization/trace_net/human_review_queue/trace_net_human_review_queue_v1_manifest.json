@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-06-10T17:24:32+00:00",
+  "inputs": {
+    "callout_visual_part_verifier": "local_data/organization/trace_net/callout_visual_part_verifier/trace_net_callout_visual_part_verifier_v1.json",
+    "community_aware_retrieval": "local_data/organization/trace_net/community_aware_retrieval_sim/trace_net_community_aware_retrieval_sim_v1.json",
+    "feedback_memory": "local_data/organization/trace_net/feedback_memory/trace_net_feedback_memory_v1.json",
+    "figure_chart_understanding": "local_data/organization/trace_net/figure_chart_understanding/trace_net_figure_chart_understanding_v1.json",
+    "final_answer_report": "local_data/organization/trace_net/final_answer_gate/trace_net_final_answer_gate_v1.json",
+    "fishnet_retry_refined": "local_data/organization/trace_net/fishnet_retry_refined/trace_net_fishnet_retry_refinement_v1.json",
+    "it_console": "local_data/organization/trace_net/it_operations_console/trace_net_it_operations_console_v1.json",
+    "leiden_communities": "local_data/organization/trace_net/leiden_graph_communities/trace_net_leiden_graph_communities_v1.json",
+    "table_cell_normalizer": "local_data/organization/trace_net/table_cell_normalizer/trace_net_table_cell_normalizer_v1.json",
+    "visual_ink_layout_calibrator": "local_data/organization/trace_net/visual_ink_layout_calibrator/trace_net_visual_ink_layout_calibrator_v1.json"
+  },
+  "outputs": {
+    "quality": "local_data\\organization\\trace_net\\human_review_queue\\trace_net_human_review_queue_v1_quality.json",
+    "report": "local_data\\organization\\trace_net\\human_review_queue\\trace_net_human_review_queue_v1.json",
+    "summary": "local_data\\organization\\trace_net\\human_review_queue\\trace_net_human_review_queue_v1_summary.json",
+    "tasks": "local_data\\organization\\trace_net\\human_review_queue\\trace_net_human_review_queue_v1_tasks.jsonl"
+  },
+  "schema_version": "trace_net_human_review_queue_v1_manifest"
+}

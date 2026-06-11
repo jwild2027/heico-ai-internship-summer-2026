@@ -1,0 +1,151 @@
+{
+  "checks": [
+    {
+      "actual": 5,
+      "expected": ">= 5",
+      "name": "min_queries",
+      "passed": true
+    },
+    {
+      "actual": 5,
+      "expected": ">= 5",
+      "name": "min_queries_with_results",
+      "passed": true
+    },
+    {
+      "actual": 40,
+      "expected": ">= 25",
+      "name": "min_grouped_results",
+      "passed": true
+    },
+    {
+      "actual": 40,
+      "expected": ">= 25",
+      "name": "min_community_boosted_results",
+      "passed": true
+    },
+    {
+      "actual": 4,
+      "expected": ">= 1",
+      "name": "min_feedback_memory_records",
+      "passed": true
+    },
+    {
+      "actual": 6,
+      "expected": ">= 0",
+      "name": "min_feedback_adjusted_results",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "hybrid_quality_pass",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "leiden_quality_pass",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "feedback_quality_pass",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "unsafe_result_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "community_as_proof_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "feedback_as_proof_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "direct_answer_allowed_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "retrieval_only_answer_allowed_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "raw_feedback_direct_to_llm_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "feedback_can_answer_directly_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "feedback_can_prove_claims_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "feedback_can_mutate_source_truth_zero",
+      "passed": true
+    }
+  ],
+  "report_path": "local_data/organization/trace_net/community_aware_retrieval_sim/trace_net_community_aware_retrieval_sim_v1.json",
+  "status": "PASS",
+  "summary": {
+    "algorithm": "trace_net_community_feedback_advisory_ranker_v1",
+    "community_as_proof_count": 0,
+    "community_aware_query_count": 5,
+    "community_boosted_result_count": 40,
+    "community_count": 229,
+    "community_feedback_answer_policy": "advisory_only_no_proof_no_source_truth_mutation",
+    "direct_answer_allowed_result_count": 0,
+    "feedback_adjusted_result_count": 6,
+    "feedback_as_proof_count": 0,
+    "feedback_boosted_result_count": 6,
+    "feedback_can_answer_directly_count": 0,
+    "feedback_can_mutate_source_truth_count": 0,
+    "feedback_can_prove_claims_count": 0,
+    "feedback_event_count": 4,
+    "feedback_memory_quality_status": "PASS",
+    "feedback_memory_record_count": 4,
+    "feedback_penalized_result_count": 0,
+    "grouped_result_count": 40,
+    "hybrid_quality_status": "PASS",
+    "leiden_quality_status": "PASS",
+    "missing_page_id_count": 0,
+    "page_count": 509,
+    "prompt_injection_flagged_count": 1,
+    "queries_with_results_count": 5,
+    "raw_feedback_direct_to_llm_count": 0,
+    "retrieval_only_answer_allowed_count": 0,
+    "schema_version": "trace_net_community_aware_retrieval_sim_v1",
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_result_count": 0
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "description": "Feedback sanitizer detected prompt injection.",
+  "origin_category": "feedback_memory",
+  "quality_status": "PASS",
+  "scenario_id": "feedback_prompt_injection",
+  "schema_version": "trace_net_it_issue_origin_test_matrix_v1_synthetic_quality",
+  "source_layer": "feedback_sanitizer",
+  "status": "PASS",
+  "summary": {
+    "origin_category": "feedback_memory",
+    "prompt_injection_flagged_count": 2,
+    "scenario_id": "feedback_prompt_injection",
+    "source_layer": "feedback_sanitizer"
+  }
+}

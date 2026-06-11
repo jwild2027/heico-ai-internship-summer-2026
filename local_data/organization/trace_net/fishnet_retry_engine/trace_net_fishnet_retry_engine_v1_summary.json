@@ -1,0 +1,111 @@
+{
+  "algorithm": "trace_net_universal_fishnet_retry_planner_v1",
+  "claim_proof_allowed_count": 0,
+  "direct_answer_allowed_count": 0,
+  "extractor_family_count": 10,
+  "extractor_family_counts": {
+    "citation": 495,
+    "context": 459,
+    "graph": 509,
+    "ocr": 509,
+    "registry": 509,
+    "review": 474,
+    "table": 995,
+    "trust": 509,
+    "vision": 470,
+    "visual": 1439
+  },
+  "final_answer_allowed_count": 0,
+  "fishnet_layer_counts": {
+    "0": 509,
+    "1": 509,
+    "2": 509,
+    "3": 495,
+    "4": 509,
+    "5": 509
+  },
+  "fishnet_record_count": 509,
+  "layout_class_counts": {
+    "blank": 14,
+    "chart_or_plot": 160,
+    "mixed_table_and_diagram": 37,
+    "parts_list_or_illustrated_parts": 239,
+    "parts_list_table": 14,
+    "table_or_grid": 5,
+    "text_heavy": 39,
+    "unknown_visual_layout": 1
+  },
+  "missing_page_id_count": 0,
+  "ocr_retry_action_count": 509,
+  "ocr_state_counts": {
+    "ocr_present": 495,
+    "source_confirmed_blank": 14
+  },
+  "pages_needing_vision_model_count": 470,
+  "pages_with_answer_support_candidates_count": 495,
+  "pages_with_retry_count": 509,
+  "pages_with_retry_plan_count": 509,
+  "pages_with_review_count": 474,
+  "retry_action_counts": {
+    "compare_against_source_graph_and_citations": 509,
+    "compare_table_parts_against_catalog_graph": 495,
+    "compare_visual_parts_against_catalog_graph": 474,
+    "confirm_blank_without_losing_source_trace": 14,
+    "enforce_trust_authority_gate": 509,
+    "extract_and_check_visual_callouts": 456,
+    "human_review_for_unverified_visual_page": 474,
+    "inventory_existing_extractor_outputs": 509,
+    "keep_unverified_table_rows_retrieval_only": 4,
+    "ocr_cleanup_available_if_needed": 495,
+    "optional_context_v2_expansion": 459,
+    "review_repaired_table_cells": 1,
+    "send_to_vision_model_pilot": 470,
+    "validate_table_rows_and_cells": 495,
+    "validate_visual_regions_and_callouts": 509,
+    "verify_answer_support_citations": 495
+  },
+  "retry_route_counts": {
+    "blank_page_review_route": 14,
+    "callout_candidate_route": 456,
+    "catalog_graph_visual_compare": 474,
+    "citation_authority_compare": 495,
+    "context_v2_generation_route": 459,
+    "existing_artifact_inventory": 509,
+    "graph_source_citation_compare": 509,
+    "human_review_visual_route": 474,
+    "ocr_cleanup_retry": 495,
+    "table_catalog_graph_compare": 495,
+    "table_cell_normalizer_route": 495,
+    "table_repair_review_route": 1,
+    "table_trust_downgrade_route": 4,
+    "trust_authority_gate": 509,
+    "vision_model_pilot_route": 470,
+    "visual_region_retry_route": 509
+  },
+  "schema_version": "trace_net_fishnet_retry_engine_v1",
+  "source_confirmed_blank_page_count": 14,
+  "source_summaries": {
+    "evidence_consensus_status": "OK",
+    "figure_chart_understanding_quality_status": "PASS",
+    "page_registry_quality_status": "PASS",
+    "table_cell_normalizer_quality_status": "PASS",
+    "visual_ink_layout_calibrator_quality_status": "PASS"
+  },
+  "source_truth_mutation_allowed_count": 0,
+  "sparse_ink_page_count": 0,
+  "table_retry_action_count": 995,
+  "table_type_counts": {
+    "ata_index_table": 3,
+    "index_table": 2,
+    "list_of_effective_pages": 9,
+    "none": 14,
+    "parts_list_table": 6,
+    "unknown_table": 475
+  },
+  "unsafe_fishnet_record_count": 0,
+  "visual_retry_action_count": 1909,
+  "visual_type_counts": {
+    "chart_or_plot_candidate": 39,
+    "parts_diagram_or_illustrated_parts_list": 470
+  }
+}

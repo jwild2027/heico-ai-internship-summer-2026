@@ -1,0 +1,27 @@
+{
+  "created_at": "2026-06-09T16:33:42Z",
+  "input_paths": {
+    "embedding_candidates": "local_data/organization/trace_net/embedding_candidates/trace_net_embedding_candidates_v1.json",
+    "image_recognition_audit": "local_data/organization/image_recognition/page_image_recognition_audit.json",
+    "image_recognition_quality": "local_data/organization/image_recognition/page_image_recognition_quality.json",
+    "page_registry": "local_data/organization/trace_net/page_element_registry/trace_net_page_element_registry_v1.json",
+    "table_cell_normalizer": "local_data/organization/trace_net/table_cell_normalizer/trace_net_table_cell_normalizer_v1.json",
+    "visual_text_records": "local_data/organization/visual_text/visual_text_extraction_clean.jsonl",
+    "visual_text_summary": "local_data/organization/visual_text/visual_text_clean_summary.json"
+  },
+  "output_paths": {
+    "callouts": "local_data\\organization\\trace_net\\figure_chart_understanding\\trace_net_figure_chart_understanding_v1_callouts.jsonl",
+    "graph_attachment_plan": "local_data\\organization\\trace_net\\figure_chart_understanding\\trace_net_figure_chart_understanding_v1_graph_attachment_plan.jsonl",
+    "html": "local_data\\organization\\trace_net\\figure_chart_understanding\\trace_net_figure_chart_understanding_v1.html",
+    "markdown": "local_data\\organization\\trace_net\\figure_chart_understanding\\trace_net_figure_chart_understanding_v1.md",
+    "quality": "local_data\\organization\\trace_net\\figure_chart_understanding\\trace_net_figure_chart_understanding_v1_quality.json",
+    "records": "local_data\\organization\\trace_net\\figure_chart_understanding\\trace_net_figure_chart_understanding_v1_records.jsonl",
+    "regions": "local_data\\organization\\trace_net\\figure_chart_understanding\\trace_net_figure_chart_understanding_v1_regions.jsonl",
+    "report": "local_data\\organization\\trace_net\\figure_chart_understanding\\trace_net_figure_chart_understanding_v1.json",
+    "summary": "local_data\\organization\\trace_net\\figure_chart_understanding\\trace_net_figure_chart_understanding_v1_summary.json"
+  },
+  "quality_status": "PASS",
+  "report_sha256": "18cf9080749fea0b86f81d0f19a55a658ab75260b5eb34e74b609b25df8d527e",
+  "schema_version": "trace_net_figure_chart_understanding_v1",
+  "status": "FIGURE_CHART_UNDERSTANDING_BUILT"
+}

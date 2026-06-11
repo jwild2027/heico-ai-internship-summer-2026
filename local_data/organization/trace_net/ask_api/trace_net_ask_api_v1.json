@@ -1,0 +1,48 @@
+{
+  "checks": {
+    "api_is_read_only": true,
+    "community_aware_retrieval_present": true,
+    "feedback_memory_present": true,
+    "final_answer_report_present": true,
+    "final_answer_report_quality_pass": true,
+    "leiden_communities_present": true,
+    "opensearch_adapter_present": true,
+    "source_truth_mutation_allowed_false": true
+  },
+  "generated_at": "2026-06-11T13:34:27+00:00",
+  "paths": {
+    "community_aware_retrieval": "local_data\\organization\\trace_net\\community_aware_retrieval_sim\\trace_net_community_aware_retrieval_sim_v1.json",
+    "feedback_memory": "local_data\\organization\\trace_net\\feedback_memory\\trace_net_feedback_memory_v1.json",
+    "final_answer_markdown": "local_data\\organization\\trace_net\\final_answer_gate\\trace_net_final_answer_gate_v1_answer.md",
+    "final_answer_report": "local_data\\organization\\trace_net\\final_answer_gate\\trace_net_final_answer_gate_v1.json",
+    "leiden_communities": "local_data\\organization\\trace_net\\leiden_graph_communities\\trace_net_leiden_graph_communities_v1.json",
+    "opensearch_adapter": "local_data\\organization\\trace_net\\opensearch_adapter\\trace_net_opensearch_adapter_v1.json"
+  },
+  "quality_status": "PASS",
+  "schema_version": "trace_net_ask_api_v1",
+  "server": {
+    "default_port": 8012
+  },
+  "status": "ASK_API_CONFIG_BUILT",
+  "summary": {
+    "api_endpoint_count": 5,
+    "community_as_proof_count": 0,
+    "community_aware_quality_status": "PASS",
+    "default_answer_mode": "final-gate",
+    "default_retrieval_mode": "community-aware",
+    "feedback_as_proof_count": 0,
+    "feedback_quality_status": "PASS",
+    "final_answer_allowed": true,
+    "final_answer_quality_status": "PASS",
+    "leiden_quality_status": "PASS",
+    "model_name": "trace-net-final-gate-v1",
+    "opensearch_quality_status": "PASS",
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "read_only_api": true,
+    "schema_version": "trace_net_ask_api_v1",
+    "source_truth_mutation_allowed_count": 0,
+    "status": "PASS"
+  }
+}

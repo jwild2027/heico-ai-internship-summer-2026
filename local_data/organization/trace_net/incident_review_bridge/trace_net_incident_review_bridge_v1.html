@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset='utf-8'><title>TRACE-Net Incident Review Bridge v1</title></head><body><pre># TRACE-Net Incident Review Bridge v1<br>
+<br>
+**Status:** INCIDENT_REVIEW_BRIDGE_BUILT<br>
+**Quality:** PASS<br>
+<br>
+## Summary<br>
+<br>
+- incident_count: 1<br>
+- review_task_count: 1<br>
+- critical_priority_review_task_count: 0<br>
+- high_priority_review_task_count: 0<br>
+- medium_priority_review_task_count: 1<br>
+- low_priority_review_task_count: 0<br>
+- unsafe_review_task_count: 0<br>
+- source_truth_mutation_allowed_count: 0<br>
+- raw_feedback_direct_to_llm_count: 0<br>
+<br>
+## Top Review Tasks<br>
+<br>
+### MEDIUM — inspect_vector_index_incident<br>
+- review_task_id: `review_incident__413324fb69ac88b8`<br>
+- origin_incident_id: `syninc_4d41547bb8ed17b6`<br>
+- target: `qdrant_point` / `random_qdrant_point`<br>
+- pages: <br>
+- reason: Incident syninc_4d41547bb8ed17b6 from semantic_vector reported warning severity: Random synthetic vector incident: Qdrant payload or embedding dimension should be checked.<br>
+- action: Verify vector dimension, payload safety flags, and collection counts.</pre></body></html>

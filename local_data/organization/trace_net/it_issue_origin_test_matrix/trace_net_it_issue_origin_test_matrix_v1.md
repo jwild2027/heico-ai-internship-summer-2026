@@ -1,0 +1,43 @@
+# TRACE-Net IT Issue-Origin Test Matrix v1
+
+**Status:** PASS
+**Generated:** 2026-06-10T15:25:34+00:00
+
+## Summary
+
+- scenario_count: 68
+- origin_category_count: 17
+- detected_scenario_count: 68
+- undetected_scenario_count: 0
+- critical_scenario_count: 34
+- warning_scenario_count: 27
+- review_scenario_count: 7
+- synthetic_console_critical_issue_count: 34
+- synthetic_console_warning_issue_count: 27
+- synthetic_console_review_issue_count: 7
+
+## Origin Coverage
+
+| Origin | Scenarios | Detected | Critical | Warning | Review |
+|---|---:|---:|---:|---:|---:|
+| answer_gate | 6 | 6 | 5 | 1 | 0 |
+| evidence_consensus | 2 | 2 | 1 | 0 | 1 |
+| feedback_memory | 4 | 4 | 2 | 1 | 1 |
+| graph_community | 2 | 2 | 1 | 1 | 0 |
+| graph_integrity | 4 | 4 | 2 | 1 | 1 |
+| incremental_ops | 5 | 5 | 1 | 4 | 0 |
+| keyword_search | 4 | 4 | 2 | 2 | 0 |
+| llm_advisory | 3 | 3 | 2 | 1 | 0 |
+| ocr_text | 4 | 4 | 2 | 2 | 0 |
+| page_registry | 4 | 4 | 1 | 2 | 1 |
+| retrieval | 3 | 3 | 2 | 1 | 0 |
+| security_leakage | 3 | 3 | 2 | 1 | 0 |
+| semantic_vector | 4 | 4 | 2 | 2 | 0 |
+| source_ingest | 5 | 5 | 2 | 3 | 0 |
+| table_extraction | 5 | 5 | 2 | 2 | 1 |
+| trust_authority | 4 | 4 | 3 | 1 | 0 |
+| visual_diagram | 6 | 6 | 2 | 2 | 2 |
+
+## Undetected Scenarios
+
+All synthetic issue-origin scenarios were detected.

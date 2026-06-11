@@ -1,0 +1,2409 @@
+{
+  "generated_at": "2026-06-10T15:25:34+00:00",
+  "html_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_console_report/trace_net_it_operations_console_v1.html",
+  "issues": [
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_boilerplate/issue_answer_boilerplate_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000001",
+      "key": "summary.boilerplate_leak_count",
+      "message": "Stage 'issue_answer_boilerplate' has summary.boilerplate_leak_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_answer_boilerplate",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_claim_without_citation/issue_answer_claim_without_citation_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000002",
+      "key": "summary.claim_without_citation_count",
+      "message": "Stage 'issue_answer_claim_without_citation' has summary.claim_without_citation_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_answer_claim_without_citation",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_local_path_leak/issue_answer_local_path_leak_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000003",
+      "key": "summary.local_path_leak_count",
+      "message": "Stage 'issue_answer_local_path_leak' has summary.local_path_leak_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_answer_local_path_leak",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_nonstandard_status/issue_answer_nonstandard_status_quality.json",
+      "category": "stage_quality_nonstandard",
+      "issue_id": "itops_issue_000004",
+      "key": null,
+      "message": "Stage 'issue_answer_nonstandard_status' has non-standard status PARTIAL.",
+      "recommended_action": "Confirm whether this status is expected for the artifact type.",
+      "severity": "warning",
+      "stage_id": "issue_answer_nonstandard_status",
+      "value": null
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_raw_bytes/issue_answer_raw_bytes_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000005",
+      "key": "summary.raw_bytes_repr_count",
+      "message": "Stage 'issue_answer_raw_bytes' has summary.raw_bytes_repr_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_answer_raw_bytes",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_uncited_claim/issue_answer_uncited_claim_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000006",
+      "key": "summary.uncited_final_claim_count",
+      "message": "Stage 'issue_answer_uncited_claim' has summary.uncited_final_claim_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_answer_uncited_claim",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_callout_review/issue_callout_review_quality.json",
+      "category": "review_backlog",
+      "issue_id": "itops_issue_000007",
+      "key": "summary.needs_human_review_callout_count",
+      "message": "Stage 'issue_callout_review' has summary.needs_human_review_callout_count = 5.",
+      "recommended_action": "Create or inspect human review tasks for this queue/backlog signal.",
+      "severity": "review",
+      "stage_id": "issue_callout_review",
+      "value": 5
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_community_as_proof/issue_community_as_proof_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000008",
+      "key": "summary.community_as_proof_count",
+      "message": "Stage 'issue_community_as_proof' has summary.community_as_proof_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_community_as_proof",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_community_missing_membership/issue_community_missing_membership_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000009",
+      "key": "summary.missing_community_membership_count",
+      "message": "Stage 'issue_community_missing_membership' has summary.missing_community_membership_count = 5.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_community_missing_membership",
+      "value": 5
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_consensus_review_needed/issue_consensus_review_needed_quality.json",
+      "category": "review_backlog",
+      "issue_id": "itops_issue_000010",
+      "key": "summary.human_review_candidate_count",
+      "message": "Stage 'issue_consensus_review_needed' has summary.human_review_candidate_count = 4.",
+      "recommended_action": "Create or inspect human review tasks for this queue/backlog signal.",
+      "severity": "review",
+      "stage_id": "issue_consensus_review_needed",
+      "value": 4
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_consensus_unsafe_include/issue_consensus_unsafe_include_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000011",
+      "key": "summary.unsafe_rag_include_records_count",
+      "message": "Stage 'issue_consensus_unsafe_include' has summary.unsafe_rag_include_records_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_consensus_unsafe_include",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_embed_missing_page/issue_embed_missing_page_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000012",
+      "key": "summary.missing_embedding_page_id_count",
+      "message": "Stage 'issue_embed_missing_page' has summary.missing_embedding_page_id_count = 4.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_embed_missing_page",
+      "value": 4
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_embed_unsafe_candidate/issue_embed_unsafe_candidate_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000013",
+      "key": "summary.unsafe_embedding_candidate_count",
+      "message": "Stage 'issue_embed_unsafe_candidate' has summary.unsafe_embedding_candidate_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_embed_unsafe_candidate",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_feedback_as_proof/issue_feedback_as_proof_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000014",
+      "key": "summary.feedback_as_proof_count",
+      "message": "Stage 'issue_feedback_as_proof' has summary.feedback_as_proof_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_feedback_as_proof",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_feedback_missing_target/issue_feedback_missing_target_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000015",
+      "key": "summary.missing_feedback_target_count",
+      "message": "Stage 'issue_feedback_missing_target' has summary.missing_feedback_target_count = 3.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_feedback_missing_target",
+      "value": 3
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_feedback_prompt_injection/issue_feedback_prompt_injection_quality.json",
+      "category": "review_backlog",
+      "issue_id": "itops_issue_000016",
+      "key": "summary.prompt_injection_flagged_count",
+      "message": "Stage 'issue_feedback_prompt_injection' has summary.prompt_injection_flagged_count = 2.",
+      "recommended_action": "Create or inspect human review tasks for this queue/backlog signal.",
+      "severity": "review",
+      "stage_id": "issue_feedback_prompt_injection",
+      "value": 2
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_feedback_raw_to_llm/issue_feedback_raw_to_llm_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000017",
+      "key": "summary.raw_feedback_direct_to_llm_count",
+      "message": "Stage 'issue_feedback_raw_to_llm' has summary.raw_feedback_direct_to_llm_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_feedback_raw_to_llm",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_graph_missing_lineage/issue_graph_missing_lineage_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000018",
+      "key": "summary.missing_part_candidate_lineage_count",
+      "message": "Stage 'issue_graph_missing_lineage' has summary.missing_part_candidate_lineage_count = 8.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_graph_missing_lineage",
+      "value": 8
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_graph_orphan_edge/issue_graph_orphan_edge_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000019",
+      "key": "summary.orphan_edge_count",
+      "message": "Stage 'issue_graph_orphan_edge' has summary.orphan_edge_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_graph_orphan_edge",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_graph_postgres_write/issue_graph_postgres_write_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000020",
+      "key": "summary.postgres_write_attempt_count",
+      "message": "Stage 'issue_graph_postgres_write' has summary.postgres_write_attempt_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_graph_postgres_write",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_graph_review_cluster/issue_graph_review_cluster_quality.json",
+      "category": "review_backlog",
+      "issue_id": "itops_issue_000021",
+      "key": "summary.review_required_community_count",
+      "message": "Stage 'issue_graph_review_cluster' has summary.review_required_community_count = 3.",
+      "recommended_action": "Create or inspect human review tasks for this queue/backlog signal.",
+      "severity": "review",
+      "stage_id": "issue_graph_review_cluster",
+      "value": 3
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_incremental_dirty/issue_incremental_dirty_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000022",
+      "key": "summary.dirty_page_count",
+      "message": "Stage 'issue_incremental_dirty' has summary.dirty_page_count = 5.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_incremental_dirty",
+      "value": 5
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_incremental_needs_embedding/issue_incremental_needs_embedding_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000023",
+      "key": "summary.needs_embedding_page_count",
+      "message": "Stage 'issue_incremental_needs_embedding' has summary.needs_embedding_page_count = 5.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_incremental_needs_embedding",
+      "value": 5
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_incremental_needs_graph/issue_incremental_needs_graph_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000024",
+      "key": "summary.needs_graph_update_page_count",
+      "message": "Stage 'issue_incremental_needs_graph' has summary.needs_graph_update_page_count = 5.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_incremental_needs_graph",
+      "value": 5
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_incremental_needs_leiden/issue_incremental_needs_leiden_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000025",
+      "key": "summary.needs_leiden_refresh_page_count",
+      "message": "Stage 'issue_incremental_needs_leiden' has summary.needs_leiden_refresh_page_count = 5.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_incremental_needs_leiden",
+      "value": 5
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_llm_claim_proof/issue_llm_claim_proof_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000026",
+      "key": "summary.claim_proof_allowed_llm_count",
+      "message": "Stage 'issue_llm_claim_proof' has summary.claim_proof_allowed_llm_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_llm_claim_proof",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_llm_freeform_allowed/issue_llm_freeform_allowed_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000027",
+      "key": "summary.direct_answer_allowed_llm_freeform_count",
+      "message": "Stage 'issue_llm_freeform_allowed' has summary.direct_answer_allowed_llm_freeform_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_llm_freeform_allowed",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_llm_needs_model/issue_llm_needs_model_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000028",
+      "key": "summary.needs_model_download_count",
+      "message": "Stage 'issue_llm_needs_model' has summary.needs_model_download_count = 1.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_llm_needs_model",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_ocr_missing_clean_text/issue_ocr_missing_clean_text_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000029",
+      "key": "summary.missing_clean_ocr_text_count",
+      "message": "Stage 'issue_ocr_missing_clean_text' has summary.missing_clean_ocr_text_count = 5.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_ocr_missing_clean_text",
+      "value": 5
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_ocr_needs_retry/issue_ocr_needs_retry_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000030",
+      "key": "summary.needs_ocr_page_count",
+      "message": "Stage 'issue_ocr_needs_retry' has summary.needs_ocr_page_count = 7.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_ocr_needs_retry",
+      "value": 7
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_ocr_raw_index_risk/issue_ocr_raw_index_risk_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000031",
+      "key": "summary.unsafe_raw_ocr_index_document_count",
+      "message": "Stage 'issue_ocr_raw_index_risk' has summary.unsafe_raw_ocr_index_document_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_ocr_raw_index_risk",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_ocr_unsafe_text/issue_ocr_unsafe_text_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000032",
+      "key": "summary.unsafe_ocr_record_count",
+      "message": "Stage 'issue_ocr_unsafe_text' has summary.unsafe_ocr_record_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_ocr_unsafe_text",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_opensearch_missing_page/issue_opensearch_missing_page_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000033",
+      "key": "summary.missing_index_page_id_count",
+      "message": "Stage 'issue_opensearch_missing_page' has summary.missing_index_page_id_count = 4.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_opensearch_missing_page",
+      "value": 4
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_opensearch_needs_docs/issue_opensearch_needs_docs_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000034",
+      "key": "summary.needs_opensearch_page_count",
+      "message": "Stage 'issue_opensearch_needs_docs' has summary.needs_opensearch_page_count = 9.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_opensearch_needs_docs",
+      "value": 9
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_opensearch_raw_visual/issue_opensearch_raw_visual_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000035",
+      "key": "summary.unsafe_raw_visual_output_indexed_count",
+      "message": "Stage 'issue_opensearch_raw_visual' has summary.unsafe_raw_visual_output_indexed_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_opensearch_raw_visual",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_opensearch_unsafe_doc/issue_opensearch_unsafe_doc_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000036",
+      "key": "summary.unsafe_index_document_count",
+      "message": "Stage 'issue_opensearch_unsafe_doc' has summary.unsafe_index_document_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_opensearch_unsafe_doc",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_orchestrator_unsafe_job/issue_orchestrator_unsafe_job_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000037",
+      "key": "summary.unsafe_job_count",
+      "message": "Stage 'issue_orchestrator_unsafe_job' has summary.unsafe_job_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_orchestrator_unsafe_job",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_page_registry_failed/issue_page_registry_failed_quality.json",
+      "category": "stage_quality_failed",
+      "issue_id": "itops_issue_000038",
+      "key": null,
+      "message": "Stage 'issue_page_registry_failed' quality status is FAIL.",
+      "recommended_action": "Open the quality artifact, inspect failing checks, and rerun/fix the stage before publishing.",
+      "severity": "critical",
+      "stage_id": "issue_page_registry_failed",
+      "value": null
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_page_registry_missing_routes/issue_page_registry_missing_routes_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000039",
+      "key": "summary.missing_extraction_route_count",
+      "message": "Stage 'issue_page_registry_missing_routes' has summary.missing_extraction_route_count = 9.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_page_registry_missing_routes",
+      "value": 9
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_page_registry_needs_table/issue_page_registry_needs_table_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000040",
+      "key": "summary.needs_table_page_count",
+      "message": "Stage 'issue_page_registry_needs_table' has summary.needs_table_page_count = 12.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_page_registry_needs_table",
+      "value": 12
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_page_registry_review/issue_page_registry_review_quality.json",
+      "category": "review_backlog",
+      "issue_id": "itops_issue_000041",
+      "key": "summary.needs_human_review_count",
+      "message": "Stage 'issue_page_registry_review' has summary.needs_human_review_count = 6.",
+      "recommended_action": "Create or inspect human review tasks for this queue/backlog signal.",
+      "severity": "review",
+      "stage_id": "issue_page_registry_review",
+      "value": 6
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_qdrant_direct_answer/issue_qdrant_direct_answer_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000042",
+      "key": "summary.direct_answer_allowed_payload_count",
+      "message": "Stage 'issue_qdrant_direct_answer' has summary.direct_answer_allowed_payload_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_qdrant_direct_answer",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_qdrant_needs_upsert/issue_qdrant_needs_upsert_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000043",
+      "key": "summary.needs_qdrant_page_count",
+      "message": "Stage 'issue_qdrant_needs_upsert' has summary.needs_qdrant_page_count = 12.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_qdrant_needs_upsert",
+      "value": 12
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_retrieval_missing_citation/issue_retrieval_missing_citation_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000044",
+      "key": "summary.missing_citation_count",
+      "message": "Stage 'issue_retrieval_missing_citation' has summary.missing_citation_count = 6.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_retrieval_missing_citation",
+      "value": 6
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_retrieval_only_answer/issue_retrieval_only_answer_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000045",
+      "key": "summary.retrieval_only_answer_allowed_count",
+      "message": "Stage 'issue_retrieval_only_answer' has summary.retrieval_only_answer_allowed_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_retrieval_only_answer",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_retrieval_unsafe/issue_retrieval_unsafe_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000046",
+      "key": "summary.unsafe_result_count",
+      "message": "Stage 'issue_retrieval_unsafe' has summary.unsafe_result_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_retrieval_unsafe",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_security_debug_leak/issue_security_debug_leak_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000047",
+      "key": "summary.unsafe_debug_record_count",
+      "message": "Stage 'issue_security_debug_leak' has summary.unsafe_debug_record_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_security_debug_leak",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_security_missing_redaction/issue_security_missing_redaction_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000048",
+      "key": "summary.missing_redaction_count",
+      "message": "Stage 'issue_security_missing_redaction' has summary.missing_redaction_count = 3.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_security_missing_redaction",
+      "value": 3
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_security_prompt_leak/issue_security_prompt_leak_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000049",
+      "key": "summary.unsafe_prompt_leak_count",
+      "message": "Stage 'issue_security_prompt_leak' has summary.unsafe_prompt_leak_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_security_prompt_leak",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_source_ingest_changed_sources/issue_source_ingest_changed_sources_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000050",
+      "key": "summary.changed_source_count",
+      "message": "Stage 'issue_source_ingest_changed_sources' has summary.changed_source_count = 2.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_source_ingest_changed_sources",
+      "value": 2
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_source_ingest_missing_trace/issue_source_ingest_missing_trace_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000051",
+      "key": "summary.missing_source_trace_count",
+      "message": "Stage 'issue_source_ingest_missing_trace' has summary.missing_source_trace_count = 4.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_source_ingest_missing_trace",
+      "value": 4
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_source_ingest_mutation/issue_source_ingest_mutation_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000052",
+      "key": "summary.source_truth_mutation_allowed_count",
+      "message": "Stage 'issue_source_ingest_mutation' has summary.source_truth_mutation_allowed_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_source_ingest_mutation",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_source_ingest_new_sources/issue_source_ingest_new_sources_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000053",
+      "key": "summary.new_source_count",
+      "message": "Stage 'issue_source_ingest_new_sources' has summary.new_source_count = 3.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_source_ingest_new_sources",
+      "value": 3
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_source_ingest_unsafe_package/issue_source_ingest_unsafe_package_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000054",
+      "key": "summary.unsafe_source_package_count",
+      "message": "Stage 'issue_source_ingest_unsafe_package' has summary.unsafe_source_package_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_source_ingest_unsafe_package",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_table_missing_source/issue_table_missing_source_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000055",
+      "key": "summary.missing_source_trace_count",
+      "message": "Stage 'issue_table_missing_source' has summary.missing_source_trace_count = 10.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_table_missing_source",
+      "value": 10
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_table_repair_review/issue_table_repair_review_quality.json",
+      "category": "review_backlog",
+      "issue_id": "itops_issue_000056",
+      "key": "summary.review_required_table_repair_count",
+      "message": "Stage 'issue_table_repair_review' has summary.review_required_table_repair_count = 3.",
+      "recommended_action": "Create or inspect human review tasks for this queue/backlog signal.",
+      "severity": "review",
+      "stage_id": "issue_table_repair_review",
+      "value": 3
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_table_uncited_answer/issue_table_uncited_answer_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000057",
+      "key": "summary.answer_capable_without_citation_count",
+      "message": "Stage 'issue_table_uncited_answer' has summary.answer_capable_without_citation_count = 2.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_table_uncited_answer",
+      "value": 2
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_table_unsafe/issue_table_unsafe_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000058",
+      "key": "summary.unsafe_table_evidence_count",
+      "message": "Stage 'issue_table_unsafe' has summary.unsafe_table_evidence_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_table_unsafe",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_table_unverified_rows/issue_table_unverified_rows_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000059",
+      "key": "summary.candidate_unverified_table_row_count",
+      "message": "Stage 'issue_table_unverified_rows' has summary.candidate_unverified_table_row_count = 14.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_table_unverified_rows",
+      "value": 14
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_trust_claim_proof/issue_trust_claim_proof_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000060",
+      "key": "summary.claim_proof_allowed_count",
+      "message": "Stage 'issue_trust_claim_proof' has summary.claim_proof_allowed_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_trust_claim_proof",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_trust_claim_without_authority/issue_trust_claim_without_authority_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000061",
+      "key": "summary.claim_proof_without_authority_count",
+      "message": "Stage 'issue_trust_claim_without_authority' has summary.claim_proof_without_authority_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_trust_claim_without_authority",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_trust_direct_answer/issue_trust_direct_answer_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000062",
+      "key": "summary.direct_answer_allowed_count",
+      "message": "Stage 'issue_trust_direct_answer' has summary.direct_answer_allowed_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_trust_direct_answer",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_trust_missing_authority/issue_trust_missing_authority_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000063",
+      "key": "summary.missing_authority_count",
+      "message": "Stage 'issue_trust_missing_authority' has summary.missing_authority_count = 2.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_trust_missing_authority",
+      "value": 2
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_visual_direct_answer/issue_visual_direct_answer_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000064",
+      "key": "summary.direct_answer_allowed_visual_count",
+      "message": "Stage 'issue_visual_direct_answer' has summary.direct_answer_allowed_visual_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_visual_direct_answer",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_visual_human_review/issue_visual_human_review_quality.json",
+      "category": "review_backlog",
+      "issue_id": "itops_issue_000065",
+      "key": "summary.records_needing_human_review_count",
+      "message": "Stage 'issue_visual_human_review' has summary.records_needing_human_review_count = 23.",
+      "recommended_action": "Create or inspect human review tasks for this queue/backlog signal.",
+      "severity": "review",
+      "stage_id": "issue_visual_human_review",
+      "value": 23
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_visual_needs_model/issue_visual_needs_model_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000066",
+      "key": "summary.needs_vision_model_count",
+      "message": "Stage 'issue_visual_needs_model' has summary.needs_vision_model_count = 17.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_visual_needs_model",
+      "value": 17
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_visual_unsafe/issue_visual_unsafe_quality.json",
+      "category": "safety_count_nonzero",
+      "issue_id": "itops_issue_000067",
+      "key": "summary.unsafe_visual_evidence_count",
+      "message": "Stage 'issue_visual_unsafe' has summary.unsafe_visual_evidence_count = 1.",
+      "recommended_action": "Treat as a blocker for answer/search publication until the stage is repaired or the count is justified.",
+      "severity": "critical",
+      "stage_id": "issue_visual_unsafe",
+      "value": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_visual_unverified_claim/issue_visual_unverified_claim_quality.json",
+      "category": "operational_warning",
+      "issue_id": "itops_issue_000068",
+      "key": "summary.unverified_visual_claim_count",
+      "message": "Stage 'issue_visual_unverified_claim' has summary.unverified_visual_claim_count = 11.",
+      "recommended_action": "Inspect the operational count; it may indicate changed data, missing artifacts, or work pending.",
+      "severity": "warning",
+      "stage_id": "issue_visual_unverified_claim",
+      "value": 11
+    }
+  ],
+  "issues_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_console_report/trace_net_it_operations_console_v1_issues.jsonl",
+  "manifest_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_console_report/trace_net_it_operations_console_v1_manifest.json",
+  "markdown_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_console_report/trace_net_it_operations_console_v1.md",
+  "output_dir": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_console_report",
+  "quality": {
+    "checks": {
+      "answer_permission_issue_count_zero": false,
+      "critical_issue_count_within_limit": true,
+      "raw_feedback_direct_to_llm_issue_count_zero": false,
+      "source_truth_mutation_issue_count_zero": false,
+      "stage_fail_count_zero": false
+    },
+    "critical_issue_count": 34,
+    "max_critical_issues": 999999,
+    "stage_fail_count": 1,
+    "status": "FAIL"
+  },
+  "quality_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_console_report/trace_net_it_operations_console_v1_quality.json",
+  "quality_status": "FAIL",
+  "report_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_console_report/trace_net_it_operations_console_v1.json",
+  "schema_version": "trace_net_it_operations_console_v1",
+  "stages": [
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/page_element_registry/trace_net_page_element_registry_v1_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 0,
+      "key_counts": {},
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "page_element_registry",
+      "status": "PASS",
+      "summary": {
+        "stage_id": "page_element_registry",
+        "stubbed_for_issue_origin_matrix": true
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/table_understanding/trace_net_table_understanding_v1_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 0,
+      "key_counts": {},
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "table_understanding",
+      "status": "PASS",
+      "summary": {
+        "stage_id": "table_understanding",
+        "stubbed_for_issue_origin_matrix": true
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/table_cell_normalizer/trace_net_table_cell_normalizer_v1_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 0,
+      "key_counts": {},
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "table_cell_normalizer",
+      "status": "PASS",
+      "summary": {
+        "stage_id": "table_cell_normalizer",
+        "stubbed_for_issue_origin_matrix": true
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/figure_chart_understanding/trace_net_figure_chart_understanding_v1_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 0,
+      "key_counts": {},
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "figure_chart_understanding",
+      "status": "PASS",
+      "summary": {
+        "stage_id": "figure_chart_understanding",
+        "stubbed_for_issue_origin_matrix": true
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/visual_ink_layout_calibrator/trace_net_visual_ink_layout_calibrator_v1_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 0,
+      "key_counts": {},
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "visual_ink_layout_calibrator",
+      "status": "PASS",
+      "summary": {
+        "stage_id": "visual_ink_layout_calibrator",
+        "stubbed_for_issue_origin_matrix": true
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/fishnet_retry_engine/trace_net_fishnet_retry_engine_v1_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 0,
+      "key_counts": {},
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "fishnet_retry_engine",
+      "status": "PASS",
+      "summary": {
+        "stage_id": "fishnet_retry_engine",
+        "stubbed_for_issue_origin_matrix": true
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/fishnet_retry_refined/trace_net_fishnet_retry_refinement_v1_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 0,
+      "key_counts": {},
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "fishnet_retry_refined",
+      "status": "PASS",
+      "summary": {
+        "stage_id": "fishnet_retry_refined",
+        "stubbed_for_issue_origin_matrix": true
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/element_graph_attachment/trace_net_element_graph_attachment_plan_v1_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 0,
+      "key_counts": {},
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "element_graph_attachment",
+      "status": "PASS",
+      "summary": {
+        "stage_id": "element_graph_attachment",
+        "stubbed_for_issue_origin_matrix": true
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/graph_writeback_overlay/trace_net_graph_writeback_overlay_v1_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 0,
+      "key_counts": {},
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "graph_writeback_overlay",
+      "status": "PASS",
+      "summary": {
+        "stage_id": "graph_writeback_overlay",
+        "stubbed_for_issue_origin_matrix": true
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/graph_overlay_part_lineage/trace_net_graph_overlay_part_lineage_v1_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 0,
+      "key_counts": {},
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "part_lineage",
+      "status": "PASS",
+      "summary": {
+        "stage_id": "part_lineage",
+        "stubbed_for_issue_origin_matrix": true
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/graph_overlay_part_property_normalizer/trace_net_graph_overlay_part_property_normalizer_v1_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 0,
+      "key_counts": {},
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "part_property_normalizer",
+      "status": "PASS",
+      "summary": {
+        "stage_id": "part_property_normalizer",
+        "stubbed_for_issue_origin_matrix": true
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/leiden_graph_communities/trace_net_leiden_graph_communities_v1_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 0,
+      "key_counts": {},
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "leiden_communities",
+      "status": "PASS",
+      "summary": {
+        "stage_id": "leiden_communities",
+        "stubbed_for_issue_origin_matrix": true
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/feedback_memory/trace_net_feedback_memory_v1_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 0,
+      "key_counts": {},
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "feedback_memory",
+      "status": "PASS",
+      "summary": {
+        "stage_id": "feedback_memory",
+        "stubbed_for_issue_origin_matrix": true
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/community_aware_retrieval_sim/trace_net_community_aware_retrieval_sim_v1_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 0,
+      "key_counts": {},
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "community_aware_retrieval",
+      "status": "PASS",
+      "summary": {
+        "stage_id": "community_aware_retrieval",
+        "stubbed_for_issue_origin_matrix": true
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/incremental_corpus_manifest/trace_net_incremental_corpus_manifest_v1_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 0,
+      "key_counts": {},
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "incremental_manifest",
+      "status": "PASS",
+      "summary": {
+        "stage_id": "incremental_manifest",
+        "stubbed_for_issue_origin_matrix": true
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/incremental_orchestrator/trace_net_incremental_orchestrator_v1_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 0,
+      "key_counts": {},
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "incremental_orchestrator",
+      "status": "PASS",
+      "summary": {
+        "stage_id": "incremental_orchestrator",
+        "stubbed_for_issue_origin_matrix": true
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_boilerplate/issue_answer_boilerplate_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.boilerplate_leak_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_answer_boilerplate",
+      "status": "PASS",
+      "summary": {
+        "boilerplate_leak_count": 1,
+        "origin_category": "answer_gate",
+        "scenario_id": "answer_boilerplate",
+        "source_layer": "snippet_cleaner"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_claim_without_citation/issue_answer_claim_without_citation_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.claim_without_citation_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_answer_claim_without_citation",
+      "status": "PASS",
+      "summary": {
+        "claim_without_citation_count": 1,
+        "origin_category": "answer_gate",
+        "scenario_id": "answer_claim_without_citation",
+        "source_layer": "final_answer_gate"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_local_path_leak/issue_answer_local_path_leak_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.local_path_leak_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_answer_local_path_leak",
+      "status": "PASS",
+      "summary": {
+        "local_path_leak_count": 1,
+        "origin_category": "answer_gate",
+        "scenario_id": "answer_local_path_leak",
+        "source_layer": "snippet_cleaner"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_nonstandard_status/issue_answer_nonstandard_status_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {},
+      "quality_status": "PARTIAL",
+      "review_issue_count": 0,
+      "stage_id": "issue_answer_nonstandard_status",
+      "status": "PARTIAL",
+      "summary": {
+        "origin_category": "answer_gate",
+        "scenario_id": "answer_nonstandard_status",
+        "source_layer": "final_answer_gate"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_raw_bytes/issue_answer_raw_bytes_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.raw_bytes_repr_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_answer_raw_bytes",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "answer_gate",
+        "raw_bytes_repr_count": 1,
+        "scenario_id": "answer_raw_bytes",
+        "source_layer": "snippet_cleaner"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_uncited_claim/issue_answer_uncited_claim_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.uncited_final_claim_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_answer_uncited_claim",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "answer_gate",
+        "scenario_id": "answer_uncited_claim",
+        "source_layer": "citation_draft",
+        "uncited_final_claim_count": 1
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_callout_review/issue_callout_review_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.needs_human_review_callout_count": 5
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 1,
+      "stage_id": "issue_callout_review",
+      "status": "PASS",
+      "summary": {
+        "needs_human_review_callout_count": 5,
+        "origin_category": "visual_diagram",
+        "scenario_id": "callout_review",
+        "source_layer": "callout_visual_part_verifier"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_community_as_proof/issue_community_as_proof_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.community_as_proof_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_community_as_proof",
+      "status": "PASS",
+      "summary": {
+        "community_as_proof_count": 1,
+        "origin_category": "graph_community",
+        "scenario_id": "community_as_proof",
+        "source_layer": "leiden_communities"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_community_missing_membership/issue_community_missing_membership_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.missing_community_membership_count": 5
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_community_missing_membership",
+      "status": "PASS",
+      "summary": {
+        "missing_community_membership_count": 5,
+        "origin_category": "graph_community",
+        "scenario_id": "community_missing_membership",
+        "source_layer": "leiden_communities"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_consensus_review_needed/issue_consensus_review_needed_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.human_review_candidate_count": 4
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 1,
+      "stage_id": "issue_consensus_review_needed",
+      "status": "PASS",
+      "summary": {
+        "human_review_candidate_count": 4,
+        "origin_category": "evidence_consensus",
+        "scenario_id": "consensus_review_needed",
+        "source_layer": "evidence_consensus"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_consensus_unsafe_include/issue_consensus_unsafe_include_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.unsafe_rag_include_records_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_consensus_unsafe_include",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "evidence_consensus",
+        "scenario_id": "consensus_unsafe_include",
+        "source_layer": "evidence_consensus",
+        "unsafe_rag_include_records_count": 1
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_embed_missing_page/issue_embed_missing_page_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.missing_embedding_page_id_count": 4
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_embed_missing_page",
+      "status": "PASS",
+      "summary": {
+        "missing_embedding_page_id_count": 4,
+        "origin_category": "semantic_vector",
+        "scenario_id": "embed_missing_page",
+        "source_layer": "embedding_candidates"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_embed_unsafe_candidate/issue_embed_unsafe_candidate_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.unsafe_embedding_candidate_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_embed_unsafe_candidate",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "semantic_vector",
+        "scenario_id": "embed_unsafe_candidate",
+        "source_layer": "embedding_candidates",
+        "unsafe_embedding_candidate_count": 1
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_feedback_as_proof/issue_feedback_as_proof_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.feedback_as_proof_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_feedback_as_proof",
+      "status": "PASS",
+      "summary": {
+        "feedback_as_proof_count": 1,
+        "origin_category": "feedback_memory",
+        "scenario_id": "feedback_as_proof",
+        "source_layer": "feedback_memory"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_feedback_missing_target/issue_feedback_missing_target_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.missing_feedback_target_count": 3
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_feedback_missing_target",
+      "status": "PASS",
+      "summary": {
+        "missing_feedback_target_count": 3,
+        "origin_category": "feedback_memory",
+        "scenario_id": "feedback_missing_target",
+        "source_layer": "feedback_events"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_feedback_prompt_injection/issue_feedback_prompt_injection_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.prompt_injection_flagged_count": 2
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 1,
+      "stage_id": "issue_feedback_prompt_injection",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "feedback_memory",
+        "prompt_injection_flagged_count": 2,
+        "scenario_id": "feedback_prompt_injection",
+        "source_layer": "feedback_sanitizer"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_feedback_raw_to_llm/issue_feedback_raw_to_llm_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.raw_feedback_direct_to_llm_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_feedback_raw_to_llm",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "feedback_memory",
+        "raw_feedback_direct_to_llm_count": 1,
+        "scenario_id": "feedback_raw_to_llm",
+        "source_layer": "feedback_memory"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_graph_missing_lineage/issue_graph_missing_lineage_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.missing_part_candidate_lineage_count": 8
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_graph_missing_lineage",
+      "status": "PASS",
+      "summary": {
+        "missing_part_candidate_lineage_count": 8,
+        "origin_category": "graph_integrity",
+        "scenario_id": "graph_missing_lineage",
+        "source_layer": "part_lineage"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_graph_orphan_edge/issue_graph_orphan_edge_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.orphan_edge_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_graph_orphan_edge",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "graph_integrity",
+        "orphan_edge_count": 1,
+        "scenario_id": "graph_orphan_edge",
+        "source_layer": "graph_overlay"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_graph_postgres_write/issue_graph_postgres_write_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.postgres_write_attempt_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_graph_postgres_write",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "graph_integrity",
+        "postgres_write_attempt_count": 1,
+        "scenario_id": "graph_postgres_write",
+        "source_layer": "graph_writeback"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_graph_review_cluster/issue_graph_review_cluster_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.review_required_community_count": 3
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 1,
+      "stage_id": "issue_graph_review_cluster",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "graph_integrity",
+        "review_required_community_count": 3,
+        "scenario_id": "graph_review_cluster",
+        "source_layer": "leiden_review"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_incremental_dirty/issue_incremental_dirty_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.dirty_page_count": 5
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_incremental_dirty",
+      "status": "PASS",
+      "summary": {
+        "dirty_page_count": 5,
+        "origin_category": "incremental_ops",
+        "scenario_id": "incremental_dirty",
+        "source_layer": "corpus_manifest"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_incremental_needs_embedding/issue_incremental_needs_embedding_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.needs_embedding_page_count": 5
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_incremental_needs_embedding",
+      "status": "PASS",
+      "summary": {
+        "needs_embedding_page_count": 5,
+        "origin_category": "incremental_ops",
+        "scenario_id": "incremental_needs_embedding",
+        "source_layer": "corpus_manifest"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_incremental_needs_graph/issue_incremental_needs_graph_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.needs_graph_update_page_count": 5
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_incremental_needs_graph",
+      "status": "PASS",
+      "summary": {
+        "needs_graph_update_page_count": 5,
+        "origin_category": "incremental_ops",
+        "scenario_id": "incremental_needs_graph",
+        "source_layer": "corpus_manifest"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_incremental_needs_leiden/issue_incremental_needs_leiden_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.needs_leiden_refresh_page_count": 5
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_incremental_needs_leiden",
+      "status": "PASS",
+      "summary": {
+        "needs_leiden_refresh_page_count": 5,
+        "origin_category": "incremental_ops",
+        "scenario_id": "incremental_needs_leiden",
+        "source_layer": "corpus_manifest"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_llm_claim_proof/issue_llm_claim_proof_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.claim_proof_allowed_llm_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_llm_claim_proof",
+      "status": "PASS",
+      "summary": {
+        "claim_proof_allowed_llm_count": 1,
+        "origin_category": "llm_advisory",
+        "scenario_id": "llm_claim_proof",
+        "source_layer": "answer_composer"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_llm_freeform_allowed/issue_llm_freeform_allowed_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.direct_answer_allowed_llm_freeform_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_llm_freeform_allowed",
+      "status": "PASS",
+      "summary": {
+        "direct_answer_allowed_llm_freeform_count": 1,
+        "origin_category": "llm_advisory",
+        "scenario_id": "llm_freeform_allowed",
+        "source_layer": "answer_composer"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_llm_needs_model/issue_llm_needs_model_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.needs_model_download_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_llm_needs_model",
+      "status": "PASS",
+      "summary": {
+        "needs_model_download_count": 1,
+        "origin_category": "llm_advisory",
+        "scenario_id": "llm_needs_model",
+        "source_layer": "model_runtime"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_ocr_missing_clean_text/issue_ocr_missing_clean_text_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.missing_clean_ocr_text_count": 5
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_ocr_missing_clean_text",
+      "status": "PASS",
+      "summary": {
+        "missing_clean_ocr_text_count": 5,
+        "origin_category": "ocr_text",
+        "scenario_id": "ocr_missing_clean_text",
+        "source_layer": "ocr_cleaning"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_ocr_needs_retry/issue_ocr_needs_retry_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.needs_ocr_page_count": 7
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_ocr_needs_retry",
+      "status": "PASS",
+      "summary": {
+        "needs_ocr_page_count": 7,
+        "origin_category": "ocr_text",
+        "scenario_id": "ocr_needs_retry",
+        "source_layer": "ocr_retry"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_ocr_raw_index_risk/issue_ocr_raw_index_risk_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.unsafe_raw_ocr_index_document_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_ocr_raw_index_risk",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "ocr_text",
+        "scenario_id": "ocr_raw_index_risk",
+        "source_layer": "ocr_indexing",
+        "unsafe_raw_ocr_index_document_count": 1
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_ocr_unsafe_text/issue_ocr_unsafe_text_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.unsafe_ocr_record_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_ocr_unsafe_text",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "ocr_text",
+        "scenario_id": "ocr_unsafe_text",
+        "source_layer": "ocr_extractor",
+        "unsafe_ocr_record_count": 1
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_opensearch_missing_page/issue_opensearch_missing_page_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.missing_index_page_id_count": 4
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_opensearch_missing_page",
+      "status": "PASS",
+      "summary": {
+        "missing_index_page_id_count": 4,
+        "origin_category": "keyword_search",
+        "scenario_id": "opensearch_missing_page",
+        "source_layer": "opensearch_adapter"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_opensearch_needs_docs/issue_opensearch_needs_docs_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.needs_opensearch_page_count": 9
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_opensearch_needs_docs",
+      "status": "PASS",
+      "summary": {
+        "needs_opensearch_page_count": 9,
+        "origin_category": "keyword_search",
+        "scenario_id": "opensearch_needs_docs",
+        "source_layer": "opensearch_incremental"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_opensearch_raw_visual/issue_opensearch_raw_visual_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.unsafe_raw_visual_output_indexed_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_opensearch_raw_visual",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "keyword_search",
+        "scenario_id": "opensearch_raw_visual",
+        "source_layer": "opensearch_adapter",
+        "unsafe_raw_visual_output_indexed_count": 1
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_opensearch_unsafe_doc/issue_opensearch_unsafe_doc_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.unsafe_index_document_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_opensearch_unsafe_doc",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "keyword_search",
+        "scenario_id": "opensearch_unsafe_doc",
+        "source_layer": "opensearch_adapter",
+        "unsafe_index_document_count": 1
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_orchestrator_unsafe_job/issue_orchestrator_unsafe_job_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.unsafe_job_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_orchestrator_unsafe_job",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "incremental_ops",
+        "scenario_id": "orchestrator_unsafe_job",
+        "source_layer": "incremental_orchestrator",
+        "unsafe_job_count": 1
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_page_registry_failed/issue_page_registry_failed_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {},
+      "quality_status": "FAIL",
+      "review_issue_count": 0,
+      "stage_id": "issue_page_registry_failed",
+      "status": "FAIL",
+      "summary": {
+        "origin_category": "page_registry",
+        "scenario_id": "registry_failed_stage",
+        "source_layer": "page_element_registry"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_page_registry_missing_routes/issue_page_registry_missing_routes_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.missing_extraction_route_count": 9
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_page_registry_missing_routes",
+      "status": "PASS",
+      "summary": {
+        "missing_extraction_route_count": 9,
+        "origin_category": "page_registry",
+        "scenario_id": "registry_missing_routes",
+        "source_layer": "extraction_router"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_page_registry_needs_table/issue_page_registry_needs_table_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.needs_table_page_count": 12
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_page_registry_needs_table",
+      "status": "PASS",
+      "summary": {
+        "needs_table_page_count": 12,
+        "origin_category": "page_registry",
+        "scenario_id": "registry_needs_table",
+        "source_layer": "route_planner"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_page_registry_review/issue_page_registry_review_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.needs_human_review_count": 6
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 1,
+      "stage_id": "issue_page_registry_review",
+      "status": "PASS",
+      "summary": {
+        "needs_human_review_count": 6,
+        "origin_category": "page_registry",
+        "scenario_id": "registry_review",
+        "source_layer": "route_planner"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_qdrant_direct_answer/issue_qdrant_direct_answer_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.direct_answer_allowed_payload_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_qdrant_direct_answer",
+      "status": "PASS",
+      "summary": {
+        "direct_answer_allowed_payload_count": 1,
+        "origin_category": "semantic_vector",
+        "scenario_id": "qdrant_direct_answer",
+        "source_layer": "qdrant_payload"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_qdrant_needs_upsert/issue_qdrant_needs_upsert_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.needs_qdrant_page_count": 12
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_qdrant_needs_upsert",
+      "status": "PASS",
+      "summary": {
+        "needs_qdrant_page_count": 12,
+        "origin_category": "semantic_vector",
+        "scenario_id": "qdrant_needs_upsert",
+        "source_layer": "qdrant_incremental"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_retrieval_missing_citation/issue_retrieval_missing_citation_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.missing_citation_count": 6
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_retrieval_missing_citation",
+      "status": "PASS",
+      "summary": {
+        "missing_citation_count": 6,
+        "origin_category": "retrieval",
+        "scenario_id": "retrieval_missing_citation",
+        "source_layer": "hybrid_retrieval"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_retrieval_only_answer/issue_retrieval_only_answer_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.retrieval_only_answer_allowed_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_retrieval_only_answer",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "retrieval",
+        "retrieval_only_answer_allowed_count": 1,
+        "scenario_id": "retrieval_only_answer",
+        "source_layer": "hybrid_retrieval"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_retrieval_unsafe/issue_retrieval_unsafe_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.unsafe_result_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_retrieval_unsafe",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "retrieval",
+        "scenario_id": "retrieval_unsafe",
+        "source_layer": "hybrid_retrieval",
+        "unsafe_result_count": 1
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_security_debug_leak/issue_security_debug_leak_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.unsafe_debug_record_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_security_debug_leak",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "security_leakage",
+        "scenario_id": "security_debug_leak",
+        "source_layer": "debug_boundary",
+        "unsafe_debug_record_count": 1
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_security_missing_redaction/issue_security_missing_redaction_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.missing_redaction_count": 3
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_security_missing_redaction",
+      "status": "PASS",
+      "summary": {
+        "missing_redaction_count": 3,
+        "origin_category": "security_leakage",
+        "scenario_id": "security_missing_redaction",
+        "source_layer": "redaction"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_security_prompt_leak/issue_security_prompt_leak_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.unsafe_prompt_leak_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_security_prompt_leak",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "security_leakage",
+        "scenario_id": "security_prompt_leak",
+        "source_layer": "prompt_boundary",
+        "unsafe_prompt_leak_count": 1
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_source_ingest_changed_sources/issue_source_ingest_changed_sources_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.changed_source_count": 2
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_source_ingest_changed_sources",
+      "status": "PASS",
+      "summary": {
+        "changed_source_count": 2,
+        "origin_category": "source_ingest",
+        "scenario_id": "src_changed_arrivals",
+        "source_layer": "incremental_source_scan"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_source_ingest_missing_trace/issue_source_ingest_missing_trace_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.missing_source_trace_count": 4
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_source_ingest_missing_trace",
+      "status": "PASS",
+      "summary": {
+        "missing_source_trace_count": 4,
+        "origin_category": "source_ingest",
+        "scenario_id": "src_missing_trace",
+        "source_layer": "source_links"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_source_ingest_mutation/issue_source_ingest_mutation_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.source_truth_mutation_allowed_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_source_ingest_mutation",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "source_ingest",
+        "scenario_id": "src_mutation_risk",
+        "source_layer": "source_package",
+        "source_truth_mutation_allowed_count": 1
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_source_ingest_new_sources/issue_source_ingest_new_sources_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.new_source_count": 3
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_source_ingest_new_sources",
+      "status": "PASS",
+      "summary": {
+        "new_source_count": 3,
+        "origin_category": "source_ingest",
+        "scenario_id": "src_new_arrivals",
+        "source_layer": "incremental_source_scan"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_source_ingest_unsafe_package/issue_source_ingest_unsafe_package_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.unsafe_source_package_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_source_ingest_unsafe_package",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "source_ingest",
+        "scenario_id": "src_unsafe_package",
+        "source_layer": "source_package",
+        "unsafe_source_package_count": 1
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_table_missing_source/issue_table_missing_source_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.missing_source_trace_count": 10
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_table_missing_source",
+      "status": "PASS",
+      "summary": {
+        "missing_source_trace_count": 10,
+        "origin_category": "table_extraction",
+        "scenario_id": "table_missing_source",
+        "source_layer": "table_source_trace"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_table_repair_review/issue_table_repair_review_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.review_required_table_repair_count": 3
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 1,
+      "stage_id": "issue_table_repair_review",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "table_extraction",
+        "review_required_table_repair_count": 3,
+        "scenario_id": "table_repair_review",
+        "source_layer": "table_cell_normalizer"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_table_uncited_answer/issue_table_uncited_answer_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.answer_capable_without_citation_count": 2
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_table_uncited_answer",
+      "status": "PASS",
+      "summary": {
+        "answer_capable_without_citation_count": 2,
+        "origin_category": "table_extraction",
+        "scenario_id": "table_uncited_answer",
+        "source_layer": "table_answer_support"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_table_unsafe/issue_table_unsafe_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.unsafe_table_evidence_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_table_unsafe",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "table_extraction",
+        "scenario_id": "table_unsafe_evidence",
+        "source_layer": "table_understanding",
+        "unsafe_table_evidence_count": 1
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_table_unverified_rows/issue_table_unverified_rows_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.candidate_unverified_table_row_count": 14
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_table_unverified_rows",
+      "status": "PASS",
+      "summary": {
+        "candidate_unverified_table_row_count": 14,
+        "origin_category": "table_extraction",
+        "scenario_id": "table_unverified_rows",
+        "source_layer": "table_cells"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_trust_claim_proof/issue_trust_claim_proof_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.claim_proof_allowed_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_trust_claim_proof",
+      "status": "PASS",
+      "summary": {
+        "claim_proof_allowed_count": 1,
+        "origin_category": "trust_authority",
+        "scenario_id": "trust_claim_proof",
+        "source_layer": "trust_authority"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_trust_claim_without_authority/issue_trust_claim_without_authority_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.claim_proof_without_authority_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_trust_claim_without_authority",
+      "status": "PASS",
+      "summary": {
+        "claim_proof_without_authority_count": 1,
+        "origin_category": "trust_authority",
+        "scenario_id": "trust_claim_without_authority",
+        "source_layer": "authority_gate"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_trust_direct_answer/issue_trust_direct_answer_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.direct_answer_allowed_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_trust_direct_answer",
+      "status": "PASS",
+      "summary": {
+        "direct_answer_allowed_count": 1,
+        "origin_category": "trust_authority",
+        "scenario_id": "trust_direct_answer",
+        "source_layer": "trust_authority"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_trust_missing_authority/issue_trust_missing_authority_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.missing_authority_count": 2
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_trust_missing_authority",
+      "status": "PASS",
+      "summary": {
+        "missing_authority_count": 2,
+        "origin_category": "trust_authority",
+        "scenario_id": "trust_missing_authority",
+        "source_layer": "authority_gate"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_visual_direct_answer/issue_visual_direct_answer_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.direct_answer_allowed_visual_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_visual_direct_answer",
+      "status": "PASS",
+      "summary": {
+        "direct_answer_allowed_visual_count": 1,
+        "origin_category": "visual_diagram",
+        "scenario_id": "visual_direct_answer",
+        "source_layer": "visual_authority"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_visual_human_review/issue_visual_human_review_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.records_needing_human_review_count": 23
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 1,
+      "stage_id": "issue_visual_human_review",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "visual_diagram",
+        "records_needing_human_review_count": 23,
+        "scenario_id": "visual_human_review",
+        "source_layer": "diagram_review"
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_visual_needs_model/issue_visual_needs_model_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.needs_vision_model_count": 17
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_visual_needs_model",
+      "status": "PASS",
+      "summary": {
+        "needs_vision_model_count": 17,
+        "origin_category": "visual_diagram",
+        "scenario_id": "visual_needs_model",
+        "source_layer": "vision_model_pilot"
+      },
+      "warning_issue_count": 1
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_visual_unsafe/issue_visual_unsafe_quality.json",
+      "critical_issue_count": 1,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.unsafe_visual_evidence_count": 1
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_visual_unsafe",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "visual_diagram",
+        "scenario_id": "visual_unsafe",
+        "source_layer": "figure_chart_understanding",
+        "unsafe_visual_evidence_count": 1
+      },
+      "warning_issue_count": 0
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_visual_unverified_claim/issue_visual_unverified_claim_quality.json",
+      "critical_issue_count": 0,
+      "exists": true,
+      "issue_count": 1,
+      "key_counts": {
+        "summary.unverified_visual_claim_count": 11
+      },
+      "quality_status": "PASS",
+      "review_issue_count": 0,
+      "stage_id": "issue_visual_unverified_claim",
+      "status": "PASS",
+      "summary": {
+        "origin_category": "visual_diagram",
+        "scenario_id": "visual_unverified_claim",
+        "source_layer": "callout_detection",
+        "unverified_visual_claim_count": 11
+      },
+      "warning_issue_count": 1
+    }
+  ],
+  "stages_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_console_report/trace_net_it_operations_console_v1_stages.jsonl",
+  "status": "IT_OPERATIONS_CONSOLE_BUILT",
+  "summary": {
+    "answer_permission_issue_count": 6,
+    "critical_issue_count": 34,
+    "generated_at": "2026-06-10T15:25:34+00:00",
+    "issue_count": 68,
+    "missing_expected_stage_count": 0,
+    "present_stage_record_count": 84,
+    "raw_feedback_direct_to_llm_issue_count": 1,
+    "review_issue_count": 7,
+    "schema_version": "trace_net_it_operations_console_v1",
+    "source_truth_mutation_issue_count": 1,
+    "stage_fail_count": 1,
+    "stage_pass_count": 82,
+    "stage_record_count": 84,
+    "stage_unknown_count": 0,
+    "status": "FAIL",
+    "warning_issue_count": 27
+  },
+  "summary_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_console_report/trace_net_it_operations_console_v1_summary.json",
+  "trace_net_root": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root"
+}

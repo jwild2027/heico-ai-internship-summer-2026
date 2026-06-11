@@ -1,0 +1,34 @@
+{
+  "checks": {
+    "all_scenarios_detected_if_required": true,
+    "critical_scenarios_present": true,
+    "origin_category_count_meets_minimum": true,
+    "review_scenarios_present": true,
+    "scenario_count_meets_minimum": true,
+    "warning_scenarios_present": true
+  },
+  "min_origin_categories": 15,
+  "min_scenarios": 60,
+  "report_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/trace_net_it_issue_origin_test_matrix_v1.json",
+  "require_all_scenarios_detected": true,
+  "schema_version": "trace_net_it_issue_origin_test_matrix_v1_quality",
+  "status": "PASS",
+  "summary": {
+    "critical_scenario_count": 34,
+    "detected_scenario_count": 68,
+    "origin_category_count": 17,
+    "review_scenario_count": 7,
+    "scenario_count": 68,
+    "schema_version": "trace_net_it_issue_origin_test_matrix_v1",
+    "status": "PASS",
+    "synthetic_console_critical_issue_count": 34,
+    "synthetic_console_issue_count": 68,
+    "synthetic_console_quality_status": "FAIL",
+    "synthetic_console_report_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_console_report/trace_net_it_operations_console_v1.json",
+    "synthetic_console_review_issue_count": 7,
+    "synthetic_console_warning_issue_count": 27,
+    "synthetic_trace_net_root": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root",
+    "undetected_scenario_count": 0,
+    "warning_scenario_count": 27
+  }
+}

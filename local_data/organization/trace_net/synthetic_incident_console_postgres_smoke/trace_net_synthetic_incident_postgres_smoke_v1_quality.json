@@ -1,0 +1,22 @@
+{
+  "checks": {
+    "affects_real_pipeline_zero": true,
+    "created_incidents_found_in_postgres": true,
+    "inserted_incident_count_min": true,
+    "postgres_table_present": true,
+    "raw_feedback_direct_to_llm_zero": true,
+    "source_truth_mutation_allowed_zero": true,
+    "status_is_smoke_ran": true,
+    "storage_mode_postgres": true,
+    "unsafe_incident_count_zero": true
+  },
+  "created_incident_found_count": 1,
+  "inserted_incident_count": 1,
+  "postgres_table": "trace_net_synthetic_incident_events",
+  "raw_feedback_direct_to_llm_count": 0,
+  "schema_version": "trace_net_synthetic_incident_postgres_smoke_v1_quality",
+  "source_truth_mutation_allowed_count": 0,
+  "status": "PASS",
+  "storage_mode": "postgres",
+  "unsafe_incident_count": 0
+}

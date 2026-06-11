@@ -1,0 +1,42 @@
+[
+  {
+    "does_current_code_do_it": "Yes",
+    "status": "Registry represents 509 page(s); source trace pages: 509.",
+    "trace_net_step": "Page enters system"
+  },
+  {
+    "does_current_code_do_it": "Yes",
+    "status": "Registry emits deterministic traits for 509 page(s). Trait families include OCR, source, table/list, figure/chart, part/catalog, context, and revision/front-matter signals.",
+    "trace_net_step": "Classify page traits"
+  },
+  {
+    "does_current_code_do_it": "Yes",
+    "status": "Registry emits recommended extraction routes for 509 page(s), including source, OCR, part, table, visual, context, consensus, trust, and graph-attachment routes.",
+    "trace_net_step": "Choose extraction route"
+  },
+  {
+    "does_current_code_do_it": "Yes for current extractor outputs; registry plans next routes",
+    "status": "Existing artifacts provide OCR/source/part/table/visual/context outputs. Registry does not rerun extractors; it records which existing outputs are present and which route should run next.",
+    "trace_net_step": "Run specialized extractors"
+  },
+  {
+    "does_current_code_do_it": "Planner implemented; universal executor future",
+    "status": "Registry emits fishnet retry plans for 509 page(s). It is plan-only and does not mutate source truth.",
+    "trace_net_step": "Retry failures through fishnet layers"
+  },
+  {
+    "does_current_code_do_it": "Yes",
+    "status": "Registry emits comparison targets for 509 page(s), including OCR, catalog/part graph, source trace, citations, table/visual signals, RAG eligibility, and trust authority where relevant.",
+    "trace_net_step": "Compare outputs against OCR/catalog/graph"
+  },
+  {
+    "does_current_code_do_it": "Yes",
+    "status": "Registry attaches trust assignment policy to 509 page(s): evidence_consensus_then_trust_authority_gate.",
+    "trace_net_step": "Assign trust tier"
+  },
+  {
+    "does_current_code_do_it": "Plan generated; Postgres writeback remains explicit",
+    "status": "Registry emits graph attachment plans for 509 page(s). Plans are read-only and prepare Page -> Element/Evidence/Citation relationships.",
+    "trace_net_step": "Attach clean evidence to graph"
+  }
+]

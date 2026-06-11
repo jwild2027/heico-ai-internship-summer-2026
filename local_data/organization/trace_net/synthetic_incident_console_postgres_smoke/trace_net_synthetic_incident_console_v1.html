@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TRACE-Net Synthetic Incident Console</title>
+  <style>
+    :root { font-family: Inter, Segoe UI, Arial, sans-serif; color: #172033; background: #f5f7fb; }
+    body { margin: 0; }
+    header { background: #101828; color: white; padding: 24px 32px; }
+    header h1 { margin: 0 0 6px; font-size: 26px; }
+    header p { margin: 0; color: #d0d5dd; }
+    main { padding: 24px 32px 60px; max-width: 1440px; margin: 0 auto; }
+    .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 22px; }
+    .metric { background: white; border: 1px solid #e4e7ec; border-radius: 14px; padding: 16px; box-shadow: 0 1px 2px #0000000d; }
+    .metric .label { color: #667085; font-size: 13px; }
+    .metric .value { font-size: 28px; font-weight: 800; margin-top: 6px; }
+    .panel { background: white; border: 1px solid #e4e7ec; border-radius: 14px; padding: 18px; margin-bottom: 20px; box-shadow: 0 1px 2px #0000000d; }
+    .panel h2 { margin: 0 0 14px; font-size: 18px; }
+    .buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+    button { cursor: pointer; border: 0; border-radius: 10px; padding: 10px 12px; font-weight: 700; }
+    .origin-btn { background: #e8f0ff; color: #1d4ed8; }
+    .origin-btn:hover { background: #dbeafe; }
+    .danger { background: #fee4e2; color: #b42318; }
+    .secondary { background: #f2f4f7; color: #344054; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+    input, select, textarea { width: 100%; box-sizing: border-box; border: 1px solid #d0d5dd; border-radius: 10px; padding: 10px; font: inherit; }
+    textarea { min-height: 80px; resize: vertical; }
+    .alerts { display: grid; gap: 10px; }
+    .alert { border: 1px solid #e4e7ec; border-left-width: 8px; border-radius: 12px; padding: 14px; background: white; }
+    .alert.critical { border-left-color: #d92d20; }
+    .alert.warning { border-left-color: #f79009; }
+    .alert.review { border-left-color: #7a5af8; }
+    .alert.info { border-left-color: #2e90fa; }
+    .alert .top { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+    .badge { display: inline-block; padding: 4px 8px; border-radius: 999px; font-size: 12px; font-weight: 800; text-transform: uppercase; }
+    .badge.critical { background: #fee4e2; color: #b42318; }
+    .badge.warning { background: #fef0c7; color: #b54708; }
+    .badge.review { background: #ebe9fe; color: #5925dc; }
+    .badge.info { background: #d1e9ff; color: #175cd3; }
+    .muted { color: #667085; font-size: 13px; }
+    .safety { color: #027a48; font-weight: 700; }
+    @media (max-width: 900px) { .grid, .form-row { grid-template-columns: 1fr; } main { padding: 18px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TRACE-Net Synthetic Incident Console</h1>
+    <p>Local synthetic alert testing. No Postgres, Qdrant, OpenSearch, or source-truth writes.</p>
+  </header>
+  <main>
+    <section class="grid" id="metrics"></section>
+    <section class="panel">
+      <h2>Create synthetic incident</h2>
+      <p class="muted">Buttons create fake incidents for IT alert testing only. They do not affect the real TRACE-Net pipeline.</p>
+      <div style="margin-bottom:12px; display:flex; gap:8px; flex-wrap:wrap;">
+        <button id="createRandom" class="danger">Create random incident</button>
+        <span class="muted" style="align-self:center;">Random incidents use safe synthetic templates across TRACE-Net issue origins.</span>
+      </div>
+      <div class="buttons"><button class="origin-btn" data-origin="source_ingest" data-severity="warning">Source ingest</button>
+<button class="origin-btn" data-origin="ocr_text" data-severity="warning">OCR text</button>
+<button class="origin-btn" data-origin="page_registry" data-severity="review">Page registry</button>
+<button class="origin-btn" data-origin="table_extraction" data-severity="warning">Table extraction</button>
+<button class="origin-btn" data-origin="visual_diagram" data-severity="review">Visual / diagram</button>
+<button class="origin-btn" data-origin="graph_integrity" data-severity="critical">Graph integrity</button>
+<button class="origin-btn" data-origin="semantic_vector" data-severity="warning">Semantic vector / Qdrant</button>
+<button class="origin-btn" data-origin="keyword_search" data-severity="warning">Keyword / OpenSearch</button>
+<button class="origin-btn" data-origin="retrieval" data-severity="warning">Retrieval</button>
+<button class="origin-btn" data-origin="answer_gate" data-severity="critical">Answer gate</button>
+<button class="origin-btn" data-origin="feedback_memory" data-severity="review">Feedback memory</button>
+<button class="origin-btn" data-origin="incremental_ops" data-severity="warning">Incremental ops</button>
+<button class="origin-btn" data-origin="llm_advisory" data-severity="warning">LLM advisory</button>
+<button class="origin-btn" data-origin="security_leakage" data-severity="critical">Security / leakage</button>
+<button class="origin-btn" data-origin="trust_authority" data-severity="critical">Trust authority</button>
+<button class="origin-btn" data-origin="community_graph" data-severity="review">Graph community</button>
+<button class="origin-btn" data-origin="human_review" data-severity="review">Human review</button></div>
+    </section>
+    <section class="panel">
+      <h2>Custom synthetic incident</h2>
+      <div class="form-row">
+        <select id="origin"><option value="source_ingest">Source ingest</option>
+<option value="ocr_text">OCR text</option>
+<option value="page_registry">Page registry</option>
+<option value="table_extraction">Table extraction</option>
+<option value="visual_diagram">Visual / diagram</option>
+<option value="graph_integrity">Graph integrity</option>
+<option value="semantic_vector">Semantic vector / Qdrant</option>
+<option value="keyword_search">Keyword / OpenSearch</option>
+<option value="retrieval">Retrieval</option>
+<option value="answer_gate">Answer gate</option>
+<option value="feedback_memory">Feedback memory</option>
+<option value="incremental_ops">Incremental ops</option>
+<option value="llm_advisory">LLM advisory</option>
+<option value="security_leakage">Security / leakage</option>
+<option value="trust_authority">Trust authority</option>
+<option value="community_graph">Graph community</option>
+<option value="human_review">Human review</option></select>
+        <select id="severity"><option>critical</option><option>warning</option><option selected>review</option><option>info</option></select>
+        <input id="target" placeholder="target id, optional" />
+      </div>
+      <textarea id="message" placeholder="Short incident message"></textarea>
+      <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+        <button id="createCustom" class="origin-btn">Create custom incident</button>
+        <button id="refresh" class="secondary">Refresh</button>
+        <button id="clear" class="danger">Clear synthetic incidents</button>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>Organized alerts</h2>
+      <div id="alerts" class="alerts"></div>
+    </section>
+  </main>
+<script>
+async function api(path, options={}) {
+  const response = await fetch(path, {headers: {'Content-Type': 'application/json'}, ...options});
+  if (!response.ok) throw new Error(await response.text());
+  return await response.json();
+}
+function metric(label, value) { return `<div class="metric"><div class="label">${label}</div><div class="value">${value}</div></div>`; }
+function render(data) {
+  const s = data.summary || {};
+  document.getElementById('metrics').innerHTML = [
+    metric('Incidents', s.incident_count || 0),
+    metric('Critical', s.critical_incident_count || 0),
+    metric('Warnings', s.warning_incident_count || 0),
+    metric('Review', s.review_incident_count || 0),
+  ].join('');
+  const alerts = data.alerts || [];
+  if (!alerts.length) {
+    document.getElementById('alerts').innerHTML = '<p class="muted">No synthetic alerts yet.</p>';
+    return;
+  }
+  const ordered = [...alerts].sort((a,b) => ({critical:0, warning:1, review:2, info:3}[a.severity] ?? 9) - ({critical:0, warning:1, review:2, info:3}[b.severity] ?? 9));
+  document.getElementById('alerts').innerHTML = ordered.map(a => `
+    <article class="alert ${a.severity}">
+      <div class="top"><span class="badge ${a.severity}">${a.severity}</span><span class="muted">${a.created_at}</span></div>
+      <h3>${a.origin_label || a.origin_category}</h3>
+      <p>${a.message}</p>
+      <p><strong>Target:</strong> ${a.target_type} / ${a.target_id}</p>
+      <p><strong>Action:</strong> ${a.recommended_action}</p>
+      <p class="safety">Synthetic only. Cannot answer, prove claims, or mutate source truth.</p>
+    </article>`).join('');
+}
+async function refresh() { render(await api('/api/incidents')); }
+async function createIncident(origin, severity, message, target) {
+  await api('/api/incidents', {method:'POST', body: JSON.stringify({origin_category: origin, severity, message, target_id: target})});
+  await refresh();
+}
+document.querySelectorAll('.origin-btn[data-origin]').forEach(btn => btn.addEventListener('click', () => createIncident(btn.dataset.origin, btn.dataset.severity)));
+document.getElementById('createRandom').addEventListener('click', async () => { await api('/api/incidents/random', {method:'POST'}); await refresh(); });
+document.getElementById('createCustom').addEventListener('click', () => createIncident(
+  document.getElementById('origin').value,
+  document.getElementById('severity').value,
+  document.getElementById('message').value,
+  document.getElementById('target').value
+));
+document.getElementById('refresh').addEventListener('click', refresh);
+document.getElementById('clear').addEventListener('click', async () => { await api('/api/incidents/clear', {method:'POST'}); await refresh(); });
+refresh().catch(err => { document.getElementById('alerts').innerHTML = `<pre>${err}</pre>`; });
+</script>
+</body>
+</html>

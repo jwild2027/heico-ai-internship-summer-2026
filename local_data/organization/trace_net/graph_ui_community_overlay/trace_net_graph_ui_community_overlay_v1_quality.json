@@ -1,0 +1,166 @@
+{
+  "checks": [
+    {
+      "actual": 509,
+      "expected": 509,
+      "name": "page_count",
+      "passed": true
+    },
+    {
+      "actual": 32719,
+      "expected": ">=1000",
+      "name": "min_overlay_nodes",
+      "passed": true
+    },
+    {
+      "actual": 68468,
+      "expected": ">=1000",
+      "name": "min_overlay_edges",
+      "passed": true
+    },
+    {
+      "actual": 229,
+      "expected": ">=229",
+      "name": "min_communities",
+      "passed": true
+    },
+    {
+      "actual": 509,
+      "expected": ">=509",
+      "name": "min_page_nodes_with_community",
+      "passed": true
+    },
+    {
+      "actual": 301,
+      "expected": ">=301",
+      "name": "min_part_candidate_nodes_with_community",
+      "passed": true
+    },
+    {
+      "actual": 3090,
+      "expected": ">=3090",
+      "name": "min_table_cell_nodes_with_community",
+      "passed": true
+    },
+    {
+      "actual": 3,
+      "expected": ">=1",
+      "name": "min_feedback_memory_records_linked",
+      "passed": true
+    },
+    {
+      "actual": 40,
+      "expected": ">=1",
+      "name": "min_community_aware_results_linked",
+      "passed": true
+    },
+    {
+      "actual": 386,
+      "expected": ">=1",
+      "name": "min_nomenclature_edges_preserved",
+      "passed": true
+    },
+    {
+      "actual": 50,
+      "expected": ">=50",
+      "name": "min_context_v2_edges_preserved",
+      "passed": true
+    },
+    {
+      "actual": 14,
+      "expected": ">=14",
+      "name": "min_confirmed_blank_preserve_source_trace",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "orphan_edge_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "orphan_community_edge_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "community_as_proof_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "feedback_as_proof_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "retrieval_only_answer_allowed_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "postgres_write_attempt_count_zero",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "source_overlay_quality_pass",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "leiden_quality_pass",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "feedback_quality_pass",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "community_aware_quality_pass",
+      "passed": true
+    }
+  ],
+  "community_as_proof_count": 0,
+  "community_aware_result_node_count": 40,
+  "community_aware_results_linked_count": 40,
+  "community_count": 229,
+  "confirmed_blank_pages_preserve_source_trace_count": 14,
+  "created_at": "2026-06-09T19:59:32.116173+00:00",
+  "feedback_as_proof_count": 0,
+  "feedback_memory_record_count": 4,
+  "feedback_memory_records_linked_count": 3,
+  "has_context_v2_edges_preserved": 50,
+  "has_nomenclature_edges_preserved": 386,
+  "orphan_community_edge_count": 0,
+  "orphan_edge_count": 0,
+  "overlay_edge_count": 68468,
+  "overlay_node_count": 32719,
+  "page_count": 509,
+  "page_nodes_with_community_count": 509,
+  "part_candidate_nodes_with_community_count": 301,
+  "postgres_write_attempt_count": 0,
+  "retrieval_only_answer_allowed_count": 0,
+  "schema_version": "trace_net_graph_ui_community_overlay_v1_quality",
+  "source_truth_mutation_allowed_count": 0,
+  "status": "PASS",
+  "table_cell_nodes_with_community_count": 3090
+}

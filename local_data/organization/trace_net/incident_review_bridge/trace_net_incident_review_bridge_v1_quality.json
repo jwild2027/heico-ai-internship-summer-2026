@@ -1,0 +1,69 @@
+{
+  "checks": [
+    {
+      "expected": ">= 1",
+      "name": "incident_count_min",
+      "passed": true,
+      "value": 1
+    },
+    {
+      "expected": ">= 1",
+      "name": "review_task_count_min",
+      "passed": true,
+      "value": 1
+    },
+    {
+      "expected": ">= 0",
+      "name": "high_priority_review_task_count_min",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "unsafe_review_task_count_zero",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "review_task_can_answer_directly_count_zero",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "review_task_can_prove_claims_count_zero",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_count_zero",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "raw_feedback_direct_to_llm_count_zero",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "missing_target_count_zero",
+      "passed": true,
+      "value": 0
+    }
+  ],
+  "critical_priority_review_task_count": 0,
+  "high_priority_review_task_count": 0,
+  "incident_count": 1,
+  "raw_feedback_direct_to_llm_count": 0,
+  "review_task_can_answer_directly_count": 0,
+  "review_task_can_prove_claims_count": 0,
+  "review_task_count": 1,
+  "schema_version": "trace_net_incident_review_bridge_v1",
+  "source_truth_mutation_allowed_count": 0,
+  "status": "PASS",
+  "unsafe_review_task_count": 0
+}

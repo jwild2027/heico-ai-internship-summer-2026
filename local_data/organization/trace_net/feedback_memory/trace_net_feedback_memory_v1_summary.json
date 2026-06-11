@@ -1,0 +1,36 @@
+{
+  "authority_counts": {
+    "feedback_advisory_only": 4
+  },
+  "feedback_can_answer_directly_count": 0,
+  "feedback_can_mutate_source_truth_count": 0,
+  "feedback_can_prove_claims_count": 0,
+  "feedback_event_count": 4,
+  "llm_reference_allowed_count": 3,
+  "local_path_flagged_count": 0,
+  "memory_record_count": 4,
+  "memory_signal_counts": {
+    "boost_answer_for_similar_queries": 1,
+    "boost_community_for_similar_queries": 1,
+    "demote_page_for_similar_queries": 1,
+    "quarantine_feedback_for_review": 1
+  },
+  "memory_without_sanitized_payload_count": 0,
+  "memory_without_summary_count": 0,
+  "missing_rating_count": 0,
+  "missing_target_count": 0,
+  "pii_or_secret_flagged_count": 0,
+  "prompt_injection_flagged_count": 1,
+  "rating_counts": {
+    "-1": 2,
+    "1": 2
+  },
+  "raw_feedback_direct_to_llm_count": 0,
+  "retrieval_advisory_allowed_count": 4,
+  "schema_version": "trace_net_feedback_memory_v1",
+  "target_type_counts": {
+    "answer": 2,
+    "citation": 1,
+    "community": 1
+  }
+}
