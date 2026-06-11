@@ -1,0 +1,397 @@
+{
+  "decision_records": [
+    {
+      "actor_id_hash": "actor__2fcb84cc2134",
+      "actor_role": "reviewer",
+      "authority": "human_review_decision_advisory_only",
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [],
+      "comment_text_redacted": "Rejecting this feedback as instruction-manipulation. Do not use as LLM context.",
+      "comment_was_redacted": false,
+      "community_ids": [],
+      "created_at": "2026-06-10T17:51:03+00:00",
+      "decision_effect": "review_rejected_advisory_pending_policy_update",
+      "decision_type": "reject",
+      "final_answer_allowed": false,
+      "invalid_decision_type": false,
+      "invalid_target_type": false,
+      "llm_reference_allowed": true,
+      "missing_actor": false,
+      "missing_target": false,
+      "missing_timestamp": false,
+      "page_ids": [],
+      "part_numbers": [],
+      "promotion_candidate": false,
+      "promotion_status": "not_a_promotion_candidate",
+      "prompt_injection_flagged": false,
+      "raw_feedback_direct_to_llm": false,
+      "record_type": "human_review_decision",
+      "requires_authority_gate": true,
+      "requires_citation": true,
+      "requires_promotion_gate": false,
+      "requires_source_resolution": true,
+      "retrieval_advisory_allowed": true,
+      "review_decision_id": "hrdec__5abea3be0fe3b912",
+      "review_reference_allowed": true,
+      "reviewer_present": true,
+      "safety_bucket": "human_review_decision_advisory",
+      "sanitized_decision_summary": "Reviewer decision 'reject' recorded for feedback_memory:suspicious_feedback_event. Comment: Rejecting this feedback as instruction-manipulation. Do not use as LLM context.",
+      "schema_version": "trace_net_human_review_decision_recorder_v1",
+      "source_review_task_ids": [],
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "target_id": "suspicious_feedback_event",
+      "target_type": "feedback_memory",
+      "triage_card_id": "",
+      "unsafe_decision": false,
+      "unsafe_decision_reasons": []
+    },
+    {
+      "actor_id_hash": "actor__2fcb84cc2134",
+      "actor_role": "reviewer",
+      "authority": "human_review_decision_advisory_only",
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:table_structured:t_p_120_1176_p000003:71e826e3f3"
+      ],
+      "comment_text_redacted": "Needs catalog and source-page verification before promotion.",
+      "comment_was_redacted": false,
+      "community_ids": [],
+      "created_at": "2026-06-10T17:53:21+00:00",
+      "decision_effect": "hold_for_additional_review",
+      "decision_type": "needs_more_review",
+      "final_answer_allowed": false,
+      "invalid_decision_type": false,
+      "invalid_target_type": false,
+      "llm_reference_allowed": true,
+      "missing_actor": false,
+      "missing_target": false,
+      "missing_timestamp": false,
+      "page_ids": [
+        "t_p_120_1176_p000003"
+      ],
+      "part_numbers": [
+        "120-45851-501",
+        "120-45851-503",
+        "120-46137-001",
+        "120-46137-501",
+        "120-50645-007",
+        "120-50645-009",
+        "120-50645-015",
+        "120-50645-017",
+        "120-50645-023",
+        "120-50645-025",
+        "120-50645-035",
+        "120-50645-037",
+        "120-50648-001",
+        "120-50648-003",
+        "120-50648-009",
+        "120-50648-011",
+        "120-50648-031",
+        "120-50648-033",
+        "120-50648-531",
+        "120-50648-533"
+      ],
+      "promotion_candidate": false,
+      "promotion_status": "not_a_promotion_candidate",
+      "prompt_injection_flagged": false,
+      "raw_feedback_direct_to_llm": false,
+      "record_type": "human_review_decision",
+      "requires_authority_gate": true,
+      "requires_citation": true,
+      "requires_promotion_gate": false,
+      "requires_source_resolution": true,
+      "retrieval_advisory_allowed": true,
+      "review_decision_id": "hrdec__c4540826db3cd45c",
+      "review_reference_allowed": true,
+      "reviewer_present": true,
+      "safety_bucket": "human_review_decision_advisory",
+      "sanitized_decision_summary": "Reviewer decision 'needs_more_review' recorded for triage_card:triage_fa81bb02f27df586. Pages: t_p_120_1176_p000003. Citations: 1 linked. Parts: 120-45851-501, 120-45851-503, 120-46137-001, 120-46137-501, 120-50645-007. Comment: Needs catalog and source-page verification before promotion.",
+      "schema_version": "trace_net_human_review_decision_recorder_v1",
+      "source_review_task_ids": [
+        "review_0393a4c33a0064bb",
+        "review_24e26c09a5aac3a4",
+        "review_670d3a09131aa00f",
+        "review_9850b6afb63b19e7",
+        "review_bdb46a6b3188e11e",
+        "review_fd6c1dd0de0f037f"
+      ],
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "target_id": "triage_fa81bb02f27df586",
+      "target_type": "triage_card",
+      "triage_card_id": "triage_fa81bb02f27df586",
+      "unsafe_decision": false,
+      "unsafe_decision_reasons": []
+    }
+  ],
+  "decisions_path": "local_data/organization/trace_net/human_review_decisions/trace_net_human_review_decisions_v1_events.jsonl",
+  "manifest_path": "local_data\\organization\\trace_net\\human_review_decisions\\trace_net_human_review_decisions_v1_manifest.json",
+  "quality": {
+    "checks": [
+      {
+        "expected": ">= 2",
+        "name": "min_review_decisions",
+        "passed": true,
+        "severity": "critical",
+        "value": 2
+      },
+      {
+        "expected": 0,
+        "name": "invalid_decision_type_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": 0,
+        "name": "invalid_target_type_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": 0,
+        "name": "missing_actor_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": 0,
+        "name": "missing_target_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": 0,
+        "name": "missing_timestamp_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": 0,
+        "name": "unsafe_decision_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": 0,
+        "name": "raw_feedback_direct_to_llm_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": 0,
+        "name": "decision_can_answer_directly_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": 0,
+        "name": "decision_can_prove_claims_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": 0,
+        "name": "decision_can_mutate_source_truth_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": 0,
+        "name": "source_truth_mutation_allowed_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": 0,
+        "name": "source_truth_mutations_performed_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": 0,
+        "name": "final_answer_allowed_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": "PASS",
+        "name": "source_triage_quality_pass",
+        "passed": true,
+        "severity": "critical",
+        "value": "PASS"
+      }
+    ],
+    "schema_version": "trace_net_human_review_decision_recorder_v1_quality",
+    "status": "PASS",
+    "summary": {
+      "actor_role_counts": {
+        "reviewer": 2
+      },
+      "affected_citation_count": 1,
+      "affected_citation_ids": [
+        "cite:table_structured:t_p_120_1176_p000003:71e826e3f3"
+      ],
+      "affected_community_count": 0,
+      "affected_community_ids": [],
+      "affected_page_count": 1,
+      "affected_page_ids": [
+        "t_p_120_1176_p000003"
+      ],
+      "affected_part_number_count": 20,
+      "affected_part_numbers": [
+        "120-45851-501",
+        "120-45851-503",
+        "120-46137-001",
+        "120-46137-501",
+        "120-50645-007",
+        "120-50645-009",
+        "120-50645-015",
+        "120-50645-017",
+        "120-50645-023",
+        "120-50645-025",
+        "120-50645-035",
+        "120-50645-037",
+        "120-50648-001",
+        "120-50648-003",
+        "120-50648-009",
+        "120-50648-011",
+        "120-50648-031",
+        "120-50648-033",
+        "120-50648-531",
+        "120-50648-533"
+      ],
+      "approved_decision_count": 0,
+      "decision_can_answer_directly_count": 0,
+      "decision_can_mutate_source_truth_count": 0,
+      "decision_can_prove_claims_count": 0,
+      "decision_type_counts": {
+        "needs_more_review": 1,
+        "reject": 1
+      },
+      "final_answer_allowed_count": 0,
+      "invalid_decision_type_count": 0,
+      "invalid_target_type_count": 0,
+      "llm_reference_allowed_count": 2,
+      "missing_actor_count": 0,
+      "missing_target_count": 0,
+      "missing_timestamp_count": 0,
+      "needs_more_review_decision_count": 1,
+      "promotion_candidate_count": 0,
+      "prompt_injection_flagged_count": 0,
+      "raw_feedback_direct_to_llm_count": 0,
+      "rejected_decision_count": 1,
+      "retrieval_advisory_allowed_count": 2,
+      "review_decision_count": 2,
+      "review_reference_allowed_count": 2,
+      "schema_version": "trace_net_human_review_decision_recorder_v1",
+      "source_triage_card_count": 544,
+      "source_triage_quality_status": "PASS",
+      "source_truth_mutation_allowed_count": 0,
+      "source_truth_mutations_performed": 0,
+      "status": "UNKNOWN",
+      "target_type_counts": {
+        "feedback_memory": 1,
+        "triage_card": 1
+      },
+      "unsafe_decision_count": 0
+    }
+  },
+  "quality_path": "local_data\\organization\\trace_net\\human_review_decisions\\trace_net_human_review_decisions_v1_quality.json",
+  "quality_status": "PASS",
+  "records_path": "local_data\\organization\\trace_net\\human_review_decisions\\trace_net_human_review_decisions_v1_records.jsonl",
+  "report_path": "local_data\\organization\\trace_net\\human_review_decisions\\trace_net_human_review_decisions_v1.json",
+  "schema_version": "trace_net_human_review_decision_recorder_v1",
+  "source_triage_report_path": "local_data/organization/trace_net/human_review_triage/trace_net_human_review_triage_v1.json",
+  "status": "HUMAN_REVIEW_DECISIONS_BUILT",
+  "summary": {
+    "actor_role_counts": {
+      "reviewer": 2
+    },
+    "affected_citation_count": 1,
+    "affected_citation_ids": [
+      "cite:table_structured:t_p_120_1176_p000003:71e826e3f3"
+    ],
+    "affected_community_count": 0,
+    "affected_community_ids": [],
+    "affected_page_count": 1,
+    "affected_page_ids": [
+      "t_p_120_1176_p000003"
+    ],
+    "affected_part_number_count": 20,
+    "affected_part_numbers": [
+      "120-45851-501",
+      "120-45851-503",
+      "120-46137-001",
+      "120-46137-501",
+      "120-50645-007",
+      "120-50645-009",
+      "120-50645-015",
+      "120-50645-017",
+      "120-50645-023",
+      "120-50645-025",
+      "120-50645-035",
+      "120-50645-037",
+      "120-50648-001",
+      "120-50648-003",
+      "120-50648-009",
+      "120-50648-011",
+      "120-50648-031",
+      "120-50648-033",
+      "120-50648-531",
+      "120-50648-533"
+    ],
+    "approved_decision_count": 0,
+    "decision_can_answer_directly_count": 0,
+    "decision_can_mutate_source_truth_count": 0,
+    "decision_can_prove_claims_count": 0,
+    "decision_type_counts": {
+      "needs_more_review": 1,
+      "reject": 1
+    },
+    "final_answer_allowed_count": 0,
+    "invalid_decision_type_count": 0,
+    "invalid_target_type_count": 0,
+    "llm_reference_allowed_count": 2,
+    "missing_actor_count": 0,
+    "missing_target_count": 0,
+    "missing_timestamp_count": 0,
+    "needs_more_review_decision_count": 1,
+    "promotion_candidate_count": 0,
+    "prompt_injection_flagged_count": 0,
+    "raw_feedback_direct_to_llm_count": 0,
+    "rejected_decision_count": 1,
+    "retrieval_advisory_allowed_count": 2,
+    "review_decision_count": 2,
+    "review_reference_allowed_count": 2,
+    "schema_version": "trace_net_human_review_decision_recorder_v1",
+    "source_triage_card_count": 544,
+    "source_triage_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "source_truth_mutations_performed": 0,
+    "status": "PASS",
+    "target_type_counts": {
+      "feedback_memory": 1,
+      "triage_card": 1
+    },
+    "unsafe_decision_count": 0
+  },
+  "summary_path": "local_data\\organization\\trace_net\\human_review_decisions\\trace_net_human_review_decisions_v1_summary.json"
+}

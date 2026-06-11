@@ -1,0 +1,34 @@
+{
+  "critical_priority_review_task_count": 0,
+  "deduped_incident_count": 1,
+  "high_priority_review_task_count": 0,
+  "incident_count": 1,
+  "incident_sources": [
+    "postgres:trace_net_synthetic_incident_events"
+  ],
+  "low_priority_review_task_count": 0,
+  "medium_priority_review_task_count": 1,
+  "missing_target_count": 0,
+  "origin_category_counts": {
+    "semantic_vector": 1
+  },
+  "page_scoped_missing_page_id_count": 0,
+  "priority_counts": {
+    "medium": 1
+  },
+  "raw_feedback_direct_to_llm_count": 0,
+  "raw_feedback_incident_count": 0,
+  "raw_incident_count": 1,
+  "review_task_can_answer_directly_count": 0,
+  "review_task_can_prove_claims_count": 0,
+  "review_task_count": 1,
+  "schema_version": "trace_net_incident_review_bridge_v1",
+  "source_truth_mutation_allowed_count": 0,
+  "source_truth_mutation_incident_count": 0,
+  "status": "PASS",
+  "synthetic_only_task_count": 1,
+  "task_type_counts": {
+    "inspect_vector_index_incident": 1
+  },
+  "unsafe_review_task_count": 0
+}

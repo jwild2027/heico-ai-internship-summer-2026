@@ -1,0 +1,89 @@
+{
+  "checks": [
+    {
+      "expected": 509,
+      "name": "require_page_count",
+      "observed": 509,
+      "passed": true
+    },
+    {
+      "expected": ">= 509",
+      "name": "min_refined_records",
+      "observed": 509,
+      "passed": true
+    },
+    {
+      "expected": ">= 509",
+      "name": "min_baseline_validation_pages",
+      "observed": 509,
+      "passed": true
+    },
+    {
+      "expected": "< 509",
+      "name": "actual_retry_page_count_less_than_page_count",
+      "observed": 456,
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "missing_page_id_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "unsafe_refined_record_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "unsafe_refined_action_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "direct_answer_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "claim_proof_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "final_answer_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "confirmed_blank_pages_with_visual_retry_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "text_heavy_pages_with_vision_retry_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "unknown_table_pages_with_table_answer_retry_count",
+      "observed": 0,
+      "passed": true
+    }
+  ],
+  "status": "PASS"
+}

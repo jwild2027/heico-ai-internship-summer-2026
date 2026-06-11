@@ -1,0 +1,1960 @@
+{
+  "generated_at": "2026-06-10T15:25:34+00:00",
+  "html_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/trace_net_it_issue_origin_test_matrix_v1.html",
+  "manifest_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/trace_net_it_issue_origin_test_matrix_v1_manifest.json",
+  "markdown_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/trace_net_it_issue_origin_test_matrix_v1.md",
+  "origin_coverage": {
+    "answer_gate": {
+      "critical_count": 5,
+      "detected_count": 6,
+      "origin_category": "answer_gate",
+      "review_count": 0,
+      "scenario_count": 6,
+      "warning_count": 1
+    },
+    "evidence_consensus": {
+      "critical_count": 1,
+      "detected_count": 2,
+      "origin_category": "evidence_consensus",
+      "review_count": 1,
+      "scenario_count": 2,
+      "warning_count": 0
+    },
+    "feedback_memory": {
+      "critical_count": 2,
+      "detected_count": 4,
+      "origin_category": "feedback_memory",
+      "review_count": 1,
+      "scenario_count": 4,
+      "warning_count": 1
+    },
+    "graph_community": {
+      "critical_count": 1,
+      "detected_count": 2,
+      "origin_category": "graph_community",
+      "review_count": 0,
+      "scenario_count": 2,
+      "warning_count": 1
+    },
+    "graph_integrity": {
+      "critical_count": 2,
+      "detected_count": 4,
+      "origin_category": "graph_integrity",
+      "review_count": 1,
+      "scenario_count": 4,
+      "warning_count": 1
+    },
+    "incremental_ops": {
+      "critical_count": 1,
+      "detected_count": 5,
+      "origin_category": "incremental_ops",
+      "review_count": 0,
+      "scenario_count": 5,
+      "warning_count": 4
+    },
+    "keyword_search": {
+      "critical_count": 2,
+      "detected_count": 4,
+      "origin_category": "keyword_search",
+      "review_count": 0,
+      "scenario_count": 4,
+      "warning_count": 2
+    },
+    "llm_advisory": {
+      "critical_count": 2,
+      "detected_count": 3,
+      "origin_category": "llm_advisory",
+      "review_count": 0,
+      "scenario_count": 3,
+      "warning_count": 1
+    },
+    "ocr_text": {
+      "critical_count": 2,
+      "detected_count": 4,
+      "origin_category": "ocr_text",
+      "review_count": 0,
+      "scenario_count": 4,
+      "warning_count": 2
+    },
+    "page_registry": {
+      "critical_count": 1,
+      "detected_count": 4,
+      "origin_category": "page_registry",
+      "review_count": 1,
+      "scenario_count": 4,
+      "warning_count": 2
+    },
+    "retrieval": {
+      "critical_count": 2,
+      "detected_count": 3,
+      "origin_category": "retrieval",
+      "review_count": 0,
+      "scenario_count": 3,
+      "warning_count": 1
+    },
+    "security_leakage": {
+      "critical_count": 2,
+      "detected_count": 3,
+      "origin_category": "security_leakage",
+      "review_count": 0,
+      "scenario_count": 3,
+      "warning_count": 1
+    },
+    "semantic_vector": {
+      "critical_count": 2,
+      "detected_count": 4,
+      "origin_category": "semantic_vector",
+      "review_count": 0,
+      "scenario_count": 4,
+      "warning_count": 2
+    },
+    "source_ingest": {
+      "critical_count": 2,
+      "detected_count": 5,
+      "origin_category": "source_ingest",
+      "review_count": 0,
+      "scenario_count": 5,
+      "warning_count": 3
+    },
+    "table_extraction": {
+      "critical_count": 2,
+      "detected_count": 5,
+      "origin_category": "table_extraction",
+      "review_count": 1,
+      "scenario_count": 5,
+      "warning_count": 2
+    },
+    "trust_authority": {
+      "critical_count": 3,
+      "detected_count": 4,
+      "origin_category": "trust_authority",
+      "review_count": 0,
+      "scenario_count": 4,
+      "warning_count": 1
+    },
+    "visual_diagram": {
+      "critical_count": 2,
+      "detected_count": 6,
+      "origin_category": "visual_diagram",
+      "review_count": 2,
+      "scenario_count": 6,
+      "warning_count": 2
+    }
+  },
+  "origins_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/trace_net_it_issue_origin_test_matrix_v1_origins.jsonl",
+  "output_dir": "local_data/organization/trace_net/it_issue_origin_test_matrix",
+  "quality": {
+    "checks": {
+      "all_scenarios_detected_if_required": true,
+      "critical_scenarios_present": true,
+      "origin_category_count_meets_minimum": true,
+      "review_scenarios_present": true,
+      "scenario_count_meets_minimum": true,
+      "synthetic_console_generated": true,
+      "warning_scenarios_present": true
+    },
+    "min_origin_categories": 15,
+    "min_scenarios": 60,
+    "require_all_scenarios_detected": true,
+    "schema_version": "trace_net_it_issue_origin_test_matrix_v1_quality",
+    "status": "PASS"
+  },
+  "quality_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/trace_net_it_issue_origin_test_matrix_v1_quality.json",
+  "quality_status": "PASS",
+  "report_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/trace_net_it_issue_origin_test_matrix_v1.json",
+  "results_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/trace_net_it_issue_origin_test_matrix_v1_results.jsonl",
+  "scenario_catalog": [
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_source_ingest_unsafe_package/issue_source_ingest_unsafe_package_quality.json",
+      "description": "A source package has unsafe records.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_source_package_count",
+      "expected_severity": "critical",
+      "origin_category": "source_ingest",
+      "scenario_id": "src_unsafe_package",
+      "source_layer": "source_package",
+      "stage_id": "issue_source_ingest_unsafe_package"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_source_ingest_mutation/issue_source_ingest_mutation_quality.json",
+      "description": "A source-stage artifact would allow source truth mutation.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "source_truth_mutation_allowed_count",
+      "expected_severity": "critical",
+      "origin_category": "source_ingest",
+      "scenario_id": "src_mutation_risk",
+      "source_layer": "source_package",
+      "stage_id": "issue_source_ingest_mutation"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_source_ingest_missing_trace/issue_source_ingest_missing_trace_quality.json",
+      "description": "Source trace records are missing.",
+      "expected_category": "operational_warning",
+      "expected_key": "missing_source_trace_count",
+      "expected_severity": "warning",
+      "origin_category": "source_ingest",
+      "scenario_id": "src_missing_trace",
+      "source_layer": "source_links",
+      "stage_id": "issue_source_ingest_missing_trace"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_source_ingest_changed_sources/issue_source_ingest_changed_sources_quality.json",
+      "description": "Changed source files require incremental work.",
+      "expected_category": "operational_warning",
+      "expected_key": "changed_source_count",
+      "expected_severity": "warning",
+      "origin_category": "source_ingest",
+      "scenario_id": "src_changed_arrivals",
+      "source_layer": "incremental_source_scan",
+      "stage_id": "issue_source_ingest_changed_sources"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_source_ingest_new_sources/issue_source_ingest_new_sources_quality.json",
+      "description": "New source arrivals are detected.",
+      "expected_category": "operational_warning",
+      "expected_key": "new_source_count",
+      "expected_severity": "warning",
+      "origin_category": "source_ingest",
+      "scenario_id": "src_new_arrivals",
+      "source_layer": "incremental_source_scan",
+      "stage_id": "issue_source_ingest_new_sources"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_ocr_unsafe_text/issue_ocr_unsafe_text_quality.json",
+      "description": "OCR output was flagged unsafe.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_ocr_record_count",
+      "expected_severity": "critical",
+      "origin_category": "ocr_text",
+      "scenario_id": "ocr_unsafe_text",
+      "source_layer": "ocr_extractor",
+      "stage_id": "issue_ocr_unsafe_text"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_ocr_raw_index_risk/issue_ocr_raw_index_risk_quality.json",
+      "description": "Raw OCR would be indexed without filtering.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_raw_ocr_index_document_count",
+      "expected_severity": "critical",
+      "origin_category": "ocr_text",
+      "scenario_id": "ocr_raw_index_risk",
+      "source_layer": "ocr_indexing",
+      "stage_id": "issue_ocr_raw_index_risk"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_ocr_needs_retry/issue_ocr_needs_retry_quality.json",
+      "description": "Pages need OCR retry.",
+      "expected_category": "operational_warning",
+      "expected_key": "needs_ocr_page_count",
+      "expected_severity": "warning",
+      "origin_category": "ocr_text",
+      "scenario_id": "ocr_needs_retry",
+      "source_layer": "ocr_retry",
+      "stage_id": "issue_ocr_needs_retry"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_ocr_missing_clean_text/issue_ocr_missing_clean_text_quality.json",
+      "description": "Clean OCR artifacts are missing.",
+      "expected_category": "operational_warning",
+      "expected_key": "missing_clean_ocr_text_count",
+      "expected_severity": "warning",
+      "origin_category": "ocr_text",
+      "scenario_id": "ocr_missing_clean_text",
+      "source_layer": "ocr_cleaning",
+      "stage_id": "issue_ocr_missing_clean_text"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_page_registry_failed/issue_page_registry_failed_quality.json",
+      "description": "The page registry quality artifact failed.",
+      "expected_category": "stage_quality_failed",
+      "expected_key": null,
+      "expected_severity": "critical",
+      "origin_category": "page_registry",
+      "scenario_id": "registry_failed_stage",
+      "source_layer": "page_element_registry",
+      "stage_id": "issue_page_registry_failed"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_page_registry_missing_routes/issue_page_registry_missing_routes_quality.json",
+      "description": "Pages are missing extraction routes.",
+      "expected_category": "operational_warning",
+      "expected_key": "missing_extraction_route_count",
+      "expected_severity": "warning",
+      "origin_category": "page_registry",
+      "scenario_id": "registry_missing_routes",
+      "source_layer": "extraction_router",
+      "stage_id": "issue_page_registry_missing_routes"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_page_registry_needs_table/issue_page_registry_needs_table_quality.json",
+      "description": "Pages need table route work.",
+      "expected_category": "operational_warning",
+      "expected_key": "needs_table_page_count",
+      "expected_severity": "warning",
+      "origin_category": "page_registry",
+      "scenario_id": "registry_needs_table",
+      "source_layer": "route_planner",
+      "stage_id": "issue_page_registry_needs_table"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_page_registry_review/issue_page_registry_review_quality.json",
+      "description": "Registry flags pages for human review.",
+      "expected_category": "review_backlog",
+      "expected_key": "needs_human_review_count",
+      "expected_severity": "review",
+      "origin_category": "page_registry",
+      "scenario_id": "registry_review",
+      "source_layer": "route_planner",
+      "stage_id": "issue_page_registry_review"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_table_unsafe/issue_table_unsafe_quality.json",
+      "description": "Unsafe table evidence appeared.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_table_evidence_count",
+      "expected_severity": "critical",
+      "origin_category": "table_extraction",
+      "scenario_id": "table_unsafe_evidence",
+      "source_layer": "table_understanding",
+      "stage_id": "issue_table_unsafe"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_table_uncited_answer/issue_table_uncited_answer_quality.json",
+      "description": "Answer-capable table rows lack citations.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "answer_capable_without_citation_count",
+      "expected_severity": "critical",
+      "origin_category": "table_extraction",
+      "scenario_id": "table_uncited_answer",
+      "source_layer": "table_answer_support",
+      "stage_id": "issue_table_uncited_answer"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_table_missing_source/issue_table_missing_source_quality.json",
+      "description": "Table records lack source trace.",
+      "expected_category": "operational_warning",
+      "expected_key": "missing_source_trace_count",
+      "expected_severity": "warning",
+      "origin_category": "table_extraction",
+      "scenario_id": "table_missing_source",
+      "source_layer": "table_source_trace",
+      "stage_id": "issue_table_missing_source"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_table_unverified_rows/issue_table_unverified_rows_quality.json",
+      "description": "Table rows remain unverified.",
+      "expected_category": "operational_warning",
+      "expected_key": "candidate_unverified_table_row_count",
+      "expected_severity": "warning",
+      "origin_category": "table_extraction",
+      "scenario_id": "table_unverified_rows",
+      "source_layer": "table_cells",
+      "stage_id": "issue_table_unverified_rows"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_table_repair_review/issue_table_repair_review_quality.json",
+      "description": "Table cell repairs require review.",
+      "expected_category": "review_backlog",
+      "expected_key": "review_required_table_repair_count",
+      "expected_severity": "review",
+      "origin_category": "table_extraction",
+      "scenario_id": "table_repair_review",
+      "source_layer": "table_cell_normalizer",
+      "stage_id": "issue_table_repair_review"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_visual_unsafe/issue_visual_unsafe_quality.json",
+      "description": "Visual evidence was unsafe.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_visual_evidence_count",
+      "expected_severity": "critical",
+      "origin_category": "visual_diagram",
+      "scenario_id": "visual_unsafe",
+      "source_layer": "figure_chart_understanding",
+      "stage_id": "issue_visual_unsafe"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_visual_direct_answer/issue_visual_direct_answer_quality.json",
+      "description": "Visual records were incorrectly allowed to answer.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "direct_answer_allowed_visual_count",
+      "expected_severity": "critical",
+      "origin_category": "visual_diagram",
+      "scenario_id": "visual_direct_answer",
+      "source_layer": "visual_authority",
+      "stage_id": "issue_visual_direct_answer"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_visual_unverified_claim/issue_visual_unverified_claim_quality.json",
+      "description": "Visual claims remain unverified.",
+      "expected_category": "operational_warning",
+      "expected_key": "unverified_visual_claim_count",
+      "expected_severity": "warning",
+      "origin_category": "visual_diagram",
+      "scenario_id": "visual_unverified_claim",
+      "source_layer": "callout_detection",
+      "stage_id": "issue_visual_unverified_claim"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_visual_needs_model/issue_visual_needs_model_quality.json",
+      "description": "Pages need vision model inspection.",
+      "expected_category": "operational_warning",
+      "expected_key": "needs_vision_model_count",
+      "expected_severity": "warning",
+      "origin_category": "visual_diagram",
+      "scenario_id": "visual_needs_model",
+      "source_layer": "vision_model_pilot",
+      "stage_id": "issue_visual_needs_model"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_visual_human_review/issue_visual_human_review_quality.json",
+      "description": "Diagrams need human review.",
+      "expected_category": "review_backlog",
+      "expected_key": "records_needing_human_review_count",
+      "expected_severity": "review",
+      "origin_category": "visual_diagram",
+      "scenario_id": "visual_human_review",
+      "source_layer": "diagram_review",
+      "stage_id": "issue_visual_human_review"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_callout_review/issue_callout_review_quality.json",
+      "description": "Callout candidates require human review.",
+      "expected_category": "review_backlog",
+      "expected_key": "needs_human_review_callout_count",
+      "expected_severity": "review",
+      "origin_category": "visual_diagram",
+      "scenario_id": "callout_review",
+      "source_layer": "callout_visual_part_verifier",
+      "stage_id": "issue_callout_review"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_graph_orphan_edge/issue_graph_orphan_edge_quality.json",
+      "description": "Graph overlay has orphan edges.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "orphan_edge_count",
+      "expected_severity": "critical",
+      "origin_category": "graph_integrity",
+      "scenario_id": "graph_orphan_edge",
+      "source_layer": "graph_overlay",
+      "stage_id": "issue_graph_orphan_edge"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_graph_missing_lineage/issue_graph_missing_lineage_quality.json",
+      "description": "Cross-page graph nodes lack lineage.",
+      "expected_category": "operational_warning",
+      "expected_key": "missing_part_candidate_lineage_count",
+      "expected_severity": "warning",
+      "origin_category": "graph_integrity",
+      "scenario_id": "graph_missing_lineage",
+      "source_layer": "part_lineage",
+      "stage_id": "issue_graph_missing_lineage"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_graph_postgres_write/issue_graph_postgres_write_quality.json",
+      "description": "A dry-run stage attempted Postgres writeback.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "postgres_write_attempt_count",
+      "expected_severity": "critical",
+      "origin_category": "graph_integrity",
+      "scenario_id": "graph_postgres_write",
+      "source_layer": "graph_writeback",
+      "stage_id": "issue_graph_postgres_write"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_graph_review_cluster/issue_graph_review_cluster_quality.json",
+      "description": "Communities require review.",
+      "expected_category": "review_backlog",
+      "expected_key": "review_required_community_count",
+      "expected_severity": "review",
+      "origin_category": "graph_integrity",
+      "scenario_id": "graph_review_cluster",
+      "source_layer": "leiden_review",
+      "stage_id": "issue_graph_review_cluster"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_trust_direct_answer/issue_trust_direct_answer_quality.json",
+      "description": "A trust record allows direct answering unexpectedly.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "direct_answer_allowed_count",
+      "expected_severity": "critical",
+      "origin_category": "trust_authority",
+      "scenario_id": "trust_direct_answer",
+      "source_layer": "trust_authority",
+      "stage_id": "issue_trust_direct_answer"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_trust_claim_proof/issue_trust_claim_proof_quality.json",
+      "description": "A trust record allows proof without gate.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "claim_proof_allowed_count",
+      "expected_severity": "critical",
+      "origin_category": "trust_authority",
+      "scenario_id": "trust_claim_proof",
+      "source_layer": "trust_authority",
+      "stage_id": "issue_trust_claim_proof"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_trust_claim_without_authority/issue_trust_claim_without_authority_quality.json",
+      "description": "A claim proof lacks authority.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "claim_proof_without_authority_count",
+      "expected_severity": "critical",
+      "origin_category": "trust_authority",
+      "scenario_id": "trust_claim_without_authority",
+      "source_layer": "authority_gate",
+      "stage_id": "issue_trust_claim_without_authority"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_trust_missing_authority/issue_trust_missing_authority_quality.json",
+      "description": "Trust authority records are missing.",
+      "expected_category": "operational_warning",
+      "expected_key": "missing_authority_count",
+      "expected_severity": "warning",
+      "origin_category": "trust_authority",
+      "scenario_id": "trust_missing_authority",
+      "source_layer": "authority_gate",
+      "stage_id": "issue_trust_missing_authority"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_consensus_unsafe_include/issue_consensus_unsafe_include_quality.json",
+      "description": "Unsafe evidence would enter RAG.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_rag_include_records_count",
+      "expected_severity": "critical",
+      "origin_category": "evidence_consensus",
+      "scenario_id": "consensus_unsafe_include",
+      "source_layer": "evidence_consensus",
+      "stage_id": "issue_consensus_unsafe_include"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_consensus_review_needed/issue_consensus_review_needed_quality.json",
+      "description": "Evidence consensus created review candidates.",
+      "expected_category": "review_backlog",
+      "expected_key": "human_review_candidate_count",
+      "expected_severity": "review",
+      "origin_category": "evidence_consensus",
+      "scenario_id": "consensus_review_needed",
+      "source_layer": "evidence_consensus",
+      "stage_id": "issue_consensus_review_needed"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_embed_unsafe_candidate/issue_embed_unsafe_candidate_quality.json",
+      "description": "Unsafe candidate reached embedding stage.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_embedding_candidate_count",
+      "expected_severity": "critical",
+      "origin_category": "semantic_vector",
+      "scenario_id": "embed_unsafe_candidate",
+      "source_layer": "embedding_candidates",
+      "stage_id": "issue_embed_unsafe_candidate"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_embed_missing_page/issue_embed_missing_page_quality.json",
+      "description": "Embedding records are missing page IDs.",
+      "expected_category": "operational_warning",
+      "expected_key": "missing_embedding_page_id_count",
+      "expected_severity": "warning",
+      "origin_category": "semantic_vector",
+      "scenario_id": "embed_missing_page",
+      "source_layer": "embedding_candidates",
+      "stage_id": "issue_embed_missing_page"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_qdrant_direct_answer/issue_qdrant_direct_answer_quality.json",
+      "description": "A Qdrant payload allows direct answering.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "direct_answer_allowed_payload_count",
+      "expected_severity": "critical",
+      "origin_category": "semantic_vector",
+      "scenario_id": "qdrant_direct_answer",
+      "source_layer": "qdrant_payload",
+      "stage_id": "issue_qdrant_direct_answer"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_qdrant_needs_upsert/issue_qdrant_needs_upsert_quality.json",
+      "description": "Changed pages need Qdrant upsert.",
+      "expected_category": "operational_warning",
+      "expected_key": "needs_qdrant_page_count",
+      "expected_severity": "warning",
+      "origin_category": "semantic_vector",
+      "scenario_id": "qdrant_needs_upsert",
+      "source_layer": "qdrant_incremental",
+      "stage_id": "issue_qdrant_needs_upsert"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_retrieval_unsafe/issue_retrieval_unsafe_quality.json",
+      "description": "Unsafe retrieval result appeared.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_result_count",
+      "expected_severity": "critical",
+      "origin_category": "retrieval",
+      "scenario_id": "retrieval_unsafe",
+      "source_layer": "hybrid_retrieval",
+      "stage_id": "issue_retrieval_unsafe"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_retrieval_only_answer/issue_retrieval_only_answer_quality.json",
+      "description": "Retrieval-only record was answer allowed.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "retrieval_only_answer_allowed_count",
+      "expected_severity": "critical",
+      "origin_category": "retrieval",
+      "scenario_id": "retrieval_only_answer",
+      "source_layer": "hybrid_retrieval",
+      "stage_id": "issue_retrieval_only_answer"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_retrieval_missing_citation/issue_retrieval_missing_citation_quality.json",
+      "description": "Retrieval results lack citations.",
+      "expected_category": "operational_warning",
+      "expected_key": "missing_citation_count",
+      "expected_severity": "warning",
+      "origin_category": "retrieval",
+      "scenario_id": "retrieval_missing_citation",
+      "source_layer": "hybrid_retrieval",
+      "stage_id": "issue_retrieval_missing_citation"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_community_as_proof/issue_community_as_proof_quality.json",
+      "description": "Community signal was used as proof.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "community_as_proof_count",
+      "expected_severity": "critical",
+      "origin_category": "graph_community",
+      "scenario_id": "community_as_proof",
+      "source_layer": "leiden_communities",
+      "stage_id": "issue_community_as_proof"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_community_missing_membership/issue_community_missing_membership_quality.json",
+      "description": "Community membership is missing.",
+      "expected_category": "operational_warning",
+      "expected_key": "missing_community_membership_count",
+      "expected_severity": "warning",
+      "origin_category": "graph_community",
+      "scenario_id": "community_missing_membership",
+      "source_layer": "leiden_communities",
+      "stage_id": "issue_community_missing_membership"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_feedback_raw_to_llm/issue_feedback_raw_to_llm_quality.json",
+      "description": "Raw feedback would be sent to LLM.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "raw_feedback_direct_to_llm_count",
+      "expected_severity": "critical",
+      "origin_category": "feedback_memory",
+      "scenario_id": "feedback_raw_to_llm",
+      "source_layer": "feedback_memory",
+      "stage_id": "issue_feedback_raw_to_llm"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_feedback_as_proof/issue_feedback_as_proof_quality.json",
+      "description": "Feedback was treated as proof.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "feedback_as_proof_count",
+      "expected_severity": "critical",
+      "origin_category": "feedback_memory",
+      "scenario_id": "feedback_as_proof",
+      "source_layer": "feedback_memory",
+      "stage_id": "issue_feedback_as_proof"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_feedback_prompt_injection/issue_feedback_prompt_injection_quality.json",
+      "description": "Feedback sanitizer detected prompt injection.",
+      "expected_category": "review_backlog",
+      "expected_key": "prompt_injection_flagged_count",
+      "expected_severity": "review",
+      "origin_category": "feedback_memory",
+      "scenario_id": "feedback_prompt_injection",
+      "source_layer": "feedback_sanitizer",
+      "stage_id": "issue_feedback_prompt_injection"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_feedback_missing_target/issue_feedback_missing_target_quality.json",
+      "description": "Feedback records are missing targets.",
+      "expected_category": "operational_warning",
+      "expected_key": "missing_feedback_target_count",
+      "expected_severity": "warning",
+      "origin_category": "feedback_memory",
+      "scenario_id": "feedback_missing_target",
+      "source_layer": "feedback_events",
+      "stage_id": "issue_feedback_missing_target"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_uncited_claim/issue_answer_uncited_claim_quality.json",
+      "description": "A final claim lacks citation.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "uncited_final_claim_count",
+      "expected_severity": "critical",
+      "origin_category": "answer_gate",
+      "scenario_id": "answer_uncited_claim",
+      "source_layer": "citation_draft",
+      "stage_id": "issue_answer_uncited_claim"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_claim_without_citation/issue_answer_claim_without_citation_quality.json",
+      "description": "A claim lacks citation.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "claim_without_citation_count",
+      "expected_severity": "critical",
+      "origin_category": "answer_gate",
+      "scenario_id": "answer_claim_without_citation",
+      "source_layer": "final_answer_gate",
+      "stage_id": "issue_answer_claim_without_citation"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_local_path_leak/issue_answer_local_path_leak_quality.json",
+      "description": "Answer/snippet leaks local path.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "local_path_leak_count",
+      "expected_severity": "critical",
+      "origin_category": "answer_gate",
+      "scenario_id": "answer_local_path_leak",
+      "source_layer": "snippet_cleaner",
+      "stage_id": "issue_answer_local_path_leak"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_raw_bytes/issue_answer_raw_bytes_quality.json",
+      "description": "Answer/snippet leaks raw byte wrapper.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "raw_bytes_repr_count",
+      "expected_severity": "critical",
+      "origin_category": "answer_gate",
+      "scenario_id": "answer_raw_bytes",
+      "source_layer": "snippet_cleaner",
+      "stage_id": "issue_answer_raw_bytes"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_boilerplate/issue_answer_boilerplate_quality.json",
+      "description": "Answer/snippet leaks boilerplate.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "boilerplate_leak_count",
+      "expected_severity": "critical",
+      "origin_category": "answer_gate",
+      "scenario_id": "answer_boilerplate",
+      "source_layer": "snippet_cleaner",
+      "stage_id": "issue_answer_boilerplate"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_answer_nonstandard_status/issue_answer_nonstandard_status_quality.json",
+      "description": "Final answer stage has nonstandard status.",
+      "expected_category": "stage_quality_nonstandard",
+      "expected_key": null,
+      "expected_severity": "warning",
+      "origin_category": "answer_gate",
+      "scenario_id": "answer_nonstandard_status",
+      "source_layer": "final_answer_gate",
+      "stage_id": "issue_answer_nonstandard_status"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_incremental_dirty/issue_incremental_dirty_quality.json",
+      "description": "Incremental manifest has dirty pages.",
+      "expected_category": "operational_warning",
+      "expected_key": "dirty_page_count",
+      "expected_severity": "warning",
+      "origin_category": "incremental_ops",
+      "scenario_id": "incremental_dirty",
+      "source_layer": "corpus_manifest",
+      "stage_id": "issue_incremental_dirty"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_incremental_needs_embedding/issue_incremental_needs_embedding_quality.json",
+      "description": "Pages need embedding refresh.",
+      "expected_category": "operational_warning",
+      "expected_key": "needs_embedding_page_count",
+      "expected_severity": "warning",
+      "origin_category": "incremental_ops",
+      "scenario_id": "incremental_needs_embedding",
+      "source_layer": "corpus_manifest",
+      "stage_id": "issue_incremental_needs_embedding"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_incremental_needs_graph/issue_incremental_needs_graph_quality.json",
+      "description": "Pages need graph updates.",
+      "expected_category": "operational_warning",
+      "expected_key": "needs_graph_update_page_count",
+      "expected_severity": "warning",
+      "origin_category": "incremental_ops",
+      "scenario_id": "incremental_needs_graph",
+      "source_layer": "corpus_manifest",
+      "stage_id": "issue_incremental_needs_graph"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_incremental_needs_leiden/issue_incremental_needs_leiden_quality.json",
+      "description": "Graph change requires community refresh.",
+      "expected_category": "operational_warning",
+      "expected_key": "needs_leiden_refresh_page_count",
+      "expected_severity": "warning",
+      "origin_category": "incremental_ops",
+      "scenario_id": "incremental_needs_leiden",
+      "source_layer": "corpus_manifest",
+      "stage_id": "issue_incremental_needs_leiden"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_orchestrator_unsafe_job/issue_orchestrator_unsafe_job_quality.json",
+      "description": "Incremental planner created unsafe job.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_job_count",
+      "expected_severity": "critical",
+      "origin_category": "incremental_ops",
+      "scenario_id": "orchestrator_unsafe_job",
+      "source_layer": "incremental_orchestrator",
+      "stage_id": "issue_orchestrator_unsafe_job"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_opensearch_unsafe_doc/issue_opensearch_unsafe_doc_quality.json",
+      "description": "Unsafe document would be indexed.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_index_document_count",
+      "expected_severity": "critical",
+      "origin_category": "keyword_search",
+      "scenario_id": "opensearch_unsafe_doc",
+      "source_layer": "opensearch_adapter",
+      "stage_id": "issue_opensearch_unsafe_doc"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_opensearch_raw_visual/issue_opensearch_raw_visual_quality.json",
+      "description": "Raw visual output would be indexed.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_raw_visual_output_indexed_count",
+      "expected_severity": "critical",
+      "origin_category": "keyword_search",
+      "scenario_id": "opensearch_raw_visual",
+      "source_layer": "opensearch_adapter",
+      "stage_id": "issue_opensearch_raw_visual"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_opensearch_missing_page/issue_opensearch_missing_page_quality.json",
+      "description": "OpenSearch docs lack page IDs.",
+      "expected_category": "operational_warning",
+      "expected_key": "missing_index_page_id_count",
+      "expected_severity": "warning",
+      "origin_category": "keyword_search",
+      "scenario_id": "opensearch_missing_page",
+      "source_layer": "opensearch_adapter",
+      "stage_id": "issue_opensearch_missing_page"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_opensearch_needs_docs/issue_opensearch_needs_docs_quality.json",
+      "description": "Changed pages need OpenSearch upsert.",
+      "expected_category": "operational_warning",
+      "expected_key": "needs_opensearch_page_count",
+      "expected_severity": "warning",
+      "origin_category": "keyword_search",
+      "scenario_id": "opensearch_needs_docs",
+      "source_layer": "opensearch_incremental",
+      "stage_id": "issue_opensearch_needs_docs"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_llm_freeform_allowed/issue_llm_freeform_allowed_quality.json",
+      "description": "LLM freeform answer was allowed directly.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "direct_answer_allowed_llm_freeform_count",
+      "expected_severity": "critical",
+      "origin_category": "llm_advisory",
+      "scenario_id": "llm_freeform_allowed",
+      "source_layer": "answer_composer",
+      "stage_id": "issue_llm_freeform_allowed"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_llm_claim_proof/issue_llm_claim_proof_quality.json",
+      "description": "LLM advisory output was allowed as proof.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "claim_proof_allowed_llm_count",
+      "expected_severity": "critical",
+      "origin_category": "llm_advisory",
+      "scenario_id": "llm_claim_proof",
+      "source_layer": "answer_composer",
+      "stage_id": "issue_llm_claim_proof"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_llm_needs_model/issue_llm_needs_model_quality.json",
+      "description": "Model runtime dependency is missing or pending.",
+      "expected_category": "operational_warning",
+      "expected_key": "needs_model_download_count",
+      "expected_severity": "warning",
+      "origin_category": "llm_advisory",
+      "scenario_id": "llm_needs_model",
+      "source_layer": "model_runtime",
+      "stage_id": "issue_llm_needs_model"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_security_prompt_leak/issue_security_prompt_leak_quality.json",
+      "description": "Prompt/debug leakage detected.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_prompt_leak_count",
+      "expected_severity": "critical",
+      "origin_category": "security_leakage",
+      "scenario_id": "security_prompt_leak",
+      "source_layer": "prompt_boundary",
+      "stage_id": "issue_security_prompt_leak"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_security_debug_leak/issue_security_debug_leak_quality.json",
+      "description": "Debug/internal record leaked into a publishable layer.",
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_debug_record_count",
+      "expected_severity": "critical",
+      "origin_category": "security_leakage",
+      "scenario_id": "security_debug_leak",
+      "source_layer": "debug_boundary",
+      "stage_id": "issue_security_debug_leak"
+    },
+    {
+      "artifact_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root/issue_security_missing_redaction/issue_security_missing_redaction_quality.json",
+      "description": "Expected redaction was missing.",
+      "expected_category": "operational_warning",
+      "expected_key": "missing_redaction_count",
+      "expected_severity": "warning",
+      "origin_category": "security_leakage",
+      "scenario_id": "security_missing_redaction",
+      "source_layer": "redaction",
+      "stage_id": "issue_security_missing_redaction"
+    }
+  ],
+  "scenario_results": [
+    {
+      "description": "A source package has unsafe records.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_source_package_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000054"
+      ],
+      "origin_category": "source_ingest",
+      "scenario_id": "src_unsafe_package",
+      "source_layer": "source_package",
+      "stage_id": "issue_source_ingest_unsafe_package"
+    },
+    {
+      "description": "A source-stage artifact would allow source truth mutation.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "source_truth_mutation_allowed_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000052"
+      ],
+      "origin_category": "source_ingest",
+      "scenario_id": "src_mutation_risk",
+      "source_layer": "source_package",
+      "stage_id": "issue_source_ingest_mutation"
+    },
+    {
+      "description": "Source trace records are missing.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "missing_source_trace_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000051"
+      ],
+      "origin_category": "source_ingest",
+      "scenario_id": "src_missing_trace",
+      "source_layer": "source_links",
+      "stage_id": "issue_source_ingest_missing_trace"
+    },
+    {
+      "description": "Changed source files require incremental work.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "changed_source_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000050"
+      ],
+      "origin_category": "source_ingest",
+      "scenario_id": "src_changed_arrivals",
+      "source_layer": "incremental_source_scan",
+      "stage_id": "issue_source_ingest_changed_sources"
+    },
+    {
+      "description": "New source arrivals are detected.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "new_source_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000053"
+      ],
+      "origin_category": "source_ingest",
+      "scenario_id": "src_new_arrivals",
+      "source_layer": "incremental_source_scan",
+      "stage_id": "issue_source_ingest_new_sources"
+    },
+    {
+      "description": "OCR output was flagged unsafe.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_ocr_record_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000032"
+      ],
+      "origin_category": "ocr_text",
+      "scenario_id": "ocr_unsafe_text",
+      "source_layer": "ocr_extractor",
+      "stage_id": "issue_ocr_unsafe_text"
+    },
+    {
+      "description": "Raw OCR would be indexed without filtering.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_raw_ocr_index_document_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000031"
+      ],
+      "origin_category": "ocr_text",
+      "scenario_id": "ocr_raw_index_risk",
+      "source_layer": "ocr_indexing",
+      "stage_id": "issue_ocr_raw_index_risk"
+    },
+    {
+      "description": "Pages need OCR retry.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "needs_ocr_page_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000030"
+      ],
+      "origin_category": "ocr_text",
+      "scenario_id": "ocr_needs_retry",
+      "source_layer": "ocr_retry",
+      "stage_id": "issue_ocr_needs_retry"
+    },
+    {
+      "description": "Clean OCR artifacts are missing.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "missing_clean_ocr_text_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000029"
+      ],
+      "origin_category": "ocr_text",
+      "scenario_id": "ocr_missing_clean_text",
+      "source_layer": "ocr_cleaning",
+      "stage_id": "issue_ocr_missing_clean_text"
+    },
+    {
+      "description": "The page registry quality artifact failed.",
+      "detected": true,
+      "expected_category": "stage_quality_failed",
+      "expected_key": null,
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000038"
+      ],
+      "origin_category": "page_registry",
+      "scenario_id": "registry_failed_stage",
+      "source_layer": "page_element_registry",
+      "stage_id": "issue_page_registry_failed"
+    },
+    {
+      "description": "Pages are missing extraction routes.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "missing_extraction_route_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000039"
+      ],
+      "origin_category": "page_registry",
+      "scenario_id": "registry_missing_routes",
+      "source_layer": "extraction_router",
+      "stage_id": "issue_page_registry_missing_routes"
+    },
+    {
+      "description": "Pages need table route work.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "needs_table_page_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000040"
+      ],
+      "origin_category": "page_registry",
+      "scenario_id": "registry_needs_table",
+      "source_layer": "route_planner",
+      "stage_id": "issue_page_registry_needs_table"
+    },
+    {
+      "description": "Registry flags pages for human review.",
+      "detected": true,
+      "expected_category": "review_backlog",
+      "expected_key": "needs_human_review_count",
+      "expected_severity": "review",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000041"
+      ],
+      "origin_category": "page_registry",
+      "scenario_id": "registry_review",
+      "source_layer": "route_planner",
+      "stage_id": "issue_page_registry_review"
+    },
+    {
+      "description": "Unsafe table evidence appeared.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_table_evidence_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000058"
+      ],
+      "origin_category": "table_extraction",
+      "scenario_id": "table_unsafe_evidence",
+      "source_layer": "table_understanding",
+      "stage_id": "issue_table_unsafe"
+    },
+    {
+      "description": "Answer-capable table rows lack citations.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "answer_capable_without_citation_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000057"
+      ],
+      "origin_category": "table_extraction",
+      "scenario_id": "table_uncited_answer",
+      "source_layer": "table_answer_support",
+      "stage_id": "issue_table_uncited_answer"
+    },
+    {
+      "description": "Table records lack source trace.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "missing_source_trace_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000055"
+      ],
+      "origin_category": "table_extraction",
+      "scenario_id": "table_missing_source",
+      "source_layer": "table_source_trace",
+      "stage_id": "issue_table_missing_source"
+    },
+    {
+      "description": "Table rows remain unverified.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "candidate_unverified_table_row_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000059"
+      ],
+      "origin_category": "table_extraction",
+      "scenario_id": "table_unverified_rows",
+      "source_layer": "table_cells",
+      "stage_id": "issue_table_unverified_rows"
+    },
+    {
+      "description": "Table cell repairs require review.",
+      "detected": true,
+      "expected_category": "review_backlog",
+      "expected_key": "review_required_table_repair_count",
+      "expected_severity": "review",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000056"
+      ],
+      "origin_category": "table_extraction",
+      "scenario_id": "table_repair_review",
+      "source_layer": "table_cell_normalizer",
+      "stage_id": "issue_table_repair_review"
+    },
+    {
+      "description": "Visual evidence was unsafe.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_visual_evidence_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000067"
+      ],
+      "origin_category": "visual_diagram",
+      "scenario_id": "visual_unsafe",
+      "source_layer": "figure_chart_understanding",
+      "stage_id": "issue_visual_unsafe"
+    },
+    {
+      "description": "Visual records were incorrectly allowed to answer.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "direct_answer_allowed_visual_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000064"
+      ],
+      "origin_category": "visual_diagram",
+      "scenario_id": "visual_direct_answer",
+      "source_layer": "visual_authority",
+      "stage_id": "issue_visual_direct_answer"
+    },
+    {
+      "description": "Visual claims remain unverified.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "unverified_visual_claim_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000068"
+      ],
+      "origin_category": "visual_diagram",
+      "scenario_id": "visual_unverified_claim",
+      "source_layer": "callout_detection",
+      "stage_id": "issue_visual_unverified_claim"
+    },
+    {
+      "description": "Pages need vision model inspection.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "needs_vision_model_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000066"
+      ],
+      "origin_category": "visual_diagram",
+      "scenario_id": "visual_needs_model",
+      "source_layer": "vision_model_pilot",
+      "stage_id": "issue_visual_needs_model"
+    },
+    {
+      "description": "Diagrams need human review.",
+      "detected": true,
+      "expected_category": "review_backlog",
+      "expected_key": "records_needing_human_review_count",
+      "expected_severity": "review",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000065"
+      ],
+      "origin_category": "visual_diagram",
+      "scenario_id": "visual_human_review",
+      "source_layer": "diagram_review",
+      "stage_id": "issue_visual_human_review"
+    },
+    {
+      "description": "Callout candidates require human review.",
+      "detected": true,
+      "expected_category": "review_backlog",
+      "expected_key": "needs_human_review_callout_count",
+      "expected_severity": "review",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000007"
+      ],
+      "origin_category": "visual_diagram",
+      "scenario_id": "callout_review",
+      "source_layer": "callout_visual_part_verifier",
+      "stage_id": "issue_callout_review"
+    },
+    {
+      "description": "Graph overlay has orphan edges.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "orphan_edge_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000019"
+      ],
+      "origin_category": "graph_integrity",
+      "scenario_id": "graph_orphan_edge",
+      "source_layer": "graph_overlay",
+      "stage_id": "issue_graph_orphan_edge"
+    },
+    {
+      "description": "Cross-page graph nodes lack lineage.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "missing_part_candidate_lineage_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000018"
+      ],
+      "origin_category": "graph_integrity",
+      "scenario_id": "graph_missing_lineage",
+      "source_layer": "part_lineage",
+      "stage_id": "issue_graph_missing_lineage"
+    },
+    {
+      "description": "A dry-run stage attempted Postgres writeback.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "postgres_write_attempt_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000020"
+      ],
+      "origin_category": "graph_integrity",
+      "scenario_id": "graph_postgres_write",
+      "source_layer": "graph_writeback",
+      "stage_id": "issue_graph_postgres_write"
+    },
+    {
+      "description": "Communities require review.",
+      "detected": true,
+      "expected_category": "review_backlog",
+      "expected_key": "review_required_community_count",
+      "expected_severity": "review",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000021"
+      ],
+      "origin_category": "graph_integrity",
+      "scenario_id": "graph_review_cluster",
+      "source_layer": "leiden_review",
+      "stage_id": "issue_graph_review_cluster"
+    },
+    {
+      "description": "A trust record allows direct answering unexpectedly.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "direct_answer_allowed_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000062"
+      ],
+      "origin_category": "trust_authority",
+      "scenario_id": "trust_direct_answer",
+      "source_layer": "trust_authority",
+      "stage_id": "issue_trust_direct_answer"
+    },
+    {
+      "description": "A trust record allows proof without gate.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "claim_proof_allowed_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000060"
+      ],
+      "origin_category": "trust_authority",
+      "scenario_id": "trust_claim_proof",
+      "source_layer": "trust_authority",
+      "stage_id": "issue_trust_claim_proof"
+    },
+    {
+      "description": "A claim proof lacks authority.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "claim_proof_without_authority_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000061"
+      ],
+      "origin_category": "trust_authority",
+      "scenario_id": "trust_claim_without_authority",
+      "source_layer": "authority_gate",
+      "stage_id": "issue_trust_claim_without_authority"
+    },
+    {
+      "description": "Trust authority records are missing.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "missing_authority_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000063"
+      ],
+      "origin_category": "trust_authority",
+      "scenario_id": "trust_missing_authority",
+      "source_layer": "authority_gate",
+      "stage_id": "issue_trust_missing_authority"
+    },
+    {
+      "description": "Unsafe evidence would enter RAG.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_rag_include_records_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000011"
+      ],
+      "origin_category": "evidence_consensus",
+      "scenario_id": "consensus_unsafe_include",
+      "source_layer": "evidence_consensus",
+      "stage_id": "issue_consensus_unsafe_include"
+    },
+    {
+      "description": "Evidence consensus created review candidates.",
+      "detected": true,
+      "expected_category": "review_backlog",
+      "expected_key": "human_review_candidate_count",
+      "expected_severity": "review",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000010"
+      ],
+      "origin_category": "evidence_consensus",
+      "scenario_id": "consensus_review_needed",
+      "source_layer": "evidence_consensus",
+      "stage_id": "issue_consensus_review_needed"
+    },
+    {
+      "description": "Unsafe candidate reached embedding stage.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_embedding_candidate_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000013"
+      ],
+      "origin_category": "semantic_vector",
+      "scenario_id": "embed_unsafe_candidate",
+      "source_layer": "embedding_candidates",
+      "stage_id": "issue_embed_unsafe_candidate"
+    },
+    {
+      "description": "Embedding records are missing page IDs.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "missing_embedding_page_id_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000012"
+      ],
+      "origin_category": "semantic_vector",
+      "scenario_id": "embed_missing_page",
+      "source_layer": "embedding_candidates",
+      "stage_id": "issue_embed_missing_page"
+    },
+    {
+      "description": "A Qdrant payload allows direct answering.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "direct_answer_allowed_payload_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000042"
+      ],
+      "origin_category": "semantic_vector",
+      "scenario_id": "qdrant_direct_answer",
+      "source_layer": "qdrant_payload",
+      "stage_id": "issue_qdrant_direct_answer"
+    },
+    {
+      "description": "Changed pages need Qdrant upsert.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "needs_qdrant_page_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000043"
+      ],
+      "origin_category": "semantic_vector",
+      "scenario_id": "qdrant_needs_upsert",
+      "source_layer": "qdrant_incremental",
+      "stage_id": "issue_qdrant_needs_upsert"
+    },
+    {
+      "description": "Unsafe retrieval result appeared.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_result_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000046"
+      ],
+      "origin_category": "retrieval",
+      "scenario_id": "retrieval_unsafe",
+      "source_layer": "hybrid_retrieval",
+      "stage_id": "issue_retrieval_unsafe"
+    },
+    {
+      "description": "Retrieval-only record was answer allowed.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "retrieval_only_answer_allowed_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000045"
+      ],
+      "origin_category": "retrieval",
+      "scenario_id": "retrieval_only_answer",
+      "source_layer": "hybrid_retrieval",
+      "stage_id": "issue_retrieval_only_answer"
+    },
+    {
+      "description": "Retrieval results lack citations.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "missing_citation_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000044"
+      ],
+      "origin_category": "retrieval",
+      "scenario_id": "retrieval_missing_citation",
+      "source_layer": "hybrid_retrieval",
+      "stage_id": "issue_retrieval_missing_citation"
+    },
+    {
+      "description": "Community signal was used as proof.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "community_as_proof_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000008"
+      ],
+      "origin_category": "graph_community",
+      "scenario_id": "community_as_proof",
+      "source_layer": "leiden_communities",
+      "stage_id": "issue_community_as_proof"
+    },
+    {
+      "description": "Community membership is missing.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "missing_community_membership_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000009"
+      ],
+      "origin_category": "graph_community",
+      "scenario_id": "community_missing_membership",
+      "source_layer": "leiden_communities",
+      "stage_id": "issue_community_missing_membership"
+    },
+    {
+      "description": "Raw feedback would be sent to LLM.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "raw_feedback_direct_to_llm_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000017"
+      ],
+      "origin_category": "feedback_memory",
+      "scenario_id": "feedback_raw_to_llm",
+      "source_layer": "feedback_memory",
+      "stage_id": "issue_feedback_raw_to_llm"
+    },
+    {
+      "description": "Feedback was treated as proof.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "feedback_as_proof_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000014"
+      ],
+      "origin_category": "feedback_memory",
+      "scenario_id": "feedback_as_proof",
+      "source_layer": "feedback_memory",
+      "stage_id": "issue_feedback_as_proof"
+    },
+    {
+      "description": "Feedback sanitizer detected prompt injection.",
+      "detected": true,
+      "expected_category": "review_backlog",
+      "expected_key": "prompt_injection_flagged_count",
+      "expected_severity": "review",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000016"
+      ],
+      "origin_category": "feedback_memory",
+      "scenario_id": "feedback_prompt_injection",
+      "source_layer": "feedback_sanitizer",
+      "stage_id": "issue_feedback_prompt_injection"
+    },
+    {
+      "description": "Feedback records are missing targets.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "missing_feedback_target_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000015"
+      ],
+      "origin_category": "feedback_memory",
+      "scenario_id": "feedback_missing_target",
+      "source_layer": "feedback_events",
+      "stage_id": "issue_feedback_missing_target"
+    },
+    {
+      "description": "A final claim lacks citation.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "uncited_final_claim_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000006"
+      ],
+      "origin_category": "answer_gate",
+      "scenario_id": "answer_uncited_claim",
+      "source_layer": "citation_draft",
+      "stage_id": "issue_answer_uncited_claim"
+    },
+    {
+      "description": "A claim lacks citation.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "claim_without_citation_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000002"
+      ],
+      "origin_category": "answer_gate",
+      "scenario_id": "answer_claim_without_citation",
+      "source_layer": "final_answer_gate",
+      "stage_id": "issue_answer_claim_without_citation"
+    },
+    {
+      "description": "Answer/snippet leaks local path.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "local_path_leak_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000003"
+      ],
+      "origin_category": "answer_gate",
+      "scenario_id": "answer_local_path_leak",
+      "source_layer": "snippet_cleaner",
+      "stage_id": "issue_answer_local_path_leak"
+    },
+    {
+      "description": "Answer/snippet leaks raw byte wrapper.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "raw_bytes_repr_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000005"
+      ],
+      "origin_category": "answer_gate",
+      "scenario_id": "answer_raw_bytes",
+      "source_layer": "snippet_cleaner",
+      "stage_id": "issue_answer_raw_bytes"
+    },
+    {
+      "description": "Answer/snippet leaks boilerplate.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "boilerplate_leak_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000001"
+      ],
+      "origin_category": "answer_gate",
+      "scenario_id": "answer_boilerplate",
+      "source_layer": "snippet_cleaner",
+      "stage_id": "issue_answer_boilerplate"
+    },
+    {
+      "description": "Final answer stage has nonstandard status.",
+      "detected": true,
+      "expected_category": "stage_quality_nonstandard",
+      "expected_key": null,
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000004"
+      ],
+      "origin_category": "answer_gate",
+      "scenario_id": "answer_nonstandard_status",
+      "source_layer": "final_answer_gate",
+      "stage_id": "issue_answer_nonstandard_status"
+    },
+    {
+      "description": "Incremental manifest has dirty pages.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "dirty_page_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000022"
+      ],
+      "origin_category": "incremental_ops",
+      "scenario_id": "incremental_dirty",
+      "source_layer": "corpus_manifest",
+      "stage_id": "issue_incremental_dirty"
+    },
+    {
+      "description": "Pages need embedding refresh.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "needs_embedding_page_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000023"
+      ],
+      "origin_category": "incremental_ops",
+      "scenario_id": "incremental_needs_embedding",
+      "source_layer": "corpus_manifest",
+      "stage_id": "issue_incremental_needs_embedding"
+    },
+    {
+      "description": "Pages need graph updates.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "needs_graph_update_page_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000024"
+      ],
+      "origin_category": "incremental_ops",
+      "scenario_id": "incremental_needs_graph",
+      "source_layer": "corpus_manifest",
+      "stage_id": "issue_incremental_needs_graph"
+    },
+    {
+      "description": "Graph change requires community refresh.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "needs_leiden_refresh_page_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000025"
+      ],
+      "origin_category": "incremental_ops",
+      "scenario_id": "incremental_needs_leiden",
+      "source_layer": "corpus_manifest",
+      "stage_id": "issue_incremental_needs_leiden"
+    },
+    {
+      "description": "Incremental planner created unsafe job.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_job_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000037"
+      ],
+      "origin_category": "incremental_ops",
+      "scenario_id": "orchestrator_unsafe_job",
+      "source_layer": "incremental_orchestrator",
+      "stage_id": "issue_orchestrator_unsafe_job"
+    },
+    {
+      "description": "Unsafe document would be indexed.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_index_document_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000036"
+      ],
+      "origin_category": "keyword_search",
+      "scenario_id": "opensearch_unsafe_doc",
+      "source_layer": "opensearch_adapter",
+      "stage_id": "issue_opensearch_unsafe_doc"
+    },
+    {
+      "description": "Raw visual output would be indexed.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_raw_visual_output_indexed_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000035"
+      ],
+      "origin_category": "keyword_search",
+      "scenario_id": "opensearch_raw_visual",
+      "source_layer": "opensearch_adapter",
+      "stage_id": "issue_opensearch_raw_visual"
+    },
+    {
+      "description": "OpenSearch docs lack page IDs.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "missing_index_page_id_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000033"
+      ],
+      "origin_category": "keyword_search",
+      "scenario_id": "opensearch_missing_page",
+      "source_layer": "opensearch_adapter",
+      "stage_id": "issue_opensearch_missing_page"
+    },
+    {
+      "description": "Changed pages need OpenSearch upsert.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "needs_opensearch_page_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000034"
+      ],
+      "origin_category": "keyword_search",
+      "scenario_id": "opensearch_needs_docs",
+      "source_layer": "opensearch_incremental",
+      "stage_id": "issue_opensearch_needs_docs"
+    },
+    {
+      "description": "LLM freeform answer was allowed directly.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "direct_answer_allowed_llm_freeform_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000027"
+      ],
+      "origin_category": "llm_advisory",
+      "scenario_id": "llm_freeform_allowed",
+      "source_layer": "answer_composer",
+      "stage_id": "issue_llm_freeform_allowed"
+    },
+    {
+      "description": "LLM advisory output was allowed as proof.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "claim_proof_allowed_llm_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000026"
+      ],
+      "origin_category": "llm_advisory",
+      "scenario_id": "llm_claim_proof",
+      "source_layer": "answer_composer",
+      "stage_id": "issue_llm_claim_proof"
+    },
+    {
+      "description": "Model runtime dependency is missing or pending.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "needs_model_download_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000028"
+      ],
+      "origin_category": "llm_advisory",
+      "scenario_id": "llm_needs_model",
+      "source_layer": "model_runtime",
+      "stage_id": "issue_llm_needs_model"
+    },
+    {
+      "description": "Prompt/debug leakage detected.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_prompt_leak_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000049"
+      ],
+      "origin_category": "security_leakage",
+      "scenario_id": "security_prompt_leak",
+      "source_layer": "prompt_boundary",
+      "stage_id": "issue_security_prompt_leak"
+    },
+    {
+      "description": "Debug/internal record leaked into a publishable layer.",
+      "detected": true,
+      "expected_category": "safety_count_nonzero",
+      "expected_key": "unsafe_debug_record_count",
+      "expected_severity": "critical",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000047"
+      ],
+      "origin_category": "security_leakage",
+      "scenario_id": "security_debug_leak",
+      "source_layer": "debug_boundary",
+      "stage_id": "issue_security_debug_leak"
+    },
+    {
+      "description": "Expected redaction was missing.",
+      "detected": true,
+      "expected_category": "operational_warning",
+      "expected_key": "missing_redaction_count",
+      "expected_severity": "warning",
+      "matched_issue_count": 1,
+      "matched_issue_ids": [
+        "itops_issue_000048"
+      ],
+      "origin_category": "security_leakage",
+      "scenario_id": "security_missing_redaction",
+      "source_layer": "redaction",
+      "stage_id": "issue_security_missing_redaction"
+    }
+  ],
+  "scenarios_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/trace_net_it_issue_origin_test_matrix_v1_scenarios.jsonl",
+  "schema_version": "trace_net_it_issue_origin_test_matrix_v1",
+  "status": "IT_ISSUE_ORIGIN_TEST_MATRIX_BUILT",
+  "summary": {
+    "critical_scenario_count": 34,
+    "detected_scenario_count": 68,
+    "origin_category_count": 17,
+    "review_scenario_count": 7,
+    "scenario_count": 68,
+    "schema_version": "trace_net_it_issue_origin_test_matrix_v1",
+    "status": "PASS",
+    "synthetic_console_critical_issue_count": 34,
+    "synthetic_console_issue_count": 68,
+    "synthetic_console_quality_status": "FAIL",
+    "synthetic_console_report_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_console_report/trace_net_it_operations_console_v1.json",
+    "synthetic_console_review_issue_count": 7,
+    "synthetic_console_warning_issue_count": 27,
+    "synthetic_trace_net_root": "local_data/organization/trace_net/it_issue_origin_test_matrix/synthetic_trace_net_root",
+    "undetected_scenario_count": 0,
+    "warning_scenario_count": 27
+  },
+  "summary_path": "local_data/organization/trace_net/it_issue_origin_test_matrix/trace_net_it_issue_origin_test_matrix_v1_summary.json"
+}

@@ -1,0 +1,89 @@
+{
+  "checks": [
+    {
+      "expected": ">= 509",
+      "name": "min_fishnet_records",
+      "observed": 509,
+      "passed": true
+    },
+    {
+      "expected": "== 509",
+      "name": "require_page_count",
+      "observed": 509,
+      "passed": true
+    },
+    {
+      "expected": ">= 509",
+      "name": "min_pages_with_retry_plan",
+      "observed": 509,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "min_pages_with_review_or_retry",
+      "observed": 983,
+      "passed": true
+    },
+    {
+      "expected": ">= 6",
+      "name": "min_extractor_family_count",
+      "observed": 10,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "min_table_retry_actions",
+      "observed": 995,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "min_visual_retry_actions",
+      "observed": 1909,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "min_ocr_retry_actions",
+      "observed": 509,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "missing_page_id_count_zero",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "unsafe_fishnet_record_count_zero",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "direct_answer_allowed_count_zero",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "claim_proof_allowed_count_zero",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "source_truth_mutation_allowed_count_zero",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "final_answer_allowed_count_zero",
+      "observed": 0,
+      "passed": true
+    }
+  ],
+  "status": "PASS"
+}

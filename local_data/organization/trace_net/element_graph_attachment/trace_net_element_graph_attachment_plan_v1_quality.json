@@ -1,0 +1,181 @@
+{
+  "checks": [
+    {
+      "actual": 509,
+      "expected": 509,
+      "name": "required_page_count",
+      "passed": true
+    },
+    {
+      "actual": 509,
+      "expected": ">= 509",
+      "name": "min_page_nodes",
+      "passed": true
+    },
+    {
+      "actual": 32446,
+      "expected": ">= 1000",
+      "name": "min_element_node_plans",
+      "passed": true
+    },
+    {
+      "actual": 35907,
+      "expected": ">= 1000",
+      "name": "min_edge_plans",
+      "passed": true
+    },
+    {
+      "actual": 495,
+      "expected": ">= 20",
+      "name": "min_table_node_plans",
+      "passed": true
+    },
+    {
+      "actual": 1414,
+      "expected": ">= 100",
+      "name": "min_table_row_node_plans",
+      "passed": true
+    },
+    {
+      "actual": 3090,
+      "expected": ">= 100",
+      "name": "min_table_cell_node_plans",
+      "passed": true
+    },
+    {
+      "actual": 1018,
+      "expected": ">= 100",
+      "name": "min_visual_node_plans",
+      "passed": true
+    },
+    {
+      "actual": 509,
+      "expected": ">= 509",
+      "name": "min_fishnet_node_plans",
+      "passed": true
+    },
+    {
+      "actual": 2860,
+      "expected": ">= 1",
+      "name": "min_citation_edge_plans",
+      "passed": true
+    },
+    {
+      "actual": 14,
+      "expected": ">= 14",
+      "name": "min_confirmed_blank_preserve_source_trace",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "no_orphan_edges",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "no_missing_page_ids",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "no_answer_capable_without_citation",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "no_retrieval_only_answer_allowed",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "no_direct_answer_allowed",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "no_claim_proof_allowed",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "no_source_truth_mutation_allowed",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "no_unsafe_attachment_records",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "no_forbidden_property_leaks",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "page_registry_quality_pass",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "fishnet_refinement_quality_pass",
+      "passed": true
+    }
+  ],
+  "created_at": "2026-06-09T18:23:22+00:00",
+  "schema_version": "trace_net_element_graph_attachment_plan_v1_quality",
+  "status": "PASS",
+  "summary": {
+    "algorithm": "trace_net_read_only_element_graph_attachment_planner_v1",
+    "answer_capable_without_citation_count": 0,
+    "callout_node_plan_count": 9092,
+    "citation_edge_plan_count": 2860,
+    "citation_node_plan_count": 1446,
+    "claim_proof_allowed_count": 0,
+    "confirmed_blank_pages_preserve_source_trace_count": 14,
+    "direct_answer_allowed_count": 0,
+    "edge_plan_count": 35907,
+    "evidence_candidate_node_plan_count": 1476,
+    "fishnet_action_node_plan_count": 6368,
+    "fishnet_node_plan_count": 509,
+    "forbidden_property_leak_count": 0,
+    "missing_page_id_count": 0,
+    "node_plan_count": 32446,
+    "orphan_edge_count": 0,
+    "page_count": 509,
+    "page_node_count": 509,
+    "records_with_evidence_candidates_count": 509,
+    "records_with_fishnet_nodes_count": 509,
+    "records_with_table_nodes_count": 495,
+    "records_with_visual_nodes_count": 509,
+    "retrieval_only_answer_allowed_count": 0,
+    "schema_version": "trace_net_element_graph_attachment_plan_v1",
+    "source_summaries": {
+      "embedding_candidates_quality_status": null,
+      "figure_chart_understanding_quality_status": "PASS",
+      "fishnet_refinement_quality_status": "PASS",
+      "page_registry_quality_status": "PASS",
+      "table_cell_normalizer_quality_status": "PASS",
+      "table_understanding_quality_status": "PASS"
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "table_cell_node_plan_count": 3090,
+    "table_node_plan_count": 495,
+    "table_row_node_plan_count": 1414,
+    "trust_authority_node_plan_count": 6,
+    "unsafe_attachment_record_count": 0,
+    "visual_node_plan_count": 1018,
+    "writeback_mode": "read_only_plan"
+  }
+}

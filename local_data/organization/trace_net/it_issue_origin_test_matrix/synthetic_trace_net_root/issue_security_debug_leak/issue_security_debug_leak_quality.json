@@ -1,0 +1,15 @@
+{
+  "description": "Debug/internal record leaked into a publishable layer.",
+  "origin_category": "security_leakage",
+  "quality_status": "PASS",
+  "scenario_id": "security_debug_leak",
+  "schema_version": "trace_net_it_issue_origin_test_matrix_v1_synthetic_quality",
+  "source_layer": "debug_boundary",
+  "status": "PASS",
+  "summary": {
+    "origin_category": "security_leakage",
+    "scenario_id": "security_debug_leak",
+    "source_layer": "debug_boundary",
+    "unsafe_debug_record_count": 1
+  }
+}

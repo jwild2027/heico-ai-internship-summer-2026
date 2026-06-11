@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-06-11T16:34:06Z",
+  "input_paths": {
+    "element_graph_attachment": "local_data/organization/trace_net/element_graph_attachment/trace_net_element_graph_attachment_plan_v1.json",
+    "feedback_memory": "local_data/organization/trace_net/feedback_memory/trace_net_feedback_memory_v1.json",
+    "figure_chart_understanding": "local_data/organization/trace_net/figure_chart_understanding/trace_net_figure_chart_understanding_v1.json",
+    "human_review_triage": "local_data/organization/trace_net/human_review_triage/trace_net_human_review_triage_v1.json",
+    "leiden_communities": "local_data/organization/trace_net/leiden_graph_communities/trace_net_leiden_graph_communities_v1.json",
+    "opensearch_adapter": "local_data/organization/trace_net/opensearch_adapter/trace_net_opensearch_adapter_v1.json",
+    "page_registry": "local_data/organization/trace_net/page_element_registry/trace_net_page_element_registry_v1.json",
+    "table_cell_normalizer": "local_data/organization/trace_net/table_cell_normalizer/trace_net_table_cell_normalizer_v1.json",
+    "visual_ink_layout_calibrator": "local_data/organization/trace_net/visual_ink_layout_calibrator/trace_net_visual_ink_layout_calibrator_v1.json"
+  },
+  "output_paths": {
+    "documents": "local_data\\organization\\trace_net\\dublin_core_crosswalk\\trace_net_dublin_core_documents_v1.jsonl",
+    "field_map": "local_data\\organization\\trace_net\\dublin_core_crosswalk\\trace_net_dublin_core_crosswalk_field_map_v1.md",
+    "html": "local_data\\organization\\trace_net\\dublin_core_crosswalk\\trace_net_dublin_core_crosswalk_v1.html",
+    "markdown": "local_data\\organization\\trace_net\\dublin_core_crosswalk\\trace_net_dublin_core_crosswalk_v1.md",
+    "pages": "local_data\\organization\\trace_net\\dublin_core_crosswalk\\trace_net_dublin_core_pages_v1.jsonl",
+    "quality": "local_data\\organization\\trace_net\\dublin_core_crosswalk\\trace_net_dublin_core_crosswalk_v1_quality.json",
+    "report": "local_data\\organization\\trace_net\\dublin_core_crosswalk\\trace_net_dublin_core_crosswalk_v1.json",
+    "summary": "local_data\\organization\\trace_net\\dublin_core_crosswalk\\trace_net_dublin_core_crosswalk_v1_summary.json"
+  },
+  "quality_status": "PASS",
+  "report_sha256": "f77f20d27279b07f77454e523254380692c399ea3cde9ade7a8e0ccc3c3f76a9",
+  "schema_version": "trace_net_dublin_core_crosswalk_v1",
+  "status": "DUBLIN_CORE_CROSSWALK_BUILT"
+}

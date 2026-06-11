@@ -1,0 +1,77 @@
+{
+  "index_name": "trace_net_safe_search_v1",
+  "mappings": {
+    "dynamic": "false",
+    "properties": {
+      "answer_support_candidate": {
+        "type": "boolean"
+      },
+      "authority": {
+        "type": "keyword"
+      },
+      "citation_ids": {
+        "type": "keyword"
+      },
+      "community_ids": {
+        "type": "keyword"
+      },
+      "created_at": {
+        "type": "date"
+      },
+      "document_type": {
+        "type": "keyword"
+      },
+      "page_id": {
+        "type": "keyword"
+      },
+      "part_numbers": {
+        "type": "keyword"
+      },
+      "rag_bucket": {
+        "type": "keyword"
+      },
+      "requires_authority_gate": {
+        "type": "boolean"
+      },
+      "requires_citation": {
+        "type": "boolean"
+      },
+      "retrieval_only": {
+        "type": "boolean"
+      },
+      "safe_for_opensearch": {
+        "type": "boolean"
+      },
+      "schema_version": {
+        "type": "keyword"
+      },
+      "source_artifact": {
+        "type": "keyword"
+      },
+      "source_page_ids": {
+        "type": "keyword"
+      },
+      "source_trace_present": {
+        "type": "boolean"
+      },
+      "text": {
+        "type": "text"
+      },
+      "title": {
+        "fields": {
+          "keyword": {
+            "ignore_above": 512,
+            "type": "keyword"
+          }
+        },
+        "type": "text"
+      }
+    }
+  },
+  "settings": {
+    "index": {
+      "number_of_replicas": 0,
+      "number_of_shards": 1
+    }
+  }
+}

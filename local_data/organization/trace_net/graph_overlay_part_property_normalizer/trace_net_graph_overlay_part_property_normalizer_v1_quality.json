@@ -1,0 +1,148 @@
+{
+  "checks": [
+    {
+      "actual": 509,
+      "expected": 509,
+      "name": "page_count",
+      "passed": true
+    },
+    {
+      "actual": 32446,
+      "expected": ">=1000",
+      "name": "min_overlay_nodes",
+      "passed": true
+    },
+    {
+      "actual": 35907,
+      "expected": ">=1000",
+      "name": "min_overlay_edges",
+      "passed": true
+    },
+    {
+      "actual": 301,
+      "expected": ">=301",
+      "name": "min_part_candidate_nodes",
+      "passed": true
+    },
+    {
+      "actual": 301,
+      "expected": ">=301",
+      "name": "min_part_candidate_nodes_with_source_page_ids",
+      "passed": true
+    },
+    {
+      "actual": 301,
+      "expected": ">=301",
+      "name": "min_part_candidate_nodes_with_part_number",
+      "passed": true
+    },
+    {
+      "actual": 92,
+      "expected": ">=1",
+      "name": "min_part_families",
+      "passed": true
+    },
+    {
+      "actual": 3090,
+      "expected": ">=3090",
+      "name": "min_table_cell_nodes",
+      "passed": true
+    },
+    {
+      "actual": 50,
+      "expected": ">=50",
+      "name": "min_context_v2_edges_preserved",
+      "passed": true
+    },
+    {
+      "actual": 386,
+      "expected": ">=1",
+      "name": "min_nomenclature_edges_preserved",
+      "passed": true
+    },
+    {
+      "actual": 14,
+      "expected": ">=14",
+      "name": "min_confirmed_blank_preserve_source_trace",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "part_candidate_missing_source_page_ids_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "part_candidate_missing_part_number_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "page_scoped_missing_page_id_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "orphan_edge_count_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "direct_answer_allowed_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "claim_proof_allowed_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "retrieval_only_answer_allowed_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_zero",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "postgres_write_not_attempted",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "source_lineage_quality_pass",
+      "passed": true
+    }
+  ],
+  "generated_at": "2026-06-09T18:57:40+00:00",
+  "schema_version": "trace_net_graph_overlay_part_property_normalizer_v1",
+  "status": "PASS",
+  "summary": {
+    "orphan_edge_count": 0,
+    "overlay_edge_count": 35907,
+    "overlay_node_count": 32446,
+    "page_count": 509,
+    "page_scoped_missing_page_id_count": 0,
+    "part_candidate_missing_part_number_count": 0,
+    "part_candidate_node_count": 301,
+    "part_candidate_nodes_with_part_number_count": 301,
+    "part_candidate_nodes_with_source_page_ids_count": 301,
+    "part_family_count": 92,
+    "postgres_write_attempt_count": 0,
+    "retrieval_only_answer_allowed_count": 0,
+    "source_truth_mutation_allowed_count": 0
+  }
+}

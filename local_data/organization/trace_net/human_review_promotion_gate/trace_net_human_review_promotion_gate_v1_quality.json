@@ -1,0 +1,150 @@
+{
+  "checks": [
+    {
+      "expected": ">= 2",
+      "name": "min_review_decisions",
+      "passed": true,
+      "severity": "critical",
+      "value": 2
+    },
+    {
+      "expected": ">= 0",
+      "name": "min_promotion_evaluations",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "unsafe_promotion_record_count_zero",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "approved_without_citation_count_zero",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "approved_without_source_or_page_count_zero",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "promotion_can_answer_directly_count_zero",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "promotion_can_prove_claims_count_zero",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "promotion_can_mutate_source_truth_count_zero",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_count_zero",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "source_truth_mutations_performed_zero",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "raw_feedback_direct_to_llm_count_zero",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "final_answer_allowed_count_zero",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": "PASS",
+      "name": "source_decision_quality_pass",
+      "passed": true,
+      "severity": "critical",
+      "value": "PASS"
+    }
+  ],
+  "schema_version": "trace_net_human_review_promotion_gate_v1_quality",
+  "status": "PASS",
+  "summary": {
+    "affected_citation_count": 62,
+    "affected_page_count": 1,
+    "affected_part_number_count": 20,
+    "approved_without_citation_count": 0,
+    "approved_without_graph_or_catalog_support_count": 0,
+    "approved_without_source_or_page_count": 0,
+    "decision_type_counts": {
+      "needs_more_review": 1,
+      "reject": 1
+    },
+    "final_answer_allowed_count": 0,
+    "non_promotion_decision_count": 2,
+    "promotion_approved_count": 0,
+    "promotion_can_answer_directly_count": 0,
+    "promotion_can_mutate_source_truth_count": 0,
+    "promotion_can_prove_claims_count": 0,
+    "promotion_candidate_count": 0,
+    "promotion_denied_count": 0,
+    "promotion_evaluation_count": 0,
+    "promotion_review_required_count": 0,
+    "promotion_status_counts": {
+      "not_a_promotion_candidate": 2
+    },
+    "raw_feedback_direct_to_llm_count": 0,
+    "regression_required_count": 0,
+    "review_decision_count": 2,
+    "schema_version": "trace_net_human_review_promotion_gate_v1",
+    "source_decision_quality_status": "PASS",
+    "source_decision_report_status": "PASS",
+    "source_summaries": {
+      "embedding_candidate_page_count": 509,
+      "embedding_candidates_quality_status": null,
+      "graph_overlay_part_normalizer_quality_status": "PASS",
+      "graph_part_candidate_count": 301,
+      "review_decisions_quality_status": "PASS",
+      "review_decisions_summary_status": "PASS",
+      "table_cell_normalizer_quality_status": "PASS",
+      "table_repair_page_count": 1,
+      "triage_quality_status": "PASS"
+    },
+    "source_triage_quality_pass": true,
+    "source_triage_quality_required": true,
+    "source_truth_mutation_allowed_count": 0,
+    "source_truth_mutations_performed": 0,
+    "status": "PASS",
+    "target_type_counts": {
+      "feedback_memory": 1,
+      "triage_card": 1
+    },
+    "unsafe_promotion_record_count": 0,
+    "writeback_required_count": 0
+  }
+}

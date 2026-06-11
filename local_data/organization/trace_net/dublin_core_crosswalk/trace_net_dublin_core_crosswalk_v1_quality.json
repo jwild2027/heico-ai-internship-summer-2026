@@ -1,0 +1,102 @@
+{
+  "checks": [
+    {
+      "expected": 509,
+      "name": "page_count_matches_required",
+      "passed": true,
+      "severity": "critical",
+      "value": 509
+    },
+    {
+      "expected": ">=509",
+      "name": "min_page_records",
+      "passed": true,
+      "severity": "critical",
+      "value": 509
+    },
+    {
+      "expected": ">=1",
+      "name": "min_document_records",
+      "passed": true,
+      "severity": "critical",
+      "value": 1
+    },
+    {
+      "expected": ">=509",
+      "name": "min_pages_with_element_counts",
+      "passed": true,
+      "severity": "critical",
+      "value": 509
+    },
+    {
+      "expected": 0,
+      "name": "dc_identifier_present",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "dc_source_present",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "dc_format_present",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "trace_net_element_count_present",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "trace_net_element_type_count_present",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "direct_answer_allowed_zero",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "claim_proof_allowed_zero",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_zero",
+      "passed": true,
+      "severity": "critical",
+      "value": 0
+    }
+  ],
+  "claim_proof_allowed_count": 0,
+  "direct_answer_allowed_count": 0,
+  "document_dc_record_count": 1,
+  "failed_check_count": 0,
+  "missing_dc_format_count": 0,
+  "missing_dc_identifier_count": 0,
+  "missing_dc_source_count": 0,
+  "missing_trace_net_element_count": 0,
+  "missing_trace_net_element_type_count": 0,
+  "page_dc_record_count": 509,
+  "page_records_with_element_counts": 509,
+  "schema_version": "trace_net_dublin_core_crosswalk_v1_quality",
+  "source_truth_mutation_allowed_count": 0,
+  "status": "PASS"
+}

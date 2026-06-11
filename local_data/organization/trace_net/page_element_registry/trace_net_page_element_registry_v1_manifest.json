@@ -1,0 +1,27 @@
+{
+  "created_at": "2026-06-09T15:10:28.615753Z",
+  "input_paths": {
+    "baseline_checkpoint": "local_data\\organization\\trace_net\\baselines\\graph_context_v2_nomenclature_v1\\trace_net_graph_baseline_checkpoint_v1.json",
+    "context_helpers": "local_data\\organization\\trace_net\\context_retrieval_helpers\\trace_net_context_retrieval_helpers_v1.json",
+    "embedding_candidates": "local_data\\organization\\trace_net\\embedding_candidates\\trace_net_embedding_candidates_v1.json",
+    "evidence_consensus_summary": "local_data\\organization\\trace_net\\evidence_consensus\\evidence_consensus_summary.json",
+    "image_recognition_quality": "local_data\\organization\\image_recognition\\page_image_recognition_quality.json",
+    "page_profiles": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json"
+  },
+  "output_paths": {
+    "graph_attachment_plan": "local_data\\organization\\trace_net\\page_element_registry\\trace_net_page_element_registry_v1_graph_attachment_plan.jsonl",
+    "html": "local_data\\organization\\trace_net\\page_element_registry\\trace_net_page_element_registry_v1.html",
+    "markdown": "local_data\\organization\\trace_net\\page_element_registry\\trace_net_page_element_registry_v1.md",
+    "matrix_json": "local_data\\organization\\trace_net\\page_element_registry\\trace_net_core_algorithm_matrix_v1.json",
+    "matrix_md": "local_data\\organization\\trace_net\\page_element_registry\\trace_net_core_algorithm_matrix_v1.md",
+    "quality": "local_data\\organization\\trace_net\\page_element_registry\\trace_net_page_element_registry_v1_quality.json",
+    "records": "local_data\\organization\\trace_net\\page_element_registry\\trace_net_page_element_registry_v1_records.jsonl",
+    "report": "local_data\\organization\\trace_net\\page_element_registry\\trace_net_page_element_registry_v1.json",
+    "routes": "local_data\\organization\\trace_net\\page_element_registry\\trace_net_page_element_registry_v1_routes.jsonl",
+    "summary": "local_data\\organization\\trace_net\\page_element_registry\\trace_net_page_element_registry_v1_summary.json"
+  },
+  "quality_status": "PASS",
+  "registry_sha256": "856f6f51f457c989dc03a649bf04d8efc64061c9a39fb08f6f1c3352621ebeab",
+  "schema_version": "trace_net_page_element_registry_v1",
+  "status": "PAGE_ELEMENT_REGISTRY_BUILT"
+}

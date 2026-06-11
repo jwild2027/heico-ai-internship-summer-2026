@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-06-09T18:33:32+00:00",
+  "input_paths": {
+    "attachment_plan": "local_data/organization/trace_net/element_graph_attachment/trace_net_element_graph_attachment_plan_v1.json",
+    "graph_explorer_dir": "local_data/organization/trace_net/graph_explorer"
+  },
+  "output_paths": {
+    "edges": "local_data/organization/trace_net/graph_writeback_overlay/trace_net_graph_writeback_overlay_v1_edges.jsonl",
+    "html": "local_data/organization/trace_net/graph_writeback_overlay/trace_net_graph_writeback_overlay_v1.html",
+    "markdown": "local_data/organization/trace_net/graph_writeback_overlay/trace_net_graph_writeback_overlay_v1.md",
+    "nodes": "local_data/organization/trace_net/graph_writeback_overlay/trace_net_graph_writeback_overlay_v1_nodes.jsonl",
+    "quality": "local_data/organization/trace_net/graph_writeback_overlay/trace_net_graph_writeback_overlay_v1_quality.json",
+    "report": "local_data/organization/trace_net/graph_writeback_overlay/trace_net_graph_writeback_overlay_v1.json",
+    "summary": "local_data/organization/trace_net/graph_writeback_overlay/trace_net_graph_writeback_overlay_v1_summary.json"
+  },
+  "quality_status": "PASS",
+  "schema_version": "trace_net_graph_writeback_overlay_v1",
+  "status": "GRAPH_WRITEBACK_OVERLAY_BUILT",
+  "writeback_mode": "dry_run_overlay"
+}

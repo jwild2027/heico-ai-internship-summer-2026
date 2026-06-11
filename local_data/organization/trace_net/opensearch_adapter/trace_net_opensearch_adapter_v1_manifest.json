@@ -1,0 +1,90 @@
+{
+  "generated_at": "2026-06-10T20:00:51Z",
+  "index_name": "trace_net_safe_search_v1",
+  "paths": {
+    "bulk_path": "local_data\\organization\\trace_net\\opensearch_adapter\\trace_net_opensearch_bulk_v1.ndjson",
+    "documents_path": "local_data\\organization\\trace_net\\opensearch_adapter\\trace_net_opensearch_documents_v1.jsonl",
+    "manifest_path": "local_data\\organization\\trace_net\\opensearch_adapter\\trace_net_opensearch_adapter_v1_manifest.json",
+    "mapping_path": "local_data\\organization\\trace_net\\opensearch_adapter\\trace_net_opensearch_mapping_v1.json",
+    "markdown_path": "local_data\\organization\\trace_net\\opensearch_adapter\\trace_net_opensearch_adapter_v1.md",
+    "quality_path": "local_data\\organization\\trace_net\\opensearch_adapter\\trace_net_opensearch_adapter_v1_quality.json",
+    "report_path": "local_data\\organization\\trace_net\\opensearch_adapter\\trace_net_opensearch_adapter_v1.json",
+    "summary_path": "local_data\\organization\\trace_net\\opensearch_adapter\\trace_net_opensearch_adapter_v1_summary.json"
+  },
+  "quality_status": "PASS",
+  "schema_version": "trace_net_opensearch_adapter_v1_manifest",
+  "source_artifacts": {
+    "context_helpers": "local_data/organization/trace_net/context_retrieval_helpers/trace_net_context_retrieval_helpers_v1.json",
+    "embedding_candidates": "local_data/organization/trace_net/embedding_candidates/trace_net_embedding_candidates_v1.json",
+    "evidence_snippet_cleaner": "local_data/organization/trace_net/evidence_snippet_cleaner/trace_net_evidence_snippet_cleaner_v1.json",
+    "graph_overlay_part_normalizer": "local_data/organization/trace_net/graph_overlay_part_property_normalizer/trace_net_graph_overlay_part_property_normalizer_v1.json",
+    "leiden_communities": "local_data/organization/trace_net/leiden_graph_communities/trace_net_leiden_graph_communities_v1.json",
+    "page_profiles": "local_data/organization/trace_net/page_retrieval_profiles/trace_net_page_retrieval_profiles_v1.json",
+    "table_cell_normalizer": "local_data/organization/trace_net/table_cell_normalizer/trace_net_table_cell_normalizer_v1.json"
+  },
+  "summary": {
+    "algorithm": "trace_net_safe_opensearch_document_builder_v1",
+    "authority_counts": {
+      "community_navigation_only": 223,
+      "ocr_text_claim_with_citation": 495,
+      "page_route_only": 509,
+      "part_candidate_navigation_only": 301,
+      "part_page_relationship": 362,
+      "retrieval_helper_only": 100,
+      "source_exists_only": 509,
+      "supporting_context_only": 60,
+      "table_cell_retrieval_helper_only": 3054,
+      "table_row_retrieval_helper_only": 1414
+    },
+    "bucket_counts": {
+      "community_retrieval_helper": 223,
+      "context_retrieval_helper": 100,
+      "derived_context": 60,
+      "page_retrieval_profile": 509,
+      "part_candidate_lineage": 301,
+      "source_evidence": 509,
+      "source_text_evidence": 495,
+      "table_cell_normalized": 3054,
+      "table_row_normalized": 1414,
+      "verified_part_evidence": 362
+    },
+    "document_type_counts": {
+      "community_summary": 223,
+      "context_retrieval_helper": 50,
+      "embedding_candidate": 1476,
+      "page_retrieval_profile": 509,
+      "part_candidate_lineage": 301,
+      "table_cell_normalized": 3054,
+      "table_row_normalized": 1414
+    },
+    "index_name": "trace_net_safe_search_v1",
+    "missing_page_id_count": 0,
+    "missing_source_trace_count": 0,
+    "opensearch_document_count": 7027,
+    "opensearch_write_attempt_count": 0,
+    "page_scoped_document_count": 7027,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "raw_feedback_indexed_count": 0,
+    "raw_ocr_unfiltered_indexed_count": 0,
+    "raw_visual_output_indexed_count": 0,
+    "retrieval_only_answer_allowed_count": 0,
+    "schema_version": "trace_net_opensearch_adapter_v1",
+    "source_artifact_count": 7,
+    "source_artifacts": {
+      "context_helpers": "local_data/organization/trace_net/context_retrieval_helpers/trace_net_context_retrieval_helpers_v1.json",
+      "embedding_candidates": "local_data/organization/trace_net/embedding_candidates/trace_net_embedding_candidates_v1.json",
+      "evidence_snippet_cleaner": "local_data/organization/trace_net/evidence_snippet_cleaner/trace_net_evidence_snippet_cleaner_v1.json",
+      "graph_overlay_part_normalizer": "local_data/organization/trace_net/graph_overlay_part_property_normalizer/trace_net_graph_overlay_part_property_normalizer_v1.json",
+      "leiden_communities": "local_data/organization/trace_net/leiden_graph_communities/trace_net_leiden_graph_communities_v1.json",
+      "page_profiles": "local_data/organization/trace_net/page_retrieval_profiles/trace_net_page_retrieval_profiles_v1.json",
+      "table_cell_normalizer": "local_data/organization/trace_net/table_cell_normalizer/trace_net_table_cell_normalizer_v1.json"
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "source_truth_mutations_performed": 0,
+    "status": "PASS",
+    "unsafe_index_document_count": 0,
+    "write_mode": "local_document_build_only"
+  },
+  "write_mode": "local_document_build_only"
+}

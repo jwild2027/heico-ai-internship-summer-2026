@@ -1,0 +1,222 @@
+{
+  "alerts": [
+    {
+      "ack_status": "unacknowledged",
+      "alert_id": "synalert_f08b432cd9685713",
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "created_at": "2026-06-10T18:49:12+00:00",
+      "incident_id": "syninc_4d41547bb8ed17b6",
+      "message": "Random synthetic vector incident: Qdrant payload or embedding dimension should be checked.",
+      "origin_category": "semantic_vector",
+      "origin_label": "Semantic vector / Qdrant",
+      "recommended_action": "Verify vector dimension, payload safety flags, and collection counts.",
+      "record_type": "synthetic_alert",
+      "schema_version": "trace_net_synthetic_incident_console_v1",
+      "severity": "warning",
+      "synthetic_only": true,
+      "target_id": "random_qdrant_point",
+      "target_type": "qdrant_point"
+    }
+  ],
+  "docker_port_notes": {
+    "default_console_port": 8011,
+    "note": "The console defaults to 8011 to avoid Postgres, Qdrant, Chroma, and Open WebUI ports.",
+    "reserved_ports_observed": [
+      5432,
+      6333,
+      6334,
+      8000,
+      3000
+    ]
+  },
+  "generated_at": "2026-06-10T18:49:29+00:00",
+  "incident_origins": {
+    "answer_gate": {
+      "default_severity": "critical",
+      "label": "Answer gate",
+      "message": "Synthetic answer-gate issue: final answer claim must be blocked until citations pass.",
+      "recommended_action": "Check final answer gate, uncited claims, authority, and leak counters."
+    },
+    "community_graph": {
+      "default_severity": "review",
+      "label": "Graph community",
+      "message": "Synthetic community issue: community hint must remain advisory-only.",
+      "recommended_action": "Check community overlay and confirm community is not used as proof."
+    },
+    "feedback_memory": {
+      "default_severity": "review",
+      "label": "Feedback memory",
+      "message": "Synthetic feedback issue: feedback memory requires review before advisory use.",
+      "recommended_action": "Sanitize feedback and confirm it remains advisory-only."
+    },
+    "graph_integrity": {
+      "default_severity": "critical",
+      "label": "Graph integrity",
+      "message": "Synthetic graph issue: possible orphan edge or missing graph lineage.",
+      "recommended_action": "Run graph quality checks and block writeback until orphan edges are resolved."
+    },
+    "human_review": {
+      "default_severity": "review",
+      "label": "Human review",
+      "message": "Synthetic human-review issue: triage card needs reviewer action.",
+      "recommended_action": "Open review triage and record a safe reviewer decision."
+    },
+    "incremental_ops": {
+      "default_severity": "warning",
+      "label": "Incremental ops",
+      "message": "Synthetic incremental issue: changed files need dependency-aware rerun planning.",
+      "recommended_action": "Inspect manifest/orchestrator dirty pages and avoid full rescan."
+    },
+    "keyword_search": {
+      "default_severity": "warning",
+      "label": "Keyword / OpenSearch",
+      "message": "Synthetic keyword-search issue: OpenSearch index document needs validation.",
+      "recommended_action": "Verify index documents are safe, traced, and not raw OCR/feedback/model output."
+    },
+    "llm_advisory": {
+      "default_severity": "warning",
+      "label": "LLM advisory",
+      "message": "Synthetic LLM advisory issue: model output must remain non-authoritative.",
+      "recommended_action": "Ensure LLM output is advisory and final gate controls user-facing claims."
+    },
+    "ocr_text": {
+      "default_severity": "warning",
+      "label": "OCR text",
+      "message": "Synthetic OCR issue: OCR quality may be weak or missing on a page.",
+      "recommended_action": "Schedule OCR cleanup or region OCR retry through fishnet."
+    },
+    "page_registry": {
+      "default_severity": "review",
+      "label": "Page registry",
+      "message": "Synthetic page-registry issue: page route/trait classification needs review.",
+      "recommended_action": "Inspect page traits, detected elements, and route recommendations."
+    },
+    "retrieval": {
+      "default_severity": "warning",
+      "label": "Retrieval",
+      "message": "Synthetic retrieval issue: ranking or evidence grouping needs validation.",
+      "recommended_action": "Run retrieval smoke/regression and inspect citation/trust groups."
+    },
+    "security_leakage": {
+      "default_severity": "critical",
+      "label": "Security / leakage",
+      "message": "Synthetic leakage issue: possible local path, raw byte, or prompt/debug leak.",
+      "recommended_action": "Block publication and run snippet/leakage cleaners before exposure."
+    },
+    "semantic_vector": {
+      "default_severity": "warning",
+      "label": "Semantic vector / Qdrant",
+      "message": "Synthetic vector issue: embedding or Qdrant payload should be checked.",
+      "recommended_action": "Verify vector dimension, payload safety flags, and collection counts."
+    },
+    "source_ingest": {
+      "default_severity": "warning",
+      "label": "Source ingest",
+      "message": "Synthetic source-ingest issue: a new source file needs trace validation.",
+      "recommended_action": "Check source manifest, page mapping, and source trace before promotion."
+    },
+    "table_extraction": {
+      "default_severity": "warning",
+      "label": "Table extraction",
+      "message": "Synthetic table issue: normalized rows/cells need table repair review.",
+      "recommended_action": "Review table rows/cells and compare part numbers against catalog/graph."
+    },
+    "trust_authority": {
+      "default_severity": "critical",
+      "label": "Trust authority",
+      "message": "Synthetic trust-authority issue: evidence authority must be checked.",
+      "recommended_action": "Verify trust tier, authority, citation, and allowed-use fields."
+    },
+    "visual_diagram": {
+      "default_severity": "review",
+      "label": "Visual / diagram",
+      "message": "Synthetic visual issue: callout or visual part candidate needs verification.",
+      "recommended_action": "Verify callouts against OCR, table rows, catalog, graph, and source page."
+    }
+  },
+  "incidents": [
+    {
+      "actor_id": "postgres_smoke",
+      "affects_real_pipeline": false,
+      "alert_id": "synalert_f08b432cd9685713",
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "community_as_proof": false,
+      "created_at": "2026-06-10T18:49:12+00:00",
+      "feedback_as_proof": false,
+      "incident_id": "syninc_4d41547bb8ed17b6",
+      "incident_tag": "random_vector_check",
+      "message": "Random synthetic vector incident: Qdrant payload or embedding dimension should be checked.",
+      "origin_category": "semantic_vector",
+      "origin_label": "Semantic vector / Qdrant",
+      "prompt_injection_flagged": false,
+      "prompt_injection_reasons": [],
+      "random_template_id": "syntpl_a1af48752aa39a65",
+      "randomly_generated": true,
+      "raw_feedback_direct_to_llm": false,
+      "recommended_action": "Verify vector dimension, payload safety flags, and collection counts.",
+      "record_type": "synthetic_incident",
+      "retrieval_only_answer_allowed": false,
+      "schema_version": "trace_net_synthetic_incident_console_v1",
+      "severity": "warning",
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "synthetic_only": true,
+      "target_id": "random_qdrant_point",
+      "target_type": "qdrant_point",
+      "writeback_mode": "local_synthetic_only"
+    }
+  ],
+  "postgres_storage_enabled": true,
+  "postgres_table": "trace_net_synthetic_incident_events",
+  "quality_status": "PASS",
+  "safety_contract": {
+    "no_answer_authority": true,
+    "no_opensearch_write": true,
+    "no_postgres_source_truth_write": true,
+    "no_qdrant_write": true,
+    "no_source_truth_mutation": true,
+    "postgres_incident_storage_only": true,
+    "synthetic_only": true
+  },
+  "schema_version": "trace_net_synthetic_incident_console_v1",
+  "server_hint": {
+    "host": "127.0.0.1",
+    "port": 8011
+  },
+  "status": "SYNTHETIC_INCIDENT_CONSOLE_BUILT",
+  "storage_mode": "postgres",
+  "summary": {
+    "affects_real_pipeline_count": 0,
+    "alert_count": 1,
+    "available_origin_category_count": 17,
+    "critical_incident_count": 0,
+    "incident_count": 1,
+    "incident_origin_category_count": 1,
+    "info_incident_count": 0,
+    "origin_counts": {
+      "semantic_vector": 1
+    },
+    "postgres_storage_enabled": true,
+    "postgres_table": "trace_net_synthetic_incident_events",
+    "prompt_injection_flagged_count": 0,
+    "random_template_count": 1,
+    "randomly_generated_incident_count": 1,
+    "raw_feedback_direct_to_llm_count": 0,
+    "review_incident_count": 0,
+    "schema_version": "trace_net_synthetic_incident_console_v1",
+    "severity_counts": {
+      "warning": 1
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "source_truth_mutations_performed": 0,
+    "status": "PASS",
+    "storage_mode": "postgres",
+    "synthetic_only_count": 1,
+    "unsafe_incident_count": 0,
+    "warning_incident_count": 1
+  }
+}

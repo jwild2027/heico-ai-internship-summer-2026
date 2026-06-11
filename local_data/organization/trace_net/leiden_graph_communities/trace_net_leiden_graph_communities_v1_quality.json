@@ -1,0 +1,101 @@
+{
+  "checks": [
+    {
+      "actual": 509,
+      "expected": 509,
+      "name": "page_count",
+      "passed": true
+    },
+    {
+      "actual": 229,
+      "expected": ">=1",
+      "name": "community_count",
+      "passed": true
+    },
+    {
+      "actual": 32446,
+      "expected": ">=1000",
+      "name": "node_count",
+      "passed": true
+    },
+    {
+      "actual": 35907,
+      "expected": ">=1000",
+      "name": "edge_count",
+      "passed": true
+    },
+    {
+      "actual": 509,
+      "expected": ">=509",
+      "name": "page_nodes_with_community",
+      "passed": true
+    },
+    {
+      "actual": 301,
+      "expected": ">=301",
+      "name": "part_candidate_nodes_with_community",
+      "passed": true
+    },
+    {
+      "actual": 3090,
+      "expected": ">=3090",
+      "name": "table_cell_nodes_with_community",
+      "passed": true
+    },
+    {
+      "actual": 386,
+      "expected": ">=1",
+      "name": "nomenclature_edges_preserved",
+      "passed": true
+    },
+    {
+      "actual": 50,
+      "expected": ">=50",
+      "name": "context_v2_edges_preserved",
+      "passed": true
+    },
+    {
+      "actual": 14,
+      "expected": ">=14",
+      "name": "confirmed_blank_pages_preserve_source_trace",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "source_overlay_quality_status",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "orphan_edge_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "direct_answer_allowed_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "claim_proof_allowed_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "retrieval_only_answer_allowed_count",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_count",
+      "passed": true
+    }
+  ],
+  "status": "PASS"
+}
