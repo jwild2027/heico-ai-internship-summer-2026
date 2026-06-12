@@ -1,0 +1,32 @@
+# TRACE-Net Category-Aware Graph UI Overlay v1
+
+**Status:** CATEGORY_AWARE_GRAPH_UI_OVERLAY_BUILT
+**Quality:** PASS
+**Writeback mode:** dry_run_category_aware_ui_overlay
+
+## Summary
+
+- page_count: 509
+- community_count: 229
+- category_aware_community_card_count: 229
+- page_category_profile_card_count: 509
+- total_ui_node_count: 37622
+- total_ui_edge_count: 80629
+- category_similarity_edge_count: 977
+- giant_global_category_hub_count: 0
+- orphan_edge_count: 0
+- category_as_proof_count: 0
+- source_truth_mutation_allowed_count: 0
+
+## Top category-aware labels
+
+- Visual part / diagram review community: 112
+- Table + parts + diagram review community: 33
+- Chart / visual review community: 30
+- Text / source evidence community: 17
+- Blank / source-trace review community: 14
+- Parts-list table review community: 6
+- TRACE-Net graph community: 6
+- Text / source evidence review community: 5
+- Table evidence review community: 4
+- Visual / diagram review community: 2

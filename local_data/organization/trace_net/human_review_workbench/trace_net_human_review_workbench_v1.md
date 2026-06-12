@@ -1,0 +1,106 @@
+# TRACE-Net Human Review Workbench View Model v1
+
+**Status:** HUMAN_REVIEW_WORKBENCH_BUILT
+**Quality:** PASS
+**Generated:** 2026-06-12T14:23:26Z
+
+## Summary
+
+- workbench_card_count: 544
+- page_workbench_profile_count: 509
+- critical_workbench_card_count: 1
+- high_priority_workbench_card_count: 479
+- cards_with_page_ids_count: 492
+- cards_with_visual_summary_count: 492
+- cards_with_table_summary_count: 478
+- cards_with_category_summary_count: 492
+- cards_with_source_package_summary_count: 492
+- unsafe_workbench_card_count: 0
+- workbench_can_answer_directly_count: 0
+- workbench_can_prove_claims_count: 0
+- source_truth_mutation_allowed_count: 0
+
+## Top Workbench Cards
+
+| Priority | Card type | Page/group | Tasks | Next action |
+|---|---|---|---:|---|
+| critical | critical_review_card | feedback_memory:review_prompt_injection_feedback:answer:trace_net_final_answer_gate_v1 | 1 | Resolve critical item before using the affected signal in retrieval, review, or answer workflows. |
+| high | page_table_visual_review_card | t_p_120_1176_p000003 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_table_visual_review_card | t_p_120_1176_p000031 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000368 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000092 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_table_visual_review_card | t_p_120_1176_p000032 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000140 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000179 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000297 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000040 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000364 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000343 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000276 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000352 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000384 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000173 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000340 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000098 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000358 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000330 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000337 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_table_visual_review_card | t_p_120_1176_p000036 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000424 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_table_visual_review_card | t_p_120_1176_p000030 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000050 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000416 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000042 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000380 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000440 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000436 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000046 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000396 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000193 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000167 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000285 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000303 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000039 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000054 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000300 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000392 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000118 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000105 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000376 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000461 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000372 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000452 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000444 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000043 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000056 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000306 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000053 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000408 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000428 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000334 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000447 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000432 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000279 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000346 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000361 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000101 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000420 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000400 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000353 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000129 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000288 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000450 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000044 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000099 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000045 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000116 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000159 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000052 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000355 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000199 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000146 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000055 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000232 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000289 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000185 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |
+| high | page_visual_review_card | t_p_120_1176_p000171 | 6 | Open the page image, verify callout labels and visual-part links, suppress random numbers, and compare against table/catalog/graph evidence. |

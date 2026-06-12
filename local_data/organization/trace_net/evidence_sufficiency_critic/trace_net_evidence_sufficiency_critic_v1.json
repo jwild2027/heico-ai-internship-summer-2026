@@ -1,0 +1,2142 @@
+{
+  "algorithm": "trace_net_read_only_self_rag_style_evidence_sufficiency_critic_v1",
+  "generated_at": "2026-06-12T12:52:55Z",
+  "opensearch_write_attempt_count": 0,
+  "postgres_write_attempt_count": 0,
+  "qdrant_write_attempt_count": 0,
+  "quality_status": "PASS",
+  "read_only_critic": true,
+  "schema_version": "trace_net_evidence_sufficiency_critic_v1",
+  "source_quality_statuses": {
+    "dynamic_final_gate": "PASS",
+    "hybrid_v2": "PASS",
+    "retrieval_critic": "PASS"
+  },
+  "source_truth_mutations_performed": 0,
+  "status": "EVIDENCE_SUFFICIENCY_CRITIC_BUILT",
+  "sufficiency_records": [
+    {
+      "advisory_only": true,
+      "answer_support_group_count": 7,
+      "authority_candidate_count": 8,
+      "blocked_claim_count": 0,
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "category_as_proof_count": 0,
+      "citation_candidate_count": 8,
+      "claim_sufficiency_records": [],
+      "community_as_proof_count": 0,
+      "critic_confidence": 0.95,
+      "dynamic_final_answer_allowed": true,
+      "dynamic_final_answer_safe_to_return": true,
+      "dynamic_final_gate_block_reasons": [],
+      "dynamic_final_gate_status": "FINAL_GATE_ARTIFACT_ANSWER",
+      "evidence_sufficiency_status": "final_artifact_evidence_sufficient",
+      "exact_hit_group_count": 1,
+      "feedback_as_proof_count": 0,
+      "final_claim_count": 7,
+      "group_sufficiency_records": [
+        {
+          "answer_support_like": false,
+          "authorities": [
+            "page_route_only",
+            "retrieval_helper_only"
+          ],
+          "citation_ids": [
+            "cite:source:t_p_120_1176_p000001:5942c5d8c3"
+          ],
+          "exact_hit_count": 3,
+          "group_id": "hv2grp__a530e38ef9ce90be",
+          "insufficiency_reason_codes": [
+            "missing_answer_support_authority",
+            "retrieval_only_group"
+          ],
+          "page_id": "t_p_120_1176_p000001",
+          "part_numbers": [],
+          "rag_buckets": [
+            "context_retrieval_helper",
+            "page_retrieval_profile"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": false,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000001"
+          ],
+          "sufficient_for_final_gate": false,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "ocr_text_claim_with_citation"
+          ],
+          "citation_ids": [
+            "cite:source:t_p_120_1176_p000004:997aaebe9d",
+            "cite:source_text:t_p_120_1176_p000004:f6dd161aab"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__532157632d932585",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000004",
+          "part_numbers": [],
+          "rag_buckets": [
+            "page_retrieval_profile",
+            "source_text_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": false,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000004"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "ocr_text_claim_with_citation"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000329:c257a23a13"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__e56c7f68ba96440d",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000329",
+          "part_numbers": [],
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000329"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "ocr_text_claim_with_citation"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000095:42be71a0a0"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__24479fd156c0a3a9",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000095",
+          "part_numbers": [],
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000095"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "ocr_text_claim_with_citation"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000308:c17c8d6ddb"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__f112a3d103d168bd",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000308",
+          "part_numbers": [],
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000308"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "ocr_text_claim_with_citation"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000399:4d4b464df3"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__74ff04f853ed130d",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000399",
+          "part_numbers": [],
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000399"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "ocr_text_claim_with_citation"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000094:bb56384ee9"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__8103bf156853388c",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000094",
+          "part_numbers": [],
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000094"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "ocr_text_claim_with_citation"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000427:33b5a2ac45"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__9f9a31cf7fb49d1b",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000427",
+          "part_numbers": [],
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000427"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        }
+      ],
+      "insufficient_final_claim_count": 0,
+      "query": "Which pages discuss manual revision history?",
+      "query_id": "manual_revision_history",
+      "query_intent": "revision_history_lookup",
+      "ranked_group_count": 8,
+      "raw_feedback_direct_to_llm": false,
+      "reason_codes": [
+        "final_gate_artifact_evidence_clean",
+        "review_signals_present"
+      ],
+      "recommended_next_action": "return_final_answer_if_policy_allows",
+      "retrieval_critic_action": "return_final_gate_answer",
+      "retrieval_critic_status": "final_gate_already_authorized",
+      "retrieval_only_group_count": 1,
+      "review_signal_group_count": 6,
+      "safe_final_claim_count": 0,
+      "semantic_group_count": 8,
+      "source_trace_candidate_count": 8,
+      "source_truth_mutation_allowed": false,
+      "sufficiency_record_id": "evsuff__b98e3ce2dff1e0f8",
+      "sufficient_group_count": 7,
+      "top_citation_ids": [
+        "cite:source:t_p_120_1176_p000001:5942c5d8c3",
+        "cite:source:t_p_120_1176_p000004:997aaebe9d",
+        "cite:source_text:t_p_120_1176_p000004:f6dd161aab",
+        "cite:source_text:t_p_120_1176_p000094:bb56384ee9",
+        "cite:source_text:t_p_120_1176_p000095:42be71a0a0",
+        "cite:source_text:t_p_120_1176_p000308:c17c8d6ddb",
+        "cite:source_text:t_p_120_1176_p000329:c257a23a13",
+        "cite:source_text:t_p_120_1176_p000399:4d4b464df3",
+        "cite:source_text:t_p_120_1176_p000427:33b5a2ac45"
+      ],
+      "top_page_ids": [
+        "t_p_120_1176_p000001",
+        "t_p_120_1176_p000004",
+        "t_p_120_1176_p000094",
+        "t_p_120_1176_p000095",
+        "t_p_120_1176_p000308",
+        "t_p_120_1176_p000329",
+        "t_p_120_1176_p000399",
+        "t_p_120_1176_p000427"
+      ],
+      "top_part_numbers": [],
+      "unsafe_group_count": 0
+    },
+    {
+      "advisory_only": true,
+      "answer_support_group_count": 4,
+      "authority_candidate_count": 8,
+      "blocked_claim_count": 4,
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "category_as_proof_count": 0,
+      "citation_candidate_count": 4,
+      "claim_sufficiency_records": [
+        {
+          "authorities": [
+            "community_navigation_only",
+            "ocr_text_claim_with_citation",
+            "part_candidate_navigation_only",
+            "part_page_relationship",
+            "table_cell_retrieval_helper_only",
+            "table_row_retrieval_helper_only"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000003:4aad03094c",
+            "cite:table_structured:t_p_120_1176_p000003:71e826e3f3",
+            "cite:verified_part:t_p_120_1176_p000003:7834a9c41e"
+          ],
+          "claim_id": "dynclaim__d5c35191b3e14369",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000003",
+          "rag_buckets": [
+            "community_retrieval_helper",
+            "part_candidate_lineage",
+            "source_text_evidence",
+            "table_cell_normalized",
+            "table_row_normalized",
+            "verified_part_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000003"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [
+            "community_navigation_only",
+            "ocr_text_claim_with_citation",
+            "part_candidate_navigation_only",
+            "part_page_relationship"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000340:1cf5d0ba7f",
+            "cite:verified_part:t_p_120_1176_p000340:7f1dd43bb5"
+          ],
+          "claim_id": "dynclaim__c5b2ba3248725dc0",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000340",
+          "rag_buckets": [
+            "community_retrieval_helper",
+            "part_candidate_lineage",
+            "source_text_evidence",
+            "verified_part_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000340"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [
+            "community_navigation_only",
+            "ocr_text_claim_with_citation",
+            "part_candidate_navigation_only"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000339:f420d742f4"
+          ],
+          "claim_id": "dynclaim__3b8cb5e0b5ac69b0",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000339",
+          "rag_buckets": [
+            "community_retrieval_helper",
+            "part_candidate_lineage",
+            "source_text_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000339"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [
+            "community_navigation_only",
+            "ocr_text_claim_with_citation",
+            "part_candidate_navigation_only"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000341:df1094a0f1"
+          ],
+          "claim_id": "dynclaim__706aa2edd3b12eba",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000341",
+          "rag_buckets": [
+            "community_retrieval_helper",
+            "part_candidate_lineage",
+            "source_text_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000341"
+          ],
+          "sufficient_for_final_answer": true
+        }
+      ],
+      "community_as_proof_count": 0,
+      "critic_confidence": 0.9,
+      "dynamic_final_answer_allowed": true,
+      "dynamic_final_answer_safe_to_return": true,
+      "dynamic_final_gate_block_reasons": [],
+      "dynamic_final_gate_status": "DYNAMIC_FINAL_GATE_APPROVED",
+      "evidence_sufficiency_status": "final_evidence_sufficient",
+      "exact_hit_group_count": 8,
+      "feedback_as_proof_count": 0,
+      "final_claim_count": 4,
+      "group_sufficiency_records": [
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "community_navigation_only",
+            "ocr_text_claim_with_citation",
+            "part_candidate_navigation_only",
+            "part_page_relationship",
+            "table_cell_retrieval_helper_only",
+            "table_row_retrieval_helper_only"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000003:4aad03094c",
+            "cite:table_structured:t_p_120_1176_p000003:71e826e3f3",
+            "cite:verified_part:t_p_120_1176_p000003:7834a9c41e"
+          ],
+          "exact_hit_count": 6,
+          "group_id": "hv2grp__ce4b61194566a07e",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000003",
+          "part_numbers": [
+            "120-46137-001",
+            "120-46137-501",
+            "120-50645-007",
+            "120-50645-017",
+            "120-50645-035",
+            "120-50645-037",
+            "120-50648-009",
+            "120-50648-031",
+            "120-50648-033",
+            "120-50648-533"
+          ],
+          "rag_buckets": [
+            "community_retrieval_helper",
+            "part_candidate_lineage",
+            "source_text_evidence",
+            "table_cell_normalized",
+            "table_row_normalized",
+            "verified_part_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 0,
+          "source_page_ids": [
+            "t_p_120_1176_p000003",
+            "t_p_120_1176_p000208",
+            "t_p_120_1176_p000209",
+            "t_p_120_1176_p000210",
+            "t_p_120_1176_p000323",
+            "t_p_120_1176_p000324",
+            "t_p_120_1176_p000339",
+            "t_p_120_1176_p000340",
+            "t_p_120_1176_p000341"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "community_navigation_only",
+            "ocr_text_claim_with_citation",
+            "part_candidate_navigation_only",
+            "part_page_relationship"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000340:1cf5d0ba7f",
+            "cite:verified_part:t_p_120_1176_p000340:7f1dd43bb5"
+          ],
+          "exact_hit_count": 4,
+          "group_id": "hv2grp__d7f25a66d13b516c",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000340",
+          "part_numbers": [
+            "120-46137-001",
+            "120-46137-501",
+            "120-50645-007",
+            "120-50645-017",
+            "120-50645-035",
+            "120-50645-037",
+            "120-50648-009",
+            "120-50648-031",
+            "120-50648-033",
+            "120-50648-533"
+          ],
+          "rag_buckets": [
+            "community_retrieval_helper",
+            "part_candidate_lineage",
+            "source_text_evidence",
+            "verified_part_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 0,
+          "source_page_ids": [
+            "t_p_120_1176_p000003",
+            "t_p_120_1176_p000208",
+            "t_p_120_1176_p000209",
+            "t_p_120_1176_p000210",
+            "t_p_120_1176_p000323",
+            "t_p_120_1176_p000324",
+            "t_p_120_1176_p000339",
+            "t_p_120_1176_p000340",
+            "t_p_120_1176_p000341"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "community_navigation_only",
+            "ocr_text_claim_with_citation",
+            "part_candidate_navigation_only"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000339:f420d742f4"
+          ],
+          "exact_hit_count": 3,
+          "group_id": "hv2grp__2519d03069da02e6",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000339",
+          "part_numbers": [
+            "120-46137-001",
+            "120-46137-501",
+            "120-50645-007",
+            "120-50645-017",
+            "120-50645-035",
+            "120-50645-037",
+            "120-50648-009",
+            "120-50648-031",
+            "120-50648-033",
+            "120-50648-533"
+          ],
+          "rag_buckets": [
+            "community_retrieval_helper",
+            "part_candidate_lineage",
+            "source_text_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 0,
+          "source_page_ids": [
+            "t_p_120_1176_p000003",
+            "t_p_120_1176_p000208",
+            "t_p_120_1176_p000209",
+            "t_p_120_1176_p000210",
+            "t_p_120_1176_p000323",
+            "t_p_120_1176_p000324",
+            "t_p_120_1176_p000339",
+            "t_p_120_1176_p000340",
+            "t_p_120_1176_p000341"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "community_navigation_only",
+            "ocr_text_claim_with_citation",
+            "part_candidate_navigation_only"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000341:df1094a0f1"
+          ],
+          "exact_hit_count": 3,
+          "group_id": "hv2grp__57dcecf166efaf5e",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000341",
+          "part_numbers": [
+            "120-46137-001",
+            "120-46137-501",
+            "120-50645-007",
+            "120-50645-017",
+            "120-50645-035",
+            "120-50645-037",
+            "120-50648-009",
+            "120-50648-031",
+            "120-50648-033",
+            "120-50648-533"
+          ],
+          "rag_buckets": [
+            "community_retrieval_helper",
+            "part_candidate_lineage",
+            "source_text_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 0,
+          "source_page_ids": [
+            "t_p_120_1176_p000003",
+            "t_p_120_1176_p000208",
+            "t_p_120_1176_p000209",
+            "t_p_120_1176_p000210",
+            "t_p_120_1176_p000323",
+            "t_p_120_1176_p000324",
+            "t_p_120_1176_p000339",
+            "t_p_120_1176_p000340",
+            "t_p_120_1176_p000341"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": false,
+          "authorities": [
+            "community_navigation_only"
+          ],
+          "citation_ids": [],
+          "exact_hit_count": 1,
+          "group_id": "hv2grp__77008c23526c092e",
+          "insufficiency_reason_codes": [
+            "missing_answer_support_authority",
+            "missing_citation",
+            "retrieval_only_group",
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000208",
+          "part_numbers": [
+            "120-46137-001",
+            "120-46137-501",
+            "120-50645-007",
+            "120-50645-017",
+            "120-50645-035",
+            "120-50645-037",
+            "120-50648-009",
+            "120-50648-031",
+            "120-50648-033",
+            "120-50648-533"
+          ],
+          "rag_buckets": [
+            "community_retrieval_helper"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 0,
+          "source_page_ids": [
+            "t_p_120_1176_p000003",
+            "t_p_120_1176_p000208",
+            "t_p_120_1176_p000209",
+            "t_p_120_1176_p000210",
+            "t_p_120_1176_p000323",
+            "t_p_120_1176_p000324",
+            "t_p_120_1176_p000339",
+            "t_p_120_1176_p000340",
+            "t_p_120_1176_p000341"
+          ],
+          "sufficient_for_final_gate": false,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": false,
+          "authorities": [
+            "community_navigation_only"
+          ],
+          "citation_ids": [],
+          "exact_hit_count": 1,
+          "group_id": "hv2grp__11833d34575415c8",
+          "insufficiency_reason_codes": [
+            "missing_answer_support_authority",
+            "missing_citation",
+            "retrieval_only_group",
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000209",
+          "part_numbers": [
+            "120-46137-001",
+            "120-46137-501",
+            "120-50645-007",
+            "120-50645-017",
+            "120-50645-035",
+            "120-50645-037",
+            "120-50648-009",
+            "120-50648-031",
+            "120-50648-033",
+            "120-50648-533"
+          ],
+          "rag_buckets": [
+            "community_retrieval_helper"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 0,
+          "source_page_ids": [
+            "t_p_120_1176_p000003",
+            "t_p_120_1176_p000208",
+            "t_p_120_1176_p000209",
+            "t_p_120_1176_p000210",
+            "t_p_120_1176_p000323",
+            "t_p_120_1176_p000324",
+            "t_p_120_1176_p000339",
+            "t_p_120_1176_p000340",
+            "t_p_120_1176_p000341"
+          ],
+          "sufficient_for_final_gate": false,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": false,
+          "authorities": [
+            "community_navigation_only"
+          ],
+          "citation_ids": [],
+          "exact_hit_count": 1,
+          "group_id": "hv2grp__9e4aa83d9229c41d",
+          "insufficiency_reason_codes": [
+            "missing_answer_support_authority",
+            "missing_citation",
+            "retrieval_only_group",
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000210",
+          "part_numbers": [
+            "120-46137-001",
+            "120-46137-501",
+            "120-50645-007",
+            "120-50645-017",
+            "120-50645-035",
+            "120-50645-037",
+            "120-50648-009",
+            "120-50648-031",
+            "120-50648-033",
+            "120-50648-533"
+          ],
+          "rag_buckets": [
+            "community_retrieval_helper"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 0,
+          "source_page_ids": [
+            "t_p_120_1176_p000003",
+            "t_p_120_1176_p000208",
+            "t_p_120_1176_p000209",
+            "t_p_120_1176_p000210",
+            "t_p_120_1176_p000323",
+            "t_p_120_1176_p000324",
+            "t_p_120_1176_p000339",
+            "t_p_120_1176_p000340",
+            "t_p_120_1176_p000341"
+          ],
+          "sufficient_for_final_gate": false,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": false,
+          "authorities": [
+            "community_navigation_only"
+          ],
+          "citation_ids": [],
+          "exact_hit_count": 1,
+          "group_id": "hv2grp__02dd3f25abc0150f",
+          "insufficiency_reason_codes": [
+            "missing_answer_support_authority",
+            "missing_citation",
+            "retrieval_only_group",
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000323",
+          "part_numbers": [
+            "120-46137-001",
+            "120-46137-501",
+            "120-50645-007",
+            "120-50645-017",
+            "120-50645-035",
+            "120-50645-037",
+            "120-50648-009",
+            "120-50648-031",
+            "120-50648-033",
+            "120-50648-533"
+          ],
+          "rag_buckets": [
+            "community_retrieval_helper"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 0,
+          "source_page_ids": [
+            "t_p_120_1176_p000003",
+            "t_p_120_1176_p000208",
+            "t_p_120_1176_p000209",
+            "t_p_120_1176_p000210",
+            "t_p_120_1176_p000323",
+            "t_p_120_1176_p000324",
+            "t_p_120_1176_p000339",
+            "t_p_120_1176_p000340",
+            "t_p_120_1176_p000341"
+          ],
+          "sufficient_for_final_gate": false,
+          "unsafe_group": false
+        }
+      ],
+      "insufficient_final_claim_count": 0,
+      "query": "120-46137-001",
+      "query_id": "part_120_46137_001",
+      "query_intent": "exact_part_number_lookup",
+      "ranked_group_count": 8,
+      "raw_feedback_direct_to_llm": false,
+      "reason_codes": [
+        "dynamic_final_gate_evidence_clean",
+        "review_signals_present"
+      ],
+      "recommended_next_action": "return_final_answer_if_retrieval_critic_allows",
+      "retrieval_critic_action": "return_final_gate_answer",
+      "retrieval_critic_status": "final_gate_already_authorized",
+      "retrieval_only_group_count": 4,
+      "review_signal_group_count": 8,
+      "safe_final_claim_count": 4,
+      "semantic_group_count": 0,
+      "source_trace_candidate_count": 8,
+      "source_truth_mutation_allowed": false,
+      "sufficiency_record_id": "evsuff__4f0bb4ca39e2d08d",
+      "sufficient_group_count": 4,
+      "top_citation_ids": [
+        "cite:source_text:t_p_120_1176_p000003:4aad03094c",
+        "cite:source_text:t_p_120_1176_p000339:f420d742f4",
+        "cite:source_text:t_p_120_1176_p000340:1cf5d0ba7f",
+        "cite:source_text:t_p_120_1176_p000341:df1094a0f1",
+        "cite:table_structured:t_p_120_1176_p000003:71e826e3f3",
+        "cite:verified_part:t_p_120_1176_p000003:7834a9c41e",
+        "cite:verified_part:t_p_120_1176_p000340:7f1dd43bb5"
+      ],
+      "top_page_ids": [
+        "t_p_120_1176_p000003",
+        "t_p_120_1176_p000208",
+        "t_p_120_1176_p000209",
+        "t_p_120_1176_p000210",
+        "t_p_120_1176_p000323",
+        "t_p_120_1176_p000339",
+        "t_p_120_1176_p000340",
+        "t_p_120_1176_p000341"
+      ],
+      "top_part_numbers": [
+        "120-46137-001",
+        "120-46137-501",
+        "120-50645-007",
+        "120-50645-017",
+        "120-50645-035",
+        "120-50645-037",
+        "120-50648-009",
+        "120-50648-031",
+        "120-50648-033",
+        "120-50648-533"
+      ],
+      "unsafe_group_count": 0
+    },
+    {
+      "advisory_only": true,
+      "answer_support_group_count": 4,
+      "authority_candidate_count": 8,
+      "blocked_claim_count": 4,
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "category_as_proof_count": 0,
+      "citation_candidate_count": 8,
+      "claim_sufficiency_records": [
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000050:af05d45d86"
+          ],
+          "claim_id": "dynclaim__e964a46b846e833c",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000050",
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000050"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000066:9fecf03133"
+          ],
+          "claim_id": "dynclaim__2954f3d8183bcc16",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000066",
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000066"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000068:850d074d7d"
+          ],
+          "claim_id": "dynclaim__cc7dc00112dc9dee",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000068",
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000068"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000499:9c8c468e2c"
+          ],
+          "claim_id": "dynclaim__300fa3ac39bedc5b",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000499",
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000499"
+          ],
+          "sufficient_for_final_answer": true
+        }
+      ],
+      "community_as_proof_count": 0,
+      "critic_confidence": 0.75,
+      "dynamic_final_answer_allowed": true,
+      "dynamic_final_answer_safe_to_return": false,
+      "dynamic_final_gate_block_reasons": [],
+      "dynamic_final_gate_status": "DYNAMIC_FINAL_GATE_APPROVED",
+      "evidence_sufficiency_status": "final_evidence_sufficient_but_retrieval_audit_required",
+      "exact_hit_group_count": 0,
+      "feedback_as_proof_count": 0,
+      "final_claim_count": 4,
+      "group_sufficiency_records": [
+        {
+          "answer_support_like": false,
+          "authorities": [
+            "retrieval_helper_only"
+          ],
+          "citation_ids": [
+            "cite:source:t_p_120_1176_p000045:d7168d9d4b"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__8a329749e34d8508",
+          "insufficiency_reason_codes": [
+            "missing_answer_support_authority",
+            "retrieval_only_group",
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000045",
+          "part_numbers": [],
+          "rag_buckets": [
+            "context_retrieval_helper",
+            "page_retrieval_profile"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000045"
+          ],
+          "sufficient_for_final_gate": false,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": false,
+          "authorities": [
+            "retrieval_helper_only"
+          ],
+          "citation_ids": [
+            "cite:source:t_p_120_1176_p000026:d770220604"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__be17d953d88afa69",
+          "insufficiency_reason_codes": [
+            "missing_answer_support_authority",
+            "retrieval_only_group"
+          ],
+          "page_id": "t_p_120_1176_p000026",
+          "part_numbers": [],
+          "rag_buckets": [
+            "context_retrieval_helper",
+            "page_retrieval_profile"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": false,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000026"
+          ],
+          "sufficient_for_final_gate": false,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": false,
+          "authorities": [
+            "retrieval_helper_only"
+          ],
+          "citation_ids": [
+            "cite:source:t_p_120_1176_p000033:9095b9ac95"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__4c59079b6221f51f",
+          "insufficiency_reason_codes": [
+            "missing_answer_support_authority",
+            "retrieval_only_group",
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000033",
+          "part_numbers": [],
+          "rag_buckets": [
+            "context_retrieval_helper",
+            "page_retrieval_profile"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000033"
+          ],
+          "sufficient_for_final_gate": false,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": false,
+          "authorities": [
+            "retrieval_helper_only"
+          ],
+          "citation_ids": [
+            "cite:source:t_p_120_1176_p000034:4f679c3ef9"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__b990830589a4ebea",
+          "insufficiency_reason_codes": [
+            "missing_answer_support_authority",
+            "retrieval_only_group",
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000034",
+          "part_numbers": [],
+          "rag_buckets": [
+            "context_retrieval_helper",
+            "page_retrieval_profile"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000034"
+          ],
+          "sufficient_for_final_gate": false,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "part_page_relationship"
+          ],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000050:af05d45d86"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__311d6ef1a69ea129",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000050",
+          "part_numbers": [],
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000050"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "part_page_relationship"
+          ],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000066:9fecf03133"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__1feb72d1b970024c",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000066",
+          "part_numbers": [],
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000066"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "part_page_relationship"
+          ],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000068:850d074d7d"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__48c3ee2986903744",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000068",
+          "part_numbers": [],
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000068"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "part_page_relationship"
+          ],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000499:9c8c468e2c"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__e9c6637d00f156fb",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000499",
+          "part_numbers": [],
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000499"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        }
+      ],
+      "insufficient_final_claim_count": 0,
+      "query": "ATA 25-21-00",
+      "query_id": "ata_25_21_00",
+      "query_intent": "exact_part_number_lookup",
+      "ranked_group_count": 8,
+      "raw_feedback_direct_to_llm": false,
+      "reason_codes": [
+        "retrieval_critic_requires_audit",
+        "review_signals_present"
+      ],
+      "recommended_next_action": "audit_retrieval_consistency_before_returning_answer",
+      "retrieval_critic_action": "audit_dynamic_final_gate_retrieval_consistency_before_returning_answer; prioritize_human_review_for_unverified_groups",
+      "retrieval_critic_status": "dynamic_final_gate_needs_audit",
+      "retrieval_only_group_count": 4,
+      "review_signal_group_count": 7,
+      "safe_final_claim_count": 4,
+      "semantic_group_count": 8,
+      "source_trace_candidate_count": 8,
+      "source_truth_mutation_allowed": false,
+      "sufficiency_record_id": "evsuff__0e96ff7467ccb61a",
+      "sufficient_group_count": 4,
+      "top_citation_ids": [
+        "cite:source:t_p_120_1176_p000026:d770220604",
+        "cite:source:t_p_120_1176_p000033:9095b9ac95",
+        "cite:source:t_p_120_1176_p000034:4f679c3ef9",
+        "cite:source:t_p_120_1176_p000045:d7168d9d4b",
+        "cite:verified_part:t_p_120_1176_p000050:af05d45d86",
+        "cite:verified_part:t_p_120_1176_p000066:9fecf03133",
+        "cite:verified_part:t_p_120_1176_p000068:850d074d7d",
+        "cite:verified_part:t_p_120_1176_p000499:9c8c468e2c"
+      ],
+      "top_page_ids": [
+        "t_p_120_1176_p000026",
+        "t_p_120_1176_p000033",
+        "t_p_120_1176_p000034",
+        "t_p_120_1176_p000045",
+        "t_p_120_1176_p000050",
+        "t_p_120_1176_p000066",
+        "t_p_120_1176_p000068",
+        "t_p_120_1176_p000499"
+      ],
+      "top_part_numbers": [],
+      "unsafe_group_count": 0
+    },
+    {
+      "advisory_only": true,
+      "answer_support_group_count": 8,
+      "authority_candidate_count": 8,
+      "blocked_claim_count": 0,
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "category_as_proof_count": 0,
+      "citation_candidate_count": 8,
+      "claim_sufficiency_records": [
+        {
+          "authorities": [
+            "ocr_text_claim_with_citation",
+            "page_route_only",
+            "retrieval_helper_only"
+          ],
+          "citation_ids": [
+            "cite:source:t_p_120_1176_p000001:5942c5d8c3",
+            "cite:source_text:t_p_120_1176_p000001:092378ba20"
+          ],
+          "claim_id": "dynclaim__346c8f936c7b2d0e",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000001",
+          "rag_buckets": [
+            "context_retrieval_helper",
+            "page_retrieval_profile",
+            "source_text_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000001"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:source:t_p_120_1176_p000004:997aaebe9d",
+            "cite:source_text:t_p_120_1176_p000004:f6dd161aab"
+          ],
+          "claim_id": "dynclaim__27bdd219171ab83e",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000004",
+          "rag_buckets": [
+            "page_retrieval_profile",
+            "source_text_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000004"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000329:c257a23a13"
+          ],
+          "claim_id": "dynclaim__361a83ee0c606492",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000329",
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000329"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000095:42be71a0a0"
+          ],
+          "claim_id": "dynclaim__0463a82f533b1a80",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000095",
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000095"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000308:c17c8d6ddb"
+          ],
+          "claim_id": "dynclaim__d6dde244f692c233",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000308",
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000308"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000399:4d4b464df3"
+          ],
+          "claim_id": "dynclaim__5fd3fede5f14742e",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000399",
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000399"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000094:bb56384ee9"
+          ],
+          "claim_id": "dynclaim__bfe35c20be21f66f",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000094",
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000094"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000427:33b5a2ac45"
+          ],
+          "claim_id": "dynclaim__19072e82eb5fe226",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000427",
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000427"
+          ],
+          "sufficient_for_final_answer": true
+        }
+      ],
+      "community_as_proof_count": 0,
+      "critic_confidence": 0.9,
+      "dynamic_final_answer_allowed": true,
+      "dynamic_final_answer_safe_to_return": true,
+      "dynamic_final_gate_block_reasons": [],
+      "dynamic_final_gate_status": "DYNAMIC_FINAL_GATE_APPROVED",
+      "evidence_sufficiency_status": "final_evidence_sufficient",
+      "exact_hit_group_count": 1,
+      "feedback_as_proof_count": 0,
+      "final_claim_count": 8,
+      "group_sufficiency_records": [
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "ocr_text_claim_with_citation",
+            "page_route_only",
+            "retrieval_helper_only"
+          ],
+          "citation_ids": [
+            "cite:source:t_p_120_1176_p000001:5942c5d8c3",
+            "cite:source_text:t_p_120_1176_p000001:092378ba20"
+          ],
+          "exact_hit_count": 4,
+          "group_id": "hv2grp__db7e539ff613323c",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000001",
+          "part_numbers": [],
+          "rag_buckets": [
+            "context_retrieval_helper",
+            "page_retrieval_profile",
+            "source_text_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": false,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000001"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "ocr_text_claim_with_citation"
+          ],
+          "citation_ids": [
+            "cite:source:t_p_120_1176_p000004:997aaebe9d",
+            "cite:source_text:t_p_120_1176_p000004:f6dd161aab"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__6a45909fbb8e4ad4",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000004",
+          "part_numbers": [],
+          "rag_buckets": [
+            "page_retrieval_profile",
+            "source_text_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": false,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000004"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "ocr_text_claim_with_citation"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000329:c257a23a13"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__811ed916c7326587",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000329",
+          "part_numbers": [],
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000329"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "ocr_text_claim_with_citation"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000095:42be71a0a0"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__88c4fd21649902aa",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000095",
+          "part_numbers": [],
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000095"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "ocr_text_claim_with_citation"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000308:c17c8d6ddb"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__6e5663591c2e016a",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000308",
+          "part_numbers": [],
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000308"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "ocr_text_claim_with_citation"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000399:4d4b464df3"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__b76ab6c96c9a713f",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000399",
+          "part_numbers": [],
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000399"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "ocr_text_claim_with_citation"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000094:bb56384ee9"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__a7b2689a1b14387f",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000094",
+          "part_numbers": [],
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000094"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "ocr_text_claim_with_citation"
+          ],
+          "citation_ids": [
+            "cite:source_text:t_p_120_1176_p000427:33b5a2ac45"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__40c66a407a6a21da",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000427",
+          "part_numbers": [],
+          "rag_buckets": [
+            "source_text_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000427"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        }
+      ],
+      "insufficient_final_claim_count": 0,
+      "query": "Revision 4",
+      "query_id": "revision_4",
+      "query_intent": "revision_lookup",
+      "ranked_group_count": 8,
+      "raw_feedback_direct_to_llm": false,
+      "reason_codes": [
+        "dynamic_final_gate_evidence_clean",
+        "review_signals_present"
+      ],
+      "recommended_next_action": "return_final_answer_if_retrieval_critic_allows",
+      "retrieval_critic_action": "return_final_gate_answer",
+      "retrieval_critic_status": "final_gate_already_authorized",
+      "retrieval_only_group_count": 0,
+      "review_signal_group_count": 6,
+      "safe_final_claim_count": 8,
+      "semantic_group_count": 8,
+      "source_trace_candidate_count": 8,
+      "source_truth_mutation_allowed": false,
+      "sufficiency_record_id": "evsuff__ced7a04c1a8b5b52",
+      "sufficient_group_count": 8,
+      "top_citation_ids": [
+        "cite:source:t_p_120_1176_p000001:5942c5d8c3",
+        "cite:source:t_p_120_1176_p000004:997aaebe9d",
+        "cite:source_text:t_p_120_1176_p000001:092378ba20",
+        "cite:source_text:t_p_120_1176_p000004:f6dd161aab",
+        "cite:source_text:t_p_120_1176_p000094:bb56384ee9",
+        "cite:source_text:t_p_120_1176_p000095:42be71a0a0",
+        "cite:source_text:t_p_120_1176_p000308:c17c8d6ddb",
+        "cite:source_text:t_p_120_1176_p000329:c257a23a13",
+        "cite:source_text:t_p_120_1176_p000399:4d4b464df3",
+        "cite:source_text:t_p_120_1176_p000427:33b5a2ac45"
+      ],
+      "top_page_ids": [
+        "t_p_120_1176_p000001",
+        "t_p_120_1176_p000004",
+        "t_p_120_1176_p000094",
+        "t_p_120_1176_p000095",
+        "t_p_120_1176_p000308",
+        "t_p_120_1176_p000329",
+        "t_p_120_1176_p000399",
+        "t_p_120_1176_p000427"
+      ],
+      "top_part_numbers": [],
+      "unsafe_group_count": 0
+    },
+    {
+      "advisory_only": true,
+      "answer_support_group_count": 8,
+      "authority_candidate_count": 8,
+      "blocked_claim_count": 0,
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "category_as_proof_count": 0,
+      "citation_candidate_count": 8,
+      "claim_sufficiency_records": [
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000432:4ec6bbe2d4"
+          ],
+          "claim_id": "dynclaim__e3c5589970b6ee78",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000432",
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000432"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000050:af05d45d86"
+          ],
+          "claim_id": "dynclaim__c13aac7e334d9000",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000050",
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000050"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000267:4792d19056"
+          ],
+          "claim_id": "dynclaim__365b9650844bee11",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000267",
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000267"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000152:7bb06de844"
+          ],
+          "claim_id": "dynclaim__dcfc4e8f5560dc63",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000152",
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000152"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000494:4b2bd746b3"
+          ],
+          "claim_id": "dynclaim__62a991508116b651",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000494",
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000494"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000073:ea63f120fb"
+          ],
+          "claim_id": "dynclaim__8b4d913f0352fca8",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000073",
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000073"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000307:c0bf0e39eb"
+          ],
+          "claim_id": "dynclaim__b1b36a0e8359f0b7",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000307",
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000307"
+          ],
+          "sufficient_for_final_answer": true
+        },
+        {
+          "authorities": [],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000074:b8f65e298c"
+          ],
+          "claim_id": "dynclaim__e07dc5a8b9411be4",
+          "insufficiency_reason_codes": [],
+          "page_id": "t_p_120_1176_p000074",
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "source_page_ids": [
+            "t_p_120_1176_p000074"
+          ],
+          "sufficient_for_final_answer": true
+        }
+      ],
+      "community_as_proof_count": 0,
+      "critic_confidence": 0.75,
+      "dynamic_final_answer_allowed": true,
+      "dynamic_final_answer_safe_to_return": false,
+      "dynamic_final_gate_block_reasons": [],
+      "dynamic_final_gate_status": "DYNAMIC_FINAL_GATE_APPROVED",
+      "evidence_sufficiency_status": "final_evidence_sufficient_but_retrieval_audit_required",
+      "exact_hit_group_count": 0,
+      "feedback_as_proof_count": 0,
+      "final_claim_count": 8,
+      "group_sufficiency_records": [
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "part_page_relationship"
+          ],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000432:4ec6bbe2d4"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__5267e446e689300d",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000432",
+          "part_numbers": [],
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000432"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "part_page_relationship"
+          ],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000050:af05d45d86"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__f1cf46e7a064df99",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000050",
+          "part_numbers": [],
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000050"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "part_page_relationship"
+          ],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000267:4792d19056"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__2642921cf03d766d",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000267",
+          "part_numbers": [],
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 2,
+          "source_page_ids": [
+            "t_p_120_1176_p000267"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "part_page_relationship"
+          ],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000152:7bb06de844"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__8344208e4ab58cf9",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000152",
+          "part_numbers": [],
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000152"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "part_page_relationship"
+          ],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000494:4b2bd746b3"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__e7c7e35f9d6073ee",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000494",
+          "part_numbers": [],
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 2,
+          "source_page_ids": [
+            "t_p_120_1176_p000494"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "part_page_relationship"
+          ],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000073:ea63f120fb"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__3e99db01a09e9613",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000073",
+          "part_numbers": [],
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 2,
+          "source_page_ids": [
+            "t_p_120_1176_p000073"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "part_page_relationship"
+          ],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000307:c0bf0e39eb"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__7de0093e05249e74",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000307",
+          "part_numbers": [],
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 2,
+          "source_page_ids": [
+            "t_p_120_1176_p000307"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        },
+        {
+          "answer_support_like": true,
+          "authorities": [
+            "part_page_relationship"
+          ],
+          "citation_ids": [
+            "cite:verified_part:t_p_120_1176_p000074:b8f65e298c"
+          ],
+          "exact_hit_count": 0,
+          "group_id": "hv2grp__e70c6e4e38c449be",
+          "insufficiency_reason_codes": [
+            "review_signal_present"
+          ],
+          "page_id": "t_p_120_1176_p000074",
+          "part_numbers": [],
+          "rag_buckets": [
+            "verified_part_evidence"
+          ],
+          "retrieval_only": true,
+          "review_signal_present": true,
+          "semantic_group_count": 1,
+          "source_page_ids": [
+            "t_p_120_1176_p000074"
+          ],
+          "sufficient_for_final_gate": true,
+          "unsafe_group": false
+        }
+      ],
+      "insufficient_final_claim_count": 0,
+      "query": "record of revisions",
+      "query_id": "record_of_revisions",
+      "query_intent": "revision_history_lookup",
+      "ranked_group_count": 8,
+      "raw_feedback_direct_to_llm": false,
+      "reason_codes": [
+        "retrieval_critic_requires_audit",
+        "review_signals_present"
+      ],
+      "recommended_next_action": "audit_retrieval_consistency_before_returning_answer",
+      "retrieval_critic_action": "audit_dynamic_final_gate_retrieval_consistency_before_returning_answer; prioritize_human_review_for_unverified_groups",
+      "retrieval_critic_status": "dynamic_final_gate_needs_audit",
+      "retrieval_only_group_count": 0,
+      "review_signal_group_count": 8,
+      "safe_final_claim_count": 8,
+      "semantic_group_count": 12,
+      "source_trace_candidate_count": 8,
+      "source_truth_mutation_allowed": false,
+      "sufficiency_record_id": "evsuff__62150a0e8d76456b",
+      "sufficient_group_count": 8,
+      "top_citation_ids": [
+        "cite:verified_part:t_p_120_1176_p000050:af05d45d86",
+        "cite:verified_part:t_p_120_1176_p000073:ea63f120fb",
+        "cite:verified_part:t_p_120_1176_p000074:b8f65e298c",
+        "cite:verified_part:t_p_120_1176_p000152:7bb06de844",
+        "cite:verified_part:t_p_120_1176_p000267:4792d19056",
+        "cite:verified_part:t_p_120_1176_p000307:c0bf0e39eb",
+        "cite:verified_part:t_p_120_1176_p000432:4ec6bbe2d4",
+        "cite:verified_part:t_p_120_1176_p000494:4b2bd746b3"
+      ],
+      "top_page_ids": [
+        "t_p_120_1176_p000050",
+        "t_p_120_1176_p000073",
+        "t_p_120_1176_p000074",
+        "t_p_120_1176_p000152",
+        "t_p_120_1176_p000267",
+        "t_p_120_1176_p000307",
+        "t_p_120_1176_p000432",
+        "t_p_120_1176_p000494"
+      ],
+      "top_part_numbers": [],
+      "unsafe_group_count": 0
+    }
+  ],
+  "summary": {
+    "algorithm": "trace_net_read_only_self_rag_style_evidence_sufficiency_critic_v1",
+    "answer_support_group_count": 31,
+    "category_as_proof_count": 0,
+    "community_as_proof_count": 0,
+    "dynamic_final_gate_quality_status": "PASS",
+    "evidence_needs_human_review_count": 0,
+    "evidence_sufficiency_status_counts": {
+      "final_artifact_evidence_sufficient": 1,
+      "final_evidence_sufficient": 2,
+      "final_evidence_sufficient_but_retrieval_audit_required": 2
+    },
+    "feedback_as_proof_count": 0,
+    "final_artifact_evidence_sufficient_count": 1,
+    "final_evidence_sufficient_but_retrieval_audit_required_count": 2,
+    "final_evidence_sufficient_count": 2,
+    "final_gate_claims_need_audit_count": 0,
+    "hybrid_v2_quality_status": "PASS",
+    "insufficient_final_claim_count": 0,
+    "insufficient_missing_citation_count": 0,
+    "insufficient_missing_exact_support_count": 0,
+    "insufficient_retrieval_only_evidence_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "query_count": 5,
+    "query_intent_counts": {
+      "exact_part_number_lookup": 2,
+      "revision_history_lookup": 2,
+      "revision_lookup": 1
+    },
+    "raw_feedback_direct_to_llm_count": 0,
+    "reason_code_counts": {
+      "dynamic_final_gate_evidence_clean": 2,
+      "final_gate_artifact_evidence_clean": 1,
+      "retrieval_critic_requires_audit": 2,
+      "review_signals_present": 5
+    },
+    "recommended_action_counts": {
+      "audit_retrieval_consistency_before_returning_answer": 2,
+      "return_final_answer_if_policy_allows": 1,
+      "return_final_answer_if_retrieval_critic_allows": 2
+    },
+    "retrieval_critic_quality_status": "PASS",
+    "retrieval_only_group_count": 9,
+    "safe_final_claim_count": 24,
+    "schema_version": "trace_net_evidence_sufficiency_critic_v1",
+    "source_quality_statuses": {
+      "dynamic_final_gate": "PASS",
+      "hybrid_v2": "PASS",
+      "retrieval_critic": "PASS"
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "source_truth_mutations_performed": 0,
+    "status": "PASS",
+    "sufficiency_can_answer_directly_count": 0,
+    "sufficiency_can_prove_claims_count": 0,
+    "sufficiency_record_count": 5,
+    "sufficient_for_final_gate_attempt_count": 0,
+    "sufficient_group_count": 31,
+    "unsafe_evidence_blocked_count": 0,
+    "unsafe_sufficiency_record_count": 0
+  }
+}
