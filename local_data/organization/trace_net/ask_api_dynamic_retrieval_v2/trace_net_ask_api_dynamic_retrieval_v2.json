@@ -1,0 +1,56 @@
+{
+  "checks": {
+    "api_is_read_only": true,
+    "category_aware_leiden_overlay_present": true,
+    "feedback_memory_present": true,
+    "final_answer_report_present": true,
+    "final_answer_report_quality_pass": true,
+    "hybrid_report_present": true,
+    "hybrid_v2_report_present": true,
+    "hybrid_v2_report_quality_pass": true,
+    "opensearch_adapter_present": true,
+    "opensearch_adapter_quality_pass": true
+  },
+  "generated_at": "2026-06-11T19:49:15+00:00",
+  "paths": {
+    "category_aware_leiden_overlay": "local_data\\organization\\trace_net\\category_aware_leiden_overlay\\trace_net_category_aware_leiden_overlay_v1.json",
+    "community_aware_retrieval": "local_data\\organization\\trace_net\\community_aware_retrieval_sim\\trace_net_community_aware_retrieval_sim_v1.json",
+    "feedback_memory": "local_data\\organization\\trace_net\\feedback_memory\\trace_net_feedback_memory_v1.json",
+    "final_answer_markdown": "local_data\\organization\\trace_net\\final_answer_gate\\trace_net_final_answer_gate_v1_answer.md",
+    "final_answer_report": "local_data\\organization\\trace_net\\final_answer_gate\\trace_net_final_answer_gate_v1.json",
+    "hybrid_report": "local_data\\organization\\trace_net\\hybrid_retrieval_sim\\trace_net_hybrid_retrieval_sim_v1.json",
+    "hybrid_v2_report": "local_data\\organization\\trace_net\\hybrid_retrieval_v2\\trace_net_hybrid_retrieval_v2.json",
+    "opensearch_adapter": "local_data\\organization\\trace_net\\opensearch_adapter\\trace_net_opensearch_adapter_v1.json"
+  },
+  "quality_status": "PASS",
+  "schema_version": "trace_net_ask_api_dynamic_retrieval_v2",
+  "server": {
+    "default_port": 8013
+  },
+  "status": "ASK_API_DYNAMIC_CONFIG_BUILT",
+  "summary": {
+    "api_endpoint_count": 5,
+    "category_as_proof_count": 0,
+    "category_aware_quality_status": "PASS",
+    "community_as_proof_count": 0,
+    "default_answer_mode": "final-gate",
+    "default_retrieval_mode": "dynamic-hybrid-v2",
+    "dynamic_retrieval_available": true,
+    "feedback_as_proof_count": 0,
+    "feedback_quality_status": "PASS",
+    "final_answer_allowed": true,
+    "final_answer_quality_status": "PASS",
+    "hybrid_quality_status": "PASS",
+    "hybrid_v2_quality_status": "PASS",
+    "model_name": "trace-net-dynamic-hybrid-v2",
+    "opensearch_quality_status": "PASS",
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "read_only_api": true,
+    "retrieval_only_answer_allowed_count": 0,
+    "schema_version": "trace_net_ask_api_dynamic_retrieval_v2",
+    "source_truth_mutation_allowed_count": 0,
+    "status": "PASS"
+  }
+}

@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset='utf-8'><title>TRACE-Net Retrieval Critic v1</title></head><body><h1>TRACE-Net Retrieval Critic v1</h1>
+
+<p>**Status:** RETRIEVAL_CRITIC_BUILT</p>
+<p>**Quality:** PASS</p>
+
+<h2>Summary</h2>
+
+<p>- critic_record_count: 5</p>
+<p>- strong_enough_for_final_gate_attempt_count: 0</p>
+<p>- retrieval_only_not_answer_ready_count: 0</p>
+<p>- needs_exact_search_count: 0</p>
+<p>- needs_semantic_expansion_count: 0</p>
+<p>- abstain_no_evidence_count: 0</p>
+<p>- final_gate_already_authorized_count: 3</p>
+<p>- dynamic_final_gate_needs_audit_count: 2</p>
+<p>- unsafe_critic_record_count: 0</p>
+<p>- source_truth_mutation_allowed_count: 0</p>
+
+<h2>Critic Records</h2>
+
+<p>- **Which pages discuss manual revision history?**: `final_gate_already_authorized` -&gt; return_final_gate_answer</p>
+<p>- **120-46137-001**: `final_gate_already_authorized` -&gt; return_final_gate_answer</p>
+<p>- **ATA 25-21-00**: `dynamic_final_gate_needs_audit` -&gt; audit_dynamic_final_gate_retrieval_consistency_before_returning_answer; prioritize_human_review_for_unverified_groups</p>
+<p>- **Revision 4**: `final_gate_already_authorized` -&gt; return_final_gate_answer</p>
+<p>- **record of revisions**: `dynamic_final_gate_needs_audit` -&gt; audit_dynamic_final_gate_retrieval_consistency_before_returning_answer; prioritize_human_review_for_unverified_groups</p></body></html>

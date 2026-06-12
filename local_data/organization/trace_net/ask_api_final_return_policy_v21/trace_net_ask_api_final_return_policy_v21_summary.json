@@ -1,0 +1,49 @@
+{
+  "algorithm": "trace_net_ask_api_conservative_final_return_policy_v21",
+  "answer_claim_critic_quality_status": "PASS",
+  "audit_required_count": 2,
+  "audit_return_allowed_count": 0,
+  "blocked_unsafe_count": 0,
+  "can_answer_directly_count": 0,
+  "can_prove_claims_count": 0,
+  "category_as_proof_count": 0,
+  "community_as_proof_count": 0,
+  "dynamic_final_gate_quality_status": "PASS",
+  "evidence_sufficiency_quality_status": "PASS",
+  "feedback_as_proof_count": 0,
+  "final_answer_return_allowed_count": 3,
+  "hard_safety_violation_count": 0,
+  "local_path_leak_count": 0,
+  "no_safe_answer_count": 0,
+  "opensearch_write_attempt_count": 0,
+  "policy_record_count": 5,
+  "policy_status_counts": {
+    "FINAL_ANSWER_AUDIT_REQUIRED": 2,
+    "FINAL_ANSWER_RETURN_ALLOWED": 3
+  },
+  "postgres_write_attempt_count": 0,
+  "qdrant_write_attempt_count": 0,
+  "query_count": 5,
+  "raw_bytes_repr_count": 0,
+  "read_only_policy": true,
+  "required_action_counts": {
+    "audit_before_returning_final_answer": 2,
+    "return_final_answer": 3
+  },
+  "retrieval_critic_quality_status": "PASS",
+  "retrieval_only_answer_allowed_count": 0,
+  "retrieval_only_as_proof_count": 0,
+  "retrieval_only_final_gate_required_count": 0,
+  "schema_version": "trace_net_ask_api_final_return_policy_v21",
+  "source_quality_statuses": {
+    "answer_claim_critic": "PASS",
+    "ask_api_dynamic": "PASS",
+    "dynamic_final_gate": "PASS",
+    "evidence_sufficiency_critic": "PASS",
+    "retrieval_critic": "PASS"
+  },
+  "source_truth_mutation_allowed_count": 0,
+  "source_truth_mutations_performed": 0,
+  "status": "PASS",
+  "unsafe_return_allowed_count": 0
+}

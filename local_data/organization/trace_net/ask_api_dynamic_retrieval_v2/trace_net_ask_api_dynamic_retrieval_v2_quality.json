@@ -1,0 +1,31 @@
+{
+  "checks": {
+    "category_as_proof_zero": true,
+    "community_as_proof_zero": true,
+    "feedback_as_proof_zero": true,
+    "read_only_ok": true,
+    "retrieval_only_answer_allowed_zero": true,
+    "schema_version_ok": true,
+    "source_truth_mutation_allowed_zero": true,
+    "write_attempts_zero": true
+  },
+  "generated_at": "2026-06-11T19:49:15+00:00",
+  "quality_status": "PASS",
+  "schema_version": "trace_net_ask_api_dynamic_retrieval_v2_quality",
+  "status": "PASS",
+  "summary": {
+    "category_as_proof_count": 0,
+    "community_as_proof_count": 0,
+    "dynamic_retrieval_available": true,
+    "feedback_as_proof_count": 0,
+    "final_answer_quality_status": "PASS",
+    "hybrid_v2_quality_status": "PASS",
+    "opensearch_quality_status": "PASS",
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "read_only_api": true,
+    "retrieval_only_answer_allowed_count": 0,
+    "source_truth_mutation_allowed_count": 0
+  }
+}

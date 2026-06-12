@@ -1,0 +1,37 @@
+{
+  "algorithm": "trace_net_dynamic_retrieval_to_citation_authority_gate_v1",
+  "answer_status_counts": {
+    "DYNAMIC_FINAL_GATE_APPROVED": 1
+  },
+  "blocked_claim_count": 4,
+  "blocked_reason_counts": {
+    "missing_citation": 4,
+    "no_answer_support_authority": 4,
+    "retrieval_only_group": 4
+  },
+  "category_as_proof_count": 0,
+  "cited_final_claim_count": 4,
+  "community_as_proof_count": 0,
+  "dynamic_final_gate_approved_count": 1,
+  "dynamic_gate_query_count": 1,
+  "feedback_as_proof_count": 0,
+  "final_answer_allowed_count": 1,
+  "final_answer_gate_quality_status": "PASS",
+  "final_artifact_answer_count": 0,
+  "final_claim_count": 4,
+  "hybrid_v2_quality_status": "PASS",
+  "local_path_leak_count": 0,
+  "missing_citation_blocked_claim_count": 4,
+  "missing_page_id_blocked_claim_count": 0,
+  "no_answer_support_blocked_claim_count": 4,
+  "opensearch_write_attempt_count": 0,
+  "postgres_write_attempt_count": 0,
+  "qdrant_write_attempt_count": 0,
+  "raw_bytes_repr_count": 0,
+  "retrieval_only_final_claim_count": 0,
+  "retrieval_only_result_count": 0,
+  "schema_version": "trace_net_dynamic_final_gate_execution_v1",
+  "source_truth_mutation_allowed_count": 0,
+  "status": "PASS",
+  "uncited_final_claim_count": 0
+}
