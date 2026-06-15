@@ -1,0 +1,64 @@
+{
+  "failures": [],
+  "quality_status": "PASS",
+  "schema_version": "trace_net_ai_trace_pack_v1_quality",
+  "status": "PASS",
+  "summary": {
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "category_as_proof_count": 0,
+    "channel_counts": {
+      "claim_evidence_entailment": 8,
+      "hybrid_v2_ranked_group": 16,
+      "leiden_navigation_hint": 5,
+      "leiden_page_navigation_hint": 85,
+      "opensearch_exact": 58,
+      "organization_graph": 77
+    },
+    "community_as_proof_count": 0,
+    "critic_status_counts": {
+      "dynamic_final_gate_needs_audit": 4,
+      "final_gate_already_authorized": 6
+    },
+    "feedback_as_proof_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "retrieval_only_answer_allowed_count": 0,
+    "review_reason_counts": {
+      "claim_evidence_review": 4,
+      "graph_evidence_review_flags": 2,
+      "page_alignment_review": 3,
+      "retrieval_critic_audit": 2
+    },
+    "review_recommended_trace_pack_count": 4,
+    "review_record_count": 11,
+    "schema_version": "trace_net_ai_trace_pack_v1",
+    "source_quality_statuses": {
+      "answer_claim_critic": "PASS",
+      "claim_evidence_entailment": "PASS",
+      "dublin_core_source_package_extension": "PASS",
+      "dynamic_final_gate": "PASS",
+      "evidence_sufficiency_critic": "PASS",
+      "final_return_policy": "PASS",
+      "graph_query_api_v1_1": "PASS",
+      "graph_query_evidence_enrichment": "PASS",
+      "hybrid_v2": "PASS",
+      "leiden_navigation_metadata_bridge": "PASS",
+      "retrieval_critic": "PASS"
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "status": "PASS",
+    "trace_pack_count": 8,
+    "trace_pack_with_claim_entailment_count": 4,
+    "trace_pack_with_dublin_core_identity_count": 3,
+    "trace_pack_with_graph_context_count": 3,
+    "trace_pack_with_hybrid_retrieval_count": 5,
+    "trace_pack_with_leiden_navigation_count": 3,
+    "trace_status_counts": {
+      "TRACE_PACK_FINAL_GATE_AUTHORIZED_NO_REVIEW_FLAGS": 1,
+      "TRACE_PACK_READY": 3,
+      "TRACE_PACK_REVIEW_RECOMMENDED": 4
+    }
+  }
+}

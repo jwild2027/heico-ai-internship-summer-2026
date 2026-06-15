@@ -1,0 +1,1609 @@
+{
+  "entailment_records": [
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:table_structured:t_p_120_1176_p000003:71e826e3f3"
+        ],
+        "evidence_id": "normcell__611299966238cd",
+        "evidence_kind": "table_cell_normalized",
+        "match_score": 0.575,
+        "page_ids": [
+          "t_p_120_1176_p000003"
+        ],
+        "source_record_path": "query_results.1.ranked_groups.0.exact_hits.0",
+        "text_preview": "120-46137-001"
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:source_text:t_p_120_1176_p000003:4aad03094c",
+        "cite:table_structured:t_p_120_1176_p000003:71e826e3f3",
+        "cite:verified_part:t_p_120_1176_p000003:7834a9c41e"
+      ],
+      "claim_id": "claim_0001",
+      "claim_index": 1,
+      "claim_text": "Page 3 is a citation-backed TRACE-Net evidence page matching part number 120-46137-001.",
+      "contradiction_risk": false,
+      "critic_disagreement": false,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "final_gate_already_authorized"
+      },
+      "entailment_record_id": "entailment_0001",
+      "entailment_score": 0.575,
+      "entailment_status": "SUPPORTED_BY_CITATION_EVIDENCE",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": false,
+      "page_ids": [
+        "t_p_120_1176_p000003"
+      ],
+      "query": "120-46137-001",
+      "query_id": "part_120_46137_001",
+      "reason_codes": [],
+      "recommended_action": "eligible_for_downstream_policy_review",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000003"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.0"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:verified_part:t_p_120_1176_p000340:7f1dd43bb5"
+        ],
+        "evidence_id": "embcand__4dfe12be273c18f225116e0b",
+        "evidence_kind": "embedding_candidate",
+        "match_score": 0.436025,
+        "page_ids": [
+          "t_p_120_1176_p000340"
+        ],
+        "source_record_path": "query_results.1.ranked_groups.1.exact_hits.1",
+        "text_preview": "Verified part evidence for page t_p_120_1176_p000340. This record comes from the verified part evidence pool and is source-traceable. ATA: 25-21-00. Page/catalog part signals: 120-40636-001, 120-41231-001, 120-41474-002, 120-41475-003, 120-46137-001, 120-46137-501. Source URL: http://localhost:8080/rescarta/t_p_120_1176/000340.\nVerified part evidence for page t_p_120_1176_p000340. This record comes from the verified part evidence pool and is source-traceable. ATA: 25-21-00. Page/catalog part sig"
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:source_text:t_p_120_1176_p000340:1cf5d0ba7f",
+        "cite:verified_part:t_p_120_1176_p000340:7f1dd43bb5"
+      ],
+      "claim_id": "claim_0002",
+      "claim_index": 2,
+      "claim_text": "Page 340 is a citation-backed TRACE-Net evidence page matching part number 120-46137-001.",
+      "contradiction_risk": false,
+      "critic_disagreement": false,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "final_gate_already_authorized"
+      },
+      "entailment_record_id": "entailment_0002",
+      "entailment_score": 0.436025,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000340"
+      ],
+      "query": "120-46137-001",
+      "query_id": "part_120_46137_001",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000340"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.1"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:table_structured:t_p_120_1176_p000003:71e826e3f3"
+        ],
+        "evidence_id": "normcell__611299966238cd",
+        "evidence_kind": "table_cell_normalized",
+        "match_score": 0.357143,
+        "page_ids": [
+          "t_p_120_1176_p000003"
+        ],
+        "source_record_path": "query_results.1.ranked_groups.0.exact_hits.0",
+        "text_preview": "120-46137-001"
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:source_text:t_p_120_1176_p000339:f420d742f4"
+      ],
+      "claim_id": "claim_0003",
+      "claim_index": 3,
+      "claim_text": "Page 339 is a citation-backed TRACE-Net evidence page matching part number 120-46137-001.",
+      "contradiction_risk": false,
+      "critic_disagreement": false,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "final_gate_already_authorized"
+      },
+      "entailment_record_id": "entailment_0003",
+      "entailment_score": 0.357143,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000339"
+      ],
+      "query": "120-46137-001",
+      "query_id": "part_120_46137_001",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000339"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.2"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:table_structured:t_p_120_1176_p000003:71e826e3f3"
+        ],
+        "evidence_id": "normcell__611299966238cd",
+        "evidence_kind": "table_cell_normalized",
+        "match_score": 0.357143,
+        "page_ids": [
+          "t_p_120_1176_p000003"
+        ],
+        "source_record_path": "query_results.1.ranked_groups.0.exact_hits.0",
+        "text_preview": "120-46137-001"
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:source_text:t_p_120_1176_p000341:df1094a0f1"
+      ],
+      "claim_id": "claim_0004",
+      "claim_index": 4,
+      "claim_text": "Page 341 is a citation-backed TRACE-Net evidence page matching part number 120-46137-001.",
+      "contradiction_risk": false,
+      "critic_disagreement": false,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "final_gate_already_authorized"
+      },
+      "entailment_record_id": "entailment_0004",
+      "entailment_score": 0.357143,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000341"
+      ],
+      "query": "120-46137-001",
+      "query_id": "part_120_46137_001",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000341"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.3"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:source:t_p_120_1176_p000001:5942c5d8c3"
+        ],
+        "evidence_id": "81f08cd4-9bfe-5e1d-a32e-a43994d35f76",
+        "evidence_kind": "page_retrieval_profile",
+        "match_score": 0.467033,
+        "page_ids": [
+          "t_p_120_1176_p000001"
+        ],
+        "source_record_path": "query_results.0.ranked_groups.0.semantic_groups.0.page_profile_hits.0",
+        "text_preview": "TRACE-Net page retrieval profile. Use: route a query to likely pages, then resolve through source-backed evidence. Authority: page_route_only. This profile cannot answer directly or prove claims. Document: t_p_120_1176 Page ID: t_p_120_1176_p000001 Page number: 1 ATA: 25-21-00..."
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:verified_part:t_p_120_1176_p000050:af05d45d86"
+      ],
+      "claim_id": "claim_0005",
+      "claim_index": 5,
+      "claim_text": "Page 50 is a citation-backed TRACE-Net evidence page matching part number 25-21-00.",
+      "contradiction_risk": false,
+      "critic_disagreement": true,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "dynamic_final_gate_needs_audit"
+      },
+      "entailment_record_id": "entailment_0005",
+      "entailment_score": 0.467033,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000050"
+      ],
+      "query": "ATA 25-21-00",
+      "query_id": "ata_25_21_00",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000050"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.4"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:source:t_p_120_1176_p000001:5942c5d8c3"
+        ],
+        "evidence_id": "81f08cd4-9bfe-5e1d-a32e-a43994d35f76",
+        "evidence_kind": "page_retrieval_profile",
+        "match_score": 0.467033,
+        "page_ids": [
+          "t_p_120_1176_p000001"
+        ],
+        "source_record_path": "query_results.0.ranked_groups.0.semantic_groups.0.page_profile_hits.0",
+        "text_preview": "TRACE-Net page retrieval profile. Use: route a query to likely pages, then resolve through source-backed evidence. Authority: page_route_only. This profile cannot answer directly or prove claims. Document: t_p_120_1176 Page ID: t_p_120_1176_p000001 Page number: 1 ATA: 25-21-00..."
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:verified_part:t_p_120_1176_p000066:9fecf03133"
+      ],
+      "claim_id": "claim_0006",
+      "claim_index": 6,
+      "claim_text": "Page 66 is a citation-backed TRACE-Net evidence page matching part number 25-21-00.",
+      "contradiction_risk": false,
+      "critic_disagreement": true,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "dynamic_final_gate_needs_audit"
+      },
+      "entailment_record_id": "entailment_0006",
+      "entailment_score": 0.467033,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000066"
+      ],
+      "query": "ATA 25-21-00",
+      "query_id": "ata_25_21_00",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000066"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.5"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:source:t_p_120_1176_p000001:5942c5d8c3"
+        ],
+        "evidence_id": "81f08cd4-9bfe-5e1d-a32e-a43994d35f76",
+        "evidence_kind": "page_retrieval_profile",
+        "match_score": 0.467033,
+        "page_ids": [
+          "t_p_120_1176_p000001"
+        ],
+        "source_record_path": "query_results.0.ranked_groups.0.semantic_groups.0.page_profile_hits.0",
+        "text_preview": "TRACE-Net page retrieval profile. Use: route a query to likely pages, then resolve through source-backed evidence. Authority: page_route_only. This profile cannot answer directly or prove claims. Document: t_p_120_1176 Page ID: t_p_120_1176_p000001 Page number: 1 ATA: 25-21-00..."
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:verified_part:t_p_120_1176_p000068:850d074d7d"
+      ],
+      "claim_id": "claim_0007",
+      "claim_index": 7,
+      "claim_text": "Page 68 is a citation-backed TRACE-Net evidence page matching part number 25-21-00.",
+      "contradiction_risk": false,
+      "critic_disagreement": true,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "dynamic_final_gate_needs_audit"
+      },
+      "entailment_record_id": "entailment_0007",
+      "entailment_score": 0.467033,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000068"
+      ],
+      "query": "ATA 25-21-00",
+      "query_id": "ata_25_21_00",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000068"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.6"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:source:t_p_120_1176_p000001:5942c5d8c3"
+        ],
+        "evidence_id": "81f08cd4-9bfe-5e1d-a32e-a43994d35f76",
+        "evidence_kind": "page_retrieval_profile",
+        "match_score": 0.467033,
+        "page_ids": [
+          "t_p_120_1176_p000001"
+        ],
+        "source_record_path": "query_results.0.ranked_groups.0.semantic_groups.0.page_profile_hits.0",
+        "text_preview": "TRACE-Net page retrieval profile. Use: route a query to likely pages, then resolve through source-backed evidence. Authority: page_route_only. This profile cannot answer directly or prove claims. Document: t_p_120_1176 Page ID: t_p_120_1176_p000001 Page number: 1 ATA: 25-21-00..."
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:verified_part:t_p_120_1176_p000499:9c8c468e2c"
+      ],
+      "claim_id": "claim_0008",
+      "claim_index": 8,
+      "claim_text": "Page 499 is a citation-backed TRACE-Net evidence page matching part number 25-21-00.",
+      "contradiction_risk": false,
+      "critic_disagreement": true,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "dynamic_final_gate_needs_audit"
+      },
+      "entailment_record_id": "entailment_0008",
+      "entailment_score": 0.467033,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000499"
+      ],
+      "query": "ATA 25-21-00",
+      "query_id": "ata_25_21_00",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000499"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.7"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:source:t_p_120_1176_p000001:5942c5d8c3"
+        ],
+        "evidence_id": "81f08cd4-9bfe-5e1d-a32e-a43994d35f76",
+        "evidence_kind": "page_retrieval_profile",
+        "match_score": 0.809375,
+        "page_ids": [
+          "t_p_120_1176_p000001"
+        ],
+        "source_record_path": "query_results.0.ranked_groups.0.semantic_groups.0.page_profile_hits.0",
+        "text_preview": "TRACE-Net page retrieval profile. Use: route a query to likely pages, then resolve through source-backed evidence. Authority: page_route_only. This profile cannot answer directly or prove claims. Document: t_p_120_1176 Page ID: t_p_120_1176_p000001 Page number: 1 ATA: 25-21-00..."
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:source:t_p_120_1176_p000001:5942c5d8c3",
+        "cite:source_text:t_p_120_1176_p000001:092378ba20"
+      ],
+      "claim_id": "claim_0009",
+      "claim_index": 9,
+      "claim_text": "Page 1 is a citation-backed TRACE-Net evidence page for the query 'Revision 4'.",
+      "contradiction_risk": false,
+      "critic_disagreement": false,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "final_gate_already_authorized"
+      },
+      "entailment_record_id": "entailment_0009",
+      "entailment_score": 0.809375,
+      "entailment_status": "SUPPORTED_BY_CITATION_EVIDENCE",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": false,
+      "page_ids": [
+        "t_p_120_1176_p000001"
+      ],
+      "query": "Revision 4",
+      "query_id": "revision_4",
+      "reason_codes": [],
+      "recommended_action": "eligible_for_downstream_policy_review",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000001"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.8"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:source:t_p_120_1176_p000004:997aaebe9d"
+        ],
+        "evidence_id": "25f0408b-79c1-585d-add3-5f0a3f65d024",
+        "evidence_kind": "page_retrieval_profile",
+        "match_score": 0.809375,
+        "page_ids": [
+          "t_p_120_1176_p000004"
+        ],
+        "source_record_path": "query_results.0.ranked_groups.1.semantic_groups.0.page_profile_hits.0",
+        "text_preview": "TRACE-Net page retrieval profile. Use: route a query to likely pages, then resolve through source-backed evidence. Authority: page_route_only. This profile cannot answer directly or prove claims. Document: t_p_120_1176 Page ID: t_p_120_1176_p000004 Page number: 4 ATA: 25-21-00..."
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:source:t_p_120_1176_p000004:997aaebe9d",
+        "cite:source_text:t_p_120_1176_p000004:f6dd161aab"
+      ],
+      "claim_id": "claim_0010",
+      "claim_index": 10,
+      "claim_text": "Page 4 is a citation-backed TRACE-Net evidence page for the query 'Revision 4'.",
+      "contradiction_risk": false,
+      "critic_disagreement": false,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "final_gate_already_authorized"
+      },
+      "entailment_record_id": "entailment_0010",
+      "entailment_score": 0.809375,
+      "entailment_status": "SUPPORTED_BY_CITATION_EVIDENCE",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": false,
+      "page_ids": [
+        "t_p_120_1176_p000004"
+      ],
+      "query": "Revision 4",
+      "query_id": "revision_4",
+      "reason_codes": [],
+      "recommended_action": "eligible_for_downstream_policy_review",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000004"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.9"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [],
+        "evidence_id": "page_profile__effe48a692eab552814465ab",
+        "evidence_kind": "page_retrieval_profile",
+        "match_score": 0.4875,
+        "page_ids": [
+          "t_p_120_1176_p000001"
+        ],
+        "source_record_path": "query_results.0.ranked_groups.0.exact_hits.2",
+        "text_preview": "TRACE-Net page retrieval profile. Use: route a query to likely pages, then resolve through source-backed evidence. Authority: page_route_only. This profile cannot answer directly or prove claims. Document: t_p_120_1176 Page ID: t_p_120_1176_p000001 Page number: 1 ATA: 25-21-00 Source URL: http://localhost:8080/rescarta/t_p_120_1176/000001 TIFF path: [local_path_redacted] ContextV2 retrieval summary: This page contains the title block, revision history, and manufacturer contact information for te"
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:source_text:t_p_120_1176_p000329:c257a23a13"
+      ],
+      "claim_id": "claim_0011",
+      "claim_index": 11,
+      "claim_text": "Page 329 is a citation-backed TRACE-Net evidence page for the query 'Revision 4'.",
+      "contradiction_risk": false,
+      "critic_disagreement": false,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "final_gate_already_authorized"
+      },
+      "entailment_record_id": "entailment_0011",
+      "entailment_score": 0.4875,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000329"
+      ],
+      "query": "Revision 4",
+      "query_id": "revision_4",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000329"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.10"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [],
+        "evidence_id": "page_profile__effe48a692eab552814465ab",
+        "evidence_kind": "page_retrieval_profile",
+        "match_score": 0.4875,
+        "page_ids": [
+          "t_p_120_1176_p000001"
+        ],
+        "source_record_path": "query_results.0.ranked_groups.0.exact_hits.2",
+        "text_preview": "TRACE-Net page retrieval profile. Use: route a query to likely pages, then resolve through source-backed evidence. Authority: page_route_only. This profile cannot answer directly or prove claims. Document: t_p_120_1176 Page ID: t_p_120_1176_p000001 Page number: 1 ATA: 25-21-00 Source URL: http://localhost:8080/rescarta/t_p_120_1176/000001 TIFF path: [local_path_redacted] ContextV2 retrieval summary: This page contains the title block, revision history, and manufacturer contact information for te"
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:source_text:t_p_120_1176_p000095:42be71a0a0"
+      ],
+      "claim_id": "claim_0012",
+      "claim_index": 12,
+      "claim_text": "Page 95 is a citation-backed TRACE-Net evidence page for the query 'Revision 4'.",
+      "contradiction_risk": false,
+      "critic_disagreement": false,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "final_gate_already_authorized"
+      },
+      "entailment_record_id": "entailment_0012",
+      "entailment_score": 0.4875,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000095"
+      ],
+      "query": "Revision 4",
+      "query_id": "revision_4",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000095"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.11"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [],
+        "evidence_id": "page_profile__effe48a692eab552814465ab",
+        "evidence_kind": "page_retrieval_profile",
+        "match_score": 0.4875,
+        "page_ids": [
+          "t_p_120_1176_p000001"
+        ],
+        "source_record_path": "query_results.0.ranked_groups.0.exact_hits.2",
+        "text_preview": "TRACE-Net page retrieval profile. Use: route a query to likely pages, then resolve through source-backed evidence. Authority: page_route_only. This profile cannot answer directly or prove claims. Document: t_p_120_1176 Page ID: t_p_120_1176_p000001 Page number: 1 ATA: 25-21-00 Source URL: http://localhost:8080/rescarta/t_p_120_1176/000001 TIFF path: [local_path_redacted] ContextV2 retrieval summary: This page contains the title block, revision history, and manufacturer contact information for te"
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:source_text:t_p_120_1176_p000308:c17c8d6ddb"
+      ],
+      "claim_id": "claim_0013",
+      "claim_index": 13,
+      "claim_text": "Page 308 is a citation-backed TRACE-Net evidence page for the query 'Revision 4'.",
+      "contradiction_risk": false,
+      "critic_disagreement": false,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "final_gate_already_authorized"
+      },
+      "entailment_record_id": "entailment_0013",
+      "entailment_score": 0.4875,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000308"
+      ],
+      "query": "Revision 4",
+      "query_id": "revision_4",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000308"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.12"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [],
+        "evidence_id": "page_profile__effe48a692eab552814465ab",
+        "evidence_kind": "page_retrieval_profile",
+        "match_score": 0.4875,
+        "page_ids": [
+          "t_p_120_1176_p000001"
+        ],
+        "source_record_path": "query_results.0.ranked_groups.0.exact_hits.2",
+        "text_preview": "TRACE-Net page retrieval profile. Use: route a query to likely pages, then resolve through source-backed evidence. Authority: page_route_only. This profile cannot answer directly or prove claims. Document: t_p_120_1176 Page ID: t_p_120_1176_p000001 Page number: 1 ATA: 25-21-00 Source URL: http://localhost:8080/rescarta/t_p_120_1176/000001 TIFF path: [local_path_redacted] ContextV2 retrieval summary: This page contains the title block, revision history, and manufacturer contact information for te"
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:source_text:t_p_120_1176_p000399:4d4b464df3"
+      ],
+      "claim_id": "claim_0014",
+      "claim_index": 14,
+      "claim_text": "Page 399 is a citation-backed TRACE-Net evidence page for the query 'Revision 4'.",
+      "contradiction_risk": false,
+      "critic_disagreement": false,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "final_gate_already_authorized"
+      },
+      "entailment_record_id": "entailment_0014",
+      "entailment_score": 0.4875,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000399"
+      ],
+      "query": "Revision 4",
+      "query_id": "revision_4",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000399"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.13"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [],
+        "evidence_id": "page_profile__effe48a692eab552814465ab",
+        "evidence_kind": "page_retrieval_profile",
+        "match_score": 0.4875,
+        "page_ids": [
+          "t_p_120_1176_p000001"
+        ],
+        "source_record_path": "query_results.0.ranked_groups.0.exact_hits.2",
+        "text_preview": "TRACE-Net page retrieval profile. Use: route a query to likely pages, then resolve through source-backed evidence. Authority: page_route_only. This profile cannot answer directly or prove claims. Document: t_p_120_1176 Page ID: t_p_120_1176_p000001 Page number: 1 ATA: 25-21-00 Source URL: http://localhost:8080/rescarta/t_p_120_1176/000001 TIFF path: [local_path_redacted] ContextV2 retrieval summary: This page contains the title block, revision history, and manufacturer contact information for te"
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:source_text:t_p_120_1176_p000094:bb56384ee9"
+      ],
+      "claim_id": "claim_0015",
+      "claim_index": 15,
+      "claim_text": "Page 94 is a citation-backed TRACE-Net evidence page for the query 'Revision 4'.",
+      "contradiction_risk": false,
+      "critic_disagreement": false,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "final_gate_already_authorized"
+      },
+      "entailment_record_id": "entailment_0015",
+      "entailment_score": 0.4875,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000094"
+      ],
+      "query": "Revision 4",
+      "query_id": "revision_4",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000094"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.14"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [],
+        "evidence_id": "page_profile__effe48a692eab552814465ab",
+        "evidence_kind": "page_retrieval_profile",
+        "match_score": 0.4875,
+        "page_ids": [
+          "t_p_120_1176_p000001"
+        ],
+        "source_record_path": "query_results.0.ranked_groups.0.exact_hits.2",
+        "text_preview": "TRACE-Net page retrieval profile. Use: route a query to likely pages, then resolve through source-backed evidence. Authority: page_route_only. This profile cannot answer directly or prove claims. Document: t_p_120_1176 Page ID: t_p_120_1176_p000001 Page number: 1 ATA: 25-21-00 Source URL: http://localhost:8080/rescarta/t_p_120_1176/000001 TIFF path: [local_path_redacted] ContextV2 retrieval summary: This page contains the title block, revision history, and manufacturer contact information for te"
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:source_text:t_p_120_1176_p000427:33b5a2ac45"
+      ],
+      "claim_id": "claim_0016",
+      "claim_index": 16,
+      "claim_text": "Page 427 is a citation-backed TRACE-Net evidence page for the query 'Revision 4'.",
+      "contradiction_risk": false,
+      "critic_disagreement": false,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "final_gate_already_authorized"
+      },
+      "entailment_record_id": "entailment_0016",
+      "entailment_score": 0.4875,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000427"
+      ],
+      "query": "Revision 4",
+      "query_id": "revision_4",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000427"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.15"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:verified_part:t_p_120_1176_p000432:4ec6bbe2d4"
+        ],
+        "evidence_id": "45ac23f5-0e11-5670-90b6-9eeca4536350",
+        "evidence_kind": "verified_part_evidence",
+        "match_score": 0.439286,
+        "page_ids": [
+          "t_p_120_1176_p000432"
+        ],
+        "source_record_path": "query_results.4.ranked_groups.0.semantic_groups.0.candidate_hits.0",
+        "text_preview": "Verified part evidence for page t_p_120_1176_p000432. This record comes from the verified part evidence pool and is source-traceable. ATA: 25-21-00. Page/catalog part signals: 120-29068-035, 120-29068-057, 120-48023-001, 120-48024-001, PE21052-2. Source URL: http://localhost:8..."
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:verified_part:t_p_120_1176_p000432:4ec6bbe2d4"
+      ],
+      "claim_id": "claim_0017",
+      "claim_index": 17,
+      "claim_text": "Page 432 is a citation-backed TRACE-Net evidence page for the query 'record of revisions'.",
+      "contradiction_risk": false,
+      "critic_disagreement": true,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "dynamic_final_gate_needs_audit"
+      },
+      "entailment_record_id": "entailment_0017",
+      "entailment_score": 0.439286,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000432"
+      ],
+      "query": "record of revisions",
+      "query_id": "record_of_revisions",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000432"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.16"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:verified_part:t_p_120_1176_p000050:af05d45d86"
+        ],
+        "evidence_id": "acd873e3-561c-52f9-9a0e-d6ba2223a047",
+        "evidence_kind": "verified_part_evidence",
+        "match_score": 0.442063,
+        "page_ids": [
+          "t_p_120_1176_p000050"
+        ],
+        "source_record_path": "query_results.2.ranked_groups.4.semantic_groups.0.candidate_hits.0",
+        "text_preview": "Verified part evidence for page t_p_120_1176_p000050. This record comes from the verified part evidence pool and is source-traceable. ATA: 25-21-00. Page/catalog part signals: 120-41475-003, 120-41825-507, 120-41825-517, 120-41825-519, 120-41825-521, 120-42070-001, Z20-21-UU-3..."
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:verified_part:t_p_120_1176_p000050:af05d45d86"
+      ],
+      "claim_id": "claim_0018",
+      "claim_index": 18,
+      "claim_text": "Page 50 is a citation-backed TRACE-Net evidence page for the query 'record of revisions'.",
+      "contradiction_risk": false,
+      "critic_disagreement": true,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "dynamic_final_gate_needs_audit"
+      },
+      "entailment_record_id": "entailment_0018",
+      "entailment_score": 0.442063,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000050"
+      ],
+      "query": "record of revisions",
+      "query_id": "record_of_revisions",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000050"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.17"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:verified_part:t_p_120_1176_p000267:4792d19056"
+        ],
+        "evidence_id": "397bb8df-ad1c-5f6f-981b-be6777dbce31",
+        "evidence_kind": "verified_part_evidence",
+        "match_score": 0.440602,
+        "page_ids": [
+          "t_p_120_1176_p000267"
+        ],
+        "source_record_path": "query_results.4.ranked_groups.2.semantic_groups.0.candidate_hits.0",
+        "text_preview": "Verified part evidence for page t_p_120_1176_p000267. This record comes from the verified part evidence pool and is source-traceable. ATA: 25-21-00. Page/catalog part signals: 120-37313-001, 120-41825-507, 120-41825-517. Source URL: http://localhost:8080/rescarta/t_p_120_1176/..."
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:verified_part:t_p_120_1176_p000267:4792d19056"
+      ],
+      "claim_id": "claim_0019",
+      "claim_index": 19,
+      "claim_text": "Page 267 is a citation-backed TRACE-Net evidence page for the query 'record of revisions'.",
+      "contradiction_risk": false,
+      "critic_disagreement": true,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "dynamic_final_gate_needs_audit"
+      },
+      "entailment_record_id": "entailment_0019",
+      "entailment_score": 0.440602,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000267"
+      ],
+      "query": "record of revisions",
+      "query_id": "record_of_revisions",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000267"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.18"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:verified_part:t_p_120_1176_p000152:7bb06de844"
+        ],
+        "evidence_id": "31a7bbe6-0296-5cf9-a086-72164cbf3c47",
+        "evidence_kind": "verified_part_evidence",
+        "match_score": 0.440602,
+        "page_ids": [
+          "t_p_120_1176_p000152"
+        ],
+        "source_record_path": "query_results.4.ranked_groups.3.semantic_groups.0.candidate_hits.0",
+        "text_preview": "Verified part evidence for page t_p_120_1176_p000152. This record comes from the verified part evidence pool and is source-traceable. ATA: 25-21-00. Page/catalog part signals: 120-36833-015, 120-36833-509, 120-36843-001. Source URL: http://localhost:8080/rescarta/t_p_120_1176/..."
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:verified_part:t_p_120_1176_p000152:7bb06de844"
+      ],
+      "claim_id": "claim_0020",
+      "claim_index": 20,
+      "claim_text": "Page 152 is a citation-backed TRACE-Net evidence page for the query 'record of revisions'.",
+      "contradiction_risk": false,
+      "critic_disagreement": true,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "dynamic_final_gate_needs_audit"
+      },
+      "entailment_record_id": "entailment_0020",
+      "entailment_score": 0.440602,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000152"
+      ],
+      "query": "record of revisions",
+      "query_id": "record_of_revisions",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000152"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.19"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:verified_part:t_p_120_1176_p000494:4b2bd746b3"
+        ],
+        "evidence_id": "a9869bc1-49f4-592a-a3d2-500c5e48c54b",
+        "evidence_kind": "verified_part_evidence",
+        "match_score": 0.442063,
+        "page_ids": [
+          "t_p_120_1176_p000494"
+        ],
+        "source_record_path": "query_results.4.ranked_groups.4.semantic_groups.0.candidate_hits.0",
+        "text_preview": "Verified part evidence for page t_p_120_1176_p000494. This record comes from the verified part evidence pool and is source-traceable. ATA: 25-21-00. Page/catalog part signals: TP250007.MCE. Source URL: http://localhost:8080/rescarta/t_p_120_1176/000494."
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:verified_part:t_p_120_1176_p000494:4b2bd746b3"
+      ],
+      "claim_id": "claim_0021",
+      "claim_index": 21,
+      "claim_text": "Page 494 is a citation-backed TRACE-Net evidence page for the query 'record of revisions'.",
+      "contradiction_risk": false,
+      "critic_disagreement": true,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "dynamic_final_gate_needs_audit"
+      },
+      "entailment_record_id": "entailment_0021",
+      "entailment_score": 0.442063,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000494"
+      ],
+      "query": "record of revisions",
+      "query_id": "record_of_revisions",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000494"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.20"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:verified_part:t_p_120_1176_p000073:ea63f120fb"
+        ],
+        "evidence_id": "74083fdf-9805-5d96-b7bb-57617f6f9e61",
+        "evidence_kind": "verified_part_evidence",
+        "match_score": 0.442063,
+        "page_ids": [
+          "t_p_120_1176_p000073"
+        ],
+        "source_record_path": "query_results.4.ranked_groups.5.semantic_groups.0.candidate_hits.0",
+        "text_preview": "Verified part evidence for page t_p_120_1176_p000073. This record comes from the verified part evidence pool and is source-traceable. ATA: 25-21-00. Page/catalog part signals: MS51957-45, NAS4704-5. Source URL: http://localhost:8080/rescarta/t_p_120_1176/000073."
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:verified_part:t_p_120_1176_p000073:ea63f120fb"
+      ],
+      "claim_id": "claim_0022",
+      "claim_index": 22,
+      "claim_text": "Page 73 is a citation-backed TRACE-Net evidence page for the query 'record of revisions'.",
+      "contradiction_risk": false,
+      "critic_disagreement": true,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "dynamic_final_gate_needs_audit"
+      },
+      "entailment_record_id": "entailment_0022",
+      "entailment_score": 0.442063,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000073"
+      ],
+      "query": "record of revisions",
+      "query_id": "record_of_revisions",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000073"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.21"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:verified_part:t_p_120_1176_p000307:c0bf0e39eb"
+        ],
+        "evidence_id": "f74eeb21-aff6-57db-a920-a80f53226afd",
+        "evidence_kind": "verified_part_evidence",
+        "match_score": 0.443697,
+        "page_ids": [
+          "t_p_120_1176_p000307"
+        ],
+        "source_record_path": "query_results.4.ranked_groups.6.semantic_groups.0.candidate_hits.0",
+        "text_preview": "Verified part evidence for page t_p_120_1176_p000307. This record comes from the verified part evidence pool and is source-traceable. ATA: 25-21-00. Page/catalog part signals: 120-36834-519. Source URL: http://localhost:8080/rescarta/t_p_120_1176/000307."
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:verified_part:t_p_120_1176_p000307:c0bf0e39eb"
+      ],
+      "claim_id": "claim_0023",
+      "claim_index": 23,
+      "claim_text": "Page 307 is a citation-backed TRACE-Net evidence page for the query 'record of revisions'.",
+      "contradiction_risk": false,
+      "critic_disagreement": true,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "dynamic_final_gate_needs_audit"
+      },
+      "entailment_record_id": "entailment_0023",
+      "entailment_score": 0.443697,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000307"
+      ],
+      "query": "record of revisions",
+      "query_id": "record_of_revisions",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000307"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.22"
+    },
+    {
+      "advisory_only": true,
+      "best_evidence_span": {
+        "citation_ids": [
+          "cite:verified_part:t_p_120_1176_p000074:b8f65e298c"
+        ],
+        "evidence_id": "97eb8e49-f9f3-5110-8808-c6b2c52c6359",
+        "evidence_kind": "verified_part_evidence",
+        "match_score": 0.442063,
+        "page_ids": [
+          "t_p_120_1176_p000074"
+        ],
+        "source_record_path": "query_results.4.ranked_groups.7.semantic_groups.0.candidate_hits.0",
+        "text_preview": "Verified part evidence for page t_p_120_1176_p000074. This record comes from the verified part evidence pool and is source-traceable. ATA: 25-21-00. Page/catalog part signals: NAS4704-5, PE13076-1. Source URL: http://localhost:8080/rescarta/t_p_120_1176/000074."
+      },
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "citation_ids": [
+        "cite:verified_part:t_p_120_1176_p000074:b8f65e298c"
+      ],
+      "claim_id": "claim_0024",
+      "claim_index": 24,
+      "claim_text": "Page 74 is a citation-backed TRACE-Net evidence page for the query 'record of revisions'.",
+      "contradiction_risk": false,
+      "critic_disagreement": true,
+      "critic_statuses": {
+        "answer_claim_critic": "DYNAMIC_FINAL_GATE_APPROVED",
+        "retrieval_critic": "dynamic_final_gate_needs_audit"
+      },
+      "entailment_record_id": "entailment_0024",
+      "entailment_score": 0.442063,
+      "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+      "evidence_span_match_status": "MATCHED",
+      "human_review_escalation_recommended": true,
+      "page_ids": [
+        "t_p_120_1176_p000074"
+      ],
+      "query": "record of revisions",
+      "query_id": "record_of_revisions",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "human_review_or_audit_before_final_return",
+      "resolved_page_ids": [
+        "t_p_120_1176_p000074"
+      ],
+      "schema_version": "trace_net_claim_evidence_entailment_v1",
+      "source_claim_status": "approved_dynamic_final_claim_candidate",
+      "source_identity_status": "SOURCE_IDENTITY_RESOLVED",
+      "source_record_path": "final_claims.23"
+    }
+  ],
+  "quality_notes": [
+    "Advisory only: entailment records cannot answer directly or prove claims.",
+    "Human-review escalations are candidate records only; this module does not write the review queue."
+  ],
+  "quality_status": "PASS",
+  "review_escalations": [
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0002",
+      "entailment_record_id": "entailment_0002",
+      "priority": "medium",
+      "query_id": "part_120_46137_001",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0001",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0003",
+      "entailment_record_id": "entailment_0003",
+      "priority": "medium",
+      "query_id": "part_120_46137_001",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0002",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0004",
+      "entailment_record_id": "entailment_0004",
+      "priority": "medium",
+      "query_id": "part_120_46137_001",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0003",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0005",
+      "entailment_record_id": "entailment_0005",
+      "priority": "high",
+      "query_id": "ata_25_21_00",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0004",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0006",
+      "entailment_record_id": "entailment_0006",
+      "priority": "high",
+      "query_id": "ata_25_21_00",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0005",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0007",
+      "entailment_record_id": "entailment_0007",
+      "priority": "high",
+      "query_id": "ata_25_21_00",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0006",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0008",
+      "entailment_record_id": "entailment_0008",
+      "priority": "high",
+      "query_id": "ata_25_21_00",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0007",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0011",
+      "entailment_record_id": "entailment_0011",
+      "priority": "medium",
+      "query_id": "revision_4",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0008",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0012",
+      "entailment_record_id": "entailment_0012",
+      "priority": "medium",
+      "query_id": "revision_4",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0009",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0013",
+      "entailment_record_id": "entailment_0013",
+      "priority": "medium",
+      "query_id": "revision_4",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0010",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0014",
+      "entailment_record_id": "entailment_0014",
+      "priority": "medium",
+      "query_id": "revision_4",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0011",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0015",
+      "entailment_record_id": "entailment_0015",
+      "priority": "medium",
+      "query_id": "revision_4",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0012",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0016",
+      "entailment_record_id": "entailment_0016",
+      "priority": "medium",
+      "query_id": "revision_4",
+      "reason_codes": [
+        "partial_evidence_overlap"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0013",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0017",
+      "entailment_record_id": "entailment_0017",
+      "priority": "high",
+      "query_id": "record_of_revisions",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0014",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0018",
+      "entailment_record_id": "entailment_0018",
+      "priority": "high",
+      "query_id": "record_of_revisions",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0015",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0019",
+      "entailment_record_id": "entailment_0019",
+      "priority": "high",
+      "query_id": "record_of_revisions",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0016",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0020",
+      "entailment_record_id": "entailment_0020",
+      "priority": "high",
+      "query_id": "record_of_revisions",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0017",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0021",
+      "entailment_record_id": "entailment_0021",
+      "priority": "high",
+      "query_id": "record_of_revisions",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0018",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0022",
+      "entailment_record_id": "entailment_0022",
+      "priority": "high",
+      "query_id": "record_of_revisions",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0019",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0023",
+      "entailment_record_id": "entailment_0023",
+      "priority": "high",
+      "query_id": "record_of_revisions",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0020",
+      "writes_human_review_queue": false
+    },
+    {
+      "advisory_only": true,
+      "claim_id": "claim_0024",
+      "entailment_record_id": "entailment_0024",
+      "priority": "high",
+      "query_id": "record_of_revisions",
+      "reason_codes": [
+        "partial_evidence_overlap",
+        "critic_disagreement"
+      ],
+      "recommended_action": "route_to_human_review_queue_candidate",
+      "review_escalation_id": "claim_entailment_review_0021",
+      "writes_human_review_queue": false
+    }
+  ],
+  "schema_version": "trace_net_claim_evidence_entailment_v1",
+  "status": "CLAIM_EVIDENCE_ENTAILMENT_BUILT",
+  "summary": {
+    "algorithm": "lexical_overlap_page_citation_source_identity_entailment_advisory_v1",
+    "answer_claim_critic_quality_status": "PASS",
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "category_as_proof_count": 0,
+    "claim_proof_allowed_count": 0,
+    "claim_record_count": 24,
+    "claims_with_citation_count": 24,
+    "claims_without_citation_count": 0,
+    "community_as_proof_count": 0,
+    "contradiction_risk_record_count": 0,
+    "critic_disagreement_record_count": 12,
+    "direct_answer_allowed_count": 0,
+    "dublin_core_source_quality_status": "PASS",
+    "dynamic_final_gate_quality_status": "PASS",
+    "entailment_record_count": 24,
+    "entailment_status_counts": {
+      "PARTIALLY_SUPPORTED_NEEDS_REVIEW": 21,
+      "SUPPORTED_BY_CITATION_EVIDENCE": 3
+    },
+    "evidence_candidate_count": 42,
+    "evidence_span_matched_count": 24,
+    "evidence_sufficiency_quality_status": "PASS",
+    "feedback_as_proof_count": 0,
+    "human_review_escalation_count": 21,
+    "hybrid_v2_quality_status": "PASS",
+    "missing_citation_review_count": 0,
+    "no_page_id_record_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "partial_entailment_count": 21,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_failures": [],
+    "quality_status": "PASS",
+    "query_count": 4,
+    "query_ids": [
+      "ata_25_21_00",
+      "part_120_46137_001",
+      "record_of_revisions",
+      "revision_4"
+    ],
+    "retrieval_critic_quality_status": "PASS",
+    "retrieval_only_answer_allowed_count": 0,
+    "schema_version": "trace_net_claim_evidence_entailment_v1",
+    "source_identity_page_count": 509,
+    "source_load_statuses": {
+      "answer_claim_critic": "LOADED",
+      "dublin_core_source_package_extension": "LOADED",
+      "evidence_sufficiency_critic": "LOADED",
+      "hybrid_v2": "LOADED",
+      "retrieval_critic": "LOADED"
+    },
+    "source_partial_record_count": 0,
+    "source_resolved_record_count": 24,
+    "source_truth_mutation_allowed_count": 0,
+    "source_truth_mutations_performed": 0,
+    "source_unresolved_record_count": 0,
+    "source_unresolved_review_count": 0,
+    "status": "PASS",
+    "supported_entailment_count": 3,
+    "unsafe_entailment_record_count": 0,
+    "weak_or_missing_evidence_span_count": 0
+  }
+}

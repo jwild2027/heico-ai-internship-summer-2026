@@ -1,0 +1,60 @@
+{
+  "failures": [],
+  "quality_status": "PASS",
+  "schema_version": "trace_net_graph_query_api_v1",
+  "status": "PASS",
+  "summary": {
+    "ata_query_route_count": 1,
+    "available_query_inputs": {
+      "ata_browse": [
+        {
+          "ata_code": "25-21-00"
+        }
+      ],
+      "page_lookup": [
+        {
+          "page_id_or_label": "t_p_120_1176_p000003"
+        }
+      ],
+      "part_lookup": [
+        {
+          "part_number": "120-46137-001"
+        }
+      ]
+    },
+    "available_query_type_counts": {
+      "ata_browse": 1,
+      "page_lookup": 1,
+      "part_lookup": 1
+    },
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "category_as_proof_count": 0,
+    "community_as_proof_count": 0,
+    "generic_query_route_count": 1,
+    "health_route_count": 1,
+    "opensearch_write_attempt_count": 0,
+    "page_query_route_count": 1,
+    "part_query_route_count": 1,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "query_record_count": 3,
+    "retrieval_only_answer_allowed_count": 0,
+    "route_record_count": 5,
+    "schema_version": "trace_net_graph_query_api_v1",
+    "source_graph_edge_count": 14008,
+    "source_graph_node_count": 3750,
+    "source_graph_query_helper_path": "local_data\\organization\\trace_net\\graph_query_helper\\trace_net_graph_query_helper_v1.json",
+    "source_graph_query_helper_quality_status": "PASS",
+    "source_graph_query_helper_status": "GRAPH_QUERY_HELPER_BUILT",
+    "source_load_statuses": {
+      "graph_query_helper": "LOADED"
+    },
+    "source_quality_statuses": {
+      "graph_query_helper": "PASS"
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "status": "PASS",
+    "unbounded_traversal_route_count": 0
+  }
+}

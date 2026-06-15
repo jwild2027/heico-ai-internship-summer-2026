@@ -1,0 +1,57 @@
+{
+  "failures": [],
+  "quality_status": "PASS",
+  "schema_version": "trace_net_leiden_representative_label_tightening_v1",
+  "status": "LEIDEN_REPRESENTATIVE_LABELS_REFINED",
+  "summary": {
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "category_as_proof_count": 0,
+    "communities_with_representative_pages_count": 223,
+    "community_as_proof_count": 0,
+    "community_profile_record_count": 229,
+    "dominant_evidence_category_counts": {
+      "none": 6,
+      "source_identity": 39,
+      "table_evidence": 40,
+      "visual_evidence": 144
+    },
+    "low_navigation_confidence_count": 2,
+    "missing_category_summary_count": 6,
+    "missing_page_membership_count": 6,
+    "navigation_confidence_counts": {
+      "HIGH_NAVIGATION_CONFIDENCE": 175,
+      "LOW_NAVIGATION_CONFIDENCE": 2,
+      "MODERATE_NAVIGATION_CONFIDENCE": 46,
+      "REVIEW_ONLY": 6
+    },
+    "navigation_intent_counts": {
+      "mixed_evidence_navigation": 45,
+      "part_family_navigation": 101,
+      "table_evidence_navigation": 20,
+      "visual_evidence_navigation": 63
+    },
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "refined_label_count": 229,
+    "retrieval_only_answer_allowed_count": 0,
+    "review_only_community_count": 6,
+    "review_recommended_community_count": 45,
+    "risk_flag_counts": {
+      "low_normalized_category_coherence": 2,
+      "missing_category_summary": 6,
+      "missing_page_membership": 6,
+      "mixed_navigation_intent": 45
+    },
+    "schema_version": "trace_net_leiden_representative_label_tightening_v1",
+    "source_dublin_core_quality_status": "PASS",
+    "source_hydrator_quality_status": "PASS",
+    "source_quality_statuses": {
+      "dublin_core_refined": "PASS",
+      "leiden_category_summary_hydrator": "PASS"
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "status": "PASS"
+  }
+}

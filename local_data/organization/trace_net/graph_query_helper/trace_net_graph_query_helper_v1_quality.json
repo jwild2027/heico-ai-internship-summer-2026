@@ -1,0 +1,93 @@
+{
+  "quality_issues": [],
+  "quality_status": "PASS",
+  "schema_version": "trace_net_graph_query_helper_v1_quality",
+  "status": "PASS",
+  "summary": {
+    "algorithm": "trace_net_bounded_read_only_graph_query_helper_v1",
+    "ata_query_record_count": 1,
+    "bounded_traversal_record_count": 3,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "category_as_proof_count": 0,
+    "community_as_proof_count": 0,
+    "feedback_as_proof_count": 0,
+    "graph_edge_count": 14008,
+    "graph_edge_type_counts": {
+      "APPEARS_ON": 981,
+      "BELONGS_TO_ATA": 509,
+      "BELONGS_TO_DOCUMENT": 509,
+      "CONTAINS_PAGE": 509,
+      "FOUND_ON": 981,
+      "HAS_ATA_SECTION": 5,
+      "HAS_CONTEXT": 509,
+      "HAS_MENTION": 981,
+      "HAS_NOMENCLATURE": 386,
+      "HAS_PAGE": 509,
+      "HAS_PART_MENTION": 981,
+      "HAS_SOURCE_LINK": 509,
+      "HAS_TIFF": 509,
+      "HIGHLIGHTS_PART": 1032,
+      "MENTIONS_PART": 981,
+      "OPENS": 509,
+      "POINTS_TO_TIFF": 509,
+      "REFERS_TO_PART": 981,
+      "SUMMARIZES": 509,
+      "TAGGED_AS": 1609
+    },
+    "graph_node_count": 3750,
+    "graph_node_type_counts": {
+      "ata_section": 5,
+      "document": 1,
+      "nomenclature": 151,
+      "page": 509,
+      "page_context": 509,
+      "part": 386,
+      "part_mention": 981,
+      "source_file": 509,
+      "source_link": 509,
+      "topic": 190
+    },
+    "opensearch_write_attempt_count": 0,
+    "page_query_record_count": 1,
+    "page_result_count": 77,
+    "part_query_record_count": 1,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "query_record_count": 3,
+    "query_type_counts": {
+      "ata_browse": 1,
+      "page_lookup": 1,
+      "part_lookup": 1
+    },
+    "result_with_dublin_core_identity_count": 77,
+    "result_with_leiden_navigation_hint_count": 76,
+    "retrieval_only_answer_allowed_count": 0,
+    "schema_version": "trace_net_graph_query_helper_v1",
+    "source_load_statuses": {
+      "dublin_core_source_package_extension": "LOADED",
+      "graph_edges": "LOADED",
+      "graph_nodes": "LOADED",
+      "leiden_navigation_metadata_bridge": "LOADED"
+    },
+    "source_quality_statuses": {
+      "dublin_core_source_package_extension": "PASS",
+      "leiden_navigation_metadata_bridge": "PASS"
+    },
+    "source_resolved_result_count": 77,
+    "source_resolved_result_ratio": 1.0,
+    "source_truth_mutation_allowed_count": 0,
+    "unbounded_traversal_record_count": 0
+  },
+  "thresholds": {
+    "min_ata_query_results": 1,
+    "min_page_query_results": 1,
+    "min_page_results": 1,
+    "min_part_query_results": 1,
+    "min_query_records": 3,
+    "min_source_resolved_results": 1,
+    "require_graph_edges": true,
+    "require_graph_nodes": true,
+    "require_no_answer_permission": true
+  }
+}
