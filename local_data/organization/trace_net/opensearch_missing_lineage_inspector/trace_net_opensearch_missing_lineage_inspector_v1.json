@@ -1,0 +1,178 @@
+{
+  "generated_at": "2026-06-12T16:53:22Z",
+  "paths": {
+    "markdown_path": "local_data\\organization\\trace_net\\opensearch_missing_lineage_inspector\\trace_net_opensearch_missing_lineage_inspector_v1.md",
+    "quality_path": "local_data\\organization\\trace_net\\opensearch_missing_lineage_inspector\\trace_net_opensearch_missing_lineage_inspector_v1_quality.json",
+    "report_path": "local_data\\organization\\trace_net\\opensearch_missing_lineage_inspector\\trace_net_opensearch_missing_lineage_inspector_v1.json"
+  },
+  "quality": {
+    "checks": [
+      {
+        "expected": ">= 100",
+        "name": "document_count_min",
+        "passed": true,
+        "severity": "critical",
+        "value": 7027
+      },
+      {
+        "expected": "<= 0",
+        "name": "missing_lineage_doc_count_max",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": "0",
+        "name": "postgres_write_attempt_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": "0",
+        "name": "qdrant_write_attempt_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": "0",
+        "name": "opensearch_write_attempt_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": "0",
+        "name": "source_truth_mutation_allowed_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": "0",
+        "name": "can_answer_directly_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": "0",
+        "name": "can_prove_claims_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      },
+      {
+        "expected": "0",
+        "name": "can_mutate_source_truth_count_zero",
+        "passed": true,
+        "severity": "critical",
+        "value": 0
+      }
+    ],
+    "generated_at": "2026-06-12T16:53:32Z",
+    "quality_status": "PASS",
+    "schema_version": "trace_net_opensearch_missing_lineage_inspector_v1_quality",
+    "status": "PASS",
+    "summary": {
+      "adapter_path": "local_data/organization/trace_net/opensearch_adapter/trace_net_opensearch_adapter_v1.json",
+      "adapter_quality_status": "PASS",
+      "algorithm": "trace_net_opensearch_missing_lineage_inspector_v1",
+      "can_answer_directly_count": 0,
+      "can_mutate_source_truth_count": 0,
+      "can_prove_claims_count": 0,
+      "document_type_counts": {
+        "community_summary": 223,
+        "context_retrieval_helper": 50,
+        "embedding_candidate": 1476,
+        "page_retrieval_profile": 509,
+        "part_candidate_lineage": 301,
+        "table_cell_normalized": 3054,
+        "table_row_normalized": 1414
+      },
+      "failed_check_count": 0,
+      "missing_lineage_doc_count": 0,
+      "missing_lineage_document_type_counts": {},
+      "missing_lineage_rag_bucket_counts": {},
+      "missing_page_id_count": 0,
+      "missing_source_trace_count": 0,
+      "opensearch_document_count": 7027,
+      "opensearch_write_attempt_count": 0,
+      "page_scoped_document_count": 7027,
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "quality_status": "PASS",
+      "rag_bucket_counts": {
+        "community_retrieval_helper": 223,
+        "context_retrieval_helper": 100,
+        "derived_context": 60,
+        "page_retrieval_profile": 509,
+        "part_candidate_lineage": 301,
+        "source_evidence": 509,
+        "source_text_evidence": 495,
+        "table_cell_normalized": 3054,
+        "table_row_normalized": 1414,
+        "verified_part_evidence": 362
+      },
+      "raw_feedback_indexed_count": 0,
+      "raw_ocr_unfiltered_indexed_count": 0,
+      "raw_visual_output_indexed_count": 0,
+      "retrieval_only_answer_allowed_count": 0,
+      "schema_version": "trace_net_opensearch_missing_lineage_inspector_v1",
+      "source_truth_mutation_allowed_count": 0,
+      "unsafe_index_document_count": 0
+    }
+  },
+  "quality_status": "PASS",
+  "records": [],
+  "schema_version": "trace_net_opensearch_missing_lineage_inspector_v1",
+  "status": "NO_MISSING_LINEAGE",
+  "summary": {
+    "adapter_path": "local_data/organization/trace_net/opensearch_adapter/trace_net_opensearch_adapter_v1.json",
+    "adapter_quality_status": "PASS",
+    "algorithm": "trace_net_opensearch_missing_lineage_inspector_v1",
+    "can_answer_directly_count": 0,
+    "can_mutate_source_truth_count": 0,
+    "can_prove_claims_count": 0,
+    "document_type_counts": {
+      "community_summary": 223,
+      "context_retrieval_helper": 50,
+      "embedding_candidate": 1476,
+      "page_retrieval_profile": 509,
+      "part_candidate_lineage": 301,
+      "table_cell_normalized": 3054,
+      "table_row_normalized": 1414
+    },
+    "missing_lineage_doc_count": 0,
+    "missing_lineage_document_type_counts": {},
+    "missing_lineage_rag_bucket_counts": {},
+    "missing_page_id_count": 0,
+    "missing_source_trace_count": 0,
+    "opensearch_document_count": 7027,
+    "opensearch_write_attempt_count": 0,
+    "page_scoped_document_count": 7027,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_status": "PASS",
+    "rag_bucket_counts": {
+      "community_retrieval_helper": 223,
+      "context_retrieval_helper": 100,
+      "derived_context": 60,
+      "page_retrieval_profile": 509,
+      "part_candidate_lineage": 301,
+      "source_evidence": 509,
+      "source_text_evidence": 495,
+      "table_cell_normalized": 3054,
+      "table_row_normalized": 1414,
+      "verified_part_evidence": 362
+    },
+    "raw_feedback_indexed_count": 0,
+    "raw_ocr_unfiltered_indexed_count": 0,
+    "raw_visual_output_indexed_count": 0,
+    "retrieval_only_answer_allowed_count": 0,
+    "schema_version": "trace_net_opensearch_missing_lineage_inspector_v1",
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_index_document_count": 0
+  }
+}

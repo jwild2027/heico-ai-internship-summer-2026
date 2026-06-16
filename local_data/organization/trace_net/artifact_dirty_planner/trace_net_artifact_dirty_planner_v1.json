@@ -1,0 +1,2893 @@
+{
+  "changed_artifacts": [
+    "opensearch_adapter",
+    "opensearch_loader_smoke"
+  ],
+  "changed_input_matches": {},
+  "changed_inputs": [],
+  "dependency_cycles": [],
+  "dependency_edges_used": [
+    {
+      "downstream_artifact_id": "artifact__503248c53bc293ed",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__4203f8f0c9fd12f8"
+    },
+    {
+      "downstream_artifact_id": "artifact__503248c53bc293ed",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__d16b82ad6ae5e9d0"
+    },
+    {
+      "downstream_artifact_id": "artifact__503248c53bc293ed",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__7e6c333c07e4de3c"
+    },
+    {
+      "downstream_artifact_id": "artifact__503248c53bc293ed",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__1bc315666cfb647a"
+    },
+    {
+      "downstream_artifact_id": "artifact__5b09bbb92a180807",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__08929466a01e585d"
+    },
+    {
+      "downstream_artifact_id": "artifact__5b09bbb92a180807",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__d16b82ad6ae5e9d0"
+    },
+    {
+      "downstream_artifact_id": "artifact__5b09bbb92a180807",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__8c350db811499ebc"
+    },
+    {
+      "downstream_artifact_id": "artifact__4203f8f0c9fd12f8",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__d16b82ad6ae5e9d0"
+    },
+    {
+      "downstream_artifact_id": "artifact__4203f8f0c9fd12f8",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__2d237014562cb859"
+    },
+    {
+      "downstream_artifact_id": "artifact__4203f8f0c9fd12f8",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__239f3ac5d11c0044"
+    },
+    {
+      "downstream_artifact_id": "artifact__f991391f904596e5",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__233264d991d8a942"
+    },
+    {
+      "downstream_artifact_id": "artifact__f991391f904596e5",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__0122b786ddab3933"
+    },
+    {
+      "downstream_artifact_id": "artifact__f991391f904596e5",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__ba435326c0040ff3"
+    },
+    {
+      "downstream_artifact_id": "artifact__f991391f904596e5",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__7e6c333c07e4de3c"
+    },
+    {
+      "downstream_artifact_id": "artifact__302b1e3679497665",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__45dbc7adea9d7f09"
+    },
+    {
+      "downstream_artifact_id": "artifact__302b1e3679497665",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__7b8569a3d26531ca"
+    },
+    {
+      "downstream_artifact_id": "artifact__302b1e3679497665",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__ee7d87883ee60eb9"
+    },
+    {
+      "downstream_artifact_id": "artifact__302b1e3679497665",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__5fed3912f0648b65"
+    },
+    {
+      "downstream_artifact_id": "artifact__7b8569a3d26531ca",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__def3e424a19a0904"
+    },
+    {
+      "downstream_artifact_id": "artifact__7b8569a3d26531ca",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__ee7d87883ee60eb9"
+    },
+    {
+      "downstream_artifact_id": "artifact__7b8569a3d26531ca",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__5fed3912f0648b65"
+    },
+    {
+      "downstream_artifact_id": "artifact__7b8569a3d26531ca",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__45dbc7adea9d7f09"
+    },
+    {
+      "downstream_artifact_id": "artifact__5fba5e50cca57fda",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__503248c53bc293ed"
+    },
+    {
+      "downstream_artifact_id": "artifact__8c350db811499ebc",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__d16b82ad6ae5e9d0"
+    },
+    {
+      "downstream_artifact_id": "artifact__8c350db811499ebc",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__def3e424a19a0904"
+    },
+    {
+      "downstream_artifact_id": "artifact__8c350db811499ebc",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__e322057ba80fe98f"
+    },
+    {
+      "downstream_artifact_id": "artifact__5ef67e74718ff85e",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__dd28592002c07de7"
+    },
+    {
+      "downstream_artifact_id": "artifact__b1a7c9b57dbbd761",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__af71a2926112c241"
+    },
+    {
+      "downstream_artifact_id": "artifact__b1a7c9b57dbbd761",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__0122b786ddab3933"
+    },
+    {
+      "downstream_artifact_id": "artifact__b1a7c9b57dbbd761",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__233264d991d8a942"
+    },
+    {
+      "downstream_artifact_id": "artifact__b1a7c9b57dbbd761",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__e24c0b4978817c0e"
+    },
+    {
+      "downstream_artifact_id": "artifact__b1a7c9b57dbbd761",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__a41917e8bd818471"
+    },
+    {
+      "downstream_artifact_id": "artifact__b1a7c9b57dbbd761",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__def3e424a19a0904"
+    },
+    {
+      "downstream_artifact_id": "artifact__b1a7c9b57dbbd761",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__251994bb8c12f575"
+    },
+    {
+      "downstream_artifact_id": "artifact__b1a7c9b57dbbd761",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__e322057ba80fe98f"
+    },
+    {
+      "downstream_artifact_id": "artifact__b1a7c9b57dbbd761",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__da6130503028e5a0"
+    },
+    {
+      "downstream_artifact_id": "artifact__5fed3912f0648b65",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__b1a7c9b57dbbd761"
+    },
+    {
+      "downstream_artifact_id": "artifact__ee7d87883ee60eb9",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__5fed3912f0648b65"
+    },
+    {
+      "downstream_artifact_id": "artifact__ee7d87883ee60eb9",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__a41917e8bd818471"
+    },
+    {
+      "downstream_artifact_id": "artifact__ee7d87883ee60eb9",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__0122b786ddab3933"
+    },
+    {
+      "downstream_artifact_id": "artifact__ee7d87883ee60eb9",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__233264d991d8a942"
+    },
+    {
+      "downstream_artifact_id": "artifact__ee7d87883ee60eb9",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__f991391f904596e5"
+    },
+    {
+      "downstream_artifact_id": "artifact__ee7d87883ee60eb9",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__da6130503028e5a0"
+    },
+    {
+      "downstream_artifact_id": "artifact__ee7d87883ee60eb9",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__251994bb8c12f575"
+    },
+    {
+      "downstream_artifact_id": "artifact__ee7d87883ee60eb9",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__def3e424a19a0904"
+    },
+    {
+      "downstream_artifact_id": "artifact__a41917e8bd818471",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__af71a2926112c241"
+    },
+    {
+      "downstream_artifact_id": "artifact__a41917e8bd818471",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__efe5b510e523d44a"
+    },
+    {
+      "downstream_artifact_id": "artifact__a41917e8bd818471",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__0122b786ddab3933"
+    },
+    {
+      "downstream_artifact_id": "artifact__a41917e8bd818471",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__233264d991d8a942"
+    },
+    {
+      "downstream_artifact_id": "artifact__a41917e8bd818471",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__5bfab480c90cc278"
+    },
+    {
+      "downstream_artifact_id": "artifact__a41917e8bd818471",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__7e6c333c07e4de3c"
+    },
+    {
+      "downstream_artifact_id": "artifact__7e6c333c07e4de3c",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__293cf2bededc937e"
+    },
+    {
+      "downstream_artifact_id": "artifact__7e6c333c07e4de3c",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__5ef67e74718ff85e"
+    },
+    {
+      "downstream_artifact_id": "artifact__767248b8b33cac7c",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__5fba5e50cca57fda"
+    },
+    {
+      "downstream_artifact_id": "artifact__767248b8b33cac7c",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__503248c53bc293ed"
+    },
+    {
+      "downstream_artifact_id": "artifact__4bfd181e6176acf3",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__5fba5e50cca57fda"
+    },
+    {
+      "downstream_artifact_id": "artifact__4bfd181e6176acf3",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__503248c53bc293ed"
+    },
+    {
+      "downstream_artifact_id": "artifact__51a4bceec63676cd",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__767248b8b33cac7c"
+    },
+    {
+      "downstream_artifact_id": "artifact__e322057ba80fe98f",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__08929466a01e585d"
+    },
+    {
+      "downstream_artifact_id": "artifact__e322057ba80fe98f",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__def3e424a19a0904"
+    },
+    {
+      "downstream_artifact_id": "artifact__233264d991d8a942",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__af71a2926112c241"
+    },
+    {
+      "downstream_artifact_id": "artifact__233264d991d8a942",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__0122b786ddab3933"
+    },
+    {
+      "downstream_artifact_id": "artifact__08929466a01e585d",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__51a4bceec63676cd"
+    },
+    {
+      "downstream_artifact_id": "artifact__59b213ad696e27e8",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__af71a2926112c241"
+    },
+    {
+      "downstream_artifact_id": "artifact__59b213ad696e27e8",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__0122b786ddab3933"
+    },
+    {
+      "downstream_artifact_id": "artifact__59b213ad696e27e8",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__233264d991d8a942"
+    },
+    {
+      "downstream_artifact_id": "artifact__59b213ad696e27e8",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__e24c0b4978817c0e"
+    },
+    {
+      "downstream_artifact_id": "artifact__59b213ad696e27e8",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__293cf2bededc937e"
+    },
+    {
+      "downstream_artifact_id": "artifact__5bfab480c90cc278",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__59b213ad696e27e8"
+    },
+    {
+      "downstream_artifact_id": "artifact__eccc4f0f0c47dbc3",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__f8d56a7f4a3c7f1f"
+    },
+    {
+      "downstream_artifact_id": "artifact__ba435326c0040ff3",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__eccc4f0f0c47dbc3"
+    },
+    {
+      "downstream_artifact_id": "artifact__45dbc7adea9d7f09",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__ba435326c0040ff3"
+    },
+    {
+      "downstream_artifact_id": "artifact__45dbc7adea9d7f09",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__def3e424a19a0904"
+    },
+    {
+      "downstream_artifact_id": "artifact__45dbc7adea9d7f09",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__e322057ba80fe98f"
+    },
+    {
+      "downstream_artifact_id": "artifact__45dbc7adea9d7f09",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__8c350db811499ebc"
+    },
+    {
+      "downstream_artifact_id": "artifact__f8d56a7f4a3c7f1f",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__a41917e8bd818471"
+    },
+    {
+      "downstream_artifact_id": "artifact__4bd9b84450dc9c50",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__da6130503028e5a0"
+    },
+    {
+      "downstream_artifact_id": "artifact__5208558be54a3787",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__4bd9b84450dc9c50"
+    },
+    {
+      "downstream_artifact_id": "artifact__5208558be54a3787",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__da6130503028e5a0"
+    },
+    {
+      "downstream_artifact_id": "artifact__5208558be54a3787",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__0122b786ddab3933"
+    },
+    {
+      "downstream_artifact_id": "artifact__5208558be54a3787",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__7e6c333c07e4de3c"
+    },
+    {
+      "downstream_artifact_id": "artifact__5208558be54a3787",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__ba435326c0040ff3"
+    },
+    {
+      "downstream_artifact_id": "artifact__98470497b1731a11",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__b4326642342efb5d"
+    },
+    {
+      "downstream_artifact_id": "artifact__98470497b1731a11",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__5bfab480c90cc278"
+    },
+    {
+      "downstream_artifact_id": "artifact__98470497b1731a11",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__233264d991d8a942"
+    },
+    {
+      "downstream_artifact_id": "artifact__98470497b1731a11",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__e24c0b4978817c0e"
+    },
+    {
+      "downstream_artifact_id": "artifact__98470497b1731a11",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__f991391f904596e5"
+    },
+    {
+      "downstream_artifact_id": "artifact__98470497b1731a11",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__0122b786ddab3933"
+    },
+    {
+      "downstream_artifact_id": "artifact__98470497b1731a11",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__e322057ba80fe98f"
+    },
+    {
+      "downstream_artifact_id": "artifact__98470497b1731a11",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__def3e424a19a0904"
+    },
+    {
+      "downstream_artifact_id": "artifact__98470497b1731a11",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__8c350db811499ebc"
+    },
+    {
+      "downstream_artifact_id": "artifact__98470497b1731a11",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__08929466a01e585d"
+    },
+    {
+      "downstream_artifact_id": "artifact__da6130503028e5a0",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__98470497b1731a11"
+    },
+    {
+      "downstream_artifact_id": "artifact__d16b82ad6ae5e9d0",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__239f3ac5d11c0044"
+    },
+    {
+      "downstream_artifact_id": "artifact__d16b82ad6ae5e9d0",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__7e6c333c07e4de3c"
+    },
+    {
+      "downstream_artifact_id": "artifact__d16b82ad6ae5e9d0",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__1bc315666cfb647a"
+    },
+    {
+      "downstream_artifact_id": "artifact__a0fcb365482f832c",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__1c23a409aca662aa"
+    },
+    {
+      "downstream_artifact_id": "artifact__7f2e9c7bd3d5095d",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__af71a2926112c241"
+    },
+    {
+      "downstream_artifact_id": "artifact__7f2e9c7bd3d5095d",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__7e6c333c07e4de3c"
+    },
+    {
+      "downstream_artifact_id": "artifact__7f2e9c7bd3d5095d",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__a41917e8bd818471"
+    },
+    {
+      "downstream_artifact_id": "artifact__7f2e9c7bd3d5095d",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__def3e424a19a0904"
+    },
+    {
+      "downstream_artifact_id": "artifact__7f2e9c7bd3d5095d",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__e322057ba80fe98f"
+    },
+    {
+      "downstream_artifact_id": "artifact__553dbd80a4c75d90",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__7f2e9c7bd3d5095d"
+    },
+    {
+      "downstream_artifact_id": "artifact__8780537e2111e560",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__553dbd80a4c75d90"
+    },
+    {
+      "downstream_artifact_id": "artifact__1546bd3e0f6ec6ca",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__8780537e2111e560"
+    },
+    {
+      "downstream_artifact_id": "artifact__895822bad592dfe5",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__b4326642342efb5d"
+    },
+    {
+      "downstream_artifact_id": "artifact__def3e424a19a0904",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__ba435326c0040ff3"
+    },
+    {
+      "downstream_artifact_id": "artifact__251994bb8c12f575",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__7e6c333c07e4de3c"
+    },
+    {
+      "downstream_artifact_id": "artifact__251994bb8c12f575",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__1bc315666cfb647a"
+    },
+    {
+      "downstream_artifact_id": "artifact__251994bb8c12f575",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__0122b786ddab3933"
+    },
+    {
+      "downstream_artifact_id": "artifact__251994bb8c12f575",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__51a4bceec63676cd"
+    },
+    {
+      "downstream_artifact_id": "artifact__251994bb8c12f575",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__5ef67e74718ff85e"
+    },
+    {
+      "downstream_artifact_id": "artifact__251994bb8c12f575",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__def3e424a19a0904"
+    },
+    {
+      "downstream_artifact_id": "artifact__251994bb8c12f575",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__ba435326c0040ff3"
+    },
+    {
+      "downstream_artifact_id": "artifact__af71a2926112c241",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__1bc315666cfb647a"
+    },
+    {
+      "downstream_artifact_id": "artifact__af71a2926112c241",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__7e6c333c07e4de3c"
+    },
+    {
+      "downstream_artifact_id": "artifact__af71a2926112c241",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__293cf2bededc937e"
+    },
+    {
+      "downstream_artifact_id": "artifact__1bc315666cfb647a",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__5ef67e74718ff85e"
+    },
+    {
+      "downstream_artifact_id": "artifact__954f357d7a806f4d",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__5208558be54a3787"
+    },
+    {
+      "downstream_artifact_id": "artifact__954f357d7a806f4d",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__4bd9b84450dc9c50"
+    },
+    {
+      "downstream_artifact_id": "artifact__954f357d7a806f4d",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__da6130503028e5a0"
+    },
+    {
+      "downstream_artifact_id": "artifact__7a75dcc4bb1d5f5b",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__7e6c333c07e4de3c"
+    },
+    {
+      "downstream_artifact_id": "artifact__7a75dcc4bb1d5f5b",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__1bc315666cfb647a"
+    },
+    {
+      "downstream_artifact_id": "artifact__ad0b6e56ce7e2b84",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__7e6c333c07e4de3c"
+    },
+    {
+      "downstream_artifact_id": "artifact__ad0b6e56ce7e2b84",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__1bc315666cfb647a"
+    },
+    {
+      "downstream_artifact_id": "artifact__e7d302e21121a4d9",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__7e6c333c07e4de3c"
+    },
+    {
+      "downstream_artifact_id": "artifact__e7d302e21121a4d9",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__1bc315666cfb647a"
+    },
+    {
+      "downstream_artifact_id": "artifact__dd7edf174c0ff647",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__7e6c333c07e4de3c"
+    },
+    {
+      "downstream_artifact_id": "artifact__dd7edf174c0ff647",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__1bc315666cfb647a"
+    },
+    {
+      "downstream_artifact_id": "artifact__13af0b40a43fc2e9",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__d16b82ad6ae5e9d0"
+    },
+    {
+      "downstream_artifact_id": "artifact__2d237014562cb859",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__d16b82ad6ae5e9d0"
+    },
+    {
+      "downstream_artifact_id": "artifact__6d135368fb0e5c2d",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__1c23a409aca662aa"
+    },
+    {
+      "downstream_artifact_id": "artifact__e14f0a5cd041b527",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__1c23a409aca662aa"
+    },
+    {
+      "downstream_artifact_id": "artifact__0122b786ddab3933",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__efe5b510e523d44a"
+    },
+    {
+      "downstream_artifact_id": "artifact__0122b786ddab3933",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__7e6c333c07e4de3c"
+    },
+    {
+      "downstream_artifact_id": "artifact__0122b786ddab3933",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__af71a2926112c241"
+    },
+    {
+      "downstream_artifact_id": "artifact__efe5b510e523d44a",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__af71a2926112c241"
+    },
+    {
+      "downstream_artifact_id": "artifact__239f3ac5d11c0044",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__e7d302e21121a4d9"
+    },
+    {
+      "downstream_artifact_id": "artifact__239f3ac5d11c0044",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__7e6c333c07e4de3c"
+    },
+    {
+      "downstream_artifact_id": "artifact__239f3ac5d11c0044",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__1bc315666cfb647a"
+    },
+    {
+      "downstream_artifact_id": "artifact__e24c0b4978817c0e",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__233264d991d8a942"
+    },
+    {
+      "downstream_artifact_id": "artifact__e24c0b4978817c0e",
+      "edge_source": "artifact_dependency_registry",
+      "raw_edge_keys": [
+        "can_answer_directly",
+        "can_prove_claims",
+        "dependency_edge_id",
+        "edge_type",
+        "source_artifact_id",
+        "source_stage_id",
+        "source_truth_mutation_allowed",
+        "target_artifact_id",
+        "target_stage_id",
+        "weight"
+      ],
+      "upstream_artifact_id": "artifact__af71a2926112c241"
+    },
+    {
+      "downstream_artifact_id": "opensearch_loader_smoke",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "opensearch_adapter"
+    },
+    {
+      "downstream_artifact_id": "hybrid_retrieval_v2",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "opensearch_adapter"
+    },
+    {
+      "downstream_artifact_id": "ask_api_dynamic_retrieval_v2",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "opensearch_adapter"
+    },
+    {
+      "downstream_artifact_id": "hybrid_retrieval_v2",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "opensearch_loader_smoke"
+    },
+    {
+      "downstream_artifact_id": "dynamic_final_gate_execution",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "hybrid_retrieval_v2"
+    },
+    {
+      "downstream_artifact_id": "retrieval_critic",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "hybrid_retrieval_v2"
+    },
+    {
+      "downstream_artifact_id": "ask_api_dynamic_retrieval_v2",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "hybrid_retrieval_v2"
+    },
+    {
+      "downstream_artifact_id": "ask_api_final_return_policy_v21",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "hybrid_retrieval_v2"
+    },
+    {
+      "downstream_artifact_id": "retrieval_critic",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "dynamic_final_gate_execution"
+    },
+    {
+      "downstream_artifact_id": "evidence_sufficiency_critic",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "dynamic_final_gate_execution"
+    },
+    {
+      "downstream_artifact_id": "answer_claim_critic",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "dynamic_final_gate_execution"
+    },
+    {
+      "downstream_artifact_id": "ask_api_final_return_policy_v21",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "dynamic_final_gate_execution"
+    },
+    {
+      "downstream_artifact_id": "evidence_sufficiency_critic",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "retrieval_critic"
+    },
+    {
+      "downstream_artifact_id": "answer_claim_critic",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "retrieval_critic"
+    },
+    {
+      "downstream_artifact_id": "ask_api_final_return_policy_v21",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "retrieval_critic"
+    },
+    {
+      "downstream_artifact_id": "answer_claim_critic",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "evidence_sufficiency_critic"
+    },
+    {
+      "downstream_artifact_id": "ask_api_final_return_policy_v21",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "evidence_sufficiency_critic"
+    },
+    {
+      "downstream_artifact_id": "ask_api_final_return_policy_v21",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "answer_claim_critic"
+    },
+    {
+      "downstream_artifact_id": "hybrid_retrieval_v2",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "feedback_memory"
+    },
+    {
+      "downstream_artifact_id": "retrieval_critic",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "feedback_memory"
+    },
+    {
+      "downstream_artifact_id": "human_review_queue",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "feedback_memory"
+    },
+    {
+      "downstream_artifact_id": "graph_ui_community_overlay",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "feedback_memory"
+    },
+    {
+      "downstream_artifact_id": "hybrid_retrieval_v2",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "category_aware_leiden_overlay"
+    },
+    {
+      "downstream_artifact_id": "category_aware_graph_ui_overlay",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "category_aware_leiden_overlay"
+    },
+    {
+      "downstream_artifact_id": "graph_ui_community_overlay",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "leiden_graph_communities"
+    },
+    {
+      "downstream_artifact_id": "category_aware_leiden_overlay",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "leiden_graph_communities"
+    },
+    {
+      "downstream_artifact_id": "dublin_core_crosswalk",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "leiden_graph_communities"
+    },
+    {
+      "downstream_artifact_id": "feedback_memory",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "leiden_graph_communities"
+    },
+    {
+      "downstream_artifact_id": "dublin_core_source_package_extension",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "dublin_core_crosswalk_refined"
+    },
+    {
+      "downstream_artifact_id": "element_category_taxonomy",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "dublin_core_crosswalk_refined"
+    },
+    {
+      "downstream_artifact_id": "category_aware_leiden_overlay",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "dublin_core_crosswalk_refined"
+    },
+    {
+      "downstream_artifact_id": "category_aware_leiden_overlay",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "element_category_taxonomy"
+    },
+    {
+      "downstream_artifact_id": "category_aware_graph_ui_overlay",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "element_category_taxonomy"
+    },
+    {
+      "downstream_artifact_id": "human_review_decisions",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "human_review_triage"
+    },
+    {
+      "downstream_artifact_id": "human_review_workbench",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "human_review_triage"
+    },
+    {
+      "downstream_artifact_id": "dublin_core_crosswalk",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "human_review_triage"
+    },
+    {
+      "downstream_artifact_id": "human_review_triage",
+      "edge_source": "trace_net_default_rule",
+      "raw_edge_keys": [],
+      "upstream_artifact_id": "human_review_queue"
+    }
+  ],
+  "dirty_artifacts": [
+    "ask_api_dynamic_retrieval_v2",
+    "hybrid_retrieval_v2",
+    "opensearch_loader_smoke",
+    "ask_api_final_return_policy_v21",
+    "dynamic_final_gate_execution",
+    "retrieval_critic",
+    "answer_claim_critic",
+    "evidence_sufficiency_critic"
+  ],
+  "planner_records": [
+    {
+      "artifact_id": "ask_api_dynamic_retrieval_v2",
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "dependency_depth": 1,
+      "direct_dirty_upstreams": [
+        "hybrid_retrieval_v2",
+        "opensearch_adapter"
+      ],
+      "dirty_reason": "downstream_of_changed_artifact_or_input",
+      "display_name": "ask_api_dynamic_retrieval_v2",
+      "known_in_registry": false,
+      "paths": [],
+      "planner_record_id": "trace_net_artifact_dirty_planner_v1:rebuild:0001:ask_api_dynamic_retrieval_v2",
+      "rebuild_order": 1,
+      "recommended_action": "rebuild_and_quality_check_before_using_downstream",
+      "registry_quality_status": null,
+      "seed_artifacts": [
+        "opensearch_adapter",
+        "opensearch_loader_smoke"
+      ]
+    },
+    {
+      "artifact_id": "hybrid_retrieval_v2",
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "dependency_depth": 1,
+      "direct_dirty_upstreams": [
+        "opensearch_adapter",
+        "opensearch_loader_smoke"
+      ],
+      "dirty_reason": "downstream_of_changed_artifact_or_input",
+      "display_name": "hybrid_retrieval_v2",
+      "known_in_registry": false,
+      "paths": [],
+      "planner_record_id": "trace_net_artifact_dirty_planner_v1:rebuild:0002:hybrid_retrieval_v2",
+      "rebuild_order": 2,
+      "recommended_action": "rebuild_and_quality_check_before_using_downstream",
+      "registry_quality_status": null,
+      "seed_artifacts": [
+        "opensearch_adapter",
+        "opensearch_loader_smoke"
+      ]
+    },
+    {
+      "artifact_id": "opensearch_loader_smoke",
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "dependency_depth": 1,
+      "direct_dirty_upstreams": [
+        "opensearch_adapter"
+      ],
+      "dirty_reason": "downstream_of_changed_artifact_or_input",
+      "display_name": "opensearch_loader_smoke",
+      "known_in_registry": false,
+      "paths": [],
+      "planner_record_id": "trace_net_artifact_dirty_planner_v1:rebuild:0003:opensearch_loader_smoke",
+      "rebuild_order": 3,
+      "recommended_action": "rebuild_and_quality_check_before_using_downstream",
+      "registry_quality_status": null,
+      "seed_artifacts": [
+        "opensearch_adapter"
+      ]
+    },
+    {
+      "artifact_id": "ask_api_final_return_policy_v21",
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "dependency_depth": 2,
+      "direct_dirty_upstreams": [
+        "answer_claim_critic",
+        "dynamic_final_gate_execution",
+        "evidence_sufficiency_critic",
+        "hybrid_retrieval_v2",
+        "retrieval_critic"
+      ],
+      "dirty_reason": "downstream_of_changed_artifact_or_input",
+      "display_name": "ask_api_final_return_policy_v21",
+      "known_in_registry": false,
+      "paths": [],
+      "planner_record_id": "trace_net_artifact_dirty_planner_v1:rebuild:0004:ask_api_final_return_policy_v21",
+      "rebuild_order": 4,
+      "recommended_action": "rebuild_and_quality_check_before_using_downstream",
+      "registry_quality_status": null,
+      "seed_artifacts": [
+        "opensearch_adapter",
+        "opensearch_loader_smoke"
+      ]
+    },
+    {
+      "artifact_id": "dynamic_final_gate_execution",
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "dependency_depth": 2,
+      "direct_dirty_upstreams": [
+        "hybrid_retrieval_v2"
+      ],
+      "dirty_reason": "downstream_of_changed_artifact_or_input",
+      "display_name": "dynamic_final_gate_execution",
+      "known_in_registry": false,
+      "paths": [],
+      "planner_record_id": "trace_net_artifact_dirty_planner_v1:rebuild:0005:dynamic_final_gate_execution",
+      "rebuild_order": 5,
+      "recommended_action": "rebuild_and_quality_check_before_using_downstream",
+      "registry_quality_status": null,
+      "seed_artifacts": [
+        "opensearch_adapter",
+        "opensearch_loader_smoke"
+      ]
+    },
+    {
+      "artifact_id": "retrieval_critic",
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "dependency_depth": 2,
+      "direct_dirty_upstreams": [
+        "dynamic_final_gate_execution",
+        "hybrid_retrieval_v2"
+      ],
+      "dirty_reason": "downstream_of_changed_artifact_or_input",
+      "display_name": "retrieval_critic",
+      "known_in_registry": false,
+      "paths": [],
+      "planner_record_id": "trace_net_artifact_dirty_planner_v1:rebuild:0006:retrieval_critic",
+      "rebuild_order": 6,
+      "recommended_action": "rebuild_and_quality_check_before_using_downstream",
+      "registry_quality_status": null,
+      "seed_artifacts": [
+        "opensearch_adapter",
+        "opensearch_loader_smoke"
+      ]
+    },
+    {
+      "artifact_id": "answer_claim_critic",
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "dependency_depth": 3,
+      "direct_dirty_upstreams": [
+        "dynamic_final_gate_execution",
+        "evidence_sufficiency_critic",
+        "retrieval_critic"
+      ],
+      "dirty_reason": "downstream_of_changed_artifact_or_input",
+      "display_name": "answer_claim_critic",
+      "known_in_registry": false,
+      "paths": [],
+      "planner_record_id": "trace_net_artifact_dirty_planner_v1:rebuild:0007:answer_claim_critic",
+      "rebuild_order": 7,
+      "recommended_action": "rebuild_and_quality_check_before_using_downstream",
+      "registry_quality_status": null,
+      "seed_artifacts": [
+        "opensearch_adapter",
+        "opensearch_loader_smoke"
+      ]
+    },
+    {
+      "artifact_id": "evidence_sufficiency_critic",
+      "can_answer_directly": false,
+      "can_mutate_source_truth": false,
+      "can_prove_claims": false,
+      "dependency_depth": 3,
+      "direct_dirty_upstreams": [
+        "dynamic_final_gate_execution",
+        "retrieval_critic"
+      ],
+      "dirty_reason": "downstream_of_changed_artifact_or_input",
+      "display_name": "evidence_sufficiency_critic",
+      "known_in_registry": false,
+      "paths": [],
+      "planner_record_id": "trace_net_artifact_dirty_planner_v1:rebuild:0008:evidence_sufficiency_critic",
+      "rebuild_order": 8,
+      "recommended_action": "rebuild_and_quality_check_before_using_downstream",
+      "registry_quality_status": null,
+      "seed_artifacts": [
+        "opensearch_adapter",
+        "opensearch_loader_smoke"
+      ]
+    }
+  ],
+  "quality_failures": [],
+  "quality_status": "PASS",
+  "safety_contract": {
+    "answer_permission": false,
+    "claim_proof_authority": false,
+    "opensearch_writes": false,
+    "postgres_writes": false,
+    "qdrant_writes": false,
+    "source_truth_mutation": false
+  },
+  "schema_version": "trace_net_artifact_dirty_planner_v1",
+  "seed_artifacts": [
+    "opensearch_adapter",
+    "opensearch_loader_smoke"
+  ],
+  "status": "DIRTY_PLAN_BUILT",
+  "summary": {
+    "algorithm": "trace_net_read_only_artifact_dirty_planner_v1",
+    "artifact_record_count": 92,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "category_as_proof_count": 0,
+    "changed_artifact_count": 2,
+    "changed_input_count": 0,
+    "claim_proof_allowed_count": 0,
+    "community_as_proof_count": 0,
+    "default_rule_edge_count": 37,
+    "dependency_cycle_count": 0,
+    "dependency_edge_count": 179,
+    "direct_answer_allowed_count": 0,
+    "dirty_artifact_count": 8,
+    "feedback_as_proof_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "planner_quality_status_counts": {
+      "unknown": 8
+    },
+    "planner_record_count": 8,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "registry_edge_count": 142,
+    "retrieval_only_answer_allowed_count": 0,
+    "schema_version": "trace_net_artifact_dirty_planner_v1",
+    "seed_artifact_count": 2,
+    "source_registry_path": "local_data/organization/trace_net/artifact_dependency_registry/trace_net_artifact_dependency_registry_v1.json",
+    "source_registry_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "source_truth_mutations_performed": 0,
+    "unknown_seed_artifact_count": 2
+  }
+}

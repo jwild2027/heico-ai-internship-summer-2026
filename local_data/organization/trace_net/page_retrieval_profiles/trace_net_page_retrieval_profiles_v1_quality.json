@@ -19,14 +19,14 @@
       "passed": true
     },
     {
-      "actual": 50,
-      "expected": ">= 50",
+      "actual": 200,
+      "expected": ">= 200",
       "name": "min_context_v2_pages",
       "passed": true
     },
     {
       "actual": 509,
-      "expected": ">= 50",
+      "expected": ">= 200",
       "name": "min_profiles_with_retrieval_cues",
       "passed": true
     },
@@ -115,7 +115,7 @@
       "passed": true
     }
   ],
-  "generated_at_utc": "2026-06-08T17:53:00Z",
+  "generated_at_utc": "2026-06-16T14:49:04Z",
   "profiles_path": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
   "schema_version": "trace_net_page_retrieval_profiles_v1",
   "status": "PASS",
@@ -130,7 +130,7 @@
     },
     "claim_proof_profile_count": 0,
     "context_helper_quality_status": "PASS",
-    "context_v2_profile_count": 50,
+    "context_v2_profile_count": 200,
     "embedding_answer_authority_allowed_count": 0,
     "embedding_candidate_quality_status": "PASS",
     "missing_embedding_candidate_id_count": 0,

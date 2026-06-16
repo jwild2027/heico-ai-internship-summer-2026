@@ -1,0 +1,91 @@
+{
+  "created_at": "2026-06-15T18:50:58Z",
+  "quality_checks": [
+    {
+      "detail": "records=170 minimum=170",
+      "name": "query_record_count",
+      "ok": true
+    },
+    {
+      "detail": "blank=9 minimum=1",
+      "name": "blank_expected_count",
+      "ok": true
+    },
+    {
+      "detail": "context_v2=170 minimum=170",
+      "name": "context_v2_query_count",
+      "ok": true
+    },
+    {
+      "detail": "evaluated=170 minimum=170",
+      "name": "evaluated_record_count",
+      "ok": true
+    },
+    {
+      "detail": "hits=108 minimum=1",
+      "name": "target_hit_at_k_count",
+      "ok": true
+    },
+    {
+      "detail": "answer_capable=0 max=0",
+      "name": "answer_capable_payload_count",
+      "ok": true
+    },
+    {
+      "detail": "claim_proof=0 max=0",
+      "name": "claim_proof_payload_count",
+      "ok": true
+    },
+    {
+      "detail": "source_truth_mutation_allowed=0 max=0",
+      "name": "source_truth_mutation_allowed_count",
+      "ok": true
+    },
+    {
+      "detail": "read-only eval",
+      "name": "no_write_attempts",
+      "ok": true
+    }
+  ],
+  "quality_status": "PASS",
+  "schema_version": "trace_net_page_retrieval_large_eval_v1",
+  "status": "PAGE_RETRIEVAL_LARGE_EVAL_BUILT",
+  "summary": {
+    "answer_capable_payload_count": 0,
+    "blank_evaluated_count": 9,
+    "blank_expected_count": 9,
+    "blank_target_hit_at_k_count": 9,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "claim_proof_payload_count": 0,
+    "context_v2_query_count": 170,
+    "evaluated_record_count": 170,
+    "first_pages_requested": 170,
+    "llm_should_say_blank_count": 9,
+    "metadata_zip_path": "C:/Users/juswil/Desktop/metadata.zip",
+    "missing_profile_count": 0,
+    "missing_profiles": [],
+    "ollama_model": "bge-m3:latest",
+    "ollama_url": "http://localhost:11434",
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "profile_record_count": 509,
+    "profiles_path": "local_data/organization/trace_net/page_retrieval_profiles/trace_net_page_retrieval_profiles_v1.json",
+    "qdrant_collection": "trace_net_page_retrieval_profiles_ollama_bge_m3_v1",
+    "qdrant_write_attempt_count": 0,
+    "query_record_count": 170,
+    "schema_version": "trace_net_page_retrieval_large_eval_v1",
+    "source_truth_mutation_allowed_count": 0,
+    "target_hit_at_10_count": 85,
+    "target_hit_at_10_rate": 0.5,
+    "target_hit_at_1_count": 37,
+    "target_hit_at_1_rate": 0.217647,
+    "target_hit_at_3_count": 56,
+    "target_hit_at_3_rate": 0.329412,
+    "target_hit_at_5_count": 71,
+    "target_hit_at_5_rate": 0.417647,
+    "target_hit_at_k_count": 108,
+    "target_hit_at_k_rate": 0.635294,
+    "top_k": 20
+  }
+}

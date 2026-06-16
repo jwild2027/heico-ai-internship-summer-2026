@@ -1,0 +1,45 @@
+{
+  "quality_failures": [],
+  "quality_status": "PASS",
+  "schema_version": "trace_net_artifact_dirty_planner_v1_quality",
+  "status": "PASS",
+  "summary": {
+    "algorithm": "trace_net_read_only_artifact_dirty_planner_v1",
+    "artifact_record_count": 92,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "category_as_proof_count": 0,
+    "changed_artifact_count": 2,
+    "changed_input_count": 0,
+    "claim_proof_allowed_count": 0,
+    "community_as_proof_count": 0,
+    "default_rule_edge_count": 37,
+    "dependency_cycle_count": 0,
+    "dependency_edge_count": 179,
+    "direct_answer_allowed_count": 0,
+    "dirty_artifact_count": 8,
+    "feedback_as_proof_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "planner_quality_status_counts": {
+      "unknown": 8
+    },
+    "planner_record_count": 8,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "registry_edge_count": 142,
+    "retrieval_only_answer_allowed_count": 0,
+    "schema_version": "trace_net_artifact_dirty_planner_v1",
+    "seed_artifact_count": 2,
+    "source_registry_path": "local_data/organization/trace_net/artifact_dependency_registry/trace_net_artifact_dependency_registry_v1.json",
+    "source_registry_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "source_truth_mutations_performed": 0,
+    "unknown_seed_artifact_count": 2
+  },
+  "thresholds": {
+    "max_dependency_cycle_count": 0,
+    "min_dirty_artifacts": 1,
+    "min_planner_records": 1,
+    "require_registry_quality_pass": true
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "checks": [
+    {
+      "expected": ">= 200",
+      "name": "record_count",
+      "observed": 200,
+      "ok": true
+    },
+    {
+      "expected": ">= 200",
+      "name": "image_opened_count",
+      "observed": 200,
+      "ok": true
+    },
+    {
+      "expected": ">= 11",
+      "name": "blank_image_response_match_count",
+      "observed": 11,
+      "ok": true
+    },
+    {
+      "expected": ">= 200",
+      "name": "response_page_anchor_count",
+      "observed": 200,
+      "ok": true
+    },
+    {
+      "expected": ">= 200",
+      "name": "response_source_entry_anchor_count",
+      "observed": 200,
+      "ok": true
+    },
+    {
+      "expected": ">= 12",
+      "name": "vision_evaluated_count",
+      "observed": 12,
+      "ok": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "missing_zip_entry_count",
+      "observed": 0,
+      "ok": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "image_open_failure_count",
+      "observed": 0,
+      "ok": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "blank_mismatch_count",
+      "observed": 0,
+      "ok": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "vision_support_fail_count",
+      "observed": 0,
+      "ok": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "vision_call_failed_count",
+      "observed": 0,
+      "ok": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "unsafe_response_count",
+      "observed": 0,
+      "ok": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_capable_response_count",
+      "observed": 0,
+      "ok": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "claim_proof_response_count",
+      "observed": 0,
+      "ok": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "ok": true
+    },
+    {
+      "expected": "PASS",
+      "name": "source_dataset_quality_status",
+      "observed": "PASS",
+      "ok": true
+    },
+    {
+      "expected": "0",
+      "name": "can_answer_directly_count",
+      "observed": 0,
+      "ok": true
+    },
+    {
+      "expected": "0",
+      "name": "can_prove_claims_count",
+      "observed": 0,
+      "ok": true
+    }
+  ],
+  "quality_status": "PASS",
+  "schema_version": "trace_net_page_query_response_tiff_content_audit_v1_quality",
+  "status": "PAGE_QUERY_RESPONSE_TIFF_CONTENT_AUDIT_BUILT",
+  "summary": {
+    "answer_capable_response_count": 0,
+    "blank_expected_count": 11,
+    "blank_image_count": 11,
+    "blank_image_response_match_count": 11,
+    "blank_mismatch_count": 0,
+    "blank_response_count": 11,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "claim_proof_response_count": 0,
+    "content_audit_fail_count": 0,
+    "content_audit_pass_count": 185,
+    "content_audit_review_count": 15,
+    "content_audit_status_counts": {
+      "PASS": 185,
+      "REVIEW": 15
+    },
+    "heuristic_fail_count": 0,
+    "heuristic_flag_counts": {
+      "parts_table_answer_low_ink_review": 3
+    },
+    "heuristic_pass_count": 197,
+    "heuristic_review_count": 3,
+    "image_open_failure_count": 0,
+    "image_opened_count": 200,
+    "metadata_zip_entry_count": 510,
+    "missing_zip_entry_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "record_count": 200,
+    "response_page_anchor_count": 200,
+    "response_source_entry_anchor_count": 200,
+    "review_recommended_count": 15,
+    "schema_version": "trace_net_page_query_response_tiff_content_audit_v1",
+    "source_dataset_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "status": "PASS",
+    "unsafe_response_count": 0,
+    "vision_call_failed_count": 0,
+    "vision_enabled": true,
+    "vision_evaluated_count": 12,
+    "vision_model": "qwen3-vl:latest",
+    "vision_status_counts": {
+      "NOT_RUN": 188,
+      "REVIEW": 12
+    },
+    "vision_support_fail_count": 0,
+    "vision_support_pass_count": 0,
+    "vision_support_review_count": 12
+  }
+}

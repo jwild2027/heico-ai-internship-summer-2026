@@ -19,8 +19,8 @@
       "passed": true
     },
     {
-      "actual": 50,
-      "expected": ">= 50",
+      "actual": 200,
+      "expected": ">= 200",
       "name": "min_context_v2_points",
       "passed": true
     },
@@ -103,14 +103,14 @@
       "passed": true
     }
   ],
-  "generated_at_utc": "2026-06-08T19:18:26Z",
+  "generated_at_utc": "2026-06-16T14:54:06Z",
   "manifest_path": "local_data\\organization\\trace_net\\qdrant_page_retrieval_profiles_ollama_bge_m3\\trace_net_page_retrieval_profiles_qdrant_v1_manifest.json",
   "schema_version": "trace_net_page_retrieval_profiles_qdrant_v1",
   "status": "PASS",
   "summary": {
     "answer_capable_payload_count": 0,
     "claim_proof_payload_count": 0,
-    "context_v2_point_count": 50,
+    "context_v2_point_count": 200,
     "embedding_answer_authority_allowed_count": 0,
     "missing_embedding_candidate_id_count": 0,
     "missing_page_id_count": 0,

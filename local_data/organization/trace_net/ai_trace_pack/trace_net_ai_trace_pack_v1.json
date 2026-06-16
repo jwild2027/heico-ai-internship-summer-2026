@@ -1,0 +1,2041 @@
+{
+  "quality_status": "PASS",
+  "review_records": [
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query": "120-46137-001",
+      "query_id": "part_120_46137_001",
+      "retrieval_only": true,
+      "review_reason": "claim_evidence_review",
+      "trace_pack_id": "trace_pack::part_120_46137_001"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query": "120-46137-001",
+      "query_id": "part_120_46137_001",
+      "retrieval_only": true,
+      "review_reason": "page_alignment_review",
+      "trace_pack_id": "trace_pack::part_120_46137_001"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query": "120-46137-001",
+      "query_id": "part_120_46137_001",
+      "retrieval_only": true,
+      "review_reason": "graph_evidence_review_flags",
+      "trace_pack_id": "trace_pack::part_120_46137_001"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query": "ATA 25-21-00",
+      "query_id": "ata_25_21_00",
+      "retrieval_only": true,
+      "review_reason": "retrieval_critic_audit",
+      "trace_pack_id": "trace_pack::ata_25_21_00"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query": "ATA 25-21-00",
+      "query_id": "ata_25_21_00",
+      "retrieval_only": true,
+      "review_reason": "claim_evidence_review",
+      "trace_pack_id": "trace_pack::ata_25_21_00"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query": "ATA 25-21-00",
+      "query_id": "ata_25_21_00",
+      "retrieval_only": true,
+      "review_reason": "page_alignment_review",
+      "trace_pack_id": "trace_pack::ata_25_21_00"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query": "ATA 25-21-00",
+      "query_id": "ata_25_21_00",
+      "retrieval_only": true,
+      "review_reason": "graph_evidence_review_flags",
+      "trace_pack_id": "trace_pack::ata_25_21_00"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query": "Revision 4",
+      "query_id": "revision_4",
+      "retrieval_only": true,
+      "review_reason": "claim_evidence_review",
+      "trace_pack_id": "trace_pack::revision_4"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query": "Revision 4",
+      "query_id": "revision_4",
+      "retrieval_only": true,
+      "review_reason": "page_alignment_review",
+      "trace_pack_id": "trace_pack::revision_4"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query": "record of revisions",
+      "query_id": "record_of_revisions",
+      "retrieval_only": true,
+      "review_reason": "retrieval_critic_audit",
+      "trace_pack_id": "trace_pack::record_of_revisions"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query": "record of revisions",
+      "query_id": "record_of_revisions",
+      "retrieval_only": true,
+      "review_reason": "claim_evidence_review",
+      "trace_pack_id": "trace_pack::record_of_revisions"
+    }
+  ],
+  "safety_contract": {
+    "no_answer_permission": true,
+    "no_claim_proof_authority": true,
+    "no_opensearch_writes": true,
+    "no_postgres_writes": true,
+    "no_qdrant_writes": true,
+    "no_source_truth_mutation": true
+  },
+  "schema_version": "trace_net_ai_trace_pack_v1",
+  "status": "AI_TRACE_PACK_BUILT",
+  "summary": {
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "category_as_proof_count": 0,
+    "channel_counts": {
+      "claim_evidence_entailment": 8,
+      "hybrid_v2_ranked_group": 16,
+      "leiden_navigation_hint": 5,
+      "leiden_page_navigation_hint": 85,
+      "opensearch_exact": 58,
+      "organization_graph": 77
+    },
+    "community_as_proof_count": 0,
+    "critic_status_counts": {
+      "dynamic_final_gate_needs_audit": 4,
+      "final_gate_already_authorized": 6
+    },
+    "feedback_as_proof_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "retrieval_only_answer_allowed_count": 0,
+    "review_reason_counts": {
+      "claim_evidence_review": 4,
+      "graph_evidence_review_flags": 2,
+      "page_alignment_review": 3,
+      "retrieval_critic_audit": 2
+    },
+    "review_recommended_trace_pack_count": 4,
+    "review_record_count": 11,
+    "schema_version": "trace_net_ai_trace_pack_v1",
+    "source_quality_statuses": {
+      "answer_claim_critic": "PASS",
+      "claim_evidence_entailment": "PASS",
+      "dublin_core_source_package_extension": "PASS",
+      "dynamic_final_gate": "PASS",
+      "evidence_sufficiency_critic": "PASS",
+      "final_return_policy": "PASS",
+      "graph_query_api_v1_1": "PASS",
+      "graph_query_evidence_enrichment": "PASS",
+      "hybrid_v2": "PASS",
+      "leiden_navigation_metadata_bridge": "PASS",
+      "retrieval_critic": "PASS"
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "status": "PASS",
+    "trace_pack_count": 8,
+    "trace_pack_with_claim_entailment_count": 4,
+    "trace_pack_with_dublin_core_identity_count": 3,
+    "trace_pack_with_graph_context_count": 3,
+    "trace_pack_with_hybrid_retrieval_count": 5,
+    "trace_pack_with_leiden_navigation_count": 3,
+    "trace_status_counts": {
+      "TRACE_PACK_FINAL_GATE_AUTHORIZED_NO_REVIEW_FLAGS": 1,
+      "TRACE_PACK_READY": 3,
+      "TRACE_PACK_REVIEW_RECOMMENDED": 4
+    }
+  },
+  "trace_pack_records": [
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "claim_evidence_summary": {
+        "claim_count": 0,
+        "claim_evidence_entailment_quality_status": "PASS",
+        "claims_with_citation_count": 0,
+        "entailment_status_counts": {},
+        "human_review_escalation_count": 0,
+        "page_mismatch_review_count": 0,
+        "partial_claim_count": 0,
+        "sample_claims": [],
+        "supported_claim_count": 0
+      },
+      "critic_summary": {
+        "answer_claim_critic_quality_status": "PASS",
+        "critic_statuses": {
+          "answer_claim_critic": null,
+          "evidence_sufficiency_critic": "final_gate_already_authorized",
+          "retrieval_critic": "final_gate_already_authorized"
+        },
+        "evidence_sufficiency_critic_quality_status": "PASS",
+        "retrieval_critic_action": null,
+        "retrieval_critic_quality_status": "PASS",
+        "retrieval_critic_reason_codes": [
+          "dynamic_final_gate_allowed_and_claim_safe",
+          "review_signals_present"
+        ]
+      },
+      "final_gate_summary": {
+        "dynamic_final_gate_quality_status": "PASS",
+        "dynamic_query_status": "FINAL_GATE_ARTIFACT_ANSWER",
+        "dynamic_summary_counts": {
+          "blocked_claim_count": 8,
+          "dynamic_final_gate_approved_count": 4,
+          "final_answer_allowed_count": 5,
+          "final_artifact_answer_count": 1
+        },
+        "final_policy_status": null
+      },
+      "graph_trace_summary": {
+        "channel_counts": {},
+        "enriched_page_count": 0,
+        "graph_query_present": false,
+        "original_graph_page_count": 0,
+        "plan_id": null,
+        "query_type": null,
+        "review_flags": [],
+        "sample_pages": []
+      },
+      "leiden_navigation_summary": {
+        "leiden_navigation_bridge_quality_status": "PASS",
+        "leiden_navigation_hint_page_count": 0,
+        "page_navigation_hint_count": 506,
+        "retrieval_navigation_hint_count": 221
+      },
+      "needs_review": false,
+      "page_ids": [
+        "t_p_120_1176_p000001",
+        "t_p_120_1176_p000004",
+        "t_p_120_1176_p000329",
+        "t_p_120_1176_p000095",
+        "t_p_120_1176_p000308",
+        "t_p_120_1176_p000399",
+        "t_p_120_1176_p000094",
+        "t_p_120_1176_p000427"
+      ],
+      "query": "Which pages discuss manual revision history?",
+      "query_id": "manual_revision_history",
+      "retrieval_only": true,
+      "retrieval_summary": {
+        "exact_hit_group_count": 1,
+        "hybrid_query_present": true,
+        "ranked_group_count": 8,
+        "semantic_group_count": 8,
+        "top_groups": [
+          {
+            "exact_hit_count": 3,
+            "page_id": "t_p_120_1176_p000001",
+            "part_numbers": [],
+            "rank": 1,
+            "score": 1.665697,
+            "semantic_group_count": 1
+          },
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000004",
+            "part_numbers": [],
+            "rank": 2,
+            "score": 1.231873,
+            "semantic_group_count": 1
+          },
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000329",
+            "part_numbers": [],
+            "rank": 3,
+            "score": 0.66768,
+            "semantic_group_count": 1
+          },
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000095",
+            "part_numbers": [],
+            "rank": 4,
+            "score": 0.662432,
+            "semantic_group_count": 1
+          },
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000308",
+            "part_numbers": [],
+            "rank": 5,
+            "score": 0.6617,
+            "semantic_group_count": 1
+          }
+        ]
+      },
+      "review_reason_codes": [],
+      "safety_contract": {
+        "no_answer_permission": true,
+        "no_claim_proof_authority": true,
+        "no_opensearch_writes": true,
+        "no_postgres_writes": true,
+        "no_qdrant_writes": true,
+        "no_source_truth_mutation": true
+      },
+      "schema_version": "trace_net_ai_trace_pack_v1",
+      "source_trace_summary": {
+        "dublin_core_identity_page_count": 0,
+        "dublin_core_source_quality_status": "PASS",
+        "source_package_page_count": 509,
+        "source_resolved_page_count": 0
+      },
+      "source_truth_mutation_allowed": false,
+      "trace_pack_id": "trace_pack::manual_revision_history",
+      "trace_status": "TRACE_PACK_FINAL_GATE_AUTHORIZED_NO_REVIEW_FLAGS"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "claim_evidence_summary": {
+        "claim_count": 4,
+        "claim_evidence_entailment_quality_status": "PASS",
+        "claims_with_citation_count": 4,
+        "entailment_status_counts": {
+          "PARTIALLY_SUPPORTED_NEEDS_REVIEW": 3,
+          "SUPPORTED_BY_CITATION_EVIDENCE": 1
+        },
+        "human_review_escalation_count": 3,
+        "page_mismatch_review_count": 2,
+        "partial_claim_count": 3,
+        "sample_claims": [
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000003"
+            ],
+            "claim_id": "claim_0001",
+            "claim_text": "Page 3 is a citation-backed TRACE-Net evidence page matching part number 120-46137-001.",
+            "entailment_score": 0.575,
+            "entailment_status": "SUPPORTED_BY_CITATION_EVIDENCE",
+            "human_review_escalation_recommended": false,
+            "page_ids": [
+              "t_p_120_1176_p000003"
+            ],
+            "reason_codes": []
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000340"
+            ],
+            "claim_id": "claim_0002",
+            "claim_text": "Page 340 is a citation-backed TRACE-Net evidence page matching part number 120-46137-001.",
+            "entailment_score": 0.436025,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000340"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap"
+            ]
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000003"
+            ],
+            "claim_id": "claim_0003",
+            "claim_text": "Page 339 is a citation-backed TRACE-Net evidence page matching part number 120-46137-001.",
+            "entailment_score": 0.357143,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000339"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap"
+            ]
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000003"
+            ],
+            "claim_id": "claim_0004",
+            "claim_text": "Page 341 is a citation-backed TRACE-Net evidence page matching part number 120-46137-001.",
+            "entailment_score": 0.357143,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000341"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap"
+            ]
+          }
+        ],
+        "supported_claim_count": 1
+      },
+      "critic_summary": {
+        "answer_claim_critic_quality_status": "PASS",
+        "critic_statuses": {
+          "answer_claim_critic": null,
+          "evidence_sufficiency_critic": "final_gate_already_authorized",
+          "retrieval_critic": "final_gate_already_authorized"
+        },
+        "evidence_sufficiency_critic_quality_status": "PASS",
+        "retrieval_critic_action": null,
+        "retrieval_critic_quality_status": "PASS",
+        "retrieval_critic_reason_codes": [
+          "dynamic_final_gate_allowed_and_claim_safe",
+          "review_signals_present"
+        ]
+      },
+      "final_gate_summary": {
+        "dynamic_final_gate_quality_status": "PASS",
+        "dynamic_query_status": "DYNAMIC_FINAL_GATE_APPROVED",
+        "dynamic_summary_counts": {
+          "blocked_claim_count": 8,
+          "dynamic_final_gate_approved_count": 4,
+          "final_answer_allowed_count": 5,
+          "final_artifact_answer_count": 1
+        },
+        "final_policy_status": null
+      },
+      "graph_trace_summary": {
+        "channel_counts": {
+          "claim_evidence_entailment": 4,
+          "hybrid_v2_ranked_group": 8,
+          "leiden_navigation_hint": 5,
+          "leiden_page_navigation_hint": 7,
+          "opensearch_exact": 9,
+          "organization_graph": 1
+        },
+        "enriched_page_count": 9,
+        "graph_query_present": true,
+        "original_graph_page_count": 1,
+        "plan_id": "part_source_check_v1",
+        "query_type": "part_lookup",
+        "review_flags": [
+          {
+            "channel": "claim_evidence_entailment",
+            "claim_id": "claim_0002",
+            "page_alignment_status": "PAGE_ALIGNED",
+            "page_id": "t_p_120_1176_p000340",
+            "reason_codes": [
+              "partial_evidence_overlap"
+            ]
+          },
+          {
+            "channel": "claim_evidence_entailment",
+            "claim_id": "claim_0003",
+            "page_alignment_status": "PAGE_MISMATCH_REVIEW",
+            "page_id": "t_p_120_1176_p000339",
+            "reason_codes": [
+              "partial_evidence_overlap"
+            ]
+          },
+          {
+            "channel": "claim_evidence_entailment",
+            "claim_id": "claim_0004",
+            "page_alignment_status": "PAGE_MISMATCH_REVIEW",
+            "page_id": "t_p_120_1176_p000341",
+            "reason_codes": [
+              "partial_evidence_overlap"
+            ]
+          },
+          {
+            "channel": "claim_evidence_entailment",
+            "claim_id": "claim_0002",
+            "page_alignment_status": "PAGE_ALIGNED",
+            "page_id": "t_p_120_1176_p000340",
+            "reason_codes": [
+              "partial_evidence_overlap"
+            ]
+          },
+          {
+            "channel": "claim_evidence_entailment",
+            "claim_id": "claim_0003",
+            "page_alignment_status": "PAGE_MISMATCH_REVIEW",
+            "page_id": "t_p_120_1176_p000339",
+            "reason_codes": [
+              "partial_evidence_overlap"
+            ]
+          },
+          {
+            "channel": "claim_evidence_entailment",
+            "claim_id": "claim_0004",
+            "page_alignment_status": "PAGE_MISMATCH_REVIEW",
+            "page_id": "t_p_120_1176_p000341",
+            "reason_codes": [
+              "partial_evidence_overlap"
+            ]
+          }
+        ],
+        "sample_pages": [
+          {
+            "channels": [
+              "organization_graph",
+              "opensearch_exact",
+              "hybrid_v2_ranked_group",
+              "claim_evidence_entailment"
+            ],
+            "evidence_record_count": 7,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 0,
+            "page_id": "t_p_120_1176_p000340",
+            "source_resolved": true
+          },
+          {
+            "channels": [
+              "opensearch_exact",
+              "hybrid_v2_ranked_group",
+              "claim_evidence_entailment",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 6,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 5,
+            "page_id": "t_p_120_1176_p000003",
+            "source_resolved": true
+          },
+          {
+            "channels": [
+              "leiden_navigation_hint",
+              "opensearch_exact",
+              "hybrid_v2_ranked_group",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 3,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 1,
+            "page_id": "t_p_120_1176_p000208",
+            "source_resolved": true
+          },
+          {
+            "channels": [
+              "opensearch_exact",
+              "hybrid_v2_ranked_group",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 2,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 1,
+            "page_id": "t_p_120_1176_p000209",
+            "source_resolved": true
+          },
+          {
+            "channels": [
+              "leiden_navigation_hint",
+              "opensearch_exact",
+              "hybrid_v2_ranked_group",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 3,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 1,
+            "page_id": "t_p_120_1176_p000210",
+            "source_resolved": true
+          },
+          {
+            "channels": [
+              "leiden_navigation_hint",
+              "opensearch_exact",
+              "hybrid_v2_ranked_group",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 3,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 1,
+            "page_id": "t_p_120_1176_p000323",
+            "source_resolved": true
+          },
+          {
+            "channels": [
+              "leiden_navigation_hint",
+              "opensearch_exact",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 2,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 1,
+            "page_id": "t_p_120_1176_p000324",
+            "source_resolved": true
+          },
+          {
+            "channels": [
+              "leiden_navigation_hint",
+              "opensearch_exact",
+              "hybrid_v2_ranked_group",
+              "claim_evidence_entailment",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 6,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 1,
+            "page_id": "t_p_120_1176_p000339",
+            "source_resolved": true
+          },
+          {
+            "channels": [
+              "opensearch_exact",
+              "hybrid_v2_ranked_group",
+              "claim_evidence_entailment"
+            ],
+            "evidence_record_count": 5,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 0,
+            "page_id": "t_p_120_1176_p000341",
+            "source_resolved": true
+          }
+        ]
+      },
+      "leiden_navigation_summary": {
+        "leiden_navigation_bridge_quality_status": "PASS",
+        "leiden_navigation_hint_page_count": 7,
+        "page_navigation_hint_count": 506,
+        "retrieval_navigation_hint_count": 221
+      },
+      "needs_review": true,
+      "page_ids": [
+        "t_p_120_1176_p000340",
+        "t_p_120_1176_p000003",
+        "t_p_120_1176_p000208",
+        "t_p_120_1176_p000209",
+        "t_p_120_1176_p000210",
+        "t_p_120_1176_p000323",
+        "t_p_120_1176_p000324",
+        "t_p_120_1176_p000339",
+        "t_p_120_1176_p000341"
+      ],
+      "query": "120-46137-001",
+      "query_id": "part_120_46137_001",
+      "retrieval_only": true,
+      "retrieval_summary": {
+        "exact_hit_group_count": 8,
+        "hybrid_query_present": true,
+        "ranked_group_count": 8,
+        "semantic_group_count": 0,
+        "top_groups": [
+          {
+            "exact_hit_count": 6,
+            "page_id": "t_p_120_1176_p000003",
+            "part_numbers": [
+              "120-46137-001",
+              "120-46137-501",
+              "120-50645-007",
+              "120-50645-017",
+              "120-50645-035",
+              "120-50645-037",
+              "120-50648-009",
+              "120-50648-031",
+              "120-50648-033",
+              "120-50648-533"
+            ],
+            "rank": 1,
+            "score": 0.48,
+            "semantic_group_count": 0
+          },
+          {
+            "exact_hit_count": 4,
+            "page_id": "t_p_120_1176_p000340",
+            "part_numbers": [
+              "120-46137-001",
+              "120-46137-501",
+              "120-50645-007",
+              "120-50645-017",
+              "120-50645-035",
+              "120-50645-037",
+              "120-50648-009",
+              "120-50648-031",
+              "120-50648-033",
+              "120-50648-533"
+            ],
+            "rank": 2,
+            "score": 0.465,
+            "semantic_group_count": 0
+          },
+          {
+            "exact_hit_count": 3,
+            "page_id": "t_p_120_1176_p000339",
+            "part_numbers": [
+              "120-46137-001",
+              "120-46137-501",
+              "120-50645-007",
+              "120-50645-017",
+              "120-50645-035",
+              "120-50645-037",
+              "120-50648-009",
+              "120-50648-031",
+              "120-50648-033",
+              "120-50648-533"
+            ],
+            "rank": 3,
+            "score": 0.45,
+            "semantic_group_count": 0
+          },
+          {
+            "exact_hit_count": 3,
+            "page_id": "t_p_120_1176_p000341",
+            "part_numbers": [
+              "120-46137-001",
+              "120-46137-501",
+              "120-50645-007",
+              "120-50645-017",
+              "120-50645-035",
+              "120-50645-037",
+              "120-50648-009",
+              "120-50648-031",
+              "120-50648-033",
+              "120-50648-533"
+            ],
+            "rank": 4,
+            "score": 0.45,
+            "semantic_group_count": 0
+          },
+          {
+            "exact_hit_count": 1,
+            "page_id": "t_p_120_1176_p000208",
+            "part_numbers": [
+              "120-46137-001",
+              "120-46137-501",
+              "120-50645-007",
+              "120-50645-017",
+              "120-50645-035",
+              "120-50645-037",
+              "120-50648-009",
+              "120-50648-031",
+              "120-50648-033",
+              "120-50648-533"
+            ],
+            "rank": 5,
+            "score": 0.300417,
+            "semantic_group_count": 0
+          }
+        ]
+      },
+      "review_reason_codes": [
+        "claim_evidence_review",
+        "page_alignment_review",
+        "graph_evidence_review_flags"
+      ],
+      "safety_contract": {
+        "no_answer_permission": true,
+        "no_claim_proof_authority": true,
+        "no_opensearch_writes": true,
+        "no_postgres_writes": true,
+        "no_qdrant_writes": true,
+        "no_source_truth_mutation": true
+      },
+      "schema_version": "trace_net_ai_trace_pack_v1",
+      "source_trace_summary": {
+        "dublin_core_identity_page_count": 9,
+        "dublin_core_source_quality_status": "PASS",
+        "source_package_page_count": 509,
+        "source_resolved_page_count": 9
+      },
+      "source_truth_mutation_allowed": false,
+      "trace_pack_id": "trace_pack::part_120_46137_001",
+      "trace_status": "TRACE_PACK_REVIEW_RECOMMENDED"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "claim_evidence_summary": {
+        "claim_count": 4,
+        "claim_evidence_entailment_quality_status": "PASS",
+        "claims_with_citation_count": 4,
+        "entailment_status_counts": {
+          "PARTIALLY_SUPPORTED_NEEDS_REVIEW": 4
+        },
+        "human_review_escalation_count": 4,
+        "page_mismatch_review_count": 4,
+        "partial_claim_count": 4,
+        "sample_claims": [
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000001"
+            ],
+            "claim_id": "claim_0005",
+            "claim_text": "Page 50 is a citation-backed TRACE-Net evidence page matching part number 25-21-00.",
+            "entailment_score": 0.467033,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000050"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000001"
+            ],
+            "claim_id": "claim_0006",
+            "claim_text": "Page 66 is a citation-backed TRACE-Net evidence page matching part number 25-21-00.",
+            "entailment_score": 0.467033,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000066"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000001"
+            ],
+            "claim_id": "claim_0007",
+            "claim_text": "Page 68 is a citation-backed TRACE-Net evidence page matching part number 25-21-00.",
+            "entailment_score": 0.467033,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000068"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000001"
+            ],
+            "claim_id": "claim_0008",
+            "claim_text": "Page 499 is a citation-backed TRACE-Net evidence page matching part number 25-21-00.",
+            "entailment_score": 0.467033,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000499"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          }
+        ],
+        "supported_claim_count": 0
+      },
+      "critic_summary": {
+        "answer_claim_critic_quality_status": "PASS",
+        "critic_statuses": {
+          "answer_claim_critic": null,
+          "evidence_sufficiency_critic": "dynamic_final_gate_needs_audit",
+          "retrieval_critic": "dynamic_final_gate_needs_audit"
+        },
+        "evidence_sufficiency_critic_quality_status": "PASS",
+        "retrieval_critic_action": null,
+        "retrieval_critic_quality_status": "PASS",
+        "retrieval_critic_reason_codes": [
+          "dynamic_final_gate_exact_query_missing_exact_hits",
+          "dynamic_final_gate_missing_answer_support_groups_for_exact_query",
+          "dynamic_final_gate_retrieval_pattern_only_retrieval_groups",
+          "review_signals_present"
+        ]
+      },
+      "final_gate_summary": {
+        "dynamic_final_gate_quality_status": "PASS",
+        "dynamic_query_status": "DYNAMIC_FINAL_GATE_APPROVED",
+        "dynamic_summary_counts": {
+          "blocked_claim_count": 8,
+          "dynamic_final_gate_approved_count": 4,
+          "final_answer_allowed_count": 5,
+          "final_artifact_answer_count": 1
+        },
+        "final_policy_status": null
+      },
+      "graph_trace_summary": {
+        "channel_counts": {
+          "claim_evidence_entailment": 4,
+          "hybrid_v2_ranked_group": 8,
+          "leiden_page_navigation_hint": 77,
+          "opensearch_exact": 49,
+          "organization_graph": 75
+        },
+        "enriched_page_count": 77,
+        "graph_query_present": true,
+        "original_graph_page_count": 75,
+        "plan_id": "ata_pages_browse_v1",
+        "query_type": "ata_browse",
+        "review_flags": [
+          {
+            "channel": "claim_evidence_entailment",
+            "claim_id": "claim_0005",
+            "page_alignment_status": "PAGE_MISMATCH_REVIEW",
+            "page_id": "t_p_120_1176_p000050",
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          },
+          {
+            "channel": "claim_evidence_entailment",
+            "claim_id": "claim_0006",
+            "page_alignment_status": "PAGE_MISMATCH_REVIEW",
+            "page_id": "t_p_120_1176_p000066",
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          },
+          {
+            "channel": "claim_evidence_entailment",
+            "claim_id": "claim_0007",
+            "page_alignment_status": "PAGE_MISMATCH_REVIEW",
+            "page_id": "t_p_120_1176_p000068",
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          },
+          {
+            "channel": "claim_evidence_entailment",
+            "claim_id": "claim_0008",
+            "page_alignment_status": "PAGE_MISMATCH_REVIEW",
+            "page_id": "t_p_120_1176_p000499",
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          },
+          {
+            "channel": "claim_evidence_entailment",
+            "claim_id": "claim_0005",
+            "page_alignment_status": "PAGE_MISMATCH_REVIEW",
+            "page_id": "t_p_120_1176_p000050",
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          },
+          {
+            "channel": "claim_evidence_entailment",
+            "claim_id": "claim_0006",
+            "page_alignment_status": "PAGE_MISMATCH_REVIEW",
+            "page_id": "t_p_120_1176_p000066",
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          },
+          {
+            "channel": "claim_evidence_entailment",
+            "claim_id": "claim_0007",
+            "page_alignment_status": "PAGE_MISMATCH_REVIEW",
+            "page_id": "t_p_120_1176_p000068",
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          },
+          {
+            "channel": "claim_evidence_entailment",
+            "claim_id": "claim_0008",
+            "page_alignment_status": "PAGE_MISMATCH_REVIEW",
+            "page_id": "t_p_120_1176_p000499",
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          }
+        ],
+        "sample_pages": [
+          {
+            "channels": [
+              "organization_graph",
+              "opensearch_exact",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 6,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 1,
+            "page_id": "t_p_120_1176_p000001",
+            "source_resolved": true
+          },
+          {
+            "channels": [
+              "organization_graph",
+              "opensearch_exact",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 4,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 1,
+            "page_id": "t_p_120_1176_p000002",
+            "source_resolved": true
+          },
+          {
+            "channels": [
+              "organization_graph",
+              "opensearch_exact",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 4,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 5,
+            "page_id": "t_p_120_1176_p000003",
+            "source_resolved": true
+          },
+          {
+            "channels": [
+              "organization_graph",
+              "opensearch_exact",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 5,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 1,
+            "page_id": "t_p_120_1176_p000004",
+            "source_resolved": true
+          },
+          {
+            "channels": [
+              "organization_graph",
+              "opensearch_exact",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 9,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 1,
+            "page_id": "t_p_120_1176_p000005",
+            "source_resolved": true
+          },
+          {
+            "channels": [
+              "organization_graph",
+              "opensearch_exact",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 4,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 1,
+            "page_id": "t_p_120_1176_p000006",
+            "source_resolved": true
+          },
+          {
+            "channels": [
+              "organization_graph",
+              "opensearch_exact",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 4,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 1,
+            "page_id": "t_p_120_1176_p000007",
+            "source_resolved": true
+          },
+          {
+            "channels": [
+              "organization_graph",
+              "opensearch_exact",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 6,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 1,
+            "page_id": "t_p_120_1176_p000008",
+            "source_resolved": true
+          },
+          {
+            "channels": [
+              "organization_graph",
+              "opensearch_exact",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 6,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 1,
+            "page_id": "t_p_120_1176_p000009",
+            "source_resolved": true
+          },
+          {
+            "channels": [
+              "organization_graph",
+              "opensearch_exact",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 4,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 1,
+            "page_id": "t_p_120_1176_p000010",
+            "source_resolved": true
+          }
+        ]
+      },
+      "leiden_navigation_summary": {
+        "leiden_navigation_bridge_quality_status": "PASS",
+        "leiden_navigation_hint_page_count": 77,
+        "page_navigation_hint_count": 506,
+        "retrieval_navigation_hint_count": 221
+      },
+      "needs_review": true,
+      "page_ids": [
+        "t_p_120_1176_p000001",
+        "t_p_120_1176_p000002",
+        "t_p_120_1176_p000003",
+        "t_p_120_1176_p000004",
+        "t_p_120_1176_p000005",
+        "t_p_120_1176_p000006",
+        "t_p_120_1176_p000007",
+        "t_p_120_1176_p000008",
+        "t_p_120_1176_p000009",
+        "t_p_120_1176_p000010",
+        "t_p_120_1176_p000011",
+        "t_p_120_1176_p000012",
+        "t_p_120_1176_p000013",
+        "t_p_120_1176_p000014",
+        "t_p_120_1176_p000015",
+        "t_p_120_1176_p000016",
+        "t_p_120_1176_p000017",
+        "t_p_120_1176_p000018",
+        "t_p_120_1176_p000019",
+        "t_p_120_1176_p000020",
+        "t_p_120_1176_p000021",
+        "t_p_120_1176_p000022",
+        "t_p_120_1176_p000023",
+        "t_p_120_1176_p000024",
+        "t_p_120_1176_p000025",
+        "t_p_120_1176_p000026",
+        "t_p_120_1176_p000027",
+        "t_p_120_1176_p000028",
+        "t_p_120_1176_p000029",
+        "t_p_120_1176_p000030",
+        "t_p_120_1176_p000031",
+        "t_p_120_1176_p000032",
+        "t_p_120_1176_p000033",
+        "t_p_120_1176_p000034",
+        "t_p_120_1176_p000035",
+        "t_p_120_1176_p000036",
+        "t_p_120_1176_p000037",
+        "t_p_120_1176_p000038",
+        "t_p_120_1176_p000039",
+        "t_p_120_1176_p000040",
+        "t_p_120_1176_p000041",
+        "t_p_120_1176_p000043",
+        "t_p_120_1176_p000044",
+        "t_p_120_1176_p000045",
+        "t_p_120_1176_p000046",
+        "t_p_120_1176_p000047",
+        "t_p_120_1176_p000048",
+        "t_p_120_1176_p000049",
+        "t_p_120_1176_p000050",
+        "t_p_120_1176_p000051"
+      ],
+      "query": "ATA 25-21-00",
+      "query_id": "ata_25_21_00",
+      "retrieval_only": true,
+      "retrieval_summary": {
+        "exact_hit_group_count": 0,
+        "hybrid_query_present": true,
+        "ranked_group_count": 8,
+        "semantic_group_count": 8,
+        "top_groups": [
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000045",
+            "part_numbers": [],
+            "rank": 1,
+            "score": 1.093713,
+            "semantic_group_count": 1
+          },
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000026",
+            "part_numbers": [],
+            "rank": 2,
+            "score": 1.063665,
+            "semantic_group_count": 1
+          },
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000033",
+            "part_numbers": [],
+            "rank": 3,
+            "score": 1.05463,
+            "semantic_group_count": 1
+          },
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000034",
+            "part_numbers": [],
+            "rank": 4,
+            "score": 1.039949,
+            "semantic_group_count": 1
+          },
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000050",
+            "part_numbers": [],
+            "rank": 5,
+            "score": 0.719156,
+            "semantic_group_count": 1
+          }
+        ]
+      },
+      "review_reason_codes": [
+        "retrieval_critic_audit",
+        "claim_evidence_review",
+        "page_alignment_review",
+        "graph_evidence_review_flags"
+      ],
+      "safety_contract": {
+        "no_answer_permission": true,
+        "no_claim_proof_authority": true,
+        "no_opensearch_writes": true,
+        "no_postgres_writes": true,
+        "no_qdrant_writes": true,
+        "no_source_truth_mutation": true
+      },
+      "schema_version": "trace_net_ai_trace_pack_v1",
+      "source_trace_summary": {
+        "dublin_core_identity_page_count": 77,
+        "dublin_core_source_quality_status": "PASS",
+        "source_package_page_count": 509,
+        "source_resolved_page_count": 77
+      },
+      "source_truth_mutation_allowed": false,
+      "trace_pack_id": "trace_pack::ata_25_21_00",
+      "trace_status": "TRACE_PACK_REVIEW_RECOMMENDED"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "claim_evidence_summary": {
+        "claim_count": 8,
+        "claim_evidence_entailment_quality_status": "PASS",
+        "claims_with_citation_count": 8,
+        "entailment_status_counts": {
+          "PARTIALLY_SUPPORTED_NEEDS_REVIEW": 6,
+          "SUPPORTED_BY_CITATION_EVIDENCE": 2
+        },
+        "human_review_escalation_count": 6,
+        "page_mismatch_review_count": 6,
+        "partial_claim_count": 6,
+        "sample_claims": [
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000001"
+            ],
+            "claim_id": "claim_0009",
+            "claim_text": "Page 1 is a citation-backed TRACE-Net evidence page for the query 'Revision 4'.",
+            "entailment_score": 0.809375,
+            "entailment_status": "SUPPORTED_BY_CITATION_EVIDENCE",
+            "human_review_escalation_recommended": false,
+            "page_ids": [
+              "t_p_120_1176_p000001"
+            ],
+            "reason_codes": []
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000004"
+            ],
+            "claim_id": "claim_0010",
+            "claim_text": "Page 4 is a citation-backed TRACE-Net evidence page for the query 'Revision 4'.",
+            "entailment_score": 0.809375,
+            "entailment_status": "SUPPORTED_BY_CITATION_EVIDENCE",
+            "human_review_escalation_recommended": false,
+            "page_ids": [
+              "t_p_120_1176_p000004"
+            ],
+            "reason_codes": []
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000001"
+            ],
+            "claim_id": "claim_0011",
+            "claim_text": "Page 329 is a citation-backed TRACE-Net evidence page for the query 'Revision 4'.",
+            "entailment_score": 0.4875,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000329"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap"
+            ]
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000001"
+            ],
+            "claim_id": "claim_0012",
+            "claim_text": "Page 95 is a citation-backed TRACE-Net evidence page for the query 'Revision 4'.",
+            "entailment_score": 0.4875,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000095"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap"
+            ]
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000001"
+            ],
+            "claim_id": "claim_0013",
+            "claim_text": "Page 308 is a citation-backed TRACE-Net evidence page for the query 'Revision 4'.",
+            "entailment_score": 0.4875,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000308"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap"
+            ]
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000001"
+            ],
+            "claim_id": "claim_0014",
+            "claim_text": "Page 399 is a citation-backed TRACE-Net evidence page for the query 'Revision 4'.",
+            "entailment_score": 0.4875,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000399"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap"
+            ]
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000001"
+            ],
+            "claim_id": "claim_0015",
+            "claim_text": "Page 94 is a citation-backed TRACE-Net evidence page for the query 'Revision 4'.",
+            "entailment_score": 0.4875,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000094"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap"
+            ]
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000001"
+            ],
+            "claim_id": "claim_0016",
+            "claim_text": "Page 427 is a citation-backed TRACE-Net evidence page for the query 'Revision 4'.",
+            "entailment_score": 0.4875,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000427"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap"
+            ]
+          }
+        ],
+        "supported_claim_count": 2
+      },
+      "critic_summary": {
+        "answer_claim_critic_quality_status": "PASS",
+        "critic_statuses": {
+          "answer_claim_critic": null,
+          "evidence_sufficiency_critic": "final_gate_already_authorized",
+          "retrieval_critic": "final_gate_already_authorized"
+        },
+        "evidence_sufficiency_critic_quality_status": "PASS",
+        "retrieval_critic_action": null,
+        "retrieval_critic_quality_status": "PASS",
+        "retrieval_critic_reason_codes": [
+          "dynamic_final_gate_allowed_and_claim_safe",
+          "review_signals_present"
+        ]
+      },
+      "final_gate_summary": {
+        "dynamic_final_gate_quality_status": "PASS",
+        "dynamic_query_status": "DYNAMIC_FINAL_GATE_APPROVED",
+        "dynamic_summary_counts": {
+          "blocked_claim_count": 8,
+          "dynamic_final_gate_approved_count": 4,
+          "final_answer_allowed_count": 5,
+          "final_artifact_answer_count": 1
+        },
+        "final_policy_status": null
+      },
+      "graph_trace_summary": {
+        "channel_counts": {},
+        "enriched_page_count": 0,
+        "graph_query_present": false,
+        "original_graph_page_count": 0,
+        "plan_id": null,
+        "query_type": null,
+        "review_flags": [],
+        "sample_pages": []
+      },
+      "leiden_navigation_summary": {
+        "leiden_navigation_bridge_quality_status": "PASS",
+        "leiden_navigation_hint_page_count": 0,
+        "page_navigation_hint_count": 506,
+        "retrieval_navigation_hint_count": 221
+      },
+      "needs_review": true,
+      "page_ids": [
+        "t_p_120_1176_p000001",
+        "t_p_120_1176_p000004",
+        "t_p_120_1176_p000329",
+        "t_p_120_1176_p000095",
+        "t_p_120_1176_p000308",
+        "t_p_120_1176_p000399",
+        "t_p_120_1176_p000094",
+        "t_p_120_1176_p000427"
+      ],
+      "query": "Revision 4",
+      "query_id": "revision_4",
+      "retrieval_only": true,
+      "retrieval_summary": {
+        "exact_hit_group_count": 1,
+        "hybrid_query_present": true,
+        "ranked_group_count": 8,
+        "semantic_group_count": 8,
+        "top_groups": [
+          {
+            "exact_hit_count": 4,
+            "page_id": "t_p_120_1176_p000001",
+            "part_numbers": [],
+            "rank": 1,
+            "score": 1.680697,
+            "semantic_group_count": 1
+          },
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000004",
+            "part_numbers": [],
+            "rank": 2,
+            "score": 1.231873,
+            "semantic_group_count": 1
+          },
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000329",
+            "part_numbers": [],
+            "rank": 3,
+            "score": 0.66768,
+            "semantic_group_count": 1
+          },
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000095",
+            "part_numbers": [],
+            "rank": 4,
+            "score": 0.662432,
+            "semantic_group_count": 1
+          },
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000308",
+            "part_numbers": [],
+            "rank": 5,
+            "score": 0.6617,
+            "semantic_group_count": 1
+          }
+        ]
+      },
+      "review_reason_codes": [
+        "claim_evidence_review",
+        "page_alignment_review"
+      ],
+      "safety_contract": {
+        "no_answer_permission": true,
+        "no_claim_proof_authority": true,
+        "no_opensearch_writes": true,
+        "no_postgres_writes": true,
+        "no_qdrant_writes": true,
+        "no_source_truth_mutation": true
+      },
+      "schema_version": "trace_net_ai_trace_pack_v1",
+      "source_trace_summary": {
+        "dublin_core_identity_page_count": 0,
+        "dublin_core_source_quality_status": "PASS",
+        "source_package_page_count": 509,
+        "source_resolved_page_count": 0
+      },
+      "source_truth_mutation_allowed": false,
+      "trace_pack_id": "trace_pack::revision_4",
+      "trace_status": "TRACE_PACK_REVIEW_RECOMMENDED"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "claim_evidence_summary": {
+        "claim_count": 8,
+        "claim_evidence_entailment_quality_status": "PASS",
+        "claims_with_citation_count": 8,
+        "entailment_status_counts": {
+          "PARTIALLY_SUPPORTED_NEEDS_REVIEW": 8
+        },
+        "human_review_escalation_count": 8,
+        "page_mismatch_review_count": 0,
+        "partial_claim_count": 8,
+        "sample_claims": [
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000432"
+            ],
+            "claim_id": "claim_0017",
+            "claim_text": "Page 432 is a citation-backed TRACE-Net evidence page for the query 'record of revisions'.",
+            "entailment_score": 0.439286,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000432"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000050"
+            ],
+            "claim_id": "claim_0018",
+            "claim_text": "Page 50 is a citation-backed TRACE-Net evidence page for the query 'record of revisions'.",
+            "entailment_score": 0.442063,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000050"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000267"
+            ],
+            "claim_id": "claim_0019",
+            "claim_text": "Page 267 is a citation-backed TRACE-Net evidence page for the query 'record of revisions'.",
+            "entailment_score": 0.440602,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000267"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000152"
+            ],
+            "claim_id": "claim_0020",
+            "claim_text": "Page 152 is a citation-backed TRACE-Net evidence page for the query 'record of revisions'.",
+            "entailment_score": 0.440602,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000152"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000494"
+            ],
+            "claim_id": "claim_0021",
+            "claim_text": "Page 494 is a citation-backed TRACE-Net evidence page for the query 'record of revisions'.",
+            "entailment_score": 0.442063,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000494"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000073"
+            ],
+            "claim_id": "claim_0022",
+            "claim_text": "Page 73 is a citation-backed TRACE-Net evidence page for the query 'record of revisions'.",
+            "entailment_score": 0.442063,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000073"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000307"
+            ],
+            "claim_id": "claim_0023",
+            "claim_text": "Page 307 is a citation-backed TRACE-Net evidence page for the query 'record of revisions'.",
+            "entailment_score": 0.443697,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000307"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          },
+          {
+            "best_evidence_page_ids": [
+              "t_p_120_1176_p000074"
+            ],
+            "claim_id": "claim_0024",
+            "claim_text": "Page 74 is a citation-backed TRACE-Net evidence page for the query 'record of revisions'.",
+            "entailment_score": 0.442063,
+            "entailment_status": "PARTIALLY_SUPPORTED_NEEDS_REVIEW",
+            "human_review_escalation_recommended": true,
+            "page_ids": [
+              "t_p_120_1176_p000074"
+            ],
+            "reason_codes": [
+              "partial_evidence_overlap",
+              "critic_disagreement"
+            ]
+          }
+        ],
+        "supported_claim_count": 0
+      },
+      "critic_summary": {
+        "answer_claim_critic_quality_status": "PASS",
+        "critic_statuses": {
+          "answer_claim_critic": null,
+          "evidence_sufficiency_critic": "dynamic_final_gate_needs_audit",
+          "retrieval_critic": "dynamic_final_gate_needs_audit"
+        },
+        "evidence_sufficiency_critic_quality_status": "PASS",
+        "retrieval_critic_action": null,
+        "retrieval_critic_quality_status": "PASS",
+        "retrieval_critic_reason_codes": [
+          "dynamic_final_gate_retrieval_pattern_only_retrieval_groups",
+          "review_signals_present"
+        ]
+      },
+      "final_gate_summary": {
+        "dynamic_final_gate_quality_status": "PASS",
+        "dynamic_query_status": "DYNAMIC_FINAL_GATE_APPROVED",
+        "dynamic_summary_counts": {
+          "blocked_claim_count": 8,
+          "dynamic_final_gate_approved_count": 4,
+          "final_answer_allowed_count": 5,
+          "final_artifact_answer_count": 1
+        },
+        "final_policy_status": null
+      },
+      "graph_trace_summary": {
+        "channel_counts": {},
+        "enriched_page_count": 0,
+        "graph_query_present": false,
+        "original_graph_page_count": 0,
+        "plan_id": null,
+        "query_type": null,
+        "review_flags": [],
+        "sample_pages": []
+      },
+      "leiden_navigation_summary": {
+        "leiden_navigation_bridge_quality_status": "PASS",
+        "leiden_navigation_hint_page_count": 0,
+        "page_navigation_hint_count": 506,
+        "retrieval_navigation_hint_count": 221
+      },
+      "needs_review": true,
+      "page_ids": [
+        "t_p_120_1176_p000432",
+        "t_p_120_1176_p000050",
+        "t_p_120_1176_p000267",
+        "t_p_120_1176_p000152",
+        "t_p_120_1176_p000494",
+        "t_p_120_1176_p000073",
+        "t_p_120_1176_p000307",
+        "t_p_120_1176_p000074"
+      ],
+      "query": "record of revisions",
+      "query_id": "record_of_revisions",
+      "retrieval_only": true,
+      "retrieval_summary": {
+        "exact_hit_group_count": 0,
+        "hybrid_query_present": true,
+        "ranked_group_count": 8,
+        "semantic_group_count": 8,
+        "top_groups": [
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000432",
+            "part_numbers": [],
+            "rank": 1,
+            "score": 0.823326,
+            "semantic_group_count": 1
+          },
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000050",
+            "part_numbers": [],
+            "rank": 2,
+            "score": 0.719156,
+            "semantic_group_count": 1
+          },
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000267",
+            "part_numbers": [],
+            "rank": 3,
+            "score": 0.716451,
+            "semantic_group_count": 2
+          },
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000152",
+            "part_numbers": [],
+            "rank": 4,
+            "score": 0.715339,
+            "semantic_group_count": 1
+          },
+          {
+            "exact_hit_count": 0,
+            "page_id": "t_p_120_1176_p000494",
+            "part_numbers": [],
+            "rank": 5,
+            "score": 0.692603,
+            "semantic_group_count": 2
+          }
+        ]
+      },
+      "review_reason_codes": [
+        "retrieval_critic_audit",
+        "claim_evidence_review"
+      ],
+      "safety_contract": {
+        "no_answer_permission": true,
+        "no_claim_proof_authority": true,
+        "no_opensearch_writes": true,
+        "no_postgres_writes": true,
+        "no_qdrant_writes": true,
+        "no_source_truth_mutation": true
+      },
+      "schema_version": "trace_net_ai_trace_pack_v1",
+      "source_trace_summary": {
+        "dublin_core_identity_page_count": 0,
+        "dublin_core_source_quality_status": "PASS",
+        "source_package_page_count": 509,
+        "source_resolved_page_count": 0
+      },
+      "source_truth_mutation_allowed": false,
+      "trace_pack_id": "trace_pack::record_of_revisions",
+      "trace_status": "TRACE_PACK_REVIEW_RECOMMENDED"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "claim_evidence_summary": {
+        "claim_count": 0,
+        "claim_evidence_entailment_quality_status": "PASS",
+        "claims_with_citation_count": 0,
+        "entailment_status_counts": {},
+        "human_review_escalation_count": 0,
+        "page_mismatch_review_count": 0,
+        "partial_claim_count": 0,
+        "sample_claims": [],
+        "supported_claim_count": 0
+      },
+      "critic_summary": {
+        "answer_claim_critic_quality_status": "PASS",
+        "critic_statuses": {
+          "answer_claim_critic": null,
+          "evidence_sufficiency_critic": null,
+          "retrieval_critic": null
+        },
+        "evidence_sufficiency_critic_quality_status": "PASS",
+        "retrieval_critic_action": null,
+        "retrieval_critic_quality_status": "PASS",
+        "retrieval_critic_reason_codes": []
+      },
+      "final_gate_summary": {
+        "dynamic_final_gate_quality_status": "PASS",
+        "dynamic_query_status": null,
+        "dynamic_summary_counts": {
+          "blocked_claim_count": 8,
+          "dynamic_final_gate_approved_count": 4,
+          "final_answer_allowed_count": 5,
+          "final_artifact_answer_count": 1
+        },
+        "final_policy_status": null
+      },
+      "graph_trace_summary": {
+        "channel_counts": {
+          "leiden_page_navigation_hint": 1,
+          "organization_graph": 1
+        },
+        "enriched_page_count": 1,
+        "graph_query_present": true,
+        "original_graph_page_count": 1,
+        "plan_id": "page_source_context_v1",
+        "query_type": "page_lookup",
+        "review_flags": [],
+        "sample_pages": [
+          {
+            "channels": [
+              "organization_graph",
+              "leiden_page_navigation_hint"
+            ],
+            "evidence_record_count": 1,
+            "has_dublin_core_identity": true,
+            "leiden_hint_count": 5,
+            "page_id": "t_p_120_1176_p000003",
+            "source_resolved": true
+          }
+        ]
+      },
+      "leiden_navigation_summary": {
+        "leiden_navigation_bridge_quality_status": "PASS",
+        "leiden_navigation_hint_page_count": 1,
+        "page_navigation_hint_count": 506,
+        "retrieval_navigation_hint_count": 221
+      },
+      "needs_review": false,
+      "page_ids": [
+        "t_p_120_1176_p000003"
+      ],
+      "query": "t_p_120_1176_p000003",
+      "query_id": "page_t_p_120_1176_p000003",
+      "retrieval_only": true,
+      "retrieval_summary": {
+        "exact_hit_group_count": 0,
+        "hybrid_query_present": false,
+        "ranked_group_count": 0,
+        "semantic_group_count": 0,
+        "top_groups": []
+      },
+      "review_reason_codes": [],
+      "safety_contract": {
+        "no_answer_permission": true,
+        "no_claim_proof_authority": true,
+        "no_opensearch_writes": true,
+        "no_postgres_writes": true,
+        "no_qdrant_writes": true,
+        "no_source_truth_mutation": true
+      },
+      "schema_version": "trace_net_ai_trace_pack_v1",
+      "source_trace_summary": {
+        "dublin_core_identity_page_count": 1,
+        "dublin_core_source_quality_status": "PASS",
+        "source_package_page_count": 509,
+        "source_resolved_page_count": 1
+      },
+      "source_truth_mutation_allowed": false,
+      "trace_pack_id": "trace_pack::page_t_p_120_1176_p000003",
+      "trace_status": "TRACE_PACK_READY"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "claim_evidence_summary": {
+        "claim_count": 0,
+        "claim_evidence_entailment_quality_status": "PASS",
+        "claims_with_citation_count": 0,
+        "entailment_status_counts": {},
+        "human_review_escalation_count": 0,
+        "page_mismatch_review_count": 0,
+        "partial_claim_count": 0,
+        "sample_claims": [],
+        "supported_claim_count": 0
+      },
+      "critic_summary": {
+        "answer_claim_critic_quality_status": "PASS",
+        "critic_statuses": {
+          "answer_claim_critic": null,
+          "evidence_sufficiency_critic": null,
+          "retrieval_critic": null
+        },
+        "evidence_sufficiency_critic_quality_status": "PASS",
+        "retrieval_critic_action": null,
+        "retrieval_critic_quality_status": "PASS",
+        "retrieval_critic_reason_codes": []
+      },
+      "final_gate_summary": {
+        "dynamic_final_gate_quality_status": "PASS",
+        "dynamic_query_status": null,
+        "dynamic_summary_counts": {
+          "blocked_claim_count": 8,
+          "dynamic_final_gate_approved_count": 4,
+          "final_answer_allowed_count": 5,
+          "final_artifact_answer_count": 1
+        },
+        "final_policy_status": null
+      },
+      "graph_trace_summary": {
+        "channel_counts": {},
+        "enriched_page_count": 0,
+        "graph_query_present": false,
+        "original_graph_page_count": 0,
+        "plan_id": null,
+        "query_type": null,
+        "review_flags": [],
+        "sample_pages": []
+      },
+      "leiden_navigation_summary": {
+        "leiden_navigation_bridge_quality_status": "PASS",
+        "leiden_navigation_hint_page_count": 0,
+        "page_navigation_hint_count": 506,
+        "retrieval_navigation_hint_count": 221
+      },
+      "needs_review": false,
+      "page_ids": [],
+      "query": "120_46137_001",
+      "query_id": "120_46137_001",
+      "retrieval_only": true,
+      "retrieval_summary": {
+        "exact_hit_group_count": 0,
+        "hybrid_query_present": false,
+        "ranked_group_count": 0,
+        "semantic_group_count": 0,
+        "top_groups": []
+      },
+      "review_reason_codes": [],
+      "safety_contract": {
+        "no_answer_permission": true,
+        "no_claim_proof_authority": true,
+        "no_opensearch_writes": true,
+        "no_postgres_writes": true,
+        "no_qdrant_writes": true,
+        "no_source_truth_mutation": true
+      },
+      "schema_version": "trace_net_ai_trace_pack_v1",
+      "source_trace_summary": {
+        "dublin_core_identity_page_count": 0,
+        "dublin_core_source_quality_status": "PASS",
+        "source_package_page_count": 509,
+        "source_resolved_page_count": 0
+      },
+      "source_truth_mutation_allowed": false,
+      "trace_pack_id": "trace_pack::120_46137_001",
+      "trace_status": "TRACE_PACK_READY"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "claim_evidence_summary": {
+        "claim_count": 0,
+        "claim_evidence_entailment_quality_status": "PASS",
+        "claims_with_citation_count": 0,
+        "entailment_status_counts": {},
+        "human_review_escalation_count": 0,
+        "page_mismatch_review_count": 0,
+        "partial_claim_count": 0,
+        "sample_claims": [],
+        "supported_claim_count": 0
+      },
+      "critic_summary": {
+        "answer_claim_critic_quality_status": "PASS",
+        "critic_statuses": {
+          "answer_claim_critic": null,
+          "evidence_sufficiency_critic": null,
+          "retrieval_critic": null
+        },
+        "evidence_sufficiency_critic_quality_status": "PASS",
+        "retrieval_critic_action": null,
+        "retrieval_critic_quality_status": "PASS",
+        "retrieval_critic_reason_codes": []
+      },
+      "final_gate_summary": {
+        "dynamic_final_gate_quality_status": "PASS",
+        "dynamic_query_status": null,
+        "dynamic_summary_counts": {
+          "blocked_claim_count": 8,
+          "dynamic_final_gate_approved_count": 4,
+          "final_answer_allowed_count": 5,
+          "final_artifact_answer_count": 1
+        },
+        "final_policy_status": null
+      },
+      "graph_trace_summary": {
+        "channel_counts": {},
+        "enriched_page_count": 0,
+        "graph_query_present": false,
+        "original_graph_page_count": 0,
+        "plan_id": null,
+        "query_type": null,
+        "review_flags": [],
+        "sample_pages": []
+      },
+      "leiden_navigation_summary": {
+        "leiden_navigation_bridge_quality_status": "PASS",
+        "leiden_navigation_hint_page_count": 0,
+        "page_navigation_hint_count": 506,
+        "retrieval_navigation_hint_count": 221
+      },
+      "needs_review": false,
+      "page_ids": [],
+      "query": "which_pages_discuss_manual_revision_history",
+      "query_id": "which_pages_discuss_manual_revision_history",
+      "retrieval_only": true,
+      "retrieval_summary": {
+        "exact_hit_group_count": 0,
+        "hybrid_query_present": false,
+        "ranked_group_count": 0,
+        "semantic_group_count": 0,
+        "top_groups": []
+      },
+      "review_reason_codes": [],
+      "safety_contract": {
+        "no_answer_permission": true,
+        "no_claim_proof_authority": true,
+        "no_opensearch_writes": true,
+        "no_postgres_writes": true,
+        "no_qdrant_writes": true,
+        "no_source_truth_mutation": true
+      },
+      "schema_version": "trace_net_ai_trace_pack_v1",
+      "source_trace_summary": {
+        "dublin_core_identity_page_count": 0,
+        "dublin_core_source_quality_status": "PASS",
+        "source_package_page_count": 509,
+        "source_resolved_page_count": 0
+      },
+      "source_truth_mutation_allowed": false,
+      "trace_pack_id": "trace_pack::which_pages_discuss_manual_revision_history",
+      "trace_status": "TRACE_PACK_READY"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "quality_checks": [
+    {
+      "detail": "source_eval_quality_status=PASS",
+      "name": "source_eval_quality_pass",
+      "ok": true
+    },
+    {
+      "detail": "records=200; minimum=200",
+      "name": "record_count",
+      "ok": true
+    },
+    {
+      "detail": "responses=200; minimum=200",
+      "name": "response_count",
+      "ok": true
+    },
+    {
+      "detail": "blank_responses=11; minimum=1",
+      "name": "blank_response_count",
+      "ok": true
+    },
+    {
+      "detail": "graph_paths=200; minimum=200",
+      "name": "graph_path_resolved_count",
+      "ok": true
+    },
+    {
+      "detail": "source_identity=200; minimum=200",
+      "name": "source_identity_resolved_count",
+      "ok": true
+    },
+    {
+      "detail": "qdrant_evaluated=200; minimum=200",
+      "name": "qdrant_evaluated_record_count",
+      "ok": true
+    },
+    {
+      "detail": "unsafe=0; max=0",
+      "name": "unsafe_response_count",
+      "ok": true
+    },
+    {
+      "detail": "answer_capable=0; max=0",
+      "name": "answer_capable_response_count",
+      "ok": true
+    },
+    {
+      "detail": "claim_proof=0; max=0",
+      "name": "claim_proof_response_count",
+      "ok": true
+    },
+    {
+      "detail": "mutations=0; max=0",
+      "name": "source_truth_mutation_allowed_count",
+      "ok": true
+    },
+    {
+      "detail": "write attempts must be zero",
+      "name": "no_write_attempts",
+      "ok": true
+    },
+    {
+      "detail": "can_answer_directly/can_prove_claims must be zero",
+      "name": "no_answer_permission",
+      "ok": true
+    }
+  ],
+  "quality_status": "PASS",
+  "summary": {
+    "answer_capable_response_count": 0,
+    "blank_record_count": 11,
+    "blank_response_count": 11,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "claim_proof_response_count": 0,
+    "graph_path_resolved_count": 200,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_evaluated_record_count": 200,
+    "qdrant_target_hit_at_k_count": 198,
+    "qdrant_target_hit_at_k_rate": 0.99,
+    "qdrant_write_attempt_count": 0,
+    "question_count": 200,
+    "record_count": 200,
+    "response_count": 200,
+    "review_flag_counts": {},
+    "role_counts": {
+      "blank": 11,
+      "front_matter": 9,
+      "page_context": 146,
+      "parts_list": 32,
+      "table_or_grid": 1,
+      "visual_or_diagram": 1
+    },
+    "schema_version": "trace_net_page_query_response_dataset_v1",
+    "source_eval_context_v2_query_count": 200,
+    "source_eval_evaluated_record_count": 200,
+    "source_eval_graph_path_resolved_count": 200,
+    "source_eval_quality_status": "PASS",
+    "source_eval_query_record_count": 200,
+    "source_eval_status": "PAGE_RETRIEVAL_LARGE_EVAL_V2_BUILT",
+    "source_eval_target_hit_at_k_rate": 0.99,
+    "source_identity_resolved_count": 200,
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_response_count": 0
+  }
+}

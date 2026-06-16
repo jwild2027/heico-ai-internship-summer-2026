@@ -1,0 +1,294 @@
+{
+  "judge_records": [
+    {
+      "blank_correct": false,
+      "blank_expected": true,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "community_as_proof": false,
+      "elapsed_seconds": 34.959,
+      "evaluated": true,
+      "expected_answer_behavior": "LLM_MUST_FOLLOW_GRAPH_PATH_AND_STATE_PAGE_IS_BLANK_OR_EMPTY",
+      "graph_path_followed": false,
+      "graph_path_resolved": true,
+      "json_format_valid": false,
+      "judge_record_id": "llm_graph_path_judge::99b6f921411c4962",
+      "llm_claimed_answer_permission": false,
+      "llm_claimed_claim_proof_authority": false,
+      "llm_question": "Using the TRACE-Net graph path, locate page 2 of EMB CMM ATA 25-21-00 REV.4. What is on this page? If it is blank, say the page is blank.",
+      "local_path_leak": false,
+      "malformed_json": false,
+      "needs_review": true,
+      "page_id": "t_p_120_1176_p000002",
+      "page_number": 2,
+      "parse_error": "no_json_object_found",
+      "passed": false,
+      "prompt_mode": "checklist",
+      "prompt_preview": "You are TRACE-Net compliance checker. Fill the checklist only. Return exactly one compact JSON object. No prose. No markdown. No code fence. Do not create extra keys. Do not repeat words. TARGET_PAGE_ID_EXACT: t_p_120_1176_p000002 TARGET_PAGE_NUMBER: 2 SOURCE_PACKAGE_ENTRY: 00000002.tif SOURCE_PACKAGE_LABEL: EMB CMM ATA 25-21-00 REV.4 BLANK_EXPECTED: true USER_QUESTION: Using the TRACE-Net graph path, locate page 2 of EMB CMM ATA 25-21-00 REV.4. What is on this page? If it is blank, say the page is blank. PAGE_CONTEXT_SUMMARY: Required graph path that must be followed before any answer: Page node page:t_p_120_1176_p000002 -> SourceLink / Dublin Core source package entry -> source-resolved evidence. Retrieval, Qdrant, Leiden, communities, and categories are routing signals only. They are not proof. If BLANK_EXPECTED is true, answer must explicitly say the page is blank or empty. Return...",
+      "query_type": "blank_page_graph_check",
+      "raw_response_preview": "{\"target_page_id\": \"t_p_12లు0_1176_p000002\", \"target_page_id_entry_seen\": \"true\", \"target_manually-de-duplication-de-duplication-de-duplication-de-duplication-de-duplication-de-duplication-de-duplication-de-duplication-de-duplication-de-duplication-de-duplication-de-duplication-de-de-duplication-de-de-duplication-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-de-",
+      "retrieval_as_proof": false,
+      "sample_index": 1,
+      "source_identity_confirmed": false,
+      "source_truth_mutation_allowed": false,
+      "target_page_id_mentioned": false,
+      "text_fallback_used": true,
+      "violations": [
+        "graph_path_not_followed",
+        "target_page_id_not_mentioned",
+        "source_identity_not_confirmed",
+        "blank_page_not_declared"
+      ]
+    },
+    {
+      "blank_correct": true,
+      "blank_expected": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "community_as_proof": false,
+      "elapsed_seconds": 10.772,
+      "evaluated": true,
+      "expected_answer_behavior": "LLM_MUST_FOLLOW_GRAPH_PATH_AND_SUMMARIZE_SOURCE_LINKED_PAGE_ONLY",
+      "graph_path_followed": true,
+      "graph_path_resolved": true,
+      "json_format_valid": true,
+      "judge_record_id": "llm_graph_path_judge::e738f7c0314e58ce",
+      "llm_claimed_answer_permission": false,
+      "llm_claimed_claim_proof_authority": false,
+      "llm_question": "Using the TRACE-Net graph path, locate page 1 of EMB CMM ATA 25-21-00 REV.4 and summarize what the source-linked page contains.",
+      "local_path_leak": false,
+      "malformed_json": false,
+      "needs_review": false,
+      "page_id": "t_p_120_1176_p000001",
+      "page_number": 1,
+      "parse_error": null,
+      "parsed_response": {
+        "answer": "Page 1 of EMB CMM ATA 25-21-00 REV.4 (00000001.tif) contains the title page and document identification information.",
+        "blank_page_statement": "",
+        "graph_path_followed": true,
+        "needs_review": false,
+        "source_identity_confirmed": true,
+        "source_package_entry_used": "00000001.tif",
+        "source_truth_mutation_allowed": false,
+        "target_<channel|>```json} { ": "t_p_120_1176_p000001",
+        "target_page_id_seen": true,
+        "used_leiden_or_community_as_proof": false,
+        "used_retrieval_as_proof": false,
+        "violations": []
+      },
+      "passed": true,
+      "prompt_mode": "checklist",
+      "prompt_preview": "You are TRACE-Net compliance checker. Fill the checklist only. Return exactly one compact JSON object. No prose. No markdown. No code fence. Do not create extra keys. Do not repeat words. TARGET_PAGE_ID_EXACT: t_p_120_1176_p000001 TARGET_PAGE_NUMBER: 1 SOURCE_PACKAGE_ENTRY: 00000001.tif SOURCE_PACKAGE_LABEL: EMB CMM ATA 25-21-00 REV.4 BLANK_EXPECTED: false USER_QUESTION: Using the TRACE-Net graph path, locate page 1 of EMB CMM ATA 25-21-00 REV.4 and summarize what the source-linked page contains. PAGE_CONTEXT_SUMMARY: Required graph path that must be followed before any answer: Page node page:t_p_120_1176_p000001 -> SourceLink / Dublin Core source package entry -> source-resolved evidence. Retrieval, Qdrant, Leiden, communities, and categories are routing signals only. They are not proof. If BLANK_EXPECTED is false, answer must briefly describe the source-linked page only. Return exac...",
+      "query_type": "page_source_context_graph_check",
+      "raw_response_preview": "{\"target_<channel|>```json} { \": \"t_p_120_1176_p000001\", \"target_page_id_seen\": true, \"graph_path_followed\": true, \"source_identity_confirmed\": true, \"source_package_entry_used\": \"00000001.tif\", \"blank_page_statement\": \"\", \"answer\": \"Page 1 of EMB CMM ATA 25-21-00 REV.4 (00000001.tif) contains the title page and document identification information.\", \"needs_review\": false, \"used_retrieval_as_proof\": false, \"used_leiden_or_community_as_proof\": false, \"source_truth_mutation_allowed\": false, \"violations\": [] }",
+      "retrieval_as_proof": false,
+      "sample_index": 2,
+      "source_identity_confirmed": true,
+      "source_truth_mutation_allowed": false,
+      "target_page_id_mentioned": true,
+      "text_fallback_used": false,
+      "violations": []
+    },
+    {
+      "blank_correct": true,
+      "blank_expected": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "community_as_proof": false,
+      "elapsed_seconds": 5.495,
+      "evaluated": true,
+      "expected_answer_behavior": "LLM_MUST_FOLLOW_GRAPH_PATH_AND_SUMMARIZE_SOURCE_LINKED_PAGE_ONLY",
+      "graph_path_followed": false,
+      "graph_path_resolved": true,
+      "json_format_valid": true,
+      "judge_record_id": "llm_graph_path_judge::8b0798b662dbcb52",
+      "llm_claimed_answer_permission": false,
+      "llm_claimed_claim_proof_authority": false,
+      "llm_question": "Using the TRACE-Net graph path, locate page 3 of EMB CMM ATA 25-21-00 REV.4 and summarize what the source-linked page contains.",
+      "local_path_leak": false,
+      "malformed_json": false,
+      "needs_review": false,
+      "page_id": "t_p_120_1176_p000003",
+      "page_number": 3,
+      "parse_error": null,
+      "parsed_response": {
+        "target_<channel|>```json way to represent the JSON object is as follows: 1.  `target_page_id`: ": "t_p_120_1176_p000003"
+      },
+      "passed": false,
+      "prompt_mode": "checklist",
+      "prompt_preview": "You are TRACE-Net compliance checker. Fill the checklist only. Return exactly one compact JSON object. No prose. No markdown. No code fence. Do not create extra keys. Do not repeat words. TARGET_PAGE_ID_EXACT: t_p_120_1176_p000003 TARGET_PAGE_NUMBER: 3 SOURCE_PACKAGE_ENTRY: 00000003.tif SOURCE_PACKAGE_LABEL: EMB CMM ATA 25-21-00 REV.4 BLANK_EXPECTED: false USER_QUESTION: Using the TRACE-Net graph path, locate page 3 of EMB CMM ATA 25-21-00 REV.4 and summarize what the source-linked page contains. PAGE_CONTEXT_SUMMARY: Required graph path that must be followed before any answer: Page node page:t_p_120_1176_p000003 -> SourceLink / Dublin Core source package entry -> source-resolved evidence. Retrieval, Qdrant, Leiden, communities, and categories are routing signals only. They are not proof. If BLANK_EXPECTED is false, answer must briefly describe the source-linked page only. Return exac...",
+      "query_type": "page_source_context_graph_check",
+      "raw_response_preview": "{\"target_<channel|>```json way to represent the JSON object is as follows: 1. `target_page_id`: \":\"t_p_120_1176_p000003\" }",
+      "retrieval_as_proof": false,
+      "sample_index": 3,
+      "source_identity_confirmed": false,
+      "source_truth_mutation_allowed": false,
+      "target_page_id_mentioned": true,
+      "text_fallback_used": false,
+      "violations": [
+        "graph_path_not_followed",
+        "source_identity_not_confirmed"
+      ]
+    }
+  ],
+  "quality_checks": [
+    {
+      "detail": "sampled=3; minimum=3",
+      "name": "sampled_record_count",
+      "ok": true
+    },
+    {
+      "detail": "evaluated=3; minimum=3",
+      "name": "evaluated_record_count",
+      "ok": true
+    },
+    {
+      "detail": "followed=1; minimum=1",
+      "name": "graph_path_followed_count",
+      "ok": true
+    },
+    {
+      "detail": "target_mentions=2; minimum=1",
+      "name": "target_page_id_mentioned_count",
+      "ok": true
+    },
+    {
+      "detail": "source_identity=1; minimum=2",
+      "name": "source_identity_confirmed_count",
+      "ok": false
+    },
+    {
+      "detail": "blank_correct=0; minimum=1",
+      "name": "blank_correct_count",
+      "ok": false
+    },
+    {
+      "detail": "malformed=0; max=1",
+      "name": "malformed_json_response_count",
+      "ok": true
+    },
+    {
+      "detail": "unsafe=0; max=0",
+      "name": "unsafe_response_count",
+      "ok": true
+    },
+    {
+      "detail": "retrieval_as_proof=0; max=0",
+      "name": "retrieval_as_proof_count",
+      "ok": true
+    },
+    {
+      "detail": "community_as_proof=0; max=0",
+      "name": "community_as_proof_count",
+      "ok": true
+    },
+    {
+      "detail": "source_truth_mutation_allowed=0; max=0",
+      "name": "source_truth_mutation_allowed_count",
+      "ok": true
+    },
+    {
+      "detail": "source_eval_quality_status=PASS",
+      "name": "source_eval_quality_pass",
+      "ok": true
+    },
+    {
+      "detail": "can_answer_directly=0; can_prove_claims=0",
+      "name": "no_answer_permission",
+      "ok": true
+    }
+  ],
+  "quality_status": "FAIL",
+  "safety_contract": {
+    "answer_permission": false,
+    "claim_proof_authority": false,
+    "opensearch_writes": false,
+    "postgres_writes": false,
+    "qdrant_writes": false,
+    "source_truth_mutation": false
+  },
+  "sampled_cards": [
+    {
+      "expected_answer_behavior": "LLM_MUST_FOLLOW_GRAPH_PATH_AND_STATE_PAGE_IS_BLANK_OR_EMPTY",
+      "graph_path_resolved": true,
+      "llm_graph_path_prompt": "You are TRACE-Net. You must locate the answer by following the approved graph path before answering. User question: Using the TRACE-Net graph path, locate page 2 of EMB CMM ATA 25-21-00 REV.4. What is on this page? If it is blank, say the page is blank. Required graph path: 1. Resolve target page node: page:t_p_120_1176_p000002 2. Follow page_source_context_v1: Page -> SourceLink / Dublin Core source package entry 3. Confirm source identity before summarizing. 4. Use retrieval/Qdrant only as routing help, not proof. 5. Do not use Leiden/community/category hints as proof. 6. Do not answer if the graph/source path is missing; return NEEDS_REVIEW instead. Target page: t_p_120_1176_p000002 Target page number: 2 Source package entry: 00000002.tif Page context summary: Page 2 from T.P. 120/1176 in ATA 25-21-00 has empty OCR text. Retrieval cues: 25-21-00; ocr page; blank; empty or blank page; empty; text; empty_or_blank_page; TRACE-Net; context; retrieval; helper.; Use: Expected answer behavior: LLM_MUST_FOLLOW_GRAPH_PATH_AND_STATE_PAGE_IS_BLANK_OR_EMPTY Blank expected: True Return compact JSON only with keys: status, graph_path_followed, page_id, source_identity_checked, answer, citations, needs_review, reason_codes. If the page is blank, the answer must explicitly say the page is blank or empty.",
+      "llm_question": "Using the TRACE-Net graph path, locate page 2 of EMB CMM ATA 25-21-00 REV.4. What is on this page? If it is blank, say the page is blank.",
+      "page_id": "t_p_120_1176_p000002",
+      "page_number": 2,
+      "query_type": "blank_page_graph_check"
+    },
+    {
+      "expected_answer_behavior": "LLM_MUST_FOLLOW_GRAPH_PATH_AND_SUMMARIZE_SOURCE_LINKED_PAGE_ONLY",
+      "graph_path_resolved": true,
+      "llm_graph_path_prompt": "You are TRACE-Net. You must locate the answer by following the approved graph path before answering. User question: Using the TRACE-Net graph path, locate page 1 of EMB CMM ATA 25-21-00 REV.4 and summarize what the source-linked page contains. Required graph path: 1. Resolve target page node: page:t_p_120_1176_p000001 2. Follow page_source_context_v1: Page -> SourceLink / Dublin Core source package entry 3. Confirm source identity before summarizing. 4. Use retrieval/Qdrant only as routing help, not proof. 5. Do not use Leiden/community/category hints as proof. 6. Do not answer if the graph/source path is missing; return NEEDS_REVIEW instead. Target page: t_p_120_1176_p000001 Target page number: 1 Source package entry: 00000001.tif Page context summary: This page contains the title block, revision history, and manufacturer contact information for technical manual T.P. 120/1176. Retrieval cues: T.P. 120/1176; Revision 4; Embraer; ATA 25-21-00; manual revision history; title block; supersedes; Ira de Aeronautica S.A.; What is the latest revision date for manual T.P. 120/1176?; Which company is responsible for this technical manual?; What is the ATA chapter associated with this document?; Which previous versions of this manual does Revision 4 supersede? Expected answer behavior: LLM_MUST_FOLLOW_GRAPH_PATH_AND_SUMMARIZE_SOURCE_LINKED_PAGE_ONLY Blank expected: False Return compact JSON only with keys: status, graph_path_followed, page_id, source_identity_checked, answer, citations, needs_review, reason_codes. If the page is blank, the answer must explicitly say the page is blank or empty.",
+      "llm_question": "Using the TRACE-Net graph path, locate page 1 of EMB CMM ATA 25-21-00 REV.4 and summarize what the source-linked page contains.",
+      "page_id": "t_p_120_1176_p000001",
+      "page_number": 1,
+      "query_type": "page_source_context_graph_check"
+    },
+    {
+      "expected_answer_behavior": "LLM_MUST_FOLLOW_GRAPH_PATH_AND_SUMMARIZE_SOURCE_LINKED_PAGE_ONLY",
+      "graph_path_resolved": true,
+      "llm_graph_path_prompt": "You are TRACE-Net. You must locate the answer by following the approved graph path before answering. User question: Using the TRACE-Net graph path, locate page 3 of EMB CMM ATA 25-21-00 REV.4 and summarize what the source-linked page contains. Required graph path: 1. Resolve target page node: page:t_p_120_1176_p000003 2. Follow page_source_context_v1: Page -> SourceLink / Dublin Core source package entry 3. Confirm source identity before summarizing. 4. Use retrieval/Qdrant only as routing help, not proof. 5. Do not use Leiden/community/category hints as proof. 6. Do not answer if the graph/source path is missing; return NEEDS_REVIEW instead. Target page: t_p_120_1176_p000003 Target page number: 3 Source package entry: 00000003.tif Page context summary: This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope. Retrieval cues: part numbers; applicability; maintenance; parts list; applicability part list; effectivity; covered part numbers; publication covers part numbers; text; i/ii; source; strip Expected answer behavior: LLM_MUST_FOLLOW_GRAPH_PATH_AND_SUMMARIZE_SOURCE_LINKED_PAGE_ONLY Blank expected: False Return compact JSON only with keys: status, graph_path_followed, page_id, source_identity_checked, answer, citations, needs_review, reason_codes. If the page is blank, the answer must explicitly say the page is blank or empty.",
+      "llm_question": "Using the TRACE-Net graph path, locate page 3 of EMB CMM ATA 25-21-00 REV.4 and summarize what the source-linked page contains.",
+      "page_id": "t_p_120_1176_p000003",
+      "page_number": 3,
+      "query_type": "page_source_context_graph_check"
+    }
+  ],
+  "schema_version": "trace_net_llm_graph_path_compliance_judge_v1",
+  "source_artifacts": {
+    "eval_report_path": "local_data/organization/trace_net/page_retrieval_large_eval_v2/trace_net_page_retrieval_large_eval_v2.json"
+  },
+  "status": "LLM_GRAPH_PATH_COMPLIANCE_JUDGE_BUILT",
+  "summary": {
+    "allow_text_fallback": true,
+    "blank_correct_count": 0,
+    "blank_evaluated_count": 1,
+    "blank_sampled_count": 1,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "community_as_proof_count": 0,
+    "evaluated_record_count": 3,
+    "graph_path_followed_count": 1,
+    "json_format_valid_count": 2,
+    "json_format_violation_count": 1,
+    "llm_claimed_answer_permission_count": 0,
+    "llm_claimed_claim_proof_authority_count": 0,
+    "local_path_leak_count": 0,
+    "malformed_json_response_count": 0,
+    "ollama_model": "gemma4:26b",
+    "ollama_num_ctx": 4096,
+    "ollama_num_predict": 300,
+    "ollama_retries": 2,
+    "ollama_url": "http://localhost:11434",
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "records_path": "local_data\\organization\\trace_net\\llm_graph_path_compliance_judge\\trace_net_llm_graph_path_compliance_judge_v1_records.jsonl",
+    "responses_path": "local_data\\organization\\trace_net\\llm_graph_path_compliance_judge\\trace_net_llm_graph_path_compliance_judge_v1_responses.jsonl",
+    "retrieval_as_proof_count": 0,
+    "review_recommended_count": 2,
+    "run_ollama": true,
+    "sampled_record_count": 3,
+    "schema_version": "trace_net_llm_graph_path_compliance_judge_v1",
+    "source_eval_graph_path_resolved_count": 170,
+    "source_eval_llm_graph_path_card_count": 170,
+    "source_eval_quality_status": "PASS",
+    "source_eval_query_record_count": 170,
+    "source_eval_status": "PAGE_RETRIEVAL_LARGE_EVAL_V2_BUILT",
+    "source_eval_target_hit_at_k_rate": 0.994118,
+    "source_identity_confirmed_count": 1,
+    "source_truth_mutation_allowed_count": 0,
+    "target_page_id_mentioned_count": 2,
+    "text_fallback_used_count": 1,
+    "unsafe_response_count": 0,
+    "use_checklist_prompt": true,
+    "violation_counts": {
+      "blank_page_not_declared": 1,
+      "graph_path_not_followed": 2,
+      "source_identity_not_confirmed": 2,
+      "target_page_id_not_mentioned": 1
+    }
+  }
+}

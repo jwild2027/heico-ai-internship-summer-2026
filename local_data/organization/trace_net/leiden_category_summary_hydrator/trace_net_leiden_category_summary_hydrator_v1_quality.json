@@ -1,0 +1,52 @@
+{
+  "issues": [],
+  "quality_status": "PASS",
+  "schema_version": "trace_net_leiden_category_summary_hydrator_v1",
+  "status": "LEIDEN_CATEGORY_SUMMARY_HYDRATED",
+  "summary": {
+    "algorithm": "trace_net_leiden_category_summary_rollup_v1",
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "category_as_proof_count": 0,
+    "category_summary_hydrated_count": 223,
+    "community_as_proof_count": 0,
+    "community_hydration_record_count": 229,
+    "dominant_category_counts": {
+      "community_navigation": 40,
+      "table_evidence": 40,
+      "visual_evidence": 143
+    },
+    "effective_page_count": 509,
+    "low_category_coherence_count": 51,
+    "missing_category_summary_count": 6,
+    "missing_page_membership_count": 6,
+    "navigation_intent_counts": {
+      "mixed_evidence_navigation": 45,
+      "part_family_navigation": 101,
+      "table_evidence_navigation": 20,
+      "visual_evidence_navigation": 63
+    },
+    "opensearch_write_attempt_count": 0,
+    "page_category_profile_count": 509,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "retrieval_only_answer_allowed_count": 0,
+    "review_recommended_community_count": 57,
+    "risk_flag_counts": {
+      "low_category_coherence": 51,
+      "missing_category_summary": 6,
+      "missing_page_membership": 6
+    },
+    "schema_version": "trace_net_leiden_category_summary_hydrator_v1",
+    "source_leiden_community_count": 229,
+    "source_quality_statuses": {
+      "category_aware_leiden_overlay": "PASS",
+      "dublin_core_refined": "PASS",
+      "element_category_taxonomy": "PASS",
+      "graph_ui_community_overlay": "PASS",
+      "leiden_community_quality_audit": "PASS",
+      "leiden_graph_communities": "PASS"
+    },
+    "source_truth_mutation_allowed_count": 0
+  }
+}

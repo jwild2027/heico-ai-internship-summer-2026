@@ -1,0 +1,167 @@
+{
+  "quality_checks": [
+    {
+      "detail": "source_dataset_quality_status=PASS",
+      "name": "source_dataset_quality_pass",
+      "ok": true
+    },
+    {
+      "detail": "metadata_xml_present=True",
+      "name": "metadata_xml_present",
+      "ok": true
+    },
+    {
+      "detail": "records=200; minimum=200",
+      "name": "record_count",
+      "ok": true
+    },
+    {
+      "detail": "responses=200; minimum=200",
+      "name": "response_count",
+      "ok": true
+    },
+    {
+      "detail": "zip entries=200; minimum=200",
+      "name": "zip_entry_resolved_count",
+      "ok": true
+    },
+    {
+      "detail": "METS entries=200; minimum=200",
+      "name": "mets_file_entry_resolved_count",
+      "ok": true
+    },
+    {
+      "detail": "checksum verified=200; minimum=200",
+      "name": "checksum_verified_count",
+      "ok": true
+    },
+    {
+      "detail": "size matches=200; minimum=200",
+      "name": "size_match_count",
+      "ok": true
+    },
+    {
+      "detail": "response page anchors=200; minimum=200",
+      "name": "response_page_anchor_count",
+      "ok": true
+    },
+    {
+      "detail": "response source entry anchors=200; minimum=200",
+      "name": "response_source_entry_anchor_count",
+      "ok": true
+    },
+    {
+      "detail": "blank answer cross refs=11; minimum=1",
+      "name": "blank_answer_cross_reference_count",
+      "ok": true
+    },
+    {
+      "detail": "missing zip entries=0; maximum=0",
+      "name": "missing_zip_entry_count",
+      "ok": true
+    },
+    {
+      "detail": "missing METS entries=0; maximum=0",
+      "name": "missing_mets_entry_count",
+      "ok": true
+    },
+    {
+      "detail": "checksum mismatches=0; maximum=0",
+      "name": "checksum_mismatch_count",
+      "ok": true
+    },
+    {
+      "detail": "size mismatches=0; maximum=0",
+      "name": "size_mismatch_count",
+      "ok": true
+    },
+    {
+      "detail": "wrong source entries=0; maximum=0",
+      "name": "wrong_source_entry_count",
+      "ok": true
+    },
+    {
+      "detail": "unsafe responses=0; maximum=0",
+      "name": "unsafe_response_count",
+      "ok": true
+    },
+    {
+      "detail": "answer capable responses=0; maximum=0",
+      "name": "answer_capable_response_count",
+      "ok": true
+    },
+    {
+      "detail": "claim proof responses=0; maximum=0",
+      "name": "claim_proof_response_count",
+      "ok": true
+    },
+    {
+      "detail": "source mutations=0; maximum=0",
+      "name": "source_truth_mutation_allowed_count",
+      "ok": true
+    },
+    {
+      "detail": "write attempts must be zero",
+      "name": "no_write_attempts",
+      "ok": true
+    },
+    {
+      "detail": "can_answer_directly/can_prove_claims must be zero",
+      "name": "no_answer_permission",
+      "ok": true
+    }
+  ],
+  "quality_status": "PASS",
+  "schema_version": "trace_net_page_query_response_source_cross_reference_v1",
+  "status": "PAGE_QUERY_RESPONSE_SOURCE_CROSS_REFERENCE_BUILT",
+  "summary": {
+    "answer_capable_response_count": 0,
+    "blank_answer_cross_reference_count": 11,
+    "blank_record_count": 11,
+    "blank_response_missing_blank_or_empty_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "checksum_mismatch_count": 0,
+    "checksum_verified_count": 200,
+    "claim_proof_response_count": 0,
+    "cross_reference_pass_count": 200,
+    "cross_reference_review_count": 0,
+    "expected_source_entry_match_count": 200,
+    "metadata_xml_name": "metadata.xml",
+    "metadata_xml_present": true,
+    "metadata_zip_path": "C:\\Users\\juswil\\Desktop\\metadata.zip",
+    "mets_file_entry_count": 509,
+    "mets_file_entry_resolved_count": 200,
+    "missing_mets_entry_count": 0,
+    "missing_zip_entry_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "question_count": 200,
+    "record_count": 200,
+    "response_count": 200,
+    "response_missing_page_id_anchor_count": 0,
+    "response_missing_source_entry_anchor_count": 0,
+    "response_page_anchor_count": 200,
+    "response_source_entry_anchor_count": 200,
+    "schema_version": "trace_net_page_query_response_source_cross_reference_v1",
+    "size_match_count": 200,
+    "size_mismatch_count": 0,
+    "source_dataset_graph_path_resolved_count": 200,
+    "source_dataset_quality_status": "PASS",
+    "source_dataset_record_count": 200,
+    "source_dataset_response_count": 200,
+    "source_dataset_source_identity_resolved_count": 200,
+    "source_dataset_status": "PAGE_QUERY_RESPONSE_DATASET_BUILT",
+    "source_package_file_count": 510,
+    "source_package_label": "EMB CMM ATA 25-21-00 REV.4",
+    "source_package_objid": "heico001/00003594/00000027",
+    "source_package_tiff_count": 509,
+    "source_package_type": "ResCarta Monograph Metadata v3.1",
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_response_count": 0,
+    "validation_flag_counts": {},
+    "wrong_source_entry_count": 0,
+    "zip_entry_resolved_count": 200
+  }
+}

@@ -4,15 +4,15 @@
   "summary": {
     "status": "OK",
     "version": "trace_net_page_context_v2_quality_v1",
-    "context_v2_records": 50,
-    "pages_with_context_v2": 50,
-    "records_with_retrieval_cues": 50,
-    "records_with_answerable_questions": 46,
+    "context_v2_records": 170,
+    "pages_with_context_v2": 170,
+    "records_with_retrieval_cues": 170,
+    "records_with_answerable_questions": 161,
     "direct_answer_context_records": 0,
     "canonical_source_truth_context_records": 0,
     "source_truth_mutation_records": 0,
-    "context_v2_graph_nodes": 50,
-    "has_context_v2_edges": 50
+    "context_v2_graph_nodes": 170,
+    "has_context_v2_edges": 170
   },
   "checks": [
     {
@@ -23,22 +23,22 @@
     {
       "name": "context_v2_records",
       "ok": true,
-      "detail": "records=50; minimum=50"
+      "detail": "records=170; minimum=170"
     },
     {
       "name": "pages_with_context_v2",
       "ok": true,
-      "detail": "pages=50; minimum=50"
+      "detail": "pages=170; minimum=170"
     },
     {
       "name": "records_with_retrieval_cues",
       "ok": true,
-      "detail": "cues=50; minimum=40"
+      "detail": "cues=170; minimum=136"
     },
     {
       "name": "records_with_answerable_questions",
       "ok": true,
-      "detail": "questions=46; minimum=40"
+      "detail": "questions=161; minimum=136"
     },
     {
       "name": "direct_answer_context_records",
@@ -58,12 +58,12 @@
     {
       "name": "context_v2_graph_nodes",
       "ok": true,
-      "detail": "graph_nodes=50; minimum=50"
+      "detail": "graph_nodes=170; minimum=170"
     },
     {
       "name": "has_context_v2_edges",
       "ok": true,
-      "detail": "graph_edges=50; minimum=50"
+      "detail": "graph_edges=170; minimum=170"
     }
   ]
 }

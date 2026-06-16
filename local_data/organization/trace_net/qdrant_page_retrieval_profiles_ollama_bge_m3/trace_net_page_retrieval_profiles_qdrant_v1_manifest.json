@@ -1,13 +1,13 @@
 {
-  "collection": "trace_net_page_retrieval_profiles_v1",
+  "collection": "trace_net_page_retrieval_profiles_ollama_bge_m3_v1",
   "dry_run": false,
   "embedding_dim": 1024,
   "embedding_mode": "ollama",
   "embedding_model": "bge-m3:latest",
-  "generated_at_utc": "2026-06-08T19:18:26Z",
+  "generated_at_utc": "2026-06-16T14:54:06Z",
   "loaded_point_count": 509,
   "points_preview_path": "local_data\\organization\\trace_net\\qdrant_page_retrieval_profiles_ollama_bge_m3\\trace_net_page_retrieval_profiles_qdrant_v1_points_preview.jsonl",
-  "points_preview_sha256": "57f7e543596570955ce80d55fb29fcd08889c02c163e30f60bb874b1098f085e",
+  "points_preview_sha256": "d655bcae2df8db03c610319f1a6658878ea13f3223fea3a9b6aba5b4e0a675f3",
   "profiles_quality_status": "PASS",
   "profiles_record_count": 509,
   "progress_enabled": true,
@@ -21,7 +21,7 @@
   "summary": {
     "answer_capable_payload_count": 0,
     "claim_proof_payload_count": 0,
-    "context_v2_point_count": 50,
+    "context_v2_point_count": 200,
     "embedding_answer_authority_allowed_count": 0,
     "missing_embedding_candidate_id_count": 0,
     "missing_page_id_count": 0,
@@ -39,5 +39,5 @@
     "source_truth_payload_count": 0
   },
   "summary_path": "local_data\\organization\\trace_net\\qdrant_page_retrieval_profiles_ollama_bge_m3\\trace_net_page_retrieval_profiles_qdrant_v1_summary.json",
-  "summary_sha256": "40f2f42b3f0d5ec2c65ade96da391b1e7303d17a475a6a4eac4ab6e4d946e2d3"
+  "summary_sha256": "1e5c9118aaf48088e678915b1929c325db68c3405a5a070b7d5cb4b87b7f5ade"
 }
