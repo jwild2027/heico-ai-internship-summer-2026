@@ -13,8 +13,8 @@ Status: **OK**
 
 ## Samples
 
-### t_p_120_1176_p000170 / parts_list_|_single_passenger_seat_assembly / itemized_components
+### t_p_120_1176_p000200 / parts_list|figure / trim_components_identification
 
-This page should be retrieved when searching for part numbers, quantities, or stock codes related to passenger seat components, specifically the snack table folding kit, armrest lining assembly, ashtray, and fastener button hardware.
+Use this page to identify part numbers, quantities, and effectivity for seat trim pieces, specifically front/rear trims and armrest-related parts for the double passenger seat assembly.
 
-Retrieval cues: single passenger seat assembly, 120-36833-515, snack table folding kit, armrest lining assembly, fastener button male, ashtray, parts list, ATA 25-21-00, 120-37735-001, AM03078-22
+Retrieval cues: seat trim, front trim, rear trim, fixed armrest, movable armrest, nylon plug, PE17001-3PR, 120-61548-507, 120-50648-549, Figure 31A, ATA 25-21-00

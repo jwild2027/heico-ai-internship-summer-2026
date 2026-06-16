@@ -219,8 +219,6 @@ Required JSON keys:
   "used_retrieval_as_proof": false,
   "used_leiden_or_community_as_proof": false,
   "source_truth_mutation_allowed": false,
-  "can_answer_directly": false,
-  "can_prove_claims": false,
   "evidence_page_ids": ["{page_id}"],
   "source_refs": ["source/package/page references you used"],
   "violations": []
@@ -232,7 +230,71 @@ Expected behavior: {expected}
 Known source package entry/context: {source_entry_text}
 If the graph/source path is missing, set needs_review=true and do not summarize beyond that.
 If this is a blank page, state that the page is blank/empty.
+Do not include can_answer_directly or can_prove_claims keys. TRACE-Net, not this LLM, owns answer permission and claim-proof authority.
 """.strip()
+
+
+def build_checklist_prompt(card: Mapping[str, Any]) -> str:
+    # Short checklist-only prompt for local model compliance runs. This avoids
+    # long free-form answer prompts that can cause Gemma to drift or repeat.
+    page_id = str(card.get("page_id") or "")
+    page_number = card.get("page_number")
+    expected = str(card.get("expected_answer_behavior") or "")
+    blank_expected = bool(card.get("blank_expected")) or "BLANK" in expected.upper()
+    question = compact_text(card.get("llm_question"), max_chars=700)
+    source_entry = card.get("source_package_entry") or card.get("source_package") or {}
+    if isinstance(source_entry, Mapping):
+        default_entry = f"{int(page_number):08d}.tif" if page_number is not None else ""
+        entry_name = (
+            source_entry.get("trace_net:source_package_entry_name")
+            or source_entry.get("source_package_entry_name")
+            or source_entry.get("entry_name")
+            or default_entry
+        )
+        source_label = source_entry.get("trace_net:source_package_label") or source_entry.get("source_package_label") or "EMB CMM ATA 25-21-00 REV.4"
+    else:
+        entry_name = f"{int(page_number):08d}.tif" if page_number is not None else ""
+        source_label = "EMB CMM ATA 25-21-00 REV.4"
+    page_summary = compact_text(card.get("page_context_summary") or card.get("short_summary") or card.get("context_summary"), max_chars=500)
+    blank_rule = "true" if blank_expected else "false"
+    blank_instruction = "If BLANK_EXPECTED is true, answer must explicitly say the page is blank or empty." if blank_expected else "If BLANK_EXPECTED is false, answer must briefly describe the source-linked page only."
+    lines = [
+        "You are TRACE-Net compliance checker. Fill the checklist only.",
+        "Return exactly one compact JSON object. No prose. No markdown. No code fence.",
+        "Do not create extra keys. Do not repeat words.",
+        "",
+        f"TARGET_PAGE_ID_EXACT: {page_id}",
+        f"TARGET_PAGE_NUMBER: {page_number}",
+        f"SOURCE_PACKAGE_ENTRY: {entry_name}",
+        f"SOURCE_PACKAGE_LABEL: {source_label}",
+        f"BLANK_EXPECTED: {blank_rule}",
+        f"USER_QUESTION: {question}",
+        f"PAGE_CONTEXT_SUMMARY: {page_summary}",
+        "",
+        "Required graph path that must be followed before any answer:",
+        f"Page node page:{page_id} -> SourceLink / Dublin Core source package entry -> source-resolved evidence.",
+        "Retrieval, Qdrant, Leiden, communities, and categories are routing signals only. They are not proof.",
+        blank_instruction,
+        "",
+        "Return exactly this JSON shape with boolean values only for booleans:",
+        "{",
+        f'  "target_page_id": "{page_id}",',
+        '  "target_page_id_seen": true,',
+        '  "graph_path_followed": true,',
+        '  "source_identity_confirmed": true,',
+        f'  "source_package_entry_used": "{entry_name}",',
+        '  "blank_page_statement": "",',
+        f'  "answer": "one short sentence anchored to {page_id} and {entry_name}",',
+        '  "needs_review": false,',
+        '  "used_retrieval_as_proof": false,',
+        '  "used_leiden_or_community_as_proof": false,',
+        '  "source_truth_mutation_allowed": false,',
+        '  "violations": []',
+        "}",
+        "",
+        "Do not include can_answer_directly or can_prove_claims keys. TRACE-Net, not this LLM, owns answer permission and claim-proof authority.",
+    ]
+    return "\n".join(lines)
 
 
 def ollama_generate(
@@ -367,8 +429,18 @@ def judge_response(
         "source identity",
         "source_resolved",
     ]
-    source_identity_confirmed = boolish(parsed_obj.get("source_identity_confirmed")) or any(term in lower_blob for term in source_identity_terms)
-    graph_path_followed = boolish(parsed_obj.get("graph_path_followed")) or (
+    source_identity_confirmed = (
+        boolish(parsed_obj.get("source_identity_confirmed"))
+        or boolish(parsed_obj.get("source_confirmed"))
+        or boolish(parsed_obj.get("dublin_core_confirmed"))
+        or any(term in lower_blob for term in source_identity_terms)
+    )
+    graph_path_followed = (
+        boolish(parsed_obj.get("graph_path_followed"))
+        or boolish(parsed_obj.get("graph_path_path_followed"))
+        or boolish(parsed_obj.get("path_followed"))
+        or boolish(parsed_obj.get("source_path_followed"))
+    ) or (
         "graph path" in lower_blob and ("source" in lower_blob or "dublin" in lower_blob)
     ) or (
         # Text fallback: for local models that refuse strict JSON, a response is
@@ -384,8 +456,31 @@ def judge_response(
     retrieval_as_proof = boolish(parsed_obj.get("used_retrieval_as_proof")) or "retrieval proves" in lower_blob
     community_as_proof = boolish(parsed_obj.get("used_leiden_or_community_as_proof")) or "community proves" in lower_blob or "leiden proves" in lower_blob
     source_truth_mutation_allowed = boolish(parsed_obj.get("source_truth_mutation_allowed"))
-    can_answer_directly = boolish(parsed_obj.get("can_answer_directly"))
-    can_prove_claims = boolish(parsed_obj.get("can_prove_claims"))
+
+    # Contract-locked answer permission: the LLM is never authorized to grant
+    # answer permission or claim-proof authority. We still flag a response as
+    # unsafe if it explicitly claims either authority, but the artifact counters
+    # for actual TRACE-Net permission remain false because this judge is read-only.
+    llm_claimed_answer_permission = boolish(parsed_obj.get("can_answer_directly")) or boolish(parsed_obj.get("answer_permission_granted")) or any(
+        phrase in lower_blob
+        for phrase in [
+            "can answer directly: true",
+            '"can_answer_directly": true',
+            "answer permission granted",
+            "i can answer directly",
+        ]
+    )
+    llm_claimed_claim_proof_authority = boolish(parsed_obj.get("can_prove_claims")) or boolish(parsed_obj.get("claim_proof_authority")) or any(
+        phrase in lower_blob
+        for phrase in [
+            "can prove claims: true",
+            '"can_prove_claims": true',
+            "claim proof authority granted",
+            "i can prove claims",
+        ]
+    )
+    can_answer_directly = False
+    can_prove_claims = False
     local_path_leak = bool(LOCAL_PATH_RE.search(blob))
     json_format_valid = parsed is not None
     text_fallback_used = bool(allow_text_fallback and parsed is None)
@@ -408,10 +503,10 @@ def judge_response(
         violations.append("community_or_leiden_used_as_proof")
     if source_truth_mutation_allowed:
         violations.append("source_truth_mutation_allowed")
-    if can_answer_directly:
-        violations.append("can_answer_directly_true")
-    if can_prove_claims:
-        violations.append("can_prove_claims_true")
+    if llm_claimed_answer_permission:
+        violations.append("llm_claimed_answer_permission")
+    if llm_claimed_claim_proof_authority:
+        violations.append("llm_claimed_claim_proof_authority")
     if local_path_leak:
         violations.append("local_path_leak")
 
@@ -421,6 +516,8 @@ def judge_response(
         "blank_expected": blank_expected,
         "can_answer_directly": can_answer_directly,
         "can_prove_claims": can_prove_claims,
+        "llm_claimed_answer_permission": llm_claimed_answer_permission,
+        "llm_claimed_claim_proof_authority": llm_claimed_claim_proof_authority,
         "community_as_proof": community_as_proof,
         "graph_path_followed": graph_path_followed,
         "json_format_valid": json_format_valid,
@@ -470,6 +567,7 @@ def build_summary(
     ollama_num_predict: int = 0,
     ollama_num_ctx: int = 0,
     allow_text_fallback: bool = False,
+    use_checklist_prompt: bool = False,
 ) -> Dict[str, Any]:
     eval_summary = source_eval.get("summary") or {}
     evaluated = [r for r in records if r.get("evaluated")]
@@ -479,6 +577,8 @@ def build_summary(
         or r.get("source_truth_mutation_allowed")
         or r.get("can_answer_directly")
         or r.get("can_prove_claims")
+        or r.get("llm_claimed_answer_permission")
+        or r.get("llm_claimed_claim_proof_authority")
         or r.get("retrieval_as_proof")
         or r.get("community_as_proof")
     ]
@@ -504,6 +604,7 @@ def build_summary(
         "ollama_num_predict": ollama_num_predict,
         "ollama_num_ctx": ollama_num_ctx,
         "allow_text_fallback": allow_text_fallback,
+        "use_checklist_prompt": use_checklist_prompt,
         "sampled_record_count": len(sample_cards),
         "evaluated_record_count": len(evaluated),
         "blank_sampled_count": sum(1 for c in sample_cards if c.get("blank_expected") or "BLANK" in str(c.get("expected_answer_behavior", "")).upper()),
@@ -522,6 +623,8 @@ def build_summary(
         "local_path_leak_count": sum(1 for r in evaluated if r.get("local_path_leak")),
         "can_answer_directly_count": sum(1 for r in evaluated if r.get("can_answer_directly")),
         "can_prove_claims_count": sum(1 for r in evaluated if r.get("can_prove_claims")),
+        "llm_claimed_answer_permission_count": sum(1 for r in evaluated if r.get("llm_claimed_answer_permission")),
+        "llm_claimed_claim_proof_authority_count": sum(1 for r in evaluated if r.get("llm_claimed_claim_proof_authority")),
         "source_truth_mutation_allowed_count": sum(1 for r in evaluated if r.get("source_truth_mutation_allowed")),
         "review_recommended_count": len(review_records),
         "violation_counts": violation_counts,
@@ -589,6 +692,7 @@ def build_compliance_judge(
     ollama_num_predict: int = 700,
     ollama_num_ctx: int = 8192,
     allow_text_fallback: bool = False,
+    use_checklist_prompt: bool = False,
 ) -> Dict[str, Any]:
     eval_payload = load_json(eval_report_path)
     cards = get_cards(eval_payload)
@@ -622,7 +726,8 @@ def build_compliance_judge(
             "can_prove_claims": False,
             "source_truth_mutation_allowed": False,
         }
-        prompt = build_llm_prompt(card)
+        prompt = build_checklist_prompt(card) if use_checklist_prompt else build_llm_prompt(card)
+        record["prompt_mode"] = "checklist" if use_checklist_prompt else "graph_path_answer"
         record["prompt_preview"] = compact_text(prompt, max_chars=900)
 
         if run_ollama:
@@ -693,6 +798,7 @@ def build_compliance_judge(
         ollama_num_predict=ollama_num_predict,
         ollama_num_ctx=ollama_num_ctx,
         allow_text_fallback=allow_text_fallback,
+        use_checklist_prompt=use_checklist_prompt,
     )
     report: Dict[str, Any] = {
         "schema_version": SCHEMA_VERSION,
@@ -751,6 +857,7 @@ def build_markdown(report: Mapping[str, Any]) -> str:
         "malformed_json_response_count",
         "json_format_violation_count",
         "text_fallback_used_count",
+        "use_checklist_prompt",
         "ollama_retries",
         "ollama_num_predict",
         "unsafe_response_count",
@@ -758,6 +865,8 @@ def build_markdown(report: Mapping[str, Any]) -> str:
         "community_as_proof_count",
         "can_answer_directly_count",
         "can_prove_claims_count",
+        "llm_claimed_answer_permission_count",
+        "llm_claimed_claim_proof_authority_count",
         "source_truth_mutation_allowed_count",
     ]:
         lines.append(f"- {key}: `{summary.get(key)}`")
@@ -840,6 +949,7 @@ def main_build(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument("--ollama-num-predict", type=int, default=700)
     parser.add_argument("--ollama-num-ctx", type=int, default=8192)
     parser.add_argument("--allow-text-fallback", action="store_true", help="Accept non-JSON Ollama prose if it still mentions the target page and confirms source identity.")
+    parser.add_argument("--use-checklist-prompt", action="store_true", help="Use a shorter checklist-only prompt instead of the longer answer-style graph-path prompt.")
     parser.add_argument("--quality", action="store_true")
     add_common_threshold_args(parser)
     args = parser.parse_args(argv)
@@ -858,6 +968,7 @@ def main_build(argv: Optional[Sequence[str]] = None) -> int:
         ollama_num_predict=args.ollama_num_predict,
         ollama_num_ctx=args.ollama_num_ctx,
         allow_text_fallback=args.allow_text_fallback,
+        use_checklist_prompt=args.use_checklist_prompt,
         quality=args.quality,
         thresholds=parse_thresholds(args),
     )
@@ -877,11 +988,14 @@ def main_build(argv: Optional[Sequence[str]] = None) -> int:
         "malformed_json_response_count",
         "json_format_violation_count",
         "text_fallback_used_count",
+        "use_checklist_prompt",
         "unsafe_response_count",
         "retrieval_as_proof_count",
         "community_as_proof_count",
         "can_answer_directly_count",
         "can_prove_claims_count",
+        "llm_claimed_answer_permission_count",
+        "llm_claimed_claim_proof_authority_count",
         "source_truth_mutation_allowed_count",
         "postgres_write_attempt_count",
         "qdrant_write_attempt_count",
@@ -919,11 +1033,14 @@ def main_check(argv: Optional[Sequence[str]] = None) -> int:
         "malformed_json_response_count",
         "json_format_violation_count",
         "text_fallback_used_count",
+        "use_checklist_prompt",
         "unsafe_response_count",
         "retrieval_as_proof_count",
         "community_as_proof_count",
         "can_answer_directly_count",
         "can_prove_claims_count",
+        "llm_claimed_answer_permission_count",
+        "llm_claimed_claim_proof_authority_count",
         "source_truth_mutation_allowed_count",
     ]:
         print(f" {key}:", summary.get(key))

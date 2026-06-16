@@ -3,6 +3,7 @@ from pathlib import Path
 
 from tiff.trace_net_llm_graph_path_compliance_judge_v1 import (
     Thresholds,
+    build_checklist_prompt,
     build_compliance_judge,
     extract_json_object,
     judge_response,
@@ -152,3 +153,35 @@ def test_text_fallback_accepts_source_anchored_non_json_response():
     assert judged["malformed_json"] is False
     assert judged["graph_path_followed"] is True
     assert judged["target_page_id_mentioned"] is True
+
+
+
+def test_checklist_prompt_is_short_and_exact_page_anchored():
+    card = sample_eval_payload()["llm_graph_path_cards"][0]
+    prompt = build_checklist_prompt(card)
+    assert "TARGET_PAGE_ID_EXACT: t_p_120_1176_p000001" in prompt
+    assert "Return exactly one compact JSON object" in prompt
+    assert "Page node page:t_p_120_1176_p000001" in prompt
+    assert len(prompt) < 2500
+
+
+def test_judge_response_accepts_common_graph_path_key_typo():
+    card = sample_eval_payload()["llm_graph_path_cards"][0]
+    raw = json.dumps({
+        "target_page_id": "t_p_120_1176_p000001",
+        "target_page_id_seen": True,
+        "graph_path_path_followed": True,
+        "source_identity_confirmed": True,
+        "answer": "Page t_p_120_1176_p000001 was resolved through source package entry 00000001.tif.",
+        "blank_page_statement": "",
+        "needs_review": False,
+        "used_retrieval_as_proof": False,
+        "used_leiden_or_community_as_proof": False,
+        "source_truth_mutation_allowed": False,
+        "can_answer_directly": False,
+        "can_prove_claims": False,
+    })
+    parsed, error = extract_json_object(raw)
+    judged = judge_response(card, raw, parsed, error)
+    assert judged["passed"] is True
+    assert judged["graph_path_followed"] is True

@@ -1,0 +1,117 @@
+{
+  "quality_checks": [
+    {
+      "detail": "records=25; minimum=25",
+      "name": "sampled_record_count",
+      "ok": true
+    },
+    {
+      "detail": "evaluated=25; minimum=25",
+      "name": "evaluated_record_count",
+      "ok": true
+    },
+    {
+      "detail": "bound=25; minimum=25",
+      "name": "graph_path_bound_count",
+      "ok": true
+    },
+    {
+      "detail": "anchored=25; minimum=25",
+      "name": "graph_path_anchored_count",
+      "ok": true
+    },
+    {
+      "detail": "target=25; minimum=25",
+      "name": "target_page_id_anchored_count",
+      "ok": true
+    },
+    {
+      "detail": "source=25; minimum=25",
+      "name": "source_identity_anchored_count",
+      "ok": true
+    },
+    {
+      "detail": "blank=5; minimum=5",
+      "name": "blank_correct_count",
+      "ok": true
+    },
+    {
+      "detail": "unsafe=0; max=0",
+      "name": "unsafe_response_count",
+      "ok": true
+    },
+    {
+      "detail": "retrieval_as_proof=0; max=0",
+      "name": "retrieval_as_proof_count",
+      "ok": true
+    },
+    {
+      "detail": "community_as_proof=0; max=0",
+      "name": "community_as_proof_count",
+      "ok": true
+    },
+    {
+      "detail": "source_truth_mutation_allowed=0; max=0",
+      "name": "source_truth_mutation_allowed_count",
+      "ok": true
+    },
+    {
+      "detail": "source_eval_quality_status=PASS",
+      "name": "source_eval_quality_status",
+      "ok": true
+    },
+    {
+      "detail": "can_answer_directly=0; can_prove_claims=0",
+      "name": "no_answer_permission",
+      "ok": true
+    }
+  ],
+  "quality_status": "PASS",
+  "schema_version": "trace_net_llm_graph_path_response_guard_v1",
+  "status": "LLM_GRAPH_PATH_RESPONSE_GUARD_BUILT",
+  "summary": {
+    "blank_correct_count": 5,
+    "blank_evaluated_count": 5,
+    "blank_sampled_count": 5,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "community_as_proof_count": 0,
+    "enforce_source_anchor_prefix": true,
+    "evaluated_record_count": 25,
+    "graph_path_anchored_count": 25,
+    "graph_path_bound_count": 25,
+    "llm_claimed_answer_permission_count": 0,
+    "llm_claimed_claim_proof_authority_count": 0,
+    "local_path_leak_count": 0,
+    "model_response_graph_path_anchored_count": 0,
+    "model_response_source_identity_anchored_count": 0,
+    "model_response_target_page_id_anchored_count": 0,
+    "ollama_call_failed_count": 0,
+    "ollama_model": "gemma4:26b",
+    "ollama_num_ctx": 4096,
+    "ollama_num_predict": 220,
+    "ollama_retries": 2,
+    "ollama_timeout": 600,
+    "ollama_url": "http://localhost:11434",
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "retrieval_as_proof_count": 0,
+    "run_ollama": true,
+    "sampled_record_count": 25,
+    "schema_version": "trace_net_llm_graph_path_response_guard_v1",
+    "source_entry_anchored_count": 25,
+    "source_eval_graph_path_resolved_count": 170,
+    "source_eval_llm_graph_path_card_count": 170,
+    "source_eval_quality_status": "PASS",
+    "source_eval_query_record_count": 170,
+    "source_eval_target_hit_at_k_rate": 0.994118,
+    "source_identity_anchored_count": 25,
+    "source_truth_mutation_allowed_count": 0,
+    "status": "LLM_GRAPH_PATH_RESPONSE_GUARD_BUILT",
+    "system_anchor_prefix_applied_count": 25,
+    "target_page_id_anchored_count": 25,
+    "target_page_number_anchored_count": 0,
+    "unsafe_response_count": 0
+  }
+}

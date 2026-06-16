@@ -1,0 +1,155 @@
+{
+  "quality_checks": [
+    {
+      "check_name": "correction_record_count",
+      "detail": "records=44; minimum=5",
+      "passed": true
+    },
+    {
+      "check_name": "diagnostic_record_count",
+      "detail": "records=44; minimum=5",
+      "passed": true
+    },
+    {
+      "check_name": "safe_action_record_count",
+      "detail": "records=44; minimum=5",
+      "passed": true
+    },
+    {
+      "check_name": "review_routed_record_count",
+      "detail": "records=42; minimum=1",
+      "passed": true
+    },
+    {
+      "check_name": "unsafe_correction_record_count",
+      "detail": "unsafe=0; max=0",
+      "passed": true
+    },
+    {
+      "check_name": "answer_permission_count",
+      "detail": "answer_permission=0; max=0",
+      "passed": true
+    },
+    {
+      "check_name": "source_truth_mutation_allowed_count",
+      "detail": "mutations=0; max=0",
+      "passed": true
+    },
+    {
+      "check_name": "write_attempts",
+      "detail": "postgres/qdrant/opensearch write attempts must all be 0",
+      "passed": true
+    },
+    {
+      "check_name": "no_answer_permission",
+      "detail": "planner must not grant direct answer/proof/retrieval-only answer permission",
+      "passed": true
+    },
+    {
+      "check_name": "page_retrieval_large_eval_v2_quality_pass",
+      "detail": "loaded=True; quality_status=PASS",
+      "passed": true
+    },
+    {
+      "check_name": "ai_trace_pack_quality_pass",
+      "detail": "loaded=True; quality_status=PASS",
+      "passed": true
+    },
+    {
+      "check_name": "graph_query_evidence_enrichment_quality_pass",
+      "detail": "loaded=True; quality_status=PASS",
+      "passed": true
+    },
+    {
+      "check_name": "opensearch_loader_smoke_quality_pass",
+      "detail": "loaded=True; quality_status=PASS",
+      "passed": true
+    },
+    {
+      "check_name": "qdrant_page_profile_quality_quality_pass",
+      "detail": "loaded=True; quality_status=UNKNOWN",
+      "passed": false
+    },
+    {
+      "check_name": "page_query_response_tiff_content_audit_quality_pass",
+      "detail": "loaded=True; quality_status=PASS",
+      "passed": true
+    }
+  ],
+  "quality_status": "FAIL",
+  "schema_version": "trace_net_corrective_retrieval_planner_v1",
+  "status": "CORRECTIVE_RETRIEVAL_PLAN_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "category_as_proof_count": 0,
+    "community_as_proof_count": 0,
+    "correction_record_count": 44,
+    "diagnostic_record_count": 44,
+    "issue_type_counts": {
+      "exact_search_channel_available": 1,
+      "graph_evidence_review_flag": 7,
+      "semantic_page_target_miss": 2,
+      "target_page_low_rank": 14,
+      "tiff_content_audit_review": 15,
+      "trace_pack_review_recommended": 4,
+      "trace_pack_safe_to_use_final_gate_path": 1
+    },
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_status": "FAIL",
+    "recommended_action_counts": {
+      "apply_blank_page_exact_page_rerank": 5,
+      "apply_graph_anchor_rerank": 14,
+      "compare_semantic_vs_exact_channels": 2,
+      "expand_bounded_graph_path": 7,
+      "expand_graph_evidence_enrichment": 2,
+      "expand_graph_source_path": 2,
+      "mark_result_audit_required_until_corrected": 2,
+      "require_human_review_before_final_answer": 4,
+      "rerank_with_graph_page_anchor": 2,
+      "retain_top_k_for_review": 14,
+      "route_to_review_if_still_flagged": 7,
+      "route_to_tiff_content_review": 15,
+      "run_claim_evidence_alignment_review": 4,
+      "run_corrective_retrieval_expansion": 2,
+      "run_opensearch_exact_if_identifier_present": 2,
+      "run_or_expand_vision_audit_sample": 15,
+      "use_final_gate_authorized_answer_path": 1,
+      "use_opensearch_exact_for_identifiers": 1,
+      "use_opensearch_table_cell_for_part_cells": 1,
+      "verify_blank_page_with_image_metrics": 2,
+      "verify_dublin_core_source_identity": 7
+    },
+    "retrieval_only_answer_allowed_count": 0,
+    "review_routed_record_count": 42,
+    "safe_action_record_count": 44,
+    "schema_version": "trace_net_corrective_retrieval_planner_v1",
+    "severity_counts": {
+      "HIGH": 6,
+      "INFO": 2,
+      "MEDIUM": 36
+    },
+    "source_artifact_count": 6,
+    "source_module_counts": {
+      "ai_trace_pack": 5,
+      "graph_query_evidence_enrichment": 7,
+      "opensearch_loader_smoke": 1,
+      "page_query_response_tiff_content_audit": 15,
+      "page_retrieval_large_eval_v2": 16
+    },
+    "source_quality_statuses": {
+      "ai_trace_pack": "PASS",
+      "graph_query_evidence_enrichment": "PASS",
+      "opensearch_loader_smoke": "PASS",
+      "page_query_response_tiff_content_audit": "PASS",
+      "page_retrieval_large_eval_v2": "PASS",
+      "qdrant_page_profile_quality": "UNKNOWN"
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "status": "CORRECTIVE_RETRIEVAL_PLAN_BUILT",
+    "unsafe_correction_record_count": 0
+  }
+}

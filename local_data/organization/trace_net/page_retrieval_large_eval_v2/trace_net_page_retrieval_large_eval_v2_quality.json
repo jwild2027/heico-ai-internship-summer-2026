@@ -6,37 +6,37 @@
       "ok": true
     },
     {
-      "detail": "records=170; minimum=170",
+      "detail": "records=200; minimum=200",
       "name": "query_record_count",
       "ok": true
     },
     {
-      "detail": "blank=9; minimum=1",
+      "detail": "blank=11; minimum=1",
       "name": "blank_expected_count",
       "ok": true
     },
     {
-      "detail": "context_v2=170; minimum=170",
+      "detail": "context_v2=200; minimum=200",
       "name": "context_v2_query_count",
       "ok": true
     },
     {
-      "detail": "graph_paths=170; minimum=170",
+      "detail": "graph_paths=200; minimum=200",
       "name": "graph_path_resolved_count",
       "ok": true
     },
     {
-      "detail": "cards=170; minimum=170",
+      "detail": "cards=200; minimum=200",
       "name": "llm_graph_path_card_count",
       "ok": true
     },
     {
-      "detail": "evaluated=170; minimum=170",
+      "detail": "evaluated=200; minimum=200",
       "name": "evaluated_record_count",
       "ok": true
     },
     {
-      "detail": "hits=169; minimum=1",
+      "detail": "hits=198; minimum=1",
       "name": "target_hit_at_k_count",
       "ok": true
     },
@@ -74,44 +74,44 @@
   "quality_status": "PASS",
   "summary": {
     "answer_capable_payload_count": 0,
-    "blank_evaluated_count": 9,
-    "blank_expected_count": 9,
-    "blank_target_hit_at_k_count": 9,
+    "blank_evaluated_count": 11,
+    "blank_expected_count": 11,
+    "blank_target_hit_at_k_count": 11,
     "can_answer_directly_count": 0,
     "can_prove_claims_count": 0,
     "claim_proof_payload_count": 0,
-    "context_v2_query_count": 170,
-    "evaluated_record_count": 170,
+    "context_v2_query_count": 200,
+    "evaluated_record_count": 200,
     "graph_path_missing_count": 0,
-    "graph_path_resolved_count": 170,
-    "llm_graph_path_card_count": 170,
-    "llm_must_follow_graph_path_count": 170,
+    "graph_path_resolved_count": 200,
+    "llm_graph_path_card_count": 200,
+    "llm_must_follow_graph_path_count": 200,
     "miss_reason_counts": {
-      "semantic_page_target_miss": 1
+      "semantic_page_target_miss": 2
     },
     "opensearch_write_attempt_count": 0,
     "postgres_write_attempt_count": 0,
     "qdrant_write_attempt_count": 0,
     "query_embedding_cache_enabled": true,
-    "query_embedding_cache_final_record_count": 170,
+    "query_embedding_cache_final_record_count": 200,
     "query_embedding_cache_hit_count": 170,
     "query_embedding_cache_initial_record_count": 170,
-    "query_embedding_cache_miss_count": 0,
+    "query_embedding_cache_miss_count": 30,
     "query_embedding_cache_path": "local_data\\organization\\trace_net\\page_retrieval_large_eval_v2\\query_embedding_cache_ollama_bge_m3.jsonl",
-    "query_embedding_cache_write_count": 0,
-    "query_embedding_ollama_request_count": 0,
-    "query_record_count": 170,
+    "query_embedding_cache_write_count": 30,
+    "query_embedding_ollama_request_count": 3,
+    "query_record_count": 200,
     "query_type_counts": {
-      "blank_page_graph_check": 9,
-      "page_source_context_graph_check": 161
+      "blank_page_graph_check": 11,
+      "page_source_context_graph_check": 189
     },
     "retrieval_route_counts": {
-      "graph_first_blank_confirmation": 9,
-      "graph_first_page_source_context": 161
+      "graph_first_blank_confirmation": 11,
+      "graph_first_page_source_context": 189
     },
     "schema_version": "trace_net_page_retrieval_large_eval_v2",
-    "source_identity_resolved_count": 170,
-    "source_link_resolved_count": 170,
+    "source_identity_resolved_count": 200,
+    "source_link_resolved_count": 200,
     "source_load_statuses": {
       "dublin_core_source_package_extension": "LOADED",
       "graph_nodes_edges": "LOADED",
@@ -123,26 +123,26 @@
       "qdrant_eval": "EVALUATED",
       "query_embedding_cache": {
         "enabled": true,
-        "final_record_count": 170,
+        "final_record_count": 200,
         "hit_count": 170,
         "initial_record_count": 170,
-        "miss_count": 0,
-        "ollama_request_count": 0,
+        "miss_count": 30,
+        "ollama_request_count": 3,
         "path": "local_data\\organization\\trace_net\\page_retrieval_large_eval_v2\\query_embedding_cache_ollama_bge_m3.jsonl",
         "reset": false,
-        "write_count": 0
+        "write_count": 30
       }
     },
     "source_truth_mutation_allowed_count": 0,
     "status": "PASS",
-    "target_hit_at_10_count": 166,
-    "target_hit_at_10_rate": 0.976471,
-    "target_hit_at_1_count": 129,
-    "target_hit_at_1_rate": 0.758824,
-    "target_hit_at_3_count": 149,
-    "target_hit_at_5_count": 160,
-    "target_hit_at_k_count": 169,
-    "target_hit_at_k_rate": 0.994118,
+    "target_hit_at_10_count": 195,
+    "target_hit_at_10_rate": 0.975,
+    "target_hit_at_1_count": 150,
+    "target_hit_at_1_rate": 0.75,
+    "target_hit_at_3_count": 176,
+    "target_hit_at_5_count": 184,
+    "target_hit_at_k_count": 198,
+    "target_hit_at_k_rate": 0.99,
     "top_k": 20
   }
 }

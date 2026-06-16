@@ -11,24 +11,24 @@
       "ok": true
     },
     {
-      "detail": "followed=2; minimum=2",
+      "detail": "followed=1; minimum=1",
       "name": "graph_path_followed_count",
       "ok": true
     },
     {
-      "detail": "target_mentions=2; minimum=2",
+      "detail": "target_mentions=2; minimum=1",
       "name": "target_page_id_mentioned_count",
       "ok": true
     },
     {
-      "detail": "source_identity=2; minimum=2",
+      "detail": "source_identity=1; minimum=2",
       "name": "source_identity_confirmed_count",
-      "ok": true
+      "ok": false
     },
     {
-      "detail": "blank_correct=1; minimum=1",
+      "detail": "blank_correct=0; minimum=1",
       "name": "blank_correct_count",
-      "ok": true
+      "ok": false
     },
     {
       "detail": "malformed=0; max=1",
@@ -66,26 +66,28 @@
       "ok": true
     }
   ],
-  "quality_status": "PASS",
+  "quality_status": "FAIL",
   "schema_version": "trace_net_llm_graph_path_compliance_judge_v1",
   "status": "LLM_GRAPH_PATH_COMPLIANCE_JUDGE_BUILT",
   "summary": {
     "allow_text_fallback": true,
-    "blank_correct_count": 1,
+    "blank_correct_count": 0,
     "blank_evaluated_count": 1,
     "blank_sampled_count": 1,
     "can_answer_directly_count": 0,
     "can_prove_claims_count": 0,
     "community_as_proof_count": 0,
     "evaluated_record_count": 3,
-    "graph_path_followed_count": 2,
-    "json_format_valid_count": 0,
-    "json_format_violation_count": 3,
+    "graph_path_followed_count": 1,
+    "json_format_valid_count": 2,
+    "json_format_violation_count": 1,
+    "llm_claimed_answer_permission_count": 0,
+    "llm_claimed_claim_proof_authority_count": 0,
     "local_path_leak_count": 0,
     "malformed_json_response_count": 0,
     "ollama_model": "gemma4:26b",
-    "ollama_num_ctx": 8192,
-    "ollama_num_predict": 500,
+    "ollama_num_ctx": 4096,
+    "ollama_num_predict": 300,
     "ollama_retries": 2,
     "ollama_url": "http://localhost:11434",
     "opensearch_write_attempt_count": 0,
@@ -94,7 +96,7 @@
     "records_path": "local_data\\organization\\trace_net\\llm_graph_path_compliance_judge\\trace_net_llm_graph_path_compliance_judge_v1_records.jsonl",
     "responses_path": "local_data\\organization\\trace_net\\llm_graph_path_compliance_judge\\trace_net_llm_graph_path_compliance_judge_v1_responses.jsonl",
     "retrieval_as_proof_count": 0,
-    "review_recommended_count": 3,
+    "review_recommended_count": 2,
     "run_ollama": true,
     "sampled_record_count": 3,
     "schema_version": "trace_net_llm_graph_path_compliance_judge_v1",
@@ -104,14 +106,16 @@
     "source_eval_query_record_count": 170,
     "source_eval_status": "PAGE_RETRIEVAL_LARGE_EVAL_V2_BUILT",
     "source_eval_target_hit_at_k_rate": 0.994118,
-    "source_identity_confirmed_count": 2,
+    "source_identity_confirmed_count": 1,
     "source_truth_mutation_allowed_count": 0,
     "target_page_id_mentioned_count": 2,
-    "text_fallback_used_count": 3,
+    "text_fallback_used_count": 1,
     "unsafe_response_count": 0,
+    "use_checklist_prompt": true,
     "violation_counts": {
-      "graph_path_not_followed": 1,
-      "source_identity_not_confirmed": 1,
+      "blank_page_not_declared": 1,
+      "graph_path_not_followed": 2,
+      "source_identity_not_confirmed": 2,
       "target_page_id_not_mentioned": 1
     }
   }
