@@ -1,0 +1,117 @@
+{
+  "artifacts": {
+    "final_answer_markdown": {
+      "exists": true,
+      "path": "local_data/organization/trace_net/final_answer_gate/trace_net_final_answer_gate_v1_answer.md",
+      "required": false,
+      "size_bytes": 3575
+    },
+    "final_answer_report": {
+      "exists": true,
+      "path": "local_data/organization/trace_net/final_answer_gate/trace_net_final_answer_gate_v1.json",
+      "quality_status": "PASS",
+      "required": false,
+      "size_bytes": 36195
+    },
+    "final_return_config": {
+      "corrective_group_count": 13,
+      "exists": true,
+      "final_answer_quality_status": "PASS",
+      "hybrid_v3_group_count": 40,
+      "path": "local_data/organization/trace_net/ask_api_final_return_policy_hybrid_v3_v22/trace_net_ask_api_final_return_policy_hybrid_v3_v22.json",
+      "quality_status": "PASS",
+      "query_count": 5,
+      "required": false,
+      "review_routed_group_count": 13,
+      "size_bytes": 2698,
+      "unsafe_group_count": 0
+    },
+    "hybrid_v3_report": {
+      "corrective_group_count": 13,
+      "exists": true,
+      "hybrid_v3_group_count": 40,
+      "path": "local_data/organization/trace_net/hybrid_retrieval_v3/trace_net_hybrid_retrieval_v3.json",
+      "quality_status": "PASS",
+      "queries_with_results_count": 5,
+      "query_count": 5,
+      "required": true,
+      "review_routed_group_count": 13,
+      "size_bytes": 99030,
+      "unsafe_group_count": 0
+    }
+  },
+  "checks": {
+    "api_port_present": true,
+    "final_answer_report_present": true,
+    "final_return_config_present": true,
+    "hybrid_v3_report_present": true,
+    "hybrid_v3_report_quality_pass": true,
+    "model_name_present": true,
+    "open_webui_base_url_present": true,
+    "runtime_is_read_only": true
+  },
+  "generated_at": "2026-06-17T13:38:02+00:00",
+  "open_webui": {
+    "api_key": "blank",
+    "base_url": "http://host.docker.internal:8016/v1",
+    "model": "trace-net-final-return-policy-hybrid-v3-v2.2"
+  },
+  "quality_status": "PASS",
+  "runtime_commands": {
+    "health": "curl -s http://localhost:8016/health | python -m json.tool",
+    "openai_chat": "curl -s -X POST http://localhost:8016/v1/chat/completions -H 'Content-Type: application/json' -d '{\"model\":\"trace-net-final-return-policy-hybrid-v3-v2.2\",\"messages\":[{\"role\":\"user\",\"content\":\"120-46137-001\"}]}' | python -m json.tool"
+  },
+  "safety_contract": {
+    "final_gate_remains_answer_authority": true,
+    "hybrid_v3_routing_is_not_proof": true,
+    "no_answer_permission_from_runtime": true,
+    "no_opensearch_writes": true,
+    "no_postgres_writes": true,
+    "no_qdrant_writes": true,
+    "no_source_truth_mutation": true,
+    "read_only_runtime": true
+  },
+  "schema_version": "trace_net_runtime_hybrid_v3_v22",
+  "source_quality_statuses": {
+    "final_answer_gate": "PASS",
+    "final_return_policy_hybrid_v3_v22": "PASS",
+    "hybrid_retrieval_v3": "PASS"
+  },
+  "status": "RUNTIME_HYBRID_V3_V22_CONFIG_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "api_host": "0.0.0.0",
+    "api_port": 8016,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "category_as_proof_count": 0,
+    "community_as_proof_count": 0,
+    "corrective_action_as_proof_count": 0,
+    "corrective_group_count": 13,
+    "docker_service_count": 3,
+    "docker_services": [
+      "trace-net-postgres",
+      "trace-net-qdrant",
+      "open-webui"
+    ],
+    "feedback_as_proof_count": 0,
+    "hybrid_v3_group_count": 40,
+    "hybrid_v3_quality_status": "PASS",
+    "max_groups": 8,
+    "model_name": "trace-net-final-return-policy-hybrid-v3-v2.2",
+    "open_webui_api_key": "blank",
+    "open_webui_base_url": "http://host.docker.internal:8016/v1",
+    "open_webui_model": "trace-net-final-return-policy-hybrid-v3-v2.2",
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_fail_reasons": [],
+    "quality_status": "PASS",
+    "read_only_runtime": true,
+    "retrieval_only_answer_allowed_count": 0,
+    "review_routed_group_count": 13,
+    "schema_version": "trace_net_runtime_hybrid_v3_v22",
+    "source_truth_mutation_allowed_count": 0,
+    "status": "RUNTIME_HYBRID_V3_V22_CONFIG_BUILT"
+  }
+}

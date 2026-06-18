@@ -29,6 +29,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
+from tiff.trace_net_route_dispatch_contract_loader_v1 import load_route_dispatch_processor_contract
+
 SCHEMA_VERSION = "trace_net_answer_context_pack_v1"
 DEFAULT_OUTPUT_DIR = Path("local_data/organization/trace_net/answer_context_pack")
 DEFAULT_ASK_REPORT = Path("local_data/organization/trace_net/ask_hybrid_flag/trace_net_ask_hybrid_flag_v1.json")
@@ -878,6 +880,12 @@ def evaluate_context_pack_quality(
         "retrieval_only_answer_allowed_count",
         "page_profile_answer_allowed_count",
         "context_helper_answer_allowed_count",
+        "route_dispatch_processor_contract_available",
+        "route_dispatch_processor_contract_quality_status",
+        "normal_text_route_allowed_input_count",
+        "normal_text_route_blocked_input_count",
+        "normal_text_route_allowed_record_count",
+        "normal_text_route_blocked_record_count",
         "source_evidence_answer_allowed_count",
         "direct_answer_allowed_record_count",
         "claim_proof_without_authority_count",
@@ -968,6 +976,7 @@ def build_trace_net_answer_context_pack(
     require_embedding_dim: int | None = 1024,
     write_quality: bool = False,
     open_result: bool = False,
+    route_dispatch_processor_contract: str | Path | None = None,
 ) -> dict[str, Any]:
     ask_report = load_ask_report(Path(ask_report_path))
     discovered_hybrid_path = discover_hybrid_report_path(ask_report, hybrid_report_path)
@@ -975,6 +984,19 @@ def build_trace_net_answer_context_pack(
     candidate_records, candidate_meta = load_records_artifact(Path(embedding_candidates_path))
     page_profile_records, page_profile_meta = load_records_artifact(Path(page_profiles_path))
     indexes = build_resolution_indexes(candidate_records, page_profile_records)
+    route_dispatch_contract = None
+    route_dispatch_contract_quality_status = None
+    if route_dispatch_processor_contract:
+        route_dispatch_payload = read_json(Path(route_dispatch_processor_contract))
+        route_dispatch_contract_quality_status = route_dispatch_payload.get("quality_status") or (route_dispatch_payload.get("summary") or {}).get("quality_status")
+        route_dispatch_contract = load_route_dispatch_processor_contract(route_dispatch_processor_contract)
+
+    route_dispatch_contract_available = route_dispatch_contract is not None
+    normal_text_route_allowed_input_count = 0
+    normal_text_route_blocked_input_count = 0
+    normal_text_route_allowed_record_count = 0
+    normal_text_route_blocked_record_count = 0
+
     query_results = choose_query_results(ask_report, hybrid_report, query=query)
     groups: list[dict[str, Any]] = []
     for query_result in query_results:
@@ -990,6 +1012,27 @@ def build_trace_net_answer_context_pack(
             )
         if groups:
             break
+    if route_dispatch_contract_available:
+        filtered_groups: list[dict[str, Any]] = []
+        for group in groups:
+            page_id = as_text(group.get("page_id"))
+            all_records = [record for record in group.get("all_records") or [] if isinstance(record, Mapping)]
+            if page_id and route_dispatch_contract.is_normal_text_allowed(page_id):
+                normal_text_route_allowed_input_count += 1
+                normal_text_route_allowed_record_count += len(all_records)
+                group["route_dispatch_processor_contract_available"] = True
+                group["normal_text_route_dispatch_allowed"] = True
+                group["route_dispatch_review_required"] = bool(route_dispatch_contract.is_review_required(page_id))
+                for record in all_records:
+                    record["route_dispatch_processor_contract_available"] = True
+                    record["normal_text_route_dispatch_allowed"] = True
+                    record["route_dispatch_review_required"] = bool(route_dispatch_contract.is_review_required(record.get("page_id") or page_id))
+                filtered_groups.append(group)
+            else:
+                normal_text_route_blocked_input_count += 1
+                normal_text_route_blocked_record_count += len(all_records)
+        groups = filtered_groups
+
     summary = summarize_context_pack(
         groups,
         ask_report=ask_report,
@@ -999,6 +1042,13 @@ def build_trace_net_answer_context_pack(
         embedding_candidates_quality_status=as_text((candidate_meta.get("quality") or {}).get("status") if isinstance(candidate_meta.get("quality"), Mapping) else candidate_meta.get("quality_status")),
         page_profiles_quality_status=as_text((page_profile_meta.get("quality") or {}).get("status") if isinstance(page_profile_meta.get("quality"), Mapping) else page_profile_meta.get("quality_status")),
     )
+    summary["route_dispatch_processor_contract_available"] = bool(route_dispatch_processor_contract)
+    summary["route_dispatch_processor_contract_path"] = str(route_dispatch_processor_contract) if route_dispatch_processor_contract else None
+    summary["route_dispatch_processor_contract_quality_status"] = route_dispatch_contract_quality_status
+    summary["normal_text_route_allowed_input_count"] = normal_text_route_allowed_input_count
+    summary["normal_text_route_blocked_input_count"] = normal_text_route_blocked_input_count
+    summary["normal_text_route_allowed_record_count"] = normal_text_route_allowed_record_count
+    summary["normal_text_route_blocked_record_count"] = normal_text_route_blocked_record_count
     quality = evaluate_context_pack_quality(
         summary,
         min_context_groups=min_context_groups,
@@ -1024,6 +1074,7 @@ def build_trace_net_answer_context_pack(
         "hybrid_report_path": str(discovered_hybrid_path) if discovered_hybrid_path else "",
         "embedding_candidates_path": str(embedding_candidates_path),
         "page_profiles_path": str(page_profiles_path),
+        "route_dispatch_processor_contract_path": str(route_dispatch_processor_contract or ""),
         "summary": summary,
         "groups": groups,
         "records": records,
@@ -1149,6 +1200,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--hybrid-report", type=Path, default=None)
     parser.add_argument("--embedding-candidates", type=Path, default=DEFAULT_EMBEDDING_CANDIDATES)
     parser.add_argument("--page-profiles", type=Path, default=DEFAULT_PAGE_PROFILES)
+    parser.add_argument("--route-dispatch-processor-contract", type=Path, default=None)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--query", default="")
     parser.add_argument("--max-groups", type=positive_int, default=8)
@@ -1202,6 +1254,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             hybrid_report_path=args.hybrid_report,
             embedding_candidates_path=args.embedding_candidates,
             page_profiles_path=args.page_profiles,
+        route_dispatch_processor_contract=args.route_dispatch_processor_contract,
             output_dir=args.output_dir,
             query=args.query,
             max_groups=args.max_groups,

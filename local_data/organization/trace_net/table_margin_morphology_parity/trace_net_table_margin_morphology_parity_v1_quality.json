@@ -1,0 +1,55 @@
+{
+  "checks": {
+    "answer_permission_within_limit": true,
+    "margin_experiment_quality_pass": true,
+    "min_experiment_improvement_cards_met": true,
+    "min_parity_cards_met": true,
+    "min_parity_gap_cards_met": true,
+    "no_answer_permission": true,
+    "schema_version_ok": true,
+    "source_truth_mutation_allowed_within_limit": true,
+    "table_line_geometry_quality_pass": true,
+    "unsafe_parity_cards_within_limit": true
+  },
+  "generated_at": "2026-06-17T18:28:58+00:00",
+  "quality_status": "PASS",
+  "schema_version": "trace_net_table_margin_morphology_parity_v1_quality",
+  "status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "checks": {
+      "answer_permission_within_limit": true,
+      "margin_experiment_quality_pass": true,
+      "min_experiment_improvement_cards_met": true,
+      "min_parity_cards_met": true,
+      "min_parity_gap_cards_met": true,
+      "no_answer_permission": true,
+      "schema_version_ok": true,
+      "source_truth_mutation_allowed_within_limit": true,
+      "table_line_geometry_quality_pass": true,
+      "unsafe_parity_cards_within_limit": true
+    },
+    "experiment_improvement_card_count": 19,
+    "margin_experiment_quality_status": "PASS",
+    "missing_experiment_card_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "parity_card_count": 20,
+    "parity_gap_card_count": 19,
+    "postgres_write_attempt_count": 0,
+    "production_margin_candidate_card_count": 20,
+    "production_margin_selected_card_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_fail_reasons": [],
+    "quality_status": "PASS",
+    "schema_version": "trace_net_table_margin_morphology_parity_v1",
+    "selected_morphology_scope_counts": {
+      "page": 20
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "status": "PASS",
+    "table_line_geometry_quality_status": "PASS",
+    "unsafe_parity_card_count": 0
+  }
+}

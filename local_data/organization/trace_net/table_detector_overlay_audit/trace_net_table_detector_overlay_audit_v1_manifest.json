@@ -1,0 +1,22 @@
+{
+  "files": [
+    "local_data\\organization\\trace_net\\table_detector_overlay_audit\\trace_net_table_detector_overlay_audit_v1.json",
+    "local_data\\organization\\trace_net\\table_detector_overlay_audit\\trace_net_table_detector_overlay_audit_v1_cards.jsonl",
+    "local_data\\organization\\trace_net\\table_detector_overlay_audit\\trace_net_table_detector_overlay_audit_v1_summary.json",
+    "local_data\\organization\\trace_net\\table_detector_overlay_audit\\trace_net_table_detector_overlay_audit_v1_quality.json",
+    "local_data\\organization\\trace_net\\table_detector_overlay_audit\\trace_net_table_detector_overlay_audit_v1_manifest.json"
+  ],
+  "generated_at": "2026-06-17T18:57:02+00:00",
+  "overlay_dir": "local_data\\organization\\trace_net\\table_detector_overlay_audit\\overlays",
+  "safety_contract": {
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "no_answer_permission": true,
+    "no_opensearch_writes": true,
+    "no_postgres_writes": true,
+    "no_qdrant_writes": true,
+    "no_source_truth_mutation": true,
+    "read_only_diagnostic": true
+  },
+  "schema_version": "trace_net_table_detector_overlay_audit_v1_manifest"
+}

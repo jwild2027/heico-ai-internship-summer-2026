@@ -25,6 +25,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
+from tiff.trace_net_route_dispatch_contract_loader_v1 import load_route_dispatch_processor_contract
+
 SCHEMA_VERSION = "trace_net_visual_ink_layout_calibrator_v1"
 ALGORITHM_NAME = "trace_net_ink_layout_math_calibrator_v1"
 DEFAULT_OUTPUT_DIR = Path("local_data/organization/trace_net/visual_ink_layout_calibrator")
@@ -738,6 +740,7 @@ def build_visual_ink_layout_calibrator(
     min_reclassified_pages: int = 0,
     max_chart_pages: int | None = None,
     write_quality: bool = False,
+    route_dispatch_processor_contract: str | Path | None = None,
 ) -> dict[str, Any]:
     output = Path(output_dir)
     output.mkdir(parents=True, exist_ok=True)
@@ -762,6 +765,17 @@ def build_visual_ink_layout_calibrator(
 
     audit_index = {r.get("page_id"): r for r in audit_records if isinstance(r, dict) and r.get("page_id")}
     figure_index = {r.get("page_id"): r for r in figure_records if isinstance(r, dict) and r.get("page_id")}
+    route_dispatch_contract = None
+    route_dispatch_contract_quality_status = None
+    if route_dispatch_processor_contract:
+        route_dispatch_payload = read_json(route_dispatch_processor_contract, {})
+        route_dispatch_contract_quality_status = route_dispatch_payload.get("quality_status") or (route_dispatch_payload.get("summary") or {}).get("quality_status")
+        route_dispatch_contract = load_route_dispatch_processor_contract(route_dispatch_processor_contract)
+
+    route_dispatch_contract_available = route_dispatch_contract is not None
+    image_visual_route_allowed_input_count = 0
+    image_visual_route_blocked_input_count = 0
+
     table_index = index_by_page(table_records)
 
     records: list[dict[str, Any]] = []
@@ -769,15 +783,35 @@ def build_visual_ink_layout_calibrator(
         page_id = page_record.get("page_id")
         if not isinstance(page_id, str) or not page_id:
             continue
+
+        image_visual_route_dispatch_allowed = True
+        route_dispatch_review_required = False
+        if route_dispatch_contract_available:
+            image_visual_route_dispatch_allowed = bool(route_dispatch_contract.is_image_visual_allowed(page_id))
+            route_dispatch_review_required = bool(route_dispatch_contract.is_review_required(page_id))
+            if not image_visual_route_dispatch_allowed:
+                image_visual_route_blocked_input_count += 1
+                continue
+            image_visual_route_allowed_input_count += 1
+
         audit_record = audit_index.get(page_id, {})
         figure_record = figure_index.get(page_id, {})
-        records.append(build_calibrated_record(page_record, audit_record, figure_record, table_index.get(page_id, [])))
+        record = build_calibrated_record(page_record, audit_record, figure_record, table_index.get(page_id, []))
+        record["route_dispatch_processor_contract_available"] = route_dispatch_contract_available
+        record["image_visual_route_dispatch_allowed"] = image_visual_route_dispatch_allowed
+        record["route_dispatch_review_required"] = route_dispatch_review_required
+        records.append(record)
 
     source_summaries = {
         "image_recognition_summary": audit_summary,
         "figure_chart_summary": figure_summary,
     }
     summary = compute_summary(records, source_summaries)
+    summary["route_dispatch_processor_contract_available"] = bool(route_dispatch_processor_contract)
+    summary["route_dispatch_processor_contract_path"] = str(route_dispatch_processor_contract) if route_dispatch_processor_contract else None
+    summary["route_dispatch_processor_contract_quality_status"] = route_dispatch_contract_quality_status
+    summary["image_visual_route_allowed_input_count"] = image_visual_route_allowed_input_count
+    summary["image_visual_route_blocked_input_count"] = image_visual_route_blocked_input_count
     payload: dict[str, Any] = {
         "schema_version": SCHEMA_VERSION,
         "algorithm": ALGORITHM_NAME,
@@ -899,6 +933,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--image-recognition-audit", required=True)
     parser.add_argument("--figure-chart-understanding")
     parser.add_argument("--table-cell-normalizer")
+    parser.add_argument("--route-dispatch-processor-contract")
     parser.add_argument("--output-dir", default=str(DEFAULT_OUTPUT_DIR))
     parser.add_argument("--require-page-count", type=int)
     parser.add_argument("--min-calibrated-pages", type=int, default=1)
@@ -918,6 +953,7 @@ def main(argv: list[str] | None = None) -> int:
             image_recognition_audit_path=args.image_recognition_audit,
             figure_chart_understanding_path=args.figure_chart_understanding,
             table_cell_normalizer_path=args.table_cell_normalizer,
+        route_dispatch_processor_contract=args.route_dispatch_processor_contract,
             output_dir=args.output_dir,
             require_page_count=args.require_page_count,
             min_calibrated_pages=args.min_calibrated_pages,

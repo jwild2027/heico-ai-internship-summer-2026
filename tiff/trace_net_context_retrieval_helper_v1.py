@@ -22,6 +22,8 @@ from dataclasses import dataclass
 from datetime import date, datetime, timezone
 from decimal import Decimal
 from pathlib import Path
+
+from tiff.trace_net_route_dispatch_contract_loader_v1 import load_route_dispatch_processor_contract
 from typing import Any, Iterable, Mapping, Sequence
 
 SCHEMA_VERSION = "trace_net_context_retrieval_helper_v1"
@@ -734,15 +736,52 @@ def build_helper_bundle(
     fallback_doc: str = DEFAULT_FALLBACK_DOC,
     require_pages: Sequence[int] | None = None,
     max_helper_text_chars: int = 6000,
+    route_dispatch_processor_contract: str | Path | None = None,
 ) -> dict[str, Any]:
-    records = build_helper_records(rows, fallback_doc=fallback_doc, max_helper_text_chars=max_helper_text_chars)
+    route_dispatch_contract = None
+    route_dispatch_contract_quality_status = None
+    if route_dispatch_processor_contract:
+        route_dispatch_payload = json.loads(Path(route_dispatch_processor_contract).read_text(encoding="utf-8"))
+        route_dispatch_contract_quality_status = route_dispatch_payload.get("quality_status") or (route_dispatch_payload.get("summary") or {}).get("quality_status")
+        route_dispatch_contract = load_route_dispatch_processor_contract(route_dispatch_processor_contract)
+
+    route_dispatch_contract_available = route_dispatch_contract is not None
+    normal_text_route_allowed_input_count = 0
+    normal_text_route_blocked_input_count = 0
+
+    gated_rows: Sequence[Mapping[str, Any]] = rows
+    if route_dispatch_contract_available:
+        filtered_rows: list[Mapping[str, Any]] = []
+        for row in rows:
+            page_id = _context_page_id(row, fallback_doc=fallback_doc)
+            if page_id and route_dispatch_contract.is_normal_text_allowed(page_id):
+                normal_text_route_allowed_input_count += 1
+                filtered_rows.append(row)
+            else:
+                normal_text_route_blocked_input_count += 1
+        gated_rows = filtered_rows
+
+    records = build_helper_records(gated_rows, fallback_doc=fallback_doc, max_helper_text_chars=max_helper_text_chars)
+    for record in records:
+        record["route_dispatch_processor_contract_available"] = route_dispatch_contract_available
+        record["normal_text_route_dispatch_allowed"] = True
+        record["route_dispatch_review_required"] = bool(route_dispatch_contract.is_review_required(record.get("page_id"))) if route_dispatch_contract_available else False
+
     required_pages = list(require_pages or [])
     summary = summarize_records(records, required_pages=required_pages)
+    summary["route_dispatch_processor_contract_available"] = bool(route_dispatch_processor_contract)
+    summary["route_dispatch_processor_contract_path"] = str(route_dispatch_processor_contract) if route_dispatch_processor_contract else None
+    summary["route_dispatch_processor_contract_quality_status"] = route_dispatch_contract_quality_status
+    summary["normal_text_route_allowed_input_count"] = normal_text_route_allowed_input_count
+    summary["normal_text_route_blocked_input_count"] = normal_text_route_blocked_input_count
     return {
         "schema_version": SCHEMA_VERSION,
         "generated_at_utc": utc_now_iso(),
         "read_only": True,
         "source_table": "page_context_v2_records",
+        "source_paths": {
+            "route_dispatch_processor_contract": str(route_dispatch_processor_contract or ""),
+        },
         "record_count": len(records),
         "trace_net_boundary_rules": {
             "context_can_route_search": True,
@@ -841,6 +880,10 @@ def _print_quality(quality: QualityResult) -> None:
         "records_with_query_tunnel_terms_count",
         "required_page_missing_count",
         "unsafe_helper_count",
+        "route_dispatch_processor_contract_available",
+        "route_dispatch_processor_contract_quality_status",
+        "normal_text_route_allowed_input_count",
+        "normal_text_route_blocked_input_count",
         "baseline_quality_status",
     ]:
         if key in quality.summary:
@@ -860,6 +903,7 @@ def main_build(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--fallback-doc", default=DEFAULT_FALLBACK_DOC)
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--max-helper-text-chars", type=int, default=6000)
+    parser.add_argument("--route-dispatch-processor-contract", type=Path, default=None)
     parser.add_argument("--quality", action="store_true")
     parser.add_argument("--min-helper-records", type=int, default=50)
     parser.add_argument("--min-pages-with-helpers", type=int, default=50)
@@ -882,6 +926,7 @@ def main_build(argv: Sequence[str] | None = None) -> int:
         fallback_doc=args.fallback_doc,
         require_pages=required_pages,
         max_helper_text_chars=args.max_helper_text_chars,
+        route_dispatch_processor_contract=args.route_dispatch_processor_contract,
     )
     paths = write_helper_outputs(bundle, args.output_dir)
 

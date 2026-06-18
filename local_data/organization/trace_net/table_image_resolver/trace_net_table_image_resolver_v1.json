@@ -1,0 +1,2808 @@
+{
+  "checks": {
+    "answer_permission_within_limit": true,
+    "answer_permission_zero_required": true,
+    "can_answer_directly_zero": true,
+    "can_prove_claims_zero": true,
+    "min_resolved_image_cards_met": true,
+    "min_resolver_cards_met": true,
+    "min_source_cards_met": true,
+    "schema_version_ok": true,
+    "source_quality_pass": true,
+    "source_truth_mutation_allowed_within_limit": true,
+    "unsafe_cards_within_limit": true,
+    "write_attempts_zero": true
+  },
+  "generated_at": "2026-06-17T15:03:37+00:00",
+  "quality_status": "PASS",
+  "safety_contract": {
+    "no_answer_permission": true,
+    "no_claim_proof_authority": true,
+    "no_opensearch_writes": true,
+    "no_postgres_writes": true,
+    "no_qdrant_writes": true,
+    "no_source_truth_mutation": true,
+    "read_only_resolver": true
+  },
+  "schema_version": "trace_net_table_image_resolver_v1",
+  "source_artifacts": {
+    "human_review_queue": "local_data/organization/trace_net/human_review_queue/trace_net_human_review_queue_v1.json",
+    "table_cell_normalizer": "local_data/organization/trace_net/table_cell_normalizer/trace_net_table_cell_normalizer_v1.json",
+    "table_line_geometry": "local_data/organization/trace_net/table_line_geometry/trace_net_table_line_geometry_v1.json"
+  },
+  "status": "TABLE_IMAGE_RESOLVER_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "candidate_image_total_count": 54069,
+    "human_review_queue_quality_status": "PASS",
+    "image_root": ".",
+    "image_root_exists": true,
+    "opensearch_write_attempt_count": 0,
+    "part_number_table_card_count": 9,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_fail_reasons": [],
+    "quality_status": "PASS",
+    "recommended_action_counts": {},
+    "resolution_status_counts": {
+      "RESOLVED": 20
+    },
+    "resolved_image_card_count": 20,
+    "resolver_card_count": 20,
+    "retrieval_only_answer_allowed_count": 0,
+    "review_flag_counts": {},
+    "review_required_card_count": 0,
+    "scanned_image_file_count": 4665,
+    "schema_version": "trace_net_table_image_resolver_v1",
+    "source_quality_status": "PASS",
+    "source_table_geometry_card_count": 20,
+    "source_truth_mutation_allowed_count": 0,
+    "source_truth_mutations_performed": 0,
+    "status": "TABLE_IMAGE_RESOLVER_BUILT",
+    "table_cell_normalizer_quality_status": "PASS",
+    "unresolved_image_card_count": 0,
+    "unsafe_resolution_card_count": 0
+  },
+  "table_image_resolution_cards": [
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 3252,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 70153,
+          "image_path": "local_data/ocr/pilot_10_psm3/pages/zip_page_000003_00000003.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 70153,
+          "image_path": "local_data/ocr/pilot/pages/zip_page_000003_00000003.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 70153,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000003_00000003.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 161204,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000003/tile_003.png",
+          "match_score": 415,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 539286,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000003/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 167371,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000003/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 156226,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000003/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 139707,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000003/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 42775,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000003/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 30845,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000003/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        }
+      ],
+      "cell_record_count": 215,
+      "domain_validation": {
+        "ata_code_count": 0,
+        "ata_codes_sample": [],
+        "domain_table_type_hints": [
+          "parts_list_or_ipl_table"
+        ],
+        "part_number_count": 68,
+        "part_number_row_count": 64,
+        "part_numbers_sample": [
+          "120-45851-501",
+          "120-45851-503",
+          "120-46137-001",
+          "120-46137-501",
+          "120-50645-007",
+          "120-50645-009",
+          "120-50645-015",
+          "120-50645-017",
+          "120-50645-023",
+          "120-50645-025",
+          "120-50645-035",
+          "120-50645-037",
+          "120-50648-001",
+          "120-50648-003",
+          "120-50648-009",
+          "120-50648-011",
+          "120-50648-031",
+          "120-50648-033",
+          "120-50648-531",
+          "120-50648-533"
+        ],
+        "quantity_like_cell_count": 0,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 70153,
+      "resolved_image_path": "local_data/ocr/pilot_10_psm3/pages/zip_page_000003_00000003.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_3960c2e92728eb",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 75,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_5e656df4523162",
+      "source_geometry_confidence": 0.7,
+      "source_page_ids": [
+        "t_p_120_1176_p000003"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__f81df1cc10f27d",
+      "table_type": "parts_list_table",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2958,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 70074,
+          "image_path": "local_data/ocr/pilot_10_psm3/pages/zip_page_000005_00000005.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 70074,
+          "image_path": "local_data/ocr/pilot/pages/zip_page_000005_00000005.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 70074,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000005_00000005.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 141696,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000005/tile_005.png",
+          "match_score": 415,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 516917,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000005/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 135851,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000005/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 130914,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000005/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 123761,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000005/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 92189,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000005/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 57067,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000005/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        }
+      ],
+      "cell_record_count": 215,
+      "domain_validation": {
+        "ata_code_count": 1,
+        "ata_codes_sample": [
+          "25-21-00"
+        ],
+        "domain_table_type_hints": [
+          "ata_reference_table"
+        ],
+        "part_number_count": 0,
+        "part_number_row_count": 0,
+        "part_numbers_sample": [],
+        "quantity_like_cell_count": 3,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000005",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 70074,
+      "resolved_image_path": "local_data/ocr/pilot_10_psm3/pages/zip_page_000005_00000005.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_54cf3a5fecbb9d",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 75,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_eef6aa5a9a07a2",
+      "source_geometry_confidence": 0.7,
+      "source_page_ids": [
+        "t_p_120_1176_p000005"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__7f7b5da7a9e22e",
+      "table_type": "list_of_effective_pages",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2952,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 77604,
+          "image_path": "local_data/ocr/pilot_10_psm3/pages/zip_page_000006_00000006.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 77604,
+          "image_path": "local_data/ocr/pilot/pages/zip_page_000006_00000006.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 77604,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000006_00000006.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 90230,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000006/tile_006.png",
+          "match_score": 415,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 559760,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000006/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 156702,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000006/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 151705,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000006/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 140627,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000006/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 140082,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000006/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 56245,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000006/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        }
+      ],
+      "cell_record_count": 220,
+      "domain_validation": {
+        "ata_code_count": 0,
+        "ata_codes_sample": [],
+        "domain_table_type_hints": [
+          "generic_table"
+        ],
+        "part_number_count": 0,
+        "part_number_row_count": 0,
+        "part_numbers_sample": [],
+        "quantity_like_cell_count": 0,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000006",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 77604,
+      "resolved_image_path": "local_data/ocr/pilot_10_psm3/pages/zip_page_000006_00000006.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_1c29ce38fd3e4f",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 75,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_22da8d6986f21e",
+      "source_geometry_confidence": 0.6,
+      "source_page_ids": [
+        "t_p_120_1176_p000006"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__764aa02af38eb4",
+      "table_type": "list_of_effective_pages",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2663,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 63274,
+          "image_path": "local_data/ocr/pilot_10_psm3/pages/zip_page_000007_00000007.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 63274,
+          "image_path": "local_data/ocr/pilot/pages/zip_page_000007_00000007.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 63274,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000007_00000007.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 473401,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000007/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 120980,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000007/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 119185,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000007/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 118585,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000007/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 118002,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000007/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 85398,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000007/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 56479,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000007/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        }
+      ],
+      "cell_record_count": 232,
+      "domain_validation": {
+        "ata_code_count": 0,
+        "ata_codes_sample": [],
+        "domain_table_type_hints": [
+          "generic_table"
+        ],
+        "part_number_count": 0,
+        "part_number_row_count": 0,
+        "part_numbers_sample": [],
+        "quantity_like_cell_count": 3,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000007",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 63274,
+      "resolved_image_path": "local_data/ocr/pilot_10_psm3/pages/zip_page_000007_00000007.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_d6bdf489257263",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 75,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_1691e6cb12a6c5",
+      "source_geometry_confidence": 0.6,
+      "source_page_ids": [
+        "t_p_120_1176_p000007"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__eb2feaf8184b19",
+      "table_type": "list_of_effective_pages",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2642,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 62019,
+          "image_path": "local_data/ocr/pilot_10_psm3/pages/zip_page_000008_00000008.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 62019,
+          "image_path": "local_data/ocr/pilot/pages/zip_page_000008_00000008.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 62019,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000008_00000008.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 465827,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000008/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 120465,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000008/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 119040,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000008/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 117913,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000008/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 113128,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000008/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 85142,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000008/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 50268,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000008/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        }
+      ],
+      "cell_record_count": 233,
+      "domain_validation": {
+        "ata_code_count": 0,
+        "ata_codes_sample": [],
+        "domain_table_type_hints": [
+          "generic_table"
+        ],
+        "part_number_count": 0,
+        "part_number_row_count": 0,
+        "part_numbers_sample": [],
+        "quantity_like_cell_count": 0,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000008",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 62019,
+      "resolved_image_path": "local_data/ocr/pilot_10_psm3/pages/zip_page_000008_00000008.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_0a684b060d4a31",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 75,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_77b7835ae486f5",
+      "source_geometry_confidence": 0.6,
+      "source_page_ids": [
+        "t_p_120_1176_p000008"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__d1b977339f3dbd",
+      "table_type": "list_of_effective_pages",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2642,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 63596,
+          "image_path": "local_data/ocr/pilot_10_psm3/pages/zip_page_000009_00000009.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 63596,
+          "image_path": "local_data/ocr/pilot/pages/zip_page_000009_00000009.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 63596,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000009_00000009.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 471577,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000009/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 120890,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000009/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 118770,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000009/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 118223,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000009/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 117776,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000009/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 84885,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000009/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 56377,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000009/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        }
+      ],
+      "cell_record_count": 232,
+      "domain_validation": {
+        "ata_code_count": 0,
+        "ata_codes_sample": [],
+        "domain_table_type_hints": [
+          "generic_table"
+        ],
+        "part_number_count": 0,
+        "part_number_row_count": 0,
+        "part_numbers_sample": [],
+        "quantity_like_cell_count": 4,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000009",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 63596,
+      "resolved_image_path": "local_data/ocr/pilot_10_psm3/pages/zip_page_000009_00000009.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_cc84523f4c4511",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 75,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_f0fb950f114b73",
+      "source_geometry_confidence": 0.6,
+      "source_page_ids": [
+        "t_p_120_1176_p000009"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__6d41f24dae2feb",
+      "table_type": "list_of_effective_pages",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2642,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 61985,
+          "image_path": "local_data/ocr/pilot_10_psm3/pages/zip_page_000010_00000010.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 61985,
+          "image_path": "local_data/ocr/pilot/pages/zip_page_000010_00000010.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 61985,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000010_00000010.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 465120,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000010/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 121281,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000010/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 118314,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000010/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 117885,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000010/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 112486,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000010/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 84869,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000010/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 49626,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000010/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        }
+      ],
+      "cell_record_count": 232,
+      "domain_validation": {
+        "ata_code_count": 0,
+        "ata_codes_sample": [],
+        "domain_table_type_hints": [
+          "generic_table"
+        ],
+        "part_number_count": 0,
+        "part_number_row_count": 0,
+        "part_numbers_sample": [],
+        "quantity_like_cell_count": 1,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000010",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 61985,
+      "resolved_image_path": "local_data/ocr/pilot_10_psm3/pages/zip_page_000010_00000010.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_7965a32ce6e8d6",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 75,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_a356dca0925d0f",
+      "source_geometry_confidence": 0.6,
+      "source_page_ids": [
+        "t_p_120_1176_p000010"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__5a5f503faa1d6e",
+      "table_type": "list_of_effective_pages",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2642,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 46925,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000011_00000011.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 362808,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000011/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 120191,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000011/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 85689,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000011/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 73670,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000011/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 68151,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000011/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 67878,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000011/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 56120,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000011/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 50320,
+          "image_path": "local_data/sample_tiffs/00000118.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 50320,
+          "image_path": "local_data/rescarta_toolkit_parent/t_p_120_1176/000118_00000118.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        }
+      ],
+      "cell_record_count": 197,
+      "domain_validation": {
+        "ata_code_count": 0,
+        "ata_codes_sample": [],
+        "domain_table_type_hints": [
+          "generic_table"
+        ],
+        "part_number_count": 0,
+        "part_number_row_count": 0,
+        "part_numbers_sample": [],
+        "quantity_like_cell_count": 39,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000011",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 46925,
+      "resolved_image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000011_00000011.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_cbf7363f1d9bad",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 75,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_6e15ec7b829988",
+      "source_geometry_confidence": 0.6,
+      "source_page_ids": [
+        "t_p_120_1176_p000011"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__467baede2d74c0",
+      "table_type": "list_of_effective_pages",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2642,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 17197,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000013_00000013.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 92603,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000013/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 43154,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000013/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 31377,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000013/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 22013,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000013/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 7302,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000013/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 6918,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000013/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 6826,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000013/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 50536,
+          "image_path": "local_data/sample_tiffs/00000130.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 50536,
+          "image_path": "local_data/rescarta_toolkit_parent/t_p_120_1176/000130_00000130.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        }
+      ],
+      "cell_record_count": 152,
+      "domain_validation": {
+        "ata_code_count": 0,
+        "ata_codes_sample": [],
+        "domain_table_type_hints": [
+          "generic_table"
+        ],
+        "part_number_count": 0,
+        "part_number_row_count": 0,
+        "part_numbers_sample": [],
+        "quantity_like_cell_count": 0,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000013",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 17197,
+      "resolved_image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000013_00000013.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_f0e6d32ab2d78f",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 58,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_27235bd2c5dda3",
+      "source_geometry_confidence": 0.6,
+      "source_page_ids": [
+        "t_p_120_1176_p000013"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__7333dbe048e0b1",
+      "table_type": "index_table",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2642,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 21854,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000014_00000014.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 145890,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000014/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 68290,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000014/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 59634,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000014/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 37686,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000014/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 6247,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000014/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 6186,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000014/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 6157,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000014/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 52309,
+          "image_path": "local_data/sample_tiffs/00000140.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 52309,
+          "image_path": "local_data/rescarta_toolkit_parent/t_p_120_1176/000140_00000140.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        }
+      ],
+      "cell_record_count": 236,
+      "domain_validation": {
+        "ata_code_count": 0,
+        "ata_codes_sample": [],
+        "domain_table_type_hints": [
+          "generic_table"
+        ],
+        "part_number_count": 0,
+        "part_number_row_count": 0,
+        "part_numbers_sample": [],
+        "quantity_like_cell_count": 1,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000014",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 21854,
+      "resolved_image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000014_00000014.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_4fa29487dce700",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 40,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_c543cb318b0009",
+      "source_geometry_confidence": 0.6,
+      "source_page_ids": [
+        "t_p_120_1176_p000014"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__383a34735f6211",
+      "table_type": "index_table",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2649,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 55975,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000027_00000027.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 394331,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000027/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 97071,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000027/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 95699,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000027/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 94026,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000027/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 93857,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000027/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 65720,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000027/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 64495,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000027/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 59265,
+          "image_path": "local_data/sample_tiffs/00000275.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 59265,
+          "image_path": "local_data/rescarta_toolkit_parent/t_p_120_1176/000275_00000275.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        }
+      ],
+      "cell_record_count": 201,
+      "domain_validation": {
+        "ata_code_count": 2,
+        "ata_codes_sample": [
+          "25-21-00",
+          "29-21-00"
+        ],
+        "domain_table_type_hints": [
+          "ata_reference_table"
+        ],
+        "part_number_count": 0,
+        "part_number_row_count": 0,
+        "part_numbers_sample": [],
+        "quantity_like_cell_count": 43,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000027",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 55975,
+      "resolved_image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000027_00000027.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_19ead3012e4aed",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 75,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_d2e9a074720069",
+      "source_geometry_confidence": 0.7,
+      "source_page_ids": [
+        "t_p_120_1176_p000027"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__ceb30b4224686b",
+      "table_type": "ata_index_table",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2649,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 56877,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000028_00000028.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 399955,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000028/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 103028,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000028/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 98678,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000028/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 95061,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000028/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 87887,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000028/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 66916,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000028/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 64706,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000028/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 58101,
+          "image_path": "local_data/sample_tiffs/00000281.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 58101,
+          "image_path": "local_data/rescarta_toolkit_parent/t_p_120_1176/000281_00000281.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        }
+      ],
+      "cell_record_count": 268,
+      "domain_validation": {
+        "ata_code_count": 1,
+        "ata_codes_sample": [
+          "25-21-00"
+        ],
+        "domain_table_type_hints": [
+          "ata_reference_table"
+        ],
+        "part_number_count": 0,
+        "part_number_row_count": 0,
+        "part_numbers_sample": [],
+        "quantity_like_cell_count": 69,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000028",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 56877,
+      "resolved_image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000028_00000028.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_1b1d2374099fca",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 75,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_4bc75f44f9f7c9",
+      "source_geometry_confidence": 0.7,
+      "source_page_ids": [
+        "t_p_120_1176_p000028"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__9ded89bb38cc5c",
+      "table_type": "ata_index_table",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2635,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 56308,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000029_00000029.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 394783,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000029/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 97659,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000029/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 97199,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000029/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 95146,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000029/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 91297,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000029/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 64545,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000029/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 64406,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000029/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 57696,
+          "image_path": "local_data/sample_tiffs/00000293.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 57696,
+          "image_path": "local_data/rescarta_toolkit_parent/t_p_120_1176/000293_00000293.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        }
+      ],
+      "cell_record_count": 215,
+      "domain_validation": {
+        "ata_code_count": 1,
+        "ata_codes_sample": [
+          "25-21-00"
+        ],
+        "domain_table_type_hints": [
+          "parts_list_or_ipl_table",
+          "ata_reference_table",
+          "parts_quantity_table"
+        ],
+        "part_number_count": 5,
+        "part_number_row_count": 7,
+        "part_numbers_sample": [
+          "20-20970-003",
+          "20-26948-001",
+          "20-26948-003",
+          "120-26948-001",
+          "120-26948-003"
+        ],
+        "quantity_like_cell_count": 39,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000029",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 56308,
+      "resolved_image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000029_00000029.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_7f4df2e2d9e3c0",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 76,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_6743af9be6478d",
+      "source_geometry_confidence": 0.7,
+      "source_page_ids": [
+        "t_p_120_1176_p000029"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__572f3f5e658f20",
+      "table_type": "parts_list_table",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2649,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 52696,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000030_00000030.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 364571,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000030/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 87113,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000030/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 86332,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000030/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 85930,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000030/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 84422,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000030/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 68484,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000030/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 58615,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000030/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 58307,
+          "image_path": "local_data/sample_tiffs/00000305.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 58307,
+          "image_path": "local_data/rescarta_toolkit_parent/t_p_120_1176/000305_00000305.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        }
+      ],
+      "cell_record_count": 273,
+      "domain_validation": {
+        "ata_code_count": 1,
+        "ata_codes_sample": [
+          "25-21-00"
+        ],
+        "domain_table_type_hints": [
+          "parts_list_or_ipl_table",
+          "ata_reference_table",
+          "parts_quantity_table"
+        ],
+        "part_number_count": 6,
+        "part_number_row_count": 10,
+        "part_numbers_sample": [
+          "120-29067-031",
+          "120-29067-033",
+          "120-29067-035",
+          "120-29067-013",
+          "120-26948-003",
+          "120-29067-015"
+        ],
+        "quantity_like_cell_count": 69,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000030",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 52696,
+      "resolved_image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000030_00000030.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_131349dfdf592a",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 76,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_06ec6c4c1db031",
+      "source_geometry_confidence": 0.7,
+      "source_page_ids": [
+        "t_p_120_1176_p000030"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__ef1e3e215be5b4",
+      "table_type": "parts_list_table",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2635,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 52361,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000031_00000031.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 360887,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000031/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 92020,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000031/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 87303,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000031/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 85342,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000031/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 82394,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000031/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 66123,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000031/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 54757,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000031/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 52361,
+          "image_path": "local_data/sample_tiffs/00000031.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 52361,
+          "image_path": "local_data/rescarta_toolkit_parent/t_p_120_1176/000031_00000031.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        }
+      ],
+      "cell_record_count": 198,
+      "domain_validation": {
+        "ata_code_count": 1,
+        "ata_codes_sample": [
+          "25-21-00"
+        ],
+        "domain_table_type_hints": [
+          "parts_list_or_ipl_table",
+          "ata_reference_table",
+          "parts_quantity_table"
+        ],
+        "part_number_count": 18,
+        "part_number_row_count": 19,
+        "part_numbers_sample": [
+          "20-29068-045",
+          "20-29068-047",
+          "20-29068-049",
+          "20-29068-051",
+          "20-29068-053",
+          "20-29068-055",
+          "20-29068-057",
+          "120-29066-019",
+          "120-29066-049",
+          "120-29068-051",
+          "120-29068-017",
+          "120-29068-053",
+          "120-29068-019",
+          "120-29068-055",
+          "120-29068-057",
+          "120-29068-021",
+          "120-29067-035",
+          "120-29068-023"
+        ],
+        "quantity_like_cell_count": 35,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000031",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 52361,
+      "resolved_image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000031_00000031.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_2b1e0e69b73f36",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 75,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_c1777963bc4f6a",
+      "source_geometry_confidence": 0.7,
+      "source_page_ids": [
+        "t_p_120_1176_p000031"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__a2318342d8032a",
+      "table_type": "list_of_effective_pages",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2635,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 51700,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000032_00000032.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 367381,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000032/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 94697,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000032/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 93003,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000032/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 91207,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000032/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 89268,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000032/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 69267,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000032/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 43838,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000032/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 55063,
+          "image_path": "local_data/sample_tiffs/00000324.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 55063,
+          "image_path": "local_data/rescarta_toolkit_parent/t_p_120_1176/000324_00000324.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        }
+      ],
+      "cell_record_count": 273,
+      "domain_validation": {
+        "ata_code_count": 1,
+        "ata_codes_sample": [
+          "25-21-00"
+        ],
+        "domain_table_type_hints": [
+          "parts_list_or_ipl_table",
+          "ata_reference_table",
+          "parts_quantity_table"
+        ],
+        "part_number_count": 8,
+        "part_number_row_count": 11,
+        "part_numbers_sample": [
+          "120-29073-005",
+          "120-29073-007",
+          "420-29069-005",
+          "120-29073-008",
+          "120-29069-007",
+          "120-29069-009",
+          "120-29068-059",
+          "120-29070-001"
+        ],
+        "quantity_like_cell_count": 77,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000032",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 51700,
+      "resolved_image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000032_00000032.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_7f643d2f0ed24d",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 75,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_0ea83d3ec5094a",
+      "source_geometry_confidence": 0.7,
+      "source_page_ids": [
+        "t_p_120_1176_p000032"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__e031629faa20ec",
+      "table_type": "parts_list_table",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2642,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 53853,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000033_00000033.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 371476,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000033/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 92683,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000033/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 91243,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000033/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 85120,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000033/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 84659,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000033/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 66422,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000033/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 61140,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000033/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 56180,
+          "image_path": "local_data/sample_tiffs/00000332.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 56180,
+          "image_path": "local_data/rescarta_toolkit_parent/t_p_120_1176/000332_00000332.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        }
+      ],
+      "cell_record_count": 215,
+      "domain_validation": {
+        "ata_code_count": 2,
+        "ata_codes_sample": [
+          "25-21-00",
+          "29-21-00"
+        ],
+        "domain_table_type_hints": [
+          "parts_list_or_ipl_table",
+          "ata_reference_table",
+          "parts_quantity_table"
+        ],
+        "part_number_count": 3,
+        "part_number_row_count": 5,
+        "part_numbers_sample": [
+          "120-29075-031",
+          "120-29076-001",
+          "120-29074-001"
+        ],
+        "quantity_like_cell_count": 46,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000033",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 53853,
+      "resolved_image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000033_00000033.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_a82ed19abb22cf",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 76,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_b654173100fd55",
+      "source_geometry_confidence": 0.7,
+      "source_page_ids": [
+        "t_p_120_1176_p000033"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__a28060eb2bf80d",
+      "table_type": "ata_index_table",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2642,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 24270,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000034_00000034.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 120925,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000034/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 60816,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000034/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 48869,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000034/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 20536,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000034/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 10751,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000034/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 2160,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000034/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 2160,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000034/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 48204,
+          "image_path": "local_data/sample_tiffs/00000349.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 48204,
+          "image_path": "local_data/rescarta_toolkit_parent/t_p_120_1176/000349_00000349.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        }
+      ],
+      "cell_record_count": 116,
+      "domain_validation": {
+        "ata_code_count": 1,
+        "ata_codes_sample": [
+          "25-21-00"
+        ],
+        "domain_table_type_hints": [
+          "parts_list_or_ipl_table",
+          "ata_reference_table"
+        ],
+        "part_number_count": 1,
+        "part_number_row_count": 2,
+        "part_numbers_sample": [
+          "120-29083-001"
+        ],
+        "quantity_like_cell_count": 0,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000034",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 24270,
+      "resolved_image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000034_00000034.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_77c4ff0f0147c9",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 36,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_5f3f5f7d2e4bbc",
+      "source_geometry_confidence": 0.7,
+      "source_page_ids": [
+        "t_p_120_1176_p000034"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__37db1b274874e6",
+      "table_type": "list_of_effective_pages",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2628,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 54527,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000036_00000036.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 383769,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000036/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 96921,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000036/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 93461,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000036/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 91717,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000036/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 91601,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000036/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 68607,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000036/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 56345,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000036/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 54527,
+          "image_path": "local_data/sample_tiffs/00000036.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 54527,
+          "image_path": "local_data/rescarta_toolkit_parent/t_p_120_1176/000036_00000036.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        }
+      ],
+      "cell_record_count": 290,
+      "domain_validation": {
+        "ata_code_count": 1,
+        "ata_codes_sample": [
+          "25-21-00"
+        ],
+        "domain_table_type_hints": [
+          "parts_list_or_ipl_table",
+          "ata_reference_table",
+          "parts_quantity_table"
+        ],
+        "part_number_count": 6,
+        "part_number_row_count": 10,
+        "part_numbers_sample": [
+          "120-31626-001",
+          "120-33774-001",
+          "120-30016-001",
+          "120-30016-002",
+          "120-30017-001",
+          "120-29102-003"
+        ],
+        "quantity_like_cell_count": 74,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000036",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 54527,
+      "resolved_image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000036_00000036.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_4748889d154ca1",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 76,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_4d77efff82de28",
+      "source_geometry_confidence": 0.7,
+      "source_page_ids": [
+        "t_p_120_1176_p000036"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__3e3988c2ff19a9",
+      "table_type": "parts_list_table",
+      "unsafe_resolution_card": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_image_count": 2628,
+      "candidate_images": [
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 54439,
+          "image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000037_00000037.tif",
+          "match_score": 420,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 380264,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000037/full_preprocessed.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 94575,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000037/tile_004.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 92460,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000037/tile_003.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 89199,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000037/tile_002.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 86984,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000037/tile_005.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 66423,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000037/tile_001.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 62496,
+          "image_path": "local_data/organization/table_extraction/tiles/t_p_120_1176_p000037/tile_006.png",
+          "match_score": 380,
+          "path_exists": true,
+          "suffix": ".png"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 54439,
+          "image_path": "local_data/sample_tiffs/00000037.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        },
+        {
+          "candidate_source": "image_root_scan",
+          "file_size_bytes": 54439,
+          "image_path": "local_data/rescarta_toolkit_parent/t_p_120_1176/000037_00000037.tif",
+          "match_score": 340,
+          "path_exists": true,
+          "suffix": ".tif"
+        }
+      ],
+      "cell_record_count": 255,
+      "domain_validation": {
+        "ata_code_count": 1,
+        "ata_codes_sample": [
+          "25-21-00"
+        ],
+        "domain_table_type_hints": [
+          "parts_list_or_ipl_table",
+          "ata_reference_table",
+          "parts_quantity_table"
+        ],
+        "part_number_count": 3,
+        "part_number_row_count": 4,
+        "part_numbers_sample": [
+          "20-33774-539",
+          "20-34291-001",
+          "120-33774-001"
+        ],
+        "quantity_like_cell_count": 45,
+        "revision_token_count": 0,
+        "revision_tokens_sample": []
+      },
+      "image_resolution_confidence": 1.0,
+      "image_resolution_status": "RESOLVED",
+      "image_root": ".",
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000037",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "read_only_resolution": true,
+      "recommended_actions": [],
+      "resolved_image_file_size_bytes": 54439,
+      "resolved_image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000037_00000037.tif",
+      "resolved_image_suffix": ".tif",
+      "resolver_card_id": "table_image_resolver_8082b1e3d7ab8e",
+      "retrieval_only": true,
+      "review_flags": [],
+      "review_required": false,
+      "row_record_count": 76,
+      "schema_version": "trace_net_table_image_resolver_v1",
+      "source_geometry_card_id": "table_geom_ea23bf8fc6f8bc",
+      "source_geometry_confidence": 0.7,
+      "source_page_ids": [
+        "t_p_120_1176_p000037"
+      ],
+      "source_review_required": true,
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "table_id": "normtable__7a94bb4b46b16f",
+      "table_type": "parts_list_table",
+      "unsafe_resolution_card": false
+    }
+  ]
+}

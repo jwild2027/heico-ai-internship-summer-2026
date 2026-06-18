@@ -19,6 +19,8 @@ import re
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
+
+from tiff.trace_net_route_dispatch_contract_loader_v1 import load_route_dispatch_processor_contract
 from typing import Any, Iterable
 
 SCHEMA_VERSION = "trace_net_callout_visual_part_verifier_v1"
@@ -590,6 +592,7 @@ def build_callout_visual_part_verifier_report(
     output_dir: str | Path = DEFAULT_OUTPUT_DIR,
     quality_config: dict[str, Any] | None = None,
     write_quality: bool = False,
+    route_dispatch_processor_contract: str | Path | None = None,
 ) -> dict[str, Any]:
     output_dir = Path(output_dir)
     visual_records = load_records_from_report(figure_chart_understanding_path, "records", "visual_records")
@@ -598,6 +601,17 @@ def build_callout_visual_part_verifier_report(
     embedding_payload = read_json(embedding_candidates_path, default={})
     catalog_parts = extract_catalog_parts(part_payload if isinstance(part_payload, dict) else {}, embedding_payload if isinstance(embedding_payload, dict) else {})
     rows_by_page = table_rows_by_page(table_records)
+
+    route_dispatch_contract = None
+    route_dispatch_contract_quality_status = None
+    if route_dispatch_processor_contract:
+        route_dispatch_payload = read_json(route_dispatch_processor_contract, default={})
+        route_dispatch_contract_quality_status = route_dispatch_payload.get("quality_status") or (route_dispatch_payload.get("summary") or {}).get("quality_status")
+        route_dispatch_contract = load_route_dispatch_processor_contract(route_dispatch_processor_contract)
+
+    route_dispatch_contract_available = route_dispatch_contract is not None
+    image_visual_route_allowed_input_count = 0
+    image_visual_route_blocked_input_count = 0
 
     records: list[dict[str, Any]] = []
     for visual in visual_records:
@@ -618,9 +632,29 @@ def build_callout_visual_part_verifier_report(
         )
         if not has_signal:
             continue
-        records.append(verify_visual_record(visual, table_rows=rows_by_page.get(page_id, []), catalog_parts=catalog_parts))
+
+        image_visual_route_dispatch_allowed = True
+        route_dispatch_review_required = False
+        if route_dispatch_contract_available:
+            image_visual_route_dispatch_allowed = bool(route_dispatch_contract.is_image_visual_allowed(page_id))
+            route_dispatch_review_required = bool(route_dispatch_contract.is_review_required(page_id))
+            if not image_visual_route_dispatch_allowed:
+                image_visual_route_blocked_input_count += 1
+                continue
+            image_visual_route_allowed_input_count += 1
+
+        record = verify_visual_record(visual, table_rows=rows_by_page.get(page_id, []), catalog_parts=catalog_parts)
+        record["route_dispatch_processor_contract_available"] = route_dispatch_contract_available
+        record["image_visual_route_dispatch_allowed"] = image_visual_route_dispatch_allowed
+        record["route_dispatch_review_required"] = route_dispatch_review_required
+        records.append(record)
 
     summary = compute_summary(records, source_visual_record_count=len(visual_records), catalog_part_count=len(catalog_parts))
+    summary["route_dispatch_processor_contract_available"] = bool(route_dispatch_processor_contract)
+    summary["route_dispatch_processor_contract_path"] = str(route_dispatch_processor_contract) if route_dispatch_processor_contract else None
+    summary["route_dispatch_processor_contract_quality_status"] = route_dispatch_contract_quality_status
+    summary["image_visual_route_allowed_input_count"] = image_visual_route_allowed_input_count
+    summary["image_visual_route_blocked_input_count"] = image_visual_route_blocked_input_count
     quality = evaluate_quality(summary, quality_config)
     status = "CALLOUT_VISUAL_PART_VERIFIER_BUILT"
     quality_status = quality["status"]
@@ -642,6 +676,7 @@ def build_callout_visual_part_verifier_report(
             "table_cell_normalizer": str(table_cell_normalizer_path or ""),
             "graph_overlay_part_normalizer": str(graph_overlay_part_normalizer_path or ""),
             "embedding_candidates": str(embedding_candidates_path or ""),
+            "route_dispatch_processor_contract": str(route_dispatch_processor_contract or ""),
         },
     }
 
@@ -723,6 +758,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--table-cell-normalizer")
     parser.add_argument("--graph-overlay-part-normalizer")
     parser.add_argument("--embedding-candidates")
+    parser.add_argument("--route-dispatch-processor-contract")
     parser.add_argument("--output-dir", default=str(DEFAULT_OUTPUT_DIR))
     parser.add_argument("--min-verifier-records", type=int, default=1)
     parser.add_argument("--min-clean-callouts", type=int, default=1)
@@ -765,6 +801,7 @@ def main(argv: list[str] | None = None) -> int:
         table_cell_normalizer_path=args.table_cell_normalizer,
         graph_overlay_part_normalizer_path=args.graph_overlay_part_normalizer,
         embedding_candidates_path=args.embedding_candidates,
+        route_dispatch_processor_contract=args.route_dispatch_processor_contract,
         output_dir=args.output_dir,
         quality_config=config_from_args(args),
         write_quality=args.quality,
@@ -783,6 +820,10 @@ def main(argv: list[str] | None = None) -> int:
         "catalog_verified_visual_part_count",
         "diagrams_needing_human_review_count",
         "unsafe_visual_evidence_count",
+        "route_dispatch_processor_contract_available",
+        "route_dispatch_processor_contract_quality_status",
+        "image_visual_route_allowed_input_count",
+        "image_visual_route_blocked_input_count",
         "visual_answer_allowed_count",
         "source_truth_mutation_allowed_count",
     ]:

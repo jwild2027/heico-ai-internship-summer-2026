@@ -15,6 +15,8 @@ from decimal import Decimal
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
+from tiff.trace_net_route_dispatch_contract_loader_v1 import load_route_dispatch_processor_contract
+
 PROMPT_VERSION = "page_context_v2_query_guidance_card"
 VERSION = "trace_net_page_context_v2_v1"
 DEFAULT_OUTPUT_DIR = Path("local_data/organization/trace_net/page_context_v2")
@@ -851,10 +853,23 @@ def build_page_context_v2(
     temperature: float = 0.0,
     progress: bool = False,
     dry_run: bool = False,
+    route_dispatch_processor_contract: Optional[Path] = None,
 ) -> Dict[str, Any]:
     started = time.time()
     output_dir.mkdir(parents=True, exist_ok=True)
     pages = collect_page_inputs(database_url, context_file=context_file, max_ocr_chars=max_ocr_chars)
+
+    route_dispatch_contract = None
+    route_dispatch_contract_quality_status = None
+    if route_dispatch_processor_contract:
+        route_dispatch_payload = load_json(route_dispatch_processor_contract)
+        route_dispatch_contract_quality_status = route_dispatch_payload.get("quality_status") or (route_dispatch_payload.get("summary") or {}).get("quality_status")
+        route_dispatch_contract = load_route_dispatch_processor_contract(route_dispatch_processor_contract)
+
+    route_dispatch_contract_available = route_dispatch_contract is not None
+    normal_text_route_allowed_input_count = 0
+    normal_text_route_blocked_input_count = 0
+
     if page_ids:
         requested = set(page_ids)
         pages = [p for p in pages if p.get("page_id") in requested]
@@ -866,10 +881,24 @@ def build_page_context_v2(
         pages = pages[:limit]
 
     records: List[Dict[str, Any]] = []
+    if route_dispatch_contract_available:
+        filtered_pages = []
+        for page in pages:
+            page_id = page.get("page_id")
+            if page_id and route_dispatch_contract.is_normal_text_allowed(page_id):
+                normal_text_route_allowed_input_count += 1
+                filtered_pages.append(page)
+            else:
+                normal_text_route_blocked_input_count += 1
+        pages = filtered_pages
+
     total = len(pages)
     for idx, page in enumerate(pages, start=1):
         t0 = time.time()
         rec = generate_context_v2(page, provider=provider, model=model, ollama_url=ollama_url, timeout_seconds=timeout_seconds, temperature=temperature)
+        rec["route_dispatch_processor_contract_available"] = route_dispatch_contract_available
+        rec["normal_text_route_dispatch_allowed"] = True
+        rec["route_dispatch_review_required"] = bool(route_dispatch_contract.is_review_required(rec.get("page_id"))) if route_dispatch_contract_available else False
         records.append(rec)
         if progress:
             elapsed = time.time() - t0
@@ -909,6 +938,11 @@ def build_page_context_v2(
         "created_at": utc_now(),
         "records_path": str(records_path),
     }
+    summary["route_dispatch_processor_contract_available"] = bool(route_dispatch_processor_contract)
+    summary["route_dispatch_processor_contract_path"] = str(route_dispatch_processor_contract) if route_dispatch_processor_contract else None
+    summary["route_dispatch_processor_contract_quality_status"] = route_dispatch_contract_quality_status
+    summary["normal_text_route_allowed_input_count"] = normal_text_route_allowed_input_count
+    summary["normal_text_route_blocked_input_count"] = normal_text_route_blocked_input_count
     if not dry_run:
         summary.update(collect_postgres_summary(database_url))
     summary_path = output_dir / "trace_net_page_context_v2_summary.json"
@@ -997,6 +1031,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--temperature", type=float, default=0.0)
     p.add_argument("--progress", action="store_true")
     p.add_argument("--dry-run", action="store_true")
+    p.add_argument("--route-dispatch-processor-contract", type=Path, default=None)
     p.add_argument("--open", action="store_true")
     return p
 
@@ -1028,6 +1063,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         temperature=args.temperature,
         progress=args.progress,
         dry_run=args.dry_run,
+        route_dispatch_processor_contract=args.route_dispatch_processor_contract,
     )
     print("TRACE-Net Page Context v2 / query guidance")
     print(f"  Status: {summary.get('status')}")
@@ -1043,6 +1079,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "direct_answer_context_records",
         "canonical_source_truth_context_records",
         "source_truth_mutation_records",
+        "route_dispatch_processor_contract_available",
+        "route_dispatch_processor_contract_quality_status",
+        "normal_text_route_allowed_input_count",
+        "normal_text_route_blocked_input_count",
         "postgres_page_context_v2_records",
         "postgres_context_v2_graph_nodes",
         "postgres_has_context_v2_edges",

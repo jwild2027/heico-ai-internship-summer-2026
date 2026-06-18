@@ -1,0 +1,37 @@
+{
+  "can_answer_directly": false,
+  "can_prove_claims": false,
+  "image_height": 4141,
+  "image_width": 3199,
+  "ocr_bbox_jsonl_path": "local_data/organization/trace_net/table_ocr_bbox_sidecars/sidecars/t_p_120_1176_p000037__zip_page_000037_00000037_ocr_bboxes.jsonl",
+  "ocr_line_jsonl_path": "local_data/organization/trace_net/table_ocr_bbox_sidecars/sidecars/t_p_120_1176_p000037__zip_page_000037_00000037_ocr_lines.jsonl",
+  "ocr_line_record_count": 52,
+  "ocr_word_record_count": 305,
+  "page_id": "t_p_120_1176_p000037",
+  "part_number_match_count": 6,
+  "part_number_match_jsonl_path": "local_data/organization/trace_net/table_ocr_bbox_sidecars/sidecars/t_p_120_1176_p000037__zip_page_000037_00000037_part_number_matches.jsonl",
+  "part_numbers_sample": [
+    "120-33774-001",
+    "120-33774-501",
+    "120-33774-505",
+    "120-33774-537",
+    "120-33774-539",
+    "120-34291-001"
+  ],
+  "resolved_image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000037_00000037.tif",
+  "schema_version": "trace_net_table_ocr_bbox_sidecar_page_summary_v1",
+  "source_truth_mutation_allowed": false,
+  "table_candidate_bbox": {
+    "coverage_ratio": 0.927165,
+    "height": 4141,
+    "width": 2966,
+    "x0": 0,
+    "x1": 2966,
+    "y0": 0,
+    "y1": 4141
+  },
+  "table_candidate_bbox_source": "part_number_ocr_line_band_bbox",
+  "table_id": "normtable__7a94bb4b46b16f",
+  "table_type": "parts_list_table",
+  "tsv_sidecar_path": "local_data/organization/trace_net/table_ocr_bbox_sidecars/sidecars/t_p_120_1176_p000037__zip_page_000037_00000037.tsv"
+}

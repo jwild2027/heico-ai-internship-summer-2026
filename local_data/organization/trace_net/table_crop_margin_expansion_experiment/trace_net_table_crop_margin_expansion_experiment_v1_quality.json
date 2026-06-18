@@ -1,0 +1,62 @@
+{
+  "checks": {
+    "answer_permission_within_limit": true,
+    "answer_permission_zero": true,
+    "can_answer_directly_zero": true,
+    "can_prove_claims_zero": true,
+    "min_diagnostic_cards_met": true,
+    "min_margin_candidate_cards_met": true,
+    "min_successful_image_cards_met": true,
+    "schema_version_ok": true,
+    "source_truth_mutation_allowed_within_limit": true,
+    "table_bbox_resolver_quality_pass": true,
+    "table_line_geometry_quality_pass": true,
+    "unsafe_diagnostic_cards_within_limit": true,
+    "write_attempts_zero": true
+  },
+  "generated_at": "2026-06-17T18:00:37+00:00",
+  "quality_status": "PASS",
+  "schema_version": "trace_net_table_crop_margin_expansion_experiment_v1_quality",
+  "status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "bbox_source_counts": {
+      "explicit_table_bbox": 20
+    },
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "diagnostic_card_count": 20,
+    "margin_candidate_card_count": 120,
+    "margin_improvement_card_count": 19,
+    "margin_pixels": [
+      0,
+      25,
+      50,
+      100,
+      150,
+      250
+    ],
+    "margin_selected_for_recommendation_card_count": 19,
+    "opensearch_write_attempt_count": 0,
+    "page_selected_source_card_count": 12,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_fail_reasons": [],
+    "quality_status": "PASS",
+    "recommendation_counts": {
+      "candidate_margin_improves_grid_evidence": 19,
+      "keep_page_morphology_or_improve_line_thresholds": 1
+    },
+    "review_required_card_count": 20,
+    "schema_version": "trace_net_table_crop_margin_expansion_experiment_v1",
+    "source_quality_statuses": {
+      "table_bbox_resolver": "PASS",
+      "table_line_geometry": "PASS"
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "source_truth_mutations_performed": 0,
+    "status": "TABLE_CROP_MARGIN_EXPANSION_EXPERIMENT_BUILT",
+    "successful_image_card_count": 20,
+    "unsafe_diagnostic_card_count": 0
+  }
+}

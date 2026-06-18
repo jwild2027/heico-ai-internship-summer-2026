@@ -1,0 +1,63 @@
+{
+  "checks": {
+    "answer_permission_within_limit": true,
+    "min_expanded_full_table_bbox_cards_met": true,
+    "min_ocr_content_bbox_cards_met": true,
+    "min_recovery_cards_met": true,
+    "no_answer_permission": true,
+    "schema_version_ok": true,
+    "source_truth_mutation_allowed_within_limit": true,
+    "table_bbox_resolver_quality_pass": true,
+    "table_ocr_bbox_enrichment_quality_pass": true,
+    "unsafe_recovery_cards_within_limit": true
+  },
+  "generated_at": "2026-06-17T20:13:23+00:00",
+  "quality_fail_reasons": [],
+  "quality_status": "PASS",
+  "schema_version": "trace_net_table_full_region_recovery_v1_quality",
+  "status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "checks": {
+      "answer_permission_within_limit": true,
+      "min_expanded_full_table_bbox_cards_met": true,
+      "min_ocr_content_bbox_cards_met": true,
+      "min_recovery_cards_met": true,
+      "no_answer_permission": true,
+      "schema_version_ok": true,
+      "source_truth_mutation_allowed_within_limit": true,
+      "table_bbox_resolver_quality_pass": true,
+      "table_ocr_bbox_enrichment_quality_pass": true,
+      "unsafe_recovery_cards_within_limit": true
+    },
+    "crop_recovery_ready_card_count": 14,
+    "crop_recovery_review_required_card_count": 20,
+    "detector_disagreement_card_count": 20,
+    "expanded_full_table_bbox_card_count": 20,
+    "line_projection_bbox_card_count": 20,
+    "ocr_content_bbox_card_count": 20,
+    "opensearch_write_attempt_count": 0,
+    "output_dir": "local_data\\organization\\trace_net\\table_full_region_recovery",
+    "overlay_unreviewed_card_count": 20,
+    "part_number_coverage_ok_card_count": 9,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_fail_reasons": [],
+    "quality_status": "PASS",
+    "recovered_bbox_too_page_like_card_count": 6,
+    "recovery_card_count": 20,
+    "schema_version": "trace_net_table_full_region_recovery_v1",
+    "source_quality_statuses": {
+      "table_bbox_resolver": "PASS",
+      "table_detector_overlay_audit": "PASS",
+      "table_line_geometry": "PASS",
+      "table_ocr_bbox_enrichment": "PASS"
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "source_truth_mutations_performed": 0,
+    "status": "TABLE_FULL_REGION_RECOVERY_BUILT",
+    "unsafe_recovery_card_count": 0
+  }
+}

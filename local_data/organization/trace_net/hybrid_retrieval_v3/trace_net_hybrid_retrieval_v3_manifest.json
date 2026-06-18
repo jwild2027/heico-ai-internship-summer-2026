@@ -1,0 +1,29 @@
+{
+  "algorithm": "trace_net_crag_aware_hybrid_retrieval_v3",
+  "generated_at": "2026-06-17T14:19:57Z",
+  "groups_path": "local_data\\organization\\trace_net\\hybrid_retrieval_v3\\trace_net_hybrid_retrieval_v3_groups.jsonl",
+  "quality_path": "local_data\\organization\\trace_net\\hybrid_retrieval_v3\\trace_net_hybrid_retrieval_v3_quality.json",
+  "quality_status": "PASS",
+  "report_path": "local_data\\organization\\trace_net\\hybrid_retrieval_v3\\trace_net_hybrid_retrieval_v3.json",
+  "results_path": "local_data\\organization\\trace_net\\hybrid_retrieval_v3\\trace_net_hybrid_retrieval_v3_results.jsonl",
+  "safety_contract": {
+    "answer_permission": false,
+    "claim_proof": false,
+    "opensearch_writes": false,
+    "postgres_writes": false,
+    "qdrant_writes": false,
+    "source_truth_mutation": false
+  },
+  "schema_version": "trace_net_hybrid_retrieval_v3",
+  "source_paths": {
+    "corrective_planner": "local_data/organization/trace_net/corrective_retrieval_planner/trace_net_corrective_retrieval_planner_v1.json",
+    "graph_enrichment": "local_data/organization/trace_net/graph_query_evidence_enrichment/trace_net_graph_query_evidence_enrichment_v1.json",
+    "hybrid_v2": "local_data/organization/trace_net/hybrid_retrieval_v2/trace_net_hybrid_retrieval_v2.json",
+    "opensearch_index_name": "trace_net_safe_search_v1",
+    "opensearch_live_loader": "local_data/organization/trace_net/opensearch_live_loader/trace_net_opensearch_live_loader_v1.json",
+    "opensearch_loader_smoke": "local_data/organization/trace_net/opensearch_loader_smoke/trace_net_opensearch_loader_smoke_v1.json",
+    "opensearch_url": "http://localhost:9200",
+    "qdrant_page_profile_quality": "local_data/organization/trace_net/qdrant_page_retrieval_profiles_ollama_bge_m3/trace_net_page_retrieval_profiles_qdrant_v1_quality.json"
+  },
+  "summary_path": "local_data\\organization\\trace_net\\hybrid_retrieval_v3\\trace_net_hybrid_retrieval_v3_summary.json"
+}

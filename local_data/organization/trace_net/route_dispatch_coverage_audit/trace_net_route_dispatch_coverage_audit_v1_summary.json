@@ -1,0 +1,65 @@
+{
+  "advisory_reason_counts": {
+    "multi_route_dispatch": 149,
+    "route_dispatch_requires_review": 131
+  },
+  "allowed_dispatch_route_counts": {
+    "blank_candidate": 557,
+    "image_visual": 50,
+    "normal_text": 34,
+    "review": 131,
+    "table": 66
+  },
+  "answer_permission_count": 0,
+  "artifact_detector_path": "local_data\\organization\\trace_net\\artifact_detector\\trace_net_artifact_detector_v1.json",
+  "artifact_detector_quality_status": "PASS",
+  "audited_page_artifact_card_count": 631,
+  "blank_heavy_processing_warning_card_count": 50,
+  "can_answer_directly_count": 0,
+  "can_prove_claims_count": 0,
+  "checks": {
+    "answer_permission_within_limit": true,
+    "artifact_detector_quality_pass": true,
+    "min_audited_page_artifact_cards_met": true,
+    "min_dispatch_coverage_cards_met": true,
+    "no_answer_permission": true,
+    "route_dispatch_manifest_quality_pass": true,
+    "schema_version_ok": true,
+    "source_truth_mutation_allowed_within_limit": true,
+    "unsafe_audit_cards_within_limit": true
+  },
+  "coverage_status_counts": {
+    "PASS": 436,
+    "REVIEW": 132,
+    "WARNING": 63
+  },
+  "dispatch_coverage_card_count": 631,
+  "image_visual_artifact_without_dispatch_allowed_count": 0,
+  "multi_route_audit_card_count": 149,
+  "ocr_text_artifact_without_explicit_text_dispatch_warning_count": 10,
+  "opensearch_write_attempt_count": 0,
+  "page_with_artifact_evidence_count": 631,
+  "page_with_dispatch_card_count": 509,
+  "postgres_write_attempt_count": 0,
+  "qdrant_write_attempt_count": 0,
+  "quality_fail_reasons": [],
+  "quality_status": "PASS",
+  "review_required_audit_card_count": 131,
+  "route_dispatch_card_count": 509,
+  "route_dispatch_manifest_path": "local_data\\organization\\trace_net\\route_dispatch_manifest\\trace_net_route_dispatch_manifest_v1.json",
+  "route_dispatch_manifest_quality_status": "PASS",
+  "route_dispatch_violation_card_count": 0,
+  "route_dispatch_warning_card_count": 63,
+  "schema_version": "trace_net_route_dispatch_coverage_audit_v1",
+  "source_truth_mutation_allowed_count": 0,
+  "source_truth_mutations_performed": 0,
+  "status": "TRACE_NET_ROUTE_DISPATCH_COVERAGE_AUDIT_BUILT",
+  "table_artifact_without_dispatch_allowed_count": 0,
+  "unsafe_audit_card_count": 0,
+  "violation_reason_counts": {},
+  "warning_reason_counts": {
+    "blank_candidate_has_heavy_processing_evidence": 50,
+    "ocr_text_artifact_without_explicit_text_dispatch": 10,
+    "retrieval_answer_artifact_without_explicit_text_dispatch": 63
+  }
+}

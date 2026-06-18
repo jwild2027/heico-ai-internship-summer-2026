@@ -2152,6 +2152,49 @@
     {
       "can_answer_directly": false,
       "can_prove_claims": false,
+      "correction_status": "CORRECTION_ROUTED",
+      "evidence_channels": [
+        "qdrant_bge_m3"
+      ],
+      "issue_type": "semantic_search_channel_available",
+      "metadata": {
+        "context_v2_point_count": 200,
+        "point_count": 509
+      },
+      "opensearch_write_attempt_count": 0,
+      "page_id": null,
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "query": null,
+      "query_id": null,
+      "rationale": "Qdrant BGE-M3 page-profile collection passed quality; use it for semantic candidates but still source-resolve and final-gate results.",
+      "recommended_actions": [
+        "use_qdrant_bge_m3_for_semantic_candidates",
+        "rerank_with_graph_source_anchors"
+      ],
+      "recommended_primary_action": "use_qdrant_bge_m3_for_semantic_candidates",
+      "record_id": "corrective_retrieval::qdrant_page_profile_quality::semantic_search_channel_available::semantic_search_channel_available",
+      "retrieval_only": true,
+      "review_reason_codes": [],
+      "safety_contract": {
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "opensearch_write_attempt": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "retrieval_only": true,
+        "source_truth_mutation_allowed": false
+      },
+      "schema_version": "trace_net_corrective_retrieval_planner_v1",
+      "severity": "INFO",
+      "source_module": "qdrant_page_profile_quality",
+      "source_record_id": "semantic_search_channel_available",
+      "source_status": "PASS",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
       "correction_status": "CORRECTION_ROUTED_TO_REVIEW",
       "evidence_channels": [
         "tiff_image_heuristic",
@@ -5001,6 +5044,49 @@
     {
       "can_answer_directly": false,
       "can_prove_claims": false,
+      "correction_status": "CORRECTION_ROUTED",
+      "evidence_channels": [
+        "qdrant_bge_m3"
+      ],
+      "issue_type": "semantic_search_channel_available",
+      "metadata": {
+        "context_v2_point_count": 200,
+        "point_count": 509
+      },
+      "opensearch_write_attempt_count": 0,
+      "page_id": null,
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "query": null,
+      "query_id": null,
+      "rationale": "Qdrant BGE-M3 page-profile collection passed quality; use it for semantic candidates but still source-resolve and final-gate results.",
+      "recommended_actions": [
+        "use_qdrant_bge_m3_for_semantic_candidates",
+        "rerank_with_graph_source_anchors"
+      ],
+      "recommended_primary_action": "use_qdrant_bge_m3_for_semantic_candidates",
+      "record_id": "corrective_retrieval::qdrant_page_profile_quality::semantic_search_channel_available::semantic_search_channel_available",
+      "retrieval_only": true,
+      "review_reason_codes": [],
+      "safety_contract": {
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "opensearch_write_attempt": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "retrieval_only": true,
+        "source_truth_mutation_allowed": false
+      },
+      "schema_version": "trace_net_corrective_retrieval_planner_v1",
+      "severity": "INFO",
+      "source_module": "qdrant_page_profile_quality",
+      "source_record_id": "semantic_search_channel_available",
+      "source_status": "PASS",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
       "correction_status": "CORRECTION_ROUTED_TO_REVIEW",
       "evidence_channels": [
         "tiff_image_heuristic",
@@ -5700,17 +5786,17 @@
   "quality_checks": [
     {
       "check_name": "correction_record_count",
-      "detail": "records=44; minimum=5",
+      "detail": "records=45; minimum=5",
       "passed": true
     },
     {
       "check_name": "diagnostic_record_count",
-      "detail": "records=44; minimum=5",
+      "detail": "records=45; minimum=5",
       "passed": true
     },
     {
       "check_name": "safe_action_record_count",
-      "detail": "records=44; minimum=5",
+      "detail": "records=45; minimum=5",
       "passed": true
     },
     {
@@ -5765,8 +5851,8 @@
     },
     {
       "check_name": "qdrant_page_profile_quality_quality_pass",
-      "detail": "loaded=True; quality_status=UNKNOWN",
-      "passed": false
+      "detail": "loaded=True; quality_status=PASS",
+      "passed": true
     },
     {
       "check_name": "page_query_response_tiff_content_audit_quality_pass",
@@ -5775,7 +5861,7 @@
     }
   ],
   "quality_path": "local_data\\organization\\trace_net\\corrective_retrieval_planner\\trace_net_corrective_retrieval_planner_v1_quality.json",
-  "quality_status": "FAIL",
+  "quality_status": "PASS",
   "records_path": "local_data\\organization\\trace_net\\corrective_retrieval_planner\\trace_net_corrective_retrieval_planner_v1_records.jsonl",
   "report_path": "local_data\\organization\\trace_net\\corrective_retrieval_planner\\trace_net_corrective_retrieval_planner_v1.json",
   "schema_version": "trace_net_corrective_retrieval_planner_v1",
@@ -6098,7 +6184,7 @@
       "loaded": true,
       "name": "qdrant_page_profile_quality",
       "path": "local_data/organization/trace_net/qdrant_page_retrieval_profiles_ollama_bge_m3/trace_net_page_retrieval_profiles_qdrant_v1_quality.json",
-      "quality_status": "UNKNOWN",
+      "quality_status": "PASS",
       "status": "PASS",
       "summary": {
         "answer_capable_payload_count": 0,
@@ -6131,12 +6217,13 @@
     "can_prove_claims_count": 0,
     "category_as_proof_count": 0,
     "community_as_proof_count": 0,
-    "correction_record_count": 44,
-    "diagnostic_record_count": 44,
+    "correction_record_count": 45,
+    "diagnostic_record_count": 45,
     "issue_type_counts": {
       "exact_search_channel_available": 1,
       "graph_evidence_review_flag": 7,
       "semantic_page_target_miss": 2,
+      "semantic_search_channel_available": 1,
       "target_page_low_rank": 14,
       "tiff_content_audit_review": 15,
       "trace_pack_review_recommended": 4,
@@ -6145,7 +6232,7 @@
     "opensearch_write_attempt_count": 0,
     "postgres_write_attempt_count": 0,
     "qdrant_write_attempt_count": 0,
-    "quality_status": "FAIL",
+    "quality_status": "PASS",
     "recommended_action_counts": {
       "apply_blank_page_exact_page_rerank": 5,
       "apply_graph_anchor_rerank": 14,
@@ -6156,6 +6243,7 @@
       "mark_result_audit_required_until_corrected": 2,
       "require_human_review_before_final_answer": 4,
       "rerank_with_graph_page_anchor": 2,
+      "rerank_with_graph_source_anchors": 1,
       "retain_top_k_for_review": 14,
       "route_to_review_if_still_flagged": 7,
       "route_to_tiff_content_review": 15,
@@ -6166,16 +6254,17 @@
       "use_final_gate_authorized_answer_path": 1,
       "use_opensearch_exact_for_identifiers": 1,
       "use_opensearch_table_cell_for_part_cells": 1,
+      "use_qdrant_bge_m3_for_semantic_candidates": 1,
       "verify_blank_page_with_image_metrics": 2,
       "verify_dublin_core_source_identity": 7
     },
     "retrieval_only_answer_allowed_count": 0,
     "review_routed_record_count": 42,
-    "safe_action_record_count": 44,
+    "safe_action_record_count": 45,
     "schema_version": "trace_net_corrective_retrieval_planner_v1",
     "severity_counts": {
       "HIGH": 6,
-      "INFO": 2,
+      "INFO": 3,
       "MEDIUM": 36
     },
     "source_artifact_count": 6,
@@ -6184,7 +6273,8 @@
       "graph_query_evidence_enrichment": 7,
       "opensearch_loader_smoke": 1,
       "page_query_response_tiff_content_audit": 15,
-      "page_retrieval_large_eval_v2": 16
+      "page_retrieval_large_eval_v2": 16,
+      "qdrant_page_profile_quality": 1
     },
     "source_quality_statuses": {
       "ai_trace_pack": "PASS",
@@ -6192,7 +6282,7 @@
       "opensearch_loader_smoke": "PASS",
       "page_query_response_tiff_content_audit": "PASS",
       "page_retrieval_large_eval_v2": "PASS",
-      "qdrant_page_profile_quality": "UNKNOWN"
+      "qdrant_page_profile_quality": "PASS"
     },
     "source_truth_mutation_allowed_count": 0,
     "status": "CORRECTIVE_RETRIEVAL_PLAN_BUILT",

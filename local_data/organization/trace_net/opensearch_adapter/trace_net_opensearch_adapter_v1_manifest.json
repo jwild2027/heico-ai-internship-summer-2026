@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T14:48:23Z",
+  "generated_at": "2026-06-17T13:45:27Z",
   "index_name": "trace_net_safe_search_v1",
   "paths": {
     "bulk_path": "local_data\\organization\\trace_net\\opensearch_adapter\\trace_net_opensearch_bulk_v1.ndjson",
@@ -12,16 +12,15 @@
     "summary_path": "local_data\\organization\\trace_net\\opensearch_adapter\\trace_net_opensearch_adapter_v1_summary.json"
   },
   "quality_status": "PASS",
-  "schema_version": "trace_net_opensearch_adapter_v1_manifest",
-  "source_artifacts": {
-    "context_helpers": "local_data/organization/trace_net/context_retrieval_helpers/trace_net_context_retrieval_helpers_v1.json",
-    "embedding_candidates": "local_data/organization/trace_net/embedding_candidates/trace_net_embedding_candidates_v1.json",
-    "evidence_snippet_cleaner": "local_data/organization/trace_net/evidence_snippet_cleaner/trace_net_evidence_snippet_cleaner_v1.json",
-    "graph_overlay_part_normalizer": "local_data/organization/trace_net/graph_overlay_part_property_normalizer/trace_net_graph_overlay_part_property_normalizer_v1.json",
-    "leiden_communities": "local_data/organization/trace_net/leiden_graph_communities/trace_net_leiden_graph_communities_v1.json",
-    "page_profiles": "local_data/organization/trace_net/page_retrieval_profiles/trace_net_page_retrieval_profiles_v1.json",
-    "table_cell_normalizer": "local_data/organization/trace_net/table_cell_normalizer/trace_net_table_cell_normalizer_v1.json"
+  "safety_contract": {
+    "answer_permission": false,
+    "claim_proof_authority": false,
+    "opensearch_writes": false,
+    "postgres_writes": false,
+    "qdrant_writes": false,
+    "source_truth_mutation": false
   },
+  "schema_version": "trace_net_opensearch_adapter_lineage_guard_v1_manifest",
   "summary": {
     "algorithm": "trace_net_safe_opensearch_document_builder_v1",
     "authority_counts": {
@@ -57,7 +56,12 @@
       "table_cell_normalized": 3054,
       "table_row_normalized": 1414
     },
+    "documents_with_search_text_count": 7027,
     "index_name": "trace_net_safe_search_v1",
+    "lineage_guard_applied": true,
+    "lineage_guard_drop_reason_counts": {},
+    "lineage_guard_dropped_document_count": 0,
+    "lineage_guard_schema_version": "trace_net_opensearch_adapter_lineage_guard_v1",
     "missing_page_id_count": 0,
     "missing_source_trace_count": 0,
     "opensearch_document_count": 7027,
@@ -65,6 +69,7 @@
     "page_scoped_document_count": 7027,
     "postgres_write_attempt_count": 0,
     "qdrant_write_attempt_count": 0,
+    "quality_status": "PASS",
     "raw_feedback_indexed_count": 0,
     "raw_ocr_unfiltered_indexed_count": 0,
     "raw_visual_output_indexed_count": 0,

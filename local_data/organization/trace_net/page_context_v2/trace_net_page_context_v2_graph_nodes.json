@@ -1,71 +1,73 @@
 [
   {
-    "id": "page_context_v2:t_p_120_1176_p000200",
+    "id": "page_context_v2:t_p_120_1176_p000001",
     "type": "page_context_v2",
-    "label": "Context v2 t_p_120_1176_p000200",
+    "label": "Context v2 t_p_120_1176_p000001",
     "payload": {
-      "page_id": "t_p_120_1176_p000200",
-      "role": "parts_list|figure",
-      "subrole": "trim_components_identification",
+      "page_id": "t_p_120_1176_p000001",
+      "role": "front_matter",
+      "subrole": "effective_pages_or_revision_history",
       "confidence": "high",
-      "short_summary": "Parts list for passenger seat trim components, including front and rear trims, associated with Figure 31A.",
-      "retrieval_summary": "Use this page to identify part numbers, quantities, and effectivity for seat trim pieces, specifically front/rear trims and armrest-related parts for the double passenger seat assembly.",
+      "short_summary": "This page appears to be a revision notice and title block for a technical manual, superseding an earlier version.",
+      "retrieval_summary": "Use this page as derived retrieval guidance for queries about manual revision, title block, technical documentation, front matter, effective pages or revision history, list of effective pages, revision history, page date.",
       "answerable_questions": [
-        "What are the part numbers for the front and rear seat trims?",
-        "Which part number is associated with the fixed armrest trim?",
-        "How many nylon plugs (PE17001-3PR) are required for this assembly?",
-        "What is the part number for the rear movable armrest trim components?"
+        "Where does the manual show effective pages or revision history?"
       ],
       "retrieval_cues": [
-        "seat trim",
-        "front trim",
-        "rear trim",
-        "fixed armrest",
-        "movable armrest",
-        "nylon plug",
-        "PE17001-3PR",
-        "120-61548-507",
-        "120-50648-549",
-        "Figure 31A",
-        "ATA 25-21-00"
+        "manual revision",
+        "title block",
+        "technical documentation",
+        "front matter",
+        "effective pages or revision history",
+        "list of effective pages",
+        "revision history",
+        "page date",
+        "manual update",
+        "embraer",
+        "september",
+        "text",
+        "april",
+        "brasil",
+        "http",
+        "paulo",
+        "source",
+        "strip",
+        "aeronautica"
       ],
       "important_entities": [
-        "Double Passenger Seat",
-        "Front Trim",
-        "Rear Trim",
-        "Fixed Armrest",
-        "Movable Armrest",
-        "Nylon Plug"
+        "manual revision",
+        "title block",
+        "technical documentation"
       ],
-      "component_families": [
-        "Passenger Seat Assembly",
-        "Seat Trim Components"
-      ],
+      "component_families": [],
       "important_parts": [
-        "120-61548-507",
-        "PE17001-3PR",
-        "120-50648-549",
-        "120-50648-551"
+        "12.227-901",
+        "3927-7517",
+        "3927-7546"
       ],
       "nearby_context": {
-        "previous": "...",
-        "next": "...",
-        "same_section_hint": "Part of the Illustrated Parts List for ATA 25-21-00, specifically Sheet 3 of Figure 31A."
+        "previous": null,
+        "next": "t_p_120_1176_p000002"
       },
       "source_grounding": {
         "has_ocr": true,
         "source_url_present": true,
+        "ocr_classification": "likely_full_page",
         "supporting_ocr_phrases": [
-          "TRIM, FRONT",
-          "TRIM, REAR - FIXED ARMREST",
-          "PE17001-3PR PLUG, NYLON",
-          "Double Passenger Seat (120-61548-507 and 120-50648-549/551)"
-        ]
+          "AV. BRIGADEIRO FARIA LIMA, 2.170 - CAIXA POSTAL 8050 - TELEFONE: (55) (12) 3927-7517",
+          "FAX: (55) (12) 3927-7546 - CEP 12.227-901 - SAO JOSE DOS CAMPOS - SAO PAULO - BRASIL",
+          "XA POSTAL 8050 - TELEFONE: (55) (12) 3927-7517",
+          "-FONE: (55) (12) 3927-7517",
+          "ATA: 25-21-00."
+        ],
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000001"
       },
       "not_good_for": [
-        "installation procedures",
-        "removal instructions",
-        "detailed structural design specifications"
+        "proving source truth without checking the cited source page",
+        "answering without a source URL",
+        "TIFF path",
+        "and OCR/source evidence",
+        "proving detailed maintenance procedure steps without checking nearby/source pages"
       ],
       "authority": {
         "trust_scope": "page_context_summary",
@@ -76,12 +78,1537 @@
         "requires_citation": true,
         "source_truth_mutation_allowed": false
       },
-      "generation_provider": "ollama",
-      "generation_model": "gemma4:26b",
+      "generation_provider": "heuristic",
+      "generation_model": "heuristic-page-context-v2",
       "prompt_version": "page_context_v2_query_guidance_card",
       "status": "ok",
       "warnings": [],
-      "llm_response_preview": "```json\n{\n  \"page_id\": \"t_p_120_1176_p000200\",\n  \"role\": \"parts_list|figure\",\n  \"subrole\": \"trim_components_identification\",\n  \"confidence\": \"high\",\n  \"short_summary\": \"Parts list for passenger seat trim components, including front and rear trims, associated with Figure 31A.\",\n  \"retrieval_summary\": \"Use this page to identify part numbers, quantities, and effectivity for seat trim pieces, specifically front/rear trims and armrest-related parts for the double passenger seat assembly.\",\n  \"answera"
+      "route_dispatch_processor_contract_available": true,
+      "normal_text_route_dispatch_allowed": true,
+      "route_dispatch_review_required": true
+    }
+  },
+  {
+    "id": "page_context_v2:t_p_120_1176_p000002",
+    "type": "page_context_v2",
+    "label": "Context v2 t_p_120_1176_p000002",
+    "payload": {
+      "page_id": "t_p_120_1176_p000002",
+      "role": "blank",
+      "subrole": "empty_or_blank_page",
+      "confidence": "low",
+      "short_summary": "Page 2 from T.P. 120/1176 in ATA 25-21-00 has empty OCR text.",
+      "retrieval_summary": "Use this page as derived retrieval guidance for queries about 25-21-00, ocr page, blank, empty or blank page, empty, text.",
+      "answerable_questions": [],
+      "retrieval_cues": [
+        "25-21-00",
+        "ocr page",
+        "blank",
+        "empty or blank page",
+        "empty",
+        "text"
+      ],
+      "important_entities": [
+        "25-21-00",
+        "ocr page"
+      ],
+      "component_families": [],
+      "important_parts": [
+        "25-21-00"
+      ],
+      "nearby_context": {
+        "previous": "t_p_120_1176_p000001",
+        "next": "t_p_120_1176_p000003"
+      },
+      "source_grounding": {
+        "has_ocr": false,
+        "source_url_present": true,
+        "ocr_classification": "empty_ocr",
+        "supporting_ocr_phrases": [],
+        "source_url": ""
+      },
+      "not_good_for": [
+        "proving source truth without checking the cited source page",
+        "answering without a source URL",
+        "TIFF path",
+        "and OCR/source evidence",
+        "answering content questions because OCR is empty or the page is likely blank"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false
+      },
+      "generation_provider": "heuristic",
+      "generation_model": "heuristic-page-context-v2",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "status": "ok",
+      "warnings": [],
+      "route_dispatch_processor_contract_available": true,
+      "normal_text_route_dispatch_allowed": true,
+      "route_dispatch_review_required": true
+    }
+  },
+  {
+    "id": "page_context_v2:t_p_120_1176_p000003",
+    "type": "page_context_v2",
+    "label": "Context v2 t_p_120_1176_p000003",
+    "payload": {
+      "page_id": "t_p_120_1176_p000003",
+      "role": "parts_list",
+      "subrole": "applicability_part_list",
+      "confidence": "high",
+      "short_summary": "This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope.",
+      "retrieval_summary": "Use this page as derived retrieval guidance for queries about part numbers, applicability, maintenance, parts list, applicability part list, effectivity, covered part numbers, publication covers part numbers.",
+      "answerable_questions": [
+        "Which part numbers are listed or referenced on this page?",
+        "Where does the manual list applicability or covered part numbers?"
+      ],
+      "retrieval_cues": [
+        "part numbers",
+        "applicability",
+        "maintenance",
+        "parts list",
+        "applicability part list",
+        "effectivity",
+        "covered part numbers",
+        "publication covers part numbers",
+        "text",
+        "i/ii",
+        "source",
+        "strip",
+        "bottom",
+        "data",
+        "document",
+        "evidence",
+        "exports"
+      ],
+      "important_entities": [
+        "upholstery",
+        "applicability",
+        "part numbers",
+        "maintenance"
+      ],
+      "component_families": [
+        "upholstery",
+        "applicability"
+      ],
+      "important_parts": [
+        "120-36833-501",
+        "120-45851-501",
+        "120-45851-503",
+        "120-50645-007",
+        "120-50645-009",
+        "120-50648-001"
+      ],
+      "nearby_context": {
+        "previous": "t_p_120_1176_p000002",
+        "next": "t_p_120_1176_p000004"
+      },
+      "source_grounding": {
+        "has_ocr": true,
+        "source_url_present": true,
+        "ocr_classification": "likely_full_page",
+        "supporting_ocr_phrases": [
+          "ILLUSTRATED PARTS LIST",
+          "EFFECTIVITY: ALL 25-APPLICABILITY",
+          "25-APPLICABILITY",
+          "MAINTENANCE MANUAL WITH",
+          "5-APPLICABILITY"
+        ],
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000003"
+      },
+      "not_good_for": [
+        "proving source truth without checking the cited source page",
+        "answering without a source URL",
+        "TIFF path",
+        "and OCR/source evidence"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false
+      },
+      "generation_provider": "heuristic",
+      "generation_model": "heuristic-page-context-v2",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "status": "ok",
+      "warnings": [],
+      "route_dispatch_processor_contract_available": true,
+      "normal_text_route_dispatch_allowed": true,
+      "route_dispatch_review_required": true
+    }
+  },
+  {
+    "id": "page_context_v2:t_p_120_1176_p000004",
+    "type": "page_context_v2",
+    "label": "Context v2 t_p_120_1176_p000004",
+    "payload": {
+      "page_id": "t_p_120_1176_p000004",
+      "role": "front_matter",
+      "subrole": "parts_list",
+      "confidence": "high",
+      "short_summary": "This page introduces the maintenance manual, outlining its purpose and scope related to passenger cabin disassembly.",
+      "retrieval_summary": "Use this page as derived retrieval guidance for queries about introduction, maintenance manual, disassembly, front matter, parts list, passenger seat, seat assembly, seat bottom.",
+      "answerable_questions": [
+        "Which pages discuss passenger seat components or assemblies?",
+        "Which pages discuss the seat bottom",
+        "backrest",
+        "armrest",
+        "or snack table?",
+        "Where does the manual describe passenger seat construction or design context?",
+        "Which part numbers are listed or referenced on this page?",
+        "Where does the manual list applicability or covered part numbers?"
+      ],
+      "retrieval_cues": [
+        "introduction",
+        "maintenance manual",
+        "disassembly",
+        "front matter",
+        "parts list",
+        "passenger seat",
+        "seat assembly",
+        "seat bottom",
+        "backrest",
+        "armrest",
+        "snack table",
+        "seat frame",
+        "upholstery",
+        "text",
+        "source",
+        "strip",
+        "bottom",
+        "data",
+        "evidence",
+        "exports",
+        "local"
+      ],
+      "important_entities": [
+        "passenger seat",
+        "backrest",
+        "seat bottom",
+        "armrest",
+        "snack table",
+        "upholstery",
+        "frame",
+        "vendor",
+        "applicability",
+        "introduction",
+        "maintenance manual",
+        "disassembly"
+      ],
+      "component_families": [
+        "passenger seat",
+        "backrest",
+        "seat bottom",
+        "armrest",
+        "snack table",
+        "upholstery",
+        "frame",
+        "vendor",
+        "applicability"
+      ],
+      "important_parts": [
+        "25-21-00",
+        "25-INTRODUCTION"
+      ],
+      "nearby_context": {
+        "previous": "t_p_120_1176_p000003",
+        "next": "t_p_120_1176_p000005"
+      },
+      "source_grounding": {
+        "has_ocr": true,
+        "source_url_present": true,
+        "ocr_classification": "likely_full_page",
+        "supporting_ocr_phrases": [
+          "ILLUSTRATED PARTS LIST",
+          "| parts list.",
+          "MAINTENANCE MANUAL WITH",
+          "EFFECTIVITY: ALL 25-INTRODUCTION",
+          "25-INTRODUCTION"
+        ],
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000004"
+      },
+      "not_good_for": [
+        "proving source truth without checking the cited source page",
+        "answering without a source URL",
+        "TIFF path",
+        "and OCR/source evidence",
+        "proving installation/removal procedure details without procedure evidence"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false
+      },
+      "generation_provider": "heuristic",
+      "generation_model": "heuristic-page-context-v2",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "status": "ok",
+      "warnings": [],
+      "route_dispatch_processor_contract_available": true,
+      "normal_text_route_dispatch_allowed": true,
+      "route_dispatch_review_required": true
+    }
+  },
+  {
+    "id": "page_context_v2:t_p_120_1176_p000012",
+    "type": "page_context_v2",
+    "label": "Context v2 t_p_120_1176_p000012",
+    "payload": {
+      "page_id": "t_p_120_1176_p000012",
+      "role": "blank",
+      "subrole": "empty_or_blank_page",
+      "confidence": "low",
+      "short_summary": "Page 12 from T.P. 120/1176 in ATA 25-21-00 has empty OCR text.",
+      "retrieval_summary": "Use this page as derived retrieval guidance for queries about 25-21-00, ocr page, blank, empty or blank page, empty, text.",
+      "answerable_questions": [],
+      "retrieval_cues": [
+        "25-21-00",
+        "ocr page",
+        "blank",
+        "empty or blank page",
+        "empty",
+        "text"
+      ],
+      "important_entities": [
+        "25-21-00",
+        "ocr page"
+      ],
+      "component_families": [],
+      "important_parts": [
+        "25-21-00"
+      ],
+      "nearby_context": {
+        "previous": "t_p_120_1176_p000011",
+        "next": "t_p_120_1176_p000013"
+      },
+      "source_grounding": {
+        "has_ocr": false,
+        "source_url_present": true,
+        "ocr_classification": "empty_ocr",
+        "supporting_ocr_phrases": [],
+        "source_url": ""
+      },
+      "not_good_for": [
+        "proving source truth without checking the cited source page",
+        "answering without a source URL",
+        "TIFF path",
+        "and OCR/source evidence",
+        "answering content questions because OCR is empty or the page is likely blank"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false
+      },
+      "generation_provider": "heuristic",
+      "generation_model": "heuristic-page-context-v2",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "status": "ok",
+      "warnings": [],
+      "route_dispatch_processor_contract_available": true,
+      "normal_text_route_dispatch_allowed": true,
+      "route_dispatch_review_required": true
+    }
+  },
+  {
+    "id": "page_context_v2:t_p_120_1176_p000015",
+    "type": "page_context_v2",
+    "label": "Context v2 t_p_120_1176_p000015",
+    "payload": {
+      "page_id": "t_p_120_1176_p000015",
+      "role": "parts_list",
+      "subrole": "passenger_seat_overview",
+      "confidence": "high",
+      "short_summary": "This page describes passenger seats, including armrests and snack folding tables, detailing their construction and design.",
+      "retrieval_summary": "Use this page as derived retrieval guidance for queries about passenger seat, armrest, snack table, design, parts list, passenger seat overview, seat assembly, seat bottom.",
+      "answerable_questions": [
+        "Which pages discuss passenger seat components or assemblies?",
+        "Which pages discuss the seat bottom",
+        "backrest",
+        "armrest",
+        "or snack table?",
+        "Where does the manual describe passenger seat construction or design context?",
+        "Which part numbers are listed or referenced on this page?",
+        "Where does the manual list applicability or covered part numbers?"
+      ],
+      "retrieval_cues": [
+        "passenger seat",
+        "armrest",
+        "snack table",
+        "design",
+        "parts list",
+        "passenger seat overview",
+        "seat assembly",
+        "seat bottom",
+        "backrest",
+        "seat frame",
+        "upholstery",
+        "folding",
+        "armrests",
+        "position",
+        "snack",
+        "structure",
+        "seat",
+        "text",
+        "between"
+      ],
+      "important_entities": [
+        "passenger seat",
+        "backrest",
+        "seat bottom",
+        "armrest",
+        "snack table",
+        "upholstery",
+        "frame",
+        "applicability",
+        "design"
+      ],
+      "component_families": [
+        "passenger seat",
+        "backrest",
+        "seat bottom",
+        "armrest",
+        "snack table",
+        "upholstery",
+        "frame",
+        "applicability"
+      ],
+      "important_parts": [
+        "25-21-00"
+      ],
+      "nearby_context": {
+        "previous": "t_p_120_1176_p000014",
+        "next": "t_p_120_1176_p000016"
+      },
+      "source_grounding": {
+        "has_ocr": true,
+        "source_url_present": true,
+        "ocr_classification": "likely_full_page",
+        "supporting_ocr_phrases": [
+          "riple Passenger Seat (Figure 3), with three armrests and",
+          "D. The composite structure of the seat supports the armrests, the backrest and the snack folding",
+          "yports the armrests, the backrest and the snack folding",
+          "ILLUSTRATED PARTS LIST",
+          "F. The armrest of the wall side has a similar design, except that it is mounted in a fixed position."
+        ],
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000015"
+      },
+      "not_good_for": [
+        "proving source truth without checking the cited source page",
+        "answering without a source URL",
+        "TIFF path",
+        "and OCR/source evidence"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false
+      },
+      "generation_provider": "heuristic",
+      "generation_model": "heuristic-page-context-v2",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "status": "ok",
+      "warnings": [],
+      "route_dispatch_processor_contract_available": true,
+      "normal_text_route_dispatch_allowed": true,
+      "route_dispatch_review_required": true
+    }
+  },
+  {
+    "id": "page_context_v2:t_p_120_1176_p000016",
+    "type": "page_context_v2",
+    "label": "Context v2 t_p_120_1176_p000016",
+    "payload": {
+      "page_id": "t_p_120_1176_p000016",
+      "role": "procedure",
+      "subrole": "maintenance_procedure",
+      "confidence": "high",
+      "short_summary": "This page from the maintenance manual describes the construction of a seat backrest and bottom cushion, including materials like composite structures, foam cushions, upholstery, and Velcro fasteners.",
+      "retrieval_summary": "Use this page as derived retrieval guidance for queries about seat assembly, maintenance procedures, upholstery, composite structure, procedure, maintenance procedure, passenger seat, seat bottom.",
+      "answerable_questions": [
+        "Which pages discuss passenger seat components or assemblies?",
+        "Which pages discuss the seat bottom",
+        "backrest",
+        "armrest",
+        "or snack table?",
+        "Where does the manual describe passenger seat construction or design context?"
+      ],
+      "retrieval_cues": [
+        "seat assembly",
+        "maintenance procedures",
+        "upholstery",
+        "composite structure",
+        "procedure",
+        "maintenance procedure",
+        "passenger seat",
+        "seat bottom",
+        "backrest",
+        "armrest",
+        "snack table",
+        "seat frame",
+        "structure",
+        "bottom",
+        "seat",
+        "text",
+        "which",
+        "cushion",
+        "foam",
+        "source",
+        "strip"
+      ],
+      "important_entities": [
+        "passenger seat",
+        "backrest",
+        "seat bottom",
+        "armrest",
+        "snack table",
+        "upholstery",
+        "frame",
+        "fastener",
+        "applicability",
+        "seat assembly",
+        "maintenance procedures",
+        "composite structure"
+      ],
+      "component_families": [
+        "passenger seat",
+        "backrest",
+        "seat bottom",
+        "armrest",
+        "snack table",
+        "upholstery",
+        "frame",
+        "fastener",
+        "applicability"
+      ],
+      "important_parts": [
+        "25-21-00"
+      ],
+      "nearby_context": {
+        "previous": "t_p_120_1176_p000015",
+        "next": "t_p_120_1176_p000017"
+      },
+      "source_grounding": {
+        "has_ocr": true,
+        "source_url_present": true,
+        "ocr_classification": "likely_full_page",
+        "supporting_ocr_phrases": [
+          "G. The backrest structure consists of a rigid composite structure attached to the seat structure and",
+          "ILLUSTRATED PARTS LIST",
+          "H. The seat bottom cushion is made of molded foam and is covered by the upholstery which is",
+          "o the seat structure and",
+          "MAINTENANCE MANUAL WITH"
+        ],
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000016"
+      },
+      "not_good_for": [
+        "proving source truth without checking the cited source page",
+        "answering without a source URL",
+        "TIFF path",
+        "and OCR/source evidence"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false
+      },
+      "generation_provider": "heuristic",
+      "generation_model": "heuristic-page-context-v2",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "status": "ok",
+      "warnings": [],
+      "route_dispatch_processor_contract_available": true,
+      "normal_text_route_dispatch_allowed": true,
+      "route_dispatch_review_required": true
+    }
+  },
+  {
+    "id": "page_context_v2:t_p_120_1176_p000017",
+    "type": "page_context_v2",
+    "label": "Context v2 t_p_120_1176_p000017",
+    "payload": {
+      "page_id": "t_p_120_1176_p000017",
+      "role": "parts_list",
+      "subrole": "passenger_seat_overview",
+      "confidence": "high",
+      "short_summary": "This page is a parts list and figure illustrating the passenger seat, referencing part number 120TP250001.MCI.",
+      "retrieval_summary": "Use this page as derived retrieval guidance for queries about passenger seat, parts list, figure, passenger seat overview, seat assembly, seat bottom, backrest, armrest.",
+      "answerable_questions": [
+        "Which pages discuss passenger seat components or assemblies?",
+        "Which pages discuss the seat bottom",
+        "backrest",
+        "armrest",
+        "or snack table?",
+        "Where does the manual describe passenger seat construction or design context?",
+        "Which part numbers are listed or referenced on this page?",
+        "Where does the manual list applicability or covered part numbers?"
+      ],
+      "retrieval_cues": [
+        "passenger seat",
+        "parts list",
+        "figure",
+        "passenger seat overview",
+        "seat assembly",
+        "seat bottom",
+        "backrest",
+        "armrest",
+        "snack table",
+        "seat frame",
+        "upholstery",
+        "seat",
+        "text",
+        "tp250001",
+        "bottom",
+        "passenger",
+        "source",
+        "strip",
+        "data",
+        "evidence",
+        "exports"
+      ],
+      "important_entities": [
+        "passenger seat",
+        "backrest",
+        "seat bottom",
+        "armrest",
+        "snack table",
+        "upholstery",
+        "frame",
+        "applicability",
+        "parts list",
+        "figure"
+      ],
+      "component_families": [
+        "passenger seat",
+        "backrest",
+        "seat bottom",
+        "armrest",
+        "snack table",
+        "upholstery",
+        "frame",
+        "applicability"
+      ],
+      "important_parts": [
+        "120TP250001.MCI"
+      ],
+      "nearby_context": {
+        "previous": "t_p_120_1176_p000016",
+        "next": "t_p_120_1176_p000018"
+      },
+      "source_grounding": {
+        "has_ocr": true,
+        "source_url_present": true,
+        "ocr_classification": "noisy_or_unknown",
+        "supporting_ocr_phrases": [
+          "ILLUSTRATED PARTS LIST",
+          "Single Passenger Seat",
+          "Passenger Seat",
+          "MAINTENANCE MANUAL WITH",
+          "SEAT BOTTOM"
+        ],
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000017"
+      },
+      "not_good_for": [
+        "proving source truth without checking the cited source page",
+        "answering without a source URL",
+        "TIFF path",
+        "and OCR/source evidence"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false
+      },
+      "generation_provider": "heuristic",
+      "generation_model": "heuristic-page-context-v2",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "status": "ok",
+      "warnings": [],
+      "route_dispatch_processor_contract_available": true,
+      "normal_text_route_dispatch_allowed": true,
+      "route_dispatch_review_required": true
+    }
+  },
+  {
+    "id": "page_context_v2:t_p_120_1176_p000018",
+    "type": "page_context_v2",
+    "label": "Context v2 t_p_120_1176_p000018",
+    "payload": {
+      "page_id": "t_p_120_1176_p000018",
+      "role": "parts_list",
+      "subrole": "illustration_or_figure",
+      "confidence": "high",
+      "short_summary": "This page is a parts list illustration for a double passenger seat, referencing part number 120TP250002.MCE and figure 2.",
+      "retrieval_summary": "Use this page as derived retrieval guidance for queries about seat, parts list, figure, illustration or figure, passenger seat, seat assembly, seat bottom, backrest.",
+      "answerable_questions": [
+        "Which pages discuss passenger seat components or assemblies?",
+        "Which pages discuss the seat bottom",
+        "backrest",
+        "armrest",
+        "or snack table?",
+        "Where does the manual describe passenger seat construction or design context?",
+        "Which part numbers are listed or referenced on this page?",
+        "Where does the manual list applicability or covered part numbers?"
+      ],
+      "retrieval_cues": [
+        "seat",
+        "parts list",
+        "figure",
+        "illustration or figure",
+        "passenger seat",
+        "seat assembly",
+        "seat bottom",
+        "backrest",
+        "armrest",
+        "snack table",
+        "seat frame",
+        "upholstery",
+        "text",
+        "tp250002",
+        "source",
+        "strip",
+        "bottom",
+        "data",
+        "double",
+        "evidence",
+        "exports"
+      ],
+      "important_entities": [
+        "passenger seat",
+        "backrest",
+        "seat bottom",
+        "armrest",
+        "snack table",
+        "upholstery",
+        "frame",
+        "applicability",
+        "seat",
+        "parts list",
+        "figure"
+      ],
+      "component_families": [
+        "passenger seat",
+        "backrest",
+        "seat bottom",
+        "armrest",
+        "snack table",
+        "upholstery",
+        "frame",
+        "applicability"
+      ],
+      "important_parts": [
+        "120TP250002.MCE"
+      ],
+      "nearby_context": {
+        "previous": "t_p_120_1176_p000017",
+        "next": "t_p_120_1176_p000019"
+      },
+      "source_grounding": {
+        "has_ocr": true,
+        "source_url_present": true,
+        "ocr_classification": "noisy_or_unknown",
+        "supporting_ocr_phrases": [
+          "ILLUSTRATED PARTS LIST",
+          "Double Passenger Seat",
+          "MAINTENANCE MANUAL WITH",
+          "jer Seat",
+          "Figure 2"
+        ],
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000018"
+      },
+      "not_good_for": [
+        "proving source truth without checking the cited source page",
+        "answering without a source URL",
+        "TIFF path",
+        "and OCR/source evidence"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false
+      },
+      "generation_provider": "heuristic",
+      "generation_model": "heuristic-page-context-v2",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "status": "ok",
+      "warnings": [],
+      "route_dispatch_processor_contract_available": true,
+      "normal_text_route_dispatch_allowed": true,
+      "route_dispatch_review_required": true
+    }
+  },
+  {
+    "id": "page_context_v2:t_p_120_1176_p000019",
+    "type": "page_context_v2",
+    "label": "Context v2 t_p_120_1176_p000019",
+    "payload": {
+      "page_id": "t_p_120_1176_p000019",
+      "role": "figure",
+      "subrole": "passenger_seat_overview",
+      "confidence": "high",
+      "short_summary": "This page is a figure illustrating the passenger seat, including its backrests and bottom, with associated part numbers and revision information.",
+      "retrieval_summary": "Use this page as derived retrieval guidance for queries about passenger seat, seat components, maintenance manual, figure, passenger seat overview, seat assembly, seat bottom, backrest.",
+      "answerable_questions": [
+        "Which pages discuss passenger seat components or assemblies?",
+        "Which pages discuss the seat bottom",
+        "backrest",
+        "armrest",
+        "or snack table?",
+        "Where does the manual describe passenger seat construction or design context?",
+        "Where does the manual show effective pages or revision history?"
+      ],
+      "retrieval_cues": [
+        "passenger seat",
+        "seat components",
+        "maintenance manual",
+        "figure",
+        "passenger seat overview",
+        "seat assembly",
+        "seat bottom",
+        "backrest",
+        "armrest",
+        "snack table",
+        "seat frame",
+        "upholstery",
+        "list of effective pages",
+        "revision history",
+        "page date",
+        "manual update",
+        "seat",
+        "bottom",
+        "text",
+        "passenger",
+        "source",
+        "strip",
+        "tp250003",
+        "backrests",
+        "data",
+        "evidence"
+      ],
+      "important_entities": [
+        "passenger seat",
+        "backrest",
+        "seat bottom",
+        "armrest",
+        "snack table",
+        "upholstery",
+        "frame",
+        "applicability",
+        "seat components",
+        "maintenance manual"
+      ],
+      "component_families": [
+        "passenger seat",
+        "backrest",
+        "seat bottom",
+        "armrest",
+        "snack table",
+        "upholstery",
+        "frame",
+        "applicability"
+      ],
+      "important_parts": [
+        "120TP250003.MCE"
+      ],
+      "nearby_context": {
+        "previous": "t_p_120_1176_p000018",
+        "next": "t_p_120_1176_p000020"
+      },
+      "source_grounding": {
+        "has_ocr": true,
+        "source_url_present": true,
+        "ocr_classification": "noisy_or_unknown",
+        "supporting_ocr_phrases": [
+          "ILLUSTRATED PARTS LIST",
+          "Triple Passenger Seat",
+          "> Passenger Seat",
+          "SEAT BACKRESTS",
+          "MAINTENANCE MANUAL WITH"
+        ],
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000019"
+      },
+      "not_good_for": [
+        "proving source truth without checking the cited source page",
+        "answering without a source URL",
+        "TIFF path",
+        "and OCR/source evidence"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false
+      },
+      "generation_provider": "heuristic",
+      "generation_model": "heuristic-page-context-v2",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "status": "ok",
+      "warnings": [],
+      "route_dispatch_processor_contract_available": true,
+      "normal_text_route_dispatch_allowed": true,
+      "route_dispatch_review_required": true
+    }
+  },
+  {
+    "id": "page_context_v2:t_p_120_1176_p000020",
+    "type": "page_context_v2",
+    "label": "Context v2 t_p_120_1176_p000020",
+    "payload": {
+      "page_id": "t_p_120_1176_p000020",
+      "role": "table",
+      "subrole": "vendor_list",
+      "confidence": "high",
+      "short_summary": "This page describes the format of an illustrated parts list, explaining the different columns and their purpose for identifying aircraft parts.",
+      "retrieval_summary": "Use this page as derived retrieval guidance for queries about parts list, ATA code, aircraft maintenance, table, vendor list, supplier, manufacturer, vendor code.",
+      "answerable_questions": [
+        "Which part numbers are listed or referenced on this page?",
+        "Where does the manual list applicability or covered part numbers?",
+        "Where does the manual list vendor or supplier information?",
+        "Where can a part number be looked up in the numerical index?"
+      ],
+      "retrieval_cues": [
+        "parts list",
+        "ATA code",
+        "aircraft maintenance",
+        "table",
+        "vendor list",
+        "supplier",
+        "manufacturer",
+        "vendor code",
+        "numerical index",
+        "part number index",
+        "index lookup",
+        "item",
+        "unit",
+        "column",
+        "text",
+        "their",
+        "applicable",
+        "fig-",
+        "right",
+        "source",
+        "strip"
+      ],
+      "important_entities": [
+        "vendor",
+        "applicability",
+        "parts list",
+        "ATA code",
+        "aircraft maintenance"
+      ],
+      "component_families": [
+        "vendor",
+        "applicability"
+      ],
+      "important_parts": [
+        "25-21-00"
+      ],
+      "nearby_context": {
+        "previous": "t_p_120_1176_p000019",
+        "next": "t_p_120_1176_p000021"
+      },
+      "source_grounding": {
+        "has_ocr": true,
+        "source_url_present": true,
+        "ocr_classification": "likely_full_page",
+        "supporting_ocr_phrases": [
+          "This column lists the chapter, section, unit, figure, and item numbers of the applicable parts.",
+          "n, unit, figure, and item numbers of the applicable parts.",
+          "the Detailed Parts List and is",
+          "ILLUSTRATED PARTS LIST",
+          "NOTE: The letter O is always considered a numerical zero."
+        ],
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000020"
+      },
+      "not_good_for": [
+        "proving source truth without checking the cited source page",
+        "answering without a source URL",
+        "TIFF path",
+        "and OCR/source evidence",
+        "proving detailed maintenance procedure steps without checking nearby/source pages"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false
+      },
+      "generation_provider": "heuristic",
+      "generation_model": "heuristic-page-context-v2",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "status": "ok",
+      "warnings": [],
+      "route_dispatch_processor_contract_available": true,
+      "normal_text_route_dispatch_allowed": true,
+      "route_dispatch_review_required": true
+    }
+  },
+  {
+    "id": "page_context_v2:t_p_120_1176_p000021",
+    "type": "page_context_v2",
+    "label": "Context v2 t_p_120_1176_p000021",
+    "payload": {
+      "page_id": "t_p_120_1176_p000021",
+      "role": "parts_list",
+      "subrole": "vendor_list",
+      "confidence": "high",
+      "short_summary": "This page describes the organization and categorization of parts within a maintenance manual's illustrated parts list, including EMBRAER, military standard, and vendor part numbers.",
+      "retrieval_summary": "Use this page as derived retrieval guidance for queries about parts list, part numbering, NATO codes, EMBRAER, vendor list, supplier, manufacturer, vendor code.",
+      "answerable_questions": [
+        "Which part numbers are listed or referenced on this page?",
+        "Where does the manual list applicability or covered part numbers?",
+        "Where does the manual list vendor or supplier information?"
+      ],
+      "retrieval_cues": [
+        "parts list",
+        "part numbering",
+        "NATO codes",
+        "EMBRAER",
+        "vendor list",
+        "supplier",
+        "manufacturer",
+        "vendor code",
+        "part",
+        "categories",
+        "vendor",
+        "will",
+        "column",
+        "text",
+        "into",
+        "nato",
+        "preceding"
+      ],
+      "important_entities": [
+        "vendor",
+        "applicability",
+        "parts list",
+        "part numbering",
+        "NATO codes",
+        "EMBRAER"
+      ],
+      "component_families": [
+        "vendor",
+        "applicability"
+      ],
+      "important_parts": [
+        "AG-",
+        "PE-",
+        "110-",
+        "110E-",
+        "110K1",
+        "110P1-",
+        "110P2-",
+        "110S-",
+        "110A-",
+        "120-",
+        "121-",
+        "200-",
+        "201-",
+        "4A",
+        "AN",
+        "MS",
+        "NAS"
+      ],
+      "nearby_context": {
+        "previous": "t_p_120_1176_p000020",
+        "next": "t_p_120_1176_p000022"
+      },
+      "source_grounding": {
+        "has_ocr": true,
+        "source_url_present": true,
+        "ocr_classification": "likely_full_page",
+        "supporting_ocr_phrases": [
+          "justrated but included in the parts list will appear",
+          "the parts list will appear",
+          "g between the parts list",
+          "ILLUSTRATED PARTS LIST",
+          "(d) Vendor part numbers: Remaining part numbers not falling into the preceding categories."
+        ],
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000021"
+      },
+      "not_good_for": [
+        "proving source truth without checking the cited source page",
+        "answering without a source URL",
+        "TIFF path",
+        "and OCR/source evidence",
+        "proving detailed maintenance procedure steps without checking nearby/source pages"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false
+      },
+      "generation_provider": "heuristic",
+      "generation_model": "heuristic-page-context-v2",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "status": "ok",
+      "warnings": [],
+      "route_dispatch_processor_contract_available": true,
+      "normal_text_route_dispatch_allowed": true,
+      "route_dispatch_review_required": true
+    }
+  },
+  {
+    "id": "page_context_v2:t_p_120_1176_p000022",
+    "type": "page_context_v2",
+    "label": "Context v2 t_p_120_1176_p000022",
+    "payload": {
+      "page_id": "t_p_120_1176_p000022",
+      "role": "front_matter",
+      "subrole": "parts_list",
+      "confidence": "high",
+      "short_summary": "This page explains abbreviations and conventions used in a detailed parts list, including interchangeability indicators and left/right hand orientation.",
+      "retrieval_summary": "Use this page as derived retrieval guidance for queries about parts list, nomenclature, abbreviations, interchangeability, front matter, hand, right, next.",
+      "answerable_questions": [
+        "Which part numbers are listed or referenced on this page?",
+        "Where does the manual list applicability or covered part numbers?"
+      ],
+      "retrieval_cues": [
+        "parts list",
+        "nomenclature",
+        "abbreviations",
+        "interchangeability",
+        "front matter",
+        "hand",
+        "right",
+        "next",
+        "indicates",
+        "interchangeable",
+        "left",
+        "text",
+        "after",
+        "assembly",
+        "description"
+      ],
+      "important_entities": [
+        "applicability",
+        "parts list",
+        "nomenclature",
+        "abbreviations",
+        "interchangeability"
+      ],
+      "component_families": [
+        "applicability"
+      ],
+      "important_parts": [
+        "25-21-00"
+      ],
+      "nearby_context": {
+        "previous": "t_p_120_1176_p000021",
+        "next": "t_p_120_1176_p000023"
+      },
+      "source_grounding": {
+        "has_ocr": true,
+        "source_url_present": true,
+        "ocr_classification": "likely_full_page",
+        "supporting_ocr_phrases": [
+          "S are employed in the Detailed Parts List:",
+          "ILLUSTRATED PARTS LIST",
+          "etailed Parts List:",
+          "4 INTERCH WTH (Interchangeable with...) - Indicates parts that are interchangeable",
+          "jeable with...) - Indicates parts that are interchangeable"
+        ],
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000022"
+      },
+      "not_good_for": [
+        "proving source truth without checking the cited source page",
+        "answering without a source URL",
+        "TIFF path",
+        "and OCR/source evidence",
+        "proving installation/removal procedure details without procedure evidence"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false
+      },
+      "generation_provider": "heuristic",
+      "generation_model": "heuristic-page-context-v2",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "status": "ok",
+      "warnings": [],
+      "route_dispatch_processor_contract_available": true,
+      "normal_text_route_dispatch_allowed": true,
+      "route_dispatch_review_required": true
+    }
+  },
+  {
+    "id": "page_context_v2:t_p_120_1176_p000023",
+    "type": "page_context_v2",
+    "label": "Context v2 t_p_120_1176_p000023",
+    "payload": {
+      "page_id": "t_p_120_1176_p000023",
+      "role": "table",
+      "subrole": "parts_list",
+      "confidence": "high",
+      "short_summary": "This page describes notes and abbreviations used within a parts list, including explanations of codes like 'REF', 'AR', and notations regarding stock exhaustion.",
+      "retrieval_summary": "Use this page as derived retrieval guidance for queries about parts list, abbreviations, procurement, stock management, table, column, source, text.",
+      "answerable_questions": [
+        "Which part numbers are listed or referenced on this page?",
+        "Where does the manual list applicability or covered part numbers?"
+      ],
+      "retrieval_cues": [
+        "parts list",
+        "abbreviations",
+        "procurement",
+        "stock management",
+        "table",
+        "column",
+        "source",
+        "text",
+        "used",
+        "which",
+        "exhausted",
+        "items",
+        "strip",
+        "abbreviation"
+      ],
+      "important_entities": [
+        "applicability",
+        "parts list",
+        "abbreviations",
+        "procurement",
+        "stock management"
+      ],
+      "component_families": [
+        "applicability"
+      ],
+      "important_parts": [
+        "25-21-00"
+      ],
+      "nearby_context": {
+        "previous": "t_p_120_1176_p000022",
+        "next": "t_p_120_1176_p000024"
+      },
+      "source_grounding": {
+        "has_ocr": true,
+        "source_url_present": true,
+        "ocr_classification": "likely_full_page",
+        "supporting_ocr_phrases": [
+          "ILLUSTRATED PARTS LIST",
+          "8 (WHEN EXHAUSTED USE ...) - Used in the description column of parts for which",
+          "9 (USE UNTIL EXHAUSTED, NOT REPLACED) - Used in description column of parts",
+          "scription column of parts",
+          "of parts for which a cer-"
+        ],
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000023"
+      },
+      "not_good_for": [
+        "proving source truth without checking the cited source page",
+        "answering without a source URL",
+        "TIFF path",
+        "and OCR/source evidence",
+        "proving installation/removal procedure details without procedure evidence"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false
+      },
+      "generation_provider": "heuristic",
+      "generation_model": "heuristic-page-context-v2",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "status": "ok",
+      "warnings": [],
+      "route_dispatch_processor_contract_available": true,
+      "normal_text_route_dispatch_allowed": true,
+      "route_dispatch_review_required": true
+    }
+  },
+  {
+    "id": "page_context_v2:t_p_120_1176_p000024",
+    "type": "page_context_v2",
+    "label": "Context v2 t_p_120_1176_p000024",
+    "payload": {
+      "page_id": "t_p_120_1176_p000024",
+      "role": "parts_list",
+      "subrole": "vendor_list",
+      "confidence": "high",
+      "short_summary": "This page from the maintenance manual provides vendor information and includes a parts list entry for part number 345-1598.",
+      "retrieval_summary": "Use this page as derived retrieval guidance for queries about vendor information, parts list, maintenance, vendor list, supplier, manufacturer, vendor code, text.",
+      "answerable_questions": [
+        "Which part numbers are listed or referenced on this page?",
+        "Where does the manual list applicability or covered part numbers?",
+        "Where does the manual list vendor or supplier information?"
+      ],
+      "retrieval_cues": [
+        "vendor information",
+        "parts list",
+        "maintenance",
+        "vendor list",
+        "supplier",
+        "manufacturer",
+        "vendor code",
+        "text",
+        "source",
+        "strip",
+        "addresses",
+        "bottom",
+        "data",
+        "evidence",
+        "exports",
+        "local",
+        "names"
+      ],
+      "important_entities": [
+        "vendor",
+        "applicability",
+        "vendor information",
+        "parts list",
+        "maintenance"
+      ],
+      "component_families": [
+        "vendor",
+        "applicability"
+      ],
+      "important_parts": [
+        "345-1598"
+      ],
+      "nearby_context": {
+        "previous": "t_p_120_1176_p000023",
+        "next": "t_p_120_1176_p000025"
+      },
+      "source_grounding": {
+        "has_ocr": true,
+        "source_url_present": true,
+        "ocr_classification": "likely_full_page",
+        "supporting_ocr_phrases": [
+          "ILLUSTRATED PARTS LIST",
+          "VENDORS’ NAMES AND ADDRESSES",
+          "VENDOR NAMES AND ADDRESSES",
+          "MAINTENANCE MANUAL WITH",
+          "ATA: 25-21-00."
+        ],
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000024"
+      },
+      "not_good_for": [
+        "proving source truth without checking the cited source page",
+        "answering without a source URL",
+        "TIFF path",
+        "and OCR/source evidence",
+        "proving detailed maintenance procedure steps without checking nearby/source pages"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false
+      },
+      "generation_provider": "heuristic",
+      "generation_model": "heuristic-page-context-v2",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "status": "ok",
+      "warnings": [],
+      "route_dispatch_processor_contract_available": true,
+      "normal_text_route_dispatch_allowed": true,
+      "route_dispatch_review_required": true
+    }
+  },
+  {
+    "id": "page_context_v2:t_p_120_1176_p000025",
+    "type": "page_context_v2",
+    "label": "Context v2 t_p_120_1176_p000025",
+    "payload": {
+      "page_id": "t_p_120_1176_p000025",
+      "role": "blank",
+      "subrole": "empty_or_blank_page",
+      "confidence": "low",
+      "short_summary": "Page 25 from T.P. 120/1176 in ATA 25-21-00 has empty OCR text.",
+      "retrieval_summary": "Use this page as derived retrieval guidance for queries about 25-21-00, ocr page, blank, empty or blank page, empty, text.",
+      "answerable_questions": [],
+      "retrieval_cues": [
+        "25-21-00",
+        "ocr page",
+        "blank",
+        "empty or blank page",
+        "empty",
+        "text"
+      ],
+      "important_entities": [
+        "25-21-00",
+        "ocr page"
+      ],
+      "component_families": [],
+      "important_parts": [
+        "25-21-00"
+      ],
+      "nearby_context": {
+        "previous": "t_p_120_1176_p000024",
+        "next": "t_p_120_1176_p000026"
+      },
+      "source_grounding": {
+        "has_ocr": false,
+        "source_url_present": true,
+        "ocr_classification": "empty_ocr",
+        "supporting_ocr_phrases": [],
+        "source_url": ""
+      },
+      "not_good_for": [
+        "proving source truth without checking the cited source page",
+        "answering without a source URL",
+        "TIFF path",
+        "and OCR/source evidence",
+        "answering content questions because OCR is empty or the page is likely blank"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false
+      },
+      "generation_provider": "heuristic",
+      "generation_model": "heuristic-page-context-v2",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "status": "ok",
+      "warnings": [],
+      "route_dispatch_processor_contract_available": true,
+      "normal_text_route_dispatch_allowed": true,
+      "route_dispatch_review_required": true
+    }
+  },
+  {
+    "id": "page_context_v2:t_p_120_1176_p000048",
+    "type": "page_context_v2",
+    "label": "Context v2 t_p_120_1176_p000048",
+    "payload": {
+      "page_id": "t_p_120_1176_p000048",
+      "role": "parts_list",
+      "subrole": "parts_list",
+      "confidence": "high",
+      "short_summary": "This page appears to be a parts list from an aircraft maintenance manual, containing numerous part numbers and associated codes.",
+      "retrieval_summary": "Use this page as derived retrieval guidance for queries about aircraft maintenance, parts list, technical documentation, text, assy, item, part, source.",
+      "answerable_questions": [
+        "Which part numbers are listed or referenced on this page?",
+        "Where does the manual list applicability or covered part numbers?"
+      ],
+      "retrieval_cues": [
+        "aircraft maintenance",
+        "parts list",
+        "technical documentation",
+        "text",
+        "assy",
+        "item",
+        "part",
+        "source",
+        "stock",
+        "strip",
+        "airline",
+        "bottom",
+        "ch-sec-un-fig"
+      ],
+      "important_entities": [
+        "applicability",
+        "aircraft maintenance",
+        "parts list",
+        "technical documentation"
+      ],
+      "component_families": [
+        "applicability"
+      ],
+      "important_parts": [
+        "120-41231-003",
+        "120-41474-002",
+        "Z20-21-UU-0U"
+      ],
+      "nearby_context": {
+        "previous": "t_p_120_1176_p000047",
+        "next": "t_p_120_1176_p000049"
+      },
+      "source_grounding": {
+        "has_ocr": true,
+        "source_url_present": true,
+        "ocr_classification": "likely_full_page",
+        "supporting_ocr_phrases": [
+          "ILLUSTRATED PARTS LIST",
+          "MAINTENANCE MANUAL WITH",
+          "| 25-21-00-02A | 240 1 25-21-00-76 190 1",
+          "Z20-21-UU-0U “£01 | 20-2 1-UU-4F -£01 |",
+          "25-21-00-01 -221 1 25-21-00-54 -221 1"
+        ],
+        "source_url": "http://localhost:8080/rescarta/t_p_120_1176/000048"
+      },
+      "not_good_for": [
+        "proving source truth without checking the cited source page",
+        "answering without a source URL",
+        "TIFF path",
+        "and OCR/source evidence",
+        "proving installation/removal procedure details without procedure evidence"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false
+      },
+      "generation_provider": "heuristic",
+      "generation_model": "heuristic-page-context-v2",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "status": "ok",
+      "warnings": [],
+      "route_dispatch_processor_contract_available": true,
+      "normal_text_route_dispatch_allowed": true,
+      "route_dispatch_review_required": false
     }
   }
 ]

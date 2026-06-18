@@ -1,0 +1,586 @@
+{
+  "generated_at": "2026-06-17T14:11:52Z",
+  "inputs": {
+    "loader_smoke": "local_data/organization/trace_net/opensearch_loader_smoke/trace_net_opensearch_loader_smoke_v1.json",
+    "opensearch_adapter": "local_data\\organization\\trace_net\\opensearch_adapter\\trace_net_opensearch_adapter_v1.json"
+  },
+  "mapping_preview": {
+    "mappings": {
+      "dynamic": "false",
+      "properties": {
+        "answer_support_candidate": {
+          "type": "boolean"
+        },
+        "authority": {
+          "type": "keyword"
+        },
+        "citation_ids": {
+          "type": "keyword"
+        },
+        "community_ids": {
+          "type": "keyword"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "document_type": {
+          "type": "keyword"
+        },
+        "page_id": {
+          "type": "keyword"
+        },
+        "part_numbers": {
+          "type": "keyword"
+        },
+        "rag_bucket": {
+          "type": "keyword"
+        },
+        "requires_authority_gate": {
+          "type": "boolean"
+        },
+        "requires_citation": {
+          "type": "boolean"
+        },
+        "retrieval_only": {
+          "type": "boolean"
+        },
+        "safe_for_opensearch": {
+          "type": "boolean"
+        },
+        "schema_version": {
+          "type": "keyword"
+        },
+        "source_artifact": {
+          "type": "keyword"
+        },
+        "source_page_ids": {
+          "type": "keyword"
+        },
+        "source_trace_present": {
+          "type": "boolean"
+        },
+        "text": {
+          "type": "text"
+        },
+        "title": {
+          "fields": {
+            "keyword": {
+              "ignore_above": 512,
+              "type": "keyword"
+            }
+          },
+          "type": "text"
+        }
+      }
+    },
+    "settings": {
+      "index": {
+        "number_of_replicas": 0,
+        "number_of_shards": 1
+      }
+    }
+  },
+  "module_name": "trace_net_opensearch_live_loader_v1",
+  "operation_log": [
+    {
+      "details": {
+        "status_code": 200
+      },
+      "operation": "delete_index",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "body": {
+          "acknowledged": true,
+          "index": "trace_net_safe_search_v1",
+          "shards_acknowledged": true
+        },
+        "status_code": 200
+      },
+      "operation": "create_index",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "bulk_error_count": 0,
+        "count": 500,
+        "start": 0,
+        "status_code": 200
+      },
+      "operation": "bulk_load_batch",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "bulk_error_count": 0,
+        "count": 500,
+        "start": 500,
+        "status_code": 200
+      },
+      "operation": "bulk_load_batch",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "bulk_error_count": 0,
+        "count": 500,
+        "start": 1000,
+        "status_code": 200
+      },
+      "operation": "bulk_load_batch",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "bulk_error_count": 0,
+        "count": 500,
+        "start": 1500,
+        "status_code": 200
+      },
+      "operation": "bulk_load_batch",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "bulk_error_count": 0,
+        "count": 500,
+        "start": 2000,
+        "status_code": 200
+      },
+      "operation": "bulk_load_batch",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "bulk_error_count": 0,
+        "count": 500,
+        "start": 2500,
+        "status_code": 200
+      },
+      "operation": "bulk_load_batch",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "bulk_error_count": 0,
+        "count": 500,
+        "start": 3000,
+        "status_code": 200
+      },
+      "operation": "bulk_load_batch",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "bulk_error_count": 0,
+        "count": 500,
+        "start": 3500,
+        "status_code": 200
+      },
+      "operation": "bulk_load_batch",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "bulk_error_count": 0,
+        "count": 500,
+        "start": 4000,
+        "status_code": 200
+      },
+      "operation": "bulk_load_batch",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "bulk_error_count": 0,
+        "count": 500,
+        "start": 4500,
+        "status_code": 200
+      },
+      "operation": "bulk_load_batch",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "bulk_error_count": 0,
+        "count": 500,
+        "start": 5000,
+        "status_code": 200
+      },
+      "operation": "bulk_load_batch",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "bulk_error_count": 0,
+        "count": 500,
+        "start": 5500,
+        "status_code": 200
+      },
+      "operation": "bulk_load_batch",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "bulk_error_count": 0,
+        "count": 500,
+        "start": 6000,
+        "status_code": 200
+      },
+      "operation": "bulk_load_batch",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "bulk_error_count": 0,
+        "count": 500,
+        "start": 6500,
+        "status_code": 200
+      },
+      "operation": "bulk_load_batch",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "bulk_error_count": 0,
+        "count": 27,
+        "start": 7000,
+        "status_code": 200
+      },
+      "operation": "bulk_load_batch",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "status_code": 200
+      },
+      "operation": "refresh",
+      "status": "OK"
+    },
+    {
+      "details": {
+        "count": 7027,
+        "status_code": 200
+      },
+      "operation": "live_count",
+      "status": "OK"
+    }
+  ],
+  "outputs": {
+    "manifest_path": "local_data\\organization\\trace_net\\opensearch_live_loader\\trace_net_opensearch_live_loader_v1_manifest.json",
+    "markdown_path": "local_data\\organization\\trace_net\\opensearch_live_loader\\trace_net_opensearch_live_loader_v1.md",
+    "quality_path": "local_data\\organization\\trace_net\\opensearch_live_loader\\trace_net_opensearch_live_loader_v1_quality.json",
+    "report_path": "local_data\\organization\\trace_net\\opensearch_live_loader\\trace_net_opensearch_live_loader_v1.json",
+    "summary_path": "local_data\\organization\\trace_net\\opensearch_live_loader\\trace_net_opensearch_live_loader_v1_summary.json"
+  },
+  "quality_errors": [],
+  "quality_status": "PASS",
+  "query_plans": [
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "opensearch_request_template": {
+        "body": {
+          "query": {
+            "bool": {
+              "minimum_should_match": 1,
+              "should": [
+                {
+                  "term": {
+                    "part_numbers.keyword": "120-29066-019"
+                  }
+                },
+                {
+                  "match_phrase": {
+                    "search_text": "120-29066-019"
+                  }
+                }
+              ]
+            }
+          },
+          "size": 5
+        },
+        "method": "POST",
+        "path": "/trace_net_safe_search_v1/_search"
+      },
+      "query": "120-29066-019",
+      "query_kind": "part_number_exact",
+      "query_plan_id": "trace_net_opensearch_loader_smoke_v1:part_number_exact",
+      "query_text": "120-29066-019",
+      "retrieval_only": true,
+      "sample_document": {
+        "document_type": "community_summary",
+        "opensearch_document_id": "community::tracenet_community_00001",
+        "page_ids": [
+          "t_p_120_1176_p000031",
+          "t_p_120_1176_p000054",
+          "t_p_120_1176_p000055",
+          "t_p_120_1176_p000346",
+          "t_p_120_1176_p000349",
+          "t_p_120_1176_p000350",
+          "t_p_120_1176_p000355",
+          "t_p_120_1176_p000356",
+          "t_p_120_1176_p000358",
+          "t_p_120_1176_p000361",
+          "t_p_120_1176_p000372",
+          "t_p_120_1176_p000376",
+          "t_p_120_1176_p000380",
+          "t_p_120_1176_p000392",
+          "t_p_120_1176_p000396",
+          "t_p_120_1176_p000400",
+          "t_p_120_1176_p000408",
+          "t_p_120_1176_p000416",
+          "t_p_120_1176_p000420",
+          "t_p_120_1176_p000432",
+          "t_p_120_1176_p000436",
+          "t_p_120_1176_p000440",
+          "t_p_120_1176_p000444"
+        ],
+        "text_preview": "Part family community 120-29066 Part families: 120-29066, 120-29067, 120-29068, 120-29074, 120-48023, 120-48024 Part numbers: 120-29066-019, 120-29066-049, 120-29067-027, 120-29068-037, 120-29068-045, 120-29068-049, 120-"
+      },
+      "source": "adapter_sample"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "opensearch_request_template": {
+        "body": {
+          "query": {
+            "match_phrase": {
+              "search_text": "Part family community 120-29066 Part families"
+            }
+          },
+          "size": 5
+        },
+        "method": "POST",
+        "path": "/trace_net_safe_search_v1/_search"
+      },
+      "query": "Part family community 120-29066 Part families",
+      "query_kind": "ocr_phrase_exact",
+      "query_plan_id": "trace_net_opensearch_loader_smoke_v1:ocr_phrase_exact",
+      "query_text": "Part family community 120-29066 Part families",
+      "retrieval_only": true,
+      "sample_document": {
+        "document_type": "community_summary",
+        "opensearch_document_id": "community::tracenet_community_00001",
+        "page_ids": [
+          "t_p_120_1176_p000031",
+          "t_p_120_1176_p000054",
+          "t_p_120_1176_p000055",
+          "t_p_120_1176_p000346",
+          "t_p_120_1176_p000349",
+          "t_p_120_1176_p000350",
+          "t_p_120_1176_p000355",
+          "t_p_120_1176_p000356",
+          "t_p_120_1176_p000358",
+          "t_p_120_1176_p000361",
+          "t_p_120_1176_p000372",
+          "t_p_120_1176_p000376",
+          "t_p_120_1176_p000380",
+          "t_p_120_1176_p000392",
+          "t_p_120_1176_p000396",
+          "t_p_120_1176_p000400",
+          "t_p_120_1176_p000408",
+          "t_p_120_1176_p000416",
+          "t_p_120_1176_p000420",
+          "t_p_120_1176_p000432",
+          "t_p_120_1176_p000436",
+          "t_p_120_1176_p000440",
+          "t_p_120_1176_p000444"
+        ],
+        "text_preview": "Part family community 120-29066 Part families: 120-29066, 120-29067, 120-29068, 120-29074, 120-48023, 120-48024 Part numbers: 120-29066-019, 120-29066-049, 120-29067-027, 120-29068-037, 120-29068-045, 120-29068-049, 120-"
+      },
+      "source": "adapter_sample"
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "opensearch_request_template": {
+        "body": {
+          "query": {
+            "bool": {
+              "filter": [
+                {
+                  "terms": {
+                    "document_type.keyword": [
+                      "table_cell",
+                      "table_row",
+                      "table_evidence"
+                    ]
+                  }
+                }
+              ],
+              "must": [
+                {
+                  "match_phrase": {
+                    "search_text": "120-50648-001"
+                  }
+                }
+              ]
+            }
+          },
+          "size": 5
+        },
+        "method": "POST",
+        "path": "/trace_net_safe_search_v1/_search"
+      },
+      "query": "120-50648-001",
+      "query_kind": "table_cell_exact",
+      "query_plan_id": "trace_net_opensearch_loader_smoke_v1:table_cell_exact",
+      "query_text": "120-50648-001",
+      "retrieval_only": true,
+      "sample_document": {
+        "document_type": "table_cell_normalized",
+        "opensearch_document_id": "normcell__01ac63e4943341",
+        "page_ids": [
+          "t_p_120_1176_p000003"
+        ],
+        "text_preview": "120-50648-001 Table cell | t_p_120_1176_p000003 | 120-50648-001"
+      },
+      "source": "adapter_sample"
+    }
+  ],
+  "records": [
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "hit_count": 1661,
+      "ok": true,
+      "query": "120-29066-019",
+      "query_kind": "part_number_exact",
+      "query_plan_id": "trace_net_opensearch_loader_smoke_v1:part_number_exact",
+      "retrieval_only": true,
+      "status_code": 200
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "hit_count": 2237,
+      "ok": true,
+      "query": "Part family community 120-29066 Part families",
+      "query_kind": "ocr_phrase_exact",
+      "query_plan_id": "trace_net_opensearch_loader_smoke_v1:ocr_phrase_exact",
+      "retrieval_only": true,
+      "status_code": 200
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "hit_count": 1669,
+      "ok": true,
+      "query": "120-50648-001",
+      "query_kind": "table_cell_exact",
+      "query_plan_id": "trace_net_opensearch_loader_smoke_v1:table_cell_exact",
+      "retrieval_only": true,
+      "status_code": 200
+    }
+  ],
+  "safety_contract": {
+    "indexed_documents_are_retrieval_only": true,
+    "no_answer_permission": true,
+    "no_claim_proof_authority": true,
+    "no_postgres_writes": true,
+    "no_qdrant_writes": true,
+    "no_source_truth_mutation": true,
+    "opensearch_write_intended": true,
+    "opensearch_writes_allowed_only_when_explicit": true
+  },
+  "schema_version": "trace_net_opensearch_live_loader_v1",
+  "smoke_query_results": [
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "hit_count": 1661,
+      "ok": true,
+      "query": "120-29066-019",
+      "query_kind": "part_number_exact",
+      "query_plan_id": "trace_net_opensearch_loader_smoke_v1:part_number_exact",
+      "retrieval_only": true,
+      "status_code": 200
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "hit_count": 2237,
+      "ok": true,
+      "query": "Part family community 120-29066 Part families",
+      "query_kind": "ocr_phrase_exact",
+      "query_plan_id": "trace_net_opensearch_loader_smoke_v1:ocr_phrase_exact",
+      "retrieval_only": true,
+      "status_code": 200
+    },
+    {
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "hit_count": 1669,
+      "ok": true,
+      "query": "120-50648-001",
+      "query_kind": "table_cell_exact",
+      "query_plan_id": "trace_net_opensearch_loader_smoke_v1:table_cell_exact",
+      "retrieval_only": true,
+      "status_code": 200
+    }
+  ],
+  "status": "OPENSEARCH_LIVE_LOADER_READY",
+  "summary": {
+    "adapter_document_list_key": "documents",
+    "adapter_path": "local_data\\organization\\trace_net\\opensearch_adapter\\trace_net_opensearch_adapter_v1.json",
+    "adapter_quality_status": "PASS",
+    "allow_opensearch_writes": true,
+    "answer_permission_count": 0,
+    "bulk_error_count": 0,
+    "bulk_load_performed": true,
+    "bulk_load_requested": true,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "create_index_performed": true,
+    "create_index_requested": false,
+    "document_type_counts": {
+      "community_summary": 223,
+      "context_retrieval_helper": 50,
+      "embedding_candidate": 1476,
+      "page_retrieval_profile": 509,
+      "part_candidate_lineage": 301,
+      "table_cell_normalized": 3054,
+      "table_row_normalized": 1414
+    },
+    "documents_with_search_text_count": 7027,
+    "dry_run": false,
+    "index_name": "trace_net_safe_search_v1",
+    "lineage_guard_drop_reason_counts": {},
+    "lineage_guard_dropped_document_count": 0,
+    "live_index_document_count": 7027,
+    "live_read_check_ok": true,
+    "loaded_document_count": 7027,
+    "loader_smoke_path": "local_data/organization/trace_net/opensearch_loader_smoke/trace_net_opensearch_loader_smoke_v1.json",
+    "loader_smoke_quality_status": "PASS",
+    "mapping_key": "mapping",
+    "mapping_present": true,
+    "missing_page_id_count": 0,
+    "missing_source_trace_count": 0,
+    "opensearch_document_count": 7027,
+    "opensearch_url": "http://localhost:9200",
+    "opensearch_write_attempt_count": 18,
+    "opensearch_write_intended": true,
+    "page_scoped_document_count": 7027,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "raw_feedback_indexed_count": 0,
+    "raw_ocr_unfiltered_indexed_count": 0,
+    "raw_visual_output_indexed_count": 0,
+    "recreate_index_requested": true,
+    "refresh_performed": true,
+    "refresh_requested": true,
+    "retrieval_only_answer_allowed_count": 0,
+    "run_smoke_queries_requested": true,
+    "schema_version": "trace_net_opensearch_live_loader_v1",
+    "smoke_query_count": 3,
+    "smoke_query_success_count": 3,
+    "source_adapter_document_count": 7027,
+    "source_adapter_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "source_truth_mutations_performed": 0,
+    "unsafe_index_document_count": 0
+  }
+}

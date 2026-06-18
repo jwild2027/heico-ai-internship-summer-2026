@@ -1,0 +1,41 @@
+{
+  "answer_permission_count": 0,
+  "bbox_source_counts": {
+    "explicit_table_bbox": 20
+  },
+  "can_answer_directly_count": 0,
+  "can_prove_claims_count": 0,
+  "diagnostic_card_count": 20,
+  "margin_candidate_card_count": 120,
+  "margin_improvement_card_count": 19,
+  "margin_pixels": [
+    0,
+    25,
+    50,
+    100,
+    150,
+    250
+  ],
+  "margin_selected_for_recommendation_card_count": 19,
+  "opensearch_write_attempt_count": 0,
+  "page_selected_source_card_count": 12,
+  "postgres_write_attempt_count": 0,
+  "qdrant_write_attempt_count": 0,
+  "quality_fail_reasons": [],
+  "quality_status": "PASS",
+  "recommendation_counts": {
+    "candidate_margin_improves_grid_evidence": 19,
+    "keep_page_morphology_or_improve_line_thresholds": 1
+  },
+  "review_required_card_count": 20,
+  "schema_version": "trace_net_table_crop_margin_expansion_experiment_v1",
+  "source_quality_statuses": {
+    "table_bbox_resolver": "PASS",
+    "table_line_geometry": "PASS"
+  },
+  "source_truth_mutation_allowed_count": 0,
+  "source_truth_mutations_performed": 0,
+  "status": "TABLE_CROP_MARGIN_EXPANSION_EXPERIMENT_BUILT",
+  "successful_image_card_count": 20,
+  "unsafe_diagnostic_card_count": 0
+}
