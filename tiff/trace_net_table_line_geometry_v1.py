@@ -1476,6 +1476,65 @@ def resolve_image_path(records: Sequence[Mapping[str, Any]], image_root: Optiona
     return None
 
 
+def load_table_paddle_style_bbox_resolver_cards(resolver_path: Optional[Path]) -> Tuple[Dict[Tuple[str, str], Mapping[str, Any]], str]:
+    if not resolver_path:
+        return {}, "NOT_PROVIDED"
+    payload = read_json(resolver_path)
+    status = str(payload.get("quality_status") or payload.get("status") or "UNKNOWN") if isinstance(payload, Mapping) else "UNKNOWN"
+    cards = payload.get("table_paddle_style_bbox_resolver_cards") or payload.get("resolver_cards") or payload.get("records") or []
+    output: Dict[Tuple[str, str], Mapping[str, Any]] = {}
+    if not isinstance(cards, list):
+        return output, status
+    for card in cards:
+        if not isinstance(card, Mapping):
+            continue
+        page_id = str(card.get("page_id") or "")
+        table_id = str(card.get("table_id") or "")
+        if page_id and table_id:
+            output[(page_id, table_id)] = card
+    return output, status
+
+
+def paddle_style_table_region_bbox(
+    page_id: str,
+    table_id: str,
+    paddle_style_bbox_map: Mapping[Tuple[str, str], Mapping[str, Any]],
+) -> Tuple[Optional[Dict[str, float]], Dict[str, Any]]:
+    card = paddle_style_bbox_map.get((page_id, table_id))
+    metadata: Dict[str, Any] = {
+        "table_paddle_style_bbox_resolver_available": bool(card),
+        "table_paddle_style_bbox_selected_for_geometry": False,
+        "table_paddle_style_bbox_crop_rejected": False,
+        "table_paddle_style_bbox_rejection_reason": None,
+        "table_paddle_style_selected_bbox": card.get("selected_bbox") if card else None,
+        "table_paddle_style_selected_score": card.get("selected_score") if card else None,
+        "table_paddle_style_selected_source_name": card.get("selected_source_name") if card else None,
+        "table_paddle_style_selected_source_bbox_path": card.get("selected_source_bbox_path") if card else None,
+        "table_paddle_style_review_required": bool(card.get("review_required")) if card else False,
+        "table_paddle_style_review_reasons": list(card.get("review_reasons") or []) if card else [],
+    }
+
+    if not card:
+        return None, metadata
+    if card.get("table_route_dispatch_allowed") is False:
+        metadata["table_paddle_style_bbox_crop_rejected"] = True
+        metadata["table_paddle_style_bbox_rejection_reason"] = "table_route_not_allowed"
+        return None, metadata
+    if card.get("review_required"):
+        metadata["table_paddle_style_bbox_crop_rejected"] = True
+        metadata["table_paddle_style_bbox_rejection_reason"] = "paddle_style_bbox_requires_review"
+        return None, metadata
+
+    bbox = parse_bbox(card.get("selected_bbox"))
+    if not bbox:
+        metadata["table_paddle_style_bbox_crop_rejected"] = True
+        metadata["table_paddle_style_bbox_rejection_reason"] = "selected_bbox_missing_or_unparseable"
+        return None, metadata
+
+    metadata["table_paddle_style_bbox_selected_for_geometry"] = True
+    return bbox, metadata
+
+
 def build_table_geometry_cards(
     records: Sequence[Mapping[str, Any]],
     image_root: Optional[Path] = None,
@@ -1485,6 +1544,7 @@ def build_table_geometry_cards(
     table_bbox_resolver_map: Optional[Mapping[Tuple[str, str], Mapping[str, Any]]] = None,
     table_crop_completeness_guard_map: Optional[Mapping[Tuple[str, str], Mapping[str, Any]]] = None,
     table_full_region_recovery_map: Optional[Mapping[Tuple[str, str], Mapping[str, Any]]] = None,
+    table_paddle_style_bbox_resolver_map: Optional[Mapping[Tuple[str, str], Mapping[str, Any]]] = None,
     route_dispatch_contract: Optional[Any] = None,
     route_dispatch_stats: Optional[Dict[str, int]] = None,
 ) -> List[Dict[str, Any]]:
@@ -1492,6 +1552,7 @@ def build_table_geometry_cards(
     bbox_resolver_map = table_bbox_resolver_map or {}
     crop_guard_map = table_crop_completeness_guard_map or {}
     full_region_recovery_map = table_full_region_recovery_map or {}
+    paddle_style_bbox_map = table_paddle_style_bbox_resolver_map or {}
     stats = route_dispatch_stats if route_dispatch_stats is not None else {}
     stats["route_dispatch_contract_available"] = 1 if route_dispatch_contract is not None else 0
     stats.setdefault("table_route_allowed_input_group_count", 0)
@@ -1534,6 +1595,7 @@ def build_table_geometry_cards(
         record_region_bbox = infer_table_region_bbox_from_records(group_records, padding=config.crop_padding_pixels)
         resolver_region_bbox, bbox_resolver_metadata = bbox_resolver_table_region_bbox(page_id, table_id, bbox_resolver_map, config)
         recovered_region_bbox, full_region_recovery_metadata = full_region_recovery_table_region_bbox(page_id, table_id, full_region_recovery_map, config)
+        paddle_style_region_bbox, paddle_style_bbox_metadata = paddle_style_table_region_bbox(page_id, table_id, paddle_style_bbox_map)
         crop_guard_card = crop_guard_map.get((page_id, table_id))
         crop_guard_metadata: Dict[str, Any] = {
             "crop_completeness_guard_available": bool(crop_guard_card),
@@ -1544,15 +1606,30 @@ def build_table_geometry_cards(
             "crop_completeness_guard_review_flags": list(crop_guard_card.get("review_flags") or []) if crop_guard_card else [],
             "crop_completeness_guard_recommended_actions": list(crop_guard_card.get("recommended_actions") or []) if crop_guard_card else [],
         }
-        table_region_bbox = recovered_region_bbox or resolver_region_bbox or record_region_bbox
-        table_region_bbox_source = "table_full_region_recovery" if recovered_region_bbox else "table_bbox_resolver" if resolver_region_bbox else "record_bbox_aggregation" if record_region_bbox else None
+        morphology_crop_guard_metadata = dict(crop_guard_metadata)
+        paddle_style_bbox_override_crop_guard = bool(
+            paddle_style_bbox_metadata.get("table_paddle_style_bbox_selected_for_geometry")
+            and not paddle_style_bbox_metadata.get("table_paddle_style_review_required")
+            and not paddle_style_bbox_metadata.get("table_paddle_style_bbox_crop_rejected")
+        )
+        if paddle_style_bbox_override_crop_guard:
+            # Paddle-style bbox resolver is now the stronger bbox validator.
+            # Preserve legacy crop-completeness fields for audit, but allow
+            # morphology selection to evaluate the selected Paddle-style crop.
+            morphology_crop_guard_metadata["crop_completeness_guard_selection_allowed"] = True
+            morphology_crop_guard_metadata["crop_completeness_guard_selection_blocked"] = False
+            morphology_crop_guard_metadata["paddle_style_bbox_override_crop_guard_for_morphology"] = True
+        table_region_bbox = paddle_style_region_bbox or recovered_region_bbox or resolver_region_bbox or record_region_bbox
+        table_region_bbox_source = "table_paddle_style_bbox_resolver" if paddle_style_region_bbox else "table_full_region_recovery" if recovered_region_bbox else "table_bbox_resolver" if resolver_region_bbox else "record_bbox_aggregation" if record_region_bbox else None
         crop_comparison: Dict[str, Any] = {
             "selected_morphology_scope": "none",
             "table_region_crop_available": bool(table_region_bbox),
             "table_region_bbox_source": table_region_bbox_source,
             **bbox_resolver_metadata,
             **full_region_recovery_metadata,
+            **paddle_style_bbox_metadata,
             **crop_guard_metadata,
+            "paddle_style_bbox_override_crop_guard_for_morphology": paddle_style_bbox_override_crop_guard,
         }
         if image_path and image_pages_used < max_image_pages:
             image_pages_used += 1
@@ -1562,7 +1639,7 @@ def build_table_geometry_cards(
                 page_image_result,
                 region_image_result,
                 bbox_resolver_metadata,
-                crop_guard_metadata,
+                morphology_crop_guard_metadata,
             )
             if margin_candidates:
                 image_result["margin_expansion_candidate_count"] = len(margin_candidates)
@@ -1572,7 +1649,9 @@ def build_table_geometry_cards(
             image_result["table_region_bbox_source"] = table_region_bbox_source
             image_result.update(bbox_resolver_metadata)
             image_result.update(full_region_recovery_metadata)
+            image_result.update(paddle_style_bbox_metadata)
             image_result.update(crop_guard_metadata)
+            image_result["paddle_style_bbox_override_crop_guard_for_morphology"] = paddle_style_bbox_override_crop_guard
         alignment = image_alignment_summary(inferred, image_result)
         review_flags: List[str] = list(image_result.get("line_detection_review_flags") or [])
         for bbox_flag in bbox_resolver_metadata.get("table_bbox_resolver_review_flags") or []:
@@ -1585,8 +1664,12 @@ def build_table_geometry_cards(
             review_flags.append("table_full_region_recovery_used_for_crop")
         if full_region_recovery_metadata.get("table_full_region_recovery_crop_rejected"):
             review_flags.append("table_full_region_recovery_crop_rejected")
+        if paddle_style_bbox_metadata.get("table_paddle_style_bbox_crop_rejected"):
+            review_flags.append("table_paddle_style_bbox_crop_rejected")
+        if paddle_style_bbox_metadata.get("table_paddle_style_review_required"):
+            review_flags.append("table_paddle_style_bbox_requires_review")
         crop_selection_comparison = image_result.get("table_region_crop_comparison") or crop_comparison or {}
-        crop_guard_selection_allowed_for_card = crop_guard_metadata.get("crop_completeness_guard_selection_allowed") is True
+        crop_guard_selection_allowed_for_card = morphology_crop_guard_metadata.get("crop_completeness_guard_selection_allowed") is True
         crop_blocked_by_guard_for_card = (
             not crop_guard_selection_allowed_for_card
             and bool(crop_selection_comparison.get("crop_selection_blocked_by_completeness_guard"))
@@ -1678,9 +1761,11 @@ def build_table_geometry_cards(
             "crop_completeness_guard_selection_allowed": crop_guard_metadata.get("crop_completeness_guard_selection_allowed"),
             "crop_completeness_guard_selection_blocked": crop_guard_metadata.get("crop_completeness_guard_selection_blocked"),
             "crop_selection_blocked_by_completeness_guard": (
-                crop_guard_metadata.get("crop_completeness_guard_selection_allowed") is not True
+                morphology_crop_guard_metadata.get("crop_completeness_guard_selection_allowed") is not True
                 and bool(crop_selection_comparison.get("crop_selection_blocked_by_completeness_guard"))
             ),
+            "legacy_crop_completeness_guard_selection_blocked": crop_guard_metadata.get("crop_completeness_guard_selection_blocked"),
+            "paddle_style_bbox_override_crop_guard_for_morphology": paddle_style_bbox_override_crop_guard,
             "crop_completeness_guard_review_flags": crop_guard_metadata.get("crop_completeness_guard_review_flags"),
             "crop_completeness_guard_recommended_actions": crop_guard_metadata.get("crop_completeness_guard_recommended_actions"),
             "table_bbox_resolver_available": bbox_resolver_metadata.get("table_bbox_resolver_available"),
@@ -1705,6 +1790,42 @@ def build_table_geometry_cards(
             "table_full_region_recovery_recommended_actions": full_region_recovery_metadata.get("table_full_region_recovery_recommended_actions"),
             "table_full_region_recovery_original_crop_bbox": full_region_recovery_metadata.get("table_full_region_recovery_original_crop_bbox"),
             "table_full_region_recovery_expanded_full_table_bbox": full_region_recovery_metadata.get("table_full_region_recovery_expanded_full_table_bbox"),
+            "table_paddle_style_bbox_resolver_available": paddle_style_bbox_metadata.get("table_paddle_style_bbox_resolver_available"),
+            "table_paddle_style_bbox_selected_for_geometry": paddle_style_bbox_metadata.get("table_paddle_style_bbox_selected_for_geometry"),
+            "table_paddle_style_bbox_crop_rejected": paddle_style_bbox_metadata.get("table_paddle_style_bbox_crop_rejected"),
+            "table_paddle_style_bbox_rejection_reason": paddle_style_bbox_metadata.get("table_paddle_style_bbox_rejection_reason"),
+            "table_paddle_style_selected_bbox": paddle_style_bbox_metadata.get("table_paddle_style_selected_bbox"),
+            "table_paddle_style_selected_score": paddle_style_bbox_metadata.get("table_paddle_style_selected_score"),
+            "table_paddle_style_selected_source_name": paddle_style_bbox_metadata.get("table_paddle_style_selected_source_name"),
+            "table_paddle_style_selected_source_bbox_path": paddle_style_bbox_metadata.get("table_paddle_style_selected_source_bbox_path"),
+            "table_paddle_style_review_required": paddle_style_bbox_metadata.get("table_paddle_style_review_required"),
+            "table_paddle_style_review_reasons": paddle_style_bbox_metadata.get("table_paddle_style_review_reasons"),
+            "table_paddle_style_bbox_selected_for_extraction": bool(
+                paddle_style_bbox_metadata.get("table_paddle_style_bbox_selected_for_geometry")
+                and not paddle_style_bbox_metadata.get("table_paddle_style_bbox_crop_rejected")
+                and not paddle_style_bbox_metadata.get("table_paddle_style_review_required")
+            ),
+            "table_extraction_bbox_source": (
+                "table_paddle_style_bbox_resolver"
+                if paddle_style_bbox_metadata.get("table_paddle_style_bbox_selected_for_geometry")
+                and not paddle_style_bbox_metadata.get("table_paddle_style_bbox_crop_rejected")
+                and not paddle_style_bbox_metadata.get("table_paddle_style_review_required")
+                else table_region_bbox_source
+            ),
+            "table_extraction_bbox": (
+                paddle_style_bbox_metadata.get("table_paddle_style_selected_bbox")
+                if paddle_style_bbox_metadata.get("table_paddle_style_bbox_selected_for_geometry")
+                and not paddle_style_bbox_metadata.get("table_paddle_style_bbox_crop_rejected")
+                and not paddle_style_bbox_metadata.get("table_paddle_style_review_required")
+                else table_region_bbox
+            ),
+            "table_extraction_scope": (
+                "paddle_style_bbox_crop"
+                if paddle_style_bbox_metadata.get("table_paddle_style_bbox_selected_for_geometry")
+                and not paddle_style_bbox_metadata.get("table_paddle_style_bbox_crop_rejected")
+                and not paddle_style_bbox_metadata.get("table_paddle_style_review_required")
+                else image_result.get("selected_morphology_scope")
+            ),
             "table_image_resolver_available": bool(resolver_card),
             "table_image_resolver_status": resolver_card.get("image_resolution_status") if resolver_card else None,
             "image_resolution_confidence": resolver_card.get("image_resolution_confidence") if resolver_card else None,
@@ -1850,6 +1971,14 @@ def compute_summary(cards: Sequence[Mapping[str, Any]], records: Sequence[Mappin
         "table_bbox_resolver_crop_used_card_count": sum(1 for card in cards if card.get("table_bbox_resolver_used_for_crop")),
         "table_bbox_resolver_crop_rejected_card_count": sum(1 for card in cards if card.get("table_bbox_resolver_crop_rejected")),
         "table_bbox_resolver_low_specificity_card_count": sum(1 for card in cards if "table_region_bbox_low_specificity" in (card.get("review_flags") or [])),
+        "table_paddle_style_bbox_resolver_available_card_count": sum(1 for card in cards if card.get("table_paddle_style_bbox_resolver_available")),
+        "table_paddle_style_bbox_selected_for_geometry_count": sum(1 for card in cards if card.get("table_paddle_style_bbox_selected_for_geometry")),
+        "table_paddle_style_bbox_crop_rejected_card_count": sum(1 for card in cards if card.get("table_paddle_style_bbox_crop_rejected")),
+        "table_paddle_style_bbox_review_required_card_count": sum(1 for card in cards if card.get("table_paddle_style_review_required")),
+        "table_paddle_style_bbox_selected_for_extraction_count": sum(1 for card in cards if card.get("table_paddle_style_bbox_selected_for_extraction")),
+        "table_extraction_bbox_paddle_style_count": sum(1 for card in cards if card.get("table_extraction_bbox_source") == "table_paddle_style_bbox_resolver"),
+        "paddle_style_bbox_override_crop_guard_for_morphology_count": sum(1 for card in cards if card.get("paddle_style_bbox_override_crop_guard_for_morphology")),
+        "legacy_crop_completeness_guard_selection_blocked_count": sum(1 for card in cards if card.get("legacy_crop_completeness_guard_selection_blocked")),
         "page_morphology_selected_card_count": sum(1 for card in cards if card.get("selected_morphology_scope") == "page"),
         "resolved_image_input_card_count": sum(1 for card in cards if card.get("resolved_image_path")),
         "ocr_clustering_fallback_card_count": sum(1 for card in cards if card.get("ocr_geometry_inference_method") == "normalizer_row_column_fallback"),
@@ -1929,6 +2058,7 @@ def build_report(
     table_bbox_resolver_path: Optional[Path] = None,
     table_crop_completeness_guard_path: Optional[Path] = None,
     table_full_region_recovery_path: Optional[Path] = None,
+    table_paddle_style_bbox_resolver_path: Optional[Path] = None,
     route_dispatch_processor_contract: Optional[Path] = None,
 ) -> Dict[str, Any]:
     thresholds = dict(thresholds or {})
@@ -1939,6 +2069,7 @@ def build_report(
     bbox_resolver_map, bbox_resolver_status = load_table_bbox_resolver_cards(table_bbox_resolver_path)
     crop_guard_map, crop_guard_status = load_table_crop_completeness_guard_cards(table_crop_completeness_guard_path)
     full_region_recovery_map, full_region_recovery_status = load_table_full_region_recovery_cards(table_full_region_recovery_path)
+    paddle_style_bbox_map, paddle_style_bbox_status = load_table_paddle_style_bbox_resolver_cards(table_paddle_style_bbox_resolver_path)
     route_dispatch_contract = None
     route_dispatch_contract_quality_status = None
     if route_dispatch_processor_contract:
@@ -1955,6 +2086,7 @@ def build_report(
         table_bbox_resolver_map=bbox_resolver_map,
         table_crop_completeness_guard_map=crop_guard_map,
         table_full_region_recovery_map=full_region_recovery_map,
+        table_paddle_style_bbox_resolver_map=paddle_style_bbox_map,
         route_dispatch_contract=route_dispatch_contract,
         route_dispatch_stats=route_dispatch_stats,
     )
@@ -1967,6 +2099,8 @@ def build_report(
     summary["table_crop_completeness_guard_card_count"] = len(crop_guard_map)
     summary["table_full_region_recovery_quality_status"] = full_region_recovery_status
     summary["table_full_region_recovery_card_count"] = len(full_region_recovery_map)
+    summary["table_paddle_style_bbox_resolver_quality_status"] = paddle_style_bbox_status
+    summary["table_paddle_style_bbox_resolver_card_count"] = len(paddle_style_bbox_map)
     summary["route_dispatch_processor_contract_available"] = bool(route_dispatch_processor_contract)
     summary["route_dispatch_processor_contract_path"] = str(route_dispatch_processor_contract) if route_dispatch_processor_contract else None
     summary["route_dispatch_processor_contract_quality_status"] = route_dispatch_contract_quality_status
@@ -1990,6 +2124,7 @@ def build_report(
             "table_bbox_resolver": str(table_bbox_resolver_path) if table_bbox_resolver_path else None,
             "table_crop_completeness_guard": str(table_crop_completeness_guard_path) if table_crop_completeness_guard_path else None,
             "table_full_region_recovery": str(table_full_region_recovery_path) if table_full_region_recovery_path else None,
+            "table_paddle_style_bbox_resolver": str(table_paddle_style_bbox_resolver_path) if table_paddle_style_bbox_resolver_path else None,
         },
         "summary": summary,
         "safety_contract": SAFETY_CONTRACT,
@@ -2074,6 +2209,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--table-bbox-resolver", type=Path, default=None)
     parser.add_argument("--table-crop-completeness-guard", type=Path, default=None)
     parser.add_argument("--table-full-region-recovery", type=Path, default=None)
+    parser.add_argument("--table-paddle-style-bbox-resolver", type=Path, default=None)
     parser.add_argument("--route-dispatch-processor-contract", type=Path, default=None)
     parser.add_argument("--image-root", type=Path, default=None)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
@@ -2113,6 +2249,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         table_bbox_resolver_path=args.table_bbox_resolver,
         table_crop_completeness_guard_path=args.table_crop_completeness_guard,
         table_full_region_recovery_path=args.table_full_region_recovery,
+        table_paddle_style_bbox_resolver_path=args.table_paddle_style_bbox_resolver,
         route_dispatch_processor_contract=args.route_dispatch_processor_contract,
     )
     summary = report.get("summary") or {}
@@ -2153,6 +2290,16 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "table_bbox_resolver_crop_used_card_count",
         "table_bbox_resolver_crop_rejected_card_count",
         "table_bbox_resolver_low_specificity_card_count",
+        "table_paddle_style_bbox_resolver_quality_status",
+        "table_paddle_style_bbox_resolver_card_count",
+        "table_paddle_style_bbox_resolver_available_card_count",
+        "table_paddle_style_bbox_selected_for_geometry_count",
+        "table_paddle_style_bbox_crop_rejected_card_count",
+        "table_paddle_style_bbox_review_required_card_count",
+        "table_paddle_style_bbox_selected_for_extraction_count",
+        "table_extraction_bbox_paddle_style_count",
+        "paddle_style_bbox_override_crop_guard_for_morphology_count",
+        "legacy_crop_completeness_guard_selection_blocked_count",
         "page_morphology_selected_card_count",
         "ocr_clustering_fallback_card_count",
         "merged_cell_candidate_count",

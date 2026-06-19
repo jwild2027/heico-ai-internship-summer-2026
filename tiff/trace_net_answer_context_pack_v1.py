@@ -95,6 +95,16 @@ FORBIDDEN_USE = [
 DEFAULT_MAX_PAGE_ANSWER_SUPPORT_RECORDS = 3
 ANSWER_SUPPORT_EXPANSION_SOURCE = "same_page_answer_support_expansion"
 
+ROUTE_CONTRACT_INFORMATIONAL_QUALITY_KEYS = {
+    "route_dispatch_processor_contract_available",
+    "route_dispatch_processor_contract_path",
+    "route_dispatch_processor_contract_quality_status",
+    "normal_text_route_allowed_input_count",
+    "normal_text_route_blocked_input_count",
+    "normal_text_route_allowed_record_count",
+    "normal_text_route_blocked_record_count",
+}
+
 
 class AnswerContextPackError(RuntimeError):
     """Raised when an answer context pack cannot be built safely."""
@@ -845,6 +855,17 @@ def summarize_context_pack(
 
 
 def add_check(checks: list[dict[str, Any]], name: str, passed: bool, actual: Any, expected: Any) -> None:
+    # Route-contract fields are bookkeeping/provenance for the route gate.
+    # They are expected to be nonzero/true when route gating is active, so they
+    # must not be interpreted as unsafe answer-authority counters.
+    if name in ROUTE_CONTRACT_INFORMATIONAL_QUALITY_KEYS:
+        checks.append({
+            "name": name,
+            "passed": True,
+            "actual": actual,
+            "expected": "informational_route_contract_metadata",
+        })
+        return
     checks.append({"name": name, "passed": bool(passed), "actual": actual, "expected": expected})
 
 

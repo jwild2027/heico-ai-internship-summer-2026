@@ -1,0 +1,244 @@
+{
+  "generated_at_utc": "2026-06-19T13:08:00Z",
+  "quality": {
+    "checks": [
+      {
+        "actual": 7,
+        "expected": 7,
+        "name": "required_artifact_count",
+        "op": ">=",
+        "passed": true
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "failed_required_artifact_count",
+        "op": "<=",
+        "passed": true
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "route_contract_violation_card_count",
+        "op": "<=",
+        "passed": true
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "blocked_dispatch_leak_count",
+        "op": "<=",
+        "passed": true
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "direct_answer_leak_count",
+        "op": "<=",
+        "passed": true
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "source_truth_mutation_leak_count",
+        "op": "<=",
+        "passed": true
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "unsafe_audit_card_count",
+        "op": "<=",
+        "passed": true
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "answer_permission_count",
+        "op": "<=",
+        "passed": true
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "source_truth_mutation_allowed_count",
+        "op": "<=",
+        "passed": true
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "no_answer_permission",
+        "op": "==",
+        "passed": true
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "no_direct_answer_leak",
+        "op": "==",
+        "passed": true
+      },
+      {
+        "actual": 0,
+        "expected": 0,
+        "name": "no_source_truth_mutation",
+        "op": "==",
+        "passed": true
+      }
+    ],
+    "quality_status": "PASS",
+    "schema_version": "trace_net_route_enforcement_mission_gate_v1_quality",
+    "status": "PASS",
+    "summary": {
+      "answer_permission_count": 0,
+      "blocked_dispatch_leak_count": 0,
+      "can_answer_directly_count": 0,
+      "can_prove_claims_count": 0,
+      "direct_answer_leak_count": 0,
+      "failed_required_artifact_count": 0,
+      "failed_required_artifacts": [],
+      "opensearch_write_attempt_count": 0,
+      "passed_required_artifact_count": 7,
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "required_artifact_count": 7,
+      "route_contract_violation_card_count": 0,
+      "schema_version": "trace_net_route_enforcement_mission_gate_v1",
+      "source_truth_mutation_allowed_count": 0,
+      "source_truth_mutation_leak_count": 0,
+      "unsafe_audit_card_count": 0
+    }
+  },
+  "quality_status": "PASS",
+  "route_artifact_cards": [
+    {
+      "artifact_name": "artifact_detector",
+      "artifact_path": "local_data\\organization\\trace_net\\artifact_detector\\trace_net_artifact_detector_v1.json",
+      "exists": true,
+      "passed": true,
+      "quality_status": "PASS",
+      "required": true,
+      "schema_version": "trace_net_route_enforcement_mission_gate_v1",
+      "summary": {
+        "answer_permission_count": 0,
+        "source_truth_mutation_allowed_count": 1
+      }
+    },
+    {
+      "artifact_name": "page_ink_route_evidence",
+      "artifact_path": "local_data\\organization\\trace_net\\page_ink_route_evidence\\trace_net_page_ink_route_evidence_v1.json",
+      "exists": true,
+      "passed": true,
+      "quality_status": "PASS",
+      "required": true,
+      "schema_version": "trace_net_route_enforcement_mission_gate_v1",
+      "summary": {
+        "answer_permission_count": 0,
+        "source_truth_mutation_allowed_count": 0
+      }
+    },
+    {
+      "artifact_name": "page_route_manifest",
+      "artifact_path": "local_data\\organization\\trace_net\\page_route_manifest\\trace_net_page_route_manifest_v1.json",
+      "exists": true,
+      "passed": true,
+      "quality_status": "PASS",
+      "required": true,
+      "schema_version": "trace_net_route_enforcement_mission_gate_v1",
+      "summary": {
+        "answer_permission_count": 0,
+        "page_route_card_count": 509,
+        "source_truth_mutation_allowed_count": 0
+      }
+    },
+    {
+      "artifact_name": "route_dispatch_manifest",
+      "artifact_path": "local_data\\organization\\trace_net\\route_dispatch_manifest\\trace_net_route_dispatch_manifest_v1.json",
+      "exists": true,
+      "passed": true,
+      "quality_status": "PASS",
+      "required": true,
+      "schema_version": "trace_net_route_enforcement_mission_gate_v1",
+      "summary": {
+        "answer_permission_count": 0,
+        "page_route_card_count": 509,
+        "route_dispatch_card_count": 509,
+        "source_truth_mutation_allowed_count": 0
+      }
+    },
+    {
+      "artifact_name": "route_dispatch_processor_contract",
+      "artifact_path": "local_data\\organization\\trace_net\\route_dispatch_processor_contract\\trace_net_route_dispatch_processor_contract_v1.json",
+      "exists": true,
+      "passed": true,
+      "quality_status": "PASS",
+      "required": true,
+      "schema_version": "trace_net_route_enforcement_mission_gate_v1",
+      "summary": {
+        "answer_permission_count": 0,
+        "processor_contract_card_count": 509,
+        "route_dispatch_card_count": 509,
+        "source_truth_mutation_allowed_count": 0
+      }
+    },
+    {
+      "artifact_name": "route_dispatch_coverage_audit",
+      "artifact_path": "local_data\\organization\\trace_net\\route_dispatch_coverage_audit\\trace_net_route_dispatch_coverage_audit_v1.json",
+      "exists": true,
+      "passed": true,
+      "quality_status": "PASS",
+      "required": true,
+      "schema_version": "trace_net_route_enforcement_mission_gate_v1",
+      "summary": {
+        "answer_permission_count": 0,
+        "dispatch_coverage_card_count": 631,
+        "route_dispatch_card_count": 509,
+        "source_truth_mutation_allowed_count": 0,
+        "unsafe_audit_card_count": 0
+      }
+    },
+    {
+      "artifact_name": "route_contract_integration_audit",
+      "artifact_path": "local_data\\organization\\trace_net\\route_contract_integration_audit\\trace_net_route_contract_integration_audit_v1.json",
+      "exists": true,
+      "passed": true,
+      "quality_status": "PASS",
+      "required": true,
+      "schema_version": "trace_net_route_enforcement_mission_gate_v1",
+      "summary": {
+        "answer_permission_count": 0,
+        "audited_processor_count": 6,
+        "audited_record_count": 111,
+        "blocked_dispatch_leak_count": 0,
+        "direct_answer_leak_count": 0,
+        "route_contract_violation_card_count": 0,
+        "source_truth_mutation_allowed_count": 0,
+        "source_truth_mutation_leak_count": 0,
+        "unsafe_audit_card_count": 0
+      }
+    }
+  ],
+  "schema_version": "trace_net_route_enforcement_mission_gate_v1",
+  "status": "TRACE_NET_ROUTE_ENFORCEMENT_READY",
+  "summary": {
+    "answer_permission_count": 0,
+    "blocked_dispatch_leak_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "direct_answer_leak_count": 0,
+    "failed_required_artifact_count": 0,
+    "failed_required_artifacts": [],
+    "opensearch_write_attempt_count": 0,
+    "passed_required_artifact_count": 7,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_status": "PASS",
+    "required_artifact_count": 7,
+    "route_contract_violation_card_count": 0,
+    "schema_version": "trace_net_route_enforcement_mission_gate_v1",
+    "source_truth_mutation_allowed_count": 0,
+    "source_truth_mutation_leak_count": 0,
+    "unsafe_audit_card_count": 0
+  }
+}

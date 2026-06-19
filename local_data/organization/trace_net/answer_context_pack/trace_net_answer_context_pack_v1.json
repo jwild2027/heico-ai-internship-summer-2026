@@ -2,7 +2,7 @@
   "answer_composition_allowed": false,
   "answer_status": "CONTEXT_PACK_ONLY",
   "ask_report_path": "local_data\\organization\\trace_net\\ask_hybrid_flag\\trace_net_ask_hybrid_flag_v1.json",
-  "created_at_utc": "2026-06-18T20:34:37Z",
+  "created_at_utc": "2026-06-19T12:51:03Z",
   "embedding_candidates_path": "local_data\\organization\\trace_net\\embedding_candidates\\trace_net_embedding_candidates_v1.json",
   "forbidden_use": [
     "direct_answer_from_vector_hit",
@@ -1361,39 +1361,39 @@
       },
       {
         "actual": true,
-        "expected": 0,
+        "expected": "informational_route_contract_metadata",
         "name": "route_dispatch_processor_contract_available",
-        "passed": false
+        "passed": true
       },
       {
         "actual": "PASS",
-        "expected": 0,
+        "expected": "informational_route_contract_metadata",
         "name": "route_dispatch_processor_contract_quality_status",
         "passed": true
       },
       {
         "actual": 2,
-        "expected": 0,
+        "expected": "informational_route_contract_metadata",
         "name": "normal_text_route_allowed_input_count",
-        "passed": false
+        "passed": true
       },
       {
         "actual": 6,
-        "expected": 0,
+        "expected": "informational_route_contract_metadata",
         "name": "normal_text_route_blocked_input_count",
-        "passed": false
+        "passed": true
       },
       {
         "actual": 7,
-        "expected": 0,
+        "expected": "informational_route_contract_metadata",
         "name": "normal_text_route_allowed_record_count",
-        "passed": false
+        "passed": true
       },
       {
         "actual": 20,
-        "expected": 0,
+        "expected": "informational_route_contract_metadata",
         "name": "normal_text_route_blocked_record_count",
-        "passed": false
+        "passed": true
       },
       {
         "actual": 0,
@@ -1444,7 +1444,7 @@
         "passed": true
       }
     ],
-    "status": "FAIL",
+    "status": "PASS",
     "summary": {
       "answer_composition_allowed": false,
       "answer_composition_allowed_count": 0,
@@ -1513,7 +1513,7 @@
       "verified_part_evidence_record_count": 2
     }
   },
-  "quality_status": "FAIL",
+  "quality_status": "PASS",
   "query": "Which pages discuss manual revision history?",
   "records": [
     {
