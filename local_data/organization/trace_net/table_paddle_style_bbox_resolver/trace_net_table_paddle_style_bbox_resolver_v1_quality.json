@@ -1,0 +1,113 @@
+{
+  "checks": [
+    {
+      "actual": 20,
+      "expected": 1,
+      "name": "resolver_card_count",
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "actual": 20,
+      "expected": 1,
+      "name": "selected_bbox_card_count",
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "route_blocked_card_count",
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "unsafe_resolver_card_count",
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "answer_permission_count",
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_count",
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "expected": "PASS",
+      "name": "route_dispatch_processor_contract_quality_status",
+      "op": "==",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "no_answer_permission",
+      "op": "==",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "no_can_answer_directly",
+      "op": "==",
+      "passed": true
+    },
+    {
+      "actual": 0,
+      "expected": 0,
+      "name": "no_can_prove_claims",
+      "op": "==",
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS",
+  "schema_version": "trace_net_table_paddle_style_bbox_resolver_v1_quality",
+  "status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "candidate_bbox_count": 360,
+    "candidate_count_by_source": {
+      "table_bbox_resolver": 20,
+      "table_full_region_recovery": 220,
+      "table_line_geometry": 120
+    },
+    "low_score_selected_card_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "page_like_candidate_card_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "resolver_card_count": 20,
+    "review_required_card_count": 0,
+    "route_blocked_card_count": 0,
+    "route_dispatch_processor_contract_path": "local_data\\organization\\trace_net\\route_dispatch_processor_contract\\trace_net_route_dispatch_processor_contract_v1.json",
+    "route_dispatch_processor_contract_quality_status": "PASS",
+    "schema_version": "trace_net_table_paddle_style_bbox_resolver_v1",
+    "selected_bbox_card_count": 20,
+    "source_truth_mutation_allowed_count": 0,
+    "source_truth_mutations_performed": 0,
+    "status": "TRACE_NET_TABLE_PADDLE_STYLE_BBOX_RESOLVER_BUILT",
+    "table_bbox_resolver_path": "local_data\\organization\\trace_net\\table_bbox_resolver\\trace_net_table_bbox_resolver_v1.json",
+    "table_bbox_resolver_quality_status": "PASS",
+    "table_crop_completeness_guard_path": "local_data\\organization\\trace_net\\table_crop_completeness_guard\\trace_net_table_crop_completeness_guard_v1.json",
+    "table_crop_completeness_guard_quality_status": "PASS",
+    "table_full_region_recovery_path": "local_data\\organization\\trace_net\\table_full_region_recovery\\trace_net_table_full_region_recovery_v1.json",
+    "table_full_region_recovery_quality_status": "PASS",
+    "table_line_geometry_path": "local_data\\organization\\trace_net\\table_line_geometry\\trace_net_table_line_geometry_v1.json",
+    "table_line_geometry_quality_status": "PASS",
+    "tiny_candidate_card_count": 0,
+    "unsafe_resolver_card_count": 0
+  }
+}

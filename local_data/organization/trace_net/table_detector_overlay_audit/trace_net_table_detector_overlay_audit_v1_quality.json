@@ -1,0 +1,46 @@
+{
+  "checks": {
+    "answer_permission_within_limit": true,
+    "margin_detector_parity_quality_pass": true,
+    "min_audit_cards_met": true,
+    "min_detector_disagreement_cards_met": true,
+    "min_overlay_ready_cards_met": true,
+    "no_answer_permission": true,
+    "schema_version_ok": true,
+    "source_truth_mutation_allowed_within_limit": true,
+    "table_bbox_resolver_quality_pass": true,
+    "unsafe_audit_cards_within_limit": true
+  },
+  "generated_at": "2026-06-17T18:57:06+00:00",
+  "quality_fail_reasons": [],
+  "quality_status": "PASS",
+  "report_path": "local_data\\organization\\trace_net\\table_detector_overlay_audit\\trace_net_table_detector_overlay_audit_v1.json",
+  "schema_version": "trace_net_table_detector_overlay_audit_v1_quality",
+  "status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "audit_card_count": 20,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "detector_disagreement_card_count": 20,
+    "estimator_exceeds_production_card_count": 19,
+    "line_overlay_candidate_card_count": 20,
+    "opensearch_write_attempt_count": 0,
+    "overlay_missing_card_count": 0,
+    "overlay_ready_card_count": 20,
+    "postgres_write_attempt_count": 0,
+    "production_exceeds_estimator_card_count": 10,
+    "qdrant_write_attempt_count": 0,
+    "quality_fail_reasons": [],
+    "quality_status": "PASS",
+    "review_required_card_count": 20,
+    "schema_version": "trace_net_table_detector_overlay_audit_v1",
+    "source_quality_statuses": {
+      "margin_detector_parity": "PASS",
+      "table_bbox_resolver": "PASS"
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "status": "PASS",
+    "unsafe_audit_card_count": 0
+  }
+}

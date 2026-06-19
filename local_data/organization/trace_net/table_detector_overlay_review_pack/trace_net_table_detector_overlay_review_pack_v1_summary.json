@@ -1,0 +1,38 @@
+{
+  "answer_permission_count": 0,
+  "can_answer_directly_count": 0,
+  "can_prove_claims_count": 0,
+  "contact_sheet_count": 4,
+  "contact_sheet_error": null,
+  "contact_sheet_paths": [
+    "local_data\\organization\\trace_net\\table_detector_overlay_review_pack\\contact_sheets\\trace_net_table_detector_overlay_review_contact_sheet_001.png",
+    "local_data\\organization\\trace_net\\table_detector_overlay_review_pack\\contact_sheets\\trace_net_table_detector_overlay_review_contact_sheet_002.png",
+    "local_data\\organization\\trace_net\\table_detector_overlay_review_pack\\contact_sheets\\trace_net_table_detector_overlay_review_contact_sheet_003.png",
+    "local_data\\organization\\trace_net\\table_detector_overlay_review_pack\\contact_sheets\\trace_net_table_detector_overlay_review_contact_sheet_004.png"
+  ],
+  "detector_disagreement_card_count": 20,
+  "estimator_exceeds_production_card_count": 19,
+  "opensearch_write_attempt_count": 0,
+  "overlay_audit_path": "local_data\\organization\\trace_net\\table_detector_overlay_audit\\trace_net_table_detector_overlay_audit_v1.json",
+  "overlay_audit_quality_status": "PASS",
+  "overlay_missing_card_count": 0,
+  "overlay_ready_card_count": 20,
+  "postgres_write_attempt_count": 0,
+  "production_exceeds_estimator_card_count": 10,
+  "qdrant_write_attempt_count": 0,
+  "quality_fail_reasons": [],
+  "quality_status": "PASS",
+  "review_card_count": 20,
+  "review_required_card_count": 20,
+  "schema_version": "trace_net_table_detector_overlay_review_pack_v1",
+  "source_truth_mutation_allowed_count": 0,
+  "status": "TABLE_DETECTOR_OVERLAY_REVIEW_PACK_BUILT",
+  "unreviewed_card_count": 20,
+  "unsafe_review_card_count": 0,
+  "verdict_options": [
+    "UNREVIEWED",
+    "ESTIMATOR_LINES_REAL_TABLE_RULES",
+    "ESTIMATOR_LINES_TEXT_OR_NOISE",
+    "MIXED_OR_UNCLEAR"
+  ]
+}

@@ -3,37 +3,37 @@
     {
       "expected": ">= 1",
       "name": "min_verifier_records",
-      "observed": 509,
+      "observed": 25,
       "passed": true
     },
     {
       "expected": ">= 1",
       "name": "min_clean_callouts",
-      "observed": 6018,
+      "observed": 60,
       "passed": true
     },
     {
-      "expected": ">= 1",
+      "expected": ">= 0",
       "name": "min_random_numbers_suppressed",
-      "observed": 3080,
+      "observed": 24,
       "passed": true
     },
     {
       "expected": ">= 0",
       "name": "min_callout_to_table_row_links",
-      "observed": 519,
+      "observed": 0,
       "passed": true
     },
     {
       "expected": ">= 0",
       "name": "min_catalog_verified_visual_parts",
-      "observed": 931,
+      "observed": 59,
       "passed": true
     },
     {
       "expected": ">= 1",
       "name": "min_records_with_graph_attachment_plans",
-      "observed": 509,
+      "observed": 25,
       "passed": true
     },
     {
@@ -61,41 +61,46 @@
       "passed": true
     }
   ],
-  "created_at": "2026-06-10T15:00:56Z",
+  "created_at": "2026-06-18T19:27:46Z",
   "schema_version": "trace_net_callout_visual_part_verifier_v1",
   "status": "PASS",
   "summary": {
     "answer_status": "CALLOUT_VISUAL_PART_VERIFICATION_ONLY",
     "authority_counts": {
-      "visual_callout_part_verification_retrieval_only": 509
+      "visual_callout_part_verification_retrieval_only": 25
     },
-    "callout_to_table_row_link_count": 519,
-    "callout_verifier_record_count": 509,
+    "callout_to_table_row_link_count": 0,
+    "callout_verifier_record_count": 25,
     "catalog_part_count": 301,
-    "catalog_verified_visual_part_count": 931,
-    "clean_callout_count": 6018,
-    "diagrams_needing_human_review_count": 471,
+    "catalog_verified_visual_part_count": 59,
+    "clean_callout_count": 60,
+    "diagrams_needing_human_review_count": 13,
     "final_answer_allowed": false,
-    "linked_visual_part_candidate_count": 940,
-    "page_count": 509,
+    "image_visual_route_allowed_input_count": 25,
+    "image_visual_route_blocked_input_count": 484,
+    "linked_visual_part_candidate_count": 68,
+    "page_count": 25,
     "rag_bucket_counts": {
-      "visual_callout_part_verification_helper": 509
+      "visual_callout_part_verification_helper": 25
     },
-    "random_number_suppressed_count": 3080,
-    "raw_callout_candidate_count": 9098,
-    "records_with_graph_attachment_plan_count": 509,
-    "retrieval_only_record_count": 509,
+    "random_number_suppressed_count": 24,
+    "raw_callout_candidate_count": 84,
+    "records_with_graph_attachment_plan_count": 25,
+    "retrieval_only_record_count": 25,
+    "route_dispatch_processor_contract_available": true,
+    "route_dispatch_processor_contract_path": "local_data\\organization\\trace_net\\route_dispatch_processor_contract\\trace_net_route_dispatch_processor_contract_v1.json",
+    "route_dispatch_processor_contract_quality_status": "PASS",
     "schema_version": "trace_net_callout_visual_part_verifier_v1",
     "source_truth_mutation_allowed_count": 0,
     "source_visual_record_count": 509,
-    "table_supported_visual_part_count": 106,
+    "table_supported_visual_part_count": 68,
     "trust_tier_counts": {
-      "B": 38,
-      "C": 471
+      "B": 12,
+      "C": 13
     },
     "unsafe_visual_evidence_count": 0,
     "unverified_visual_claim_count": 0,
     "visual_answer_allowed_count": 0,
-    "visual_part_link_count": 940
+    "visual_part_link_count": 68
   }
 }

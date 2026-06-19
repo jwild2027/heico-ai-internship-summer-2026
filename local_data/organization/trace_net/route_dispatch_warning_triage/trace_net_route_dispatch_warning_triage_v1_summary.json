@@ -1,0 +1,55 @@
+{
+  "answer_permission_count": 0,
+  "blank_heavy_processing_triage_count": 50,
+  "can_answer_directly_count": 0,
+  "can_prove_claims_count": 0,
+  "checks": {
+    "answer_permission_within_limit": true,
+    "min_warning_triage_cards_met": true,
+    "no_answer_permission": true,
+    "route_dispatch_coverage_audit_quality_pass": true,
+    "schema_version_ok": true,
+    "source_truth_mutation_allowed_within_limit": true,
+    "unsafe_triage_cards_within_limit": true
+  },
+  "coverage_audit_violation_card_count": 0,
+  "coverage_audit_warning_card_count": 63,
+  "ocr_text_dispatch_policy_triage_count": 10,
+  "opensearch_write_attempt_count": 0,
+  "postgres_write_attempt_count": 0,
+  "qdrant_write_attempt_count": 0,
+  "quality_fail_reasons": [],
+  "quality_status": "PASS",
+  "recommended_action_counts": {
+    "consider_text_secondary_dispatch_or_keep_as_embedded_text_evidence": 10,
+    "inspect_blank_candidate_heavy_artifacts_or_route_backfill": 50,
+    "no_dispatch_change_required_until_answer_artifacts_are_rebuilt_from_dispatch": 63
+  },
+  "retrieval_answer_legacy_overlap_triage_count": 63,
+  "route_dispatch_coverage_audit_path": "local_data\\organization\\trace_net\\route_dispatch_coverage_audit\\trace_net_route_dispatch_coverage_audit_v1.json",
+  "route_dispatch_coverage_audit_quality_status": "PASS",
+  "schema_version": "trace_net_route_dispatch_warning_triage_v1",
+  "source_truth_mutation_allowed_count": 0,
+  "source_truth_mutations_performed": 0,
+  "status": "TRACE_NET_ROUTE_DISPATCH_WARNING_TRIAGE_BUILT",
+  "unclassified_warning_triage_count": 0,
+  "unresolved_violation_triage_count": 0,
+  "unsafe_triage_card_count": 0,
+  "warning_family_counts": {
+    "blank_candidate_heavy_processing": 50,
+    "ocr_text_dispatch_policy": 10,
+    "retrieval_answer_legacy_overlap": 63
+  },
+  "warning_instance_count": 123,
+  "warning_reason_counts": {
+    "blank_candidate_has_heavy_processing_evidence": 50,
+    "ocr_text_artifact_without_explicit_text_dispatch": 10,
+    "retrieval_answer_artifact_without_explicit_text_dispatch": 63
+  },
+  "warning_severity_counts": {
+    "legacy_advisory": 63,
+    "policy_advisory": 10,
+    "review_cleanup": 50
+  },
+  "warning_triage_card_count": 123
+}

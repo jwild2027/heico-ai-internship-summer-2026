@@ -1,6 +1,6 @@
-# TRACE-Net OpenSearch Adapter v1
+# TRACE-Net OpenSearch Adapter v1 — Lineage Guarded
 
-**Status:** OPENSEARCH_DOCUMENTS_BUILT
+**Status:** OPENSEARCH_DOCUMENTS_LINEAGE_GUARDED
 **Quality:** PASS
 **Index:** trace_net_safe_search_v1
 
@@ -8,8 +8,10 @@
 
 - opensearch_document_count: 7027
 - page_scoped_document_count: 7027
+- documents_with_search_text_count: 7027
 - missing_page_id_count: 0
 - missing_source_trace_count: 0
+- lineage_guard_dropped_document_count: 0
 - unsafe_index_document_count: 0
 - raw_feedback_indexed_count: 0
 - raw_visual_output_indexed_count: 0
@@ -18,19 +20,9 @@
 - source_truth_mutation_allowed_count: 0
 - opensearch_write_attempt_count: 0
 
-## Document Types
-
-- community_summary: 223
-- context_retrieval_helper: 50
-- embedding_candidate: 1476
-- page_retrieval_profile: 509
-- part_candidate_lineage: 301
-- table_cell_normalized: 3054
-- table_row_normalized: 1414
-
 ## Safety Contract
 
-- This adapter builds local OpenSearch documents only.
-- It does not write to OpenSearch/Postgres/Qdrant.
-- Raw OCR, raw visual output, raw feedback, prompt/debug text, and unsafe records are blocked.
-- Retrieval-only documents cannot prove claims or answer directly.
+- Local artifact rewrite only.
+- No Postgres, Qdrant, or OpenSearch writes.
+- Documents without page/source lineage are removed before loader smoke or live indexing.
+- Retrieval-only documents cannot answer directly or prove claims.

@@ -1,0 +1,37 @@
+{
+  "checks": {
+    "category_as_proof_zero": true,
+    "community_as_proof_zero": true,
+    "corrective_action_as_proof_zero": true,
+    "feedback_as_proof_zero": true,
+    "hybrid_v3_quality_pass": true,
+    "hybrid_v3_routing_available": true,
+    "read_only_ok": true,
+    "retrieval_only_answer_allowed_zero": true,
+    "schema_version_ok": true,
+    "source_truth_mutation_allowed_zero": true,
+    "write_attempts_zero": true
+  },
+  "generated_at": "2026-06-17T13:17:49+00:00",
+  "quality_status": "PASS",
+  "schema_version": "trace_net_ask_api_hybrid_v3_routing_v1_quality",
+  "status": "PASS",
+  "summary": {
+    "category_as_proof_count": 0,
+    "community_as_proof_count": 0,
+    "corrective_action_as_proof_count": 0,
+    "corrective_group_count": 13,
+    "feedback_as_proof_count": 0,
+    "final_answer_quality_status": "PASS",
+    "hybrid_v3_group_count": 40,
+    "hybrid_v3_quality_status": "PASS",
+    "hybrid_v3_routing_available": true,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "read_only_api": true,
+    "retrieval_only_answer_allowed_count": 0,
+    "review_routed_group_count": 13,
+    "source_truth_mutation_allowed_count": 0
+  }
+}

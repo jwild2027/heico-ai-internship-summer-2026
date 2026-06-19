@@ -1,0 +1,61 @@
+{
+  "answer_permission_count": 0,
+  "bbox_source_counts": {
+    "explicit_table_bbox": 13,
+    "ocr_table_text_token_match": 7
+  },
+  "broad_bbox_candidate_card_count": 7,
+  "can_answer_directly_count": 0,
+  "can_prove_claims_count": 0,
+  "crop_applied_card_count": 20,
+  "crop_available_card_count": 20,
+  "crop_decision_bucket_counts": {
+    "page_selected_grid": 12,
+    "page_selected_weak_or_partial": 8
+  },
+  "crop_selected_but_weak_card_count": 0,
+  "crop_selected_card_count": 0,
+  "diagnostic_card_count": 20,
+  "morphology_signal_strength_counts": {
+    "GRID": 12,
+    "PARTIAL_GRID": 1,
+    "WEAK_LINE_SIGNAL": 7
+  },
+  "ocr_bbox_source_counts": {
+    "ocr_part_number_token_match": 9,
+    "ocr_table_text_token_match": 11
+  },
+  "opensearch_write_attempt_count": 0,
+  "page_selected_card_count": 20,
+  "page_selected_grid_card_count": 12,
+  "postgres_write_attempt_count": 0,
+  "qdrant_write_attempt_count": 0,
+  "quality_fail_reasons": [],
+  "quality_status": "PASS",
+  "recommended_action_counts": {
+    "compare_crop_and_page_row_estimates_against_ocr_rows": 12,
+    "improve_crop_bbox_tightness_or_line_thresholds": 8,
+    "keep_page_preference_for_page_grid_cases": 12,
+    "tighten_ocr_bbox_crop_to_content_band": 7
+  },
+  "review_flag_counts": {
+    "broad_crop_candidate_kept_page_morphology": 7,
+    "calibrated_morphology_signal_not_full_grid": 8,
+    "crop_selection_rejected_no_vertical_or_intersection_gain": 8,
+    "morphology_lines_have_no_intersections": 1,
+    "no_vertical_lines_detected": 7,
+    "visual_row_count_mismatch_with_ocr_fallback": 12,
+    "weak_morphology_grid_signal": 8
+  },
+  "review_required_card_count": 20,
+  "schema_version": "trace_net_table_crop_selection_diagnostics_v1",
+  "selected_morphology_scope_counts": {
+    "page": 20
+  },
+  "source_truth_mutation_allowed_count": 0,
+  "status": "PASS",
+  "table_bbox_resolver_quality_status": "PASS",
+  "table_line_geometry_quality_status": "PASS",
+  "table_ocr_bbox_enrichment_quality_status": "PASS",
+  "unsafe_diagnostic_card_count": 0
+}

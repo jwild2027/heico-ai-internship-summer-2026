@@ -5,14 +5,14 @@
 
 ## Summary
 
-- Verification records: 509
-- Raw callout candidates: 9098
-- Clean callouts: 6018
-- Random numbers suppressed: 3080
-- Callout-to-table row links: 519
-- Visual part links: 940
-- Catalog-verified visual parts: 931
-- Records needing human review: 471
+- Verification records: 25
+- Raw callout candidates: 84
+- Clean callouts: 60
+- Random numbers suppressed: 24
+- Callout-to-table row links: 0
+- Visual part links: 68
+- Catalog-verified visual parts: 59
+- Records needing human review: 13
 - Unsafe visual evidence: 0
 - Source truth mutations allowed: 0
 

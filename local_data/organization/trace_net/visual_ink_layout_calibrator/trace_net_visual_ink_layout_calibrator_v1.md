@@ -11,31 +11,29 @@ It is route-only: it cannot answer directly, prove claims, or mutate source trut
 
 ## Summary
 
-- calibrated_page_count: 509
-- ink_metric_page_count: 509
-- blank_page_count: 14
-- confirmed_blank_page_count: 14
-- ink_blank_candidate_count: 14
+- calibrated_page_count: 25
+- ink_metric_page_count: 25
+- blank_page_count: 3
+- confirmed_blank_page_count: 3
+- ink_blank_candidate_count: 3
 - sparse_ink_page_count: 0
-- text_heavy_page_count: 39
-- table_or_grid_page_count: 19
-- parts_list_or_diagram_page_count: 290
-- figure_or_diagram_page_count: 276
-- chart_or_plot_page_count: 160
-- reclassified_page_count: 301
-- chart_candidate_demoted_count: 39
-- needs_vision_model_count: 436
-- needs_human_review_count: 437
+- text_heavy_page_count: 5
+- table_or_grid_page_count: 10
+- parts_list_or_diagram_page_count: 11
+- figure_or_diagram_page_count: 5
+- chart_or_plot_page_count: 2
+- reclassified_page_count: 15
+- chart_candidate_demoted_count: 12
+- needs_vision_model_count: 7
+- needs_human_review_count: 7
 - visual_answer_allowed_count: 0
 - source_truth_mutation_allowed_count: 0
 
 ## Layout classes
 
-- blank: 14
-- chart_or_plot: 160
-- mixed_table_and_diagram: 37
-- parts_list_or_illustrated_parts: 239
-- parts_list_table: 14
-- table_or_grid: 5
-- text_heavy: 39
-- unknown_visual_layout: 1
+- blank: 3
+- chart_or_plot: 2
+- parts_list_or_illustrated_parts: 5
+- parts_list_table: 6
+- table_or_grid: 4
+- text_heavy: 5

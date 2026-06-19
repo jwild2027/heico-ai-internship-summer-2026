@@ -1,0 +1,42 @@
+{
+  "can_answer_directly": false,
+  "can_prove_claims": false,
+  "image_height": 4141,
+  "image_width": 3199,
+  "ocr_bbox_jsonl_path": "local_data/organization/trace_net/table_ocr_bbox_sidecars/sidecars/t_p_120_1176_p000036__zip_page_000036_00000036_ocr_bboxes.jsonl",
+  "ocr_line_jsonl_path": "local_data/organization/trace_net/table_ocr_bbox_sidecars/sidecars/t_p_120_1176_p000036__zip_page_000036_00000036_ocr_lines.jsonl",
+  "ocr_line_record_count": 52,
+  "ocr_word_record_count": 295,
+  "page_id": "t_p_120_1176_p000036",
+  "part_number_match_count": 11,
+  "part_number_match_jsonl_path": "local_data/organization/trace_net/table_ocr_bbox_sidecars/sidecars/t_p_120_1176_p000036__zip_page_000036_00000036_part_number_matches.jsonl",
+  "part_numbers_sample": [
+    "120-29102-003",
+    "120-30016-001",
+    "120-30016-002",
+    "120-30018-001",
+    "120-30018-002",
+    "120-30019-001",
+    "120-30020-001",
+    "120-30020-005",
+    "120-31565-001",
+    "120-31565-002",
+    "120-31626-001"
+  ],
+  "resolved_image_path": "local_data/ocr/full_509_psm3/pages/zip_page_000036_00000036.tif",
+  "schema_version": "trace_net_table_ocr_bbox_sidecar_page_summary_v1",
+  "source_truth_mutation_allowed": false,
+  "table_candidate_bbox": {
+    "coverage_ratio": 0.909034,
+    "height": 4141,
+    "width": 2908,
+    "x0": 250,
+    "x1": 3158,
+    "y0": 0,
+    "y1": 4141
+  },
+  "table_candidate_bbox_source": "part_number_ocr_line_band_bbox",
+  "table_id": "normtable__3e3988c2ff19a9",
+  "table_type": "parts_list_table",
+  "tsv_sidecar_path": "local_data/organization/trace_net/table_ocr_bbox_sidecars/sidecars/t_p_120_1176_p000036__zip_page_000036_00000036.tsv"
+}

@@ -2,21 +2,20 @@
 
 A read-only CRAG-style planner for TRACE-Net artifacts.
 
-The planner does not retrieve, index, write to external services, or answer.
-It reads existing retrieval/evidence/audit artifacts and emits corrective
-routing decisions such as exact-search expansion, graph-path expansion,
-reranking, visual review, or final-gate use.
+The planner does not retrieve, index, write to external services, or answer. It
+reads existing retrieval/evidence/audit artifacts and emits corrective routing
+records such as exact-search expansion, graph-path expansion, reranking, visual
+review, or final-gate use.
 """
 from __future__ import annotations
 
 import argparse
 import json
 import re
-import sys
-from collections import Counter, defaultdict
+from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
+from typing import Any, Dict, Iterable, List, Optional, Sequence
 
 SCHEMA_VERSION = "trace_net_corrective_retrieval_planner_v1"
 STATUS_BUILT = "CORRECTIVE_RETRIEVAL_PLAN_BUILT"
@@ -41,6 +40,20 @@ SAFE_BASE_CONTRACT = {
     "qdrant_write_attempt": False,
     "opensearch_write_attempt": False,
 }
+
+HARD_ZERO_SUMMARY_FIELDS = (
+    "unsafe_correction_record_count",
+    "answer_permission_count",
+    "source_truth_mutation_allowed_count",
+    "postgres_write_attempt_count",
+    "qdrant_write_attempt_count",
+    "opensearch_write_attempt_count",
+    "can_answer_directly_count",
+    "can_prove_claims_count",
+    "retrieval_only_answer_allowed_count",
+    "community_as_proof_count",
+    "category_as_proof_count",
+)
 
 
 @dataclass(frozen=True)
@@ -87,13 +100,144 @@ def get_summary(payload: Dict[str, Any]) -> Dict[str, Any]:
     return payload.get("summary") if isinstance(payload.get("summary"), dict) else {}
 
 
-def get_quality_status(payload: Dict[str, Any]) -> str:
-    status = payload.get("quality_status")
-    if isinstance(status, str):
+def _upper_status(value: Any) -> Optional[str]:
+    if not isinstance(value, str):
+        return None
+    status = value.strip().upper()
+    return status or None
+
+
+def _explicit_quality(value: Any) -> Optional[str]:
+    status = _upper_status(value)
+    if status in {QUALITY_PASS, QUALITY_FAIL, QUALITY_UNKNOWN}:
+        return status
+    return None
+
+
+def _number(value: Any) -> Optional[float]:
+    if value is None or isinstance(value, bool):
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _lookup(payload: Dict[str, Any], key: str) -> Any:
+    if key in payload:
+        return payload.get(key)
+    summary = get_summary(payload)
+    return summary.get(key)
+
+
+def _summary_counter_zero(payload: Dict[str, Any], *keys: str) -> bool:
+    for key in keys:
+        value = _lookup(payload, key)
+        n = _number(value)
+        if n is not None and n != 0:
+            return False
+    return True
+
+
+def normalize_qdrant_page_profile_quality(payload: Dict[str, Any]) -> str:
+    """Normalize old and new Qdrant page-profile quality artifact shapes.
+
+    Historical Qdrant page-profile artifacts in this repo have appeared as
+    quality reports, manifests, and summary-only JSON objects. Some old shapes
+    carried a non-quality status such as a build/manifest status while the PASS
+    signal lived under `summary`, `profile_quality_status`, or in coherent point
+    counts. This normalizer intentionally accepts those safe PASS shapes while
+    still failing explicit FAILs or unsafe/nonzero counters.
+    """
+    summary = get_summary(payload)
+
+    # Explicit FAIL always wins when it appears in quality-bearing fields.
+    for key in (
+        "quality_status",
+        "qdrant_quality_status",
+        "profile_quality_status",
+        "page_profile_quality_status",
+        "adapter_quality_status",
+    ):
+        for container in (payload, summary):
+            explicit = _explicit_quality(container.get(key))
+            if explicit == QUALITY_FAIL:
+                return QUALITY_FAIL
+
+    # Top-level/summary `status` may be a literal PASS/FAIL in older reports.
+    for container in (payload, summary):
+        explicit = _explicit_quality(container.get("status"))
+        if explicit == QUALITY_FAIL:
+            return QUALITY_FAIL
+
+    if not _summary_counter_zero(
+        payload,
+        "unsafe_point_count",
+        "unsafe_payload_count",
+        "unsafe_record_count",
+        "rejected_count",
+        "source_truth_mutation_allowed_count",
+        "can_answer_directly_count",
+        "can_prove_claims_count",
+        "retrieval_only_answer_allowed_count",
+        "postgres_write_attempt_count",
+        "qdrant_write_attempt_count",
+        "opensearch_write_attempt_count",
+    ):
+        return QUALITY_FAIL
+
+    # Any explicit PASS in quality-bearing fields is enough once unsafe counters
+    # are clean. This handles newer quality JSONs and summary-only reports.
+    for key in (
+        "quality_status",
+        "qdrant_quality_status",
+        "profile_quality_status",
+        "page_profile_quality_status",
+        "adapter_quality_status",
+        "status",
+    ):
+        for container in (payload, summary):
+            explicit = _explicit_quality(container.get(key))
+            if explicit == QUALITY_PASS:
+                return QUALITY_PASS
+
+    # Count-based fallback for manifest-like Qdrant reports.
+    loaded = (
+        _number(_lookup(payload, "loaded_point_count"))
+        or _number(_lookup(payload, "point_count"))
+        or _number(_lookup(payload, "points_loaded"))
+    )
+    qdrant_count = _number(_lookup(payload, "qdrant_count"))
+    page_count = _number(_lookup(payload, "page_count")) or _number(_lookup(payload, "pages_with_points"))
+    source_trace_count = _number(_lookup(payload, "source_trace_point_count"))
+    context_count = _number(_lookup(payload, "context_v2_point_count"))
+
+    if loaded and loaded > 0:
+        counts_match = True
+        if qdrant_count is not None:
+            counts_match = counts_match and qdrant_count == loaded
+        if page_count is not None:
+            counts_match = counts_match and page_count > 0
+        if source_trace_count is not None:
+            counts_match = counts_match and source_trace_count > 0
+        if context_count is not None:
+            counts_match = counts_match and context_count >= 0
+        if counts_match:
+            return QUALITY_PASS
+
+    return QUALITY_UNKNOWN
+
+
+def get_quality_status(payload: Dict[str, Any], *, artifact_name: Optional[str] = None) -> str:
+    if artifact_name == "qdrant_page_profile_quality":
+        return normalize_qdrant_page_profile_quality(payload)
+
+    status = _explicit_quality(payload.get("quality_status"))
+    if status:
         return status
     summary = get_summary(payload)
-    status = summary.get("quality_status") or summary.get("status")
-    return status if isinstance(status, str) else QUALITY_UNKNOWN
+    status = _explicit_quality(summary.get("quality_status")) or _explicit_quality(summary.get("status"))
+    return status if status else QUALITY_UNKNOWN
 
 
 def get_status(payload: Dict[str, Any]) -> str:
@@ -203,7 +347,6 @@ def collect_from_page_eval(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
         query_type = r.get("query_type")
         route = r.get("retrieval_route")
         graph_path_resolved = r.get("graph_path_resolved")
-
         if evaluated and not target_hit_at_k:
             out.append(
                 make_record(
@@ -276,7 +419,7 @@ def collect_from_ai_trace(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
         query = p.get("query")
         trace_status = p.get("trace_status")
         reason_codes = [str(x) for x in maybe_list(p.get("review_reason_codes"))]
-        channels = []
+        channels: List[str] = []
         graph_summary = p.get("graph_trace_summary") or {}
         if isinstance(graph_summary, dict):
             channels.extend((graph_summary.get("channel_counts") or {}).keys())
@@ -289,7 +432,6 @@ def collect_from_ai_trace(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
             channels.append("leiden_navigation")
         if p.get("claim_evidence_summary"):
             channels.append("claim_evidence_entailment")
-
         if needs_review:
             actions: List[str] = []
             if "retrieval_critic_audit" in reason_codes:
@@ -306,7 +448,6 @@ def collect_from_ai_trace(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
                     source_record_id=str(p.get("trace_pack_id") or query_id),
                     query_id=str(query_id) if query_id else None,
                     query=str(query) if query else None,
-                    page_id=None,
                     issue_type="trace_pack_review_recommended",
                     severity="HIGH" if any("claim" in x or "alignment" in x for x in reason_codes) else "MEDIUM",
                     recommended_actions=actions,
@@ -334,7 +475,6 @@ def collect_from_ai_trace(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
                     recommended_actions=["use_final_gate_authorized_answer_path"],
                     rationale="Trace pack is already final-gate authorized with no review flags; no corrective retrieval needed.",
                     channels=list(dict.fromkeys(str(c) for c in channels)),
-                    review_reason_codes=[],
                     source_status=source_status,
                     metadata={"trace_status": trace_status, "page_ids": p.get("page_ids") or []},
                 )
@@ -383,11 +523,11 @@ def collect_from_tiff_audit(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
         if not isinstance(r, dict):
             continue
         status = r.get("content_audit_status")
-        if status == "PASS":
+        if status == QUALITY_PASS:
             continue
         page_id = r.get("page_id")
         reason_codes = [str(x) for x in maybe_list(r.get("heuristic_flags") or r.get("vision_flags") or r.get("validation_flags"))]
-        severity = "HIGH" if status == "FAIL" else "MEDIUM"
+        severity = "HIGH" if status == QUALITY_FAIL else "MEDIUM"
         actions = ["route_to_tiff_content_review", "run_or_expand_vision_audit_sample"]
         if r.get("blank_expected"):
             actions.insert(0, "verify_blank_page_with_image_metrics")
@@ -422,7 +562,7 @@ def make_source_artifact_record(name: str, path: Optional[str], payload: Optiona
         "name": name,
         "path": path,
         "loaded": True,
-        "quality_status": get_quality_status(payload),
+        "quality_status": get_quality_status(payload, artifact_name=name),
         "status": get_status(payload),
         "summary": get_summary(payload),
     }
@@ -455,7 +595,6 @@ def compute_summary(records: List[Dict[str, Any]], source_artifacts: Dict[str, D
     answer_permission_count = 0
     source_truth_mutation_allowed_count = 0
     safe_action_records = 0
-
     for record in records:
         actions = [str(a) for a in (record.get("recommended_actions") or [])]
         action_counter.update(actions)
@@ -473,11 +612,10 @@ def compute_summary(records: List[Dict[str, Any]], source_artifacts: Dict[str, D
             answer_permission_count += 1
         if safe_bool(record.get("source_truth_mutation_allowed")):
             source_truth_mutation_allowed_count += 1
-
     loaded_source_quality = {
         name: artifact.get("quality_status") for name, artifact in source_artifacts.items() if artifact.get("loaded")
     }
-    summary = {
+    return {
         "schema_version": SCHEMA_VERSION,
         "status": STATUS_BUILT,
         "correction_record_count": len(records),
@@ -502,7 +640,6 @@ def compute_summary(records: List[Dict[str, Any]], source_artifacts: Dict[str, D
         "community_as_proof_count": 0,
         "category_as_proof_count": 0,
     }
-    return summary
 
 
 def build_quality_checks(summary: Dict[str, Any], source_artifacts: Dict[str, Dict[str, Any]], thresholds: Thresholds) -> List[Dict[str, Any]]:
@@ -511,27 +648,16 @@ def build_quality_checks(summary: Dict[str, Any], source_artifacts: Dict[str, Di
     def add(name: str, ok: bool, detail: str) -> None:
         checks.append({"check_name": name, "passed": bool(ok), "detail": detail})
 
-    add("correction_record_count", summary.get("correction_record_count", 0) >= thresholds.min_correction_records,
-        f"records={summary.get('correction_record_count', 0)}; minimum={thresholds.min_correction_records}")
-    add("diagnostic_record_count", summary.get("diagnostic_record_count", 0) >= thresholds.min_diagnostic_records,
-        f"records={summary.get('diagnostic_record_count', 0)}; minimum={thresholds.min_diagnostic_records}")
-    add("safe_action_record_count", summary.get("safe_action_record_count", 0) >= thresholds.min_safe_action_records,
-        f"records={summary.get('safe_action_record_count', 0)}; minimum={thresholds.min_safe_action_records}")
-    add("review_routed_record_count", summary.get("review_routed_record_count", 0) >= thresholds.min_review_routed_records,
-        f"records={summary.get('review_routed_record_count', 0)}; minimum={thresholds.min_review_routed_records}")
-    add("unsafe_correction_record_count", summary.get("unsafe_correction_record_count", 0) <= thresholds.max_unsafe_correction_records,
-        f"unsafe={summary.get('unsafe_correction_record_count', 0)}; max={thresholds.max_unsafe_correction_records}")
-    add("answer_permission_count", summary.get("answer_permission_count", 0) <= thresholds.max_answer_permission_count,
-        f"answer_permission={summary.get('answer_permission_count', 0)}; max={thresholds.max_answer_permission_count}")
-    add("source_truth_mutation_allowed_count", summary.get("source_truth_mutation_allowed_count", 0) <= thresholds.max_source_truth_mutation_allowed,
-        f"mutations={summary.get('source_truth_mutation_allowed_count', 0)}; max={thresholds.max_source_truth_mutation_allowed}")
-    add("write_attempts", summary.get("postgres_write_attempt_count", 0) == 0 and summary.get("qdrant_write_attempt_count", 0) == 0 and summary.get("opensearch_write_attempt_count", 0) == 0,
-        "postgres/qdrant/opensearch write attempts must all be 0")
-
+    add("correction_record_count", summary.get("correction_record_count", 0) >= thresholds.min_correction_records, f"records={summary.get('correction_record_count', 0)}; minimum={thresholds.min_correction_records}")
+    add("diagnostic_record_count", summary.get("diagnostic_record_count", 0) >= thresholds.min_diagnostic_records, f"records={summary.get('diagnostic_record_count', 0)}; minimum={thresholds.min_diagnostic_records}")
+    add("safe_action_record_count", summary.get("safe_action_record_count", 0) >= thresholds.min_safe_action_records, f"records={summary.get('safe_action_record_count', 0)}; minimum={thresholds.min_safe_action_records}")
+    add("review_routed_record_count", summary.get("review_routed_record_count", 0) >= thresholds.min_review_routed_records, f"records={summary.get('review_routed_record_count', 0)}; minimum={thresholds.min_review_routed_records}")
+    add("unsafe_correction_record_count", summary.get("unsafe_correction_record_count", 0) <= thresholds.max_unsafe_correction_records, f"unsafe={summary.get('unsafe_correction_record_count', 0)}; max={thresholds.max_unsafe_correction_records}")
+    add("answer_permission_count", summary.get("answer_permission_count", 0) <= thresholds.max_answer_permission_count, f"answer_permission={summary.get('answer_permission_count', 0)}; max={thresholds.max_answer_permission_count}")
+    add("source_truth_mutation_allowed_count", summary.get("source_truth_mutation_allowed_count", 0) <= thresholds.max_source_truth_mutation_allowed, f"mutations={summary.get('source_truth_mutation_allowed_count', 0)}; max={thresholds.max_source_truth_mutation_allowed}")
+    add("write_attempts", summary.get("postgres_write_attempt_count", 0) == 0 and summary.get("qdrant_write_attempt_count", 0) == 0 and summary.get("opensearch_write_attempt_count", 0) == 0, "postgres/qdrant/opensearch write attempts must all be 0")
     if thresholds.require_no_answer_permission:
-        add("no_answer_permission", summary.get("can_answer_directly_count", 0) == 0 and summary.get("can_prove_claims_count", 0) == 0 and summary.get("retrieval_only_answer_allowed_count", 0) == 0,
-            "planner must not grant direct answer/proof/retrieval-only answer permission")
-
+        add("no_answer_permission", summary.get("can_answer_directly_count", 0) == 0 and summary.get("can_prove_claims_count", 0) == 0 and summary.get("retrieval_only_answer_allowed_count", 0) == 0, "planner must not grant direct answer/proof/retrieval-only answer permission")
     source_requirements = {
         "page_retrieval_large_eval_v2": thresholds.require_page_eval_quality_pass,
         "ai_trace_pack": thresholds.require_ai_trace_quality_pass,
@@ -545,7 +671,6 @@ def build_quality_checks(summary: Dict[str, Any], source_artifacts: Dict[str, Di
             artifact = source_artifacts.get(name) or {}
             ok = artifact.get("loaded") and artifact.get("quality_status") == QUALITY_PASS
             add(f"{name}_quality_pass", ok, f"loaded={artifact.get('loaded')}; quality_status={artifact.get('quality_status')}")
-
     return checks
 
 
@@ -580,19 +705,18 @@ def build_corrective_retrieval_plan(
     page_eval = read_optional("page_retrieval_large_eval_v2", page_retrieval_large_eval_v2)
     if page_eval:
         all_records.extend(collect_from_page_eval(page_eval))
-
     ai_trace = read_optional("ai_trace_pack", ai_trace_pack)
     if ai_trace:
         all_records.extend(collect_from_ai_trace(ai_trace))
-
     graph_enrichment = read_optional("graph_query_evidence_enrichment", graph_query_evidence_enrichment)
     if graph_enrichment:
         all_records.extend(collect_from_graph_enrichment(graph_enrichment))
 
     opensearch_payload = read_optional("opensearch_loader_smoke", opensearch_loader_smoke)
     if opensearch_payload:
-        summary = get_summary(opensearch_payload)
-        if get_quality_status(opensearch_payload) == QUALITY_PASS:
+        os_summary = get_summary(opensearch_payload)
+        os_quality = get_quality_status(opensearch_payload)
+        if os_quality == QUALITY_PASS:
             all_records.append(
                 make_record(
                     source_module="opensearch_loader_smoke",
@@ -602,11 +726,8 @@ def build_corrective_retrieval_plan(
                     recommended_actions=["use_opensearch_exact_for_identifiers", "use_opensearch_table_cell_for_part_cells"],
                     rationale="OpenSearch loader smoke is ready; CRAG correction can route exact identifiers and table cells to this exact-search channel.",
                     channels=["opensearch_exact"],
-                    source_status=get_quality_status(opensearch_payload),
-                    metadata={
-                        "opensearch_document_count": summary.get("opensearch_document_count"),
-                        "query_plan_count": summary.get("query_plan_count"),
-                    },
+                    source_status=os_quality,
+                    metadata={"opensearch_document_count": os_summary.get("opensearch_document_count"), "query_plan_count": os_summary.get("query_plan_count")},
                 )
             )
         else:
@@ -620,14 +741,15 @@ def build_corrective_retrieval_plan(
                     rationale="OpenSearch exact-search channel did not pass quality; CRAG correction must not rely on it yet.",
                     channels=["opensearch_exact"],
                     review_reason_codes=["opensearch_quality_not_pass"],
-                    source_status=get_quality_status(opensearch_payload),
+                    source_status=os_quality,
                 )
             )
 
     qdrant_payload = read_optional("qdrant_page_profile_quality", qdrant_page_profile_quality)
     if qdrant_payload:
-        summary = get_summary(qdrant_payload)
-        if get_quality_status(qdrant_payload) == QUALITY_PASS:
+        q_summary = get_summary(qdrant_payload)
+        q_quality = get_quality_status(qdrant_payload, artifact_name="qdrant_page_profile_quality")
+        if q_quality == QUALITY_PASS:
             all_records.append(
                 make_record(
                     source_module="qdrant_page_profile_quality",
@@ -637,10 +759,10 @@ def build_corrective_retrieval_plan(
                     recommended_actions=["use_qdrant_bge_m3_for_semantic_candidates", "rerank_with_graph_source_anchors"],
                     rationale="Qdrant BGE-M3 page-profile collection passed quality; use it for semantic candidates but still source-resolve and final-gate results.",
                     channels=["qdrant_bge_m3"],
-                    source_status=get_quality_status(qdrant_payload),
+                    source_status=q_quality,
                     metadata={
-                        "point_count": summary.get("point_count") or summary.get("loaded_point_count"),
-                        "context_v2_point_count": summary.get("context_v2_point_count"),
+                        "point_count": q_summary.get("point_count") or q_summary.get("loaded_point_count") or qdrant_payload.get("loaded_point_count") or qdrant_payload.get("point_count"),
+                        "context_v2_point_count": q_summary.get("context_v2_point_count") or qdrant_payload.get("context_v2_point_count"),
                     },
                 )
             )
@@ -649,7 +771,6 @@ def build_corrective_retrieval_plan(
     if tiff_audit:
         all_records.extend(collect_from_tiff_audit(tiff_audit))
 
-    # Deduplicate by record_id while preserving order.
     seen = set()
     records: List[Dict[str, Any]] = []
     for record in all_records:
@@ -663,7 +784,6 @@ def build_corrective_retrieval_plan(
     checks = build_quality_checks(summary, source_artifacts, thresholds)
     quality_status = quality_status_from_checks(checks)
     summary["quality_status"] = quality_status
-
     payload = {
         "schema_version": SCHEMA_VERSION,
         "status": STATUS_BUILT,
@@ -674,24 +794,20 @@ def build_corrective_retrieval_plan(
         "corrective_retrieval_records": records,
         "diagnostic_records": records,
     }
-
     if write_outputs:
         output.mkdir(parents=True, exist_ok=True)
         report_path = output / "trace_net_corrective_retrieval_planner_v1.json"
         quality_path = output / "trace_net_corrective_retrieval_planner_v1_quality.json"
         records_path = output / "trace_net_corrective_retrieval_planner_v1_records.jsonl"
         summary_md_path = output / "trace_net_corrective_retrieval_planner_v1_summary.md"
-        write_json(report_path, payload)
-        write_json(quality_path, {k: payload[k] for k in ["schema_version", "status", "quality_status", "summary", "quality_checks"]})
-        write_jsonl(records_path, records)
-        summary_md_path.write_text(render_markdown_summary(payload), encoding="utf-8")
         payload["report_path"] = str(report_path)
         payload["quality_path"] = str(quality_path)
         payload["records_path"] = str(records_path)
         payload["summary_markdown_path"] = str(summary_md_path)
-        # Re-write report with paths included for convenience.
         write_json(report_path, payload)
-
+        write_json(quality_path, {k: payload[k] for k in ["schema_version", "status", "quality_status", "summary", "quality_checks"]})
+        write_jsonl(records_path, records)
+        summary_md_path.write_text(render_markdown_summary(payload), encoding="utf-8")
     return payload
 
 
@@ -721,8 +837,13 @@ def render_markdown_summary(payload: Dict[str, Any]) -> str:
     lines.extend(["", "## Recommended action counts", ""])
     for action, count in (summary.get("recommended_action_counts") or {}).items():
         lines.append(f"- {action}: `{count}`")
-    lines.extend(["", "## Safety contract", "", "This artifact is read-only and retrieval-only. It cannot answer directly, prove claims, write to stores, or mutate source truth.", ""])
-    return "\n".join(lines)
+    lines.extend([
+        "",
+        "## Safety contract",
+        "",
+        "This artifact is read-only and retrieval-only. It does not grant final answer permission, does not prove claims, and does not mutate source truth.",
+    ])
+    return "\n".join(lines) + "\n"
 
 
 def check_corrective_retrieval_plan_quality(
@@ -731,56 +852,47 @@ def check_corrective_retrieval_plan_quality(
     thresholds: Thresholds,
     write_json_report: bool = False,
 ) -> Dict[str, Any]:
-    payload = load_json(report_path)
-    records = payload.get("corrective_retrieval_records") or payload.get("diagnostic_records") or []
+    report = load_json(report_path)
+    records = report.get("corrective_retrieval_records") or report.get("records") or report.get("diagnostic_records") or []
     if not isinstance(records, list):
         records = []
-    source_artifacts = payload.get("source_artifacts") or {}
-    if not isinstance(source_artifacts, dict):
-        source_artifacts = {}
+    source_artifacts = report.get("source_artifacts") if isinstance(report.get("source_artifacts"), dict) else {}
     summary = compute_summary(records, source_artifacts)
     checks = build_quality_checks(summary, source_artifacts, thresholds)
     quality_status = quality_status_from_checks(checks)
     summary["quality_status"] = quality_status
     result = {
         "schema_version": SCHEMA_VERSION,
-        "status": payload.get("status") or STATUS_BUILT,
+        "status": report.get("status") or STATUS_BUILT,
         "quality_status": quality_status,
         "summary": summary,
         "quality_checks": checks,
     }
     if write_json_report:
-        p = Path(report_path)
-        quality_path = p.with_name("trace_net_corrective_retrieval_planner_v1_quality.json")
-        write_json(quality_path, result)
-        result["quality_path"] = str(quality_path)
+        out_path = Path(report_path).parent / "trace_net_corrective_retrieval_planner_v1_quality.json"
+        write_json(out_path, result)
+        result["quality_path"] = str(out_path)
     return result
 
 
-def print_report(payload: Dict[str, Any], *, title: str = "TRACE-Net Corrective Retrieval Planner v1") -> None:
-    summary = payload.get("summary") or {}
-    print(title)
-    print(f" Status: {payload.get('status')}")
-    print(f" Quality status: {payload.get('quality_status')}")
-    for key in [
-        "correction_record_count",
-        "diagnostic_record_count",
-        "safe_action_record_count",
-        "review_routed_record_count",
-        "unsafe_correction_record_count",
-        "answer_permission_count",
-        "source_truth_mutation_allowed_count",
-        "postgres_write_attempt_count",
-        "qdrant_write_attempt_count",
-        "opensearch_write_attempt_count",
-    ]:
-        print(f" {key}: {summary.get(key)}")
-    for key in ["report_path", "quality_path", "records_path"]:
-        if payload.get(key):
-            print(f" {key}: {payload.get(key)}")
+def _add_threshold_args(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("--min-correction-records", type=int, default=0)
+    parser.add_argument("--min-diagnostic-records", type=int, default=0)
+    parser.add_argument("--min-safe-action-records", type=int, default=0)
+    parser.add_argument("--min-review-routed-records", type=int, default=0)
+    parser.add_argument("--max-unsafe-correction-records", type=int, default=0)
+    parser.add_argument("--max-answer-permission-count", type=int, default=0)
+    parser.add_argument("--max-source-truth-mutation-allowed", type=int, default=0)
+    parser.add_argument("--require-page-eval-quality-pass", action="store_true")
+    parser.add_argument("--require-ai-trace-quality-pass", action="store_true")
+    parser.add_argument("--require-graph-enrichment-quality-pass", action="store_true")
+    parser.add_argument("--require-opensearch-loader-quality-pass", action="store_true")
+    parser.add_argument("--require-qdrant-quality-pass", action="store_true")
+    parser.add_argument("--require-tiff-audit-quality-pass", action="store_true")
+    parser.add_argument("--require-no-answer-permission", action="store_true")
 
 
-def thresholds_from_args(args: argparse.Namespace) -> Thresholds:
+def _thresholds_from_args(args: argparse.Namespace) -> Thresholds:
     return Thresholds(
         min_correction_records=args.min_correction_records,
         min_diagnostic_records=args.min_diagnostic_records,
@@ -790,28 +902,17 @@ def thresholds_from_args(args: argparse.Namespace) -> Thresholds:
         max_answer_permission_count=args.max_answer_permission_count,
         max_source_truth_mutation_allowed=args.max_source_truth_mutation_allowed,
         require_no_answer_permission=args.require_no_answer_permission,
-        require_page_eval_quality_pass=getattr(args, "require_page_eval_quality_pass", False),
-        require_ai_trace_quality_pass=getattr(args, "require_ai_trace_quality_pass", False),
-        require_graph_enrichment_quality_pass=getattr(args, "require_graph_enrichment_quality_pass", False),
-        require_opensearch_loader_quality_pass=getattr(args, "require_opensearch_loader_quality_pass", False),
-        require_qdrant_quality_pass=getattr(args, "require_qdrant_quality_pass", False),
-        require_tiff_audit_quality_pass=getattr(args, "require_tiff_audit_quality_pass", False),
+        require_page_eval_quality_pass=args.require_page_eval_quality_pass,
+        require_ai_trace_quality_pass=args.require_ai_trace_quality_pass,
+        require_graph_enrichment_quality_pass=args.require_graph_enrichment_quality_pass,
+        require_opensearch_loader_quality_pass=args.require_opensearch_loader_quality_pass,
+        require_qdrant_quality_pass=args.require_qdrant_quality_pass,
+        require_tiff_audit_quality_pass=args.require_tiff_audit_quality_pass,
     )
 
 
-def add_threshold_args(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument("--min-correction-records", type=int, default=0)
-    parser.add_argument("--min-diagnostic-records", type=int, default=0)
-    parser.add_argument("--min-safe-action-records", type=int, default=0)
-    parser.add_argument("--min-review-routed-records", type=int, default=0)
-    parser.add_argument("--max-unsafe-correction-records", type=int, default=0)
-    parser.add_argument("--max-answer-permission-count", type=int, default=0)
-    parser.add_argument("--max-source-truth-mutation-allowed", type=int, default=0)
-    parser.add_argument("--require-no-answer-permission", action="store_true")
-
-
-def build_arg_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Build TRACE-Net Corrective Retrieval Planner v1")
+def main(argv: Optional[Sequence[str]] = None) -> int:
+    parser = argparse.ArgumentParser(description="Build TRACE-Net Corrective Retrieval Planner v1.")
     parser.add_argument("--page-retrieval-large-eval-v2")
     parser.add_argument("--ai-trace-pack")
     parser.add_argument("--graph-query-evidence-enrichment")
@@ -819,57 +920,37 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--qdrant-page-profile-quality")
     parser.add_argument("--page-query-response-tiff-content-audit")
     parser.add_argument("--output-dir", required=True)
-    parser.add_argument("--require-page-eval-quality-pass", action="store_true")
-    parser.add_argument("--require-ai-trace-quality-pass", action="store_true")
-    parser.add_argument("--require-graph-enrichment-quality-pass", action="store_true")
-    parser.add_argument("--require-opensearch-loader-quality-pass", action="store_true")
-    parser.add_argument("--require-qdrant-quality-pass", action="store_true")
-    parser.add_argument("--require-tiff-audit-quality-pass", action="store_true")
-    parser.add_argument("--quality", action="store_true", help="Build and print quality summary")
-    add_threshold_args(parser)
-    return parser
-
-
-def check_arg_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Check TRACE-Net Corrective Retrieval Planner v1 quality")
-    parser.add_argument("--report-path", required=True)
-    parser.add_argument("--write-json", action="store_true")
-    parser.add_argument("--require-page-eval-quality-pass", action="store_true")
-    parser.add_argument("--require-ai-trace-quality-pass", action="store_true")
-    parser.add_argument("--require-graph-enrichment-quality-pass", action="store_true")
-    parser.add_argument("--require-opensearch-loader-quality-pass", action="store_true")
-    parser.add_argument("--require-qdrant-quality-pass", action="store_true")
-    parser.add_argument("--require-tiff-audit-quality-pass", action="store_true")
-    add_threshold_args(parser)
-    return parser
-
-
-def main(argv: Optional[Sequence[str]] = None) -> int:
-    args = build_arg_parser().parse_args(argv)
+    parser.add_argument("--quality", action="store_true")
+    _add_threshold_args(parser)
+    args = parser.parse_args(argv)
     payload = build_corrective_retrieval_plan(
         output_dir=args.output_dir,
+        thresholds=_thresholds_from_args(args),
         page_retrieval_large_eval_v2=args.page_retrieval_large_eval_v2,
         ai_trace_pack=args.ai_trace_pack,
         graph_query_evidence_enrichment=args.graph_query_evidence_enrichment,
         opensearch_loader_smoke=args.opensearch_loader_smoke,
         qdrant_page_profile_quality=args.qdrant_page_profile_quality,
         page_query_response_tiff_content_audit=args.page_query_response_tiff_content_audit,
-        thresholds=thresholds_from_args(args),
         write_outputs=True,
     )
-    print_report(payload)
-    return 0 if payload.get("quality_status") == QUALITY_PASS else 1
+    print(json.dumps({"quality_status": payload["quality_status"], "summary": payload["summary"]}, indent=2, sort_keys=True))
+    return 0 if (not args.quality or payload["quality_status"] == QUALITY_PASS) else 1
 
 
 def main_check(argv: Optional[Sequence[str]] = None) -> int:
-    args = check_arg_parser().parse_args(argv)
-    result = check_corrective_retrieval_plan_quality(
+    parser = argparse.ArgumentParser(description="Check TRACE-Net Corrective Retrieval Planner v1 quality.")
+    parser.add_argument("--report-path", required=True)
+    parser.add_argument("--write-json", action="store_true")
+    _add_threshold_args(parser)
+    args = parser.parse_args(argv)
+    payload = check_corrective_retrieval_plan_quality(
         report_path=args.report_path,
-        thresholds=thresholds_from_args(args),
+        thresholds=_thresholds_from_args(args),
         write_json_report=args.write_json,
     )
-    print_report(result, title="TRACE-Net Corrective Retrieval Planner v1 quality")
-    return 0 if result.get("quality_status") == QUALITY_PASS else 1
+    print(json.dumps({"quality_status": payload["quality_status"], "summary": payload["summary"]}, indent=2, sort_keys=True))
+    return 0 if payload["quality_status"] == QUALITY_PASS else 1
 
 
 if __name__ == "__main__":
