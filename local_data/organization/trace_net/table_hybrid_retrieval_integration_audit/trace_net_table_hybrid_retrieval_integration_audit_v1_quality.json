@@ -1,0 +1,189 @@
+{
+  "quality_checks": [
+    {
+      "expected": true,
+      "name": "source_bridge_quality_pass",
+      "observed": true,
+      "operator": "is True",
+      "passed": true
+    },
+    {
+      "expected": 1000,
+      "name": "source_bridge_record_count",
+      "observed": 1497,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 3,
+      "name": "source_query_bridge_group_count",
+      "observed": 6,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 1000,
+      "name": "integration_audit_record_count",
+      "observed": 1503,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 1000,
+      "name": "ranking_available_bridge_record_count",
+      "observed": 1497,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 1,
+      "name": "page_with_ranking_signal_count",
+      "observed": 13,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 4,
+      "name": "field_count",
+      "observed": 6,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 3,
+      "name": "successful_query_bridge_group_count",
+      "observed": 6,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 100,
+      "name": "covered_part_number_ranking_signals",
+      "observed": 150,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 39,
+      "name": "manual_page_reference_ranking_signals",
+      "observed": 39,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 100,
+      "name": "ipl_part_number_ranking_signals",
+      "observed": 197,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "schema_missing_required_key_record_count",
+      "observed": 0,
+      "operator": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "unsafe_integration_audit_record_count",
+      "observed": 0,
+      "operator": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "answer_permission_count",
+      "observed": 0,
+      "operator": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "operator": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "can_answer_directly_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "can_prove_claims_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "postgres_write_attempt_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "qdrant_write_attempt_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "opensearch_write_attempt_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "opensearch_upload_attempt_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS",
+  "status": "TABLE_HYBRID_RETRIEVAL_INTEGRATION_AUDIT_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "field_count": 6,
+    "field_counts": {
+      "covered_part_number": 150,
+      "ipl_figure_item_or_quantity": 843,
+      "ipl_part_number": 197,
+      "ipl_text": 188,
+      "manual_page_reference": 39,
+      "page_rev_or_sequence_value": 80
+    },
+    "integration_audit_record_count": 1503,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "page_with_ranking_signal_count": 13,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "ranking_available_bridge_record_count": 1497,
+    "retrieval_only_bridge_record_count": 1497,
+    "schema_missing_required_key_record_count": 0,
+    "source_bridge_path": "local_data\\organization\\trace_net\\table_hybrid_retrieval_bridge\\trace_net_table_hybrid_retrieval_bridge_v1.json",
+    "source_bridge_quality_pass": true,
+    "source_bridge_record_count": 1497,
+    "source_bridge_records_collection": "bridge_records",
+    "source_query_bridge_group_count": 6,
+    "source_query_groups_collection": "query_bridge_groups",
+    "source_successful_query_bridge_group_count": 6,
+    "source_table_hybrid_bridge_record_count": 1497,
+    "source_truth_mutation_allowed_count": 0,
+    "source_unsafe_bridge_record_count": 0,
+    "successful_query_bridge_group_count": 6,
+    "total_query_bridge_hit_count": 42,
+    "unsafe_integration_audit_record_count": 0
+  }
+}

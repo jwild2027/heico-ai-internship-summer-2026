@@ -1,0 +1,960 @@
+{
+  "artifact_states": [
+    {
+      "name": "dynamic_query_endpoint_manifest",
+      "path": "local_data\\organization\\trace_net\\e2e_dynamic_query_endpoint\\trace_net_e2e_dynamic_query_endpoint_v1.json",
+      "present": true,
+      "purpose": "Confirms the dynamic endpoint consumes prebuilt evidence and keeps answer/write authority blocked.",
+      "quality_status": "PASS",
+      "record_count": 0,
+      "required_for_v3": true,
+      "status": "E2E_DYNAMIC_QUERY_ENDPOINT_READY_FOR_OPEN_WEBUI_DYNAMIC_SMOKE",
+      "tunnel_type": "dynamic_endpoint_contract"
+    },
+    {
+      "name": "table_exact_search_adapter",
+      "path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "present": true,
+      "purpose": "Exact table value lookup for part numbers, manual references, IPL items, and table text.",
+      "quality_status": "PASS",
+      "record_count": 1497,
+      "required_for_v3": true,
+      "status": "TABLE_EXACT_SEARCH_ADAPTER_BUILT",
+      "tunnel_type": "table_exact_search_tunnel"
+    },
+    {
+      "name": "table_hybrid_retrieval_bridge",
+      "path": "local_data\\organization\\trace_net\\table_hybrid_retrieval_bridge\\trace_net_table_hybrid_retrieval_bridge_v1.json",
+      "present": true,
+      "purpose": "Table ranking signals, route boosts, and retrieval-only bridge records.",
+      "quality_status": "PASS",
+      "record_count": 1497,
+      "required_for_v3": true,
+      "status": "TABLE_HYBRID_RETRIEVAL_BRIDGE_BUILT",
+      "tunnel_type": "table_hybrid_bridge_tunnel"
+    },
+    {
+      "name": "page_retrieval_profiles",
+      "path": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+      "present": true,
+      "purpose": "Prebuilt page/profile metadata used to guide semantic/Qdrant retrieval without rebuilding embeddings.",
+      "quality_status": "UNKNOWN",
+      "record_count": 509,
+      "required_for_v3": false,
+      "status": "UNKNOWN",
+      "tunnel_type": "qdrant_page_profile_tunnel"
+    },
+    {
+      "name": "page_context_v2",
+      "path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+      "present": true,
+      "purpose": "Page-level summaries/context used as query-time guide rails for the LLM and final gate.",
+      "quality_status": "PASS",
+      "record_count": 0,
+      "required_for_v3": false,
+      "status": "PAGE_CONTEXT_V2_OPTIONAL_TUNNEL_ACTIVATED",
+      "tunnel_type": "page_summary_tunnel"
+    },
+    {
+      "name": "leiden_communities",
+      "path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+      "present": true,
+      "purpose": "Graph/community navigation tunnel for related evidence discovery; not proof authority.",
+      "quality_status": "PASS",
+      "record_count": 229,
+      "required_for_v3": false,
+      "status": "LEIDEN_GRAPH_COMMUNITIES_BUILT",
+      "tunnel_type": "graph_community_tunnel"
+    },
+    {
+      "name": "community_navigation_metadata_bridge",
+      "path": "local_data\\organization\\trace_net\\community_navigation_metadata_bridge\\trace_net_community_navigation_metadata_bridge_v1.json",
+      "present": true,
+      "purpose": "Community navigation metadata bridge for query-time graph traversal hints.",
+      "quality_status": "PASS",
+      "record_count": 229,
+      "required_for_v3": false,
+      "status": "COMMUNITY_NAVIGATION_METADATA_BRIDGE_OPTIONAL_TUNNEL_ACTIVATED",
+      "tunnel_type": "graph_navigation_tunnel"
+    },
+    {
+      "name": "route_dispatch_manifest",
+      "path": "local_data\\organization\\trace_net\\route_dispatch_manifest\\trace_net_route_dispatch_manifest_v1.json",
+      "present": true,
+      "purpose": "Route labels for table/image/normal-text/blank constraints during retrieval.",
+      "quality_status": "PASS",
+      "record_count": 0,
+      "required_for_v3": false,
+      "status": "TRACE_NET_ROUTE_DISPATCH_MANIFEST_BUILT",
+      "tunnel_type": "route_metadata_tunnel"
+    },
+    {
+      "name": "table_route_retrieval_handoff_summary",
+      "path": "local_data\\organization\\trace_net\\table_route_retrieval_handoff_summary\\trace_net_table_route_retrieval_handoff_summary_v1.json",
+      "present": true,
+      "purpose": "Plain-English table route status and contract for query-time routing explanations.",
+      "quality_status": "PASS",
+      "record_count": 1497,
+      "required_for_v3": false,
+      "status": "TABLE_ROUTE_RETRIEVAL_READINESS_REPORT_BUILT",
+      "tunnel_type": "table_route_summary_tunnel"
+    }
+  ],
+  "dynamic_query_tunnel_contract": {
+    "answer_permission": false,
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "graph_is_not_proof_authority": true,
+    "reruns_embeddings": false,
+    "reruns_graph_build": false,
+    "reruns_ocr": false,
+    "reruns_page_classification": false,
+    "reruns_page_summaries": false,
+    "source_truth_mutation_allowed": false,
+    "summaries_are_not_source_truth": true,
+    "tunnels_are_routing_and_ranking_only": true,
+    "uses_prebuilt_artifacts": true
+  },
+  "e2e_dynamic_query_tunnels_status": "E2E_DYNAMIC_QUERY_TUNNELS_READY_FOR_ENDPOINT_INTEGRATION",
+  "hybrid_tunnel_assessment": "Dynamic v3 adds query-time tunnel plans over prebuilt table exact-search, table bridge, page/profile summaries, graph/community navigation, and route metadata when those artifacts are present. It does not rebuild corpus artifacts and does not grant answer authority.",
+  "quality_checks": [
+    {
+      "expected": ">= 5",
+      "name": "query_tunnel_plan_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "ready_query_tunnel_plan_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 20",
+      "name": "total_tunnel_count",
+      "observed": 40,
+      "passed": true
+    },
+    {
+      "expected": ">= 3",
+      "name": "unique_tunnel_type_count",
+      "observed": 8,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "plans_with_table_tunnel_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "plans_with_graph_or_summary_tunnel_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 7",
+      "name": "available_artifact_count",
+      "observed": 9,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "unsafe_record_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "contract_no_answer_permission",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "contract_no_source_truth_mutation",
+      "observed": 0,
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS",
+  "query_records": [
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query_id": "dynamic_tunnel_query_0001_16edebfd33",
+      "query_intent": "covered_part_number",
+      "query_terms": [
+        "120-36833-001"
+      ],
+      "source_truth_mutation_allowed": false,
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query_id": "dynamic_tunnel_query_0002_edc71ae6f3",
+      "query_intent": "covered_part_number",
+      "query_terms": [
+        "120-36834-509"
+      ],
+      "source_truth_mutation_allowed": false,
+      "user_query": "Find part number 120-36834-509"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query_id": "dynamic_tunnel_query_0003_a3412ee376",
+      "query_intent": "manual_page_reference",
+      "query_terms": [
+        "25-21-00"
+      ],
+      "source_truth_mutation_allowed": false,
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query_id": "dynamic_tunnel_query_0004_9d64aadbe8",
+      "query_intent": "table_text",
+      "query_terms": [
+        "MAINTENANCE MANUAL WITH"
+      ],
+      "source_truth_mutation_allowed": false,
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query_id": "dynamic_tunnel_query_0005_99746386e7",
+      "query_intent": "covered_part_number",
+      "query_terms": [
+        "What",
+        "maintenance",
+        "manual",
+        "pages",
+        "mention",
+        "covered",
+        "part",
+        "numbers"
+      ],
+      "source_truth_mutation_allowed": false,
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    }
+  ],
+  "query_tunnel_plans": [
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "dynamic_tunnel_plan_status": "DYNAMIC_TUNNEL_PLAN_READY",
+      "query_id": "dynamic_tunnel_query_0001_16edebfd33",
+      "query_intent": "covered_part_number",
+      "query_terms": [
+        "120-36833-001"
+      ],
+      "source_truth_mutation_allowed": false,
+      "tunnel_count": 8,
+      "tunnel_types": [
+        "table_exact_search_tunnel",
+        "table_hybrid_bridge_tunnel",
+        "route_metadata_tunnel",
+        "table_route_summary_tunnel",
+        "qdrant_page_profile_tunnel",
+        "graph_navigation_tunnel",
+        "page_summary_tunnel",
+        "graph_community_tunnel"
+      ],
+      "tunnels": [
+        {
+          "answer_authority": "blocked",
+          "purpose": "Look up exact table values that match query terms.",
+          "rank": 1,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "table_exact_search_adapter",
+          "source_path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 1497,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Apply table route ranking signals and intent-aware field boosts.",
+          "rank": 2,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "table_hybrid_retrieval_bridge",
+          "source_path": "local_data\\organization\\trace_net\\table_hybrid_retrieval_bridge\\trace_net_table_hybrid_retrieval_bridge_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 1497,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "table_hybrid_bridge_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Constrain retrieval by page route labels such as table, image_visual, and normal_text.",
+          "rank": 3,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "route_dispatch_manifest",
+          "source_path": "local_data\\organization\\trace_net\\route_dispatch_manifest\\trace_net_route_dispatch_manifest_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 0,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "route_metadata_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Carry the table route handoff contract into dynamic query explainability.",
+          "rank": 4,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "table_route_retrieval_handoff_summary",
+          "source_path": "local_data\\organization\\trace_net\\table_route_retrieval_handoff_summary\\trace_net_table_route_retrieval_handoff_summary_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 1497,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "table_route_summary_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use prebuilt semantic/page-profile vectors as a route-aware semantic channel.",
+          "rank": 5,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "page_retrieval_profiles",
+          "source_path": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "source_quality_status": "UNKNOWN",
+          "source_record_count": 509,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "qdrant_page_profile_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use graph/community navigation hints to find related source-trace evidence without treating graph as proof.",
+          "rank": 6,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "community_navigation_metadata_bridge",
+          "source_path": "local_data\\organization\\trace_net\\community_navigation_metadata_bridge\\trace_net_community_navigation_metadata_bridge_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 229,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "graph_navigation_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use prebuilt page summaries as guide rails for context pack assembly.",
+          "rank": 7,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "page_context_v2",
+          "source_path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 0,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "page_summary_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use graph/community navigation hints to find related source-trace evidence without treating graph as proof.",
+          "rank": 8,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "leiden_communities",
+          "source_path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 229,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "graph_community_tunnel"
+        }
+      ],
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "dynamic_tunnel_plan_status": "DYNAMIC_TUNNEL_PLAN_READY",
+      "query_id": "dynamic_tunnel_query_0002_edc71ae6f3",
+      "query_intent": "covered_part_number",
+      "query_terms": [
+        "120-36834-509"
+      ],
+      "source_truth_mutation_allowed": false,
+      "tunnel_count": 8,
+      "tunnel_types": [
+        "table_exact_search_tunnel",
+        "table_hybrid_bridge_tunnel",
+        "route_metadata_tunnel",
+        "table_route_summary_tunnel",
+        "qdrant_page_profile_tunnel",
+        "graph_navigation_tunnel",
+        "page_summary_tunnel",
+        "graph_community_tunnel"
+      ],
+      "tunnels": [
+        {
+          "answer_authority": "blocked",
+          "purpose": "Look up exact table values that match query terms.",
+          "rank": 1,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "table_exact_search_adapter",
+          "source_path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 1497,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Apply table route ranking signals and intent-aware field boosts.",
+          "rank": 2,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "table_hybrid_retrieval_bridge",
+          "source_path": "local_data\\organization\\trace_net\\table_hybrid_retrieval_bridge\\trace_net_table_hybrid_retrieval_bridge_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 1497,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "table_hybrid_bridge_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Constrain retrieval by page route labels such as table, image_visual, and normal_text.",
+          "rank": 3,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "route_dispatch_manifest",
+          "source_path": "local_data\\organization\\trace_net\\route_dispatch_manifest\\trace_net_route_dispatch_manifest_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 0,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "route_metadata_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Carry the table route handoff contract into dynamic query explainability.",
+          "rank": 4,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "table_route_retrieval_handoff_summary",
+          "source_path": "local_data\\organization\\trace_net\\table_route_retrieval_handoff_summary\\trace_net_table_route_retrieval_handoff_summary_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 1497,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "table_route_summary_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use prebuilt semantic/page-profile vectors as a route-aware semantic channel.",
+          "rank": 5,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "page_retrieval_profiles",
+          "source_path": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "source_quality_status": "UNKNOWN",
+          "source_record_count": 509,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "qdrant_page_profile_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use graph/community navigation hints to find related source-trace evidence without treating graph as proof.",
+          "rank": 6,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "community_navigation_metadata_bridge",
+          "source_path": "local_data\\organization\\trace_net\\community_navigation_metadata_bridge\\trace_net_community_navigation_metadata_bridge_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 229,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "graph_navigation_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use prebuilt page summaries as guide rails for context pack assembly.",
+          "rank": 7,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "page_context_v2",
+          "source_path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 0,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "page_summary_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use graph/community navigation hints to find related source-trace evidence without treating graph as proof.",
+          "rank": 8,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "leiden_communities",
+          "source_path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 229,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "graph_community_tunnel"
+        }
+      ],
+      "user_query": "Find part number 120-36834-509"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "dynamic_tunnel_plan_status": "DYNAMIC_TUNNEL_PLAN_READY",
+      "query_id": "dynamic_tunnel_query_0003_a3412ee376",
+      "query_intent": "manual_page_reference",
+      "query_terms": [
+        "25-21-00"
+      ],
+      "source_truth_mutation_allowed": false,
+      "tunnel_count": 8,
+      "tunnel_types": [
+        "table_exact_search_tunnel",
+        "table_hybrid_bridge_tunnel",
+        "route_metadata_tunnel",
+        "graph_navigation_tunnel",
+        "page_summary_tunnel",
+        "qdrant_page_profile_tunnel",
+        "graph_community_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "tunnels": [
+        {
+          "answer_authority": "blocked",
+          "purpose": "Look up exact table values that match query terms.",
+          "rank": 1,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "table_exact_search_adapter",
+          "source_path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 1497,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Apply table route ranking signals and intent-aware field boosts.",
+          "rank": 2,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "table_hybrid_retrieval_bridge",
+          "source_path": "local_data\\organization\\trace_net\\table_hybrid_retrieval_bridge\\trace_net_table_hybrid_retrieval_bridge_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 1497,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "table_hybrid_bridge_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Constrain retrieval by page route labels such as table, image_visual, and normal_text.",
+          "rank": 3,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "route_dispatch_manifest",
+          "source_path": "local_data\\organization\\trace_net\\route_dispatch_manifest\\trace_net_route_dispatch_manifest_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 0,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "route_metadata_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use graph/community navigation hints to find related source-trace evidence without treating graph as proof.",
+          "rank": 4,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "community_navigation_metadata_bridge",
+          "source_path": "local_data\\organization\\trace_net\\community_navigation_metadata_bridge\\trace_net_community_navigation_metadata_bridge_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 229,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "graph_navigation_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use prebuilt page summaries as guide rails for context pack assembly.",
+          "rank": 5,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "page_context_v2",
+          "source_path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 0,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "page_summary_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use prebuilt semantic/page-profile vectors as a route-aware semantic channel.",
+          "rank": 6,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "page_retrieval_profiles",
+          "source_path": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "source_quality_status": "UNKNOWN",
+          "source_record_count": 509,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "qdrant_page_profile_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use graph/community navigation hints to find related source-trace evidence without treating graph as proof.",
+          "rank": 7,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "leiden_communities",
+          "source_path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 229,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "graph_community_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Carry the table route handoff contract into dynamic query explainability.",
+          "rank": 8,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "table_route_retrieval_handoff_summary",
+          "source_path": "local_data\\organization\\trace_net\\table_route_retrieval_handoff_summary\\trace_net_table_route_retrieval_handoff_summary_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 1497,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "table_route_summary_tunnel"
+        }
+      ],
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "dynamic_tunnel_plan_status": "DYNAMIC_TUNNEL_PLAN_READY",
+      "query_id": "dynamic_tunnel_query_0004_9d64aadbe8",
+      "query_intent": "table_text",
+      "query_terms": [
+        "MAINTENANCE MANUAL WITH"
+      ],
+      "source_truth_mutation_allowed": false,
+      "tunnel_count": 8,
+      "tunnel_types": [
+        "table_exact_search_tunnel",
+        "table_hybrid_bridge_tunnel",
+        "page_summary_tunnel",
+        "route_metadata_tunnel",
+        "qdrant_page_profile_tunnel",
+        "graph_navigation_tunnel",
+        "graph_community_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "tunnels": [
+        {
+          "answer_authority": "blocked",
+          "purpose": "Look up exact table values that match query terms.",
+          "rank": 1,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "table_exact_search_adapter",
+          "source_path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 1497,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Apply table route ranking signals and intent-aware field boosts.",
+          "rank": 2,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "table_hybrid_retrieval_bridge",
+          "source_path": "local_data\\organization\\trace_net\\table_hybrid_retrieval_bridge\\trace_net_table_hybrid_retrieval_bridge_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 1497,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "table_hybrid_bridge_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use prebuilt page summaries as guide rails for context pack assembly.",
+          "rank": 3,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "page_context_v2",
+          "source_path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 0,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "page_summary_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Constrain retrieval by page route labels such as table, image_visual, and normal_text.",
+          "rank": 4,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "route_dispatch_manifest",
+          "source_path": "local_data\\organization\\trace_net\\route_dispatch_manifest\\trace_net_route_dispatch_manifest_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 0,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "route_metadata_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use prebuilt semantic/page-profile vectors as a route-aware semantic channel.",
+          "rank": 5,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "page_retrieval_profiles",
+          "source_path": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "source_quality_status": "UNKNOWN",
+          "source_record_count": 509,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "qdrant_page_profile_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use graph/community navigation hints to find related source-trace evidence without treating graph as proof.",
+          "rank": 6,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "community_navigation_metadata_bridge",
+          "source_path": "local_data\\organization\\trace_net\\community_navigation_metadata_bridge\\trace_net_community_navigation_metadata_bridge_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 229,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "graph_navigation_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use graph/community navigation hints to find related source-trace evidence without treating graph as proof.",
+          "rank": 7,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "leiden_communities",
+          "source_path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 229,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "graph_community_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Carry the table route handoff contract into dynamic query explainability.",
+          "rank": 8,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "table_route_retrieval_handoff_summary",
+          "source_path": "local_data\\organization\\trace_net\\table_route_retrieval_handoff_summary\\trace_net_table_route_retrieval_handoff_summary_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 1497,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "table_route_summary_tunnel"
+        }
+      ],
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "dynamic_tunnel_plan_status": "DYNAMIC_TUNNEL_PLAN_READY",
+      "query_id": "dynamic_tunnel_query_0005_99746386e7",
+      "query_intent": "covered_part_number",
+      "query_terms": [
+        "What",
+        "maintenance",
+        "manual",
+        "pages",
+        "mention",
+        "covered",
+        "part",
+        "numbers"
+      ],
+      "source_truth_mutation_allowed": false,
+      "tunnel_count": 8,
+      "tunnel_types": [
+        "table_exact_search_tunnel",
+        "table_hybrid_bridge_tunnel",
+        "route_metadata_tunnel",
+        "table_route_summary_tunnel",
+        "qdrant_page_profile_tunnel",
+        "graph_navigation_tunnel",
+        "page_summary_tunnel",
+        "graph_community_tunnel"
+      ],
+      "tunnels": [
+        {
+          "answer_authority": "blocked",
+          "purpose": "Look up exact table values that match query terms.",
+          "rank": 1,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "table_exact_search_adapter",
+          "source_path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 1497,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Apply table route ranking signals and intent-aware field boosts.",
+          "rank": 2,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "table_hybrid_retrieval_bridge",
+          "source_path": "local_data\\organization\\trace_net\\table_hybrid_retrieval_bridge\\trace_net_table_hybrid_retrieval_bridge_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 1497,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "table_hybrid_bridge_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Constrain retrieval by page route labels such as table, image_visual, and normal_text.",
+          "rank": 3,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "route_dispatch_manifest",
+          "source_path": "local_data\\organization\\trace_net\\route_dispatch_manifest\\trace_net_route_dispatch_manifest_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 0,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "route_metadata_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Carry the table route handoff contract into dynamic query explainability.",
+          "rank": 4,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "table_route_retrieval_handoff_summary",
+          "source_path": "local_data\\organization\\trace_net\\table_route_retrieval_handoff_summary\\trace_net_table_route_retrieval_handoff_summary_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 1497,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "table_route_summary_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use prebuilt semantic/page-profile vectors as a route-aware semantic channel.",
+          "rank": 5,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "page_retrieval_profiles",
+          "source_path": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "source_quality_status": "UNKNOWN",
+          "source_record_count": 509,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "qdrant_page_profile_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use graph/community navigation hints to find related source-trace evidence without treating graph as proof.",
+          "rank": 6,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "community_navigation_metadata_bridge",
+          "source_path": "local_data\\organization\\trace_net\\community_navigation_metadata_bridge\\trace_net_community_navigation_metadata_bridge_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 229,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "graph_navigation_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use prebuilt page summaries as guide rails for context pack assembly.",
+          "rank": 7,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "page_context_v2",
+          "source_path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 0,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "page_summary_tunnel"
+        },
+        {
+          "answer_authority": "blocked",
+          "purpose": "Use graph/community navigation hints to find related source-trace evidence without treating graph as proof.",
+          "rank": 8,
+          "rerun_corpus_processing": false,
+          "retrieval_permission": "routing_and_ranking_only",
+          "source_name": "leiden_communities",
+          "source_path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+          "source_quality_status": "PASS",
+          "source_record_count": 229,
+          "source_truth_mutation_allowed": false,
+          "tunnel_type": "graph_community_tunnel"
+        }
+      ],
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    }
+  ],
+  "schema_version": "v3",
+  "status": "E2E_DYNAMIC_QUERY_TUNNELS_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "available_artifact_count": 9,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "plans_with_graph_or_summary_tunnel_count": 5,
+    "plans_with_graph_tunnel_count": 10,
+    "plans_with_qdrant_page_profile_tunnel_count": 5,
+    "plans_with_route_metadata_tunnel_count": 5,
+    "plans_with_summary_tunnel_count": 10,
+    "plans_with_table_tunnel_count": 5,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "query_record_count": 5,
+    "query_tunnel_plan_count": 5,
+    "ready_query_tunnel_plan_count": 5,
+    "required_missing_artifact_count": 0,
+    "required_missing_artifacts": [],
+    "source_truth_mutation_allowed_count": 0,
+    "total_tunnel_count": 40,
+    "unique_tunnel_type_count": 8,
+    "unique_tunnel_types": [
+      "graph_community_tunnel",
+      "graph_navigation_tunnel",
+      "page_summary_tunnel",
+      "qdrant_page_profile_tunnel",
+      "route_metadata_tunnel",
+      "table_exact_search_tunnel",
+      "table_hybrid_bridge_tunnel",
+      "table_route_summary_tunnel"
+    ],
+    "unsafe_record_count": 0
+  }
+}

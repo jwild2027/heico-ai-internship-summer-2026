@@ -1,0 +1,1125 @@
+{
+  "critiques": [
+    {
+      "answer_permission": false,
+      "blocker_count": 0,
+      "blockers": [],
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_ready_evidence_count": 5,
+      "context_pack_id": "dynamic_context_pack_v8_0001",
+      "evidence_item_count": 5,
+      "findings": [
+        {
+          "detail": "Context pack must be marked ready before LLM prompt construction.",
+          "name": "context_pack_status_ready",
+          "observed": "DYNAMIC_CONTEXT_PACK_READY",
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Context pack must include source-truth evidence items.",
+          "name": "has_evidence_box_items",
+          "observed": 5,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Every evidence item must be citation-ready.",
+          "name": "all_evidence_citation_ready",
+          "observed": {
+            "citation_ready_count": 5,
+            "evidence_item_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Every evidence item must be source-trace-ready.",
+          "name": "all_evidence_source_trace_ready",
+          "observed": {
+            "evidence_item_count": 5,
+            "source_trace_ready_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Evidence box items must be marked source-truth evidence only.",
+          "name": "all_evidence_source_truth_authority",
+          "observed": {
+            "evidence_item_count": 5,
+            "source_truth_authority_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "At least one evidence item should match the detected query intent.",
+          "name": "intent_relevant_evidence_present",
+          "observed": {
+            "query_intent": "covered_part_number",
+            "relevant_evidence_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Guidance helps the LLM navigate graph/vector/summary/route context.",
+          "name": "guidance_box_present",
+          "observed": 7,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Guidance items must be marked guidance-only/not-source-truth/not-proof.",
+          "name": "all_guidance_is_not_source_truth",
+          "observed": {
+            "guidance_item_count": 7,
+            "safe_guidance_count": 7
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Graph/summary guidance should be available for context engineering.",
+          "name": "graph_or_summary_guidance_available",
+          "observed": 5,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep evidence_box_is_source_truth=True.",
+          "name": "rules_box_evidence_box_is_source_truth",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep guidance_box_is_not_source_truth=True.",
+          "name": "rules_box_guidance_box_is_not_source_truth",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep graph_is_not_proof_authority=True.",
+          "name": "rules_box_graph_is_not_proof_authority",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep summaries_are_not_source_truth=True.",
+          "name": "rules_box_summaries_are_not_source_truth",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep cite_every_factual_claim=True.",
+          "name": "rules_box_cite_every_factual_claim",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep source_truth_mutation_allowed=False.",
+          "name": "rules_box_source_truth_mutation_allowed",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep answer_permission=False.",
+          "name": "rules_box_answer_permission",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep can_answer_directly=False.",
+          "name": "rules_box_can_answer_directly",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep can_prove_claims=False.",
+          "name": "rules_box_can_prove_claims",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep reruns_ocr=False.",
+          "name": "rules_box_reruns_ocr",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep reruns_embeddings=False.",
+          "name": "rules_box_reruns_embeddings",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep reruns_graph_build=False.",
+          "name": "rules_box_reruns_graph_build",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep reruns_table_extraction=False.",
+          "name": "rules_box_reruns_table_extraction",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        }
+      ],
+      "graph_or_summary_guidance_count": 5,
+      "guidance_item_count": 7,
+      "intent_relevant_evidence_count": 5,
+      "needs_crag_retry": false,
+      "needs_human_review": false,
+      "query_intent": "covered_part_number",
+      "ready_for_prompt_contract": true,
+      "safe_guidance_item_count": 7,
+      "schema_version": "v9",
+      "self_rag_critic_status": "SELF_RAG_CONTEXT_READY",
+      "self_rag_next_status": "READY_FOR_LLM_PROMPT_CONTRACT",
+      "source_trace_ready_evidence_count": 5,
+      "source_truth_evidence_count": 5,
+      "source_truth_mutation_allowed": false,
+      "user_query": "Find part number 120-36833-001",
+      "warning_count": 0,
+      "warnings": []
+    },
+    {
+      "answer_permission": false,
+      "blocker_count": 0,
+      "blockers": [],
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_ready_evidence_count": 5,
+      "context_pack_id": "dynamic_context_pack_v8_0002",
+      "evidence_item_count": 5,
+      "findings": [
+        {
+          "detail": "Context pack must be marked ready before LLM prompt construction.",
+          "name": "context_pack_status_ready",
+          "observed": "DYNAMIC_CONTEXT_PACK_READY",
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Context pack must include source-truth evidence items.",
+          "name": "has_evidence_box_items",
+          "observed": 5,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Every evidence item must be citation-ready.",
+          "name": "all_evidence_citation_ready",
+          "observed": {
+            "citation_ready_count": 5,
+            "evidence_item_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Every evidence item must be source-trace-ready.",
+          "name": "all_evidence_source_trace_ready",
+          "observed": {
+            "evidence_item_count": 5,
+            "source_trace_ready_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Evidence box items must be marked source-truth evidence only.",
+          "name": "all_evidence_source_truth_authority",
+          "observed": {
+            "evidence_item_count": 5,
+            "source_truth_authority_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "At least one evidence item should match the detected query intent.",
+          "name": "intent_relevant_evidence_present",
+          "observed": {
+            "query_intent": "covered_part_number",
+            "relevant_evidence_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Guidance helps the LLM navigate graph/vector/summary/route context.",
+          "name": "guidance_box_present",
+          "observed": 7,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Guidance items must be marked guidance-only/not-source-truth/not-proof.",
+          "name": "all_guidance_is_not_source_truth",
+          "observed": {
+            "guidance_item_count": 7,
+            "safe_guidance_count": 7
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Graph/summary guidance should be available for context engineering.",
+          "name": "graph_or_summary_guidance_available",
+          "observed": 5,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep evidence_box_is_source_truth=True.",
+          "name": "rules_box_evidence_box_is_source_truth",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep guidance_box_is_not_source_truth=True.",
+          "name": "rules_box_guidance_box_is_not_source_truth",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep graph_is_not_proof_authority=True.",
+          "name": "rules_box_graph_is_not_proof_authority",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep summaries_are_not_source_truth=True.",
+          "name": "rules_box_summaries_are_not_source_truth",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep cite_every_factual_claim=True.",
+          "name": "rules_box_cite_every_factual_claim",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep source_truth_mutation_allowed=False.",
+          "name": "rules_box_source_truth_mutation_allowed",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep answer_permission=False.",
+          "name": "rules_box_answer_permission",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep can_answer_directly=False.",
+          "name": "rules_box_can_answer_directly",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep can_prove_claims=False.",
+          "name": "rules_box_can_prove_claims",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep reruns_ocr=False.",
+          "name": "rules_box_reruns_ocr",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep reruns_embeddings=False.",
+          "name": "rules_box_reruns_embeddings",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep reruns_graph_build=False.",
+          "name": "rules_box_reruns_graph_build",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep reruns_table_extraction=False.",
+          "name": "rules_box_reruns_table_extraction",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        }
+      ],
+      "graph_or_summary_guidance_count": 5,
+      "guidance_item_count": 7,
+      "intent_relevant_evidence_count": 5,
+      "needs_crag_retry": false,
+      "needs_human_review": false,
+      "query_intent": "covered_part_number",
+      "ready_for_prompt_contract": true,
+      "safe_guidance_item_count": 7,
+      "schema_version": "v9",
+      "self_rag_critic_status": "SELF_RAG_CONTEXT_READY",
+      "self_rag_next_status": "READY_FOR_LLM_PROMPT_CONTRACT",
+      "source_trace_ready_evidence_count": 5,
+      "source_truth_evidence_count": 5,
+      "source_truth_mutation_allowed": false,
+      "user_query": "Find part number 120-36834-509",
+      "warning_count": 0,
+      "warnings": []
+    },
+    {
+      "answer_permission": false,
+      "blocker_count": 0,
+      "blockers": [],
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_ready_evidence_count": 5,
+      "context_pack_id": "dynamic_context_pack_v8_0003",
+      "evidence_item_count": 5,
+      "findings": [
+        {
+          "detail": "Context pack must be marked ready before LLM prompt construction.",
+          "name": "context_pack_status_ready",
+          "observed": "DYNAMIC_CONTEXT_PACK_READY",
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Context pack must include source-truth evidence items.",
+          "name": "has_evidence_box_items",
+          "observed": 5,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Every evidence item must be citation-ready.",
+          "name": "all_evidence_citation_ready",
+          "observed": {
+            "citation_ready_count": 5,
+            "evidence_item_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Every evidence item must be source-trace-ready.",
+          "name": "all_evidence_source_trace_ready",
+          "observed": {
+            "evidence_item_count": 5,
+            "source_trace_ready_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Evidence box items must be marked source-truth evidence only.",
+          "name": "all_evidence_source_truth_authority",
+          "observed": {
+            "evidence_item_count": 5,
+            "source_truth_authority_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "At least one evidence item should match the detected query intent.",
+          "name": "intent_relevant_evidence_present",
+          "observed": {
+            "query_intent": "manual_page_reference",
+            "relevant_evidence_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Guidance helps the LLM navigate graph/vector/summary/route context.",
+          "name": "guidance_box_present",
+          "observed": 10,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Guidance items must be marked guidance-only/not-source-truth/not-proof.",
+          "name": "all_guidance_is_not_source_truth",
+          "observed": {
+            "guidance_item_count": 10,
+            "safe_guidance_count": 10
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Graph/summary guidance should be available for context engineering.",
+          "name": "graph_or_summary_guidance_available",
+          "observed": 8,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep evidence_box_is_source_truth=True.",
+          "name": "rules_box_evidence_box_is_source_truth",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep guidance_box_is_not_source_truth=True.",
+          "name": "rules_box_guidance_box_is_not_source_truth",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep graph_is_not_proof_authority=True.",
+          "name": "rules_box_graph_is_not_proof_authority",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep summaries_are_not_source_truth=True.",
+          "name": "rules_box_summaries_are_not_source_truth",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep cite_every_factual_claim=True.",
+          "name": "rules_box_cite_every_factual_claim",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep source_truth_mutation_allowed=False.",
+          "name": "rules_box_source_truth_mutation_allowed",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep answer_permission=False.",
+          "name": "rules_box_answer_permission",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep can_answer_directly=False.",
+          "name": "rules_box_can_answer_directly",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep can_prove_claims=False.",
+          "name": "rules_box_can_prove_claims",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep reruns_ocr=False.",
+          "name": "rules_box_reruns_ocr",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep reruns_embeddings=False.",
+          "name": "rules_box_reruns_embeddings",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep reruns_graph_build=False.",
+          "name": "rules_box_reruns_graph_build",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep reruns_table_extraction=False.",
+          "name": "rules_box_reruns_table_extraction",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        }
+      ],
+      "graph_or_summary_guidance_count": 8,
+      "guidance_item_count": 10,
+      "intent_relevant_evidence_count": 5,
+      "needs_crag_retry": false,
+      "needs_human_review": false,
+      "query_intent": "manual_page_reference",
+      "ready_for_prompt_contract": true,
+      "safe_guidance_item_count": 10,
+      "schema_version": "v9",
+      "self_rag_critic_status": "SELF_RAG_CONTEXT_READY",
+      "self_rag_next_status": "READY_FOR_LLM_PROMPT_CONTRACT",
+      "source_trace_ready_evidence_count": 5,
+      "source_truth_evidence_count": 5,
+      "source_truth_mutation_allowed": false,
+      "user_query": "Where is manual reference 25-21-00 used?",
+      "warning_count": 0,
+      "warnings": []
+    },
+    {
+      "answer_permission": false,
+      "blocker_count": 0,
+      "blockers": [],
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_ready_evidence_count": 5,
+      "context_pack_id": "dynamic_context_pack_v8_0004",
+      "evidence_item_count": 5,
+      "findings": [
+        {
+          "detail": "Context pack must be marked ready before LLM prompt construction.",
+          "name": "context_pack_status_ready",
+          "observed": "DYNAMIC_CONTEXT_PACK_READY",
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Context pack must include source-truth evidence items.",
+          "name": "has_evidence_box_items",
+          "observed": 5,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Every evidence item must be citation-ready.",
+          "name": "all_evidence_citation_ready",
+          "observed": {
+            "citation_ready_count": 5,
+            "evidence_item_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Every evidence item must be source-trace-ready.",
+          "name": "all_evidence_source_trace_ready",
+          "observed": {
+            "evidence_item_count": 5,
+            "source_trace_ready_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Evidence box items must be marked source-truth evidence only.",
+          "name": "all_evidence_source_truth_authority",
+          "observed": {
+            "evidence_item_count": 5,
+            "source_truth_authority_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "At least one evidence item should match the detected query intent.",
+          "name": "intent_relevant_evidence_present",
+          "observed": {
+            "query_intent": "table_text",
+            "relevant_evidence_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Guidance helps the LLM navigate graph/vector/summary/route context.",
+          "name": "guidance_box_present",
+          "observed": 11,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Guidance items must be marked guidance-only/not-source-truth/not-proof.",
+          "name": "all_guidance_is_not_source_truth",
+          "observed": {
+            "guidance_item_count": 11,
+            "safe_guidance_count": 11
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Graph/summary guidance should be available for context engineering.",
+          "name": "graph_or_summary_guidance_available",
+          "observed": 9,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep evidence_box_is_source_truth=True.",
+          "name": "rules_box_evidence_box_is_source_truth",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep guidance_box_is_not_source_truth=True.",
+          "name": "rules_box_guidance_box_is_not_source_truth",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep graph_is_not_proof_authority=True.",
+          "name": "rules_box_graph_is_not_proof_authority",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep summaries_are_not_source_truth=True.",
+          "name": "rules_box_summaries_are_not_source_truth",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep cite_every_factual_claim=True.",
+          "name": "rules_box_cite_every_factual_claim",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep source_truth_mutation_allowed=False.",
+          "name": "rules_box_source_truth_mutation_allowed",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep answer_permission=False.",
+          "name": "rules_box_answer_permission",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep can_answer_directly=False.",
+          "name": "rules_box_can_answer_directly",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep can_prove_claims=False.",
+          "name": "rules_box_can_prove_claims",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep reruns_ocr=False.",
+          "name": "rules_box_reruns_ocr",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep reruns_embeddings=False.",
+          "name": "rules_box_reruns_embeddings",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep reruns_graph_build=False.",
+          "name": "rules_box_reruns_graph_build",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep reruns_table_extraction=False.",
+          "name": "rules_box_reruns_table_extraction",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        }
+      ],
+      "graph_or_summary_guidance_count": 9,
+      "guidance_item_count": 11,
+      "intent_relevant_evidence_count": 5,
+      "needs_crag_retry": false,
+      "needs_human_review": false,
+      "query_intent": "table_text",
+      "ready_for_prompt_contract": true,
+      "safe_guidance_item_count": 11,
+      "schema_version": "v9",
+      "self_rag_critic_status": "SELF_RAG_CONTEXT_READY",
+      "self_rag_next_status": "READY_FOR_LLM_PROMPT_CONTRACT",
+      "source_trace_ready_evidence_count": 5,
+      "source_truth_evidence_count": 5,
+      "source_truth_mutation_allowed": false,
+      "user_query": "Search table text MAINTENANCE MANUAL WITH",
+      "warning_count": 0,
+      "warnings": []
+    },
+    {
+      "answer_permission": false,
+      "blocker_count": 0,
+      "blockers": [],
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_ready_evidence_count": 5,
+      "context_pack_id": "dynamic_context_pack_v8_0005",
+      "evidence_item_count": 5,
+      "findings": [
+        {
+          "detail": "Context pack must be marked ready before LLM prompt construction.",
+          "name": "context_pack_status_ready",
+          "observed": "DYNAMIC_CONTEXT_PACK_READY",
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Context pack must include source-truth evidence items.",
+          "name": "has_evidence_box_items",
+          "observed": 5,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Every evidence item must be citation-ready.",
+          "name": "all_evidence_citation_ready",
+          "observed": {
+            "citation_ready_count": 5,
+            "evidence_item_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Every evidence item must be source-trace-ready.",
+          "name": "all_evidence_source_trace_ready",
+          "observed": {
+            "evidence_item_count": 5,
+            "source_trace_ready_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Evidence box items must be marked source-truth evidence only.",
+          "name": "all_evidence_source_truth_authority",
+          "observed": {
+            "evidence_item_count": 5,
+            "source_truth_authority_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "At least one evidence item should match the detected query intent.",
+          "name": "intent_relevant_evidence_present",
+          "observed": {
+            "query_intent": "covered_part_number",
+            "relevant_evidence_count": 5
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Guidance helps the LLM navigate graph/vector/summary/route context.",
+          "name": "guidance_box_present",
+          "observed": 7,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Guidance items must be marked guidance-only/not-source-truth/not-proof.",
+          "name": "all_guidance_is_not_source_truth",
+          "observed": {
+            "guidance_item_count": 7,
+            "safe_guidance_count": 7
+          },
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Graph/summary guidance should be available for context engineering.",
+          "name": "graph_or_summary_guidance_available",
+          "observed": 5,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep evidence_box_is_source_truth=True.",
+          "name": "rules_box_evidence_box_is_source_truth",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep guidance_box_is_not_source_truth=True.",
+          "name": "rules_box_guidance_box_is_not_source_truth",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep graph_is_not_proof_authority=True.",
+          "name": "rules_box_graph_is_not_proof_authority",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep summaries_are_not_source_truth=True.",
+          "name": "rules_box_summaries_are_not_source_truth",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep cite_every_factual_claim=True.",
+          "name": "rules_box_cite_every_factual_claim",
+          "observed": true,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep source_truth_mutation_allowed=False.",
+          "name": "rules_box_source_truth_mutation_allowed",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep answer_permission=False.",
+          "name": "rules_box_answer_permission",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep can_answer_directly=False.",
+          "name": "rules_box_can_answer_directly",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep can_prove_claims=False.",
+          "name": "rules_box_can_prove_claims",
+          "observed": false,
+          "passed": true,
+          "severity": "blocker"
+        },
+        {
+          "detail": "Rules box must keep reruns_ocr=False.",
+          "name": "rules_box_reruns_ocr",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep reruns_embeddings=False.",
+          "name": "rules_box_reruns_embeddings",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep reruns_graph_build=False.",
+          "name": "rules_box_reruns_graph_build",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        },
+        {
+          "detail": "Rules box must keep reruns_table_extraction=False.",
+          "name": "rules_box_reruns_table_extraction",
+          "observed": false,
+          "passed": true,
+          "severity": "warning"
+        }
+      ],
+      "graph_or_summary_guidance_count": 5,
+      "guidance_item_count": 7,
+      "intent_relevant_evidence_count": 5,
+      "needs_crag_retry": false,
+      "needs_human_review": false,
+      "query_intent": "covered_part_number",
+      "ready_for_prompt_contract": true,
+      "safe_guidance_item_count": 7,
+      "schema_version": "v9",
+      "self_rag_critic_status": "SELF_RAG_CONTEXT_READY",
+      "self_rag_next_status": "READY_FOR_LLM_PROMPT_CONTRACT",
+      "source_trace_ready_evidence_count": 5,
+      "source_truth_evidence_count": 5,
+      "source_truth_mutation_allowed": false,
+      "user_query": "What maintenance manual pages mention covered part numbers?",
+      "warning_count": 0,
+      "warnings": []
+    }
+  ],
+  "e2e_self_rag_context_critic_status": "E2E_SELF_RAG_CONTEXT_CRITIC_READY_FOR_CRAG_OR_PROMPT",
+  "quality_checks": [
+    {
+      "expected": ">= 5",
+      "name": "context_pack_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "self_rag_critique_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "ready_context_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "contexts_with_source_truth_evidence_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "contexts_with_guidance_separation_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "human_review_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "graph_summary_proof_violation_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "contract_answer_permission",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "contract_can_answer_directly",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "contract_can_prove_claims",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "needs_crag_retry_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "require_no_answer_permission",
+      "observed": 0,
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS",
+  "schema_version": "v9",
+  "self_rag_context_critic_contract": {
+    "answer_permission": false,
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "critic_does_not_call_llm": true,
+    "critic_does_not_rerun_retrieval": true,
+    "evidence_box_is_source_truth": true,
+    "graph_is_not_proof_authority": true,
+    "guidance_box_is_not_source_truth": true,
+    "reruns_embeddings": false,
+    "reruns_graph_build": false,
+    "reruns_ocr": false,
+    "reruns_page_classification": false,
+    "reruns_page_summaries": false,
+    "reruns_table_extraction": false,
+    "source_truth_mutation_allowed": false,
+    "summaries_are_not_source_truth": true,
+    "uses_prebuilt_context_packs": true
+  },
+  "source_dynamic_context_pack_path": "local_data/organization/trace_net/e2e_dynamic_context_pack/trace_net_e2e_dynamic_context_pack_v8.json",
+  "status": "E2E_SELF_RAG_CONTEXT_CRITIC_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "context_pack_count": 5,
+    "contexts_with_graph_or_summary_guidance_count": 5,
+    "contexts_with_guidance_separation_count": 5,
+    "contexts_with_source_truth_evidence_count": 5,
+    "graph_summary_proof_violation_count": 0,
+    "human_review_count": 0,
+    "needs_crag_retry_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_status": "PASS",
+    "ready_context_count": 5,
+    "self_rag_critique_count": 5,
+    "source_truth_mutation_allowed_count": 0,
+    "weak_context_count": 0
+  }
+}

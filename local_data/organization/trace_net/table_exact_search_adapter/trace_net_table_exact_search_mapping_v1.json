@@ -1,0 +1,120 @@
+{
+  "index_name": "trace-net-table-route-evidence-v1",
+  "mappings": {
+    "dynamic": "strict",
+    "properties": {
+      "answer_permission": {
+        "type": "boolean"
+      },
+      "can_answer_directly": {
+        "type": "boolean"
+      },
+      "can_prove_claims": {
+        "type": "boolean"
+      },
+      "cell_id": {
+        "type": "keyword"
+      },
+      "display_value": {
+        "fields": {
+          "keyword": {
+            "ignore_above": 512,
+            "type": "keyword"
+          }
+        },
+        "type": "text"
+      },
+      "document_id": {
+        "type": "keyword"
+      },
+      "field_name": {
+        "type": "keyword"
+      },
+      "field_role": {
+        "type": "keyword"
+      },
+      "normalized_value": {
+        "fields": {
+          "keyword": {
+            "ignore_above": 512,
+            "type": "keyword"
+          }
+        },
+        "type": "text"
+      },
+      "opensearch_upload_attempted": {
+        "type": "boolean"
+      },
+      "opensearch_write_attempted": {
+        "type": "boolean"
+      },
+      "page_id": {
+        "type": "keyword"
+      },
+      "postgres_write_attempted": {
+        "type": "boolean"
+      },
+      "qdrant_write_attempted": {
+        "type": "boolean"
+      },
+      "raw_value": {
+        "fields": {
+          "keyword": {
+            "ignore_above": 512,
+            "type": "keyword"
+          }
+        },
+        "type": "text"
+      },
+      "record_type": {
+        "type": "keyword"
+      },
+      "retrieval_only": {
+        "type": "boolean"
+      },
+      "route": {
+        "type": "keyword"
+      },
+      "row_id": {
+        "type": "keyword"
+      },
+      "search_family": {
+        "type": "keyword"
+      },
+      "search_text": {
+        "type": "text"
+      },
+      "search_tokens": {
+        "type": "keyword"
+      },
+      "source_evidence_id": {
+        "type": "keyword"
+      },
+      "source_page_id": {
+        "type": "keyword"
+      },
+      "source_trace": {
+        "enabled": true,
+        "type": "object"
+      },
+      "source_truth_mutation_allowed": {
+        "type": "boolean"
+      },
+      "table_id": {
+        "type": "keyword"
+      },
+      "table_template": {
+        "type": "keyword"
+      },
+      "unsafe": {
+        "type": "boolean"
+      }
+    }
+  },
+  "settings": {
+    "index": {
+      "number_of_replicas": 0,
+      "number_of_shards": 1
+    }
+  }
+}

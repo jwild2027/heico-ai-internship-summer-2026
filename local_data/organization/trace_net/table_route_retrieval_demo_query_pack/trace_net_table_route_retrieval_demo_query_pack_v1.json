@@ -1,0 +1,608 @@
+{
+  "demo_queries": [
+    {
+      "analogy": "Like looking up a product SKU in a store inventory index.",
+      "answer_authority": "blocked",
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "demo_query_id": "table_demo_query_001",
+      "final_gate_required": true,
+      "hit_count_in_demo": 1,
+      "hits": [
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-001",
+          "page_id": "t_p_120_1176_p000003",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 1.35,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        }
+      ],
+      "match_count": 1,
+      "matched_value_example": "120-36833-001",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_ids": [
+        "t_p_120_1176_p000003"
+      ],
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "query_intent": "covered_part_number",
+      "retrieval_effect": "boost_matching_table_pages_in_hybrid_retrieval",
+      "retrieval_permission": "ranking_only",
+      "simple_explanation": "This looks like a covered/effective part number from a table.",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_query": "120-36833-001"
+    },
+    {
+      "analogy": "Like using a book index to jump to the right chapter/page.",
+      "answer_authority": "blocked",
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "demo_query_id": "table_demo_query_002",
+      "final_gate_required": true,
+      "hit_count_in_demo": 5,
+      "hits": [
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "manual_page_reference",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000005",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 1.25,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "manual_page_reference",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000005",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 1.25,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "manual_page_reference",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000005",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 1.25,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "manual_page_reference",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000005",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 1.25,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "manual_page_reference",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000005",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 1.25,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        }
+      ],
+      "match_count": 10,
+      "matched_value_example": "25-21-00",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_ids": [
+        "t_p_120_1176_p000005"
+      ],
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "query_intent": "manual_page_reference",
+      "retrieval_effect": "boost_matching_table_pages_in_hybrid_retrieval",
+      "retrieval_permission": "ranking_only",
+      "simple_explanation": "This points to a manual section or page reference.",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_query": "25-21-00"
+    },
+    {
+      "analogy": "Like checking a table-of-contents line number or revision marker.",
+      "answer_authority": "blocked",
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "demo_query_id": "table_demo_query_003",
+      "final_gate_required": true,
+      "hit_count_in_demo": 1,
+      "hits": [
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "page_rev_or_sequence_value",
+          "normalized_value": "607",
+          "page_id": "t_p_120_1176_p000005",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 1.05,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        }
+      ],
+      "match_count": 1,
+      "matched_value_example": "607",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_ids": [
+        "t_p_120_1176_p000005"
+      ],
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "query_intent": "page_rev_or_sequence_value",
+      "retrieval_effect": "boost_matching_table_pages_in_hybrid_retrieval",
+      "retrieval_permission": "ranking_only",
+      "simple_explanation": "This looks like a page sequence or revision/table-list value.",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_query": "607"
+    },
+    {
+      "analogy": "Like searching the notes column of a parts list.",
+      "answer_authority": "blocked",
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "demo_query_id": "table_demo_query_004",
+      "final_gate_required": true,
+      "hit_count_in_demo": 5,
+      "hits": [
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000027",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 1.0,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000028",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 1.0,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000029",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 1.0,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000030",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 1.0,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000031",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 1.0,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        }
+      ],
+      "match_count": 10,
+      "matched_value_example": "MAINTENANCE MANUAL WITH",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_ids": [
+        "t_p_120_1176_p000027",
+        "t_p_120_1176_p000028",
+        "t_p_120_1176_p000029",
+        "t_p_120_1176_p000030",
+        "t_p_120_1176_p000031",
+        "t_p_120_1176_p000032",
+        "t_p_120_1176_p000033",
+        "t_p_120_1176_p000034",
+        "t_p_120_1176_p000036",
+        "t_p_120_1176_p000037"
+      ],
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "query_intent": "ipl_text",
+      "retrieval_effect": "boost_matching_table_pages_in_hybrid_retrieval",
+      "retrieval_permission": "ranking_only",
+      "simple_explanation": "This is descriptive table text from an illustrated-parts-list style table.",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_query": "MAINTENANCE MANUAL WITH"
+    },
+    {
+      "analogy": "Like searching by item number on an exploded-view diagram list.",
+      "answer_authority": "blocked",
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "demo_query_id": "table_demo_query_005",
+      "final_gate_required": true,
+      "hit_count_in_demo": 5,
+      "hits": [
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "ipl_figure_item_or_quantity",
+          "normalized_value": "130",
+          "page_id": "t_p_120_1176_p000027",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 0.95,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "ipl_figure_item_or_quantity",
+          "normalized_value": "130",
+          "page_id": "t_p_120_1176_p000027",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 0.95,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "ipl_figure_item_or_quantity",
+          "normalized_value": "130",
+          "page_id": "t_p_120_1176_p000027",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 0.95,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "ipl_figure_item_or_quantity",
+          "normalized_value": "130",
+          "page_id": "t_p_120_1176_p000027",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 0.95,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "ipl_figure_item_or_quantity",
+          "normalized_value": "130",
+          "page_id": "t_p_120_1176_p000027",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 0.95,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        }
+      ],
+      "match_count": 10,
+      "matched_value_example": "130",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_ids": [
+        "t_p_120_1176_p000027"
+      ],
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "query_intent": "ipl_figure_item_or_quantity",
+      "retrieval_effect": "boost_matching_table_pages_in_hybrid_retrieval",
+      "retrieval_permission": "ranking_only",
+      "simple_explanation": "This is a figure item, index, or quantity-style table value.",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_query": "130"
+    },
+    {
+      "analogy": "Like looking up a product SKU in a store inventory index.",
+      "answer_authority": "blocked",
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "demo_query_id": "table_demo_query_006",
+      "final_gate_required": true,
+      "hit_count_in_demo": 5,
+      "hits": [
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-001",
+          "page_id": "t_p_120_1176_p000003",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 1.35,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-003",
+          "page_id": "t_p_120_1176_p000003",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 1.35,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-005",
+          "page_id": "t_p_120_1176_p000003",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 1.35,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-501",
+          "page_id": "t_p_120_1176_p000003",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 1.35,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-503",
+          "page_id": "t_p_120_1176_p000003",
+          "retrieval_role": "ranking_signal_only",
+          "routing_boost": 1.35,
+          "source_truth_mutation_allowed": false,
+          "table_id": ""
+        }
+      ],
+      "match_count": 10,
+      "matched_value_example": "120-36833-001",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_ids": [
+        "t_p_120_1176_p000003"
+      ],
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "query_intent": "covered_part_number",
+      "retrieval_effect": "boost_matching_table_pages_in_hybrid_retrieval",
+      "retrieval_permission": "ranking_only",
+      "simple_explanation": "This looks like a covered/effective part number from a table.",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_query": "covered_part_number"
+    }
+  ],
+  "demo_queries_jsonl_path": "local_data\\organization\\trace_net\\table_route_retrieval_demo_query_pack\\trace_net_table_route_retrieval_demo_queries_v1.jsonl",
+  "inspect_md_path": "local_data\\organization\\trace_net\\table_route_retrieval_demo_query_pack\\trace_net_table_route_retrieval_demo_query_pack_v1_inspect.md",
+  "quality_checks": [
+    {
+      "expected": "is True",
+      "name": "source_readiness_quality_pass",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "expected": "is True",
+      "name": "source_bridge_quality_pass",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "expected": "READY_FOR_RETRIEVAL_RANKING_ONLY",
+      "name": "readiness_status_ready_for_ranking_only",
+      "observed": "READY_FOR_RETRIEVAL_RANKING_ONLY",
+      "passed": true
+    },
+    {
+      "expected": ">= 3",
+      "name": "demo_query_count",
+      "observed": 6,
+      "passed": true
+    },
+    {
+      "expected": ">= 3",
+      "name": "successful_demo_query_count",
+      "observed": 6,
+      "passed": true
+    },
+    {
+      "expected": ">= 3",
+      "name": "total_demo_match_count",
+      "observed": 42,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "page_with_demo_match_count",
+      "observed": 12,
+      "passed": true
+    },
+    {
+      "expected": ">= 4",
+      "name": "field_count",
+      "observed": 6,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "unsafe_demo_record_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "can_answer_directly_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "can_prove_claims_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "postgres_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "qdrant_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "opensearch_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "opensearch_upload_attempt_count",
+      "observed": 0,
+      "passed": true
+    }
+  ],
+  "quality_json_path": "local_data\\organization\\trace_net\\table_route_retrieval_demo_query_pack\\trace_net_table_route_retrieval_demo_query_pack_v1_quality.json",
+  "quality_status": "PASS",
+  "readiness_contract": {
+    "answer_authority": "blocked",
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "retrieval_permission": "ranking_only",
+    "source_truth_mutation_allowed": false,
+    "table_route_values_are_ranking_signals": true,
+    "table_route_values_are_searchable": true,
+    "uploads_to_opensearch": false,
+    "writes_to_opensearch": false,
+    "writes_to_postgres": false,
+    "writes_to_qdrant": false
+  },
+  "report_path": "local_data\\organization\\trace_net\\table_route_retrieval_demo_query_pack\\trace_net_table_route_retrieval_demo_query_pack_v1.json",
+  "schema_version": "trace_net_table_route_retrieval_demo_query_pack_v1",
+  "status": "TABLE_ROUTE_RETRIEVAL_DEMO_QUERY_PACK_BUILT",
+  "summary": {
+    "answer_authority": "blocked",
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "demo_query_count": 6,
+    "demo_readiness_status": "DEMO_READY_RETRIEVAL_ONLY",
+    "field_count": 6,
+    "field_counts": {
+      "covered_part_number": 150,
+      "ipl_figure_item_or_quantity": 843,
+      "ipl_part_number": 197,
+      "ipl_text": 188,
+      "manual_page_reference": 39,
+      "page_rev_or_sequence_value": 80
+    },
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "page_with_demo_match_count": 12,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "ready_for_hybrid_retrieval_ranking": true,
+    "ready_for_live_opensearch_upload": false,
+    "retrieval_permission": "ranking_only",
+    "source_bridge_path": "local_data\\organization\\trace_net\\table_hybrid_retrieval_bridge\\trace_net_table_hybrid_retrieval_bridge_v1.json",
+    "source_bridge_quality_pass": true,
+    "source_bridge_record_count": 1497,
+    "source_exact_search_document_count": 1497,
+    "source_ranking_available_bridge_record_count": 1497,
+    "source_readiness_path": "local_data\\organization\\trace_net\\table_route_retrieval_readiness_report\\trace_net_table_route_retrieval_readiness_report_v1.json",
+    "source_readiness_quality_pass": true,
+    "source_retrieval_readiness_status": "READY_FOR_RETRIEVAL_RANKING_ONLY",
+    "source_successful_smoke_query_count": 6,
+    "source_total_smoke_match_count": 42,
+    "source_truth_mutation_allowed_count": 0,
+    "successful_demo_query_count": 6,
+    "total_demo_match_count": 42,
+    "unsafe_demo_record_count": 0
+  }
+}

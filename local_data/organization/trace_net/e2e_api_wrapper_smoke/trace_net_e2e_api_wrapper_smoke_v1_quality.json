@@ -1,0 +1,145 @@
+{
+  "checks": [
+    {
+      "expected": 5,
+      "name": "source_e2e_demo_record_count",
+      "observed": 5,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "source_complete_demo_flow_count",
+      "observed": 5,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "api_wrapper_request_count",
+      "observed": 5,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "api_wrapper_response_count",
+      "observed": 5,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 4,
+      "name": "citation_backed_api_response_count",
+      "observed": 5,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 10,
+      "name": "total_api_citation_count",
+      "observed": 15,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 2,
+      "name": "page_with_api_citation_count",
+      "observed": 6,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 3,
+      "name": "field_count",
+      "observed": 4,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "schema_missing_required_key_record_count",
+      "observed": 0,
+      "operator": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "unsafe_api_wrapper_record_count",
+      "observed": 0,
+      "operator": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "answer_permission_count",
+      "observed": 0,
+      "operator": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "operator": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "can_answer_directly_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "can_prove_claims_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "postgres_write_attempt_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "qdrant_write_attempt_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "opensearch_write_attempt_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "opensearch_upload_attempt_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": true,
+      "name": "source_demo_report_quality_pass",
+      "observed": true,
+      "operator": "is",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "all_api_records_no_answer_authority",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS"
+}

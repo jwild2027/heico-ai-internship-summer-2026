@@ -1,0 +1,123 @@
+{
+  "quality_checks": [
+    {
+      "expected": ">= 1",
+      "name": "e2e_query_input_record_count",
+      "observed": 1,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "routeable_query_count",
+      "observed": 1,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "planned_retrieval_query_count",
+      "observed": 1,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "unique_intent_count",
+      "observed": 1,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "schema_missing_required_key_record_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "unsafe_query_input_record_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "can_answer_directly_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "can_prove_claims_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "postgres_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "qdrant_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "opensearch_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "opensearch_upload_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "is True",
+      "name": "all_records_retrieval_only",
+      "observed": true,
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "e2e_query_input_record_count": 1,
+    "intent_counts": {
+      "covered_part_number": 1
+    },
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "planned_retrieval_query_count": 1,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "retrieval_channel_counts": {
+      "graph_source_trace": 1,
+      "qdrant_page_profiles": 1,
+      "table_exact_search": 1,
+      "table_hybrid_retrieval_bridge": 1
+    },
+    "route_counts": {
+      "normal_text": 1,
+      "table": 1
+    },
+    "routeable_query_count": 1,
+    "source_truth_mutation_allowed_count": 0,
+    "unique_intent_count": 1,
+    "unsafe_query_input_record_count": 0
+  }
+}

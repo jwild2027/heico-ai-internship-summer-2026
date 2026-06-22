@@ -1,0 +1,181 @@
+{
+  "quality_checks": [
+    {
+      "expected": "is True",
+      "name": "source_context_pack_quality_pass",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "expected": "is True",
+      "name": "source_context_pack_ready_for_final_gate",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "source_context_pack_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "source_context_pack_with_items_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "evidence_sufficiency_gate_record_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 4",
+      "name": "sufficient_context_pack_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 4",
+      "name": "final_gate_review_ready_pack_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 20",
+      "name": "total_evidence_item_count",
+      "observed": 25,
+      "passed": true
+    },
+    {
+      "expected": ">= 20",
+      "name": "citation_ready_evidence_item_count",
+      "observed": 25,
+      "passed": true
+    },
+    {
+      "expected": ">= 20",
+      "name": "source_trace_ready_evidence_item_count",
+      "observed": 25,
+      "passed": true
+    },
+    {
+      "expected": ">= 2",
+      "name": "page_with_evidence_item_count",
+      "observed": 8,
+      "passed": true
+    },
+    {
+      "expected": ">= 3",
+      "name": "field_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "schema_missing_required_key_item_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "unsafe_evidence_sufficiency_record_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "can_answer_directly_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "can_prove_claims_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "postgres_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "qdrant_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "opensearch_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "opensearch_upload_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "is True",
+      "name": "all_gate_records_no_answer_authority",
+      "observed": true,
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS",
+  "summary": {
+    "all_gate_records_no_answer_authority": true,
+    "answer_authority": "blocked_until_final_gate",
+    "answer_permission_count": 0,
+    "audit_only_context_pack_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "citation_ready_evidence_item_count": 25,
+    "evidence_sufficiency_gate_record_count": 5,
+    "evidence_sufficiency_gate_status": "E2E_EVIDENCE_SUFFICIENCY_READY_FOR_FINAL_GATE_SMOKE",
+    "field_count": 5,
+    "field_counts": {
+      "covered_part_number": 10,
+      "ipl_figure_item_or_quantity": 5,
+      "ipl_part_number": 4,
+      "ipl_text": 5,
+      "manual_page_reference": 1
+    },
+    "final_gate_review_ready_pack_count": 5,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "page_with_evidence_item_count": 8,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "ready_for_final_gate_smoke": true,
+    "retrieval_permission": "ranking_only_until_final_gate",
+    "schema_missing_required_key_item_count": 0,
+    "source_context_pack_count": 5,
+    "source_context_pack_path": "local_data\\organization\\trace_net\\e2e_context_pack_builder_planned\\trace_net_e2e_context_pack_builder_v1.json",
+    "source_context_pack_quality_pass": true,
+    "source_context_pack_ready_for_final_gate": true,
+    "source_context_pack_with_items_count": 5,
+    "source_trace_ready_evidence_item_count": 25,
+    "source_truth_mutation_allowed_count": 0,
+    "sufficient_context_pack_count": 5,
+    "total_evidence_item_count": 25,
+    "unsafe_evidence_sufficiency_record_count": 0
+  }
+}

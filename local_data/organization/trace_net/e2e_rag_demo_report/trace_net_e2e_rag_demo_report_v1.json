@@ -1,0 +1,636 @@
+{
+  "report_schema_version": "trace_net_e2e_rag_demo_report_v1",
+  "status": "E2E_RAG_DEMO_REPORT_BUILT",
+  "quality_status": "PASS",
+  "e2e_rag_demo_status": "E2E_RAG_DEMO_REPORT_READY_FOR_API_WRAPPER",
+  "demo_contract": {
+    "purpose": "Combine planned query routing, hybrid retrieval, context packs, sufficiency, and final-gate smoke into one local E2E RAG demo report.",
+    "graph_and_summaries_are_tunnels": true,
+    "tunnels_can_rank_or_route": true,
+    "tunnels_can_answer_directly": false,
+    "safe_responses_are_drafts_until_api_finalization": true,
+    "answer_authority": "blocked_in_artifact_smoke",
+    "retrieval_permission": "ranking_until_final_gate_smoke",
+    "ready_for_api_wrapper": true,
+    "source_truth_mutation_allowed": false,
+    "writes_to_postgres": false,
+    "writes_to_qdrant": false,
+    "writes_to_opensearch": false,
+    "uploads_to_opensearch": false
+  },
+  "source_paths": {
+    "query_planning_routing": "local_data/organization/trace_net/e2e_query_planning_routing/trace_net_e2e_query_planning_routing_v1.json",
+    "e2e_hybrid_retrieval_runtime": "local_data/organization/trace_net/e2e_hybrid_retrieval_runtime_planned/trace_net_e2e_hybrid_retrieval_runtime_v1.json",
+    "e2e_context_pack_builder": "local_data/organization/trace_net/e2e_context_pack_builder_planned/trace_net_e2e_context_pack_builder_v1.json",
+    "e2e_evidence_sufficiency_gate": "local_data/organization/trace_net/e2e_evidence_sufficiency_gate_planned/trace_net_e2e_evidence_sufficiency_gate_v1.json",
+    "e2e_final_gate_smoke": "local_data/organization/trace_net/e2e_final_gate_smoke_planned/trace_net_e2e_final_gate_smoke_v1.json"
+  },
+  "summary": {
+    "e2e_rag_demo_status": "E2E_RAG_DEMO_REPORT_READY_FOR_API_WRAPPER",
+    "source_planning_quality_pass": true,
+    "source_runtime_quality_pass": true,
+    "source_context_quality_pass": true,
+    "source_sufficiency_quality_pass": true,
+    "source_final_gate_smoke_quality_pass": true,
+    "stage_pass_count": 5,
+    "e2e_demo_record_count": 5,
+    "complete_demo_flow_count": 5,
+    "planned_query_route_plan_count": 5,
+    "total_query_tunnel_count": 30,
+    "unique_tunnel_type_count": 5,
+    "retrieval_group_count": 5,
+    "successful_retrieval_query_count": 5,
+    "total_retrieval_hit_count": 50,
+    "context_pack_count": 5,
+    "total_context_item_count": 25,
+    "citation_ready_context_item_count": 25,
+    "source_trace_ready_context_item_count": 25,
+    "sufficient_context_pack_count": 5,
+    "final_gate_review_ready_pack_count": 5,
+    "final_gate_record_count": 5,
+    "safe_response_draft_count": 5,
+    "citation_backed_response_draft_count": 5,
+    "audit_only_response_count": 0,
+    "total_citation_count": 15,
+    "page_with_citation_count": 6,
+    "field_count": 5,
+    "field_counts": {
+      "covered_part_number": 6,
+      "ipl_figure_item_or_quantity": 3,
+      "ipl_part_number": 2,
+      "ipl_text": 3,
+      "manual_page_reference": 1
+    },
+    "schema_missing_required_key_record_count": 0,
+    "unsafe_total_count": 0,
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "all_demo_records_no_answer_authority": true,
+    "api_wrapper_next_step": true
+  },
+  "demo_records": [
+    {
+      "query_id": "e2e_query_v1_0001",
+      "query_intent": "covered_part_number",
+      "user_query": "Find part number 120-36833-001",
+      "demo_flow_status": "E2E_DEMO_FLOW_COMPLETE",
+      "routeable": true,
+      "tunnel_types": [
+        "artifact_graph_summary_tunnel",
+        "graph_source_trace_tunnel",
+        "page_summary_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "planned_retrieval_step_count": 4,
+      "retrieval_status": "RETRIEVAL_MATCHED",
+      "retrieval_hit_count": 10,
+      "context_pack_status": "CONTEXT_PACK_READY",
+      "context_item_count": 5,
+      "evidence_sufficiency_status": "EVIDENCE_SUFFICIENT_FOR_FINAL_GATE_REVIEW",
+      "final_gate_decision": "FINAL_GATE_SAFE_CITATION_BACKED_RESPONSE_DRAFT",
+      "response_type": "safe_response_draft",
+      "response_draft": "Final-gate smoke draft for query: 'Find part number 120-36833-001'. TRACE-Net found citation/source-trace-ready evidence: covered_part_number=120-36833-001 on t_p_120_1176_p000003; covered_part_number=120-36833-003 on t_p_120_1176_p000003; covered_part_number=120-36833-005 on t_p_120_1176_p000003. This draft is safe for final-gate review and remains non-mutating; it does not rewrite source truth.",
+      "citation_count": 3,
+      "source_trace_count": 3,
+      "page_ids": [
+        "t_p_120_1176_p000003"
+      ],
+      "top_citations": [
+        {
+          "citation_id": "cite_e2e_query_v1_0001_t_p_120_1176_p000003_covered_part_number_001",
+          "citation_ready": true,
+          "evidence_route": "table",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-001",
+          "page_id": "t_p_120_1176_p000003",
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "retrieval_score": 988.2,
+          "routing_boost": 1.35,
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "cite_e2e_query_v1_0001_t_p_120_1176_p000003_covered_part_number_002",
+          "citation_ready": true,
+          "evidence_route": "table",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-003",
+          "page_id": "t_p_120_1176_p000003",
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "retrieval_score": 567.0,
+          "routing_boost": 1.35,
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "cite_e2e_query_v1_0001_t_p_120_1176_p000003_covered_part_number_003",
+          "citation_ready": true,
+          "evidence_route": "table",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-005",
+          "page_id": "t_p_120_1176_p000003",
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "retrieval_score": 567.0,
+          "routing_boost": 1.35,
+          "source_trace_ready": true
+        }
+      ],
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "query_id": "e2e_query_v1_0002",
+      "query_intent": "manual_page_reference",
+      "user_query": "Where is manual reference 25-21-00 used?",
+      "demo_flow_status": "E2E_DEMO_FLOW_COMPLETE",
+      "routeable": true,
+      "tunnel_types": [
+        "artifact_graph_summary_tunnel",
+        "graph_source_trace_tunnel",
+        "page_summary_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "planned_retrieval_step_count": 4,
+      "retrieval_status": "RETRIEVAL_MATCHED",
+      "retrieval_hit_count": 10,
+      "context_pack_status": "CONTEXT_PACK_READY",
+      "context_item_count": 5,
+      "evidence_sufficiency_status": "EVIDENCE_SUFFICIENT_FOR_FINAL_GATE_REVIEW",
+      "final_gate_decision": "FINAL_GATE_SAFE_CITATION_BACKED_RESPONSE_DRAFT",
+      "response_type": "safe_response_draft",
+      "response_draft": "Final-gate smoke draft for query: 'Where is manual reference 25-21-00 used?'. TRACE-Net found citation/source-trace-ready evidence: manual_page_reference=25-21-00 on t_p_120_1176_p000005; ipl_part_number=25-21-00 on t_p_120_1176_p000027; ipl_part_number=25-21-00 on t_p_120_1176_p000028. This draft is safe for final-gate review and remains non-mutating; it does not rewrite source truth.",
+      "citation_count": 3,
+      "source_trace_count": 3,
+      "page_ids": [
+        "t_p_120_1176_p000005",
+        "t_p_120_1176_p000027",
+        "t_p_120_1176_p000028",
+        "t_p_120_1176_p000029",
+        "t_p_120_1176_p000030",
+        "t_p_120_1176_p000031",
+        "t_p_120_1176_p000032",
+        "t_p_120_1176_p000033",
+        "t_p_120_1176_p000034",
+        "t_p_120_1176_p000036"
+      ],
+      "top_citations": [
+        {
+          "citation_id": "cite_e2e_query_v1_0002_t_p_120_1176_p000005_manual_page_reference_001",
+          "citation_ready": true,
+          "evidence_route": "table",
+          "field_name": "manual_page_reference",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000005",
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "retrieval_score": 1290.0,
+          "routing_boost": 1.25,
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "cite_e2e_query_v1_0002_t_p_120_1176_p000027_ipl_part_number_002",
+          "citation_ready": true,
+          "evidence_route": "table",
+          "field_name": "ipl_part_number",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000027",
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "retrieval_score": 795.6,
+          "routing_boost": 1.3,
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "cite_e2e_query_v1_0002_t_p_120_1176_p000028_ipl_part_number_003",
+          "citation_ready": true,
+          "evidence_route": "table",
+          "field_name": "ipl_part_number",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000028",
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "retrieval_score": 795.6,
+          "routing_boost": 1.3,
+          "source_trace_ready": true
+        }
+      ],
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "query_id": "e2e_query_v1_0003",
+      "query_intent": "ipl_figure_item_or_quantity",
+      "user_query": "Find IPL item 130",
+      "demo_flow_status": "E2E_DEMO_FLOW_COMPLETE",
+      "routeable": true,
+      "tunnel_types": [
+        "artifact_graph_summary_tunnel",
+        "graph_source_trace_tunnel",
+        "table_route_summary_tunnel",
+        "visual_summary_tunnel"
+      ],
+      "planned_retrieval_step_count": 4,
+      "retrieval_status": "RETRIEVAL_MATCHED",
+      "retrieval_hit_count": 10,
+      "context_pack_status": "CONTEXT_PACK_READY",
+      "context_item_count": 5,
+      "evidence_sufficiency_status": "EVIDENCE_SUFFICIENT_FOR_FINAL_GATE_REVIEW",
+      "final_gate_decision": "FINAL_GATE_SAFE_CITATION_BACKED_RESPONSE_DRAFT",
+      "response_type": "safe_response_draft",
+      "response_draft": "Final-gate smoke draft for query: 'Find IPL item 130'. TRACE-Net found citation/source-trace-ready evidence: ipl_figure_item_or_quantity=130 on t_p_120_1176_p000027; ipl_figure_item_or_quantity=130 on t_p_120_1176_p000028; ipl_figure_item_or_quantity=130 on t_p_120_1176_p000036. This draft is safe for final-gate review and remains non-mutating; it does not rewrite source truth.",
+      "citation_count": 3,
+      "source_trace_count": 3,
+      "page_ids": [
+        "t_p_120_1176_p000027",
+        "t_p_120_1176_p000028",
+        "t_p_120_1176_p000036"
+      ],
+      "top_citations": [
+        {
+          "citation_id": "cite_e2e_query_v1_0003_t_p_120_1176_p000027_ipl_figure_item_or_quantity_001",
+          "citation_ready": true,
+          "evidence_route": "table",
+          "field_name": "ipl_figure_item_or_quantity",
+          "normalized_value": "130",
+          "page_id": "t_p_120_1176_p000027",
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "retrieval_score": 695.4,
+          "routing_boost": 0.95,
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "cite_e2e_query_v1_0003_t_p_120_1176_p000028_ipl_figure_item_or_quantity_002",
+          "citation_ready": true,
+          "evidence_route": "table",
+          "field_name": "ipl_figure_item_or_quantity",
+          "normalized_value": "130",
+          "page_id": "t_p_120_1176_p000028",
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "retrieval_score": 695.4,
+          "routing_boost": 0.95,
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "cite_e2e_query_v1_0003_t_p_120_1176_p000036_ipl_figure_item_or_quantity_003",
+          "citation_ready": true,
+          "evidence_route": "table",
+          "field_name": "ipl_figure_item_or_quantity",
+          "normalized_value": "130",
+          "page_id": "t_p_120_1176_p000036",
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "retrieval_score": 695.4,
+          "routing_boost": 0.95,
+          "source_trace_ready": true
+        }
+      ],
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "query_id": "e2e_query_v1_0004",
+      "query_intent": "table_text",
+      "user_query": "Search table text MAINTENANCE MANUAL WITH",
+      "demo_flow_status": "E2E_DEMO_FLOW_COMPLETE",
+      "routeable": true,
+      "tunnel_types": [
+        "artifact_graph_summary_tunnel",
+        "graph_source_trace_tunnel",
+        "page_summary_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "planned_retrieval_step_count": 4,
+      "retrieval_status": "RETRIEVAL_MATCHED",
+      "retrieval_hit_count": 10,
+      "context_pack_status": "CONTEXT_PACK_READY",
+      "context_item_count": 5,
+      "evidence_sufficiency_status": "EVIDENCE_SUFFICIENT_FOR_FINAL_GATE_REVIEW",
+      "final_gate_decision": "FINAL_GATE_SAFE_CITATION_BACKED_RESPONSE_DRAFT",
+      "response_type": "safe_response_draft",
+      "response_draft": "Final-gate smoke draft for query: 'Search table text MAINTENANCE MANUAL WITH'. TRACE-Net found citation/source-trace-ready evidence: ipl_text=MAINTENANCE MANUAL WITH on t_p_120_1176_p000027; ipl_text=MAINTENANCE MANUAL WITH on t_p_120_1176_p000028; ipl_text=MAINTENANCE MANUAL WITH on t_p_120_1176_p000029. This draft is safe for final-gate review and remains non-mutating; it does not rewrite source truth.",
+      "citation_count": 3,
+      "source_trace_count": 3,
+      "page_ids": [
+        "t_p_120_1176_p000027",
+        "t_p_120_1176_p000028",
+        "t_p_120_1176_p000029",
+        "t_p_120_1176_p000030",
+        "t_p_120_1176_p000031",
+        "t_p_120_1176_p000032",
+        "t_p_120_1176_p000033",
+        "t_p_120_1176_p000034",
+        "t_p_120_1176_p000036",
+        "t_p_120_1176_p000037"
+      ],
+      "top_citations": [
+        {
+          "citation_id": "cite_e2e_query_v1_0004_t_p_120_1176_p000027_ipl_text_001",
+          "citation_ready": true,
+          "evidence_route": "table",
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000027",
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "retrieval_score": 420.0,
+          "routing_boost": 1.0,
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "cite_e2e_query_v1_0004_t_p_120_1176_p000028_ipl_text_002",
+          "citation_ready": true,
+          "evidence_route": "table",
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000028",
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "retrieval_score": 420.0,
+          "routing_boost": 1.0,
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "cite_e2e_query_v1_0004_t_p_120_1176_p000029_ipl_text_003",
+          "citation_ready": true,
+          "evidence_route": "table",
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000029",
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "retrieval_score": 420.0,
+          "routing_boost": 1.0,
+          "source_trace_ready": true
+        }
+      ],
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "query_id": "e2e_query_v1_0005",
+      "query_intent": "covered_part_number",
+      "user_query": "What maintenance manual pages mention covered part numbers?",
+      "demo_flow_status": "E2E_DEMO_FLOW_COMPLETE",
+      "routeable": true,
+      "tunnel_types": [
+        "artifact_graph_summary_tunnel",
+        "graph_source_trace_tunnel",
+        "page_summary_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "planned_retrieval_step_count": 4,
+      "retrieval_status": "RETRIEVAL_MATCHED",
+      "retrieval_hit_count": 10,
+      "context_pack_status": "CONTEXT_PACK_READY",
+      "context_item_count": 5,
+      "evidence_sufficiency_status": "EVIDENCE_SUFFICIENT_FOR_FINAL_GATE_REVIEW",
+      "final_gate_decision": "FINAL_GATE_SAFE_CITATION_BACKED_RESPONSE_DRAFT",
+      "response_type": "safe_response_draft",
+      "response_draft": "Final-gate smoke draft for query: 'What maintenance manual pages mention covered part numbers?'. TRACE-Net found citation/source-trace-ready evidence: covered_part_number=120-36833-001 on t_p_120_1176_p000003; covered_part_number=120-36833-003 on t_p_120_1176_p000003; covered_part_number=120-36833-005 on t_p_120_1176_p000003. This draft is safe for final-gate review and remains non-mutating; it does not rewrite source truth.",
+      "citation_count": 3,
+      "source_trace_count": 3,
+      "page_ids": [
+        "t_p_120_1176_p000003"
+      ],
+      "top_citations": [
+        {
+          "citation_id": "cite_e2e_query_v1_0005_t_p_120_1176_p000003_covered_part_number_001",
+          "citation_ready": true,
+          "evidence_route": "table",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-001",
+          "page_id": "t_p_120_1176_p000003",
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "retrieval_score": 567.0,
+          "routing_boost": 1.35,
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "cite_e2e_query_v1_0005_t_p_120_1176_p000003_covered_part_number_002",
+          "citation_ready": true,
+          "evidence_route": "table",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-003",
+          "page_id": "t_p_120_1176_p000003",
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "retrieval_score": 567.0,
+          "routing_boost": 1.35,
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "cite_e2e_query_v1_0005_t_p_120_1176_p000003_covered_part_number_003",
+          "citation_ready": true,
+          "evidence_route": "table",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-005",
+          "page_id": "t_p_120_1176_p000003",
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "retrieval_score": 567.0,
+          "routing_boost": 1.35,
+          "source_trace_ready": true
+        }
+      ],
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "source_truth_mutation_allowed": false
+    }
+  ],
+  "quality_checks": [
+    {
+      "name": "source_planning_quality_pass",
+      "observed": true,
+      "expected": "is True",
+      "passed": true
+    },
+    {
+      "name": "source_runtime_quality_pass",
+      "observed": true,
+      "expected": "is True",
+      "passed": true
+    },
+    {
+      "name": "source_context_quality_pass",
+      "observed": true,
+      "expected": "is True",
+      "passed": true
+    },
+    {
+      "name": "source_sufficiency_quality_pass",
+      "observed": true,
+      "expected": "is True",
+      "passed": true
+    },
+    {
+      "name": "source_final_gate_smoke_quality_pass",
+      "observed": true,
+      "expected": "is True",
+      "passed": true
+    },
+    {
+      "name": "stage_pass_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "e2e_demo_record_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "complete_demo_flow_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "planned_query_route_plan_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "total_query_tunnel_count",
+      "observed": 30,
+      "expected": ">= 15",
+      "passed": true
+    },
+    {
+      "name": "retrieval_group_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "successful_retrieval_query_count",
+      "observed": 5,
+      "expected": ">= 4",
+      "passed": true
+    },
+    {
+      "name": "context_pack_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "final_gate_review_ready_pack_count",
+      "observed": 5,
+      "expected": ">= 4",
+      "passed": true
+    },
+    {
+      "name": "final_gate_record_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "safe_response_draft_count",
+      "observed": 5,
+      "expected": ">= 4",
+      "passed": true
+    },
+    {
+      "name": "citation_backed_response_draft_count",
+      "observed": 5,
+      "expected": ">= 4",
+      "passed": true
+    },
+    {
+      "name": "total_citation_count",
+      "observed": 15,
+      "expected": ">= 10",
+      "passed": true
+    },
+    {
+      "name": "page_with_citation_count",
+      "observed": 6,
+      "expected": ">= 2",
+      "passed": true
+    },
+    {
+      "name": "field_count",
+      "observed": 5,
+      "expected": ">= 3",
+      "passed": true
+    },
+    {
+      "name": "schema_missing_required_key_record_count",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "unsafe_total_count",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "answer_permission_count",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "can_answer_directly_count",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    },
+    {
+      "name": "can_prove_claims_count",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    },
+    {
+      "name": "postgres_write_attempt_count",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    },
+    {
+      "name": "qdrant_write_attempt_count",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    },
+    {
+      "name": "opensearch_write_attempt_count",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    },
+    {
+      "name": "opensearch_upload_attempt_count",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    },
+    {
+      "name": "all_demo_records_no_answer_authority",
+      "observed": true,
+      "expected": "is True",
+      "passed": true
+    }
+  ],
+  "report_path": "local_data\\organization\\trace_net\\e2e_rag_demo_report\\trace_net_e2e_rag_demo_report_v1.json",
+  "quality_path": "local_data\\organization\\trace_net\\e2e_rag_demo_report\\trace_net_e2e_rag_demo_report_v1_quality.json",
+  "records_jsonl_path": "local_data\\organization\\trace_net\\e2e_rag_demo_report\\trace_net_e2e_rag_demo_records_v1.jsonl",
+  "inspect_md_path": "local_data\\organization\\trace_net\\e2e_rag_demo_report\\trace_net_e2e_rag_demo_report_v1_inspect.md"
+}

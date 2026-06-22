@@ -1,0 +1,343 @@
+{
+  "e2e_query_input_status": "E2E_QUERY_INPUT_READY_FOR_RETRIEVAL_RUNTIME",
+  "quality_checks": [
+    {
+      "expected": ">= 5",
+      "name": "e2e_query_input_record_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "routeable_query_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "planned_retrieval_query_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 4",
+      "name": "unique_intent_count",
+      "observed": 4,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "schema_missing_required_key_record_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "unsafe_query_input_record_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "can_answer_directly_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "can_prove_claims_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "postgres_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "qdrant_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "opensearch_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "opensearch_upload_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "is True",
+      "name": "all_records_retrieval_only",
+      "observed": true,
+      "passed": true
+    }
+  ],
+  "quality_path": "local_data\\organization\\trace_net\\e2e_query_input\\trace_net_e2e_query_input_v1_quality.json",
+  "quality_status": "PASS",
+  "query_input_contract": {
+    "answer_authority": "blocked",
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "purpose": "Convert user questions into safe query-plan artifacts for the later E2E retrieval runtime.",
+    "retrieval_permission": "ranking_only_until_final_gate",
+    "source_truth_mutation_allowed": false,
+    "uploads_to_opensearch": false,
+    "writes_to_opensearch": false,
+    "writes_to_postgres": false,
+    "writes_to_qdrant": false
+  },
+  "query_records": [
+    {
+      "answer_policy_hint": "needs_retrieval_and_final_gate",
+      "normalized_query": "find part number 120-36833-001",
+      "query_id": "e2e_query_v1_0001",
+      "query_intent": "covered_part_number",
+      "query_terms": [
+        {
+          "term": "120-36833-001",
+          "term_type": "part_number"
+        }
+      ],
+      "requested_routes": [
+        "table",
+        "normal_text"
+      ],
+      "retrieval_channels": [
+        "table_exact_search",
+        "table_hybrid_retrieval_bridge",
+        "qdrant_page_profiles",
+        "graph_source_trace"
+      ],
+      "route_contract": {
+        "normal_text_requires_source_trace": true,
+        "table_route_values_are_allowed_as_final_answer_authority": false,
+        "table_route_values_are_allowed_as_ranking_signals": true,
+        "visual_route_output_is_advisory_until_verified": true
+      },
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "opensearch_upload_attempt": false,
+        "opensearch_write_attempt": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "retrieval_only_input": true,
+        "source_truth_mutation_allowed": false
+      },
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "answer_policy_hint": "needs_retrieval_and_final_gate",
+      "normalized_query": "where is manual reference 25-21-00 used?",
+      "query_id": "e2e_query_v1_0002",
+      "query_intent": "manual_page_reference",
+      "query_terms": [
+        {
+          "term": "25-21-00",
+          "term_type": "manual_page_reference"
+        }
+      ],
+      "requested_routes": [
+        "table",
+        "normal_text"
+      ],
+      "retrieval_channels": [
+        "table_exact_search",
+        "table_hybrid_retrieval_bridge",
+        "qdrant_page_profiles",
+        "graph_source_trace"
+      ],
+      "route_contract": {
+        "normal_text_requires_source_trace": true,
+        "table_route_values_are_allowed_as_final_answer_authority": false,
+        "table_route_values_are_allowed_as_ranking_signals": true,
+        "visual_route_output_is_advisory_until_verified": true
+      },
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "opensearch_upload_attempt": false,
+        "opensearch_write_attempt": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "retrieval_only_input": true,
+        "source_truth_mutation_allowed": false
+      },
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "answer_policy_hint": "needs_retrieval_and_final_gate",
+      "normalized_query": "find ipl item 130",
+      "query_id": "e2e_query_v1_0003",
+      "query_intent": "ipl_figure_item_or_quantity",
+      "query_terms": [
+        {
+          "term": "130",
+          "term_type": "numeric_token"
+        }
+      ],
+      "requested_routes": [
+        "table",
+        "image_visual"
+      ],
+      "retrieval_channels": [
+        "table_exact_search",
+        "table_hybrid_retrieval_bridge",
+        "graph_source_trace"
+      ],
+      "route_contract": {
+        "normal_text_requires_source_trace": true,
+        "table_route_values_are_allowed_as_final_answer_authority": false,
+        "table_route_values_are_allowed_as_ranking_signals": true,
+        "visual_route_output_is_advisory_until_verified": true
+      },
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "opensearch_upload_attempt": false,
+        "opensearch_write_attempt": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "retrieval_only_input": true,
+        "source_truth_mutation_allowed": false
+      },
+      "user_query": "Find IPL item 130"
+    },
+    {
+      "answer_policy_hint": "needs_retrieval_and_final_gate",
+      "normalized_query": "search table text maintenance manual with",
+      "query_id": "e2e_query_v1_0004",
+      "query_intent": "table_text",
+      "query_terms": [
+        {
+          "term": "MAINTENANCE MANUAL WITH",
+          "term_type": "table_text_phrase"
+        }
+      ],
+      "requested_routes": [
+        "table",
+        "normal_text"
+      ],
+      "retrieval_channels": [
+        "table_exact_search",
+        "table_hybrid_retrieval_bridge",
+        "qdrant_page_profiles"
+      ],
+      "route_contract": {
+        "normal_text_requires_source_trace": true,
+        "table_route_values_are_allowed_as_final_answer_authority": false,
+        "table_route_values_are_allowed_as_ranking_signals": true,
+        "visual_route_output_is_advisory_until_verified": true
+      },
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "opensearch_upload_attempt": false,
+        "opensearch_write_attempt": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "retrieval_only_input": true,
+        "source_truth_mutation_allowed": false
+      },
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "answer_policy_hint": "needs_retrieval_and_final_gate",
+      "normalized_query": "what maintenance manual pages mention covered part numbers?",
+      "query_id": "e2e_query_v1_0005",
+      "query_intent": "covered_part_number",
+      "query_terms": [
+        {
+          "term": "What maintenance manual pages mention covered part numbers?",
+          "term_type": "free_text"
+        }
+      ],
+      "requested_routes": [
+        "table",
+        "normal_text"
+      ],
+      "retrieval_channels": [
+        "table_exact_search",
+        "table_hybrid_retrieval_bridge",
+        "qdrant_page_profiles",
+        "graph_source_trace"
+      ],
+      "route_contract": {
+        "normal_text_requires_source_trace": true,
+        "table_route_values_are_allowed_as_final_answer_authority": false,
+        "table_route_values_are_allowed_as_ranking_signals": true,
+        "visual_route_output_is_advisory_until_verified": true
+      },
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "opensearch_upload_attempt": false,
+        "opensearch_write_attempt": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "retrieval_only_input": true,
+        "source_truth_mutation_allowed": false
+      },
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    }
+  ],
+  "schema_missing_required_key_record_count": 0,
+  "status": "E2E_QUERY_INPUT_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "e2e_query_input_record_count": 5,
+    "intent_counts": {
+      "covered_part_number": 2,
+      "ipl_figure_item_or_quantity": 1,
+      "manual_page_reference": 1,
+      "table_text": 1
+    },
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "planned_retrieval_query_count": 5,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "retrieval_channel_counts": {
+      "graph_source_trace": 4,
+      "qdrant_page_profiles": 4,
+      "table_exact_search": 5,
+      "table_hybrid_retrieval_bridge": 5
+    },
+    "route_counts": {
+      "image_visual": 1,
+      "normal_text": 4,
+      "table": 5
+    },
+    "routeable_query_count": 5,
+    "source_truth_mutation_allowed_count": 0,
+    "unique_intent_count": 4,
+    "unsafe_query_input_record_count": 0
+  }
+}

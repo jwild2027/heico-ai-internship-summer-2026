@@ -1,0 +1,567 @@
+{
+  "e2e_llm_prompt_contract_status": "E2E_LLM_PROMPT_CONTRACT_READY_FOR_REASONED_DRAFT",
+  "llm_prompt_contract_contract": {
+    "answer_permission": false,
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "cite_every_factual_claim": true,
+    "evidence_box_is_source_truth": true,
+    "graph_is_not_proof_authority": true,
+    "guidance_box_is_not_source_truth": true,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "prompt_builder_does_not_call_llm": true,
+    "prompt_builder_does_not_rerun_embeddings": true,
+    "prompt_builder_does_not_rerun_graph_build": true,
+    "prompt_builder_does_not_rerun_ocr": true,
+    "prompt_builder_does_not_rerun_page_classification": true,
+    "prompt_builder_does_not_rerun_page_summaries": true,
+    "prompt_builder_does_not_rerun_retrieval": true,
+    "prompt_builder_does_not_rerun_table_extraction": true,
+    "prompt_contract_only": true,
+    "qdrant_write_attempt_count": 0,
+    "source_truth_mutation_allowed": false,
+    "summaries_are_not_source_truth": true,
+    "uses_prebuilt_context_packs": true,
+    "uses_prebuilt_crag_plans": true,
+    "uses_prebuilt_self_rag_critiques": true
+  },
+  "prompt_contracts": [
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_ready_evidence_count": 5,
+      "context_pack_id": "dynamic_context_pack_v8_0001",
+      "contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "cite_every_factual_claim": true,
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "opensearch_upload_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "prompt_builder_does_not_call_llm": true,
+        "prompt_builder_does_not_rerun_embeddings": true,
+        "prompt_builder_does_not_rerun_graph_build": true,
+        "prompt_builder_does_not_rerun_ocr": true,
+        "prompt_builder_does_not_rerun_page_classification": true,
+        "prompt_builder_does_not_rerun_page_summaries": true,
+        "prompt_builder_does_not_rerun_retrieval": true,
+        "prompt_builder_does_not_rerun_table_extraction": true,
+        "prompt_contract_only": true,
+        "qdrant_write_attempt_count": 0,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true,
+        "uses_prebuilt_context_packs": true,
+        "uses_prebuilt_crag_plans": true,
+        "uses_prebuilt_self_rag_critiques": true
+      },
+      "crag_no_retry_needed": true,
+      "evidence_ready": true,
+      "graph_or_summary_guidance_count": 4,
+      "graph_summary_proof_violation_count": 0,
+      "guidance_item_count": 7,
+      "guidance_safe": true,
+      "message_count": 3,
+      "messages": [
+        {
+          "content": "You are TRACE-Net's grounded response drafter. You must use SOURCE-TRUTH EVIDENCE for factual claims and citations. Use GUIDANCE ONLY to understand route, graph, vector, summary, and table-route context. Graph/community hints, summaries, vector/page profiles, and route metadata are not proof authority. Do not invent missing part descriptions. If the evidence is insufficient, say the evidence is insufficient instead of guessing. Do not mutate source truth.",
+          "role": "system"
+        },
+        {
+          "content": "TRACE-Net contract: cite every factual claim from SOURCE-TRUTH EVIDENCE. Treat GUIDANCE ONLY as navigation context, not proof. Respect Self-RAG and CRAG statuses. If Self-RAG is not ready or CRAG requires retry/review, do not draft a final answer; return an audit-only limitation.",
+          "role": "developer"
+        },
+        {
+          "content": "TRACE-NET LLM PROMPT CONTRACT v11\n\nUSER QUESTION:\nFind part number 120-36833-001\n\nQUERY INTENT:\ncovered_part_number\n\nSELF-RAG STATUS:\nSELF_RAG_CONTEXT_READY\n\nCRAG STATUS:\nCRAG_NO_RETRY_NEEDED\n\nSOURCE-TRUTH EVIDENCE (ONLY THIS BOX CAN SUPPORT FACTUAL CLAIMS):\n- [1] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-001 source_tunnel=table_exact_search_tunnel tunnel_score=319\n- [2] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-003 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [3] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-005 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [4] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-501 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [5] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-503 source_tunnel=table_exact_search_tunnel tunnel_score=199\n\nGUIDANCE ONLY (not source truth, not proof):\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope.\n- tunnel=route_metadata_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Route metadata constrains table/image/text handling. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000003 authority=graph_guidance_only_not_proof text=Part family community 120-46137\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000003 authority=graph_guidance_only_not_proof text=Part family community 120-36834\n- tunnel=graph_navigation_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Graph navigation metadata can guide traversal to related evidence but is not proof authority. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=qdrant_page_profile_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Prebuilt page/profile vector metadata can guide semantic retrieval without rebuilding embeddings. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=table_route_summary_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Table route summary explains table extraction status and limitations. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n\nANSWER RULES:\n- Cite every factual claim using SOURCE-TRUTH EVIDENCE.\n- Do not cite graph/community hints, summaries, vector/page profiles, route metadata, or table-route summaries as proof; they are guidance only and not proof.\n- Use guidance only to understand context and navigate related evidence.\n- If evidence is insufficient, say the evidence is insufficient instead of guessing.\n- Do not invent missing part descriptions, procedures, quantities, or applicability.\n- Do not mutate or rewrite source truth.\n- Keep answer_permission=false, can_answer_directly=false, and can_prove_claims=false until a later final-answer gate changes them.",
+          "role": "user"
+        }
+      ],
+      "prompt_contract_id": "llm_prompt_contract_v11_0001",
+      "prompt_contract_status": "LLM_PROMPT_CONTRACT_READY",
+      "prompt_policy": {
+        "cite_every_factual_claim": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_section": "GUIDANCE ONLY",
+        "llm_may_answer_from_guidance_only": false,
+        "rules_section": "ANSWER RULES",
+        "source_truth_evidence_section": "SOURCE-TRUTH EVIDENCE",
+        "summaries_are_not_source_truth": true,
+        "unsupported_claim_policy": "say_evidence_is_insufficient_or_keep_audit_draft"
+      },
+      "prompt_text": "TRACE-NET LLM PROMPT CONTRACT v11\n\nUSER QUESTION:\nFind part number 120-36833-001\n\nQUERY INTENT:\ncovered_part_number\n\nSELF-RAG STATUS:\nSELF_RAG_CONTEXT_READY\n\nCRAG STATUS:\nCRAG_NO_RETRY_NEEDED\n\nSOURCE-TRUTH EVIDENCE (ONLY THIS BOX CAN SUPPORT FACTUAL CLAIMS):\n- [1] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-001 source_tunnel=table_exact_search_tunnel tunnel_score=319\n- [2] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-003 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [3] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-005 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [4] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-501 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [5] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-503 source_tunnel=table_exact_search_tunnel tunnel_score=199\n\nGUIDANCE ONLY (not source truth, not proof):\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope.\n- tunnel=route_metadata_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Route metadata constrains table/image/text handling. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000003 authority=graph_guidance_only_not_proof text=Part family community 120-46137\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000003 authority=graph_guidance_only_not_proof text=Part family community 120-36834\n- tunnel=graph_navigation_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Graph navigation metadata can guide traversal to related evidence but is not proof authority. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=qdrant_page_profile_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Prebuilt page/profile vector metadata can guide semantic retrieval without rebuilding embeddings. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=table_route_summary_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Table route summary explains table extraction status and limitations. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n\nANSWER RULES:\n- Cite every factual claim using SOURCE-TRUTH EVIDENCE.\n- Do not cite graph/community hints, summaries, vector/page profiles, route metadata, or table-route summaries as proof; they are guidance only and not proof.\n- Use guidance only to understand context and navigate related evidence.\n- If evidence is insufficient, say the evidence is insufficient instead of guessing.\n- Do not invent missing part descriptions, procedures, quantities, or applicability.\n- Do not mutate or rewrite source truth.\n- Keep answer_permission=false, can_answer_directly=false, and can_prove_claims=false until a later final-answer gate changes them.",
+      "query_intent": "covered_part_number",
+      "ready_for_reasoned_response_draft": true,
+      "schema_version": "v11",
+      "self_rag_ready": true,
+      "source_crag_plan_status": "CRAG_NO_RETRY_NEEDED",
+      "source_self_rag_status": "SELF_RAG_CONTEXT_READY",
+      "source_trace_ready_evidence_count": 5,
+      "source_truth_evidence_count": 5,
+      "source_truth_mutation_allowed": false,
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_ready_evidence_count": 5,
+      "context_pack_id": "dynamic_context_pack_v8_0002",
+      "contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "cite_every_factual_claim": true,
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "opensearch_upload_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "prompt_builder_does_not_call_llm": true,
+        "prompt_builder_does_not_rerun_embeddings": true,
+        "prompt_builder_does_not_rerun_graph_build": true,
+        "prompt_builder_does_not_rerun_ocr": true,
+        "prompt_builder_does_not_rerun_page_classification": true,
+        "prompt_builder_does_not_rerun_page_summaries": true,
+        "prompt_builder_does_not_rerun_retrieval": true,
+        "prompt_builder_does_not_rerun_table_extraction": true,
+        "prompt_contract_only": true,
+        "qdrant_write_attempt_count": 0,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true,
+        "uses_prebuilt_context_packs": true,
+        "uses_prebuilt_crag_plans": true,
+        "uses_prebuilt_self_rag_critiques": true
+      },
+      "crag_no_retry_needed": true,
+      "evidence_ready": true,
+      "graph_or_summary_guidance_count": 4,
+      "graph_summary_proof_violation_count": 0,
+      "guidance_item_count": 7,
+      "guidance_safe": true,
+      "message_count": 3,
+      "messages": [
+        {
+          "content": "You are TRACE-Net's grounded response drafter. You must use SOURCE-TRUTH EVIDENCE for factual claims and citations. Use GUIDANCE ONLY to understand route, graph, vector, summary, and table-route context. Graph/community hints, summaries, vector/page profiles, and route metadata are not proof authority. Do not invent missing part descriptions. If the evidence is insufficient, say the evidence is insufficient instead of guessing. Do not mutate source truth.",
+          "role": "system"
+        },
+        {
+          "content": "TRACE-Net contract: cite every factual claim from SOURCE-TRUTH EVIDENCE. Treat GUIDANCE ONLY as navigation context, not proof. Respect Self-RAG and CRAG statuses. If Self-RAG is not ready or CRAG requires retry/review, do not draft a final answer; return an audit-only limitation.",
+          "role": "developer"
+        },
+        {
+          "content": "TRACE-NET LLM PROMPT CONTRACT v11\n\nUSER QUESTION:\nFind part number 120-36834-509\n\nQUERY INTENT:\ncovered_part_number\n\nSELF-RAG STATUS:\nSELF_RAG_CONTEXT_READY\n\nCRAG STATUS:\nCRAG_NO_RETRY_NEEDED\n\nSOURCE-TRUTH EVIDENCE (ONLY THIS BOX CAN SUPPORT FACTUAL CLAIMS):\n- [1] page=t_p_120_1176_p000003 field=covered_part_number value=120-36834-509 source_tunnel=table_exact_search_tunnel tunnel_score=319\n- [2] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-001 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [3] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-003 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [4] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-005 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [5] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-501 source_tunnel=table_exact_search_tunnel tunnel_score=199\n\nGUIDANCE ONLY (not source truth, not proof):\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope.\n- tunnel=route_metadata_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Route metadata constrains table/image/text handling. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000003 authority=graph_guidance_only_not_proof text=Part family community 120-46137\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000003 authority=graph_guidance_only_not_proof text=Part family community 120-36834\n- tunnel=graph_navigation_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Graph navigation metadata can guide traversal to related evidence but is not proof authority. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=qdrant_page_profile_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Prebuilt page/profile vector metadata can guide semantic retrieval without rebuilding embeddings. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=table_route_summary_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Table route summary explains table extraction status and limitations. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n\nANSWER RULES:\n- Cite every factual claim using SOURCE-TRUTH EVIDENCE.\n- Do not cite graph/community hints, summaries, vector/page profiles, route metadata, or table-route summaries as proof; they are guidance only and not proof.\n- Use guidance only to understand context and navigate related evidence.\n- If evidence is insufficient, say the evidence is insufficient instead of guessing.\n- Do not invent missing part descriptions, procedures, quantities, or applicability.\n- Do not mutate or rewrite source truth.\n- Keep answer_permission=false, can_answer_directly=false, and can_prove_claims=false until a later final-answer gate changes them.",
+          "role": "user"
+        }
+      ],
+      "prompt_contract_id": "llm_prompt_contract_v11_0002",
+      "prompt_contract_status": "LLM_PROMPT_CONTRACT_READY",
+      "prompt_policy": {
+        "cite_every_factual_claim": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_section": "GUIDANCE ONLY",
+        "llm_may_answer_from_guidance_only": false,
+        "rules_section": "ANSWER RULES",
+        "source_truth_evidence_section": "SOURCE-TRUTH EVIDENCE",
+        "summaries_are_not_source_truth": true,
+        "unsupported_claim_policy": "say_evidence_is_insufficient_or_keep_audit_draft"
+      },
+      "prompt_text": "TRACE-NET LLM PROMPT CONTRACT v11\n\nUSER QUESTION:\nFind part number 120-36834-509\n\nQUERY INTENT:\ncovered_part_number\n\nSELF-RAG STATUS:\nSELF_RAG_CONTEXT_READY\n\nCRAG STATUS:\nCRAG_NO_RETRY_NEEDED\n\nSOURCE-TRUTH EVIDENCE (ONLY THIS BOX CAN SUPPORT FACTUAL CLAIMS):\n- [1] page=t_p_120_1176_p000003 field=covered_part_number value=120-36834-509 source_tunnel=table_exact_search_tunnel tunnel_score=319\n- [2] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-001 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [3] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-003 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [4] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-005 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [5] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-501 source_tunnel=table_exact_search_tunnel tunnel_score=199\n\nGUIDANCE ONLY (not source truth, not proof):\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope.\n- tunnel=route_metadata_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Route metadata constrains table/image/text handling. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000003 authority=graph_guidance_only_not_proof text=Part family community 120-46137\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000003 authority=graph_guidance_only_not_proof text=Part family community 120-36834\n- tunnel=graph_navigation_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Graph navigation metadata can guide traversal to related evidence but is not proof authority. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=qdrant_page_profile_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Prebuilt page/profile vector metadata can guide semantic retrieval without rebuilding embeddings. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=table_route_summary_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Table route summary explains table extraction status and limitations. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n\nANSWER RULES:\n- Cite every factual claim using SOURCE-TRUTH EVIDENCE.\n- Do not cite graph/community hints, summaries, vector/page profiles, route metadata, or table-route summaries as proof; they are guidance only and not proof.\n- Use guidance only to understand context and navigate related evidence.\n- If evidence is insufficient, say the evidence is insufficient instead of guessing.\n- Do not invent missing part descriptions, procedures, quantities, or applicability.\n- Do not mutate or rewrite source truth.\n- Keep answer_permission=false, can_answer_directly=false, and can_prove_claims=false until a later final-answer gate changes them.",
+      "query_intent": "covered_part_number",
+      "ready_for_reasoned_response_draft": true,
+      "schema_version": "v11",
+      "self_rag_ready": true,
+      "source_crag_plan_status": "CRAG_NO_RETRY_NEEDED",
+      "source_self_rag_status": "SELF_RAG_CONTEXT_READY",
+      "source_trace_ready_evidence_count": 5,
+      "source_truth_evidence_count": 5,
+      "source_truth_mutation_allowed": false,
+      "user_query": "Find part number 120-36834-509"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_ready_evidence_count": 5,
+      "context_pack_id": "dynamic_context_pack_v8_0003",
+      "contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "cite_every_factual_claim": true,
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "opensearch_upload_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "prompt_builder_does_not_call_llm": true,
+        "prompt_builder_does_not_rerun_embeddings": true,
+        "prompt_builder_does_not_rerun_graph_build": true,
+        "prompt_builder_does_not_rerun_ocr": true,
+        "prompt_builder_does_not_rerun_page_classification": true,
+        "prompt_builder_does_not_rerun_page_summaries": true,
+        "prompt_builder_does_not_rerun_retrieval": true,
+        "prompt_builder_does_not_rerun_table_extraction": true,
+        "prompt_contract_only": true,
+        "qdrant_write_attempt_count": 0,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true,
+        "uses_prebuilt_context_packs": true,
+        "uses_prebuilt_crag_plans": true,
+        "uses_prebuilt_self_rag_critiques": true
+      },
+      "crag_no_retry_needed": true,
+      "evidence_ready": true,
+      "graph_or_summary_guidance_count": 7,
+      "graph_summary_proof_violation_count": 0,
+      "guidance_item_count": 10,
+      "guidance_safe": true,
+      "message_count": 3,
+      "messages": [
+        {
+          "content": "You are TRACE-Net's grounded response drafter. You must use SOURCE-TRUTH EVIDENCE for factual claims and citations. Use GUIDANCE ONLY to understand route, graph, vector, summary, and table-route context. Graph/community hints, summaries, vector/page profiles, and route metadata are not proof authority. Do not invent missing part descriptions. If the evidence is insufficient, say the evidence is insufficient instead of guessing. Do not mutate source truth.",
+          "role": "system"
+        },
+        {
+          "content": "TRACE-Net contract: cite every factual claim from SOURCE-TRUTH EVIDENCE. Treat GUIDANCE ONLY as navigation context, not proof. Respect Self-RAG and CRAG statuses. If Self-RAG is not ready or CRAG requires retry/review, do not draft a final answer; return an audit-only limitation.",
+          "role": "developer"
+        },
+        {
+          "content": "TRACE-NET LLM PROMPT CONTRACT v11\n\nUSER QUESTION:\nWhere is manual reference 25-21-00 used?\n\nQUERY INTENT:\nmanual_page_reference\n\nSELF-RAG STATUS:\nSELF_RAG_CONTEXT_READY\n\nCRAG STATUS:\nCRAG_NO_RETRY_NEEDED\n\nSOURCE-TRUTH EVIDENCE (ONLY THIS BOX CAN SUPPORT FACTUAL CLAIMS):\n- [1] page=t_p_120_1176_p000005 field=manual_page_reference value=25-21-00 source_tunnel=table_exact_search_tunnel tunnel_score=319\n- [2] page=t_p_120_1176_p000027 field=ipl_part_number value=25-21-00 source_tunnel=table_exact_search_tunnel tunnel_score=299\n- [3] page=t_p_120_1176_p000028 field=ipl_part_number value=25-21-00 source_tunnel=table_exact_search_tunnel tunnel_score=299\n- [4] page=t_p_120_1176_p000029 field=ipl_part_number value=25-21-00 source_tunnel=table_exact_search_tunnel tunnel_score=299\n- [5] page=t_p_120_1176_p000030 field=ipl_part_number value=25-21-00 source_tunnel=table_exact_search_tunnel tunnel_score=299\n\nGUIDANCE ONLY (not source truth, not proof):\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000005 authority=guidance_only_not_source_truth text=This page appears to be a parts list and index from a maintenance manual, listing various part numbers and revision dates.\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000027 authority=guidance_only_not_source_truth text=This page appears to be a parts list from the maintenance manual, listing numerous part numbers with associated quantities and airline part numbers.\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000028 authority=guidance_only_not_source_truth text=This page appears to be a parts list from an aircraft maintenance manual, detailing various part numbers and their associated information.\n- tunnel=route_metadata_tunnel page=t_p_120_1176_p000005 authority=guidance_only_not_source_truth text=Route metadata constrains table/image/text handling. Applies to t_p_120_1176_p000005, t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030 for query intent manual_page_reference.\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000005 authority=graph_guidance_only_not_proof text=Table evidence community (1 page(s))\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000027 authority=graph_guidance_only_not_proof text=Table evidence community (1 page(s))\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000028 authority=graph_guidance_only_not_proof text=Table evidence community (1 page(s))\n- tunnel=graph_navigation_tunnel page=t_p_120_1176_p000005 authority=guidance_only_not_source_truth text=Graph navigation metadata can guide traversal to related evidence but is not proof authority. Applies to t_p_120_1176_p000005, t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030 for query intent manual_page_reference.\n- tunnel=qdrant_page_profile_tunnel page=t_p_120_1176_p000005 authority=guidance_only_not_source_truth text=Prebuilt page/profile vector metadata can guide semantic retrieval without rebuilding embeddings. Applies to t_p_120_1176_p000005, t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030 for query intent manual_page_reference.\n- tunnel=table_route_summary_tunnel page=t_p_120_1176_p000005 authority=guidance_only_not_source_truth text=Table route summary explains table extraction status and limitations. Applies to t_p_120_1176_p000005, t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030 for query intent manual_page_reference.\n\nANSWER RULES:\n- Cite every factual claim using SOURCE-TRUTH EVIDENCE.\n- Do not cite graph/community hints, summaries, vector/page profiles, route metadata, or table-route summaries as proof; they are guidance only and not proof.\n- Use guidance only to understand context and navigate related evidence.\n- If evidence is insufficient, say the evidence is insufficient instead of guessing.\n- Do not invent missing part descriptions, procedures, quantities, or applicability.\n- Do not mutate or rewrite source truth.\n- Keep answer_permission=false, can_answer_directly=false, and can_prove_claims=false until a later final-answer gate changes them.",
+          "role": "user"
+        }
+      ],
+      "prompt_contract_id": "llm_prompt_contract_v11_0003",
+      "prompt_contract_status": "LLM_PROMPT_CONTRACT_READY",
+      "prompt_policy": {
+        "cite_every_factual_claim": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_section": "GUIDANCE ONLY",
+        "llm_may_answer_from_guidance_only": false,
+        "rules_section": "ANSWER RULES",
+        "source_truth_evidence_section": "SOURCE-TRUTH EVIDENCE",
+        "summaries_are_not_source_truth": true,
+        "unsupported_claim_policy": "say_evidence_is_insufficient_or_keep_audit_draft"
+      },
+      "prompt_text": "TRACE-NET LLM PROMPT CONTRACT v11\n\nUSER QUESTION:\nWhere is manual reference 25-21-00 used?\n\nQUERY INTENT:\nmanual_page_reference\n\nSELF-RAG STATUS:\nSELF_RAG_CONTEXT_READY\n\nCRAG STATUS:\nCRAG_NO_RETRY_NEEDED\n\nSOURCE-TRUTH EVIDENCE (ONLY THIS BOX CAN SUPPORT FACTUAL CLAIMS):\n- [1] page=t_p_120_1176_p000005 field=manual_page_reference value=25-21-00 source_tunnel=table_exact_search_tunnel tunnel_score=319\n- [2] page=t_p_120_1176_p000027 field=ipl_part_number value=25-21-00 source_tunnel=table_exact_search_tunnel tunnel_score=299\n- [3] page=t_p_120_1176_p000028 field=ipl_part_number value=25-21-00 source_tunnel=table_exact_search_tunnel tunnel_score=299\n- [4] page=t_p_120_1176_p000029 field=ipl_part_number value=25-21-00 source_tunnel=table_exact_search_tunnel tunnel_score=299\n- [5] page=t_p_120_1176_p000030 field=ipl_part_number value=25-21-00 source_tunnel=table_exact_search_tunnel tunnel_score=299\n\nGUIDANCE ONLY (not source truth, not proof):\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000005 authority=guidance_only_not_source_truth text=This page appears to be a parts list and index from a maintenance manual, listing various part numbers and revision dates.\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000027 authority=guidance_only_not_source_truth text=This page appears to be a parts list from the maintenance manual, listing numerous part numbers with associated quantities and airline part numbers.\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000028 authority=guidance_only_not_source_truth text=This page appears to be a parts list from an aircraft maintenance manual, detailing various part numbers and their associated information.\n- tunnel=route_metadata_tunnel page=t_p_120_1176_p000005 authority=guidance_only_not_source_truth text=Route metadata constrains table/image/text handling. Applies to t_p_120_1176_p000005, t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030 for query intent manual_page_reference.\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000005 authority=graph_guidance_only_not_proof text=Table evidence community (1 page(s))\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000027 authority=graph_guidance_only_not_proof text=Table evidence community (1 page(s))\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000028 authority=graph_guidance_only_not_proof text=Table evidence community (1 page(s))\n- tunnel=graph_navigation_tunnel page=t_p_120_1176_p000005 authority=guidance_only_not_source_truth text=Graph navigation metadata can guide traversal to related evidence but is not proof authority. Applies to t_p_120_1176_p000005, t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030 for query intent manual_page_reference.\n- tunnel=qdrant_page_profile_tunnel page=t_p_120_1176_p000005 authority=guidance_only_not_source_truth text=Prebuilt page/profile vector metadata can guide semantic retrieval without rebuilding embeddings. Applies to t_p_120_1176_p000005, t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030 for query intent manual_page_reference.\n- tunnel=table_route_summary_tunnel page=t_p_120_1176_p000005 authority=guidance_only_not_source_truth text=Table route summary explains table extraction status and limitations. Applies to t_p_120_1176_p000005, t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030 for query intent manual_page_reference.\n\nANSWER RULES:\n- Cite every factual claim using SOURCE-TRUTH EVIDENCE.\n- Do not cite graph/community hints, summaries, vector/page profiles, route metadata, or table-route summaries as proof; they are guidance only and not proof.\n- Use guidance only to understand context and navigate related evidence.\n- If evidence is insufficient, say the evidence is insufficient instead of guessing.\n- Do not invent missing part descriptions, procedures, quantities, or applicability.\n- Do not mutate or rewrite source truth.\n- Keep answer_permission=false, can_answer_directly=false, and can_prove_claims=false until a later final-answer gate changes them.",
+      "query_intent": "manual_page_reference",
+      "ready_for_reasoned_response_draft": true,
+      "schema_version": "v11",
+      "self_rag_ready": true,
+      "source_crag_plan_status": "CRAG_NO_RETRY_NEEDED",
+      "source_self_rag_status": "SELF_RAG_CONTEXT_READY",
+      "source_trace_ready_evidence_count": 5,
+      "source_truth_evidence_count": 5,
+      "source_truth_mutation_allowed": false,
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_ready_evidence_count": 5,
+      "context_pack_id": "dynamic_context_pack_v8_0004",
+      "contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "cite_every_factual_claim": true,
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "opensearch_upload_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "prompt_builder_does_not_call_llm": true,
+        "prompt_builder_does_not_rerun_embeddings": true,
+        "prompt_builder_does_not_rerun_graph_build": true,
+        "prompt_builder_does_not_rerun_ocr": true,
+        "prompt_builder_does_not_rerun_page_classification": true,
+        "prompt_builder_does_not_rerun_page_summaries": true,
+        "prompt_builder_does_not_rerun_retrieval": true,
+        "prompt_builder_does_not_rerun_table_extraction": true,
+        "prompt_contract_only": true,
+        "qdrant_write_attempt_count": 0,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true,
+        "uses_prebuilt_context_packs": true,
+        "uses_prebuilt_crag_plans": true,
+        "uses_prebuilt_self_rag_critiques": true
+      },
+      "crag_no_retry_needed": true,
+      "evidence_ready": true,
+      "graph_or_summary_guidance_count": 8,
+      "graph_summary_proof_violation_count": 0,
+      "guidance_item_count": 11,
+      "guidance_safe": true,
+      "message_count": 3,
+      "messages": [
+        {
+          "content": "You are TRACE-Net's grounded response drafter. You must use SOURCE-TRUTH EVIDENCE for factual claims and citations. Use GUIDANCE ONLY to understand route, graph, vector, summary, and table-route context. Graph/community hints, summaries, vector/page profiles, and route metadata are not proof authority. Do not invent missing part descriptions. If the evidence is insufficient, say the evidence is insufficient instead of guessing. Do not mutate source truth.",
+          "role": "system"
+        },
+        {
+          "content": "TRACE-Net contract: cite every factual claim from SOURCE-TRUTH EVIDENCE. Treat GUIDANCE ONLY as navigation context, not proof. Respect Self-RAG and CRAG statuses. If Self-RAG is not ready or CRAG requires retry/review, do not draft a final answer; return an audit-only limitation.",
+          "role": "developer"
+        },
+        {
+          "content": "TRACE-NET LLM PROMPT CONTRACT v11\n\nUSER QUESTION:\nSearch table text MAINTENANCE MANUAL WITH\n\nQUERY INTENT:\ntable_text\n\nSELF-RAG STATUS:\nSELF_RAG_CONTEXT_READY\n\nCRAG STATUS:\nCRAG_NO_RETRY_NEEDED\n\nSOURCE-TRUTH EVIDENCE (ONLY THIS BOX CAN SUPPORT FACTUAL CLAIMS):\n- [1] page=t_p_120_1176_p000027 field=ipl_text value=MAINTENANCE MANUAL WITH source_tunnel=table_exact_search_tunnel tunnel_score=319\n- [2] page=t_p_120_1176_p000028 field=ipl_text value=MAINTENANCE MANUAL WITH source_tunnel=table_exact_search_tunnel tunnel_score=319\n- [3] page=t_p_120_1176_p000029 field=ipl_text value=MAINTENANCE MANUAL WITH source_tunnel=table_exact_search_tunnel tunnel_score=319\n- [4] page=t_p_120_1176_p000030 field=ipl_text value=MAINTENANCE MANUAL WITH source_tunnel=table_exact_search_tunnel tunnel_score=319\n- [5] page=t_p_120_1176_p000031 field=ipl_text value=MAINTENANCE MANUAL WITH source_tunnel=table_exact_search_tunnel tunnel_score=319\n\nGUIDANCE ONLY (not source truth, not proof):\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000027 authority=guidance_only_not_source_truth text=This page appears to be a parts list from the maintenance manual, listing numerous part numbers with associated quantities and airline part numbers.\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000028 authority=guidance_only_not_source_truth text=This page appears to be a parts list from an aircraft maintenance manual, detailing various part numbers and their associated information.\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000029 authority=guidance_only_not_source_truth text=This page appears to be a parts list from the maintenance manual, listing various part numbers and quantities.\n- tunnel=route_metadata_tunnel page=t_p_120_1176_p000027 authority=guidance_only_not_source_truth text=Route metadata constrains table/image/text handling. Applies to t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030, t_p_120_1176_p000031 for query intent table_text.\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000027 authority=graph_guidance_only_not_proof text=Table evidence community (1 page(s))\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000028 authority=graph_guidance_only_not_proof text=Table evidence community (1 page(s))\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000029 authority=graph_guidance_only_not_proof text=Table evidence community (1 page(s))\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000029 authority=graph_guidance_only_not_proof text=Part family community 120-26948\n- tunnel=graph_navigation_tunnel page=t_p_120_1176_p000027 authority=guidance_only_not_source_truth text=Graph navigation metadata can guide traversal to related evidence but is not proof authority. Applies to t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030, t_p_120_1176_p000031 for query intent table_text.\n- tunnel=qdrant_page_profile_tunnel page=t_p_120_1176_p000027 authority=guidance_only_not_source_truth text=Prebuilt page/profile vector metadata can guide semantic retrieval without rebuilding embeddings. Applies to t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030, t_p_120_1176_p000031 for query intent table_text.\n- tunnel=table_route_summary_tunnel page=t_p_120_1176_p000027 authority=guidance_only_not_source_truth text=Table route summary explains table extraction status and limitations. Applies to t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030, t_p_120_1176_p000031 for query intent table_text.\n\nANSWER RULES:\n- Cite every factual claim using SOURCE-TRUTH EVIDENCE.\n- Do not cite graph/community hints, summaries, vector/page profiles, route metadata, or table-route summaries as proof; they are guidance only and not proof.\n- Use guidance only to understand context and navigate related evidence.\n- If evidence is insufficient, say the evidence is insufficient instead of guessing.\n- Do not invent missing part descriptions, procedures, quantities, or applicability.\n- Do not mutate or rewrite source truth.\n- Keep answer_permission=false, can_answer_directly=false, and can_prove_claims=false until a later final-answer gate changes them.",
+          "role": "user"
+        }
+      ],
+      "prompt_contract_id": "llm_prompt_contract_v11_0004",
+      "prompt_contract_status": "LLM_PROMPT_CONTRACT_READY",
+      "prompt_policy": {
+        "cite_every_factual_claim": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_section": "GUIDANCE ONLY",
+        "llm_may_answer_from_guidance_only": false,
+        "rules_section": "ANSWER RULES",
+        "source_truth_evidence_section": "SOURCE-TRUTH EVIDENCE",
+        "summaries_are_not_source_truth": true,
+        "unsupported_claim_policy": "say_evidence_is_insufficient_or_keep_audit_draft"
+      },
+      "prompt_text": "TRACE-NET LLM PROMPT CONTRACT v11\n\nUSER QUESTION:\nSearch table text MAINTENANCE MANUAL WITH\n\nQUERY INTENT:\ntable_text\n\nSELF-RAG STATUS:\nSELF_RAG_CONTEXT_READY\n\nCRAG STATUS:\nCRAG_NO_RETRY_NEEDED\n\nSOURCE-TRUTH EVIDENCE (ONLY THIS BOX CAN SUPPORT FACTUAL CLAIMS):\n- [1] page=t_p_120_1176_p000027 field=ipl_text value=MAINTENANCE MANUAL WITH source_tunnel=table_exact_search_tunnel tunnel_score=319\n- [2] page=t_p_120_1176_p000028 field=ipl_text value=MAINTENANCE MANUAL WITH source_tunnel=table_exact_search_tunnel tunnel_score=319\n- [3] page=t_p_120_1176_p000029 field=ipl_text value=MAINTENANCE MANUAL WITH source_tunnel=table_exact_search_tunnel tunnel_score=319\n- [4] page=t_p_120_1176_p000030 field=ipl_text value=MAINTENANCE MANUAL WITH source_tunnel=table_exact_search_tunnel tunnel_score=319\n- [5] page=t_p_120_1176_p000031 field=ipl_text value=MAINTENANCE MANUAL WITH source_tunnel=table_exact_search_tunnel tunnel_score=319\n\nGUIDANCE ONLY (not source truth, not proof):\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000027 authority=guidance_only_not_source_truth text=This page appears to be a parts list from the maintenance manual, listing numerous part numbers with associated quantities and airline part numbers.\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000028 authority=guidance_only_not_source_truth text=This page appears to be a parts list from an aircraft maintenance manual, detailing various part numbers and their associated information.\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000029 authority=guidance_only_not_source_truth text=This page appears to be a parts list from the maintenance manual, listing various part numbers and quantities.\n- tunnel=route_metadata_tunnel page=t_p_120_1176_p000027 authority=guidance_only_not_source_truth text=Route metadata constrains table/image/text handling. Applies to t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030, t_p_120_1176_p000031 for query intent table_text.\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000027 authority=graph_guidance_only_not_proof text=Table evidence community (1 page(s))\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000028 authority=graph_guidance_only_not_proof text=Table evidence community (1 page(s))\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000029 authority=graph_guidance_only_not_proof text=Table evidence community (1 page(s))\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000029 authority=graph_guidance_only_not_proof text=Part family community 120-26948\n- tunnel=graph_navigation_tunnel page=t_p_120_1176_p000027 authority=guidance_only_not_source_truth text=Graph navigation metadata can guide traversal to related evidence but is not proof authority. Applies to t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030, t_p_120_1176_p000031 for query intent table_text.\n- tunnel=qdrant_page_profile_tunnel page=t_p_120_1176_p000027 authority=guidance_only_not_source_truth text=Prebuilt page/profile vector metadata can guide semantic retrieval without rebuilding embeddings. Applies to t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030, t_p_120_1176_p000031 for query intent table_text.\n- tunnel=table_route_summary_tunnel page=t_p_120_1176_p000027 authority=guidance_only_not_source_truth text=Table route summary explains table extraction status and limitations. Applies to t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030, t_p_120_1176_p000031 for query intent table_text.\n\nANSWER RULES:\n- Cite every factual claim using SOURCE-TRUTH EVIDENCE.\n- Do not cite graph/community hints, summaries, vector/page profiles, route metadata, or table-route summaries as proof; they are guidance only and not proof.\n- Use guidance only to understand context and navigate related evidence.\n- If evidence is insufficient, say the evidence is insufficient instead of guessing.\n- Do not invent missing part descriptions, procedures, quantities, or applicability.\n- Do not mutate or rewrite source truth.\n- Keep answer_permission=false, can_answer_directly=false, and can_prove_claims=false until a later final-answer gate changes them.",
+      "query_intent": "table_text",
+      "ready_for_reasoned_response_draft": true,
+      "schema_version": "v11",
+      "self_rag_ready": true,
+      "source_crag_plan_status": "CRAG_NO_RETRY_NEEDED",
+      "source_self_rag_status": "SELF_RAG_CONTEXT_READY",
+      "source_trace_ready_evidence_count": 5,
+      "source_truth_evidence_count": 5,
+      "source_truth_mutation_allowed": false,
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_ready_evidence_count": 5,
+      "context_pack_id": "dynamic_context_pack_v8_0005",
+      "contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "cite_every_factual_claim": true,
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "opensearch_upload_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "prompt_builder_does_not_call_llm": true,
+        "prompt_builder_does_not_rerun_embeddings": true,
+        "prompt_builder_does_not_rerun_graph_build": true,
+        "prompt_builder_does_not_rerun_ocr": true,
+        "prompt_builder_does_not_rerun_page_classification": true,
+        "prompt_builder_does_not_rerun_page_summaries": true,
+        "prompt_builder_does_not_rerun_retrieval": true,
+        "prompt_builder_does_not_rerun_table_extraction": true,
+        "prompt_contract_only": true,
+        "qdrant_write_attempt_count": 0,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true,
+        "uses_prebuilt_context_packs": true,
+        "uses_prebuilt_crag_plans": true,
+        "uses_prebuilt_self_rag_critiques": true
+      },
+      "crag_no_retry_needed": true,
+      "evidence_ready": true,
+      "graph_or_summary_guidance_count": 4,
+      "graph_summary_proof_violation_count": 0,
+      "guidance_item_count": 7,
+      "guidance_safe": true,
+      "message_count": 3,
+      "messages": [
+        {
+          "content": "You are TRACE-Net's grounded response drafter. You must use SOURCE-TRUTH EVIDENCE for factual claims and citations. Use GUIDANCE ONLY to understand route, graph, vector, summary, and table-route context. Graph/community hints, summaries, vector/page profiles, and route metadata are not proof authority. Do not invent missing part descriptions. If the evidence is insufficient, say the evidence is insufficient instead of guessing. Do not mutate source truth.",
+          "role": "system"
+        },
+        {
+          "content": "TRACE-Net contract: cite every factual claim from SOURCE-TRUTH EVIDENCE. Treat GUIDANCE ONLY as navigation context, not proof. Respect Self-RAG and CRAG statuses. If Self-RAG is not ready or CRAG requires retry/review, do not draft a final answer; return an audit-only limitation.",
+          "role": "developer"
+        },
+        {
+          "content": "TRACE-NET LLM PROMPT CONTRACT v11\n\nUSER QUESTION:\nWhat maintenance manual pages mention covered part numbers?\n\nQUERY INTENT:\ncovered_part_number\n\nSELF-RAG STATUS:\nSELF_RAG_CONTEXT_READY\n\nCRAG STATUS:\nCRAG_NO_RETRY_NEEDED\n\nSOURCE-TRUTH EVIDENCE (ONLY THIS BOX CAN SUPPORT FACTUAL CLAIMS):\n- [1] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-001 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [2] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-003 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [3] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-005 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [4] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-501 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [5] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-503 source_tunnel=table_exact_search_tunnel tunnel_score=199\n\nGUIDANCE ONLY (not source truth, not proof):\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope.\n- tunnel=route_metadata_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Route metadata constrains table/image/text handling. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000003 authority=graph_guidance_only_not_proof text=Part family community 120-46137\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000003 authority=graph_guidance_only_not_proof text=Part family community 120-36834\n- tunnel=graph_navigation_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Graph navigation metadata can guide traversal to related evidence but is not proof authority. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=qdrant_page_profile_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Prebuilt page/profile vector metadata can guide semantic retrieval without rebuilding embeddings. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=table_route_summary_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Table route summary explains table extraction status and limitations. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n\nANSWER RULES:\n- Cite every factual claim using SOURCE-TRUTH EVIDENCE.\n- Do not cite graph/community hints, summaries, vector/page profiles, route metadata, or table-route summaries as proof; they are guidance only and not proof.\n- Use guidance only to understand context and navigate related evidence.\n- If evidence is insufficient, say the evidence is insufficient instead of guessing.\n- Do not invent missing part descriptions, procedures, quantities, or applicability.\n- Do not mutate or rewrite source truth.\n- Keep answer_permission=false, can_answer_directly=false, and can_prove_claims=false until a later final-answer gate changes them.",
+          "role": "user"
+        }
+      ],
+      "prompt_contract_id": "llm_prompt_contract_v11_0005",
+      "prompt_contract_status": "LLM_PROMPT_CONTRACT_READY",
+      "prompt_policy": {
+        "cite_every_factual_claim": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_section": "GUIDANCE ONLY",
+        "llm_may_answer_from_guidance_only": false,
+        "rules_section": "ANSWER RULES",
+        "source_truth_evidence_section": "SOURCE-TRUTH EVIDENCE",
+        "summaries_are_not_source_truth": true,
+        "unsupported_claim_policy": "say_evidence_is_insufficient_or_keep_audit_draft"
+      },
+      "prompt_text": "TRACE-NET LLM PROMPT CONTRACT v11\n\nUSER QUESTION:\nWhat maintenance manual pages mention covered part numbers?\n\nQUERY INTENT:\ncovered_part_number\n\nSELF-RAG STATUS:\nSELF_RAG_CONTEXT_READY\n\nCRAG STATUS:\nCRAG_NO_RETRY_NEEDED\n\nSOURCE-TRUTH EVIDENCE (ONLY THIS BOX CAN SUPPORT FACTUAL CLAIMS):\n- [1] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-001 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [2] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-003 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [3] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-005 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [4] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-501 source_tunnel=table_exact_search_tunnel tunnel_score=199\n- [5] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-503 source_tunnel=table_exact_search_tunnel tunnel_score=199\n\nGUIDANCE ONLY (not source truth, not proof):\n- tunnel=page_summary_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope.\n- tunnel=route_metadata_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Route metadata constrains table/image/text handling. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000003 authority=graph_guidance_only_not_proof text=Part family community 120-46137\n- tunnel=graph_community_tunnel page=t_p_120_1176_p000003 authority=graph_guidance_only_not_proof text=Part family community 120-36834\n- tunnel=graph_navigation_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Graph navigation metadata can guide traversal to related evidence but is not proof authority. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=qdrant_page_profile_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Prebuilt page/profile vector metadata can guide semantic retrieval without rebuilding embeddings. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n- tunnel=table_route_summary_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=Table route summary explains table extraction status and limitations. Applies to t_p_120_1176_p000003 for query intent covered_part_number.\n\nANSWER RULES:\n- Cite every factual claim using SOURCE-TRUTH EVIDENCE.\n- Do not cite graph/community hints, summaries, vector/page profiles, route metadata, or table-route summaries as proof; they are guidance only and not proof.\n- Use guidance only to understand context and navigate related evidence.\n- If evidence is insufficient, say the evidence is insufficient instead of guessing.\n- Do not invent missing part descriptions, procedures, quantities, or applicability.\n- Do not mutate or rewrite source truth.\n- Keep answer_permission=false, can_answer_directly=false, and can_prove_claims=false until a later final-answer gate changes them.",
+      "query_intent": "covered_part_number",
+      "ready_for_reasoned_response_draft": true,
+      "schema_version": "v11",
+      "self_rag_ready": true,
+      "source_crag_plan_status": "CRAG_NO_RETRY_NEEDED",
+      "source_self_rag_status": "SELF_RAG_CONTEXT_READY",
+      "source_trace_ready_evidence_count": 5,
+      "source_truth_evidence_count": 5,
+      "source_truth_mutation_allowed": false,
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    }
+  ],
+  "quality_checks": [
+    {
+      "expected": "== PASS",
+      "name": "quality_status",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "context_pack_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "prompt_contract_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "ready_prompt_contract_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 15",
+      "name": "total_prompt_message_count",
+      "observed": 15,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "contracts_with_source_truth_evidence_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "contracts_with_guidance_box_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "contracts_with_self_rag_ready_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "contracts_with_crag_no_retry_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "contracts_with_graph_or_summary_guidance_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "graph_summary_proof_violation_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "contract_can_answer_directly",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "contract_can_prove_claims",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "postgres_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "qdrant_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "opensearch_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "require_no_answer_permission",
+      "observed": 0,
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS",
+  "schema_version": "v11",
+  "source_paths": {
+    "crag_retrieval_corrector": "local_data/organization/trace_net/e2e_crag_retrieval_corrector/trace_net_e2e_crag_retrieval_corrector_v10.json",
+    "dynamic_context_pack": "local_data/organization/trace_net/e2e_dynamic_context_pack/trace_net_e2e_dynamic_context_pack_v8.json",
+    "self_rag_context_critic": "local_data/organization/trace_net/e2e_self_rag_context_critic/trace_net_e2e_self_rag_context_critic_v9.json"
+  },
+  "status": "E2E_LLM_PROMPT_CONTRACT_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "context_pack_count": 5,
+    "contracts_with_crag_no_retry_count": 5,
+    "contracts_with_graph_or_summary_guidance_count": 5,
+    "contracts_with_guidance_box_count": 5,
+    "contracts_with_self_rag_ready_count": 5,
+    "contracts_with_source_truth_evidence_count": 5,
+    "graph_summary_proof_violation_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "prompt_contract_count": 5,
+    "qdrant_write_attempt_count": 0,
+    "quality_status": "PASS",
+    "ready_prompt_contract_count": 5,
+    "source_truth_mutation_allowed_count": 0,
+    "total_prompt_message_count": 15
+  }
+}

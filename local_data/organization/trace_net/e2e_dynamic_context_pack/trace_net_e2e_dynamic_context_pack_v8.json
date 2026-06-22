@@ -1,0 +1,2016 @@
+{
+  "artifact_states": [
+    {
+      "name": "dynamic_tunnel_ranker",
+      "present": true,
+      "purpose": "dynamic_ranker_source",
+      "quality_status": "PASS",
+      "record_count": 5,
+      "status": "E2E_DYNAMIC_TUNNEL_RANKER_BUILT"
+    },
+    {
+      "name": "dynamic_query_tunnels",
+      "present": true,
+      "purpose": "tunnel_plan_source",
+      "quality_status": "PASS",
+      "record_count": 5,
+      "status": "E2E_DYNAMIC_QUERY_TUNNELS_BUILT"
+    },
+    {
+      "name": "table_exact_search_adapter",
+      "present": true,
+      "purpose": "source_truth_evidence",
+      "quality_status": "PASS",
+      "record_count": 1497,
+      "status": "TABLE_EXACT_SEARCH_ADAPTER_BUILT"
+    },
+    {
+      "name": "table_hybrid_retrieval_bridge",
+      "present": true,
+      "purpose": "ranking_guidance",
+      "quality_status": "PASS",
+      "record_count": 1497,
+      "status": "TABLE_HYBRID_RETRIEVAL_BRIDGE_BUILT"
+    },
+    {
+      "name": "page_retrieval_profiles",
+      "present": true,
+      "purpose": "semantic_profile_guidance",
+      "quality_status": "UNKNOWN",
+      "record_count": 509,
+      "status": "UNKNOWN"
+    },
+    {
+      "name": "page_context_v2",
+      "present": true,
+      "purpose": "page_summary_guidance",
+      "quality_status": "PASS",
+      "record_count": 509,
+      "status": "PAGE_CONTEXT_V2_OPTIONAL_TUNNEL_ACTIVATED"
+    },
+    {
+      "name": "leiden_communities",
+      "present": true,
+      "purpose": "graph_community_guidance",
+      "quality_status": "PASS",
+      "record_count": 229,
+      "status": "LEIDEN_GRAPH_COMMUNITIES_BUILT"
+    },
+    {
+      "name": "community_navigation_metadata_bridge",
+      "present": true,
+      "purpose": "graph_navigation_guidance",
+      "quality_status": "PASS",
+      "record_count": 0,
+      "status": "COMMUNITY_NAVIGATION_METADATA_BRIDGE_OPTIONAL_TUNNEL_ACTIVATED"
+    },
+    {
+      "name": "route_dispatch_manifest",
+      "present": true,
+      "purpose": "route_metadata_guidance",
+      "quality_status": "PASS",
+      "record_count": 0,
+      "status": "TRACE_NET_ROUTE_DISPATCH_MANIFEST_BUILT"
+    },
+    {
+      "name": "table_route_retrieval_handoff_summary",
+      "present": true,
+      "purpose": "table_route_guidance",
+      "quality_status": "PASS",
+      "record_count": 0,
+      "status": "TABLE_ROUTE_RETRIEVAL_READINESS_REPORT_BUILT"
+    }
+  ],
+  "context_engineering_assessment": "Dynamic context pack v8 separates source-truth evidence, guidance-only graph/vector/summary/route signals, and answer rules so a downstream LLM can reason without treating guidance as proof.",
+  "context_packs": [
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "context_pack_contract": {
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "llm_may_answer_from_guidance_only": false,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true
+      },
+      "context_pack_id": "dynamic_context_pack_v8_0001",
+      "context_pack_status": "DYNAMIC_CONTEXT_PACK_READY",
+      "evidence_box": {
+        "authority": "source_truth_evidence_only",
+        "citation_required": true,
+        "items": [
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_001",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-001",
+            "page_id": "t_p_120_1176_p000003",
+            "rank": 1,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 319,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 240,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_002",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-003",
+            "page_id": "t_p_120_1176_p000003",
+            "rank": 2,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 199,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 120,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_003",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-005",
+            "page_id": "t_p_120_1176_p000003",
+            "rank": 3,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 199,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 120,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_004",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-501",
+            "page_id": "t_p_120_1176_p000003",
+            "rank": 4,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 199,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 120,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_005",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-503",
+            "page_id": "t_p_120_1176_p000003",
+            "rank": 5,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 199,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 120,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          }
+        ]
+      },
+      "guidance_box": {
+        "authority": "guidance_only_not_source_truth",
+        "contains_graph_or_summary_guidance": true,
+        "items": [
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "page_summary_t_p_120_1176_p000003",
+            "guidance_text": "This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope.",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "page_summary_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "route_metadata_tunnel_fallback",
+            "guidance_text": "Route metadata constrains table/image/text handling. Applies to t_p_120_1176_p000003 for query intent covered_part_number.",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "route_metadata_tunnel"
+          },
+          {
+            "authority": "graph_guidance_only_not_proof",
+            "community_id": "tracenet_community_00011",
+            "guidance_id": "graph_community_t_p_120_1176_p000003_1",
+            "guidance_text": "Part family community 120-46137",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "graph_community_tunnel"
+          },
+          {
+            "authority": "graph_guidance_only_not_proof",
+            "community_id": "tracenet_community_00014",
+            "guidance_id": "graph_community_t_p_120_1176_p000003_2",
+            "guidance_text": "Part family community 120-36834",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "graph_community_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "graph_navigation_tunnel_fallback",
+            "guidance_text": "Graph navigation metadata can guide traversal to related evidence but is not proof authority. Applies to t_p_120_1176_p000003 for query intent covered_part_number.",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "graph_navigation_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "qdrant_page_profile_tunnel_fallback",
+            "guidance_text": "Prebuilt page/profile vector metadata can guide semantic retrieval without rebuilding embeddings. Applies to t_p_120_1176_p000003 for query intent covered_part_number.",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "qdrant_page_profile_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "table_route_summary_tunnel_fallback",
+            "guidance_text": "Table route summary explains table extraction status and limitations. Applies to t_p_120_1176_p000003 for query intent covered_part_number.",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "table_route_summary_tunnel"
+          }
+        ]
+      },
+      "query_intent": "covered_part_number",
+      "query_terms": [
+        "120-36833-001"
+      ],
+      "rules_box": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "cite_every_factual_claim": true,
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "llm_instruction_summary": "Use the evidence box for factual claims and citations. Use the guidance box only to understand route, graph, summary, and semantic context. Do not treat graph or summary guidance as proof. Do not invent missing part descriptions.",
+        "reruns_embeddings": false,
+        "reruns_graph_build": false,
+        "reruns_ocr": false,
+        "reruns_page_classification": false,
+        "reruns_page_summaries": false,
+        "reruns_table_extraction": false,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true,
+        "unsupported_claim_policy": "say_evidence_is_insufficient_or_keep_audit_draft",
+        "uses_prebuilt_artifacts": true
+      },
+      "schema_version": "v8",
+      "self_rag_next_status": "READY_FOR_SELF_RAG_CONTEXT_CRITIC",
+      "source_truth_mutation_allowed": false,
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "context_pack_contract": {
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "llm_may_answer_from_guidance_only": false,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true
+      },
+      "context_pack_id": "dynamic_context_pack_v8_0002",
+      "context_pack_status": "DYNAMIC_CONTEXT_PACK_READY",
+      "evidence_box": {
+        "authority": "source_truth_evidence_only",
+        "citation_required": true,
+        "items": [
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_001",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36834-509",
+            "page_id": "t_p_120_1176_p000003",
+            "rank": 1,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 319,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 240,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_002",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-001",
+            "page_id": "t_p_120_1176_p000003",
+            "rank": 2,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 199,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 120,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_003",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-003",
+            "page_id": "t_p_120_1176_p000003",
+            "rank": 3,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 199,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 120,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_004",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-005",
+            "page_id": "t_p_120_1176_p000003",
+            "rank": 4,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 199,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 120,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_005",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-501",
+            "page_id": "t_p_120_1176_p000003",
+            "rank": 5,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 199,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 120,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          }
+        ]
+      },
+      "guidance_box": {
+        "authority": "guidance_only_not_source_truth",
+        "contains_graph_or_summary_guidance": true,
+        "items": [
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "page_summary_t_p_120_1176_p000003",
+            "guidance_text": "This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope.",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "page_summary_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "route_metadata_tunnel_fallback",
+            "guidance_text": "Route metadata constrains table/image/text handling. Applies to t_p_120_1176_p000003 for query intent covered_part_number.",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "route_metadata_tunnel"
+          },
+          {
+            "authority": "graph_guidance_only_not_proof",
+            "community_id": "tracenet_community_00011",
+            "guidance_id": "graph_community_t_p_120_1176_p000003_1",
+            "guidance_text": "Part family community 120-46137",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "graph_community_tunnel"
+          },
+          {
+            "authority": "graph_guidance_only_not_proof",
+            "community_id": "tracenet_community_00014",
+            "guidance_id": "graph_community_t_p_120_1176_p000003_2",
+            "guidance_text": "Part family community 120-36834",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "graph_community_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "graph_navigation_tunnel_fallback",
+            "guidance_text": "Graph navigation metadata can guide traversal to related evidence but is not proof authority. Applies to t_p_120_1176_p000003 for query intent covered_part_number.",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "graph_navigation_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "qdrant_page_profile_tunnel_fallback",
+            "guidance_text": "Prebuilt page/profile vector metadata can guide semantic retrieval without rebuilding embeddings. Applies to t_p_120_1176_p000003 for query intent covered_part_number.",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "qdrant_page_profile_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "table_route_summary_tunnel_fallback",
+            "guidance_text": "Table route summary explains table extraction status and limitations. Applies to t_p_120_1176_p000003 for query intent covered_part_number.",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "table_route_summary_tunnel"
+          }
+        ]
+      },
+      "query_intent": "covered_part_number",
+      "query_terms": [
+        "120-36834-509"
+      ],
+      "rules_box": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "cite_every_factual_claim": true,
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "llm_instruction_summary": "Use the evidence box for factual claims and citations. Use the guidance box only to understand route, graph, summary, and semantic context. Do not treat graph or summary guidance as proof. Do not invent missing part descriptions.",
+        "reruns_embeddings": false,
+        "reruns_graph_build": false,
+        "reruns_ocr": false,
+        "reruns_page_classification": false,
+        "reruns_page_summaries": false,
+        "reruns_table_extraction": false,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true,
+        "unsupported_claim_policy": "say_evidence_is_insufficient_or_keep_audit_draft",
+        "uses_prebuilt_artifacts": true
+      },
+      "schema_version": "v8",
+      "self_rag_next_status": "READY_FOR_SELF_RAG_CONTEXT_CRITIC",
+      "source_truth_mutation_allowed": false,
+      "user_query": "Find part number 120-36834-509"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "context_pack_contract": {
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "llm_may_answer_from_guidance_only": false,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true
+      },
+      "context_pack_id": "dynamic_context_pack_v8_0003",
+      "context_pack_status": "DYNAMIC_CONTEXT_PACK_READY",
+      "evidence_box": {
+        "authority": "source_truth_evidence_only",
+        "citation_required": true,
+        "items": [
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_001",
+            "field_name": "manual_page_reference",
+            "normalized_value": "25-21-00",
+            "page_id": "t_p_120_1176_p000005",
+            "rank": 1,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 319,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 240,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_002",
+            "field_name": "ipl_part_number",
+            "normalized_value": "25-21-00",
+            "page_id": "t_p_120_1176_p000027",
+            "rank": 2,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 299,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 220,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_003",
+            "field_name": "ipl_part_number",
+            "normalized_value": "25-21-00",
+            "page_id": "t_p_120_1176_p000028",
+            "rank": 3,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 299,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 220,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_004",
+            "field_name": "ipl_part_number",
+            "normalized_value": "25-21-00",
+            "page_id": "t_p_120_1176_p000029",
+            "rank": 4,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 299,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 220,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_005",
+            "field_name": "ipl_part_number",
+            "normalized_value": "25-21-00",
+            "page_id": "t_p_120_1176_p000030",
+            "rank": 5,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 299,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 220,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          }
+        ]
+      },
+      "guidance_box": {
+        "authority": "guidance_only_not_source_truth",
+        "contains_graph_or_summary_guidance": true,
+        "items": [
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "page_summary_t_p_120_1176_p000005",
+            "guidance_text": "This page appears to be a parts list and index from a maintenance manual, listing various part numbers and revision dates.",
+            "page_id": "t_p_120_1176_p000005",
+            "tunnel_type": "page_summary_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "page_summary_t_p_120_1176_p000027",
+            "guidance_text": "This page appears to be a parts list from the maintenance manual, listing numerous part numbers with associated quantities and airline part numbers.",
+            "page_id": "t_p_120_1176_p000027",
+            "tunnel_type": "page_summary_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "page_summary_t_p_120_1176_p000028",
+            "guidance_text": "This page appears to be a parts list from an aircraft maintenance manual, detailing various part numbers and their associated information.",
+            "page_id": "t_p_120_1176_p000028",
+            "tunnel_type": "page_summary_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "route_metadata_tunnel_fallback",
+            "guidance_text": "Route metadata constrains table/image/text handling. Applies to t_p_120_1176_p000005, t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030 for query intent manual_page_reference.",
+            "page_id": "t_p_120_1176_p000005",
+            "tunnel_type": "route_metadata_tunnel"
+          },
+          {
+            "authority": "graph_guidance_only_not_proof",
+            "community_id": "tracenet_community_00037",
+            "guidance_id": "graph_community_t_p_120_1176_p000005_1",
+            "guidance_text": "Table evidence community (1 page(s))",
+            "page_id": "t_p_120_1176_p000005",
+            "tunnel_type": "graph_community_tunnel"
+          },
+          {
+            "authority": "graph_guidance_only_not_proof",
+            "community_id": "tracenet_community_00038",
+            "guidance_id": "graph_community_t_p_120_1176_p000027_1",
+            "guidance_text": "Table evidence community (1 page(s))",
+            "page_id": "t_p_120_1176_p000027",
+            "tunnel_type": "graph_community_tunnel"
+          },
+          {
+            "authority": "graph_guidance_only_not_proof",
+            "community_id": "tracenet_community_00019",
+            "guidance_id": "graph_community_t_p_120_1176_p000028_1",
+            "guidance_text": "Table evidence community (1 page(s))",
+            "page_id": "t_p_120_1176_p000028",
+            "tunnel_type": "graph_community_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "graph_navigation_tunnel_fallback",
+            "guidance_text": "Graph navigation metadata can guide traversal to related evidence but is not proof authority. Applies to t_p_120_1176_p000005, t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030 for query intent manual_page_reference.",
+            "page_id": "t_p_120_1176_p000005",
+            "tunnel_type": "graph_navigation_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "qdrant_page_profile_tunnel_fallback",
+            "guidance_text": "Prebuilt page/profile vector metadata can guide semantic retrieval without rebuilding embeddings. Applies to t_p_120_1176_p000005, t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030 for query intent manual_page_reference.",
+            "page_id": "t_p_120_1176_p000005",
+            "tunnel_type": "qdrant_page_profile_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "table_route_summary_tunnel_fallback",
+            "guidance_text": "Table route summary explains table extraction status and limitations. Applies to t_p_120_1176_p000005, t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030 for query intent manual_page_reference.",
+            "page_id": "t_p_120_1176_p000005",
+            "tunnel_type": "table_route_summary_tunnel"
+          }
+        ]
+      },
+      "query_intent": "manual_page_reference",
+      "query_terms": [
+        "25-21-00"
+      ],
+      "rules_box": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "cite_every_factual_claim": true,
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "llm_instruction_summary": "Use the evidence box for factual claims and citations. Use the guidance box only to understand route, graph, summary, and semantic context. Do not treat graph or summary guidance as proof. Do not invent missing part descriptions.",
+        "reruns_embeddings": false,
+        "reruns_graph_build": false,
+        "reruns_ocr": false,
+        "reruns_page_classification": false,
+        "reruns_page_summaries": false,
+        "reruns_table_extraction": false,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true,
+        "unsupported_claim_policy": "say_evidence_is_insufficient_or_keep_audit_draft",
+        "uses_prebuilt_artifacts": true
+      },
+      "schema_version": "v8",
+      "self_rag_next_status": "READY_FOR_SELF_RAG_CONTEXT_CRITIC",
+      "source_truth_mutation_allowed": false,
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "context_pack_contract": {
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "llm_may_answer_from_guidance_only": false,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true
+      },
+      "context_pack_id": "dynamic_context_pack_v8_0004",
+      "context_pack_status": "DYNAMIC_CONTEXT_PACK_READY",
+      "evidence_box": {
+        "authority": "source_truth_evidence_only",
+        "citation_required": true,
+        "items": [
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_001",
+            "field_name": "ipl_text",
+            "normalized_value": "MAINTENANCE MANUAL WITH",
+            "page_id": "t_p_120_1176_p000027",
+            "rank": 1,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 319,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 240,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_002",
+            "field_name": "ipl_text",
+            "normalized_value": "MAINTENANCE MANUAL WITH",
+            "page_id": "t_p_120_1176_p000028",
+            "rank": 2,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 319,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 240,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_003",
+            "field_name": "ipl_text",
+            "normalized_value": "MAINTENANCE MANUAL WITH",
+            "page_id": "t_p_120_1176_p000029",
+            "rank": 3,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 319,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 240,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_004",
+            "field_name": "ipl_text",
+            "normalized_value": "MAINTENANCE MANUAL WITH",
+            "page_id": "t_p_120_1176_p000030",
+            "rank": 4,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 319,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 240,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_005",
+            "field_name": "ipl_text",
+            "normalized_value": "MAINTENANCE MANUAL WITH",
+            "page_id": "t_p_120_1176_p000031",
+            "rank": 5,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 319,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 240,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          }
+        ]
+      },
+      "guidance_box": {
+        "authority": "guidance_only_not_source_truth",
+        "contains_graph_or_summary_guidance": true,
+        "items": [
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "page_summary_t_p_120_1176_p000027",
+            "guidance_text": "This page appears to be a parts list from the maintenance manual, listing numerous part numbers with associated quantities and airline part numbers.",
+            "page_id": "t_p_120_1176_p000027",
+            "tunnel_type": "page_summary_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "page_summary_t_p_120_1176_p000028",
+            "guidance_text": "This page appears to be a parts list from an aircraft maintenance manual, detailing various part numbers and their associated information.",
+            "page_id": "t_p_120_1176_p000028",
+            "tunnel_type": "page_summary_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "page_summary_t_p_120_1176_p000029",
+            "guidance_text": "This page appears to be a parts list from the maintenance manual, listing various part numbers and quantities.",
+            "page_id": "t_p_120_1176_p000029",
+            "tunnel_type": "page_summary_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "route_metadata_tunnel_fallback",
+            "guidance_text": "Route metadata constrains table/image/text handling. Applies to t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030, t_p_120_1176_p000031 for query intent table_text.",
+            "page_id": "t_p_120_1176_p000027",
+            "tunnel_type": "route_metadata_tunnel"
+          },
+          {
+            "authority": "graph_guidance_only_not_proof",
+            "community_id": "tracenet_community_00038",
+            "guidance_id": "graph_community_t_p_120_1176_p000027_1",
+            "guidance_text": "Table evidence community (1 page(s))",
+            "page_id": "t_p_120_1176_p000027",
+            "tunnel_type": "graph_community_tunnel"
+          },
+          {
+            "authority": "graph_guidance_only_not_proof",
+            "community_id": "tracenet_community_00019",
+            "guidance_id": "graph_community_t_p_120_1176_p000028_1",
+            "guidance_text": "Table evidence community (1 page(s))",
+            "page_id": "t_p_120_1176_p000028",
+            "tunnel_type": "graph_community_tunnel"
+          },
+          {
+            "authority": "graph_guidance_only_not_proof",
+            "community_id": "tracenet_community_00054",
+            "guidance_id": "graph_community_t_p_120_1176_p000029_1",
+            "guidance_text": "Table evidence community (1 page(s))",
+            "page_id": "t_p_120_1176_p000029",
+            "tunnel_type": "graph_community_tunnel"
+          },
+          {
+            "authority": "graph_guidance_only_not_proof",
+            "community_id": "tracenet_community_00104",
+            "guidance_id": "graph_community_t_p_120_1176_p000029_2",
+            "guidance_text": "Part family community 120-26948",
+            "page_id": "t_p_120_1176_p000029",
+            "tunnel_type": "graph_community_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "graph_navigation_tunnel_fallback",
+            "guidance_text": "Graph navigation metadata can guide traversal to related evidence but is not proof authority. Applies to t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030, t_p_120_1176_p000031 for query intent table_text.",
+            "page_id": "t_p_120_1176_p000027",
+            "tunnel_type": "graph_navigation_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "qdrant_page_profile_tunnel_fallback",
+            "guidance_text": "Prebuilt page/profile vector metadata can guide semantic retrieval without rebuilding embeddings. Applies to t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030, t_p_120_1176_p000031 for query intent table_text.",
+            "page_id": "t_p_120_1176_p000027",
+            "tunnel_type": "qdrant_page_profile_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "table_route_summary_tunnel_fallback",
+            "guidance_text": "Table route summary explains table extraction status and limitations. Applies to t_p_120_1176_p000027, t_p_120_1176_p000028, t_p_120_1176_p000029, t_p_120_1176_p000030, t_p_120_1176_p000031 for query intent table_text.",
+            "page_id": "t_p_120_1176_p000027",
+            "tunnel_type": "table_route_summary_tunnel"
+          }
+        ]
+      },
+      "query_intent": "table_text",
+      "query_terms": [
+        "MAINTENANCE MANUAL WITH"
+      ],
+      "rules_box": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "cite_every_factual_claim": true,
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "llm_instruction_summary": "Use the evidence box for factual claims and citations. Use the guidance box only to understand route, graph, summary, and semantic context. Do not treat graph or summary guidance as proof. Do not invent missing part descriptions.",
+        "reruns_embeddings": false,
+        "reruns_graph_build": false,
+        "reruns_ocr": false,
+        "reruns_page_classification": false,
+        "reruns_page_summaries": false,
+        "reruns_table_extraction": false,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true,
+        "unsupported_claim_policy": "say_evidence_is_insufficient_or_keep_audit_draft",
+        "uses_prebuilt_artifacts": true
+      },
+      "schema_version": "v8",
+      "self_rag_next_status": "READY_FOR_SELF_RAG_CONTEXT_CRITIC",
+      "source_truth_mutation_allowed": false,
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "context_pack_contract": {
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "llm_may_answer_from_guidance_only": false,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true
+      },
+      "context_pack_id": "dynamic_context_pack_v8_0005",
+      "context_pack_status": "DYNAMIC_CONTEXT_PACK_READY",
+      "evidence_box": {
+        "authority": "source_truth_evidence_only",
+        "citation_required": true,
+        "items": [
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_001",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-001",
+            "page_id": "t_p_120_1176_p000003",
+            "rank": 1,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 199,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 120,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_002",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-003",
+            "page_id": "t_p_120_1176_p000003",
+            "rank": 2,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 199,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 120,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_003",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-005",
+            "page_id": "t_p_120_1176_p000003",
+            "rank": 3,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 199,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 120,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_004",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-501",
+            "page_id": "t_p_120_1176_p000003",
+            "rank": 4,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 199,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 120,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          },
+          {
+            "answer_authority": "source_truth_evidence_only",
+            "citation_ready": true,
+            "evidence_id": "evidence_005",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-503",
+            "page_id": "t_p_120_1176_p000003",
+            "rank": 5,
+            "source_name": "table_exact_search_adapter",
+            "source_trace_ready": true,
+            "source_tunnel": "table_exact_search_tunnel",
+            "total_tunnel_score": 199,
+            "tunnel_contributions": {
+              "graph_community_tunnel": 7,
+              "graph_navigation_tunnel": 7,
+              "page_summary_tunnel": 10,
+              "qdrant_page_profile_tunnel": 12,
+              "route_metadata_tunnel": 15,
+              "table_exact_search_tunnel": 120,
+              "table_hybrid_bridge_tunnel": 20,
+              "table_route_summary_tunnel": 8
+            }
+          }
+        ]
+      },
+      "guidance_box": {
+        "authority": "guidance_only_not_source_truth",
+        "contains_graph_or_summary_guidance": true,
+        "items": [
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "page_summary_t_p_120_1176_p000003",
+            "guidance_text": "This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope.",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "page_summary_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "route_metadata_tunnel_fallback",
+            "guidance_text": "Route metadata constrains table/image/text handling. Applies to t_p_120_1176_p000003 for query intent covered_part_number.",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "route_metadata_tunnel"
+          },
+          {
+            "authority": "graph_guidance_only_not_proof",
+            "community_id": "tracenet_community_00011",
+            "guidance_id": "graph_community_t_p_120_1176_p000003_1",
+            "guidance_text": "Part family community 120-46137",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "graph_community_tunnel"
+          },
+          {
+            "authority": "graph_guidance_only_not_proof",
+            "community_id": "tracenet_community_00014",
+            "guidance_id": "graph_community_t_p_120_1176_p000003_2",
+            "guidance_text": "Part family community 120-36834",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "graph_community_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "graph_navigation_tunnel_fallback",
+            "guidance_text": "Graph navigation metadata can guide traversal to related evidence but is not proof authority. Applies to t_p_120_1176_p000003 for query intent covered_part_number.",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "graph_navigation_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "qdrant_page_profile_tunnel_fallback",
+            "guidance_text": "Prebuilt page/profile vector metadata can guide semantic retrieval without rebuilding embeddings. Applies to t_p_120_1176_p000003 for query intent covered_part_number.",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "qdrant_page_profile_tunnel"
+          },
+          {
+            "authority": "guidance_only_not_source_truth",
+            "guidance_id": "table_route_summary_tunnel_fallback",
+            "guidance_text": "Table route summary explains table extraction status and limitations. Applies to t_p_120_1176_p000003 for query intent covered_part_number.",
+            "page_id": "t_p_120_1176_p000003",
+            "tunnel_type": "table_route_summary_tunnel"
+          }
+        ]
+      },
+      "query_intent": "covered_part_number",
+      "query_terms": [
+        "maintenance",
+        "covered",
+        "numbers"
+      ],
+      "rules_box": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "cite_every_factual_claim": true,
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "llm_instruction_summary": "Use the evidence box for factual claims and citations. Use the guidance box only to understand route, graph, summary, and semantic context. Do not treat graph or summary guidance as proof. Do not invent missing part descriptions.",
+        "reruns_embeddings": false,
+        "reruns_graph_build": false,
+        "reruns_ocr": false,
+        "reruns_page_classification": false,
+        "reruns_page_summaries": false,
+        "reruns_table_extraction": false,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true,
+        "unsupported_claim_policy": "say_evidence_is_insufficient_or_keep_audit_draft",
+        "uses_prebuilt_artifacts": true
+      },
+      "schema_version": "v8",
+      "self_rag_next_status": "READY_FOR_SELF_RAG_CONTEXT_CRITIC",
+      "source_truth_mutation_allowed": false,
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    }
+  ],
+  "dynamic_context_pack_contract": {
+    "answer_permission": false,
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "cite_every_factual_claim": true,
+    "evidence_box_is_source_truth": true,
+    "graph_is_not_proof_authority": true,
+    "guidance_box_is_not_source_truth": true,
+    "llm_instruction_summary": "Use the evidence box for factual claims and citations. Use the guidance box only to understand route, graph, summary, and semantic context. Do not treat graph or summary guidance as proof. Do not invent missing part descriptions.",
+    "reruns_embeddings": false,
+    "reruns_graph_build": false,
+    "reruns_ocr": false,
+    "reruns_page_classification": false,
+    "reruns_page_summaries": false,
+    "reruns_table_extraction": false,
+    "source_truth_mutation_allowed": false,
+    "summaries_are_not_source_truth": true,
+    "unsupported_claim_policy": "say_evidence_is_insufficient_or_keep_audit_draft",
+    "uses_prebuilt_artifacts": true
+  },
+  "e2e_dynamic_context_pack_status": "E2E_DYNAMIC_CONTEXT_PACK_READY_FOR_SELF_RAG",
+  "evidence_records": [
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0001",
+      "evidence_id": "evidence_001",
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-001",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 1,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 319,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 240,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0001",
+      "evidence_id": "evidence_002",
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-003",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 2,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0001",
+      "evidence_id": "evidence_003",
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-005",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 3,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0001",
+      "evidence_id": "evidence_004",
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-501",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 4,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0001",
+      "evidence_id": "evidence_005",
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-503",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 5,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0002",
+      "evidence_id": "evidence_001",
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36834-509",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 1,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 319,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 240,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36834-509"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0002",
+      "evidence_id": "evidence_002",
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-001",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 2,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36834-509"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0002",
+      "evidence_id": "evidence_003",
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-003",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 3,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36834-509"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0002",
+      "evidence_id": "evidence_004",
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-005",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 4,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36834-509"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0002",
+      "evidence_id": "evidence_005",
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-501",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 5,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36834-509"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0003",
+      "evidence_id": "evidence_001",
+      "field_name": "manual_page_reference",
+      "normalized_value": "25-21-00",
+      "page_id": "t_p_120_1176_p000005",
+      "query_intent": "manual_page_reference",
+      "rank": 1,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 319,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 240,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0003",
+      "evidence_id": "evidence_002",
+      "field_name": "ipl_part_number",
+      "normalized_value": "25-21-00",
+      "page_id": "t_p_120_1176_p000027",
+      "query_intent": "manual_page_reference",
+      "rank": 2,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 299,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 220,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0003",
+      "evidence_id": "evidence_003",
+      "field_name": "ipl_part_number",
+      "normalized_value": "25-21-00",
+      "page_id": "t_p_120_1176_p000028",
+      "query_intent": "manual_page_reference",
+      "rank": 3,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 299,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 220,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0003",
+      "evidence_id": "evidence_004",
+      "field_name": "ipl_part_number",
+      "normalized_value": "25-21-00",
+      "page_id": "t_p_120_1176_p000029",
+      "query_intent": "manual_page_reference",
+      "rank": 4,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 299,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 220,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0003",
+      "evidence_id": "evidence_005",
+      "field_name": "ipl_part_number",
+      "normalized_value": "25-21-00",
+      "page_id": "t_p_120_1176_p000030",
+      "query_intent": "manual_page_reference",
+      "rank": 5,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 299,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 220,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0004",
+      "evidence_id": "evidence_001",
+      "field_name": "ipl_text",
+      "normalized_value": "MAINTENANCE MANUAL WITH",
+      "page_id": "t_p_120_1176_p000027",
+      "query_intent": "table_text",
+      "rank": 1,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 319,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 240,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0004",
+      "evidence_id": "evidence_002",
+      "field_name": "ipl_text",
+      "normalized_value": "MAINTENANCE MANUAL WITH",
+      "page_id": "t_p_120_1176_p000028",
+      "query_intent": "table_text",
+      "rank": 2,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 319,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 240,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0004",
+      "evidence_id": "evidence_003",
+      "field_name": "ipl_text",
+      "normalized_value": "MAINTENANCE MANUAL WITH",
+      "page_id": "t_p_120_1176_p000029",
+      "query_intent": "table_text",
+      "rank": 3,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 319,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 240,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0004",
+      "evidence_id": "evidence_004",
+      "field_name": "ipl_text",
+      "normalized_value": "MAINTENANCE MANUAL WITH",
+      "page_id": "t_p_120_1176_p000030",
+      "query_intent": "table_text",
+      "rank": 4,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 319,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 240,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0004",
+      "evidence_id": "evidence_005",
+      "field_name": "ipl_text",
+      "normalized_value": "MAINTENANCE MANUAL WITH",
+      "page_id": "t_p_120_1176_p000031",
+      "query_intent": "table_text",
+      "rank": 5,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 319,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 240,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0005",
+      "evidence_id": "evidence_001",
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-001",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 1,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0005",
+      "evidence_id": "evidence_002",
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-003",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 2,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0005",
+      "evidence_id": "evidence_003",
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-005",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 3,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0005",
+      "evidence_id": "evidence_004",
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-501",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 4,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    },
+    {
+      "answer_authority": "source_truth_evidence_only",
+      "citation_ready": true,
+      "context_pack_id": "dynamic_context_pack_v8_0005",
+      "evidence_id": "evidence_005",
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-503",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 5,
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    }
+  ],
+  "quality_checks": [
+    {
+      "expected": ">= 5",
+      "name": "context_pack_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "ready_context_pack_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 10",
+      "name": "total_evidence_item_count",
+      "observed": 25,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "packs_with_evidence_box_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "packs_with_guidance_box_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "packs_with_rules_box_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "packs_with_graph_or_summary_guidance_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "contract_answer_permission",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "contract_can_answer_directly",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "contract_can_prove_claims",
+      "observed": 0,
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS",
+  "schema_version": "v8",
+  "status": "E2E_DYNAMIC_CONTEXT_PACK_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "available_artifact_count": 10,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "context_pack_count": 5,
+    "guidance_item_count": 42,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "packs_with_evidence_box_count": 5,
+    "packs_with_graph_or_summary_guidance_count": 5,
+    "packs_with_guidance_box_count": 5,
+    "packs_with_rules_box_count": 5,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_status": "PASS",
+    "ready_context_pack_count": 5,
+    "source_truth_mutation_allowed_count": 0,
+    "total_evidence_item_count": 25
+  }
+}

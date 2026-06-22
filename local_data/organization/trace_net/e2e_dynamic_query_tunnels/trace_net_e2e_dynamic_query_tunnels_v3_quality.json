@@ -1,0 +1,89 @@
+{
+  "checks": [
+    {
+      "expected": "== PASS",
+      "name": "quality_status",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "query_tunnel_plan_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "ready_query_tunnel_plan_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 20",
+      "name": "total_tunnel_count",
+      "observed": 40,
+      "passed": true
+    },
+    {
+      "expected": ">= 3",
+      "name": "unique_tunnel_type_count",
+      "observed": 8,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "plans_with_table_tunnel_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "plans_with_graph_or_summary_tunnel_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 7",
+      "name": "available_artifact_count",
+      "observed": 9,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "unsafe_record_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "contract_answer_permission",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "contract_can_answer_directly",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "contract_can_prove_claims",
+      "observed": 0,
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS"
+}

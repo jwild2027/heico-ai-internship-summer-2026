@@ -1,0 +1,14 @@
+{
+  "quality_status": "PASS",
+  "checks": [
+    "PASS quality_status: observed=PASS expected=PASS",
+    "PASS table_exact_search_document_count: observed=1497 expected>=1000",
+    "PASS table_hybrid_bridge_record_count: observed=1497 expected>=1000",
+    "PASS field_count: observed=6 expected>=3",
+    "PASS answer_permission_count: observed=0 expected<=0",
+    "PASS source_truth_mutation_allowed_count: observed=0 expected<=0",
+    "PASS postgres_write_attempt_count: observed=0 expected=0",
+    "PASS qdrant_write_attempt_count: observed=0 expected=0",
+    "PASS opensearch_write_attempt_count: observed=0 expected=0"
+  ]
+}

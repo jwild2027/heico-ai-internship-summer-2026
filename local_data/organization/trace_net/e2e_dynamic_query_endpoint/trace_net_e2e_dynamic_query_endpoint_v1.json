@@ -1,0 +1,58 @@
+{
+  "dynamic_contract": {
+    "answer_authority": "blocked_until_final_gate",
+    "does_not_mutate_source_truth": true,
+    "does_not_rebuild_embeddings": true,
+    "does_not_rerun_ocr": true,
+    "query_time_dynamic_retrieval": true,
+    "reranker_version": "v2_intent_field_exact_match",
+    "uses_prebuilt_embeddings_or_profiles": "planned/optional tunnel; does not rebuild",
+    "uses_prebuilt_ocr": true,
+    "uses_prebuilt_page_classification": true,
+    "uses_prebuilt_table_exact_search": true,
+    "uses_prebuilt_table_hybrid_bridge": true
+  },
+  "e2e_dynamic_query_endpoint_status": "E2E_DYNAMIC_QUERY_ENDPOINT_READY_FOR_OPEN_WEBUI_DYNAMIC_SMOKE",
+  "inspect_md_path": "local_data\\organization\\trace_net\\e2e_dynamic_query_endpoint\\trace_net_e2e_dynamic_query_endpoint_v1.md",
+  "module": "trace_net_e2e_dynamic_query_endpoint_v1",
+  "quality_status": "PASS",
+  "report_path": "local_data\\organization\\trace_net\\e2e_dynamic_query_endpoint\\trace_net_e2e_dynamic_query_endpoint_v1.json",
+  "source_paths": {
+    "table_exact_search_adapter": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+    "table_hybrid_retrieval_bridge": "local_data\\organization\\trace_net\\table_hybrid_retrieval_bridge\\trace_net_table_hybrid_retrieval_bridge_v1.json"
+  },
+  "status": "E2E_DYNAMIC_QUERY_ENDPOINT_MANIFEST_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "dynamic_search_document_count": 2994,
+    "field_count": 6,
+    "fields": [
+      "covered_part_number",
+      "ipl_figure_item_or_quantity",
+      "ipl_part_number",
+      "ipl_text",
+      "manual_page_reference",
+      "page_rev_or_sequence_value"
+    ],
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "page_with_dynamic_search_document_count": 13,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "safety": {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "source_truth_mutation_allowed": false,
+      "uploads_to_opensearch": false,
+      "writes_to_opensearch": false,
+      "writes_to_postgres": false,
+      "writes_to_qdrant": false
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "table_exact_search_document_count": 1497,
+    "table_hybrid_bridge_record_count": 1497
+  }
+}

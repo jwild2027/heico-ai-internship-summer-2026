@@ -1,0 +1,180 @@
+{
+  "checks": [
+    {
+      "expected": ">= 20",
+      "name": "source_normalizer_record_count",
+      "observed": 20,
+      "passed": true
+    },
+    {
+      "expected": ">= 1800",
+      "name": "source_normalized_table_value_record_count",
+      "observed": 2108,
+      "passed": true
+    },
+    {
+      "expected": ">= 20",
+      "name": "table_route_value_audit_record_count",
+      "observed": 20,
+      "passed": true
+    },
+    {
+      "expected": ">= 19",
+      "name": "audited_table_count",
+      "observed": 19,
+      "passed": true
+    },
+    {
+      "expected": ">= 1000",
+      "name": "promoted_table_value_evidence_record_count",
+      "observed": 1497,
+      "passed": true
+    },
+    {
+      "expected": ">= 1000",
+      "name": "search_ready_evidence_record_count",
+      "observed": 1497,
+      "passed": true
+    },
+    {
+      "expected": ">= 100",
+      "name": "covered_part_number_promoted_count",
+      "observed": 150,
+      "passed": true
+    },
+    {
+      "expected": ">= 39",
+      "name": "manual_page_reference_promoted_count",
+      "observed": 39,
+      "passed": true
+    },
+    {
+      "expected": ">= 100",
+      "name": "ipl_part_number_promoted_count",
+      "observed": 197,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "unsafe_record_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "postgres_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "qdrant_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "opensearch_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "can_answer_directly_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "can_prove_claims_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "is True",
+      "name": "table_route_value_normalizer_quality_pass",
+      "observed": true,
+      "passed": true
+    }
+  ],
+  "counts": {
+    "answer_permission_count": 0,
+    "audited_table_count": 19,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "context_only_record_count": 40,
+    "covered_part_number_promoted_count": 150,
+    "evidence_ready_table_count": 12,
+    "high_context_ratio_table_count": 6,
+    "ipl_figure_item_or_quantity_promoted_count": 843,
+    "ipl_part_number_promoted_count": 197,
+    "ipl_text_promoted_count": 188,
+    "manual_page_reference_promoted_count": 39,
+    "opensearch_write_attempt_count": 0,
+    "page_rev_or_sequence_value_promoted_count": 80,
+    "postgres_write_attempt_count": 0,
+    "promoted_table_value_evidence_record_count": 1497,
+    "qdrant_write_attempt_count": 0,
+    "review_required_table_count": 18,
+    "search_ready_evidence_record_count": 1497,
+    "source_normalized_table_value_record_count": 2108,
+    "source_normalizer_record_count": 20,
+    "source_truth_mutation_allowed_count": 0,
+    "table_route_value_audit_record_count": 20,
+    "unsafe_record_count": 0
+  },
+  "first_search_ready_values": [],
+  "notes": [
+    "LEP v4 intentionally reduced normalized value count by suppressing noisy context.",
+    "This preset therefore gates min_source_normalized_records at 1800 instead of 3000.",
+    "Search-ready table evidence remains retrieval/search support only; it grants no answer authority."
+  ],
+  "preset": {
+    "inspect_limit": 50,
+    "max_answer_permission_count": 0,
+    "max_context_ratio": 0.75,
+    "max_source_truth_mutation_allowed": 0,
+    "max_unsafe_records": 0,
+    "min_audit_records": 20,
+    "min_audited_tables": 19,
+    "min_covered_part_number_promoted": 100,
+    "min_ipl_part_number_promoted": 100,
+    "min_manual_page_reference_promoted": 39,
+    "min_promote_confidence": 0.6,
+    "min_promoted_evidence_records": 1000,
+    "min_search_ready_evidence_records": 1000,
+    "min_source_normalized_records": 1800,
+    "min_source_normalizer_records": 20,
+    "require_no_answer_permission": true,
+    "require_table_route_value_normalizer_quality_pass": true
+  },
+  "promoted_fields": {
+    "covered_part_number": 150,
+    "ipl_figure_item_or_quantity": 843,
+    "ipl_part_number": 197,
+    "ipl_text": 188,
+    "manual_page_reference": 39,
+    "page_rev_or_sequence_value": 80
+  },
+  "quality_status": "PASS",
+  "schema_version": "trace_net_table_route_value_audit_lep_v4_preset_v1",
+  "watch_counters": {
+    "context_only_record_count": 40,
+    "evidence_ready_table_count": 12,
+    "high_context_ratio_table_count": 6,
+    "review_required_table_count": 18,
+    "search_ready_evidence_record_count": 1497
+  }
+}
