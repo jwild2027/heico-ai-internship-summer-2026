@@ -2,28 +2,41 @@
 
 Read-only TRACE-Net module that consumes OCR bbox sidecars for table pages and proposes advisory table-region crop boxes.
 
-## Current upgrade: OCR content-band tightening
+## Current upgrade: prefer `table_extraction_bbox`
 
-This version tightens broad OCR crop candidates before they reach the bbox resolver. When a raw OCR-token union covers most of the scanned page, the module computes a denser OCR content band by trimming outlier header/footer/marginal tokens with percentile-based bounds. The original union remains recorded for audit.
+This version makes `table_ocr_bbox_enrichment` prefer a safe upstream `table_extraction_bbox` from `table_line_geometry` before falling back to a fresh OCR-token bbox union. OCR-derived bbox fields remain recorded for audit and fallback, but the route-approved extraction crop is now the primary candidate when present and valid.
 
-New fields include:
+New card fields include:
 
-- `original_inferred_table_region_bbox`
-- `original_bbox_coverage_ratio`
-- `content_band_bbox`
-- `content_band_bbox_coverage_ratio`
-- `content_band_tightening_available`
-- `content_band_tightening_applied`
-- `content_band_tightening_reason`
-- `content_band_source_record_count`
-- `content_band_selected_record_count`
+- `ocr_inferred_table_region_bbox`
+- `ocr_bbox_source`
+- `ocr_bbox_confidence`
+- `ocr_crop_candidate_ready`
+- `table_extraction_bbox_candidate`
+- `table_extraction_bbox_available`
+- `table_extraction_bbox_valid`
+- `table_extraction_bbox_preferred`
+- `table_extraction_bbox_source_container`
+- `table_extraction_bbox_source_key`
+- `table_extraction_bbox_source`
+- `table_extraction_bbox_confidence`
+- `table_extraction_bbox_coverage_ratio`
+- `table_extraction_bbox_rejection_reason`
+- `bbox_preference_order`
 
 Summary counters include:
 
-- `content_band_tightening_available_card_count`
-- `content_band_tightening_applied_card_count`
-- `broad_ocr_bbox_card_count`
-- `tightened_ocr_bbox_card_count`
+- `table_extraction_bbox_available_card_count`
+- `table_extraction_bbox_valid_card_count`
+- `table_extraction_bbox_preferred_card_count`
+- `table_extraction_bbox_consumed_card_count`
+- `ocr_fallback_used_card_count`
+
+## Current upgrade: OCR content-band tightening
+
+This version still tightens broad OCR crop candidates before they reach the bbox resolver. When a raw OCR-token union covers most of the scanned page, the module computes a denser OCR content band by trimming outlier header/footer/marginal tokens with percentile-based bounds.
+
+The original union remains recorded for audit.
 
 ## Safety contract
 

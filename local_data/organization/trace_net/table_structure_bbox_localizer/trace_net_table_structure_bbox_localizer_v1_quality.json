@@ -1,0 +1,100 @@
+{
+  "checks": [
+    {
+      "detail": "records=20 minimum=20",
+      "name": "source_visual_records",
+      "ok": true
+    },
+    {
+      "detail": "records=20 minimum=20",
+      "name": "structure_records",
+      "ok": true
+    },
+    {
+      "detail": "selected=20 minimum=20",
+      "name": "selected_bbox_records",
+      "ok": true
+    },
+    {
+      "detail": "rejected=16 minimum=1",
+      "name": "visual_bbox_rejection_guard",
+      "ok": true
+    },
+    {
+      "detail": "unsafe=0 max=0",
+      "name": "unsafe_records",
+      "ok": true
+    },
+    {
+      "detail": "count=0 max=0",
+      "name": "answer_permission",
+      "ok": true
+    },
+    {
+      "detail": "count=0 max=0",
+      "name": "source_truth_mutation_allowed",
+      "ok": true
+    },
+    {
+      "detail": "count=0",
+      "name": "postgres_writes",
+      "ok": true
+    },
+    {
+      "detail": "count=0",
+      "name": "qdrant_writes",
+      "ok": true
+    },
+    {
+      "detail": "count=0",
+      "name": "opensearch_writes",
+      "ok": true
+    },
+    {
+      "detail": "status=PASS",
+      "name": "source_table_visual_bbox_localizer_quality_pass",
+      "ok": true
+    },
+    {
+      "detail": "status=PASS",
+      "name": "source_table_bbox_scoped_cell_extraction_quality_pass",
+      "ok": true
+    },
+    {
+      "detail": "selected=20 records=20",
+      "name": "all_records_selected_bbox_ready",
+      "ok": true
+    }
+  ],
+  "schema_version": "trace_net_table_structure_bbox_localizer_v1_quality",
+  "status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "conservative_input_bbox_fallback_count": 16,
+    "missing_scoped_cell_bridge_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "page_count": 20,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "schema_version": "trace_net_table_structure_bbox_localizer_v1",
+    "source_scoped_table_record_count": 20,
+    "source_table_bbox_scoped_cell_extraction_quality_status": "PASS",
+    "source_table_visual_bbox_localizer_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "source_visual_record_count": 20,
+    "split_column_visual_accepted_count": 3,
+    "split_column_visual_candidate_count": 10,
+    "structure_record_count": 20,
+    "structure_selected_bbox_record_count": 20,
+    "structure_visual_bbox_accepted_count": 4,
+    "structure_visual_bbox_rejected_count": 16,
+    "unsafe_table_structure_bbox_localizer_record_count": 0,
+    "visual_candidate_cuts_table_columns_count": 9,
+    "visual_candidate_cuts_table_rows_count": 4,
+    "visual_candidate_over_tightened_area_count": 6,
+    "visual_candidate_too_short_for_row_count": 4,
+    "visual_to_input_area_ratio_median": 0.34448
+  }
+}

@@ -6,7 +6,12 @@ import json
 from pathlib import Path
 from typing import Optional, Sequence
 
-from tiff.trace_net_table_ocr_bbox_enrichment_v1 import build_quality_payload, add_common_args, thresholds_from_args, write_json
+from tiff.trace_net_table_ocr_bbox_enrichment_v1 import (
+    add_common_args,
+    build_quality_payload,
+    thresholds_from_args,
+    write_json,
+)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -27,12 +32,31 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     print("TRACE-Net Table OCR BBox Enrichment v1 quality")
     print(f" Status: {quality.get('quality_status')}")
     for key in [
-        "source_table_geometry_card_count", "ocr_bbox_enrichment_card_count", "ocr_source_file_card_count",
-        "ocr_bbox_record_card_count", "matched_ocr_bbox_card_count", "part_number_ocr_match_card_count",
-        "crop_candidate_ready_card_count", "content_band_tightening_available_card_count", "content_band_tightening_applied_card_count",
-        "broad_ocr_bbox_card_count", "tightened_ocr_bbox_card_count", "review_required_card_count", "unsafe_ocr_bbox_enrichment_card_count",
-        "answer_permission_count", "can_answer_directly_count", "can_prove_claims_count",
-        "source_truth_mutation_allowed_count", "postgres_write_attempt_count", "qdrant_write_attempt_count", "opensearch_write_attempt_count",
+        "source_table_geometry_card_count",
+        "ocr_bbox_enrichment_card_count",
+        "ocr_source_file_card_count",
+        "ocr_bbox_record_card_count",
+        "matched_ocr_bbox_card_count",
+        "part_number_ocr_match_card_count",
+        "crop_candidate_ready_card_count",
+        "table_extraction_bbox_available_card_count",
+        "table_extraction_bbox_valid_card_count",
+        "table_extraction_bbox_preferred_card_count",
+        "table_extraction_bbox_consumed_card_count",
+        "ocr_fallback_used_card_count",
+        "content_band_tightening_available_card_count",
+        "content_band_tightening_applied_card_count",
+        "broad_ocr_bbox_card_count",
+        "tightened_ocr_bbox_card_count",
+        "review_required_card_count",
+        "unsafe_ocr_bbox_enrichment_card_count",
+        "answer_permission_count",
+        "can_answer_directly_count",
+        "can_prove_claims_count",
+        "source_truth_mutation_allowed_count",
+        "postgres_write_attempt_count",
+        "qdrant_write_attempt_count",
+        "opensearch_write_attempt_count",
     ]:
         print(f" {key}: {summary.get(key)}")
     return 0 if quality.get("quality_status") == "PASS" else 1
