@@ -1,0 +1,25 @@
+{
+  "allowed_table_records_path": "local_data\\organization\\trace_net\\table_presence_verifier\\trace_net_table_presence_verifier_v1_allowed_table_records.jsonl",
+  "created_at": "2026-06-19T18:05:23Z",
+  "quality_path": "local_data\\organization\\trace_net\\table_presence_verifier\\trace_net_table_presence_verifier_v1_quality.json",
+  "records_path": "local_data\\organization\\trace_net\\table_presence_verifier\\trace_net_table_presence_verifier_v1_records.jsonl",
+  "report_path": "local_data\\organization\\trace_net\\table_presence_verifier\\trace_net_table_presence_verifier_v1.json",
+  "safety_contract": {
+    "answer_permission": false,
+    "opensearch_writes": false,
+    "postgres_writes": false,
+    "qdrant_writes": false,
+    "source_truth_mutation": false
+  },
+  "schema_version": "trace_net_table_presence_verifier_v1",
+  "source_paths": {
+    "page_route_manifest": "local_data/organization/trace_net/page_route_manifest/trace_net_page_route_manifest_v1.json",
+    "route_dispatch_manifest": "local_data/organization/trace_net/route_dispatch_manifest/trace_net_route_dispatch_manifest_v1.json",
+    "table_bbox_scoped_cell_extraction": "local_data/organization/trace_net/table_bbox_scoped_cell_extraction/trace_net_table_bbox_scoped_cell_extraction_v1.json",
+    "table_ocr_bbox_enrichment": "local_data/organization/trace_net/table_ocr_bbox_enrichment/trace_net_table_ocr_bbox_enrichment_v1.json",
+    "table_structure_bbox_localizer": "local_data/organization/trace_net/table_structure_bbox_localizer/trace_net_table_structure_bbox_localizer_v1.json",
+    "table_visual_bbox_localizer": "local_data/organization/trace_net/table_visual_bbox_localizer/trace_net_table_visual_bbox_localizer_v1.json"
+  },
+  "summary_path": "local_data\\organization\\trace_net\\table_presence_verifier\\trace_net_table_presence_verifier_v1_summary.json",
+  "suppressed_candidates_path": "local_data\\organization\\trace_net\\table_presence_verifier\\trace_net_table_presence_verifier_v1_suppressed_candidates.jsonl"
+}

@@ -32,6 +32,26 @@ BBOX_KEYS = (
     "bbox", "bounding_box", "bounds", "box", "ocr_bbox", "word_bbox", "text_bbox",
     "cell_bbox", "row_bbox", "table_bbox", "table_region_bbox",
 )
+EXTRACTION_BBOX_KEYS = (
+    "table_extraction_bbox",
+    "selected_table_extraction_bbox",
+    "paddle_style_table_extraction_bbox",
+    "extraction_bbox",
+)
+EXTRACTION_BBOX_SOURCE_KEYS = (
+    "table_extraction_bbox_source",
+    "selected_table_extraction_bbox_source",
+    "paddle_style_table_extraction_bbox_source",
+    "extraction_bbox_source",
+    "bbox_source",
+)
+EXTRACTION_BBOX_CONFIDENCE_KEYS = (
+    "table_extraction_bbox_confidence",
+    "selected_table_extraction_bbox_confidence",
+    "paddle_style_table_extraction_bbox_confidence",
+    "extraction_bbox_confidence",
+    "bbox_confidence",
+)
 TEXT_KEYS = ("text", "normalized_text", "normalized_value", "value", "word", "content", "line_text")
 X0_KEYS = ("x0", "x_min", "xmin", "left")
 Y0_KEYS = ("y0", "y_min", "ymin", "top")
@@ -596,6 +616,65 @@ def valid_crop_candidate(box: Optional[Mapping[str, Any]], width: Optional[int],
     return True
 
 
+def select_preferred_table_extraction_bbox(
+    card: Mapping[str, Any],
+    bbox_resolver_card: Optional[Mapping[str, Any]],
+    *,
+    width: Optional[int],
+    height: Optional[int],
+) -> Tuple[Optional[Dict[str, Any]], Dict[str, Any]]:
+    """Return a safe upstream table_extraction_bbox candidate when available.
+
+    The bbox exposed by table_line_geometry is the current route-approved table
+    crop. This enrichment layer should prefer that explicit crop over a fresh
+    OCR-token union, while still retaining OCR-derived fields for audit and
+    fallback. The result is advisory crop metadata only.
+    """
+    diagnostics: Dict[str, Any] = {
+        "table_extraction_bbox_available": False,
+        "table_extraction_bbox_valid": False,
+        "table_extraction_bbox_preferred": False,
+        "table_extraction_bbox_source_container": None,
+        "table_extraction_bbox_source_key": None,
+        "table_extraction_bbox_source": None,
+        "table_extraction_bbox_confidence": None,
+        "table_extraction_bbox_candidate": None,
+        "table_extraction_bbox_rejection_reason": None,
+        "table_extraction_bbox_coverage_ratio": None,
+    }
+    sources: List[Tuple[str, Optional[Mapping[str, Any]]]] = [
+        ("table_line_geometry", card),
+        ("table_bbox_resolver", bbox_resolver_card),
+    ]
+    for source_container, source in sources:
+        if not isinstance(source, Mapping):
+            continue
+        for key in EXTRACTION_BBOX_KEYS:
+            if key not in source or source.get(key) is None:
+                continue
+            diagnostics["table_extraction_bbox_available"] = True
+            diagnostics["table_extraction_bbox_source_container"] = source_container
+            diagnostics["table_extraction_bbox_source_key"] = key
+            box = bbox_from_value(source.get(key), width, height)
+            diagnostics["table_extraction_bbox_candidate"] = box
+            diagnostics["table_extraction_bbox_source"] = first_present(source, EXTRACTION_BBOX_SOURCE_KEYS) or key
+            confidence = as_float(first_present(source, EXTRACTION_BBOX_CONFIDENCE_KEYS))
+            diagnostics["table_extraction_bbox_confidence"] = confidence
+            diagnostics["table_extraction_bbox_coverage_ratio"] = bbox_coverage(box, width, height)
+            if not box:
+                diagnostics["table_extraction_bbox_rejection_reason"] = "table_extraction_bbox_invalid_or_unparseable"
+                return None, diagnostics
+            if not valid_crop_candidate(box, width, height):
+                diagnostics["table_extraction_bbox_rejection_reason"] = "table_extraction_bbox_not_valid_crop_candidate"
+                return None, diagnostics
+            diagnostics["table_extraction_bbox_valid"] = True
+            diagnostics["table_extraction_bbox_preferred"] = True
+            diagnostics["table_extraction_bbox_rejection_reason"] = None
+            return box, diagnostics
+    diagnostics["table_extraction_bbox_rejection_reason"] = "table_extraction_bbox_not_available"
+    return None, diagnostics
+
+
 def build_enrichment_card(
     card: Mapping[str, Any],
     *,
@@ -630,7 +709,7 @@ def build_enrichment_card(
     matched_records, part_hits = match_ocr_records(ocr_records, target_tokens, part_tokens)
     matched_boxes = [r["bbox"] for r in matched_records if r.get("bbox")]
     raw_inferred = union_bboxes(matched_boxes, pad_ratio=0.045, width=image_width, height=image_height)
-    inferred, content_band_diag = tighten_ocr_bbox_to_content_band(
+    ocr_inferred, content_band_diag = tighten_ocr_bbox_to_content_band(
         matched_records,
         raw_inferred,
         width=image_width,
@@ -638,19 +717,36 @@ def build_enrichment_card(
         table_type=card.get("table_type"),
     )
 
-    bbox_source = "unresolved"
-    confidence = 0.0
-    if inferred and part_hits >= 1:
-        bbox_source = "ocr_part_number_token_match"
-        confidence = min(0.92, 0.72 + min(part_hits, 10) * 0.02)
-    elif inferred and len(matched_records) >= 5:
-        bbox_source = "ocr_table_text_token_match"
-        confidence = min(0.84, 0.58 + min(len(matched_records), 25) * 0.01)
-    elif inferred:
-        bbox_source = "ocr_low_match_token_bbox"
-        confidence = 0.46
+    ocr_bbox_source = "unresolved"
+    ocr_confidence = 0.0
+    if ocr_inferred and part_hits >= 1:
+        ocr_bbox_source = "ocr_part_number_token_match"
+        ocr_confidence = min(0.92, 0.72 + min(part_hits, 10) * 0.02)
+    elif ocr_inferred and len(matched_records) >= 5:
+        ocr_bbox_source = "ocr_table_text_token_match"
+        ocr_confidence = min(0.84, 0.58 + min(len(matched_records), 25) * 0.01)
+    elif ocr_inferred:
+        ocr_bbox_source = "ocr_low_match_token_bbox"
+        ocr_confidence = 0.46
+
+    extraction_bbox, extraction_bbox_diag = select_preferred_table_extraction_bbox(
+        card,
+        bbox_resolver_card,
+        width=image_width,
+        height=image_height,
+    )
+
+    inferred = ocr_inferred
+    bbox_source = ocr_bbox_source
+    confidence = ocr_confidence
+    if extraction_bbox is not None and extraction_bbox_diag.get("table_extraction_bbox_preferred"):
+        inferred = extraction_bbox
+        bbox_source = "table_extraction_bbox_preferred"
+        upstream_confidence = extraction_bbox_diag.get("table_extraction_bbox_confidence")
+        confidence = max(0.9, float(upstream_confidence) if upstream_confidence is not None else 0.9)
 
     crop_ready = valid_crop_candidate(inferred, image_width, image_height)
+    ocr_crop_ready = valid_crop_candidate(ocr_inferred, image_width, image_height)
     review_flags: List[str] = []
     recommended_actions: List[str] = []
     if not ocr_files:
@@ -670,6 +766,11 @@ def build_enrichment_card(
         recommended_actions.append("verify_tightened_ocr_content_band_against_source_page")
     elif content_band_diag.get("ocr_content_band_tightening_available") and not content_band_diag.get("ocr_content_band_tightening_applied"):
         review_flags.append("ocr_bbox_content_band_tightening_not_applied")
+    if extraction_bbox_diag.get("table_extraction_bbox_available") and not extraction_bbox_diag.get("table_extraction_bbox_valid"):
+        review_flags.append("table_extraction_bbox_available_but_not_valid")
+        recommended_actions.append("inspect_table_extraction_bbox_before_downstream_consumption")
+    if extraction_bbox_diag.get("table_extraction_bbox_preferred"):
+        recommended_actions.append("use_table_extraction_bbox_for_downstream_table_ocr_crop")
     if bbox_source in {"ocr_low_match_token_bbox", "unresolved"}:
         review_flags.append("ocr_bbox_enrichment_low_confidence")
     if bbox_resolver_card and bbox_resolver_card.get("review_required"):
@@ -697,6 +798,21 @@ def build_enrichment_card(
         "bbox_source": bbox_source,
         "bbox_confidence": round(confidence, 4),
         "bbox_coverage_ratio": coverage,
+        "ocr_inferred_table_region_bbox": ocr_inferred,
+        "ocr_bbox_source": ocr_bbox_source,
+        "ocr_bbox_confidence": round(ocr_confidence, 4),
+        "ocr_crop_candidate_ready": bool(ocr_crop_ready),
+        "table_extraction_bbox_candidate": extraction_bbox_diag.get("table_extraction_bbox_candidate"),
+        "table_extraction_bbox_available": extraction_bbox_diag.get("table_extraction_bbox_available"),
+        "table_extraction_bbox_valid": extraction_bbox_diag.get("table_extraction_bbox_valid"),
+        "table_extraction_bbox_preferred": extraction_bbox_diag.get("table_extraction_bbox_preferred"),
+        "table_extraction_bbox_source_container": extraction_bbox_diag.get("table_extraction_bbox_source_container"),
+        "table_extraction_bbox_source_key": extraction_bbox_diag.get("table_extraction_bbox_source_key"),
+        "table_extraction_bbox_source": extraction_bbox_diag.get("table_extraction_bbox_source"),
+        "table_extraction_bbox_confidence": extraction_bbox_diag.get("table_extraction_bbox_confidence"),
+        "table_extraction_bbox_coverage_ratio": extraction_bbox_diag.get("table_extraction_bbox_coverage_ratio"),
+        "table_extraction_bbox_rejection_reason": extraction_bbox_diag.get("table_extraction_bbox_rejection_reason"),
+        "bbox_preference_order": ["table_extraction_bbox", "ocr_token_union"],
         "original_inferred_table_region_bbox": content_band_diag.get("ocr_original_inferred_table_region_bbox"),
         "original_bbox_coverage_ratio": content_band_diag.get("ocr_content_band_original_coverage_ratio"),
         "content_band_bbox": content_band_diag.get("ocr_content_band_bbox"),
@@ -735,6 +851,11 @@ def summarize(cards: Sequence[Mapping[str, Any]], source_cards: Sequence[Mapping
         "source_table_geometry_card_count": len(source_cards),
         "ocr_bbox_enrichment_card_count": len(cards),
         "crop_candidate_ready_card_count": count(lambda c: c.get("crop_candidate_ready")),
+        "table_extraction_bbox_available_card_count": count(lambda c: c.get("table_extraction_bbox_available")),
+        "table_extraction_bbox_valid_card_count": count(lambda c: c.get("table_extraction_bbox_valid")),
+        "table_extraction_bbox_preferred_card_count": count(lambda c: c.get("table_extraction_bbox_preferred")),
+        "table_extraction_bbox_consumed_card_count": count(lambda c: c.get("table_extraction_bbox_preferred")),
+        "ocr_fallback_used_card_count": count(lambda c: not c.get("table_extraction_bbox_preferred") and c.get("ocr_crop_candidate_ready")),
         "content_band_tightening_available_card_count": count(lambda c: c.get("content_band_tightening_available")),
         "content_band_tightening_applied_card_count": count(lambda c: c.get("content_band_tightening_applied")),
         "broad_ocr_bbox_card_count": count(lambda c: (c.get("original_bbox_coverage_ratio") or 0) > 0.75),
@@ -966,7 +1087,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     for key in [
         "source_table_geometry_card_count", "ocr_bbox_enrichment_card_count", "ocr_source_file_card_count",
         "ocr_bbox_record_card_count", "matched_ocr_bbox_card_count", "part_number_ocr_match_card_count",
-        "crop_candidate_ready_card_count", "content_band_tightening_available_card_count", "content_band_tightening_applied_card_count",
+        "crop_candidate_ready_card_count", "table_extraction_bbox_available_card_count", "table_extraction_bbox_valid_card_count",
+        "table_extraction_bbox_preferred_card_count", "table_extraction_bbox_consumed_card_count", "ocr_fallback_used_card_count",
+        "content_band_tightening_available_card_count", "content_band_tightening_applied_card_count",
         "broad_ocr_bbox_card_count", "tightened_ocr_bbox_card_count", "review_required_card_count", "unsafe_ocr_bbox_enrichment_card_count",
         "answer_permission_count", "can_answer_directly_count", "can_prove_claims_count",
         "source_truth_mutation_allowed_count", "postgres_write_attempt_count", "qdrant_write_attempt_count", "opensearch_write_attempt_count",

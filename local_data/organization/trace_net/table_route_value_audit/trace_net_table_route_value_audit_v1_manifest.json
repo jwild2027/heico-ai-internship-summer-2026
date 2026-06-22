@@ -1,0 +1,19 @@
+{
+  "artifacts": {
+    "audit_records": "trace_net_table_route_value_audit_v1_records.jsonl",
+    "report": "trace_net_table_route_value_audit_v1.json",
+    "search_ready_values": "trace_net_table_route_search_ready_values_v1.jsonl",
+    "summary": "trace_net_table_route_value_audit_v1_summary.json"
+  },
+  "generated_at": "2026-06-22T12:02:37Z",
+  "quality_status": "PASS",
+  "safety_contract": {
+    "answer_permission": false,
+    "opensearch_writes": false,
+    "postgres_writes": false,
+    "qdrant_writes": false,
+    "source_truth_mutation": false
+  },
+  "schema_version": "trace_net_table_route_value_audit_v1",
+  "status": "TABLE_ROUTE_VALUE_AUDIT_BUILT"
+}

@@ -1,0 +1,118 @@
+{
+  "checks": [
+    {
+      "detail": "records=495 minimum=20",
+      "name": "source_table_records",
+      "ok": true
+    },
+    {
+      "detail": "records=20 minimum=20",
+      "name": "scoped_table_records",
+      "ok": true
+    },
+    {
+      "detail": "consumed=20 minimum=20",
+      "name": "bbox_consumed_records",
+      "ok": true
+    },
+    {
+      "detail": "cells=3088 minimum=100",
+      "name": "scoped_cell_records",
+      "ok": true
+    },
+    {
+      "detail": "values=3088 minimum=100",
+      "name": "scoped_value_records",
+      "ok": true
+    },
+    {
+      "detail": "unsafe=0 max=0",
+      "name": "unsafe_scoped_table_records",
+      "ok": true
+    },
+    {
+      "detail": "count=0 max=0",
+      "name": "answer_permission",
+      "ok": true
+    },
+    {
+      "detail": "count=0 max=0",
+      "name": "source_truth_mutation_allowed",
+      "ok": true
+    },
+    {
+      "detail": "count=0",
+      "name": "postgres_writes",
+      "ok": true
+    },
+    {
+      "detail": "count=0",
+      "name": "qdrant_writes",
+      "ok": true
+    },
+    {
+      "detail": "count=0",
+      "name": "opensearch_writes",
+      "ok": true
+    },
+    {
+      "detail": "status=PASS",
+      "name": "source_table_understanding_quality_pass",
+      "ok": true
+    },
+    {
+      "detail": "status=PASS",
+      "name": "source_table_ocr_bbox_enrichment_quality_pass",
+      "ok": true
+    },
+    {
+      "detail": "target_missing_or_invalid=0 target_records=20 legacy_unscoped=475",
+      "name": "all_bbox_target_records_scoped",
+      "ok": true
+    }
+  ],
+  "schema_version": "trace_net_table_bbox_scoped_cell_extraction_v1_quality",
+  "status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "bbox_match_method_counts": {
+      "page_id_single_card": 20
+    },
+    "bbox_scope_target_record_count": 20,
+    "bbox_scoped_extraction_ready_record_count": 20,
+    "bbox_source_counts": {
+      "table_ocr_bbox_enrichment_preferred_table_extraction_bbox": 20
+    },
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "legacy_unscoped_match_method_counts": {
+      "no_match": 475
+    },
+    "legacy_unscoped_table_record_count": 475,
+    "opensearch_write_attempt_count": 0,
+    "page_count": 20,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "review_required_record_count": 0,
+    "row_cell_extraction_scope_counts": {
+      "table_extraction_bbox_crop": 20
+    },
+    "schema_version": "trace_net_table_bbox_scoped_cell_extraction_v1",
+    "scoped_cell_count": 3088,
+    "scoped_page_count": 20,
+    "scoped_row_count": 1414,
+    "scoped_table_record_count": 20,
+    "scoped_value_record_count": 3088,
+    "source_cell_count": 3088,
+    "source_page_count": 495,
+    "source_row_count": 1414,
+    "source_table_ocr_bbox_enrichment_quality_status": "PASS",
+    "source_table_record_count": 495,
+    "source_table_understanding_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "table_extraction_bbox_available_record_count": 20,
+    "table_extraction_bbox_consumed_record_count": 20,
+    "table_extraction_bbox_missing_or_invalid_record_count": 0,
+    "unsafe_scoped_table_record_count": 0
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "created_at": "2026-06-19T19:05:42Z",
+  "quality_path": "local_data\\organization\\trace_net\\table_full_enclosure_bbox_reconstructor\\trace_net_table_full_enclosure_bbox_reconstructor_v1_quality.json",
+  "reconstructed_records_path": "local_data\\organization\\trace_net\\table_full_enclosure_bbox_reconstructor\\trace_net_table_full_enclosure_bbox_reconstructor_v1_reconstructed_records.jsonl",
+  "records_path": "local_data\\organization\\trace_net\\table_full_enclosure_bbox_reconstructor\\trace_net_table_full_enclosure_bbox_reconstructor_v1_records.jsonl",
+  "report_path": "local_data\\organization\\trace_net\\table_full_enclosure_bbox_reconstructor\\trace_net_table_full_enclosure_bbox_reconstructor_v1.json",
+  "safety_contract": {
+    "answer_permission": false,
+    "opensearch_writes": false,
+    "postgres_writes": false,
+    "qdrant_writes": false,
+    "source_truth_mutation": false
+  },
+  "schema_version": "trace_net_table_full_enclosure_bbox_reconstructor_v1",
+  "source_paths": {
+    "image_root": ".",
+    "table_presence_verifier": "local_data/organization/trace_net/table_presence_verifier/trace_net_table_presence_verifier_v1.json",
+    "table_structure_bbox_localizer": "local_data/organization/trace_net/table_structure_bbox_localizer/trace_net_table_structure_bbox_localizer_v1.json"
+  },
+  "summary_path": "local_data\\organization\\trace_net\\table_full_enclosure_bbox_reconstructor\\trace_net_table_full_enclosure_bbox_reconstructor_v1_summary.json"
+}
