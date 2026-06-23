@@ -1,0 +1,65 @@
+{
+  "checks": [
+    {
+      "expected": "== PASS",
+      "name": "quality_status",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "expected": ">= 4",
+      "name": "activated_optional_tunnel_count",
+      "observed": 4,
+      "passed": true
+    },
+    {
+      "expected": ">= 2",
+      "name": "graph_or_summary_tunnel_count",
+      "observed": 4,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "is False",
+      "name": "contract_reruns_ocr",
+      "observed": false,
+      "passed": true
+    },
+    {
+      "expected": "is False",
+      "name": "contract_reruns_embeddings",
+      "observed": false,
+      "passed": true
+    },
+    {
+      "expected": "is False",
+      "name": "contract_reruns_graph_build",
+      "observed": false,
+      "passed": true
+    },
+    {
+      "expected": "is True",
+      "name": "contract_graph_is_not_proof_authority",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "expected": "is False",
+      "name": "contract_answer_permission",
+      "observed": false,
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS"
+}

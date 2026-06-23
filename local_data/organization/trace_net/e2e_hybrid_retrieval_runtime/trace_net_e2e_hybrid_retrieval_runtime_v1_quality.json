@@ -1,0 +1,165 @@
+{
+  "quality_checks": [
+    {
+      "expected": ">= 5",
+      "name": "source_query_input_record_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 1000",
+      "name": "source_bridge_record_count",
+      "observed": 1497,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "hybrid_retrieval_query_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 4",
+      "name": "successful_retrieval_query_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "retrieval_group_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 10",
+      "name": "total_retrieval_hit_count",
+      "observed": 50,
+      "passed": true
+    },
+    {
+      "expected": ">= 2",
+      "name": "page_with_retrieval_hit_count",
+      "observed": 12,
+      "passed": true
+    },
+    {
+      "expected": ">= 3",
+      "name": "field_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "unsafe_runtime_record_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "can_answer_directly_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "can_prove_claims_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "postgres_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "qdrant_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "opensearch_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "opensearch_upload_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "is True",
+      "name": "source_query_input_quality_pass",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "expected": "is True",
+      "name": "source_bridge_quality_pass",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "expected": "is True",
+      "name": "all_results_retrieval_only",
+      "observed": true,
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS",
+  "summary": {
+    "all_results_retrieval_only": true,
+    "answer_authority": "blocked",
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "e2e_hybrid_retrieval_runtime_status": "E2E_HYBRID_RETRIEVAL_RUNTIME_READY_FOR_CONTEXT_PACK",
+    "failed_retrieval_query_count": 0,
+    "field_count": 5,
+    "field_counts": {
+      "covered_part_number": 20,
+      "ipl_figure_item_or_quantity": 10,
+      "ipl_part_number": 9,
+      "ipl_text": 10,
+      "manual_page_reference": 1
+    },
+    "hybrid_retrieval_query_count": 5,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "page_with_retrieval_hit_count": 12,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "ready_for_context_pack": true,
+    "retrieval_group_count": 5,
+    "retrieval_permission": "ranking_only_until_final_gate",
+    "source_bridge_path": "local_data/organization/trace_net/table_hybrid_retrieval_bridge/trace_net_table_hybrid_retrieval_bridge_v1.json",
+    "source_bridge_quality_pass": true,
+    "source_bridge_record_count": 1497,
+    "source_channel_counts": {
+      "table_hybrid_retrieval_bridge": 50
+    },
+    "source_query_bridge_group_count": 6,
+    "source_query_input_path": "local_data/organization/trace_net/e2e_query_input/trace_net_e2e_query_input_v1.json",
+    "source_query_input_quality_pass": true,
+    "source_query_input_record_count": 5,
+    "source_truth_mutation_allowed_count": 0,
+    "successful_retrieval_query_count": 5,
+    "total_retrieval_hit_count": 50,
+    "unsafe_runtime_record_count": 0
+  }
+}

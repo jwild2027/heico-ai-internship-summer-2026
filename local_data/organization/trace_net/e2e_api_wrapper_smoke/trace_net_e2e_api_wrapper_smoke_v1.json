@@ -1,0 +1,474 @@
+{
+  "api_requests": [
+    {
+      "answer_authority": "blocked_in_artifact_smoke",
+      "answer_permission": false,
+      "body": {
+        "messages": [
+          {
+            "content": "Find part number 120-36833-001",
+            "role": "user"
+          }
+        ],
+        "metadata": {
+          "mode": "local_artifact_smoke",
+          "query_id": "e2e_query_v1_0001",
+          "query_intent": "covered_part_number",
+          "source": "e2e_rag_demo_report_v1"
+        },
+        "model": "trace-net-e2e-local-smoke-v1"
+      },
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "endpoint": "/api/trace-net/ask",
+      "method": "POST",
+      "openai_compatible_endpoint": "/v1/chat/completions",
+      "query_id": "e2e_query_v1_0001",
+      "request_id": "api_smoke_request_e2e_query_v1_0001",
+      "retrieval_permission": "ranking_until_final_gate_smoke",
+      "safe_to_send_to_api_wrapper": true,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_authority": "blocked_in_artifact_smoke",
+      "answer_permission": false,
+      "body": {
+        "messages": [
+          {
+            "content": "Where is manual reference 25-21-00 used?",
+            "role": "user"
+          }
+        ],
+        "metadata": {
+          "mode": "local_artifact_smoke",
+          "query_id": "e2e_query_v1_0002",
+          "query_intent": "manual_page_reference",
+          "source": "e2e_rag_demo_report_v1"
+        },
+        "model": "trace-net-e2e-local-smoke-v1"
+      },
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "endpoint": "/api/trace-net/ask",
+      "method": "POST",
+      "openai_compatible_endpoint": "/v1/chat/completions",
+      "query_id": "e2e_query_v1_0002",
+      "request_id": "api_smoke_request_e2e_query_v1_0002",
+      "retrieval_permission": "ranking_until_final_gate_smoke",
+      "safe_to_send_to_api_wrapper": true,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_authority": "blocked_in_artifact_smoke",
+      "answer_permission": false,
+      "body": {
+        "messages": [
+          {
+            "content": "Find IPL item 130",
+            "role": "user"
+          }
+        ],
+        "metadata": {
+          "mode": "local_artifact_smoke",
+          "query_id": "e2e_query_v1_0003",
+          "query_intent": "ipl_figure_item_or_quantity",
+          "source": "e2e_rag_demo_report_v1"
+        },
+        "model": "trace-net-e2e-local-smoke-v1"
+      },
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "endpoint": "/api/trace-net/ask",
+      "method": "POST",
+      "openai_compatible_endpoint": "/v1/chat/completions",
+      "query_id": "e2e_query_v1_0003",
+      "request_id": "api_smoke_request_e2e_query_v1_0003",
+      "retrieval_permission": "ranking_until_final_gate_smoke",
+      "safe_to_send_to_api_wrapper": true,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_authority": "blocked_in_artifact_smoke",
+      "answer_permission": false,
+      "body": {
+        "messages": [
+          {
+            "content": "Search table text MAINTENANCE MANUAL WITH",
+            "role": "user"
+          }
+        ],
+        "metadata": {
+          "mode": "local_artifact_smoke",
+          "query_id": "e2e_query_v1_0004",
+          "query_intent": "table_text",
+          "source": "e2e_rag_demo_report_v1"
+        },
+        "model": "trace-net-e2e-local-smoke-v1"
+      },
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "endpoint": "/api/trace-net/ask",
+      "method": "POST",
+      "openai_compatible_endpoint": "/v1/chat/completions",
+      "query_id": "e2e_query_v1_0004",
+      "request_id": "api_smoke_request_e2e_query_v1_0004",
+      "retrieval_permission": "ranking_until_final_gate_smoke",
+      "safe_to_send_to_api_wrapper": true,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_authority": "blocked_in_artifact_smoke",
+      "answer_permission": false,
+      "body": {
+        "messages": [
+          {
+            "content": "What maintenance manual pages mention covered part numbers?",
+            "role": "user"
+          }
+        ],
+        "metadata": {
+          "mode": "local_artifact_smoke",
+          "query_id": "e2e_query_v1_0005",
+          "query_intent": "covered_part_number",
+          "source": "e2e_rag_demo_report_v1"
+        },
+        "model": "trace-net-e2e-local-smoke-v1"
+      },
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "endpoint": "/api/trace-net/ask",
+      "method": "POST",
+      "openai_compatible_endpoint": "/v1/chat/completions",
+      "query_id": "e2e_query_v1_0005",
+      "request_id": "api_smoke_request_e2e_query_v1_0005",
+      "retrieval_permission": "ranking_until_final_gate_smoke",
+      "safe_to_send_to_api_wrapper": true,
+      "source_truth_mutation_allowed": false
+    }
+  ],
+  "api_responses": [
+    {
+      "answer_authority": "blocked_in_api_wrapper_smoke",
+      "answer_permission": false,
+      "api_response_status": "citation_backed_response_draft",
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_count": 3,
+      "citations": [
+        {
+          "citation_id": "generated_citation_1",
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "generated_citation_2",
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "generated_citation_3",
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true
+        }
+      ],
+      "demo_flow_status": "E2E_DEMO_FLOW_COMPLETE",
+      "final_gate_decision": "FINAL_GATE_SAFE_CITATION_BACKED_RESPONSE_DRAFT",
+      "http_status": 200,
+      "message": {
+        "content": "Final-gate smoke draft for query: 'Find part number 120-36833-001'. TRACE-Net found citation/source-trace-ready evidence: covered_part_number=120-36833-001 on t_p_120_1176_p000003; covered_part_number=120-36833-003 on t_p_120_1176_p000003; covered_part_number=120-36833-005 on t_p_120_1176_p000003. This draft is safe for final-gate review and remains non-mutating; it does not rewrite source truth.",
+        "role": "assistant"
+      },
+      "page_ids": [
+        "t_p_120_1176_p000003"
+      ],
+      "query_id": "e2e_query_v1_0001",
+      "query_intent": "covered_part_number",
+      "response_id": "api_smoke_response_e2e_query_v1_0001",
+      "retrieval_hit_count": 10,
+      "retrieval_permission": "ranking_until_api_finalization",
+      "safe_response_is_draft": true,
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "answer_authority": "blocked_in_api_wrapper_smoke",
+      "answer_permission": false,
+      "api_response_status": "citation_backed_response_draft",
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_count": 3,
+      "citations": [
+        {
+          "citation_id": "generated_citation_1",
+          "citation_ready": true,
+          "field_name": "manual_page_reference",
+          "normalized_value": "",
+          "page_id": "t_p_120_1176_p000005",
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "generated_citation_2",
+          "citation_ready": true,
+          "field_name": "manual_page_reference",
+          "normalized_value": "",
+          "page_id": "t_p_120_1176_p000027",
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "generated_citation_3",
+          "citation_ready": true,
+          "field_name": "manual_page_reference",
+          "normalized_value": "",
+          "page_id": "t_p_120_1176_p000028",
+          "source_trace_ready": true
+        }
+      ],
+      "demo_flow_status": "E2E_DEMO_FLOW_COMPLETE",
+      "final_gate_decision": "FINAL_GATE_SAFE_CITATION_BACKED_RESPONSE_DRAFT",
+      "http_status": 200,
+      "message": {
+        "content": "Final-gate smoke draft for query: 'Where is manual reference 25-21-00 used?'. TRACE-Net found citation/source-trace-ready evidence: manual_page_reference=25-21-00 on t_p_120_1176_p000005; ipl_part_number=25-21-00 on t_p_120_1176_p000027; ipl_part_number=25-21-00 on t_p_120_1176_p000028. This draft is safe for final-gate review and remains non-mutating; it does not rewrite source truth.",
+        "role": "assistant"
+      },
+      "page_ids": [
+        "t_p_120_1176_p000005",
+        "t_p_120_1176_p000027",
+        "t_p_120_1176_p000028"
+      ],
+      "query_id": "e2e_query_v1_0002",
+      "query_intent": "manual_page_reference",
+      "response_id": "api_smoke_response_e2e_query_v1_0002",
+      "retrieval_hit_count": 10,
+      "retrieval_permission": "ranking_until_api_finalization",
+      "safe_response_is_draft": true,
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "answer_authority": "blocked_in_api_wrapper_smoke",
+      "answer_permission": false,
+      "api_response_status": "citation_backed_response_draft",
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_count": 3,
+      "citations": [
+        {
+          "citation_id": "generated_citation_1",
+          "citation_ready": true,
+          "field_name": "ipl_figure_item_or_quantity",
+          "normalized_value": "",
+          "page_id": "t_p_120_1176_p000027",
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "generated_citation_2",
+          "citation_ready": true,
+          "field_name": "ipl_figure_item_or_quantity",
+          "normalized_value": "",
+          "page_id": "t_p_120_1176_p000028",
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "generated_citation_3",
+          "citation_ready": true,
+          "field_name": "ipl_figure_item_or_quantity",
+          "normalized_value": "",
+          "page_id": "t_p_120_1176_p000036",
+          "source_trace_ready": true
+        }
+      ],
+      "demo_flow_status": "E2E_DEMO_FLOW_COMPLETE",
+      "final_gate_decision": "FINAL_GATE_SAFE_CITATION_BACKED_RESPONSE_DRAFT",
+      "http_status": 200,
+      "message": {
+        "content": "Final-gate smoke draft for query: 'Find IPL item 130'. TRACE-Net found citation/source-trace-ready evidence: ipl_figure_item_or_quantity=130 on t_p_120_1176_p000027; ipl_figure_item_or_quantity=130 on t_p_120_1176_p000028; ipl_figure_item_or_quantity=130 on t_p_120_1176_p000036. This draft is safe for final-gate review and remains non-mutating; it does not rewrite source truth.",
+        "role": "assistant"
+      },
+      "page_ids": [
+        "t_p_120_1176_p000027",
+        "t_p_120_1176_p000028",
+        "t_p_120_1176_p000036"
+      ],
+      "query_id": "e2e_query_v1_0003",
+      "query_intent": "ipl_figure_item_or_quantity",
+      "response_id": "api_smoke_response_e2e_query_v1_0003",
+      "retrieval_hit_count": 10,
+      "retrieval_permission": "ranking_until_api_finalization",
+      "safe_response_is_draft": true,
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_query": "Find IPL item 130"
+    },
+    {
+      "answer_authority": "blocked_in_api_wrapper_smoke",
+      "answer_permission": false,
+      "api_response_status": "citation_backed_response_draft",
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_count": 3,
+      "citations": [
+        {
+          "citation_id": "generated_citation_1",
+          "citation_ready": true,
+          "field_name": "table_text",
+          "normalized_value": "",
+          "page_id": "t_p_120_1176_p000027",
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "generated_citation_2",
+          "citation_ready": true,
+          "field_name": "table_text",
+          "normalized_value": "",
+          "page_id": "t_p_120_1176_p000028",
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "generated_citation_3",
+          "citation_ready": true,
+          "field_name": "table_text",
+          "normalized_value": "",
+          "page_id": "t_p_120_1176_p000029",
+          "source_trace_ready": true
+        }
+      ],
+      "demo_flow_status": "E2E_DEMO_FLOW_COMPLETE",
+      "final_gate_decision": "FINAL_GATE_SAFE_CITATION_BACKED_RESPONSE_DRAFT",
+      "http_status": 200,
+      "message": {
+        "content": "Final-gate smoke draft for query: 'Search table text MAINTENANCE MANUAL WITH'. TRACE-Net found citation/source-trace-ready evidence: ipl_text=MAINTENANCE MANUAL WITH on t_p_120_1176_p000027; ipl_text=MAINTENANCE MANUAL WITH on t_p_120_1176_p000028; ipl_text=MAINTENANCE MANUAL WITH on t_p_120_1176_p000029. This draft is safe for final-gate review and remains non-mutating; it does not rewrite source truth.",
+        "role": "assistant"
+      },
+      "page_ids": [
+        "t_p_120_1176_p000027",
+        "t_p_120_1176_p000028",
+        "t_p_120_1176_p000029"
+      ],
+      "query_id": "e2e_query_v1_0004",
+      "query_intent": "table_text",
+      "response_id": "api_smoke_response_e2e_query_v1_0004",
+      "retrieval_hit_count": 10,
+      "retrieval_permission": "ranking_until_api_finalization",
+      "safe_response_is_draft": true,
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "answer_authority": "blocked_in_api_wrapper_smoke",
+      "answer_permission": false,
+      "api_response_status": "citation_backed_response_draft",
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_count": 3,
+      "citations": [
+        {
+          "citation_id": "generated_citation_1",
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "generated_citation_2",
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true
+        },
+        {
+          "citation_id": "generated_citation_3",
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true
+        }
+      ],
+      "demo_flow_status": "E2E_DEMO_FLOW_COMPLETE",
+      "final_gate_decision": "FINAL_GATE_SAFE_CITATION_BACKED_RESPONSE_DRAFT",
+      "http_status": 200,
+      "message": {
+        "content": "Final-gate smoke draft for query: 'What maintenance manual pages mention covered part numbers?'. TRACE-Net found citation/source-trace-ready evidence: covered_part_number=120-36833-001 on t_p_120_1176_p000003; covered_part_number=120-36833-003 on t_p_120_1176_p000003; covered_part_number=120-36833-005 on t_p_120_1176_p000003. This draft is safe for final-gate review and remains non-mutating; it does not rewrite source truth.",
+        "role": "assistant"
+      },
+      "page_ids": [
+        "t_p_120_1176_p000003"
+      ],
+      "query_id": "e2e_query_v1_0005",
+      "query_intent": "covered_part_number",
+      "response_id": "api_smoke_response_e2e_query_v1_0005",
+      "retrieval_hit_count": 10,
+      "retrieval_permission": "ranking_until_api_finalization",
+      "safe_response_is_draft": true,
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    }
+  ],
+  "api_wrapper_contract": {
+    "answer_authority": "blocked_in_api_wrapper_smoke",
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "endpoint_shape": [
+      "/api/trace-net/ask",
+      "/v1/chat/completions"
+    ],
+    "purpose": "Wrap artifact-driven E2E RAG demo flows in local API-style request/response records.",
+    "retrieval_permission": "ranking_until_api_finalization",
+    "safe_responses_are_drafts_until_runtime_finalization": true,
+    "source_truth_mutation_allowed": false,
+    "uploads_to_opensearch": false,
+    "writes_to_opensearch": false,
+    "writes_to_postgres": false,
+    "writes_to_qdrant": false
+  },
+  "e2e_api_wrapper_smoke_status": "E2E_API_WRAPPER_SMOKE_READY_FOR_LOCAL_ENDPOINT",
+  "inspect_md_path": "local_data\\organization\\trace_net\\e2e_api_wrapper_smoke\\trace_net_e2e_api_wrapper_smoke_v1_inspect.md",
+  "quality_status": "PASS",
+  "report_path": "local_data\\organization\\trace_net\\e2e_api_wrapper_smoke\\trace_net_e2e_api_wrapper_smoke_v1.json",
+  "requests_jsonl_path": "local_data\\organization\\trace_net\\e2e_api_wrapper_smoke\\trace_net_e2e_api_wrapper_smoke_requests_v1.jsonl",
+  "responses_jsonl_path": "local_data\\organization\\trace_net\\e2e_api_wrapper_smoke\\trace_net_e2e_api_wrapper_smoke_responses_v1.jsonl",
+  "schema_version": "trace_net_e2e_api_wrapper_smoke_v1",
+  "status": "E2E_API_WRAPPER_SMOKE_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "api_wrapper_request_count": 5,
+    "api_wrapper_response_count": 5,
+    "api_wrapper_safe_response_draft_count": 5,
+    "audit_only_api_response_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "citation_backed_api_response_count": 5,
+    "field_count": 4,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "page_with_api_citation_count": 6,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "ready_for_local_api_endpoint": true,
+    "ready_for_open_webui_adapter": true,
+    "safe_responses_are_drafts_until_runtime_finalization": true,
+    "schema_missing_required_key_record_count": 0,
+    "source_complete_demo_flow_count": 5,
+    "source_demo_report_quality_pass": true,
+    "source_e2e_demo_record_count": 5,
+    "source_e2e_rag_demo_report_path": "local_data\\organization\\trace_net\\e2e_rag_demo_report\\trace_net_e2e_rag_demo_report_v1.json",
+    "source_truth_mutation_allowed_count": 0,
+    "total_api_citation_count": 15,
+    "unsafe_api_wrapper_record_count": 0
+  }
+}

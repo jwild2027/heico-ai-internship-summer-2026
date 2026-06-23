@@ -1,0 +1,140 @@
+{
+  "quality_checks": [
+    {
+      "expected": true,
+      "name": "source_exact_search_adapter_quality_pass",
+      "observed": true,
+      "operator": "is True",
+      "passed": true
+    },
+    {
+      "expected": 1000,
+      "name": "source_exact_search_document_count",
+      "observed": 1497,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 3,
+      "name": "smoke_query_count",
+      "observed": 6,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 3,
+      "name": "successful_smoke_query_count",
+      "observed": 6,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 3,
+      "name": "total_match_count",
+      "observed": 42,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 1,
+      "name": "page_with_smoke_match_count",
+      "observed": 12,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "unsafe_smoke_result_count",
+      "observed": 0,
+      "operator": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "answer_permission_count",
+      "observed": 0,
+      "operator": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "operator": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "can_answer_directly_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "can_prove_claims_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "postgres_write_attempt_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "qdrant_write_attempt_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "opensearch_write_attempt_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "opensearch_upload_attempt_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS",
+  "status": "TABLE_EXACT_SEARCH_SMOKE_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "failed_smoke_query_count": 0,
+    "field_count_with_smoke_match": 5,
+    "field_counts": {
+      "covered_part_number": 11,
+      "ipl_figure_item_or_quantity": 10,
+      "ipl_text": 10,
+      "manual_page_reference": 10,
+      "page_rev_or_sequence_value": 1
+    },
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "page_with_smoke_match_count": 12,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "smoke_query_count": 6,
+    "source_collection": "exact_search_documents",
+    "source_exact_search_adapter_path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+    "source_exact_search_adapter_quality_pass": true,
+    "source_exact_search_document_count": 1497,
+    "source_table_exact_search_document_count": 1497,
+    "source_truth_mutation_allowed_count": 0,
+    "successful_smoke_query_count": 6,
+    "total_match_count": 42,
+    "unsafe_smoke_result_count": 0
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "quality_status": "PASS",
+  "quality_checks": [
+    {
+      "name": "exact_search_document_count",
+      "observed": 1497,
+      "op": ">=",
+      "expected": 10,
+      "passed": true
+    },
+    {
+      "name": "endpoint_route_count",
+      "observed": 4,
+      "op": ">=",
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "name": "sample_query_count",
+      "observed": 5,
+      "op": ">=",
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "name": "sample_success_count",
+      "observed": 5,
+      "op": ">=",
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "name": "sample_unsupported_claim_count",
+      "observed": 0,
+      "op": "<=",
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "sample_llm_call_error_count",
+      "observed": 0,
+      "op": "<=",
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "answer_permission_count",
+      "observed": 0,
+      "op": "<=",
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "op": "<=",
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "contract_raw_5tb_scan_at_query_time",
+      "observed": false,
+      "op": "is",
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "contract_graph_rebuild_at_query_time",
+      "observed": false,
+      "op": "is",
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "require_no_answer_permission",
+      "observed": 0,
+      "op": "==",
+      "expected": 0,
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,820 @@
+{
+  "citations_jsonl_path": "local_data\\organization\\trace_net\\e2e_reasoned_response_draft\\trace_net_e2e_reasoned_response_draft_v12_citations_v12.jsonl",
+  "drafts_jsonl_path": "local_data\\organization\\trace_net\\e2e_reasoned_response_draft\\trace_net_e2e_reasoned_response_draft_v12_records_v12.jsonl",
+  "e2e_reasoned_response_draft_status": "E2E_REASONED_RESPONSE_DRAFT_READY_FOR_FINAL_GATE",
+  "inspect_md_path": "local_data\\organization\\trace_net\\e2e_reasoned_response_draft\\trace_net_e2e_reasoned_response_draft_v12.md",
+  "quality_checks": [
+    {
+      "expected": "== PASS",
+      "name": "quality_status",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "prompt_contract_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "reasoned_draft_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "ready_reasoned_draft_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 15",
+      "name": "total_citation_count",
+      "observed": 25,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "drafts_with_limitations_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "drafts_ready_for_final_gate_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "graph_summary_proof_violation_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "is True",
+      "name": "contract_reasoned_draft_does_not_call_llm",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "contract_can_answer_directly",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "contract_can_prove_claims",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "postgres_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "qdrant_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "opensearch_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS",
+  "reasoned_response_draft_contract": {
+    "answer_permission": false,
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "cite_every_factual_claim": true,
+    "evidence_box_is_source_truth": true,
+    "graph_is_not_proof_authority": true,
+    "guidance_box_is_not_source_truth": true,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "reasoned_draft_does_not_call_llm": true,
+    "reasoned_draft_is_deterministic": true,
+    "reasoned_draft_only": true,
+    "reruns_embeddings": false,
+    "reruns_graph_build": false,
+    "reruns_ocr": false,
+    "reruns_page_classification": false,
+    "reruns_page_summaries": false,
+    "reruns_retrieval": false,
+    "reruns_table_extraction": false,
+    "source_truth_mutation_allowed": false,
+    "summaries_are_not_source_truth": true,
+    "uses_prebuilt_prompt_contracts": true
+  },
+  "reasoned_response_drafts": [
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_count": 5,
+      "citation_ready_evidence_count": 5,
+      "citations": [
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_1",
+          "citation_marker": "[1]",
+          "citation_ready": true,
+          "evidence_id": "evidence_001",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-001",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_2",
+          "citation_marker": "[2]",
+          "citation_ready": true,
+          "evidence_id": "evidence_002",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-003",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_3",
+          "citation_marker": "[3]",
+          "citation_ready": true,
+          "evidence_id": "evidence_003",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-005",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_4",
+          "citation_marker": "[4]",
+          "citation_ready": true,
+          "evidence_id": "evidence_004",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-501",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_5",
+          "citation_marker": "[5]",
+          "citation_ready": true,
+          "evidence_id": "evidence_005",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-503",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        }
+      ],
+      "context_pack_id": "dynamic_context_pack_v8_0001",
+      "contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "cite_every_factual_claim": true,
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "opensearch_upload_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "qdrant_write_attempt_count": 0,
+        "reasoned_draft_does_not_call_llm": true,
+        "reasoned_draft_is_deterministic": true,
+        "reasoned_draft_only": true,
+        "reruns_embeddings": false,
+        "reruns_graph_build": false,
+        "reruns_ocr": false,
+        "reruns_page_classification": false,
+        "reruns_page_summaries": false,
+        "reruns_retrieval": false,
+        "reruns_table_extraction": false,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true,
+        "uses_prebuilt_prompt_contracts": true
+      },
+      "crag_no_retry_needed": true,
+      "draft_message": {
+        "content": "TRACE-Net found part number 120-36833-001 as a covered part number on page t_p_120_1176_p000003 [1]. The same evidence set also includes related covered part numbers: 120-36833-003 [2], 120-36833-005 [3]. The evidence is sufficient to confirm the listing, but not enough to describe what the part physically is.",
+        "role": "assistant"
+      },
+      "draft_policy": {
+        "final_answer_gate_required": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_used_as_context_only": true,
+        "summaries_are_not_source_truth": true,
+        "unsupported_claim_policy": "state_insufficient_evidence_instead_of_guessing",
+        "uses_source_truth_evidence_only_for_claims": true
+      },
+      "field_counts": {
+        "covered_part_number": 5
+      },
+      "graph_summary_proof_violation_count": 0,
+      "limitations": [
+        "The available source-truth evidence confirms listing/coverage, but it does not provide a physical part description."
+      ],
+      "page_ids": [
+        "t_p_120_1176_p000003"
+      ],
+      "prompt_contract_id": "llm_prompt_contract_v11_0001",
+      "query_intent": "covered_part_number",
+      "ready_for_final_gate": true,
+      "reasoned_response_draft_id": "reasoned_response_draft_v12_0001",
+      "reasoned_response_draft_status": "REASONED_RESPONSE_DRAFT_READY_FOR_FINAL_GATE",
+      "response_is_reasoned_draft": true,
+      "schema_version": "v12",
+      "self_rag_ready": true,
+      "source_trace_ready_evidence_count": 5,
+      "source_truth_evidence_count": 5,
+      "source_truth_mutation_allowed": false,
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_count": 5,
+      "citation_ready_evidence_count": 5,
+      "citations": [
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_1",
+          "citation_marker": "[1]",
+          "citation_ready": true,
+          "evidence_id": "evidence_001",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36834-509",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_2",
+          "citation_marker": "[2]",
+          "citation_ready": true,
+          "evidence_id": "evidence_002",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-001",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_3",
+          "citation_marker": "[3]",
+          "citation_ready": true,
+          "evidence_id": "evidence_003",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-003",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_4",
+          "citation_marker": "[4]",
+          "citation_ready": true,
+          "evidence_id": "evidence_004",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-005",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_5",
+          "citation_marker": "[5]",
+          "citation_ready": true,
+          "evidence_id": "evidence_005",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-501",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        }
+      ],
+      "context_pack_id": "dynamic_context_pack_v8_0002",
+      "contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "cite_every_factual_claim": true,
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "opensearch_upload_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "qdrant_write_attempt_count": 0,
+        "reasoned_draft_does_not_call_llm": true,
+        "reasoned_draft_is_deterministic": true,
+        "reasoned_draft_only": true,
+        "reruns_embeddings": false,
+        "reruns_graph_build": false,
+        "reruns_ocr": false,
+        "reruns_page_classification": false,
+        "reruns_page_summaries": false,
+        "reruns_retrieval": false,
+        "reruns_table_extraction": false,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true,
+        "uses_prebuilt_prompt_contracts": true
+      },
+      "crag_no_retry_needed": true,
+      "draft_message": {
+        "content": "TRACE-Net found part number 120-36834-509 as a covered part number on page t_p_120_1176_p000003 [1]. The same evidence set also includes related covered part numbers: 120-36833-001 [2], 120-36833-003 [3]. The evidence is sufficient to confirm the listing, but not enough to describe what the part physically is.",
+        "role": "assistant"
+      },
+      "draft_policy": {
+        "final_answer_gate_required": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_used_as_context_only": true,
+        "summaries_are_not_source_truth": true,
+        "unsupported_claim_policy": "state_insufficient_evidence_instead_of_guessing",
+        "uses_source_truth_evidence_only_for_claims": true
+      },
+      "field_counts": {
+        "covered_part_number": 5
+      },
+      "graph_summary_proof_violation_count": 0,
+      "limitations": [
+        "The available source-truth evidence confirms listing/coverage, but it does not provide a physical part description."
+      ],
+      "page_ids": [
+        "t_p_120_1176_p000003"
+      ],
+      "prompt_contract_id": "llm_prompt_contract_v11_0002",
+      "query_intent": "covered_part_number",
+      "ready_for_final_gate": true,
+      "reasoned_response_draft_id": "reasoned_response_draft_v12_0002",
+      "reasoned_response_draft_status": "REASONED_RESPONSE_DRAFT_READY_FOR_FINAL_GATE",
+      "response_is_reasoned_draft": true,
+      "schema_version": "v12",
+      "self_rag_ready": true,
+      "source_trace_ready_evidence_count": 5,
+      "source_truth_evidence_count": 5,
+      "source_truth_mutation_allowed": false,
+      "user_query": "Find part number 120-36834-509"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_count": 5,
+      "citation_ready_evidence_count": 5,
+      "citations": [
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_1",
+          "citation_marker": "[1]",
+          "citation_ready": true,
+          "evidence_id": "evidence_001",
+          "field_name": "manual_page_reference",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000005",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_2",
+          "citation_marker": "[2]",
+          "citation_ready": true,
+          "evidence_id": "evidence_002",
+          "field_name": "ipl_part_number",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000027",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_3",
+          "citation_marker": "[3]",
+          "citation_ready": true,
+          "evidence_id": "evidence_003",
+          "field_name": "ipl_part_number",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000028",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_4",
+          "citation_marker": "[4]",
+          "citation_ready": true,
+          "evidence_id": "evidence_004",
+          "field_name": "ipl_part_number",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000029",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_5",
+          "citation_marker": "[5]",
+          "citation_ready": true,
+          "evidence_id": "evidence_005",
+          "field_name": "ipl_part_number",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000030",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        }
+      ],
+      "context_pack_id": "dynamic_context_pack_v8_0003",
+      "contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "cite_every_factual_claim": true,
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "opensearch_upload_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "qdrant_write_attempt_count": 0,
+        "reasoned_draft_does_not_call_llm": true,
+        "reasoned_draft_is_deterministic": true,
+        "reasoned_draft_only": true,
+        "reruns_embeddings": false,
+        "reruns_graph_build": false,
+        "reruns_ocr": false,
+        "reruns_page_classification": false,
+        "reruns_page_summaries": false,
+        "reruns_retrieval": false,
+        "reruns_table_extraction": false,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true,
+        "uses_prebuilt_prompt_contracts": true
+      },
+      "crag_no_retry_needed": true,
+      "draft_message": {
+        "content": "TRACE-Net found the manual reference in these source-truth records: manual_page_reference=25-21-00 on page t_p_120_1176_p000005 [1]; ipl_part_number=25-21-00 on page t_p_120_1176_p000027 [2]; ipl_part_number=25-21-00 on page t_p_120_1176_p000028 [3]; ipl_part_number=25-21-00 on page t_p_120_1176_p000029 [4]; ipl_part_number=25-21-00 on page t_p_120_1176_p000030 [5].",
+        "role": "assistant"
+      },
+      "draft_policy": {
+        "final_answer_gate_required": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_used_as_context_only": true,
+        "summaries_are_not_source_truth": true,
+        "unsupported_claim_policy": "state_insufficient_evidence_instead_of_guessing",
+        "uses_source_truth_evidence_only_for_claims": true
+      },
+      "field_counts": {
+        "ipl_part_number": 4,
+        "manual_page_reference": 1
+      },
+      "graph_summary_proof_violation_count": 0,
+      "limitations": [
+        "The draft reports where the reference appears in extracted table evidence; it does not infer procedural meaning beyond those citations."
+      ],
+      "page_ids": [
+        "t_p_120_1176_p000005",
+        "t_p_120_1176_p000027",
+        "t_p_120_1176_p000028",
+        "t_p_120_1176_p000029",
+        "t_p_120_1176_p000030"
+      ],
+      "prompt_contract_id": "llm_prompt_contract_v11_0003",
+      "query_intent": "manual_page_reference",
+      "ready_for_final_gate": true,
+      "reasoned_response_draft_id": "reasoned_response_draft_v12_0003",
+      "reasoned_response_draft_status": "REASONED_RESPONSE_DRAFT_READY_FOR_FINAL_GATE",
+      "response_is_reasoned_draft": true,
+      "schema_version": "v12",
+      "self_rag_ready": true,
+      "source_trace_ready_evidence_count": 5,
+      "source_truth_evidence_count": 5,
+      "source_truth_mutation_allowed": false,
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_count": 5,
+      "citation_ready_evidence_count": 5,
+      "citations": [
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_1",
+          "citation_marker": "[1]",
+          "citation_ready": true,
+          "evidence_id": "evidence_001",
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000027",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_2",
+          "citation_marker": "[2]",
+          "citation_ready": true,
+          "evidence_id": "evidence_002",
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000028",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_3",
+          "citation_marker": "[3]",
+          "citation_ready": true,
+          "evidence_id": "evidence_003",
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000029",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_4",
+          "citation_marker": "[4]",
+          "citation_ready": true,
+          "evidence_id": "evidence_004",
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000030",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_5",
+          "citation_marker": "[5]",
+          "citation_ready": true,
+          "evidence_id": "evidence_005",
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000031",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        }
+      ],
+      "context_pack_id": "dynamic_context_pack_v8_0004",
+      "contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "cite_every_factual_claim": true,
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "opensearch_upload_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "qdrant_write_attempt_count": 0,
+        "reasoned_draft_does_not_call_llm": true,
+        "reasoned_draft_is_deterministic": true,
+        "reasoned_draft_only": true,
+        "reruns_embeddings": false,
+        "reruns_graph_build": false,
+        "reruns_ocr": false,
+        "reruns_page_classification": false,
+        "reruns_page_summaries": false,
+        "reruns_retrieval": false,
+        "reruns_table_extraction": false,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true,
+        "uses_prebuilt_prompt_contracts": true
+      },
+      "crag_no_retry_needed": true,
+      "draft_message": {
+        "content": "TRACE-Net found the table text 'MAINTENANCE MANUAL WITH' on page(s) t_p_120_1176_p000027 [1], t_p_120_1176_p000028 [2], t_p_120_1176_p000029 [3], t_p_120_1176_p000030 [4], t_p_120_1176_p000031 [5].",
+        "role": "assistant"
+      },
+      "draft_policy": {
+        "final_answer_gate_required": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_used_as_context_only": true,
+        "summaries_are_not_source_truth": true,
+        "unsupported_claim_policy": "state_insufficient_evidence_instead_of_guessing",
+        "uses_source_truth_evidence_only_for_claims": true
+      },
+      "field_counts": {
+        "ipl_text": 5
+      },
+      "graph_summary_proof_violation_count": 0,
+      "limitations": [
+        "The draft confirms the exact table text occurrence only; it does not infer surrounding table meaning without additional cited context."
+      ],
+      "page_ids": [
+        "t_p_120_1176_p000027",
+        "t_p_120_1176_p000028",
+        "t_p_120_1176_p000029",
+        "t_p_120_1176_p000030",
+        "t_p_120_1176_p000031"
+      ],
+      "prompt_contract_id": "llm_prompt_contract_v11_0004",
+      "query_intent": "table_text",
+      "ready_for_final_gate": true,
+      "reasoned_response_draft_id": "reasoned_response_draft_v12_0004",
+      "reasoned_response_draft_status": "REASONED_RESPONSE_DRAFT_READY_FOR_FINAL_GATE",
+      "response_is_reasoned_draft": true,
+      "schema_version": "v12",
+      "self_rag_ready": true,
+      "source_trace_ready_evidence_count": 5,
+      "source_truth_evidence_count": 5,
+      "source_truth_mutation_allowed": false,
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_count": 5,
+      "citation_ready_evidence_count": 5,
+      "citations": [
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_1",
+          "citation_marker": "[1]",
+          "citation_ready": true,
+          "evidence_id": "evidence_001",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-001",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_2",
+          "citation_marker": "[2]",
+          "citation_ready": true,
+          "evidence_id": "evidence_002",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-003",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_3",
+          "citation_marker": "[3]",
+          "citation_ready": true,
+          "evidence_id": "evidence_003",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-005",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_4",
+          "citation_marker": "[4]",
+          "citation_ready": true,
+          "evidence_id": "evidence_004",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-501",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        },
+        {
+          "answer_authority": "source_truth_evidence_only",
+          "citation_id": "citation_5",
+          "citation_marker": "[5]",
+          "citation_ready": true,
+          "evidence_id": "evidence_005",
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-503",
+          "page_id": "t_p_120_1176_p000003",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel"
+        }
+      ],
+      "context_pack_id": "dynamic_context_pack_v8_0005",
+      "contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "cite_every_factual_claim": true,
+        "evidence_box_is_source_truth": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_box_is_not_source_truth": true,
+        "opensearch_upload_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "qdrant_write_attempt_count": 0,
+        "reasoned_draft_does_not_call_llm": true,
+        "reasoned_draft_is_deterministic": true,
+        "reasoned_draft_only": true,
+        "reruns_embeddings": false,
+        "reruns_graph_build": false,
+        "reruns_ocr": false,
+        "reruns_page_classification": false,
+        "reruns_page_summaries": false,
+        "reruns_retrieval": false,
+        "reruns_table_extraction": false,
+        "source_truth_mutation_allowed": false,
+        "summaries_are_not_source_truth": true,
+        "uses_prebuilt_prompt_contracts": true
+      },
+      "crag_no_retry_needed": true,
+      "draft_message": {
+        "content": "TRACE-Net found covered part numbers in the source-truth evidence: covered part number 120-36833-001 on page t_p_120_1176_p000003 [1]; covered part number 120-36833-003 on page t_p_120_1176_p000003 [2]; covered part number 120-36833-005 on page t_p_120_1176_p000003 [3].",
+        "role": "assistant"
+      },
+      "draft_policy": {
+        "final_answer_gate_required": true,
+        "graph_is_not_proof_authority": true,
+        "guidance_used_as_context_only": true,
+        "summaries_are_not_source_truth": true,
+        "unsupported_claim_policy": "state_insufficient_evidence_instead_of_guessing",
+        "uses_source_truth_evidence_only_for_claims": true
+      },
+      "field_counts": {
+        "covered_part_number": 5
+      },
+      "graph_summary_proof_violation_count": 0,
+      "limitations": [
+        "The draft lists cited covered-part evidence only; it does not infer full applicability beyond the cited records."
+      ],
+      "page_ids": [
+        "t_p_120_1176_p000003"
+      ],
+      "prompt_contract_id": "llm_prompt_contract_v11_0005",
+      "query_intent": "covered_part_number",
+      "ready_for_final_gate": true,
+      "reasoned_response_draft_id": "reasoned_response_draft_v12_0005",
+      "reasoned_response_draft_status": "REASONED_RESPONSE_DRAFT_READY_FOR_FINAL_GATE",
+      "response_is_reasoned_draft": true,
+      "schema_version": "v12",
+      "self_rag_ready": true,
+      "source_trace_ready_evidence_count": 5,
+      "source_truth_evidence_count": 5,
+      "source_truth_mutation_allowed": false,
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    }
+  ],
+  "report_path": "local_data\\organization\\trace_net\\e2e_reasoned_response_draft\\trace_net_e2e_reasoned_response_draft_v12.json",
+  "schema_version": "v12",
+  "source_llm_prompt_contract_path": "local_data/organization/trace_net/e2e_llm_prompt_contract/trace_net_e2e_llm_prompt_contract_v11.json",
+  "status": "E2E_REASONED_RESPONSE_DRAFT_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "audit_only_draft_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "drafts_ready_for_final_gate_count": 5,
+    "drafts_with_limitations_count": 5,
+    "graph_summary_proof_violation_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "prompt_contract_count": 5,
+    "qdrant_write_attempt_count": 0,
+    "quality_status": "PASS",
+    "ready_reasoned_draft_count": 5,
+    "reasoned_draft_count": 5,
+    "source_truth_mutation_allowed_count": 0,
+    "total_citation_count": 25
+  }
+}

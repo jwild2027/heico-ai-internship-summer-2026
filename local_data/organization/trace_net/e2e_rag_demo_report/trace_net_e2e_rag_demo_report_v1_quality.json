@@ -1,0 +1,240 @@
+{
+  "quality_status": "PASS",
+  "quality_checks": [
+    {
+      "name": "source_planning_quality_pass",
+      "observed": true,
+      "expected": "is True",
+      "passed": true
+    },
+    {
+      "name": "source_runtime_quality_pass",
+      "observed": true,
+      "expected": "is True",
+      "passed": true
+    },
+    {
+      "name": "source_context_quality_pass",
+      "observed": true,
+      "expected": "is True",
+      "passed": true
+    },
+    {
+      "name": "source_sufficiency_quality_pass",
+      "observed": true,
+      "expected": "is True",
+      "passed": true
+    },
+    {
+      "name": "source_final_gate_smoke_quality_pass",
+      "observed": true,
+      "expected": "is True",
+      "passed": true
+    },
+    {
+      "name": "stage_pass_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "e2e_demo_record_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "complete_demo_flow_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "planned_query_route_plan_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "total_query_tunnel_count",
+      "observed": 30,
+      "expected": ">= 15",
+      "passed": true
+    },
+    {
+      "name": "retrieval_group_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "successful_retrieval_query_count",
+      "observed": 5,
+      "expected": ">= 4",
+      "passed": true
+    },
+    {
+      "name": "context_pack_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "final_gate_review_ready_pack_count",
+      "observed": 5,
+      "expected": ">= 4",
+      "passed": true
+    },
+    {
+      "name": "final_gate_record_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "safe_response_draft_count",
+      "observed": 5,
+      "expected": ">= 4",
+      "passed": true
+    },
+    {
+      "name": "citation_backed_response_draft_count",
+      "observed": 5,
+      "expected": ">= 4",
+      "passed": true
+    },
+    {
+      "name": "total_citation_count",
+      "observed": 15,
+      "expected": ">= 10",
+      "passed": true
+    },
+    {
+      "name": "page_with_citation_count",
+      "observed": 6,
+      "expected": ">= 2",
+      "passed": true
+    },
+    {
+      "name": "field_count",
+      "observed": 5,
+      "expected": ">= 3",
+      "passed": true
+    },
+    {
+      "name": "schema_missing_required_key_record_count",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "unsafe_total_count",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "answer_permission_count",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "can_answer_directly_count",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    },
+    {
+      "name": "can_prove_claims_count",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    },
+    {
+      "name": "postgres_write_attempt_count",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    },
+    {
+      "name": "qdrant_write_attempt_count",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    },
+    {
+      "name": "opensearch_write_attempt_count",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    },
+    {
+      "name": "opensearch_upload_attempt_count",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    },
+    {
+      "name": "all_demo_records_no_answer_authority",
+      "observed": true,
+      "expected": "is True",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "e2e_rag_demo_status": "E2E_RAG_DEMO_REPORT_READY_FOR_API_WRAPPER",
+    "source_planning_quality_pass": true,
+    "source_runtime_quality_pass": true,
+    "source_context_quality_pass": true,
+    "source_sufficiency_quality_pass": true,
+    "source_final_gate_smoke_quality_pass": true,
+    "stage_pass_count": 5,
+    "e2e_demo_record_count": 5,
+    "complete_demo_flow_count": 5,
+    "planned_query_route_plan_count": 5,
+    "total_query_tunnel_count": 30,
+    "unique_tunnel_type_count": 5,
+    "retrieval_group_count": 5,
+    "successful_retrieval_query_count": 5,
+    "total_retrieval_hit_count": 50,
+    "context_pack_count": 5,
+    "total_context_item_count": 25,
+    "citation_ready_context_item_count": 25,
+    "source_trace_ready_context_item_count": 25,
+    "sufficient_context_pack_count": 5,
+    "final_gate_review_ready_pack_count": 5,
+    "final_gate_record_count": 5,
+    "safe_response_draft_count": 5,
+    "citation_backed_response_draft_count": 5,
+    "audit_only_response_count": 0,
+    "total_citation_count": 15,
+    "page_with_citation_count": 6,
+    "field_count": 5,
+    "field_counts": {
+      "covered_part_number": 6,
+      "ipl_figure_item_or_quantity": 3,
+      "ipl_part_number": 2,
+      "ipl_text": 3,
+      "manual_page_reference": 1
+    },
+    "schema_missing_required_key_record_count": 0,
+    "unsafe_total_count": 0,
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "all_demo_records_no_answer_authority": true,
+    "api_wrapper_next_step": true
+  }
+}

@@ -1,0 +1,2311 @@
+{
+  "artifact_name": "trace_net_e2e_query_planning_routing_v1",
+  "inspect_md_path": "local_data\\organization\\trace_net\\e2e_query_planning_routing\\trace_net_e2e_query_planning_routing_v1_inspect.md",
+  "loaded_summary_artifacts": [
+    "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json"
+  ],
+  "quality_checks": [
+    {
+      "expected": ">= 5",
+      "name": "source_query_input_record_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "query_route_plan_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "routeable_query_route_plan_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "plans_with_graph_tunnel_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "plans_with_summary_tunnel_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "plans_with_table_tunnel_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 15",
+      "name": "total_query_tunnel_count",
+      "observed": 30,
+      "passed": true
+    },
+    {
+      "expected": ">= 3",
+      "name": "unique_tunnel_type_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 15",
+      "name": "planned_retrieval_step_count",
+      "observed": 20,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "schema_missing_required_key_record_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "unsafe_query_route_plan_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "can_answer_directly_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "can_prove_claims_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "postgres_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "qdrant_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "opensearch_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "opensearch_upload_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "is True",
+      "name": "source_query_input_quality_pass",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "expected": "is True",
+      "name": "all_plans_retrieval_only",
+      "observed": true,
+      "passed": true
+    }
+  ],
+  "quality_path": "local_data\\organization\\trace_net\\e2e_query_planning_routing\\trace_net_e2e_query_planning_routing_v1_quality.json",
+  "quality_status": "PASS",
+  "query_planning_routing_contract": {
+    "answer_authority": "blocked",
+    "graph_and_summaries_are_tunnels": true,
+    "purpose": "Use graph/source-trace and summary tunnels to enrich safe query plans before hybrid retrieval.",
+    "ready_for_hybrid_retrieval_runtime": true,
+    "retrieval_permission": "ranking_only_until_final_gate",
+    "source_truth_mutation_allowed": false,
+    "tunnel_metaphor": "Graph and summaries are navigation tunnels, not proof or final-answer authority.",
+    "tunnels_can_answer_directly": false,
+    "tunnels_can_prove_claims": false,
+    "tunnels_can_rank_or_route": true,
+    "uploads_to_opensearch": false,
+    "writes_to_opensearch": false,
+    "writes_to_postgres": false,
+    "writes_to_qdrant": false
+  },
+  "query_records": [
+    {
+      "answer_policy_hint": "needs_retrieval_and_final_gate",
+      "normalized_query": "find part number 120-36833-001",
+      "query_id": "e2e_query_v1_0001",
+      "query_intent": "covered_part_number",
+      "query_routing_plan": {
+        "planned_retrieval_order": [
+          {
+            "purpose": "anchor source/page/citation neighborhoods",
+            "stage": "graph_source_trace_tunnel",
+            "step": 1
+          },
+          {
+            "purpose": "expand free-text query into page/profile summary neighborhoods",
+            "stage": "page_summary_tunnel",
+            "step": 2
+          },
+          {
+            "purpose": "match table values and apply ranking boosts",
+            "stage": "table_exact_and_bridge_tunnel",
+            "step": 3
+          },
+          {
+            "purpose": "do not answer until final TRACE-Net gate reviews the context",
+            "stage": "final_gate_boundary",
+            "step": 4
+          }
+        ],
+        "query_tunnels": [
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "priority": 1,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "query requested graph/source trace or source-routed retrieval",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0001::graph_source_trace_tunnel::01",
+            "tunnel_role": "Use graph/source-trace neighborhoods to move from query terms to page/source/citation identities.",
+            "tunnel_source": "route_contract.graph_source_trace",
+            "tunnel_type": "graph_source_trace_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "priority": 2,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "query requested page-profile/summary retrieval or has free-text wording",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0001::page_summary_tunnel::02",
+            "tunnel_role": "Use page/profile summaries as a semantic tunnel before exact page evidence is judged.",
+            "tunnel_source": "summary_profiles.page_context_or_retrieval_profile",
+            "tunnel_type": "page_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "priority": 3,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "query requested table route or table exact/hybrid channels",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0001::table_route_summary_tunnel::03",
+            "tunnel_role": "Use table-route evidence summaries to jump from part/manual/table terms to table evidence cards.",
+            "tunnel_source": "table_route.retrieval_handoff_summary",
+            "tunnel_type": "table_route_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "hint_label": "This page is an illustrated parts list for a double passenger seat, specifically",
+            "hint_page_ids": [
+              "t_p_120_1176_p000018"
+            ],
+            "hint_score": 22.0,
+            "priority": 4,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "matched summary hint score=22; label=This page is an illustrated parts list for a double passenger seat, specifically",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0001::artifact_graph_summary_tunnel::04",
+            "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+            "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+            "tunnel_type": "artifact_graph_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "hint_label": "This page defines the categorization and numbering conventions for EMBRAER, mili",
+            "hint_page_ids": [
+              "t_p_120_1176_p000021"
+            ],
+            "hint_score": 22.0,
+            "priority": 5,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "matched summary hint score=22; label=This page defines the categorization and numbering conventions for EMBRAER, mili",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0001::artifact_graph_summary_tunnel::05",
+            "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+            "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+            "tunnel_type": "artifact_graph_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "hint_label": "This page is an illustrated parts list for Embraer aircraft, specifically detail",
+            "hint_page_ids": [
+              "t_p_120_1176_p000034"
+            ],
+            "hint_score": 22.0,
+            "priority": 6,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "matched summary hint score=22; label=This page is an illustrated parts list for Embraer aircraft, specifically detail",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0001::artifact_graph_summary_tunnel::06",
+            "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+            "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+            "tunnel_type": "artifact_graph_summary_tunnel"
+          }
+        ],
+        "routing_contract": {
+          "graph_and_summaries_are_tunnels": true,
+          "tunnels_can_answer_directly": false,
+          "tunnels_can_prove_claims": false,
+          "tunnels_can_rank_or_route": true
+        },
+        "routing_status": "QUERY_ROUTE_PLAN_READY_FOR_RETRIEVAL_RUNTIME"
+      },
+      "query_terms": [
+        {
+          "term": "120-36833-001",
+          "term_type": "part_number"
+        }
+      ],
+      "query_tunnels": [
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 1,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested graph/source trace or source-routed retrieval",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0001::graph_source_trace_tunnel::01",
+          "tunnel_role": "Use graph/source-trace neighborhoods to move from query terms to page/source/citation identities.",
+          "tunnel_source": "route_contract.graph_source_trace",
+          "tunnel_type": "graph_source_trace_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 2,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested page-profile/summary retrieval or has free-text wording",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0001::page_summary_tunnel::02",
+          "tunnel_role": "Use page/profile summaries as a semantic tunnel before exact page evidence is judged.",
+          "tunnel_source": "summary_profiles.page_context_or_retrieval_profile",
+          "tunnel_type": "page_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 3,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested table route or table exact/hybrid channels",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0001::table_route_summary_tunnel::03",
+          "tunnel_role": "Use table-route evidence summaries to jump from part/manual/table terms to table evidence cards.",
+          "tunnel_source": "table_route.retrieval_handoff_summary",
+          "tunnel_type": "table_route_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page is an illustrated parts list for a double passenger seat, specifically",
+          "hint_page_ids": [
+            "t_p_120_1176_p000018"
+          ],
+          "hint_score": 22.0,
+          "priority": 4,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=22; label=This page is an illustrated parts list for a double passenger seat, specifically",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0001::artifact_graph_summary_tunnel::04",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page defines the categorization and numbering conventions for EMBRAER, mili",
+          "hint_page_ids": [
+            "t_p_120_1176_p000021"
+          ],
+          "hint_score": 22.0,
+          "priority": 5,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=22; label=This page defines the categorization and numbering conventions for EMBRAER, mili",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0001::artifact_graph_summary_tunnel::05",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page is an illustrated parts list for Embraer aircraft, specifically detail",
+          "hint_page_ids": [
+            "t_p_120_1176_p000034"
+          ],
+          "hint_score": 22.0,
+          "priority": 6,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=22; label=This page is an illustrated parts list for Embraer aircraft, specifically detail",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0001::artifact_graph_summary_tunnel::06",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        }
+      ],
+      "requested_routes": [
+        "table",
+        "normal_text"
+      ],
+      "retrieval_channels": [
+        "table_exact_search",
+        "table_hybrid_retrieval_bridge",
+        "qdrant_page_profiles",
+        "graph_source_trace",
+        "graph_summary_tunnels",
+        "page_summary_tunnels",
+        "table_route_summary_tunnels",
+        "artifact_graph_summary_tunnels"
+      ],
+      "route_contract": {
+        "normal_text_requires_source_trace": true,
+        "table_route_values_are_allowed_as_final_answer_authority": false,
+        "table_route_values_are_allowed_as_ranking_signals": true,
+        "visual_route_output_is_advisory_until_verified": true
+      },
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "opensearch_upload_attempt": false,
+        "opensearch_write_attempt": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "retrieval_only_input": true,
+        "source_truth_mutation_allowed": false
+      },
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "answer_policy_hint": "needs_retrieval_and_final_gate",
+      "normalized_query": "where is manual reference 25-21-00 used?",
+      "query_id": "e2e_query_v1_0002",
+      "query_intent": "manual_page_reference",
+      "query_routing_plan": {
+        "planned_retrieval_order": [
+          {
+            "purpose": "anchor source/page/citation neighborhoods",
+            "stage": "graph_source_trace_tunnel",
+            "step": 1
+          },
+          {
+            "purpose": "expand free-text query into page/profile summary neighborhoods",
+            "stage": "page_summary_tunnel",
+            "step": 2
+          },
+          {
+            "purpose": "match table values and apply ranking boosts",
+            "stage": "table_exact_and_bridge_tunnel",
+            "step": 3
+          },
+          {
+            "purpose": "do not answer until final TRACE-Net gate reviews the context",
+            "stage": "final_gate_boundary",
+            "step": 4
+          }
+        ],
+        "query_tunnels": [
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "priority": 1,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "query requested graph/source trace or source-routed retrieval",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0002::graph_source_trace_tunnel::01",
+            "tunnel_role": "Use graph/source-trace neighborhoods to move from query terms to page/source/citation identities.",
+            "tunnel_source": "route_contract.graph_source_trace",
+            "tunnel_type": "graph_source_trace_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "priority": 2,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "query requested page-profile/summary retrieval or has free-text wording",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0002::page_summary_tunnel::02",
+            "tunnel_role": "Use page/profile summaries as a semantic tunnel before exact page evidence is judged.",
+            "tunnel_source": "summary_profiles.page_context_or_retrieval_profile",
+            "tunnel_type": "page_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "priority": 3,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "query requested table route or table exact/hybrid channels",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0002::table_route_summary_tunnel::03",
+            "tunnel_role": "Use table-route evidence summaries to jump from part/manual/table terms to table evidence cards.",
+            "tunnel_source": "table_route.retrieval_handoff_summary",
+            "tunnel_type": "table_route_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "hint_label": "Page-level retrieval profile for t_p_120_1176 page 78.",
+            "hint_page_ids": [
+              "t_p_120_1176_p000078"
+            ],
+            "hint_score": 30.0,
+            "priority": 4,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "matched summary hint score=30; label=Page-level retrieval profile for t_p_120_1176 page 78.",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0002::artifact_graph_summary_tunnel::04",
+            "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+            "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+            "tunnel_type": "artifact_graph_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "hint_label": "Page-level retrieval profile for t_p_120_1176 page 80.",
+            "hint_page_ids": [
+              "t_p_120_1176_p000080"
+            ],
+            "hint_score": 30.0,
+            "priority": 5,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "matched summary hint score=30; label=Page-level retrieval profile for t_p_120_1176 page 80.",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0002::artifact_graph_summary_tunnel::05",
+            "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+            "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+            "tunnel_type": "artifact_graph_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "hint_label": "Page-level retrieval profile for t_p_120_1176 page 83.",
+            "hint_page_ids": [
+              "t_p_120_1176_p000083"
+            ],
+            "hint_score": 30.0,
+            "priority": 6,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "matched summary hint score=30; label=Page-level retrieval profile for t_p_120_1176 page 83.",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0002::artifact_graph_summary_tunnel::06",
+            "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+            "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+            "tunnel_type": "artifact_graph_summary_tunnel"
+          }
+        ],
+        "routing_contract": {
+          "graph_and_summaries_are_tunnels": true,
+          "tunnels_can_answer_directly": false,
+          "tunnels_can_prove_claims": false,
+          "tunnels_can_rank_or_route": true
+        },
+        "routing_status": "QUERY_ROUTE_PLAN_READY_FOR_RETRIEVAL_RUNTIME"
+      },
+      "query_terms": [
+        {
+          "term": "25-21-00",
+          "term_type": "manual_page_reference"
+        }
+      ],
+      "query_tunnels": [
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 1,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested graph/source trace or source-routed retrieval",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0002::graph_source_trace_tunnel::01",
+          "tunnel_role": "Use graph/source-trace neighborhoods to move from query terms to page/source/citation identities.",
+          "tunnel_source": "route_contract.graph_source_trace",
+          "tunnel_type": "graph_source_trace_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 2,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested page-profile/summary retrieval or has free-text wording",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0002::page_summary_tunnel::02",
+          "tunnel_role": "Use page/profile summaries as a semantic tunnel before exact page evidence is judged.",
+          "tunnel_source": "summary_profiles.page_context_or_retrieval_profile",
+          "tunnel_type": "page_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 3,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested table route or table exact/hybrid channels",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0002::table_route_summary_tunnel::03",
+          "tunnel_role": "Use table-route evidence summaries to jump from part/manual/table terms to table evidence cards.",
+          "tunnel_source": "table_route.retrieval_handoff_summary",
+          "tunnel_type": "table_route_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "Page-level retrieval profile for t_p_120_1176 page 78.",
+          "hint_page_ids": [
+            "t_p_120_1176_p000078"
+          ],
+          "hint_score": 30.0,
+          "priority": 4,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=30; label=Page-level retrieval profile for t_p_120_1176 page 78.",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0002::artifact_graph_summary_tunnel::04",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "Page-level retrieval profile for t_p_120_1176 page 80.",
+          "hint_page_ids": [
+            "t_p_120_1176_p000080"
+          ],
+          "hint_score": 30.0,
+          "priority": 5,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=30; label=Page-level retrieval profile for t_p_120_1176 page 80.",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0002::artifact_graph_summary_tunnel::05",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "Page-level retrieval profile for t_p_120_1176 page 83.",
+          "hint_page_ids": [
+            "t_p_120_1176_p000083"
+          ],
+          "hint_score": 30.0,
+          "priority": 6,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=30; label=Page-level retrieval profile for t_p_120_1176 page 83.",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0002::artifact_graph_summary_tunnel::06",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        }
+      ],
+      "requested_routes": [
+        "table",
+        "normal_text"
+      ],
+      "retrieval_channels": [
+        "table_exact_search",
+        "table_hybrid_retrieval_bridge",
+        "qdrant_page_profiles",
+        "graph_source_trace",
+        "graph_summary_tunnels",
+        "page_summary_tunnels",
+        "table_route_summary_tunnels",
+        "artifact_graph_summary_tunnels"
+      ],
+      "route_contract": {
+        "normal_text_requires_source_trace": true,
+        "table_route_values_are_allowed_as_final_answer_authority": false,
+        "table_route_values_are_allowed_as_ranking_signals": true,
+        "visual_route_output_is_advisory_until_verified": true
+      },
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "opensearch_upload_attempt": false,
+        "opensearch_write_attempt": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "retrieval_only_input": true,
+        "source_truth_mutation_allowed": false
+      },
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "answer_policy_hint": "needs_retrieval_and_final_gate",
+      "normalized_query": "find ipl item 130",
+      "query_id": "e2e_query_v1_0003",
+      "query_intent": "ipl_figure_item_or_quantity",
+      "query_routing_plan": {
+        "planned_retrieval_order": [
+          {
+            "purpose": "anchor source/page/citation neighborhoods",
+            "stage": "graph_source_trace_tunnel",
+            "step": 1
+          },
+          {
+            "purpose": "match table values and apply ranking boosts",
+            "stage": "table_exact_and_bridge_tunnel",
+            "step": 2
+          },
+          {
+            "purpose": "route IPL/diagram-style query to visual evidence candidates",
+            "stage": "visual_advisory_tunnel",
+            "step": 3
+          },
+          {
+            "purpose": "do not answer until final TRACE-Net gate reviews the context",
+            "stage": "final_gate_boundary",
+            "step": 4
+          }
+        ],
+        "query_tunnels": [
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "priority": 1,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "query requested graph/source trace or source-routed retrieval",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0003::graph_source_trace_tunnel::01",
+            "tunnel_role": "Use graph/source-trace neighborhoods to move from query terms to page/source/citation identities.",
+            "tunnel_source": "route_contract.graph_source_trace",
+            "tunnel_type": "graph_source_trace_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "priority": 2,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "query requested table route or table exact/hybrid channels",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0003::table_route_summary_tunnel::02",
+            "tunnel_role": "Use table-route evidence summaries to jump from part/manual/table terms to table evidence cards.",
+            "tunnel_source": "table_route.retrieval_handoff_summary",
+            "tunnel_type": "table_route_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "priority": 3,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "query requested image/visual route",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0003::visual_summary_tunnel::03",
+            "tunnel_role": "Use visual/callout summaries as an advisory tunnel for diagram or IPL-style lookup.",
+            "tunnel_source": "visual_route.callout_and_figure_summaries",
+            "tunnel_type": "visual_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "hint_label": "Figure 3 illustrating components of the triple passenger seat, specifically the ",
+            "hint_page_ids": [
+              "t_p_120_1176_p000019"
+            ],
+            "hint_score": 16.0,
+            "priority": 4,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "matched summary hint score=16; label=Figure 3 illustrating components of the triple passenger seat, specifically the ",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0003::artifact_graph_summary_tunnel::04",
+            "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+            "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+            "tunnel_type": "artifact_graph_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "hint_label": "This page provides the introduction to the Embraer maintenance manual and illust",
+            "hint_page_ids": [
+              "t_p_120_1176_p000004"
+            ],
+            "hint_score": 10.0,
+            "priority": 5,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "matched summary hint score=10; label=This page provides the introduction to the Embraer maintenance manual and illust",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0003::artifact_graph_summary_tunnel::05",
+            "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+            "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+            "tunnel_type": "artifact_graph_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "hint_label": "An illustrated parts list and figure for a single passenger seat, specifically i",
+            "hint_page_ids": [
+              "t_p_120_1176_p000017"
+            ],
+            "hint_score": 10.0,
+            "priority": 6,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "matched summary hint score=10; label=An illustrated parts list and figure for a single passenger seat, specifically i",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0003::artifact_graph_summary_tunnel::06",
+            "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+            "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+            "tunnel_type": "artifact_graph_summary_tunnel"
+          }
+        ],
+        "routing_contract": {
+          "graph_and_summaries_are_tunnels": true,
+          "tunnels_can_answer_directly": false,
+          "tunnels_can_prove_claims": false,
+          "tunnels_can_rank_or_route": true
+        },
+        "routing_status": "QUERY_ROUTE_PLAN_READY_FOR_RETRIEVAL_RUNTIME"
+      },
+      "query_terms": [
+        {
+          "term": "130",
+          "term_type": "numeric_token"
+        }
+      ],
+      "query_tunnels": [
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 1,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested graph/source trace or source-routed retrieval",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0003::graph_source_trace_tunnel::01",
+          "tunnel_role": "Use graph/source-trace neighborhoods to move from query terms to page/source/citation identities.",
+          "tunnel_source": "route_contract.graph_source_trace",
+          "tunnel_type": "graph_source_trace_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 2,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested table route or table exact/hybrid channels",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0003::table_route_summary_tunnel::02",
+          "tunnel_role": "Use table-route evidence summaries to jump from part/manual/table terms to table evidence cards.",
+          "tunnel_source": "table_route.retrieval_handoff_summary",
+          "tunnel_type": "table_route_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 3,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested image/visual route",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0003::visual_summary_tunnel::03",
+          "tunnel_role": "Use visual/callout summaries as an advisory tunnel for diagram or IPL-style lookup.",
+          "tunnel_source": "visual_route.callout_and_figure_summaries",
+          "tunnel_type": "visual_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "Figure 3 illustrating components of the triple passenger seat, specifically the ",
+          "hint_page_ids": [
+            "t_p_120_1176_p000019"
+          ],
+          "hint_score": 16.0,
+          "priority": 4,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=16; label=Figure 3 illustrating components of the triple passenger seat, specifically the ",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0003::artifact_graph_summary_tunnel::04",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page provides the introduction to the Embraer maintenance manual and illust",
+          "hint_page_ids": [
+            "t_p_120_1176_p000004"
+          ],
+          "hint_score": 10.0,
+          "priority": 5,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=10; label=This page provides the introduction to the Embraer maintenance manual and illust",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0003::artifact_graph_summary_tunnel::05",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "An illustrated parts list and figure for a single passenger seat, specifically i",
+          "hint_page_ids": [
+            "t_p_120_1176_p000017"
+          ],
+          "hint_score": 10.0,
+          "priority": 6,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=10; label=An illustrated parts list and figure for a single passenger seat, specifically i",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0003::artifact_graph_summary_tunnel::06",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        }
+      ],
+      "requested_routes": [
+        "table",
+        "image_visual"
+      ],
+      "retrieval_channels": [
+        "table_exact_search",
+        "table_hybrid_retrieval_bridge",
+        "graph_source_trace",
+        "graph_summary_tunnels",
+        "table_route_summary_tunnels",
+        "visual_summary_tunnels",
+        "artifact_graph_summary_tunnels"
+      ],
+      "route_contract": {
+        "normal_text_requires_source_trace": true,
+        "table_route_values_are_allowed_as_final_answer_authority": false,
+        "table_route_values_are_allowed_as_ranking_signals": true,
+        "visual_route_output_is_advisory_until_verified": true
+      },
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "opensearch_upload_attempt": false,
+        "opensearch_write_attempt": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "retrieval_only_input": true,
+        "source_truth_mutation_allowed": false
+      },
+      "user_query": "Find IPL item 130"
+    },
+    {
+      "answer_policy_hint": "needs_retrieval_and_final_gate",
+      "normalized_query": "search table text maintenance manual with",
+      "query_id": "e2e_query_v1_0004",
+      "query_intent": "table_text",
+      "query_routing_plan": {
+        "planned_retrieval_order": [
+          {
+            "purpose": "anchor source/page/citation neighborhoods",
+            "stage": "graph_source_trace_tunnel",
+            "step": 1
+          },
+          {
+            "purpose": "expand free-text query into page/profile summary neighborhoods",
+            "stage": "page_summary_tunnel",
+            "step": 2
+          },
+          {
+            "purpose": "match table values and apply ranking boosts",
+            "stage": "table_exact_and_bridge_tunnel",
+            "step": 3
+          },
+          {
+            "purpose": "do not answer until final TRACE-Net gate reviews the context",
+            "stage": "final_gate_boundary",
+            "step": 4
+          }
+        ],
+        "query_tunnels": [
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "priority": 1,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "query requested graph/source trace or source-routed retrieval",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0004::graph_source_trace_tunnel::01",
+            "tunnel_role": "Use graph/source-trace neighborhoods to move from query terms to page/source/citation identities.",
+            "tunnel_source": "route_contract.graph_source_trace",
+            "tunnel_type": "graph_source_trace_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "priority": 2,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "query requested page-profile/summary retrieval or has free-text wording",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0004::page_summary_tunnel::02",
+            "tunnel_role": "Use page/profile summaries as a semantic tunnel before exact page evidence is judged.",
+            "tunnel_source": "summary_profiles.page_context_or_retrieval_profile",
+            "tunnel_type": "page_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "priority": 3,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "query requested table route or table exact/hybrid channels",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0004::table_route_summary_tunnel::03",
+            "tunnel_role": "Use table-route evidence summaries to jump from part/manual/table terms to table evidence cards.",
+            "tunnel_source": "table_route.retrieval_handoff_summary",
+            "tunnel_type": "table_route_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "hint_label": "This page is a List of Effective Pages (LEP) for the Embraer Maintenance Manual ",
+            "hint_page_ids": [
+              "t_p_120_1176_p000009"
+            ],
+            "hint_score": 24.0,
+            "priority": 4,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "matched summary hint score=24; label=This page is a List of Effective Pages (LEP) for the Embraer Maintenance Manual ",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0004::artifact_graph_summary_tunnel::04",
+            "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+            "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+            "tunnel_type": "artifact_graph_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "hint_label": "This page is the List of Effective Pages (LEP) for an Embraer Maintenance Manual",
+            "hint_page_ids": [
+              "t_p_120_1176_p000010"
+            ],
+            "hint_score": 24.0,
+            "priority": 5,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "matched summary hint score=24; label=This page is the List of Effective Pages (LEP) for an Embraer Maintenance Manual",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0004::artifact_graph_summary_tunnel::05",
+            "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+            "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+            "tunnel_type": "artifact_graph_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "hint_label": "This is the title page for an Embraer Maintenance Manual with Illustrated Parts ",
+            "hint_page_ids": [
+              "t_p_120_1176_p000026"
+            ],
+            "hint_score": 24.0,
+            "priority": 6,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "matched summary hint score=24; label=This is the title page for an Embraer Maintenance Manual with Illustrated Parts ",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0004::artifact_graph_summary_tunnel::06",
+            "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+            "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+            "tunnel_type": "artifact_graph_summary_tunnel"
+          }
+        ],
+        "routing_contract": {
+          "graph_and_summaries_are_tunnels": true,
+          "tunnels_can_answer_directly": false,
+          "tunnels_can_prove_claims": false,
+          "tunnels_can_rank_or_route": true
+        },
+        "routing_status": "QUERY_ROUTE_PLAN_READY_FOR_RETRIEVAL_RUNTIME"
+      },
+      "query_terms": [
+        {
+          "term": "MAINTENANCE MANUAL WITH",
+          "term_type": "table_text_phrase"
+        }
+      ],
+      "query_tunnels": [
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 1,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested graph/source trace or source-routed retrieval",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0004::graph_source_trace_tunnel::01",
+          "tunnel_role": "Use graph/source-trace neighborhoods to move from query terms to page/source/citation identities.",
+          "tunnel_source": "route_contract.graph_source_trace",
+          "tunnel_type": "graph_source_trace_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 2,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested page-profile/summary retrieval or has free-text wording",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0004::page_summary_tunnel::02",
+          "tunnel_role": "Use page/profile summaries as a semantic tunnel before exact page evidence is judged.",
+          "tunnel_source": "summary_profiles.page_context_or_retrieval_profile",
+          "tunnel_type": "page_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 3,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested table route or table exact/hybrid channels",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0004::table_route_summary_tunnel::03",
+          "tunnel_role": "Use table-route evidence summaries to jump from part/manual/table terms to table evidence cards.",
+          "tunnel_source": "table_route.retrieval_handoff_summary",
+          "tunnel_type": "table_route_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page is a List of Effective Pages (LEP) for the Embraer Maintenance Manual ",
+          "hint_page_ids": [
+            "t_p_120_1176_p000009"
+          ],
+          "hint_score": 24.0,
+          "priority": 4,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=24; label=This page is a List of Effective Pages (LEP) for the Embraer Maintenance Manual ",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0004::artifact_graph_summary_tunnel::04",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page is the List of Effective Pages (LEP) for an Embraer Maintenance Manual",
+          "hint_page_ids": [
+            "t_p_120_1176_p000010"
+          ],
+          "hint_score": 24.0,
+          "priority": 5,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=24; label=This page is the List of Effective Pages (LEP) for an Embraer Maintenance Manual",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0004::artifact_graph_summary_tunnel::05",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This is the title page for an Embraer Maintenance Manual with Illustrated Parts ",
+          "hint_page_ids": [
+            "t_p_120_1176_p000026"
+          ],
+          "hint_score": 24.0,
+          "priority": 6,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=24; label=This is the title page for an Embraer Maintenance Manual with Illustrated Parts ",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0004::artifact_graph_summary_tunnel::06",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        }
+      ],
+      "requested_routes": [
+        "table",
+        "normal_text"
+      ],
+      "retrieval_channels": [
+        "table_exact_search",
+        "table_hybrid_retrieval_bridge",
+        "qdrant_page_profiles",
+        "graph_summary_tunnels",
+        "page_summary_tunnels",
+        "table_route_summary_tunnels",
+        "artifact_graph_summary_tunnels"
+      ],
+      "route_contract": {
+        "normal_text_requires_source_trace": true,
+        "table_route_values_are_allowed_as_final_answer_authority": false,
+        "table_route_values_are_allowed_as_ranking_signals": true,
+        "visual_route_output_is_advisory_until_verified": true
+      },
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "opensearch_upload_attempt": false,
+        "opensearch_write_attempt": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "retrieval_only_input": true,
+        "source_truth_mutation_allowed": false
+      },
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "answer_policy_hint": "needs_retrieval_and_final_gate",
+      "normalized_query": "what maintenance manual pages mention covered part numbers?",
+      "query_id": "e2e_query_v1_0005",
+      "query_intent": "covered_part_number",
+      "query_routing_plan": {
+        "planned_retrieval_order": [
+          {
+            "purpose": "anchor source/page/citation neighborhoods",
+            "stage": "graph_source_trace_tunnel",
+            "step": 1
+          },
+          {
+            "purpose": "expand free-text query into page/profile summary neighborhoods",
+            "stage": "page_summary_tunnel",
+            "step": 2
+          },
+          {
+            "purpose": "match table values and apply ranking boosts",
+            "stage": "table_exact_and_bridge_tunnel",
+            "step": 3
+          },
+          {
+            "purpose": "do not answer until final TRACE-Net gate reviews the context",
+            "stage": "final_gate_boundary",
+            "step": 4
+          }
+        ],
+        "query_tunnels": [
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "priority": 1,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "query requested graph/source trace or source-routed retrieval",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0005::graph_source_trace_tunnel::01",
+            "tunnel_role": "Use graph/source-trace neighborhoods to move from query terms to page/source/citation identities.",
+            "tunnel_source": "route_contract.graph_source_trace",
+            "tunnel_type": "graph_source_trace_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "priority": 2,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "query requested page-profile/summary retrieval or has free-text wording",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0005::page_summary_tunnel::02",
+            "tunnel_role": "Use page/profile summaries as a semantic tunnel before exact page evidence is judged.",
+            "tunnel_source": "summary_profiles.page_context_or_retrieval_profile",
+            "tunnel_type": "page_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "priority": 3,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "query requested table route or table exact/hybrid channels",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0005::table_route_summary_tunnel::03",
+            "tunnel_role": "Use table-route evidence summaries to jump from part/manual/table terms to table evidence cards.",
+            "tunnel_source": "table_route.retrieval_handoff_summary",
+            "tunnel_type": "table_route_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "hint_label": "This page is a list of effective pages within a maintenance manual, detailing re",
+            "hint_page_ids": [
+              "t_p_120_1176_p000007"
+            ],
+            "hint_score": 40.0,
+            "priority": 4,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "matched summary hint score=40; label=This page is a list of effective pages within a maintenance manual, detailing re",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0005::artifact_graph_summary_tunnel::04",
+            "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+            "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+            "tunnel_type": "artifact_graph_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "hint_label": "This page appears to be a parts list and index from a maintenance manual, listin",
+            "hint_page_ids": [
+              "t_p_120_1176_p000005"
+            ],
+            "hint_score": 34.0,
+            "priority": 5,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "matched summary hint score=34; label=This page appears to be a parts list and index from a maintenance manual, listin",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0005::artifact_graph_summary_tunnel::05",
+            "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+            "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+            "tunnel_type": "artifact_graph_summary_tunnel"
+          },
+          {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "hint_label": "This page appears to be a parts list from the maintenance manual, listing numero",
+            "hint_page_ids": [
+              "t_p_120_1176_p000027"
+            ],
+            "hint_score": 34.0,
+            "priority": 6,
+            "retrieval_permission": "ranking_only_until_final_gate",
+            "routing_reason": "matched summary hint score=34; label=This page appears to be a parts list from the maintenance manual, listing numero",
+            "source_truth_mutation_allowed": false,
+            "tunnel_id": "e2e_query_v1_0005::artifact_graph_summary_tunnel::06",
+            "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+            "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+            "tunnel_type": "artifact_graph_summary_tunnel"
+          }
+        ],
+        "routing_contract": {
+          "graph_and_summaries_are_tunnels": true,
+          "tunnels_can_answer_directly": false,
+          "tunnels_can_prove_claims": false,
+          "tunnels_can_rank_or_route": true
+        },
+        "routing_status": "QUERY_ROUTE_PLAN_READY_FOR_RETRIEVAL_RUNTIME"
+      },
+      "query_terms": [
+        {
+          "term": "What maintenance manual pages mention covered part numbers?",
+          "term_type": "free_text"
+        }
+      ],
+      "query_tunnels": [
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 1,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested graph/source trace or source-routed retrieval",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0005::graph_source_trace_tunnel::01",
+          "tunnel_role": "Use graph/source-trace neighborhoods to move from query terms to page/source/citation identities.",
+          "tunnel_source": "route_contract.graph_source_trace",
+          "tunnel_type": "graph_source_trace_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 2,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested page-profile/summary retrieval or has free-text wording",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0005::page_summary_tunnel::02",
+          "tunnel_role": "Use page/profile summaries as a semantic tunnel before exact page evidence is judged.",
+          "tunnel_source": "summary_profiles.page_context_or_retrieval_profile",
+          "tunnel_type": "page_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 3,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested table route or table exact/hybrid channels",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0005::table_route_summary_tunnel::03",
+          "tunnel_role": "Use table-route evidence summaries to jump from part/manual/table terms to table evidence cards.",
+          "tunnel_source": "table_route.retrieval_handoff_summary",
+          "tunnel_type": "table_route_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page is a list of effective pages within a maintenance manual, detailing re",
+          "hint_page_ids": [
+            "t_p_120_1176_p000007"
+          ],
+          "hint_score": 40.0,
+          "priority": 4,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=40; label=This page is a list of effective pages within a maintenance manual, detailing re",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0005::artifact_graph_summary_tunnel::04",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page appears to be a parts list and index from a maintenance manual, listin",
+          "hint_page_ids": [
+            "t_p_120_1176_p000005"
+          ],
+          "hint_score": 34.0,
+          "priority": 5,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=34; label=This page appears to be a parts list and index from a maintenance manual, listin",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0005::artifact_graph_summary_tunnel::05",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page appears to be a parts list from the maintenance manual, listing numero",
+          "hint_page_ids": [
+            "t_p_120_1176_p000027"
+          ],
+          "hint_score": 34.0,
+          "priority": 6,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=34; label=This page appears to be a parts list from the maintenance manual, listing numero",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0005::artifact_graph_summary_tunnel::06",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        }
+      ],
+      "requested_routes": [
+        "table",
+        "normal_text"
+      ],
+      "retrieval_channels": [
+        "table_exact_search",
+        "table_hybrid_retrieval_bridge",
+        "qdrant_page_profiles",
+        "graph_source_trace",
+        "graph_summary_tunnels",
+        "page_summary_tunnels",
+        "table_route_summary_tunnels",
+        "artifact_graph_summary_tunnels"
+      ],
+      "route_contract": {
+        "normal_text_requires_source_trace": true,
+        "table_route_values_are_allowed_as_final_answer_authority": false,
+        "table_route_values_are_allowed_as_ranking_signals": true,
+        "visual_route_output_is_advisory_until_verified": true
+      },
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "opensearch_upload_attempt": false,
+        "opensearch_write_attempt": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "retrieval_only_input": true,
+        "source_truth_mutation_allowed": false
+      },
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    }
+  ],
+  "query_route_plans": [
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "normalized_query": "find part number 120-36833-001",
+      "opensearch_upload_attempt": false,
+      "opensearch_write_attempt": false,
+      "planned_retrieval_order": [
+        {
+          "purpose": "anchor source/page/citation neighborhoods",
+          "stage": "graph_source_trace_tunnel",
+          "step": 1
+        },
+        {
+          "purpose": "expand free-text query into page/profile summary neighborhoods",
+          "stage": "page_summary_tunnel",
+          "step": 2
+        },
+        {
+          "purpose": "match table values and apply ranking boosts",
+          "stage": "table_exact_and_bridge_tunnel",
+          "step": 3
+        },
+        {
+          "purpose": "do not answer until final TRACE-Net gate reviews the context",
+          "stage": "final_gate_boundary",
+          "step": 4
+        }
+      ],
+      "planned_retrieval_step_count": 4,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "query_id": "e2e_query_v1_0001",
+      "query_intent": "covered_part_number",
+      "query_terms": [
+        {
+          "term": "120-36833-001",
+          "term_type": "part_number"
+        }
+      ],
+      "query_tunnels": [
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 1,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested graph/source trace or source-routed retrieval",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0001::graph_source_trace_tunnel::01",
+          "tunnel_role": "Use graph/source-trace neighborhoods to move from query terms to page/source/citation identities.",
+          "tunnel_source": "route_contract.graph_source_trace",
+          "tunnel_type": "graph_source_trace_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 2,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested page-profile/summary retrieval or has free-text wording",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0001::page_summary_tunnel::02",
+          "tunnel_role": "Use page/profile summaries as a semantic tunnel before exact page evidence is judged.",
+          "tunnel_source": "summary_profiles.page_context_or_retrieval_profile",
+          "tunnel_type": "page_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 3,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested table route or table exact/hybrid channels",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0001::table_route_summary_tunnel::03",
+          "tunnel_role": "Use table-route evidence summaries to jump from part/manual/table terms to table evidence cards.",
+          "tunnel_source": "table_route.retrieval_handoff_summary",
+          "tunnel_type": "table_route_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page is an illustrated parts list for a double passenger seat, specifically",
+          "hint_page_ids": [
+            "t_p_120_1176_p000018"
+          ],
+          "hint_score": 22.0,
+          "priority": 4,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=22; label=This page is an illustrated parts list for a double passenger seat, specifically",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0001::artifact_graph_summary_tunnel::04",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page defines the categorization and numbering conventions for EMBRAER, mili",
+          "hint_page_ids": [
+            "t_p_120_1176_p000021"
+          ],
+          "hint_score": 22.0,
+          "priority": 5,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=22; label=This page defines the categorization and numbering conventions for EMBRAER, mili",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0001::artifact_graph_summary_tunnel::05",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page is an illustrated parts list for Embraer aircraft, specifically detail",
+          "hint_page_ids": [
+            "t_p_120_1176_p000034"
+          ],
+          "hint_score": 22.0,
+          "priority": 6,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=22; label=This page is an illustrated parts list for Embraer aircraft, specifically detail",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0001::artifact_graph_summary_tunnel::06",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        }
+      ],
+      "requested_routes": [
+        "table",
+        "normal_text"
+      ],
+      "retrieval_channels": [
+        "table_exact_search",
+        "table_hybrid_retrieval_bridge",
+        "qdrant_page_profiles",
+        "graph_source_trace"
+      ],
+      "routing_status": "QUERY_ROUTE_PLAN_READY_FOR_RETRIEVAL_RUNTIME",
+      "source_truth_mutation_allowed": false,
+      "tunnel_count": 6,
+      "tunnel_types": [
+        "artifact_graph_summary_tunnel",
+        "graph_source_trace_tunnel",
+        "page_summary_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "normalized_query": "where is manual reference 25-21-00 used?",
+      "opensearch_upload_attempt": false,
+      "opensearch_write_attempt": false,
+      "planned_retrieval_order": [
+        {
+          "purpose": "anchor source/page/citation neighborhoods",
+          "stage": "graph_source_trace_tunnel",
+          "step": 1
+        },
+        {
+          "purpose": "expand free-text query into page/profile summary neighborhoods",
+          "stage": "page_summary_tunnel",
+          "step": 2
+        },
+        {
+          "purpose": "match table values and apply ranking boosts",
+          "stage": "table_exact_and_bridge_tunnel",
+          "step": 3
+        },
+        {
+          "purpose": "do not answer until final TRACE-Net gate reviews the context",
+          "stage": "final_gate_boundary",
+          "step": 4
+        }
+      ],
+      "planned_retrieval_step_count": 4,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "query_id": "e2e_query_v1_0002",
+      "query_intent": "manual_page_reference",
+      "query_terms": [
+        {
+          "term": "25-21-00",
+          "term_type": "manual_page_reference"
+        }
+      ],
+      "query_tunnels": [
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 1,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested graph/source trace or source-routed retrieval",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0002::graph_source_trace_tunnel::01",
+          "tunnel_role": "Use graph/source-trace neighborhoods to move from query terms to page/source/citation identities.",
+          "tunnel_source": "route_contract.graph_source_trace",
+          "tunnel_type": "graph_source_trace_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 2,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested page-profile/summary retrieval or has free-text wording",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0002::page_summary_tunnel::02",
+          "tunnel_role": "Use page/profile summaries as a semantic tunnel before exact page evidence is judged.",
+          "tunnel_source": "summary_profiles.page_context_or_retrieval_profile",
+          "tunnel_type": "page_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 3,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested table route or table exact/hybrid channels",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0002::table_route_summary_tunnel::03",
+          "tunnel_role": "Use table-route evidence summaries to jump from part/manual/table terms to table evidence cards.",
+          "tunnel_source": "table_route.retrieval_handoff_summary",
+          "tunnel_type": "table_route_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "Page-level retrieval profile for t_p_120_1176 page 78.",
+          "hint_page_ids": [
+            "t_p_120_1176_p000078"
+          ],
+          "hint_score": 30.0,
+          "priority": 4,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=30; label=Page-level retrieval profile for t_p_120_1176 page 78.",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0002::artifact_graph_summary_tunnel::04",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "Page-level retrieval profile for t_p_120_1176 page 80.",
+          "hint_page_ids": [
+            "t_p_120_1176_p000080"
+          ],
+          "hint_score": 30.0,
+          "priority": 5,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=30; label=Page-level retrieval profile for t_p_120_1176 page 80.",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0002::artifact_graph_summary_tunnel::05",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "Page-level retrieval profile for t_p_120_1176 page 83.",
+          "hint_page_ids": [
+            "t_p_120_1176_p000083"
+          ],
+          "hint_score": 30.0,
+          "priority": 6,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=30; label=Page-level retrieval profile for t_p_120_1176 page 83.",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0002::artifact_graph_summary_tunnel::06",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        }
+      ],
+      "requested_routes": [
+        "table",
+        "normal_text"
+      ],
+      "retrieval_channels": [
+        "table_exact_search",
+        "table_hybrid_retrieval_bridge",
+        "qdrant_page_profiles",
+        "graph_source_trace"
+      ],
+      "routing_status": "QUERY_ROUTE_PLAN_READY_FOR_RETRIEVAL_RUNTIME",
+      "source_truth_mutation_allowed": false,
+      "tunnel_count": 6,
+      "tunnel_types": [
+        "artifact_graph_summary_tunnel",
+        "graph_source_trace_tunnel",
+        "page_summary_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "normalized_query": "find ipl item 130",
+      "opensearch_upload_attempt": false,
+      "opensearch_write_attempt": false,
+      "planned_retrieval_order": [
+        {
+          "purpose": "anchor source/page/citation neighborhoods",
+          "stage": "graph_source_trace_tunnel",
+          "step": 1
+        },
+        {
+          "purpose": "match table values and apply ranking boosts",
+          "stage": "table_exact_and_bridge_tunnel",
+          "step": 2
+        },
+        {
+          "purpose": "route IPL/diagram-style query to visual evidence candidates",
+          "stage": "visual_advisory_tunnel",
+          "step": 3
+        },
+        {
+          "purpose": "do not answer until final TRACE-Net gate reviews the context",
+          "stage": "final_gate_boundary",
+          "step": 4
+        }
+      ],
+      "planned_retrieval_step_count": 4,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "query_id": "e2e_query_v1_0003",
+      "query_intent": "ipl_figure_item_or_quantity",
+      "query_terms": [
+        {
+          "term": "130",
+          "term_type": "numeric_token"
+        }
+      ],
+      "query_tunnels": [
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 1,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested graph/source trace or source-routed retrieval",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0003::graph_source_trace_tunnel::01",
+          "tunnel_role": "Use graph/source-trace neighborhoods to move from query terms to page/source/citation identities.",
+          "tunnel_source": "route_contract.graph_source_trace",
+          "tunnel_type": "graph_source_trace_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 2,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested table route or table exact/hybrid channels",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0003::table_route_summary_tunnel::02",
+          "tunnel_role": "Use table-route evidence summaries to jump from part/manual/table terms to table evidence cards.",
+          "tunnel_source": "table_route.retrieval_handoff_summary",
+          "tunnel_type": "table_route_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 3,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested image/visual route",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0003::visual_summary_tunnel::03",
+          "tunnel_role": "Use visual/callout summaries as an advisory tunnel for diagram or IPL-style lookup.",
+          "tunnel_source": "visual_route.callout_and_figure_summaries",
+          "tunnel_type": "visual_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "Figure 3 illustrating components of the triple passenger seat, specifically the ",
+          "hint_page_ids": [
+            "t_p_120_1176_p000019"
+          ],
+          "hint_score": 16.0,
+          "priority": 4,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=16; label=Figure 3 illustrating components of the triple passenger seat, specifically the ",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0003::artifact_graph_summary_tunnel::04",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page provides the introduction to the Embraer maintenance manual and illust",
+          "hint_page_ids": [
+            "t_p_120_1176_p000004"
+          ],
+          "hint_score": 10.0,
+          "priority": 5,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=10; label=This page provides the introduction to the Embraer maintenance manual and illust",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0003::artifact_graph_summary_tunnel::05",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "An illustrated parts list and figure for a single passenger seat, specifically i",
+          "hint_page_ids": [
+            "t_p_120_1176_p000017"
+          ],
+          "hint_score": 10.0,
+          "priority": 6,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=10; label=An illustrated parts list and figure for a single passenger seat, specifically i",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0003::artifact_graph_summary_tunnel::06",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        }
+      ],
+      "requested_routes": [
+        "table",
+        "image_visual"
+      ],
+      "retrieval_channels": [
+        "table_exact_search",
+        "table_hybrid_retrieval_bridge",
+        "graph_source_trace"
+      ],
+      "routing_status": "QUERY_ROUTE_PLAN_READY_FOR_RETRIEVAL_RUNTIME",
+      "source_truth_mutation_allowed": false,
+      "tunnel_count": 6,
+      "tunnel_types": [
+        "artifact_graph_summary_tunnel",
+        "graph_source_trace_tunnel",
+        "table_route_summary_tunnel",
+        "visual_summary_tunnel"
+      ],
+      "user_query": "Find IPL item 130"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "normalized_query": "search table text maintenance manual with",
+      "opensearch_upload_attempt": false,
+      "opensearch_write_attempt": false,
+      "planned_retrieval_order": [
+        {
+          "purpose": "anchor source/page/citation neighborhoods",
+          "stage": "graph_source_trace_tunnel",
+          "step": 1
+        },
+        {
+          "purpose": "expand free-text query into page/profile summary neighborhoods",
+          "stage": "page_summary_tunnel",
+          "step": 2
+        },
+        {
+          "purpose": "match table values and apply ranking boosts",
+          "stage": "table_exact_and_bridge_tunnel",
+          "step": 3
+        },
+        {
+          "purpose": "do not answer until final TRACE-Net gate reviews the context",
+          "stage": "final_gate_boundary",
+          "step": 4
+        }
+      ],
+      "planned_retrieval_step_count": 4,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "query_id": "e2e_query_v1_0004",
+      "query_intent": "table_text",
+      "query_terms": [
+        {
+          "term": "MAINTENANCE MANUAL WITH",
+          "term_type": "table_text_phrase"
+        }
+      ],
+      "query_tunnels": [
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 1,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested graph/source trace or source-routed retrieval",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0004::graph_source_trace_tunnel::01",
+          "tunnel_role": "Use graph/source-trace neighborhoods to move from query terms to page/source/citation identities.",
+          "tunnel_source": "route_contract.graph_source_trace",
+          "tunnel_type": "graph_source_trace_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 2,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested page-profile/summary retrieval or has free-text wording",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0004::page_summary_tunnel::02",
+          "tunnel_role": "Use page/profile summaries as a semantic tunnel before exact page evidence is judged.",
+          "tunnel_source": "summary_profiles.page_context_or_retrieval_profile",
+          "tunnel_type": "page_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 3,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested table route or table exact/hybrid channels",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0004::table_route_summary_tunnel::03",
+          "tunnel_role": "Use table-route evidence summaries to jump from part/manual/table terms to table evidence cards.",
+          "tunnel_source": "table_route.retrieval_handoff_summary",
+          "tunnel_type": "table_route_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page is a List of Effective Pages (LEP) for the Embraer Maintenance Manual ",
+          "hint_page_ids": [
+            "t_p_120_1176_p000009"
+          ],
+          "hint_score": 24.0,
+          "priority": 4,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=24; label=This page is a List of Effective Pages (LEP) for the Embraer Maintenance Manual ",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0004::artifact_graph_summary_tunnel::04",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page is the List of Effective Pages (LEP) for an Embraer Maintenance Manual",
+          "hint_page_ids": [
+            "t_p_120_1176_p000010"
+          ],
+          "hint_score": 24.0,
+          "priority": 5,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=24; label=This page is the List of Effective Pages (LEP) for an Embraer Maintenance Manual",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0004::artifact_graph_summary_tunnel::05",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This is the title page for an Embraer Maintenance Manual with Illustrated Parts ",
+          "hint_page_ids": [
+            "t_p_120_1176_p000026"
+          ],
+          "hint_score": 24.0,
+          "priority": 6,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=24; label=This is the title page for an Embraer Maintenance Manual with Illustrated Parts ",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0004::artifact_graph_summary_tunnel::06",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        }
+      ],
+      "requested_routes": [
+        "table",
+        "normal_text"
+      ],
+      "retrieval_channels": [
+        "table_exact_search",
+        "table_hybrid_retrieval_bridge",
+        "qdrant_page_profiles"
+      ],
+      "routing_status": "QUERY_ROUTE_PLAN_READY_FOR_RETRIEVAL_RUNTIME",
+      "source_truth_mutation_allowed": false,
+      "tunnel_count": 6,
+      "tunnel_types": [
+        "artifact_graph_summary_tunnel",
+        "graph_source_trace_tunnel",
+        "page_summary_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "normalized_query": "what maintenance manual pages mention covered part numbers?",
+      "opensearch_upload_attempt": false,
+      "opensearch_write_attempt": false,
+      "planned_retrieval_order": [
+        {
+          "purpose": "anchor source/page/citation neighborhoods",
+          "stage": "graph_source_trace_tunnel",
+          "step": 1
+        },
+        {
+          "purpose": "expand free-text query into page/profile summary neighborhoods",
+          "stage": "page_summary_tunnel",
+          "step": 2
+        },
+        {
+          "purpose": "match table values and apply ranking boosts",
+          "stage": "table_exact_and_bridge_tunnel",
+          "step": 3
+        },
+        {
+          "purpose": "do not answer until final TRACE-Net gate reviews the context",
+          "stage": "final_gate_boundary",
+          "step": 4
+        }
+      ],
+      "planned_retrieval_step_count": 4,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "query_id": "e2e_query_v1_0005",
+      "query_intent": "covered_part_number",
+      "query_terms": [
+        {
+          "term": "What maintenance manual pages mention covered part numbers?",
+          "term_type": "free_text"
+        }
+      ],
+      "query_tunnels": [
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 1,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested graph/source trace or source-routed retrieval",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0005::graph_source_trace_tunnel::01",
+          "tunnel_role": "Use graph/source-trace neighborhoods to move from query terms to page/source/citation identities.",
+          "tunnel_source": "route_contract.graph_source_trace",
+          "tunnel_type": "graph_source_trace_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 2,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested page-profile/summary retrieval or has free-text wording",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0005::page_summary_tunnel::02",
+          "tunnel_role": "Use page/profile summaries as a semantic tunnel before exact page evidence is judged.",
+          "tunnel_source": "summary_profiles.page_context_or_retrieval_profile",
+          "tunnel_type": "page_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "priority": 3,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "query requested table route or table exact/hybrid channels",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0005::table_route_summary_tunnel::03",
+          "tunnel_role": "Use table-route evidence summaries to jump from part/manual/table terms to table evidence cards.",
+          "tunnel_source": "table_route.retrieval_handoff_summary",
+          "tunnel_type": "table_route_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page is a list of effective pages within a maintenance manual, detailing re",
+          "hint_page_ids": [
+            "t_p_120_1176_p000007"
+          ],
+          "hint_score": 40.0,
+          "priority": 4,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=40; label=This page is a list of effective pages within a maintenance manual, detailing re",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0005::artifact_graph_summary_tunnel::04",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page appears to be a parts list and index from a maintenance manual, listin",
+          "hint_page_ids": [
+            "t_p_120_1176_p000005"
+          ],
+          "hint_score": 34.0,
+          "priority": 5,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=34; label=This page appears to be a parts list and index from a maintenance manual, listin",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0005::artifact_graph_summary_tunnel::05",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        },
+        {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "hint_label": "This page appears to be a parts list from the maintenance manual, listing numero",
+          "hint_page_ids": [
+            "t_p_120_1176_p000027"
+          ],
+          "hint_score": 34.0,
+          "priority": 6,
+          "retrieval_permission": "ranking_only_until_final_gate",
+          "routing_reason": "matched summary hint score=34; label=This page appears to be a parts list from the maintenance manual, listing numero",
+          "source_truth_mutation_allowed": false,
+          "tunnel_id": "e2e_query_v1_0005::artifact_graph_summary_tunnel::06",
+          "tunnel_role": "Use a loaded graph/summary artifact as a query-specific tunnel into likely evidence neighborhoods.",
+          "tunnel_source": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+          "tunnel_type": "artifact_graph_summary_tunnel"
+        }
+      ],
+      "requested_routes": [
+        "table",
+        "normal_text"
+      ],
+      "retrieval_channels": [
+        "table_exact_search",
+        "table_hybrid_retrieval_bridge",
+        "qdrant_page_profiles",
+        "graph_source_trace"
+      ],
+      "routing_status": "QUERY_ROUTE_PLAN_READY_FOR_RETRIEVAL_RUNTIME",
+      "source_truth_mutation_allowed": false,
+      "tunnel_count": 6,
+      "tunnel_types": [
+        "artifact_graph_summary_tunnel",
+        "graph_source_trace_tunnel",
+        "page_summary_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    }
+  ],
+  "report_path": "local_data\\organization\\trace_net\\e2e_query_planning_routing\\trace_net_e2e_query_planning_routing_v1.json",
+  "route_plans_jsonl_path": "local_data\\organization\\trace_net\\e2e_query_planning_routing\\trace_net_e2e_query_route_plans_v1.jsonl",
+  "status": "E2E_QUERY_PLANNING_ROUTING_BUILT",
+  "summary": {
+    "all_plans_retrieval_only": true,
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "e2e_query_planning_routing_status": "E2E_QUERY_PLANNING_ROUTING_READY_FOR_HYBRID_RETRIEVAL_RUNTIME",
+    "loaded_summary_artifact_count": 1,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "planned_retrieval_step_count": 20,
+    "plans_with_graph_tunnel_count": 5,
+    "plans_with_summary_tunnel_count": 5,
+    "plans_with_table_tunnel_count": 5,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "query_route_plan_count": 5,
+    "retrieval_channel_counts": {
+      "artifact_graph_summary_tunnels": 5,
+      "graph_source_trace": 4,
+      "graph_summary_tunnels": 5,
+      "page_summary_tunnels": 4,
+      "qdrant_page_profiles": 4,
+      "table_exact_search": 5,
+      "table_hybrid_retrieval_bridge": 5,
+      "table_route_summary_tunnels": 5,
+      "visual_summary_tunnels": 1
+    },
+    "route_counts": {
+      "image_visual": 1,
+      "normal_text": 4,
+      "table": 5
+    },
+    "routeable_query_route_plan_count": 5,
+    "schema_missing_required_key_record_count": 0,
+    "source_query_input_path": "local_data/organization/trace_net/e2e_query_input/trace_net_e2e_query_input_v1.json",
+    "source_query_input_quality_pass": true,
+    "source_query_input_record_count": 5,
+    "source_truth_mutation_allowed_count": 0,
+    "summary_hint_count": 500,
+    "total_query_tunnel_count": 30,
+    "tunnel_type_counts": {
+      "artifact_graph_summary_tunnel": 15,
+      "graph_source_trace_tunnel": 5,
+      "page_summary_tunnel": 4,
+      "table_route_summary_tunnel": 5,
+      "visual_summary_tunnel": 1
+    },
+    "unique_tunnel_type_count": 5,
+    "unsafe_query_route_plan_count": 0
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "quality_checks": [
+    {
+      "expected": "is True",
+      "name": "source_readiness_quality_pass",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "expected": "is True",
+      "name": "source_bridge_quality_pass",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "expected": "READY_FOR_RETRIEVAL_RANKING_ONLY",
+      "name": "readiness_status_ready_for_ranking_only",
+      "observed": "READY_FOR_RETRIEVAL_RANKING_ONLY",
+      "passed": true
+    },
+    {
+      "expected": ">= 3",
+      "name": "demo_query_count",
+      "observed": 6,
+      "passed": true
+    },
+    {
+      "expected": ">= 3",
+      "name": "successful_demo_query_count",
+      "observed": 6,
+      "passed": true
+    },
+    {
+      "expected": ">= 3",
+      "name": "total_demo_match_count",
+      "observed": 42,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "page_with_demo_match_count",
+      "observed": 12,
+      "passed": true
+    },
+    {
+      "expected": ">= 4",
+      "name": "field_count",
+      "observed": 6,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "unsafe_demo_record_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "can_answer_directly_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "can_prove_claims_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "postgres_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "qdrant_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "opensearch_write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "opensearch_upload_attempt_count",
+      "observed": 0,
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS",
+  "summary": {
+    "answer_authority": "blocked",
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "demo_query_count": 6,
+    "demo_readiness_status": "DEMO_READY_RETRIEVAL_ONLY",
+    "field_count": 6,
+    "field_counts": {
+      "covered_part_number": 150,
+      "ipl_figure_item_or_quantity": 843,
+      "ipl_part_number": 197,
+      "ipl_text": 188,
+      "manual_page_reference": 39,
+      "page_rev_or_sequence_value": 80
+    },
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "page_with_demo_match_count": 12,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "ready_for_hybrid_retrieval_ranking": true,
+    "ready_for_live_opensearch_upload": false,
+    "retrieval_permission": "ranking_only",
+    "source_bridge_path": "local_data\\organization\\trace_net\\table_hybrid_retrieval_bridge\\trace_net_table_hybrid_retrieval_bridge_v1.json",
+    "source_bridge_quality_pass": true,
+    "source_bridge_record_count": 1497,
+    "source_exact_search_document_count": 1497,
+    "source_ranking_available_bridge_record_count": 1497,
+    "source_readiness_path": "local_data\\organization\\trace_net\\table_route_retrieval_readiness_report\\trace_net_table_route_retrieval_readiness_report_v1.json",
+    "source_readiness_quality_pass": true,
+    "source_retrieval_readiness_status": "READY_FOR_RETRIEVAL_RANKING_ONLY",
+    "source_successful_smoke_query_count": 6,
+    "source_total_smoke_match_count": 42,
+    "source_truth_mutation_allowed_count": 0,
+    "successful_demo_query_count": 6,
+    "total_demo_match_count": 42,
+    "unsafe_demo_record_count": 0
+  }
+}

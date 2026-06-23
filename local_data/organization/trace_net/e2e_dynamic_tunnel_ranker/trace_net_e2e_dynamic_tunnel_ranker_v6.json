@@ -1,0 +1,1524 @@
+{
+  "artifact_states": [
+    {
+      "name": "dynamic_query_endpoint",
+      "path": "local_data\\organization\\trace_net\\e2e_dynamic_query_endpoint\\trace_net_e2e_dynamic_query_endpoint_v1.json",
+      "present": true,
+      "purpose": "Dynamic endpoint contract and safety status.",
+      "quality_status": "PASS",
+      "record_count": 1497,
+      "status": "E2E_DYNAMIC_QUERY_ENDPOINT_MANIFEST_BUILT",
+      "tunnel_type": "dynamic_endpoint_contract"
+    },
+    {
+      "name": "dynamic_query_tunnels",
+      "path": "local_data\\organization\\trace_net\\e2e_dynamic_query_tunnels\\trace_net_e2e_dynamic_query_tunnels_v3.json",
+      "present": true,
+      "purpose": "Available tunnel plan report from v3/v5.",
+      "quality_status": "PASS",
+      "record_count": 5,
+      "status": "E2E_DYNAMIC_QUERY_TUNNELS_BUILT",
+      "tunnel_type": "tunnel_plan_source"
+    },
+    {
+      "name": "table_exact_search_adapter",
+      "path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "present": true,
+      "purpose": "Exact table value evidence.",
+      "quality_status": "PASS",
+      "record_count": 1497,
+      "status": "TABLE_EXACT_SEARCH_ADAPTER_BUILT",
+      "tunnel_type": "table_exact_search_tunnel"
+    },
+    {
+      "name": "table_hybrid_retrieval_bridge",
+      "path": "local_data\\organization\\trace_net\\table_hybrid_retrieval_bridge\\trace_net_table_hybrid_retrieval_bridge_v1.json",
+      "present": true,
+      "purpose": "Table route/ranking bridge evidence.",
+      "quality_status": "PASS",
+      "record_count": 1497,
+      "status": "TABLE_HYBRID_RETRIEVAL_BRIDGE_BUILT",
+      "tunnel_type": "table_hybrid_bridge_tunnel"
+    },
+    {
+      "name": "page_retrieval_profiles",
+      "path": "local_data\\organization\\trace_net\\page_retrieval_profiles\\trace_net_page_retrieval_profiles_v1.json",
+      "present": true,
+      "purpose": "Prebuilt page/profile semantic tunnel metadata.",
+      "quality_status": "UNKNOWN",
+      "record_count": 509,
+      "status": "UNKNOWN",
+      "tunnel_type": "qdrant_page_profile_tunnel"
+    },
+    {
+      "name": "page_context_v2",
+      "path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+      "present": true,
+      "purpose": "Prebuilt/synthesized page context summaries.",
+      "quality_status": "PASS",
+      "record_count": 509,
+      "status": "PAGE_CONTEXT_V2_OPTIONAL_TUNNEL_ACTIVATED",
+      "tunnel_type": "page_summary_tunnel"
+    },
+    {
+      "name": "leiden_communities",
+      "path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+      "present": true,
+      "purpose": "Graph/community routing hints; not proof authority.",
+      "quality_status": "PASS",
+      "record_count": 229,
+      "status": "LEIDEN_GRAPH_COMMUNITIES_BUILT",
+      "tunnel_type": "graph_community_tunnel"
+    },
+    {
+      "name": "community_navigation_metadata_bridge",
+      "path": "local_data\\organization\\trace_net\\community_navigation_metadata_bridge\\trace_net_community_navigation_metadata_bridge_v1.json",
+      "present": true,
+      "purpose": "Graph navigation bridge hints.",
+      "quality_status": "PASS",
+      "record_count": 229,
+      "status": "COMMUNITY_NAVIGATION_METADATA_BRIDGE_OPTIONAL_TUNNEL_ACTIVATED",
+      "tunnel_type": "graph_navigation_tunnel"
+    },
+    {
+      "name": "route_dispatch_manifest",
+      "path": "local_data\\organization\\trace_net\\route_dispatch_manifest\\trace_net_route_dispatch_manifest_v1.json",
+      "present": true,
+      "purpose": "Route metadata constraints for page types.",
+      "quality_status": "PASS",
+      "record_count": 0,
+      "status": "TRACE_NET_ROUTE_DISPATCH_MANIFEST_BUILT",
+      "tunnel_type": "route_metadata_tunnel"
+    },
+    {
+      "name": "table_route_retrieval_handoff_summary",
+      "path": "local_data\\organization\\trace_net\\table_route_retrieval_handoff_summary\\trace_net_table_route_retrieval_handoff_summary_v1.json",
+      "present": true,
+      "purpose": "Table route retrieval contract/status summary.",
+      "quality_status": "PASS",
+      "record_count": 0,
+      "status": "TABLE_ROUTE_RETRIEVAL_READINESS_REPORT_BUILT",
+      "tunnel_type": "table_route_summary_tunnel"
+    }
+  ],
+  "dynamic_tunnel_ranker_contract": {
+    "answer_permission": false,
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "graph_is_not_proof_authority": true,
+    "reruns_embeddings": false,
+    "reruns_graph_build": false,
+    "reruns_ocr": false,
+    "reruns_page_classification": false,
+    "reruns_page_summaries": false,
+    "reruns_source_ingest": false,
+    "reruns_table_extraction": false,
+    "source_truth_mutation_allowed": false,
+    "summaries_are_not_source_truth": true,
+    "tunnels_are_routing_and_ranking_only": true,
+    "uses_prebuilt_artifacts": true
+  },
+  "e2e_dynamic_tunnel_ranker_status": "E2E_DYNAMIC_TUNNEL_RANKER_READY_FOR_ENDPOINT_INTEGRATION",
+  "hybrid_ranker_assessment": "Dynamic v6 scores table exact/bridge evidence and enriches ranking with available route, page-profile, page-summary, graph/community, graph-navigation, and table-route-summary tunnels. Tunnel scores are routing/ranking hints only and do not grant proof or answer authority.",
+  "quality_checks": [
+    {
+      "expected": ">= 5",
+      "name": "rank_plan_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "ready_rank_plan_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 10",
+      "name": "total_ranked_evidence_count",
+      "observed": 25,
+      "passed": true
+    },
+    {
+      "expected": ">= 4",
+      "name": "unique_contribution_tunnel_count",
+      "observed": 8,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "plans_with_graph_or_summary_contribution_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 5",
+      "name": "plans_with_table_contribution_count",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS",
+  "rank_plans": [
+    {
+      "answer_permission": false,
+      "available_tunnels": [
+        "table_exact_search_tunnel",
+        "table_hybrid_bridge_tunnel",
+        "qdrant_page_profile_tunnel",
+        "page_summary_tunnel",
+        "graph_community_tunnel",
+        "graph_navigation_tunnel",
+        "route_metadata_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query_intent": "covered_part_number",
+      "query_terms": [
+        "120-36833-001"
+      ],
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0001",
+      "ranked_evidence": [
+        {
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-001",
+          "page_id": "t_p_120_1176_p000003",
+          "rank": 1,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 319,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 240,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-003",
+          "page_id": "t_p_120_1176_p000003",
+          "rank": 2,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 199,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 120,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-005",
+          "page_id": "t_p_120_1176_p000003",
+          "rank": 3,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 199,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 120,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-501",
+          "page_id": "t_p_120_1176_p000003",
+          "rank": 4,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 199,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 120,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-503",
+          "page_id": "t_p_120_1176_p000003",
+          "rank": 5,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 199,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 120,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        }
+      ],
+      "ranked_evidence_count": 5,
+      "ranker_status": "DYNAMIC_TUNNEL_RANKING_READY",
+      "source_truth_mutation_allowed": false,
+      "top_tunnel_contribution_types": [
+        "graph_community_tunnel",
+        "graph_navigation_tunnel",
+        "page_summary_tunnel",
+        "qdrant_page_profile_tunnel",
+        "route_metadata_tunnel",
+        "table_exact_search_tunnel",
+        "table_hybrid_bridge_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "answer_permission": false,
+      "available_tunnels": [
+        "table_exact_search_tunnel",
+        "table_hybrid_bridge_tunnel",
+        "qdrant_page_profile_tunnel",
+        "page_summary_tunnel",
+        "graph_community_tunnel",
+        "graph_navigation_tunnel",
+        "route_metadata_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query_intent": "covered_part_number",
+      "query_terms": [
+        "120-36834-509"
+      ],
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0002",
+      "ranked_evidence": [
+        {
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36834-509",
+          "page_id": "t_p_120_1176_p000003",
+          "rank": 1,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 319,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 240,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-001",
+          "page_id": "t_p_120_1176_p000003",
+          "rank": 2,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 199,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 120,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-003",
+          "page_id": "t_p_120_1176_p000003",
+          "rank": 3,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 199,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 120,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-005",
+          "page_id": "t_p_120_1176_p000003",
+          "rank": 4,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 199,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 120,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-501",
+          "page_id": "t_p_120_1176_p000003",
+          "rank": 5,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 199,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 120,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        }
+      ],
+      "ranked_evidence_count": 5,
+      "ranker_status": "DYNAMIC_TUNNEL_RANKING_READY",
+      "source_truth_mutation_allowed": false,
+      "top_tunnel_contribution_types": [
+        "graph_community_tunnel",
+        "graph_navigation_tunnel",
+        "page_summary_tunnel",
+        "qdrant_page_profile_tunnel",
+        "route_metadata_tunnel",
+        "table_exact_search_tunnel",
+        "table_hybrid_bridge_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "user_query": "Find part number 120-36834-509"
+    },
+    {
+      "answer_permission": false,
+      "available_tunnels": [
+        "table_exact_search_tunnel",
+        "table_hybrid_bridge_tunnel",
+        "qdrant_page_profile_tunnel",
+        "page_summary_tunnel",
+        "graph_community_tunnel",
+        "graph_navigation_tunnel",
+        "route_metadata_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query_intent": "manual_page_reference",
+      "query_terms": [
+        "25-21-00"
+      ],
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0003",
+      "ranked_evidence": [
+        {
+          "citation_ready": true,
+          "field_name": "manual_page_reference",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000005",
+          "rank": 1,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 319,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 240,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "ipl_part_number",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000027",
+          "rank": 2,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 299,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 220,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "ipl_part_number",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000028",
+          "rank": 3,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 299,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 220,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "ipl_part_number",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000029",
+          "rank": 4,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 299,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 220,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "ipl_part_number",
+          "normalized_value": "25-21-00",
+          "page_id": "t_p_120_1176_p000030",
+          "rank": 5,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 299,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 220,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        }
+      ],
+      "ranked_evidence_count": 5,
+      "ranker_status": "DYNAMIC_TUNNEL_RANKING_READY",
+      "source_truth_mutation_allowed": false,
+      "top_tunnel_contribution_types": [
+        "graph_community_tunnel",
+        "graph_navigation_tunnel",
+        "page_summary_tunnel",
+        "qdrant_page_profile_tunnel",
+        "route_metadata_tunnel",
+        "table_exact_search_tunnel",
+        "table_hybrid_bridge_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "answer_permission": false,
+      "available_tunnels": [
+        "table_exact_search_tunnel",
+        "table_hybrid_bridge_tunnel",
+        "qdrant_page_profile_tunnel",
+        "page_summary_tunnel",
+        "graph_community_tunnel",
+        "graph_navigation_tunnel",
+        "route_metadata_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query_intent": "table_text",
+      "query_terms": [
+        "MAINTENANCE MANUAL WITH"
+      ],
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0004",
+      "ranked_evidence": [
+        {
+          "citation_ready": true,
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000027",
+          "rank": 1,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 319,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 240,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000028",
+          "rank": 2,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 319,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 240,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000029",
+          "rank": 3,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 319,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 240,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000030",
+          "rank": 4,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 319,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 240,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "ipl_text",
+          "normalized_value": "MAINTENANCE MANUAL WITH",
+          "page_id": "t_p_120_1176_p000031",
+          "rank": 5,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 319,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 240,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        }
+      ],
+      "ranked_evidence_count": 5,
+      "ranker_status": "DYNAMIC_TUNNEL_RANKING_READY",
+      "source_truth_mutation_allowed": false,
+      "top_tunnel_contribution_types": [
+        "graph_community_tunnel",
+        "graph_navigation_tunnel",
+        "page_summary_tunnel",
+        "qdrant_page_profile_tunnel",
+        "route_metadata_tunnel",
+        "table_exact_search_tunnel",
+        "table_hybrid_bridge_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "answer_permission": false,
+      "available_tunnels": [
+        "table_exact_search_tunnel",
+        "table_hybrid_bridge_tunnel",
+        "qdrant_page_profile_tunnel",
+        "page_summary_tunnel",
+        "graph_community_tunnel",
+        "graph_navigation_tunnel",
+        "route_metadata_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "query_intent": "covered_part_number",
+      "query_terms": [
+        "maintenance",
+        "covered",
+        "numbers"
+      ],
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0005",
+      "ranked_evidence": [
+        {
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-001",
+          "page_id": "t_p_120_1176_p000003",
+          "rank": 1,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 199,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 120,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-003",
+          "page_id": "t_p_120_1176_p000003",
+          "rank": 2,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 199,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 120,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-005",
+          "page_id": "t_p_120_1176_p000003",
+          "rank": 3,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 199,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 120,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-501",
+          "page_id": "t_p_120_1176_p000003",
+          "rank": 4,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 199,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 120,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        },
+        {
+          "citation_ready": true,
+          "field_name": "covered_part_number",
+          "normalized_value": "120-36833-503",
+          "page_id": "t_p_120_1176_p000003",
+          "rank": 5,
+          "source_name": "table_exact_search_adapter",
+          "source_trace_ready": true,
+          "source_tunnel": "table_exact_search_tunnel",
+          "total_tunnel_score": 199,
+          "tunnel_contributions": {
+            "graph_community_tunnel": 7,
+            "graph_navigation_tunnel": 7,
+            "page_summary_tunnel": 10,
+            "qdrant_page_profile_tunnel": 12,
+            "route_metadata_tunnel": 15,
+            "table_exact_search_tunnel": 120,
+            "table_hybrid_bridge_tunnel": 20,
+            "table_route_summary_tunnel": 8
+          }
+        }
+      ],
+      "ranked_evidence_count": 5,
+      "ranker_status": "DYNAMIC_TUNNEL_RANKING_READY",
+      "source_truth_mutation_allowed": false,
+      "top_tunnel_contribution_types": [
+        "graph_community_tunnel",
+        "graph_navigation_tunnel",
+        "page_summary_tunnel",
+        "qdrant_page_profile_tunnel",
+        "route_metadata_tunnel",
+        "table_exact_search_tunnel",
+        "table_hybrid_bridge_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    }
+  ],
+  "rank_records": [
+    {
+      "citation_ready": true,
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-001",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 1,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0001",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 319,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 240,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-003",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 2,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0001",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-005",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 3,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0001",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-501",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 4,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0001",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-503",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 5,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0001",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36833-001"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36834-509",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 1,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0002",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 319,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 240,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36834-509"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-001",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 2,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0002",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36834-509"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-003",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 3,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0002",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36834-509"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-005",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 4,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0002",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36834-509"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-501",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 5,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0002",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Find part number 120-36834-509"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "manual_page_reference",
+      "normalized_value": "25-21-00",
+      "page_id": "t_p_120_1176_p000005",
+      "query_intent": "manual_page_reference",
+      "rank": 1,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0003",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 319,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 240,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "ipl_part_number",
+      "normalized_value": "25-21-00",
+      "page_id": "t_p_120_1176_p000027",
+      "query_intent": "manual_page_reference",
+      "rank": 2,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0003",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 299,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 220,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "ipl_part_number",
+      "normalized_value": "25-21-00",
+      "page_id": "t_p_120_1176_p000028",
+      "query_intent": "manual_page_reference",
+      "rank": 3,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0003",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 299,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 220,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "ipl_part_number",
+      "normalized_value": "25-21-00",
+      "page_id": "t_p_120_1176_p000029",
+      "query_intent": "manual_page_reference",
+      "rank": 4,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0003",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 299,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 220,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "ipl_part_number",
+      "normalized_value": "25-21-00",
+      "page_id": "t_p_120_1176_p000030",
+      "query_intent": "manual_page_reference",
+      "rank": 5,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0003",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 299,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 220,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "ipl_text",
+      "normalized_value": "MAINTENANCE MANUAL WITH",
+      "page_id": "t_p_120_1176_p000027",
+      "query_intent": "table_text",
+      "rank": 1,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0004",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 319,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 240,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "ipl_text",
+      "normalized_value": "MAINTENANCE MANUAL WITH",
+      "page_id": "t_p_120_1176_p000028",
+      "query_intent": "table_text",
+      "rank": 2,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0004",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 319,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 240,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "ipl_text",
+      "normalized_value": "MAINTENANCE MANUAL WITH",
+      "page_id": "t_p_120_1176_p000029",
+      "query_intent": "table_text",
+      "rank": 3,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0004",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 319,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 240,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "ipl_text",
+      "normalized_value": "MAINTENANCE MANUAL WITH",
+      "page_id": "t_p_120_1176_p000030",
+      "query_intent": "table_text",
+      "rank": 4,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0004",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 319,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 240,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "ipl_text",
+      "normalized_value": "MAINTENANCE MANUAL WITH",
+      "page_id": "t_p_120_1176_p000031",
+      "query_intent": "table_text",
+      "rank": 5,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0004",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 319,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 240,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-001",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 1,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0005",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-003",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 2,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0005",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-005",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 3,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0005",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-501",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 4,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0005",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    },
+    {
+      "citation_ready": true,
+      "field_name": "covered_part_number",
+      "normalized_value": "120-36833-503",
+      "page_id": "t_p_120_1176_p000003",
+      "query_intent": "covered_part_number",
+      "rank": 5,
+      "rank_plan_id": "dynamic_tunnel_rank_plan_v6_0005",
+      "source_name": "table_exact_search_adapter",
+      "source_trace_ready": true,
+      "source_tunnel": "table_exact_search_tunnel",
+      "total_tunnel_score": 199,
+      "tunnel_contributions": {
+        "graph_community_tunnel": 7,
+        "graph_navigation_tunnel": 7,
+        "page_summary_tunnel": 10,
+        "qdrant_page_profile_tunnel": 12,
+        "route_metadata_tunnel": 15,
+        "table_exact_search_tunnel": 120,
+        "table_hybrid_bridge_tunnel": 20,
+        "table_route_summary_tunnel": 8
+      },
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    }
+  ],
+  "schema_version": "v6",
+  "status": "E2E_DYNAMIC_TUNNEL_RANKER_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "available_tunnel_count": 8,
+    "available_tunnels": [
+      "table_exact_search_tunnel",
+      "table_hybrid_bridge_tunnel",
+      "qdrant_page_profile_tunnel",
+      "page_summary_tunnel",
+      "graph_community_tunnel",
+      "graph_navigation_tunnel",
+      "route_metadata_tunnel",
+      "table_route_summary_tunnel"
+    ],
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "plans_with_graph_or_summary_contribution_count": 5,
+    "plans_with_table_contribution_count": 5,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "rank_plan_count": 5,
+    "ready_rank_plan_count": 5,
+    "source_truth_mutation_allowed_count": 0,
+    "total_ranked_evidence_count": 25,
+    "unique_contribution_tunnel_count": 8,
+    "unique_contribution_tunnels": [
+      "graph_community_tunnel",
+      "graph_navigation_tunnel",
+      "page_summary_tunnel",
+      "qdrant_page_profile_tunnel",
+      "route_metadata_tunnel",
+      "table_exact_search_tunnel",
+      "table_hybrid_bridge_tunnel",
+      "table_route_summary_tunnel"
+    ]
+  }
+}

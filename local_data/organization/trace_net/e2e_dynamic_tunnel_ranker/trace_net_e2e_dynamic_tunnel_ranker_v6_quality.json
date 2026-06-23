@@ -1,0 +1,59 @@
+{
+  "quality_status": "PASS",
+  "quality_checks": [
+    {
+      "name": "quality_status",
+      "observed": "PASS",
+      "expected": "== PASS",
+      "passed": true
+    },
+    {
+      "name": "rank_plan_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "ready_rank_plan_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "total_ranked_evidence_count",
+      "observed": 25,
+      "expected": ">= 10",
+      "passed": true
+    },
+    {
+      "name": "unique_contribution_tunnel_count",
+      "observed": 8,
+      "expected": ">= 4",
+      "passed": true
+    },
+    {
+      "name": "plans_with_graph_or_summary_contribution_count",
+      "observed": 5,
+      "expected": ">= 1",
+      "passed": true
+    },
+    {
+      "name": "plans_with_table_contribution_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "answer_permission_count",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    }
+  ]
+}

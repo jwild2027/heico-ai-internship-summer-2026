@@ -1,0 +1,107 @@
+{
+  "quality_status": "PASS",
+  "quality_checks": [
+    {
+      "name": "existing_pipeline_query_count",
+      "observed": 5,
+      "expected": ">= 5",
+      "passed": true
+    },
+    {
+      "name": "exact_search_document_count",
+      "observed": 1497,
+      "expected": ">= 10",
+      "passed": true
+    },
+    {
+      "name": "dynamic_fallback_probe_count",
+      "observed": 5,
+      "expected": ">= 3",
+      "passed": true
+    },
+    {
+      "name": "ready_dynamic_fallback_probe_count",
+      "observed": 5,
+      "expected": ">= 3",
+      "passed": true
+    },
+    {
+      "name": "total_dynamic_fallback_citation_count",
+      "observed": 21,
+      "expected": ">= 15",
+      "passed": true
+    },
+    {
+      "name": "endpoint_route_count",
+      "observed": 4,
+      "expected": ">= 4",
+      "passed": true
+    },
+    {
+      "name": "unsupported_claim_count",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "answer_permission_count",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "contract_can_answer_directly",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    },
+    {
+      "name": "contract_can_prove_claims",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    },
+    {
+      "name": "postgres_write_attempt_count",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    },
+    {
+      "name": "qdrant_write_attempt_count",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    },
+    {
+      "name": "opensearch_write_attempt_count",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    },
+    {
+      "name": "require_no_answer_permission",
+      "observed": 0,
+      "expected": "== 0",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "existing_pipeline_query_count": 5,
+    "exact_search_document_count": 1497,
+    "dynamic_fallback_probe_count": 5,
+    "ready_dynamic_fallback_probe_count": 5,
+    "total_dynamic_fallback_citation_count": 21,
+    "endpoint_route_count": 4,
+    "unsupported_claim_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "quality_status": "PASS"
+  }
+}

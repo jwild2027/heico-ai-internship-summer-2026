@@ -1,0 +1,1373 @@
+{
+  "answer_permission_count": 0,
+  "capped_result_disclosure_count": 3,
+  "context_pack_count": 5,
+  "context_packs": [
+    {
+      "aggregation_box": {
+        "available_drilldowns": [
+          "document",
+          "manual",
+          "revision",
+          "section",
+          "route",
+          "field_type",
+          "page",
+          "leiden_community"
+        ],
+        "cap_reason": "not_capped",
+        "group_counts": {
+          "by_document": {
+            "table_exact_search::t_p_120_1176_p000003::covered_part_number::bb38c274d2c92bba": 1
+          },
+          "by_field": {
+            "covered_part_number": 1
+          },
+          "by_leiden_community": {
+            "unknown_community": 1
+          },
+          "by_page": {
+            "t_p_120_1176_p000003": 1
+          }
+        },
+        "high_degree_node_detected": false,
+        "more_results_available": false,
+        "ranking_method": "source_truth_first_then_guidance_ranked",
+        "result_was_capped": false,
+        "returned_match_count": 1,
+        "total_match_count": 1
+      },
+      "answer_rules_box": {
+        "cite_every_factual_claim": true,
+        "disclose_capped_results": true,
+        "do_not_invent_part_descriptions": true,
+        "graph_is_guidance_not_proof": true,
+        "leiden_is_guidance_not_proof": true,
+        "source_truth_evidence_required_for_final_claims": true,
+        "state_limitations_when_evidence_is_incomplete": true,
+        "v2_summaries_are_guidance_not_proof": true
+      },
+      "context_pack_id": "context_pack_v19_0001",
+      "context_pack_status": "CONTEXT_PACK_READY_FOR_SELF_RAG",
+      "evidence_box": {
+        "authority": "source_truth_evidence",
+        "item_count": 1,
+        "items": [
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::bb38c274d2c92bba",
+            "evidence_record_id": "exact_doc_000019",
+            "field_name": "covered_part_number",
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": true,
+            "raw_record_index": 19,
+            "record_id": "source_truth_evidence_0001",
+            "retrieval_score": 1150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "120-36834-509"
+          }
+        ],
+        "proof_authority": true
+      },
+      "graph_policy_box": {
+        "edge_type_allowlist": [
+          "member_of_leiden_community",
+          "same_exact_part_number",
+          "same_manual_reference",
+          "same_table",
+          "same_section",
+          "page_sequence_neighbor"
+        ],
+        "edge_weight_threshold": 0.0,
+        "high_degree_node_mode": "aggregate_then_sample",
+        "high_degree_threshold": 10,
+        "hop_decay": 0.5,
+        "llm_reads_entire_graph": false,
+        "max_communities": 3,
+        "max_hops": 1,
+        "max_neighbors_per_node": 25,
+        "max_pages_per_community": 25,
+        "proof_authority": false,
+        "raw_corpus_scan_at_query_time": false,
+        "requires_source_truth_confirmation": true
+      },
+      "guidance_box": {
+        "authority": "guidance_only",
+        "graph_guidance": [
+          {
+            "authority": "guidance_only",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000003",
+              "t_p_120_1176_p000319",
+              "t_p_120_1176_p000320"
+            ],
+            "community_candidate_page_count": 3,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000003",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "edge_type": "member_of_leiden_community",
+                "hop": 1,
+                "node_id": "tracenet_community_00115"
+              }
+            ],
+            "guidance_id": "graph_guidance_query_plan_v17_0001_001",
+            "guidance_only": true,
+            "leiden_community_id": "tracenet_community_00115",
+            "proof_authority": false,
+            "record_id": "guidance_only_0001",
+            "requires_source_truth_confirmation": true,
+            "returned_candidate_page_count": 3,
+            "seed_page_id": "t_p_120_1176_p000003"
+          }
+        ],
+        "proof_authority": false,
+        "ranking_guidance": [],
+        "route_guidance": [
+          {
+            "authority": "routing_guidance_only",
+            "guidance_only": true,
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": false,
+            "record_id": "routing_guidance_only_0001",
+            "route": "table"
+          }
+        ],
+        "v2_summary_guidance": [
+          {
+            "authority": "guidance_only",
+            "guidance_only": true,
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": false,
+            "record_id": "guidance_only_0001",
+            "summary": "This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope."
+          }
+        ]
+      },
+      "query_intent": "part_number",
+      "query_plan_id": "query_plan_v17_0001",
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false,
+        "uploads_to_opensearch": false,
+        "writes_to_opensearch": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false
+      },
+      "source_execution_id": "dynamic_plan_execution_v18_query_plan_v17_0001",
+      "user_query": "Find part number 120-36834-509"
+    },
+    {
+      "aggregation_box": {
+        "available_drilldowns": [
+          "document",
+          "manual",
+          "revision",
+          "section",
+          "route",
+          "field_type",
+          "page",
+          "leiden_community"
+        ],
+        "cap_reason": "not_capped",
+        "group_counts": {
+          "by_document": {
+            "table_exact_search::t_p_120_1176_p000003::covered_part_number::f68a8a42aef16311": 1
+          },
+          "by_field": {
+            "covered_part_number": 1
+          },
+          "by_leiden_community": {
+            "unknown_community": 1
+          },
+          "by_page": {
+            "t_p_120_1176_p000003": 1
+          }
+        },
+        "high_degree_node_detected": false,
+        "more_results_available": false,
+        "ranking_method": "source_truth_first_then_guidance_ranked",
+        "result_was_capped": false,
+        "returned_match_count": 1,
+        "total_match_count": 1
+      },
+      "answer_rules_box": {
+        "cite_every_factual_claim": true,
+        "disclose_capped_results": true,
+        "do_not_invent_part_descriptions": true,
+        "graph_is_guidance_not_proof": true,
+        "leiden_is_guidance_not_proof": true,
+        "source_truth_evidence_required_for_final_claims": true,
+        "state_limitations_when_evidence_is_incomplete": true,
+        "v2_summaries_are_guidance_not_proof": true
+      },
+      "context_pack_id": "context_pack_v19_0002",
+      "context_pack_status": "CONTEXT_PACK_READY_FOR_SELF_RAG",
+      "evidence_box": {
+        "authority": "source_truth_evidence",
+        "item_count": 1,
+        "items": [
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::f68a8a42aef16311",
+            "evidence_record_id": "exact_doc_000003",
+            "field_name": "covered_part_number",
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": true,
+            "raw_record_index": 3,
+            "record_id": "source_truth_evidence_0001",
+            "retrieval_score": 1150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "120-36833-501"
+          }
+        ],
+        "proof_authority": true
+      },
+      "graph_policy_box": {
+        "edge_type_allowlist": [
+          "member_of_leiden_community",
+          "same_exact_part_number",
+          "same_manual_reference",
+          "same_table",
+          "same_section",
+          "page_sequence_neighbor"
+        ],
+        "edge_weight_threshold": 0.0,
+        "high_degree_node_mode": "aggregate_then_sample",
+        "high_degree_threshold": 10,
+        "hop_decay": 0.5,
+        "llm_reads_entire_graph": false,
+        "max_communities": 3,
+        "max_hops": 1,
+        "max_neighbors_per_node": 25,
+        "max_pages_per_community": 25,
+        "proof_authority": false,
+        "raw_corpus_scan_at_query_time": false,
+        "requires_source_truth_confirmation": true
+      },
+      "guidance_box": {
+        "authority": "guidance_only",
+        "graph_guidance": [
+          {
+            "authority": "guidance_only",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000003",
+              "t_p_120_1176_p000319",
+              "t_p_120_1176_p000320"
+            ],
+            "community_candidate_page_count": 3,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000003",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "edge_type": "member_of_leiden_community",
+                "hop": 1,
+                "node_id": "tracenet_community_00115"
+              }
+            ],
+            "guidance_id": "graph_guidance_query_plan_v17_0002_001",
+            "guidance_only": true,
+            "leiden_community_id": "tracenet_community_00115",
+            "proof_authority": false,
+            "record_id": "guidance_only_0001",
+            "requires_source_truth_confirmation": true,
+            "returned_candidate_page_count": 3,
+            "seed_page_id": "t_p_120_1176_p000003"
+          }
+        ],
+        "proof_authority": false,
+        "ranking_guidance": [],
+        "route_guidance": [
+          {
+            "authority": "routing_guidance_only",
+            "guidance_only": true,
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": false,
+            "record_id": "routing_guidance_only_0001",
+            "route": "table"
+          }
+        ],
+        "v2_summary_guidance": [
+          {
+            "authority": "guidance_only",
+            "guidance_only": true,
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": false,
+            "record_id": "guidance_only_0001",
+            "summary": "This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope."
+          }
+        ]
+      },
+      "query_intent": "part_number",
+      "query_plan_id": "query_plan_v17_0002",
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false,
+        "uploads_to_opensearch": false,
+        "writes_to_opensearch": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false
+      },
+      "source_execution_id": "dynamic_plan_execution_v18_query_plan_v17_0002",
+      "user_query": "Find part number 120-36833-501"
+    },
+    {
+      "aggregation_box": {
+        "available_drilldowns": [
+          "document",
+          "manual",
+          "revision",
+          "section",
+          "route",
+          "field_type",
+          "page",
+          "leiden_community"
+        ],
+        "cap_reason": "high_degree_or_top_k_budget",
+        "group_counts": {
+          "by_document": {
+            "table_exact_search::t_p_120_1176_p000003::covered_part_number::09cc1b019676db4d": 1,
+            "table_exact_search::t_p_120_1176_p000003::covered_part_number::37eac1debe4e79a6": 1,
+            "table_exact_search::t_p_120_1176_p000003::covered_part_number::3cdc1417d703f7d3": 1,
+            "table_exact_search::t_p_120_1176_p000003::covered_part_number::40d5b281bc3a6e1c": 1,
+            "table_exact_search::t_p_120_1176_p000003::covered_part_number::600d20088b6d7370": 1,
+            "table_exact_search::t_p_120_1176_p000003::covered_part_number::7e4824e271d9957e": 1,
+            "table_exact_search::t_p_120_1176_p000003::covered_part_number::a5c5a5fa725fdee1": 1,
+            "table_exact_search::t_p_120_1176_p000003::covered_part_number::a7c00cd732a83661": 1,
+            "table_exact_search::t_p_120_1176_p000003::covered_part_number::e9241104b2b516dc": 1,
+            "table_exact_search::t_p_120_1176_p000003::covered_part_number::f68a8a42aef16311": 1
+          },
+          "by_field": {
+            "covered_part_number": 10
+          },
+          "by_leiden_community": {
+            "unknown_community": 10
+          },
+          "by_page": {
+            "t_p_120_1176_p000003": 10
+          }
+        },
+        "high_degree_node_detected": true,
+        "more_results_available": true,
+        "ranking_method": "source_truth_first_then_guidance_ranked",
+        "result_was_capped": true,
+        "returned_match_count": 10,
+        "total_match_count": 150
+      },
+      "answer_rules_box": {
+        "cite_every_factual_claim": true,
+        "disclose_capped_results": true,
+        "do_not_invent_part_descriptions": true,
+        "graph_is_guidance_not_proof": true,
+        "leiden_is_guidance_not_proof": true,
+        "source_truth_evidence_required_for_final_claims": true,
+        "state_limitations_when_evidence_is_incomplete": true,
+        "v2_summaries_are_guidance_not_proof": true
+      },
+      "context_pack_id": "context_pack_v19_0003",
+      "context_pack_status": "CONTEXT_PACK_READY_FOR_SELF_RAG",
+      "evidence_box": {
+        "authority": "source_truth_evidence",
+        "item_count": 10,
+        "items": [
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::3cdc1417d703f7d3",
+            "evidence_record_id": "exact_doc_000000",
+            "field_name": "covered_part_number",
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": true,
+            "raw_record_index": 0,
+            "record_id": "source_truth_evidence_0001",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "120-36833-001"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::37eac1debe4e79a6",
+            "evidence_record_id": "exact_doc_000001",
+            "field_name": "covered_part_number",
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": true,
+            "raw_record_index": 1,
+            "record_id": "source_truth_evidence_0002",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "120-36833-003"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::09cc1b019676db4d",
+            "evidence_record_id": "exact_doc_000002",
+            "field_name": "covered_part_number",
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": true,
+            "raw_record_index": 2,
+            "record_id": "source_truth_evidence_0003",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "120-36833-005"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::f68a8a42aef16311",
+            "evidence_record_id": "exact_doc_000003",
+            "field_name": "covered_part_number",
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": true,
+            "raw_record_index": 3,
+            "record_id": "source_truth_evidence_0004",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "120-36833-501"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::40d5b281bc3a6e1c",
+            "evidence_record_id": "exact_doc_000004",
+            "field_name": "covered_part_number",
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": true,
+            "raw_record_index": 4,
+            "record_id": "source_truth_evidence_0005",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "120-36833-503"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::600d20088b6d7370",
+            "evidence_record_id": "exact_doc_000005",
+            "field_name": "covered_part_number",
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": true,
+            "raw_record_index": 5,
+            "record_id": "source_truth_evidence_0006",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "120-36833-507"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::a5c5a5fa725fdee1",
+            "evidence_record_id": "exact_doc_000006",
+            "field_name": "covered_part_number",
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": true,
+            "raw_record_index": 6,
+            "record_id": "source_truth_evidence_0007",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "120-36833-509"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::7e4824e271d9957e",
+            "evidence_record_id": "exact_doc_000007",
+            "field_name": "covered_part_number",
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": true,
+            "raw_record_index": 7,
+            "record_id": "source_truth_evidence_0008",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "120-36833-511"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::a7c00cd732a83661",
+            "evidence_record_id": "exact_doc_000008",
+            "field_name": "covered_part_number",
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": true,
+            "raw_record_index": 8,
+            "record_id": "source_truth_evidence_0009",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "120-36833-513"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::e9241104b2b516dc",
+            "evidence_record_id": "exact_doc_000009",
+            "field_name": "covered_part_number",
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": true,
+            "raw_record_index": 9,
+            "record_id": "source_truth_evidence_0010",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "120-36833-515"
+          }
+        ],
+        "proof_authority": true
+      },
+      "graph_policy_box": {
+        "edge_type_allowlist": [
+          "member_of_leiden_community",
+          "same_exact_part_number",
+          "same_manual_reference",
+          "same_table",
+          "same_section",
+          "page_sequence_neighbor"
+        ],
+        "edge_weight_threshold": 0.0,
+        "high_degree_node_mode": "aggregate_then_sample",
+        "high_degree_threshold": 10,
+        "hop_decay": 0.5,
+        "llm_reads_entire_graph": false,
+        "max_communities": 3,
+        "max_hops": 1,
+        "max_neighbors_per_node": 25,
+        "max_pages_per_community": 25,
+        "proof_authority": false,
+        "raw_corpus_scan_at_query_time": false,
+        "requires_source_truth_confirmation": true
+      },
+      "guidance_box": {
+        "authority": "guidance_only",
+        "graph_guidance": [
+          {
+            "authority": "guidance_only",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000003",
+              "t_p_120_1176_p000319",
+              "t_p_120_1176_p000320"
+            ],
+            "community_candidate_page_count": 3,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000003",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "edge_type": "member_of_leiden_community",
+                "hop": 1,
+                "node_id": "tracenet_community_00115"
+              }
+            ],
+            "guidance_id": "graph_guidance_query_plan_v17_0003_001",
+            "guidance_only": true,
+            "leiden_community_id": "tracenet_community_00115",
+            "proof_authority": false,
+            "record_id": "guidance_only_0001",
+            "requires_source_truth_confirmation": true,
+            "returned_candidate_page_count": 3,
+            "seed_page_id": "t_p_120_1176_p000003"
+          }
+        ],
+        "proof_authority": false,
+        "ranking_guidance": [],
+        "route_guidance": [
+          {
+            "authority": "routing_guidance_only",
+            "guidance_only": true,
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": false,
+            "record_id": "routing_guidance_only_0001",
+            "route": "table"
+          }
+        ],
+        "v2_summary_guidance": [
+          {
+            "authority": "guidance_only",
+            "guidance_only": true,
+            "page_id": "t_p_120_1176_p000003",
+            "proof_authority": false,
+            "record_id": "guidance_only_0001",
+            "summary": "This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope."
+          }
+        ]
+      },
+      "query_intent": "covered_part_number",
+      "query_plan_id": "query_plan_v17_0003",
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false,
+        "uploads_to_opensearch": false,
+        "writes_to_opensearch": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false
+      },
+      "source_execution_id": "dynamic_plan_execution_v18_query_plan_v17_0003",
+      "user_query": "What maintenance manual pages mention covered part numbers?"
+    },
+    {
+      "aggregation_box": {
+        "available_drilldowns": [
+          "document",
+          "manual",
+          "revision",
+          "section",
+          "route",
+          "field_type",
+          "page",
+          "leiden_community"
+        ],
+        "cap_reason": "high_degree_or_top_k_budget",
+        "group_counts": {
+          "by_document": {
+            "table_exact_search::t_p_120_1176_p000005::manual_page_reference::3e425c97a7b21e14": 1,
+            "table_exact_search::t_p_120_1176_p000005::manual_page_reference::4330588414891b13": 1,
+            "table_exact_search::t_p_120_1176_p000005::manual_page_reference::664820741c0017ca": 1,
+            "table_exact_search::t_p_120_1176_p000005::manual_page_reference::87f7e396b3ad5a19": 1,
+            "table_exact_search::t_p_120_1176_p000005::manual_page_reference::8872786ef341f7a3": 1,
+            "table_exact_search::t_p_120_1176_p000005::manual_page_reference::92090208a0e44456": 1,
+            "table_exact_search::t_p_120_1176_p000005::manual_page_reference::a66a0825066fabd9": 1,
+            "table_exact_search::t_p_120_1176_p000005::manual_page_reference::c028854bc092feb0": 1,
+            "table_exact_search::t_p_120_1176_p000005::manual_page_reference::c51120b3a8ddbca4": 1,
+            "table_exact_search::t_p_120_1176_p000005::manual_page_reference::eacc7d7eddb8522e": 1
+          },
+          "by_field": {
+            "manual_page_reference": 10
+          },
+          "by_leiden_community": {
+            "unknown_community": 10
+          },
+          "by_page": {
+            "t_p_120_1176_p000005": 10
+          }
+        },
+        "high_degree_node_detected": true,
+        "more_results_available": true,
+        "ranking_method": "source_truth_first_then_guidance_ranked",
+        "result_was_capped": true,
+        "returned_match_count": 10,
+        "total_match_count": 50
+      },
+      "answer_rules_box": {
+        "cite_every_factual_claim": true,
+        "disclose_capped_results": true,
+        "do_not_invent_part_descriptions": true,
+        "graph_is_guidance_not_proof": true,
+        "leiden_is_guidance_not_proof": true,
+        "source_truth_evidence_required_for_final_claims": true,
+        "state_limitations_when_evidence_is_incomplete": true,
+        "v2_summaries_are_guidance_not_proof": true
+      },
+      "context_pack_id": "context_pack_v19_0004",
+      "context_pack_status": "CONTEXT_PACK_READY_FOR_SELF_RAG",
+      "evidence_box": {
+        "authority": "source_truth_evidence",
+        "item_count": 10,
+        "items": [
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000005::manual_page_reference::c028854bc092feb0",
+            "evidence_record_id": "exact_doc_000150",
+            "field_name": "manual_page_reference",
+            "page_id": "t_p_120_1176_p000005",
+            "proof_authority": true,
+            "raw_record_index": 150,
+            "record_id": "source_truth_evidence_0001",
+            "retrieval_score": 1150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "25-21-00"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000005::manual_page_reference::c51120b3a8ddbca4",
+            "evidence_record_id": "exact_doc_000153",
+            "field_name": "manual_page_reference",
+            "page_id": "t_p_120_1176_p000005",
+            "proof_authority": true,
+            "raw_record_index": 153,
+            "record_id": "source_truth_evidence_0002",
+            "retrieval_score": 1150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "25-21-00"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000005::manual_page_reference::92090208a0e44456",
+            "evidence_record_id": "exact_doc_000156",
+            "field_name": "manual_page_reference",
+            "page_id": "t_p_120_1176_p000005",
+            "proof_authority": true,
+            "raw_record_index": 156,
+            "record_id": "source_truth_evidence_0003",
+            "retrieval_score": 1150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "25-21-00"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000005::manual_page_reference::8872786ef341f7a3",
+            "evidence_record_id": "exact_doc_000159",
+            "field_name": "manual_page_reference",
+            "page_id": "t_p_120_1176_p000005",
+            "proof_authority": true,
+            "raw_record_index": 159,
+            "record_id": "source_truth_evidence_0004",
+            "retrieval_score": 1150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "25-21-00"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000005::manual_page_reference::a66a0825066fabd9",
+            "evidence_record_id": "exact_doc_000162",
+            "field_name": "manual_page_reference",
+            "page_id": "t_p_120_1176_p000005",
+            "proof_authority": true,
+            "raw_record_index": 162,
+            "record_id": "source_truth_evidence_0005",
+            "retrieval_score": 1150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "25-21-00"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000005::manual_page_reference::664820741c0017ca",
+            "evidence_record_id": "exact_doc_000165",
+            "field_name": "manual_page_reference",
+            "page_id": "t_p_120_1176_p000005",
+            "proof_authority": true,
+            "raw_record_index": 165,
+            "record_id": "source_truth_evidence_0006",
+            "retrieval_score": 1150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "25-21-00"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000005::manual_page_reference::4330588414891b13",
+            "evidence_record_id": "exact_doc_000168",
+            "field_name": "manual_page_reference",
+            "page_id": "t_p_120_1176_p000005",
+            "proof_authority": true,
+            "raw_record_index": 168,
+            "record_id": "source_truth_evidence_0007",
+            "retrieval_score": 1150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "25-21-00"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000005::manual_page_reference::87f7e396b3ad5a19",
+            "evidence_record_id": "exact_doc_000171",
+            "field_name": "manual_page_reference",
+            "page_id": "t_p_120_1176_p000005",
+            "proof_authority": true,
+            "raw_record_index": 171,
+            "record_id": "source_truth_evidence_0008",
+            "retrieval_score": 1150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "25-21-00"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000005::manual_page_reference::eacc7d7eddb8522e",
+            "evidence_record_id": "exact_doc_000173",
+            "field_name": "manual_page_reference",
+            "page_id": "t_p_120_1176_p000005",
+            "proof_authority": true,
+            "raw_record_index": 173,
+            "record_id": "source_truth_evidence_0009",
+            "retrieval_score": 1150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "25-21-00"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000005::manual_page_reference::3e425c97a7b21e14",
+            "evidence_record_id": "exact_doc_000176",
+            "field_name": "manual_page_reference",
+            "page_id": "t_p_120_1176_p000005",
+            "proof_authority": true,
+            "raw_record_index": 176,
+            "record_id": "source_truth_evidence_0010",
+            "retrieval_score": 1150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "25-21-00"
+          }
+        ],
+        "proof_authority": true
+      },
+      "graph_policy_box": {
+        "edge_type_allowlist": [
+          "member_of_leiden_community",
+          "same_exact_part_number",
+          "same_manual_reference",
+          "same_table",
+          "same_section",
+          "page_sequence_neighbor"
+        ],
+        "edge_weight_threshold": 0.0,
+        "high_degree_node_mode": "aggregate_then_sample",
+        "high_degree_threshold": 10,
+        "hop_decay": 0.5,
+        "llm_reads_entire_graph": false,
+        "max_communities": 3,
+        "max_hops": 1,
+        "max_neighbors_per_node": 25,
+        "max_pages_per_community": 25,
+        "proof_authority": false,
+        "raw_corpus_scan_at_query_time": false,
+        "requires_source_truth_confirmation": true
+      },
+      "guidance_box": {
+        "authority": "guidance_only",
+        "graph_guidance": [
+          {
+            "authority": "guidance_only",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000005"
+            ],
+            "community_candidate_page_count": 1,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000005",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "edge_type": "member_of_leiden_community",
+                "hop": 1,
+                "node_id": "tracenet_community_00037"
+              }
+            ],
+            "guidance_id": "graph_guidance_query_plan_v17_0004_001",
+            "guidance_only": true,
+            "leiden_community_id": "tracenet_community_00037",
+            "proof_authority": false,
+            "record_id": "guidance_only_0001",
+            "requires_source_truth_confirmation": true,
+            "returned_candidate_page_count": 1,
+            "seed_page_id": "t_p_120_1176_p000005"
+          }
+        ],
+        "proof_authority": false,
+        "ranking_guidance": [],
+        "route_guidance": [
+          {
+            "authority": "routing_guidance_only",
+            "guidance_only": true,
+            "page_id": "t_p_120_1176_p000005",
+            "proof_authority": false,
+            "record_id": "routing_guidance_only_0001",
+            "route": "table"
+          }
+        ],
+        "v2_summary_guidance": [
+          {
+            "authority": "guidance_only",
+            "guidance_only": true,
+            "page_id": "t_p_120_1176_p000005",
+            "proof_authority": false,
+            "record_id": "guidance_only_0001",
+            "summary": "This page appears to be a parts list and index from a maintenance manual, listing various part numbers and revision dates."
+          }
+        ]
+      },
+      "query_intent": "manual_page_reference",
+      "query_plan_id": "query_plan_v17_0004",
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false,
+        "uploads_to_opensearch": false,
+        "writes_to_opensearch": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false
+      },
+      "source_execution_id": "dynamic_plan_execution_v18_query_plan_v17_0004",
+      "user_query": "Where is manual reference 25-21-00 used?"
+    },
+    {
+      "aggregation_box": {
+        "available_drilldowns": [
+          "document",
+          "manual",
+          "revision",
+          "section",
+          "route",
+          "field_type",
+          "page",
+          "leiden_community"
+        ],
+        "cap_reason": "high_degree_or_top_k_budget",
+        "group_counts": {
+          "by_document": {
+            "table_exact_search::t_p_120_1176_p000027::ipl_text::00f97fe35ecb98a7": 1,
+            "table_exact_search::t_p_120_1176_p000027::ipl_text::5b36c34575036e81": 1,
+            "table_exact_search::t_p_120_1176_p000027::ipl_text::5d1697cb90b3b990": 1,
+            "table_exact_search::t_p_120_1176_p000027::ipl_text::74ee998d1f9c9f2e": 1,
+            "table_exact_search::t_p_120_1176_p000027::ipl_text::791f84643a3ccf8a": 1,
+            "table_exact_search::t_p_120_1176_p000027::ipl_text::b87922f4e8464f10": 1,
+            "table_exact_search::t_p_120_1176_p000027::ipl_text::bdce33523274fe8c": 1,
+            "table_exact_search::t_p_120_1176_p000027::ipl_text::dcda8a9cddc6d800": 1,
+            "table_exact_search::t_p_120_1176_p000027::ipl_text::e0e615d1db201164": 1,
+            "table_exact_search::t_p_120_1176_p000027::ipl_text::e8faf8b30e5aafea": 1
+          },
+          "by_field": {
+            "ipl_text": 10
+          },
+          "by_leiden_community": {
+            "unknown_community": 10
+          },
+          "by_page": {
+            "t_p_120_1176_p000027": 10
+          }
+        },
+        "high_degree_node_detected": true,
+        "more_results_available": true,
+        "ranking_method": "source_truth_first_then_guidance_ranked",
+        "result_was_capped": true,
+        "returned_match_count": 10,
+        "total_match_count": 188
+      },
+      "answer_rules_box": {
+        "cite_every_factual_claim": true,
+        "disclose_capped_results": true,
+        "do_not_invent_part_descriptions": true,
+        "graph_is_guidance_not_proof": true,
+        "leiden_is_guidance_not_proof": true,
+        "source_truth_evidence_required_for_final_claims": true,
+        "state_limitations_when_evidence_is_incomplete": true,
+        "v2_summaries_are_guidance_not_proof": true
+      },
+      "context_pack_id": "context_pack_v19_0005",
+      "context_pack_status": "CONTEXT_PACK_READY_FOR_SELF_RAG",
+      "evidence_box": {
+        "authority": "source_truth_evidence",
+        "item_count": 10,
+        "items": [
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000027::ipl_text::5b36c34575036e81",
+            "evidence_record_id": "exact_doc_000269",
+            "field_name": "ipl_text",
+            "page_id": "t_p_120_1176_p000027",
+            "proof_authority": true,
+            "raw_record_index": 269,
+            "record_id": "source_truth_evidence_0001",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "MAINTENANCE MANUAL WITH"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000027::ipl_text::dcda8a9cddc6d800",
+            "evidence_record_id": "exact_doc_000270",
+            "field_name": "ipl_text",
+            "page_id": "t_p_120_1176_p000027",
+            "proof_authority": true,
+            "raw_record_index": 270,
+            "record_id": "source_truth_evidence_0002",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "ILLUSTRATED PARTS LIST"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000027::ipl_text::791f84643a3ccf8a",
+            "evidence_record_id": "exact_doc_000271",
+            "field_name": "ipl_text",
+            "page_id": "t_p_120_1176_p000027",
+            "proof_authority": true,
+            "raw_record_index": 271,
+            "record_id": "source_truth_evidence_0003",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "evsevine| PER"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000027::ipl_text::74ee998d1f9c9f2e",
+            "evidence_record_id": "exact_doc_000272",
+            "field_name": "ipl_text",
+            "page_id": "t_p_120_1176_p000027",
+            "proof_authority": true,
+            "raw_record_index": 272,
+            "record_id": "source_truth_evidence_0004",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "STOCK"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000027::ipl_text::5d1697cb90b3b990",
+            "evidence_record_id": "exact_doc_000273",
+            "field_name": "ipl_text",
+            "page_id": "t_p_120_1176_p000027",
+            "proof_authority": true,
+            "raw_record_index": 273,
+            "record_id": "source_truth_evidence_0005",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "cseounne| PER"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000027::ipl_text::00f97fe35ecb98a7",
+            "evidence_record_id": "exact_doc_000274",
+            "field_name": "ipl_text",
+            "page_id": "t_p_120_1176_p000027",
+            "proof_authority": true,
+            "raw_record_index": 274,
+            "record_id": "source_truth_evidence_0006",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "NUMBER en"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000027::ipl_text::e0e615d1db201164",
+            "evidence_record_id": "exact_doc_000300",
+            "field_name": "ipl_text",
+            "page_id": "t_p_120_1176_p000027",
+            "proof_authority": true,
+            "raw_record_index": 300,
+            "record_id": "source_truth_evidence_0007",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "i"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000027::ipl_text::e8faf8b30e5aafea",
+            "evidence_record_id": "exact_doc_000319",
+            "field_name": "ipl_text",
+            "page_id": "t_p_120_1176_p000027",
+            "proof_authority": true,
+            "raw_record_index": 319,
+            "record_id": "source_truth_evidence_0008",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "|"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000027::ipl_text::bdce33523274fe8c",
+            "evidence_record_id": "exact_doc_000422",
+            "field_name": "ipl_text",
+            "page_id": "t_p_120_1176_p000027",
+            "proof_authority": true,
+            "raw_record_index": 422,
+            "record_id": "source_truth_evidence_0009",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "i"
+          },
+          {
+            "authority": "source_truth_evidence",
+            "citation_ready": true,
+            "document_id": "table_exact_search::t_p_120_1176_p000027::ipl_text::b87922f4e8464f10",
+            "evidence_record_id": "exact_doc_000429",
+            "field_name": "ipl_text",
+            "page_id": "t_p_120_1176_p000027",
+            "proof_authority": true,
+            "raw_record_index": 429,
+            "record_id": "source_truth_evidence_0010",
+            "retrieval_score": 150.0,
+            "route": "table",
+            "source_trace_ready": true,
+            "value": "2 5.2 1 -00"
+          }
+        ],
+        "proof_authority": true
+      },
+      "graph_policy_box": {
+        "edge_type_allowlist": [
+          "member_of_leiden_community",
+          "same_exact_part_number",
+          "same_manual_reference",
+          "same_table",
+          "same_section",
+          "page_sequence_neighbor"
+        ],
+        "edge_weight_threshold": 0.0,
+        "high_degree_node_mode": "aggregate_then_sample",
+        "high_degree_threshold": 10,
+        "hop_decay": 0.5,
+        "llm_reads_entire_graph": false,
+        "max_communities": 3,
+        "max_hops": 1,
+        "max_neighbors_per_node": 25,
+        "max_pages_per_community": 25,
+        "proof_authority": false,
+        "raw_corpus_scan_at_query_time": false,
+        "requires_source_truth_confirmation": true
+      },
+      "guidance_box": {
+        "authority": "guidance_only",
+        "graph_guidance": [
+          {
+            "authority": "guidance_only",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000027"
+            ],
+            "community_candidate_page_count": 1,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000027",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "edge_type": "member_of_leiden_community",
+                "hop": 1,
+                "node_id": "tracenet_community_00038"
+              }
+            ],
+            "guidance_id": "graph_guidance_query_plan_v17_0005_001",
+            "guidance_only": true,
+            "leiden_community_id": "tracenet_community_00038",
+            "proof_authority": false,
+            "record_id": "guidance_only_0001",
+            "requires_source_truth_confirmation": true,
+            "returned_candidate_page_count": 1,
+            "seed_page_id": "t_p_120_1176_p000027"
+          }
+        ],
+        "proof_authority": false,
+        "ranking_guidance": [],
+        "route_guidance": [
+          {
+            "authority": "routing_guidance_only",
+            "guidance_only": true,
+            "page_id": "t_p_120_1176_p000027",
+            "proof_authority": false,
+            "record_id": "routing_guidance_only_0001",
+            "route": "table"
+          }
+        ],
+        "v2_summary_guidance": [
+          {
+            "authority": "guidance_only",
+            "guidance_only": true,
+            "page_id": "t_p_120_1176_p000027",
+            "proof_authority": false,
+            "record_id": "guidance_only_0001",
+            "summary": "This page appears to be a parts list from the maintenance manual, listing numerous part numbers with associated quantities and airline part numbers."
+          }
+        ]
+      },
+      "query_intent": "table_text",
+      "query_plan_id": "query_plan_v17_0005",
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false,
+        "uploads_to_opensearch": false,
+        "writes_to_opensearch": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false
+      },
+      "source_execution_id": "dynamic_plan_execution_v18_query_plan_v17_0005",
+      "user_query": "Search table text MAINTENANCE MANUAL WITH"
+    }
+  ],
+  "contract": {
+    "answer_permission": false,
+    "context_pack_uses_dynamic_plan_executor": true,
+    "graph_guidance_only": true,
+    "graph_rebuild_at_query_time": false,
+    "leiden_communities_guidance_only": true,
+    "llm_reads_context_pack_only": true,
+    "raw_5tb_scan_at_query_time": false,
+    "source_truth_evidence_required_for_final_claims": true,
+    "source_truth_mutation_allowed": false,
+    "v2_summaries_guidance_only": true
+  },
+  "evidence_jsonl_path": "local_data\\organization\\trace_net\\e2e_executed_plan_context_pack\\trace_net_e2e_executed_plan_context_pack_evidence_v19.jsonl",
+  "graph_guidance_record_count": 5,
+  "graph_proof_authority_violation_count": 0,
+  "inspect_md_path": "local_data\\organization\\trace_net\\e2e_executed_plan_context_pack\\trace_net_e2e_executed_plan_context_pack_v19.md",
+  "module": "trace_net_e2e_executed_plan_context_pack_v19",
+  "packs_jsonl_path": "local_data\\organization\\trace_net\\e2e_executed_plan_context_pack\\trace_net_e2e_executed_plan_context_pack_records_v19.jsonl",
+  "packs_with_aggregation_or_cap_disclosure_count": 5,
+  "packs_with_answer_rules_count": 5,
+  "packs_with_evidence_box_count": 5,
+  "packs_with_graph_guidance_count": 5,
+  "packs_with_guidance_box_count": 5,
+  "packs_with_v2_summary_guidance_count": 5,
+  "quality_checks": [
+    {
+      "expected": 5,
+      "name": "context_pack_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "ready_context_pack_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 10,
+      "name": "total_source_truth_evidence_count",
+      "observed": 32,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "packs_with_evidence_box_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "packs_with_guidance_box_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "packs_with_graph_guidance_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "packs_with_v2_summary_guidance_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "packs_with_answer_rules_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "packs_with_aggregation_or_cap_disclosure_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "graph_proof_authority_violation_count",
+      "observed": 0,
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "summary_proof_authority_violation_count",
+      "observed": 0,
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "answer_permission_count",
+      "observed": 0,
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "require_no_answer_permission",
+      "observed": 0,
+      "op": "==",
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS",
+  "ready_context_pack_count": 5,
+  "report_path": "local_data\\organization\\trace_net\\e2e_executed_plan_context_pack\\trace_net_e2e_executed_plan_context_pack_v19.json",
+  "source_truth_mutation_allowed_count": 0,
+  "status": "E2E_EXECUTED_PLAN_CONTEXT_PACK_READY_FOR_LIVE_SELF_RAG",
+  "summary_proof_authority_violation_count": 0,
+  "total_source_truth_evidence_count": 32,
+  "v2_summary_guidance_record_count": 5,
+  "version": "v19"
+}

@@ -1,0 +1,145 @@
+{
+  "quality_checks": [
+    {
+      "expected": "PASS",
+      "name": "quality_status",
+      "observed": "PASS",
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "api_response_count",
+      "observed": 5,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 4,
+      "name": "citation_backed_response_count",
+      "observed": 5,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 10,
+      "name": "total_citation_count",
+      "observed": 15,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": 4,
+      "name": "endpoint_route_count",
+      "observed": 4,
+      "operator": ">=",
+      "passed": true
+    },
+    {
+      "expected": true,
+      "name": "ready_for_open_webui_smoke",
+      "observed": true,
+      "operator": "is",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "unsafe_record_count",
+      "observed": 0,
+      "operator": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "answer_permission_count",
+      "observed": 0,
+      "operator": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "operator": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "can_answer_directly_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "can_prove_claims_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "postgres_write_attempt_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "qdrant_write_attempt_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "opensearch_write_attempt_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "opensearch_upload_attempt_count",
+      "observed": 0,
+      "operator": "==",
+      "passed": true
+    },
+    {
+      "expected": true,
+      "name": "source_quality_pass",
+      "observed": true,
+      "operator": "is",
+      "passed": true
+    },
+    {
+      "expected": true,
+      "name": "openai_chat_route_present",
+      "observed": true,
+      "operator": "is",
+      "passed": true
+    },
+    {
+      "expected": true,
+      "name": "native_ask_route_present",
+      "observed": true,
+      "operator": "is",
+      "passed": true
+    },
+    {
+      "expected": false,
+      "name": "contract_can_answer_directly",
+      "observed": false,
+      "operator": "is",
+      "passed": true
+    },
+    {
+      "expected": false,
+      "name": "contract_can_prove_claims",
+      "observed": false,
+      "operator": "is",
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS"
+}

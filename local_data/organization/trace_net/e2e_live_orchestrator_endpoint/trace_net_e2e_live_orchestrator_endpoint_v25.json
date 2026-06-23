@@ -1,0 +1,3274 @@
+{
+  "module": "trace_net_e2e_live_orchestrator_endpoint_v25",
+  "version": "v25",
+  "model_id": "trace-net-e2e-live-orchestrator-gemma-v25",
+  "host": "127.0.0.1",
+  "port": 8021,
+  "base_url_windows": "http://127.0.0.1:8021/v1",
+  "base_url_open_webui_docker": "http://host.docker.internal:8021/v1",
+  "endpoint_routes": [
+    "/health",
+    "/v1/models",
+    "/v1/chat/completions",
+    "/"
+  ],
+  "endpoint_route_count": 4,
+  "table_exact_search_adapter_path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+  "page_context_v2_path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+  "leiden_communities_path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+  "exact_search_document_count": 1497,
+  "page_summary_count": 509,
+  "leiden_page_membership_count": 509,
+  "llm_mode": "simulate",
+  "llm_base_url": "http://127.0.0.1:11434/v1",
+  "llm_model": "gemma4:26b",
+  "llm_api_key": "ollama",
+  "temperature": 0.0,
+  "request_timeout": 240,
+  "top_k": 10,
+  "max_pages_per_community": 25,
+  "contract": {
+    "runs_live_query_pipeline_at_request_time": true,
+    "llm_output_is_draft_only": true,
+    "final_gate_repairs_from_source_truth": true,
+    "source_truth_evidence_required_for_final_claims": true,
+    "graph_leiden_guidance_only": true,
+    "v2_summaries_guidance_only": true,
+    "nearby_context_not_direct_proof": true,
+    "raw_5tb_scan_at_query_time": false,
+    "graph_rebuild_at_query_time": false,
+    "source_truth_mutation_allowed": false,
+    "answer_permission": false,
+    "can_answer_directly": false,
+    "can_prove_claims": false
+  },
+  "safety": {
+    "answer_permission": false,
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "source_truth_mutation_allowed": false,
+    "writes_to_postgres": false,
+    "writes_to_qdrant": false,
+    "writes_to_opensearch": false,
+    "uploads_to_opensearch": false,
+    "raw_5tb_scan_at_query_time": false,
+    "graph_rebuild_at_query_time": false,
+    "llm_called": false,
+    "response_is_final_gated": true
+  },
+  "exact_search_documents": [
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36833-001",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::3cdc1417d703f7d3",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36833-001",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36833-001",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-001 | 120-36833-001",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36833-001"
+      ],
+      "source_evidence_id": "table_value_evidence_9c4ddad4d3883226",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__08901cb9713a71",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__8b666283b8fc550e",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36833-003",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::37eac1debe4e79a6",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36833-003",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36833-003",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-003 | 120-36833-003",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36833-003"
+      ],
+      "source_evidence_id": "table_value_evidence_16e1bf92f195deb7",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__c8ec160a2d23ef",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__660dcce34a851d1a",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36833-005",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::09cc1b019676db4d",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36833-005",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36833-005",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-005 | 120-36833-005",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36833-005"
+      ],
+      "source_evidence_id": "table_value_evidence_e7a2f231945bfacc",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__3b41055258c549",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__85ed25995e6587e2",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36833-501",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::f68a8a42aef16311",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36833-501",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36833-501",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-501 | 120-36833-501",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36833-501"
+      ],
+      "source_evidence_id": "table_value_evidence_2f2b5bdee9425eb8",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__ccb9085396efed",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__3c00eefe1d323177",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36833-503",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::40d5b281bc3a6e1c",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36833-503",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36833-503",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-503 | 120-36833-503",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36833-503"
+      ],
+      "source_evidence_id": "table_value_evidence_368901a79bf8751b",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__d5242084a80ab9",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__aebcf5d40d035914",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36833-507",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::600d20088b6d7370",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36833-507",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36833-507",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-507 | 120-36833-507",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36833-507"
+      ],
+      "source_evidence_id": "table_value_evidence_4fd13450763dada1",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__69b229e6cb788a",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__9751f714a782d0c8",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36833-509",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::a5c5a5fa725fdee1",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36833-509",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36833-509",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-509 | 120-36833-509",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36833-509"
+      ],
+      "source_evidence_id": "table_value_evidence_63c4e2157243a943",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__b1ee1cab8700d6",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__224f16999e1974c9",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36833-511",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::7e4824e271d9957e",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36833-511",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36833-511",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-511 | 120-36833-511",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36833-511"
+      ],
+      "source_evidence_id": "table_value_evidence_0b88d05f308d4c92",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__db38ca2a18b0ff",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__cb5a8ec07f479df7",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36833-513",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::a7c00cd732a83661",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36833-513",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36833-513",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-513 | 120-36833-513",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36833-513"
+      ],
+      "source_evidence_id": "table_value_evidence_51e9c009461f7df9",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__197d6627546707",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__919cf22ae5e7eac3",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36833-515",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::e9241104b2b516dc",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36833-515",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36833-515",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-515 | 120-36833-515",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36833-515"
+      ],
+      "source_evidence_id": "table_value_evidence_4f5aad716af48e81",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__8c93e202942ea5",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__db4c72ff55b0fa5e",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36833-517",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::466972ae55ef6f7c",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36833-517",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36833-517",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-517 | 120-36833-517",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36833-517"
+      ],
+      "source_evidence_id": "table_value_evidence_36a4f520cfb1be74",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__7ee63bc95a222b",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__854a14a78e45ccba",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36833-519",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::9bf24d4f41465ff7",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36833-519",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36833-519",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-519 | 120-36833-519",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36833-519"
+      ],
+      "source_evidence_id": "table_value_evidence_270d4811f8b07b88",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__8e696214be5ab7",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__216a416e4e157c7c",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36834-001",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::4acc27a8f9bac2eb",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36834-001",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36834-001",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36834-001 | 120-36834-001",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36834-001"
+      ],
+      "source_evidence_id": "table_value_evidence_72e76c08e25221d0",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__e6f930d3a97a6c",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__69d0ef0d7cd61bf6",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36834-003",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::4b9cce6d101f06f1",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36834-003",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36834-003",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36834-003 | 120-36834-003",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36834-003"
+      ],
+      "source_evidence_id": "table_value_evidence_39ab0fba752d556d",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__2afb5938e5b639",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__bbae49dcc01d5cf6",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36834-005",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::7c3f4971c43c7cb5",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36834-005",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36834-005",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36834-005 | 120-36834-005",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36834-005"
+      ],
+      "source_evidence_id": "table_value_evidence_6e847235e13ec5b0",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__b8051774da3bf9",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__19b00c6085a74460",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36834-019",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::91501da361142485",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36834-019",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36834-019",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36834-019 | 120-36834-019",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36834-019"
+      ],
+      "source_evidence_id": "table_value_evidence_4ade2f33922e3695",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__bc9fbe65abf945",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__d010fa34b7993461",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36834-501",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::8ddb201921b8d26c",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36834-501",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36834-501",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36834-501 | 120-36834-501",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36834-501"
+      ],
+      "source_evidence_id": "table_value_evidence_2cba1fb477ff3282",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__05fbce203ceae9",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__d45b4614a2384cde",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36834-503",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::301734d0b3e293c3",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36834-503",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36834-503",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36834-503 | 120-36834-503",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36834-503"
+      ],
+      "source_evidence_id": "table_value_evidence_7aa1df3865238821",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__6221f3013b02f4",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__2e208d4895618b5b",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36834-505",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::e1e594f3cd6b475f",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36834-505",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36834-505",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36834-505 | 120-36834-505",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36834-505"
+      ],
+      "source_evidence_id": "table_value_evidence_9b7039e46f1bb1e0",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__2042edd2439898",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__986f98dc47703bc0",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36834-509",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::bb38c274d2c92bba",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36834-509",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36834-509",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36834-509 | 120-36834-509",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36834-509"
+      ],
+      "source_evidence_id": "table_value_evidence_81aebec487b0f388",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__58103738a0f125",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__f104d61abd04ac90",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36834-511",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::4c97b20939bd3246",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36834-511",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36834-511",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36834-511 | 120-36834-511",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36834-511"
+      ],
+      "source_evidence_id": "table_value_evidence_1d4f89e4143a3a87",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__81d77ffb4a22fa",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__dfba26191d9a4e75",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36834-513",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::54ff3f0b5ca831d0",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36834-513",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36834-513",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36834-513 | 120-36834-513",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36834-513"
+      ],
+      "source_evidence_id": "table_value_evidence_1a3e30044fbb4da6",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__0cace42ce37027",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__ee334ac8596ce4bc",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36834-515",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::ea07683660819ab4",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36834-515",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36834-515",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36834-515 | 120-36834-515",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36834-515"
+      ],
+      "source_evidence_id": "table_value_evidence_08733db250b9ccb5",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__7f93bc94356f9c",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__fbc61f4f82af3976",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36834-517",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::59df6980f91d52e4",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36834-517",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36834-517",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36834-517 | 120-36834-517",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36834-517"
+      ],
+      "source_evidence_id": "table_value_evidence_c7d52774075b7d66",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__2a4b9ff2c2be69",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__c85cc667d3602c50",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    },
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cell_id": "",
+      "confidence": null,
+      "display_value": "120-36834-519",
+      "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::04511cee496db80a",
+      "field_name": "covered_part_number",
+      "field_role": "covered_part_number",
+      "normalized_value": "120-36834-519",
+      "opensearch_upload_attempted": false,
+      "opensearch_write_attempted": false,
+      "page_id": "t_p_120_1176_p000003",
+      "postgres_write_attempted": false,
+      "qdrant_write_attempted": false,
+      "raw_value": "120-36834-519",
+      "record_type": "table_route_exact_search_document",
+      "retrieval_only": true,
+      "route": "table",
+      "row_id": "",
+      "search_family": "table_route_exact_search",
+      "search_text": "TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36834-519 | 120-36834-519",
+      "search_tokens": [
+        "TRACE-Net",
+        "table",
+        "evidence",
+        "t_p_120_1176_p000003",
+        "table__t_p_120_1176_p000003__cc6f070a67",
+        "covered_part_number",
+        "120-36834-519"
+      ],
+      "source_evidence_id": "table_value_evidence_69357cf9148501da",
+      "source_page_id": "t_p_120_1176_p000003",
+      "source_trace": {
+        "field_name": "covered_part_number",
+        "page_id": "t_p_120_1176_p000003",
+        "source_cell_id": "table_route_cell__2642dd0fa54ec7",
+        "source_module": "trace_net_table_route_value_normalizer_v1",
+        "source_value_record_id": "table_route_normalized_value__97135a2b08efc11f",
+        "table_id": "table__t_p_120_1176_p000003__cc6f070a67"
+      },
+      "source_truth_mutation_allowed": false,
+      "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+      "table_template": "",
+      "unsafe": false
+    }
+  ],
+  "page_summaries": {
+    "t_p_120_1176_p000001": "This page contains the title block, revision history, and manufacturer contact information for technical manual T.P. 120/1176.",
+    "t_p_120_1176_p000002": "Page 2 from T.P. 120/1176 in ATA 25-21-00 has empty OCR text.",
+    "t_p_120_1176_p000003": "This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope.",
+    "t_p_120_1176_p000004": "This page provides the introduction to the Embraer maintenance manual and illustrated parts list, specifically regarding operations following passenger cabin disassembly.",
+    "t_p_120_1176_p000005": "This page appears to be a parts list and index from a maintenance manual, listing various part numbers and revision dates.",
+    "t_p_120_1176_p000006": "A List of Effective Pages (LEP) for the EMBRAER maintenance manual, detailing page numbers, subjects, and revision dates.",
+    "t_p_120_1176_p000007": "This page is a list of effective pages within a maintenance manual, detailing revisions and deletions with associated dates and part numbers.",
+    "t_p_120_1176_p000008": "This page is a List of Effective Pages for an Embraer Maintenance Manual, documenting revision dates and status for various Illustrated Parts List (IPL) pages.",
+    "t_p_120_1176_p000009": "This page is a List of Effective Pages (LEP) for the Embraer Maintenance Manual with Illustrated Parts List, documenting page numbers and revision dates.",
+    "t_p_120_1176_p000010": "This page is the List of Effective Pages (LEP) for an Embraer Maintenance Manual with Illustrated Parts List, detailing revision dates and page status.",
+    "t_p_120_1176_p000011": "This page contains the List of Effective Pages (LEP) for the Embraer maintenance manual, detailing revision dates and status for various IPL sections.",
+    "t_p_120_1176_p000012": "Page 12 from T.P. 120/1176 in ATA 25-21-00 has empty OCR text.",
+    "t_p_120_1176_p000013": "This page is the Record of Revisions for the Embraer Component Maintenance Manual (CMM) with Illustrated Parts List, used to track manual updates and page insertions.",
+    "t_p_120_1176_p000014": "This page explains the purpose of Information Bulletins (IB) and their classification alongside Service Bulletins under 'Other Directives'.",
+    "t_p_120_1176_p000015": "This page describes the construction and design of passenger seat components, specifically armrests and snack folding tables.",
+    "t_p_120_1176_p000016": "This page describes the construction and materials used for the seat backrest and bottom cushion, including composite structures, foam, and upholstery.",
+    "t_p_120_1176_p000017": "An illustrated parts list and figure for a single passenger seat, specifically identifying the seat bottom and backrest.",
+    "t_p_120_1176_p000018": "This page is an illustrated parts list for a double passenger seat, specifically referencing Figure 2 and part number 120TP250002.MCE.",
+    "t_p_120_1176_p000019": "Figure 3 illustrating components of the triple passenger seat, specifically the floatable seat bottom and seat backrests.",
+    "t_p_120_1176_p000020": "This page describes the column structure and numbering conventions used in the Illustrated Parts List (IPL).",
+    "t_p_120_1176_p000021": "This page defines the categorization and numbering conventions for EMBRAER, military standard, and vendor part numbers within the illustrated parts list.",
+    "t_p_120_1176_p000022": "This page defines the abbreviations, symbols, and conventions used within the Detailed Parts List.",
+    "t_p_120_1176_p000023": "This page defines specific abbreviations (REF, AR) and instructions regarding part stock exhaustion and replenishment used in the Embraer parts list.",
+    "t_p_120_1176_p000024": "This page provides a list of vendor names and addresses associated with the maintenance manual for Embraer aircraft.",
+    "t_p_120_1176_p000025": "Page 25 from T.P. 120/1176 in ATA 25-21-00 has empty OCR text."
+  },
+  "page_to_community": {
+    "t_p_120_1176_p000031": "tracenet_community_00104",
+    "t_p_120_1176_p000054": "tracenet_community_00073",
+    "t_p_120_1176_p000055": "tracenet_community_00017",
+    "t_p_120_1176_p000346": "tracenet_community_00050",
+    "t_p_120_1176_p000349": "tracenet_community_00087",
+    "t_p_120_1176_p000350": "tracenet_community_00087",
+    "t_p_120_1176_p000355": "tracenet_community_00024",
+    "t_p_120_1176_p000356": "tracenet_community_00024",
+    "t_p_120_1176_p000358": "tracenet_community_00004",
+    "t_p_120_1176_p000361": "tracenet_community_00006",
+    "t_p_120_1176_p000372": "tracenet_community_00018",
+    "t_p_120_1176_p000376": "tracenet_community_00101",
+    "t_p_120_1176_p000380": "tracenet_community_00043",
+    "t_p_120_1176_p000392": "tracenet_community_00095",
+    "t_p_120_1176_p000396": "tracenet_community_00007",
+    "t_p_120_1176_p000400": "tracenet_community_00100",
+    "t_p_120_1176_p000408": "tracenet_community_00053",
+    "t_p_120_1176_p000416": "tracenet_community_00022",
+    "t_p_120_1176_p000420": "tracenet_community_00045",
+    "t_p_120_1176_p000432": "tracenet_community_00099",
+    "t_p_120_1176_p000436": "tracenet_community_00049",
+    "t_p_120_1176_p000440": "tracenet_community_00077",
+    "t_p_120_1176_p000444": "tracenet_community_00021",
+    "t_p_120_1176_p000043": "tracenet_community_00105",
+    "t_p_120_1176_p000045": "tracenet_community_00003"
+  },
+  "community_to_pages": {
+    "tracenet_community_00001": [
+      "t_p_120_1176_p000031",
+      "t_p_120_1176_p000054",
+      "t_p_120_1176_p000055",
+      "t_p_120_1176_p000346",
+      "t_p_120_1176_p000349",
+      "t_p_120_1176_p000350",
+      "t_p_120_1176_p000355",
+      "t_p_120_1176_p000356",
+      "t_p_120_1176_p000358",
+      "t_p_120_1176_p000361"
+    ],
+    "tracenet_community_00002": [
+      "t_p_120_1176_p000043",
+      "t_p_120_1176_p000045",
+      "t_p_120_1176_p000046",
+      "t_p_120_1176_p000149",
+      "t_p_120_1176_p000150",
+      "t_p_120_1176_p000158",
+      "t_p_120_1176_p000159",
+      "t_p_120_1176_p000160",
+      "t_p_120_1176_p000161",
+      "t_p_120_1176_p000162"
+    ],
+    "tracenet_community_00003": [
+      "t_p_120_1176_p000044",
+      "t_p_120_1176_p000045",
+      "t_p_120_1176_p000048",
+      "t_p_120_1176_p000049",
+      "t_p_120_1176_p000050",
+      "t_p_120_1176_p000052",
+      "t_p_120_1176_p000092",
+      "t_p_120_1176_p000098",
+      "t_p_120_1176_p000099",
+      "t_p_120_1176_p000101"
+    ],
+    "tracenet_community_00004": [
+      "t_p_120_1176_p000030",
+      "t_p_120_1176_p000039",
+      "t_p_120_1176_p000343",
+      "t_p_120_1176_p000352",
+      "t_p_120_1176_p000357",
+      "t_p_120_1176_p000358",
+      "t_p_120_1176_p000359",
+      "t_p_120_1176_p000362",
+      "t_p_120_1176_p000363",
+      "t_p_120_1176_p000364"
+    ],
+    "tracenet_community_00005": [
+      "t_p_120_1176_p000046",
+      "t_p_120_1176_p000047",
+      "t_p_120_1176_p000048",
+      "t_p_120_1176_p000381",
+      "t_p_120_1176_p000394",
+      "t_p_120_1176_p000395",
+      "t_p_120_1176_p000396",
+      "t_p_120_1176_p000397",
+      "t_p_120_1176_p000417",
+      "t_p_120_1176_p000437"
+    ],
+    "tracenet_community_00006": [
+      "t_p_120_1176_p000167",
+      "t_p_120_1176_p000173",
+      "t_p_120_1176_p000179",
+      "t_p_120_1176_p000297",
+      "t_p_120_1176_p000300",
+      "t_p_120_1176_p000302",
+      "t_p_120_1176_p000303",
+      "t_p_120_1176_p000304",
+      "t_p_120_1176_p000360",
+      "t_p_120_1176_p000361"
+    ],
+    "tracenet_community_00007": [
+      "t_p_120_1176_p000032",
+      "t_p_120_1176_p000033",
+      "t_p_120_1176_p000038",
+      "t_p_120_1176_p000353",
+      "t_p_120_1176_p000368",
+      "t_p_120_1176_p000380",
+      "t_p_120_1176_p000384",
+      "t_p_120_1176_p000396",
+      "t_p_120_1176_p000416",
+      "t_p_120_1176_p000424"
+    ],
+    "tracenet_community_00008": [
+      "t_p_120_1176_p000050",
+      "t_p_120_1176_p000051",
+      "t_p_120_1176_p000266",
+      "t_p_120_1176_p000267",
+      "t_p_120_1176_p000268",
+      "t_p_120_1176_p000275",
+      "t_p_120_1176_p000276",
+      "t_p_120_1176_p000277"
+    ],
+    "tracenet_community_00009": [
+      "t_p_120_1176_p000042",
+      "t_p_120_1176_p000122",
+      "t_p_120_1176_p000125",
+      "t_p_120_1176_p000129",
+      "t_p_120_1176_p000132",
+      "t_p_120_1176_p000146",
+      "t_p_120_1176_p000151",
+      "t_p_120_1176_p000152",
+      "t_p_120_1176_p000153",
+      "t_p_120_1176_p000155"
+    ],
+    "tracenet_community_00010": [
+      "t_p_120_1176_p000039",
+      "t_p_120_1176_p000040",
+      "t_p_120_1176_p000148",
+      "t_p_120_1176_p000149",
+      "t_p_120_1176_p000150",
+      "t_p_120_1176_p000152",
+      "t_p_120_1176_p000157",
+      "t_p_120_1176_p000158",
+      "t_p_120_1176_p000159",
+      "t_p_120_1176_p000161"
+    ],
+    "tracenet_community_00011": [
+      "t_p_120_1176_p000003",
+      "t_p_120_1176_p000208",
+      "t_p_120_1176_p000209",
+      "t_p_120_1176_p000210",
+      "t_p_120_1176_p000323",
+      "t_p_120_1176_p000324",
+      "t_p_120_1176_p000339",
+      "t_p_120_1176_p000340",
+      "t_p_120_1176_p000341"
+    ],
+    "tracenet_community_00012": [
+      "t_p_120_1176_p000145",
+      "t_p_120_1176_p000146",
+      "t_p_120_1176_p000147",
+      "t_p_120_1176_p000154",
+      "t_p_120_1176_p000155",
+      "t_p_120_1176_p000156"
+    ],
+    "tracenet_community_00013": [
+      "t_p_120_1176_p000278",
+      "t_p_120_1176_p000279",
+      "t_p_120_1176_p000280",
+      "t_p_120_1176_p000366",
+      "t_p_120_1176_p000367",
+      "t_p_120_1176_p000368",
+      "t_p_120_1176_p000369"
+    ],
+    "tracenet_community_00014": [
+      "t_p_120_1176_p000003",
+      "t_p_120_1176_p000040",
+      "t_p_120_1176_p000041",
+      "t_p_120_1176_p000287",
+      "t_p_120_1176_p000288",
+      "t_p_120_1176_p000289",
+      "t_p_120_1176_p000308",
+      "t_p_120_1176_p000309",
+      "t_p_120_1176_p000310",
+      "t_p_120_1176_p000317"
+    ],
+    "tracenet_community_00015": [
+      "t_p_120_1176_p000003",
+      "t_p_120_1176_p000042",
+      "t_p_120_1176_p000083",
+      "t_p_120_1176_p000086",
+      "t_p_120_1176_p000096",
+      "t_p_120_1176_p000098",
+      "t_p_120_1176_p000105",
+      "t_p_120_1176_p000112",
+      "t_p_120_1176_p000181",
+      "t_p_120_1176_p000182"
+    ],
+    "tracenet_community_00016": [
+      "t_p_120_1176_p000269",
+      "t_p_120_1176_p000270",
+      "t_p_120_1176_p000271",
+      "t_p_120_1176_p000426",
+      "t_p_120_1176_p000427",
+      "t_p_120_1176_p000428",
+      "t_p_120_1176_p000429"
+    ],
+    "tracenet_community_00017": [
+      "t_p_120_1176_p000055",
+      "t_p_120_1176_p000056",
+      "t_p_120_1176_p000097",
+      "t_p_120_1176_p000098",
+      "t_p_120_1176_p000099",
+      "t_p_120_1176_p000104",
+      "t_p_120_1176_p000105",
+      "t_p_120_1176_p000106",
+      "t_p_120_1176_p000108",
+      "t_p_120_1176_p000112"
+    ],
+    "tracenet_community_00018": [
+      "t_p_120_1176_p000031",
+      "t_p_120_1176_p000251",
+      "t_p_120_1176_p000252",
+      "t_p_120_1176_p000253",
+      "t_p_120_1176_p000370",
+      "t_p_120_1176_p000371",
+      "t_p_120_1176_p000372",
+      "t_p_120_1176_p000373"
+    ],
+    "tracenet_community_00019": [
+      "t_p_120_1176_p000028"
+    ],
+    "tracenet_community_00020": [
+      "t_p_120_1176_p000446",
+      "t_p_120_1176_p000447",
+      "t_p_120_1176_p000448",
+      "t_p_120_1176_p000449",
+      "t_p_120_1176_p000450"
+    ],
+    "tracenet_community_00021": [
+      "t_p_120_1176_p000003",
+      "t_p_120_1176_p000203",
+      "t_p_120_1176_p000205",
+      "t_p_120_1176_p000206",
+      "t_p_120_1176_p000207",
+      "t_p_120_1176_p000225",
+      "t_p_120_1176_p000442",
+      "t_p_120_1176_p000443",
+      "t_p_120_1176_p000444",
+      "t_p_120_1176_p000445"
+    ],
+    "tracenet_community_00022": [
+      "t_p_120_1176_p000196",
+      "t_p_120_1176_p000221",
+      "t_p_120_1176_p000222",
+      "t_p_120_1176_p000223",
+      "t_p_120_1176_p000414",
+      "t_p_120_1176_p000415",
+      "t_p_120_1176_p000416",
+      "t_p_120_1176_p000417"
+    ],
+    "tracenet_community_00023": [
+      "t_p_120_1176_p000036"
+    ],
+    "tracenet_community_00024": [
+      "t_p_120_1176_p000030",
+      "t_p_120_1176_p000114",
+      "t_p_120_1176_p000115",
+      "t_p_120_1176_p000116",
+      "t_p_120_1176_p000354",
+      "t_p_120_1176_p000355",
+      "t_p_120_1176_p000356"
+    ],
+    "tracenet_community_00025": [
+      "t_p_120_1176_p000052",
+      "t_p_120_1176_p000053",
+      "t_p_120_1176_p000248",
+      "t_p_120_1176_p000249",
+      "t_p_120_1176_p000250"
+    ]
+  },
+  "sample_query_count": 5,
+  "sample_success_count": 5,
+  "sample_results": [
+    {
+      "user_query": "Find part number 120-36834-509",
+      "query_plan": {
+        "query_intent": "part_number",
+        "query_goal": "Find source-truth evidence for query: Find part number 120-36834-509",
+        "target_value": "120-36834-509",
+        "required_source_truth_fields": [
+          "covered_part_number",
+          "ipl_part_number",
+          "part_number"
+        ],
+        "primary_tunnels": [
+          "table_exact_search_tunnel"
+        ],
+        "secondary_tunnels": [
+          "table_hybrid_bridge_tunnel",
+          "qdrant_page_profile_tunnel"
+        ],
+        "guidance_tunnels": [
+          "page_summary_tunnel",
+          "graph_community_tunnel",
+          "graph_navigation_tunnel",
+          "route_metadata_tunnel"
+        ],
+        "subqueries": [
+          {
+            "subquery_type": "exact_value_lookup",
+            "target_value": "120-36834-509",
+            "required_source_truth_fields": [
+              "covered_part_number",
+              "ipl_part_number",
+              "part_number"
+            ]
+          }
+        ],
+        "target_format_valid": true,
+        "strict_target_match_required": true,
+        "authority": {
+          "source_truth_evidence_is_proof": true,
+          "graph_leiden_guidance_is_proof": false,
+          "v2_summary_guidance_is_proof": false,
+          "nearby_context_is_direct_proof": false
+        }
+      },
+      "retrieval": {
+        "direct_evidence": [
+          {
+            "citation_id": 1,
+            "page_id": "t_p_120_1176_p000003",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36834-509",
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::bb38c274d2c92bba",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          }
+        ],
+        "nearby_context": [],
+        "total_match_count": 1,
+        "returned_match_count": 1,
+        "result_was_capped": false,
+        "more_results_available": false,
+        "high_degree_node_detected": false,
+        "cap_reason": "not_capped",
+        "group_counts": {
+          "by_field": {
+            "covered_part_number": 1
+          },
+          "by_page": {
+            "t_p_120_1176_p000003": 1
+          }
+        },
+        "available_drilldowns": [
+          "document",
+          "manual",
+          "revision",
+          "section",
+          "route",
+          "field_type",
+          "page",
+          "leiden_community"
+        ]
+      },
+      "guidance": {
+        "graph_guidance": [
+          {
+            "guidance_id": "live_graph_guidance_0001",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000003",
+            "leiden_community_id": "tracenet_community_00115",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000003",
+              "t_p_120_1176_p000319",
+              "t_p_120_1176_p000320"
+            ],
+            "returned_candidate_page_count": 3,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000003",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00115",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          }
+        ],
+        "v2_summary_guidance": [
+          {
+            "record_id": "summary_guidance_0001",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000003",
+            "summary": "This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope."
+          }
+        ]
+      },
+      "prompt_message_count": 3,
+      "llm_mode": "simulate",
+      "llm_status": "LLM_SIMULATED",
+      "llm_draft_text": "TRACE-Net found covered_part_number=120-36834-509 on page t_p_120_1176_p000003 [1].",
+      "llm_metadata": {},
+      "final_gate_status": "LIVE_ORCHESTRATOR_FINAL_GATE_PASS",
+      "final_answer": "TRACE-Net found part number 120-36834-509 on page t_p_120_1176_p000003 as covered_part_number [1]. The available direct source-truth evidence confirms the listing, but it does not provide enough information to describe the part physically.",
+      "final_answer_ready_for_webui": true,
+      "unsupported_claim_count": 0,
+      "citation_like_count": 1,
+      "cap_disclosure_required": false,
+      "cap_disclosure_in_final_answer": false,
+      "safety": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false,
+        "writes_to_opensearch": false,
+        "uploads_to_opensearch": false,
+        "raw_5tb_scan_at_query_time": false,
+        "graph_rebuild_at_query_time": false,
+        "llm_called": false,
+        "response_is_final_gated": true
+      }
+    },
+    {
+      "user_query": "Find part number 120-36833-501",
+      "query_plan": {
+        "query_intent": "part_number",
+        "query_goal": "Find source-truth evidence for query: Find part number 120-36833-501",
+        "target_value": "120-36833-501",
+        "required_source_truth_fields": [
+          "covered_part_number",
+          "ipl_part_number",
+          "part_number"
+        ],
+        "primary_tunnels": [
+          "table_exact_search_tunnel"
+        ],
+        "secondary_tunnels": [
+          "table_hybrid_bridge_tunnel",
+          "qdrant_page_profile_tunnel"
+        ],
+        "guidance_tunnels": [
+          "page_summary_tunnel",
+          "graph_community_tunnel",
+          "graph_navigation_tunnel",
+          "route_metadata_tunnel"
+        ],
+        "subqueries": [
+          {
+            "subquery_type": "exact_value_lookup",
+            "target_value": "120-36833-501",
+            "required_source_truth_fields": [
+              "covered_part_number",
+              "ipl_part_number",
+              "part_number"
+            ]
+          }
+        ],
+        "target_format_valid": true,
+        "strict_target_match_required": true,
+        "authority": {
+          "source_truth_evidence_is_proof": true,
+          "graph_leiden_guidance_is_proof": false,
+          "v2_summary_guidance_is_proof": false,
+          "nearby_context_is_direct_proof": false
+        }
+      },
+      "retrieval": {
+        "direct_evidence": [
+          {
+            "citation_id": 1,
+            "page_id": "t_p_120_1176_p000003",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-501",
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::f68a8a42aef16311",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          }
+        ],
+        "nearby_context": [],
+        "total_match_count": 1,
+        "returned_match_count": 1,
+        "result_was_capped": false,
+        "more_results_available": false,
+        "high_degree_node_detected": false,
+        "cap_reason": "not_capped",
+        "group_counts": {
+          "by_field": {
+            "covered_part_number": 1
+          },
+          "by_page": {
+            "t_p_120_1176_p000003": 1
+          }
+        },
+        "available_drilldowns": [
+          "document",
+          "manual",
+          "revision",
+          "section",
+          "route",
+          "field_type",
+          "page",
+          "leiden_community"
+        ]
+      },
+      "guidance": {
+        "graph_guidance": [
+          {
+            "guidance_id": "live_graph_guidance_0001",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000003",
+            "leiden_community_id": "tracenet_community_00115",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000003",
+              "t_p_120_1176_p000319",
+              "t_p_120_1176_p000320"
+            ],
+            "returned_candidate_page_count": 3,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000003",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00115",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          }
+        ],
+        "v2_summary_guidance": [
+          {
+            "record_id": "summary_guidance_0001",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000003",
+            "summary": "This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope."
+          }
+        ]
+      },
+      "prompt_message_count": 3,
+      "llm_mode": "simulate",
+      "llm_status": "LLM_SIMULATED",
+      "llm_draft_text": "TRACE-Net found covered_part_number=120-36833-501 on page t_p_120_1176_p000003 [1].",
+      "llm_metadata": {},
+      "final_gate_status": "LIVE_ORCHESTRATOR_FINAL_GATE_PASS",
+      "final_answer": "TRACE-Net found part number 120-36833-501 on page t_p_120_1176_p000003 as covered_part_number [1]. The available direct source-truth evidence confirms the listing, but it does not provide enough information to describe the part physically.",
+      "final_answer_ready_for_webui": true,
+      "unsupported_claim_count": 0,
+      "citation_like_count": 1,
+      "cap_disclosure_required": false,
+      "cap_disclosure_in_final_answer": false,
+      "safety": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false,
+        "writes_to_opensearch": false,
+        "uploads_to_opensearch": false,
+        "raw_5tb_scan_at_query_time": false,
+        "graph_rebuild_at_query_time": false,
+        "llm_called": false,
+        "response_is_final_gated": true
+      }
+    },
+    {
+      "user_query": "What maintenance manual pages mention covered part numbers?",
+      "query_plan": {
+        "query_intent": "covered_part_number",
+        "query_goal": "Find source-truth evidence for query: What maintenance manual pages mention covered part numbers?",
+        "target_value": null,
+        "required_source_truth_fields": [
+          "covered_part_number"
+        ],
+        "primary_tunnels": [
+          "table_exact_search_tunnel"
+        ],
+        "secondary_tunnels": [
+          "table_hybrid_bridge_tunnel",
+          "qdrant_page_profile_tunnel"
+        ],
+        "guidance_tunnels": [
+          "page_summary_tunnel",
+          "graph_community_tunnel",
+          "graph_navigation_tunnel",
+          "route_metadata_tunnel"
+        ],
+        "subqueries": [
+          {
+            "subquery_type": "field_aware_source_truth_lookup",
+            "target_value": null,
+            "required_source_truth_fields": [
+              "covered_part_number"
+            ]
+          }
+        ],
+        "target_format_valid": true,
+        "strict_target_match_required": false,
+        "authority": {
+          "source_truth_evidence_is_proof": true,
+          "graph_leiden_guidance_is_proof": false,
+          "v2_summary_guidance_is_proof": false,
+          "nearby_context_is_direct_proof": false
+        }
+      },
+      "retrieval": {
+        "direct_evidence": [
+          {
+            "citation_id": 1,
+            "page_id": "t_p_120_1176_p000003",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-001",
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::3cdc1417d703f7d3",
+            "score": 200,
+            "match_reason": "field_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 2,
+            "page_id": "t_p_120_1176_p000003",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-003",
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::37eac1debe4e79a6",
+            "score": 200,
+            "match_reason": "field_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 3,
+            "page_id": "t_p_120_1176_p000003",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-005",
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::09cc1b019676db4d",
+            "score": 200,
+            "match_reason": "field_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 4,
+            "page_id": "t_p_120_1176_p000003",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-501",
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::f68a8a42aef16311",
+            "score": 200,
+            "match_reason": "field_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 5,
+            "page_id": "t_p_120_1176_p000003",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-503",
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::40d5b281bc3a6e1c",
+            "score": 200,
+            "match_reason": "field_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 6,
+            "page_id": "t_p_120_1176_p000003",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-507",
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::600d20088b6d7370",
+            "score": 200,
+            "match_reason": "field_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 7,
+            "page_id": "t_p_120_1176_p000003",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-509",
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::a5c5a5fa725fdee1",
+            "score": 200,
+            "match_reason": "field_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 8,
+            "page_id": "t_p_120_1176_p000003",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-511",
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::7e4824e271d9957e",
+            "score": 200,
+            "match_reason": "field_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 9,
+            "page_id": "t_p_120_1176_p000003",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-513",
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::a7c00cd732a83661",
+            "score": 200,
+            "match_reason": "field_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 10,
+            "page_id": "t_p_120_1176_p000003",
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-515",
+            "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::e9241104b2b516dc",
+            "score": 200,
+            "match_reason": "field_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          }
+        ],
+        "nearby_context": [],
+        "total_match_count": 150,
+        "returned_match_count": 10,
+        "result_was_capped": true,
+        "more_results_available": true,
+        "high_degree_node_detected": true,
+        "cap_reason": "high_degree_or_top_k_budget",
+        "group_counts": {
+          "by_field": {
+            "covered_part_number": 150
+          },
+          "by_page": {
+            "t_p_120_1176_p000003": 150
+          }
+        },
+        "available_drilldowns": [
+          "document",
+          "manual",
+          "revision",
+          "section",
+          "route",
+          "field_type",
+          "page",
+          "leiden_community"
+        ]
+      },
+      "guidance": {
+        "graph_guidance": [
+          {
+            "guidance_id": "live_graph_guidance_0001",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000003",
+            "leiden_community_id": "tracenet_community_00115",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000003",
+              "t_p_120_1176_p000319",
+              "t_p_120_1176_p000320"
+            ],
+            "returned_candidate_page_count": 3,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000003",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00115",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          }
+        ],
+        "v2_summary_guidance": [
+          {
+            "record_id": "summary_guidance_0001",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000003",
+            "summary": "This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope."
+          }
+        ]
+      },
+      "prompt_message_count": 3,
+      "llm_mode": "simulate",
+      "llm_status": "LLM_SIMULATED",
+      "llm_draft_text": "TRACE-Net found covered_part_number=120-36833-001 on page t_p_120_1176_p000003 [1].",
+      "llm_metadata": {},
+      "final_gate_status": "LIVE_ORCHESTRATOR_FINAL_GATE_PASS",
+      "final_answer": "TRACE-Net found covered part numbers on page(s) t_p_120_1176_p000003. Direct source-truth examples include 120-36833-001 [1]; 120-36833-003 [2]; 120-36833-005 [3]; 120-36833-501 [4]; 120-36833-503 [5]; 120-36833-507 [6]; 120-36833-509 [7]; 120-36833-511 [8]; 120-36833-513 [9]; 120-36833-515 [10]. Results were capped: TRACE-Net returned 10 of 150 matching records. Available drill-downs include document, manual, revision, section, route, field_type.",
+      "final_answer_ready_for_webui": true,
+      "unsupported_claim_count": 0,
+      "citation_like_count": 10,
+      "cap_disclosure_required": true,
+      "cap_disclosure_in_final_answer": true,
+      "safety": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false,
+        "writes_to_opensearch": false,
+        "uploads_to_opensearch": false,
+        "raw_5tb_scan_at_query_time": false,
+        "graph_rebuild_at_query_time": false,
+        "llm_called": false,
+        "response_is_final_gated": true
+      }
+    },
+    {
+      "user_query": "Where is manual reference 25-21-00 used?",
+      "query_plan": {
+        "query_intent": "manual_page_reference",
+        "query_goal": "Find source-truth evidence for query: Where is manual reference 25-21-00 used?",
+        "target_value": "25-21-00",
+        "required_source_truth_fields": [
+          "manual_page_reference",
+          "ipl_part_number"
+        ],
+        "primary_tunnels": [
+          "table_exact_search_tunnel"
+        ],
+        "secondary_tunnels": [
+          "table_hybrid_bridge_tunnel",
+          "qdrant_page_profile_tunnel"
+        ],
+        "guidance_tunnels": [
+          "page_summary_tunnel",
+          "graph_community_tunnel",
+          "graph_navigation_tunnel",
+          "route_metadata_tunnel"
+        ],
+        "subqueries": [
+          {
+            "subquery_type": "manual_reference_lookup",
+            "target_value": "25-21-00",
+            "required_source_truth_fields": [
+              "manual_page_reference",
+              "ipl_part_number"
+            ]
+          }
+        ],
+        "target_format_valid": true,
+        "strict_target_match_required": true,
+        "authority": {
+          "source_truth_evidence_is_proof": true,
+          "graph_leiden_guidance_is_proof": false,
+          "v2_summary_guidance_is_proof": false,
+          "nearby_context_is_direct_proof": false
+        }
+      },
+      "retrieval": {
+        "direct_evidence": [
+          {
+            "citation_id": 1,
+            "page_id": "t_p_120_1176_p000005",
+            "field_name": "manual_page_reference",
+            "normalized_value": "25-21-00",
+            "document_id": "table_exact_search::t_p_120_1176_p000005::manual_page_reference::c028854bc092feb0",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 39,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 2,
+            "page_id": "t_p_120_1176_p000027",
+            "field_name": "ipl_part_number",
+            "normalized_value": "25-21-00",
+            "document_id": "table_exact_search::t_p_120_1176_p000027::ipl_part_number::914bd253ac6684dd",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 3,
+            "page_id": "t_p_120_1176_p000028",
+            "field_name": "ipl_part_number",
+            "normalized_value": "25-21-00",
+            "document_id": "table_exact_search::t_p_120_1176_p000028::ipl_part_number::7df90e6e7a777d2c",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 4,
+            "page_id": "t_p_120_1176_p000029",
+            "field_name": "ipl_part_number",
+            "normalized_value": "25-21-00",
+            "document_id": "table_exact_search::t_p_120_1176_p000029::ipl_part_number::85b5b9043a44ddd7",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 5,
+            "page_id": "t_p_120_1176_p000030",
+            "field_name": "ipl_part_number",
+            "normalized_value": "25-21-00",
+            "document_id": "table_exact_search::t_p_120_1176_p000030::ipl_part_number::26e6485f1160aa0a",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 6,
+            "page_id": "t_p_120_1176_p000031",
+            "field_name": "ipl_part_number",
+            "normalized_value": "25-21-00",
+            "document_id": "table_exact_search::t_p_120_1176_p000031::ipl_part_number::72ebe450a7785237",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 7,
+            "page_id": "t_p_120_1176_p000032",
+            "field_name": "ipl_part_number",
+            "normalized_value": "25-21-00",
+            "document_id": "table_exact_search::t_p_120_1176_p000032::ipl_part_number::23761f58c5c72088",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 8,
+            "page_id": "t_p_120_1176_p000033",
+            "field_name": "ipl_part_number",
+            "normalized_value": "25-21-00",
+            "document_id": "table_exact_search::t_p_120_1176_p000033::ipl_part_number::8b04301316c2d9fc",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 9,
+            "page_id": "t_p_120_1176_p000034",
+            "field_name": "ipl_part_number",
+            "normalized_value": "25-21-00",
+            "document_id": "table_exact_search::t_p_120_1176_p000034::ipl_part_number::952eb88021812846",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 10,
+            "page_id": "t_p_120_1176_p000036",
+            "field_name": "ipl_part_number",
+            "normalized_value": "25-21-00",
+            "document_id": "table_exact_search::t_p_120_1176_p000036::ipl_part_number::2000e8937737704d",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          }
+        ],
+        "nearby_context": [],
+        "total_match_count": 50,
+        "returned_match_count": 10,
+        "result_was_capped": true,
+        "more_results_available": true,
+        "high_degree_node_detected": true,
+        "cap_reason": "high_degree_or_top_k_budget",
+        "group_counts": {
+          "by_field": {
+            "manual_page_reference": 39,
+            "ipl_part_number": 11
+          },
+          "by_page": {
+            "t_p_120_1176_p000005": 39,
+            "t_p_120_1176_p000032": 2,
+            "t_p_120_1176_p000027": 1,
+            "t_p_120_1176_p000028": 1,
+            "t_p_120_1176_p000029": 1,
+            "t_p_120_1176_p000030": 1,
+            "t_p_120_1176_p000031": 1,
+            "t_p_120_1176_p000033": 1,
+            "t_p_120_1176_p000034": 1,
+            "t_p_120_1176_p000036": 1,
+            "t_p_120_1176_p000037": 1
+          }
+        },
+        "available_drilldowns": [
+          "document",
+          "manual",
+          "revision",
+          "section",
+          "route",
+          "field_type",
+          "page",
+          "leiden_community"
+        ]
+      },
+      "guidance": {
+        "graph_guidance": [
+          {
+            "guidance_id": "live_graph_guidance_0001",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000005",
+            "leiden_community_id": "tracenet_community_00037",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000005"
+            ],
+            "returned_candidate_page_count": 1,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000005",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00037",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0002",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000027",
+            "leiden_community_id": "tracenet_community_00038",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000027"
+            ],
+            "returned_candidate_page_count": 1,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000027",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00038",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0003",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000028",
+            "leiden_community_id": "tracenet_community_00019",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000028"
+            ],
+            "returned_candidate_page_count": 1,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000028",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00019",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0004",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000029",
+            "leiden_community_id": "tracenet_community_00104",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000029",
+              "t_p_120_1176_p000030",
+              "t_p_120_1176_p000031",
+              "t_p_120_1176_p000452"
+            ],
+            "returned_candidate_page_count": 4,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000029",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00104",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0005",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000030",
+            "leiden_community_id": "tracenet_community_00104",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000029",
+              "t_p_120_1176_p000030",
+              "t_p_120_1176_p000031",
+              "t_p_120_1176_p000452"
+            ],
+            "returned_candidate_page_count": 4,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000030",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00104",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0006",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000031",
+            "leiden_community_id": "tracenet_community_00104",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000029",
+              "t_p_120_1176_p000030",
+              "t_p_120_1176_p000031",
+              "t_p_120_1176_p000452"
+            ],
+            "returned_candidate_page_count": 4,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000031",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00104",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0007",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000032",
+            "leiden_community_id": "tracenet_community_00041",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000032",
+              "t_p_120_1176_p000451",
+              "t_p_120_1176_p000452",
+              "t_p_120_1176_p000453"
+            ],
+            "returned_candidate_page_count": 4,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000032",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00041",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0008",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000033",
+            "leiden_community_id": "tracenet_community_00035",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000033"
+            ],
+            "returned_candidate_page_count": 1,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000033",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00035",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0009",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000034",
+            "leiden_community_id": "tracenet_community_00102",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000034"
+            ],
+            "returned_candidate_page_count": 1,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000034",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00102",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0010",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000036",
+            "leiden_community_id": "tracenet_community_00103",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000036",
+              "t_p_120_1176_p000037"
+            ],
+            "returned_candidate_page_count": 2,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000036",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00103",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          }
+        ],
+        "v2_summary_guidance": [
+          {
+            "record_id": "summary_guidance_0001",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000005",
+            "summary": "This page appears to be a parts list and index from a maintenance manual, listing various part numbers and revision dates."
+          },
+          {
+            "record_id": "summary_guidance_0002",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000027",
+            "summary": "This page appears to be a parts list from the maintenance manual, listing numerous part numbers with associated quantities and airline part numbers."
+          },
+          {
+            "record_id": "summary_guidance_0003",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000028",
+            "summary": "This page appears to be a parts list from an aircraft maintenance manual, detailing various part numbers and their associated information."
+          },
+          {
+            "record_id": "summary_guidance_0004",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000029",
+            "summary": "This page appears to be a parts list from the maintenance manual, listing various part numbers and quantities."
+          },
+          {
+            "record_id": "summary_guidance_0005",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000030",
+            "summary": "This page appears to be a parts list from an aircraft maintenance manual, detailing part numbers and quantities."
+          },
+          {
+            "record_id": "summary_guidance_0006",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000031",
+            "summary": "This page appears to be a parts list from a maintenance manual, listing part numbers and ATA codes."
+          },
+          {
+            "record_id": "summary_guidance_0007",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000032",
+            "summary": "This page appears to be a parts list from an aircraft maintenance manual, listing various part numbers and associated codes."
+          },
+          {
+            "record_id": "summary_guidance_0008",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000033",
+            "summary": "This page is an illustrated parts list for Embraer ATA 25-21-00, detailing various part numbers, quantities, and assembly numbers."
+          },
+          {
+            "record_id": "summary_guidance_0009",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000034",
+            "summary": "This page is an illustrated parts list for Embraer aircraft, specifically detailing part numbers and stock information under ATA 25-21-00."
+          },
+          {
+            "record_id": "summary_guidance_0010",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000036",
+            "summary": "This page appears to be a parts list from a maintenance manual, listing part numbers and associated codes."
+          }
+        ]
+      },
+      "prompt_message_count": 3,
+      "llm_mode": "simulate",
+      "llm_status": "LLM_SIMULATED",
+      "llm_draft_text": "TRACE-Net found manual_page_reference=25-21-00 on page t_p_120_1176_p000005 [1].",
+      "llm_metadata": {},
+      "final_gate_status": "LIVE_ORCHESTRATOR_FINAL_GATE_PASS",
+      "final_answer": "TRACE-Net found manual reference 25-21-00 on page t_p_120_1176_p000005 [1]. The same page/value was collapsed from 39 repeated source records. Results were capped: TRACE-Net returned 10 of 50 matching records. Available drill-downs include document, manual, revision, section, route, field_type.",
+      "final_answer_ready_for_webui": true,
+      "unsupported_claim_count": 0,
+      "citation_like_count": 1,
+      "cap_disclosure_required": true,
+      "cap_disclosure_in_final_answer": true,
+      "safety": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false,
+        "writes_to_opensearch": false,
+        "uploads_to_opensearch": false,
+        "raw_5tb_scan_at_query_time": false,
+        "graph_rebuild_at_query_time": false,
+        "llm_called": false,
+        "response_is_final_gated": true
+      }
+    },
+    {
+      "user_query": "Search table text MAINTENANCE MANUAL WITH",
+      "query_plan": {
+        "query_intent": "table_text",
+        "query_goal": "Find source-truth evidence for query: Search table text MAINTENANCE MANUAL WITH",
+        "target_value": "MAINTENANCE MANUAL WITH",
+        "required_source_truth_fields": [
+          "ipl_text",
+          "table_text"
+        ],
+        "primary_tunnels": [
+          "table_exact_search_tunnel"
+        ],
+        "secondary_tunnels": [
+          "table_hybrid_bridge_tunnel",
+          "qdrant_page_profile_tunnel"
+        ],
+        "guidance_tunnels": [
+          "page_summary_tunnel",
+          "graph_community_tunnel",
+          "graph_navigation_tunnel",
+          "route_metadata_tunnel"
+        ],
+        "subqueries": [
+          {
+            "subquery_type": "table_text_lookup",
+            "target_value": "MAINTENANCE MANUAL WITH",
+            "required_source_truth_fields": [
+              "ipl_text",
+              "table_text"
+            ]
+          }
+        ],
+        "target_format_valid": true,
+        "strict_target_match_required": true,
+        "authority": {
+          "source_truth_evidence_is_proof": true,
+          "graph_leiden_guidance_is_proof": false,
+          "v2_summary_guidance_is_proof": false,
+          "nearby_context_is_direct_proof": false
+        }
+      },
+      "retrieval": {
+        "direct_evidence": [
+          {
+            "citation_id": 1,
+            "page_id": "t_p_120_1176_p000027",
+            "field_name": "ipl_text",
+            "normalized_value": "MAINTENANCE MANUAL WITH",
+            "document_id": "table_exact_search::t_p_120_1176_p000027::ipl_text::5b36c34575036e81",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 2,
+            "page_id": "t_p_120_1176_p000028",
+            "field_name": "ipl_text",
+            "normalized_value": "MAINTENANCE MANUAL WITH",
+            "document_id": "table_exact_search::t_p_120_1176_p000028::ipl_text::5e4fb29696857244",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 3,
+            "page_id": "t_p_120_1176_p000029",
+            "field_name": "ipl_text",
+            "normalized_value": "MAINTENANCE MANUAL WITH",
+            "document_id": "table_exact_search::t_p_120_1176_p000029::ipl_text::e51e49f458eaefaa",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 4,
+            "page_id": "t_p_120_1176_p000030",
+            "field_name": "ipl_text",
+            "normalized_value": "MAINTENANCE MANUAL WITH",
+            "document_id": "table_exact_search::t_p_120_1176_p000030::ipl_text::9f640fb25cb25cad",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 5,
+            "page_id": "t_p_120_1176_p000031",
+            "field_name": "ipl_text",
+            "normalized_value": "MAINTENANCE MANUAL WITH",
+            "document_id": "table_exact_search::t_p_120_1176_p000031::ipl_text::6175eb9237dc17ab",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 6,
+            "page_id": "t_p_120_1176_p000032",
+            "field_name": "ipl_text",
+            "normalized_value": "MAINTENANCE MANUAL WITH",
+            "document_id": "table_exact_search::t_p_120_1176_p000032::ipl_text::7af0c12898706a8c",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 7,
+            "page_id": "t_p_120_1176_p000033",
+            "field_name": "ipl_text",
+            "normalized_value": "MAINTENANCE MANUAL WITH",
+            "document_id": "table_exact_search::t_p_120_1176_p000033::ipl_text::05c14064a02e42e4",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 8,
+            "page_id": "t_p_120_1176_p000034",
+            "field_name": "ipl_text",
+            "normalized_value": "MAINTENANCE MANUAL WITH",
+            "document_id": "table_exact_search::t_p_120_1176_p000034::ipl_text::bcfdab4107f8439c",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 9,
+            "page_id": "t_p_120_1176_p000036",
+            "field_name": "ipl_text",
+            "normalized_value": "MAINTENANCE MANUAL WITH",
+            "document_id": "table_exact_search::t_p_120_1176_p000036::ipl_text::ba8540e4f6fa8563",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          },
+          {
+            "citation_id": 10,
+            "page_id": "t_p_120_1176_p000037",
+            "field_name": "ipl_text",
+            "normalized_value": "MAINTENANCE MANUAL WITH",
+            "document_id": "table_exact_search::t_p_120_1176_p000037::ipl_text::92d6d98e4fcf0110",
+            "score": 1200,
+            "match_reason": "exact_value_match",
+            "occurrence_count": 1,
+            "direct_proof_authority": true
+          }
+        ],
+        "nearby_context": [],
+        "total_match_count": 10,
+        "returned_match_count": 10,
+        "result_was_capped": false,
+        "more_results_available": false,
+        "high_degree_node_detected": false,
+        "cap_reason": "not_capped",
+        "group_counts": {
+          "by_field": {
+            "ipl_text": 10
+          },
+          "by_page": {
+            "t_p_120_1176_p000027": 1,
+            "t_p_120_1176_p000028": 1,
+            "t_p_120_1176_p000029": 1,
+            "t_p_120_1176_p000030": 1,
+            "t_p_120_1176_p000031": 1,
+            "t_p_120_1176_p000032": 1,
+            "t_p_120_1176_p000033": 1,
+            "t_p_120_1176_p000034": 1,
+            "t_p_120_1176_p000036": 1,
+            "t_p_120_1176_p000037": 1
+          }
+        },
+        "available_drilldowns": [
+          "document",
+          "manual",
+          "revision",
+          "section",
+          "route",
+          "field_type",
+          "page",
+          "leiden_community"
+        ]
+      },
+      "guidance": {
+        "graph_guidance": [
+          {
+            "guidance_id": "live_graph_guidance_0001",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000027",
+            "leiden_community_id": "tracenet_community_00038",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000027"
+            ],
+            "returned_candidate_page_count": 1,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000027",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00038",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0002",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000028",
+            "leiden_community_id": "tracenet_community_00019",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000028"
+            ],
+            "returned_candidate_page_count": 1,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000028",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00019",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0003",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000029",
+            "leiden_community_id": "tracenet_community_00104",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000029",
+              "t_p_120_1176_p000030",
+              "t_p_120_1176_p000031",
+              "t_p_120_1176_p000452"
+            ],
+            "returned_candidate_page_count": 4,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000029",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00104",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0004",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000030",
+            "leiden_community_id": "tracenet_community_00104",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000029",
+              "t_p_120_1176_p000030",
+              "t_p_120_1176_p000031",
+              "t_p_120_1176_p000452"
+            ],
+            "returned_candidate_page_count": 4,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000030",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00104",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0005",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000031",
+            "leiden_community_id": "tracenet_community_00104",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000029",
+              "t_p_120_1176_p000030",
+              "t_p_120_1176_p000031",
+              "t_p_120_1176_p000452"
+            ],
+            "returned_candidate_page_count": 4,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000031",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00104",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0006",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000032",
+            "leiden_community_id": "tracenet_community_00041",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000032",
+              "t_p_120_1176_p000451",
+              "t_p_120_1176_p000452",
+              "t_p_120_1176_p000453"
+            ],
+            "returned_candidate_page_count": 4,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000032",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00041",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0007",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000033",
+            "leiden_community_id": "tracenet_community_00035",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000033"
+            ],
+            "returned_candidate_page_count": 1,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000033",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00035",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0008",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000034",
+            "leiden_community_id": "tracenet_community_00102",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000034"
+            ],
+            "returned_candidate_page_count": 1,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000034",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00102",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0009",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000036",
+            "leiden_community_id": "tracenet_community_00103",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000036",
+              "t_p_120_1176_p000037"
+            ],
+            "returned_candidate_page_count": 2,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000036",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00103",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          },
+          {
+            "guidance_id": "live_graph_guidance_0010",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "requires_source_truth_confirmation": true,
+            "seed_page_id": "t_p_120_1176_p000037",
+            "leiden_community_id": "tracenet_community_00103",
+            "candidate_page_ids": [
+              "t_p_120_1176_p000036",
+              "t_p_120_1176_p000037"
+            ],
+            "returned_candidate_page_count": 2,
+            "graph_path_provenance": [
+              {
+                "hop": 0,
+                "node_id": "t_p_120_1176_p000037",
+                "node_type": "source_truth_seed_page"
+              },
+              {
+                "hop": 1,
+                "node_id": "tracenet_community_00103",
+                "edge_type": "member_of_leiden_community"
+              }
+            ]
+          }
+        ],
+        "v2_summary_guidance": [
+          {
+            "record_id": "summary_guidance_0001",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000027",
+            "summary": "This page appears to be a parts list from the maintenance manual, listing numerous part numbers with associated quantities and airline part numbers."
+          },
+          {
+            "record_id": "summary_guidance_0002",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000028",
+            "summary": "This page appears to be a parts list from an aircraft maintenance manual, detailing various part numbers and their associated information."
+          },
+          {
+            "record_id": "summary_guidance_0003",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000029",
+            "summary": "This page appears to be a parts list from the maintenance manual, listing various part numbers and quantities."
+          },
+          {
+            "record_id": "summary_guidance_0004",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000030",
+            "summary": "This page appears to be a parts list from an aircraft maintenance manual, detailing part numbers and quantities."
+          },
+          {
+            "record_id": "summary_guidance_0005",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000031",
+            "summary": "This page appears to be a parts list from a maintenance manual, listing part numbers and ATA codes."
+          },
+          {
+            "record_id": "summary_guidance_0006",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000032",
+            "summary": "This page appears to be a parts list from an aircraft maintenance manual, listing various part numbers and associated codes."
+          },
+          {
+            "record_id": "summary_guidance_0007",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000033",
+            "summary": "This page is an illustrated parts list for Embraer ATA 25-21-00, detailing various part numbers, quantities, and assembly numbers."
+          },
+          {
+            "record_id": "summary_guidance_0008",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000034",
+            "summary": "This page is an illustrated parts list for Embraer aircraft, specifically detailing part numbers and stock information under ATA 25-21-00."
+          },
+          {
+            "record_id": "summary_guidance_0009",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000036",
+            "summary": "This page appears to be a parts list from a maintenance manual, listing part numbers and associated codes."
+          },
+          {
+            "record_id": "summary_guidance_0010",
+            "authority": "guidance_only",
+            "proof_authority": false,
+            "page_id": "t_p_120_1176_p000037",
+            "summary": "This page appears to be a parts list from an aircraft maintenance manual, detailing part numbers and quantities."
+          }
+        ]
+      },
+      "prompt_message_count": 3,
+      "llm_mode": "simulate",
+      "llm_status": "LLM_SIMULATED",
+      "llm_draft_text": "TRACE-Net found ipl_text=MAINTENANCE MANUAL WITH on page t_p_120_1176_p000027 [1].",
+      "llm_metadata": {},
+      "final_gate_status": "LIVE_ORCHESTRATOR_FINAL_GATE_PASS",
+      "final_answer": "TRACE-Net found the exact table text \"MAINTENANCE MANUAL WITH\" on page t_p_120_1176_p000027 [1]. Nearby OCR/table records were returned as context only and are not treated as direct proof for this query.",
+      "final_answer_ready_for_webui": true,
+      "unsupported_claim_count": 0,
+      "citation_like_count": 1,
+      "cap_disclosure_required": false,
+      "cap_disclosure_in_final_answer": false,
+      "safety": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false,
+        "writes_to_opensearch": false,
+        "uploads_to_opensearch": false,
+        "raw_5tb_scan_at_query_time": false,
+        "graph_rebuild_at_query_time": false,
+        "llm_called": false,
+        "response_is_final_gated": true
+      }
+    }
+  ],
+  "answer_permission_count": 0,
+  "source_truth_mutation_allowed_count": 0,
+  "quality_status": "PASS",
+  "quality_checks": [
+    {
+      "name": "exact_search_document_count",
+      "observed": 1497,
+      "op": ">=",
+      "expected": 10,
+      "passed": true
+    },
+    {
+      "name": "endpoint_route_count",
+      "observed": 4,
+      "op": ">=",
+      "expected": 4,
+      "passed": true
+    },
+    {
+      "name": "sample_query_count",
+      "observed": 5,
+      "op": ">=",
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "name": "sample_success_count",
+      "observed": 5,
+      "op": ">=",
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "name": "sample_unsupported_claim_count",
+      "observed": 0,
+      "op": "<=",
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "sample_llm_call_error_count",
+      "observed": 0,
+      "op": "<=",
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "answer_permission_count",
+      "observed": 0,
+      "op": "<=",
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "op": "<=",
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "contract_raw_5tb_scan_at_query_time",
+      "observed": false,
+      "op": "is",
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "contract_graph_rebuild_at_query_time",
+      "observed": false,
+      "op": "is",
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "require_no_answer_permission",
+      "observed": 0,
+      "op": "==",
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "status": "E2E_LIVE_ORCHESTRATOR_ENDPOINT_READY",
+  "report_path": "local_data\\organization\\trace_net\\e2e_live_orchestrator_endpoint\\trace_net_e2e_live_orchestrator_endpoint_v25.json",
+  "sample_jsonl_path": "local_data\\organization\\trace_net\\e2e_live_orchestrator_endpoint\\trace_net_e2e_live_orchestrator_endpoint_samples_v25.jsonl",
+  "inspect_md_path": "local_data\\organization\\trace_net\\e2e_live_orchestrator_endpoint\\trace_net_e2e_live_orchestrator_endpoint_v25.md"
+}

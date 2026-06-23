@@ -1,0 +1,459 @@
+{
+  "blocking_count": 0,
+  "hybrid_search_assessment": "Current WebUI endpoint uses artifact-backed planned hybrid retrieval outputs. The planned runtime includes query planning/routing tunnels, table bridge signals, exact/table evidence, and context/final-gate artifacts, but it is not yet a fully dynamic per-query live retrieval runner.",
+  "items": [
+    {
+      "category": "source",
+      "detail": "present",
+      "name": "E2E query input harness",
+      "path": "tiff/trace_net_e2e_query_input_v1.py",
+      "status": "PASS"
+    },
+    {
+      "category": "source",
+      "detail": "present",
+      "name": "E2E query planning/routing tunnels",
+      "path": "tiff/trace_net_e2e_query_planning_routing_v1.py",
+      "status": "PASS"
+    },
+    {
+      "category": "source",
+      "detail": "present",
+      "name": "E2E hybrid retrieval runtime",
+      "path": "tiff/trace_net_e2e_hybrid_retrieval_runtime_v1.py",
+      "status": "PASS"
+    },
+    {
+      "category": "source",
+      "detail": "present",
+      "name": "E2E context pack builder",
+      "path": "tiff/trace_net_e2e_context_pack_builder_v1.py",
+      "status": "PASS"
+    },
+    {
+      "category": "source",
+      "detail": "present",
+      "name": "E2E evidence sufficiency gate",
+      "path": "tiff/trace_net_e2e_evidence_sufficiency_gate_v1.py",
+      "status": "PASS"
+    },
+    {
+      "category": "source",
+      "detail": "present",
+      "name": "E2E final gate smoke",
+      "path": "tiff/trace_net_e2e_final_gate_smoke_v1.py",
+      "status": "PASS"
+    },
+    {
+      "category": "source",
+      "detail": "present",
+      "name": "E2E RAG demo report",
+      "path": "tiff/trace_net_e2e_rag_demo_report_v1.py",
+      "status": "PASS"
+    },
+    {
+      "category": "source",
+      "detail": "present",
+      "name": "E2E API wrapper smoke",
+      "path": "tiff/trace_net_e2e_api_wrapper_smoke_v1.py",
+      "status": "PASS"
+    },
+    {
+      "category": "source",
+      "detail": "present",
+      "name": "E2E local endpoint module",
+      "path": "tiff/trace_net_e2e_local_endpoint_v1.py",
+      "status": "PASS"
+    },
+    {
+      "category": "source",
+      "detail": "present",
+      "name": "E2E local endpoint server",
+      "path": "scripts/serve_trace_net_e2e_local_endpoint_v1.py",
+      "status": "PASS"
+    },
+    {
+      "category": "source",
+      "detail": "present",
+      "name": "Codebase checklist",
+      "path": "tiff/trace_net_e2e_codebase_checklist_v1.py",
+      "status": "PASS"
+    },
+    {
+      "category": "table_route",
+      "detail": "quality_status=PASS",
+      "name": "Table exact-search adapter",
+      "path": "local_data/organization/trace_net/table_exact_search_adapter/trace_net_table_exact_search_adapter_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "table_route",
+      "detail": "observed=1497 expected>=1000",
+      "name": "Table exact-search adapter table_exact_search_document_count",
+      "path": "local_data/organization/trace_net/table_exact_search_adapter/trace_net_table_exact_search_adapter_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "table_route",
+      "detail": "all observed authority/write counters are zero",
+      "name": "Table exact-search adapter safety/write counters",
+      "path": "local_data/organization/trace_net/table_exact_search_adapter/trace_net_table_exact_search_adapter_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "table_route",
+      "detail": "quality_status=PASS",
+      "name": "Table exact-search smoke",
+      "path": "local_data/organization/trace_net/table_exact_search_smoke/trace_net_table_exact_search_smoke_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "table_route",
+      "detail": "observed=6 expected>=3",
+      "name": "Table exact-search smoke successful_smoke_query_count",
+      "path": "local_data/organization/trace_net/table_exact_search_smoke/trace_net_table_exact_search_smoke_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "table_route",
+      "detail": "observed=42 expected>=3",
+      "name": "Table exact-search smoke total_match_count",
+      "path": "local_data/organization/trace_net/table_exact_search_smoke/trace_net_table_exact_search_smoke_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "table_route",
+      "detail": "all observed authority/write counters are zero",
+      "name": "Table exact-search smoke safety/write counters",
+      "path": "local_data/organization/trace_net/table_exact_search_smoke/trace_net_table_exact_search_smoke_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "table_route",
+      "detail": "quality_status=PASS",
+      "name": "Table hybrid retrieval bridge",
+      "path": "local_data/organization/trace_net/table_hybrid_retrieval_bridge/trace_net_table_hybrid_retrieval_bridge_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "table_route",
+      "detail": "observed=1497 expected>=1000",
+      "name": "Table hybrid retrieval bridge table_hybrid_bridge_record_count",
+      "path": "local_data/organization/trace_net/table_hybrid_retrieval_bridge/trace_net_table_hybrid_retrieval_bridge_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "table_route",
+      "detail": "all observed authority/write counters are zero",
+      "name": "Table hybrid retrieval bridge safety/write counters",
+      "path": "local_data/organization/trace_net/table_hybrid_retrieval_bridge/trace_net_table_hybrid_retrieval_bridge_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "quality_status=PASS",
+      "name": "E2E query input",
+      "path": "local_data/organization/trace_net/e2e_query_input/trace_net_e2e_query_input_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "READY_FOR_RETRIEVAL_RUNTIME",
+      "name": "E2E query input status",
+      "path": "local_data/organization/trace_net/e2e_query_input/trace_net_e2e_query_input_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "observed=5 expected>=5",
+      "name": "E2E query input e2e_query_input_record_count",
+      "path": "local_data/organization/trace_net/e2e_query_input/trace_net_e2e_query_input_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "all observed authority/write counters are zero",
+      "name": "E2E query input safety/write counters",
+      "path": "local_data/organization/trace_net/e2e_query_input/trace_net_e2e_query_input_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "quality_status=PASS",
+      "name": "E2E query planning/routing tunnels",
+      "path": "local_data/organization/trace_net/e2e_query_planning_routing/trace_net_e2e_query_planning_routing_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "READY_FOR_HYBRID_RETRIEVAL_RUNTIME",
+      "name": "E2E query planning/routing tunnels status",
+      "path": "local_data/organization/trace_net/e2e_query_planning_routing/trace_net_e2e_query_planning_routing_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "observed=5 expected>=5",
+      "name": "E2E query planning/routing tunnels query_route_plan_count",
+      "path": "local_data/organization/trace_net/e2e_query_planning_routing/trace_net_e2e_query_planning_routing_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "observed=30 expected>=15",
+      "name": "E2E query planning/routing tunnels total_query_tunnel_count",
+      "path": "local_data/organization/trace_net/e2e_query_planning_routing/trace_net_e2e_query_planning_routing_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "all observed authority/write counters are zero",
+      "name": "E2E query planning/routing tunnels safety/write counters",
+      "path": "local_data/organization/trace_net/e2e_query_planning_routing/trace_net_e2e_query_planning_routing_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "quality_status=PASS",
+      "name": "Planned hybrid retrieval runtime",
+      "path": "local_data/organization/trace_net/e2e_hybrid_retrieval_runtime_planned/trace_net_e2e_hybrid_retrieval_runtime_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "READY_FOR_CONTEXT_PACK",
+      "name": "Planned hybrid retrieval runtime status",
+      "path": "local_data/organization/trace_net/e2e_hybrid_retrieval_runtime_planned/trace_net_e2e_hybrid_retrieval_runtime_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "observed=5 expected>=4",
+      "name": "Planned hybrid retrieval runtime successful_retrieval_query_count",
+      "path": "local_data/organization/trace_net/e2e_hybrid_retrieval_runtime_planned/trace_net_e2e_hybrid_retrieval_runtime_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "observed=50 expected>=10",
+      "name": "Planned hybrid retrieval runtime total_retrieval_hit_count",
+      "path": "local_data/organization/trace_net/e2e_hybrid_retrieval_runtime_planned/trace_net_e2e_hybrid_retrieval_runtime_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "all observed authority/write counters are zero",
+      "name": "Planned hybrid retrieval runtime safety/write counters",
+      "path": "local_data/organization/trace_net/e2e_hybrid_retrieval_runtime_planned/trace_net_e2e_hybrid_retrieval_runtime_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "quality_status=PASS",
+      "name": "Planned context pack builder",
+      "path": "local_data/organization/trace_net/e2e_context_pack_builder_planned/trace_net_e2e_context_pack_builder_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "READY_FOR_FINAL_GATE",
+      "name": "Planned context pack builder status",
+      "path": "local_data/organization/trace_net/e2e_context_pack_builder_planned/trace_net_e2e_context_pack_builder_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "observed=5 expected>=5",
+      "name": "Planned context pack builder context_pack_count",
+      "path": "local_data/organization/trace_net/e2e_context_pack_builder_planned/trace_net_e2e_context_pack_builder_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "observed=25 expected>=20",
+      "name": "Planned context pack builder citation_ready_context_item_count",
+      "path": "local_data/organization/trace_net/e2e_context_pack_builder_planned/trace_net_e2e_context_pack_builder_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "all observed authority/write counters are zero",
+      "name": "Planned context pack builder safety/write counters",
+      "path": "local_data/organization/trace_net/e2e_context_pack_builder_planned/trace_net_e2e_context_pack_builder_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "quality_status=PASS",
+      "name": "Planned evidence sufficiency gate",
+      "path": "local_data/organization/trace_net/e2e_evidence_sufficiency_gate_planned/trace_net_e2e_evidence_sufficiency_gate_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "READY_FOR_FINAL_GATE_SMOKE",
+      "name": "Planned evidence sufficiency gate status",
+      "path": "local_data/organization/trace_net/e2e_evidence_sufficiency_gate_planned/trace_net_e2e_evidence_sufficiency_gate_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "observed=5 expected>=4",
+      "name": "Planned evidence sufficiency gate final_gate_review_ready_pack_count",
+      "path": "local_data/organization/trace_net/e2e_evidence_sufficiency_gate_planned/trace_net_e2e_evidence_sufficiency_gate_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "all observed authority/write counters are zero",
+      "name": "Planned evidence sufficiency gate safety/write counters",
+      "path": "local_data/organization/trace_net/e2e_evidence_sufficiency_gate_planned/trace_net_e2e_evidence_sufficiency_gate_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "quality_status=PASS",
+      "name": "Planned final gate smoke",
+      "path": "local_data/organization/trace_net/e2e_final_gate_smoke_planned/trace_net_e2e_final_gate_smoke_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "READY_FOR_API_OR_AUDIT_RESPONSE",
+      "name": "Planned final gate smoke status",
+      "path": "local_data/organization/trace_net/e2e_final_gate_smoke_planned/trace_net_e2e_final_gate_smoke_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "observed=5 expected>=4",
+      "name": "Planned final gate smoke safe_response_draft_count",
+      "path": "local_data/organization/trace_net/e2e_final_gate_smoke_planned/trace_net_e2e_final_gate_smoke_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "observed=15 expected>=10",
+      "name": "Planned final gate smoke total_citation_count",
+      "path": "local_data/organization/trace_net/e2e_final_gate_smoke_planned/trace_net_e2e_final_gate_smoke_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "all observed authority/write counters are zero",
+      "name": "Planned final gate smoke safety/write counters",
+      "path": "local_data/organization/trace_net/e2e_final_gate_smoke_planned/trace_net_e2e_final_gate_smoke_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "quality_status=PASS",
+      "name": "E2E RAG demo report",
+      "path": "local_data/organization/trace_net/e2e_rag_demo_report/trace_net_e2e_rag_demo_report_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "READY_FOR_API_WRAPPER",
+      "name": "E2E RAG demo report status",
+      "path": "local_data/organization/trace_net/e2e_rag_demo_report/trace_net_e2e_rag_demo_report_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "observed=5 expected>=5",
+      "name": "E2E RAG demo report complete_demo_flow_count",
+      "path": "local_data/organization/trace_net/e2e_rag_demo_report/trace_net_e2e_rag_demo_report_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "observed=5 expected>=4",
+      "name": "E2E RAG demo report citation_backed_response_draft_count",
+      "path": "local_data/organization/trace_net/e2e_rag_demo_report/trace_net_e2e_rag_demo_report_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "e2e_chain",
+      "detail": "all observed authority/write counters are zero",
+      "name": "E2E RAG demo report safety/write counters",
+      "path": "local_data/organization/trace_net/e2e_rag_demo_report/trace_net_e2e_rag_demo_report_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "endpoint",
+      "detail": "quality_status=PASS",
+      "name": "E2E API wrapper smoke",
+      "path": "local_data/organization/trace_net/e2e_api_wrapper_smoke/trace_net_e2e_api_wrapper_smoke_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "endpoint",
+      "detail": "READY_FOR_LOCAL_ENDPOINT",
+      "name": "E2E API wrapper smoke status",
+      "path": "local_data/organization/trace_net/e2e_api_wrapper_smoke/trace_net_e2e_api_wrapper_smoke_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "endpoint",
+      "detail": "observed=5 expected>=5",
+      "name": "E2E API wrapper smoke api_wrapper_response_count",
+      "path": "local_data/organization/trace_net/e2e_api_wrapper_smoke/trace_net_e2e_api_wrapper_smoke_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "endpoint",
+      "detail": "observed=5 expected>=4",
+      "name": "E2E API wrapper smoke citation_backed_api_response_count",
+      "path": "local_data/organization/trace_net/e2e_api_wrapper_smoke/trace_net_e2e_api_wrapper_smoke_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "endpoint",
+      "detail": "all observed authority/write counters are zero",
+      "name": "E2E API wrapper smoke safety/write counters",
+      "path": "local_data/organization/trace_net/e2e_api_wrapper_smoke/trace_net_e2e_api_wrapper_smoke_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "endpoint",
+      "detail": "quality_status=PASS",
+      "name": "E2E local endpoint manifest",
+      "path": "local_data/organization/trace_net/e2e_local_endpoint/trace_net_e2e_local_endpoint_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "endpoint",
+      "detail": "READY_FOR_OPEN_WEBUI_SMOKE",
+      "name": "E2E local endpoint manifest status",
+      "path": "local_data/organization/trace_net/e2e_local_endpoint/trace_net_e2e_local_endpoint_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "endpoint",
+      "detail": "observed=4 expected>=4",
+      "name": "E2E local endpoint manifest endpoint_route_count",
+      "path": "local_data/organization/trace_net/e2e_local_endpoint/trace_net_e2e_local_endpoint_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "endpoint",
+      "detail": "observed=5 expected>=5",
+      "name": "E2E local endpoint manifest api_response_count",
+      "path": "local_data/organization/trace_net/e2e_local_endpoint/trace_net_e2e_local_endpoint_v1.json",
+      "status": "PASS"
+    },
+    {
+      "category": "endpoint",
+      "detail": "all observed authority/write counters are zero",
+      "name": "E2E local endpoint manifest safety/write counters",
+      "path": "local_data/organization/trace_net/e2e_local_endpoint/trace_net_e2e_local_endpoint_v1.json",
+      "status": "PASS"
+    }
+  ],
+  "module": "trace_net_e2e_codebase_checklist_v1",
+  "overall_status": "PASS",
+  "status_counts": {
+    "PASS": 64
+  }
+}

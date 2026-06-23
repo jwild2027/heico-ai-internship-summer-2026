@@ -1,0 +1,500 @@
+{
+  "answer_permission_count": 0,
+  "audit_only_count": 0,
+  "context_pack_count": 5,
+  "contexts_with_aggregation_or_cap_disclosure_count": 5,
+  "contexts_with_graph_guidance_count": 5,
+  "contexts_with_source_truth_evidence_count": 5,
+  "contexts_with_v2_summary_guidance_count": 5,
+  "contract": {
+    "answer_permission": false,
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "cap_disclosure_required_for_capped_results": true,
+    "crag_retries_only_when_needed": true,
+    "graph_guidance_authority": "guidance_only",
+    "graph_rebuild_at_query_time": false,
+    "llm_reads_context_pack_only": true,
+    "raw_5tb_scan_at_query_time": false,
+    "self_rag_checks_context_strength": true,
+    "source_truth_evidence_required_for_final_claims": true,
+    "source_truth_mutation_allowed": false,
+    "v2_summary_authority": "guidance_only"
+  },
+  "crag_plan_count": 5,
+  "crag_plans_jsonl_path": "local_data\\organization\\trace_net\\e2e_live_self_rag_crag_evaluator\\trace_net_e2e_live_self_rag_crag_evaluator_crag_plans_v20.jsonl",
+  "graph_proof_authority_violation_count": 0,
+  "inspect_md_path": "local_data\\organization\\trace_net\\e2e_live_self_rag_crag_evaluator\\trace_net_e2e_live_self_rag_crag_evaluator_v20.md",
+  "module": "trace_net_e2e_live_self_rag_crag_evaluator_v20",
+  "opensearch_write_attempt_count": 0,
+  "postgres_write_attempt_count": 0,
+  "qdrant_write_attempt_count": 0,
+  "quality_checks": [
+    {
+      "expected": 5,
+      "name": "context_pack_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "self_rag_evaluation_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "crag_plan_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "ready_for_llm_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "contexts_with_source_truth_evidence_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "contexts_with_graph_guidance_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "contexts_with_v2_summary_guidance_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "contexts_with_aggregation_or_cap_disclosure_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "retry_required_count",
+      "observed": 0,
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "audit_only_count",
+      "observed": 0,
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "graph_proof_authority_violation_count",
+      "observed": 0,
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "summary_proof_authority_violation_count",
+      "observed": 0,
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "answer_permission_count",
+      "observed": 0,
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "expected": false,
+      "name": "contract_raw_5tb_scan_at_query_time",
+      "observed": false,
+      "op": "is False",
+      "passed": true
+    },
+    {
+      "expected": false,
+      "name": "contract_graph_rebuild_at_query_time",
+      "observed": false,
+      "op": "is False",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "require_no_answer_permission",
+      "observed": 0,
+      "op": "==",
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS",
+  "ready_for_llm_count": 5,
+  "ready_with_cap_disclosure_count": 3,
+  "records_jsonl_path": "local_data\\organization\\trace_net\\e2e_live_self_rag_crag_evaluator\\trace_net_e2e_live_self_rag_crag_evaluator_records_v20.jsonl",
+  "report_path": "local_data\\organization\\trace_net\\e2e_live_self_rag_crag_evaluator\\trace_net_e2e_live_self_rag_crag_evaluator_v20.json",
+  "retry_required_count": 0,
+  "self_rag_crag_records": [
+    {
+      "aggregation_or_cap_disclosure": {
+        "available_drilldowns": [
+          "document",
+          "manual",
+          "revision",
+          "section",
+          "route",
+          "field_type",
+          "page",
+          "leiden_community"
+        ],
+        "high_degree_node_detected": false,
+        "more_results_available": false,
+        "result_was_capped": false,
+        "returned_match_count": 1,
+        "total_match_count": 1
+      },
+      "audit_only": false,
+      "context_pack_id": "context_pack_v19_0001",
+      "crag_actions": [
+        {
+          "action_type": "no_retry_needed",
+          "requires_source_truth_confirmation": true
+        }
+      ],
+      "crag_status": "CRAG_NO_RETRY_NEEDED",
+      "graph_guidance_authority": "guidance_only",
+      "graph_guidance_count": 1,
+      "graph_proof_authority_violation": false,
+      "has_answer_rules": true,
+      "has_graph_guidance": true,
+      "has_source_truth_evidence": true,
+      "has_v2_summary_guidance": true,
+      "limitations": [
+        "Final answer must stay limited to cited source-truth evidence."
+      ],
+      "query_plan_id": "query_plan_v17_0001",
+      "ready_for_llm_prompt": true,
+      "retry_required": false,
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "graph_rebuild_at_query_time": false,
+        "raw_5tb_scan_at_query_time": false,
+        "source_truth_mutation_allowed": false,
+        "uploads_to_opensearch": false,
+        "writes_to_opensearch": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false
+      },
+      "self_rag_crag_record_id": "self_rag_crag_v20_0001",
+      "self_rag_status": "CONTEXT_READY_FOR_LLM",
+      "source_truth_evidence_count": 1,
+      "summary_proof_authority_violation": false,
+      "user_query": "Find part number 120-36834-509",
+      "v2_summary_authority": "guidance_only",
+      "v2_summary_guidance_count": 1
+    },
+    {
+      "aggregation_or_cap_disclosure": {
+        "available_drilldowns": [
+          "document",
+          "manual",
+          "revision",
+          "section",
+          "route",
+          "field_type",
+          "page",
+          "leiden_community"
+        ],
+        "high_degree_node_detected": false,
+        "more_results_available": false,
+        "result_was_capped": false,
+        "returned_match_count": 1,
+        "total_match_count": 1
+      },
+      "audit_only": false,
+      "context_pack_id": "context_pack_v19_0002",
+      "crag_actions": [
+        {
+          "action_type": "no_retry_needed",
+          "requires_source_truth_confirmation": true
+        }
+      ],
+      "crag_status": "CRAG_NO_RETRY_NEEDED",
+      "graph_guidance_authority": "guidance_only",
+      "graph_guidance_count": 1,
+      "graph_proof_authority_violation": false,
+      "has_answer_rules": true,
+      "has_graph_guidance": true,
+      "has_source_truth_evidence": true,
+      "has_v2_summary_guidance": true,
+      "limitations": [
+        "Final answer must stay limited to cited source-truth evidence."
+      ],
+      "query_plan_id": "query_plan_v17_0002",
+      "ready_for_llm_prompt": true,
+      "retry_required": false,
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "graph_rebuild_at_query_time": false,
+        "raw_5tb_scan_at_query_time": false,
+        "source_truth_mutation_allowed": false,
+        "uploads_to_opensearch": false,
+        "writes_to_opensearch": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false
+      },
+      "self_rag_crag_record_id": "self_rag_crag_v20_0002",
+      "self_rag_status": "CONTEXT_READY_FOR_LLM",
+      "source_truth_evidence_count": 1,
+      "summary_proof_authority_violation": false,
+      "user_query": "Find part number 120-36833-501",
+      "v2_summary_authority": "guidance_only",
+      "v2_summary_guidance_count": 1
+    },
+    {
+      "aggregation_or_cap_disclosure": {
+        "available_drilldowns": [
+          "document",
+          "manual",
+          "revision",
+          "section",
+          "route",
+          "field_type",
+          "page",
+          "leiden_community"
+        ],
+        "high_degree_node_detected": true,
+        "more_results_available": true,
+        "result_was_capped": true,
+        "returned_match_count": 10,
+        "total_match_count": 150
+      },
+      "audit_only": false,
+      "context_pack_id": "context_pack_v19_0003",
+      "crag_actions": [
+        {
+          "action_type": "preserve_aggregation_and_offer_drilldown",
+          "allowed_drilldowns": [
+            "document",
+            "manual",
+            "revision",
+            "section",
+            "route",
+            "field_type",
+            "page",
+            "leiden_community"
+          ],
+          "requires_cap_disclosure": true,
+          "requires_source_truth_confirmation": true
+        }
+      ],
+      "crag_status": "CRAG_NO_RETRY_NEEDED_PRESERVE_CAP_DISCLOSURE",
+      "graph_guidance_authority": "guidance_only",
+      "graph_guidance_count": 1,
+      "graph_proof_authority_violation": false,
+      "has_answer_rules": true,
+      "has_graph_guidance": true,
+      "has_source_truth_evidence": true,
+      "has_v2_summary_guidance": true,
+      "limitations": [
+        "Results are capped or aggregated; the final answer must disclose that more matching evidence may exist."
+      ],
+      "query_plan_id": "query_plan_v17_0003",
+      "ready_for_llm_prompt": true,
+      "retry_required": false,
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "graph_rebuild_at_query_time": false,
+        "raw_5tb_scan_at_query_time": false,
+        "source_truth_mutation_allowed": false,
+        "uploads_to_opensearch": false,
+        "writes_to_opensearch": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false
+      },
+      "self_rag_crag_record_id": "self_rag_crag_v20_0003",
+      "self_rag_status": "CONTEXT_READY_WITH_CAP_DISCLOSURE",
+      "source_truth_evidence_count": 10,
+      "summary_proof_authority_violation": false,
+      "user_query": "What maintenance manual pages mention covered part numbers?",
+      "v2_summary_authority": "guidance_only",
+      "v2_summary_guidance_count": 1
+    },
+    {
+      "aggregation_or_cap_disclosure": {
+        "available_drilldowns": [
+          "document",
+          "manual",
+          "revision",
+          "section",
+          "route",
+          "field_type",
+          "page",
+          "leiden_community"
+        ],
+        "high_degree_node_detected": true,
+        "more_results_available": true,
+        "result_was_capped": true,
+        "returned_match_count": 10,
+        "total_match_count": 50
+      },
+      "audit_only": false,
+      "context_pack_id": "context_pack_v19_0004",
+      "crag_actions": [
+        {
+          "action_type": "preserve_aggregation_and_offer_drilldown",
+          "allowed_drilldowns": [
+            "document",
+            "manual",
+            "revision",
+            "section",
+            "route",
+            "field_type",
+            "page",
+            "leiden_community"
+          ],
+          "requires_cap_disclosure": true,
+          "requires_source_truth_confirmation": true
+        }
+      ],
+      "crag_status": "CRAG_NO_RETRY_NEEDED_PRESERVE_CAP_DISCLOSURE",
+      "graph_guidance_authority": "guidance_only",
+      "graph_guidance_count": 1,
+      "graph_proof_authority_violation": false,
+      "has_answer_rules": true,
+      "has_graph_guidance": true,
+      "has_source_truth_evidence": true,
+      "has_v2_summary_guidance": true,
+      "limitations": [
+        "Results are capped or aggregated; the final answer must disclose that more matching evidence may exist."
+      ],
+      "query_plan_id": "query_plan_v17_0004",
+      "ready_for_llm_prompt": true,
+      "retry_required": false,
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "graph_rebuild_at_query_time": false,
+        "raw_5tb_scan_at_query_time": false,
+        "source_truth_mutation_allowed": false,
+        "uploads_to_opensearch": false,
+        "writes_to_opensearch": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false
+      },
+      "self_rag_crag_record_id": "self_rag_crag_v20_0004",
+      "self_rag_status": "CONTEXT_READY_WITH_CAP_DISCLOSURE",
+      "source_truth_evidence_count": 10,
+      "summary_proof_authority_violation": false,
+      "user_query": "Where is manual reference 25-21-00 used?",
+      "v2_summary_authority": "guidance_only",
+      "v2_summary_guidance_count": 1
+    },
+    {
+      "aggregation_or_cap_disclosure": {
+        "available_drilldowns": [
+          "document",
+          "manual",
+          "revision",
+          "section",
+          "route",
+          "field_type",
+          "page",
+          "leiden_community"
+        ],
+        "high_degree_node_detected": true,
+        "more_results_available": true,
+        "result_was_capped": true,
+        "returned_match_count": 10,
+        "total_match_count": 188
+      },
+      "audit_only": false,
+      "context_pack_id": "context_pack_v19_0005",
+      "crag_actions": [
+        {
+          "action_type": "preserve_aggregation_and_offer_drilldown",
+          "allowed_drilldowns": [
+            "document",
+            "manual",
+            "revision",
+            "section",
+            "route",
+            "field_type",
+            "page",
+            "leiden_community"
+          ],
+          "requires_cap_disclosure": true,
+          "requires_source_truth_confirmation": true
+        }
+      ],
+      "crag_status": "CRAG_NO_RETRY_NEEDED_PRESERVE_CAP_DISCLOSURE",
+      "graph_guidance_authority": "guidance_only",
+      "graph_guidance_count": 1,
+      "graph_proof_authority_violation": false,
+      "has_answer_rules": true,
+      "has_graph_guidance": true,
+      "has_source_truth_evidence": true,
+      "has_v2_summary_guidance": true,
+      "limitations": [
+        "Results are capped or aggregated; the final answer must disclose that more matching evidence may exist."
+      ],
+      "query_plan_id": "query_plan_v17_0005",
+      "ready_for_llm_prompt": true,
+      "retry_required": false,
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "graph_rebuild_at_query_time": false,
+        "raw_5tb_scan_at_query_time": false,
+        "source_truth_mutation_allowed": false,
+        "uploads_to_opensearch": false,
+        "writes_to_opensearch": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false
+      },
+      "self_rag_crag_record_id": "self_rag_crag_v20_0005",
+      "self_rag_status": "CONTEXT_READY_WITH_CAP_DISCLOSURE",
+      "source_truth_evidence_count": 10,
+      "summary_proof_authority_violation": false,
+      "user_query": "Search table text MAINTENANCE MANUAL WITH",
+      "v2_summary_authority": "guidance_only",
+      "v2_summary_guidance_count": 1
+    }
+  ],
+  "self_rag_evaluation_count": 5,
+  "source_report_path": "local_data/organization/trace_net/e2e_executed_plan_context_pack/trace_net_e2e_executed_plan_context_pack_v19.json",
+  "source_truth_mutation_allowed_count": 0,
+  "status": "E2E_LIVE_SELF_RAG_CRAG_EVALUATOR_READY_FOR_LIVE_LLM_PROMPT",
+  "summary_proof_authority_violation_count": 0,
+  "version": "v20"
+}
