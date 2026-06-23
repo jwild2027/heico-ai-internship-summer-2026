@@ -183,3 +183,61 @@ ANSWER RULES:
     assert "t_p_120_1176_p000029 [3]" in content
     assert "t_p_120_1176_p000030 [4]" in content
     assert "t_p_120_1176_p000031 [5]" in content
+
+
+def test_broad_covered_part_draft_cites_each_page_value_claim(tmp_path: Path):
+    prompt = """TRACE-NET LLM PROMPT CONTRACT v11
+
+USER QUESTION:
+What maintenance manual pages mention covered part numbers?
+
+QUERY INTENT:
+covered_part_number
+
+SELF-RAG STATUS:
+SELF_RAG_CONTEXT_READY
+
+CRAG STATUS:
+CRAG_NO_RETRY_NEEDED
+
+SOURCE-TRUTH EVIDENCE (ONLY THIS BOX CAN SUPPORT FACTUAL CLAIMS):
+- [1] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-001 source_tunnel=table_exact_search_tunnel tunnel_score=199
+- [2] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-003 source_tunnel=table_exact_search_tunnel tunnel_score=199
+- [3] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-005 source_tunnel=table_exact_search_tunnel tunnel_score=199
+
+GUIDANCE ONLY (not source truth, not proof):
+- tunnel=page_summary_tunnel page=t_p_120_1176_p000003 authority=guidance_only_not_source_truth text=summary
+
+ANSWER RULES:
+- Cite every factual claim using SOURCE-TRUTH EVIDENCE.
+"""
+    data = {
+        "quality_status": "PASS",
+        "prompt_contracts": [
+            {
+                "prompt_contract_id": "llm_prompt_contract_v11_broad_covered_parts",
+                "prompt_contract_status": "LLM_PROMPT_CONTRACT_READY",
+                "context_pack_id": "dynamic_context_pack_v8_broad_covered_parts",
+                "user_query": "What maintenance manual pages mention covered part numbers?",
+                "query_intent": "covered_part_number",
+                "prompt_text": prompt,
+                "self_rag_ready": True,
+                "crag_no_retry_needed": True,
+                "source_self_rag_status": "SELF_RAG_CONTEXT_READY",
+                "source_crag_plan_status": "CRAG_NO_RETRY_NEEDED",
+                "graph_summary_proof_violation_count": 0,
+                "answer_permission": False,
+                "can_answer_directly": False,
+                "can_prove_claims": False,
+                "source_truth_mutation_allowed": False,
+            }
+        ],
+    }
+    source_path = tmp_path / "prompt_contract_broad_covered_parts.json"
+    source_path.write_text(json.dumps(data), encoding="utf-8")
+    report = build_report(source_path)
+    content = report["reasoned_response_drafts"][0]["draft_message"]["content"]
+    assert "page(s)" not in content
+    assert "120-36833-001 on page t_p_120_1176_p000003 [1]" in content
+    assert "120-36833-003 on page t_p_120_1176_p000003 [2]" in content
+    assert "120-36833-005 on page t_p_120_1176_p000003 [3]" in content

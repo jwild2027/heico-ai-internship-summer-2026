@@ -28,7 +28,7 @@ This stage creates deterministic reasoned answer drafts from v11 prompt contract
 - **REASONED_RESPONSE_DRAFT_READY_FOR_FINAL_GATE** `reasoned_response_draft_v12_0004` | table_text | Search table text MAINTENANCE MANUAL WITH | citations=5
   - TRACE-Net found the table text 'MAINTENANCE MANUAL WITH' on page(s) t_p_120_1176_p000027 [1], t_p_120_1176_p000028 [2], t_p_120_1176_p000029 [3], t_p_120_1176_p000030 [4], t_p_120_1176_p000031 [5].
 - **REASONED_RESPONSE_DRAFT_READY_FOR_FINAL_GATE** `reasoned_response_draft_v12_0005` | covered_part_number | What maintenance manual pages mention covered part numbers? | citations=5
-  - TRACE-Net found covered part numbers on page(s) t_p_120_1176_p000003. Examples from the source-truth evidence include 120-36833-001 [1], 120-36833-003 [2], 120-36833-005 [3].
+  - TRACE-Net found covered part numbers in the source-truth evidence: covered part number 120-36833-001 on page t_p_120_1176_p000003 [1]; covered part number 120-36833-003 on page t_p_120_1176_p000003 [2]; covered part number 120-36833-005 on page t_p_120_1176_p000003 [3].
 
 ## Quality checks
 - PASS quality_status: observed=PASS expected=== PASS

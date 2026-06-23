@@ -1,0 +1,890 @@
+{
+  "allowed_tunnel_validation_count": 40,
+  "answer_permission_count": 0,
+  "artifact_summary": {
+    "community_navigation_available": false,
+    "community_navigation_record_count": 0,
+    "leiden_communities_available": true,
+    "leiden_community_record_count": 229,
+    "page_context_v2_available": false,
+    "page_context_v2_record_count": 0,
+    "route_dispatch_manifest_available": false,
+    "route_dispatch_record_count": 0,
+    "table_exact_search_available": true,
+    "table_exact_search_record_count": 1497
+  },
+  "contract": {
+    "answer_permission": false,
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "leiden_communities_guidance_only": true,
+    "llm_assisted_planning_allowed": true,
+    "llm_plan_must_be_structured_json": true,
+    "raw_5tb_scan_at_query_time": false,
+    "source_truth_evidence_required_for_final_claims": true,
+    "source_truth_mutation_allowed": false,
+    "trace_net_executes_only_allowed_tunnels": true,
+    "trace_net_validates_plan_before_execution": true,
+    "v2_summaries_guidance_only": true
+  },
+  "invalid_tunnel_count": 0,
+  "module": "trace_net_e2e_llm_assisted_query_planner_v17",
+  "plans_with_leiden_guidance_count": 5,
+  "plans_with_source_truth_fields_count": 5,
+  "plans_with_v2_summary_guidance_count": 5,
+  "proof_authority_violation_count": 0,
+  "quality_checks": [
+    {
+      "expected": 5,
+      "name": "query_plan_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "validated_query_plan_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "plans_with_v2_summary_guidance_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "plans_with_leiden_guidance_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 5,
+      "name": "plans_with_source_truth_fields_count",
+      "observed": 5,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 20,
+      "name": "allowed_tunnel_validation_count",
+      "observed": 40,
+      "op": ">=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "invalid_tunnel_count",
+      "observed": 0,
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "proof_authority_violation_count",
+      "observed": 0,
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "answer_permission_count",
+      "observed": 0,
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "op": "<=",
+      "passed": true
+    },
+    {
+      "expected": 0,
+      "name": "require_no_answer_permission",
+      "observed": 0,
+      "op": "==",
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS",
+  "query_plan_count": 5,
+  "query_plans": [
+    {
+      "artifact_guidance": {
+        "community_navigation_metadata_bridge": {
+          "authority": "guidance_only",
+          "available": false,
+          "record_count": 0
+        },
+        "leiden_communities": {
+          "authority": "guidance_only",
+          "available": true,
+          "record_count": 229,
+          "use_for": [
+            "relationship_navigation",
+            "related_page_expansion",
+            "graph_guided_retry"
+          ]
+        },
+        "page_context_v2": {
+          "authority": "guidance_only",
+          "available": false,
+          "record_count": 0,
+          "use_for": [
+            "query_planning",
+            "context_compression",
+            "crag_retry_page_targeting"
+          ]
+        },
+        "route_dispatch_manifest": {
+          "authority": "routing_guidance_only",
+          "available": false,
+          "record_count": 0
+        }
+      },
+      "extracted_query_terms": {
+        "ipl_items": [],
+        "manual_references": [],
+        "part_numbers": [
+          "120-36834-509"
+        ]
+      },
+      "future_llm_role": "LLM may propose structured plan, subqueries, synonyms, and graph expansion hints; TRACE-Net validates and executes only allowed tunnels.",
+      "guidance_tunnels": [
+        "page_summary_tunnel",
+        "graph_community_tunnel",
+        "graph_navigation_tunnel",
+        "route_metadata_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "planner_mode": "llm_assisted_contract_simulated_deterministic_v17",
+      "primary_tunnels": [
+        "table_exact_search_tunnel"
+      ],
+      "query_goal": "Find source-truth evidence for 120-36834-509 and return citation-ready page/value records.",
+      "query_intent": "part_number",
+      "query_plan_id": "query_plan_v17_0001",
+      "query_plan_status": "QUERY_PLAN_VALIDATED_FOR_TUNNEL_EXECUTION",
+      "required_source_truth_fields": [
+        "covered_part_number",
+        "ipl_part_number",
+        "part_number"
+      ],
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false,
+        "uploads_to_opensearch": false,
+        "writes_to_opensearch": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false
+      },
+      "scalability_contract": {
+        "designed_for_large_corpora": true,
+        "expected_corpus_size_note": "Query-time planning must never scan raw 5TB source data. It must operate over prebuilt indexes, summaries, graph metadata, and source-truth evidence stores.",
+        "graph_built_offline": true,
+        "graph_rebuild_at_query_time": false,
+        "llm_reads_context_pack_only": true,
+        "llm_reads_entire_graph": false,
+        "raw_corpus_scan_at_query_time": false
+      },
+      "secondary_tunnels": [
+        "table_hybrid_bridge_tunnel",
+        "qdrant_page_profile_tunnel"
+      ],
+      "subqueries": [
+        {
+          "preferred_tunnel": "table_exact_search_tunnel",
+          "required_source_truth_fields": [
+            "covered_part_number",
+            "ipl_part_number"
+          ],
+          "subquery_type": "exact_value_lookup",
+          "target_value": "120-36834-509"
+        }
+      ],
+      "tunnel_policy": {
+        "allowed_tunnels": [
+          "graph_community_tunnel",
+          "graph_navigation_tunnel",
+          "page_summary_tunnel",
+          "qdrant_page_profile_tunnel",
+          "route_metadata_tunnel",
+          "table_exact_search_tunnel",
+          "table_hybrid_bridge_tunnel",
+          "table_route_summary_tunnel"
+        ],
+        "graph_authority": "guidance_only",
+        "guidance_only_tunnels": [
+          "graph_community_tunnel",
+          "graph_navigation_tunnel",
+          "page_summary_tunnel",
+          "route_metadata_tunnel",
+          "table_route_summary_tunnel"
+        ],
+        "leiden_communities_allowed": true,
+        "leiden_use_for": [
+          "related_page_expansion",
+          "community_navigation",
+          "crag_retry",
+          "context_guidance"
+        ],
+        "llm_may_choose_tunnels": false,
+        "llm_may_suggest_tunnels_for_validation": true,
+        "proof_authority": "source_truth_evidence_only",
+        "ranking_support_tunnels": [
+          "qdrant_page_profile_tunnel",
+          "table_hybrid_bridge_tunnel"
+        ],
+        "source_truth_tunnels": [
+          "table_exact_search_tunnel"
+        ],
+        "summary_authority": "guidance_only",
+        "v2_summaries_allowed": true
+      },
+      "user_query": "Find part number 120-36834-509",
+      "validation": {
+        "allowed_tunnel_validation_count": 8,
+        "invalid_tunnel_count": 0,
+        "invalid_tunnels": [],
+        "proof_authority_violation_count": 0,
+        "proof_authority_violations": [],
+        "validated": true,
+        "validation_checks": {
+          "all_tunnel_names_allowed": true,
+          "graph_and_summary_guidance_only": true,
+          "has_leiden_guidance": true,
+          "has_primary_tunnel": true,
+          "has_required_source_truth_fields": true,
+          "has_source_truth_primary_or_secondary": true,
+          "has_v2_summary_guidance": true,
+          "no_answer_permission": true,
+          "no_source_truth_mutation": true
+        }
+      }
+    },
+    {
+      "artifact_guidance": {
+        "community_navigation_metadata_bridge": {
+          "authority": "guidance_only",
+          "available": false,
+          "record_count": 0
+        },
+        "leiden_communities": {
+          "authority": "guidance_only",
+          "available": true,
+          "record_count": 229,
+          "use_for": [
+            "relationship_navigation",
+            "related_page_expansion",
+            "graph_guided_retry"
+          ]
+        },
+        "page_context_v2": {
+          "authority": "guidance_only",
+          "available": false,
+          "record_count": 0,
+          "use_for": [
+            "query_planning",
+            "context_compression",
+            "crag_retry_page_targeting"
+          ]
+        },
+        "route_dispatch_manifest": {
+          "authority": "routing_guidance_only",
+          "available": false,
+          "record_count": 0
+        }
+      },
+      "extracted_query_terms": {
+        "ipl_items": [],
+        "manual_references": [],
+        "part_numbers": [
+          "120-36833-501"
+        ]
+      },
+      "future_llm_role": "LLM may propose structured plan, subqueries, synonyms, and graph expansion hints; TRACE-Net validates and executes only allowed tunnels.",
+      "guidance_tunnels": [
+        "page_summary_tunnel",
+        "graph_community_tunnel",
+        "graph_navigation_tunnel",
+        "route_metadata_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "planner_mode": "llm_assisted_contract_simulated_deterministic_v17",
+      "primary_tunnels": [
+        "table_exact_search_tunnel"
+      ],
+      "query_goal": "Find source-truth evidence for 120-36833-501 and return citation-ready page/value records.",
+      "query_intent": "part_number",
+      "query_plan_id": "query_plan_v17_0002",
+      "query_plan_status": "QUERY_PLAN_VALIDATED_FOR_TUNNEL_EXECUTION",
+      "required_source_truth_fields": [
+        "covered_part_number",
+        "ipl_part_number",
+        "part_number"
+      ],
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false,
+        "uploads_to_opensearch": false,
+        "writes_to_opensearch": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false
+      },
+      "scalability_contract": {
+        "designed_for_large_corpora": true,
+        "expected_corpus_size_note": "Query-time planning must never scan raw 5TB source data. It must operate over prebuilt indexes, summaries, graph metadata, and source-truth evidence stores.",
+        "graph_built_offline": true,
+        "graph_rebuild_at_query_time": false,
+        "llm_reads_context_pack_only": true,
+        "llm_reads_entire_graph": false,
+        "raw_corpus_scan_at_query_time": false
+      },
+      "secondary_tunnels": [
+        "table_hybrid_bridge_tunnel",
+        "qdrant_page_profile_tunnel"
+      ],
+      "subqueries": [
+        {
+          "preferred_tunnel": "table_exact_search_tunnel",
+          "required_source_truth_fields": [
+            "covered_part_number",
+            "ipl_part_number"
+          ],
+          "subquery_type": "exact_value_lookup",
+          "target_value": "120-36833-501"
+        }
+      ],
+      "tunnel_policy": {
+        "allowed_tunnels": [
+          "graph_community_tunnel",
+          "graph_navigation_tunnel",
+          "page_summary_tunnel",
+          "qdrant_page_profile_tunnel",
+          "route_metadata_tunnel",
+          "table_exact_search_tunnel",
+          "table_hybrid_bridge_tunnel",
+          "table_route_summary_tunnel"
+        ],
+        "graph_authority": "guidance_only",
+        "guidance_only_tunnels": [
+          "graph_community_tunnel",
+          "graph_navigation_tunnel",
+          "page_summary_tunnel",
+          "route_metadata_tunnel",
+          "table_route_summary_tunnel"
+        ],
+        "leiden_communities_allowed": true,
+        "leiden_use_for": [
+          "related_page_expansion",
+          "community_navigation",
+          "crag_retry",
+          "context_guidance"
+        ],
+        "llm_may_choose_tunnels": false,
+        "llm_may_suggest_tunnels_for_validation": true,
+        "proof_authority": "source_truth_evidence_only",
+        "ranking_support_tunnels": [
+          "qdrant_page_profile_tunnel",
+          "table_hybrid_bridge_tunnel"
+        ],
+        "source_truth_tunnels": [
+          "table_exact_search_tunnel"
+        ],
+        "summary_authority": "guidance_only",
+        "v2_summaries_allowed": true
+      },
+      "user_query": "Find part number 120-36833-501",
+      "validation": {
+        "allowed_tunnel_validation_count": 8,
+        "invalid_tunnel_count": 0,
+        "invalid_tunnels": [],
+        "proof_authority_violation_count": 0,
+        "proof_authority_violations": [],
+        "validated": true,
+        "validation_checks": {
+          "all_tunnel_names_allowed": true,
+          "graph_and_summary_guidance_only": true,
+          "has_leiden_guidance": true,
+          "has_primary_tunnel": true,
+          "has_required_source_truth_fields": true,
+          "has_source_truth_primary_or_secondary": true,
+          "has_v2_summary_guidance": true,
+          "no_answer_permission": true,
+          "no_source_truth_mutation": true
+        }
+      }
+    },
+    {
+      "artifact_guidance": {
+        "community_navigation_metadata_bridge": {
+          "authority": "guidance_only",
+          "available": false,
+          "record_count": 0
+        },
+        "leiden_communities": {
+          "authority": "guidance_only",
+          "available": true,
+          "record_count": 229,
+          "use_for": [
+            "relationship_navigation",
+            "related_page_expansion",
+            "graph_guided_retry"
+          ]
+        },
+        "page_context_v2": {
+          "authority": "guidance_only",
+          "available": false,
+          "record_count": 0,
+          "use_for": [
+            "query_planning",
+            "context_compression",
+            "crag_retry_page_targeting"
+          ]
+        },
+        "route_dispatch_manifest": {
+          "authority": "routing_guidance_only",
+          "available": false,
+          "record_count": 0
+        }
+      },
+      "extracted_query_terms": {
+        "ipl_items": [],
+        "manual_references": [],
+        "part_numbers": []
+      },
+      "future_llm_role": "LLM may propose structured plan, subqueries, synonyms, and graph expansion hints; TRACE-Net validates and executes only allowed tunnels.",
+      "guidance_tunnels": [
+        "page_summary_tunnel",
+        "graph_community_tunnel",
+        "graph_navigation_tunnel",
+        "route_metadata_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "planner_mode": "llm_assisted_contract_simulated_deterministic_v17",
+      "primary_tunnels": [
+        "table_exact_search_tunnel"
+      ],
+      "query_goal": "Find pages and source-truth records that list covered part numbers.",
+      "query_intent": "covered_part_number",
+      "query_plan_id": "query_plan_v17_0003",
+      "query_plan_status": "QUERY_PLAN_VALIDATED_FOR_TUNNEL_EXECUTION",
+      "required_source_truth_fields": [
+        "covered_part_number"
+      ],
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false,
+        "uploads_to_opensearch": false,
+        "writes_to_opensearch": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false
+      },
+      "scalability_contract": {
+        "designed_for_large_corpora": true,
+        "expected_corpus_size_note": "Query-time planning must never scan raw 5TB source data. It must operate over prebuilt indexes, summaries, graph metadata, and source-truth evidence stores.",
+        "graph_built_offline": true,
+        "graph_rebuild_at_query_time": false,
+        "llm_reads_context_pack_only": true,
+        "llm_reads_entire_graph": false,
+        "raw_corpus_scan_at_query_time": false
+      },
+      "secondary_tunnels": [
+        "table_hybrid_bridge_tunnel",
+        "qdrant_page_profile_tunnel"
+      ],
+      "subqueries": [
+        {
+          "preferred_tunnel": "table_exact_search_tunnel",
+          "required_source_truth_fields": [
+            "covered_part_number"
+          ],
+          "subquery_type": "field_aware_source_truth_lookup",
+          "target_value": null
+        }
+      ],
+      "tunnel_policy": {
+        "allowed_tunnels": [
+          "graph_community_tunnel",
+          "graph_navigation_tunnel",
+          "page_summary_tunnel",
+          "qdrant_page_profile_tunnel",
+          "route_metadata_tunnel",
+          "table_exact_search_tunnel",
+          "table_hybrid_bridge_tunnel",
+          "table_route_summary_tunnel"
+        ],
+        "graph_authority": "guidance_only",
+        "guidance_only_tunnels": [
+          "graph_community_tunnel",
+          "graph_navigation_tunnel",
+          "page_summary_tunnel",
+          "route_metadata_tunnel",
+          "table_route_summary_tunnel"
+        ],
+        "leiden_communities_allowed": true,
+        "leiden_use_for": [
+          "related_page_expansion",
+          "community_navigation",
+          "crag_retry",
+          "context_guidance"
+        ],
+        "llm_may_choose_tunnels": false,
+        "llm_may_suggest_tunnels_for_validation": true,
+        "proof_authority": "source_truth_evidence_only",
+        "ranking_support_tunnels": [
+          "qdrant_page_profile_tunnel",
+          "table_hybrid_bridge_tunnel"
+        ],
+        "source_truth_tunnels": [
+          "table_exact_search_tunnel"
+        ],
+        "summary_authority": "guidance_only",
+        "v2_summaries_allowed": true
+      },
+      "user_query": "What maintenance manual pages mention covered part numbers?",
+      "validation": {
+        "allowed_tunnel_validation_count": 8,
+        "invalid_tunnel_count": 0,
+        "invalid_tunnels": [],
+        "proof_authority_violation_count": 0,
+        "proof_authority_violations": [],
+        "validated": true,
+        "validation_checks": {
+          "all_tunnel_names_allowed": true,
+          "graph_and_summary_guidance_only": true,
+          "has_leiden_guidance": true,
+          "has_primary_tunnel": true,
+          "has_required_source_truth_fields": true,
+          "has_source_truth_primary_or_secondary": true,
+          "has_v2_summary_guidance": true,
+          "no_answer_permission": true,
+          "no_source_truth_mutation": true
+        }
+      }
+    },
+    {
+      "artifact_guidance": {
+        "community_navigation_metadata_bridge": {
+          "authority": "guidance_only",
+          "available": false,
+          "record_count": 0
+        },
+        "leiden_communities": {
+          "authority": "guidance_only",
+          "available": true,
+          "record_count": 229,
+          "use_for": [
+            "relationship_navigation",
+            "related_page_expansion",
+            "graph_guided_retry"
+          ]
+        },
+        "page_context_v2": {
+          "authority": "guidance_only",
+          "available": false,
+          "record_count": 0,
+          "use_for": [
+            "query_planning",
+            "context_compression",
+            "crag_retry_page_targeting"
+          ]
+        },
+        "route_dispatch_manifest": {
+          "authority": "routing_guidance_only",
+          "available": false,
+          "record_count": 0
+        }
+      },
+      "extracted_query_terms": {
+        "ipl_items": [],
+        "manual_references": [
+          "25-21-00"
+        ],
+        "part_numbers": []
+      },
+      "future_llm_role": "LLM may propose structured plan, subqueries, synonyms, and graph expansion hints; TRACE-Net validates and executes only allowed tunnels.",
+      "guidance_tunnels": [
+        "page_summary_tunnel",
+        "graph_community_tunnel",
+        "graph_navigation_tunnel",
+        "route_metadata_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "planner_mode": "llm_assisted_contract_simulated_deterministic_v17",
+      "primary_tunnels": [
+        "table_exact_search_tunnel"
+      ],
+      "query_goal": "Find where manual reference 25-21-00 is used and cite source-truth records.",
+      "query_intent": "manual_page_reference",
+      "query_plan_id": "query_plan_v17_0004",
+      "query_plan_status": "QUERY_PLAN_VALIDATED_FOR_TUNNEL_EXECUTION",
+      "required_source_truth_fields": [
+        "manual_page_reference",
+        "ipl_part_number"
+      ],
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false,
+        "uploads_to_opensearch": false,
+        "writes_to_opensearch": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false
+      },
+      "scalability_contract": {
+        "designed_for_large_corpora": true,
+        "expected_corpus_size_note": "Query-time planning must never scan raw 5TB source data. It must operate over prebuilt indexes, summaries, graph metadata, and source-truth evidence stores.",
+        "graph_built_offline": true,
+        "graph_rebuild_at_query_time": false,
+        "llm_reads_context_pack_only": true,
+        "llm_reads_entire_graph": false,
+        "raw_corpus_scan_at_query_time": false
+      },
+      "secondary_tunnels": [
+        "table_hybrid_bridge_tunnel",
+        "qdrant_page_profile_tunnel"
+      ],
+      "subqueries": [
+        {
+          "preferred_tunnel": "table_exact_search_tunnel",
+          "required_source_truth_fields": [
+            "manual_page_reference",
+            "ipl_part_number"
+          ],
+          "subquery_type": "manual_reference_lookup",
+          "target_value": "25-21-00"
+        }
+      ],
+      "tunnel_policy": {
+        "allowed_tunnels": [
+          "graph_community_tunnel",
+          "graph_navigation_tunnel",
+          "page_summary_tunnel",
+          "qdrant_page_profile_tunnel",
+          "route_metadata_tunnel",
+          "table_exact_search_tunnel",
+          "table_hybrid_bridge_tunnel",
+          "table_route_summary_tunnel"
+        ],
+        "graph_authority": "guidance_only",
+        "guidance_only_tunnels": [
+          "graph_community_tunnel",
+          "graph_navigation_tunnel",
+          "page_summary_tunnel",
+          "route_metadata_tunnel",
+          "table_route_summary_tunnel"
+        ],
+        "leiden_communities_allowed": true,
+        "leiden_use_for": [
+          "related_page_expansion",
+          "community_navigation",
+          "crag_retry",
+          "context_guidance"
+        ],
+        "llm_may_choose_tunnels": false,
+        "llm_may_suggest_tunnels_for_validation": true,
+        "proof_authority": "source_truth_evidence_only",
+        "ranking_support_tunnels": [
+          "qdrant_page_profile_tunnel",
+          "table_hybrid_bridge_tunnel"
+        ],
+        "source_truth_tunnels": [
+          "table_exact_search_tunnel"
+        ],
+        "summary_authority": "guidance_only",
+        "v2_summaries_allowed": true
+      },
+      "user_query": "Where is manual reference 25-21-00 used?",
+      "validation": {
+        "allowed_tunnel_validation_count": 8,
+        "invalid_tunnel_count": 0,
+        "invalid_tunnels": [],
+        "proof_authority_violation_count": 0,
+        "proof_authority_violations": [],
+        "validated": true,
+        "validation_checks": {
+          "all_tunnel_names_allowed": true,
+          "graph_and_summary_guidance_only": true,
+          "has_leiden_guidance": true,
+          "has_primary_tunnel": true,
+          "has_required_source_truth_fields": true,
+          "has_source_truth_primary_or_secondary": true,
+          "has_v2_summary_guidance": true,
+          "no_answer_permission": true,
+          "no_source_truth_mutation": true
+        }
+      }
+    },
+    {
+      "artifact_guidance": {
+        "community_navigation_metadata_bridge": {
+          "authority": "guidance_only",
+          "available": false,
+          "record_count": 0
+        },
+        "leiden_communities": {
+          "authority": "guidance_only",
+          "available": true,
+          "record_count": 229,
+          "use_for": [
+            "relationship_navigation",
+            "related_page_expansion",
+            "graph_guided_retry"
+          ]
+        },
+        "page_context_v2": {
+          "authority": "guidance_only",
+          "available": false,
+          "record_count": 0,
+          "use_for": [
+            "query_planning",
+            "context_compression",
+            "crag_retry_page_targeting"
+          ]
+        },
+        "route_dispatch_manifest": {
+          "authority": "routing_guidance_only",
+          "available": false,
+          "record_count": 0
+        }
+      },
+      "extracted_query_terms": {
+        "ipl_items": [],
+        "manual_references": [],
+        "part_numbers": []
+      },
+      "future_llm_role": "LLM may propose structured plan, subqueries, synonyms, and graph expansion hints; TRACE-Net validates and executes only allowed tunnels.",
+      "guidance_tunnels": [
+        "page_summary_tunnel",
+        "graph_community_tunnel",
+        "graph_navigation_tunnel",
+        "route_metadata_tunnel",
+        "table_route_summary_tunnel"
+      ],
+      "planner_mode": "llm_assisted_contract_simulated_deterministic_v17",
+      "primary_tunnels": [
+        "table_exact_search_tunnel"
+      ],
+      "query_goal": "Find exact or table-aware source-truth text matches in table/IPL evidence.",
+      "query_intent": "table_text",
+      "query_plan_id": "query_plan_v17_0005",
+      "query_plan_status": "QUERY_PLAN_VALIDATED_FOR_TUNNEL_EXECUTION",
+      "required_source_truth_fields": [
+        "ipl_text",
+        "table_text"
+      ],
+      "safety_contract": {
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false,
+        "uploads_to_opensearch": false,
+        "writes_to_opensearch": false,
+        "writes_to_postgres": false,
+        "writes_to_qdrant": false
+      },
+      "scalability_contract": {
+        "designed_for_large_corpora": true,
+        "expected_corpus_size_note": "Query-time planning must never scan raw 5TB source data. It must operate over prebuilt indexes, summaries, graph metadata, and source-truth evidence stores.",
+        "graph_built_offline": true,
+        "graph_rebuild_at_query_time": false,
+        "llm_reads_context_pack_only": true,
+        "llm_reads_entire_graph": false,
+        "raw_corpus_scan_at_query_time": false
+      },
+      "secondary_tunnels": [
+        "table_hybrid_bridge_tunnel",
+        "qdrant_page_profile_tunnel"
+      ],
+      "subqueries": [
+        {
+          "preferred_tunnel": "table_exact_search_tunnel",
+          "required_source_truth_fields": [
+            "ipl_text",
+            "table_text"
+          ],
+          "subquery_type": "field_aware_source_truth_lookup",
+          "target_value": null
+        }
+      ],
+      "tunnel_policy": {
+        "allowed_tunnels": [
+          "graph_community_tunnel",
+          "graph_navigation_tunnel",
+          "page_summary_tunnel",
+          "qdrant_page_profile_tunnel",
+          "route_metadata_tunnel",
+          "table_exact_search_tunnel",
+          "table_hybrid_bridge_tunnel",
+          "table_route_summary_tunnel"
+        ],
+        "graph_authority": "guidance_only",
+        "guidance_only_tunnels": [
+          "graph_community_tunnel",
+          "graph_navigation_tunnel",
+          "page_summary_tunnel",
+          "route_metadata_tunnel",
+          "table_route_summary_tunnel"
+        ],
+        "leiden_communities_allowed": true,
+        "leiden_use_for": [
+          "related_page_expansion",
+          "community_navigation",
+          "crag_retry",
+          "context_guidance"
+        ],
+        "llm_may_choose_tunnels": false,
+        "llm_may_suggest_tunnels_for_validation": true,
+        "proof_authority": "source_truth_evidence_only",
+        "ranking_support_tunnels": [
+          "qdrant_page_profile_tunnel",
+          "table_hybrid_bridge_tunnel"
+        ],
+        "source_truth_tunnels": [
+          "table_exact_search_tunnel"
+        ],
+        "summary_authority": "guidance_only",
+        "v2_summaries_allowed": true
+      },
+      "user_query": "Search table text MAINTENANCE MANUAL WITH",
+      "validation": {
+        "allowed_tunnel_validation_count": 8,
+        "invalid_tunnel_count": 0,
+        "invalid_tunnels": [],
+        "proof_authority_violation_count": 0,
+        "proof_authority_violations": [],
+        "validated": true,
+        "validation_checks": {
+          "all_tunnel_names_allowed": true,
+          "graph_and_summary_guidance_only": true,
+          "has_leiden_guidance": true,
+          "has_primary_tunnel": true,
+          "has_required_source_truth_fields": true,
+          "has_source_truth_primary_or_secondary": true,
+          "has_v2_summary_guidance": true,
+          "no_answer_permission": true,
+          "no_source_truth_mutation": true
+        }
+      }
+    }
+  ],
+  "relationship_or_synthesis_plan_count": 0,
+  "source_truth_mutation_allowed_count": 0,
+  "status": "E2E_LLM_ASSISTED_QUERY_PLANNER_READY_FOR_DYNAMIC_PLAN_EXECUTION",
+  "validated_query_plan_count": 5,
+  "version": "v17"
+}

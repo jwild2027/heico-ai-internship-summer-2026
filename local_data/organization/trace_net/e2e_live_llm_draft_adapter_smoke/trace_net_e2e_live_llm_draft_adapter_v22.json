@@ -1,0 +1,186 @@
+{
+  "module": "trace_net_e2e_live_llm_draft_adapter_v22",
+  "version": "v22",
+  "status": "E2E_LIVE_LLM_DRAFT_ADAPTER_READY_FOR_FINAL_GATE",
+  "quality_status": "PASS",
+  "prompt_contract_count": 5,
+  "ready_prompt_contract_count": 5,
+  "llm_draft_count": 1,
+  "drafts_ready_for_final_gate_count": 1,
+  "drafts_with_nonempty_content_count": 1,
+  "source_truth_supported_prompt_count": 1,
+  "successful_llm_call_count": 1,
+  "live_llm_call_count": 1,
+  "simulated_llm_draft_count": 0,
+  "llm_call_error_count": 0,
+  "drafts_with_citation_like_tokens_count": 1,
+  "drafts_needing_cap_disclosure_count": 0,
+  "drafts_with_cap_disclosure_detected_count": 0,
+  "llm_reasoning_omitted_count": 1,
+  "answer_permission_count": 0,
+  "source_truth_mutation_allowed_count": 0,
+  "contract": {
+    "llm_draft_adapter_stage": true,
+    "real_llm_call_supported": true,
+    "llm_mode": "ollama",
+    "llm_model": "gemma4:26b",
+    "llm_base_url": "http://127.0.0.1:11434/v1",
+    "final_gate_required_after_llm_draft": true,
+    "draft_is_not_final_answer": true,
+    "source_truth_evidence_required_for_final_claims": true,
+    "graph_leiden_guidance_only": true,
+    "v2_summaries_guidance_only": true,
+    "raw_5tb_scan_at_query_time": false,
+    "graph_rebuild_at_query_time": false,
+    "source_truth_mutation_allowed": false,
+    "answer_permission": false,
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "llm_reasoning_field_is_not_passed_to_final_gate": true
+  },
+  "llm_drafts": [
+    {
+      "llm_draft_id": "llm_draft_v22_0001",
+      "prompt_contract_id": "llm_prompt_contract_v21_0001",
+      "context_pack_id": "context_pack_v19_0001",
+      "user_query": "Find part number 120-36834-509",
+      "draft_adapter_status": "LLM_DRAFT_READY_FOR_FINAL_GATE",
+      "prompt_contract_ready": true,
+      "llm_mode": "ollama",
+      "llm_provider": "ollama_openai_compatible",
+      "llm_base_url": "http://127.0.0.1:11434/v1",
+      "llm_model": "gemma4:26b",
+      "llm_called": true,
+      "source_truth_evidence_count": 1,
+      "requires_final_gate": true,
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "source_truth_mutation_allowed": false,
+      "writes_to_postgres": false,
+      "writes_to_qdrant": false,
+      "writes_to_opensearch": false,
+      "uploads_to_opensearch": false,
+      "raw_5tb_scan_at_query_time": false,
+      "graph_rebuild_at_query_time": false,
+      "llm_reads_context_pack_only": true,
+      "graph_leiden_guidance_only": true,
+      "v2_summaries_guidance_only": true,
+      "aggregation_cap_disclosure": {
+        "result_was_capped": false,
+        "more_results_available": false,
+        "high_degree_node_detected": false,
+        "total_match_count": 1,
+        "returned_match_count": 1
+      },
+      "llm_call_status": "LLM_CALL_SUCCEEDED",
+      "ready_for_final_gate": true,
+      "draft_text": "Part number 120-36834-509 is identified as a covered part number on page t_p_120_1176_p000003 [1]. No further descriptions or details for this part number are provided in the available evidence.",
+      "draft_character_count": 194,
+      "citation_like_count": 1,
+      "cap_disclosure_detected_in_draft": false,
+      "llm_elapsed_seconds": 67.784,
+      "llm_response_metadata": {
+        "raw_response_id": "chatcmpl-57",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 1529,
+          "completion_tokens": 381,
+          "total_tokens": 1910
+        },
+        "reasoning_present": true,
+        "reasoning_omitted_from_draft": true,
+        "model_returned": "gemma4:26b"
+      }
+    }
+  ],
+  "quality_checks": [
+    {
+      "name": "prompt_contract_count",
+      "observed": 5,
+      "op": ">=",
+      "expected": 5,
+      "passed": true
+    },
+    {
+      "name": "llm_draft_count",
+      "observed": 1,
+      "op": ">=",
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "drafts_ready_for_final_gate_count",
+      "observed": 1,
+      "op": ">=",
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "drafts_with_nonempty_content_count",
+      "observed": 1,
+      "op": ">=",
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "source_truth_supported_prompt_count",
+      "observed": 1,
+      "op": ">=",
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "successful_llm_call_count",
+      "observed": 1,
+      "op": ">=",
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "live_llm_call_count",
+      "observed": 1,
+      "op": ">=",
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "simulated_llm_draft_count",
+      "observed": 0,
+      "op": ">=",
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "llm_call_error_count",
+      "observed": 0,
+      "op": "<=",
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "answer_permission_count",
+      "observed": 0,
+      "op": "<=",
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "op": "<=",
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "require_no_answer_permission",
+      "observed": 0,
+      "op": "==",
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "report_path": "local_data\\organization\\trace_net\\e2e_live_llm_draft_adapter_smoke\\trace_net_e2e_live_llm_draft_adapter_v22.json",
+  "drafts_jsonl_path": "local_data\\organization\\trace_net\\e2e_live_llm_draft_adapter_smoke\\trace_net_e2e_live_llm_draft_adapter_records_v22.jsonl",
+  "inspect_md_path": "local_data\\organization\\trace_net\\e2e_live_llm_draft_adapter_smoke\\trace_net_e2e_live_llm_draft_adapter_v22.md"
+}

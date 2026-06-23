@@ -202,13 +202,21 @@ def build_reasoned_content(user_query: str, query_intent: str, evidence: Sequenc
                 lines.append("The evidence is sufficient to confirm the listing, but not enough to describe what the part physically is.")
                 return " ".join(lines), limitations
             else:
-                page_text = ", ".join(pages)
+                # Broad covered-part questions must keep every page/value claim
+                # in the same cited clause.  The final answer gate rejects
+                # standalone page claims such as "page(s) t_p_..." when the
+                # citation appears only in a later sentence.
                 examples = []
                 for item in evidence[:3]:
-                    examples.append(f"{clean_text(item.get('normalized_value'))} {citation(item)}")
+                    value = clean_text(item.get("normalized_value"))
+                    page = clean_text(item.get("page_id"))
+                    if value and page:
+                        examples.append(f"covered part number {value} on page {page} {citation(item)}")
+                if not examples:
+                    for item in evidence[:3]:
+                        examples.append(f"{clean_text(item.get('normalized_value'))} {citation(item)}")
                 lines = [
-                    f"TRACE-Net found covered part numbers on page(s) {page_text}.",
-                    "Examples from the source-truth evidence include " + ", ".join(examples) + ".",
+                    "TRACE-Net found covered part numbers in the source-truth evidence: " + "; ".join(examples) + "."
                 ]
                 limitations.append("The draft lists cited covered-part evidence only; it does not infer full applicability beyond the cited records.")
                 return " ".join(lines), limitations

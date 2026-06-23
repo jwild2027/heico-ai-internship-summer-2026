@@ -402,7 +402,7 @@
     }
   ],
   "citations_jsonl_path": "local_data\\organization\\trace_net\\e2e_final_answer_gate\\trace_net_e2e_final_answer_gate_citations_v13.jsonl",
-  "e2e_final_answer_gate_status": "E2E_FINAL_ANSWER_GATE_NEEDS_REPAIR",
+  "e2e_final_answer_gate_status": "E2E_FINAL_ANSWER_GATE_READY_FOR_WEBUI_ENDPOINT",
   "final_answer_gate_contract": {
     "answer_permission": false,
     "can_answer_directly": false,
@@ -991,10 +991,8 @@
     },
     {
       "answer_permission": false,
-      "blocker_count": 1,
-      "blockers": [
-        "unsupported_evidence_mentions:1"
-      ],
+      "blocker_count": 0,
+      "blockers": [],
       "can_answer_directly": false,
       "can_prove_claims": false,
       "citation_count": 5,
@@ -1091,12 +1089,12 @@
         "covered_part_number": 5
       },
       "final_answer_gate_id": "final_answer_gate_v13_0005",
-      "final_answer_gate_status": "FINAL_ANSWER_GATE_BLOCKED",
+      "final_answer_gate_status": "FINAL_ANSWER_GATE_PASSED",
       "final_answer_message": {
-        "content": "TRACE-Net found covered part numbers on page(s) t_p_120_1176_p000003. Examples from the source-truth evidence include 120-36833-001 [1], 120-36833-003 [2], 120-36833-005 [3].",
+        "content": "TRACE-Net found covered part numbers in the source-truth evidence: covered part number 120-36833-001 on page t_p_120_1176_p000003 [1]; covered part number 120-36833-003 on page t_p_120_1176_p000003 [2]; covered part number 120-36833-005 on page t_p_120_1176_p000003 [3].",
         "role": "assistant"
       },
-      "final_gate_passed": false,
+      "final_gate_passed": true,
       "final_gate_policy": {
         "cite_every_factual_claim": true,
         "graph_is_not_proof_authority": true,
@@ -1116,15 +1114,15 @@
       ],
       "prompt_contract_id": "llm_prompt_contract_v11_0005",
       "query_intent": "covered_part_number",
-      "ready_for_final_answer_output": false,
-      "ready_for_webui_endpoint": false,
+      "ready_for_final_answer_output": true,
+      "ready_for_webui_endpoint": true,
       "reasoned_response_draft_id": "reasoned_response_draft_v12_0005",
       "response_is_final_gated_draft": true,
       "schema_version": "v13",
       "source_trace_ready_citation_count": 5,
       "source_truth_citation_count": 5,
       "source_truth_mutation_allowed": false,
-      "unsupported_claim_count": 1,
+      "unsupported_claim_count": 0,
       "user_query": "What maintenance manual pages mention covered part numbers?",
       "warning_count": 0,
       "warnings": []
@@ -1153,14 +1151,14 @@
     {
       "expected": ">= 5",
       "name": "passed_final_gate_count",
-      "observed": 4,
-      "passed": false
+      "observed": 5,
+      "passed": true
     },
     {
       "expected": ">= 5",
       "name": "citation_supported_answer_count",
-      "observed": 4,
-      "passed": false
+      "observed": 5,
+      "passed": true
     },
     {
       "expected": ">= 15",
@@ -1171,8 +1169,8 @@
     {
       "expected": ">= 5",
       "name": "final_answers_ready_for_webui_count",
-      "observed": 4,
-      "passed": false
+      "observed": 5,
+      "passed": true
     },
     {
       "expected": ">= 5",
@@ -1183,8 +1181,8 @@
     {
       "expected": "<= 0",
       "name": "unsupported_claim_count",
-      "observed": 1,
-      "passed": false
+      "observed": 0,
+      "passed": true
     },
     {
       "expected": "<= 0",
@@ -1241,7 +1239,7 @@
       "passed": true
     }
   ],
-  "quality_status": "FAIL",
+  "quality_status": "PASS",
   "records_jsonl_path": "local_data\\organization\\trace_net\\e2e_final_answer_gate\\trace_net_e2e_final_answer_gate_records_v13.jsonl",
   "report_path": "local_data\\organization\\trace_net\\e2e_final_answer_gate\\trace_net_e2e_final_answer_gate_v13.json",
   "schema_version": "v13",
@@ -1250,24 +1248,24 @@
   "summary": {
     "answer_permission_count": 0,
     "answers_with_limitations_count": 5,
-    "blocked_final_gate_count": 1,
-    "blocker_count": 1,
+    "blocked_final_gate_count": 0,
+    "blocker_count": 0,
     "can_answer_directly_count": 0,
     "can_prove_claims_count": 0,
-    "citation_supported_answer_count": 4,
-    "final_answers_ready_for_webui_count": 4,
+    "citation_supported_answer_count": 5,
+    "final_answers_ready_for_webui_count": 5,
     "final_gate_count": 5,
     "graph_summary_proof_violation_count": 0,
     "opensearch_upload_attempt_count": 0,
     "opensearch_write_attempt_count": 0,
-    "passed_final_gate_count": 4,
+    "passed_final_gate_count": 5,
     "postgres_write_attempt_count": 0,
     "qdrant_write_attempt_count": 0,
-    "quality_status": "FAIL",
+    "quality_status": "PASS",
     "reasoned_draft_count": 5,
     "source_truth_mutation_allowed_count": 0,
     "total_citation_count": 25,
-    "unsupported_claim_count": 1,
+    "unsupported_claim_count": 0,
     "warning_count": 0
   }
 }
