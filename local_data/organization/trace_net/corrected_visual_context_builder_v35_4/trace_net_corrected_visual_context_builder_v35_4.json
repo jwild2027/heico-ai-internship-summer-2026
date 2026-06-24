@@ -1,0 +1,497 @@
+{
+  "answer_permission_count": 0,
+  "audit_label_non_diagram_visual_context_eligible_count": 30,
+  "cards_jsonl_path": "local_data\\organization\\trace_net\\corrected_visual_context_builder_v35_4\\trace_net_corrected_visual_context_cards_v35_4.jsonl",
+  "contract": {
+    "answer_permission": false,
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "corrected_visual_context_builder": true,
+    "fishnet_visual_review_candidates_not_auto_processed": true,
+    "gemma_not_called": true,
+    "graph_rebuild_at_query_time": false,
+    "llava_not_called_by_default": true,
+    "raw_5tb_scan_at_query_time": false,
+    "source_truth_mutation_allowed": false,
+    "source_truth_required_for_visual_claims": true,
+    "uploads_to_opensearch": false,
+    "uses_calibrated_cascade_route_brain": true,
+    "uses_visual_context_eligible_only": true,
+    "visual_context_guidance_only": true,
+    "writes_to_opensearch": false,
+    "writes_to_postgres": false,
+    "writes_to_qdrant": false
+  },
+  "created": 1782317472,
+  "fishnet_visual_review_candidate_count": 61,
+  "fishnet_visual_review_candidates_skipped_jsonl_path": "local_data\\organization\\trace_net\\corrected_visual_context_builder_v35_4\\trace_net_fishnet_visual_review_candidates_skipped_v35_4.jsonl",
+  "fishnet_visual_review_pages_processed_count": 0,
+  "guidance_only_visual_context_count": 185,
+  "inspect_md_path": "local_data\\organization\\trace_net\\corrected_visual_context_builder_v35_4\\trace_net_corrected_visual_context_builder_v35_4.md",
+  "missing_pages_jsonl_path": "local_data\\organization\\trace_net\\corrected_visual_context_builder_v35_4\\trace_net_corrected_visual_context_missing_pages_v35_4.jsonl",
+  "missing_source_page_record_count": 0,
+  "module": "trace_net_e2e_corrected_visual_context_builder_v35_4",
+  "overbroad_old_route_pages_processed_count": 0,
+  "post_gate_issue_count": 0,
+  "quality_checks": [
+    {
+      "expected": ">= 509",
+      "name": "source_page_count",
+      "observed": 509,
+      "passed": true
+    },
+    {
+      "expected": ">= 509",
+      "name": "route_decision_count",
+      "observed": 509,
+      "passed": true
+    },
+    {
+      "expected": ">= 185",
+      "name": "visual_context_input_page_count",
+      "observed": 185,
+      "passed": true
+    },
+    {
+      "expected": ">= 185",
+      "name": "visual_context_card_count",
+      "observed": 185,
+      "passed": true
+    },
+    {
+      "expected": ">= 185",
+      "name": "visual_prompt_context_count",
+      "observed": 185,
+      "passed": true
+    },
+    {
+      "expected": ">= 185",
+      "name": "guidance_only_visual_context_count",
+      "observed": 185,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "fishnet_visual_review_pages_processed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "overbroad_old_route_pages_processed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "missing_source_page_record_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "visual_proof_authority_violation_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "post_gate_issue_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "== 0",
+      "name": "require_no_answer_permission",
+      "observed": 0,
+      "passed": true
+    }
+  ],
+  "quality_status": "PASS",
+  "report_path": "local_data\\organization\\trace_net\\corrected_visual_context_builder_v35_4\\trace_net_corrected_visual_context_builder_v35_4.json",
+  "route_decision_count": 509,
+  "sample_visual_context_cards": [
+    {
+      "answer_permission": false,
+      "audit_label_non_diagram_visual_context_eligible": true,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cascade_decision_schema": "trace_net_calibrated_cascade_route_brain_v35_3_decision",
+      "dispatch_routes": [
+        "image_visual",
+        "normal_text",
+        "review"
+      ],
+      "feature_summary": {
+        "blank_score": 0.0,
+        "col_peak_count": 53,
+        "connected_component_count": 68,
+        "edge_density": 0.126478,
+        "horizontal_long_line_count": 9,
+        "horizontal_mid_line_count": 17,
+        "ink_density": 0.064154,
+        "large_component_count": 27,
+        "line_structure_score": 0.3778,
+        "row_peak_count": 33,
+        "table_grid_score": 0.4125,
+        "tall_component_count": 0,
+        "text_score": 0.5056,
+        "vertical_long_line_count": 0,
+        "vertical_mid_line_count": 0,
+        "wide_component_count": 13
+      },
+      "filename": "00000004.tif",
+      "fishnet_action": "dual_route_text_and_visual",
+      "fishnet_reasons": [
+        "text_score_competes_with_image_visual",
+        "audit_label_non_diagram_visual_context_eligible"
+      ],
+      "fishnet_visual_review_candidate": true,
+      "guidance_only": true,
+      "llava_observer_required_later": true,
+      "local_geometry_enrichment_required_later": true,
+      "manual_diagram_page": false,
+      "manual_label": "non_diagram",
+      "ocr_text_candidates": [],
+      "page_id": "t_p_120_1176_p000004",
+      "page_number": 4,
+      "primary_route": "image_visual",
+      "proof_authority": false,
+      "requires_source_truth_confirmation": true,
+      "review_required": true,
+      "route_scores": {
+        "blank_candidate": 0.0,
+        "image_visual": 0.5184,
+        "normal_text": 0.5127,
+        "table": 0.4031
+      },
+      "schema_version": "trace_net_corrected_visual_context_card_v35_4",
+      "source_container": "C:\\Users\\juswil\\Desktop\\metadata.zip",
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "technical_features": [
+        "image/diagram route candidate from calibrated cascade route brain",
+        "edge/visual structure present",
+        "long-line candidates present",
+        "table/grid-like structure also competes"
+      ],
+      "visual_context_card_id": "visual_context_card_be90515823e7df4c",
+      "visual_context_eligible": true,
+      "visual_context_stage": "route_brain_selected_context_seed",
+      "visual_context_type": "visual_table_confusion_candidate",
+      "visual_proof_authority_violation": false,
+      "zip_member": "00000004.tif"
+    },
+    {
+      "answer_permission": false,
+      "audit_label_non_diagram_visual_context_eligible": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cascade_decision_schema": "trace_net_calibrated_cascade_route_brain_v35_3_decision",
+      "dispatch_routes": [
+        "image_visual",
+        "normal_text",
+        "review"
+      ],
+      "feature_summary": {
+        "blank_score": 0.0,
+        "col_peak_count": 37,
+        "connected_component_count": 68,
+        "edge_density": 0.091251,
+        "horizontal_long_line_count": 0,
+        "horizontal_mid_line_count": 1,
+        "ink_density": 0.040892,
+        "large_component_count": 11,
+        "line_structure_score": 0.0222,
+        "row_peak_count": 45,
+        "table_grid_score": 0.0,
+        "tall_component_count": 0,
+        "text_score": 0.6167,
+        "vertical_long_line_count": 0,
+        "vertical_mid_line_count": 0,
+        "wide_component_count": 3
+      },
+      "filename": "00000017.tif",
+      "fishnet_action": "dual_route_text_and_visual",
+      "fishnet_reasons": [
+        "text_score_competes_with_image_visual"
+      ],
+      "fishnet_visual_review_candidate": true,
+      "guidance_only": true,
+      "llava_observer_required_later": true,
+      "local_geometry_enrichment_required_later": true,
+      "manual_diagram_page": true,
+      "manual_label": "diagram",
+      "ocr_text_candidates": [],
+      "page_id": "t_p_120_1176_p000017",
+      "page_number": 17,
+      "primary_route": "image_visual",
+      "proof_authority": false,
+      "requires_source_truth_confirmation": true,
+      "review_required": true,
+      "route_scores": {
+        "blank_candidate": 0.0,
+        "image_visual": 0.6677,
+        "normal_text": 0.6172,
+        "table": 0.0
+      },
+      "schema_version": "trace_net_corrected_visual_context_card_v35_4",
+      "source_container": "C:\\Users\\juswil\\Desktop\\metadata.zip",
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "technical_features": [
+        "image/diagram route candidate from calibrated cascade route brain"
+      ],
+      "visual_context_card_id": "visual_context_card_64c7cbb46eb2002b",
+      "visual_context_eligible": true,
+      "visual_context_stage": "route_brain_selected_context_seed",
+      "visual_context_type": "image_visual_candidate",
+      "visual_proof_authority_violation": false,
+      "zip_member": "00000017.tif"
+    },
+    {
+      "answer_permission": false,
+      "audit_label_non_diagram_visual_context_eligible": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cascade_decision_schema": "trace_net_calibrated_cascade_route_brain_v35_3_decision",
+      "dispatch_routes": [
+        "image_visual",
+        "normal_text",
+        "review"
+      ],
+      "feature_summary": {
+        "blank_score": 0.0,
+        "col_peak_count": 55,
+        "connected_component_count": 154,
+        "edge_density": 0.149704,
+        "horizontal_long_line_count": 0,
+        "horizontal_mid_line_count": 1,
+        "ink_density": 0.064154,
+        "large_component_count": 16,
+        "line_structure_score": 0.0222,
+        "row_peak_count": 77,
+        "table_grid_score": 0.0,
+        "tall_component_count": 0,
+        "text_score": 0.913,
+        "vertical_long_line_count": 0,
+        "vertical_mid_line_count": 0,
+        "wide_component_count": 4
+      },
+      "filename": "00000019.tif",
+      "fishnet_action": "dual_route_text_and_visual",
+      "fishnet_reasons": [
+        "text_score_competes_with_image_visual"
+      ],
+      "fishnet_visual_review_candidate": true,
+      "guidance_only": true,
+      "llava_observer_required_later": true,
+      "local_geometry_enrichment_required_later": true,
+      "manual_diagram_page": true,
+      "manual_label": "diagram",
+      "ocr_text_candidates": [],
+      "page_id": "t_p_120_1176_p000019",
+      "page_number": 19,
+      "primary_route": "image_visual",
+      "proof_authority": false,
+      "requires_source_truth_confirmation": true,
+      "review_required": true,
+      "route_scores": {
+        "blank_candidate": 0.0,
+        "image_visual": 0.8208,
+        "normal_text": 0.806,
+        "table": 0.0
+      },
+      "schema_version": "trace_net_corrected_visual_context_card_v35_4",
+      "source_container": "C:\\Users\\juswil\\Desktop\\metadata.zip",
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "technical_features": [
+        "image/diagram route candidate from calibrated cascade route brain",
+        "edge/visual structure present",
+        "mixed text and visual signals",
+        "high image_visual route score"
+      ],
+      "visual_context_card_id": "visual_context_card_9bf4353275ee6c50",
+      "visual_context_eligible": true,
+      "visual_context_stage": "route_brain_selected_context_seed",
+      "visual_context_type": "mixed_text_visual_candidate",
+      "visual_proof_authority_violation": false,
+      "zip_member": "00000019.tif"
+    },
+    {
+      "answer_permission": false,
+      "audit_label_non_diagram_visual_context_eligible": true,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cascade_decision_schema": "trace_net_calibrated_cascade_route_brain_v35_3_decision",
+      "dispatch_routes": [
+        "image_visual",
+        "review"
+      ],
+      "feature_summary": {
+        "blank_score": 0.0,
+        "col_peak_count": 2,
+        "connected_component_count": 23,
+        "edge_density": 0.064787,
+        "horizontal_long_line_count": 0,
+        "horizontal_mid_line_count": 10,
+        "ink_density": 0.029068,
+        "large_component_count": 12,
+        "line_structure_score": 0.2222,
+        "row_peak_count": 23,
+        "table_grid_score": 0.0,
+        "tall_component_count": 0,
+        "text_score": 0.413,
+        "vertical_long_line_count": 0,
+        "vertical_mid_line_count": 0,
+        "wide_component_count": 3
+      },
+      "filename": "00000026.tif",
+      "fishnet_action": "review_required",
+      "fishnet_reasons": [
+        "close_or_low_route_score_margin",
+        "audit_label_non_diagram_visual_context_eligible"
+      ],
+      "fishnet_visual_review_candidate": true,
+      "guidance_only": true,
+      "llava_observer_required_later": true,
+      "local_geometry_enrichment_required_later": true,
+      "manual_diagram_page": false,
+      "manual_label": "non_diagram",
+      "ocr_text_candidates": [],
+      "page_id": "t_p_120_1176_p000026",
+      "page_number": 26,
+      "primary_route": "image_visual",
+      "proof_authority": false,
+      "requires_source_truth_confirmation": true,
+      "review_required": true,
+      "route_scores": {
+        "blank_candidate": 0.0,
+        "image_visual": 0.5199,
+        "normal_text": 0.4942,
+        "table": 0.0
+      },
+      "schema_version": "trace_net_corrected_visual_context_card_v35_4",
+      "source_container": "C:\\Users\\juswil\\Desktop\\metadata.zip",
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "technical_features": [
+        "image/diagram route candidate from calibrated cascade route brain"
+      ],
+      "visual_context_card_id": "visual_context_card_b58e01c04647b546",
+      "visual_context_eligible": true,
+      "visual_context_stage": "route_brain_selected_context_seed",
+      "visual_context_type": "image_visual_candidate",
+      "visual_proof_authority_violation": false,
+      "zip_member": "00000026.tif"
+    },
+    {
+      "answer_permission": false,
+      "audit_label_non_diagram_visual_context_eligible": true,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "cascade_decision_schema": "trace_net_calibrated_cascade_route_brain_v35_3_decision",
+      "dispatch_routes": [
+        "image_visual",
+        "review"
+      ],
+      "feature_summary": {
+        "blank_score": 0.0,
+        "col_peak_count": 2,
+        "connected_component_count": 25,
+        "edge_density": 0.069573,
+        "horizontal_long_line_count": 0,
+        "horizontal_mid_line_count": 8,
+        "ink_density": 0.030159,
+        "large_component_count": 12,
+        "line_structure_score": 0.1778,
+        "row_peak_count": 23,
+        "table_grid_score": 0.0,
+        "tall_component_count": 0,
+        "text_score": 0.413,
+        "vertical_long_line_count": 0,
+        "vertical_mid_line_count": 0,
+        "wide_component_count": 3
+      },
+      "filename": "00000080.tif",
+      "fishnet_action": "review_required",
+      "fishnet_reasons": [
+        "close_or_low_route_score_margin",
+        "audit_label_non_diagram_visual_context_eligible"
+      ],
+      "fishnet_visual_review_candidate": true,
+      "guidance_only": true,
+      "llava_observer_required_later": true,
+      "local_geometry_enrichment_required_later": true,
+      "manual_diagram_page": false,
+      "manual_label": "non_diagram",
+      "ocr_text_candidates": [],
+      "page_id": "t_p_120_1176_p000080",
+      "page_number": 80,
+      "primary_route": "image_visual",
+      "proof_authority": false,
+      "requires_source_truth_confirmation": true,
+      "review_required": true,
+      "route_scores": {
+        "blank_candidate": 0.0,
+        "image_visual": 0.5413,
+        "normal_text": 0.4908,
+        "table": 0.0
+      },
+      "schema_version": "trace_net_corrected_visual_context_card_v35_4",
+      "source_container": "C:\\Users\\juswil\\Desktop\\metadata.zip",
+      "source_truth_mutation_allowed": false,
+      "source_truth_mutations_performed": 0,
+      "technical_features": [
+        "image/diagram route candidate from calibrated cascade route brain"
+      ],
+      "visual_context_card_id": "visual_context_card_ec71f01ef8955fc5",
+      "visual_context_eligible": true,
+      "visual_context_stage": "route_brain_selected_context_seed",
+      "visual_context_type": "image_visual_candidate",
+      "visual_proof_authority_violation": false,
+      "zip_member": "00000080.tif"
+    }
+  ],
+  "schema_version": "trace_net_corrected_visual_context_builder_v35_4_report",
+  "source_page_count": 509,
+  "source_primary_route_counts": {
+    "blank_candidate": 14,
+    "image_visual": 185,
+    "normal_text": 283,
+    "table": 27
+  },
+  "source_truth_mutation_allowed_count": 0,
+  "status": "E2E_CORRECTED_VISUAL_CONTEXT_BUILDER_READY",
+  "version": "v35.4",
+  "visual_context_card_count": 185,
+  "visual_context_eligible_count": 185,
+  "visual_context_fishnet_action_counts": {
+    "accept_route": 38,
+    "dual_route_text_and_visual": 143,
+    "review_required": 4
+  },
+  "visual_context_input_page_count": 185,
+  "visual_context_type_counts": {
+    "diagram_or_figure_candidate": 95,
+    "image_visual_candidate": 4,
+    "mixed_text_visual_candidate": 84,
+    "visual_table_confusion_candidate": 2
+  },
+  "visual_prompt_context_count": 185,
+  "visual_prompt_context_jsonl_path": "local_data\\organization\\trace_net\\corrected_visual_context_builder_v35_4\\trace_net_corrected_visual_prompt_context_v35_4.jsonl",
+  "visual_proof_authority_violation_count": 0
+}

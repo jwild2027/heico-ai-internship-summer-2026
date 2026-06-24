@@ -1,0 +1,802 @@
+{
+  "actual_diagram_page_count": 159,
+  "actual_diagram_pages_jsonl_path": "local_data\\organization\\trace_net\\route_brain_image_page_audit_v35_1\\trace_net_actual_diagram_pages_v35_1.jsonl",
+  "answer_permission_count": 0,
+  "contract": {
+    "answer_permission": false,
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "diagram_pages_are_guidance_labels_not_source_truth_claims": true,
+    "graph_rebuild_at_query_time": false,
+    "manual_screened_diagram_truthset_supported": true,
+    "raw_5tb_scan_at_query_time": false,
+    "route_brain_audit_only": true,
+    "source_truth_mutation_allowed": false,
+    "uploads_to_opensearch": false,
+    "writes_to_opensearch": false,
+    "writes_to_postgres": false,
+    "writes_to_qdrant": false
+  },
+  "corrected_image_visual_count": 159,
+  "corrected_route_counts": {
+    "image_visual": 159,
+    "review": 350
+  },
+  "created_at": 1782312883,
+  "inspect_md_path": "local_data\\organization\\trace_net\\route_brain_image_page_audit_v35_1\\trace_net_route_brain_image_page_audit_v35_1.md",
+  "malformed_route_value_count": 0,
+  "manual_screened_diagram_page_count": 159,
+  "missed_diagram_page_count": 141,
+  "missed_diagram_pages_jsonl_path": "local_data\\organization\\trace_net\\route_brain_image_page_audit_v35_1\\trace_net_missed_diagram_pages_v35_1.jsonl",
+  "module": "trace_net_e2e_route_brain_image_page_audit_v35_1",
+  "overbroad_image_visual_candidate_count": 104,
+  "overbroad_image_visual_candidates_jsonl_path": "local_data\\organization\\trace_net\\route_brain_image_page_audit_v35_1\\trace_net_overbroad_image_visual_candidates_v35_1.jsonl",
+  "post_gate_issue_count": 0,
+  "quality_checks": [
+    {
+      "expected": ">= 509",
+      "name": "source_page_count",
+      "observed": 509,
+      "status": "PASS"
+    },
+    {
+      "expected": ">= 509",
+      "name": "route_candidate_count",
+      "observed": 509,
+      "status": "PASS"
+    },
+    {
+      "expected": ">= 159",
+      "name": "manual_screened_diagram_page_count",
+      "observed": 159,
+      "status": "PASS"
+    },
+    {
+      "expected": "== 159",
+      "name": "actual_diagram_page_count",
+      "observed": 159,
+      "status": "PASS"
+    },
+    {
+      "expected": "== 159",
+      "name": "corrected_image_visual_count",
+      "observed": 159,
+      "status": "PASS"
+    },
+    {
+      "expected": "<= 159",
+      "name": "corrected_image_visual_count",
+      "observed": 159,
+      "status": "PASS"
+    },
+    {
+      "expected": ">= 1",
+      "name": "overbroad_image_visual_candidate_count",
+      "observed": 104,
+      "status": "PASS"
+    },
+    {
+      "expected": "<= 0",
+      "name": "malformed_route_value_count",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "expected": "<= 0",
+      "name": "visual_proof_authority_violation_count",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "expected": "<= 0",
+      "name": "post_gate_issue_count",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "expected": "== 0",
+      "name": "require_no_answer_permission",
+      "observed": 0,
+      "status": "PASS"
+    }
+  ],
+  "quality_status": "PASS",
+  "report_path": "local_data\\organization\\trace_net\\route_brain_image_page_audit_v35_1\\trace_net_route_brain_image_page_audit_v35_1.json",
+  "route_brain_corrections_jsonl_path": "local_data\\organization\\trace_net\\route_brain_image_page_audit_v35_1\\trace_net_route_brain_corrections_v35_1.jsonl",
+  "route_brain_repair_action_counts": {
+    "demote_overbroad_image_visual_to_review_non_diagram": 104,
+    "keep_visual_route_confirmed_by_manual_screen": 18,
+    "manual_screen_non_diagram_unclassified_review": 246,
+    "promote_to_image_visual_from_manual_screen": 141
+  },
+  "route_candidate_count": 509,
+  "route_index_page_count": 122,
+  "route_manifest_image_visual_candidate_count": 122,
+  "sample_actual_diagram_pages": [
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000017.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": true,
+      "manifest_routes": [
+        "image_visual",
+        "normal_text",
+        "table",
+        "review",
+        "blank_candidate"
+      ],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000017",
+      "page_number": 17,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_confirms_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_64c7cbb46eb2002b",
+      "route_brain_repair_action": "keep_visual_route_confirmed_by_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000018.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": true,
+      "manifest_routes": [
+        "image_visual",
+        "normal_text",
+        "table",
+        "review",
+        "blank_candidate"
+      ],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000018",
+      "page_number": 18,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_confirms_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_f39a012315bb7ef0",
+      "route_brain_repair_action": "keep_visual_route_confirmed_by_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000019.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": true,
+      "manifest_routes": [
+        "image_visual",
+        "normal_text",
+        "table",
+        "review",
+        "blank_candidate"
+      ],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000019",
+      "page_number": 19,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_confirms_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_9bf4353275ee6c50",
+      "route_brain_repair_action": "keep_visual_route_confirmed_by_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000081.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": false,
+      "manifest_routes": [],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000081",
+      "page_number": 81,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_finds_missed_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_6dd14d78961560a0",
+      "route_brain_repair_action": "promote_to_image_visual_from_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000084.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": false,
+      "manifest_routes": [],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000084",
+      "page_number": 84,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_finds_missed_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_66e26ce3bafe8aa8",
+      "route_brain_repair_action": "promote_to_image_visual_from_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000087.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": false,
+      "manifest_routes": [],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000087",
+      "page_number": 87,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_finds_missed_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_9e317f8627052449",
+      "route_brain_repair_action": "promote_to_image_visual_from_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000090.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": false,
+      "manifest_routes": [],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000090",
+      "page_number": 90,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_finds_missed_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_8be8c20ba3be64ff",
+      "route_brain_repair_action": "promote_to_image_visual_from_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000094.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": true,
+      "manifest_routes": [
+        "blank_candidate",
+        "review",
+        "image_visual",
+        "normal_text",
+        "table"
+      ],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000094",
+      "page_number": 94,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_confirms_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_5c53cb530a2205a0",
+      "route_brain_repair_action": "keep_visual_route_confirmed_by_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000097.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": false,
+      "manifest_routes": [],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000097",
+      "page_number": 97,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_finds_missed_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_f13da0a5817aadb0",
+      "route_brain_repair_action": "promote_to_image_visual_from_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000100.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": false,
+      "manifest_routes": [],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000100",
+      "page_number": 100,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_finds_missed_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_7d52b09aaf48dd05",
+      "route_brain_repair_action": "promote_to_image_visual_from_manual_screen",
+      "source_truth_mutation_allowed": false
+    }
+  ],
+  "sample_missed_diagram_pages": [
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000081.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": false,
+      "manifest_routes": [],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000081",
+      "page_number": 81,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_finds_missed_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_6dd14d78961560a0",
+      "route_brain_repair_action": "promote_to_image_visual_from_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000084.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": false,
+      "manifest_routes": [],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000084",
+      "page_number": 84,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_finds_missed_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_66e26ce3bafe8aa8",
+      "route_brain_repair_action": "promote_to_image_visual_from_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000087.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": false,
+      "manifest_routes": [],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000087",
+      "page_number": 87,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_finds_missed_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_9e317f8627052449",
+      "route_brain_repair_action": "promote_to_image_visual_from_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000090.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": false,
+      "manifest_routes": [],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000090",
+      "page_number": 90,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_finds_missed_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_8be8c20ba3be64ff",
+      "route_brain_repair_action": "promote_to_image_visual_from_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000097.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": false,
+      "manifest_routes": [],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000097",
+      "page_number": 97,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_finds_missed_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_f13da0a5817aadb0",
+      "route_brain_repair_action": "promote_to_image_visual_from_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000100.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": false,
+      "manifest_routes": [],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000100",
+      "page_number": 100,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_finds_missed_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_7d52b09aaf48dd05",
+      "route_brain_repair_action": "promote_to_image_visual_from_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000104.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": false,
+      "manifest_routes": [],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000104",
+      "page_number": 104,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_finds_missed_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_5b04e5702caf6a11",
+      "route_brain_repair_action": "promote_to_image_visual_from_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000107.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": false,
+      "manifest_routes": [],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000107",
+      "page_number": 107,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_finds_missed_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_0234701b9163cbe1",
+      "route_brain_repair_action": "promote_to_image_visual_from_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000110.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": false,
+      "manifest_routes": [],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000110",
+      "page_number": 110,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_finds_missed_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_e207d89fdea724cb",
+      "route_brain_repair_action": "promote_to_image_visual_from_manual_screen",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "image_visual",
+      "filename": "00000114.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": false,
+      "manifest_routes": [],
+      "manual_screen_category": "diagram_image_page",
+      "manual_screen_diagram_page": true,
+      "page_id": "t_p_120_1176_p000114",
+      "page_number": 114,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_finds_missed_diagram_page"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_341c95edba7601d3",
+      "route_brain_repair_action": "promote_to_image_visual_from_manual_screen",
+      "source_truth_mutation_allowed": false
+    }
+  ],
+  "sample_overbroad_image_visual_candidates": [
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "review",
+      "filename": "00000001.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": true,
+      "manifest_routes": [
+        "image_visual",
+        "normal_text",
+        "table",
+        "review",
+        "blank_candidate"
+      ],
+      "manual_screen_category": "non_diagram_or_unlabeled",
+      "manual_screen_diagram_page": false,
+      "page_id": "t_p_120_1176_p000001",
+      "page_number": 1,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_rejects_diagram_page",
+        "existing_image_visual_was_overbroad"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_cfd0a406e172972f",
+      "route_brain_repair_action": "demote_overbroad_image_visual_to_review_non_diagram",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "review",
+      "filename": "00000002.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": true,
+      "manifest_routes": [
+        "image_visual",
+        "normal_text",
+        "review",
+        "blank_candidate",
+        "table"
+      ],
+      "manual_screen_category": "non_diagram_or_unlabeled",
+      "manual_screen_diagram_page": false,
+      "page_id": "t_p_120_1176_p000002",
+      "page_number": 2,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_rejects_diagram_page",
+        "existing_image_visual_was_overbroad"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_6b2aae44f6c01256",
+      "route_brain_repair_action": "demote_overbroad_image_visual_to_review_non_diagram",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "review",
+      "filename": "00000003.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": true,
+      "manifest_routes": [
+        "table",
+        "image_visual",
+        "normal_text",
+        "review",
+        "blank_candidate"
+      ],
+      "manual_screen_category": "non_diagram_or_unlabeled",
+      "manual_screen_diagram_page": false,
+      "page_id": "t_p_120_1176_p000003",
+      "page_number": 3,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_rejects_diagram_page",
+        "existing_image_visual_was_overbroad"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_40fbe3e5e5519800",
+      "route_brain_repair_action": "demote_overbroad_image_visual_to_review_non_diagram",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "review",
+      "filename": "00000004.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": true,
+      "manifest_routes": [
+        "image_visual",
+        "normal_text",
+        "table",
+        "review",
+        "blank_candidate"
+      ],
+      "manual_screen_category": "non_diagram_or_unlabeled",
+      "manual_screen_diagram_page": false,
+      "page_id": "t_p_120_1176_p000004",
+      "page_number": 4,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_rejects_diagram_page",
+        "existing_image_visual_was_overbroad"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_be90515823e7df4c",
+      "route_brain_repair_action": "demote_overbroad_image_visual_to_review_non_diagram",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "review",
+      "filename": "00000005.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": true,
+      "manifest_routes": [
+        "table",
+        "image_visual",
+        "normal_text",
+        "blank_candidate",
+        "review"
+      ],
+      "manual_screen_category": "non_diagram_or_unlabeled",
+      "manual_screen_diagram_page": false,
+      "page_id": "t_p_120_1176_p000005",
+      "page_number": 5,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_rejects_diagram_page",
+        "existing_image_visual_was_overbroad"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_0d292ce02565730c",
+      "route_brain_repair_action": "demote_overbroad_image_visual_to_review_non_diagram",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "review",
+      "filename": "00000006.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": true,
+      "manifest_routes": [
+        "table",
+        "image_visual",
+        "normal_text",
+        "blank_candidate",
+        "review"
+      ],
+      "manual_screen_category": "non_diagram_or_unlabeled",
+      "manual_screen_diagram_page": false,
+      "page_id": "t_p_120_1176_p000006",
+      "page_number": 6,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_rejects_diagram_page",
+        "existing_image_visual_was_overbroad"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_dabba73de7439408",
+      "route_brain_repair_action": "demote_overbroad_image_visual_to_review_non_diagram",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "review",
+      "filename": "00000007.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": true,
+      "manifest_routes": [
+        "table",
+        "image_visual",
+        "normal_text",
+        "blank_candidate",
+        "review"
+      ],
+      "manual_screen_category": "non_diagram_or_unlabeled",
+      "manual_screen_diagram_page": false,
+      "page_id": "t_p_120_1176_p000007",
+      "page_number": 7,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_rejects_diagram_page",
+        "existing_image_visual_was_overbroad"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_1d3ab59beb983a81",
+      "route_brain_repair_action": "demote_overbroad_image_visual_to_review_non_diagram",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "review",
+      "filename": "00000008.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": true,
+      "manifest_routes": [
+        "table",
+        "image_visual",
+        "normal_text",
+        "blank_candidate",
+        "review"
+      ],
+      "manual_screen_category": "non_diagram_or_unlabeled",
+      "manual_screen_diagram_page": false,
+      "page_id": "t_p_120_1176_p000008",
+      "page_number": 8,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_rejects_diagram_page",
+        "existing_image_visual_was_overbroad"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_5a0850ade8b0c542",
+      "route_brain_repair_action": "demote_overbroad_image_visual_to_review_non_diagram",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "review",
+      "filename": "00000009.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": true,
+      "manifest_routes": [
+        "table",
+        "image_visual",
+        "normal_text",
+        "blank_candidate",
+        "review"
+      ],
+      "manual_screen_category": "non_diagram_or_unlabeled",
+      "manual_screen_diagram_page": false,
+      "page_id": "t_p_120_1176_p000009",
+      "page_number": 9,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_rejects_diagram_page",
+        "existing_image_visual_was_overbroad"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_a2e8f8fbb1485274",
+      "route_brain_repair_action": "demote_overbroad_image_visual_to_review_non_diagram",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "corrected_primary_route": "review",
+      "filename": "00000010.tif",
+      "guidance_only": true,
+      "manifest_image_visual_candidate": true,
+      "manifest_routes": [
+        "table",
+        "image_visual",
+        "normal_text",
+        "blank_candidate",
+        "review"
+      ],
+      "manual_screen_category": "non_diagram_or_unlabeled",
+      "manual_screen_diagram_page": false,
+      "page_id": "t_p_120_1176_p000010",
+      "page_number": 10,
+      "proof_authority": false,
+      "repair_reasons": [
+        "manual_screen_rejects_diagram_page",
+        "existing_image_visual_was_overbroad"
+      ],
+      "route_brain_audit_record_id": "route_brain_image_audit_v35_1_39968d9cc65fb285",
+      "route_brain_repair_action": "demote_overbroad_image_visual_to_review_non_diagram",
+      "source_truth_mutation_allowed": false
+    }
+  ],
+  "source_page_count": 509,
+  "source_truth_mutation_allowed_count": 0,
+  "status": "E2E_ROUTE_BRAIN_IMAGE_PAGE_AUDIT_READY",
+  "version": "v35.1",
+  "visual_proof_authority_violation_count": 0
+}
