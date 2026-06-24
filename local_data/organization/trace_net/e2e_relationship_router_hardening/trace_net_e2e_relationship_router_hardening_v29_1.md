@@ -6,8 +6,10 @@ Status: `E2E_RELATIONSHIP_ROUTER_HARDENING_READY`
 ## Summary
 - exact_search_document_count: 574
 - page_context_v2_page_count: 509
-- graph_has_v2_page_count: 51
-- graph_has_nomenclature_page_count: 0
+- graph_has_v2_page_count: 52
+- graph_has_context_page_count: 52
+- graph_has_nomenclature_page_count: 11
+- graph_has_nomenclature_part_count: 385
 - sample_query_count: 8
 - sample_success_count: 8
 - metadata_count_sample_count: 2
@@ -17,7 +19,8 @@ Status: `E2E_RELATIONSHIP_ROUTER_HARDENING_READY`
 
 ## Contract
 - Metadata/count questions route before broad source-truth fallback.
-- Graph Has_v2 and Has_nomenclature/Has_nomeclature signals are supported when available.
+- page_context_v2 is authoritative for v2 summary coverage when available.
+- Graph Has_v2, HAS_CONTEXT/SUMMARIZES, and Has_nomenclature/Has_nomeclature signals are supported as metadata diagnostics.
 - V2 summaries and graph signals are guidance/metadata, not source-truth proof.
 - Unknown metadata/field questions return audit-only instead of unrelated covered part records.
 
@@ -29,16 +32,16 @@ Status: `E2E_RELATIONSHIP_ROUTER_HARDENING_READY`
 - final_gate_status: LIVE_ORCHESTRATOR_METADATA_COUNT_PASS
 - metadata_count_router_used: True
 - bad_broad_fallback_blocked: True
-- preview: TRACE-Net found v2 summary guidance for 51 page(s), page range t_p_120_1176_p000001 through t_p_120_1176_p000051. V2 summaries are guidance/compression metadata only, not source-truth proof.
+- preview: TRACE-Net found v2 summary guidance for 509 page(s), page range t_p_120_1176_p000001 through t_p_120_1176_p000509. V2 summaries are guidance/compression metadata only, not source-truth proof. Graph metadata coverage observed separately: Has_v2=52, HAS_CONTEXT/
 
 ### router_hardening_sample_0002 — PASS
 - query: how many pages mention a nomenclature
 - query_intent: field_or_graph_nomenclature_count
-- response_mode: audit_only
-- final_gate_status: LIVE_ORCHESTRATOR_AUDIT_ONLY
+- response_mode: artifact_metadata_count
+- final_gate_status: LIVE_ORCHESTRATOR_METADATA_COUNT_PASS
 - metadata_count_router_used: True
 - bad_broad_fallback_blocked: True
-- preview: TRACE-Net did not find direct citation-ready source-truth evidence for this query. No source-truth claim is made. Try narrowing by part number, manual reference, page, table text, or a supported artifact-count field.
+- preview: TRACE-Net found graph Has_nomenclature guidance for 11 page(s) across 385 part/entity seed(s). Graph nomenclature signals are navigation/count guidance and should be confirmed with source-truth records before factual part claims.
 
 ### router_hardening_sample_0003 — PASS
 - query: find part number 120-36833-503

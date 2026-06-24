@@ -58,29 +58,39 @@ def _fixtures(tmp_path: Path):
         tmp_path / "graph.json",
         {
             "edges": [
+                # Deliberately partial Has_v2: page_context_v2 should win for the count.
                 {"edge_type": "Has_v2", "source": "t_p_120_1176_p000001", "target": "v2_summary_1"},
-                {"edge_type": "Has_v2", "source": "t_p_120_1176_p000002", "target": "v2_summary_2"},
-                {"edge_type": "Has_nomenclature", "source": "t_p_120_1176_p000003", "target": "nomenclature_1"},
+                # HAS_CONTEXT/SUMMARIZES diagnostic path.
+                {"edge_type": "HAS_CONTEXT", "source": "t_p_120_1176_p000002", "target": "page_context_2"},
+                {"edge_type": "SUMMARIZES", "source": "page_context_2", "target": "t_p_120_1176_p000002"},
+                # Nomenclature is not on the page edge. It must be joined through part->appears_on.
+                {"edge_type": "HAS_NOMENCLATURE", "source": "part_120-36833-503", "target": "nomenclature_widget"},
+                {"edge_type": "APPEARS_ON", "source": "part_120-36833-503", "target": "t_p_120_1176_p000003"},
             ]
         },
     )
     return table, page_context, leiden, graph
 
 
-def test_v2_summary_count_routes_to_metadata_not_source_truth(tmp_path: Path):
+def test_v2_summary_count_prefers_page_context_over_partial_graph_signal(tmp_path: Path):
     table, page_context, leiden, graph = _fixtures(tmp_path)
-    records = load_source_truth_records(table)
-    page_index = build_page_summary_index(page_context)
-    leiden_index = build_leiden_index(leiden)
-    graph_signals = load_graph_signal_pages([graph])
-    result = answer_query("how many pages have a v2 summary", records, page_index, leiden_index, graph_signals)
+    result = answer_query(
+        "how many pages have a v2 summary",
+        load_source_truth_records(table),
+        build_page_summary_index(page_context),
+        build_leiden_index(leiden),
+        load_graph_signal_pages([graph]),
+    )
     assert result["response_mode"] == "artifact_metadata_count"
     assert result["metadata_count_router_used"] is True
+    assert result["metadata_count_source"] == "page_context_v2_summary_records"
     assert result["v2_summary_page_count"] == 2
+    assert result["graph_has_v2_page_count"] == 1
+    assert result["graph_has_context_page_count"] == 1
     assert "covered_part_number" not in result["answer"]
 
 
-def test_nomenclature_count_uses_graph_signal_and_blocks_broad_fallback(tmp_path: Path):
+def test_nomenclature_count_joins_part_has_nomenclature_to_appears_on_page(tmp_path: Path):
     table, page_context, leiden, graph = _fixtures(tmp_path)
     result = answer_query(
         "how many pages mention a nomenclature",
@@ -90,7 +100,9 @@ def test_nomenclature_count_uses_graph_signal_and_blocks_broad_fallback(tmp_path
         load_graph_signal_pages([graph]),
     )
     assert result["metadata_count_router_used"] is True
+    assert result["metadata_count_source"] == "graph_has_nomenclature_signal"
     assert result["nomenclature_page_count"] == 1
+    assert result["nomenclature_part_count"] == 1
     assert result["bad_broad_fallback_blocked"] is True
     assert "120-36833" not in result["answer"]
 
@@ -161,3 +173,5 @@ def test_build_report_quality_passes(tmp_path: Path):
     assert report["quality_status"] == "PASS"
     assert report["metadata_count_sample_count"] >= 2
     assert report["bad_broad_fallback_count"] == 0
+    assert report["graph_has_context_page_count"] >= 1
+    assert report["graph_has_nomenclature_part_count"] >= 1

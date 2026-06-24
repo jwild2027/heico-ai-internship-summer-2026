@@ -255,10 +255,59 @@ def discover_graph_signal_paths(root: Path, limit: int = 20) -> List[Path]:
     return hits
 
 
+def _edge_label(d: Dict[str, Any]) -> str:
+    for key in ("edge_type", "relationship", "relation", "predicate", "label", "type", "kind"):
+        value = d.get(key)
+        if value not in (None, ""):
+            return _norm(value)
+    return ""
+
+
+def _edge_source_target(d: Dict[str, Any]) -> Tuple[str, str]:
+    source = ""
+    target = ""
+    for key in ("source", "from", "from_node", "source_id", "src", "head", "start", "subject"):
+        value = d.get(key)
+        if isinstance(value, str) and value.strip():
+            source = value.strip()
+            break
+    for key in ("target", "to", "to_node", "target_id", "dst", "tail", "end", "object"):
+        value = d.get(key)
+        if isinstance(value, str) and value.strip():
+            target = value.strip()
+            break
+    return source, target
+
+
+def _looks_like_part_node(value: str) -> bool:
+    v = str(value or "")
+    if not v:
+        return False
+    if PAGE_ID_RE.search(v):
+        return False
+    low = v.lower()
+    return bool(PART_RE.search(v) or "part" in low or "pn_" in low or "part_number" in low)
+
+
+def _looks_like_nomenclature_node(value: str) -> bool:
+    return "nomenclature" in str(value or "").lower() or "nomeclature" in str(value or "").lower()
+
+
 def load_graph_signal_pages(paths: Sequence[Path]) -> Dict[str, Dict[str, Any]]:
+    """Resolve metadata graph signals into page sets.
+
+    v29.1 only counted records where a page id appeared on the same object as
+    Has_v2/Has_nomenclature. v29.2 also follows graph edges such as:
+      page -> HAS_CONTEXT -> context, context -> SUMMARIZES -> page
+      part -> HAS_NOMENCLATURE -> nomenclature, part -> APPEARS_ON -> page
+      page -> MENTIONS_PART -> part
+    Graph signals remain metadata/navigation guidance, not proof authority.
+    """
     result: Dict[str, Dict[str, Any]] = {
-        "has_v2": {"pages": set(), "source_paths": []},
-        "has_nomenclature": {"pages": set(), "source_paths": []},
+        "has_v2": {"pages": set(), "source_paths": [], "diagnostic_only": True},
+        "has_context": {"pages": set(), "source_paths": [], "diagnostic_only": True},
+        "has_nomenclature": {"pages": set(), "source_paths": [], "diagnostic_only": True},
+        "nomenclature_parts": {"parts": set(), "source_paths": []},
     }
     for p in paths:
         if not p.exists():
@@ -267,29 +316,107 @@ def load_graph_signal_pages(paths: Sequence[Path]) -> Dict[str, Dict[str, Any]]:
             data = _read_json(p)
         except Exception:
             continue
-        local_v2 = set()
-        local_nom = set()
+        local_v2: set[str] = set()
+        local_context: set[str] = set()
+        local_nom_pages: set[str] = set()
+        local_nom_parts: set[str] = set()
+        part_to_pages: Dict[str, set[str]] = defaultdict(set)
+        page_to_parts: Dict[str, set[str]] = defaultdict(set)
+        part_has_nom: set[str] = set()
+
         for d in _iter_dicts(data):
-            joined = " ".join(_norm(v) for v in d.values() if not isinstance(v, (dict, list)))
+            label = _edge_label(d)
             field = _extract_field(d)
+            source, target = _edge_source_target(d)
+            joined = " ".join(_norm(v) for v in d.values() if not isinstance(v, (dict, list)))
             pages = _extract_page_ids_from_any(d)
-            if not pages:
-                continue
+
+            # V2/context summary graph diagnostics. The authoritative count should
+            # still come from page_context_v2 when available.
             if field == "has_v2" or "has_v2" in joined or "has_v2_summary" in joined:
                 local_v2.update(pages)
+            if label in {"has_context", "summarizes", "has_page_context", "has_summary", "page_context"} or "has_context" in joined or "summarizes" in joined:
+                local_context.update(pages)
+
+            # Direct same-record nomenclature page signals.
             if field in NOMENCLATURE_FIELDS or "has_nomenclature" in joined or "has_nomeclature" in joined:
-                local_nom.update(pages)
+                local_nom_pages.update(pages)
+
+            # Edge-based nomenclature resolution.
+            source_pages = PAGE_ID_RE.findall(source)
+            target_pages = PAGE_ID_RE.findall(target)
+            if label in {"has_nomenclature", "has_nomeclature"} or "has_nomenclature" in joined or "has_nomeclature" in joined:
+                if source_pages or target_pages:
+                    local_nom_pages.update(source_pages)
+                    local_nom_pages.update(target_pages)
+                # Capture the non-nomenclature endpoint as a part-like seed.
+                for node in (source, target):
+                    if _looks_like_part_node(node) and not _looks_like_nomenclature_node(node):
+                        part_has_nom.add(node)
+                        local_nom_parts.add(node)
+            elif "nomenclature" in label or "nomeclature" in label:
+                local_nom_pages.update(pages)
+                for node in (source, target):
+                    if _looks_like_part_node(node) and not _looks_like_nomenclature_node(node):
+                        part_has_nom.add(node)
+                        local_nom_parts.add(node)
+
+            # Part/page connection edges that let us resolve part nomenclature to pages.
+            if label in {"appears_on", "found_on", "has_mention", "mentions_part", "has_part_mention", "appears_on_page", "found_on_page", "source_page"} or any(token in label for token in ("appears_on", "found_on", "mentions_part", "has_mention", "has_part_mention")):
+                part_nodes = [n for n in (source, target) if _looks_like_part_node(n)]
+                edge_pages = list(dict.fromkeys(source_pages + target_pages + pages))
+                for part in part_nodes:
+                    for page in edge_pages:
+                        part_to_pages[part].add(page)
+                        page_to_parts[page].add(part)
+
+            # Trait-style records may carry has_nomenclature plus appears_on_pages.
+            trait_has_nom = False
+            for key, value in d.items():
+                lk = _norm(key)
+                lv = _norm(value) if not isinstance(value, (dict, list)) else ""
+                if ("has_nomenclature" in lk or "has_nomeclature" in lk or lk in {"nomenclature", "nomeclature"}) and str(value).lower() not in {"", "false", "0", "none"}:
+                    trait_has_nom = True
+            if trait_has_nom:
+                local_nom_pages.update(pages)
+                for key in ("part_id", "part_number", "node_id", "id", "entity_id"):
+                    value = d.get(key)
+                    if isinstance(value, str) and _looks_like_part_node(value):
+                        part_has_nom.add(value)
+                        local_nom_parts.add(value)
+                for key in ("appears_on_pages", "page_ids", "pages", "best_pages"):
+                    value = d.get(key)
+                    local_nom_pages.update(_extract_page_ids_from_any(value))
+
+        # Join part -> HAS_NOMENCLATURE with part -> APPEARS_ON/page mention edges.
+        for part in part_has_nom:
+            local_nom_pages.update(part_to_pages.get(part, set()))
+        # Some graphs store page -> MENTIONS_PART -> part; join those too.
+        for page, parts in page_to_parts.items():
+            if parts.intersection(part_has_nom):
+                local_nom_pages.add(page)
+
         if local_v2:
             result["has_v2"]["pages"].update(local_v2)
             result["has_v2"]["source_paths"].append(str(p))
-        if local_nom:
-            result["has_nomenclature"]["pages"].update(local_nom)
+        if local_context:
+            result["has_context"]["pages"].update(local_context)
+            result["has_context"]["source_paths"].append(str(p))
+        if local_nom_pages:
+            result["has_nomenclature"]["pages"].update(local_nom_pages)
             result["has_nomenclature"]["source_paths"].append(str(p))
+        if local_nom_parts:
+            result["nomenclature_parts"]["parts"].update(local_nom_parts)
+            result["nomenclature_parts"]["source_paths"].append(str(p))
+
     # Convert sets to sorted lists for JSON stability.
     for key in list(result):
-        result[key]["pages"] = sorted(result[key]["pages"])
+        if "pages" in result[key]:
+            result[key]["pages"] = sorted(result[key]["pages"])
+        if "parts" in result[key]:
+            result[key]["parts"] = sorted(result[key]["parts"])
+        result[key]["source_paths"] = sorted(set(result[key].get("source_paths", [])))
     return result
-
 
 def build_page_summary_index(page_context_v2: Optional[Path]) -> Dict[str, Any]:
     if not page_context_v2 or not page_context_v2.exists():
@@ -445,14 +572,33 @@ def answer_query(
     answer: Dict[str, Any]
 
     if intent == "artifact_v2_summary_count":
-        signal_pages = graph_signals.get("has_v2", {}).get("pages", []) or []
-        source = "graph_has_v2_signal" if signal_pages else "page_context_v2_summary_records"
-        pages = signal_pages if signal_pages else page_summary_index.get("pages", [])
+        artifact_pages = page_summary_index.get("pages", []) or []
+        graph_v2_pages = graph_signals.get("has_v2", {}).get("pages", []) or []
+        graph_context_pages = graph_signals.get("has_context", {}).get("pages", []) or []
+        # v29.2: page_context_v2 is the authoritative metadata artifact for
+        # v2/page summary coverage. Graph Has_v2/HAS_CONTEXT/SUMMARIZES is
+        # useful diagnostic guidance, but it can be partial.
+        if artifact_pages:
+            pages = sorted(set(artifact_pages))
+            source = "page_context_v2_summary_records"
+        elif graph_context_pages:
+            pages = sorted(set(graph_context_pages))
+            source = "graph_has_context_or_summarizes_signal"
+        else:
+            pages = sorted(set(graph_v2_pages))
+            source = "graph_has_v2_signal"
         first, last = _first_last_pages(pages)
         page_range = f", page range {first} through {last}" if first and last else ""
+        diagnostic = ""
+        if artifact_pages and (graph_v2_pages or graph_context_pages):
+            diagnostic = (
+                f" Graph metadata coverage observed separately: Has_v2={len(set(graph_v2_pages))}, "
+                f"HAS_CONTEXT/SUMMARIZES={len(set(graph_context_pages))}."
+            )
         answer_text = (
             f"TRACE-Net found v2 summary guidance for {len(set(pages))} page(s){page_range}. "
             "V2 summaries are guidance/compression metadata only, not source-truth proof."
+            f"{diagnostic}"
         )
         answer = {
             "answer": answer_text,
@@ -467,7 +613,11 @@ def answer_query(
             "v2_summary_page_count": len(set(pages)),
             "v2_summary_page_first": first,
             "v2_summary_page_last": last,
+            "page_context_v2_page_count": len(set(artifact_pages)),
+            "graph_has_v2_page_count": len(set(graph_v2_pages)),
+            "graph_has_context_page_count": len(set(graph_context_pages)),
             "graph_has_v2_source_paths": graph_signals.get("has_v2", {}).get("source_paths", []),
+            "graph_has_context_source_paths": graph_signals.get("has_context", {}).get("source_paths", []),
             "bad_broad_fallback_blocked": True,
             "relationship_query": False,
             "relationship_guidance_only": False,
@@ -476,12 +626,13 @@ def answer_query(
         }
     elif intent == "field_or_graph_nomenclature_count":
         signal_pages = graph_signals.get("has_nomenclature", {}).get("pages", []) or []
+        signal_parts = graph_signals.get("nomenclature_parts", {}).get("parts", []) or []
         nom_records = _find_field(records, NOMENCLATURE_FIELDS)
         if signal_pages:
             pages = sorted(set(signal_pages))
             first, last = _first_last_pages(pages)
             answer = {
-                "answer": f"TRACE-Net found graph Has_nomenclature guidance for {len(pages)} page(s). Graph nomenclature signals are navigation/count guidance and should be confirmed with source-truth records before factual part claims.",
+                "answer": f"TRACE-Net found graph Has_nomenclature guidance for {len(pages)} page(s) across {len(set(signal_parts))} part/entity seed(s). Graph nomenclature signals are navigation/count guidance and should be confirmed with source-truth records before factual part claims.",
                 "response_mode": "artifact_metadata_count",
                 "final_gate_status": "LIVE_ORCHESTRATOR_METADATA_COUNT_PASS",
                 "citation_like_count": 0,
@@ -491,9 +642,11 @@ def answer_query(
                 "metadata_count_router_used": True,
                 "metadata_count_source": "graph_has_nomenclature_signal",
                 "nomenclature_page_count": len(pages),
+                "nomenclature_part_count": len(set(signal_parts)),
                 "nomenclature_page_first": first,
                 "nomenclature_page_last": last,
                 "graph_has_nomenclature_source_paths": graph_signals.get("has_nomenclature", {}).get("source_paths", []),
+                "graph_has_nomenclature_part_source_paths": graph_signals.get("nomenclature_parts", {}).get("source_paths", []),
                 "bad_broad_fallback_blocked": True,
                 "relationship_query": False,
                 "relationship_guidance_only": True,
@@ -808,7 +961,9 @@ def build_report(
         "exact_search_document_count": len(records),
         "page_context_v2_page_count": len(page_index.get("pages", [])),
         "graph_has_v2_page_count": len(graph_signals.get("has_v2", {}).get("pages", [])),
+        "graph_has_context_page_count": len(graph_signals.get("has_context", {}).get("pages", [])),
         "graph_has_nomenclature_page_count": len(graph_signals.get("has_nomenclature", {}).get("pages", [])),
+        "graph_has_nomenclature_part_count": len(graph_signals.get("nomenclature_parts", {}).get("parts", [])),
         "graph_signal_paths": [str(p) for p in graph_signal_paths],
         "leiden_page_membership_count": len(leiden_index.get("page_to_community", {})),
         "endpoint_route_count": endpoint_route_count,
@@ -851,7 +1006,9 @@ def write_inspect_md(path: Path, report: Dict[str, Any]) -> None:
         f"- exact_search_document_count: {report['exact_search_document_count']}",
         f"- page_context_v2_page_count: {report['page_context_v2_page_count']}",
         f"- graph_has_v2_page_count: {report['graph_has_v2_page_count']}",
+        f"- graph_has_context_page_count: {report.get('graph_has_context_page_count', 0)}",
         f"- graph_has_nomenclature_page_count: {report['graph_has_nomenclature_page_count']}",
+        f"- graph_has_nomenclature_part_count: {report.get('graph_has_nomenclature_part_count', 0)}",
         f"- sample_query_count: {report['sample_query_count']}",
         f"- sample_success_count: {report['sample_success_count']}",
         f"- metadata_count_sample_count: {report['metadata_count_sample_count']}",
@@ -861,7 +1018,8 @@ def write_inspect_md(path: Path, report: Dict[str, Any]) -> None:
         "",
         "## Contract",
         "- Metadata/count questions route before broad source-truth fallback.",
-        "- Graph Has_v2 and Has_nomenclature/Has_nomeclature signals are supported when available.",
+        "- page_context_v2 is authoritative for v2 summary coverage when available.",
+        "- Graph Has_v2, HAS_CONTEXT/SUMMARIZES, and Has_nomenclature/Has_nomeclature signals are supported as metadata diagnostics.",
         "- V2 summaries and graph signals are guidance/metadata, not source-truth proof.",
         "- Unknown metadata/field questions return audit-only instead of unrelated covered part records.",
         "",
@@ -913,9 +1071,13 @@ def make_chat_completion_response(model: str, query: str, result: Dict[str, Any]
         "v2_summary_page_count",
         "v2_summary_page_first",
         "v2_summary_page_last",
+        "page_context_v2_page_count",
+        "graph_has_v2_page_count",
+        "graph_has_context_page_count",
         "nomenclature_page_count",
         "nomenclature_page_first",
         "nomenclature_page_last",
+        "nomenclature_part_count",
         "raw_candidate_match_count",
         "target_unique_match_count",
         "target_occurrence_count",
