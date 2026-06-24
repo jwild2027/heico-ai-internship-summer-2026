@@ -1,38 +1,29 @@
-# TRACE-Net E2E Relationship Router Hardening v29.1
+# TRACE-Net E2E Relationship Router Hardening v29.2 Hotfix
 
-This module hardens the v29 relationship endpoint against metadata/count routing failures.
+This hotfix updates the v29.1 router-hardening endpoint.
 
 ## Purpose
 
-v29.1 routes metadata and field-count questions before broad source-truth fallback. This prevents questions such as:
+- Keep metadata/count questions out of broad source-truth fallback.
+- Prefer `page_context_v2` for v2 summary coverage counts.
+- Treat graph `Has_v2`, `HAS_CONTEXT`, and `SUMMARIZES` as diagnostic metadata signals, not proof authority.
+- Resolve nomenclature page counts from graph paths such as:
+  - `part -> HAS_NOMENCLATURE -> nomenclature`
+  - `part -> APPEARS_ON -> page`
+  - `page -> MENTIONS_PART -> part`
+- Count unique pages for metadata questions.
+- Keep graph/Leiden/nomenclature metadata as guidance only.
 
-- `how many pages have a v2 summary`
-- `how many pages mention a nomenclature`
+## Expected fixed behavior
 
-from incorrectly returning unrelated covered part number records.
+- `how many pages have a v2 summary` should answer from `page_context_v2` when present.
+- `how many pages mention a nomenclature` should use graph nomenclature edges if present.
+- Neither query should return unrelated `covered_part_number` records.
 
-## Graph signals
+## Safety contract
 
-When available, the module searches existing graph artifacts for relationship labels such as:
-
-- `Has_v2`
-- `has_v2`
-- `Has_nomenclature`
-- `Has_nomeclature`
-
-These signals are metadata/navigation guidance only. They are not source-truth proof for technical claims.
-
-## Contracts
-
-- Source-truth records remain the only proof authority for factual source claims.
-- V2 summaries are guidance/compression metadata only.
-- Graph Has_v2 / Has_nomenclature signals are count/navigation metadata only.
-- Unknown metadata/field questions return audit-only instead of broad noisy matches.
-- Query-time execution does not scan raw 5TB data, rebuild the graph, rerun OCR, mutate source truth, or write to services.
-
-## Expected behavior
-
-- `how many pages have a v2 summary` returns an artifact metadata count.
-- `how many pages mention a nomenclature` returns a graph/field count if supported, otherwise audit-only.
-- `Find part number DOES-NOT-EXIST-999` returns audit-only.
-- `What pages are related to part number 120-36833-503?` returns graph/Leiden guidance only and requires source-truth confirmation before relationship claims.
+- No raw 5TB scan at query time.
+- No graph rebuild at query time.
+- No source-truth mutation.
+- No Postgres/Qdrant/OpenSearch writes.
+- Metadata and graph signals are guidance/count metadata only, not proof authority for part/manual relationships.
