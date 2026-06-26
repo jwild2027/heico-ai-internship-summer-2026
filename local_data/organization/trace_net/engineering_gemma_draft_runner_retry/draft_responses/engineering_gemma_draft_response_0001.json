@@ -1,0 +1,38 @@
+{
+  "answer_permission": false,
+  "draft_safety_scan": {
+    "citation_marker_count": 0,
+    "draft_text_char_count": 3,
+    "empty_draft": false,
+    "risky_phrase_hit_count": 0,
+    "risky_phrase_hits": []
+  },
+  "draft_text": "###",
+  "endpoint": "http://127.0.0.1:11434/api/chat",
+  "error": null,
+  "latency_ms": 46227,
+  "model_id": "gemma4:26b",
+  "provider": "ollama",
+  "raw_response": {
+    "created_at": "2026-06-25T18:11:13.1376461Z",
+    "done": true,
+    "done_reason": "length",
+    "eval_count": 1,
+    "eval_duration": 1000,
+    "load_duration": 34231607100,
+    "message": {
+      "content": "###",
+      "role": "assistant"
+    },
+    "model": "gemma4:26b",
+    "prompt_eval_count": 4095,
+    "prompt_eval_duration": 11916814000,
+    "total_duration": 46182888400
+  },
+  "ready_for_final_answer": false,
+  "request_payload_path": "local_data\\organization\\trace_net\\engineering_gemma_draft_retry_prompt\\request_payloads\\engineering_gemma_draft_retry_0001_ollama_request.json",
+  "request_sent": true,
+  "response_received": true,
+  "source_adapter_record_id": "engineering_gemma_draft_retry_prompt_0001",
+  "source_draft_packet_id": "engineering_draft_packet_0001"
+}

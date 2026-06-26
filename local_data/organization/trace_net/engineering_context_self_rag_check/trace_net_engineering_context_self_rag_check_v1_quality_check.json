@@ -1,0 +1,40 @@
+{
+  "checked_report_path": "local_data\\organization\\trace_net\\engineering_context_self_rag_check\\trace_net_engineering_context_self_rag_check_v1.json",
+  "failures": [],
+  "quality_status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "average_evidence_strength_score": 51.75,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "crag_retry_required_count": 3,
+    "intent_family_counts": {
+      "engineering_change_candidate": 1,
+      "exact_part_lookup": 1,
+      "repair_or_fault_context": 1,
+      "visual_or_callout_similarity": 1
+    },
+    "llm_call_allowed_count": 0,
+    "max_evidence_strength_score": 90,
+    "min_evidence_strength_score": 24,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "ready_for_gemma_draft_count": 1,
+    "retrieval_execution_allowed_count": 0,
+    "self_rag_record_count": 4,
+    "self_rag_status_counts": {
+      "CRAG_RETRY_REQUIRED": 3,
+      "READY_FOR_GEMMA_DRAFT_CONTEXT_ONLY": 1
+    },
+    "source_context_pack_builder_quality_status": "PASS",
+    "source_context_pack_count": 4,
+    "source_truth_evidence_strength_counts": {
+      "partial_source_truth_context": 3,
+      "strong_exact_source_truth": 1
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "total_missing_evidence_count": 4,
+    "unsafe_record_count": 0
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "quality_reasons": [],
+  "quality_status": "PASS",
+  "summary": {
+    "agreement_count": 9,
+    "agreement_ratio": 0.0177,
+    "agreement_status_counts": {
+      "agree": 9,
+      "disagree": 328,
+      "fishnet_review_required": 158,
+      "high_confidence_disagreement": 14
+    },
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "comparison_record_count": 509,
+    "current_route_alias_count": 2545,
+    "current_route_counts": {
+      "blank_candidate": 472,
+      "image_visual": 15,
+      "normal_text": 1,
+      "table": 21
+    },
+    "current_route_manifest_path": "local_data\\organization\\trace_net\\page_route_manifest\\trace_net_page_route_manifest_v1.json",
+    "current_route_missing_count": 0,
+    "current_route_page_count": 509,
+    "disagreement_count": 342,
+    "fishnet_best_route_candidate_before_review_counts": {
+      "blank_candidate": 14,
+      "image_visual": 11,
+      "normal_text": 353,
+      "table": 131
+    },
+    "fishnet_ocr_engine_status_counts": {
+      "empty": 14,
+      "ok": 495
+    },
+    "fishnet_page_count": 509,
+    "fishnet_report_path": "local_data\\organization\\trace_net\\fishnet_ocr_grid\\trace_net_fishnet_ocr_grid_v1.json",
+    "fishnet_route_candidate_counts": {
+      "image_visual": 3,
+      "normal_text": 311,
+      "review_required": 158,
+      "table": 37
+    },
+    "high_confidence_disagreement_count": 14,
+    "high_confidence_threshold": 0.85,
+    "matched_page_count": 509,
+    "opensearch_write_attempt_count": 0,
+    "pages_with_fishnet_ocr_text_count": 495,
+    "pages_with_fishnet_ocr_word_boxes_count": 495,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "review_required_count": 500,
+    "review_severity_counts": {
+      "high": 14,
+      "medium": 328,
+      "ok": 9,
+      "review": 158
+    },
+    "route_pair_counts": {
+      "blank_candidate->image_visual": 3,
+      "blank_candidate->normal_text": 298,
+      "blank_candidate->review_required": 143,
+      "blank_candidate->table": 28,
+      "image_visual->normal_text": 10,
+      "image_visual->review_required": 5,
+      "normal_text->review_required": 1,
+      "table->normal_text": 3,
+      "table->review_required": 9,
+      "table->table": 9
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "total_fishnet_ocr_text_length": 493498,
+    "total_fishnet_ocr_word_box_count": 83741,
+    "unsafe_record_count": 0
+  }
+}

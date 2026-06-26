@@ -1,0 +1,36 @@
+{
+  "checked_report_path": "local_data\\organization\\trace_net\\engineering_context_pack_blueprint\\trace_net_engineering_context_pack_blueprint_v1.json",
+  "failures": [],
+  "quality_status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "blueprints_with_candidate_language_required_count": 2,
+    "blueprints_with_source_truth_required_count": 4,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "context_pack_blueprint_count": 4,
+    "intent_family_counts": {
+      "engineering_change_candidate": 1,
+      "exact_part_lookup": 1,
+      "repair_or_fault_context": 1,
+      "visual_or_callout_similarity": 1
+    },
+    "llm_call_allowed_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "retrieval_execution_allowed_count": 0,
+    "route_evidence_slot_counts": {
+      "graph": 3,
+      "image_visual": 2,
+      "normal_text": 3,
+      "route_dispatch": 1,
+      "table": 4
+    },
+    "source_query_plan_count": 4,
+    "source_query_planner_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "total_route_evidence_slot_count": 13,
+    "unsafe_record_count": 0
+  }
+}

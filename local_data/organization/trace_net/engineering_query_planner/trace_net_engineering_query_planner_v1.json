@@ -1,0 +1,676 @@
+{
+  "module": "trace_net_engineering_query_planner_v1",
+  "quality_status": "PASS",
+  "records": [
+    {
+      "allowed_answer_claims": [
+        "dimension candidate for review",
+        "source shows a listed dimension",
+        "candidate appears shorter/longer only if source proves dimensions"
+      ],
+      "answer_permission": false,
+      "answers_user_question": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "dynamic_context_pack_blueprint": {
+        "compression_policy": {
+          "deduplicate_by_page_id_and_source_trace": true,
+          "include_missing_evidence_explicitly": true,
+          "prefer_source_truth_over_summary": true,
+          "summaries_are_guidance_not_proof": true
+        },
+        "context_budget": {
+          "candidate_records": 10,
+          "engineering_playbook_cards": 1,
+          "exact_evidence_records": 8,
+          "few_shot_examples": 2,
+          "graph_neighbors": 20,
+          "normal_text_context_pages": 6,
+          "table_records": 12,
+          "visual_or_callout_records": 8
+        },
+        "route_context_needed": [
+          "graph",
+          "normal_text",
+          "table"
+        ],
+        "route_handoff_counts": {
+          "blank_candidate": 461,
+          "image_visual": 12,
+          "normal_text": 15,
+          "table": 21
+        },
+        "sections_in_order": [
+          "system_engineering_role",
+          "selected_engineering_playbook",
+          "few_shot_engineering_examples",
+          "structured_user_intent",
+          "route_handoff_availability",
+          "source_truth_evidence",
+          "candidate_evidence",
+          "missing_evidence",
+          "trust_tier_policy",
+          "forbidden_claims",
+          "answer_format_contract"
+        ]
+      },
+      "evidence_policy": {
+        "candidate_language_required": true,
+        "crag_retry_if_evidence_weak": true,
+        "final_gate_required": true,
+        "must_retrieve_exact_seed_first": true,
+        "must_separate_proven_facts_from_candidates": true,
+        "self_rag_required": true,
+        "source_truth_required_for_final_claims": true
+      },
+      "forbidden_answer_claims": [
+        "approved modification",
+        "approved replacement without explicit source evidence",
+        "engineering approval",
+        "guaranteed fit/form/function",
+        "manufacturing/tolerance approval",
+        "safe dimensional change",
+        "safe to install",
+        "uncited dimension or material claim",
+        "uncited repair procedure",
+        "will fit"
+      ],
+      "intent_family": "engineering_change_candidate",
+      "intent_score": 5,
+      "llm_call_allowed": false,
+      "matched_triggers": [
+        "shorter",
+        "4 inches",
+        "requested_change"
+      ],
+      "opensearch_write_attempt": false,
+      "planner_status": "planned_no_retrieval_executed",
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "query_plan_version": "trace_net_engineering_query_planner_v1",
+      "question_id": "engineering_q0001",
+      "requested_change": {
+        "delta_unit": "inches",
+        "delta_value": 4.0,
+        "direction": "decrease",
+        "property": "length",
+        "requires_source_dimension_before_computing_target": true
+      },
+      "retrieval_execution_allowed": false,
+      "retrieval_plan": [
+        "exact_seed_lookup",
+        "dimension_table_search",
+        "dash_number_variant_search",
+        "same_assembly_graph_search",
+        "same_ipl_table_search",
+        "engineering_text_context_search"
+      ],
+      "route_mapped_retrieval_steps": [
+        {
+          "retrieval_step": "exact_seed_lookup",
+          "routes": [
+            "table"
+          ],
+          "tools": [
+            "table_exact_or_value_search"
+          ]
+        },
+        {
+          "retrieval_step": "dimension_table_search",
+          "routes": [
+            "table"
+          ],
+          "tools": [
+            "table_exact_or_value_search"
+          ]
+        },
+        {
+          "retrieval_step": "dash_number_variant_search",
+          "routes": [
+            "table"
+          ],
+          "tools": [
+            "table_exact_or_value_search"
+          ]
+        },
+        {
+          "retrieval_step": "same_assembly_graph_search",
+          "routes": [
+            "graph"
+          ],
+          "tools": [
+            "graph_or_leiden_search"
+          ]
+        },
+        {
+          "retrieval_step": "same_ipl_table_search",
+          "routes": [
+            "table"
+          ],
+          "tools": [
+            "table_exact_or_value_search"
+          ]
+        },
+        {
+          "retrieval_step": "engineering_text_context_search",
+          "routes": [
+            "normal_text"
+          ],
+          "tools": [
+            "page_context_v2"
+          ]
+        }
+      ],
+      "seed_entities": [
+        "123-45"
+      ],
+      "selected_playbook_id": "dimensional_change_candidate_search",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_question": "This model number 123-45 needs to be 4 inches shorter. Any part that looks like that?"
+    },
+    {
+      "allowed_answer_claims": [
+        "exact source-backed part record",
+        "candidate related context clearly labeled"
+      ],
+      "answer_permission": false,
+      "answers_user_question": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "dynamic_context_pack_blueprint": {
+        "compression_policy": {
+          "deduplicate_by_page_id_and_source_trace": true,
+          "include_missing_evidence_explicitly": true,
+          "prefer_source_truth_over_summary": true,
+          "summaries_are_guidance_not_proof": true
+        },
+        "context_budget": {
+          "engineering_playbook_cards": 1,
+          "exact_evidence_records": 8,
+          "few_shot_examples": 1,
+          "graph_neighbors": 12,
+          "normal_text_context_pages": 4,
+          "table_records": 8,
+          "visual_or_callout_records": 4
+        },
+        "route_context_needed": [
+          "graph",
+          "normal_text",
+          "route_dispatch",
+          "table"
+        ],
+        "route_handoff_counts": {
+          "blank_candidate": 461,
+          "image_visual": 12,
+          "normal_text": 15,
+          "table": 21
+        },
+        "sections_in_order": [
+          "system_engineering_role",
+          "selected_engineering_playbook",
+          "few_shot_engineering_examples",
+          "structured_user_intent",
+          "route_handoff_availability",
+          "source_truth_evidence",
+          "candidate_evidence",
+          "missing_evidence",
+          "trust_tier_policy",
+          "forbidden_claims",
+          "answer_format_contract"
+        ]
+      },
+      "evidence_policy": {
+        "candidate_language_required": false,
+        "crag_retry_if_evidence_weak": true,
+        "final_gate_required": true,
+        "must_retrieve_exact_seed_first": true,
+        "must_separate_proven_facts_from_candidates": true,
+        "self_rag_required": true,
+        "source_truth_required_for_final_claims": true
+      },
+      "forbidden_answer_claims": [
+        "approved replacement without explicit source evidence",
+        "engineering approval",
+        "guaranteed fit/form/function",
+        "safe to install",
+        "uncited dimension or material claim",
+        "uncited repair procedure",
+        "unproven synonym",
+        "unverified alternate part"
+      ],
+      "intent_family": "exact_part_lookup",
+      "intent_score": 4,
+      "llm_call_allowed": false,
+      "matched_triggers": [
+        "part number",
+        "find",
+        "part_like_token"
+      ],
+      "opensearch_write_attempt": false,
+      "planner_status": "planned_no_retrieval_executed",
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "query_plan_version": "trace_net_engineering_query_planner_v1",
+      "question_id": "engineering_q0002",
+      "requested_change": null,
+      "retrieval_execution_allowed": false,
+      "retrieval_plan": [
+        "table_exact_search",
+        "promoted_table_value_evidence_search",
+        "page_context_v2_search",
+        "graph_neighbor_search",
+        "route_handoff_lookup"
+      ],
+      "route_mapped_retrieval_steps": [
+        {
+          "retrieval_step": "table_exact_search",
+          "routes": [
+            "table"
+          ],
+          "tools": [
+            "table_exact_or_value_search"
+          ]
+        },
+        {
+          "retrieval_step": "promoted_table_value_evidence_search",
+          "routes": [
+            "table"
+          ],
+          "tools": [
+            "table_exact_or_value_search"
+          ]
+        },
+        {
+          "retrieval_step": "page_context_v2_search",
+          "routes": [
+            "normal_text"
+          ],
+          "tools": [
+            "page_context_v2"
+          ]
+        },
+        {
+          "retrieval_step": "graph_neighbor_search",
+          "routes": [
+            "graph"
+          ],
+          "tools": [
+            "graph_or_leiden_search"
+          ]
+        },
+        {
+          "retrieval_step": "route_handoff_lookup",
+          "routes": [
+            "route_dispatch"
+          ],
+          "tools": [
+            "route_handoff_lookup"
+          ]
+        }
+      ],
+      "seed_entities": [
+        "120-29073-001"
+      ],
+      "selected_playbook_id": "part_number_evidence_pack",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_question": "Find part number 120-29073-001 and nearby similar parts."
+    },
+    {
+      "allowed_answer_claims": [
+        "source-backed procedure summary",
+        "warning/caution/note citation",
+        "review required for missing steps"
+      ],
+      "answer_permission": false,
+      "answers_user_question": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "dynamic_context_pack_blueprint": {
+        "compression_policy": {
+          "deduplicate_by_page_id_and_source_trace": true,
+          "include_missing_evidence_explicitly": true,
+          "prefer_source_truth_over_summary": true,
+          "summaries_are_guidance_not_proof": true
+        },
+        "context_budget": {
+          "engineering_playbook_cards": 1,
+          "few_shot_examples": 2,
+          "procedure_context_pages": 8,
+          "table_records": 6,
+          "visual_or_callout_records": 4,
+          "warning_caution_notes": 10
+        },
+        "route_context_needed": [
+          "image_visual",
+          "normal_text",
+          "table"
+        ],
+        "route_handoff_counts": {
+          "blank_candidate": 461,
+          "image_visual": 12,
+          "normal_text": 15,
+          "table": 21
+        },
+        "sections_in_order": [
+          "system_engineering_role",
+          "selected_engineering_playbook",
+          "few_shot_engineering_examples",
+          "structured_user_intent",
+          "route_handoff_availability",
+          "source_truth_evidence",
+          "candidate_evidence",
+          "missing_evidence",
+          "trust_tier_policy",
+          "forbidden_claims",
+          "answer_format_contract"
+        ]
+      },
+      "evidence_policy": {
+        "candidate_language_required": false,
+        "crag_retry_if_evidence_weak": true,
+        "final_gate_required": true,
+        "must_retrieve_exact_seed_first": false,
+        "must_separate_proven_facts_from_candidates": true,
+        "self_rag_required": true,
+        "source_truth_required_for_final_claims": true
+      },
+      "forbidden_answer_claims": [
+        "approval to perform maintenance",
+        "approved replacement without explicit source evidence",
+        "engineering approval",
+        "guaranteed fit/form/function",
+        "safe to install",
+        "skipped warning",
+        "uncited dimension or material claim",
+        "uncited repair procedure"
+      ],
+      "intent_family": "repair_or_fault_context",
+      "intent_score": 4,
+      "llm_call_allowed": false,
+      "matched_triggers": [
+        "clean",
+        "solvent",
+        "procedure_or_warning_language"
+      ],
+      "opensearch_write_attempt": false,
+      "planner_status": "planned_no_retrieval_executed",
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "query_plan_version": "trace_net_engineering_query_planner_v1",
+      "question_id": "engineering_q0003",
+      "requested_change": null,
+      "retrieval_execution_allowed": false,
+      "retrieval_plan": [
+        "normal_text_page_context_search",
+        "exact_part_lookup",
+        "procedure_section_search",
+        "warning_caution_note_search",
+        "associated_figure_callout_search",
+        "associated_table_search"
+      ],
+      "route_mapped_retrieval_steps": [
+        {
+          "retrieval_step": "normal_text_page_context_search",
+          "routes": [
+            "normal_text"
+          ],
+          "tools": [
+            "page_context_v2"
+          ]
+        },
+        {
+          "retrieval_step": "exact_part_lookup",
+          "routes": [
+            "table"
+          ],
+          "tools": [
+            "table_exact_or_value_search"
+          ]
+        },
+        {
+          "retrieval_step": "procedure_section_search",
+          "routes": [
+            "normal_text"
+          ],
+          "tools": [
+            "page_context_v2"
+          ]
+        },
+        {
+          "retrieval_step": "warning_caution_note_search",
+          "routes": [
+            "normal_text"
+          ],
+          "tools": [
+            "page_context_v2"
+          ]
+        },
+        {
+          "retrieval_step": "associated_figure_callout_search",
+          "routes": [
+            "image_visual"
+          ],
+          "tools": [
+            "visual_or_callout_search"
+          ]
+        },
+        {
+          "retrieval_step": "associated_table_search",
+          "routes": [
+            "table"
+          ],
+          "tools": [
+            "table_exact_or_value_search"
+          ]
+        }
+      ],
+      "seed_entities": [],
+      "selected_playbook_id": "fault_repair_procedure_reasoning",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_question": "Can I clean this part with solvent?"
+    },
+    {
+      "allowed_answer_claims": [
+        "visually similar candidate",
+        "same figure/callout neighborhood",
+        "needs table/source confirmation"
+      ],
+      "answer_permission": false,
+      "answers_user_question": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "dynamic_context_pack_blueprint": {
+        "compression_policy": {
+          "deduplicate_by_page_id_and_source_trace": true,
+          "include_missing_evidence_explicitly": true,
+          "prefer_source_truth_over_summary": true,
+          "summaries_are_guidance_not_proof": true
+        },
+        "context_budget": {
+          "engineering_playbook_cards": 1,
+          "exact_evidence_records": 8,
+          "few_shot_examples": 1,
+          "graph_neighbors": 12,
+          "normal_text_context_pages": 4,
+          "table_records": 8,
+          "visual_or_callout_records": 4
+        },
+        "route_context_needed": [
+          "graph",
+          "image_visual",
+          "table"
+        ],
+        "route_handoff_counts": {
+          "blank_candidate": 461,
+          "image_visual": 12,
+          "normal_text": 15,
+          "table": 21
+        },
+        "sections_in_order": [
+          "system_engineering_role",
+          "selected_engineering_playbook",
+          "few_shot_engineering_examples",
+          "structured_user_intent",
+          "route_handoff_availability",
+          "source_truth_evidence",
+          "candidate_evidence",
+          "missing_evidence",
+          "trust_tier_policy",
+          "forbidden_claims",
+          "answer_format_contract"
+        ]
+      },
+      "evidence_policy": {
+        "candidate_language_required": true,
+        "crag_retry_if_evidence_weak": true,
+        "final_gate_required": true,
+        "must_retrieve_exact_seed_first": false,
+        "must_separate_proven_facts_from_candidates": true,
+        "self_rag_required": true,
+        "source_truth_required_for_final_claims": true
+      },
+      "forbidden_answer_claims": [
+        "approved replacement without explicit source evidence",
+        "approved visual replacement",
+        "engineering approval",
+        "guaranteed fit/form/function",
+        "safe to install",
+        "same part based only on image",
+        "uncited dimension or material claim",
+        "uncited repair procedure"
+      ],
+      "intent_family": "visual_or_callout_similarity",
+      "intent_score": 5,
+      "llm_call_allowed": false,
+      "matched_triggers": [
+        "visual",
+        "callout",
+        "figure",
+        "visual_language"
+      ],
+      "opensearch_write_attempt": false,
+      "planner_status": "planned_no_retrieval_executed",
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "query_plan_version": "trace_net_engineering_query_planner_v1",
+      "question_id": "engineering_q0004",
+      "requested_change": null,
+      "retrieval_execution_allowed": false,
+      "retrieval_plan": [
+        "image_visual_handoff_search",
+        "callout_candidate_search",
+        "same_figure_graph_search",
+        "table_exact_cross_check",
+        "visual_observer_review_search"
+      ],
+      "route_mapped_retrieval_steps": [
+        {
+          "retrieval_step": "image_visual_handoff_search",
+          "routes": [
+            "image_visual"
+          ],
+          "tools": [
+            "visual_or_callout_search"
+          ]
+        },
+        {
+          "retrieval_step": "callout_candidate_search",
+          "routes": [
+            "image_visual"
+          ],
+          "tools": [
+            "visual_or_callout_search"
+          ]
+        },
+        {
+          "retrieval_step": "same_figure_graph_search",
+          "routes": [
+            "graph",
+            "image_visual"
+          ],
+          "tools": [
+            "graph_or_leiden_search",
+            "visual_or_callout_search"
+          ]
+        },
+        {
+          "retrieval_step": "table_exact_cross_check",
+          "routes": [
+            "table"
+          ],
+          "tools": [
+            "table_exact_or_value_search"
+          ]
+        },
+        {
+          "retrieval_step": "visual_observer_review_search",
+          "routes": [
+            "image_visual"
+          ],
+          "tools": [
+            "visual_or_callout_search"
+          ]
+        }
+      ],
+      "seed_entities": [],
+      "selected_playbook_id": "visual_similarity_candidate_search",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_question": "Show visually similar callout parts in the same figure."
+    }
+  ],
+  "safety_contract": {
+    "answer_permission": false,
+    "answers_user_question": false,
+    "artifact_authority": "query_planning_only",
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "llm_call_allowed": false,
+    "opensearch_write_allowed": false,
+    "postgres_write_allowed": false,
+    "qdrant_write_allowed": false,
+    "retrieval_execution_allowed": false,
+    "source_truth_mutation_allowed": false
+  },
+  "source_kernel_path": "local_data\\organization\\trace_net\\engineering_reasoning_kernel\\trace_net_engineering_reasoning_kernel_v1.json",
+  "status": "ENGINEERING_QUERY_PLANNER_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "intent_family_counts": {
+      "engineering_change_candidate": 1,
+      "exact_part_lookup": 1,
+      "repair_or_fault_context": 1,
+      "visual_or_callout_similarity": 1
+    },
+    "llm_call_allowed_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "plans_with_candidate_language_required_count": 2,
+    "plans_with_requested_change_count": 1,
+    "plans_with_seed_entities_count": 2,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "query_plan_count": 4,
+    "retrieval_execution_allowed_count": 0,
+    "route_context_need_counts": {
+      "graph": 3,
+      "image_visual": 2,
+      "normal_text": 3,
+      "route_dispatch": 1,
+      "table": 4
+    },
+    "selected_playbook_counts": {
+      "dimensional_change_candidate_search": 1,
+      "fault_repair_procedure_reasoning": 1,
+      "part_number_evidence_pack": 1,
+      "visual_similarity_candidate_search": 1
+    },
+    "source_kernel_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0
+  }
+}

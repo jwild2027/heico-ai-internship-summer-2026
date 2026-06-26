@@ -1,0 +1,219 @@
+{
+  "module": "trace_net_fishnet_ocr_grid_v1",
+  "version": "v1.5",
+  "quality_status": "PASS",
+  "summary": {
+    "source_page_count": 509,
+    "page_record_count": 509,
+    "grid_rows": 8,
+    "grid_cols": 6,
+    "expected_cells_per_page": 48,
+    "total_cell_count": 24432,
+    "route_candidate_counts": {
+      "normal_text": 311,
+      "review_required": 158,
+      "table": 37,
+      "image_visual": 3
+    },
+    "best_route_candidate_before_review_counts": {
+      "normal_text": 353,
+      "blank_candidate": 14,
+      "table": 131,
+      "image_visual": 11
+    },
+    "ocr_engine_status_counts": {
+      "ok": 495,
+      "empty": 14
+    },
+    "ocr_ok_page_count": 495,
+    "ocr_failed_page_count": 0,
+    "ocr_unavailable_page_count": 0,
+    "ocr_empty_page_count": 14,
+    "ocr_nonempty_page_count": 495,
+    "total_ocr_text_char_count": 493498,
+    "total_ocr_word_box_count": 83741,
+    "pages_with_ocr_word_boxes_count": 495,
+    "ocr_error_examples": [
+      {
+        "error": "Tesseract ran but produced empty text. This usually means the page needs OCR preprocessing, a different psm, or the source image is mostly visual/blank. v1.2 records this as empty, not ok. attempted=['original|--psm 6', 'original|--oem 3 --",
+        "count": 14
+      }
+    ],
+    "review_required_count": 158,
+    "mean_route_confidence": 0.2398,
+    "unsafe_record_count": 0,
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0
+  },
+  "checks": [
+    {
+      "name": "require_page_count",
+      "passed": true,
+      "observed": 509,
+      "expected": 509
+    },
+    {
+      "name": "require_page_record_count",
+      "passed": true,
+      "observed": 509,
+      "expected": 509
+    },
+    {
+      "name": "min_page_records",
+      "passed": true,
+      "observed": 509,
+      "expected": ">=509"
+    },
+    {
+      "name": "min_total_cell_records",
+      "passed": true,
+      "observed": 24432,
+      "expected": ">=24432"
+    },
+    {
+      "name": "min_grid_rows",
+      "passed": true,
+      "observed": 8,
+      "expected": ">=8"
+    },
+    {
+      "name": "min_grid_cols",
+      "passed": true,
+      "observed": 6,
+      "expected": ">=6"
+    },
+    {
+      "name": "max_unsafe",
+      "passed": true,
+      "observed": 0,
+      "expected": "<=0"
+    },
+    {
+      "name": "require_all_pages_have_grid",
+      "passed": true,
+      "observed": [],
+      "expected": "all records cell_count == expected_cells_per_page"
+    },
+    {
+      "name": "require_no_answer_permission",
+      "passed": true,
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "name": "require_no_direct_answer",
+      "passed": true,
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "name": "require_no_claim_proof",
+      "passed": true,
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "name": "require_no_source_truth_mutation",
+      "passed": true,
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "name": "min_ocr_ok_pages",
+      "passed": true,
+      "observed": 495,
+      "expected": ">=495"
+    },
+    {
+      "name": "max_ocr_failed_pages",
+      "passed": true,
+      "observed": 0,
+      "expected": "<=0"
+    },
+    {
+      "name": "require_no_ocr_failures",
+      "passed": true,
+      "observed": {
+        "failed": 0,
+        "unavailable": 0
+      },
+      "expected": {
+        "failed": 0,
+        "unavailable": 0
+      }
+    },
+    {
+      "name": "min_ocr_nonempty_pages",
+      "passed": true,
+      "observed": 495,
+      "expected": ">=495"
+    },
+    {
+      "name": "min_total_ocr_text_chars",
+      "passed": true,
+      "observed": 493498,
+      "expected": ">=400000"
+    },
+    {
+      "name": "min_ocr_word_boxes",
+      "passed": true,
+      "observed": 83741,
+      "expected": ">=10000"
+    },
+    {
+      "name": "max_ocr_empty_pages",
+      "passed": true,
+      "observed": 14,
+      "expected": "<=14"
+    },
+    {
+      "name": "max_image_visual_ratio",
+      "passed": true,
+      "observed": 0.005894,
+      "expected": "<=0.2"
+    },
+    {
+      "name": "max_table_ratio",
+      "passed": true,
+      "observed": 0.072692,
+      "expected": "<=0.5"
+    },
+    {
+      "name": "postgres_write_attempt_count",
+      "passed": true,
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "name": "qdrant_write_attempt_count",
+      "passed": true,
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "name": "opensearch_write_attempt_count",
+      "passed": true,
+      "observed": 0,
+      "expected": 0
+    }
+  ],
+  "errors": [],
+  "safety_contract": {
+    "artifact_authority": "router_classifier_input_only",
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "answer_permission": false,
+    "source_truth_mutation_allowed": false,
+    "postgres_write_allowed": false,
+    "qdrant_write_allowed": false,
+    "opensearch_write_allowed": false,
+    "raw_scan_query_time_allowed": false,
+    "requires_downstream_source_truth_confirmation": true,
+    "guidance_only": true
+  }
+}

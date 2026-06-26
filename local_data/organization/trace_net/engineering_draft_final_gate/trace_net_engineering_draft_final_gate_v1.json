@@ -1,0 +1,100 @@
+{
+  "gate_config": {
+    "min_draft_chars": 300,
+    "min_section_markers": 1,
+    "require_citation_markers": false
+  },
+  "module": "trace_net_engineering_draft_final_gate_v1",
+  "quality_status": "PASS",
+  "records": [
+    {
+      "answer_permission": false,
+      "answers_user_question": false,
+      "blocking_reasons": [
+        "draft_too_short"
+      ],
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_marker_count": 0,
+      "draft_preview": "Based",
+      "draft_response_path": "local_data\\organization\\trace_net\\engineering_gemma_draft_runner\\draft_responses\\engineering_gemma_draft_response_0001.json",
+      "draft_text_char_count": 5,
+      "final_gate_record_id": "engineering_draft_final_gate_0001",
+      "final_gate_record_version": "trace_net_engineering_draft_final_gate_v1",
+      "final_gate_status": "FINAL_GATE_BLOCKED",
+      "human_review_required": true,
+      "intent_family": "exact_part_lookup",
+      "llm_call_allowed": false,
+      "min_draft_chars": 300,
+      "model_id": "gemma4:26b",
+      "opensearch_write_attempt": false,
+      "postgres_write_attempt": false,
+      "provider": "ollama",
+      "qdrant_write_attempt": false,
+      "question_id": "engineering_q0002",
+      "ready_for_final_answer": false,
+      "ready_for_manual_review": false,
+      "retrieval_execution_allowed": false,
+      "risky_phrase_hit_count": 0,
+      "risky_phrase_hits": [],
+      "section_marker_count": 0,
+      "selected_playbook_id": "part_number_evidence_pack",
+      "source_adapter_record_id": "engineering_gemma_draft_adapter_0001",
+      "source_draft_packet_id": "engineering_draft_packet_0001",
+      "source_runner_record_id": "engineering_gemma_draft_runner_0001",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_question": "Find part number 120-29073-001 and nearby similar parts.",
+      "warning_reasons": [
+        "missing_expected_section_markers"
+      ]
+    }
+  ],
+  "safety_contract": {
+    "answer_permission": false,
+    "answers_user_question": false,
+    "artifact_authority": "draft_final_gate_only",
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "llm_call_allowed": false,
+    "opensearch_write_allowed": false,
+    "postgres_write_allowed": false,
+    "qdrant_write_allowed": false,
+    "ready_for_final_answer": false,
+    "retrieval_execution_allowed": false,
+    "source_truth_mutation_allowed": false
+  },
+  "source_runner_report_path": "local_data\\organization\\trace_net\\engineering_gemma_draft_runner\\trace_net_engineering_gemma_draft_runner_v1.json",
+  "status": "ENGINEERING_DRAFT_FINAL_GATE_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "blocked_record_count": 1,
+    "blocking_reason_counts": {
+      "draft_too_short": 1
+    },
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "final_gate_record_count": 1,
+    "final_gate_status_counts": {
+      "FINAL_GATE_BLOCKED": 1
+    },
+    "human_review_required_count": 1,
+    "intent_family_counts": {
+      "exact_part_lookup": 1
+    },
+    "llm_call_allowed_count": 0,
+    "manual_review_ready_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "ready_for_final_answer_count": 0,
+    "retrieval_execution_allowed_count": 0,
+    "source_runner_quality_status": "PASS",
+    "source_runner_record_count": 1,
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0,
+    "warning_reason_counts": {
+      "missing_expected_section_markers": 1
+    }
+  }
+}

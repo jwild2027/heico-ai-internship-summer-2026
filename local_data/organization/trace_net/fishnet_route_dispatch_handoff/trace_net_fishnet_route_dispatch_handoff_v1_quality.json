@@ -1,0 +1,37 @@
+{
+  "quality_status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "blank_candidate_handoff_count": 461,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "changed_route_handoff_count": 14,
+    "changed_route_pair_counts": {
+      "blank_candidate->normal_text": 11,
+      "image_visual->normal_text": 3
+    },
+    "changed_route_target_counts": {
+      "normal_text": 14
+    },
+    "dispatch_record_count": 509,
+    "image_visual_handoff_count": 12,
+    "normal_text_handoff_count": 15,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "processor_execution_allowed_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "route_change_authorized_count": 14,
+    "route_handoff_counts": {
+      "blank_candidate": 461,
+      "image_visual": 12,
+      "normal_text": 15,
+      "table": 21
+    },
+    "source_accepted_route_manifest_page_count": 509,
+    "source_accepted_route_manifest_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "table_handoff_count": 21,
+    "unknown_route_handoff_count": 0,
+    "unsafe_record_count": 0
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "model_id": "trace-net-engineering-webui-v1",
+  "module": "trace_net_engineering_webui_answer_server_v1_3",
+  "quality_status": "PASS",
+  "records": [
+    {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_count": 3,
+      "citations": [
+        {
+          "page_id": "source_p000485",
+          "page_number": 485,
+          "route": "unknown",
+          "source": "page_context_v2_or_fishnet"
+        },
+        {
+          "page_id": "source_p000486",
+          "page_number": 486,
+          "route": "unknown",
+          "source": "page_context_v2_or_fishnet"
+        },
+        {
+          "page_id": "source_p000487",
+          "page_number": 487,
+          "route": "unknown",
+          "source": "page_context_v2_or_fishnet"
+        }
+      ],
+      "evidence_status": "page_text_hits",
+      "intent": "fallback_search",
+      "llm_attempt_count": 0,
+      "llm_base_url": null,
+      "llm_call_allowed": false,
+      "llm_called": false,
+      "llm_error": "llm_mode_off",
+      "llm_mode": "off",
+      "llm_model": null,
+      "manual_review_required": true,
+      "opensearch_write_attempt": false,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "question": "find repair information for passenger seat legs",
+      "ready_for_final_answer": false,
+      "ready_for_webui_response": true,
+      "response_kind": "clean_controlled_artifact_search",
+      "response_text": "TRACE-Net found repair-related manual pages. The strongest leads are: - `source_p000485` (page 485, route=unknown): EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST 11. Typical Repair to Passenger Seat Leg (figure 613) A. Single Passenger Seat Leg Repair. PART MATERIAL 1 LATERAL STRUCTURE (P/N 120-29073- 1 - 005) 2 REPAIR D -< MAINTENANCE ILLUSTRATED Passenger Seat Leg (figure EMBRAER MANUAL WITH PARTS LIST 613) A. Single Passenger (1) Repair Materials. PART 1 LATERAL 005) 2 REPAIR 3 ORIGINAL STRUCTURE (P/N DOUBLER REINFORCE Key terms: repair doubler, alclad plate 1, lateral structure (p/n 120-29073- 1 - 005) 2 repair d -< maintenance illustrated passenger seat leg (figure embraer manu, typical repair to passenger seat leg (figure 613) a, figure 613. - `source_p000486` (page 486, route=unknown): EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST B. Double Passenger Seat Leg Repair. PART MATERIAL 1 LATERAL STRUCTURE 1 - (P/N 120-29074-001) 2 REPAIR DOUBLER 2 ALCLAD PLATE 2024-T3 1.016 mm (0.040 in) 3 ORI -< EMBRAER MAINTENANCE ILLUSTRATED Repair. MANUAL WITH PARTS LIST Repair Materials. PART LATERAL STRUCTURE (P/N 120-29074-001) REPAIR DOUBLER ORIGINAL FASTENER (CR3242-4) FASTENER (CR3212-4) REINFORCEMENT Key terms: 120-29074-001, repair doubler, original fastener, reinforcement doubler, alclad plate 2024-t3 1, lateral structure 1 - (p/n 120-29074-001) 2 repair doubler 2 alclad plate 2024-t3 1. - `source_p000487` (page 487, route=unknown): EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST C. Triple Passenger Seat Leg Repairs. PART MATERIAL 1 LATERAL STRUCTURE (P/N 120-29073- 1 - 015) 2 LATERAL LEG STRUCTURE (P/N 120- 1 - 29073-006) 3 REPAIR DOUBL -< MAINTENANCE ILLUSTRATED Seat Leg Repairs. EMBRAER MANUAL WITH PARTS LIST (1) Repair Materials. 1 LATERAL 015) 2 LATERAL 29073-006) 3 REPAIR 4 ORIGINAL 5 FASTENER LEG STRUCTURE DOUBLER REINFORCEMENT (CR Key terms: repair doubler, alclad plate 1, lateral structure (p/n 120-29073- 1 - 015) 2 lateral leg structure (p/n 120- 1 - 29073-006) 3 repair doubl -< maintenanc, lateral leg structure (p/n 120- 1 - 29073-006) 3 repair doubl -< maintenance illustrated seat leg repairs, triple passenger seat leg repairs. Treat these as source leads for review, not as proof of approval, interchangeability, fit, or safety.\n\nSource notes: source_p000485 (page 485, route=unknown); source_p000486 (page 486, route=unknown); source_p000487 (page 487, route=unknown).",
+      "response_text_char_count": 2443,
+      "retrieval_execution_allowed": false,
+      "server_record_version": "trace_net_engineering_webui_answer_server_v1",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false
+    }
+  ],
+  "routes": {
+    "chat_completions": "/v1/chat/completions",
+    "health": "/health",
+    "models": "/v1/models"
+  },
+  "safety_contract": {
+    "answer_permission": false,
+    "manual_review_required": true,
+    "opensearch_write_allowed": false,
+    "postgres_write_allowed": false,
+    "qdrant_write_allowed": false,
+    "source_truth_mutation_allowed": false
+  },
+  "status": "ENGINEERING_WEBUI_ANSWER_SERVER_V1_3_MANIFEST_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "clean_fallback_enabled": true,
+    "gated_draft_count": 1,
+    "openai_compatible_chat_completions_route": true,
+    "page_record_count": 509,
+    "page_with_text_count": 509,
+    "ready_for_webui": true,
+    "retrieval_execution_allowed_count": 0,
+    "retry_empty_response_enabled": true,
+    "sample_response_char_count": 2443,
+    "sample_response_kind": "clean_controlled_artifact_search",
+    "server_llm_base_url": "http://127.0.0.1:11434/v1",
+    "server_llm_mode": "ollama_openai",
+    "server_llm_model": "gemma4:26b",
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0
+  }
+}

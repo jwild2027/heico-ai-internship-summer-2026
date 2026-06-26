@@ -1,0 +1,38 @@
+{
+  "checked_report_path": "local_data\\organization\\trace_net\\engineering_draft_final_gate_retry\\trace_net_engineering_draft_final_gate_v1.json",
+  "failures": [
+    "not enough manual-review-ready records"
+  ],
+  "quality_status": "FAIL",
+  "summary": {
+    "answer_permission_count": 0,
+    "blocked_record_count": 1,
+    "blocking_reason_counts": {
+      "draft_too_short": 1
+    },
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "final_gate_record_count": 1,
+    "final_gate_status_counts": {
+      "FINAL_GATE_BLOCKED": 1
+    },
+    "human_review_required_count": 1,
+    "intent_family_counts": {
+      "exact_part_lookup": 1
+    },
+    "llm_call_allowed_count": 0,
+    "manual_review_ready_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "ready_for_final_answer_count": 0,
+    "retrieval_execution_allowed_count": 0,
+    "source_runner_quality_status": "PASS",
+    "source_runner_record_count": 1,
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0,
+    "warning_reason_counts": {
+      "missing_expected_section_markers": 1
+    }
+  }
+}

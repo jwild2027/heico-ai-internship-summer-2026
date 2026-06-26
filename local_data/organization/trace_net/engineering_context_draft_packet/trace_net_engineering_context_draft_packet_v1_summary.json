@@ -1,0 +1,50 @@
+{
+  "answer_permission_count": 0,
+  "can_answer_directly_count": 0,
+  "can_prove_claims_count": 0,
+  "draft_packet_count": 1,
+  "draft_packet_status_counts": {
+    "ready_for_gemma_draft_context_only": 1
+  },
+  "intent_family_counts": {
+    "exact_part_lookup": 1
+  },
+  "llm_call_allowed_count": 0,
+  "opensearch_write_attempt_count": 0,
+  "postgres_write_attempt_count": 0,
+  "qdrant_write_attempt_count": 0,
+  "ready_for_final_answer_count": 0,
+  "ready_for_gemma_draft_count": 1,
+  "requires_final_gate_after_draft_count": 1,
+  "retrieval_execution_allowed_count": 0,
+  "skipped_context_pack_count": 3,
+  "skipped_context_packs": [
+    {
+      "context_pack_id": "engineering_context_pack_0001",
+      "crag_retry_required": true,
+      "reason": "self_rag_not_ready_for_gemma_draft",
+      "self_rag_status": "CRAG_RETRY_REQUIRED"
+    },
+    {
+      "context_pack_id": "engineering_context_pack_0003",
+      "crag_retry_required": true,
+      "reason": "self_rag_not_ready_for_gemma_draft",
+      "self_rag_status": "CRAG_RETRY_REQUIRED"
+    },
+    {
+      "context_pack_id": "engineering_context_pack_0004",
+      "crag_retry_required": true,
+      "reason": "self_rag_not_ready_for_gemma_draft",
+      "self_rag_status": "CRAG_RETRY_REQUIRED"
+    }
+  ],
+  "source_context_pack_builder_quality_status": "PASS",
+  "source_context_pack_count": 4,
+  "source_self_rag_quality_status": "PASS",
+  "source_self_rag_record_count": 4,
+  "source_truth_mutation_allowed_count": 0,
+  "total_candidate_capsule_count": 16,
+  "total_missing_evidence_count": 0,
+  "total_source_truth_capsule_count": 14,
+  "unsafe_record_count": 0
+}

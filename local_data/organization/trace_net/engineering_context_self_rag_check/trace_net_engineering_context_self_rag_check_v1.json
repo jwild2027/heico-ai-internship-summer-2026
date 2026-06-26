@@ -1,0 +1,394 @@
+{
+  "module": "trace_net_engineering_context_self_rag_check_v1",
+  "quality_status": "PASS",
+  "records": [
+    {
+      "answer_permission": false,
+      "answers_user_question": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "capsule_counts": {
+        "candidate_capsule_count": 8,
+        "exact_source_capsule_count": 0,
+        "fallback_capsule_count": 0,
+        "high_signal_capsule_count": 22,
+        "route_capsule_counts": {
+          "graph": 8,
+          "normal_text": 6,
+          "table": 8
+        },
+        "source_trace_ready_capsule_count": 22,
+        "source_truth_capsule_count": 14,
+        "trust_tier_counts": {
+          "relationship_candidate": 8,
+          "source_context_guidance": 6,
+          "structured_table_candidate": 8
+        }
+      },
+      "context_pack_id": "engineering_context_pack_0001",
+      "crag_retry_reasons": [
+        "critical_missing:source_dimension_not_confirmed",
+        "missing_evidence:source_dimension_not_confirmed:table"
+      ],
+      "crag_retry_required": true,
+      "critical_missing_evidence_types": [
+        "source_dimension_not_confirmed"
+      ],
+      "draft_mode": "crag_retry_or_review_required_before_draft",
+      "evidence_strength_score": 52,
+      "forbidden_claim_count": 10,
+      "forbidden_claims_sample": [
+        "approved modification",
+        "approved replacement without explicit source evidence",
+        "engineering approval",
+        "guaranteed fit/form/function",
+        "manufacturing/tolerance approval",
+        "safe dimensional change",
+        "safe to install",
+        "uncited dimension or material claim",
+        "uncited repair procedure",
+        "will fit"
+      ],
+      "intent_family": "engineering_change_candidate",
+      "llm_call_allowed": false,
+      "missing_evidence": [
+        {
+          "crag_retry_recommended": true,
+          "missing_type": "source_dimension_not_confirmed",
+          "reason": "question requests a dimensional change but selected table evidence does not clearly prove a source dimension",
+          "route": "table"
+        }
+      ],
+      "missing_evidence_count": 1,
+      "missing_evidence_types": [
+        "source_dimension_not_confirmed"
+      ],
+      "opensearch_write_attempt": false,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "question_id": "engineering_q0001",
+      "ready_for_gemma_draft": false,
+      "retrieval_execution_allowed": false,
+      "route_coverage": {
+        "filled_route_slot_count": 3,
+        "high_signal_filled_route_slot_count": 3,
+        "high_signal_route_coverage_ratio": 1.0,
+        "required_route_slot_count": 3,
+        "route_coverage_ratio": 1.0,
+        "route_coverage_status": "complete_high_signal_route_coverage"
+      },
+      "safety_violations": [],
+      "selected_playbook_id": "dimensional_change_candidate_search",
+      "self_rag_check_version": "trace_net_engineering_context_self_rag_check_v1",
+      "self_rag_record_id": "engineering_self_rag_0001",
+      "self_rag_status": "CRAG_RETRY_REQUIRED",
+      "source_blueprint_id": "context_pack_blueprint_0001",
+      "source_truth_evidence_strength": "partial_source_truth_context",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_question": "This model number 123-45 needs to be 4 inches shorter. Any part that looks like that?"
+    },
+    {
+      "answer_permission": false,
+      "answers_user_question": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "capsule_counts": {
+        "candidate_capsule_count": 16,
+        "exact_source_capsule_count": 1,
+        "fallback_capsule_count": 0,
+        "high_signal_capsule_count": 30,
+        "route_capsule_counts": {
+          "graph": 8,
+          "normal_text": 6,
+          "route_dispatch": 8,
+          "table": 8
+        },
+        "source_trace_ready_capsule_count": 29,
+        "source_truth_capsule_count": 14,
+        "trust_tier_counts": {
+          "exact_source_evidence_candidate": 1,
+          "relationship_candidate": 8,
+          "routing_metadata_not_source_truth": 8,
+          "source_context_guidance": 6,
+          "structured_table_candidate": 7
+        }
+      },
+      "context_pack_id": "engineering_context_pack_0002",
+      "crag_retry_reasons": [],
+      "crag_retry_required": false,
+      "critical_missing_evidence_types": [],
+      "draft_mode": "context_draft_allowed_no_final_answer",
+      "evidence_strength_score": 90,
+      "forbidden_claim_count": 8,
+      "forbidden_claims_sample": [
+        "approved replacement without explicit source evidence",
+        "engineering approval",
+        "guaranteed fit/form/function",
+        "safe to install",
+        "uncited dimension or material claim",
+        "uncited repair procedure",
+        "unproven synonym",
+        "unverified alternate part"
+      ],
+      "intent_family": "exact_part_lookup",
+      "llm_call_allowed": false,
+      "missing_evidence": [],
+      "missing_evidence_count": 0,
+      "missing_evidence_types": [],
+      "opensearch_write_attempt": false,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "question_id": "engineering_q0002",
+      "ready_for_gemma_draft": true,
+      "retrieval_execution_allowed": false,
+      "route_coverage": {
+        "filled_route_slot_count": 4,
+        "high_signal_filled_route_slot_count": 4,
+        "high_signal_route_coverage_ratio": 1.0,
+        "required_route_slot_count": 4,
+        "route_coverage_ratio": 1.0,
+        "route_coverage_status": "complete_high_signal_route_coverage"
+      },
+      "safety_violations": [],
+      "selected_playbook_id": "part_number_evidence_pack",
+      "self_rag_check_version": "trace_net_engineering_context_self_rag_check_v1",
+      "self_rag_record_id": "engineering_self_rag_0002",
+      "self_rag_status": "READY_FOR_GEMMA_DRAFT_CONTEXT_ONLY",
+      "source_blueprint_id": "context_pack_blueprint_0002",
+      "source_truth_evidence_strength": "strong_exact_source_truth",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_question": "Find part number 120-29073-001 and nearby similar parts."
+    },
+    {
+      "answer_permission": false,
+      "answers_user_question": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "capsule_counts": {
+        "candidate_capsule_count": 0,
+        "exact_source_capsule_count": 0,
+        "fallback_capsule_count": 0,
+        "high_signal_capsule_count": 16,
+        "route_capsule_counts": {
+          "normal_text": 8,
+          "table": 8
+        },
+        "source_trace_ready_capsule_count": 16,
+        "source_truth_capsule_count": 16,
+        "trust_tier_counts": {
+          "source_context_guidance": 8,
+          "structured_table_candidate": 8
+        }
+      },
+      "context_pack_id": "engineering_context_pack_0003",
+      "crag_retry_reasons": [
+        "critical_missing:route_slot_unfilled",
+        "critical_missing:warning_caution_not_confirmed",
+        "evidence_strength_score_below_threshold",
+        "missing_evidence:route_slot_unfilled:image_visual",
+        "missing_evidence:warning_caution_not_confirmed:normal_text"
+      ],
+      "crag_retry_required": true,
+      "critical_missing_evidence_types": [
+        "route_slot_unfilled",
+        "warning_caution_not_confirmed"
+      ],
+      "draft_mode": "crag_retry_or_review_required_before_draft",
+      "evidence_strength_score": 24,
+      "forbidden_claim_count": 8,
+      "forbidden_claims_sample": [
+        "approval to perform maintenance",
+        "approved replacement without explicit source evidence",
+        "engineering approval",
+        "guaranteed fit/form/function",
+        "safe to install",
+        "skipped warning",
+        "uncited dimension or material claim",
+        "uncited repair procedure"
+      ],
+      "intent_family": "repair_or_fault_context",
+      "llm_call_allowed": false,
+      "missing_evidence": [
+        {
+          "crag_retry_recommended": true,
+          "missing_type": "route_slot_unfilled",
+          "reason": "no available artifact evidence selected for route image_visual",
+          "route": "image_visual"
+        },
+        {
+          "crag_retry_recommended": true,
+          "missing_type": "warning_caution_not_confirmed",
+          "reason": "procedure question should check warnings/cautions; selected evidence did not clearly include them",
+          "route": "normal_text"
+        }
+      ],
+      "missing_evidence_count": 2,
+      "missing_evidence_types": [
+        "route_slot_unfilled",
+        "warning_caution_not_confirmed"
+      ],
+      "opensearch_write_attempt": false,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "question_id": "engineering_q0003",
+      "ready_for_gemma_draft": false,
+      "retrieval_execution_allowed": false,
+      "route_coverage": {
+        "filled_route_slot_count": 2,
+        "high_signal_filled_route_slot_count": 2,
+        "high_signal_route_coverage_ratio": 0.6667,
+        "required_route_slot_count": 3,
+        "route_coverage_ratio": 0.6667,
+        "route_coverage_status": "partial_route_coverage"
+      },
+      "safety_violations": [],
+      "selected_playbook_id": "fault_repair_procedure_reasoning",
+      "self_rag_check_version": "trace_net_engineering_context_self_rag_check_v1",
+      "self_rag_record_id": "engineering_self_rag_0003",
+      "self_rag_status": "CRAG_RETRY_REQUIRED",
+      "source_blueprint_id": "context_pack_blueprint_0003",
+      "source_truth_evidence_strength": "partial_source_truth_context",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_question": "Can I clean this part with solvent?"
+    },
+    {
+      "answer_permission": false,
+      "answers_user_question": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "capsule_counts": {
+        "candidate_capsule_count": 8,
+        "exact_source_capsule_count": 0,
+        "fallback_capsule_count": 0,
+        "high_signal_capsule_count": 16,
+        "route_capsule_counts": {
+          "graph": 8,
+          "table": 8
+        },
+        "source_trace_ready_capsule_count": 16,
+        "source_truth_capsule_count": 8,
+        "trust_tier_counts": {
+          "relationship_candidate": 8,
+          "structured_table_candidate": 8
+        }
+      },
+      "context_pack_id": "engineering_context_pack_0004",
+      "crag_retry_reasons": [
+        "critical_missing:route_slot_unfilled",
+        "missing_evidence:route_slot_unfilled:image_visual"
+      ],
+      "crag_retry_required": true,
+      "critical_missing_evidence_types": [
+        "route_slot_unfilled"
+      ],
+      "draft_mode": "crag_retry_or_review_required_before_draft",
+      "evidence_strength_score": 41,
+      "forbidden_claim_count": 8,
+      "forbidden_claims_sample": [
+        "approved replacement without explicit source evidence",
+        "approved visual replacement",
+        "engineering approval",
+        "guaranteed fit/form/function",
+        "safe to install",
+        "same part based only on image",
+        "uncited dimension or material claim",
+        "uncited repair procedure"
+      ],
+      "intent_family": "visual_or_callout_similarity",
+      "llm_call_allowed": false,
+      "missing_evidence": [
+        {
+          "crag_retry_recommended": true,
+          "missing_type": "route_slot_unfilled",
+          "reason": "no available artifact evidence selected for route image_visual",
+          "route": "image_visual"
+        }
+      ],
+      "missing_evidence_count": 1,
+      "missing_evidence_types": [
+        "route_slot_unfilled"
+      ],
+      "opensearch_write_attempt": false,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "question_id": "engineering_q0004",
+      "ready_for_gemma_draft": false,
+      "retrieval_execution_allowed": false,
+      "route_coverage": {
+        "filled_route_slot_count": 2,
+        "high_signal_filled_route_slot_count": 2,
+        "high_signal_route_coverage_ratio": 0.6667,
+        "required_route_slot_count": 3,
+        "route_coverage_ratio": 0.6667,
+        "route_coverage_status": "partial_route_coverage"
+      },
+      "safety_violations": [],
+      "selected_playbook_id": "visual_similarity_candidate_search",
+      "self_rag_check_version": "trace_net_engineering_context_self_rag_check_v1",
+      "self_rag_record_id": "engineering_self_rag_0004",
+      "self_rag_status": "CRAG_RETRY_REQUIRED",
+      "source_blueprint_id": "context_pack_blueprint_0004",
+      "source_truth_evidence_strength": "partial_source_truth_context",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_question": "Show visually similar callout parts in the same figure."
+    }
+  ],
+  "safety_contract": {
+    "answer_permission": false,
+    "answers_user_question": false,
+    "artifact_authority": "self_rag_check_only",
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "llm_call_allowed": false,
+    "opensearch_write_allowed": false,
+    "postgres_write_allowed": false,
+    "qdrant_write_allowed": false,
+    "retrieval_execution_allowed": false,
+    "source_truth_mutation_allowed": false
+  },
+  "source_context_pack_builder_path": "local_data\\organization\\trace_net\\engineering_context_pack_builder\\trace_net_engineering_context_pack_builder_v1.json",
+  "status": "ENGINEERING_CONTEXT_SELF_RAG_CHECK_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "average_evidence_strength_score": 51.75,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "crag_retry_required_count": 3,
+    "intent_family_counts": {
+      "engineering_change_candidate": 1,
+      "exact_part_lookup": 1,
+      "repair_or_fault_context": 1,
+      "visual_or_callout_similarity": 1
+    },
+    "llm_call_allowed_count": 0,
+    "max_evidence_strength_score": 90,
+    "min_evidence_strength_score": 24,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "ready_for_gemma_draft_count": 1,
+    "retrieval_execution_allowed_count": 0,
+    "self_rag_record_count": 4,
+    "self_rag_status_counts": {
+      "CRAG_RETRY_REQUIRED": 3,
+      "READY_FOR_GEMMA_DRAFT_CONTEXT_ONLY": 1
+    },
+    "source_context_pack_builder_quality_status": "PASS",
+    "source_context_pack_count": 4,
+    "source_truth_evidence_strength_counts": {
+      "partial_source_truth_context": 3,
+      "strong_exact_source_truth": 1
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "total_missing_evidence_count": 4,
+    "unsafe_record_count": 0
+  },
+  "thresholds": {
+    "min_evidence_strength_score": 35,
+    "min_high_signal_capsules": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "messages": [
+    {
+      "content": "You are Gemma4 drafting inside TRACE-Net. Return normal assistant content only. Do not return hidden thinking only. Do not output a fragment. Do not use Markdown heading symbols like ###. Use only the provided evidence. This is draft-only, not a final answer.",
+      "role": "system"
+    },
+    {
+      "content": "The previous draft was blocked because it was too short.\nPrevious draft preview: '###'\n\nQuestion: Find part number 120-29073-001 and nearby similar parts.\n\nWrite a complete draft using EXACTLY these five plain-text labels. Do not use ###.\nSource-backed facts:\nRelated candidate context:\nMissing evidence and review boundaries:\nSource trace notes:\nDo-not-claim boundary:\n\nMinimum length: 300 characters.\nMinimum sentences: 8.\nUse complete sentences. Do not stop after one word or one label.\n\nSource-backed evidence:\n1. page_id=t_p_120_1176_p000001; route=normal_text; trust=source_context_guidance; excerpt=0 509 blocked page_context_v2_t_p_120_1176_p000001 t_p_120_1176_p000001 unknown_route routing_and_ranking_only Page 2 from T.P. 120/1176 in ATA 25-21-00 has empty OCR text. page_context_v2_t_p_120_1176_p000002 t_p_120_11\n2. page_id=t_p_120_1176_p000003; route=normal_text; trust=source_context_guidance; excerpt=This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope. blocked page_context_v2_t_p_120_1176_p000003 t_p_120_1176_p0000\n3. page_id=t_p_120_1176_p000005; route=normal_text; trust=source_context_guidance; excerpt=This page appears to be a parts list and index from a maintenance manual, listing various part numbers and revision dates. blocked page_context_v2_t_p_120_1176_p000005 t_p_120_1176_p000005 unknown_route routing_and_ranki\n\nCandidate evidence:\n1. page_id=t_p_120_1176_p000352; route=graph; trust=relationship_candidate; excerpt=edge::6e271f14a21793d9ab2a MAY_REFER_TO_PART element_graph_attachment_plan_v1 t_p_120_1176_p000352 dry_run_overlay visual_understanding::t_p_120_1176_p000352 part_candidate::120-29\n2. page_id=unknown_page; route=graph; trust=relationship_candidate; excerpt=community_retrieval_and_review_only 29 cite:source:t_p_120_1176_p000039:74ccdf5f41 cite:source:t_p_120_1176_p000343:b894936da8 cite:source:t_p_120_1176_p000352:b02b1c626d cite:sour\n\nMissing evidence notes: No extra missing-evidence note in packet; still avoid approval/interchangeability claims.\nForbidden claims: approved replacement without explicit source evidence; engineering approval; guaranteed fit/form/function; safe to install; uncited dimension or material claim; uncited repair procedure; unproven synonym; unverified alternate part\n\nImportant: Write the actual draft now in normal final content. Do not only write 'Based' or '###'.",
+      "role": "user"
+    }
+  ],
+  "model": "gemma4:26b",
+  "options": {
+    "num_predict": 1200,
+    "repeat_last_n": 64,
+    "temperature": 0.0
+  },
+  "stream": false,
+  "think": false
+}
