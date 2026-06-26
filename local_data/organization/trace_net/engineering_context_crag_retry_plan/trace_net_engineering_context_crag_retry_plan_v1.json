@@ -1,0 +1,386 @@
+{
+  "module": "trace_net_engineering_context_crag_retry_plan_v1",
+  "quality_status": "PASS",
+  "records": [
+    {
+      "answer_permission": false,
+      "answers_user_question": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "context_pack_id": "engineering_context_pack_0001",
+      "crag_retry_plan_id": "engineering_crag_retry_plan_0001",
+      "crag_retry_plan_version": "trace_net_engineering_context_crag_retry_plan_v1",
+      "critical_missing_evidence_types": [
+        "source_dimension_not_confirmed"
+      ],
+      "intent_family": "engineering_change_candidate",
+      "llm_call_allowed": false,
+      "missing_evidence_types": [
+        "source_dimension_not_confirmed"
+      ],
+      "opensearch_write_attempt": false,
+      "plan_status": "crag_retry_plan_ready_no_execution",
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "query_hints": [
+        "This model number 123-45 needs to be 4 inches shorter. Any part that looks like that?",
+        "123-45 shorter part dimension length inch inches mm cm",
+        "same part family dash number variant dimension length",
+        "IPL table dimensions repair material part number"
+      ],
+      "question_id": "engineering_q0001",
+      "ready_for_crag_execution": true,
+      "retrieval_execution_allowed": false,
+      "retry_actions": [
+        {
+          "answer_permission": false,
+          "db_write_allowed": false,
+          "execution_allowed": false,
+          "fallback_if_still_missing": "mark dimensional-change answer as candidate-only with missing dimension proof; do not allow fit/modification claim",
+          "intent_family": "engineering_change_candidate",
+          "missing_type": "source_dimension_not_confirmed",
+          "query_hints": [
+            "This model number 123-45 needs to be 4 inches shorter. Any part that looks like that?",
+            "123-45 shorter part dimension length inch inches mm cm",
+            "same part family dash number variant dimension length",
+            "IPL table dimensions repair material part number"
+          ],
+          "question_terms": [
+            "123-45",
+            "shorter",
+            "part"
+          ],
+          "retry_action_id": "retry_table_dimension_evidence",
+          "source_route": "table",
+          "success_conditions": [
+            "at least one table/source record contains the seed entity or same-family candidate",
+            "selected evidence contains a dimension/length/size term",
+            "page_id/source_trace is present",
+            "context pack no longer reports source_dimension_not_confirmed"
+          ],
+          "target_artifacts": [
+            "table_exact_search_adapter",
+            "table_route_evidence_package",
+            "source_normalized_table_value_records",
+            "promoted_table_value_evidence"
+          ],
+          "target_route": "table"
+        }
+      ],
+      "retry_priority": "medium",
+      "selected_playbook_id": "dimensional_change_candidate_search",
+      "source_crag_retry_reasons": [
+        "critical_missing:source_dimension_not_confirmed",
+        "missing_evidence:source_dimension_not_confirmed:table"
+      ],
+      "source_evidence_strength_score": 52,
+      "source_self_rag_record_id": "engineering_self_rag_0001",
+      "source_self_rag_status": "CRAG_RETRY_REQUIRED",
+      "source_truth_evidence_strength": "partial_source_truth_context",
+      "source_truth_mutation_allowed": false,
+      "success_gate": {
+        "answer_permission_after_retry": false,
+        "can_prove_claims_after_retry": false,
+        "must_rebuild_context_pack": true,
+        "must_reduce_or_resolve_critical_missing_evidence": true,
+        "must_rerun_self_rag": true
+      },
+      "target_artifacts": [
+        "promoted_table_value_evidence",
+        "source_normalized_table_value_records",
+        "table_exact_search_adapter",
+        "table_route_evidence_package"
+      ],
+      "target_routes": [
+        "table"
+      ],
+      "unknown_target_route_count": 0,
+      "unsafe": false,
+      "user_question": "This model number 123-45 needs to be 4 inches shorter. Any part that looks like that?"
+    },
+    {
+      "answer_permission": false,
+      "answers_user_question": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "context_pack_id": "engineering_context_pack_0003",
+      "crag_retry_plan_id": "engineering_crag_retry_plan_0002",
+      "crag_retry_plan_version": "trace_net_engineering_context_crag_retry_plan_v1",
+      "critical_missing_evidence_types": [
+        "route_slot_unfilled",
+        "warning_caution_not_confirmed"
+      ],
+      "intent_family": "repair_or_fault_context",
+      "llm_call_allowed": false,
+      "missing_evidence_types": [
+        "route_slot_unfilled",
+        "warning_caution_not_confirmed"
+      ],
+      "opensearch_write_attempt": false,
+      "plan_status": "crag_retry_plan_ready_no_execution",
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "query_hints": [
+        "Can I clean this part with solvent?",
+        "clean solvent part figure callout visual diagram",
+        "same figure callout neighboring parts visual similarity",
+        "clean solvent part WARNING CAUTION NOTE",
+        "cleaning solvent warning caution procedure",
+        "cleaners toxic ingredients gloves skin eyes"
+      ],
+      "question_id": "engineering_q0003",
+      "ready_for_crag_execution": true,
+      "retrieval_execution_allowed": false,
+      "retry_actions": [
+        {
+          "answer_permission": false,
+          "db_write_allowed": false,
+          "execution_allowed": false,
+          "fallback_if_still_missing": "continue without image evidence only for non-visual questions; visual-similarity questions remain not draft-ready",
+          "intent_family": "repair_or_fault_context",
+          "missing_type": "route_slot_unfilled",
+          "query_hints": [
+            "Can I clean this part with solvent?",
+            "clean solvent part figure callout visual diagram",
+            "same figure callout neighboring parts visual similarity"
+          ],
+          "question_terms": [
+            "clean",
+            "solvent",
+            "part"
+          ],
+          "retry_action_id": "retry_image_visual_route_evidence",
+          "source_route": "image_visual",
+          "success_conditions": [
+            "image_visual artifact exists and is parsed",
+            "at least one image/callout capsule is selected",
+            "visual-only evidence remains candidate-only"
+          ],
+          "target_artifacts": [
+            "image_visual_observer_route",
+            "image_visual_handoff",
+            "callout_candidates",
+            "visual_part_verification_records"
+          ],
+          "target_route": "image_visual"
+        },
+        {
+          "answer_permission": false,
+          "db_write_allowed": false,
+          "execution_allowed": false,
+          "fallback_if_still_missing": "answer must say warning/caution evidence was not confirmed and avoid procedural instruction",
+          "intent_family": "repair_or_fault_context",
+          "missing_type": "warning_caution_not_confirmed",
+          "query_hints": [
+            "Can I clean this part with solvent?",
+            "clean solvent part WARNING CAUTION NOTE",
+            "cleaning solvent warning caution procedure",
+            "cleaners toxic ingredients gloves skin eyes"
+          ],
+          "question_terms": [
+            "clean",
+            "solvent",
+            "part"
+          ],
+          "retry_action_id": "retry_warning_caution_procedure_evidence",
+          "source_route": "normal_text",
+          "success_conditions": [
+            "normal_text/page_context evidence includes WARNING, CAUTION, or NOTE when present",
+            "selected evidence has source page trace",
+            "procedure context is source-backed before Gemma draft"
+          ],
+          "target_artifacts": [
+            "page_context_v2",
+            "normal_text_handoff",
+            "fishnet OCR text"
+          ],
+          "target_route": "normal_text"
+        }
+      ],
+      "retry_priority": "high",
+      "selected_playbook_id": "fault_repair_procedure_reasoning",
+      "source_crag_retry_reasons": [
+        "critical_missing:route_slot_unfilled",
+        "critical_missing:warning_caution_not_confirmed",
+        "evidence_strength_score_below_threshold",
+        "missing_evidence:route_slot_unfilled:image_visual",
+        "missing_evidence:warning_caution_not_confirmed:normal_text"
+      ],
+      "source_evidence_strength_score": 24,
+      "source_self_rag_record_id": "engineering_self_rag_0003",
+      "source_self_rag_status": "CRAG_RETRY_REQUIRED",
+      "source_truth_evidence_strength": "partial_source_truth_context",
+      "source_truth_mutation_allowed": false,
+      "success_gate": {
+        "answer_permission_after_retry": false,
+        "can_prove_claims_after_retry": false,
+        "must_rebuild_context_pack": true,
+        "must_reduce_or_resolve_critical_missing_evidence": true,
+        "must_rerun_self_rag": true
+      },
+      "target_artifacts": [
+        "callout_candidates",
+        "fishnet OCR text",
+        "image_visual_handoff",
+        "image_visual_observer_route",
+        "normal_text_handoff",
+        "page_context_v2",
+        "visual_part_verification_records"
+      ],
+      "target_routes": [
+        "image_visual",
+        "normal_text"
+      ],
+      "unknown_target_route_count": 0,
+      "unsafe": false,
+      "user_question": "Can I clean this part with solvent?"
+    },
+    {
+      "answer_permission": false,
+      "answers_user_question": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "context_pack_id": "engineering_context_pack_0004",
+      "crag_retry_plan_id": "engineering_crag_retry_plan_0003",
+      "crag_retry_plan_version": "trace_net_engineering_context_crag_retry_plan_v1",
+      "critical_missing_evidence_types": [
+        "route_slot_unfilled"
+      ],
+      "intent_family": "visual_or_callout_similarity",
+      "llm_call_allowed": false,
+      "missing_evidence_types": [
+        "route_slot_unfilled"
+      ],
+      "opensearch_write_attempt": false,
+      "plan_status": "crag_retry_plan_ready_no_execution",
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "query_hints": [
+        "Show visually similar callout parts in the same figure.",
+        "callout figure visual part figure callout visual diagram",
+        "same figure callout neighboring parts visual similarity"
+      ],
+      "question_id": "engineering_q0004",
+      "ready_for_crag_execution": true,
+      "retrieval_execution_allowed": false,
+      "retry_actions": [
+        {
+          "answer_permission": false,
+          "db_write_allowed": false,
+          "execution_allowed": false,
+          "fallback_if_still_missing": "continue without image evidence only for non-visual questions; visual-similarity questions remain not draft-ready",
+          "intent_family": "visual_or_callout_similarity",
+          "missing_type": "route_slot_unfilled",
+          "query_hints": [
+            "Show visually similar callout parts in the same figure.",
+            "callout figure visual part figure callout visual diagram",
+            "same figure callout neighboring parts visual similarity"
+          ],
+          "question_terms": [
+            "callout",
+            "figure",
+            "visual",
+            "part"
+          ],
+          "retry_action_id": "retry_image_visual_route_evidence",
+          "source_route": "image_visual",
+          "success_conditions": [
+            "image_visual artifact exists and is parsed",
+            "at least one image/callout capsule is selected",
+            "visual-only evidence remains candidate-only"
+          ],
+          "target_artifacts": [
+            "image_visual_observer_route",
+            "image_visual_handoff",
+            "callout_candidates",
+            "visual_part_verification_records"
+          ],
+          "target_route": "image_visual"
+        }
+      ],
+      "retry_priority": "high",
+      "selected_playbook_id": "visual_similarity_candidate_search",
+      "source_crag_retry_reasons": [
+        "critical_missing:route_slot_unfilled",
+        "missing_evidence:route_slot_unfilled:image_visual"
+      ],
+      "source_evidence_strength_score": 41,
+      "source_self_rag_record_id": "engineering_self_rag_0004",
+      "source_self_rag_status": "CRAG_RETRY_REQUIRED",
+      "source_truth_evidence_strength": "partial_source_truth_context",
+      "source_truth_mutation_allowed": false,
+      "success_gate": {
+        "answer_permission_after_retry": false,
+        "can_prove_claims_after_retry": false,
+        "must_rebuild_context_pack": true,
+        "must_reduce_or_resolve_critical_missing_evidence": true,
+        "must_rerun_self_rag": true
+      },
+      "target_artifacts": [
+        "callout_candidates",
+        "image_visual_handoff",
+        "image_visual_observer_route",
+        "visual_part_verification_records"
+      ],
+      "target_routes": [
+        "image_visual"
+      ],
+      "unknown_target_route_count": 0,
+      "unsafe": false,
+      "user_question": "Show visually similar callout parts in the same figure."
+    }
+  ],
+  "safety_contract": {
+    "answer_permission": false,
+    "answers_user_question": false,
+    "artifact_authority": "crag_retry_planning_only",
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "llm_call_allowed": false,
+    "opensearch_write_allowed": false,
+    "postgres_write_allowed": false,
+    "qdrant_write_allowed": false,
+    "retrieval_execution_allowed": false,
+    "source_truth_mutation_allowed": false
+  },
+  "source_self_rag_report_path": "local_data\\organization\\trace_net\\engineering_context_self_rag_check\\trace_net_engineering_context_self_rag_check_v1.json",
+  "status": "ENGINEERING_CONTEXT_CRAG_RETRY_PLAN_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "crag_retry_plan_count": 3,
+    "intent_family_counts": {
+      "engineering_change_candidate": 1,
+      "repair_or_fault_context": 1,
+      "visual_or_callout_similarity": 1
+    },
+    "llm_call_allowed_count": 0,
+    "missing_evidence_type_counts": {
+      "route_slot_unfilled": 2,
+      "source_dimension_not_confirmed": 1,
+      "warning_caution_not_confirmed": 1
+    },
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "ready_for_crag_execution_count": 3,
+    "retrieval_execution_allowed_count": 0,
+    "retry_priority_counts": {
+      "high": 2,
+      "medium": 1
+    },
+    "source_crag_retry_required_count": 3,
+    "source_self_rag_quality_status": "PASS",
+    "source_self_rag_record_count": 4,
+    "source_truth_mutation_allowed_count": 0,
+    "target_route_counts": {
+      "image_visual": 2,
+      "normal_text": 1,
+      "table": 1
+    },
+    "total_retry_action_count": 4,
+    "unknown_target_route_count": 0,
+    "unsafe_record_count": 0
+  }
+}

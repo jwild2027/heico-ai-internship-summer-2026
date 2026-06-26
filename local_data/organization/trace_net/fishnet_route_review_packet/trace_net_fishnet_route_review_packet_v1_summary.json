@@ -1,0 +1,62 @@
+{
+  "answer_permission_count": 0,
+  "can_answer_directly_count": 0,
+  "can_prove_claims_count": 0,
+  "high_confidence_review_record_count": 14,
+  "opensearch_write_attempt_count": 0,
+  "postgres_write_attempt_count": 0,
+  "qdrant_write_attempt_count": 0,
+  "review_record_count": 51,
+  "review_records_with_ocr_text_count": 48,
+  "review_records_with_overlay_candidates_count": 51,
+  "route_change_authorized_count": 0,
+  "selected_agreement_status_counts": {
+    "disagree": 7,
+    "fishnet_review_required": 30,
+    "high_confidence_disagreement": 14
+  },
+  "selected_current_route_counts": {
+    "blank_candidate": 33,
+    "image_visual": 10,
+    "normal_text": 1,
+    "table": 7
+  },
+  "selected_fishnet_route_counts": {
+    "normal_text": 16,
+    "review_required": 30,
+    "table": 5
+  },
+  "selected_review_severity_counts": {
+    "high": 14,
+    "medium": 7,
+    "review": 30
+  },
+  "selected_route_pair_counts": {
+    "blank_candidate->normal_text": 11,
+    "blank_candidate->review_required": 17,
+    "blank_candidate->table": 5,
+    "image_visual->normal_text": 5,
+    "image_visual->review_required": 5,
+    "normal_text->review_required": 1,
+    "table->review_required": 7
+  },
+  "selection_reason_counts": {
+    "fishnet_review_required_sample": 20,
+    "high_confidence_disagreement": 14,
+    "representative_route_pair:blank_candidate->table": 5,
+    "representative_route_pair:image_visual->normal_text": 2,
+    "representative_route_pair:image_visual->review_required": 5,
+    "representative_route_pair:table->review_required": 5
+  },
+  "source_agreement_count": 9,
+  "source_comparison_record_count": 509,
+  "source_disagreement_count": 342,
+  "source_high_confidence_disagreement_count": 14,
+  "source_review_required_count": 500,
+  "source_total_fishnet_ocr_text_length": 493498,
+  "source_total_fishnet_ocr_word_box_count": 83741,
+  "source_truth_mutation_allowed_count": 0,
+  "source_workbench_path": "local_data/organization/trace_net/fishnet_route_signal_workbench/trace_net_fishnet_route_signal_workbench_v1.json",
+  "source_workbench_quality_status": "PASS",
+  "unsafe_record_count": 0
+}

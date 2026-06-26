@@ -1,0 +1,1144 @@
+{
+  "module": "trace_net_engineering_context_pack_blueprint_v1",
+  "quality_status": "PASS",
+  "records": [
+    {
+      "answer_format_contract": {
+        "answer_mode": "candidate_for_engineering_review",
+        "final_gate_inputs": [
+          "source_truth_evidence",
+          "candidate_evidence",
+          "missing_evidence",
+          "forbidden_claims"
+        ],
+        "must_include_if_missing": [
+          "dimension_missing",
+          "effectivity_missing",
+          "interface_or_fit_missing",
+          "approval_missing"
+        ],
+        "must_not_include": [
+          "approved modification",
+          "approved replacement without explicit source evidence",
+          "engineering approval",
+          "guaranteed fit/form/function",
+          "manufacturing/tolerance approval",
+          "safe dimensional change",
+          "safe to install",
+          "uncited dimension or material claim",
+          "uncited repair procedure",
+          "will fit"
+        ],
+        "required_blocks": [
+          "what_is_proven",
+          "candidate_or_related_findings",
+          "missing_evidence",
+          "review_boundary",
+          "citations_or_source_trace"
+        ]
+      },
+      "answer_permission": false,
+      "answers_user_question": false,
+      "blueprint_id": "context_pack_blueprint_0001",
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_language_required": true,
+      "compression_policy": {
+        "deduplicate_by_page_id_and_source_trace": true,
+        "include_missing_evidence_explicitly": true,
+        "prefer_source_truth_over_summary": true,
+        "summaries_are_guidance_not_proof": true
+      },
+      "context_budget": {
+        "candidate_records": 10,
+        "engineering_playbook_cards": 1,
+        "exact_evidence_records": 8,
+        "few_shot_examples": 2,
+        "graph_neighbors": 20,
+        "normal_text_context_pages": 6,
+        "table_records": 12,
+        "visual_or_callout_records": 8
+      },
+      "context_pack_blueprint_version": "trace_net_engineering_context_pack_blueprint_v1",
+      "context_pack_status": "blueprint_only_no_retrieval_executed",
+      "dynamic_context_role": "assemble_question_specific_engineering_context_for_gemma",
+      "engineer_brain_role": "provide_reasoning_playbook_examples_trust_boundaries",
+      "forbidden_answer_claims": [
+        "approved modification",
+        "approved replacement without explicit source evidence",
+        "engineering approval",
+        "guaranteed fit/form/function",
+        "manufacturing/tolerance approval",
+        "safe dimensional change",
+        "safe to install",
+        "uncited dimension or material claim",
+        "uncited repair procedure",
+        "will fit"
+      ],
+      "intent_family": "engineering_change_candidate",
+      "llm_call_allowed": false,
+      "opensearch_write_attempt": false,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "question_id": "engineering_q0001",
+      "requested_change": {
+        "delta_unit": "inches",
+        "delta_value": 4.0,
+        "direction": "decrease",
+        "property": "length",
+        "requires_source_dimension_before_computing_target": true
+      },
+      "retrieval_execution_allowed": false,
+      "route_evidence_slots": [
+        {
+          "evidence_role": "relationship_and_same_family_context",
+          "max_records": 20,
+          "missing_behavior": "record_missing_evidence_and_continue_to_review",
+          "preferred_artifacts": [
+            "postgres_graph_neighbors",
+            "Leiden communities",
+            "same assembly/entity graph"
+          ],
+          "required": true,
+          "route": "graph",
+          "trust_tier": "relationship_candidate_until_source_backed"
+        },
+        {
+          "evidence_role": "procedure_description_warning_context",
+          "max_records": 6,
+          "missing_behavior": "record_missing_evidence_and_continue_to_review",
+          "preferred_artifacts": [
+            "page_context_v2",
+            "normal_text_route_handoff",
+            "Dublin Core metadata"
+          ],
+          "required": true,
+          "route": "normal_text",
+          "trust_tier": "source_context_guidance"
+        },
+        {
+          "evidence_role": "structured_source_truth_or_candidate_table_evidence",
+          "max_records": 12,
+          "missing_behavior": "record_missing_evidence_and_continue_to_review",
+          "preferred_artifacts": [
+            "table_exact_search_adapter",
+            "promoted_table_value_evidence",
+            "source_normalized_table_value_records",
+            "table_route_evidence_package"
+          ],
+          "required": true,
+          "route": "table",
+          "trust_tier": "source_truth_if_exact_match_else_candidate"
+        }
+      ],
+      "route_slot_count": 3,
+      "section_contracts": [
+        {
+          "max_tokens_hint": 300,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "make Gemma answer as an engineering assistant, not a generic chatbot",
+          "required": true,
+          "section_id": "system_engineering_role",
+          "section_index": 0,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 900,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "inject the engineer-brain reasoning steps for this intent",
+          "required": true,
+          "section_id": "selected_engineering_playbook",
+          "section_index": 1,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 900,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "show good/bad engineering reasoning examples without changing source truth",
+          "required": true,
+          "section_id": "few_shot_engineering_examples",
+          "section_index": 2,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 500,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "make seed entities, requested changes, and question type explicit",
+          "required": true,
+          "section_id": "structured_user_intent",
+          "section_index": 3,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 400,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "tell the context builder which route queues are available",
+          "required": true,
+          "section_id": "route_handoff_availability",
+          "section_index": 4,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 1800,
+          "may_use_summary_guidance": false,
+          "missing_behavior": "mark_answer_not_proven_and_trigger_crag_retry",
+          "purpose": "source-backed evidence that may support claims",
+          "required": true,
+          "section_id": "source_truth_evidence",
+          "section_index": 5,
+          "source_truth_required": true
+        },
+        {
+          "max_tokens_hint": 1400,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "candidate evidence for engineering review only",
+          "required": true,
+          "section_id": "candidate_evidence",
+          "section_index": 6,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 500,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "explicitly list missing proof, dimensions, effectivity, interface, or warnings",
+          "required": true,
+          "section_id": "missing_evidence",
+          "section_index": 7,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 600,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "force Gemma to separate exact proof, candidates, and weak leads",
+          "required": true,
+          "section_id": "trust_tier_policy",
+          "section_index": 8,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 500,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "block unsafe/unproven engineering claims",
+          "required": true,
+          "section_id": "forbidden_claims",
+          "section_index": 9,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 500,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "shape final answer into source-backed facts, candidates, missing evidence, and review note",
+          "required": true,
+          "section_id": "answer_format_contract",
+          "section_index": 10,
+          "source_truth_required": false
+        }
+      ],
+      "seed_entities": [
+        "123-45"
+      ],
+      "selected_playbook_id": "dimensional_change_candidate_search",
+      "self_rag_crag_contract": {
+        "crag_retry_triggers": [
+          "seed entity not resolved",
+          "exact table evidence missing for part-number question",
+          "dimension requested but source dimension missing",
+          "candidate found but no source trace",
+          "final answer would rely only on vector/visual similarity"
+        ],
+        "final_gate_rules": [
+          "block answer if source_truth_evidence is empty for exact/procedure claim",
+          "allow candidate-only answer only with explicit review language",
+          "forbid fit/safety/approval claims unless source explicitly says so"
+        ],
+        "self_rag_checks": [
+          "every factual claim has source evidence or is labeled candidate",
+          "candidate claims do not become approved replacement claims",
+          "visual-only evidence is not treated as exact proof",
+          "semantic-only evidence is not treated as exact proof",
+          "repair/procedure claims include warnings/cautions if present"
+        ]
+      },
+      "source_truth_mutation_allowed": false,
+      "source_truth_required_section_count": 1,
+      "trust_tier_policy": {
+        "cross_route_candidate": "candidate for engineering review only",
+        "exact_source_evidence": "can support factual claim with citation",
+        "missing_evidence": "state missing proof and do not overclaim",
+        "semantic_candidate": "retrieval lead only",
+        "visual_candidate": "visual similarity only, requires table/source cross-check"
+      },
+      "unsafe": false,
+      "user_question": "This model number 123-45 needs to be 4 inches shorter. Any part that looks like that?"
+    },
+    {
+      "answer_format_contract": {
+        "answer_mode": "exact_evidence_first_then_related_context",
+        "final_gate_inputs": [
+          "source_truth_evidence",
+          "candidate_evidence",
+          "missing_evidence",
+          "forbidden_claims"
+        ],
+        "must_include_if_missing": [
+          "dimension_missing",
+          "effectivity_missing",
+          "interface_or_fit_missing",
+          "approval_missing"
+        ],
+        "must_not_include": [
+          "approved replacement without explicit source evidence",
+          "engineering approval",
+          "guaranteed fit/form/function",
+          "safe to install",
+          "uncited dimension or material claim",
+          "uncited repair procedure",
+          "unproven synonym",
+          "unverified alternate part"
+        ],
+        "required_blocks": [
+          "what_is_proven",
+          "candidate_or_related_findings",
+          "missing_evidence",
+          "review_boundary",
+          "citations_or_source_trace"
+        ]
+      },
+      "answer_permission": false,
+      "answers_user_question": false,
+      "blueprint_id": "context_pack_blueprint_0002",
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_language_required": false,
+      "compression_policy": {
+        "deduplicate_by_page_id_and_source_trace": true,
+        "include_missing_evidence_explicitly": true,
+        "prefer_source_truth_over_summary": true,
+        "summaries_are_guidance_not_proof": true
+      },
+      "context_budget": {
+        "engineering_playbook_cards": 1,
+        "exact_evidence_records": 8,
+        "few_shot_examples": 1,
+        "graph_neighbors": 12,
+        "normal_text_context_pages": 4,
+        "table_records": 8,
+        "visual_or_callout_records": 4
+      },
+      "context_pack_blueprint_version": "trace_net_engineering_context_pack_blueprint_v1",
+      "context_pack_status": "blueprint_only_no_retrieval_executed",
+      "dynamic_context_role": "assemble_question_specific_engineering_context_for_gemma",
+      "engineer_brain_role": "provide_reasoning_playbook_examples_trust_boundaries",
+      "forbidden_answer_claims": [
+        "approved replacement without explicit source evidence",
+        "engineering approval",
+        "guaranteed fit/form/function",
+        "safe to install",
+        "uncited dimension or material claim",
+        "uncited repair procedure",
+        "unproven synonym",
+        "unverified alternate part"
+      ],
+      "intent_family": "exact_part_lookup",
+      "llm_call_allowed": false,
+      "opensearch_write_attempt": false,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "question_id": "engineering_q0002",
+      "requested_change": null,
+      "retrieval_execution_allowed": false,
+      "route_evidence_slots": [
+        {
+          "evidence_role": "relationship_and_same_family_context",
+          "max_records": 20,
+          "missing_behavior": "record_missing_evidence_and_continue_to_review",
+          "preferred_artifacts": [
+            "postgres_graph_neighbors",
+            "Leiden communities",
+            "same assembly/entity graph"
+          ],
+          "required": true,
+          "route": "graph",
+          "trust_tier": "relationship_candidate_until_source_backed"
+        },
+        {
+          "evidence_role": "procedure_description_warning_context",
+          "max_records": 6,
+          "missing_behavior": "record_missing_evidence_and_continue_to_review",
+          "preferred_artifacts": [
+            "page_context_v2",
+            "normal_text_route_handoff",
+            "Dublin Core metadata"
+          ],
+          "required": true,
+          "route": "normal_text",
+          "trust_tier": "source_context_guidance"
+        },
+        {
+          "evidence_role": "route_availability_and_page_type_context",
+          "max_records": 10,
+          "missing_behavior": "record_missing_evidence_and_continue_to_review",
+          "preferred_artifacts": [
+            "fishnet_route_dispatch_handoff",
+            "accepted_route_manifest"
+          ],
+          "required": true,
+          "route": "route_dispatch",
+          "trust_tier": "routing_metadata_not_source_truth"
+        },
+        {
+          "evidence_role": "structured_source_truth_or_candidate_table_evidence",
+          "max_records": 12,
+          "missing_behavior": "record_missing_evidence_and_continue_to_review",
+          "preferred_artifacts": [
+            "table_exact_search_adapter",
+            "promoted_table_value_evidence",
+            "source_normalized_table_value_records",
+            "table_route_evidence_package"
+          ],
+          "required": true,
+          "route": "table",
+          "trust_tier": "source_truth_if_exact_match_else_candidate"
+        }
+      ],
+      "route_slot_count": 4,
+      "section_contracts": [
+        {
+          "max_tokens_hint": 300,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "make Gemma answer as an engineering assistant, not a generic chatbot",
+          "required": true,
+          "section_id": "system_engineering_role",
+          "section_index": 0,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 900,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "inject the engineer-brain reasoning steps for this intent",
+          "required": true,
+          "section_id": "selected_engineering_playbook",
+          "section_index": 1,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 900,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "show good/bad engineering reasoning examples without changing source truth",
+          "required": true,
+          "section_id": "few_shot_engineering_examples",
+          "section_index": 2,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 500,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "make seed entities, requested changes, and question type explicit",
+          "required": true,
+          "section_id": "structured_user_intent",
+          "section_index": 3,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 400,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "tell the context builder which route queues are available",
+          "required": true,
+          "section_id": "route_handoff_availability",
+          "section_index": 4,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 1800,
+          "may_use_summary_guidance": false,
+          "missing_behavior": "mark_answer_not_proven_and_trigger_crag_retry",
+          "purpose": "source-backed evidence that may support claims",
+          "required": true,
+          "section_id": "source_truth_evidence",
+          "section_index": 5,
+          "source_truth_required": true
+        },
+        {
+          "max_tokens_hint": 1400,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "candidate evidence for engineering review only",
+          "required": true,
+          "section_id": "candidate_evidence",
+          "section_index": 6,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 500,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "explicitly list missing proof, dimensions, effectivity, interface, or warnings",
+          "required": true,
+          "section_id": "missing_evidence",
+          "section_index": 7,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 600,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "force Gemma to separate exact proof, candidates, and weak leads",
+          "required": true,
+          "section_id": "trust_tier_policy",
+          "section_index": 8,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 500,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "block unsafe/unproven engineering claims",
+          "required": true,
+          "section_id": "forbidden_claims",
+          "section_index": 9,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 500,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "shape final answer into source-backed facts, candidates, missing evidence, and review note",
+          "required": true,
+          "section_id": "answer_format_contract",
+          "section_index": 10,
+          "source_truth_required": false
+        }
+      ],
+      "seed_entities": [
+        "120-29073-001"
+      ],
+      "selected_playbook_id": "part_number_evidence_pack",
+      "self_rag_crag_contract": {
+        "crag_retry_triggers": [
+          "seed entity not resolved",
+          "exact table evidence missing for part-number question",
+          "dimension requested but source dimension missing",
+          "candidate found but no source trace",
+          "final answer would rely only on vector/visual similarity"
+        ],
+        "final_gate_rules": [
+          "block answer if source_truth_evidence is empty for exact/procedure claim",
+          "allow candidate-only answer only with explicit review language",
+          "forbid fit/safety/approval claims unless source explicitly says so"
+        ],
+        "self_rag_checks": [
+          "every factual claim has source evidence or is labeled candidate",
+          "candidate claims do not become approved replacement claims",
+          "visual-only evidence is not treated as exact proof",
+          "semantic-only evidence is not treated as exact proof",
+          "repair/procedure claims include warnings/cautions if present"
+        ]
+      },
+      "source_truth_mutation_allowed": false,
+      "source_truth_required_section_count": 1,
+      "trust_tier_policy": {
+        "cross_route_candidate": "candidate for engineering review only",
+        "exact_source_evidence": "can support factual claim with citation",
+        "missing_evidence": "state missing proof and do not overclaim",
+        "semantic_candidate": "retrieval lead only",
+        "visual_candidate": "visual similarity only, requires table/source cross-check"
+      },
+      "unsafe": false,
+      "user_question": "Find part number 120-29073-001 and nearby similar parts."
+    },
+    {
+      "answer_format_contract": {
+        "answer_mode": "source_backed_procedure_context",
+        "final_gate_inputs": [
+          "source_truth_evidence",
+          "candidate_evidence",
+          "missing_evidence",
+          "forbidden_claims"
+        ],
+        "must_include_if_missing": [
+          "dimension_missing",
+          "effectivity_missing",
+          "interface_or_fit_missing",
+          "approval_missing"
+        ],
+        "must_not_include": [
+          "approval to perform maintenance",
+          "approved replacement without explicit source evidence",
+          "engineering approval",
+          "guaranteed fit/form/function",
+          "safe to install",
+          "skipped warning",
+          "uncited dimension or material claim",
+          "uncited repair procedure"
+        ],
+        "required_blocks": [
+          "what_is_proven",
+          "candidate_or_related_findings",
+          "missing_evidence",
+          "review_boundary",
+          "citations_or_source_trace"
+        ]
+      },
+      "answer_permission": false,
+      "answers_user_question": false,
+      "blueprint_id": "context_pack_blueprint_0003",
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_language_required": false,
+      "compression_policy": {
+        "deduplicate_by_page_id_and_source_trace": true,
+        "include_missing_evidence_explicitly": true,
+        "prefer_source_truth_over_summary": true,
+        "summaries_are_guidance_not_proof": true
+      },
+      "context_budget": {
+        "engineering_playbook_cards": 1,
+        "few_shot_examples": 2,
+        "procedure_context_pages": 8,
+        "table_records": 6,
+        "visual_or_callout_records": 4,
+        "warning_caution_notes": 10
+      },
+      "context_pack_blueprint_version": "trace_net_engineering_context_pack_blueprint_v1",
+      "context_pack_status": "blueprint_only_no_retrieval_executed",
+      "dynamic_context_role": "assemble_question_specific_engineering_context_for_gemma",
+      "engineer_brain_role": "provide_reasoning_playbook_examples_trust_boundaries",
+      "forbidden_answer_claims": [
+        "approval to perform maintenance",
+        "approved replacement without explicit source evidence",
+        "engineering approval",
+        "guaranteed fit/form/function",
+        "safe to install",
+        "skipped warning",
+        "uncited dimension or material claim",
+        "uncited repair procedure"
+      ],
+      "intent_family": "repair_or_fault_context",
+      "llm_call_allowed": false,
+      "opensearch_write_attempt": false,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "question_id": "engineering_q0003",
+      "requested_change": null,
+      "retrieval_execution_allowed": false,
+      "route_evidence_slots": [
+        {
+          "evidence_role": "visual_callout_candidate_context",
+          "max_records": 8,
+          "missing_behavior": "record_missing_evidence_and_continue_to_review",
+          "preferred_artifacts": [
+            "image_visual_route_handoff",
+            "visual_observer_route",
+            "callout_candidates",
+            "visual_part_verification_records"
+          ],
+          "required": true,
+          "route": "image_visual",
+          "trust_tier": "visual_candidate_only"
+        },
+        {
+          "evidence_role": "procedure_description_warning_context",
+          "max_records": 8,
+          "missing_behavior": "record_missing_evidence_and_continue_to_review",
+          "preferred_artifacts": [
+            "page_context_v2",
+            "normal_text_route_handoff",
+            "Dublin Core metadata"
+          ],
+          "required": true,
+          "route": "normal_text",
+          "trust_tier": "source_context_guidance"
+        },
+        {
+          "evidence_role": "structured_source_truth_or_candidate_table_evidence",
+          "max_records": 8,
+          "missing_behavior": "record_missing_evidence_and_continue_to_review",
+          "preferred_artifacts": [
+            "table_exact_search_adapter",
+            "promoted_table_value_evidence",
+            "source_normalized_table_value_records",
+            "table_route_evidence_package"
+          ],
+          "required": true,
+          "route": "table",
+          "trust_tier": "source_truth_if_exact_match_else_candidate"
+        }
+      ],
+      "route_slot_count": 3,
+      "section_contracts": [
+        {
+          "max_tokens_hint": 300,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "make Gemma answer as an engineering assistant, not a generic chatbot",
+          "required": true,
+          "section_id": "system_engineering_role",
+          "section_index": 0,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 900,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "inject the engineer-brain reasoning steps for this intent",
+          "required": true,
+          "section_id": "selected_engineering_playbook",
+          "section_index": 1,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 900,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "show good/bad engineering reasoning examples without changing source truth",
+          "required": true,
+          "section_id": "few_shot_engineering_examples",
+          "section_index": 2,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 500,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "make seed entities, requested changes, and question type explicit",
+          "required": true,
+          "section_id": "structured_user_intent",
+          "section_index": 3,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 400,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "tell the context builder which route queues are available",
+          "required": true,
+          "section_id": "route_handoff_availability",
+          "section_index": 4,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 1800,
+          "may_use_summary_guidance": false,
+          "missing_behavior": "mark_answer_not_proven_and_trigger_crag_retry",
+          "purpose": "source-backed evidence that may support claims",
+          "required": true,
+          "section_id": "source_truth_evidence",
+          "section_index": 5,
+          "source_truth_required": true
+        },
+        {
+          "max_tokens_hint": 1400,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "candidate evidence for engineering review only",
+          "required": true,
+          "section_id": "candidate_evidence",
+          "section_index": 6,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 500,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "explicitly list missing proof, dimensions, effectivity, interface, or warnings",
+          "required": true,
+          "section_id": "missing_evidence",
+          "section_index": 7,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 600,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "force Gemma to separate exact proof, candidates, and weak leads",
+          "required": true,
+          "section_id": "trust_tier_policy",
+          "section_index": 8,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 500,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "block unsafe/unproven engineering claims",
+          "required": true,
+          "section_id": "forbidden_claims",
+          "section_index": 9,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 500,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "shape final answer into source-backed facts, candidates, missing evidence, and review note",
+          "required": true,
+          "section_id": "answer_format_contract",
+          "section_index": 10,
+          "source_truth_required": false
+        }
+      ],
+      "seed_entities": [],
+      "selected_playbook_id": "fault_repair_procedure_reasoning",
+      "self_rag_crag_contract": {
+        "crag_retry_triggers": [
+          "seed entity not resolved",
+          "exact table evidence missing for part-number question",
+          "dimension requested but source dimension missing",
+          "candidate found but no source trace",
+          "final answer would rely only on vector/visual similarity"
+        ],
+        "final_gate_rules": [
+          "block answer if source_truth_evidence is empty for exact/procedure claim",
+          "allow candidate-only answer only with explicit review language",
+          "forbid fit/safety/approval claims unless source explicitly says so"
+        ],
+        "self_rag_checks": [
+          "every factual claim has source evidence or is labeled candidate",
+          "candidate claims do not become approved replacement claims",
+          "visual-only evidence is not treated as exact proof",
+          "semantic-only evidence is not treated as exact proof",
+          "repair/procedure claims include warnings/cautions if present"
+        ]
+      },
+      "source_truth_mutation_allowed": false,
+      "source_truth_required_section_count": 1,
+      "trust_tier_policy": {
+        "cross_route_candidate": "candidate for engineering review only",
+        "exact_source_evidence": "can support factual claim with citation",
+        "missing_evidence": "state missing proof and do not overclaim",
+        "semantic_candidate": "retrieval lead only",
+        "visual_candidate": "visual similarity only, requires table/source cross-check"
+      },
+      "unsafe": false,
+      "user_question": "Can I clean this part with solvent?"
+    },
+    {
+      "answer_format_contract": {
+        "answer_mode": "candidate_for_engineering_review",
+        "final_gate_inputs": [
+          "source_truth_evidence",
+          "candidate_evidence",
+          "missing_evidence",
+          "forbidden_claims"
+        ],
+        "must_include_if_missing": [
+          "dimension_missing",
+          "effectivity_missing",
+          "interface_or_fit_missing",
+          "approval_missing"
+        ],
+        "must_not_include": [
+          "approved replacement without explicit source evidence",
+          "approved visual replacement",
+          "engineering approval",
+          "guaranteed fit/form/function",
+          "safe to install",
+          "same part based only on image",
+          "uncited dimension or material claim",
+          "uncited repair procedure"
+        ],
+        "required_blocks": [
+          "what_is_proven",
+          "candidate_or_related_findings",
+          "missing_evidence",
+          "review_boundary",
+          "citations_or_source_trace"
+        ]
+      },
+      "answer_permission": false,
+      "answers_user_question": false,
+      "blueprint_id": "context_pack_blueprint_0004",
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_language_required": true,
+      "compression_policy": {
+        "deduplicate_by_page_id_and_source_trace": true,
+        "include_missing_evidence_explicitly": true,
+        "prefer_source_truth_over_summary": true,
+        "summaries_are_guidance_not_proof": true
+      },
+      "context_budget": {
+        "engineering_playbook_cards": 1,
+        "exact_evidence_records": 8,
+        "few_shot_examples": 1,
+        "graph_neighbors": 12,
+        "normal_text_context_pages": 4,
+        "table_records": 8,
+        "visual_or_callout_records": 4
+      },
+      "context_pack_blueprint_version": "trace_net_engineering_context_pack_blueprint_v1",
+      "context_pack_status": "blueprint_only_no_retrieval_executed",
+      "dynamic_context_role": "assemble_question_specific_engineering_context_for_gemma",
+      "engineer_brain_role": "provide_reasoning_playbook_examples_trust_boundaries",
+      "forbidden_answer_claims": [
+        "approved replacement without explicit source evidence",
+        "approved visual replacement",
+        "engineering approval",
+        "guaranteed fit/form/function",
+        "safe to install",
+        "same part based only on image",
+        "uncited dimension or material claim",
+        "uncited repair procedure"
+      ],
+      "intent_family": "visual_or_callout_similarity",
+      "llm_call_allowed": false,
+      "opensearch_write_attempt": false,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "question_id": "engineering_q0004",
+      "requested_change": null,
+      "retrieval_execution_allowed": false,
+      "route_evidence_slots": [
+        {
+          "evidence_role": "relationship_and_same_family_context",
+          "max_records": 20,
+          "missing_behavior": "record_missing_evidence_and_continue_to_review",
+          "preferred_artifacts": [
+            "postgres_graph_neighbors",
+            "Leiden communities",
+            "same assembly/entity graph"
+          ],
+          "required": true,
+          "route": "graph",
+          "trust_tier": "relationship_candidate_until_source_backed"
+        },
+        {
+          "evidence_role": "visual_callout_candidate_context",
+          "max_records": 8,
+          "missing_behavior": "record_missing_evidence_and_continue_to_review",
+          "preferred_artifacts": [
+            "image_visual_route_handoff",
+            "visual_observer_route",
+            "callout_candidates",
+            "visual_part_verification_records"
+          ],
+          "required": true,
+          "route": "image_visual",
+          "trust_tier": "visual_candidate_only"
+        },
+        {
+          "evidence_role": "structured_source_truth_or_candidate_table_evidence",
+          "max_records": 8,
+          "missing_behavior": "record_missing_evidence_and_continue_to_review",
+          "preferred_artifacts": [
+            "table_exact_search_adapter",
+            "promoted_table_value_evidence",
+            "source_normalized_table_value_records",
+            "table_route_evidence_package"
+          ],
+          "required": true,
+          "route": "table",
+          "trust_tier": "source_truth_if_exact_match_else_candidate"
+        }
+      ],
+      "route_slot_count": 3,
+      "section_contracts": [
+        {
+          "max_tokens_hint": 300,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "make Gemma answer as an engineering assistant, not a generic chatbot",
+          "required": true,
+          "section_id": "system_engineering_role",
+          "section_index": 0,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 900,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "inject the engineer-brain reasoning steps for this intent",
+          "required": true,
+          "section_id": "selected_engineering_playbook",
+          "section_index": 1,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 900,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "show good/bad engineering reasoning examples without changing source truth",
+          "required": true,
+          "section_id": "few_shot_engineering_examples",
+          "section_index": 2,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 500,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "make seed entities, requested changes, and question type explicit",
+          "required": true,
+          "section_id": "structured_user_intent",
+          "section_index": 3,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 400,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "tell the context builder which route queues are available",
+          "required": true,
+          "section_id": "route_handoff_availability",
+          "section_index": 4,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 1800,
+          "may_use_summary_guidance": false,
+          "missing_behavior": "mark_answer_not_proven_and_trigger_crag_retry",
+          "purpose": "source-backed evidence that may support claims",
+          "required": true,
+          "section_id": "source_truth_evidence",
+          "section_index": 5,
+          "source_truth_required": true
+        },
+        {
+          "max_tokens_hint": 1400,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "candidate evidence for engineering review only",
+          "required": true,
+          "section_id": "candidate_evidence",
+          "section_index": 6,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 500,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "explicitly list missing proof, dimensions, effectivity, interface, or warnings",
+          "required": true,
+          "section_id": "missing_evidence",
+          "section_index": 7,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 600,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "force Gemma to separate exact proof, candidates, and weak leads",
+          "required": true,
+          "section_id": "trust_tier_policy",
+          "section_index": 8,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 500,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "block unsafe/unproven engineering claims",
+          "required": true,
+          "section_id": "forbidden_claims",
+          "section_index": 9,
+          "source_truth_required": false
+        },
+        {
+          "max_tokens_hint": 500,
+          "may_use_summary_guidance": true,
+          "missing_behavior": "include_empty_section_with_reason",
+          "purpose": "shape final answer into source-backed facts, candidates, missing evidence, and review note",
+          "required": true,
+          "section_id": "answer_format_contract",
+          "section_index": 10,
+          "source_truth_required": false
+        }
+      ],
+      "seed_entities": [],
+      "selected_playbook_id": "visual_similarity_candidate_search",
+      "self_rag_crag_contract": {
+        "crag_retry_triggers": [
+          "seed entity not resolved",
+          "exact table evidence missing for part-number question",
+          "dimension requested but source dimension missing",
+          "candidate found but no source trace",
+          "final answer would rely only on vector/visual similarity"
+        ],
+        "final_gate_rules": [
+          "block answer if source_truth_evidence is empty for exact/procedure claim",
+          "allow candidate-only answer only with explicit review language",
+          "forbid fit/safety/approval claims unless source explicitly says so"
+        ],
+        "self_rag_checks": [
+          "every factual claim has source evidence or is labeled candidate",
+          "candidate claims do not become approved replacement claims",
+          "visual-only evidence is not treated as exact proof",
+          "semantic-only evidence is not treated as exact proof",
+          "repair/procedure claims include warnings/cautions if present"
+        ]
+      },
+      "source_truth_mutation_allowed": false,
+      "source_truth_required_section_count": 1,
+      "trust_tier_policy": {
+        "cross_route_candidate": "candidate for engineering review only",
+        "exact_source_evidence": "can support factual claim with citation",
+        "missing_evidence": "state missing proof and do not overclaim",
+        "semantic_candidate": "retrieval lead only",
+        "visual_candidate": "visual similarity only, requires table/source cross-check"
+      },
+      "unsafe": false,
+      "user_question": "Show visually similar callout parts in the same figure."
+    }
+  ],
+  "safety_contract": {
+    "answer_permission": false,
+    "answers_user_question": false,
+    "artifact_authority": "context_pack_blueprint_only",
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "llm_call_allowed": false,
+    "opensearch_write_allowed": false,
+    "postgres_write_allowed": false,
+    "qdrant_write_allowed": false,
+    "retrieval_execution_allowed": false,
+    "source_truth_mutation_allowed": false
+  },
+  "source_query_planner_path": "local_data\\organization\\trace_net\\engineering_query_planner\\trace_net_engineering_query_planner_v1.json",
+  "status": "ENGINEERING_CONTEXT_PACK_BLUEPRINT_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "blueprints_with_candidate_language_required_count": 2,
+    "blueprints_with_source_truth_required_count": 4,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "context_pack_blueprint_count": 4,
+    "intent_family_counts": {
+      "engineering_change_candidate": 1,
+      "exact_part_lookup": 1,
+      "repair_or_fault_context": 1,
+      "visual_or_callout_similarity": 1
+    },
+    "llm_call_allowed_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "retrieval_execution_allowed_count": 0,
+    "route_evidence_slot_counts": {
+      "graph": 3,
+      "image_visual": 2,
+      "normal_text": 3,
+      "route_dispatch": 1,
+      "table": 4
+    },
+    "source_query_plan_count": 4,
+    "source_query_planner_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "total_route_evidence_slot_count": 13,
+    "unsafe_record_count": 0
+  }
+}

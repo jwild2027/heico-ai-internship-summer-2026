@@ -1,0 +1,49 @@
+{
+  "answer_permission_count": 0,
+  "blocked_reason_counts": {
+    "current_route_not_promotion_source": 8,
+    "fishnet_already_requires_review": 30,
+    "fishnet_confidence_below_threshold": 37,
+    "fishnet_route_not_target": 35,
+    "low_route_margin_not_auto_promotable": 26,
+    "ocr_text_below_threshold": 5,
+    "ocr_word_boxes_below_threshold": 5,
+    "table_text_tie_not_auto_promotable": 11
+  },
+  "can_answer_directly_count": 0,
+  "can_prove_claims_count": 0,
+  "evaluated_review_record_count": 51,
+  "min_confidence": 0.85,
+  "min_ocr_text_chars": 500,
+  "min_ocr_word_boxes": 100,
+  "normal_text_review_promotion_count": 14,
+  "opensearch_write_attempt_count": 0,
+  "policy_record_count": 14,
+  "policy_record_current_route_counts": {
+    "blank_candidate": 11,
+    "image_visual": 3
+  },
+  "policy_record_review_priority_counts": {
+    "high": 14
+  },
+  "policy_record_route_pair_counts": {
+    "blank_candidate->normal_text": 11,
+    "image_visual->normal_text": 3
+  },
+  "policy_record_target_route_counts": {
+    "normal_text": 14
+  },
+  "postgres_write_attempt_count": 0,
+  "promote_current_routes": [
+    "blank_candidate",
+    "image_visual"
+  ],
+  "qdrant_write_attempt_count": 0,
+  "route_change_authorized_count": 0,
+  "route_manifest_write_allowed_count": 0,
+  "source_review_packet_quality_status": "PASS",
+  "source_review_record_count": 51,
+  "source_truth_mutation_allowed_count": 0,
+  "target_route": "normal_text",
+  "unsafe_record_count": 0
+}

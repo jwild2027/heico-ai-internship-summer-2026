@@ -1,0 +1,36 @@
+{
+  "quality_status": "PASS",
+  "summary": {
+    "adapter_record_count": 1,
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "intent_family_counts": {
+      "exact_part_lookup": 1
+    },
+    "llm_call_allowed_count": 0,
+    "ollama_think_counts": {
+      "False": 1
+    },
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "provider_counts": {
+      "ollama": 1
+    },
+    "qdrant_write_attempt_count": 0,
+    "ready_for_final_answer_count": 0,
+    "ready_for_gemma_request_payload_count": 1,
+    "request_payload_written_count": 1,
+    "request_sent_count": 0,
+    "requires_final_gate_after_draft_count": 1,
+    "response_received_count": 0,
+    "retrieval_execution_allowed_count": 0,
+    "source_draft_packet_count": 1,
+    "source_draft_packet_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "total_candidate_evidence_count": 16,
+    "total_message_character_count": 15493,
+    "total_source_truth_evidence_count": 14,
+    "unsafe_record_count": 0
+  }
+}

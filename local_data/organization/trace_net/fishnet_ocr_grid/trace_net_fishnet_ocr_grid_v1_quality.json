@@ -1,0 +1,67 @@
+{
+  "module": "trace_net_fishnet_ocr_grid_v1",
+  "version": "v1.5",
+  "quality_status": "PASS",
+  "summary": {
+    "source_page_count": 509,
+    "page_record_count": 509,
+    "grid_rows": 8,
+    "grid_cols": 6,
+    "expected_cells_per_page": 48,
+    "total_cell_count": 24432,
+    "route_candidate_counts": {
+      "normal_text": 311,
+      "review_required": 158,
+      "table": 37,
+      "image_visual": 3
+    },
+    "best_route_candidate_before_review_counts": {
+      "normal_text": 353,
+      "blank_candidate": 14,
+      "table": 131,
+      "image_visual": 11
+    },
+    "ocr_engine_status_counts": {
+      "ok": 495,
+      "empty": 14
+    },
+    "ocr_ok_page_count": 495,
+    "ocr_failed_page_count": 0,
+    "ocr_unavailable_page_count": 0,
+    "ocr_empty_page_count": 14,
+    "ocr_nonempty_page_count": 495,
+    "total_ocr_text_char_count": 493498,
+    "total_ocr_word_box_count": 83741,
+    "pages_with_ocr_word_boxes_count": 495,
+    "ocr_error_examples": [
+      {
+        "error": "Tesseract ran but produced empty text. This usually means the page needs OCR preprocessing, a different psm, or the source image is mostly visual/blank. v1.2 records this as empty, not ok. attempted=['original|--psm 6', 'original|--oem 3 --",
+        "count": 14
+      }
+    ],
+    "review_required_count": 158,
+    "mean_route_confidence": 0.2398,
+    "unsafe_record_count": 0,
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0
+  },
+  "errors": [],
+  "safety_contract": {
+    "artifact_authority": "router_classifier_input_only",
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "answer_permission": false,
+    "source_truth_mutation_allowed": false,
+    "postgres_write_allowed": false,
+    "qdrant_write_allowed": false,
+    "opensearch_write_allowed": false,
+    "raw_scan_query_time_allowed": false,
+    "requires_downstream_source_truth_confirmation": true,
+    "guidance_only": true
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "quality_status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "artifact_corpus_record_count": 23044,
+    "artifact_missing_input_count": 1,
+    "artifact_missing_inputs": [
+      {
+        "artifact_name": "image_visual_observer",
+        "missing": true,
+        "optional": true,
+        "path": "local_data\\organization\\trace_net\\e2e_image_visual_observer_route\\trace_net_e2e_image_visual_observer_route_v34_3.json",
+        "route": "image_visual"
+      }
+    ],
+    "artifact_record_counts": {
+      "fishnet_route_dispatch_handoff": 1019,
+      "image_visual_observer": 0,
+      "leiden_communities": 20000,
+      "page_context_v2": 510,
+      "table_exact_search_adapter": 1515
+    },
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "context_pack_count": 4,
+    "high_signal_route_evidence_capsule_counts": {
+      "graph": 24,
+      "normal_text": 20,
+      "route_dispatch": 8,
+      "table": 32
+    },
+    "intent_family_counts": {
+      "engineering_change_candidate": 1,
+      "exact_part_lookup": 1,
+      "repair_or_fault_context": 1,
+      "visual_or_callout_similarity": 1
+    },
+    "llm_call_allowed_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "packs_ready_for_gemma_context_count": 4,
+    "packs_ready_for_self_rag_check_count": 4,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "retrieval_execution_allowed_count": 0,
+    "route_evidence_capsule_counts": {
+      "graph": 24,
+      "normal_text": 20,
+      "route_dispatch": 8,
+      "table": 32
+    },
+    "source_blueprint_count": 4,
+    "source_blueprint_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "total_evidence_capsule_count": 84,
+    "total_fallback_evidence_capsule_count": 0,
+    "total_high_signal_evidence_capsule_count": 84,
+    "total_missing_evidence_note_count": 4,
+    "unsafe_record_count": 0
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "answer_permission": false,
+  "draft_safety_scan": {
+    "citation_marker_count": 4,
+    "draft_text_char_count": 1433,
+    "empty_draft": false,
+    "risky_phrase_hit_count": 3,
+    "risky_phrase_hits": [
+      "approved replacement",
+      "guaranteed fit",
+      "engineering approval"
+    ]
+  },
+  "draft_text": "Source-backed facts: The provided documentation contains references to parts lists and applicability sections within a maintenance manual, specifically referencing ATA 25-21-00. Page t_p_120_1176_p000003 is identified as a parts list or applicability section that includes numerous part numbers. Additionally, page t_p_120_1176_p000005 serves as a parts list and index containing various part numbers and revision dates.\n\nRelated candidate context: A graph relationship exists where part 120-29 may refer to another part, as indicated in page t_p_120_1176_p000352. This connection is documented within the element graph attachment plan.\n\nMissing evidence and review boundaries: There is no specific information provided regarding the full part number 120-29073-001 or its nearby similar parts in the available text. The current documentation does not contain enough detail to identify all related components.\n\nSource trace notes: The search for part 120-29073-001 relies on examining pages t_p_120_1176_p000003 and t_p_120_1176_p000005. The relationship between parts is partially visible in the graph data for page t_p_120_1176_p000352.\n\nDo-not-claim boundary: This draft does not claim that any part is an approved replacement or a guaranteed fit for another component. No engineering approval or safety for installation is implied by this information. There are no claims regarding unverified synonyms or unproven alternate parts.",
+  "endpoint": "http://127.0.0.1:11434/api/chat",
+  "error": null,
+  "latency_ms": 19086,
+  "model_id": "gemma4:26b",
+  "provider": "ollama",
+  "raw_response": {
+    "created_at": "2026-06-25T18:16:19.5025923Z",
+    "done": true,
+    "done_reason": "stop",
+    "eval_count": 383,
+    "eval_duration": 14203683000,
+    "load_duration": 820700800,
+    "message": {
+      "content": "Source-backed facts: The provided documentation contains references to parts lists and applicability sections within a maintenance manual, specifically referencing ATA 25-21-00. Page t_p_120_1176_p000003 is identified as a parts list or applicability section that includes numerous part numbers. Additionally, page t_p_120_1176_p000005 serves as a parts list and index containing various part numbers and revision dates.\n\nRelated candidate context: A graph relationship exists where part 120-29 may refer to another part, as indicated in page t_p_120_1176_p000352. This connection is documented within the element graph attachment plan.\n\nMissing evidence and review boundaries: There is no specific information provided regarding the full part number 120-29073-001 or its nearby similar parts in the available text. The current documentation does not contain enough detail to identify all related components.\n\nSource trace notes: The search for part 120-29073-001 relies on examining pages t_p_120_1176_p000003 and t_p_120_1176_p000005. The relationship between parts is partially visible in the graph data for page t_p_120_1176_p000352.\n\nDo-not-claim boundary: This draft does not claim that any part is an approved replacement or a guaranteed fit for another component. No engineering approval or safety for installation is implied by this information. There are no claims regarding unverified synonyms or unproven alternate parts.",
+      "role": "assistant"
+    },
+    "model": "gemma4:26b",
+    "prompt_eval_count": 1004,
+    "prompt_eval_duration": 3625693000,
+    "total_duration": 19018483200
+  },
+  "ready_for_final_answer": false,
+  "request_payload_path": "local_data\\organization\\trace_net\\engineering_gemma_draft_retry_prompt_micro\\request_payloads\\engineering_gemma_draft_retry_0001_ollama_request.json",
+  "request_sent": true,
+  "response_received": true,
+  "source_adapter_record_id": "engineering_gemma_draft_retry_prompt_0001",
+  "source_draft_packet_id": "engineering_draft_packet_0001"
+}

@@ -1,0 +1,144 @@
+{
+  "gate_config": {
+    "min_draft_chars": 300,
+    "min_section_markers": 1,
+    "negation_aware_risky_phrase_scan": true,
+    "require_citation_markers": false
+  },
+  "module": "trace_net_engineering_draft_final_gate_v1",
+  "quality_status": "PASS",
+  "records": [
+    {
+      "answer_permission": false,
+      "answers_user_question": false,
+      "blocked_risky_phrase_hit_count": 0,
+      "blocked_risky_phrase_hits": [],
+      "blocking_reasons": [],
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_marker_count": 7,
+      "draft_preview": "Source-backed facts: The provided documentation contains references to parts lists and applicability sections within a maintenance manual, specifically referencing ATA 25-21-00. Page t_p_120_1176_p000003 is identified as a parts list or applicability section that includes numerous part numbers. Additionally, page t_p_120_1176_p000005 serves as a parts list and index containing various part numbers and revision dates.\n\nRelated candidate context: A graph relationship exists where part 120-29 may refer to another part, as indicated in page t_p_120_1176_p000352. This connection is documented within the element graph attachment plan.\n\nMissing evidence and review boundaries: There is no specific information provided regarding the full part number 120-29073-001 or its nearby similar parts in the available text. The current documentation does not contain enough detail to identify all related components.\n\nSource trace notes: The search for part 120-29073-001 relies on examining pages t_p_120_1176_p000003 and t_p_120_1176_p000005. The relationship between parts is partially visible in the graph data for page t_p_120_1176_p000352.\n\nDo-not-claim boundary: This draft does not claim that any part is an approved replacement or a guaranteed fit for another component. No engineering approval or safety for installation is implied by this information. There are no claims regarding unverified synonyms or unproven alternate parts.",
+      "draft_response_path": "local_data\\organization\\trace_net\\engineering_gemma_draft_runner_retry_micro\\draft_responses\\engineering_gemma_draft_response_0001.json",
+      "draft_text_char_count": 1433,
+      "final_gate_record_id": "engineering_draft_final_gate_0001",
+      "final_gate_record_version": "trace_net_engineering_draft_final_gate_v1",
+      "final_gate_status": "FINAL_GATE_DRAFT_ACCEPTED_FOR_MANUAL_REVIEW",
+      "human_review_required": true,
+      "intent_family": "exact_part_lookup",
+      "llm_call_allowed": false,
+      "min_draft_chars": 300,
+      "model_id": "gemma4:26b",
+      "negated_risky_phrase_hit_count": 3,
+      "negated_risky_phrase_hits": [
+        {
+          "context": "Do-not-claim boundary: This draft does not claim that any part is an approved replacement or a guaranteed fit for another component",
+          "end": 1228,
+          "phrase": "approved replacement",
+          "start": 1208
+        },
+        {
+          "context": "Do-not-claim boundary: This draft does not claim that any part is an approved replacement or a guaranteed fit for another component",
+          "end": 1248,
+          "phrase": "guaranteed fit",
+          "start": 1234
+        },
+        {
+          "context": "No engineering approval or safety for installation is implied by this information",
+          "end": 1295,
+          "phrase": "engineering approval",
+          "start": 1275
+        }
+      ],
+      "opensearch_write_attempt": false,
+      "postgres_write_attempt": false,
+      "provider": "ollama",
+      "qdrant_write_attempt": false,
+      "question_id": "engineering_q0002",
+      "raw_risky_phrase_hit_count": 3,
+      "raw_risky_phrase_hits": [
+        {
+          "context": "Do-not-claim boundary: This draft does not claim that any part is an approved replacement or a guaranteed fit for another component",
+          "end": 1228,
+          "phrase": "approved replacement",
+          "start": 1208
+        },
+        {
+          "context": "Do-not-claim boundary: This draft does not claim that any part is an approved replacement or a guaranteed fit for another component",
+          "end": 1248,
+          "phrase": "guaranteed fit",
+          "start": 1234
+        },
+        {
+          "context": "No engineering approval or safety for installation is implied by this information",
+          "end": 1295,
+          "phrase": "engineering approval",
+          "start": 1275
+        }
+      ],
+      "ready_for_final_answer": false,
+      "ready_for_manual_review": true,
+      "retrieval_execution_allowed": false,
+      "risky_phrase_hit_count": 0,
+      "risky_phrase_hits": [],
+      "section_marker_count": 4,
+      "selected_playbook_id": "part_number_evidence_pack",
+      "source_adapter_record_id": "engineering_gemma_draft_retry_prompt_0001",
+      "source_draft_packet_id": "engineering_draft_packet_0001",
+      "source_runner_record_id": "engineering_gemma_draft_runner_0001",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_question": "Find part number 120-29073-001 and nearby similar parts.",
+      "warning_reasons": [
+        "negated_risky_boundary_language_detected"
+      ]
+    }
+  ],
+  "safety_contract": {
+    "answer_permission": false,
+    "answers_user_question": false,
+    "artifact_authority": "draft_final_gate_only",
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "llm_call_allowed": false,
+    "opensearch_write_allowed": false,
+    "postgres_write_allowed": false,
+    "qdrant_write_allowed": false,
+    "ready_for_final_answer": false,
+    "retrieval_execution_allowed": false,
+    "source_truth_mutation_allowed": false
+  },
+  "source_runner_report_path": "local_data\\organization\\trace_net\\engineering_gemma_draft_runner_retry_micro\\trace_net_engineering_gemma_draft_runner_v1.json",
+  "status": "ENGINEERING_DRAFT_FINAL_GATE_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "blocked_record_count": 0,
+    "blocked_risky_phrase_hit_count": 0,
+    "blocking_reason_counts": {},
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "final_gate_record_count": 1,
+    "final_gate_status_counts": {
+      "FINAL_GATE_DRAFT_ACCEPTED_FOR_MANUAL_REVIEW": 1
+    },
+    "human_review_required_count": 1,
+    "intent_family_counts": {
+      "exact_part_lookup": 1
+    },
+    "llm_call_allowed_count": 0,
+    "manual_review_ready_count": 1,
+    "negated_risky_phrase_hit_count": 3,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "raw_risky_phrase_hit_count": 3,
+    "ready_for_final_answer_count": 0,
+    "retrieval_execution_allowed_count": 0,
+    "source_runner_quality_status": "PASS",
+    "source_runner_record_count": 1,
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0,
+    "warning_reason_counts": {
+      "negated_risky_boundary_language_detected": 1
+    }
+  }
+}

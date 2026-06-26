@@ -1,0 +1,584 @@
+{
+  "module": "trace_net_engineering_context_draft_packet_v1",
+  "quality_status": "PASS",
+  "records": [
+    {
+      "answer_permission": false,
+      "answers_user_question": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "candidate_capsule_count": 16,
+      "draft_packet_id": "engineering_draft_packet_0001",
+      "draft_packet_status": "ready_for_gemma_draft_context_only",
+      "draft_packet_version": "trace_net_engineering_context_draft_packet_v1",
+      "evidence_strength_score": 90,
+      "forbidden_claim_count": 8,
+      "gemma_model_role": "draft_from_packet_only",
+      "intent_family": "exact_part_lookup",
+      "llm_call_allowed": false,
+      "missing_evidence_count": 0,
+      "opensearch_write_attempt": false,
+      "postgres_write_attempt": false,
+      "prompt_contract": {
+        "answer_format_contract": {
+          "answer_mode": "exact_evidence_first_then_related_context",
+          "final_gate_inputs": [
+            "source_truth_evidence",
+            "candidate_evidence",
+            "missing_evidence",
+            "forbidden_claims"
+          ],
+          "must_include_if_missing": [
+            "dimension_missing",
+            "effectivity_missing",
+            "interface_or_fit_missing",
+            "approval_missing"
+          ],
+          "must_not_include": [
+            "approved replacement without explicit source evidence",
+            "engineering approval",
+            "guaranteed fit/form/function",
+            "safe to install",
+            "uncited dimension or material claim",
+            "uncited repair procedure",
+            "unproven synonym",
+            "unverified alternate part"
+          ],
+          "required_blocks": [
+            "what_is_proven",
+            "candidate_or_related_findings",
+            "missing_evidence",
+            "review_boundary",
+            "citations_or_source_trace"
+          ]
+        },
+        "candidate_evidence": [
+          {
+            "excerpt": "edge::6e271f14a21793d9ab2a MAY_REFER_TO_PART element_graph_attachment_plan_v1 t_p_120_1176_p000352 dry_run_overlay visual_understanding::t_p_120_1176_p000352 part_candidate::120-29073-001 graph leiden_communities 14721",
+            "fallback_available_context": false,
+            "match_score": 104,
+            "page_id": "t_p_120_1176_p000352",
+            "route": "graph",
+            "source_artifact": "leiden_communities",
+            "source_artifact_index": 14721,
+            "source_artifact_path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "relationship_candidate"
+          },
+          {
+            "excerpt": "community_retrieval_and_review_only 29 cite:source:t_p_120_1176_p000039:74ccdf5f41 cite:source:t_p_120_1176_p000343:b894936da8 cite:source:t_p_120_1176_p000352:b02b1c626d cite:source:t_p_120_1176_p000357:f446988921 cite:source:t_p_120_1176_p000358:179bc1725c cite:source:t_p_120_1176_p000359:c7263c2140 cite:source:t_p_120_1176_p000362:6c9e31e793 cite:source:t_p_120_1176_p000363:49454c5e32 cite:source:t_p_120_1176_p000364:42055840bf cite:source:t_p_120_1176_p000365:b1e388817e cite:source_text:t_p_120_1176_p000039:972dace2ac cite:source_text:t_p_120_1176_p000343:5738635065 cite:source_text:t_p_120_1176_p000352:9312ae32a3 cite:source_text:t_p_120_1176_p000357:afc51e6964 cite:source_text:t_p_120_",
+            "fallback_available_context": false,
+            "match_score": 103,
+            "page_id": null,
+            "route": "graph",
+            "source_artifact": "leiden_communities",
+            "source_artifact_index": 4,
+            "source_artifact_path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+            "source_trace_ready": false,
+            "trust_tier": "relationship_candidate"
+          },
+          {
+            "excerpt": "trace_net_leiden_graph_communities_v1 community_retrieval_and_review_only 0 auto leiden 229 33936 6 5 4 1 3 2 19 10 8 36 13 14 35907 50 386 785 32446 9092 1446 1476 6197 6368 509 301 3090 495 1414 1.0 PASS 39 cite:source:t_p_120_1176_p000055:30223a9188 cite:source:t_p_120_1176_p000361:bbd48287bc cite:source:t_p_120_1176_p000372:4bcbdba933 cite:source:t_p_120_1176_p000376:2929aa0503 cite:source:t_p_120_1176_p000380:d0ac427cc1 cite:source:t_p_120_1176_p000392:6911fb9b53 cite:source:t_p_120_1176_p000396:c22192b62a cite:source:t_p_120_1176_p000400:1004fcaf12 cite:source:t_p_120_1176_p000416:d9d58b3bc1 cite:source:t_p_120_1176_p000420:9d18a01b7b cite:source:t_p_120_1176_p000432:75d0fb9db2 cite:so",
+            "fallback_available_context": false,
+            "match_score": 1,
+            "page_id": "t_p_120_1176_p000009",
+            "route": "graph",
+            "source_artifact": "leiden_communities",
+            "source_artifact_index": 0,
+            "source_artifact_path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "relationship_candidate"
+          },
+          {
+            "excerpt": "edge::000033669f423a4b9e3c HAS_TABLE_CELL element_graph_attachment_plan_v1 t_p_120_1176_p000009 dry_run_overlay table_row::normrow__f0d625eccce656 table_cell::normcell__d01f822ad10982 graph leiden_communities 230",
+            "fallback_available_context": false,
+            "match_score": 1,
+            "page_id": "t_p_120_1176_p000009",
+            "route": "graph",
+            "source_artifact": "leiden_communities",
+            "source_artifact_index": 230,
+            "source_artifact_path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "relationship_candidate"
+          },
+          {
+            "excerpt": "edge::00006e9564be2eeef631 HAS_CITATION element_graph_attachment_plan_v1 t_p_120_1176_p000163 dry_run_overlay evidence_candidate::rag_candidate:source_text_evidence:source_trace_t_p_120_1176_p000163 citation::cite:source_text:t_p_120_1176_p000163:1543797142 graph leiden_communities 231",
+            "fallback_available_context": false,
+            "match_score": 1,
+            "page_id": "t_p_120_1176_p000163",
+            "route": "graph",
+            "source_artifact": "leiden_communities",
+            "source_artifact_index": 231,
+            "source_artifact_path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "relationship_candidate"
+          },
+          {
+            "excerpt": "edge::0000adc784dbd62c1721 HAS_TABLE_CELL element_graph_attachment_plan_v1 t_p_120_1176_p000003 dry_run_overlay table_row::normrow__9a4268c1d6b9b6 table_cell::normcell__4d3d4a19a4f139 graph leiden_communities 232",
+            "fallback_available_context": false,
+            "match_score": 1,
+            "page_id": "t_p_120_1176_p000003",
+            "route": "graph",
+            "source_artifact": "leiden_communities",
+            "source_artifact_index": 232,
+            "source_artifact_path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "relationship_candidate"
+          },
+          {
+            "excerpt": "edge::0000b89821f4a8dd9032 HAS_CALLOUT_CANDIDATE element_graph_attachment_plan_v1 t_p_120_1176_p000447 dry_run_overlay visual_understanding::t_p_120_1176_p000447 callout_candidate::618bd11c4b7433c1 graph leiden_communities 233",
+            "fallback_available_context": false,
+            "match_score": 1,
+            "page_id": "t_p_120_1176_p000447",
+            "route": "graph",
+            "source_artifact": "leiden_communities",
+            "source_artifact_index": 233,
+            "source_artifact_path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "relationship_candidate"
+          },
+          {
+            "excerpt": "edge::0000b8e0ab6dfdc24ee2 HAS_CALLOUT_CANDIDATE element_graph_attachment_plan_v1 t_p_120_1176_p000112 dry_run_overlay visual_understanding::t_p_120_1176_p000112 callout_candidate::4424d2858942011b graph leiden_communities 234",
+            "fallback_available_context": false,
+            "match_score": 1,
+            "page_id": "t_p_120_1176_p000112",
+            "route": "graph",
+            "source_artifact": "leiden_communities",
+            "source_artifact_index": 234,
+            "source_artifact_path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "relationship_candidate"
+          },
+          {
+            "excerpt": "normal_text ready_for_normal_text_route 0.9379 accepted_fishnet_route_change image_visual t_p_120_1176_p000004 page_context_v2_and_text_retrieval_helpers normal_text_page_context_route high fishnet_route_manifest_overlay_v1 normal_text_handoff trace_net_fishnet_route_dispatch_handoff_v1 page_context_v2 guidance normal text retrieval helpers Dublin Core/source metadata enrichment route_dispatch_handoff_only normal_text handoff creates context artifacts only; no answer permission. source_p000004 3 route_dispatch fishnet_route_dispatch_handoff 4",
+            "fallback_available_context": false,
+            "match_score": 6,
+            "page_id": "t_p_120_1176_p000004",
+            "route": "route_dispatch",
+            "source_artifact": "fishnet_route_dispatch_handoff",
+            "source_artifact_index": 4,
+            "source_artifact_path": "local_data\\organization\\trace_net\\fishnet_route_dispatch_handoff\\trace_net_fishnet_route_dispatch_handoff_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "routing_metadata_not_source_truth"
+          },
+          {
+            "excerpt": "normal_text ready_for_normal_text_route 0.8814 accepted_fishnet_route_change image_visual t_p_120_1176_p000016 page_context_v2_and_text_retrieval_helpers normal_text_page_context_route high fishnet_route_manifest_overlay_v1 normal_text_handoff trace_net_fishnet_route_dispatch_handoff_v1 page_context_v2 guidance normal text retrieval helpers Dublin Core/source metadata enrichment route_dispatch_handoff_only normal_text handoff creates context artifacts only; no answer permission. source_p000016 15 route_dispatch fishnet_route_dispatch_handoff 16",
+            "fallback_available_context": false,
+            "match_score": 6,
+            "page_id": "t_p_120_1176_p000016",
+            "route": "route_dispatch",
+            "source_artifact": "fishnet_route_dispatch_handoff",
+            "source_artifact_index": 16,
+            "source_artifact_path": "local_data\\organization\\trace_net\\fishnet_route_dispatch_handoff\\trace_net_fishnet_route_dispatch_handoff_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "routing_metadata_not_source_truth"
+          },
+          {
+            "excerpt": "normal_text ready_for_normal_text_route 0.864 accepted_fishnet_route_change image_visual t_p_120_1176_p000024 page_context_v2_and_text_retrieval_helpers normal_text_page_context_route high fishnet_route_manifest_overlay_v1 normal_text_handoff trace_net_fishnet_route_dispatch_handoff_v1 page_context_v2 guidance normal text retrieval helpers Dublin Core/source metadata enrichment route_dispatch_handoff_only normal_text handoff creates context artifacts only; no answer permission. source_p000024 23 route_dispatch fishnet_route_dispatch_handoff 24",
+            "fallback_available_context": false,
+            "match_score": 6,
+            "page_id": "t_p_120_1176_p000024",
+            "route": "route_dispatch",
+            "source_artifact": "fishnet_route_dispatch_handoff",
+            "source_artifact_index": 24,
+            "source_artifact_path": "local_data\\organization\\trace_net\\fishnet_route_dispatch_handoff\\trace_net_fishnet_route_dispatch_handoff_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "routing_metadata_not_source_truth"
+          },
+          {
+            "excerpt": "normal_text ready_for_normal_text_route 0.8867 accepted_fishnet_route_change blank_candidate metadata_page_000466 page_context_v2_and_text_retrieval_helpers normal_text_page_context_route high fishnet_route_manifest_overlay_v1 normal_text_handoff trace_net_fishnet_route_dispatch_handoff_v1 page_context_v2 guidance normal text retrieval helpers Dublin Core/source metadata enrichment route_dispatch_handoff_only normal_text handoff creates context artifacts only; no answer permission. source_p000466 465 route_dispatch fishnet_route_dispatch_handoff 466",
+            "fallback_available_context": false,
+            "match_score": 6,
+            "page_id": "metadata_page_000466",
+            "route": "route_dispatch",
+            "source_artifact": "fishnet_route_dispatch_handoff",
+            "source_artifact_index": 466,
+            "source_artifact_path": "local_data\\organization\\trace_net\\fishnet_route_dispatch_handoff\\trace_net_fishnet_route_dispatch_handoff_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "routing_metadata_not_source_truth"
+          },
+          {
+            "excerpt": "normal_text ready_for_normal_text_route 0.8621 accepted_fishnet_route_change blank_candidate metadata_page_000470 page_context_v2_and_text_retrieval_helpers normal_text_page_context_route high fishnet_route_manifest_overlay_v1 normal_text_handoff trace_net_fishnet_route_dispatch_handoff_v1 page_context_v2 guidance normal text retrieval helpers Dublin Core/source metadata enrichment route_dispatch_handoff_only normal_text handoff creates context artifacts only; no answer permission. source_p000470 469 route_dispatch fishnet_route_dispatch_handoff 470",
+            "fallback_available_context": false,
+            "match_score": 6,
+            "page_id": "metadata_page_000470",
+            "route": "route_dispatch",
+            "source_artifact": "fishnet_route_dispatch_handoff",
+            "source_artifact_index": 470,
+            "source_artifact_path": "local_data\\organization\\trace_net\\fishnet_route_dispatch_handoff\\trace_net_fishnet_route_dispatch_handoff_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "routing_metadata_not_source_truth"
+          },
+          {
+            "excerpt": "normal_text ready_for_normal_text_route 0.9238 accepted_fishnet_route_change blank_candidate metadata_page_000473 page_context_v2_and_text_retrieval_helpers normal_text_page_context_route high fishnet_route_manifest_overlay_v1 normal_text_handoff trace_net_fishnet_route_dispatch_handoff_v1 page_context_v2 guidance normal text retrieval helpers Dublin Core/source metadata enrichment route_dispatch_handoff_only normal_text handoff creates context artifacts only; no answer permission. source_p000473 472 route_dispatch fishnet_route_dispatch_handoff 473",
+            "fallback_available_context": false,
+            "match_score": 6,
+            "page_id": "metadata_page_000473",
+            "route": "route_dispatch",
+            "source_artifact": "fishnet_route_dispatch_handoff",
+            "source_artifact_index": 473,
+            "source_artifact_path": "local_data\\organization\\trace_net\\fishnet_route_dispatch_handoff\\trace_net_fishnet_route_dispatch_handoff_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "routing_metadata_not_source_truth"
+          },
+          {
+            "excerpt": "normal_text ready_for_normal_text_route 0.8948 accepted_fishnet_route_change blank_candidate metadata_page_000475 page_context_v2_and_text_retrieval_helpers normal_text_page_context_route high fishnet_route_manifest_overlay_v1 normal_text_handoff trace_net_fishnet_route_dispatch_handoff_v1 page_context_v2 guidance normal text retrieval helpers Dublin Core/source metadata enrichment route_dispatch_handoff_only normal_text handoff creates context artifacts only; no answer permission. source_p000475 474 route_dispatch fishnet_route_dispatch_handoff 475",
+            "fallback_available_context": false,
+            "match_score": 6,
+            "page_id": "metadata_page_000475",
+            "route": "route_dispatch",
+            "source_artifact": "fishnet_route_dispatch_handoff",
+            "source_artifact_index": 475,
+            "source_artifact_path": "local_data\\organization\\trace_net\\fishnet_route_dispatch_handoff\\trace_net_fishnet_route_dispatch_handoff_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "routing_metadata_not_source_truth"
+          },
+          {
+            "excerpt": "normal_text ready_for_normal_text_route 0.8592 accepted_fishnet_route_change blank_candidate metadata_page_000478 page_context_v2_and_text_retrieval_helpers normal_text_page_context_route high fishnet_route_manifest_overlay_v1 normal_text_handoff trace_net_fishnet_route_dispatch_handoff_v1 page_context_v2 guidance normal text retrieval helpers Dublin Core/source metadata enrichment route_dispatch_handoff_only normal_text handoff creates context artifacts only; no answer permission. source_p000478 477 route_dispatch fishnet_route_dispatch_handoff 478",
+            "fallback_available_context": false,
+            "match_score": 6,
+            "page_id": "metadata_page_000478",
+            "route": "route_dispatch",
+            "source_artifact": "fishnet_route_dispatch_handoff",
+            "source_artifact_index": 478,
+            "source_artifact_path": "local_data\\organization\\trace_net\\fishnet_route_dispatch_handoff\\trace_net_fishnet_route_dispatch_handoff_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "routing_metadata_not_source_truth"
+          }
+        ],
+        "draft_instruction_block": {
+          "answer_mode": "exact_evidence_first_then_related_context",
+          "draft_instructions": [
+            "Start with exact source-backed evidence.",
+            "Keep nearby/similar parts separate from exact matches.",
+            "Do not call a related part an alternate, substitute, approved replacement, or interchangeable item unless source evidence explicitly says so.",
+            "Use citations/source trace references from the provided context pack only.",
+            "State missing evidence instead of guessing."
+          ],
+          "draft_permission_scope": "gemma_draft_context_only_not_final_answer",
+          "evidence_strength_score": 90,
+          "route_coverage_status": "complete_high_signal_route_coverage",
+          "self_rag_status": "READY_FOR_GEMMA_DRAFT_CONTEXT_ONLY",
+          "source_truth_evidence_strength": "strong_exact_source_truth"
+        },
+        "forbidden_claims": [
+          "approved replacement without explicit source evidence",
+          "engineering approval",
+          "guaranteed fit/form/function",
+          "safe to install",
+          "uncited dimension or material claim",
+          "uncited repair procedure",
+          "unproven synonym",
+          "unverified alternate part"
+        ],
+        "missing_evidence": [],
+        "non_negotiable_rules": [
+          "Do not use knowledge outside this packet.",
+          "Do not invent part relationships, dimensions, procedures, warnings, or approvals.",
+          "Do not state approved replacement, guaranteed fit, safe to install, or engineering approval unless explicitly present in source evidence.",
+          "Do not treat visual, graph, or semantic evidence as exact proof.",
+          "If evidence is missing, say it is missing.",
+          "This is a draft only; final answer permission is not granted."
+        ],
+        "selected_playbook": {
+          "intent_family": "exact_part_lookup",
+          "selected_playbook_id": "part_number_evidence_pack"
+        },
+        "self_rag_summary": {
+          "capsule_counts": {
+            "candidate_capsule_count": 16,
+            "exact_source_capsule_count": 1,
+            "fallback_capsule_count": 0,
+            "high_signal_capsule_count": 30,
+            "route_capsule_counts": {
+              "graph": 8,
+              "normal_text": 6,
+              "route_dispatch": 8,
+              "table": 8
+            },
+            "source_trace_ready_capsule_count": 29,
+            "source_truth_capsule_count": 14,
+            "trust_tier_counts": {
+              "exact_source_evidence_candidate": 1,
+              "relationship_candidate": 8,
+              "routing_metadata_not_source_truth": 8,
+              "source_context_guidance": 6,
+              "structured_table_candidate": 7
+            }
+          },
+          "evidence_strength_score": 90,
+          "route_coverage": {
+            "filled_route_slot_count": 4,
+            "high_signal_filled_route_slot_count": 4,
+            "high_signal_route_coverage_ratio": 1.0,
+            "required_route_slot_count": 4,
+            "route_coverage_ratio": 1.0,
+            "route_coverage_status": "complete_high_signal_route_coverage"
+          },
+          "self_rag_record_id": "engineering_self_rag_0002",
+          "source_truth_evidence_strength": "strong_exact_source_truth"
+        },
+        "source_truth_evidence": [
+          {
+            "excerpt": "0 509 blocked page_context_v2_t_p_120_1176_p000001 t_p_120_1176_p000001 unknown_route routing_and_ranking_only Page 2 from T.P. 120/1176 in ATA 25-21-00 has empty OCR text. page_context_v2_t_p_120_1176_p000002 t_p_120_1176_p000002 This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope. page_context_v2_t_p_120_1176_p000003 t_p_120_1176_p000003 This page provides the introduction to the Embraer maintenance manual and illustrated parts list, specifically regarding operations following passenger cabin disassembly. page_context_v2_t_p_120_1176_p000004 t_p_120_1176_p000004 This page appears to be a",
+            "fallback_available_context": false,
+            "match_score": 4,
+            "page_id": "t_p_120_1176_p000001",
+            "route": "normal_text",
+            "source_artifact": "page_context_v2",
+            "source_artifact_index": 0,
+            "source_artifact_path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+            "source_trace_ready": true,
+            "trust_tier": "source_context_guidance"
+          },
+          {
+            "excerpt": "This page appears to be a parts list or applicability section from a maintenance manual, listing numerous part numbers and referencing the document's scope. blocked page_context_v2_t_p_120_1176_p000003 t_p_120_1176_p000003 unknown_route routing_and_ranking_only normal_text page_context_v2 3",
+            "fallback_available_context": false,
+            "match_score": 4,
+            "page_id": "t_p_120_1176_p000003",
+            "route": "normal_text",
+            "source_artifact": "page_context_v2",
+            "source_artifact_index": 3,
+            "source_artifact_path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+            "source_trace_ready": true,
+            "trust_tier": "source_context_guidance"
+          },
+          {
+            "excerpt": "This page appears to be a parts list and index from a maintenance manual, listing various part numbers and revision dates. blocked page_context_v2_t_p_120_1176_p000005 t_p_120_1176_p000005 unknown_route routing_and_ranking_only normal_text page_context_v2 5",
+            "fallback_available_context": false,
+            "match_score": 4,
+            "page_id": "t_p_120_1176_p000005",
+            "route": "normal_text",
+            "source_artifact": "page_context_v2",
+            "source_artifact_index": 5,
+            "source_artifact_path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+            "source_trace_ready": true,
+            "trust_tier": "source_context_guidance"
+          },
+          {
+            "excerpt": "A List of Effective Pages (LEP) for the EMBRAER maintenance manual, detailing page numbers, subjects, and revision dates. blocked page_context_v2_t_p_120_1176_p000006 t_p_120_1176_p000006 unknown_route routing_and_ranking_only normal_text page_context_v2 6",
+            "fallback_available_context": false,
+            "match_score": 4,
+            "page_id": "t_p_120_1176_p000006",
+            "route": "normal_text",
+            "source_artifact": "page_context_v2",
+            "source_artifact_index": 6,
+            "source_artifact_path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+            "source_trace_ready": true,
+            "trust_tier": "source_context_guidance"
+          },
+          {
+            "excerpt": "This page is a list of effective pages within a maintenance manual, detailing revisions and deletions with associated dates and part numbers. blocked page_context_v2_t_p_120_1176_p000007 t_p_120_1176_p000007 unknown_route routing_and_ranking_only normal_text page_context_v2 7",
+            "fallback_available_context": false,
+            "match_score": 4,
+            "page_id": "t_p_120_1176_p000007",
+            "route": "normal_text",
+            "source_artifact": "page_context_v2",
+            "source_artifact_index": 7,
+            "source_artifact_path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+            "source_trace_ready": true,
+            "trust_tier": "source_context_guidance"
+          },
+          {
+            "excerpt": "This page is a List of Effective Pages (LEP) for the Embraer Maintenance Manual with Illustrated Parts List, documenting page numbers and revision dates. blocked page_context_v2_t_p_120_1176_p000009 t_p_120_1176_p000009 unknown_route routing_and_ranking_only normal_text page_context_v2 9",
+            "fallback_available_context": false,
+            "match_score": 4,
+            "page_id": "t_p_120_1176_p000009",
+            "route": "normal_text",
+            "source_artifact": "page_context_v2",
+            "source_artifact_index": 9,
+            "source_artifact_path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+            "source_trace_ready": true,
+            "trust_tier": "source_context_guidance"
+          },
+          {
+            "excerpt": "120-29073-001 table_exact_search::t_p_120_1176_p000032::ipl_part_number::541978c51192d9b0 ipl_part_number t_p_120_1176_p000032 table_route_exact_search_document table table_route_exact_search TRACE-Net table evidence | t_p_120_1176_p000032 | table__t_p_120_1176_p000032__e8b249e170 | ipl_part_number | 120-29073-001 | 120-29073-001 TRACE-Net evidence table__t_p_120_1176_p000032__e8b249e170 table_value_evidence_df2910e63c0249cd table_route_cell__eed5c61abeec1e trace_net_table_route_value_normalizer_v1 table_route_normalized_value__f1e4e68782621c33 table_exact_search_adapter 990",
+            "fallback_available_context": false,
+            "match_score": 107,
+            "page_id": "t_p_120_1176_p000032",
+            "route": "table",
+            "source_artifact": "table_exact_search_adapter",
+            "source_artifact_index": 990,
+            "source_artifact_path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "exact_source_evidence_candidate"
+          },
+          {
+            "excerpt": "0 6 150 39 843 197 188 80 13 1497 evidence_documents 120-36833-001 table_exact_search::t_p_120_1176_p000003::covered_part_number::3cdc1417d703f7d3 covered_part_number t_p_120_1176_p000003 table_route_exact_search_document table table_route_exact_search TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-001 | 120-36833-001 TRACE-Net evidence table__t_p_120_1176_p000003__cc6f070a67 table_value_evidence_9c4ddad4d3883226 table_route_cell__08901cb9713a71 trace_net_table_route_value_normalizer_v1 table_route_normalized_value__8b666283b8fc550e 120-36833-003 table_exact_search::t_p_120_1176_p000003::covered_part_number::37eac1d",
+            "fallback_available_context": false,
+            "match_score": 4,
+            "page_id": "t_p_120_1176_p000003",
+            "route": "table",
+            "source_artifact": "table_exact_search_adapter",
+            "source_artifact_index": 0,
+            "source_artifact_path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "structured_table_candidate"
+          },
+          {
+            "excerpt": "120-36833-001 table_exact_search::t_p_120_1176_p000003::covered_part_number::3cdc1417d703f7d3 covered_part_number t_p_120_1176_p000003 table_route_exact_search_document table table_route_exact_search TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-001 | 120-36833-001 TRACE-Net evidence table__t_p_120_1176_p000003__cc6f070a67 table_value_evidence_9c4ddad4d3883226 table_route_cell__08901cb9713a71 trace_net_table_route_value_normalizer_v1 table_route_normalized_value__8b666283b8fc550e table_exact_search_adapter 1",
+            "fallback_available_context": false,
+            "match_score": 4,
+            "page_id": "t_p_120_1176_p000003",
+            "route": "table",
+            "source_artifact": "table_exact_search_adapter",
+            "source_artifact_index": 1,
+            "source_artifact_path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "structured_table_candidate"
+          },
+          {
+            "excerpt": "120-36833-003 table_exact_search::t_p_120_1176_p000003::covered_part_number::37eac1debe4e79a6 covered_part_number t_p_120_1176_p000003 table_route_exact_search_document table table_route_exact_search TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-003 | 120-36833-003 TRACE-Net evidence table__t_p_120_1176_p000003__cc6f070a67 table_value_evidence_16e1bf92f195deb7 table_route_cell__c8ec160a2d23ef trace_net_table_route_value_normalizer_v1 table_route_normalized_value__660dcce34a851d1a table_exact_search_adapter 2",
+            "fallback_available_context": false,
+            "match_score": 4,
+            "page_id": "t_p_120_1176_p000003",
+            "route": "table",
+            "source_artifact": "table_exact_search_adapter",
+            "source_artifact_index": 2,
+            "source_artifact_path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "structured_table_candidate"
+          },
+          {
+            "excerpt": "120-36833-005 table_exact_search::t_p_120_1176_p000003::covered_part_number::09cc1b019676db4d covered_part_number t_p_120_1176_p000003 table_route_exact_search_document table table_route_exact_search TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-005 | 120-36833-005 TRACE-Net evidence table__t_p_120_1176_p000003__cc6f070a67 table_value_evidence_e7a2f231945bfacc table_route_cell__3b41055258c549 trace_net_table_route_value_normalizer_v1 table_route_normalized_value__85ed25995e6587e2 table_exact_search_adapter 3",
+            "fallback_available_context": false,
+            "match_score": 4,
+            "page_id": "t_p_120_1176_p000003",
+            "route": "table",
+            "source_artifact": "table_exact_search_adapter",
+            "source_artifact_index": 3,
+            "source_artifact_path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "structured_table_candidate"
+          },
+          {
+            "excerpt": "120-36833-501 table_exact_search::t_p_120_1176_p000003::covered_part_number::f68a8a42aef16311 covered_part_number t_p_120_1176_p000003 table_route_exact_search_document table table_route_exact_search TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-501 | 120-36833-501 TRACE-Net evidence table__t_p_120_1176_p000003__cc6f070a67 table_value_evidence_2f2b5bdee9425eb8 table_route_cell__ccb9085396efed trace_net_table_route_value_normalizer_v1 table_route_normalized_value__3c00eefe1d323177 table_exact_search_adapter 4",
+            "fallback_available_context": false,
+            "match_score": 4,
+            "page_id": "t_p_120_1176_p000003",
+            "route": "table",
+            "source_artifact": "table_exact_search_adapter",
+            "source_artifact_index": 4,
+            "source_artifact_path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "structured_table_candidate"
+          },
+          {
+            "excerpt": "120-36833-503 table_exact_search::t_p_120_1176_p000003::covered_part_number::40d5b281bc3a6e1c covered_part_number t_p_120_1176_p000003 table_route_exact_search_document table table_route_exact_search TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-503 | 120-36833-503 TRACE-Net evidence table__t_p_120_1176_p000003__cc6f070a67 table_value_evidence_368901a79bf8751b table_route_cell__d5242084a80ab9 trace_net_table_route_value_normalizer_v1 table_route_normalized_value__aebcf5d40d035914 table_exact_search_adapter 5",
+            "fallback_available_context": false,
+            "match_score": 4,
+            "page_id": "t_p_120_1176_p000003",
+            "route": "table",
+            "source_artifact": "table_exact_search_adapter",
+            "source_artifact_index": 5,
+            "source_artifact_path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "structured_table_candidate"
+          },
+          {
+            "excerpt": "120-36833-507 table_exact_search::t_p_120_1176_p000003::covered_part_number::600d20088b6d7370 covered_part_number t_p_120_1176_p000003 table_route_exact_search_document table table_route_exact_search TRACE-Net table evidence | t_p_120_1176_p000003 | table__t_p_120_1176_p000003__cc6f070a67 | covered_part_number | 120-36833-507 | 120-36833-507 TRACE-Net evidence table__t_p_120_1176_p000003__cc6f070a67 table_value_evidence_4fd13450763dada1 table_route_cell__69b229e6cb788a trace_net_table_route_value_normalizer_v1 table_route_normalized_value__9751f714a782d0c8 table_exact_search_adapter 6",
+            "fallback_available_context": false,
+            "match_score": 4,
+            "page_id": "t_p_120_1176_p000003",
+            "route": "table",
+            "source_artifact": "table_exact_search_adapter",
+            "source_artifact_index": 6,
+            "source_artifact_path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+            "source_trace_ready": true,
+            "trust_tier": "structured_table_candidate"
+          }
+        ],
+        "structured_user_intent": {
+          "question": "Find part number 120-29073-001 and nearby similar parts.",
+          "requested_change": null,
+          "seed_entities": [
+            "120-29073-001"
+          ]
+        },
+        "system_role": "You are an engineering evidence drafting assistant for TRACE-Net. You may draft a response from the provided context only. You must separate source-backed facts, candidates, and missing evidence.",
+        "user_question": "Find part number 120-29073-001 and nearby similar parts."
+      },
+      "qdrant_write_attempt": false,
+      "question_id": "engineering_q0002",
+      "ready_for_final_answer": false,
+      "ready_for_gemma_draft": true,
+      "requires_final_gate_after_draft": true,
+      "retrieval_execution_allowed": false,
+      "selected_playbook_id": "part_number_evidence_pack",
+      "source_context_pack_id": "engineering_context_pack_0002",
+      "source_self_rag_record_id": "engineering_self_rag_0002",
+      "source_truth_capsule_count": 14,
+      "source_truth_evidence_strength": "strong_exact_source_truth",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "user_question": "Find part number 120-29073-001 and nearby similar parts."
+    }
+  ],
+  "safety_contract": {
+    "answer_permission": false,
+    "answers_user_question": false,
+    "artifact_authority": "gemma_draft_packet_context_only",
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "llm_call_allowed": false,
+    "opensearch_write_allowed": false,
+    "postgres_write_allowed": false,
+    "qdrant_write_allowed": false,
+    "ready_for_final_answer": false,
+    "retrieval_execution_allowed": false,
+    "source_truth_mutation_allowed": false
+  },
+  "source_context_pack_builder_path": "local_data\\organization\\trace_net\\engineering_context_pack_builder\\trace_net_engineering_context_pack_builder_v1.json",
+  "source_self_rag_report_path": "local_data\\organization\\trace_net\\engineering_context_self_rag_check\\trace_net_engineering_context_self_rag_check_v1.json",
+  "status": "ENGINEERING_CONTEXT_DRAFT_PACKET_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "draft_packet_count": 1,
+    "draft_packet_status_counts": {
+      "ready_for_gemma_draft_context_only": 1
+    },
+    "intent_family_counts": {
+      "exact_part_lookup": 1
+    },
+    "llm_call_allowed_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "ready_for_final_answer_count": 0,
+    "ready_for_gemma_draft_count": 1,
+    "requires_final_gate_after_draft_count": 1,
+    "retrieval_execution_allowed_count": 0,
+    "skipped_context_pack_count": 3,
+    "skipped_context_packs": [
+      {
+        "context_pack_id": "engineering_context_pack_0001",
+        "crag_retry_required": true,
+        "reason": "self_rag_not_ready_for_gemma_draft",
+        "self_rag_status": "CRAG_RETRY_REQUIRED"
+      },
+      {
+        "context_pack_id": "engineering_context_pack_0003",
+        "crag_retry_required": true,
+        "reason": "self_rag_not_ready_for_gemma_draft",
+        "self_rag_status": "CRAG_RETRY_REQUIRED"
+      },
+      {
+        "context_pack_id": "engineering_context_pack_0004",
+        "crag_retry_required": true,
+        "reason": "self_rag_not_ready_for_gemma_draft",
+        "self_rag_status": "CRAG_RETRY_REQUIRED"
+      }
+    ],
+    "source_context_pack_builder_quality_status": "PASS",
+    "source_context_pack_count": 4,
+    "source_self_rag_quality_status": "PASS",
+    "source_self_rag_record_count": 4,
+    "source_truth_mutation_allowed_count": 0,
+    "total_candidate_capsule_count": 16,
+    "total_missing_evidence_count": 0,
+    "total_source_truth_capsule_count": 14,
+    "unsafe_record_count": 0
+  }
+}

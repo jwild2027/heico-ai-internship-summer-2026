@@ -1,0 +1,41 @@
+{
+  "checked_report_path": "local_data\\organization\\trace_net\\engineering_query_planner\\trace_net_engineering_query_planner_v1.json",
+  "failures": [],
+  "quality_status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "intent_family_counts": {
+      "engineering_change_candidate": 1,
+      "exact_part_lookup": 1,
+      "repair_or_fault_context": 1,
+      "visual_or_callout_similarity": 1
+    },
+    "llm_call_allowed_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "plans_with_candidate_language_required_count": 2,
+    "plans_with_requested_change_count": 1,
+    "plans_with_seed_entities_count": 2,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "query_plan_count": 4,
+    "retrieval_execution_allowed_count": 0,
+    "route_context_need_counts": {
+      "graph": 3,
+      "image_visual": 2,
+      "normal_text": 3,
+      "route_dispatch": 1,
+      "table": 4
+    },
+    "selected_playbook_counts": {
+      "dimensional_change_candidate_search": 1,
+      "fault_repair_procedure_reasoning": 1,
+      "part_number_evidence_pack": 1,
+      "visual_similarity_candidate_search": 1
+    },
+    "source_kernel_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0
+  }
+}
