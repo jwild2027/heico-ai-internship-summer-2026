@@ -1,0 +1,10 @@
+check_name,status,query_type,detail
+source_context_quality_pass,PASS,part_family,source_context_quality_status=PASS
+no_invalid_citations,PASS,part_family,invalid_answer_citation_count=0
+no_violations_from_runner,PASS,part_family,runner_violation_record_count=0
+has_answer_citations,PASS,part_family,answer_citations=23; valid=23
+part_family_route_ready,PASS,part_family,fast_chat_runner_ready=True; part_family_fast_answer_ready=True
+part_family_records_min,PASS,part_family,part_family_answer_record_count=23 min=1
+part_family_number_count_min,PASS,part_family,part_family_part_number_count=3 min=2
+part_family_no_forbidden_equivalence_claim,PASS,part_family,answer avoids substitute/equivalence wording
+runner_quality_pass,PASS,part_family,quality_status=PASS

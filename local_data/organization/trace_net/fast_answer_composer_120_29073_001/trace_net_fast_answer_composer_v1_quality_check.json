@@ -1,0 +1,62 @@
+{
+  "failures": [],
+  "quality_status": "PASS",
+  "summary": {
+    "answer_char_count": 842,
+    "answer_citation_count": 31,
+    "answer_permission_count": 0,
+    "answer_sentence_count": 5,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "composer_record_count": 28,
+    "direct_exact_answer_citation_count": 24,
+    "direct_exact_answer_label_count": 8,
+    "direct_exact_answer_page_count": 8,
+    "direct_exact_answer_page_numbers": [
+      343,
+      346,
+      349,
+      352,
+      355,
+      358,
+      361,
+      364
+    ],
+    "direct_exact_answer_record_count": 8,
+    "dry_run_only": true,
+    "fast_answer_composer_ready": true,
+    "human_review_required_count": 0,
+    "invalid_answer_citation_count": 0,
+    "manual_review_required_count": 0,
+    "module": "trace_net_fast_answer_composer_v1",
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "query_part_number_count": 1,
+    "query_part_numbers": [
+      "120-29073-001"
+    ],
+    "question": "Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.",
+    "ready_for_answer_quality_gate": true,
+    "retained_low_priority_support_count": 7,
+    "source_context_module": "trace_net_anchor_aware_graph_leiden_expander_v1",
+    "source_context_pack": "local_data/organization/trace_net/anchor_aware_graph_leiden_expander_gemma4_native_001/trace_net_anchor_aware_graph_leiden_expander_v1.json",
+    "source_context_quality_status": "PASS",
+    "source_record_count": 36,
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0,
+    "valid_answer_citation_count": 31,
+    "variant_answer_citation_count": 6,
+    "variant_answer_record_count": 12,
+    "variant_part_number_count": 2,
+    "variant_part_numbers": [
+      "120-29073-005",
+      "120-29073-007"
+    ],
+    "version": "v1",
+    "violation_record_count": 0,
+    "violation_severity_counts": {},
+    "weak_graph_context_record_count": 1,
+    "write_attempt_count": 0
+  }
+}

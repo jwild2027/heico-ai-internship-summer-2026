@@ -212,6 +212,13 @@ def build_raw_to_answer_context_engineered_native(
     retrieval_summary = retrieval_payload.get("summary") or {}
 
     context_dir = output_dir / "context_engineering"
+    context_dir.mkdir(parents=True, exist_ok=True)
+    exact_probe_dir = context_dir / "part_number_exact_retrieval_probe"
+    anchor_injector_dir = context_dir / "answer_context_anchor_injector"
+    anchor_aware_dir = context_dir / "anchor_aware_graph_leiden_expander"
+    for child_dir in (exact_probe_dir, anchor_injector_dir, anchor_aware_dir):
+        child_dir.mkdir(parents=True, exist_ok=True)
+
     query_parts = _extract_part_numbers(question, part_numbers)
 
     table_exact_search_adapter = _existing_or_none(table_exact_search_adapter or DEFAULT_TABLE_EXACT_SEARCH_ADAPTER)
@@ -224,7 +231,7 @@ def build_raw_to_answer_context_engineered_native(
     support_graph_leiden_expander = _existing_or_none(support_graph_leiden_expander or DEFAULT_SUPPORT_GRAPH_LEIDEN_EXPANDER)
 
     exact_probe_payload = build_part_number_exact_retrieval_probe(
-        output_dir=context_dir / "part_number_exact_retrieval_probe",
+        output_dir=exact_probe_dir,
         question=question,
         part_numbers=query_parts,
         ocr_route_scan_pack=pipeline_artifacts["scan_pack"],
@@ -235,12 +242,12 @@ def build_raw_to_answer_context_engineered_native(
         require_source_quality_pass=require_source_quality_pass,
         quality=quality,
     )
-    exact_probe_path = context_dir / "part_number_exact_retrieval_probe" / "trace_net_part_number_exact_retrieval_probe_v1.json"
+    exact_probe_path = exact_probe_dir / "trace_net_part_number_exact_retrieval_probe_v1.json"
     stage_records.append(_stage_status("part_number_exact_retrieval_probe", exact_probe_payload, exact_probe_path))
 
     anchor_payload = build_answer_context_anchor_injector(
         part_number_exact_retrieval_probe=exact_probe_path,
-        output_dir=context_dir / "answer_context_anchor_injector",
+        output_dir=anchor_injector_dir,
         graph_leiden_expander=support_graph_leiden_expander,
         evidence_enricher=support_evidence_enricher,
         max_direct_anchors=max_direct_anchors,
@@ -250,7 +257,7 @@ def build_raw_to_answer_context_engineered_native(
         require_source_quality_pass=require_source_quality_pass,
         quality=quality,
     )
-    anchor_path = context_dir / "answer_context_anchor_injector" / "trace_net_answer_context_anchor_injector_v1.json"
+    anchor_path = anchor_injector_dir / "trace_net_answer_context_anchor_injector_v1.json"
     stage_records.append(_stage_status("answer_context_anchor_injector", anchor_payload, anchor_path))
 
     anchor_aware_payload = build_anchor_aware_graph_leiden_expander(
@@ -258,13 +265,13 @@ def build_raw_to_answer_context_engineered_native(
         leiden_communities=leiden_communities,
         community_aware_retrieval=community_aware_retrieval,
         graph_report=graph_report,
-        output_dir=context_dir / "anchor_aware_graph_leiden_expander",
+        output_dir=anchor_aware_dir,
         max_records=max_anchor_aware_records,
         require_source_quality_pass=require_source_quality_pass,
         require_anchor_communities=require_anchor_communities,
         quality=quality,
     )
-    anchor_aware_path = context_dir / "anchor_aware_graph_leiden_expander" / "trace_net_anchor_aware_graph_leiden_expander_v1.json"
+    anchor_aware_path = anchor_aware_dir / "trace_net_anchor_aware_graph_leiden_expander_v1.json"
     stage_records.append(_stage_status("anchor_aware_graph_leiden_expander", anchor_aware_payload, anchor_aware_path))
 
     final_prompt = _gemma_prompt(anchor_aware_payload)

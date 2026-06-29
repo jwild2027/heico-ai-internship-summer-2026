@@ -27,16 +27,19 @@ def test_build_runs_context_engineering_chain_and_uses_anchor_prompt(tmp_path, m
     monkeypatch.setattr(mod, "_find_pipeline_artifacts", lambda out: artifacts)
 
     def fake_probe(**kwargs):
+        assert Path(kwargs["output_dir"]).exists()
         payload = {"quality_status": "PASS", "summary": {"exact_hit_count": 2, "exact_direct_hit_count": 1, "direct_exact_page_numbers": [343], "violation_record_count": 0}, "records": []}
         write_json(Path(kwargs["output_dir"]) / "trace_net_part_number_exact_retrieval_probe_v1.json", payload)
         return payload
 
     def fake_anchor(**kwargs):
+        assert Path(kwargs["output_dir"]).exists()
         payload = {"quality_status": "PASS", "summary": {"direct_exact_anchor_count": 1, "direct_exact_anchor_page_count": 1, "direct_exact_anchor_page_numbers": [343], "violation_record_count": 0}, "records": []}
         write_json(Path(kwargs["output_dir"]) / "trace_net_answer_context_anchor_injector_v1.json", payload)
         return payload
 
     def fake_anchor_aware(**kwargs):
+        assert Path(kwargs["output_dir"]).exists()
         payload = {
             "quality_status": "PASS",
             "summary": {

@@ -1,0 +1,67 @@
+key,value
+module,trace_net_fast_chat_runner_v1
+version,v1
+question,Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.
+query_type,exact_part_number
+query_route,fast_exact_part_answer
+implemented_query_type,True
+planned_query_types,"[""part_family"", ""figure_or_item"", ""image_or_diagram"", ""plain_text""]"
+query_part_numbers,"[""120-29073-001""]"
+query_part_number_count,1
+query_part_families,"[""120-29073""]"
+query_part_family_count,1
+figure,
+item,
+source_context_pack,local_data/organization/trace_net/anchor_aware_graph_leiden_expander_gemma4_native_001/trace_net_anchor_aware_graph_leiden_expander_v1.json
+source_context_quality_status,PASS
+stage_count,4
+stage_quality_statuses,"{""context_pack"": ""PASS"", ""fast_answer_composer"": ""PASS"", ""answer_quality_gate"": ""PASS"", ""multi_route_quality_gate"": ""PASS""}"
+stage_report_paths,"{""fast_answer_composer"": ""local_data\\organization\\trace_net\\fast_chat_runner_120_29073_001_integrated_gate\\fast_answer_composer\\trace_net_fast_answer_composer_v1.json"", ""answer_quality_gate"": ""local_data\\organization\\trace_net\\fast_chat_runner_120_29073_001_integrated_gate\\answer_quality_gate\\trace_net_answer_quality_gate_v1.json"", ""multi_route_quality_gate"": ""local_data\\organization\\trace_net\\fast_chat_runner_120_29073_001_integrated_gate\\multi_route_quality_gate\\trace_net_fast_chat_multi_route_quality_gate_v1.json""}"
+fast_chat_runner_ready,True
+webui_answer_ready,True
+multi_route_quality_gate_passed,True
+multi_route_quality_report,local_data\organization\trace_net\fast_chat_runner_120_29073_001_integrated_gate\multi_route_quality_gate\trace_net_fast_chat_multi_route_quality_gate_v1.json
+fast_answer_composer_ready,True
+answer_quality_gate_passed,True
+figure_item_fast_answer_ready,False
+part_family_fast_answer_ready,False
+direct_exact_answer_record_count,8
+direct_exact_answer_page_count,8
+direct_exact_answer_page_numbers,"[343, 346, 349, 352, 355, 358, 361, 364]"
+figure_item_answer_record_count,0
+figure_item_answer_page_count,0
+figure_item_answer_page_numbers,[]
+figure_item_part_numbers,[]
+part_family_answer_record_count,0
+part_family_direct_record_count,0
+part_family_variant_record_count,0
+part_family_part_number_count,0
+part_family_part_numbers,[]
+part_family_page_count,0
+part_family_page_numbers,[]
+variant_part_number_count,2
+variant_part_numbers,"[""120-29073-005"", ""120-29073-007""]"
+answer_char_count,842
+answer_citation_count,31
+valid_answer_citation_count,31
+invalid_answer_citation_count,0
+invalid_answer_citation_labels,[]
+unsupported_interchangeability_claim_count,0
+graph_or_leiden_overstatement_count,0
+violation_record_count,0
+violation_severity_counts,{}
+answer_permission_count,0
+can_answer_directly_count,0
+can_prove_claims_count,0
+source_truth_mutation_allowed_count,0
+unsafe_record_count,0
+human_review_required_count,0
+manual_review_required_count,0
+write_attempt_count,0
+postgres_write_attempt_count,0
+qdrant_write_attempt_count,0
+opensearch_write_attempt_count,0
+dry_run_only,True
+route_quality_status,PASS
+route_check_count,9
+route_check_fail_count,0

@@ -1,0 +1,101 @@
+{
+  "answer_text": "TRACE-Net found figure 85 item 1 in the cached context: it is listed as part number 120-29073-001, “STRUCTURE, LATERAL LEG”, on page 361 [E7].\n\nThis answer uses the cited figure/item row only; nearby graph or Leiden evidence is not treated as proof for any additional claim [E7].\n\nSafety: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true [E7].",
+  "module": "trace_net_figure_item_fast_answer_composer_v1",
+  "quality_status": "PASS",
+  "records": [
+    {
+      "anchor_aware_role": "direct_exact_match_anchor",
+      "anchor_aware_warnings": [],
+      "anchor_context_priority": 1000.0,
+      "anchor_relation_type": "exact_anchor",
+      "anchor_role": "direct_exact_match_anchor",
+      "anchor_status": "ANCHOR_INJECTED",
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_label": "E7",
+      "composer_role": "figure_item_answer_evidence",
+      "context_priority": 1000.0,
+      "excerpt": "€ emenncn MAINTENANCE MANUAL WITH T.P. 120/1176 ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM | PARTNUMBER STOCK vase EODE. FROM PER NUMBER TO ASSY 85 - | 120-29067-017 STRUCTURE ASSY.....0... cece VS4956 A REF - | 120-29067-027 STRUCTURE ASSY.....0... cece VS4956 B REF - | 120-29067-037 STRUCTURE ASSY....0... cece VS4956 | 172/999 REF 1 | 120-29073-001 . STRUCTURE, LATERAL LEG............. VS4956 | 035/171 1 -2 | 120-29073-005 . STRUCTURE, LATERAL LEG............. VS4956 | 172/333 1 -3 | 120-29073-007 . STRUCTURE, LATERAL LEG............. VS4956 | 334/999 1 ATTACHING PARTS 10 | PE21052-2 / PIN, ATTACH.........00.ccccccccecceeeeeeeeeeennes 035/301 1 -11 | 120-48023-001 / PIN, ATTACH. ..........cccccccceccceeeeeeeeeennnes VS4956 | 302/999 1 -15 | 120-61546-001 . NUT VS4956 | 302/999 1 20 | 42952-10 . FITTING, ATTACH........... cece 1 -21 | 42975-12 OCREW. 0... ccccceccccceeeeeeeeeeeeeeennes 1 -22 | 43392-10 OPRING....... ccc cccccccc",
+      "field_path": "ocr_sample_text",
+      "figure_item_description": "STRUCTURE, LATERAL LEG",
+      "figure_item_match_score": 125,
+      "figure_item_part_number": "120-29073-001",
+      "hit_class": "trusted_ocr_text_hit",
+      "human_review_required": false,
+      "leiden_community_ids": [
+        "1",
+        "tracenet_community_00001"
+      ],
+      "manual_review_required": false,
+      "matched_part_number": "120-29073-001",
+      "module": "trace_net_answer_context_anchor_injector_v1",
+      "opensearch_write_attempt": false,
+      "page_id": "t_p_120_1176_p000361",
+      "page_number": 361,
+      "postgres_write_attempt": false,
+      "proof_role": "direct_exact_match_proven",
+      "proof_strength": "direct_exact_proof",
+      "qdrant_write_attempt": false,
+      "query_part_numbers": [
+        "120-29073-001"
+      ],
+      "record_type": "answer_context_anchor_record",
+      "same_anchor_leiden_community": true,
+      "same_anchor_leiden_community_ids": [
+        "1",
+        "tracenet_community_00001"
+      ],
+      "source_member": "00000361.tif",
+      "source_name": "ocr_route_scan_pack",
+      "source_truth_mutation_allowed": false,
+      "unsafe_record": false,
+      "version": "v1"
+    }
+  ],
+  "summary": {
+    "answer_char_count": 374,
+    "answer_citation_count": 3,
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "composer_record_count": 1,
+    "dry_run_only": true,
+    "figure": "85",
+    "figure_item_answer_citation_count": 3,
+    "figure_item_answer_page_count": 1,
+    "figure_item_answer_page_numbers": [
+      "361"
+    ],
+    "figure_item_answer_record_count": 1,
+    "figure_item_description_count": 1,
+    "figure_item_fast_answer_ready": true,
+    "figure_item_part_numbers": [
+      "120-29073-001"
+    ],
+    "human_review_required_count": 0,
+    "invalid_answer_citation_count": 0,
+    "invalid_answer_citation_labels": [],
+    "item": "1",
+    "manual_review_required_count": 0,
+    "module": "trace_net_figure_item_fast_answer_composer_v1",
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "question": "Show figure 85 item 1.",
+    "ready_for_fast_chat_runner": true,
+    "source_context_module": "trace_net_anchor_aware_graph_leiden_expander_v1",
+    "source_context_pack": "local_data/organization/trace_net/anchor_aware_graph_leiden_expander_gemma4_native_001/trace_net_anchor_aware_graph_leiden_expander_v1.json",
+    "source_context_quality_status": "PASS",
+    "source_record_count": 36,
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0,
+    "valid_answer_citation_count": 3,
+    "version": "v1",
+    "violation_record_count": 0,
+    "violation_severity_counts": {},
+    "write_attempt_count": 0
+  },
+  "version": "v1",
+  "violations": []
+}
