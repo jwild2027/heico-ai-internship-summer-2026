@@ -1,0 +1,411 @@
+{
+  "answer_draft": {
+    "answer_permission": false,
+    "answer_text": "TRACE-Net E2E smoke draft: validated retrieval evidence was found for the question.\nQuestion: Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.\nLLM call failed; deterministic citation draft used.\nTop cited evidence:\nE1: page_id=t_p_120_1176_p000358, page=358, source_member=00000358.tif, route=table, targets=qdrant,opensearch, score=157.\nE2: page_id=t_p_120_1176_p000346, page=346, source_member=00000346.tif, route=table, targets=qdrant,opensearch, score=152.\nE3: page_id=t_p_120_1176_p000349, page=349, source_member=00000349.tif, route=table, targets=qdrant,opensearch, score=152.\nE4: page_id=t_p_120_1176_p000361, page=361, source_member=00000361.tif, route=table, targets=qdrant,opensearch, score=152.\nE5: page_id=t_p_120_1176_p000343, page=343, source_member=00000343.tif, route=table, targets=qdrant,opensearch, score=151.\nSafety: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true.",
+    "citation_count": 8,
+    "dry_run_only": true,
+    "question": "Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.",
+    "source_truth_mutation_allowed": false
+  },
+  "command_records": [
+    {
+      "command": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/run_trace_net_ocr_classifier_pipeline_v1.py",
+        "--source-package",
+        "C:\\Users\\juswil\\Desktop\\metadata.zip",
+        "--tesseract-cmd",
+        "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+        "--output-dir",
+        "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001",
+        "--quality"
+      ],
+      "elapsed_seconds": 1353.75,
+      "returncode": 0,
+      "stage": "ocr_classifier_pipeline",
+      "status": "PASS",
+      "stderr_tail": "",
+      "stdout_tail": "son --output-dir local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001\\loader_contract_audit --quality\n[contract] check: C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe scripts/check_trace_net_loader_contract_audit_v1_quality.py --report-path local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001\\loader_contract_audit\\trace_net_loader_contract_audit_v1.json --write-json --min-records 509 --min-lineage-ready 509 --max-missing-lineage 0 --min-postgres-contract-ready 509 --min-qdrant-contract-ready 400 --min-opensearch-contract-ready 250 --require-source-quality-pass --require-dry-run-only --require-no-human-review-required --max-unsafe 0 --require-no-answer-permission --require-no-source-truth-mutation --require-no-write-attempts\n[retrieval_payload_audit] build: C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe scripts/build_trace_net_retrieval_payload_audit_v1.py --loader-contract-audit local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001\\loader_contract_audit\\trace_net_loader_contract_audit_v1.json --ocr-route-scan-pack local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1.json --output-dir local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001\\retrieval_payload_audit --quality\n[retrieval_payload_audit] check: C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe scripts/check_trace_net_retrieval_payload_audit_v1_quality.py --report-path local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001\\retrieval_payload_audit\\trace_net_retrieval_payload_audit_v1.json --write-json --min-records 509 --min-route-separation-pass 400 --min-qdrant-payloads 400 --min-opensearch-payloads 250 --max-violation-records 0 --require-source-quality-pass --require-no-human-review-required --max-unsafe 0 --require-no-answer-permission --require-no-source-truth-mutation --require-no-write-attempts\nWrote: local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001\\trace_net_ocr_classifier_pipeline_runner_v1_quality_check.json\nQuality status: PASS\nSummary: {\"all_stage_quality_pass\": true, \"answer_permission_count\": 0, \"blank_payload_violation_count\": 0, \"blocked_loader_record_count\": 59, \"blocked_payload_violation_count\": 0, \"build_command_count\": 9, \"check_command_count\": 9, \"command_count\": 18, \"contract_blocked_record_count\": 0, \"dry_run_only\": true, \"final_do_not_embed_count\": 59, \"final_validated_route_counts\": {\"blank\": 14, \"image\": 12, \"plain_text\": 163, \"table\": 320}, \"human_review_required_count\": 0, \"lineage_ready_count\": 509, \"live_write_enabled\": false, \"loader_contract_audit_record_count\": 509, \"loader_plan_record_count\": 509, \"missing_lineage_count\": 0, \"missing_lineage_payload_count\": 0, \"missing_stage_report_count\": 0, \"missing_stage_reports\": [], \"module\": \"trace_net_ocr_classifier_pipeline_runner_v1\", \"opensearch_contract_ready_count\": 282, \"opensearch_dry_run_plan_count\": 282, \"opensearch_index_allowed_count\": 282, \"opensearch_payload_count\": 282, \"output_dir\": \"local_data\\\\organization\\\\trace_net\\\\raw_to_answer_e2e_smoke_gemma4_strict_001\", \"postgres_contract_ready_count\": 509, \"postgres_dry_run_plan_count\": 509, \"postgres_graph_record_count\": 509, \"qdrant_contract_ready_count\": 450, \"qdrant_dry_run_plan_count\": 450, \"qdrant_embedding_allowed_count\": 450, \"qdrant_payload_count\": 450, \"retrieval_payload_audit_record_count\": 509, \"route_payload_mismatch_count\": 0, \"source_package\": \"C:\\\\Users\\\\juswil\\\\Desktop\\\\metadata.zip\", \"source_truth_mutation_allowed_count\": 0, \"stage_count\": 9, \"stage_quality_statuses\": {\"contract\": \"PASS\", \"four_route\": \"PASS\", \"loader\": \"PASS\", \"ocr\": \"PASS\", \"resolver\": \"PASS\", \"retrieval_payload_audit\": \"PASS\", \"retry\": \"PASS\", \"storage\": \"PASS\", \"validator\": \"PASS\"}, \"stage_report_count\": 9, \"storage_gate_record_count\": 509, \"unsafe_record_count\": 0, \"version\": \"v1\", \"violation_record_count\": 0, \"write_attempt_count\": 0}\nStatus: TRACE_NET_OCR_CLASSIFIER_PIPELINE_RUNNER_BUILT\nQuality status: PASS\nSummary: {\"all_stage_quality_pass\": true, \"answer_permission_count\": 0, \"blank_payload_violation_count\": 0, \"blocked_loader_record_count\": 59, \"blocked_payload_violation_count\": 0, \"build_command_count\": 9, \"check_command_count\": 9, \"command_count\": 18, \"contract_blocked_record_count\": 0, \"dry_run_only\": true, \"final_do_not_embed_count\": 59, \"final_validated_route_counts\": {\"blank\": 14, \"image\": 12, \"plain_text\": 163, \"table\": 320}, \"human_review_required_count\": 0, \"lineage_ready_count\": 509, \"live_write_enabled\": false, \"loader_contract_audit_record_count\": 509, \"loader_plan_record_count\": 509, \"missing_lineage_count\": 0, \"missing_lineage_payload_count\": 0, \"missing_stage_report_count\": 0, \"missing_stage_reports\": [], \"module\": \"trace_net_ocr_classifier_pipeline_runner_v1\", \"opensearch_contract_ready_count\": 282, \"opensearch_dry_run_plan_count\": 282, \"opensearch_index_allowed_count\": 282, \"opensearch_payload_count\": 282, \"output_dir\": \"local_data\\\\organization\\\\trace_net\\\\raw_to_answer_e2e_smoke_gemma4_strict_001\", \"postgres_contract_ready_count\": 509, \"postgres_dry_run_plan_count\": 509, \"postgres_graph_record_count\": 509, \"qdrant_contract_ready_count\": 450, \"qdrant_dry_run_plan_count\": 450, \"qdrant_embedding_allowed_count\": 450, \"qdrant_payload_count\": 450, \"retrieval_payload_audit_record_count\": 509, \"route_payload_mismatch_count\": 0, \"source_package\": \"C:\\\\Users\\\\juswil\\\\Desktop\\\\metadata.zip\", \"source_truth_mutation_allowed_count\": 0, \"stage_count\": 9, \"stage_quality_statuses\": {\"contract\": \"PASS\", \"four_route\": \"PASS\", \"loader\": \"PASS\", \"ocr\": \"PASS\", \"resolver\": \"PASS\", \"retrieval_payload_audit\": \"PASS\", \"retry\": \"PASS\", \"storage\": \"PASS\", \"validator\": \"PASS\"}, \"stage_report_count\": 9, \"storage_gate_record_count\": 509, \"unsafe_record_count\": 0, \"version\": \"v1\", \"violation_record_count\": 0, \"write_attempt_count\": 0}\n"
+    }
+  ],
+  "llm_result": {
+    "content": "",
+    "llm_base_url": "http://127.0.0.1:11434/v1",
+    "llm_called": true,
+    "llm_content_char_count": 0,
+    "llm_fallback_reason": "empty_content_reasoning_truncated_increase_llm_max_tokens",
+    "llm_finish_reason": "length",
+    "llm_max_tokens": 2048,
+    "llm_model": "gemma4:26b",
+    "llm_reasoning_char_count": 3566,
+    "llm_status": "FALLBACK",
+    "ok": false,
+    "raw_status": "response_received"
+  },
+  "module": "trace_net_raw_to_answer_e2e_smoke_v1",
+  "quality_failures": [
+    "llm_status is not PASS",
+    "llm_answer_char_count is zero"
+  ],
+  "quality_status": "FAIL",
+  "retrieval_evidence_records": [
+    {
+      "answer_permission": false,
+      "citation": {
+        "page_id": "t_p_120_1176_p000358",
+        "page_number": 358,
+        "source_image_sha256": "5045f3b1697df049dca6838e7b7e52c37c1b7e4b09cf97af8915c02f43d3966c",
+        "source_member": "00000358.tif"
+      },
+      "ocr_char_count": 1000,
+      "ocr_excerpt": "\u20ac emenncn MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM| PARTNUMBER | STOCK Meuse eODE. FROM | PER NUMBER TO ASSY 84 - | 120-29067-015 STRUCTURE ASSY ...0....eececcecerteeetereteees VS4956 A REF - | 120-29067-025 STRUCTURE ASSY ...0....eececcecerteeetereteees VS4956 B REF - | 120-29067-035 STRUCTURE ASSY ...00...eccceerreeretrerttees VS4956 | 172/999} REF 1 | 120-29073-001 . STRUCTURE,\u2026",
+      "page_id": "t_p_120_1176_p000358",
+      "page_number": 358,
+      "part_number_count": 7,
+      "payload_ids": [
+        "t_p_120_1176_p000358::qdrant::0001",
+        "t_p_120_1176_p000358::opensearch::0001"
+      ],
+      "raw_tiff_reference": "00000358.tif",
+      "retrieval_reasons": [
+        "matched_part_number:120-29073-001",
+        "matched_query_terms:120-29073-001,and,number,part,parts,use",
+        "table_route_relevant_to_part_query",
+        "part_number_density:7"
+      ],
+      "retrieval_score": 157,
+      "route": "table",
+      "source_image_sha256": "5045f3b1697df049dca6838e7b7e52c37c1b7e4b09cf97af8915c02f43d3966c",
+      "source_member": "00000358.tif",
+      "source_truth_mutation_allowed": false,
+      "storage_decision": "validated_graph_semantic_and_exact_index",
+      "targets": [
+        "qdrant",
+        "opensearch"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "citation": {
+        "page_id": "t_p_120_1176_p000346",
+        "page_number": 346,
+        "source_image_sha256": "8dffe9dfc0a70ffa55b76d4a4157e51d6d3635cfc3d0eff4d34d9ccb2027c9a8",
+        "source_member": "00000346.tif"
+      },
+      "ocr_char_count": 1000,
+      "ocr_excerpt": "\u20ac emenncn MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM | PARTNUMBER STOCK vase EODE. FROM; PER NUMBER TO ASSY 80 - | 120-29067-019 STRUCTURE ASSY ......cccccceeeeeeeeeeeeeeeeees VS4956 A REF - | 120-29067-029 STRUCTURE ASSY ......cccccceeeeeeeeeeeeeeeeees VS4956 | 172/999] REF 1 | 120-29073-001 . STRUCTURE, LATERAL LEG ................ VS4956 A 1 -2 | 120-29073-005 . STRUCTURE, LATERA\u2026",
+      "page_id": "t_p_120_1176_p000346",
+      "page_number": 346,
+      "part_number_count": 6,
+      "payload_ids": [
+        "t_p_120_1176_p000346::qdrant::0001",
+        "t_p_120_1176_p000346::opensearch::0001"
+      ],
+      "raw_tiff_reference": "00000346.tif",
+      "retrieval_reasons": [
+        "matched_part_number:120-29073-001",
+        "matched_query_terms:120-29073-001,and,number,part,parts",
+        "table_route_relevant_to_part_query",
+        "part_number_density:6"
+      ],
+      "retrieval_score": 152,
+      "route": "table",
+      "source_image_sha256": "8dffe9dfc0a70ffa55b76d4a4157e51d6d3635cfc3d0eff4d34d9ccb2027c9a8",
+      "source_member": "00000346.tif",
+      "source_truth_mutation_allowed": false,
+      "storage_decision": "validated_graph_semantic_and_exact_index",
+      "targets": [
+        "qdrant",
+        "opensearch"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "citation": {
+        "page_id": "t_p_120_1176_p000349",
+        "page_number": 349,
+        "source_image_sha256": "11cfde31bc0dcd5b7c9a44fbc66a10de79d383d50d75723269b9d23714c8e9eb",
+        "source_member": "00000349.tif"
+      },
+      "ocr_char_count": 1000,
+      "ocr_excerpt": "\u20ac emenncn MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST FIG. ITEM PART NUMBER \u2018STOCK vase EODE. FROM PER NUMBER TO ASSY 81 - | 120-29067-003 STRUCTURE ASSY .........ccccccceeeeeeeeeeeeeas VS4956 A REF - | 120-29067-021 STRUCTURE ASSY .........ccccccceeeeeeeeeeeeeas VS4956 B REF - | 120-29067-031 STRUCTURE ASSY .........ccccccceeeeeeeeeeeeeas VS4956 | 172/999} REF 1 | 120-29073-001 . STRUCTURE, LATERAL LEG..........\u2026",
+      "page_id": "t_p_120_1176_p000349",
+      "page_number": 349,
+      "part_number_count": 7,
+      "payload_ids": [
+        "t_p_120_1176_p000349::qdrant::0001",
+        "t_p_120_1176_p000349::opensearch::0001"
+      ],
+      "raw_tiff_reference": "00000349.tif",
+      "retrieval_reasons": [
+        "matched_part_number:120-29073-001",
+        "matched_query_terms:120-29073-001,and,number,part,parts",
+        "table_route_relevant_to_part_query",
+        "part_number_density:7"
+      ],
+      "retrieval_score": 152,
+      "route": "table",
+      "source_image_sha256": "11cfde31bc0dcd5b7c9a44fbc66a10de79d383d50d75723269b9d23714c8e9eb",
+      "source_member": "00000349.tif",
+      "source_truth_mutation_allowed": false,
+      "storage_decision": "validated_graph_semantic_and_exact_index",
+      "targets": [
+        "qdrant",
+        "opensearch"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "citation": {
+        "page_id": "t_p_120_1176_p000361",
+        "page_number": 361,
+        "source_image_sha256": "b1912dbb2412f854c0be734a6d5d34d5297078f29c78d144edb5f388617e99a1",
+        "source_member": "00000361.tif"
+      },
+      "ocr_char_count": 1000,
+      "ocr_excerpt": "\u20ac emenncn MAINTENANCE MANUAL WITH T.P. 120/1176 ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM | PARTNUMBER STOCK vase EODE. FROM PER NUMBER TO ASSY 85 - | 120-29067-017 STRUCTURE ASSY.....0... cece VS4956 A REF - | 120-29067-027 STRUCTURE ASSY.....0... cece VS4956 B REF - | 120-29067-037 STRUCTURE ASSY....0... cece VS4956 | 172/999 REF 1 | 120-29073-001 . STRUCTURE, LATERAL LEG............. VS4956 | 035/171 1\u2026",
+      "page_id": "t_p_120_1176_p000361",
+      "page_number": 361,
+      "part_number_count": 8,
+      "payload_ids": [
+        "t_p_120_1176_p000361::qdrant::0001",
+        "t_p_120_1176_p000361::opensearch::0001"
+      ],
+      "raw_tiff_reference": "00000361.tif",
+      "retrieval_reasons": [
+        "matched_part_number:120-29073-001",
+        "matched_query_terms:120-29073-001,and,number,part,parts",
+        "table_route_relevant_to_part_query",
+        "part_number_density:8"
+      ],
+      "retrieval_score": 152,
+      "route": "table",
+      "source_image_sha256": "b1912dbb2412f854c0be734a6d5d34d5297078f29c78d144edb5f388617e99a1",
+      "source_member": "00000361.tif",
+      "source_truth_mutation_allowed": false,
+      "storage_decision": "validated_graph_semantic_and_exact_index",
+      "targets": [
+        "qdrant",
+        "opensearch"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "citation": {
+        "page_id": "t_p_120_1176_p000343",
+        "page_number": 343,
+        "source_image_sha256": "203c3d8ab9741c517ba0527da601cf614889e4b5529ee79135c0244aa571fcd5",
+        "source_member": "00000343.tif"
+      },
+      "ocr_char_count": 1000,
+      "ocr_excerpt": "\u20ac emenncn MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM | PARTNUMBER STOCK vase EODE. FROM | PER NUMBER TO ASSY 79 - | 120-29067-001 STRUCTURE ASSY ......cccccccceceeeeeeeeeeeeees VS4956 A REF 1 | 120-29073-001 . STRUCTURE, LATERAL LEG. ................. VS4956 1 ATTACHING PARTS 10 | PE21052-2 W PIN, ATTACH............ccccceccseceeeeeeeeeeeeeseeennees 1 20 | 42952-10 / FITTING, ATTACH\u2026",
+      "page_id": "t_p_120_1176_p000343",
+      "page_number": 343,
+      "part_number_count": 5,
+      "payload_ids": [
+        "t_p_120_1176_p000343::qdrant::0001",
+        "t_p_120_1176_p000343::opensearch::0001"
+      ],
+      "raw_tiff_reference": "00000343.tif",
+      "retrieval_reasons": [
+        "matched_part_number:120-29073-001",
+        "matched_query_terms:120-29073-001,and,number,part,parts",
+        "table_route_relevant_to_part_query",
+        "part_number_density:5"
+      ],
+      "retrieval_score": 151,
+      "route": "table",
+      "source_image_sha256": "203c3d8ab9741c517ba0527da601cf614889e4b5529ee79135c0244aa571fcd5",
+      "source_member": "00000343.tif",
+      "source_truth_mutation_allowed": false,
+      "storage_decision": "validated_graph_semantic_and_exact_index",
+      "targets": [
+        "qdrant",
+        "opensearch"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "citation": {
+        "page_id": "t_p_120_1176_p000352",
+        "page_number": 352,
+        "source_image_sha256": "f57395f3d4b3da8c2a6d158dfbe2fa11097633d421a1b47534de15d3c291e980",
+        "source_member": "00000352.tif"
+      },
+      "ocr_char_count": 1000,
+      "ocr_excerpt": "\u20ac emenncn MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM | PARTNUMBER STOCK vase EODE. FROM; PER NUMBER TO ASSY 82 - | 120-29067-005 STRUCTURE ASSY ......cccccceeeeeeeeeeeeeeeeees VS4956 A REF 1 | 120-29073-001 . STRUCTURE, LATERAL LEG ................ VS4956 1 ATTACHING PARTS 10 | PE21052-2 / PIN, ATTACH... cccccccccceentstttstseeeeeeeees 1 20 | 42952-10 . FITTING, ATTACH ....... cc. c\u2026",
+      "page_id": "t_p_120_1176_p000352",
+      "page_number": 352,
+      "part_number_count": 5,
+      "payload_ids": [
+        "t_p_120_1176_p000352::qdrant::0001",
+        "t_p_120_1176_p000352::opensearch::0001"
+      ],
+      "raw_tiff_reference": "00000352.tif",
+      "retrieval_reasons": [
+        "matched_part_number:120-29073-001",
+        "matched_query_terms:120-29073-001,and,number,part,parts",
+        "table_route_relevant_to_part_query",
+        "part_number_density:5"
+      ],
+      "retrieval_score": 151,
+      "route": "table",
+      "source_image_sha256": "f57395f3d4b3da8c2a6d158dfbe2fa11097633d421a1b47534de15d3c291e980",
+      "source_member": "00000352.tif",
+      "source_truth_mutation_allowed": false,
+      "storage_decision": "validated_graph_semantic_and_exact_index",
+      "targets": [
+        "qdrant",
+        "opensearch"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "citation": {
+        "page_id": "t_p_120_1176_p000355",
+        "page_number": 355,
+        "source_image_sha256": "ff773b54c549a6db61ec2a63d0050ffb3375daa8155305ff9119fdb6f6f7f611",
+        "source_member": "00000355.tif"
+      },
+      "ocr_char_count": 1000,
+      "ocr_excerpt": "\u20ac emenncn MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM | PARTNUMBER STOCK vase EODE. FROM | PER NUMBER TO ASSY 83 - | 120-29067-023 STRUCTURE ASSY ......cccccccceceeeeeeeeeeeeees VS4956 A REF - | 120-29067-033 STRUCTURE ASSY ......cccccccceceeeeeeeeeeeeees VS4956 | 172/999] REF 1 | 120-29073-001 . STRUCTURE, LATERAL LEG............0064 VS4956 A 1 -2 | 120-29073-005 . STRUCTURE, LATERA\u2026",
+      "page_id": "t_p_120_1176_p000355",
+      "page_number": 355,
+      "part_number_count": 4,
+      "payload_ids": [
+        "t_p_120_1176_p000355::qdrant::0001",
+        "t_p_120_1176_p000355::opensearch::0001"
+      ],
+      "raw_tiff_reference": "00000355.tif",
+      "retrieval_reasons": [
+        "matched_part_number:120-29073-001",
+        "matched_query_terms:120-29073-001,and,number,part,parts",
+        "table_route_relevant_to_part_query",
+        "part_number_density:4"
+      ],
+      "retrieval_score": 151,
+      "route": "table",
+      "source_image_sha256": "ff773b54c549a6db61ec2a63d0050ffb3375daa8155305ff9119fdb6f6f7f611",
+      "source_member": "00000355.tif",
+      "source_truth_mutation_allowed": false,
+      "storage_decision": "validated_graph_semantic_and_exact_index",
+      "targets": [
+        "qdrant",
+        "opensearch"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "citation": {
+        "page_id": "t_p_120_1176_p000364",
+        "page_number": 364,
+        "source_image_sha256": "66ddcacd6b979413f9ebce6282c3be170c783b1a89c913d52839c440c77eb852",
+        "source_member": "00000364.tif"
+      },
+      "ocr_char_count": 1000,
+      "ocr_excerpt": "\u20ac emenncn MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM | PARTNUMBER STOCK ease eODE. FROM | PER NUMBER TO ASSY 86 - | 120-29067-007 STRUCTURE ASSY ........cccccceteeseeeeeeeees VS4956 A REF 1 | 120-29073-001 . STRUCTURE, LATERAL LEG...............0.... VS4956 1 ATTACHING PARTS 10 | PE21052-2 / PIN, ATTACH 20.0... ccccccceceecceeeeeeeeeeeeeeeeeees 1 20 | 42952-10 . FITTING, ATTACH ....\u2026",
+      "page_id": "t_p_120_1176_p000364",
+      "page_number": 364,
+      "part_number_count": 5,
+      "payload_ids": [
+        "t_p_120_1176_p000364::qdrant::0001",
+        "t_p_120_1176_p000364::opensearch::0001"
+      ],
+      "raw_tiff_reference": "00000364.tif",
+      "retrieval_reasons": [
+        "matched_part_number:120-29073-001",
+        "matched_query_terms:120-29073-001,and,number,part,parts",
+        "table_route_relevant_to_part_query",
+        "part_number_density:5"
+      ],
+      "retrieval_score": 151,
+      "route": "table",
+      "source_image_sha256": "66ddcacd6b979413f9ebce6282c3be170c783b1a89c913d52839c440c77eb852",
+      "source_member": "00000364.tif",
+      "source_truth_mutation_allowed": false,
+      "storage_decision": "validated_graph_semantic_and_exact_index",
+      "targets": [
+        "qdrant",
+        "opensearch"
+      ]
+    }
+  ],
+  "safety": {
+    "answer_permission": false,
+    "dry_run_only": true,
+    "live_write_enabled": false,
+    "opensearch_write_attempt": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "source_truth_mutation_allowed": false
+  },
+  "status": "TRACE_NET_RAW_TO_ANSWER_E2E_SMOKE_BUILT",
+  "summary": {
+    "all_stage_quality_pass": true,
+    "answer_draft_char_count": 965,
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "citation_count": 8,
+    "dry_run_only": true,
+    "final_validated_route_counts": {
+      "blank": 14,
+      "image": 12,
+      "plain_text": 163,
+      "table": 320
+    },
+    "human_review_required_count": 0,
+    "lineage_ready_count": 509,
+    "live_write_enabled": false,
+    "llm_answer_char_count": 0,
+    "llm_base_url": "http://127.0.0.1:11434/v1",
+    "llm_called": true,
+    "llm_fallback_reason": "empty_content_reasoning_truncated_increase_llm_max_tokens",
+    "llm_finish_reason": "length",
+    "llm_max_tokens": 2048,
+    "llm_mode": "ollama_openai",
+    "llm_model": "gemma4:26b",
+    "llm_reasoning_char_count": 3566,
+    "llm_status": "FALLBACK",
+    "missing_lineage_count": 0,
+    "module": "trace_net_raw_to_answer_e2e_smoke_v1",
+    "opensearch_contract_ready_count": 282,
+    "opensearch_index_allowed_count": 282,
+    "opensearch_payload_count": 282,
+    "opensearch_write_attempt_count": 0,
+    "output_dir": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001",
+    "pipeline_report": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001\\trace_net_ocr_classifier_pipeline_runner_v1.json",
+    "postgres_contract_ready_count": 509,
+    "postgres_graph_record_count": 509,
+    "postgres_write_attempt_count": 0,
+    "qdrant_contract_ready_count": 450,
+    "qdrant_embedding_allowed_count": 450,
+    "qdrant_payload_count": 450,
+    "qdrant_write_attempt_count": 0,
+    "question": "Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.",
+    "ready_for_live_db_round_trip_patch": true,
+    "require_llm_success": true,
+    "retrieval_evidence_count": 8,
+    "route_payload_mismatch_count": 0,
+    "source_package": "C:\\Users\\juswil\\Desktop\\metadata.zip",
+    "source_truth_mutation_allowed_count": 0,
+    "stage_count": 9,
+    "stage_quality_statuses": {
+      "contract": "PASS",
+      "four_route": "PASS",
+      "loader": "PASS",
+      "ocr": "PASS",
+      "resolver": "PASS",
+      "retrieval_payload_audit": "PASS",
+      "retry": "PASS",
+      "storage": "PASS",
+      "validator": "PASS"
+    },
+    "stage_report_count": 9,
+    "unsafe_record_count": 0,
+    "version": "v1",
+    "violation_record_count": 0,
+    "write_attempt_count": 0
+  },
+  "version": "v1"
+}

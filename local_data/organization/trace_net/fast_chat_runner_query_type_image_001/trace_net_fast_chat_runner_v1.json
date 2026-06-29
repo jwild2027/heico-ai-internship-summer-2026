@@ -1,0 +1,74 @@
+{
+  "answer_quality_gate_report": null,
+  "answer_text": "TRACE-Net fast chat runner recognized this request, but v1 only implements exact part-number fast answers.\n\nDetected query type: `image_or_diagram`.\nPlanned route: `planned_image_visual_context`.\n\nNext query-type work should connect this route to the matching cached artifacts before allowing a final answer.\nSafety: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true.\n",
+  "composer_report": null,
+  "module": "trace_net_fast_chat_runner_v1",
+  "quality_status": "PASS",
+  "query_plan": {
+    "figures": [],
+    "implemented": false,
+    "items": [],
+    "part_families": [],
+    "part_numbers": [],
+    "query_type": "image_or_diagram",
+    "route": "planned_image_visual_context"
+  },
+  "records": [
+    {
+      "detail": "image_or_diagram",
+      "stage": "query_router",
+      "status": "UNIMPLEMENTED_QUERY_TYPE"
+    }
+  ],
+  "summary": {
+    "answer_char_count": 398,
+    "answer_citation_count": 0,
+    "answer_permission_count": 0,
+    "answer_quality_gate_passed": false,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "direct_exact_answer_page_count": 0,
+    "direct_exact_answer_page_numbers": [],
+    "direct_exact_answer_record_count": 0,
+    "dry_run_only": true,
+    "fast_answer_composer_ready": false,
+    "fast_chat_runner_ready": false,
+    "graph_or_leiden_overstatement_count": 0,
+    "human_review_required_count": 0,
+    "implemented_query_type": false,
+    "invalid_answer_citation_count": 0,
+    "manual_review_required_count": 0,
+    "module": "trace_net_fast_chat_runner_v1",
+    "opensearch_write_attempt_count": 0,
+    "planned_query_types": [
+      "part_family",
+      "figure_or_item",
+      "image_or_diagram",
+      "plain_text"
+    ],
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "query_part_number_count": 0,
+    "query_part_numbers": [],
+    "query_route": "planned_image_visual_context",
+    "query_type": "image_or_diagram",
+    "question": "What does this diagram callout show?",
+    "source_context_pack": "local_data/organization/trace_net/anchor_aware_graph_leiden_expander_gemma4_native_001/trace_net_anchor_aware_graph_leiden_expander_v1.json",
+    "source_context_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "stage_count": 1,
+    "stage_quality_statuses": {
+      "context_pack": "PASS"
+    },
+    "unsafe_record_count": 0,
+    "unsupported_interchangeability_claim_count": 0,
+    "valid_answer_citation_count": 0,
+    "variant_part_number_count": 0,
+    "variant_part_numbers": [],
+    "version": "v1",
+    "violation_record_count": 0,
+    "write_attempt_count": 0
+  },
+  "version": "v1",
+  "violations": []
+}

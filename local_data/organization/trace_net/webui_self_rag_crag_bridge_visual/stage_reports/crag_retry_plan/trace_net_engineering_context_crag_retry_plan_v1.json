@@ -1,0 +1,43 @@
+{
+  "module": "trace_net_engineering_context_crag_retry_plan_v1",
+  "quality_status": "PASS",
+  "records": [],
+  "safety_contract": {
+    "answer_permission": false,
+    "answers_user_question": false,
+    "artifact_authority": "crag_retry_planning_only",
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "llm_call_allowed": false,
+    "opensearch_write_allowed": false,
+    "postgres_write_allowed": false,
+    "qdrant_write_allowed": false,
+    "retrieval_execution_allowed": false,
+    "source_truth_mutation_allowed": false
+  },
+  "source_self_rag_report_path": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge_visual\\stage_reports\\self_rag_check\\trace_net_engineering_context_self_rag_check_v1.json",
+  "status": "ENGINEERING_CONTEXT_CRAG_RETRY_PLAN_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "crag_retry_plan_count": 0,
+    "intent_family_counts": {},
+    "llm_call_allowed_count": 0,
+    "missing_evidence_type_counts": {},
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "ready_for_crag_execution_count": 0,
+    "retrieval_execution_allowed_count": 0,
+    "retry_priority_counts": {},
+    "source_crag_retry_required_count": 0,
+    "source_self_rag_quality_status": "PASS",
+    "source_self_rag_record_count": 1,
+    "source_truth_mutation_allowed_count": 0,
+    "target_route_counts": {},
+    "total_retry_action_count": 0,
+    "unknown_target_route_count": 0,
+    "unsafe_record_count": 0
+  }
+}

@@ -1,0 +1,37 @@
+# TRACE-Net Gold Label Decision Merge v1
+
+Quality status: **PASS**
+
+## Summary
+
+- `answer_permission_count`: `0`
+- `can_answer_directly_count`: `0`
+- `can_prove_claims_count`: `0`
+- `decision_source_counts`: `{'human_review': 16, 'auto_seeded': 236, 'unresolved_human_review_required': 257}`
+- `final_gold_route_label_count`: `252`
+- `final_gold_route_label_counts`: `{'cover_or_title_page': 1, 'blank_candidate': 14, 'detailed_parts_list': 204, 'procedure_or_description': 15, 'table_or_index': 9, 'image_visual_diagram': 9}`
+- `final_labels_csv_path`: `local_data\organization\trace_net\gold_label_decision_merge\trace_net_gold_label_decision_merge_v1_final_labels.csv`
+- `human_review_file_count`: `3`
+- `human_review_rows_loaded_count`: `273`
+- `invalid_final_label_count`: `0`
+- `invalid_human_label_count`: `0`
+- `module`: `trace_net_gold_label_decision_merge_v1`
+- `opensearch_write_attempt_count`: `0`
+- `postgres_write_attempt_count`: `0`
+- `qdrant_write_attempt_count`: `0`
+- `quality_failures`: `[]`
+- `ready_for_full_gold_lock`: `False`
+- `ready_for_route_accuracy_scoring`: `True`
+- `seed_record_count`: `509`
+- `source_auto_review_seed`: `local_data\organization\trace_net\gold_label_auto_review_seed\trace_net_gold_label_auto_review_seed_v1.json`
+- `source_auto_review_seed_quality_status`: `PASS`
+- `source_truth_mutation_allowed_count`: `0`
+- `suggested_route_counts`: `{'cover_or_title_page': 1, 'blank_candidate': 14, 'detailed_parts_list': 255, 'procedure_or_description': 21, 'table_or_index': 184, 'mixed_text_and_figure': 13, 'normal_text': 4, 'image_visual_diagram': 17}`
+- `unresolved_human_review_count`: `257`
+- `unresolved_review_queue_csv_path`: `local_data\organization\trace_net\gold_label_decision_merge\trace_net_gold_label_decision_merge_v1_unresolved_review_queue.csv`
+- `unsafe_record_count`: `0`
+- `version`: `v1`
+
+## Safety
+
+This artifact grants no answer permission, performs no database writes, and does not mutate source truth.

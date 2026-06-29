@@ -1,0 +1,45 @@
+{
+  "answer_context_enriched": true,
+  "answer_permission_count": 0,
+  "can_answer_directly_count": 0,
+  "can_prove_claims_count": 0,
+  "citation_count": 8,
+  "context_pack_record_count": 8,
+  "context_prompt_char_count": 9485,
+  "direct_text_match_count": 0,
+  "dry_run_only": true,
+  "enriched_context_record_count": 8,
+  "enriched_context_role_counts": {
+    "direct_exact_match_candidate": 1,
+    "nearby_or_similar_table_evidence": 7
+  },
+  "enriched_excerpt_count": 8,
+  "enrichment_warning_count": 0,
+  "human_review_required_count": 0,
+  "lineage_ready_count": 8,
+  "manual_review_required_count": 0,
+  "missing_lineage_count": 0,
+  "module": "trace_net_answer_context_evidence_enricher_v1",
+  "opensearch_write_attempt_count": 0,
+  "postgres_write_attempt_count": 0,
+  "qdrant_write_attempt_count": 0,
+  "query_part_number_count": 1,
+  "query_part_numbers": [
+    "120-29073-001"
+  ],
+  "question": "Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.",
+  "ready_for_gemma_context_prompt": true,
+  "records_with_enriched_excerpt_count": 8,
+  "source_context_pack": "local_data\\organization\\trace_net\\answer_context_engineering_pack_gemma4_native_001\\trace_net_answer_context_engineering_pack_v1.json",
+  "source_context_pack_quality_status": "PASS",
+  "source_excerpt_counts": {
+    "ocr_route_scan_pack": 8
+  },
+  "source_ocr_route_scan_pack": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_native_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1.json",
+  "source_ocr_route_scan_pack_quality_status": "PASS",
+  "source_truth_mutation_allowed_count": 0,
+  "unsafe_record_count": 0,
+  "version": "v1",
+  "violation_record_count": 0,
+  "write_attempt_count": 0
+}

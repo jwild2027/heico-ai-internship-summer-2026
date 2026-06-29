@@ -1,0 +1,346 @@
+{
+  "assistant_response_text": "Based on the provided TRACE-Net documentation, the specific full part number 120-29073-001 and its nearby similar parts cannot be identified, as there is no specific information regarding this exact part number in the available text. The following related evidence was reviewed: * **Page t_p_120_1176_p00000\n\nSource notes: final_gate=engineering_draft_final_gate_0001.",
+  "checklist_text": "webui endpoint: used\ngemma llm: used\nocr/fishnet: available, not used\npage context v2: available, not used\nroute dispatch: available, not used\ntable route: available, not used\nembedding/vector: used\ngraph/leiden: available, not used\nvisual/image route: available, not used\nself-rag: available, not used\ncrag retry: available, not used\nfinal gate: used",
+  "module": "trace_net_e2e_tool_usage_audit_v1",
+  "quality_status": "PASS",
+  "question": "Find part number 120-29073-001 and nearby similar parts. Use every TRACE-Net evidence route that is available and show source boundaries.",
+  "raw_response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "Based on the provided TRACE-Net documentation, the specific full part number 120-29073-001 and its nearby similar parts cannot be identified, as there is no specific information regarding this exact part number in the available text. The following related evidence was reviewed: * **Page t_p_120_1176_p00000\n\nSource notes: final_gate=engineering_draft_final_gate_0001.",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1782476355,
+    "id": "chatcmpl-trace-net-1782476355835",
+    "model": "trace-net-engineering-webui-v1",
+    "object": "chat.completion",
+    "trace_net": {
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "citation_count": 1,
+      "citations": [
+        {
+          "final_gate_record_id": "engineering_draft_final_gate_0001",
+          "source_draft_packet_id": "engineering_draft_packet_0001",
+          "source_runner_record_id": "engineering_gemma_draft_runner_0001"
+        }
+      ],
+      "evidence_status": "manual_review_ready_final_gate_record",
+      "intent": "gated_lookup",
+      "llm_attempt_count": 1,
+      "llm_base_url": "http://127.0.0.1:11434/v1",
+      "llm_call_allowed": true,
+      "llm_called": true,
+      "llm_error": null,
+      "llm_mode": "ollama_openai",
+      "llm_model": "gemma4:26b",
+      "manual_review_required": true,
+      "opensearch_write_attempt": false,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "question": "Find part number 120-29073-001 and nearby similar parts. Use every TRACE-Net evidence route that is available and show source boundaries.",
+      "ready_for_final_answer": false,
+      "ready_for_webui_response": true,
+      "response_kind": "gemma4_composed_gated_lookup",
+      "response_text": "Based on the provided TRACE-Net documentation, the specific full part number 120-29073-001 and its nearby similar parts cannot be identified, as there is no specific information regarding this exact part number in the available text. The following related evidence was reviewed: * **Page t_p_120_1176_p00000\n\nSource notes: final_gate=engineering_draft_final_gate_0001.",
+      "response_text_char_count": 368,
+      "retrieval_execution_allowed": false,
+      "server_record_version": "trace_net_engineering_webui_answer_server_v1",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false
+    },
+    "usage": {
+      "completion_tokens": 0,
+      "prompt_tokens": 0,
+      "total_tokens": 0
+    }
+  },
+  "safety_contract": {
+    "answer_permission": false,
+    "opensearch_write_allowed": false,
+    "postgres_write_allowed": false,
+    "qdrant_write_allowed": false,
+    "source_truth_mutation_allowed": false
+  },
+  "status": "TRACE_NET_E2E_TOOL_USAGE_AUDIT_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "assistant_response_char_count": 368,
+    "available_not_used_tool_count": 8,
+    "available_not_used_tools": [
+      "ocr_fishnet",
+      "page_context_v2",
+      "route_dispatch",
+      "table_route",
+      "graph_leiden",
+      "visual_image_route",
+      "self_rag",
+      "crag_retry"
+    ],
+    "call_error": null,
+    "call_status": "endpoint_response_received",
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "citation_count": 1,
+    "elapsed_seconds": 70.277,
+    "endpoint_url": "http://127.0.0.1:8044/v1/chat/completions",
+    "model": "trace-net-engineering-webui-v1",
+    "not_used_tool_count": 8,
+    "not_used_tools": [
+      "ocr_fishnet",
+      "page_context_v2",
+      "route_dispatch",
+      "table_route",
+      "graph_leiden",
+      "visual_image_route",
+      "self_rag",
+      "crag_retry"
+    ],
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "question": "Find part number 120-29073-001 and nearby similar parts. Use every TRACE-Net evidence route that is available and show source boundaries.",
+    "source_truth_mutation_allowed_count": 0,
+    "tool_checklist_count": 12,
+    "trace_intent": "gated_lookup",
+    "trace_llm_called": true,
+    "trace_llm_error": null,
+    "trace_llm_model": "gemma4:26b",
+    "trace_net_present": true,
+    "trace_response_kind": "gemma4_composed_gated_lookup",
+    "unsafe_record_count": 0,
+    "used_tool_count": 4,
+    "used_tools": [
+      "webui_endpoint",
+      "gemma_llm",
+      "embedding_vector",
+      "final_gate"
+    ]
+  },
+  "tool_checklist": [
+    {
+      "available": null,
+      "checked_artifact_paths": [],
+      "existing_artifact_paths": [],
+      "reason": "OpenAI-compatible response returned choices and/or trace_net payload.",
+      "signals": [
+        "response_received"
+      ],
+      "status": "used",
+      "tool": "webui_endpoint",
+      "used": true
+    },
+    {
+      "available": null,
+      "checked_artifact_paths": [],
+      "existing_artifact_paths": [],
+      "reason": "trace_net.llm_called=true; model='gemma4:26b'.",
+      "signals": [
+        "llm_called"
+      ],
+      "status": "used",
+      "tool": "gemma_llm",
+      "used": true
+    },
+    {
+      "available": true,
+      "checked_artifact_paths": [
+        "local_data/organization/trace_net/fishnet_ocr_grid/trace_net_fishnet_ocr_grid_v1.json"
+      ],
+      "existing_artifact_paths": [
+        "local_data/organization/trace_net/fishnet_ocr_grid/trace_net_fishnet_ocr_grid_v1.json"
+      ],
+      "reason": "Artifact path exists, but this answer did not expose a usage signal for it.",
+      "signals": [],
+      "status": "available_not_used",
+      "tool": "ocr_fishnet",
+      "used": false
+    },
+    {
+      "available": true,
+      "checked_artifact_paths": [
+        "local_data/organization/trace_net/page_context_v2/trace_net_page_context_v2.json"
+      ],
+      "existing_artifact_paths": [
+        "local_data/organization/trace_net/page_context_v2/trace_net_page_context_v2.json"
+      ],
+      "reason": "Artifact path exists, but this answer did not expose a usage signal for it.",
+      "signals": [],
+      "status": "available_not_used",
+      "tool": "page_context_v2",
+      "used": false
+    },
+    {
+      "available": true,
+      "checked_artifact_paths": [
+        "local_data/organization/trace_net/fishnet_route_dispatch_handoff/trace_net_fishnet_route_dispatch_handoff_v1.json",
+        "local_data/organization/trace_net/fishnet_accepted_route_manifest/trace_net_fishnet_accepted_route_manifest_v1.json"
+      ],
+      "existing_artifact_paths": [
+        "local_data/organization/trace_net/fishnet_route_dispatch_handoff/trace_net_fishnet_route_dispatch_handoff_v1.json",
+        "local_data/organization/trace_net/fishnet_accepted_route_manifest/trace_net_fishnet_accepted_route_manifest_v1.json"
+      ],
+      "reason": "Artifact path exists, but this answer did not expose a usage signal for it.",
+      "signals": [],
+      "status": "available_not_used",
+      "tool": "route_dispatch",
+      "used": false
+    },
+    {
+      "available": true,
+      "checked_artifact_paths": [
+        "local_data/organization/trace_net/table_exact_search_adapter/trace_net_table_exact_search_adapter_v1.json",
+        "local_data/organization/trace_net/table_route_evidence_packager/trace_net_table_route_evidence_packager_v1.json",
+        "local_data/organization/trace_net/table_route_value_audit/trace_net_table_route_value_audit_v1.json"
+      ],
+      "existing_artifact_paths": [
+        "local_data/organization/trace_net/table_exact_search_adapter/trace_net_table_exact_search_adapter_v1.json",
+        "local_data/organization/trace_net/table_route_evidence_packager/trace_net_table_route_evidence_packager_v1.json",
+        "local_data/organization/trace_net/table_route_value_audit/trace_net_table_route_value_audit_v1.json"
+      ],
+      "reason": "Artifact path exists, but this answer did not expose a usage signal for it.",
+      "signals": [],
+      "status": "available_not_used",
+      "tool": "table_route",
+      "used": false
+    },
+    {
+      "available": true,
+      "checked_artifact_paths": [
+        "local_data/organization/trace_net/hybrid_retrieval_v3/trace_net_hybrid_retrieval_v3.json",
+        "local_data/organization/trace_net/vector_retrieval/trace_net_vector_retrieval_v1.json",
+        "local_data/organization/trace_net/qdrant_adapter/trace_net_qdrant_adapter_v1.json"
+      ],
+      "existing_artifact_paths": [
+        "local_data/organization/trace_net/hybrid_retrieval_v3/trace_net_hybrid_retrieval_v3.json"
+      ],
+      "reason": "Visible response/trace/citation signal matched 'qdrant'.",
+      "signals": [
+        "qdrant"
+      ],
+      "status": "used",
+      "tool": "embedding_vector",
+      "used": true
+    },
+    {
+      "available": true,
+      "checked_artifact_paths": [
+        "local_data/organization/trace_net/leiden_communities/trace_net_leiden_communities_v1.json",
+        "local_data/organization/trace_net/community_aware_retrieval/trace_net_community_aware_retrieval_v1.json"
+      ],
+      "existing_artifact_paths": [
+        "local_data/organization/trace_net/leiden_communities/trace_net_leiden_communities_v1.json"
+      ],
+      "reason": "Artifact path exists, but this answer did not expose a usage signal for it.",
+      "signals": [],
+      "status": "available_not_used",
+      "tool": "graph_leiden",
+      "used": false
+    },
+    {
+      "available": true,
+      "checked_artifact_paths": [
+        "local_data/organization/trace_net/image_visual_observer/trace_net_image_visual_observer_v1.json",
+        "local_data/organization/trace_net/callout_visual_part_verifier/trace_net_callout_visual_part_verifier_v1.json",
+        "local_data/organization/trace_net/visual_ink_layout_calibrator/trace_net_visual_ink_layout_calibrator_v1.json"
+      ],
+      "existing_artifact_paths": [
+        "local_data/organization/trace_net/callout_visual_part_verifier/trace_net_callout_visual_part_verifier_v1.json",
+        "local_data/organization/trace_net/visual_ink_layout_calibrator/trace_net_visual_ink_layout_calibrator_v1.json"
+      ],
+      "reason": "Artifact path exists, but this answer did not expose a usage signal for it.",
+      "signals": [],
+      "status": "available_not_used",
+      "tool": "visual_image_route",
+      "used": false
+    },
+    {
+      "available": true,
+      "checked_artifact_paths": [
+        "local_data/organization/trace_net/engineering_context_self_rag_check/trace_net_engineering_context_self_rag_check_v1.json"
+      ],
+      "existing_artifact_paths": [
+        "local_data/organization/trace_net/engineering_context_self_rag_check/trace_net_engineering_context_self_rag_check_v1.json"
+      ],
+      "reason": "Artifact path exists, but this answer did not expose a usage signal for it.",
+      "signals": [],
+      "status": "available_not_used",
+      "tool": "self_rag",
+      "used": false
+    },
+    {
+      "available": true,
+      "checked_artifact_paths": [
+        "local_data/organization/trace_net/engineering_context_crag_retry_plan/trace_net_engineering_context_crag_retry_plan_v1.json"
+      ],
+      "existing_artifact_paths": [
+        "local_data/organization/trace_net/engineering_context_crag_retry_plan/trace_net_engineering_context_crag_retry_plan_v1.json"
+      ],
+      "reason": "Artifact path exists, but this answer did not expose a usage signal for it.",
+      "signals": [],
+      "status": "available_not_used",
+      "tool": "crag_retry",
+      "used": false
+    },
+    {
+      "available": true,
+      "checked_artifact_paths": [
+        "local_data/organization/trace_net/engineering_draft_final_gate_retry_micro/trace_net_engineering_draft_final_gate_v1.json",
+        "local_data/organization/trace_net/engineering_draft_final_gate/trace_net_engineering_draft_final_gate_v1.json"
+      ],
+      "existing_artifact_paths": [
+        "local_data/organization/trace_net/engineering_draft_final_gate_retry_micro/trace_net_engineering_draft_final_gate_v1.json",
+        "local_data/organization/trace_net/engineering_draft_final_gate/trace_net_engineering_draft_final_gate_v1.json"
+      ],
+      "reason": "A citation referenced a final_gate record.",
+      "signals": [
+        "final_gate_citation"
+      ],
+      "status": "used",
+      "tool": "final_gate",
+      "used": true
+    }
+  ],
+  "trace_net": {
+    "answer_permission": false,
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "citation_count": 1,
+    "citations": [
+      {
+        "final_gate_record_id": "engineering_draft_final_gate_0001",
+        "source_draft_packet_id": "engineering_draft_packet_0001",
+        "source_runner_record_id": "engineering_gemma_draft_runner_0001"
+      }
+    ],
+    "evidence_status": "manual_review_ready_final_gate_record",
+    "intent": "gated_lookup",
+    "llm_attempt_count": 1,
+    "llm_base_url": "http://127.0.0.1:11434/v1",
+    "llm_call_allowed": true,
+    "llm_called": true,
+    "llm_error": null,
+    "llm_mode": "ollama_openai",
+    "llm_model": "gemma4:26b",
+    "manual_review_required": true,
+    "opensearch_write_attempt": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "question": "Find part number 120-29073-001 and nearby similar parts. Use every TRACE-Net evidence route that is available and show source boundaries.",
+    "ready_for_final_answer": false,
+    "ready_for_webui_response": true,
+    "response_kind": "gemma4_composed_gated_lookup",
+    "response_text": "Based on the provided TRACE-Net documentation, the specific full part number 120-29073-001 and its nearby similar parts cannot be identified, as there is no specific information regarding this exact part number in the available text. The following related evidence was reviewed: * **Page t_p_120_1176_p00000\n\nSource notes: final_gate=engineering_draft_final_gate_0001.",
+    "response_text_char_count": 368,
+    "retrieval_execution_allowed": false,
+    "server_record_version": "trace_net_engineering_webui_answer_server_v1",
+    "source_truth_mutation_allowed": false,
+    "unsafe": false
+  }
+}

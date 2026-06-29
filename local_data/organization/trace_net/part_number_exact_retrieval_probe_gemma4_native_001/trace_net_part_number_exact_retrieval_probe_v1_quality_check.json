@@ -1,0 +1,104 @@
+{
+  "failures": [],
+  "module": "trace_net_part_number_exact_retrieval_probe_v1_quality_check",
+  "quality_status": "PASS",
+  "source_report": "local_data\\organization\\trace_net\\part_number_exact_retrieval_probe_gemma4_native_001\\trace_net_part_number_exact_retrieval_probe_v1.json",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "citation_count": 52,
+    "context_seed_prompt_char_count": 12729,
+    "direct_exact_page_count": 9,
+    "direct_exact_page_ids": [
+      "t_p_120_1176_p000032",
+      "t_p_120_1176_p000343",
+      "t_p_120_1176_p000346",
+      "t_p_120_1176_p000349",
+      "t_p_120_1176_p000352",
+      "t_p_120_1176_p000355",
+      "t_p_120_1176_p000358",
+      "t_p_120_1176_p000361",
+      "t_p_120_1176_p000364"
+    ],
+    "direct_exact_page_numbers": [
+      343,
+      346,
+      349,
+      352,
+      355,
+      358,
+      361,
+      364
+    ],
+    "dry_run_only": true,
+    "exact_direct_hit_count": 16,
+    "exact_hit_count": 52,
+    "exact_page_count": 9,
+    "exact_page_ids": [
+      "t_p_120_1176_p000032",
+      "t_p_120_1176_p000343",
+      "t_p_120_1176_p000346",
+      "t_p_120_1176_p000349",
+      "t_p_120_1176_p000352",
+      "t_p_120_1176_p000355",
+      "t_p_120_1176_p000358",
+      "t_p_120_1176_p000361",
+      "t_p_120_1176_p000364"
+    ],
+    "exact_page_numbers": [
+      32,
+      343,
+      346,
+      349,
+      352,
+      355,
+      358,
+      361,
+      364
+    ],
+    "exact_reference_hit_count": 36,
+    "exact_retrieval_probe_ready": true,
+    "family_variant_hit_count": 83,
+    "hit_class_counts": {
+      "trusted_metadata_hit": 36,
+      "trusted_ocr_text_hit": 8,
+      "trusted_table_evidence_hit": 3,
+      "trusted_table_exact_hit": 5
+    },
+    "human_review_required_count": 0,
+    "manual_review_required_count": 0,
+    "module": "trace_net_part_number_exact_retrieval_probe_v1",
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "proof_role_counts": {
+      "direct_exact_match_proven": 16,
+      "exact_metadata_candidate": 36
+    },
+    "qdrant_write_attempt_count": 0,
+    "query_part_number_count": 1,
+    "query_part_numbers": [
+      "120-29073-001"
+    ],
+    "question": "Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.",
+    "ready_for_context_anchor_injection": true,
+    "source_file_count": 4,
+    "source_quality_statuses": {
+      "ocr_route_scan_pack": "PASS",
+      "page_context_v2": "PASS",
+      "table_evidence_package": "PASS",
+      "table_exact_search_adapter": "PASS"
+    },
+    "source_record_counts": {
+      "ocr_route_scan_pack": 1018,
+      "page_context_v2": 509,
+      "table_evidence_package": 2994,
+      "table_exact_search_adapter": 2994
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0,
+    "version": "v1",
+    "violation_record_count": 0,
+    "write_attempt_count": 0
+  }
+}

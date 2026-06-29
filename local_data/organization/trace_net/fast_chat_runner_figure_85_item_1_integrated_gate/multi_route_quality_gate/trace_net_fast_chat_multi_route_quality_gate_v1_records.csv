@@ -1,0 +1,9 @@
+check_name,status,query_type,detail
+source_context_quality_pass,PASS,figure_or_item,source_context_quality_status=PASS
+no_invalid_citations,PASS,figure_or_item,invalid_answer_citation_count=0
+no_violations_from_runner,PASS,figure_or_item,runner_violation_record_count=0
+has_answer_citations,PASS,figure_or_item,answer_citations=3; valid=3
+figure_item_route_ready,PASS,figure_or_item,fast_chat_runner_ready=True; figure_item_fast_answer_ready=True
+figure_item_records_min,PASS,figure_or_item,figure_item_answer_record_count=1 min=1
+figure_item_has_part_or_page,PASS,figure_or_item,figure_item_answer_page_count=1; figure_item_part_numbers=['120-29073-001']
+runner_quality_pass,PASS,figure_or_item,quality_status=PASS

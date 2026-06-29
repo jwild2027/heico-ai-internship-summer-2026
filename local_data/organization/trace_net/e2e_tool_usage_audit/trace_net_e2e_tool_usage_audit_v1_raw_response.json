@@ -1,0 +1,57 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "Based on the provided TRACE-Net documentation, the specific full part number 120-29073-001 and its nearby similar parts cannot be identified, as there is no specific information regarding this exact part number in the available text. The following related evidence was reviewed: * **Page t_p_120_1176_p00000\n\nSource notes: final_gate=engineering_draft_final_gate_0001.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1782476355,
+  "id": "chatcmpl-trace-net-1782476355835",
+  "model": "trace-net-engineering-webui-v1",
+  "object": "chat.completion",
+  "trace_net": {
+    "answer_permission": false,
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "citation_count": 1,
+    "citations": [
+      {
+        "final_gate_record_id": "engineering_draft_final_gate_0001",
+        "source_draft_packet_id": "engineering_draft_packet_0001",
+        "source_runner_record_id": "engineering_gemma_draft_runner_0001"
+      }
+    ],
+    "evidence_status": "manual_review_ready_final_gate_record",
+    "intent": "gated_lookup",
+    "llm_attempt_count": 1,
+    "llm_base_url": "http://127.0.0.1:11434/v1",
+    "llm_call_allowed": true,
+    "llm_called": true,
+    "llm_error": null,
+    "llm_mode": "ollama_openai",
+    "llm_model": "gemma4:26b",
+    "manual_review_required": true,
+    "opensearch_write_attempt": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "question": "Find part number 120-29073-001 and nearby similar parts. Use every TRACE-Net evidence route that is available and show source boundaries.",
+    "ready_for_final_answer": false,
+    "ready_for_webui_response": true,
+    "response_kind": "gemma4_composed_gated_lookup",
+    "response_text": "Based on the provided TRACE-Net documentation, the specific full part number 120-29073-001 and its nearby similar parts cannot be identified, as there is no specific information regarding this exact part number in the available text. The following related evidence was reviewed: * **Page t_p_120_1176_p00000\n\nSource notes: final_gate=engineering_draft_final_gate_0001.",
+    "response_text_char_count": 368,
+    "retrieval_execution_allowed": false,
+    "server_record_version": "trace_net_engineering_webui_answer_server_v1",
+    "source_truth_mutation_allowed": false,
+    "unsafe": false
+  },
+  "usage": {
+    "completion_tokens": 0,
+    "prompt_tokens": 0,
+    "total_tokens": 0
+  }
+}

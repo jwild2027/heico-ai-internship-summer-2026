@@ -1,0 +1,15 @@
+import importlib.util
+from pathlib import Path
+
+
+def test_build_and_check_scripts_import():
+    for script in [
+        "scripts/build_trace_net_gold_label_auto_review_seed_v1.py",
+        "scripts/check_trace_net_gold_label_auto_review_seed_v1_quality.py",
+    ]:
+        path = Path(script)
+        assert path.exists()
+        spec = importlib.util.spec_from_file_location(path.stem, path)
+        module = importlib.util.module_from_spec(spec)
+        assert spec.loader is not None
+        spec.loader.exec_module(module)

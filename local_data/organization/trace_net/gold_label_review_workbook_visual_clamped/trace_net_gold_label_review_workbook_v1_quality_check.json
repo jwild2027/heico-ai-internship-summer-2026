@@ -1,0 +1,51 @@
+{
+  "failures": [],
+  "quality_status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "canonical_route_label_count": 9,
+    "csv_path": "local_data\\organization\\trace_net\\gold_label_review_workbook_visual_clamped\\trace_net_gold_label_review_workbook_v1.csv",
+    "html_path": "local_data\\organization\\trace_net\\gold_label_review_workbook_visual_clamped\\trace_net_gold_label_review_workbook_v1.html",
+    "invalid_suggested_route_label_count": 0,
+    "invalid_suggested_route_labels": [],
+    "legacy_route_counts": {
+      "blank_candidate": 14,
+      "image_visual": 11,
+      "normal_text": 15,
+      "table": 469
+    },
+    "module": "trace_net_gold_label_review_workbook_v1",
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_status": "PASS",
+    "ready_for_human_gold_labeling": true,
+    "review_row_count": 509,
+    "route_label_taxonomy": "local_data\\organization\\trace_net\\route_label_taxonomy\\trace_net_route_label_taxonomy_v1.json",
+    "route_label_taxonomy_quality_status": "PASS",
+    "source_package": "C:/Users/juswil/Desktop/metadata.zip",
+    "source_scan_pack": "local_data\\organization\\trace_net\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1.json",
+    "source_scan_pack_quality_status": "PASS",
+    "source_scan_record_count": 509,
+    "source_truth_mutation_allowed_count": 0,
+    "suggested_confidence_counts": {
+      "high": 264,
+      "medium": 245
+    },
+    "suggested_route_counts": {
+      "blank_candidate": 14,
+      "cover_or_title_page": 1,
+      "detailed_parts_list": 255,
+      "image_visual_diagram": 17,
+      "mixed_text_and_figure": 13,
+      "normal_text": 4,
+      "procedure_or_description": 21,
+      "table_or_index": 184
+    },
+    "unsafe_record_count": 0,
+    "version": "v1",
+    "workbook_path": "local_data\\organization\\trace_net\\gold_label_review_workbook_visual_clamped\\trace_net_gold_label_review_workbook_v1.xlsx"
+  }
+}

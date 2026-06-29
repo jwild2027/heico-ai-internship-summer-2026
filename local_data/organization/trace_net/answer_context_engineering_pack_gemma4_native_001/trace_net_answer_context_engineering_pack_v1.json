@@ -1,0 +1,459 @@
+{
+  "answer_constraints": {
+    "answer_permission": false,
+    "cite_every_factual_claim": true,
+    "do_not_use_blocked_or_blank_pages": true,
+    "dry_run_only": true,
+    "source_truth_mutation_allowed": false,
+    "state_limitations_for_candidates": true,
+    "use_only_provided_evidence": true
+  },
+  "citation_map": [
+    {
+      "citation_label": "E1",
+      "context_role": "direct_evidence_candidate",
+      "page_id": "t_p_120_1176_p000005",
+      "page_number": 5,
+      "raw_tiff_reference": "00000005.tif",
+      "retrieval_score": 100.0,
+      "route": "table",
+      "source_image_sha256": "8980a6e91d7cc2f40a8510315d8610595243d7033621c00bdaec782a41aa1e7b",
+      "source_member": "00000005.tif",
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "citation_label": "E2",
+      "context_role": "similar_table_evidence",
+      "page_id": "t_p_120_1176_p000045",
+      "page_number": 45,
+      "raw_tiff_reference": "00000045.tif",
+      "retrieval_score": 100.0,
+      "route": "table",
+      "source_image_sha256": "53cdcd406800ffd8f8c7f062ababe097a6126caa647f8522e563a824f52d46ef",
+      "source_member": "00000045.tif",
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "citation_label": "E3",
+      "context_role": "similar_table_evidence",
+      "page_id": "t_p_120_1176_p000055",
+      "page_number": 55,
+      "raw_tiff_reference": "00000055.tif",
+      "retrieval_score": 100.0,
+      "route": "table",
+      "source_image_sha256": "be1a6d7a948bf87c345c9f3bc171ce7de6ac33be440ab0bebe8005f081b6e5ef",
+      "source_member": "00000055.tif",
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "citation_label": "E4",
+      "context_role": "similar_table_evidence",
+      "page_id": "t_p_120_1176_p000065",
+      "page_number": 65,
+      "raw_tiff_reference": "00000065.tif",
+      "retrieval_score": 100.0,
+      "route": "table",
+      "source_image_sha256": "9e653b24af5bea3cdab6210cb3985630680286d970799032d5dd8f6cebfadbf8",
+      "source_member": "00000065.tif",
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "citation_label": "E5",
+      "context_role": "similar_table_evidence",
+      "page_id": "t_p_120_1176_p000075",
+      "page_number": 75,
+      "raw_tiff_reference": "00000075.tif",
+      "retrieval_score": 100.0,
+      "route": "table",
+      "source_image_sha256": "6cee623c93733cfafb8f8096590ce5ee89535c43db33fcfb57d88fc5eed7e300",
+      "source_member": "00000075.tif",
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "citation_label": "E6",
+      "context_role": "similar_table_evidence",
+      "page_id": "t_p_120_1176_p000085",
+      "page_number": 85,
+      "raw_tiff_reference": "00000085.tif",
+      "retrieval_score": 100.0,
+      "route": "table",
+      "source_image_sha256": "107a00213b8870401e892812265b591de047ab379fd694679f3f04a2115e0b40",
+      "source_member": "00000085.tif",
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "citation_label": "E7",
+      "context_role": "similar_table_evidence",
+      "page_id": "t_p_120_1176_p000095",
+      "page_number": 95,
+      "raw_tiff_reference": "00000095.tif",
+      "retrieval_score": 100.0,
+      "route": "table",
+      "source_image_sha256": "54b2346051107a572f935aa3f05eab3c311fc239faf077a2e00119753ee5cc7d",
+      "source_member": "00000095.tif",
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "citation_label": "E8",
+      "context_role": "similar_table_evidence",
+      "page_id": "t_p_120_1176_p000105",
+      "page_number": 105,
+      "raw_tiff_reference": "00000105.tif",
+      "retrieval_score": 100.0,
+      "route": "table",
+      "source_image_sha256": "d6b387f0d300288ce3109a81d79d8719d4620d2b300525643b57bc4e7a4095af",
+      "source_member": "00000105.tif",
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    }
+  ],
+  "failures": [],
+  "llm_context_prompt": "You are TRACE-Net's final answer drafter for scanned technical manuals.\nUse only the provided evidence. Do not invent part numbers, pages, effectivity, quantities, or applicability.\nEvery factual claim must cite one or more citation labels like [E1].\nIf direct evidence does not prove the requested part, say that the result is a candidate and explain the limitation.\nKeep the answer short and operational: direct finding, nearby/similar evidence, citations, and safety note.\n\nQUESTION: Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.\nQUESTION_INTENT: part_number_with_nearby_similarity\nQUERY_PART_NUMBERS: 120-29073-001\n\nDIRECT EVIDENCE:\nE1: page=5, page_id=t_p_120_1176_p000005, route=table, targets=opensearch,postgres_graph,qdrant, score=100.0. Excerpt: No text excerpt available in payload; use citation metadata only.\n\nNEARBY / SIMILAR EVIDENCE:\nE2: page=45, page_id=t_p_120_1176_p000045, route=table, targets=opensearch,postgres_graph,qdrant, score=100.0. Excerpt: No text excerpt available in payload; use citation metadata only.\nE3: page=55, page_id=t_p_120_1176_p000055, route=table, targets=opensearch,postgres_graph,qdrant, score=100.0. Excerpt: No text excerpt available in payload; use citation metadata only.\nE4: page=65, page_id=t_p_120_1176_p000065, route=table, targets=opensearch,postgres_graph,qdrant, score=100.0. Excerpt: No text excerpt available in payload; use citation metadata only.\nE5: page=75, page_id=t_p_120_1176_p000075, route=table, targets=opensearch,postgres_graph,qdrant, score=100.0. Excerpt: No text excerpt available in payload; use citation metadata only.\nE6: page=85, page_id=t_p_120_1176_p000085, route=table, targets=opensearch,postgres_graph,qdrant, score=100.0. Excerpt: No text excerpt available in payload; use citation metadata only.\nE7: page=95, page_id=t_p_120_1176_p000095, route=table, targets=opensearch,postgres_graph,qdrant, score=100.0. Excerpt: No text excerpt available in payload; use citation metadata only.\nE8: page=105, page_id=t_p_120_1176_p000105, route=table, targets=opensearch,postgres_graph,qdrant, score=100.0. Excerpt: No text excerpt available in payload; use citation metadata only.\n\nOTHER SUPPORTING EVIDENCE:\nNone.\n\nCITATION MAP:\nE1 => page_id=t_p_120_1176_p000005, page=5, source_member=00000005.tif, sha256=8980a6e91d7cc2f40a8510315d8610595243d7033621c00bdaec782a41aa1e7b\nE2 => page_id=t_p_120_1176_p000045, page=45, source_member=00000045.tif, sha256=53cdcd406800ffd8f8c7f062ababe097a6126caa647f8522e563a824f52d46ef\nE3 => page_id=t_p_120_1176_p000055, page=55, source_member=00000055.tif, sha256=be1a6d7a948bf87c345c9f3bc171ce7de6ac33be440ab0bebe8005f081b6e5ef\nE4 => page_id=t_p_120_1176_p000065, page=65, source_member=00000065.tif, sha256=9e653b24af5bea3cdab6210cb3985630680286d970799032d5dd8f6cebfadbf8\nE5 => page_id=t_p_120_1176_p000075, page=75, source_member=00000075.tif, sha256=6cee623c93733cfafb8f8096590ce5ee89535c43db33fcfb57d88fc5eed7e300\nE6 => page_id=t_p_120_1176_p000085, page=85, source_member=00000085.tif, sha256=107a00213b8870401e892812265b591de047ab379fd694679f3f04a2115e0b40\nE7 => page_id=t_p_120_1176_p000095, page=95, source_member=00000095.tif, sha256=54b2346051107a572f935aa3f05eab3c311fc239faf077a2e00119753ee5cc7d\nE8 => page_id=t_p_120_1176_p000105, page=105, source_member=00000105.tif, sha256=d6b387f0d300288ce3109a81d79d8719d4620d2b300525643b57bc4e7a4095af\n\nSAFETY: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true.",
+  "module": "trace_net_answer_context_engineering_pack_v1",
+  "quality_status": "PASS",
+  "question_analysis": {
+    "query_part_number_count": 1,
+    "query_part_numbers": [
+      "120-29073-001"
+    ],
+    "question_intent": "part_number_with_nearby_similarity"
+  },
+  "records": [
+    {
+      "answer_permission": false,
+      "citation_label": "E1",
+      "context_role": "direct_evidence_candidate",
+      "context_role_reasons": [
+        "no_exact_part_number_match_found_in_payload_excerpt_top_ranked_candidate"
+      ],
+      "direct_part_numbers": [],
+      "dry_run_only": true,
+      "evidence_part_numbers": [],
+      "has_direct_part_number_match": false,
+      "lineage_ready": true,
+      "ocr_excerpt": "",
+      "page_id": "t_p_120_1176_p000005",
+      "page_number": 5,
+      "raw_tiff_reference": "00000005.tif",
+      "retrieval_reasons": [
+        "table_route",
+        "exact_index_ready",
+        "semantic_index_ready"
+      ],
+      "retrieval_score": 100.0,
+      "route": "table",
+      "source_image_sha256": "8980a6e91d7cc2f40a8510315d8610595243d7033621c00bdaec782a41aa1e7b",
+      "source_member": "00000005.tif",
+      "source_rank": 1,
+      "source_truth_mutation_allowed": false,
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "citation_label": "E2",
+      "context_role": "similar_table_evidence",
+      "context_role_reasons": [
+        "table_evidence_ranked_for_part_number_query"
+      ],
+      "direct_part_numbers": [],
+      "dry_run_only": true,
+      "evidence_part_numbers": [],
+      "has_direct_part_number_match": false,
+      "lineage_ready": true,
+      "ocr_excerpt": "",
+      "page_id": "t_p_120_1176_p000045",
+      "page_number": 45,
+      "raw_tiff_reference": "00000045.tif",
+      "retrieval_reasons": [
+        "table_route",
+        "exact_index_ready",
+        "semantic_index_ready"
+      ],
+      "retrieval_score": 100.0,
+      "route": "table",
+      "source_image_sha256": "53cdcd406800ffd8f8c7f062ababe097a6126caa647f8522e563a824f52d46ef",
+      "source_member": "00000045.tif",
+      "source_rank": 2,
+      "source_truth_mutation_allowed": false,
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "citation_label": "E3",
+      "context_role": "similar_table_evidence",
+      "context_role_reasons": [
+        "table_evidence_ranked_for_part_number_query"
+      ],
+      "direct_part_numbers": [],
+      "dry_run_only": true,
+      "evidence_part_numbers": [],
+      "has_direct_part_number_match": false,
+      "lineage_ready": true,
+      "ocr_excerpt": "",
+      "page_id": "t_p_120_1176_p000055",
+      "page_number": 55,
+      "raw_tiff_reference": "00000055.tif",
+      "retrieval_reasons": [
+        "table_route",
+        "exact_index_ready",
+        "semantic_index_ready"
+      ],
+      "retrieval_score": 100.0,
+      "route": "table",
+      "source_image_sha256": "be1a6d7a948bf87c345c9f3bc171ce7de6ac33be440ab0bebe8005f081b6e5ef",
+      "source_member": "00000055.tif",
+      "source_rank": 3,
+      "source_truth_mutation_allowed": false,
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "citation_label": "E4",
+      "context_role": "similar_table_evidence",
+      "context_role_reasons": [
+        "table_evidence_ranked_for_part_number_query"
+      ],
+      "direct_part_numbers": [],
+      "dry_run_only": true,
+      "evidence_part_numbers": [],
+      "has_direct_part_number_match": false,
+      "lineage_ready": true,
+      "ocr_excerpt": "",
+      "page_id": "t_p_120_1176_p000065",
+      "page_number": 65,
+      "raw_tiff_reference": "00000065.tif",
+      "retrieval_reasons": [
+        "table_route",
+        "exact_index_ready",
+        "semantic_index_ready"
+      ],
+      "retrieval_score": 100.0,
+      "route": "table",
+      "source_image_sha256": "9e653b24af5bea3cdab6210cb3985630680286d970799032d5dd8f6cebfadbf8",
+      "source_member": "00000065.tif",
+      "source_rank": 4,
+      "source_truth_mutation_allowed": false,
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "citation_label": "E5",
+      "context_role": "similar_table_evidence",
+      "context_role_reasons": [
+        "table_evidence_ranked_for_part_number_query"
+      ],
+      "direct_part_numbers": [],
+      "dry_run_only": true,
+      "evidence_part_numbers": [],
+      "has_direct_part_number_match": false,
+      "lineage_ready": true,
+      "ocr_excerpt": "",
+      "page_id": "t_p_120_1176_p000075",
+      "page_number": 75,
+      "raw_tiff_reference": "00000075.tif",
+      "retrieval_reasons": [
+        "table_route",
+        "exact_index_ready",
+        "semantic_index_ready"
+      ],
+      "retrieval_score": 100.0,
+      "route": "table",
+      "source_image_sha256": "6cee623c93733cfafb8f8096590ce5ee89535c43db33fcfb57d88fc5eed7e300",
+      "source_member": "00000075.tif",
+      "source_rank": 5,
+      "source_truth_mutation_allowed": false,
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "citation_label": "E6",
+      "context_role": "similar_table_evidence",
+      "context_role_reasons": [
+        "table_evidence_ranked_for_part_number_query"
+      ],
+      "direct_part_numbers": [],
+      "dry_run_only": true,
+      "evidence_part_numbers": [],
+      "has_direct_part_number_match": false,
+      "lineage_ready": true,
+      "ocr_excerpt": "",
+      "page_id": "t_p_120_1176_p000085",
+      "page_number": 85,
+      "raw_tiff_reference": "00000085.tif",
+      "retrieval_reasons": [
+        "table_route",
+        "exact_index_ready",
+        "semantic_index_ready"
+      ],
+      "retrieval_score": 100.0,
+      "route": "table",
+      "source_image_sha256": "107a00213b8870401e892812265b591de047ab379fd694679f3f04a2115e0b40",
+      "source_member": "00000085.tif",
+      "source_rank": 6,
+      "source_truth_mutation_allowed": false,
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "citation_label": "E7",
+      "context_role": "similar_table_evidence",
+      "context_role_reasons": [
+        "table_evidence_ranked_for_part_number_query"
+      ],
+      "direct_part_numbers": [],
+      "dry_run_only": true,
+      "evidence_part_numbers": [],
+      "has_direct_part_number_match": false,
+      "lineage_ready": true,
+      "ocr_excerpt": "",
+      "page_id": "t_p_120_1176_p000095",
+      "page_number": 95,
+      "raw_tiff_reference": "00000095.tif",
+      "retrieval_reasons": [
+        "table_route",
+        "exact_index_ready",
+        "semantic_index_ready"
+      ],
+      "retrieval_score": 100.0,
+      "route": "table",
+      "source_image_sha256": "54b2346051107a572f935aa3f05eab3c311fc239faf077a2e00119753ee5cc7d",
+      "source_member": "00000095.tif",
+      "source_rank": 7,
+      "source_truth_mutation_allowed": false,
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "citation_label": "E8",
+      "context_role": "similar_table_evidence",
+      "context_role_reasons": [
+        "table_evidence_ranked_for_part_number_query"
+      ],
+      "direct_part_numbers": [],
+      "dry_run_only": true,
+      "evidence_part_numbers": [],
+      "has_direct_part_number_match": false,
+      "lineage_ready": true,
+      "ocr_excerpt": "",
+      "page_id": "t_p_120_1176_p000105",
+      "page_number": 105,
+      "raw_tiff_reference": "00000105.tif",
+      "retrieval_reasons": [
+        "table_route",
+        "exact_index_ready",
+        "semantic_index_ready"
+      ],
+      "retrieval_score": 100.0,
+      "route": "table",
+      "source_image_sha256": "d6b387f0d300288ce3109a81d79d8719d4620d2b300525643b57bc4e7a4095af",
+      "source_member": "00000105.tif",
+      "source_rank": 8,
+      "source_truth_mutation_allowed": false,
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    }
+  ],
+  "status": "TRACE_NET_ANSWER_CONTEXT_ENGINEERING_PACK_BUILT",
+  "summary": {
+    "answer_context_ready": true,
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "citation_count": 8,
+    "context_pack_record_count": 8,
+    "context_prompt_char_count": 3501,
+    "direct_evidence_count": 1,
+    "dry_run_only": true,
+    "human_review_required_count": 0,
+    "lineage_ready_count": 8,
+    "manual_review_required_count": 0,
+    "max_direct_evidence": 5,
+    "max_nearby_evidence": 8,
+    "missing_lineage_count": 0,
+    "module": "trace_net_answer_context_engineering_pack_v1",
+    "nearby_or_similar_evidence_count": 7,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "query_part_number_count": 1,
+    "query_part_numbers": [
+      "120-29073-001"
+    ],
+    "question": "Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.",
+    "question_intent": "part_number_with_nearby_similarity",
+    "ready_for_gemma_context_prompt": true,
+    "retrieval_evidence_count": 8,
+    "source_all_stage_quality_pass": true,
+    "source_raw_to_answer_quality_status": "PASS",
+    "source_raw_to_answer_report": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_native_001\\trace_net_raw_to_answer_e2e_smoke_native_v1.json",
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0,
+    "version": "v1",
+    "violation_record_count": 0,
+    "write_attempt_count": 0
+  },
+  "version": "v1",
+  "violation_records": []
+}

@@ -1,0 +1,119 @@
+{
+  "answer_quality_gate_report": null,
+  "answer_text": "TRACE-Net found the 120-29073 part family in cached context. Direct anchor evidence includes 120-29073-001 ([E7], [E2], [E3]); 120-29073-005 ([E7], [E2], [E3]); 120-29073-007 ([E7]).\n\nDirect family anchor pages include page 361 [E7], page 346 [E2], page 349 [E3], page 355 [E5], page 358 [E6], page 343 [E1], page 352 [E4], page 364 [E8].\n\nLeiden/community-linked and part-prefix evidence are used only to group nearby family records; cited source rows remain the proof for each listed part.\n\nSafety: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true [E7], [E2], [E3], [E5], [E6], [E1], [E4], [E8].",
+  "composer_report": null,
+  "figure_item_composer_report": null,
+  "module": "trace_net_fast_chat_runner_v1",
+  "part_family_composer_report": "local_data\\organization\\trace_net\\fast_chat_runner_part_family_120_29073\\part_family_fast_answer_composer\\trace_net_part_family_fast_answer_composer_v1.json",
+  "quality_status": "PASS",
+  "query_plan": {
+    "figures": [],
+    "implemented": true,
+    "items": [],
+    "part_families": [
+      "120-29073"
+    ],
+    "part_numbers": [],
+    "query_type": "part_family",
+    "route": "fast_part_family_answer"
+  },
+  "records": [
+    {
+      "detail": "part_family",
+      "stage": "query_router",
+      "status": "PASS"
+    },
+    {
+      "detail": "local_data\\organization\\trace_net\\fast_chat_runner_part_family_120_29073\\part_family_fast_answer_composer",
+      "stage": "part_family_fast_answer_composer",
+      "status": "PASS"
+    }
+  ],
+  "summary": {
+    "answer_char_count": 628,
+    "answer_citation_count": 23,
+    "answer_permission_count": 0,
+    "answer_quality_gate_passed": false,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "direct_exact_answer_page_count": 0,
+    "direct_exact_answer_page_numbers": [],
+    "direct_exact_answer_record_count": 0,
+    "dry_run_only": true,
+    "fast_answer_composer_ready": false,
+    "fast_chat_runner_ready": true,
+    "figure_item_answer_page_count": 0,
+    "figure_item_answer_page_numbers": [],
+    "figure_item_answer_record_count": 0,
+    "figure_item_fast_answer_ready": false,
+    "figure_item_part_numbers": [],
+    "graph_or_leiden_overstatement_count": 0,
+    "human_review_required_count": 0,
+    "implemented_query_type": true,
+    "invalid_answer_citation_count": 0,
+    "manual_review_required_count": 0,
+    "module": "trace_net_fast_chat_runner_v1",
+    "opensearch_write_attempt_count": 0,
+    "part_family_answer_record_count": 23,
+    "part_family_direct_record_count": 8,
+    "part_family_fast_answer_ready": true,
+    "part_family_page_count": 9,
+    "part_family_page_numbers": [
+      "361",
+      "346",
+      "349",
+      "355",
+      "358",
+      "343",
+      "352",
+      "364",
+      "32"
+    ],
+    "part_family_part_number_count": 3,
+    "part_family_part_numbers": [
+      "120-29073-001",
+      "120-29073-005",
+      "120-29073-007"
+    ],
+    "part_family_variant_record_count": 12,
+    "planned_query_types": [
+      "part_family",
+      "figure_or_item",
+      "image_or_diagram",
+      "plain_text"
+    ],
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "query_part_families": [
+      "120-29073"
+    ],
+    "query_part_family_count": 1,
+    "query_part_number_count": 0,
+    "query_part_numbers": [],
+    "query_route": "fast_part_family_answer",
+    "query_type": "part_family",
+    "question": "Show the 120-29073 family.",
+    "source_context_pack": "local_data/organization/trace_net/anchor_aware_graph_leiden_expander_gemma4_native_001/trace_net_anchor_aware_graph_leiden_expander_v1.json",
+    "source_context_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "stage_count": 2,
+    "stage_quality_statuses": {
+      "context_pack": "PASS",
+      "part_family_fast_answer_composer": "PASS"
+    },
+    "unsafe_record_count": 0,
+    "unsupported_interchangeability_claim_count": 0,
+    "valid_answer_citation_count": 23,
+    "variant_part_number_count": 3,
+    "variant_part_numbers": [
+      "120-29073-001",
+      "120-29073-005",
+      "120-29073-007"
+    ],
+    "version": "v1",
+    "violation_record_count": 0,
+    "write_attempt_count": 0
+  },
+  "version": "v1",
+  "violations": []
+}

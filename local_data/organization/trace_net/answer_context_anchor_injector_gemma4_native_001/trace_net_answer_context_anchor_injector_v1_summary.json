@@ -1,0 +1,92 @@
+{
+  "anchor_context_record_count": 36,
+  "anchor_injection_ready": true,
+  "anchor_role_counts": {
+    "direct_exact_match_anchor": 8,
+    "direct_exact_match_candidate": 1,
+    "exact_reference_anchor": 8,
+    "family_variant_anchor": 12,
+    "similar_table_candidate": 7
+  },
+  "answer_permission_count": 0,
+  "can_answer_directly_count": 0,
+  "can_prove_claims_count": 0,
+  "citation_count": 36,
+  "context_anchor_prompt_char_count": 15420,
+  "direct_exact_anchor_count": 8,
+  "direct_exact_anchor_page_count": 8,
+  "direct_exact_anchor_page_ids": [
+    "t_p_120_1176_p000343",
+    "t_p_120_1176_p000346",
+    "t_p_120_1176_p000349",
+    "t_p_120_1176_p000352",
+    "t_p_120_1176_p000355",
+    "t_p_120_1176_p000358",
+    "t_p_120_1176_p000361",
+    "t_p_120_1176_p000364"
+  ],
+  "direct_exact_anchor_page_numbers": [
+    343,
+    346,
+    349,
+    352,
+    355,
+    358,
+    361,
+    364
+  ],
+  "dry_run_only": true,
+  "exact_reference_anchor_count": 8,
+  "family_variant_anchor_count": 12,
+  "human_review_required_count": 0,
+  "manual_review_required_count": 0,
+  "module": "trace_net_answer_context_anchor_injector_v1",
+  "opensearch_write_attempt_count": 0,
+  "postgres_write_attempt_count": 0,
+  "proof_strength_counts": {
+    "direct_candidate": 1,
+    "direct_exact_proof": 8,
+    "exact_reference": 8,
+    "related_variant": 12,
+    "weak_candidate": 7
+  },
+  "qdrant_write_attempt_count": 0,
+  "query_part_number_count": 1,
+  "query_part_numbers": [
+    "120-29073-001"
+  ],
+  "question": "Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.",
+  "ready_for_gemma_anchor_prompt": true,
+  "ready_for_graph_leiden_anchor_expansion": true,
+  "retained_support_context_count": 8,
+  "source_evidence_enricher": "local_data\\organization\\trace_net\\answer_context_evidence_enricher_gemma4_native_001\\trace_net_answer_context_evidence_enricher_v1.json",
+  "source_graph_leiden_expander": "local_data\\organization\\trace_net\\answer_context_graph_leiden_expander_gemma4_native_001\\trace_net_answer_context_graph_leiden_expander_v1.json",
+  "source_name_counts": {
+    "existing_context": 8,
+    "ocr_route_scan_pack": 28
+  },
+  "source_part_number_exact_retrieval_probe": "local_data\\organization\\trace_net\\part_number_exact_retrieval_probe_gemma4_native_001\\trace_net_part_number_exact_retrieval_probe_v1.json",
+  "source_part_number_exact_retrieval_probe_quality_status": "PASS",
+  "source_probe_direct_exact_hit_count": 16,
+  "source_probe_direct_exact_page_numbers": [
+    343,
+    346,
+    349,
+    352,
+    355,
+    358,
+    361,
+    364
+  ],
+  "source_probe_exact_hit_count": 52,
+  "source_probe_family_variant_hit_count": 83,
+  "source_truth_mutation_allowed_count": 0,
+  "support_source_quality_statuses": {
+    "evidence_enricher": "PASS",
+    "graph_leiden_expander": "PASS"
+  },
+  "unsafe_record_count": 0,
+  "version": "v1",
+  "violation_record_count": 0,
+  "write_attempt_count": 0
+}

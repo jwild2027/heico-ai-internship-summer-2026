@@ -1,0 +1,65 @@
+{
+  "answer_char_count": 842,
+  "answer_citation_count": 31,
+  "answer_permission_count": 0,
+  "answer_quality_gate_passed": true,
+  "can_answer_directly_count": 0,
+  "can_prove_claims_count": 0,
+  "direct_exact_answer_page_count": 8,
+  "direct_exact_answer_page_numbers": [
+    343,
+    346,
+    349,
+    352,
+    355,
+    358,
+    361,
+    364
+  ],
+  "direct_exact_answer_record_count": 8,
+  "dry_run_only": true,
+  "fast_answer_composer_ready": true,
+  "fast_chat_runner_ready": true,
+  "graph_or_leiden_overstatement_count": 0,
+  "human_review_required_count": 0,
+  "implemented_query_type": true,
+  "invalid_answer_citation_count": 0,
+  "manual_review_required_count": 0,
+  "module": "trace_net_fast_chat_runner_v1",
+  "opensearch_write_attempt_count": 0,
+  "planned_query_types": [
+    "part_family",
+    "figure_or_item",
+    "image_or_diagram",
+    "plain_text"
+  ],
+  "postgres_write_attempt_count": 0,
+  "qdrant_write_attempt_count": 0,
+  "query_part_number_count": 1,
+  "query_part_numbers": [
+    "120-29073-001"
+  ],
+  "query_route": "fast_exact_part_answer",
+  "query_type": "exact_part_number",
+  "question": "Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.",
+  "source_context_pack": "local_data/organization/trace_net/anchor_aware_graph_leiden_expander_gemma4_native_001/trace_net_anchor_aware_graph_leiden_expander_v1.json",
+  "source_context_quality_status": "PASS",
+  "source_truth_mutation_allowed_count": 0,
+  "stage_count": 3,
+  "stage_quality_statuses": {
+    "answer_quality_gate": "PASS",
+    "context_pack": "PASS",
+    "fast_answer_composer": "PASS"
+  },
+  "unsafe_record_count": 0,
+  "unsupported_interchangeability_claim_count": 0,
+  "valid_answer_citation_count": 31,
+  "variant_part_number_count": 2,
+  "variant_part_numbers": [
+    "120-29073-005",
+    "120-29073-007"
+  ],
+  "version": "v1",
+  "violation_record_count": 0,
+  "write_attempt_count": 0
+}

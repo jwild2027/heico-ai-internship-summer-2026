@@ -1,0 +1,30 @@
+{
+  "quality_status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "blueprints_with_candidate_language_required_count": 0,
+    "blueprints_with_source_truth_required_count": 1,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "context_pack_blueprint_count": 1,
+    "intent_family_counts": {
+      "exact_part_lookup": 1
+    },
+    "llm_call_allowed_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "retrieval_execution_allowed_count": 0,
+    "route_evidence_slot_counts": {
+      "graph": 1,
+      "normal_text": 1,
+      "route_dispatch": 1,
+      "table": 1
+    },
+    "source_query_plan_count": 1,
+    "source_query_planner_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "total_route_evidence_slot_count": 4,
+    "unsafe_record_count": 0
+  }
+}
