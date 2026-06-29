@@ -1,0 +1,222 @@
+# TRACE-Net Gold Label Review Reduction Plan
+
+This plan groups remaining human-review pages after conservative auto-seeding.
+
+## Summary
+
+- Seed records: 509
+- Auto-seeded pages: 252
+- Human-review pages: 257
+- High-priority review pages: 8
+- Medium-priority review pages: 249
+- Low-priority audit sample pages: 16
+
+## Review order
+
+1. Review `high_priority_review.csv` first.
+2. Review `medium_priority_review.csv` by route/reason groups.
+3. Spot-check `low_priority_auto_seeded_audit_sample.csv`.
+4. Copy confirmed labels into the final gold label registry.
+
+## Page ranges
+
+- Pages 13-14: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 15: mixed_text_and_figure (medium, 1 pages); reasons: semantic_or_mixed_route_requires_human_review
+- Pages 16: normal_text (medium, 1 pages); reasons: semantic_or_mixed_route_requires_human_review
+- Pages 24: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 26-28: table_or_index (medium, 3 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 33-34: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 37: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 41: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 45: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 47: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 53-54: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 57-78: table_or_index (medium, 22 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 80: normal_text (medium, 1 pages); reasons: semantic_or_mixed_route_requires_human_review
+- Pages 81: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 84: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 87: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 90: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 93: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 94: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 97: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 99: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 100: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 104: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 106: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 107: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 110: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 113: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 114: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 116: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 117: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 120: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 124: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 127: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 129: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 130: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 133: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 136: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 139: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 141: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 142: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 145: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 147: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 148: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 150: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 151: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 153: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 154: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 156: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 157: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 159: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 160: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 162: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 163: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 165: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 166: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 168: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 169: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 171: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 172: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 174: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 175: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 177: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 178: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 180: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 181: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 184: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 188: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 189: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 191: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 194: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 196-197: detailed_parts_list (medium, 2 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 198: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 202: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 205: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 208: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 210: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 211: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 214: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 216: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 218: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 221: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 223: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 224: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 227: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 230: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 233: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 236: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 239: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 242: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 245: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 248: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 251: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 254: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 257: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 260: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 263: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 266: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 268: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 269: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 272: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 275: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 277: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 278: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 281: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 284: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 287: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 289: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 290: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 293: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 296: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 298: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 299: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 301: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 302: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 305: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 308: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 310: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 311: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 313: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 317: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 319: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 321: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 323: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 325: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 329: normal_text (medium, 1 pages); reasons: semantic_or_mixed_route_requires_human_review
+- Pages 331: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 332: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 334: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 336: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 338: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 339: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 341: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 342: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 345: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 348: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 351: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 354: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 357: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 360: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 363: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 365: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 366-367: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 369: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 370-371: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 374-375: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 377: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 378-379: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 383: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 385: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 386-387: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 389: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 390: image_visual_diagram (high, 1 pages); reasons: visual_diagram_requires_manual_confirmation
+- Pages 391: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 393: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 394-395: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 398-399: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 402-403: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 406-407: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 409: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 410-411: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 414-415: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 418-419: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 422-423: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 425: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 426-427: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 430-431: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 434-435: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 437: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 438-439: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 441: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 442-443: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 446: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 448: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 450: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 451: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 453: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 454: image_visual_diagram (high, 1 pages); reasons: visual_diagram_requires_manual_confirmation
+- Pages 456: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 457: image_visual_diagram (high, 1 pages); reasons: visual_diagram_requires_manual_confirmation
+- Pages 459: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 460: image_visual_diagram (high, 1 pages); reasons: visual_diagram_requires_manual_confirmation
+- Pages 462: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 463: image_visual_diagram (high, 1 pages); reasons: visual_diagram_requires_manual_confirmation
+- Pages 465: detailed_parts_list (medium, 1 pages); reasons: detailed_parts_list_not_strong_enough
+- Pages 468-469: mixed_text_and_figure (medium, 2 pages); reasons: semantic_or_mixed_route_requires_human_review
+- Pages 474: normal_text (medium, 1 pages); reasons: semantic_or_mixed_route_requires_human_review
+- Pages 476: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 477: mixed_text_and_figure (medium, 1 pages); reasons: semantic_or_mixed_route_requires_human_review
+- Pages 479: mixed_text_and_figure (medium, 1 pages); reasons: semantic_or_mixed_route_requires_human_review
+- Pages 481-482: table_or_index (medium, 2 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 483-485: mixed_text_and_figure (medium, 3 pages); reasons: semantic_or_mixed_route_requires_human_review
+- Pages 486: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 487-488: mixed_text_and_figure (medium, 2 pages); reasons: semantic_or_mixed_route_requires_human_review
+- Pages 491: image_visual_diagram (high, 1 pages); reasons: visual_diagram_requires_manual_confirmation
+- Pages 493-494: image_visual_diagram (high, 2 pages); reasons: visual_diagram_requires_manual_confirmation
+- Pages 495-497: procedure_or_description (medium, 3 pages); reasons: procedure_or_description_not_strong_enough
+- Pages 501-503: procedure_or_description (medium, 3 pages); reasons: procedure_or_description_not_strong_enough
+- Pages 504: mixed_text_and_figure (medium, 1 pages); reasons: semantic_or_mixed_route_requires_human_review
+- Pages 505: table_or_index (medium, 1 pages); reasons: table_or_index_medium_or_ambiguous
+- Pages 506-507: mixed_text_and_figure (medium, 2 pages); reasons: semantic_or_mixed_route_requires_human_review

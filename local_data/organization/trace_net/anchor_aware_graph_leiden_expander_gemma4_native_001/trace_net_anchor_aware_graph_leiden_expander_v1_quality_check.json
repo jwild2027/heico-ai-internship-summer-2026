@@ -1,0 +1,100 @@
+{
+  "failures": [],
+  "quality_status": "PASS",
+  "summary": {
+    "anchor_aware_record_count": 36,
+    "anchor_aware_role_counts": {
+      "direct_exact_match_anchor": 8,
+      "exact_reference_anchor": 8,
+      "family_variant_anchor": 8,
+      "same_anchor_community_variant": 4,
+      "same_anchor_leiden_community_neighbor": 1,
+      "similar_table_candidate": 6,
+      "superseded_direct_candidate": 1
+    },
+    "anchor_community_count": 10,
+    "anchor_community_ids": [
+      "1",
+      "24",
+      "4",
+      "50",
+      "87",
+      "tracenet_community_00001",
+      "tracenet_community_00004",
+      "tracenet_community_00024",
+      "tracenet_community_00050",
+      "tracenet_community_00087"
+    ],
+    "anchor_relation_type_counts": {
+      "exact_anchor": 8,
+      "exact_reference": 8,
+      "part_family_variant": 8,
+      "retained_support_context": 6,
+      "same_anchor_leiden_community": 1,
+      "same_anchor_leiden_community_variant": 4,
+      "superseded_by_exact_anchors": 1
+    },
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "citation_count": 36,
+    "community_annotation_count": 36,
+    "community_assignment_record_count": 32755,
+    "community_index_key_count": 1034,
+    "context_prompt_char_count": 22941,
+    "direct_exact_anchor_count": 8,
+    "direct_exact_anchor_page_count": 8,
+    "direct_exact_anchor_page_numbers": [
+      343,
+      346,
+      349,
+      352,
+      355,
+      358,
+      361,
+      364
+    ],
+    "dry_run_only": true,
+    "human_review_required_count": 0,
+    "manual_review_required_count": 0,
+    "module": "trace_net_anchor_aware_graph_leiden_expander_v1",
+    "nearby_anchor_page_neighbor_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "page_id_join_key_count": 32242,
+    "page_number_join_key_count": 32182,
+    "postgres_write_attempt_count": 0,
+    "proof_strength_counts": {
+      "direct_candidate": 1,
+      "direct_exact_proof": 8,
+      "exact_reference": 8,
+      "related_variant": 12,
+      "weak_candidate": 7
+    },
+    "qdrant_write_attempt_count": 0,
+    "query_part_numbers": [
+      "120-29073-001"
+    ],
+    "question": "Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.",
+    "ready_for_answer_quality_gate": true,
+    "ready_for_gemma_anchor_aware_prompt": true,
+    "same_anchor_leiden_community_count": 17,
+    "same_anchor_variant_count": 4,
+    "source_anchor_injector": "local_data/organization/trace_net/answer_context_anchor_injector_gemma4_native_001/trace_net_answer_context_anchor_injector_v1.json",
+    "source_community_aware_retrieval": "local_data/organization/trace_net/community_aware_retrieval_v2/trace_net_community_aware_retrieval_v2.json",
+    "source_graph_report": null,
+    "source_leiden_communities": "local_data/organization/trace_net/leiden_communities/trace_net_leiden_communities_v1.json",
+    "source_quality_statuses": {
+      "anchor_injector": "PASS",
+      "community_aware_retrieval": "PASS",
+      "graph_report": null,
+      "leiden_communities": "PASS"
+    },
+    "source_record_count": 36,
+    "source_truth_mutation_allowed_count": 0,
+    "superseded_old_direct_candidate_count": 1,
+    "unsafe_record_count": 0,
+    "version": "v1",
+    "violation_record_count": 0,
+    "write_attempt_count": 0
+  }
+}

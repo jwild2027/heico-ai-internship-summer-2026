@@ -1,0 +1,56 @@
+{
+  "quality_status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "clean_vision_observation_ready_count": 11,
+    "dry_run_card_count": 0,
+    "excessive_visual_label_count": 1,
+    "execution_status_counts": {
+      "vision_model_error": 1,
+      "vision_model_observation_ready": 11
+    },
+    "generic_visual_label_count": 19,
+    "hallucination_risk_status_counts": {
+      "HIGH_REVIEW_REQUIRED": 2,
+      "LOW_SUPPORTED_BY_OCR": 1,
+      "MEDIUM_REVIEW_REQUIRED": 9
+    },
+    "image_source_found_count": 12,
+    "image_visual_handoff_count": 12,
+    "invented_item_sequence_suspected_count": 1,
+    "max_image_pages": 12,
+    "missing_image_source_count": 0,
+    "ocr_label_support_count": 6,
+    "ocr_text_available_for_visual_validation_count": 9,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "prompt_leak_removed_item_count": 0,
+    "prompt_leak_suspected_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "review_only_visual_context_count": 10,
+    "review_required_visual_observation_count": 10,
+    "semantic_validation_status_counts": {
+      "REVIEW_ONLY_VISUAL_CONTEXT": 9,
+      "VISION_OBSERVATION_ERROR_REVIEW_ONLY": 1,
+      "WEBUI_VISUAL_CONTEXT_ALLOWED": 2
+    },
+    "source_route_dispatch_handoff_quality_status": "PASS",
+    "source_route_dispatch_handoff_record_count": 509,
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0,
+    "unsupported_visual_label_count": 150,
+    "vision_mode": "ollama",
+    "vision_model": "llava:13b",
+    "vision_model_called_count": 12,
+    "vision_model_error_count": 1,
+    "vision_observation_ready_count": 11,
+    "visual_observation_quality_status_counts": {
+      "CLEAN_VISION_OBSERVATION_READY": 11,
+      "VISION_OBSERVATION_ERROR": 1
+    },
+    "visual_summary_card_count": 12,
+    "webui_visual_context_allowed_count": 2
+  }
+}

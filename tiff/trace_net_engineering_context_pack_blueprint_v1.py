@@ -1,7 +1,7 @@
-
 """TRACE-Net Engineering Context Pack Blueprint v1.
 
-Turns engineering query plans into dynamic context-pack contracts for Gemma/TRACE-Net.
+Turns engineering query plans into dynamic context-pack contracts for
+Gemma/TRACE-Net.
 
 This is the bridge between:
 - the engineering brain (playbooks/examples/trust tiers)
@@ -15,7 +15,6 @@ Safety:
 - does not mutate source truth
 - does not write DB/search/vector indexes
 """
-
 from __future__ import annotations
 
 import argparse
@@ -23,7 +22,6 @@ import json
 from collections import Counter
 from pathlib import Path
 from typing import Any, Dict, List, Mapping, Optional, Sequence
-
 
 MODULE_VERSION = "trace_net_engineering_context_pack_blueprint_v1"
 REPORT_NAME = "trace_net_engineering_context_pack_blueprint_v1.json"
@@ -47,9 +45,42 @@ def _write_jsonl(path: Path, records: Sequence[Mapping[str, Any]]) -> None:
             handle.write(json.dumps(record, sort_keys=True) + "\n")
 
 
+def _write_markdown(path: Path, payload: Mapping[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    summary = payload.get("summary") or {}
+    lines = [
+        "# TRACE-Net Engineering Context Pack Blueprint v1",
+        "",
+        f"Quality status: **{payload.get('quality_status')}**",
+        "",
+        "## Summary",
+        "",
+        f"- Blueprints: {summary.get('context_pack_blueprint_count')}",
+        f"- Route evidence slots: `{summary.get('route_evidence_slot_counts')}`",
+        f"- Blueprints requiring source truth: {summary.get('blueprints_with_source_truth_required_count')}",
+        "",
+        "## Blueprints",
+        "",
+    ]
+    for record in payload.get("records") or []:
+        lines.extend(
+            [
+                f"### {record.get('blueprint_id')} — {record.get('intent_family')}",
+                "",
+                f"- Question: `{record.get('user_question')}`",
+                f"- Playbook: `{record.get('selected_playbook_id')}`",
+                f"- Routes: `{[slot.get('route') for slot in record.get('route_evidence_slots', [])]}`",
+                f"- Candidate language required: `{record.get('candidate_language_required')}`",
+                f"- Answer mode: `{record.get('answer_format_contract', {}).get('answer_mode')}`",
+                "",
+            ]
+        )
+    path.write_text("\n".join(lines), encoding="utf-8")
+
+
 def _route_slot(route: str, plan: Mapping[str, Any]) -> Dict[str, Any]:
     intent = plan.get("intent_family")
-    base = {
+    base: Dict[str, Any] = {
         "route": route,
         "required": True,
         "evidence_role": "supporting_context",
@@ -58,71 +89,83 @@ def _route_slot(route: str, plan: Mapping[str, Any]) -> Dict[str, Any]:
         "missing_behavior": "record_missing_evidence_and_continue_to_review",
     }
     if route == "table":
-        base.update({
-            "evidence_role": "structured_source_truth_or_candidate_table_evidence",
-            "max_records": 12 if intent in ("engineering_change_candidate", "exact_part_lookup") else 8,
-            "preferred_artifacts": [
-                "table_exact_search_adapter",
-                "promoted_table_value_evidence",
-                "source_normalized_table_value_records",
-                "table_route_evidence_package",
-            ],
-            "trust_tier": "source_truth_if_exact_match_else_candidate",
-        })
+        base.update(
+            {
+                "evidence_role": "structured_source_truth_or_candidate_table_evidence",
+                "max_records": 12 if intent in ("engineering_change_candidate", "exact_part_lookup") else 8,
+                "preferred_artifacts": [
+                    "table_exact_search_adapter",
+                    "promoted_table_value_evidence",
+                    "source_normalized_table_value_records",
+                    "table_route_evidence_package",
+                ],
+                "trust_tier": "source_truth_if_exact_match_else_candidate",
+            }
+        )
     elif route == "normal_text":
-        base.update({
-            "evidence_role": "procedure_description_warning_context",
-            "max_records": 8 if intent == "repair_or_fault_context" else 6,
-            "preferred_artifacts": [
-                "page_context_v2",
-                "normal_text_route_handoff",
-                "Dublin Core metadata",
-            ],
-            "trust_tier": "source_context_guidance",
-        })
+        base.update(
+            {
+                "evidence_role": "procedure_description_warning_context",
+                "max_records": 8 if intent == "repair_or_fault_context" else 6,
+                "preferred_artifacts": [
+                    "page_context_v2",
+                    "normal_text_route_handoff",
+                    "Dublin Core metadata",
+                ],
+                "trust_tier": "source_context_guidance",
+            }
+        )
     elif route == "image_visual":
-        base.update({
-            "evidence_role": "visual_callout_candidate_context",
-            "max_records": 8,
-            "preferred_artifacts": [
-                "image_visual_route_handoff",
-                "visual_observer_route",
-                "callout_candidates",
-                "visual_part_verification_records",
-            ],
-            "trust_tier": "visual_candidate_only",
-        })
+        base.update(
+            {
+                "evidence_role": "visual_callout_candidate_context",
+                "max_records": 8,
+                "preferred_artifacts": [
+                    "image_visual_route_handoff",
+                    "visual_observer_route",
+                    "callout_candidates",
+                    "visual_part_verification_records",
+                ],
+                "trust_tier": "visual_candidate_only",
+            }
+        )
     elif route == "graph":
-        base.update({
-            "evidence_role": "relationship_and_same_family_context",
-            "max_records": 20,
-            "preferred_artifacts": [
-                "postgres_graph_neighbors",
-                "Leiden communities",
-                "same assembly/entity graph",
-            ],
-            "trust_tier": "relationship_candidate_until_source_backed",
-        })
+        base.update(
+            {
+                "evidence_role": "relationship_and_same_family_context",
+                "max_records": 20,
+                "preferred_artifacts": [
+                    "postgres_graph_neighbors",
+                    "Leiden communities",
+                    "same assembly/entity graph",
+                ],
+                "trust_tier": "relationship_candidate_until_source_backed",
+            }
+        )
     elif route == "vector":
-        base.update({
-            "evidence_role": "semantic_similarity_leads",
-            "max_records": 12,
-            "preferred_artifacts": [
-                "embedded vector DB",
-                "semantic similarity candidates",
-            ],
-            "trust_tier": "semantic_lead_only",
-        })
+        base.update(
+            {
+                "evidence_role": "semantic_similarity_leads",
+                "max_records": 12,
+                "preferred_artifacts": [
+                    "embedded vector DB",
+                    "semantic similarity candidates",
+                ],
+                "trust_tier": "semantic_lead_only",
+            }
+        )
     elif route == "route_dispatch":
-        base.update({
-            "evidence_role": "route_availability_and_page_type_context",
-            "max_records": 10,
-            "preferred_artifacts": [
-                "fishnet_route_dispatch_handoff",
-                "accepted_route_manifest",
-            ],
-            "trust_tier": "routing_metadata_not_source_truth",
-        })
+        base.update(
+            {
+                "evidence_role": "route_availability_and_page_type_context",
+                "max_records": 10,
+                "preferred_artifacts": [
+                    "fishnet_route_dispatch_handoff",
+                    "accepted_route_manifest",
+                ],
+                "trust_tier": "routing_metadata_not_source_truth",
+            }
+        )
     return base
 
 
@@ -140,80 +183,106 @@ def _section_contracts(plan: Mapping[str, Any]) -> List[Dict[str, Any]]:
             "missing_behavior": "include_empty_section_with_reason",
         }
         if section == "system_engineering_role":
-            contract.update({
-                "purpose": "make Gemma answer as an engineering assistant, not a generic chatbot",
-                "max_tokens_hint": 300,
-                "source_truth_required": False,
-            })
+            contract.update(
+                {
+                    "purpose": "make Gemma answer as an engineering assistant, not a generic chatbot",
+                    "max_tokens_hint": 300,
+                    "source_truth_required": False,
+                }
+            )
         elif section == "selected_engineering_playbook":
-            contract.update({
-                "purpose": "inject the engineer-brain reasoning steps for this intent",
-                "max_tokens_hint": 900,
-                "source_truth_required": False,
-            })
+            contract.update(
+                {
+                    "purpose": "inject the engineer-brain reasoning steps for this intent",
+                    "max_tokens_hint": 900,
+                    "source_truth_required": False,
+                }
+            )
         elif section == "few_shot_engineering_examples":
-            contract.update({
-                "purpose": "show good/bad engineering reasoning examples without changing source truth",
-                "max_tokens_hint": 900,
-                "source_truth_required": False,
-            })
+            contract.update(
+                {
+                    "purpose": "show good/bad engineering reasoning examples without changing source truth",
+                    "max_tokens_hint": 900,
+                    "source_truth_required": False,
+                }
+            )
         elif section == "structured_user_intent":
-            contract.update({
-                "purpose": "make seed entities, requested changes, and question type explicit",
-                "max_tokens_hint": 500,
-                "source_truth_required": False,
-            })
+            contract.update(
+                {
+                    "purpose": "make seed entities, requested changes, and question type explicit",
+                    "max_tokens_hint": 500,
+                    "source_truth_required": False,
+                }
+            )
         elif section == "route_handoff_availability":
-            contract.update({
-                "purpose": "tell the context builder which route queues are available",
-                "max_tokens_hint": 400,
-                "source_truth_required": False,
-            })
+            contract.update(
+                {
+                    "purpose": "tell the context builder which route queues are available",
+                    "max_tokens_hint": 400,
+                    "source_truth_required": False,
+                }
+            )
         elif section == "source_truth_evidence":
-            contract.update({
-                "purpose": "source-backed evidence that may support claims",
-                "max_tokens_hint": 1800,
-                "source_truth_required": True,
-                "may_use_summary_guidance": False,
-                "missing_behavior": "mark_answer_not_proven_and_trigger_crag_retry",
-            })
+            contract.update(
+                {
+                    "purpose": "source-backed evidence that may support claims",
+                    "max_tokens_hint": 1800,
+                    "source_truth_required": True,
+                    "may_use_summary_guidance": False,
+                    "missing_behavior": "mark_answer_not_proven_and_trigger_crag_retry",
+                }
+            )
         elif section == "candidate_evidence":
-            contract.update({
-                "purpose": "candidate evidence for engineering review only",
-                "max_tokens_hint": 1400,
-                "source_truth_required": False,
-            })
+            contract.update(
+                {
+                    "purpose": "candidate evidence for engineering review only",
+                    "max_tokens_hint": 1400,
+                    "source_truth_required": False,
+                }
+            )
         elif section == "missing_evidence":
-            contract.update({
-                "purpose": "explicitly list missing proof, dimensions, effectivity, interface, or warnings",
-                "max_tokens_hint": 500,
-                "source_truth_required": False,
-            })
+            contract.update(
+                {
+                    "purpose": "explicitly list missing proof, dimensions, effectivity, interface, or warnings",
+                    "max_tokens_hint": 500,
+                    "source_truth_required": False,
+                }
+            )
         elif section == "trust_tier_policy":
-            contract.update({
-                "purpose": "force Gemma to separate exact proof, candidates, and weak leads",
-                "max_tokens_hint": 600,
-                "source_truth_required": False,
-            })
+            contract.update(
+                {
+                    "purpose": "force Gemma to separate exact proof, candidates, and weak leads",
+                    "max_tokens_hint": 600,
+                    "source_truth_required": False,
+                }
+            )
         elif section == "forbidden_claims":
-            contract.update({
-                "purpose": "block unsafe/unproven engineering claims",
-                "max_tokens_hint": 500,
-                "source_truth_required": False,
-            })
+            contract.update(
+                {
+                    "purpose": "block unsafe/unproven engineering claims",
+                    "max_tokens_hint": 500,
+                    "source_truth_required": False,
+                }
+            )
         elif section == "answer_format_contract":
-            contract.update({
-                "purpose": "shape final answer into source-backed facts, candidates, missing evidence, and review note",
-                "max_tokens_hint": 500,
-                "source_truth_required": False,
-            })
+            contract.update(
+                {
+                    "purpose": "shape final answer into source-backed facts, candidates, missing evidence, and review note",
+                    "max_tokens_hint": 500,
+                    "source_truth_required": False,
+                }
+            )
         contracts.append(contract)
     return contracts
 
 
 def _answer_format_contract(plan: Mapping[str, Any]) -> Dict[str, Any]:
     intent = plan.get("intent_family")
-    if intent in ("engineering_change_candidate", "similarity_or_substitution_candidate", "visual_or_callout_similarity"):
+    if intent in (
+        "engineering_change_candidate",
+        "similarity_or_substitution_candidate",
+        "visual_or_callout_similarity",
+    ):
         mode = "candidate_for_engineering_review"
     elif intent == "repair_or_fault_context":
         mode = "source_backed_procedure_context"
@@ -276,7 +345,6 @@ def build_context_pack_blueprint_record(plan: Mapping[str, Any], index: int) -> 
     section_contracts = _section_contracts(plan)
     source_truth_sections = [s for s in section_contracts if s.get("source_truth_required")]
     forbidden_claims = plan.get("forbidden_answer_claims") or []
-
     return {
         "context_pack_blueprint_version": MODULE_VERSION,
         "blueprint_id": f"context_pack_blueprint_{index+1:04d}",
@@ -332,14 +400,10 @@ def build_engineering_context_pack_blueprint(
         for index, plan in enumerate(plans)
         if isinstance(plan, dict)
     ]
-
     route_counts = Counter(
-        slot["route"]
-        for record in records
-        for slot in record.get("route_evidence_slots", [])
+        slot["route"] for record in records for slot in record.get("route_evidence_slots", [])
     )
     intent_counts = Counter(record.get("intent_family") for record in records)
-
     summary = {
         "source_query_planner_quality_status": planner_payload.get("quality_status"),
         "source_query_plan_count": len(plans),
@@ -364,7 +428,6 @@ def build_engineering_context_pack_blueprint(
         "qdrant_write_attempt_count": sum(1 for r in records if r.get("qdrant_write_attempt")),
         "opensearch_write_attempt_count": sum(1 for r in records if r.get("opensearch_write_attempt")),
     }
-
     quality_status = "PASS"
     if planner_payload.get("quality_status") != "PASS":
         quality_status = "FAIL"
@@ -394,44 +457,16 @@ def build_engineering_context_pack_blueprint(
             "opensearch_write_allowed": False,
         },
     }
-
     output_dir.mkdir(parents=True, exist_ok=True)
     _write_json(output_dir / REPORT_NAME, payload)
     _write_jsonl(output_dir / "trace_net_engineering_context_pack_blueprint_v1_records.jsonl", records)
     _write_json(output_dir / "trace_net_engineering_context_pack_blueprint_v1_summary.json", summary)
-    _write_json(output_dir / "trace_net_engineering_context_pack_blueprint_v1_quality.json", {"quality_status": quality_status, "summary": summary})
+    _write_json(
+        output_dir / "trace_net_engineering_context_pack_blueprint_v1_quality.json",
+        {"quality_status": quality_status, "summary": summary},
+    )
     _write_markdown(output_dir / "trace_net_engineering_context_pack_blueprint_v1.md", payload)
     return payload
-
-
-def _write_markdown(path: Path, payload: Mapping[str, Any]) -> None:
-    summary = payload.get("summary") or {}
-    lines = [
-        "# TRACE-Net Engineering Context Pack Blueprint v1",
-        "",
-        f"Quality status: **{payload.get('quality_status')}**",
-        "",
-        "## Summary",
-        "",
-        f"- Blueprints: {summary.get('context_pack_blueprint_count')}",
-        f"- Route evidence slots: `{summary.get('route_evidence_slot_counts')}`",
-        f"- Blueprints requiring source truth: {summary.get('blueprints_with_source_truth_required_count')}",
-        "",
-        "## Blueprints",
-        "",
-    ]
-    for record in payload.get("records") or []:
-        lines.extend([
-            f"### {record.get('blueprint_id')} — {record.get('intent_family')}",
-            "",
-            f"- Question: `{record.get('user_question')}`",
-            f"- Playbook: `{record.get('selected_playbook_id')}`",
-            f"- Routes: `{[slot.get('route') for slot in record.get('route_evidence_slots', [])]}`",
-            f"- Candidate language required: `{record.get('candidate_language_required')}`",
-            f"- Answer mode: `{record.get('answer_format_contract', {}).get('answer_mode')}`",
-            "",
-        ])
-    path.write_text("\n".join(lines), encoding="utf-8")
 
 
 def check_engineering_context_pack_blueprint_quality(
@@ -459,7 +494,10 @@ def check_engineering_context_pack_blueprint_quality(
         fail_if(summary.get("source_query_planner_quality_status") != "PASS", "source query planner quality is not PASS")
     fail_if(summary.get("context_pack_blueprint_count", 0) < min_blueprints, "not enough blueprints")
     fail_if(summary.get("total_route_evidence_slot_count", 0) < min_total_route_slots, "not enough route evidence slots")
-    fail_if(summary.get("blueprints_with_source_truth_required_count", 0) < min_source_truth_required_blueprints, "not enough source-truth-required blueprints")
+    fail_if(
+        summary.get("blueprints_with_source_truth_required_count", 0) < min_source_truth_required_blueprints,
+        "not enough source-truth-required blueprints",
+    )
     fail_if(summary.get("unsafe_record_count", 0) > max_unsafe, "unsafe record count exceeded")
     if require_no_answer_permission:
         fail_if(summary.get("answer_permission_count", 0) != 0, "answer permission count not zero")
@@ -471,7 +509,6 @@ def check_engineering_context_pack_blueprint_quality(
         fail_if(summary.get("retrieval_execution_allowed_count", 0) != 0, "retrieval execution allowed count not zero")
     if require_no_source_truth_mutation:
         fail_if(summary.get("source_truth_mutation_allowed_count", 0) != 0, "source truth mutation allowed count not zero")
-
     quality_status = "FAIL" if failures else "PASS"
     return {
         "quality_status": quality_status,
@@ -487,7 +524,6 @@ def main_build(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--quality", action="store_true")
     args = parser.parse_args(argv)
-
     payload = build_engineering_context_pack_blueprint(
         query_planner_path=Path(args.query_planner),
         output_dir=Path(args.output_dir),
@@ -512,7 +548,6 @@ def main_check(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument("--require-no-retrieval-execution", action="store_true")
     parser.add_argument("--require-no-source-truth-mutation", action="store_true")
     args = parser.parse_args(argv)
-
     result = check_engineering_context_pack_blueprint_quality(
         report_path=Path(args.report_path),
         require_source_query_planner_quality_pass=args.require_source_query_planner_quality_pass,

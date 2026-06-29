@@ -1,0 +1,220 @@
+{
+  "checklist_text": "query planner: used \u2014 stage report built with quality_status=PASS\ncontext pack blueprint: used \u2014 stage report built with quality_status=PASS\ncontext pack builder: used \u2014 stage report built with quality_status=PASS\nSelf-RAG: used \u2014 stage report built with quality_status=PASS\nCRAG retry: skipped_not_needed \u2014 Self-RAG did not require CRAG retry; CRAG report was still evaluated with zero retry plans\nroute/dispatch: used \u2014 context pack builder selected/loaded 1019 records from fishnet_route_dispatch_handoff\ntable/route: used \u2014 context pack builder selected/loaded 1515 records from table_exact_search_adapter\npage/context/v2: used \u2014 context pack builder selected/loaded 510 records from page_context_v2\ngraph/leiden: used \u2014 context pack builder selected/loaded 20000 records from leiden_communities\nvisual/image/route: input_missing \u2014 configured path for image_visual_observer does not exist\nembedding/vector: not_wired_in_bridge \u2014 this bridge uses the current context-pack artifacts; live vector search is not yet a stage input here\nGemma LLM: not_called_by_design \u2014 this bridge stops before drafting so Self-RAG/CRAG can be audited separately\nfinal gate: not_called_by_design \u2014 no answer draft is produced by this bridge, so final gate is not invoked here",
+  "failures": [],
+  "input_paths": {
+    "graph_leiden": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+    "page_context_v2": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+    "route_dispatch": "local_data\\organization\\trace_net\\fishnet_route_dispatch_handoff\\trace_net_fishnet_route_dispatch_handoff_v1.json",
+    "table_route": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+    "visual_image_route": "local_data\\organization\\trace_net\\image_visual_observer\\trace_net_image_visual_observer_v1.json"
+  },
+  "module": "trace_net_webui_self_rag_crag_bridge_v1",
+  "quality_status": "PASS",
+  "question": "Find part number 120-29073-001 and nearby similar parts. Use every TRACE-Net evidence route that is available and show source boundaries.",
+  "safety_contract": {
+    "answer_permission": false,
+    "answers_user_question": false,
+    "artifact_authority": "webui_brain_gate_bridge_audit_only",
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "llm_call_allowed": false,
+    "opensearch_write_allowed": false,
+    "postgres_write_allowed": false,
+    "qdrant_write_allowed": false,
+    "retrieval_execution_allowed": false,
+    "source_truth_mutation_allowed": false
+  },
+  "stage_report_paths": {
+    "context_pack_blueprint": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge\\stage_reports\\context_pack_blueprint\\trace_net_engineering_context_pack_blueprint_v1.json",
+    "context_pack_builder": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge\\stage_reports\\context_pack_builder\\trace_net_engineering_context_pack_builder_v1.json",
+    "crag_retry": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge\\stage_reports\\crag_retry_plan\\trace_net_engineering_context_crag_retry_plan_v1.json",
+    "query_planner": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge\\stage_reports\\query_planner\\trace_net_engineering_query_planner_v1.json",
+    "self_rag": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge\\stage_reports\\self_rag_check\\trace_net_engineering_context_self_rag_check_v1.json"
+  },
+  "status": "TRACE_NET_WEBUI_SELF_RAG_CRAG_BRIDGE_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "artifact_record_counts": {
+      "fishnet_route_dispatch_handoff": 1019,
+      "image_visual_observer": 0,
+      "leiden_communities": 20000,
+      "page_context_v2": 510,
+      "table_exact_search_adapter": 1515
+    },
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "context_pack_blueprint_used": true,
+    "context_pack_builder_used": true,
+    "context_pack_count": 1,
+    "crag_ready_for_execution_count": 0,
+    "crag_retry_evaluated": true,
+    "crag_retry_plan_count": 0,
+    "crag_retry_status": "skipped_not_needed",
+    "not_used_tool_count": 4,
+    "not_used_tools": [
+      "visual_image_route",
+      "embedding_vector",
+      "gemma_llm",
+      "final_gate"
+    ],
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "query_planner_used": true,
+    "question": "Find part number 120-29073-001 and nearby similar parts. Use every TRACE-Net evidence route that is available and show source boundaries.",
+    "self_rag_crag_retry_required_count": 0,
+    "self_rag_ready_for_gemma_draft_count": 1,
+    "self_rag_status_counts": {
+      "READY_FOR_GEMMA_DRAFT_CONTEXT_ONLY": 1
+    },
+    "self_rag_used": true,
+    "source_truth_mutation_allowed_count": 0,
+    "status_counts": {
+      "input_missing": 1,
+      "not_called_by_design": 2,
+      "not_wired_in_bridge": 1,
+      "skipped_not_needed": 1,
+      "used": 8
+    },
+    "tool_checklist_count": 13,
+    "total_evidence_capsule_count": 30,
+    "total_high_signal_evidence_capsule_count": 30,
+    "unsafe_record_count": 0,
+    "used_tool_count": 8,
+    "used_tools": [
+      "query_planner",
+      "context_pack_blueprint",
+      "context_pack_builder",
+      "self_rag",
+      "route_dispatch",
+      "table_route",
+      "page_context_v2",
+      "graph_leiden"
+    ]
+  },
+  "thresholds": {
+    "max_records_per_slot": 8,
+    "min_evidence_strength_score": 35,
+    "min_high_signal_capsules": 1
+  },
+  "tool_checklist": [
+    {
+      "count": 1,
+      "label": "query planner",
+      "path": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge\\stage_reports\\query_planner\\trace_net_engineering_query_planner_v1.json",
+      "quality_status": "PASS",
+      "reason": "stage report built with quality_status=PASS",
+      "status": "used",
+      "tool_id": "query_planner"
+    },
+    {
+      "count": 1,
+      "label": "context pack blueprint",
+      "path": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge\\stage_reports\\context_pack_blueprint\\trace_net_engineering_context_pack_blueprint_v1.json",
+      "quality_status": "PASS",
+      "reason": "stage report built with quality_status=PASS",
+      "status": "used",
+      "tool_id": "context_pack_blueprint"
+    },
+    {
+      "count": 1,
+      "label": "context pack builder",
+      "path": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge\\stage_reports\\context_pack_builder\\trace_net_engineering_context_pack_builder_v1.json",
+      "quality_status": "PASS",
+      "reason": "stage report built with quality_status=PASS",
+      "status": "used",
+      "tool_id": "context_pack_builder"
+    },
+    {
+      "count": 1,
+      "label": "Self-RAG",
+      "path": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge\\stage_reports\\self_rag_check\\trace_net_engineering_context_self_rag_check_v1.json",
+      "quality_status": "PASS",
+      "reason": "stage report built with quality_status=PASS",
+      "status": "used",
+      "tool_id": "self_rag"
+    },
+    {
+      "count": 0,
+      "label": "CRAG retry",
+      "path": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge\\stage_reports\\crag_retry_plan\\trace_net_engineering_context_crag_retry_plan_v1.json",
+      "quality_status": "PASS",
+      "reason": "Self-RAG did not require CRAG retry; CRAG report was still evaluated with zero retry plans",
+      "status": "skipped_not_needed",
+      "tool_id": "crag_retry"
+    },
+    {
+      "count": 1019,
+      "label": "route/dispatch",
+      "path": "local_data\\organization\\trace_net\\fishnet_route_dispatch_handoff\\trace_net_fishnet_route_dispatch_handoff_v1.json",
+      "reason": "context pack builder selected/loaded 1019 records from fishnet_route_dispatch_handoff",
+      "status": "used",
+      "tool_id": "route_dispatch"
+    },
+    {
+      "count": 1515,
+      "label": "table/route",
+      "path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "reason": "context pack builder selected/loaded 1515 records from table_exact_search_adapter",
+      "status": "used",
+      "tool_id": "table_route"
+    },
+    {
+      "count": 510,
+      "label": "page/context/v2",
+      "path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+      "reason": "context pack builder selected/loaded 510 records from page_context_v2",
+      "status": "used",
+      "tool_id": "page_context_v2"
+    },
+    {
+      "count": 20000,
+      "label": "graph/leiden",
+      "path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+      "reason": "context pack builder selected/loaded 20000 records from leiden_communities",
+      "status": "used",
+      "tool_id": "graph_leiden"
+    },
+    {
+      "count": 0,
+      "label": "visual/image/route",
+      "path": "local_data\\organization\\trace_net\\image_visual_observer\\trace_net_image_visual_observer_v1.json",
+      "reason": "configured path for image_visual_observer does not exist",
+      "status": "input_missing",
+      "tool_id": "visual_image_route"
+    },
+    {
+      "label": "embedding/vector",
+      "reason": "this bridge uses the current context-pack artifacts; live vector search is not yet a stage input here",
+      "status": "not_wired_in_bridge",
+      "tool_id": "embedding_vector"
+    },
+    {
+      "label": "Gemma LLM",
+      "reason": "this bridge stops before drafting so Self-RAG/CRAG can be audited separately",
+      "status": "not_called_by_design",
+      "tool_id": "gemma_llm"
+    },
+    {
+      "label": "final gate",
+      "reason": "no answer draft is produced by this bridge, so final gate is not invoked here",
+      "status": "not_called_by_design",
+      "tool_id": "final_gate"
+    }
+  ],
+  "tool_statuses": {
+    "context_pack_blueprint": "used",
+    "context_pack_builder": "used",
+    "crag_retry": "skipped_not_needed",
+    "embedding_vector": "not_wired_in_bridge",
+    "final_gate": "not_called_by_design",
+    "gemma_llm": "not_called_by_design",
+    "graph_leiden": "used",
+    "page_context_v2": "used",
+    "query_planner": "used",
+    "route_dispatch": "used",
+    "self_rag": "used",
+    "table_route": "used",
+    "visual_image_route": "input_missing"
+  }
+}

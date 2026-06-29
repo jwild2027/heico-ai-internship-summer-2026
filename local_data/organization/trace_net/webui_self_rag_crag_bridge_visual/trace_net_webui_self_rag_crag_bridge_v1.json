@@ -1,0 +1,392 @@
+{
+  "checklist_text": "query planner: used \u2014 stage report built with quality_status=PASS\ncontext pack blueprint: used \u2014 stage report built with quality_status=PASS\ncontext pack builder: used \u2014 stage report built with quality_status=PASS\nSelf-RAG: used \u2014 stage report built with quality_status=PASS\nCRAG retry: skipped_not_needed \u2014 Self-RAG did not require CRAG retry; CRAG report was still evaluated with zero retry plans\nroute/dispatch: used \u2014 context pack builder selected/loaded 1019 records from fishnet_route_dispatch_handoff\ntable/route: used \u2014 context pack builder selected/loaded 1515 records from table_exact_search_adapter\npage/context/v2: used \u2014 context pack builder selected/loaded 510 records from page_context_v2\ngraph/leiden: used \u2014 context pack builder selected/loaded 20000 records from leiden_communities\nvisual/image/route: used \u2014 safe WebUI visual context bridge supplied 2 OCR-supported visual card(s); 10 review-only visual card(s) excluded\nwebui visual context bridge: used \u2014 loaded 2 safe visual context card(s); excluded 10 review-only visual card(s)\nembedding/vector: not_wired_in_bridge \u2014 this bridge uses the current context-pack artifacts; live vector search is not yet a stage input here\nGemma LLM: not_called_by_design \u2014 this bridge stops before drafting so Self-RAG/CRAG can be audited separately\nfinal gate: not_called_by_design \u2014 no answer draft is produced by this bridge, so final gate is not invoked here",
+  "failures": [],
+  "input_paths": {
+    "graph_leiden": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+    "page_context_v2": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+    "route_dispatch": "local_data\\organization\\trace_net\\fishnet_route_dispatch_handoff\\trace_net_fishnet_route_dispatch_handoff_v1.json",
+    "table_route": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+    "visual_image_route": "local_data\\organization\\trace_net\\image_visual_observer\\trace_net_image_visual_observer_v1.json",
+    "webui_visual_context_bridge": "local_data\\organization\\trace_net\\webui_visual_context_bridge\\trace_net_webui_visual_context_bridge_v1.json"
+  },
+  "module": "trace_net_webui_self_rag_crag_bridge_v1",
+  "quality_status": "PASS",
+  "question": "Find part number 120-29073-001 and nearby similar parts. Use every TRACE-Net evidence route that is available and show source boundaries.",
+  "safety_contract": {
+    "answer_permission": false,
+    "answers_user_question": false,
+    "artifact_authority": "webui_brain_gate_bridge_audit_only",
+    "can_answer_directly": false,
+    "can_prove_claims": false,
+    "llm_call_allowed": false,
+    "opensearch_write_allowed": false,
+    "postgres_write_allowed": false,
+    "qdrant_write_allowed": false,
+    "retrieval_execution_allowed": false,
+    "source_truth_mutation_allowed": false
+  },
+  "stage_report_paths": {
+    "context_pack_blueprint": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge_visual\\stage_reports\\context_pack_blueprint\\trace_net_engineering_context_pack_blueprint_v1.json",
+    "context_pack_builder": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge_visual\\stage_reports\\context_pack_builder\\trace_net_engineering_context_pack_builder_v1.json",
+    "crag_retry": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge_visual\\stage_reports\\crag_retry_plan\\trace_net_engineering_context_crag_retry_plan_v1.json",
+    "query_planner": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge_visual\\stage_reports\\query_planner\\trace_net_engineering_query_planner_v1.json",
+    "self_rag": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge_visual\\stage_reports\\self_rag_check\\trace_net_engineering_context_self_rag_check_v1.json"
+  },
+  "status": "TRACE_NET_WEBUI_SELF_RAG_CRAG_BRIDGE_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "artifact_record_counts": {
+      "fishnet_route_dispatch_handoff": 1019,
+      "image_visual_observer": 0,
+      "leiden_communities": 20000,
+      "page_context_v2": 510,
+      "table_exact_search_adapter": 1515
+    },
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "context_pack_blueprint_used": true,
+    "context_pack_builder_used": true,
+    "context_pack_count": 1,
+    "crag_ready_for_execution_count": 0,
+    "crag_retry_evaluated": true,
+    "crag_retry_plan_count": 0,
+    "crag_retry_status": "skipped_not_needed",
+    "not_used_tool_count": 3,
+    "not_used_tools": [
+      "embedding_vector",
+      "gemma_llm",
+      "final_gate"
+    ],
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "query_planner_used": true,
+    "question": "Find part number 120-29073-001 and nearby similar parts. Use every TRACE-Net evidence route that is available and show source boundaries.",
+    "review_only_visual_context_excluded_count": 10,
+    "self_rag_crag_retry_required_count": 0,
+    "self_rag_ready_for_gemma_draft_count": 1,
+    "self_rag_status_counts": {
+      "READY_FOR_GEMMA_DRAFT_CONTEXT_ONLY": 1
+    },
+    "self_rag_used": true,
+    "source_truth_mutation_allowed_count": 0,
+    "status_counts": {
+      "not_called_by_design": 2,
+      "not_wired_in_bridge": 1,
+      "skipped_not_needed": 1,
+      "used": 10
+    },
+    "tool_checklist_count": 14,
+    "total_evidence_capsule_count": 30,
+    "total_high_signal_evidence_capsule_count": 30,
+    "unsafe_record_count": 0,
+    "used_tool_count": 10,
+    "used_tools": [
+      "query_planner",
+      "context_pack_blueprint",
+      "context_pack_builder",
+      "self_rag",
+      "route_dispatch",
+      "table_route",
+      "page_context_v2",
+      "graph_leiden",
+      "visual_image_route",
+      "webui_visual_context_bridge"
+    ],
+    "visual_context_card_count": 2,
+    "visual_context_included_canonical_page_numbers": [
+      1,
+      22
+    ],
+    "visual_context_included_pages": [
+      "t_p_120_1176_p000001",
+      "t_p_120_1176_p000022"
+    ],
+    "visual_image_route_used": true,
+    "webui_visual_context_bridge_quality_status": "PASS",
+    "webui_visual_context_bridge_used": true
+  },
+  "thresholds": {
+    "max_records_per_slot": 8,
+    "min_evidence_strength_score": 35,
+    "min_high_signal_capsules": 1
+  },
+  "tool_checklist": [
+    {
+      "count": 1,
+      "label": "query planner",
+      "path": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge_visual\\stage_reports\\query_planner\\trace_net_engineering_query_planner_v1.json",
+      "quality_status": "PASS",
+      "reason": "stage report built with quality_status=PASS",
+      "status": "used",
+      "tool_id": "query_planner"
+    },
+    {
+      "count": 1,
+      "label": "context pack blueprint",
+      "path": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge_visual\\stage_reports\\context_pack_blueprint\\trace_net_engineering_context_pack_blueprint_v1.json",
+      "quality_status": "PASS",
+      "reason": "stage report built with quality_status=PASS",
+      "status": "used",
+      "tool_id": "context_pack_blueprint"
+    },
+    {
+      "count": 1,
+      "label": "context pack builder",
+      "path": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge_visual\\stage_reports\\context_pack_builder\\trace_net_engineering_context_pack_builder_v1.json",
+      "quality_status": "PASS",
+      "reason": "stage report built with quality_status=PASS",
+      "status": "used",
+      "tool_id": "context_pack_builder"
+    },
+    {
+      "count": 1,
+      "label": "Self-RAG",
+      "path": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge_visual\\stage_reports\\self_rag_check\\trace_net_engineering_context_self_rag_check_v1.json",
+      "quality_status": "PASS",
+      "reason": "stage report built with quality_status=PASS",
+      "status": "used",
+      "tool_id": "self_rag"
+    },
+    {
+      "count": 0,
+      "label": "CRAG retry",
+      "path": "local_data\\organization\\trace_net\\webui_self_rag_crag_bridge_visual\\stage_reports\\crag_retry_plan\\trace_net_engineering_context_crag_retry_plan_v1.json",
+      "quality_status": "PASS",
+      "reason": "Self-RAG did not require CRAG retry; CRAG report was still evaluated with zero retry plans",
+      "status": "skipped_not_needed",
+      "tool_id": "crag_retry"
+    },
+    {
+      "count": 1019,
+      "label": "route/dispatch",
+      "path": "local_data\\organization\\trace_net\\fishnet_route_dispatch_handoff\\trace_net_fishnet_route_dispatch_handoff_v1.json",
+      "reason": "context pack builder selected/loaded 1019 records from fishnet_route_dispatch_handoff",
+      "status": "used",
+      "tool_id": "route_dispatch"
+    },
+    {
+      "count": 1515,
+      "label": "table/route",
+      "path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "reason": "context pack builder selected/loaded 1515 records from table_exact_search_adapter",
+      "status": "used",
+      "tool_id": "table_route"
+    },
+    {
+      "count": 510,
+      "label": "page/context/v2",
+      "path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+      "reason": "context pack builder selected/loaded 510 records from page_context_v2",
+      "status": "used",
+      "tool_id": "page_context_v2"
+    },
+    {
+      "count": 20000,
+      "label": "graph/leiden",
+      "path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+      "reason": "context pack builder selected/loaded 20000 records from leiden_communities",
+      "status": "used",
+      "tool_id": "graph_leiden"
+    },
+    {
+      "count": 2,
+      "label": "visual/image/route",
+      "path": "local_data\\organization\\trace_net\\webui_visual_context_bridge\\trace_net_webui_visual_context_bridge_v1.json",
+      "reason": "safe WebUI visual context bridge supplied 2 OCR-supported visual card(s); 10 review-only visual card(s) excluded",
+      "status": "used",
+      "tool_id": "visual_image_route"
+    },
+    {
+      "count": 2,
+      "label": "webui visual context bridge",
+      "path": "local_data\\organization\\trace_net\\webui_visual_context_bridge\\trace_net_webui_visual_context_bridge_v1.json",
+      "quality_status": "PASS",
+      "reason": "loaded 2 safe visual context card(s); excluded 10 review-only visual card(s)",
+      "status": "used",
+      "tool_id": "webui_visual_context_bridge"
+    },
+    {
+      "label": "embedding/vector",
+      "reason": "this bridge uses the current context-pack artifacts; live vector search is not yet a stage input here",
+      "status": "not_wired_in_bridge",
+      "tool_id": "embedding_vector"
+    },
+    {
+      "label": "Gemma LLM",
+      "reason": "this bridge stops before drafting so Self-RAG/CRAG can be audited separately",
+      "status": "not_called_by_design",
+      "tool_id": "gemma_llm"
+    },
+    {
+      "label": "final gate",
+      "reason": "no answer draft is produced by this bridge, so final gate is not invoked here",
+      "status": "not_called_by_design",
+      "tool_id": "final_gate"
+    }
+  ],
+  "tool_statuses": {
+    "context_pack_blueprint": "used",
+    "context_pack_builder": "used",
+    "crag_retry": "skipped_not_needed",
+    "embedding_vector": "not_wired_in_bridge",
+    "final_gate": "not_called_by_design",
+    "gemma_llm": "not_called_by_design",
+    "graph_leiden": "used",
+    "page_context_v2": "used",
+    "query_planner": "used",
+    "route_dispatch": "used",
+    "self_rag": "used",
+    "table_route": "used",
+    "visual_image_route": "used",
+    "webui_visual_context_bridge": "used"
+  },
+  "webui_visual_context_cards": [
+    {
+      "accepted_route": "image_visual",
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "canonical_page_number": 1,
+      "context_authority": "vision_derived_retrieval_guidance_not_source_truth",
+      "context_card_id": "webui_visual_context_0001",
+      "generic_visual_label_count": 0,
+      "hallucination_risk_status": "LOW_SUPPORTED_BY_OCR",
+      "module": "trace_net_webui_visual_context_bridge_v1",
+      "observed_visual_features": [
+        "text",
+        "illustrations"
+      ],
+      "ocr_label_support_count": 4,
+      "ocr_supported_visual_terms": [
+        "Passenger Seats",
+        "Component Maintenance Manual with Illustrated Parts List",
+        "component maintenance",
+        "parts list"
+      ],
+      "ocr_text_available_for_visual_validation": true,
+      "ocr_text_char_count_for_visual_validation": 721,
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000001",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "record_type": "webui_visual_context_card",
+      "requires_source_truth_confirmation": true,
+      "safety_contract": {
+        "answer_permission": false,
+        "artifact_authority": "vision_derived_retrieval_guidance_not_source_truth",
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "opensearch_write_allowed": false,
+        "postgres_write_allowed": false,
+        "qdrant_write_allowed": false,
+        "requires_downstream_source_truth_confirmation": true,
+        "review_only_cards_excluded": true,
+        "source_truth_mutation_allowed": false
+      },
+      "semantic_validation_status": "WEBUI_VISUAL_CONTEXT_ALLOWED",
+      "source_image_path": "local_data\\organization\\trace_net\\image_visual_summary_llava_12_semantic_ocr_join\\page_images\\t_p_120_1176_p000001.tif",
+      "source_truth_mutation_allowed": false,
+      "source_visual_summary_artifact_id": "image_visual_summary_000001",
+      "uncertainty_flags": [
+        "text legibility",
+        "vision_derived_guidance_not_source_truth"
+      ],
+      "unsupported_visual_label_count": 0,
+      "unsupported_visual_labels_excluded": [],
+      "version": "v1",
+      "visible_callouts": [
+        "component maintenance",
+        "parts list"
+      ],
+      "visible_text_or_labels": [
+        "Passenger Seats",
+        "Component Maintenance Manual with Illustrated Parts List"
+      ],
+      "vision_mode": "ollama",
+      "vision_model": "llava:13b",
+      "visual_observation_quality_status": "CLEAN_VISION_OBSERVATION_READY",
+      "visual_page_type": "technical manual",
+      "visual_summary_text": "The image shows a page from a technical manual related to passenger seats, specifically focusing on component maintenance and an illustrated parts list.",
+      "webui_visual_context_allowed": true
+    },
+    {
+      "accepted_route": "image_visual",
+      "answer_permission": false,
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "canonical_page_number": 22,
+      "context_authority": "vision_derived_retrieval_guidance_not_source_truth",
+      "context_card_id": "webui_visual_context_0002",
+      "generic_visual_label_count": 0,
+      "hallucination_risk_status": "MEDIUM_REVIEW_REQUIRED",
+      "module": "trace_net_webui_visual_context_bridge_v1",
+      "observed_visual_features": [
+        "text",
+        "tables",
+        "bullet points"
+      ],
+      "ocr_label_support_count": 2,
+      "ocr_supported_visual_terms": [
+        "Title: 'Airplane Maintenance Manual'",
+        "Page number: '25'"
+      ],
+      "ocr_text_available_for_visual_validation": true,
+      "ocr_text_char_count_for_visual_validation": 1507,
+      "opensearch_write_attempt_count": 0,
+      "page_id": "t_p_120_1176_p000022",
+      "postgres_write_attempt_count": 0,
+      "qdrant_write_attempt_count": 0,
+      "record_type": "webui_visual_context_card",
+      "requires_source_truth_confirmation": true,
+      "safety_contract": {
+        "answer_permission": false,
+        "artifact_authority": "vision_derived_retrieval_guidance_not_source_truth",
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "opensearch_write_allowed": false,
+        "postgres_write_allowed": false,
+        "qdrant_write_allowed": false,
+        "requires_downstream_source_truth_confirmation": true,
+        "review_only_cards_excluded": true,
+        "source_truth_mutation_allowed": false
+      },
+      "semantic_validation_status": "WEBUI_VISUAL_CONTEXT_ALLOWED",
+      "source_image_path": "local_data\\organization\\trace_net\\image_visual_summary_llava_12_semantic_ocr_join\\page_images\\t_p_120_1176_p000022.tif",
+      "source_truth_mutation_allowed": false,
+      "source_visual_summary_artifact_id": "image_visual_summary_000010",
+      "uncertainty_flags": [
+        "uncertain text due to low resolution",
+        "vision_derived_guidance_not_source_truth"
+      ],
+      "unsupported_visual_label_count": 6,
+      "unsupported_visual_labels_excluded": [
+        "Date: '1998'",
+        "Section: 'Volume 1'",
+        "Subsection: 'Chapter 1'",
+        "step-by-step instructions",
+        "warning labels",
+        "information bulletins"
+      ],
+      "version": "v1",
+      "visible_callouts": [
+        "step-by-step instructions",
+        "warning labels",
+        "information bulletins"
+      ],
+      "visible_text_or_labels": [
+        "Title: 'Airplane Maintenance Manual'",
+        "Page number: '25'",
+        "Date: '1998'",
+        "Section: 'Volume 1'",
+        "Subsection: 'Chapter 1'"
+      ],
+      "vision_mode": "ollama",
+      "vision_model": "llava:13b",
+      "visual_observation_quality_status": "CLEAN_VISION_OBSERVATION_READY",
+      "visual_page_type": "technical manual",
+      "visual_summary_text": "The page contains technical information related to airplane maintenance, including step-by-step instructions, warnings, and informational bulletins.",
+      "webui_visual_context_allowed": true
+    }
+  ]
+}

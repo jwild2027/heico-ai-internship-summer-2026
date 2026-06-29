@@ -1,0 +1,73 @@
+{
+  "answer_permission_count": 0,
+  "artifact_record_counts": {
+    "fishnet_route_dispatch_handoff": 1019,
+    "image_visual_observer": 0,
+    "leiden_communities": 20000,
+    "page_context_v2": 510,
+    "table_exact_search_adapter": 1515
+  },
+  "can_answer_directly_count": 0,
+  "can_prove_claims_count": 0,
+  "context_pack_blueprint_used": true,
+  "context_pack_builder_used": true,
+  "context_pack_count": 1,
+  "crag_ready_for_execution_count": 0,
+  "crag_retry_evaluated": true,
+  "crag_retry_plan_count": 0,
+  "crag_retry_status": "skipped_not_needed",
+  "not_used_tool_count": 3,
+  "not_used_tools": [
+    "embedding_vector",
+    "gemma_llm",
+    "final_gate"
+  ],
+  "opensearch_write_attempt_count": 0,
+  "postgres_write_attempt_count": 0,
+  "qdrant_write_attempt_count": 0,
+  "query_planner_used": true,
+  "question": "Find part number 120-29073-001 and nearby similar parts. Use every TRACE-Net evidence route that is available and show source boundaries.",
+  "review_only_visual_context_excluded_count": 10,
+  "self_rag_crag_retry_required_count": 0,
+  "self_rag_ready_for_gemma_draft_count": 1,
+  "self_rag_status_counts": {
+    "READY_FOR_GEMMA_DRAFT_CONTEXT_ONLY": 1
+  },
+  "self_rag_used": true,
+  "source_truth_mutation_allowed_count": 0,
+  "status_counts": {
+    "not_called_by_design": 2,
+    "not_wired_in_bridge": 1,
+    "skipped_not_needed": 1,
+    "used": 10
+  },
+  "tool_checklist_count": 14,
+  "total_evidence_capsule_count": 30,
+  "total_high_signal_evidence_capsule_count": 30,
+  "unsafe_record_count": 0,
+  "used_tool_count": 10,
+  "used_tools": [
+    "query_planner",
+    "context_pack_blueprint",
+    "context_pack_builder",
+    "self_rag",
+    "route_dispatch",
+    "table_route",
+    "page_context_v2",
+    "graph_leiden",
+    "visual_image_route",
+    "webui_visual_context_bridge"
+  ],
+  "visual_context_card_count": 2,
+  "visual_context_included_canonical_page_numbers": [
+    1,
+    22
+  ],
+  "visual_context_included_pages": [
+    "t_p_120_1176_p000001",
+    "t_p_120_1176_p000022"
+  ],
+  "visual_image_route_used": true,
+  "webui_visual_context_bridge_quality_status": "PASS",
+  "webui_visual_context_bridge_used": true
+}

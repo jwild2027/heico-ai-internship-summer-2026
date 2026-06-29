@@ -1,0 +1,36 @@
+{
+  "quality_status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "clean_vision_observation_ready_count": 3,
+    "dry_run_card_count": 0,
+    "execution_status_counts": {
+      "vision_model_observation_ready": 3
+    },
+    "image_source_found_count": 3,
+    "image_visual_handoff_count": 12,
+    "max_image_pages": 3,
+    "missing_image_source_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "prompt_leak_removed_item_count": 0,
+    "prompt_leak_suspected_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "review_required_visual_observation_count": 0,
+    "source_route_dispatch_handoff_quality_status": "PASS",
+    "source_route_dispatch_handoff_record_count": 509,
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0,
+    "vision_mode": "ollama",
+    "vision_model": "llava:13b",
+    "vision_model_called_count": 3,
+    "vision_model_error_count": 0,
+    "vision_observation_ready_count": 3,
+    "visual_observation_quality_status_counts": {
+      "CLEAN_VISION_OBSERVATION_READY": 3
+    },
+    "visual_summary_card_count": 3
+  }
+}

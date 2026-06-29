@@ -1,0 +1,14 @@
+query planner: used — stage report built with quality_status=PASS
+context pack blueprint: used — stage report built with quality_status=PASS
+context pack builder: used — stage report built with quality_status=PASS
+Self-RAG: used — stage report built with quality_status=PASS
+CRAG retry: skipped_not_needed — Self-RAG did not require CRAG retry; CRAG report was still evaluated with zero retry plans
+route/dispatch: used — context pack builder selected/loaded 1019 records from fishnet_route_dispatch_handoff
+table/route: used — context pack builder selected/loaded 1515 records from table_exact_search_adapter
+page/context/v2: used — context pack builder selected/loaded 510 records from page_context_v2
+graph/leiden: used — context pack builder selected/loaded 20000 records from leiden_communities
+visual/image/route: used — safe WebUI visual context bridge supplied 2 OCR-supported visual card(s); 10 review-only visual card(s) excluded
+webui visual context bridge: used — loaded 2 safe visual context card(s); excluded 10 review-only visual card(s)
+embedding/vector: not_wired_in_bridge — this bridge uses the current context-pack artifacts; live vector search is not yet a stage input here
+Gemma LLM: not_called_by_design — this bridge stops before drafting so Self-RAG/CRAG can be audited separately
+final gate: not_called_by_design — no answer draft is produced by this bridge, so final gate is not invoked here

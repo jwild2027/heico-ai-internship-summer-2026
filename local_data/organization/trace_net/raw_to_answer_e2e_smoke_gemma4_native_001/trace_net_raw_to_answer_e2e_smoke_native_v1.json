@@ -1,0 +1,309 @@
+{
+  "answer_draft": {
+    "answer_text": "The provided evidence does not contain the part number 120-29073-001 or any information regarding nearby similar parts. The excerpts for pages 5, 45, 55, 65, 75, 85, 95, and 105 are empty [E1, E2, E3, E4, E5, E6, E7, E8].",
+    "citation_count": 8,
+    "llm_generated": true
+  },
+  "command_records": [
+    {
+      "action": "build",
+      "cmd": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/run_trace_net_ocr_classifier_pipeline_v1.py",
+        "--source-package",
+        "C:\\Users\\juswil\\Desktop\\metadata.zip",
+        "--tesseract-cmd",
+        "C:\\Users\\juswil\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe",
+        "--output-dir",
+        "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_native_001",
+        "--quality"
+      ],
+      "elapsed_seconds": 1270.895,
+      "returncode": 0,
+      "stage": "pipeline",
+      "status": "PASS",
+      "stderr_tail": "",
+      "stdout_tail": "rce-truth-mutation --require-no-write-attempts\nWrote: local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_native_001\\trace_net_ocr_classifier_pipeline_runner_v1_quality_check.json\nQuality status: PASS\nSummary: {\"all_stage_quality_pass\": true, \"answer_permission_count\": 0, \"blank_payload_violation_count\": 0, \"blocked_loader_record_count\": 59, \"blocked_payload_violation_count\": 0, \"build_command_count\": 9, \"check_command_count\": 9, \"command_count\": 18, \"contract_blocked_record_count\": 0, \"dry_run_only\": true, \"final_do_not_embed_count\": 59, \"final_validated_route_counts\": {\"blank\": 14, \"image\": 12, \"plain_text\": 163, \"table\": 320}, \"human_review_required_count\": 0, \"lineage_ready_count\": 509, \"live_write_enabled\": false, \"loader_contract_audit_record_count\": 509, \"loader_plan_record_count\": 509, \"missing_lineage_count\": 0, \"missing_lineage_payload_count\": 0, \"missing_stage_report_count\": 0, \"missing_stage_reports\": [], \"module\": \"trace_net_ocr_classifier_pipeline_runner_v1\", \"opensearch_contract_ready_count\": 282, \"opensearch_dry_run_plan_count\": 282, \"opensearch_index_allowed_count\": 282, \"opensearch_payload_count\": 282, \"output_dir\": \"local_data\\\\organization\\\\trace_net\\\\raw_to_answer_e2e_smoke_gemma4_native_001\", \"postgres_contract_ready_count\": 509, \"postgres_dry_run_plan_count\": 509, \"postgres_graph_record_count\": 509, \"qdrant_contract_ready_count\": 450, \"qdrant_dry_run_plan_count\": 450, \"qdrant_embedding_allowed_count\": 450, \"qdrant_payload_count\": 450, \"retrieval_payload_audit_record_count\": 509, \"route_payload_mismatch_count\": 0, \"source_package\": \"C:\\\\Users\\\\juswil\\\\Desktop\\\\metadata.zip\", \"source_truth_mutation_allowed_count\": 0, \"stage_count\": 9, \"stage_quality_statuses\": {\"contract\": \"PASS\", \"four_route\": \"PASS\", \"loader\": \"PASS\", \"ocr\": \"PASS\", \"resolver\": \"PASS\", \"retrieval_payload_audit\": \"PASS\", \"retry\": \"PASS\", \"storage\": \"PASS\", \"validator\": \"PASS\"}, \"stage_report_count\": 9, \"storage_gate_record_count\": 509, \"unsafe_record_count\": 0, \"version\": \"v1\", \"violation_record_count\": 0, \"write_attempt_count\": 0}\nStatus: TRACE_NET_OCR_CLASSIFIER_PIPELINE_RUNNER_BUILT\nQuality status: PASS\nSummary: {\"all_stage_quality_pass\": true, \"answer_permission_count\": 0, \"blank_payload_violation_count\": 0, \"blocked_loader_record_count\": 59, \"blocked_payload_violation_count\": 0, \"build_command_count\": 9, \"check_command_count\": 9, \"command_count\": 18, \"contract_blocked_record_count\": 0, \"dry_run_only\": true, \"final_do_not_embed_count\": 59, \"final_validated_route_counts\": {\"blank\": 14, \"image\": 12, \"plain_text\": 163, \"table\": 320}, \"human_review_required_count\": 0, \"lineage_ready_count\": 509, \"live_write_enabled\": false, \"loader_contract_audit_record_count\": 509, \"loader_plan_record_count\": 509, \"missing_lineage_count\": 0, \"missing_lineage_payload_count\": 0, \"missing_stage_report_count\": 0, \"missing_stage_reports\": [], \"module\": \"trace_net_ocr_classifier_pipeline_runner_v1\", \"opensearch_contract_ready_count\": 282, \"opensearch_dry_run_plan_count\": 282, \"opensearch_index_allowed_count\": 282, \"opensearch_payload_count\": 282, \"output_dir\": \"local_data\\\\organization\\\\trace_net\\\\raw_to_answer_e2e_smoke_gemma4_native_001\", \"postgres_contract_ready_count\": 509, \"postgres_dry_run_plan_count\": 509, \"postgres_graph_record_count\": 509, \"qdrant_contract_ready_count\": 450, \"qdrant_dry_run_plan_count\": 450, \"qdrant_embedding_allowed_count\": 450, \"qdrant_payload_count\": 450, \"retrieval_payload_audit_record_count\": 509, \"route_payload_mismatch_count\": 0, \"source_package\": \"C:\\\\Users\\\\juswil\\\\Desktop\\\\metadata.zip\", \"source_truth_mutation_allowed_count\": 0, \"stage_count\": 9, \"stage_quality_statuses\": {\"contract\": \"PASS\", \"four_route\": \"PASS\", \"loader\": \"PASS\", \"ocr\": \"PASS\", \"resolver\": \"PASS\", \"retrieval_payload_audit\": \"PASS\", \"retry\": \"PASS\", \"storage\": \"PASS\", \"validator\": \"PASS\"}, \"stage_report_count\": 9, \"storage_gate_record_count\": 509, \"unsafe_record_count\": 0, \"version\": \"v1\", \"violation_record_count\": 0, \"write_attempt_count\": 0}\n"
+    }
+  ],
+  "failures": [],
+  "llm_request_context": {
+    "evidence_count": 8,
+    "llm_mode": "ollama_native",
+    "num_predict": 1024,
+    "prompt_char_count": 1718,
+    "think": false
+  },
+  "module": "trace_net_raw_to_answer_e2e_smoke_native_v1",
+  "quality_status": "PASS",
+  "retrieval_evidence_records": [
+    {
+      "answer_permission": false,
+      "evidence_id": "E1",
+      "ocr_excerpt": "",
+      "page_id": "t_p_120_1176_p000005",
+      "page_number": 5,
+      "part_numbers": [],
+      "raw_tiff_reference": "00000005.tif",
+      "retrieval_reasons": [
+        "table_route",
+        "exact_index_ready",
+        "semantic_index_ready"
+      ],
+      "retrieval_score": 100,
+      "route": "table",
+      "source_image_sha256": "8980a6e91d7cc2f40a8510315d8610595243d7033621c00bdaec782a41aa1e7b",
+      "source_member": "00000005.tif",
+      "source_truth_mutation_allowed": false,
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "evidence_id": "E2",
+      "ocr_excerpt": "",
+      "page_id": "t_p_120_1176_p000045",
+      "page_number": 45,
+      "part_numbers": [],
+      "raw_tiff_reference": "00000045.tif",
+      "retrieval_reasons": [
+        "table_route",
+        "exact_index_ready",
+        "semantic_index_ready"
+      ],
+      "retrieval_score": 100,
+      "route": "table",
+      "source_image_sha256": "53cdcd406800ffd8f8c7f062ababe097a6126caa647f8522e563a824f52d46ef",
+      "source_member": "00000045.tif",
+      "source_truth_mutation_allowed": false,
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "evidence_id": "E3",
+      "ocr_excerpt": "",
+      "page_id": "t_p_120_1176_p000055",
+      "page_number": 55,
+      "part_numbers": [],
+      "raw_tiff_reference": "00000055.tif",
+      "retrieval_reasons": [
+        "table_route",
+        "exact_index_ready",
+        "semantic_index_ready"
+      ],
+      "retrieval_score": 100,
+      "route": "table",
+      "source_image_sha256": "be1a6d7a948bf87c345c9f3bc171ce7de6ac33be440ab0bebe8005f081b6e5ef",
+      "source_member": "00000055.tif",
+      "source_truth_mutation_allowed": false,
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "evidence_id": "E4",
+      "ocr_excerpt": "",
+      "page_id": "t_p_120_1176_p000065",
+      "page_number": 65,
+      "part_numbers": [],
+      "raw_tiff_reference": "00000065.tif",
+      "retrieval_reasons": [
+        "table_route",
+        "exact_index_ready",
+        "semantic_index_ready"
+      ],
+      "retrieval_score": 100,
+      "route": "table",
+      "source_image_sha256": "9e653b24af5bea3cdab6210cb3985630680286d970799032d5dd8f6cebfadbf8",
+      "source_member": "00000065.tif",
+      "source_truth_mutation_allowed": false,
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "evidence_id": "E5",
+      "ocr_excerpt": "",
+      "page_id": "t_p_120_1176_p000075",
+      "page_number": 75,
+      "part_numbers": [],
+      "raw_tiff_reference": "00000075.tif",
+      "retrieval_reasons": [
+        "table_route",
+        "exact_index_ready",
+        "semantic_index_ready"
+      ],
+      "retrieval_score": 100,
+      "route": "table",
+      "source_image_sha256": "6cee623c93733cfafb8f8096590ce5ee89535c43db33fcfb57d88fc5eed7e300",
+      "source_member": "00000075.tif",
+      "source_truth_mutation_allowed": false,
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "evidence_id": "E6",
+      "ocr_excerpt": "",
+      "page_id": "t_p_120_1176_p000085",
+      "page_number": 85,
+      "part_numbers": [],
+      "raw_tiff_reference": "00000085.tif",
+      "retrieval_reasons": [
+        "table_route",
+        "exact_index_ready",
+        "semantic_index_ready"
+      ],
+      "retrieval_score": 100,
+      "route": "table",
+      "source_image_sha256": "107a00213b8870401e892812265b591de047ab379fd694679f3f04a2115e0b40",
+      "source_member": "00000085.tif",
+      "source_truth_mutation_allowed": false,
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "evidence_id": "E7",
+      "ocr_excerpt": "",
+      "page_id": "t_p_120_1176_p000095",
+      "page_number": 95,
+      "part_numbers": [],
+      "raw_tiff_reference": "00000095.tif",
+      "retrieval_reasons": [
+        "table_route",
+        "exact_index_ready",
+        "semantic_index_ready"
+      ],
+      "retrieval_score": 100,
+      "route": "table",
+      "source_image_sha256": "54b2346051107a572f935aa3f05eab3c311fc239faf077a2e00119753ee5cc7d",
+      "source_member": "00000095.tif",
+      "source_truth_mutation_allowed": false,
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    },
+    {
+      "answer_permission": false,
+      "evidence_id": "E8",
+      "ocr_excerpt": "",
+      "page_id": "t_p_120_1176_p000105",
+      "page_number": 105,
+      "part_numbers": [],
+      "raw_tiff_reference": "00000105.tif",
+      "retrieval_reasons": [
+        "table_route",
+        "exact_index_ready",
+        "semantic_index_ready"
+      ],
+      "retrieval_score": 100,
+      "route": "table",
+      "source_image_sha256": "d6b387f0d300288ce3109a81d79d8719d4620d2b300525643b57bc4e7a4095af",
+      "source_member": "00000105.tif",
+      "source_truth_mutation_allowed": false,
+      "targets": [
+        "opensearch",
+        "postgres_graph",
+        "qdrant"
+      ]
+    }
+  ],
+  "status": "TRACE_NET_RAW_TO_ANSWER_E2E_SMOKE_NATIVE_BUILT",
+  "summary": {
+    "all_stage_quality_pass": true,
+    "answer_draft_char_count": 221,
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "citation_count": 8,
+    "dry_run_only": true,
+    "final_validated_route_counts": {
+      "blank": 14,
+      "image": 12,
+      "plain_text": 163,
+      "table": 320
+    },
+    "human_review_required_count": 0,
+    "lineage_ready_count": 509,
+    "live_write_enabled": false,
+    "llm_answer_char_count": 221,
+    "llm_base_url": "http://127.0.0.1:11434",
+    "llm_called": true,
+    "llm_elapsed_seconds": 30.936,
+    "llm_endpoint": "http://127.0.0.1:11434/api/chat",
+    "llm_fallback_reason": null,
+    "llm_finish_reason": "stop",
+    "llm_mode": "ollama_native",
+    "llm_model": "gemma4:26b",
+    "llm_num_predict": 1024,
+    "llm_reasoning_char_count": 0,
+    "llm_response_status": 200,
+    "llm_status": "PASS",
+    "llm_temperature": 0.0,
+    "llm_think": false,
+    "manual_review_required_count": 0,
+    "missing_lineage_count": 0,
+    "module": "trace_net_raw_to_answer_e2e_smoke_native_v1",
+    "opensearch_contract_ready_count": 282,
+    "opensearch_index_allowed_count": 282,
+    "opensearch_payload_count": 282,
+    "opensearch_write_attempt_count": 0,
+    "output_dir": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_native_001",
+    "pipeline_report": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_native_001\\trace_net_ocr_classifier_pipeline_runner_v1.json",
+    "postgres_contract_ready_count": 509,
+    "postgres_graph_record_count": 509,
+    "postgres_write_attempt_count": 0,
+    "qdrant_contract_ready_count": 450,
+    "qdrant_embedding_allowed_count": 450,
+    "qdrant_payload_count": 450,
+    "qdrant_write_attempt_count": 0,
+    "question": "Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.",
+    "ready_for_live_db_round_trip_patch": true,
+    "require_llm_success": true,
+    "retrieval_evidence_count": 8,
+    "retrieval_payload_audit_record_count": 509,
+    "route_payload_mismatch_count": 0,
+    "source_package": "C:\\Users\\juswil\\Desktop\\metadata.zip",
+    "source_truth_mutation_allowed_count": 0,
+    "stage_count": 9,
+    "stage_quality_statuses": {
+      "contract": "PASS",
+      "four_route": "PASS",
+      "loader": "PASS",
+      "ocr": "PASS",
+      "resolver": "PASS",
+      "retrieval_payload_audit": "PASS",
+      "retry": "PASS",
+      "storage": "PASS",
+      "validator": "PASS"
+    },
+    "stage_report_count": 9,
+    "unsafe_record_count": 0,
+    "version": "v1",
+    "violation_record_count": 0,
+    "write_attempt_count": 0
+  },
+  "version": "v1"
+}

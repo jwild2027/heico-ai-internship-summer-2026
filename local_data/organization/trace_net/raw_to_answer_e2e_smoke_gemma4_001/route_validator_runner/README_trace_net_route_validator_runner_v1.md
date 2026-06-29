@@ -1,0 +1,40 @@
+# TRACE-Net Route Validator Runner v1
+
+This artifact validates four operational page routes: `blank`, `plain_text`, `table`, and `image`.
+Validator-gated pages that fail validation remain source-traceable but keep `do_not_embed=true`.
+
+## Summary
+
+- **answer_permission_count**: `0`
+- **can_answer_directly_count**: `0`
+- **can_prove_claims_count**: `0`
+- **final_do_not_embed_count**: `164`
+- **human_review_required_count**: `0`
+- **invalid_validated_route_count**: `0`
+- **manual_review_required_count**: `0`
+- **module**: `trace_net_route_validator_runner_v1`
+- **opensearch_index_allowed_count**: `282`
+- **opensearch_write_attempt_count**: `0`
+- **postgres_write_attempt_count**: `0`
+- **qdrant_embedding_allowed_count**: `345`
+- **qdrant_write_attempt_count**: `0`
+- **ready_for_unresolved_retry_or_multi_route_probe**: `True`
+- **ready_for_validated_storage**: `True`
+- **source_four_route_resolver**: `local_data\organization\trace_net\raw_to_answer_e2e_smoke_gemma4_001\four_route_operational_resolver\trace_net_four_route_operational_resolver_v1.json`
+- **source_four_route_resolver_quality_status**: `PASS`
+- **source_operational_route_counts**: `{'blank': 14, 'image': 24, 'plain_text': 58, 'table': 413}`
+- **source_record_count**: `509`
+- **source_truth_mutation_allowed_count**: `0`
+- **unsafe_record_count**: `0`
+- **validated_operational_route_counts**: `{'blank': 14, 'image': 10, 'plain_text': 53, 'table': 282}`
+- **validated_route_count**: `359`
+- **validated_secondary_route_count**: `0`
+- **validation_decision_counts**: `{'validated_primary_route': 359, 'validator_gated_unresolved': 150}`
+- **validation_status_counts**: `{'PASS': 359, 'VALIDATOR_GATED_UNRESOLVED': 150}`
+- **validator_gated_unresolved_count**: `150`
+- **validator_record_count**: `509`
+- **version**: `v1`
+
+## Safety contract
+
+No Postgres writes, no Qdrant writes, no OpenSearch writes, no source-truth mutation, and no answer permission.

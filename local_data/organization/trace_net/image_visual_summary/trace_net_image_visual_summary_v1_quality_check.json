@@ -1,0 +1,31 @@
+{
+  "checked_report_path": "local_data\\organization\\trace_net\\image_visual_summary\\trace_net_image_visual_summary_v1.json",
+  "failures": [],
+  "quality_status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "dry_run_card_count": 12,
+    "execution_status_counts": {
+      "vision_not_called_dry_run": 12
+    },
+    "image_source_found_count": 12,
+    "image_visual_handoff_count": 12,
+    "max_image_pages": 20,
+    "missing_image_source_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "source_route_dispatch_handoff_quality_status": "PASS",
+    "source_route_dispatch_handoff_record_count": 509,
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0,
+    "vision_mode": "dry_run",
+    "vision_model": null,
+    "vision_model_called_count": 0,
+    "vision_model_error_count": 0,
+    "vision_observation_ready_count": 0,
+    "visual_summary_card_count": 12
+  }
+}
