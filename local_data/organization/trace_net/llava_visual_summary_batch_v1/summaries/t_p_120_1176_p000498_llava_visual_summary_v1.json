@@ -1,0 +1,57 @@
+{
+  "answer_permission": false,
+  "authority_note": "LLaVA sees/describes visual content only; OCR/table/figure-item evidence must prove final part facts.",
+  "callout_candidate_count": 1,
+  "callout_candidates": [
+    "{'type': 'diagram', 'figure_id': 'fig_1', 'description': 'A diagram showing a structure with various components and connections.'}"
+  ],
+  "can_answer_directly": false,
+  "diagram_type": "technical",
+  "error_text": "",
+  "figure_candidate_count": 1,
+  "figure_candidates": [
+    "{'type': 'diagram', 'figure_id': 'fig_1', 'description': 'A diagram showing a structure with various components and connections.'}"
+  ],
+  "job_id": "llava_visual_summary_job_0016",
+  "llava_mode": "ollama",
+  "llava_model": "llava:13b",
+  "llava_output_path": "local_data/organization/trace_net/llava_visual_summary_batch_v1/summaries/t_p_120_1176_p000498_llava_visual_summary_v1.json",
+  "llava_summary_status": "created",
+  "opensearch_upload_attempt": false,
+  "opensearch_write_attempt": false,
+  "page_id": "t_p_120_1176_p000498",
+  "page_number": 498,
+  "parse_status": "json_extracted_from_text",
+  "postgres_write_attempt": false,
+  "qdrant_write_attempt": false,
+  "record_id": "llava_visual_summary_0016",
+  "route_label": "['image']",
+  "source_image_exists": true,
+  "source_image_media_type": "image/png",
+  "source_image_note": "converted_tiff_to_png_with_pillow",
+  "source_member": "00000498.tif",
+  "source_trace_fields": {
+    "ocr_scan_pack_path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_native_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1.json",
+    "page_id": "t_p_120_1176_p000498",
+    "page_number": 498,
+    "route_artifact_path": "local_data\\organization\\trace_net\\route_validator_runner\\trace_net_route_validator_runner_v1.json",
+    "source_member": "00000498.tif",
+    "source_package_member_confirmed": true,
+    "source_package_metadata_zip": "C:\\Users\\juswil\\Desktop\\metadata.zip"
+  },
+  "source_trace_ready": true,
+  "source_truth_mutation_allowed": false,
+  "structured_json_ready": true,
+  "uncertainties": [
+    "{'type': 'text', 'description': 'Text that is partially obscured or unclear.'}"
+  ],
+  "unsafe": false,
+  "visible_text_candidate_count": 2,
+  "visible_text_candidates": [
+    "{'type': 'text', 'description': 'Text on the page, which could be instructions or specifications.'}",
+    "{'type': 'text', 'description': 'Text that is partially obscured or unclear.'}"
+  ],
+  "visual_confidence": "medium",
+  "visual_summary": "The image contains technical diagrams and text related to construction or assembly, with some parts of the text being difficult to read due to the resolution or angle of the photograph.",
+  "write_attempt_count": 0
+}

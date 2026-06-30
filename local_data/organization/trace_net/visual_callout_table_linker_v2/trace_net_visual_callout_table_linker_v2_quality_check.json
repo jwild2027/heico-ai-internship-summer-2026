@@ -1,0 +1,84 @@
+{
+  "artifact_paths": {
+    "linker": "local_data/organization/trace_net/visual_callout_table_linker_v2/trace_net_visual_callout_table_linker_v2.json",
+    "links_jsonl": "local_data/organization/trace_net/visual_callout_table_linker_v2/trace_net_visual_callout_table_linker_v2_links.jsonl",
+    "quality_check": "local_data/organization/trace_net/visual_callout_table_linker_v2/trace_net_visual_callout_table_linker_v2_quality_check.json",
+    "readme": "local_data/organization/trace_net/visual_callout_table_linker_v2/README_trace_net_visual_callout_table_linker_v2.md",
+    "records_csv": "local_data/organization/trace_net/visual_callout_table_linker_v2/trace_net_visual_callout_table_linker_v2_records.csv",
+    "unlinked_callouts_jsonl": "local_data/organization/trace_net/visual_callout_table_linker_v2/trace_net_visual_callout_table_linker_v2_unlinked_callouts.jsonl"
+  },
+  "checks": [
+    {
+      "expected": ">= 1",
+      "name": "min_visual_callout_records",
+      "observed": 26,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "min_linked_callouts",
+      "observed": 3,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "min_source_trace_ready",
+      "observed": 3,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "max_unsafe",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "max_answer_permission",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "max_source_truth_mutation_allowed",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "max_write_attempts",
+      "observed": 0,
+      "passed": true
+    }
+  ],
+  "created_at_utc": "2026-06-29T18:36:23+00:00",
+  "module_name": "trace_net_visual_callout_table_linker_v2",
+  "quality_status": "PASS",
+  "status": "TRACE_NET_VISUAL_CALLOUT_TABLE_LINKER_V2_BUILT_QUALITY_CHECKED",
+  "summary": {
+    "answer_permission_count": 0,
+    "citation_ready_count": 3,
+    "description_available_count": 0,
+    "description_missing_not_filename_count": 3,
+    "high_confidence_link_count": 0,
+    "linked_callout_record_count": 3,
+    "linked_part_number_record_count": 3,
+    "low_confidence_link_count": 23,
+    "medium_confidence_link_count": 3,
+    "ocr_extractor_record_count": 21,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "ready_for_visual_evidence_pack": true,
+    "requires_human_review_count": 26,
+    "source_trace_ready_count": 3,
+    "source_truth_mutation_allowed_count": 0,
+    "trusted_evidence_record_count": 1281,
+    "unique_linked_part_number_count": 3,
+    "unsafe_record_count": 0,
+    "visual_callout_link_record_count": 26,
+    "visual_summary_record_count": 21,
+    "write_attempt_count": 0
+  }
+}

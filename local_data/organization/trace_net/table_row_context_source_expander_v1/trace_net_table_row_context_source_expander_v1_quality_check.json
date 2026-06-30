@@ -1,0 +1,71 @@
+{
+  "status": "TRACE_NET_TABLE_ROW_CONTEXT_SOURCE_EXPANDER_QUALITY_CHECKED",
+  "quality_status": "PASS",
+  "summary": {
+    "linked_visual_part_count": 3,
+    "table_record_count": 2994,
+    "row_group_count": 547,
+    "source_artifact_scan_count": 300,
+    "row_context_record_count": 3,
+    "row_context_cell_count": 68,
+    "description_candidate_count": 0,
+    "description_rejected_count": 1031,
+    "description_selected_count": 0,
+    "description_missing_count": 3,
+    "source_trace_ready_count": 3,
+    "upstream_hit_count": 122,
+    "ready_for_nomenclature_expansion": true,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0
+  },
+  "checks": [
+    {
+      "name": "min_linked_visual_parts",
+      "observed": 3,
+      "expected": ">= 1",
+      "passed": true
+    },
+    {
+      "name": "min_row_context_records",
+      "observed": 3,
+      "expected": ">= 1",
+      "passed": true
+    },
+    {
+      "name": "min_source_trace_ready",
+      "observed": 3,
+      "expected": ">= 1",
+      "passed": true
+    },
+    {
+      "name": "max_unsafe",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "max_answer_permission",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "max_source_truth_mutation_allowed",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "max_write_attempts",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    }
+  ]
+}

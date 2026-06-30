@@ -1,0 +1,137 @@
+{
+  "schema_version": "trace_net_image_route_fast_chat_adapter_v1",
+  "status": "TRACE_NET_IMAGE_ROUTE_FAST_CHAT_ADAPTER_BUILT",
+  "quality_status": "PASS",
+  "route_type": "image_or_diagram",
+  "api_response_status": "citation_backed_visual_fast_chat_answer",
+  "question": "What does figure 69 show?",
+  "answer": "Figure 69 is linked to part number 120-50645-005 on page 315 [V6]. This is a MEDIUM-confidence visual answer because TRACE-Net has trusted figure/page evidence, but not a full exact visual callout/item match for every cited record. A clean nomenclature/description is not available in the current visual link record for at least one cited part. The evidence does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.",
+  "webui_answer_ready": true,
+  "citations": [
+    {
+      "citation_label": "V6",
+      "page_id": "t_p_120_1176_p000315",
+      "page_number": 315,
+      "figure": "69",
+      "callout": "",
+      "linked_part_number": "120-50645-005",
+      "linked_description": "",
+      "link_confidence": "MEDIUM",
+      "proof_strength": "linked_visual_plus_figure_page_table_proof",
+      "source_trace_ready": true,
+      "citation_ready": true,
+      "proof_source": "trusted_ocr_table_figure_item_evidence",
+      "visual_source": "llava_plus_ocr_extractor"
+    }
+  ],
+  "selected_records": [
+    {
+      "answer_permission": false,
+      "callout": "",
+      "can_answer_directly": false,
+      "can_prove_claims": false,
+      "can_support_limited_visual_answer": true,
+      "candidate_source": "",
+      "citation_label": "V6",
+      "citation_ready": true,
+      "evidence_id": "image_visual_evidence_ff198f6822219919",
+      "evidence_kind": "linked_visual_evidence",
+      "figure": "69",
+      "limitations": [
+        "Figure/page proof is linked, but no exact callout/item label is present in the visual link.",
+        "The visual link identifies the part number, but a clean nomenclature/description is not available in this record.",
+        "This evidence does not prove interchangeability, effectivity, fit, replacement approval, or installation safety."
+      ],
+      "link_confidence": "MEDIUM",
+      "link_reason": "figure_and_page_match",
+      "linked": true,
+      "linked_description": "",
+      "linked_description_quality": "missing_not_filename",
+      "linked_part_number": "120-50645-005",
+      "opensearch_upload_attempt": false,
+      "opensearch_write_attempt": false,
+      "page_id": "t_p_120_1176_p000315",
+      "page_number": 315,
+      "postgres_write_attempt": false,
+      "proof_source": "trusted_ocr_table_figure_item_evidence",
+      "proof_strength": "linked_visual_plus_figure_page_table_proof",
+      "qdrant_write_attempt": false,
+      "requires_human_review": false,
+      "retrieval_only": true,
+      "schema_version": "trace_net_image_visual_evidence_record_v1",
+      "source_link_record_id": "visual_callout_link_v2_00006",
+      "source_trace": {
+        "callout": "",
+        "figure": "69",
+        "page_id": "t_p_120_1176_p000315",
+        "page_number": 315,
+        "source_link_record_id": "visual_callout_link_v2_00006",
+        "source_module": "trace_net_visual_callout_table_linker_v2"
+      },
+      "source_trace_ready": true,
+      "source_truth_mutation_allowed": false,
+      "visual_role": "linked_figure",
+      "visual_source": "llava_plus_ocr_extractor"
+    }
+  ],
+  "stages": [
+    {
+      "stage": "image_visual_evidence_pack",
+      "status": "TRACE_NET_IMAGE_VISUAL_EVIDENCE_PACK_BUILT",
+      "quality_status": "PASS"
+    },
+    {
+      "stage": "image_diagram_fast_answer_adapter",
+      "status": "TRACE_NET_IMAGE_ROUTE_FAST_CHAT_ADAPTER_BUILT",
+      "quality_status": "PASS"
+    },
+    {
+      "stage": "image_route_quality_contract",
+      "webui_answer_ready": true
+    }
+  ],
+  "summary": {
+    "route_type": "image_or_diagram",
+    "stage_count": 3,
+    "selected_evidence_record_count": 1,
+    "linked_selected_evidence_count": 1,
+    "citation_count": 1,
+    "linked_citation_count": 1,
+    "source_trace_ready_citation_count": 1,
+    "unsupported_claim_count": 0,
+    "llava_only_part_identity_claim_count": 0,
+    "unsafe_record_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "write_attempt_count": 0,
+    "webui_answer_ready": true,
+    "requested_figure": "69",
+    "requested_callout": ""
+  },
+  "checks": {
+    "citation_count_min_met": true,
+    "source_trace_ready_citation_min_met": true,
+    "unsupported_claim_max_met": true,
+    "llava_only_part_identity_claim_max_met": true,
+    "unsafe_max_met": true,
+    "answer_permission_max_met": true,
+    "source_truth_mutation_allowed_max_met": true,
+    "write_attempt_max_met": true,
+    "linked_visual_evidence_present": true,
+    "webui_answer_ready_required_met": true
+  },
+  "safety_contract": {
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "opensearch_write_attempt": false,
+    "opensearch_upload_attempt": false,
+    "source_truth_mutation_allowed": false,
+    "answer_permission": false,
+    "llava_is_proof": false,
+    "visual_answer_requires_linked_proof": true
+  },
+  "paths": {
+    "adapter": "local_data\\organization\\trace_net\\fast_chat_runner_image_route_v1\\image_route_fast_chat_adapter\\trace_net_image_route_fast_chat_adapter_v1.json",
+    "question_adapter": "local_data\\organization\\trace_net\\fast_chat_runner_image_route_v1\\image_route_fast_chat_adapter\\trace_net_image_route_fast_chat_adapter_v1_what_does_figure_69_show_3cdcd067.json"
+  }
+}

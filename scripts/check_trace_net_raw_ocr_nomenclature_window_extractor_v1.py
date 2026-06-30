@@ -1,0 +1,45 @@
+from pathlib import Path
+import sys
+
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+import argparse
+from tiff.trace_net_raw_ocr_nomenclature_window_extractor_v1 import check_extractor
+
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument("--extractor", required=True)
+    p.add_argument("--output", required=True)
+    p.add_argument("--require-quality-pass", action="store_true")
+    p.add_argument("--min-linked-visual-parts", type=int, default=1)
+    p.add_argument("--min-nomenclature-selected", type=int, default=1)
+    p.add_argument("--min-source-trace-ready", type=int, default=1)
+    p.add_argument("--max-unsafe", type=int, default=0)
+    p.add_argument("--max-answer-permission", type=int, default=0)
+    p.add_argument("--max-source-truth-mutation-allowed", type=int, default=0)
+    p.add_argument("--max-write-attempts", type=int, default=0)
+    args = p.parse_args()
+    result = check_extractor(
+        extractor=args.extractor,
+        output=args.output,
+        require_quality_pass=args.require_quality_pass,
+        min_linked_visual_parts=args.min_linked_visual_parts,
+        min_nomenclature_selected=args.min_nomenclature_selected,
+        min_source_trace_ready=args.min_source_trace_ready,
+        max_unsafe=args.max_unsafe,
+        max_answer_permission=args.max_answer_permission,
+        max_source_truth_mutation_allowed=args.max_source_truth_mutation_allowed,
+        max_write_attempts=args.max_write_attempts,
+    )
+    s = result.get("summary", {})
+    print(f"status={result['status']}")
+    print(f"quality_status={result['quality_status']}")
+    for k in ["linked_visual_part_count", "nomenclature_selected_count", "source_trace_ready_count", "unsafe_record_count", "answer_permission_count", "source_truth_mutation_allowed_count", "write_attempt_count"]:
+        print(f"{k}={s.get(k)}")
+    return 0 if result["quality_status"] == "PASS" else 1
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,75 @@
+{
+  "checks": [
+    {
+      "expected": "PASS",
+      "name": "artifact_quality_pass",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "min_extractor_records",
+      "observed": 21,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "min_ocr_text_available",
+      "observed": 21,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "min_figure_candidate_records",
+      "observed": 5,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "min_source_trace_ready",
+      "observed": 21,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "max_unsafe",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "max_answer_permission",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "max_source_truth_mutation_allowed",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "max_write_attempts",
+      "observed": 0,
+      "passed": true
+    }
+  ],
+  "created_at_utc": "2026-06-29T18:32:38+00:00",
+  "input_extractor": "local_data/organization/trace_net/image_ocr_figure_callout_extractor_v1/trace_net_image_ocr_figure_callout_extractor_v1.json",
+  "module_name": "trace_net_image_ocr_figure_callout_extractor_v1_check",
+  "quality_status": "PASS",
+  "status": "TRACE_NET_IMAGE_OCR_FIGURE_CALLOUT_EXTRACTOR_QUALITY_CHECKED",
+  "summary": {
+    "answer_permission_count": 0,
+    "callout_candidate_record_count": 0,
+    "extractor_record_count": 21,
+    "figure_candidate_record_count": 5,
+    "ocr_text_available_count": 21,
+    "ready_for_visual_linker_v2": true,
+    "source_trace_ready_count": 21,
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0,
+    "write_attempt_count": 0
+  }
+}
