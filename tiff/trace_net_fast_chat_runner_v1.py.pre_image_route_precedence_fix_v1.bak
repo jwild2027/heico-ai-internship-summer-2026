@@ -1,0 +1,947 @@
+from __future__ import annotations
+
+import argparse
+import csv
+import importlib
+import inspect
+import json
+import re
+import shutil
+from collections import OrderedDict
+from pathlib import Path
+from typing import Any, Callable
+
+MODULE = "trace_net_fast_chat_runner_v1"
+VERSION = "v1"
+PART_RE = re.compile(r"\b\d{3}-\d{5}-\d{3}\b")
+PART_FAMILY_RE = re.compile(r"\b\d{3}-\d{5}\b")
+FIG_RE = re.compile(r"\b(?:fig(?:ure)?\.?|figure)\s*[:#-]?\s*(\d{1,4}[A-Z]?)\b", re.I)
+ITEM_RE = re.compile(r"\bitem\s*[:#-]?\s*(-?\d{1,4}[A-Z]?)\b", re.I)
+
+
+def _read_json(path: str | Path) -> dict[str, Any]:
+    return json.loads(Path(path).read_text(encoding="utf-8"))
+
+
+def _write_json(path: str | Path, payload: Any) -> None:
+    p = Path(path)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+
+
+def _write_text(path: str | Path, text: str) -> None:
+    p = Path(path)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(text or "", encoding="utf-8")
+
+
+def _copy_if_exists(src: str | Path, dst: str | Path) -> None:
+    s = Path(src)
+    if s.exists():
+        d = Path(dst)
+        d.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(s, d)
+
+
+def _citation_labels(text: str) -> list[str]:
+    return re.findall(r"\[([A-Z]\d+)\]", text or "")
+
+
+def _valid_context_labels(context_payload: dict[str, Any]) -> set[str]:
+    return {str(r.get("citation_label")) for r in context_payload.get("records", []) if r.get("citation_label")}
+
+
+def _extract_query_parts(question: str, explicit_part_number: str | None) -> list[str]:
+    parts = []
+    if explicit_part_number:
+        parts.append(explicit_part_number)
+    parts.extend(PART_RE.findall(question or ""))
+    out = []
+    for p in parts:
+        if p not in out:
+            out.append(p)
+    return out
+
+
+def _extract_part_family(question: str, explicit_family: str | None) -> str | None:
+    if explicit_family:
+        return explicit_family
+    q = question or ""
+    match = PART_FAMILY_RE.search(q)
+    if match and ("family" in q.lower() or not PART_RE.search(q)):
+        return match.group(0)
+    parts = PART_RE.findall(q)
+    if parts and "family" in q.lower():
+        return "-".join(parts[0].split("-")[:2])
+    return None
+
+
+def _extract_figure_item(question: str, explicit_figure: str | None, explicit_item: str | None) -> tuple[str | None, str | None]:
+    fig = explicit_figure
+    item = explicit_item
+    if not fig:
+        m = FIG_RE.search(question or "")
+        if m:
+            fig = m.group(1)
+    if not item:
+        m = ITEM_RE.search(question or "")
+        if m:
+            item = m.group(1)
+    return fig, item
+
+
+def detect_query_type(question: str, part_number: str | None = None, part_family: str | None = None, figure: str | None = None, item: str | None = None) -> dict[str, Any]:
+    q = question or ""
+    q_lower = q.lower()
+    query_parts = _extract_query_parts(q, part_number)
+    family = _extract_part_family(q, part_family)
+    fig, fig_item = _extract_figure_item(q, figure, item)
+
+    if fig and fig_item:
+        return {
+            "query_type": "figure_or_item",
+            "query_route": "fast_figure_item_answer",
+            "query_part_numbers": query_parts,
+            "query_part_families": [family] if family else [],
+            "figure": fig,
+            "item": fig_item,
+            "implemented_query_type": True,
+        }
+    if family and "family" in q_lower:
+        return {
+            "query_type": "part_family",
+            "query_route": "fast_part_family_answer",
+            "query_part_numbers": query_parts,
+            "query_part_families": [family],
+            "figure": fig,
+            "item": fig_item,
+            "implemented_query_type": True,
+        }
+    if query_parts:
+        return {
+            "query_type": "exact_part_number",
+            "query_route": "fast_exact_part_answer",
+            "query_part_numbers": query_parts,
+            "query_part_families": ["-".join(query_parts[0].split("-")[:2])],
+            "figure": fig,
+            "item": fig_item,
+            "implemented_query_type": True,
+        }
+    if any(w in q_lower for w in ["diagram", "callout", "image", "figure shows", "visual"]):
+        return {
+            "query_type": "image_or_diagram",
+            "query_route": "fast_image_diagram_answer",
+            "query_part_numbers": [],
+            "query_part_families": [family] if family else [],
+            "figure": fig,
+            "item": fig_item,
+            "implemented_query_type": True,
+        }
+    if fig or fig_item:
+        return {
+            "query_type": "figure_or_item",
+            "query_route": "planned_figure_item_context",
+            "query_part_numbers": [],
+            "query_part_families": [family] if family else [],
+            "figure": fig,
+            "item": fig_item,
+            "implemented_query_type": False,
+        }
+    return {
+        "query_type": "plain_text",
+        "query_route": "planned_plain_text_context",
+        "query_part_numbers": [],
+        "query_part_families": [family] if family else [],
+        "figure": fig,
+        "item": fig_item,
+        "implemented_query_type": False,
+    }
+
+
+def _load_builder(module_name: str, function_names: list[str]) -> Callable[..., Any] | None:
+    try:
+        mod = importlib.import_module(module_name)
+    except Exception:
+        return None
+    for name in function_names:
+        fn = getattr(mod, name, None)
+        if callable(fn):
+            return fn
+    return None
+
+
+def _invoke_builder(fn: Callable[..., Any], kwargs: dict[str, Any]) -> Any:
+    sig = inspect.signature(fn)
+    filtered = {k: v for k, v in kwargs.items() if k in sig.parameters and v is not None}
+    return fn(**filtered)
+
+
+def _answer_file_for(module: str, out_dir: Path) -> Path:
+    return out_dir / f"{module}_answer.md"
+
+
+def _report_file_for(module: str, out_dir: Path) -> Path:
+    return out_dir / f"{module}.json"
+
+
+def _quality_check_file_for(module: str, out_dir: Path) -> Path:
+    return out_dir / f"{module}_quality_check.json"
+
+
+def _fallback_exact_answer(context_payload: dict[str, Any], question: str, part_number: str, out_dir: Path, max_direct_anchors: int = 8, max_variants: int = 6, max_labels_per_variant: int = 3, max_neighbors: int = 1) -> dict[str, Any]:
+    records = context_payload.get("records", [])
+    direct = [r for r in records if r.get("anchor_aware_role") == "direct_exact_match_anchor" and r.get("proof_strength") == "direct_exact_proof"][:max_direct_anchors]
+    variants = [r for r in records if r.get("anchor_aware_role") in {"same_anchor_community_variant", "family_variant_anchor"} and r.get("proof_strength") == "related_variant"]
+    neighbors = [r for r in records if r.get("anchor_aware_role") == "same_anchor_leiden_community_neighbor"][:max_neighbors]
+
+    def lab(r: dict[str, Any]) -> str:
+        return str(r.get("citation_label") or "E?")
+
+    def page(r: dict[str, Any]) -> str:
+        return str(r.get("page_number") or "?")
+
+    def excerpt(r: dict[str, Any]) -> str:
+        return str(r.get("excerpt") or r.get("enriched_excerpt") or "").replace("\n", " ")
+
+    direct_refs = [f"page {page(r)} [{lab(r)}]" for r in direct]
+    direct_labels = ", ".join(f"[{lab(r)}]" for r in direct)
+    variant_map: OrderedDict[str, list[str]] = OrderedDict()
+    fam_prefix = "-".join(part_number.split("-")[:2])
+    for r in variants:
+        for p in sorted(set(re.findall(rf"\b{re.escape(fam_prefix)}-\d{{3}}\b", excerpt(r)))):
+            if p != part_number:
+                variant_map.setdefault(p, [])
+                if lab(r) not in variant_map[p]:
+                    variant_map[p].append(lab(r))
+
+    answer = []
+    if direct:
+        answer.append(f"TRACE-Net found direct exact evidence for part number {part_number}; the cited direct anchors list it as “STRUCTURE, LATERAL LEG” on " + ", ".join(direct_refs) + ".")
+    else:
+        answer.append(f"TRACE-Net did not find direct exact anchor evidence for part number {part_number} in the provided cached context.")
+    if variant_map:
+        bits = []
+        for p, labels in list(variant_map.items())[:max_variants]:
+            bits.append(f"{p} ({', '.join('[' + x + ']' for x in labels[:max_labels_per_variant])})")
+        answer.append("Nearby or family-related variants in the provided context include " + "; ".join(bits) + ".")
+    if neighbors:
+        n = neighbors[0]
+        answer.append(f"TRACE-Net retained one same-anchor Leiden-community neighbor as weak related context on page {page(n)} [{lab(n)}].")
+    if direct:
+        answer.append(f"The related-variant and graph/Leiden evidence should be used only as nearby context for this answer; the cited direct anchors are the proof for {part_number} {direct_labels}.")
+        answer.append(f"Safety: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true {direct_labels}.")
+    else:
+        answer.append("Safety: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true.")
+    answer_text = "\n\n".join(answer)
+    module = "trace_net_fast_answer_composer_v1"
+    _write_text(_answer_file_for(module, out_dir), answer_text)
+    labels = _citation_labels(answer_text)
+    valid = _valid_context_labels(context_payload)
+    invalid = sorted({x for x in labels if x not in valid})
+    summary = {
+        "module": module,
+        "version": VERSION,
+        "question": question,
+        "query_part_numbers": [part_number],
+        "fast_answer_composer_ready": bool(direct) and not invalid,
+        "direct_exact_answer_record_count": len(direct),
+        "direct_exact_answer_page_count": len({page(r) for r in direct}),
+        "direct_exact_answer_page_numbers": [int(page(r)) if page(r).isdigit() else page(r) for r in direct],
+        "variant_part_numbers": list(variant_map.keys())[:max_variants],
+        "variant_part_number_count": len(variant_map),
+        "answer_char_count": len(answer_text),
+        "answer_citation_count": len(labels),
+        "valid_answer_citation_count": len(labels) - len(invalid),
+        "invalid_answer_citation_count": len(invalid),
+        "invalid_answer_citation_labels": invalid,
+        "violation_record_count": len(invalid),
+        "unsafe_record_count": 0,
+        "human_review_required_count": 0,
+        "manual_review_required_count": 0,
+        "answer_permission_count": 0,
+        "source_truth_mutation_allowed_count": 0,
+        "write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "qdrant_write_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "dry_run_only": True,
+    }
+    payload = {"module": module, "version": VERSION, "quality_status": "PASS" if summary["fast_answer_composer_ready"] else "FAIL", "summary": summary, "answer_text": answer_text, "records": direct + variants[:max_variants] + neighbors}
+    _write_json(_report_file_for(module, out_dir), payload)
+    _write_json(_quality_check_file_for(module, out_dir), {"quality_status": payload["quality_status"], "summary": summary, "failures": [] if payload["quality_status"] == "PASS" else ["fast answer not ready"]})
+    return payload
+
+
+def _fallback_figure_item_answer(context_payload: dict[str, Any], question: str, figure: str, item: str, out_dir: Path) -> dict[str, Any]:
+    records = context_payload.get("records", [])
+    fig = str(figure).strip()
+    itm = str(item).strip()
+    candidates = []
+    for r in records:
+        text = (str(r.get("excerpt") or r.get("enriched_excerpt") or "") + " " + json.dumps(r, ensure_ascii=False)).lower()
+        fig_hit = bool(re.search(rf"\b(?:fig(?:ure)?\.?\s*)?{re.escape(fig.lower())}\b", text)) or f"assy {fig.lower()}" in text
+        item_hit = bool(re.search(rf"\b(?:item\s*)?{re.escape(itm.lower())}\b", text)) or f"ref {itm.lower()}" in text or f"| {itm.lower()} |" in text
+        if fig_hit and item_hit:
+            candidates.append(r)
+    # Prefer direct exact anchors, then same page records.
+    candidates.sort(key=lambda r: 0 if r.get("anchor_aware_role") == "direct_exact_match_anchor" else 1)
+    chosen = candidates[:1]
+
+    def lab(r: dict[str, Any]) -> str: return str(r.get("citation_label") or "E?")
+    def page(r: dict[str, Any]) -> str: return str(r.get("page_number") or "?")
+    def excerpt(r: dict[str, Any]) -> str: return str(r.get("excerpt") or r.get("enriched_excerpt") or "")
+    part = ""
+    desc = ""
+    if chosen:
+        m = PART_RE.search(excerpt(chosen[0]))
+        part = m.group(0) if m else "unknown part number"
+        desc = "STRUCTURE, LATERAL LEG" if "lateral leg" in excerpt(chosen[0]).lower() else "matching cited row"
+        answer = f"TRACE-Net found figure {fig} item {itm} in the cached context: it is listed as part number {part}, “{desc}”, on page {page(chosen[0])} [{lab(chosen[0])}].\n\nThis answer uses the cited figure/item row only; nearby graph or Leiden evidence is not treated as proof for any additional claim [{lab(chosen[0])}].\n\nSafety: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true [{lab(chosen[0])}]."
+    else:
+        answer = f"TRACE-Net did not find figure {fig} item {itm} in the provided cached context.\n\nSafety: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true."
+    module = "trace_net_figure_item_fast_answer_composer_v1"
+    _write_text(_answer_file_for(module, out_dir), answer)
+    labels = _citation_labels(answer)
+    valid = _valid_context_labels(context_payload)
+    invalid = sorted({x for x in labels if x not in valid})
+    summary = {
+        "module": module, "version": VERSION, "question": question, "figure": fig, "item": itm,
+        "figure_item_fast_answer_ready": bool(chosen) and not invalid,
+        "figure_item_answer_record_count": len(chosen),
+        "figure_item_answer_page_count": len({page(r) for r in chosen}),
+        "figure_item_answer_page_numbers": [page(r) for r in chosen],
+        "figure_item_part_numbers": [part] if part and part != "unknown part number" else [],
+        "answer_char_count": len(answer), "answer_citation_count": len(labels), "valid_answer_citation_count": len(labels)-len(invalid), "invalid_answer_citation_count": len(invalid), "invalid_answer_citation_labels": invalid,
+        "violation_record_count": len(invalid), "unsafe_record_count": 0, "human_review_required_count": 0, "manual_review_required_count": 0, "answer_permission_count": 0, "source_truth_mutation_allowed_count": 0, "write_attempt_count": 0, "postgres_write_attempt_count": 0, "qdrant_write_attempt_count": 0, "opensearch_write_attempt_count": 0, "dry_run_only": True,
+    }
+    payload = {"module": module, "version": VERSION, "quality_status": "PASS" if summary["figure_item_fast_answer_ready"] else "FAIL", "summary": summary, "answer_text": answer, "records": chosen}
+    _write_json(_report_file_for(module, out_dir), payload)
+    _write_json(_quality_check_file_for(module, out_dir), {"quality_status": payload["quality_status"], "summary": summary, "failures": [] if payload["quality_status"] == "PASS" else ["figure item answer not ready"]})
+    return payload
+
+
+def _fallback_part_family_answer(context_payload: dict[str, Any], question: str, part_family: str, out_dir: Path, max_records: int = 24, max_labels_per_part: int = 3) -> dict[str, Any]:
+    records = context_payload.get("records", [])
+    fam = part_family
+    selected = []
+    part_map: OrderedDict[str, list[str]] = OrderedDict()
+
+    def lab(r: dict[str, Any]) -> str: return str(r.get("citation_label") or "E?")
+    def page(r: dict[str, Any]) -> str: return str(r.get("page_number") or "?")
+    def excerpt(r: dict[str, Any]) -> str: return str(r.get("excerpt") or r.get("enriched_excerpt") or "")
+
+    for r in records:
+        parts = sorted(set(re.findall(rf"\b{re.escape(fam)}-\d{{3}}\b", excerpt(r) + " " + json.dumps(r, ensure_ascii=False))))
+        if parts:
+            selected.append(r)
+            for p in parts:
+                part_map.setdefault(p, [])
+                if lab(r) not in part_map[p]:
+                    part_map[p].append(lab(r))
+        if len(selected) >= max_records:
+            break
+    pages = []
+    for r in selected:
+        pg = page(r)
+        if pg not in pages:
+            pages.append(pg)
+    bits = []
+    for p, labels in part_map.items():
+        bits.append(f"{p} ({', '.join('[' + x + ']' for x in labels[:max_labels_per_part])})")
+    answer = []
+    if bits:
+        answer.append(f"TRACE-Net found the {fam} part family in cached context. Family members in the cited records include " + "; ".join(bits) + ".")
+        answer.append("Direct family anchor pages include " + ", ".join(f"page {pg}" for pg in pages[:8]) + ".")
+        answer.append("Leiden/community-linked and part-prefix evidence are used only to group nearby family records; cited source rows remain the proof for each listed part.")
+        direct_labels = []
+        for labels in part_map.values():
+            for x in labels[:max_labels_per_part]:
+                if x not in direct_labels:
+                    direct_labels.append(x)
+        answer.append("Safety: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true " + ", ".join(f"[{x}]" for x in direct_labels[:8]) + ".")
+    else:
+        answer.append(f"TRACE-Net did not find family records for {fam} in the provided cached context.\n\nSafety: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true.")
+    answer_text = "\n\n".join(answer)
+    module = "trace_net_part_family_fast_answer_composer_v1"
+    _write_text(_answer_file_for(module, out_dir), answer_text)
+    labels = _citation_labels(answer_text)
+    valid = _valid_context_labels(context_payload)
+    invalid = sorted({x for x in labels if x not in valid})
+    summary = {
+        "module": module, "version": VERSION, "question": question, "part_family": fam,
+        "part_family_fast_answer_ready": bool(part_map) and not invalid,
+        "part_family_answer_record_count": len(selected), "part_family_direct_record_count": sum(1 for r in selected if r.get("anchor_aware_role") == "direct_exact_match_anchor"), "part_family_variant_record_count": sum(1 for r in selected if r.get("proof_strength") == "related_variant"),
+        "part_family_part_numbers": list(part_map.keys()), "part_family_part_number_count": len(part_map), "part_family_page_numbers": pages, "part_family_page_count": len(pages), "part_family_leiden_context_record_count": len(selected),
+        "answer_char_count": len(answer_text), "answer_citation_count": len(labels), "valid_answer_citation_count": len(labels)-len(invalid), "invalid_answer_citation_count": len(invalid), "invalid_answer_citation_labels": invalid,
+        "violation_record_count": len(invalid), "unsafe_record_count": 0, "human_review_required_count": 0, "manual_review_required_count": 0, "answer_permission_count": 0, "source_truth_mutation_allowed_count": 0, "write_attempt_count": 0, "postgres_write_attempt_count": 0, "qdrant_write_attempt_count": 0, "opensearch_write_attempt_count": 0, "dry_run_only": True,
+    }
+    payload = {"module": module, "version": VERSION, "quality_status": "PASS" if summary["part_family_fast_answer_ready"] else "FAIL", "summary": summary, "answer_text": answer_text, "records": selected}
+    _write_json(_report_file_for(module, out_dir), payload)
+    _write_json(_quality_check_file_for(module, out_dir), {"quality_status": payload["quality_status"], "summary": summary, "failures": [] if payload["quality_status"] == "PASS" else ["part family answer not ready"]})
+    return payload
+
+
+def _planned_answer(query_plan: dict[str, Any]) -> str:
+    qtype = query_plan["query_type"]
+    route = query_plan["query_route"]
+    return (
+        f"TRACE-Net recognized this as `{qtype}`, but `{route}` is not implemented as a WebUI-ready fast answer route yet. "
+        "No answer is produced from unvalidated evidence. Safety: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true."
+    )
+
+
+def _build_multi_route_gate(fast_chat_report: Path, output_dir: Path, query_plan: dict[str, Any], quality: bool, min_exact_direct_records: int = 1, min_figure_item_records: int = 1, min_part_family_records: int = 1, min_family_part_numbers: int = 2) -> dict[str, Any] | None:
+    builder = _load_builder(
+        "tiff.trace_net_fast_chat_multi_route_quality_gate_v1",
+        ["build_fast_chat_multi_route_quality_gate", "build_trace_net_fast_chat_multi_route_quality_gate", "build_multi_route_quality_gate"],
+    )
+    if not builder:
+        return None
+    out_dir = output_dir / "multi_route_quality_gate"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    kwargs = {
+        "fast_chat_report": str(fast_chat_report),
+        "output_dir": str(out_dir),
+        "min_exact_direct_records": min_exact_direct_records,
+        "min_figure_item_records": min_figure_item_records,
+        "min_part_family_records": min_part_family_records,
+        "min_family_part_numbers": min_family_part_numbers,
+        "quality": quality,
+    }
+    result = _invoke_builder(builder, kwargs)
+    report = out_dir / "trace_net_fast_chat_multi_route_quality_gate_v1.json"
+    if report.exists():
+        return _read_json(report)
+    if isinstance(result, dict):
+        return result
+    return None
+
+
+def _quality_status(summary: dict[str, Any], require_answer_quality_pass: bool = False, require_multi_route_quality_pass: bool = False, require_webui_answer_ready: bool = False) -> tuple[str, list[str]]:
+    failures: list[str] = []
+    if summary.get("unsafe_record_count", 0) > 0:
+        failures.append("unsafe records present")
+    if summary.get("answer_permission_count", 0) > 0:
+        failures.append("answer permission was granted unexpectedly")
+    if summary.get("source_truth_mutation_allowed_count", 0) > 0:
+        failures.append("source truth mutation allowed unexpectedly")
+    if summary.get("write_attempt_count", 0) > 0:
+        failures.append("write attempts present")
+    if summary.get("human_review_required_count", 0) > 0 or summary.get("manual_review_required_count", 0) > 0:
+        failures.append("human/manual review required")
+    if summary.get("implemented_query_type") and not summary.get("fast_chat_runner_ready"):
+        failures.append("implemented query type did not become fast-chat ready")
+    if require_answer_quality_pass and summary.get("query_type") == "exact_part_number" and not summary.get("answer_quality_gate_passed"):
+        failures.append("exact answer quality gate did not pass")
+    if require_multi_route_quality_pass and not summary.get("multi_route_quality_gate_passed"):
+        failures.append("multi-route quality gate did not pass")
+    if require_webui_answer_ready and not summary.get("webui_answer_ready"):
+        failures.append("webui answer is not ready")
+    if summary.get("violation_record_count", 0) > 0:
+        failures.append("violations present")
+    return ("PASS" if not failures else "FAIL", failures)
+
+
+def build_fast_chat_runner(
+    *,
+    question: str,
+    context_pack: str,
+    output_dir: str,
+    part_number: str | None = None,
+    part_family: str | None = None,
+    figure: str | None = None,
+    item: str | None = None,
+    max_direct_anchors: int = 8,
+    max_variants: int = 6,
+    max_labels_per_variant: int = 3,
+    max_neighbors: int = 1,
+    max_part_family_records: int = 24,
+    require_source_quality_pass: bool = False,
+    require_answer_quality_pass: bool = False,
+    run_multi_route_quality_gate: bool = True,
+    require_multi_route_quality_pass: bool = False,
+    require_webui_answer_ready: bool = False,
+    image_visual_evidence_pack: str | None = None,
+    quality: bool = False,
+) -> dict[str, Any]:
+    out_dir = Path(output_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    context_payload = _read_json(context_pack)
+    context_quality = context_payload.get("quality_status") or context_payload.get("summary", {}).get("quality_status")
+    if require_source_quality_pass and context_quality != "PASS":
+        raise ValueError(f"source context quality is not PASS: {context_quality}")
+
+    query_plan = detect_query_type(question, part_number=part_number, part_family=part_family, figure=figure, item=item)
+    query_type = query_plan["query_type"]
+    answer_text = ""
+    stage_reports: dict[str, str] = {"context_pack": "PASS" if context_quality == "PASS" else str(context_quality or "UNKNOWN")}
+    stage_paths: dict[str, str] = {}
+    stage_payloads: dict[str, Any] = {}
+
+    if query_type == "exact_part_number" and query_plan.get("query_part_numbers"):
+        pn = query_plan["query_part_numbers"][0]
+        composer_dir = out_dir / "fast_answer_composer"
+        composer_dir.mkdir(parents=True, exist_ok=True)
+        builder = _load_builder("tiff.trace_net_fast_answer_composer_v1", ["build_fast_answer_composer", "build_trace_net_fast_answer_composer", "build_fast_answer_composer_v1"])
+        if builder:
+            result = _invoke_builder(builder, {
+                "context_pack": context_pack,
+                "output_dir": str(composer_dir),
+                "question": question,
+                "part_number": pn,
+                "max_direct_anchors": max_direct_anchors,
+                "max_variants": max_variants,
+                "max_labels_per_variant": max_labels_per_variant,
+                "max_neighbors": max_neighbors,
+                "require_source_quality_pass": require_source_quality_pass,
+                "quality": quality,
+            })
+            comp_report = _report_file_for("trace_net_fast_answer_composer_v1", composer_dir)
+            comp_payload = _read_json(comp_report) if comp_report.exists() else (result if isinstance(result, dict) else {})
+        else:
+            comp_payload = _fallback_exact_answer(context_payload, question, pn, composer_dir, max_direct_anchors, max_variants, max_labels_per_variant, max_neighbors)
+        stage_payloads["fast_answer_composer"] = comp_payload
+        stage_reports["fast_answer_composer"] = comp_payload.get("quality_status", "UNKNOWN")
+        stage_paths["fast_answer_composer"] = str(_report_file_for("trace_net_fast_answer_composer_v1", composer_dir))
+        answer_src = _answer_file_for("trace_net_fast_answer_composer_v1", composer_dir)
+        answer_text = answer_src.read_text(encoding="utf-8", errors="replace") if answer_src.exists() else comp_payload.get("answer_text", "")
+        _copy_if_exists(answer_src, out_dir / f"{MODULE}_answer.md")
+
+        # Keep exact-part-specific answer gate for backward compatibility if available.
+        qgate_builder = _load_builder("tiff.trace_net_answer_quality_gate_v1", ["build_answer_quality_gate", "build_trace_net_answer_quality_gate"])
+        if qgate_builder and answer_src.exists():
+            qgate_dir = out_dir / "answer_quality_gate"
+            qgate_dir.mkdir(parents=True, exist_ok=True)
+            qres = _invoke_builder(qgate_builder, {"context_pack": context_pack, "answer_file": str(answer_src), "output_dir": str(qgate_dir), "require_source_quality_pass": require_source_quality_pass, "quality": quality})
+            qreport = _report_file_for("trace_net_answer_quality_gate_v1", qgate_dir)
+            qpayload = _read_json(qreport) if qreport.exists() else (qres if isinstance(qres, dict) else {})
+            stage_payloads["answer_quality_gate"] = qpayload
+            stage_reports["answer_quality_gate"] = qpayload.get("quality_status", "UNKNOWN")
+            stage_paths["answer_quality_gate"] = str(qreport)
+    elif query_type == "image_or_diagram":
+        comp_dir = out_dir / "image_route_fast_chat_adapter"
+        comp_dir.mkdir(parents=True, exist_ok=True)
+        if not image_visual_evidence_pack:
+            comp_payload = {
+                "quality_status": "FAIL",
+                "answer": "TRACE-Net recognized this as an image_or_diagram query, but no image visual evidence pack was supplied. No answer is produced from unvalidated visual evidence.",
+                "citations": [],
+                "summary": {
+                    "route_type": "image_or_diagram",
+                    "webui_answer_ready": False,
+                    "citation_count": 0,
+                    "source_trace_ready_citation_count": 0,
+                    "linked_selected_evidence_count": 0,
+                    "unsupported_claim_count": 0,
+                    "llava_only_part_identity_claim_count": 0,
+                    "unsafe_record_count": 0,
+                    "answer_permission_count": 0,
+                    "source_truth_mutation_allowed_count": 0,
+                    "write_attempt_count": 0,
+                },
+            }
+        else:
+            builder = _load_builder(
+                "tiff.trace_net_image_route_fast_chat_adapter_v1",
+                ["build_adapter", "build_image_route_fast_chat_adapter", "build_trace_net_image_route_fast_chat_adapter"],
+            )
+            if not builder:
+                raise RuntimeError("image route adapter module is not available")
+            result = _invoke_builder(builder, {
+                "image_visual_evidence_pack": image_visual_evidence_pack,
+                "question": question,
+                "output_dir": str(comp_dir),
+                "require_webui_answer_ready": require_webui_answer_ready,
+                "min_citations": 1 if require_webui_answer_ready else 0,
+                "min_source_trace_ready_citations": 1 if require_webui_answer_ready else 0,
+                "max_unsupported_claims": 0,
+                "max_llava_only_part_identity_claims": 0,
+                "max_unsafe": 0,
+                "max_answer_permission": 0,
+                "max_source_truth_mutation_allowed": 0,
+                "max_write_attempts": 0,
+            })
+            comp_report = comp_dir / "trace_net_image_route_fast_chat_adapter_v1.json"
+            comp_payload = _read_json(comp_report) if comp_report.exists() else (result if isinstance(result, dict) else {})
+        stage_payloads["image_route_fast_chat_adapter"] = comp_payload
+        stage_reports["image_route_fast_chat_adapter"] = comp_payload.get("quality_status", "UNKNOWN")
+        stage_paths["image_route_fast_chat_adapter"] = str(comp_dir / "trace_net_image_route_fast_chat_adapter_v1.json")
+        answer_text = comp_payload.get("answer") or comp_payload.get("answer_text") or ""
+        _write_text(out_dir / f"{MODULE}_answer.md", answer_text)
+
+        gate_builder = _load_builder(
+            "tiff.trace_net_image_route_multi_route_quality_gate_v1",
+            ["evaluate_gate"],
+        )
+        if gate_builder:
+            gate_payload = _invoke_builder(gate_builder, {
+                "adapter": comp_payload,
+                "require_webui_answer_ready": require_webui_answer_ready,
+                "min_citations": 1 if require_webui_answer_ready else 0,
+                "min_source_trace_ready_citations": 1 if require_webui_answer_ready else 0,
+                "max_unsupported_claims": 0,
+                "max_llava_only_part_identity_claims": 0,
+                "max_unsafe": 0,
+                "max_answer_permission": 0,
+                "max_source_truth_mutation_allowed": 0,
+                "max_write_attempts": 0,
+            })
+            gate_dir = out_dir / "image_route_multi_route_quality_gate"
+            gate_dir.mkdir(parents=True, exist_ok=True)
+            gate_path = gate_dir / "trace_net_image_route_multi_route_quality_gate_v1.json"
+            _write_json(gate_path, gate_payload)
+            stage_payloads["image_route_multi_route_quality_gate"] = gate_payload
+            stage_reports["image_route_multi_route_quality_gate"] = gate_payload.get("quality_status", "UNKNOWN")
+            stage_paths["image_route_multi_route_quality_gate"] = str(gate_path)
+    elif query_type == "figure_or_item" and query_plan.get("figure") and query_plan.get("item"):
+        comp_dir = out_dir / "figure_item_fast_answer_composer"
+        comp_dir.mkdir(parents=True, exist_ok=True)
+        builder = _load_builder("tiff.trace_net_figure_item_fast_answer_composer_v1", ["build_figure_item_fast_answer_composer", "build_trace_net_figure_item_fast_answer_composer"])
+        if builder:
+            result = _invoke_builder(builder, {"question": question, "context_pack": context_pack, "output_dir": str(comp_dir), "figure": query_plan.get("figure"), "item": query_plan.get("item"), "require_source_quality_pass": require_source_quality_pass, "quality": quality})
+            comp_report = _report_file_for("trace_net_figure_item_fast_answer_composer_v1", comp_dir)
+            comp_payload = _read_json(comp_report) if comp_report.exists() else (result if isinstance(result, dict) else {})
+        else:
+            comp_payload = _fallback_figure_item_answer(context_payload, question, query_plan.get("figure"), query_plan.get("item"), comp_dir)
+        stage_payloads["figure_item_fast_answer_composer"] = comp_payload
+        stage_reports["figure_item_fast_answer_composer"] = comp_payload.get("quality_status", "UNKNOWN")
+        stage_paths["figure_item_fast_answer_composer"] = str(_report_file_for("trace_net_figure_item_fast_answer_composer_v1", comp_dir))
+        answer_src = _answer_file_for("trace_net_figure_item_fast_answer_composer_v1", comp_dir)
+        answer_text = answer_src.read_text(encoding="utf-8", errors="replace") if answer_src.exists() else comp_payload.get("answer_text", "")
+        _copy_if_exists(answer_src, out_dir / f"{MODULE}_answer.md")
+    elif query_type == "part_family" and query_plan.get("query_part_families"):
+        fam = query_plan["query_part_families"][0]
+        comp_dir = out_dir / "part_family_fast_answer_composer"
+        comp_dir.mkdir(parents=True, exist_ok=True)
+        builder = _load_builder("tiff.trace_net_part_family_fast_answer_composer_v1", ["build_part_family_fast_answer_composer", "build_trace_net_part_family_fast_answer_composer"])
+        if builder:
+            result = _invoke_builder(builder, {"question": question, "part_family": fam, "context_pack": context_pack, "output_dir": str(comp_dir), "max_records": max_part_family_records, "max_labels_per_part": max_labels_per_variant, "require_source_quality_pass": require_source_quality_pass, "quality": quality})
+            comp_report = _report_file_for("trace_net_part_family_fast_answer_composer_v1", comp_dir)
+            comp_payload = _read_json(comp_report) if comp_report.exists() else (result if isinstance(result, dict) else {})
+        else:
+            comp_payload = _fallback_part_family_answer(context_payload, question, fam, comp_dir, max_part_family_records, max_labels_per_variant)
+        stage_payloads["part_family_fast_answer_composer"] = comp_payload
+        stage_reports["part_family_fast_answer_composer"] = comp_payload.get("quality_status", "UNKNOWN")
+        stage_paths["part_family_fast_answer_composer"] = str(_report_file_for("trace_net_part_family_fast_answer_composer_v1", comp_dir))
+        answer_src = _answer_file_for("trace_net_part_family_fast_answer_composer_v1", comp_dir)
+        answer_text = answer_src.read_text(encoding="utf-8", errors="replace") if answer_src.exists() else comp_payload.get("answer_text", "")
+        _copy_if_exists(answer_src, out_dir / f"{MODULE}_answer.md")
+    else:
+        answer_text = _planned_answer(query_plan)
+        _write_text(out_dir / f"{MODULE}_answer.md", answer_text)
+
+    labels = _citation_labels(answer_text)
+    context_labels = _valid_context_labels(context_payload)
+    invalid_labels = sorted({x for x in labels if x not in context_labels})
+    exact_payload = stage_payloads.get("fast_answer_composer", {}).get("summary", {})
+    fig_payload = stage_payloads.get("figure_item_fast_answer_composer", {}).get("summary", {})
+    fam_payload = stage_payloads.get("part_family_fast_answer_composer", {}).get("summary", {})
+    image_payload = stage_payloads.get("image_route_fast_chat_adapter", {}).get("summary", {})
+    image_gate_payload = stage_payloads.get("image_route_multi_route_quality_gate", {}).get("summary", {})
+    qgate_payload = stage_payloads.get("answer_quality_gate", {}).get("summary", {})
+
+    implemented = bool(query_plan.get("implemented_query_type"))
+    route_ready = False
+    if query_type == "exact_part_number":
+        route_ready = bool(exact_payload.get("fast_answer_composer_ready")) and (not require_answer_quality_pass or bool(qgate_payload.get("answer_quality_gate_passed")))
+    elif query_type == "figure_or_item":
+        route_ready = bool(fig_payload.get("figure_item_fast_answer_ready"))
+    elif query_type == "part_family":
+        route_ready = bool(fam_payload.get("part_family_fast_answer_ready"))
+    elif query_type == "image_or_diagram":
+        route_ready = bool(image_payload.get("webui_answer_ready")) and int(image_payload.get("source_trace_ready_citation_count", 0) or 0) > 0
+
+    summary: dict[str, Any] = {
+        "module": MODULE,
+        "version": VERSION,
+        "question": question,
+        "query_type": query_type,
+        "query_route": query_plan.get("query_route"),
+        "implemented_query_type": implemented,
+        "planned_query_types": ["part_family", "figure_or_item", "image_or_diagram", "plain_text"],
+        "query_part_numbers": query_plan.get("query_part_numbers", []),
+        "query_part_number_count": len(query_plan.get("query_part_numbers", [])),
+        "query_part_families": query_plan.get("query_part_families", []),
+        "query_part_family_count": len(query_plan.get("query_part_families", [])),
+        "figure": query_plan.get("figure"),
+        "item": query_plan.get("item"),
+        "source_context_pack": context_pack,
+        "source_context_quality_status": context_quality,
+        "stage_count": len(stage_reports),
+        "stage_quality_statuses": stage_reports,
+        "stage_report_paths": stage_paths,
+        "fast_chat_runner_ready": bool(route_ready),
+        "webui_answer_ready": False,
+        "multi_route_quality_gate_passed": False,
+        "multi_route_quality_report": None,
+        "fast_answer_composer_ready": bool(exact_payload.get("fast_answer_composer_ready")),
+        "answer_quality_gate_passed": bool(qgate_payload.get("answer_quality_gate_passed")),
+        "figure_item_fast_answer_ready": bool(fig_payload.get("figure_item_fast_answer_ready")),
+        "part_family_fast_answer_ready": bool(fam_payload.get("part_family_fast_answer_ready")),
+        "image_route_fast_chat_ready": bool(image_payload.get("webui_answer_ready")),
+        "image_route_citation_count": int(image_payload.get("citation_count", 0) or 0),
+        "image_route_source_trace_ready_citation_count": int(image_payload.get("source_trace_ready_citation_count", 0) or 0),
+        "image_route_linked_selected_evidence_count": int(image_payload.get("linked_selected_evidence_count", 0) or 0),
+        "image_route_llava_only_part_identity_claim_count": int(image_payload.get("llava_only_part_identity_claim_count", 0) or 0),
+        "direct_exact_answer_record_count": int(exact_payload.get("direct_exact_answer_record_count", 0) or 0),
+        "direct_exact_answer_page_count": int(exact_payload.get("direct_exact_answer_page_count", 0) or 0),
+        "direct_exact_answer_page_numbers": exact_payload.get("direct_exact_answer_page_numbers", []),
+        "figure_item_answer_record_count": int(fig_payload.get("figure_item_answer_record_count", 0) or 0),
+        "figure_item_answer_page_count": int(fig_payload.get("figure_item_answer_page_count", 0) or 0),
+        "figure_item_answer_page_numbers": fig_payload.get("figure_item_answer_page_numbers", []),
+        "figure_item_part_numbers": fig_payload.get("figure_item_part_numbers", []),
+        "part_family_answer_record_count": int(fam_payload.get("part_family_answer_record_count", 0) or 0),
+        "part_family_direct_record_count": int(fam_payload.get("part_family_direct_record_count", 0) or 0),
+        "part_family_variant_record_count": int(fam_payload.get("part_family_variant_record_count", 0) or 0),
+        "part_family_part_number_count": int(fam_payload.get("part_family_part_number_count", 0) or 0),
+        "part_family_part_numbers": fam_payload.get("part_family_part_numbers", []),
+        "part_family_page_count": int(fam_payload.get("part_family_page_count", 0) or 0),
+        "part_family_page_numbers": fam_payload.get("part_family_page_numbers", []),
+        "variant_part_number_count": int(exact_payload.get("variant_part_number_count", 0) or fam_payload.get("part_family_part_number_count", 0) or 0),
+        "variant_part_numbers": exact_payload.get("variant_part_numbers", []) or fam_payload.get("part_family_part_numbers", []),
+        "answer_char_count": len(answer_text),
+        "answer_citation_count": len(labels),
+        "valid_answer_citation_count": len(labels) - len(invalid_labels),
+        "invalid_answer_citation_count": len(invalid_labels),
+        "invalid_answer_citation_labels": invalid_labels,
+        "unsupported_interchangeability_claim_count": 0,
+        "graph_or_leiden_overstatement_count": 0,
+        "violation_record_count": len(invalid_labels),
+        "violation_severity_counts": {},
+        "answer_permission_count": 0,
+        "can_answer_directly_count": 0,
+        "can_prove_claims_count": 0,
+        "source_truth_mutation_allowed_count": 0,
+        "unsafe_record_count": 0,
+        "human_review_required_count": 0,
+        "manual_review_required_count": 0,
+        "write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "qdrant_write_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "dry_run_only": True,
+    }
+
+    report_payload = {"module": MODULE, "version": VERSION, "quality_status": "PASS", "summary": summary, "query_plan": query_plan, "answer_text": answer_text, "records": []}
+    report_path = out_dir / f"{MODULE}.json"
+    _write_json(report_path, report_payload)
+
+    if run_multi_route_quality_gate and query_type != "image_or_diagram":
+        gate_payload = _build_multi_route_gate(
+            report_path,
+            out_dir,
+            query_plan,
+            quality,
+            min_exact_direct_records=max(1, min(max_direct_anchors, 8)),
+            min_figure_item_records=1,
+            min_part_family_records=1,
+            min_family_part_numbers=2,
+        )
+        if gate_payload:
+            gate_summary = gate_payload.get("summary", {})
+            summary["multi_route_quality_gate_passed"] = bool(gate_summary.get("multi_route_quality_gate_passed"))
+            summary["webui_answer_ready"] = bool(gate_summary.get("webui_answer_ready"))
+            summary["multi_route_quality_report"] = str(out_dir / "multi_route_quality_gate" / "trace_net_fast_chat_multi_route_quality_gate_v1.json")
+            summary["route_quality_status"] = gate_summary.get("route_quality_status")
+            summary["route_check_count"] = gate_summary.get("route_check_count")
+            summary["route_check_fail_count"] = gate_summary.get("route_check_fail_count")
+            summary["stage_quality_statuses"]["multi_route_quality_gate"] = gate_payload.get("quality_status", "UNKNOWN")
+            summary["stage_report_paths"]["multi_route_quality_gate"] = summary["multi_route_quality_report"]
+            summary["stage_count"] = len(summary["stage_quality_statuses"])
+    else:
+        summary["webui_answer_ready"] = bool(route_ready) and len(invalid_labels) == 0
+
+    if query_type == "image_or_diagram" and image_gate_payload:
+        summary["multi_route_quality_gate_passed"] = bool(image_gate_payload.get("image_route_quality_gate_ready"))
+        summary["webui_answer_ready"] = bool(image_gate_payload.get("webui_answer_ready"))
+        summary["multi_route_quality_report"] = stage_paths.get("image_route_multi_route_quality_gate")
+        summary["route_quality_status"] = stage_payloads.get("image_route_multi_route_quality_gate", {}).get("quality_status")
+        summary["route_check_count"] = len((stage_payloads.get("image_route_multi_route_quality_gate", {}) or {}).get("checks", {}) or {})
+        summary["route_check_fail_count"] = sum(1 for v in ((stage_payloads.get("image_route_multi_route_quality_gate", {}) or {}).get("checks", {}) or {}).values() if not v)
+        summary["stage_count"] = len(summary["stage_quality_statuses"])
+    quality_status, failures = _quality_status(
+        summary,
+        require_answer_quality_pass=require_answer_quality_pass,
+        require_multi_route_quality_pass=require_multi_route_quality_pass,
+        require_webui_answer_ready=require_webui_answer_ready,
+    )
+    report_payload["quality_status"] = quality_status
+    report_payload["summary"] = summary
+    _write_json(report_path, report_payload)
+    _write_json(out_dir / f"{MODULE}_summary.json", summary)
+    _write_json(out_dir / f"{MODULE}_quality_check.json", {"quality_status": quality_status, "summary": summary, "failures": failures})
+    _write_json(out_dir / f"{MODULE}_query_plan.json", query_plan)
+
+    csv_path = out_dir / f"{MODULE}_records.csv"
+    with csv_path.open("w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=["key", "value"])
+        writer.writeheader()
+        for k, v in summary.items():
+            writer.writerow({"key": k, "value": json.dumps(v, ensure_ascii=False) if isinstance(v, (list, dict)) else v})
+
+    if quality:
+        print(f"Quality status: {quality_status}")
+        print("Summary:", json.dumps(summary, ensure_ascii=False, sort_keys=True))
+        print("Wrote:", out_dir / f"{MODULE}_quality_check.json")
+    print(f"Status: TRACE_NET_FAST_CHAT_RUNNER_BUILT")
+    print(f"Quality status: {quality_status}")
+    print("Summary:", json.dumps(summary, ensure_ascii=False, sort_keys=True))
+    return report_payload
+
+
+def check_fast_chat_runner_quality(
+    *,
+    report_path: str,
+    write_json: bool = False,
+    min_stage_reports: int = 1,
+    min_citations: int = 0,
+    min_valid_citations: int = 0,
+    min_direct_exact_records: int = 0,
+    min_figure_item_records: int = 0,
+    min_part_family_records: int = 0,
+    min_family_part_numbers: int = 0,
+    max_invalid_citations: int = 0,
+    max_violations: int = 0,
+    require_source_quality_pass: bool = False,
+    require_fast_chat_ready: bool = False,
+    require_answer_quality_pass: bool = False,
+    require_multi_route_quality_pass: bool = False,
+    require_webui_answer_ready: bool = False,
+    require_exact_part_query: bool = False,
+    require_figure_item_query: bool = False,
+    require_part_family_query: bool = False,
+    require_image_diagram_query: bool = False,
+    require_no_human_review_required: bool = False,
+    max_unsafe: int = 0,
+    require_no_answer_permission: bool = False,
+    require_no_source_truth_mutation: bool = False,
+    require_no_write_attempts: bool = False,
+) -> dict[str, Any]:
+    payload = _read_json(report_path)
+    summary = payload.get("summary", {})
+    failures: list[str] = []
+    def below(key: str, minimum: int):
+        if int(summary.get(key, 0) or 0) < minimum:
+            failures.append(f"{key} below {minimum}")
+    def above(key: str, maximum: int):
+        if int(summary.get(key, 0) or 0) > maximum:
+            failures.append(f"{key} above {maximum}")
+    below("stage_count", min_stage_reports)
+    below("answer_citation_count", min_citations)
+    below("valid_answer_citation_count", min_valid_citations)
+    below("direct_exact_answer_record_count", min_direct_exact_records)
+    below("figure_item_answer_record_count", min_figure_item_records)
+    below("part_family_answer_record_count", min_part_family_records)
+    below("part_family_part_number_count", min_family_part_numbers)
+    above("invalid_answer_citation_count", max_invalid_citations)
+    above("violation_record_count", max_violations)
+    if require_source_quality_pass and summary.get("source_context_quality_status") != "PASS": failures.append("source context quality is not PASS")
+    if require_fast_chat_ready and not summary.get("fast_chat_runner_ready"): failures.append("fast_chat_runner_ready is not true")
+    if require_answer_quality_pass and not summary.get("answer_quality_gate_passed"): failures.append("answer_quality_gate_passed is not true")
+    if require_multi_route_quality_pass and not summary.get("multi_route_quality_gate_passed"): failures.append("multi_route_quality_gate_passed is not true")
+    if require_webui_answer_ready and not summary.get("webui_answer_ready"): failures.append("webui_answer_ready is not true")
+    if require_exact_part_query and summary.get("query_type") != "exact_part_number": failures.append("query_type is not exact_part_number")
+    if require_figure_item_query and summary.get("query_type") != "figure_or_item": failures.append("query_type is not figure_or_item")
+    if require_part_family_query and summary.get("query_type") != "part_family":
+        failures.append("query_type is not part_family")
+    if require_image_diagram_query and summary.get("query_type") != "image_or_diagram":
+        failures.append("query_type is not image_or_diagram")
+    if require_no_human_review_required and (summary.get("human_review_required_count", 0) or summary.get("manual_review_required_count", 0)): failures.append("human/manual review required")
+    if int(summary.get("unsafe_record_count", 0) or 0) > max_unsafe: failures.append("unsafe_record_count above max")
+    if require_no_answer_permission and summary.get("answer_permission_count", 0): failures.append("answer_permission_count is nonzero")
+    if require_no_source_truth_mutation and summary.get("source_truth_mutation_allowed_count", 0): failures.append("source_truth_mutation_allowed_count is nonzero")
+    if require_no_write_attempts and summary.get("write_attempt_count", 0): failures.append("write_attempt_count is nonzero")
+    quality_status = "PASS" if not failures else "FAIL"
+    result = {"quality_status": quality_status, "summary": summary, "failures": failures}
+    if write_json:
+        out = Path(report_path).with_name(f"{MODULE}_quality_check.json")
+        _write_json(out, result)
+        print("Wrote:", out)
+    print("Quality status:", quality_status)
+    print("Summary:", json.dumps(summary, ensure_ascii=False, sort_keys=True))
+    if failures:
+        print("Failures:", json.dumps(failures, ensure_ascii=False))
+    return result
+
+
+def main_build() -> None:
+    p = argparse.ArgumentParser()
+    p.add_argument("--question", required=True)
+    p.add_argument("--context-pack", required=True)
+    p.add_argument("--image-visual-evidence-pack")
+    p.add_argument("--output-dir", required=True)
+    p.add_argument("--part-number")
+    p.add_argument("--part-family")
+    p.add_argument("--figure")
+    p.add_argument("--item")
+    p.add_argument("--max-direct-anchors", type=int, default=8)
+    p.add_argument("--max-variants", type=int, default=6)
+    p.add_argument("--max-labels-per-variant", type=int, default=3)
+    p.add_argument("--max-neighbors", type=int, default=1)
+    p.add_argument("--max-part-family-records", type=int, default=24)
+    p.add_argument("--require-source-quality-pass", action="store_true")
+    p.add_argument("--require-answer-quality-pass", action="store_true")
+    p.add_argument("--disable-multi-route-quality-gate", action="store_true")
+    p.add_argument("--require-multi-route-quality-pass", action="store_true")
+    p.add_argument("--require-webui-answer-ready", action="store_true")
+    p.add_argument("--quality", action="store_true")
+    args = p.parse_args()
+    build_fast_chat_runner(
+        question=args.question,
+        context_pack=args.context_pack,
+        output_dir=args.output_dir,
+        part_number=args.part_number,
+        part_family=args.part_family,
+        figure=args.figure,
+        item=args.item,
+        max_direct_anchors=args.max_direct_anchors,
+        max_variants=args.max_variants,
+        max_labels_per_variant=args.max_labels_per_variant,
+        max_neighbors=args.max_neighbors,
+        max_part_family_records=args.max_part_family_records,
+        require_source_quality_pass=args.require_source_quality_pass,
+        require_answer_quality_pass=args.require_answer_quality_pass,
+        run_multi_route_quality_gate=not args.disable_multi_route_quality_gate,
+        require_multi_route_quality_pass=args.require_multi_route_quality_pass,
+        require_webui_answer_ready=args.require_webui_answer_ready,
+        image_visual_evidence_pack=args.image_visual_evidence_pack,
+        quality=args.quality,
+    )
+
+
+def main_check() -> None:
+    p = argparse.ArgumentParser()
+    p.add_argument("--report-path", required=True)
+    p.add_argument("--write-json", action="store_true")
+    p.add_argument("--min-stage-reports", type=int, default=1)
+    p.add_argument("--min-citations", type=int, default=0)
+    p.add_argument("--min-valid-citations", type=int, default=0)
+    p.add_argument("--min-direct-exact-records", type=int, default=0)
+    p.add_argument("--min-figure-item-records", type=int, default=0)
+    p.add_argument("--min-part-family-records", type=int, default=0)
+    p.add_argument("--min-family-part-numbers", type=int, default=0)
+    p.add_argument("--max-invalid-citations", type=int, default=0)
+    p.add_argument("--max-violations", type=int, default=0)
+    p.add_argument("--require-source-quality-pass", action="store_true")
+    p.add_argument("--require-fast-chat-ready", action="store_true")
+    p.add_argument("--require-answer-quality-pass", action="store_true")
+    p.add_argument("--require-multi-route-quality-pass", action="store_true")
+    p.add_argument("--require-webui-answer-ready", action="store_true")
+    p.add_argument("--require-exact-part-query", action="store_true")
+    p.add_argument("--require-figure-item-query", action="store_true")
+    p.add_argument("--require-part-family-query", action="store_true")
+    p.add_argument("--require-image-diagram-query", action="store_true")
+    p.add_argument("--require-no-human-review-required", action="store_true")
+    p.add_argument("--max-unsafe", type=int, default=0)
+    p.add_argument("--require-no-answer-permission", action="store_true")
+    p.add_argument("--require-no-source-truth-mutation", action="store_true")
+    p.add_argument("--require-no-write-attempts", action="store_true")
+    args = p.parse_args()
+    result = check_fast_chat_runner_quality(**vars(args))
+    raise SystemExit(0 if result["quality_status"] == "PASS" else 1)
+
+
+if __name__ == "__main__":
+    main_build()
+
+# TRACE_NET_IMAGE_ROUTE_FAST_CHAT_INTEGRATED_V1: image_or_diagram route integrated through Patch D adapter and image route quality gate.

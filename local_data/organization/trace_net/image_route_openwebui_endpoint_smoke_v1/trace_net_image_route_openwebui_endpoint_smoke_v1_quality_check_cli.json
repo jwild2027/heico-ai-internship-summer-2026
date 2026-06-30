@@ -1,0 +1,22 @@
+{
+  "checks": {
+    "answer_permission_count_zero": true,
+    "opensearch_upload_attempt_count_zero": true,
+    "opensearch_write_attempt_count_zero": true,
+    "postgres_write_attempt_count_zero": true,
+    "qdrant_write_attempt_count_zero": true,
+    "source_truth_mutation_allowed_count_zero": true,
+    "unsafe_record_count_zero": true,
+    "valid_answer_citation_count_min_met": false,
+    "write_attempt_count_zero": true
+  },
+  "failures": [
+    "quality_status is not PASS",
+    "webui_answer_ready is not true",
+    "valid_answer_citation_count below minimum: 0 < 1"
+  ],
+  "quality_status": "FAIL",
+  "source_manifest": "local_data/organization/trace_net/image_route_openwebui_endpoint_smoke_v1/trace_net_image_route_openwebui_endpoint_smoke_v1.json",
+  "status": "TRACE_NET_IMAGE_ROUTE_OPENWEBUI_ENDPOINT_SMOKE_CHECKED",
+  "summary": {}
+}

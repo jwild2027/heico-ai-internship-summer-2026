@@ -1,0 +1,94 @@
+{
+  "artifact_paths": {
+    "batch": "local_data/organization/trace_net/llava_visual_summary_batch_v1/trace_net_llava_visual_summary_batch_v1.json",
+    "quality_check": "local_data/organization/trace_net/llava_visual_summary_batch_v1/trace_net_llava_visual_summary_batch_v1_quality_check.json",
+    "raw_model_responses_jsonl": "",
+    "readme": "local_data/organization/trace_net/llava_visual_summary_batch_v1/README_trace_net_llava_visual_summary_batch_v1.md",
+    "records_csv": "local_data/organization/trace_net/llava_visual_summary_batch_v1/trace_net_llava_visual_summary_batch_v1_records.csv",
+    "summaries_jsonl": "local_data/organization/trace_net/llava_visual_summary_batch_v1/trace_net_llava_visual_summary_batch_v1_summaries.jsonl",
+    "summary_dir": "local_data/organization/trace_net/llava_visual_summary_batch_v1/summaries"
+  },
+  "checks": [
+    {
+      "expected": ">= 1",
+      "name": "llava_summary_count",
+      "observed": 21,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "structured_json_count",
+      "observed": 7,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "visual_summary_text_count",
+      "observed": 21,
+      "passed": true
+    },
+    {
+      "expected": ">= 1",
+      "name": "source_trace_ready_count",
+      "observed": 21,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "unsafe_record_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "answer_permission_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "source_truth_mutation_allowed_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "<= 0",
+      "name": "write_attempt_count",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "expected": "true",
+      "name": "ready_for_visual_linking",
+      "observed": true,
+      "passed": true
+    }
+  ],
+  "created_at_utc": "2026-06-29T18:17:06+00:00",
+  "module_name": "trace_net_llava_visual_summary_batch_v1",
+  "quality_status": "PASS",
+  "status": "TRACE_NET_LLAVA_VISUAL_SUMMARY_BATCH_BUILT_QUALITY_CHECKED",
+  "summary": {
+    "answer_permission_count": 0,
+    "callout_candidate_count": 9,
+    "callout_candidate_record_count": 6,
+    "dry_run_summary_count": 0,
+    "failed_llava_summary_count": 1,
+    "figure_candidate_count": 8,
+    "figure_candidate_record_count": 7,
+    "llava_summary_count": 21,
+    "ollama_summary_count": 21,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "parse_failed_count": 13,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "ready_for_visual_linking": true,
+    "source_trace_ready_count": 21,
+    "source_truth_mutation_allowed_count": 0,
+    "structured_json_count": 7,
+    "unsafe_record_count": 0,
+    "visible_text_candidate_count": 10,
+    "write_attempt_count": 0
+  }
+}

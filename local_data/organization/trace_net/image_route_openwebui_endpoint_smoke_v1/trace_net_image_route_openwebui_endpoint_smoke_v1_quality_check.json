@@ -1,0 +1,55 @@
+{
+  "checks": {
+    "answer_permission_count_zero": true,
+    "opensearch_upload_attempt_count_zero": true,
+    "opensearch_write_attempt_count_zero": true,
+    "postgres_write_attempt_count_zero": true,
+    "qdrant_write_attempt_count_zero": true,
+    "source_truth_mutation_allowed_count_zero": true,
+    "unsafe_record_count_zero": true,
+    "valid_answer_citation_count_min_met": false,
+    "write_attempt_count_zero": true
+  },
+  "failures": [
+    "quality_status is not PASS",
+    "webui_answer_ready is not true",
+    "valid_answer_citation_count below minimum: 0 < 1"
+  ],
+  "quality_status": "FAIL",
+  "source_manifest": "local_data\\organization\\trace_net\\image_route_openwebui_endpoint_smoke_v1\\trace_net_image_route_openwebui_endpoint_smoke_v1.json",
+  "status": "TRACE_NET_IMAGE_ROUTE_OPENWEBUI_ENDPOINT_SMOKE_CHECKED",
+  "summary": {
+    "answer_char_count": 36,
+    "answer_citation_count": 0,
+    "answer_permission_count": 0,
+    "answer_quality_gate_passed": false,
+    "dry_run_only": true,
+    "endpoint_direct_error": "[Errno 2] No such file or directory: 'local_data\\\\organization\\\\trace_net\\\\image_route_openwebui_endpoint_smoke_v1\\\\runner_calls\\\\what_does_figure_69_show_1782761553051\\\\image_route_fast_chat_adapter\\\\trace_net_image_route_fast_chat_adapter_v1.json'",
+    "endpoint_direct_smoke_used": true,
+    "fast_chat_runner_ready": false,
+    "image_route_fast_chat_ready": false,
+    "implemented_query_type": false,
+    "invalid_answer_citation_count": 0,
+    "module": "trace_net_fast_chat_runner_v1",
+    "multi_route_quality_gate_passed": false,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "query_route": "fast_image_diagram_answer",
+    "query_type": "image_or_diagram",
+    "question": "What does figure 69 show?",
+    "source_context_pack": "local_data/organization/trace_net/anchor_aware_graph_leiden_expander_gemma4_native_001/trace_net_anchor_aware_graph_leiden_expander_v1.json",
+    "source_context_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "stage_count": 1,
+    "stage_quality_statuses": {
+      "endpoint_direct_adapter": "FAIL"
+    },
+    "unsafe_record_count": 0,
+    "valid_answer_citation_count": 0,
+    "version": "v1",
+    "webui_answer_ready": false,
+    "write_attempt_count": 0
+  }
+}

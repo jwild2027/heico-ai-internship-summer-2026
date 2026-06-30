@@ -1,0 +1,58 @@
+{
+  "answer_permission": false,
+  "authority_note": "LLaVA sees/describes visual content only; OCR/table/figure-item evidence must prove final part facts.",
+  "callout_candidate_count": 2,
+  "callout_candidates": [
+    "2-5/8",
+    "1-3/4"
+  ],
+  "can_answer_directly": false,
+  "diagram_type": "technical drawing",
+  "error_text": "",
+  "figure_candidate_count": 1,
+  "figure_candidates": [
+    "{'type': 'object', 'description': 'Three-dimensional representation of an object, possibly a part of a larger assembly or machine.'}"
+  ],
+  "job_id": "llava_visual_summary_job_0003",
+  "llava_mode": "ollama",
+  "llava_model": "llava:13b",
+  "llava_output_path": "local_data/organization/trace_net/llava_visual_summary_batch_v1/summaries/t_p_120_1176_p000018_llava_visual_summary_v1.json",
+  "llava_summary_status": "created",
+  "opensearch_upload_attempt": false,
+  "opensearch_write_attempt": false,
+  "page_id": "t_p_120_1176_p000018",
+  "page_number": 18,
+  "parse_status": "json_extracted_from_text",
+  "postgres_write_attempt": false,
+  "qdrant_write_attempt": false,
+  "record_id": "llava_visual_summary_0003",
+  "route_label": "['image']",
+  "source_image_exists": true,
+  "source_image_media_type": "image/png",
+  "source_image_note": "converted_tiff_to_png_with_pillow",
+  "source_member": "00000018.tif",
+  "source_trace_fields": {
+    "ocr_scan_pack_path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_native_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1.json",
+    "page_id": "t_p_120_1176_p000018",
+    "page_number": 18,
+    "route_artifact_path": "local_data\\organization\\trace_net\\route_validator_runner\\trace_net_route_validator_runner_v1.json",
+    "source_member": "00000018.tif",
+    "source_package_member_confirmed": true,
+    "source_package_metadata_zip": "C:\\Users\\juswil\\Desktop\\metadata.zip"
+  },
+  "source_trace_ready": true,
+  "source_truth_mutation_allowed": false,
+  "structured_json_ready": true,
+  "uncertainties": [
+    "{'type': 'text', 'description': \"The text on the drawing is not fully legible, which could limit the understanding of the object's purpose or context.\"}"
+  ],
+  "unsafe": false,
+  "visible_text_candidate_count": 2,
+  "visible_text_candidates": [
+    "TRACE-Net's local visual/page understanding helper",
+    "Inspect only the supplied page image. Return structured JSON only."
+  ],
+  "visual_confidence": "medium",
+  "visual_summary": "The drawing is a technical representation of an object with annotations and measurements, but the text on the drawing is not fully legible, which limits the understanding of the object's purpose or context.",
+  "write_attempt_count": 0
+}

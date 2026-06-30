@@ -1,0 +1,103 @@
+{
+  "artifact_paths": {
+    "inventory": "local_data/organization/trace_net/image_route_inventory_llava_jobs_v1/trace_net_image_route_inventory_llava_jobs_v1.json",
+    "jobs_jsonl": "local_data/organization/trace_net/image_route_inventory_llava_jobs_v1/trace_net_image_route_inventory_llava_jobs_v1_jobs.jsonl",
+    "quality_check": "local_data/organization/trace_net/image_route_inventory_llava_jobs_v1/trace_net_image_route_inventory_llava_jobs_v1_quality_check.json",
+    "readme": "local_data/organization/trace_net/image_route_inventory_llava_jobs_v1/README_trace_net_image_route_inventory_llava_jobs_v1.md",
+    "records_csv": "local_data/organization/trace_net/image_route_inventory_llava_jobs_v1/trace_net_image_route_inventory_llava_jobs_v1_records.csv"
+  },
+  "checks": [
+    {
+      "expected": "PASS or UNKNOWN",
+      "name": "source_route_artifact_quality_pass_if_available",
+      "observed": "PASS",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "expected": "PASS/UNKNOWN/MISSING_OPTIONAL",
+      "name": "ocr_scan_pack_quality_pass_if_available",
+      "observed": "PASS",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "expected": ">= 1",
+      "name": "image_route_record_count_min_1",
+      "observed": 21,
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "expected": ">= 1",
+      "name": "llava_job_count_min_1",
+      "observed": 21,
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "expected": ">= 1",
+      "name": "source_trace_ready_count_min_1",
+      "observed": 21,
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "expected": "0",
+      "name": "no_human_review_required",
+      "observed": 0,
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "expected": "0",
+      "name": "unsafe_record_count_zero",
+      "observed": 0,
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "expected": "0",
+      "name": "answer_permission_count_zero",
+      "observed": 0,
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "expected": "0",
+      "name": "source_truth_mutation_allowed_count_zero",
+      "observed": 0,
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "expected": "0",
+      "name": "write_attempt_count_zero",
+      "observed": 0,
+      "passed": true,
+      "severity": "error"
+    }
+  ],
+  "created_at_utc": "2026-06-29T17:44:31+00:00",
+  "module_name": "trace_net_image_route_inventory_llava_jobs_v1",
+  "quality_status": "PASS",
+  "status": "TRACE_NET_IMAGE_ROUTE_INVENTORY_LLAVA_JOBS_BUILT_QUALITY_CHECKED",
+  "summary": {
+    "answer_permission_count": 0,
+    "existing_llava_summary_count": 0,
+    "figure_candidate_record_count": 0,
+    "human_review_required_count": 0,
+    "image_route_record_count": 21,
+    "llava_job_count": 21,
+    "missing_llava_summary_count": 21,
+    "ocr_preview_available_count": 21,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "source_trace_ready_count": 21,
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0,
+    "write_attempt_count": 0
+  }
+}

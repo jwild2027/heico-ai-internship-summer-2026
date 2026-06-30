@@ -1,0 +1,71 @@
+{
+  "status": "TRACE_NET_RAW_OCR_NOMENCLATURE_WINDOW_EXTRACTOR_QUALITY_CHECKED",
+  "quality_status": "PASS",
+  "checks": [
+    {
+      "name": "min_linked_visual_parts",
+      "observed": 3,
+      "expected": ">= 1",
+      "passed": true
+    },
+    {
+      "name": "min_nomenclature_selected",
+      "observed": 3,
+      "expected": ">= 3",
+      "passed": true
+    },
+    {
+      "name": "min_source_trace_ready",
+      "observed": 3,
+      "expected": ">= 3",
+      "passed": true
+    },
+    {
+      "name": "max_unsafe",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "max_answer_permission",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "max_source_truth_mutation_allowed",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "max_write_attempts",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "linked_visual_part_count": 3,
+    "ocr_scan_pack_count": 2,
+    "ocr_record_count": 990,
+    "nomenclature_window_record_count": 3,
+    "matched_ocr_record_count": 16,
+    "nomenclature_candidate_count": 11,
+    "nomenclature_selected_count": 3,
+    "nomenclature_missing_count": 0,
+    "high_confidence_count": 3,
+    "medium_confidence_count": 0,
+    "low_confidence_count": 0,
+    "source_trace_ready_count": 3,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0,
+    "ready_for_visual_nomenclature_enrichment": true
+  }
+}

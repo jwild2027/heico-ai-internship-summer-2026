@@ -1,5 +1,21 @@
 from __future__ import annotations
 
+# TRACE_NET_IMAGE_ROUTE_IMPORT_PATH_FIX_V1_BEGIN
+# When this file is run directly as `python tiff/trace_net_fast_chat_runner_v1.py`,
+# Python may put only the tiff/ directory on sys.path. Add the repo root so
+# package imports such as `tiff.trace_net_image_route_fast_chat_adapter_v1` work.
+try:
+    import sys as _trace_net_sys
+    from pathlib import Path as _TraceNetPath
+    _TRACE_NET_REPO_ROOT = _TraceNetPath(__file__).resolve().parents[1]
+    if str(_TRACE_NET_REPO_ROOT) not in _trace_net_sys.path:
+        _trace_net_sys.path.insert(0, str(_TRACE_NET_REPO_ROOT))
+except Exception:
+    # Import-path helper must never change runtime safety behavior. If this fails,
+    # the normal module import path/error handling below will still apply.
+    pass
+# TRACE_NET_IMAGE_ROUTE_IMPORT_PATH_FIX_V1_END
+
 import argparse
 import csv
 import importlib
@@ -130,12 +146,12 @@ def detect_query_type(question: str, part_number: str | None = None, part_family
     if any(w in q_lower for w in ["diagram", "callout", "image", "figure shows", "visual"]):
         return {
             "query_type": "image_or_diagram",
-            "query_route": "planned_image_visual_context",
+            "query_route": "fast_image_diagram_answer",
             "query_part_numbers": [],
             "query_part_families": [family] if family else [],
             "figure": fig,
             "item": fig_item,
-            "implemented_query_type": False,
+            "implemented_query_type": True,
         }
     if fig or fig_item:
         return {
@@ -461,6 +477,7 @@ def build_fast_chat_runner(
     run_multi_route_quality_gate: bool = True,
     require_multi_route_quality_pass: bool = False,
     require_webui_answer_ready: bool = False,
+    image_visual_evidence_pack: str | None = None,
     quality: bool = False,
 ) -> dict[str, Any]:
     out_dir = Path(output_dir)
@@ -471,6 +488,37 @@ def build_fast_chat_runner(
         raise ValueError(f"source context quality is not PASS: {context_quality}")
 
     query_plan = detect_query_type(question, part_number=part_number, part_family=part_family, figure=figure, item=item)
+    # TRACE_NET_IMAGE_ROUTE_PRECEDENCE_FIX_V1:
+    # Figure-only visual questions such as "What does figure 69 show?" must use
+    # the image_or_diagram route when an image visual evidence pack is supplied.
+    # Figure+item questions remain figure_or_item.
+    if (
+        image_visual_evidence_pack
+        and query_plan.get("query_type") == "figure_or_item"
+        and query_plan.get("figure")
+        and not query_plan.get("item")
+    ):
+        _q_lower = (question or "").lower()
+        _asks_for_visual_figure = any(
+            token in _q_lower
+            for token in [
+                "show",
+                "shows",
+                "showing",
+                "diagram",
+                "image",
+                "visual",
+                "picture",
+                "depict",
+                "depicts",
+                "look like",
+            ]
+        )
+        if _asks_for_visual_figure:
+            query_plan = dict(query_plan)
+            query_plan["query_type"] = "image_or_diagram"
+            query_plan["query_route"] = "fast_image_diagram_answer"
+            query_plan["implemented_query_type"] = True
     query_type = query_plan["query_type"]
     answer_text = ""
     stage_reports: dict[str, str] = {"context_pack": "PASS" if context_quality == "PASS" else str(context_quality or "UNKNOWN")}
@@ -517,6 +565,81 @@ def build_fast_chat_runner(
             stage_payloads["answer_quality_gate"] = qpayload
             stage_reports["answer_quality_gate"] = qpayload.get("quality_status", "UNKNOWN")
             stage_paths["answer_quality_gate"] = str(qreport)
+    elif query_type == "image_or_diagram":
+        comp_dir = out_dir / "image_route_fast_chat_adapter"
+        comp_dir.mkdir(parents=True, exist_ok=True)
+        if not image_visual_evidence_pack:
+            comp_payload = {
+                "quality_status": "FAIL",
+                "answer": "TRACE-Net recognized this as an image_or_diagram query, but no image visual evidence pack was supplied. No answer is produced from unvalidated visual evidence.",
+                "citations": [],
+                "summary": {
+                    "route_type": "image_or_diagram",
+                    "webui_answer_ready": False,
+                    "citation_count": 0,
+                    "source_trace_ready_citation_count": 0,
+                    "linked_selected_evidence_count": 0,
+                    "unsupported_claim_count": 0,
+                    "llava_only_part_identity_claim_count": 0,
+                    "unsafe_record_count": 0,
+                    "answer_permission_count": 0,
+                    "source_truth_mutation_allowed_count": 0,
+                    "write_attempt_count": 0,
+                },
+            }
+        else:
+            builder = _load_builder(
+                "tiff.trace_net_image_route_fast_chat_adapter_v1",
+                ["build_adapter", "build_image_route_fast_chat_adapter", "build_trace_net_image_route_fast_chat_adapter"],
+            )
+            if not builder:
+                raise RuntimeError("image route adapter module is not available")
+            result = _invoke_builder(builder, {
+                "image_visual_evidence_pack": image_visual_evidence_pack,
+                "question": question,
+                "output_dir": str(comp_dir),
+                "require_webui_answer_ready": require_webui_answer_ready,
+                "min_citations": 1 if require_webui_answer_ready else 0,
+                "min_source_trace_ready_citations": 1 if require_webui_answer_ready else 0,
+                "max_unsupported_claims": 0,
+                "max_llava_only_part_identity_claims": 0,
+                "max_unsafe": 0,
+                "max_answer_permission": 0,
+                "max_source_truth_mutation_allowed": 0,
+                "max_write_attempts": 0,
+            })
+            comp_report = comp_dir / "trace_net_image_route_fast_chat_adapter_v1.json"
+            comp_payload = _read_json(comp_report) if comp_report.exists() else (result if isinstance(result, dict) else {})
+        stage_payloads["image_route_fast_chat_adapter"] = comp_payload
+        stage_reports["image_route_fast_chat_adapter"] = comp_payload.get("quality_status", "UNKNOWN")
+        stage_paths["image_route_fast_chat_adapter"] = str(comp_dir / "trace_net_image_route_fast_chat_adapter_v1.json")
+        answer_text = comp_payload.get("answer") or comp_payload.get("answer_text") or ""
+        _write_text(out_dir / f"{MODULE}_answer.md", answer_text)
+
+        gate_builder = _load_builder(
+            "tiff.trace_net_image_route_multi_route_quality_gate_v1",
+            ["evaluate_gate"],
+        )
+        if gate_builder:
+            gate_payload = _invoke_builder(gate_builder, {
+                "adapter": comp_payload,
+                "require_webui_answer_ready": require_webui_answer_ready,
+                "min_citations": 1 if require_webui_answer_ready else 0,
+                "min_source_trace_ready_citations": 1 if require_webui_answer_ready else 0,
+                "max_unsupported_claims": 0,
+                "max_llava_only_part_identity_claims": 0,
+                "max_unsafe": 0,
+                "max_answer_permission": 0,
+                "max_source_truth_mutation_allowed": 0,
+                "max_write_attempts": 0,
+            })
+            gate_dir = out_dir / "image_route_multi_route_quality_gate"
+            gate_dir.mkdir(parents=True, exist_ok=True)
+            gate_path = gate_dir / "trace_net_image_route_multi_route_quality_gate_v1.json"
+            _write_json(gate_path, gate_payload)
+            stage_payloads["image_route_multi_route_quality_gate"] = gate_payload
+            stage_reports["image_route_multi_route_quality_gate"] = gate_payload.get("quality_status", "UNKNOWN")
+            stage_paths["image_route_multi_route_quality_gate"] = str(gate_path)
     elif query_type == "figure_or_item" and query_plan.get("figure") and query_plan.get("item"):
         comp_dir = out_dir / "figure_item_fast_answer_composer"
         comp_dir.mkdir(parents=True, exist_ok=True)
@@ -560,6 +683,8 @@ def build_fast_chat_runner(
     exact_payload = stage_payloads.get("fast_answer_composer", {}).get("summary", {})
     fig_payload = stage_payloads.get("figure_item_fast_answer_composer", {}).get("summary", {})
     fam_payload = stage_payloads.get("part_family_fast_answer_composer", {}).get("summary", {})
+    image_payload = stage_payloads.get("image_route_fast_chat_adapter", {}).get("summary", {})
+    image_gate_payload = stage_payloads.get("image_route_multi_route_quality_gate", {}).get("summary", {})
     qgate_payload = stage_payloads.get("answer_quality_gate", {}).get("summary", {})
 
     implemented = bool(query_plan.get("implemented_query_type"))
@@ -570,6 +695,8 @@ def build_fast_chat_runner(
         route_ready = bool(fig_payload.get("figure_item_fast_answer_ready"))
     elif query_type == "part_family":
         route_ready = bool(fam_payload.get("part_family_fast_answer_ready"))
+    elif query_type == "image_or_diagram":
+        route_ready = bool(image_payload.get("webui_answer_ready")) and int(image_payload.get("source_trace_ready_citation_count", 0) or 0) > 0
 
     summary: dict[str, Any] = {
         "module": MODULE,
@@ -598,6 +725,11 @@ def build_fast_chat_runner(
         "answer_quality_gate_passed": bool(qgate_payload.get("answer_quality_gate_passed")),
         "figure_item_fast_answer_ready": bool(fig_payload.get("figure_item_fast_answer_ready")),
         "part_family_fast_answer_ready": bool(fam_payload.get("part_family_fast_answer_ready")),
+        "image_route_fast_chat_ready": bool(image_payload.get("webui_answer_ready")),
+        "image_route_citation_count": int(image_payload.get("citation_count", 0) or 0),
+        "image_route_source_trace_ready_citation_count": int(image_payload.get("source_trace_ready_citation_count", 0) or 0),
+        "image_route_linked_selected_evidence_count": int(image_payload.get("linked_selected_evidence_count", 0) or 0),
+        "image_route_llava_only_part_identity_claim_count": int(image_payload.get("llava_only_part_identity_claim_count", 0) or 0),
         "direct_exact_answer_record_count": int(exact_payload.get("direct_exact_answer_record_count", 0) or 0),
         "direct_exact_answer_page_count": int(exact_payload.get("direct_exact_answer_page_count", 0) or 0),
         "direct_exact_answer_page_numbers": exact_payload.get("direct_exact_answer_page_numbers", []),
@@ -641,7 +773,7 @@ def build_fast_chat_runner(
     report_path = out_dir / f"{MODULE}.json"
     _write_json(report_path, report_payload)
 
-    if run_multi_route_quality_gate:
+    if run_multi_route_quality_gate and query_type != "image_or_diagram":
         gate_payload = _build_multi_route_gate(
             report_path,
             out_dir,
@@ -666,6 +798,43 @@ def build_fast_chat_runner(
     else:
         summary["webui_answer_ready"] = bool(route_ready) and len(invalid_labels) == 0
 
+    if query_type == "image_or_diagram" and image_gate_payload:
+        summary["multi_route_quality_gate_passed"] = bool(image_gate_payload.get("image_route_quality_gate_ready"))
+        summary["webui_answer_ready"] = bool(image_gate_payload.get("webui_answer_ready"))
+        summary["multi_route_quality_report"] = stage_paths.get("image_route_multi_route_quality_gate")
+        summary["route_quality_status"] = stage_payloads.get("image_route_multi_route_quality_gate", {}).get("quality_status")
+        summary["route_check_count"] = len((stage_payloads.get("image_route_multi_route_quality_gate", {}) or {}).get("checks", {}) or {})
+        summary["route_check_fail_count"] = sum(1 for v in ((stage_payloads.get("image_route_multi_route_quality_gate", {}) or {}).get("checks", {}) or {}).values() if not v)
+        summary["stage_count"] = len(summary["stage_quality_statuses"])
+    # TRACE_NET_IMAGE_ROUTE_CITATION_VALIDATION_FIX_V1
+    # The generic fast-runner citation validator originally only understood the older
+    # exact/figure-item/part-family citation namespaces. Image-route answers use V*
+    # citations validated by the image route adapter + image route quality gate.
+    # Treat those V* citations as valid only when the image route has linked,
+    # source-traced citations and explicitly reports no LLaVA-only part-identity claim.
+    if query_type == "image_or_diagram" and image_payload:
+        image_citation_count = int(image_payload.get("citation_count", 0) or 0)
+        image_source_trace_ready_count = int(image_payload.get("source_trace_ready_citation_count", 0) or 0)
+        image_linked_selected_count = int(image_payload.get("linked_selected_evidence_count", 0) or 0)
+        image_llava_only_identity_count = int(image_payload.get("llava_only_part_identity_claim_count", 0) or 0)
+        image_unsupported_claim_count = int(image_payload.get("unsupported_claim_count", 0) or 0)
+        image_adapter_ready = bool(image_payload.get("webui_answer_ready"))
+        image_gate_ready = bool(image_gate_payload.get("image_route_quality_gate_ready") or image_gate_payload.get("webui_answer_ready"))
+        if (
+            image_adapter_ready
+            and image_gate_ready
+            and image_citation_count > 0
+            and image_source_trace_ready_count >= image_citation_count
+            and image_linked_selected_count > 0
+            and image_llava_only_identity_count == 0
+            and image_unsupported_claim_count == 0
+        ):
+            summary["answer_citation_count"] = max(int(summary.get("answer_citation_count", 0) or 0), image_citation_count)
+            summary["valid_answer_citation_count"] = image_citation_count
+            summary["invalid_answer_citation_count"] = 0
+            summary["invalid_answer_citation_labels"] = []
+            summary["answer_quality_gate_passed"] = True
+            summary["violation_record_count"] = 0
     quality_status, failures = _quality_status(
         summary,
         require_answer_quality_pass=require_answer_quality_pass,
@@ -717,6 +886,7 @@ def check_fast_chat_runner_quality(
     require_exact_part_query: bool = False,
     require_figure_item_query: bool = False,
     require_part_family_query: bool = False,
+    require_image_diagram_query: bool = False,
     require_no_human_review_required: bool = False,
     max_unsafe: int = 0,
     require_no_answer_permission: bool = False,
@@ -748,7 +918,10 @@ def check_fast_chat_runner_quality(
     if require_webui_answer_ready and not summary.get("webui_answer_ready"): failures.append("webui_answer_ready is not true")
     if require_exact_part_query and summary.get("query_type") != "exact_part_number": failures.append("query_type is not exact_part_number")
     if require_figure_item_query and summary.get("query_type") != "figure_or_item": failures.append("query_type is not figure_or_item")
-    if require_part_family_query and summary.get("query_type") != "part_family": failures.append("query_type is not part_family")
+    if require_part_family_query and summary.get("query_type") != "part_family":
+        failures.append("query_type is not part_family")
+    if require_image_diagram_query and summary.get("query_type") != "image_or_diagram":
+        failures.append("query_type is not image_or_diagram")
     if require_no_human_review_required and (summary.get("human_review_required_count", 0) or summary.get("manual_review_required_count", 0)): failures.append("human/manual review required")
     if int(summary.get("unsafe_record_count", 0) or 0) > max_unsafe: failures.append("unsafe_record_count above max")
     if require_no_answer_permission and summary.get("answer_permission_count", 0): failures.append("answer_permission_count is nonzero")
@@ -771,6 +944,7 @@ def main_build() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--question", required=True)
     p.add_argument("--context-pack", required=True)
+    p.add_argument("--image-visual-evidence-pack")
     p.add_argument("--output-dir", required=True)
     p.add_argument("--part-number")
     p.add_argument("--part-family")
@@ -806,6 +980,7 @@ def main_build() -> None:
         run_multi_route_quality_gate=not args.disable_multi_route_quality_gate,
         require_multi_route_quality_pass=args.require_multi_route_quality_pass,
         require_webui_answer_ready=args.require_webui_answer_ready,
+        image_visual_evidence_pack=args.image_visual_evidence_pack,
         quality=args.quality,
     )
 
@@ -831,6 +1006,7 @@ def main_check() -> None:
     p.add_argument("--require-exact-part-query", action="store_true")
     p.add_argument("--require-figure-item-query", action="store_true")
     p.add_argument("--require-part-family-query", action="store_true")
+    p.add_argument("--require-image-diagram-query", action="store_true")
     p.add_argument("--require-no-human-review-required", action="store_true")
     p.add_argument("--max-unsafe", type=int, default=0)
     p.add_argument("--require-no-answer-permission", action="store_true")
@@ -843,3 +1019,5 @@ def main_check() -> None:
 
 if __name__ == "__main__":
     main_build()
+
+# TRACE_NET_IMAGE_ROUTE_FAST_CHAT_INTEGRATED_V1: image_or_diagram route integrated through Patch D adapter and image route quality gate.

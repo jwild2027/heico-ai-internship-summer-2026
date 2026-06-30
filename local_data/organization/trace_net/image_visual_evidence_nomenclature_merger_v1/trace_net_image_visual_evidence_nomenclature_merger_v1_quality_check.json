@@ -1,0 +1,78 @@
+{
+  "status": "TRACE_NET_IMAGE_VISUAL_EVIDENCE_NOMENCLATURE_MERGER_QUALITY_CHECKED",
+  "quality_status": "PASS",
+  "summary": {
+    "visual_record_count": 26,
+    "linked_visual_record_count": 3,
+    "raw_ocr_nomenclature_record_count": 3,
+    "nomenclature_merged_count": 3,
+    "nomenclature_missing_count": 0,
+    "high_confidence_nomenclature_count": 3,
+    "source_trace_ready_count": 3,
+    "ready_for_visual_answer_upgrade": true,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0
+  },
+  "checks": [
+    {
+      "name": "min_visual_records",
+      "observed": 26,
+      "expected": ">= 1",
+      "passed": true
+    },
+    {
+      "name": "min_nomenclature_merged",
+      "observed": 3,
+      "expected": ">= 3",
+      "passed": true
+    },
+    {
+      "name": "min_source_trace_ready",
+      "observed": 3,
+      "expected": ">= 3",
+      "passed": true
+    },
+    {
+      "name": "max_unsafe",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "max_answer_permission",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "max_source_truth_mutation_allowed",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "max_write_attempts",
+      "observed": 0,
+      "expected": "<= 0",
+      "passed": true
+    },
+    {
+      "name": "source_pack_quality_pass",
+      "observed": "PASS",
+      "expected": "PASS",
+      "passed": true
+    },
+    {
+      "name": "source_extractor_quality_pass",
+      "observed": "PASS",
+      "expected": "PASS",
+      "passed": true
+    }
+  ]
+}
