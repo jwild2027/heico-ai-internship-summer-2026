@@ -1,0 +1,402 @@
+{
+  "module": "trace_net_engineering_engram_core_v1",
+  "version": "v1",
+  "status": "TRACE_NET_ENGINEERING_ENGRAM_CORE_BUILT",
+  "quality_status": "PASS",
+  "summary": {
+    "module": "trace_net_engineering_engram_core_v1",
+    "version": "v1",
+    "engram_atom_count": 15,
+    "policy_trait_count": 3,
+    "style_trait_count": 3,
+    "route_behavior_count": 2,
+    "episodic_failure_memory_count": 4,
+    "episodic_eval_memory_count": 1,
+    "critic_trait_count": 1,
+    "repair_trait_count": 1,
+    "memory_type_count": 7,
+    "hard_boundary_count": 3,
+    "eval_source_count": 1,
+    "traits": [
+      "approval_boundary",
+      "crag_repair_reflex",
+      "engineering_answer_shape",
+      "eval_history",
+      "failure_memory",
+      "partial_answer_memory",
+      "route_awareness",
+      "self_rag_behavior_check",
+      "source_trace_caution",
+      "summary_boundary",
+      "unknown_handling",
+      "useful_caution"
+    ],
+    "ready_for_engram_prompt_injector": true,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0
+  },
+  "quality_gate": {
+    "quality_status": "PASS",
+    "failures": [],
+    "engram_atom_count": 15,
+    "policy_trait_count": 3,
+    "memory_type_count": 7
+  },
+  "records": [
+    {
+      "engram_id": "policy_no_interchangeability_without_authority_v1",
+      "memory_type": "policy_trait",
+      "priority": "hard_boundary",
+      "trait": "source_trace_caution",
+      "triggers": [
+        "interchangeability",
+        "approved replacement",
+        "replacement approval",
+        "shared nomenclature"
+      ],
+      "trigger_text": "interchangeability | replacement approval | shared nomenclature",
+      "rule": "Shared nomenclature, nearby figures, or part-family similarity are not proof of interchangeability or replacement approval.",
+      "good_behavior": "Say what TRACE-Net can prove about each part, then state interchangeability/replacement approval is not proven.",
+      "bad_behavior": "Treating the same description or part-family proximity as approval or interchangeability.",
+      "source": "H14C llm smoke repair",
+      "status": "active"
+    },
+    {
+      "engram_id": "policy_no_installation_safety_from_figure_v1",
+      "memory_type": "policy_trait",
+      "priority": "hard_boundary",
+      "trait": "approval_boundary",
+      "triggers": [
+        "installation safety",
+        "safe install",
+        "fit approval",
+        "aircraft effectivity"
+      ],
+      "trigger_text": "installation safety | fit approval | aircraft effectivity",
+      "rule": "Figure/part identification evidence does not prove installation safety, fit approval, aircraft effectivity, or replacement approval.",
+      "good_behavior": "Lead with not proven, then list the source-trace-ready identity/nomenclature evidence that is proven.",
+      "bad_behavior": "Implying a figure, OCR line, or part listing authorizes installation or fit.",
+      "source": "H14C llm smoke repair",
+      "status": "active"
+    },
+    {
+      "engram_id": "policy_v2_summaries_guidance_not_proof_v1",
+      "memory_type": "policy_trait",
+      "priority": "hard_boundary",
+      "trait": "summary_boundary",
+      "triggers": [
+        "v2 summary",
+        "summaries",
+        "summary proof",
+        "summary-only"
+      ],
+      "trigger_text": "v2 summary | summary-only proof",
+      "rule": "V2 summaries may guide planning and framing, but cannot prove source claims; factual claims require proof_context citations.",
+      "good_behavior": "Use summaries only to guide route selection and answer framing; cite proof_context for claims.",
+      "bad_behavior": "Using a v2 summary as direct evidence for part identity or approval.",
+      "source": "H10/H14C semantic eval",
+      "status": "active"
+    },
+    {
+      "engram_id": "route_visual_link_vs_ocr_nomenclature_v1",
+      "memory_type": "route_behavior",
+      "priority": "high",
+      "trait": "route_awareness",
+      "triggers": [
+        "visual route",
+        "OCR nomenclature",
+        "nomenclature missing",
+        "figure identity"
+      ],
+      "trigger_text": "visual route | OCR nomenclature | nomenclature missing",
+      "rule": "visual_figure_link establishes figure-to-part identity; ocr_nomenclature provides OCR-backed line-text name proof.",
+      "good_behavior": "Explain both routes separately when asked evidence-support or pipeline questions.",
+      "bad_behavior": "Saying only 'not proven' for pipeline questions when route behavior evidence is available.",
+      "source": "H14C safe reasoning traces",
+      "status": "active"
+    },
+    {
+      "engram_id": "route_table_ocr_supports_exact_part_v1",
+      "memory_type": "route_behavior",
+      "priority": "medium",
+      "trait": "route_awareness",
+      "triggers": [
+        "table OCR",
+        "exact part",
+        "part lookup",
+        "evidence supports"
+      ],
+      "trigger_text": "table OCR | exact part lookup | evidence support",
+      "rule": "Exact-part/table-OCR evidence supports presence of a part number but does not by itself prove approvals or compatibility.",
+      "good_behavior": "Use table/OCR evidence to support part presence and citation readiness, while keeping approval claims out of scope.",
+      "bad_behavior": "Converting a table hit into effectivity, fit, or replacement authority.",
+      "source": "H11-H14C smoke evals",
+      "status": "active"
+    },
+    {
+      "engram_id": "style_engineering_answer_shape_v1",
+      "memory_type": "style_trait",
+      "priority": "high",
+      "trait": "engineering_answer_shape",
+      "triggers": [
+        "engineering answer",
+        "limitations",
+        "evidence",
+        "confidence"
+      ],
+      "trigger_text": "engineering answer | limitations | evidence",
+      "rule": "Prefer answer sections: Answer, Evidence, Engineering confidence, Limits; for limitations questions, split Can prove vs Cannot prove.",
+      "good_behavior": "Give a concise direct answer, then cite proof and state limits.",
+      "bad_behavior": "Generic disclaimer-only answers, or citation dumps without answering the actual intent.",
+      "source": "H14C llm answer style",
+      "status": "active"
+    },
+    {
+      "engram_id": "style_useful_not_proven_v1",
+      "memory_type": "style_trait",
+      "priority": "high",
+      "trait": "useful_caution",
+      "triggers": [
+        "not proven",
+        "cannot prove",
+        "not source-trace-ready"
+      ],
+      "trigger_text": "not proven | cannot prove | not source-trace-ready",
+      "rule": "When a claim is not proven, still explain what TRACE-Net can prove and why the requested claim is outside the evidence.",
+      "good_behavior": "Not proven + can prove identity/nomenclature/pages + cannot prove approval/safety/effectivity.",
+      "bad_behavior": "Only saying 'not proven' without useful evidence context.",
+      "source": "H13 over-refusal repair through H14C",
+      "status": "active"
+    },
+    {
+      "engram_id": "style_unknown_part_or_figure_v1",
+      "memory_type": "style_trait",
+      "priority": "medium",
+      "trait": "unknown_handling",
+      "triggers": [
+        "unknown part",
+        "unknown figure",
+        "not found",
+        "999"
+      ],
+      "trigger_text": "unknown part | unknown figure | not found",
+      "rule": "For unknown part/figure questions with no proof_context, lead with not found / not source-trace-ready and do not cite unrelated evidence.",
+      "good_behavior": "State no proof_context was available and avoid unrelated citations.",
+      "bad_behavior": "Citing nearby known figures or parts for an unknown requested identifier.",
+      "source": "H14C partial unknown handling",
+      "status": "active"
+    },
+    {
+      "engram_id": "episode_h13_generic_not_proven_v1",
+      "memory_type": "episodic_failure_memory",
+      "priority": "high",
+      "trait": "failure_memory",
+      "triggers": [
+        "pipeline question",
+        "debug question",
+        "nomenclature missing"
+      ],
+      "trigger_text": "pipeline/debug questions over-refused",
+      "rule": "H13/H14 initially answered pipeline/debug questions with generic 'not proven'; H14C repaired this using scaffold + route-specific intent rules.",
+      "good_behavior": "Explain route behavior when the scaffold describes pipeline behavior; distinguish pipeline explanation from source-truth proof.",
+      "bad_behavior": "Blank/blocked or generic not-proven answers for route behavior questions.",
+      "source": "H13-H14C eval history",
+      "status": "active"
+    },
+    {
+      "engram_id": "episode_h14b_path_length_stage_output_v1",
+      "memory_type": "episodic_failure_memory",
+      "priority": "medium",
+      "trait": "failure_memory",
+      "triggers": [
+        "Windows path",
+        "quality_check missing",
+        "stage output",
+        "FileNotFoundError"
+      ],
+      "trigger_text": "Windows path length | missing quality_check",
+      "rule": "H14B exposed nested stage-output path failures; H14C used shorter output dirs and safe trace records to prevent blocked answers.",
+      "good_behavior": "Use short run directories and record safe failure traces instead of letting path plumbing block question evaluation.",
+      "bad_behavior": "Long nested run directories that prevent quality-check artifacts from being written/read on Windows.",
+      "source": "H14B/H14C path hardening",
+      "status": "active"
+    },
+    {
+      "engram_id": "critic_answer_behavior_self_rag_v1",
+      "memory_type": "critic_trait",
+      "priority": "high",
+      "trait": "self_rag_behavior_check",
+      "triggers": [
+        "answer critique",
+        "Self-RAG",
+        "unsupported claim",
+        "intent mismatch"
+      ],
+      "trigger_text": "Self-RAG answer behavior critique",
+      "rule": "Self-RAG should check whether the draft obeys source-trace boundaries, answers the actual intent, cites claims, and avoids over/under-refusal.",
+      "good_behavior": "Critique answers for evidence support and behavior correctness before delivery.",
+      "bad_behavior": "Only checking citation existence while missing semantic intent failure.",
+      "source": "H10 semantic answer quality eval",
+      "status": "active"
+    },
+    {
+      "engram_id": "repair_crag_engram_repair_v1",
+      "memory_type": "repair_trait",
+      "priority": "high",
+      "trait": "crag_repair_reflex",
+      "triggers": [
+        "CRAG",
+        "repair",
+        "weak answer",
+        "retry"
+      ],
+      "trigger_text": "CRAG repair | weak answer retry",
+      "rule": "CRAG should retrieve relevant failure/repair engrams and regenerate or rewrite the answer when Self-RAG flags weak behavior or weak evidence.",
+      "good_behavior": "Use retrieved repair patterns such as 'shared nomenclature is not interchangeability' to fix weak drafts.",
+      "bad_behavior": "Retrying the same prompt without adding behavior memory or evidence diagnostics.",
+      "source": "TRACE-Net engram architecture plan",
+      "status": "active"
+    },
+    {
+      "engram_id": "episode_llm_smoke_result_01_v1",
+      "memory_type": "episodic_eval_memory",
+      "priority": "medium",
+      "trait": "eval_history",
+      "triggers": [
+        "LLM smoke",
+        "answer quality",
+        "eval history"
+      ],
+      "trigger_text": "LLM smoke eval history",
+      "rule": "Observed eval result: 28 GOOD, 2 PARTIAL, 0 BAD, 0 BLOCKED out of 30; unsupported_claim_count=0.",
+      "good_behavior": "Reuse high-performing answer patterns and keep safety counters at zero.",
+      "bad_behavior": "Ignore prior eval failures or regress on unsupported claims.",
+      "source": "local_data/organization/trace_net/llm_h14c_30/trace_net_engineering_llm_answer_smoke_v1.json",
+      "status": "active"
+    },
+    {
+      "engram_id": "episode_partial_category_01_unknown_figure_v1",
+      "memory_type": "episodic_failure_memory",
+      "priority": "medium",
+      "trait": "partial_answer_memory",
+      "triggers": [
+        "unknown_figure",
+        "partial answer",
+        "quality improvement"
+      ],
+      "trigger_text": "partial category: unknown_figure",
+      "rule": "Category 'unknown_figure' was graded PARTIAL in a smoke eval; retrieve a more specific answer pattern before drafting.",
+      "good_behavior": "Explain the boundary and the available proof rather than generic refusal.",
+      "bad_behavior": "Generic not-proven or incomplete answer for a known weak category.",
+      "source": "local_data/organization/trace_net/llm_h14c_30/trace_net_engineering_llm_answer_smoke_v1.json",
+      "status": "active"
+    },
+    {
+      "engram_id": "episode_partial_category_01_unknown_part_v1",
+      "memory_type": "episodic_failure_memory",
+      "priority": "medium",
+      "trait": "partial_answer_memory",
+      "triggers": [
+        "unknown_part",
+        "partial answer",
+        "quality improvement"
+      ],
+      "trigger_text": "partial category: unknown_part",
+      "rule": "Category 'unknown_part' was graded PARTIAL in a smoke eval; retrieve a more specific answer pattern before drafting.",
+      "good_behavior": "Explain the boundary and the available proof rather than generic refusal.",
+      "bad_behavior": "Generic not-proven or incomplete answer for a known weak category.",
+      "source": "local_data/organization/trace_net/llm_h14c_30/trace_net_engineering_llm_answer_smoke_v1.json",
+      "status": "active"
+    }
+  ],
+  "eval_summaries": [
+    {
+      "path": "local_data/organization/trace_net/llm_h14c_30/trace_net_engineering_llm_answer_smoke_v1.json",
+      "quality_status": "PASS",
+      "summary": {
+        "smoke_question_count": 30,
+        "llm_answered_count": 30,
+        "runner_pass_count": 28,
+        "good_answer_count": 28,
+        "partial_answer_count": 2,
+        "bad_answer_count": 0,
+        "blocked_answer_count": 0,
+        "good_or_partial_answer_count": 30,
+        "answer_citation_count": 201,
+        "valid_answer_citation_count": 201,
+        "source_trace_ready_citation_count": 201,
+        "invalid_answer_citation_count": 0,
+        "unsupported_claim_count": 0,
+        "summary_used_as_proof_count": 0,
+        "module": "trace_net_engineering_llm_answer_smoke_v1",
+        "version": "v1",
+        "llm_mode": "ollama",
+        "llm_model": "gemma4:26b",
+        "source_question_count": 30,
+        "ready_for_llm_answer_review": true,
+        "answer_permission_count": 0,
+        "source_truth_mutation_allowed_count": 0,
+        "postgres_write_attempt_count": 0,
+        "qdrant_write_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "opensearch_upload_attempt_count": 0,
+        "write_attempt_count": 0,
+        "unsafe_record_count": 0,
+        "llava_only_part_identity_claim_count": 0
+      },
+      "record_count": 30,
+      "grade_counts": {
+        "GOOD": 28,
+        "PARTIAL": 2
+      },
+      "category_counts": {
+        "figure_lookup": 3,
+        "comparison": 2,
+        "exact_part_lookup": 3,
+        "evidence_support": 2,
+        "limitations": 2,
+        "interchangeability": 1,
+        "installation_safety": 2,
+        "fit_limit": 1,
+        "effectivity_limit": 1,
+        "troubleshooting": 2,
+        "pipeline_recovery": 1,
+        "source_page": 2,
+        "replacement_limit": 1,
+        "nomenclature_summary": 2,
+        "unknown_part": 1,
+        "unknown_figure": 1,
+        "evidence_explanation": 1,
+        "route_explanation": 1,
+        "summary_limit": 1
+      },
+      "partial_categories": [
+        "unknown_figure",
+        "unknown_part"
+      ],
+      "blocked_categories": [],
+      "bad_categories": []
+    }
+  ],
+  "safety_contract": {
+    "writes_to_postgres": false,
+    "writes_to_qdrant": false,
+    "writes_to_opensearch": false,
+    "source_truth_mutation_allowed": false,
+    "answer_permission": false,
+    "note": "H15 builds a local JSON engram profile only; Qdrant/Postgres loading is reserved for later adapter stages."
+  },
+  "paths": {
+    "core": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1.json",
+    "memory_atoms": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_memory_atoms_v1.json",
+    "traits": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_traits_v1.json",
+    "quality_check": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1_quality_check.json",
+    "csv": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_memory_atoms_v1.csv"
+  }
+}

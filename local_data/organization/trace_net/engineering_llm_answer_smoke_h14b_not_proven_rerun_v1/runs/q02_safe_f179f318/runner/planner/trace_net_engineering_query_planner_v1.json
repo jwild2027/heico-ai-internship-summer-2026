@@ -1,0 +1,94 @@
+{
+  "status": "TRACE_NET_ENGINEERING_QUERY_PLANNER_BUILT",
+  "quality_status": "PASS",
+  "module": "trace_net_engineering_query_planner_v1",
+  "version": "v1",
+  "question": "Does figure 69 prove installation safety?",
+  "source_v2_summary_guidance_index": "local_data/organization/trace_net/v2_summary_guidance_index_v1/trace_net_v2_summary_guidance_index_v1.json",
+  "summary": {
+    "planner_record_count": 1,
+    "task_type_count": 1,
+    "required_route_count": 4,
+    "selected_guidance_page_count": 0,
+    "guidance_only_summary_count": 0,
+    "source_guidance_summary_record_count": 31,
+    "can_answer_from_summaries_only_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0,
+    "ready_for_engineering_context_pack": true
+  },
+  "failures": [],
+  "records": [
+    {
+      "module": "trace_net_engineering_query_planner_v1",
+      "version": "v1",
+      "question": "Does figure 69 prove installation safety?",
+      "task_type": "visual_part_identification",
+      "engineering_intent": "identify what a visual figure or diagram shows using image plus OCR/table proof",
+      "entities": {
+        "part_numbers": [],
+        "figures": [
+          "69"
+        ],
+        "items": [],
+        "part_families": [],
+        "topics": [
+          "figure",
+          "installation"
+        ]
+      },
+      "guidance_pages": [],
+      "guidance_page_count": 0,
+      "required_routes": [
+        "image_or_diagram",
+        "table_ocr_proof",
+        "raw_ocr_nomenclature",
+        "image_route_quality_gate"
+      ],
+      "required_route_count": 4,
+      "optional_routes": [
+        "graph_leiden_neighbors",
+        "part_family"
+      ],
+      "proof_requirements": [
+        "visual figure/page evidence",
+        "linked part number proof",
+        "OCR/table nomenclature evidence",
+        "source-trace-ready citation"
+      ],
+      "forbidden_claims": [
+        "LLaVA-only part identity",
+        "effectivity",
+        "fit",
+        "installation safety",
+        "interchangeability",
+        "replacement approval",
+        "summary-only figure proof"
+      ],
+      "answer_style": "engineering_brain",
+      "can_answer_from_summaries_only": false,
+      "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof",
+      "answer_permission": false,
+      "source_truth_mutation_allowed": false,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "opensearch_write_attempt": false,
+      "opensearch_upload_attempt": false,
+      "unsafe_record": false,
+      "entities_json": "{\"part_numbers\": [], \"figures\": [\"69\"], \"items\": [], \"part_families\": [], \"topics\": [\"figure\", \"installation\"]}",
+      "required_routes_json": "[\"image_or_diagram\", \"table_ocr_proof\", \"raw_ocr_nomenclature\", \"image_route_quality_gate\"]",
+      "optional_routes_json": "[\"graph_leiden_neighbors\", \"part_family\"]"
+    }
+  ],
+  "paths": {
+    "planner": "local_data\\organization\\trace_net\\engineering_llm_answer_smoke_h14b_not_proven_rerun_v1\\runs\\q02_safe_f179f318\\runner\\planner\\trace_net_engineering_query_planner_v1.json",
+    "quality_check": "local_data\\organization\\trace_net\\engineering_llm_answer_smoke_h14b_not_proven_rerun_v1\\runs\\q02_safe_f179f318\\runner\\planner\\trace_net_engineering_query_planner_v1_quality_check.json",
+    "records_csv": "local_data\\organization\\trace_net\\engineering_llm_answer_smoke_h14b_not_proven_rerun_v1\\runs\\q02_safe_f179f318\\runner\\planner\\trace_net_engineering_query_planner_v1_records.csv"
+  }
+}

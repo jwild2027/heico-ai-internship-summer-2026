@@ -1,0 +1,21 @@
+Answer: No, v2 summaries alone cannot prove Figure 69 part identity. V2 summaries may guide planning and framing, but they are not used as proof; factual claims require `proof_context` citations.
+
+TRACE-Net can prove the following from the provided `proof_context`:
+- Visual evidence links figure 69 to part number 120-50645-005 [V6].
+- OCR-backed nomenclature identifies the part as "DOUBLE PASSENGER SEAT ASSY" [O1].
+- Table/OCR proof supports part number 120-50645-005 [T1].
+
+TRACE-Net cannot prove Figure 69's identity using only v2 summaries.
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives "DOUBLE PASSENGER SEAT ASSY" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready.
+
+Limits:
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.

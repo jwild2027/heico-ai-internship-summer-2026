@@ -1,0 +1,109 @@
+{
+  "trace_type": "safe_reasoning_trace_not_hidden_chain_of_thought",
+  "trace_note": "This shows the evidence, prompt constraints, scaffold, and gate checks. It is not raw model hidden reasoning.",
+  "question_id": "q06",
+  "category": "exact_part_lookup",
+  "question": "Find part number 120-50645-005 and cite the source.",
+  "task_type": "exact_part_lookup",
+  "runner_quality_status": "PASS",
+  "runner_passed": true,
+  "proof_context_count": 4,
+  "guidance_context_count": 0,
+  "available_citation_labels": [
+    "E1",
+    "O1",
+    "T1",
+    "V6"
+  ],
+  "proof_context_preview": [
+    {
+      "citation_label": "V6",
+      "context_type": "visual_figure_link",
+      "figure": "69",
+      "part_number": "120-50645-005",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 315,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "O1",
+      "context_type": "ocr_nomenclature",
+      "figure": "69",
+      "part_number": "120-50645-005",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 316,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "E1",
+      "context_type": "exact_part_evidence",
+      "figure": null,
+      "part_number": "120-50645-005",
+      "nomenclature": "",
+      "page_number": null,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "T1",
+      "context_type": "table_ocr_proof",
+      "figure": null,
+      "part_number": "120-50645-005",
+      "nomenclature": null,
+      "page_number": null,
+      "source_trace_ready": true
+    }
+  ],
+  "answer_constraints": {
+    "answer_style": "engineering_brain",
+    "may_claim": [
+      "part number appears in source evidence",
+      "source page/citation locations",
+      "nomenclature only when OCR/table evidence supports it"
+    ],
+    "may_not_claim": [
+      "effectivity",
+      "fit",
+      "installation safety",
+      "interchangeability",
+      "replacement approval",
+      "summary-only proof",
+      "unsupported effectivity",
+      "unsupported interchangeability",
+      "unsupported installation or safety approval"
+    ],
+    "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"
+  },
+  "intent_rules": [],
+  "scaffold_present": true,
+  "engram_atom_count": 4,
+  "engram_ids": [
+    "policy_no_interchangeability_without_authority_v1",
+    "policy_no_installation_safety_from_figure_v1",
+    "policy_v2_summaries_guidance_not_proof_v1",
+    "style_useful_not_proven_v1"
+  ],
+  "engram_traits": [
+    "approval_boundary",
+    "source_trace_caution",
+    "summary_boundary",
+    "useful_caution"
+  ],
+  "engram_note": "Engram atoms are behavioral guidance only; they are not source proof and are not raw model reasoning.",
+  "llm_retry_used": false,
+  "llm_fallback_used": false,
+  "llm_fallback_reason": "",
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h16b_engram_30\\p\\q06_078c4d_p.txt",
+  "answer_path": "local_data\\organization\\trace_net\\llm_h16b_engram_30\\a\\q06_078c4d_a.txt",
+  "llm_error": "",
+  "gate_result": {
+    "grade": "GOOD",
+    "llm_answered": true,
+    "answer_citation_count": 8,
+    "valid_answer_citation_count": 8,
+    "source_trace_ready_citation_count": 8,
+    "invalid_answer_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0
+  },
+  "answer_preview": "Answer:\nPart number 120-50645-005 is present in source-trace-ready evidence and is associated with \"DOUBLE PASSENGER SEAT ASSY\" [E1] [O1] [T1] [V6].\n\nEvidence:\n- [E1] Exact-part evidence contains part number 120-50645-005.\n- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315 with the nomenclature \"DOUBLE PASSENGER SEAT ASSY\".\n- [O1] OCR-backed nomenclature provides \"DOUBLE PASSENGER SEAT ASSY\" for part number 120-50645-005 on page 316.\n  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF\n- [T1] Table/OCR proof supports part number 120-50645-005.\n\nEngineering confidence:\nHIGH for the exact part lookup because multiple source-trace-ready proof records support the part number and its associated nomenclature.\n\nLimits:\n- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety."
+}

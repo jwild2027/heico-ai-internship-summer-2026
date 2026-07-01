@@ -1,0 +1,125 @@
+{
+  "status": "TRACE_NET_ENGINEERING_ANSWER_COMPOSER_BUILT",
+  "module": "trace_net_engineering_answer_composer_v1",
+  "version": "v1",
+  "quality_status": "PASS",
+  "source_context_pack": "local_data\\organization\\trace_net\\engineering_real_answer_smoke_test_v1\\runs\\q09_part_ca2ae526\\context_pack\\trace_net_engineering_answer_context_pack_v1.json",
+  "summary": {
+    "engineering_answer_record_count": 1,
+    "answer_char_count": 936,
+    "answer_citation_count": 8,
+    "valid_answer_citation_count": 4,
+    "source_trace_ready_citation_count": 4,
+    "invalid_answer_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "llava_only_part_identity_claim_count": 0,
+    "summary_used_as_proof_count": 0,
+    "proof_context_used_count": 4,
+    "guidance_context_used_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0,
+    "ready_for_engineering_answer_delivery": true
+  },
+  "records": [
+    {
+      "question": "What evidence supports part number 120-50645-005?",
+      "task_type": "exact_part_lookup",
+      "answer_text": "Answer:\nPart number 120-50645-005 is present in source-trace-ready evidence and is associated with \"DOUBLE PASSENGER SEAT ASSY\" [E1] [O1] [T1] [V6].\n\nEvidence:\n- [E1] Exact-part evidence contains part number 120-50645-005 in field covered_part_number: 120-50645-005.\n- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.\n- [O1] OCR-backed nomenclature gives \"DOUBLE PASSENGER SEAT ASSY\" on page 316.\n  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF\n- [T1] Table/OCR proof supports part number 120-50645-005.\n\nEngineering confidence:\nHIGH for the exact part lookup because multiple source-trace-ready proof records support the part number. Nomenclature confidence: HIGH.\n\nLimits:\n- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.\n- V2 summaries, when present, are guidance only and are not used as proof in this answer.",
+      "answer_style": "engineering_brain",
+      "selected_claim": {
+        "figure": "69",
+        "part_number": "120-50645-005",
+        "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+        "nomenclature_confidence": "HIGH"
+      },
+      "citations": [
+        "E1",
+        "O1",
+        "T1",
+        "V6",
+        "E1",
+        "V6",
+        "O1",
+        "T1"
+      ],
+      "valid_citations": [
+        "E1",
+        "O1",
+        "T1",
+        "V6"
+      ],
+      "invalid_citations": [],
+      "proof_context_used_count": 4,
+      "guidance_context_used_count": 0,
+      "summary_used_as_proof_count": 0,
+      "answer_constraints": {
+        "answer_style": "engineering_brain",
+        "may_claim": [
+          "part number appears in source evidence",
+          "source page/citation locations",
+          "nomenclature only when OCR/table evidence supports it"
+        ],
+        "may_not_claim": [
+          "effectivity",
+          "fit",
+          "installation safety",
+          "interchangeability",
+          "replacement approval",
+          "summary-only proof",
+          "unsupported effectivity",
+          "unsupported interchangeability",
+          "unsupported installation or safety approval"
+        ],
+        "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"
+      },
+      "forbidden_claims_checked": [
+        "interchangeability",
+        "effectivity",
+        "fit",
+        "installation safety",
+        "replacement approval",
+        "approved replacement",
+        "safe to install"
+      ],
+      "answer_permission": false,
+      "source_truth_mutation_allowed": false
+    }
+  ],
+  "answer_text": "Answer:\nPart number 120-50645-005 is present in source-trace-ready evidence and is associated with \"DOUBLE PASSENGER SEAT ASSY\" [E1] [O1] [T1] [V6].\n\nEvidence:\n- [E1] Exact-part evidence contains part number 120-50645-005 in field covered_part_number: 120-50645-005.\n- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.\n- [O1] OCR-backed nomenclature gives \"DOUBLE PASSENGER SEAT ASSY\" on page 316.\n  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF\n- [T1] Table/OCR proof supports part number 120-50645-005.\n\nEngineering confidence:\nHIGH for the exact part lookup because multiple source-trace-ready proof records support the part number. Nomenclature confidence: HIGH.\n\nLimits:\n- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.\n- V2 summaries, when present, are guidance only and are not used as proof in this answer.",
+  "quality_gate": {
+    "quality_status": "PASS",
+    "failures": [],
+    "answer_citation_count": 8,
+    "valid_answer_citation_count": 4,
+    "source_trace_ready_citation_count": 4,
+    "invalid_answer_citation_count": 0,
+    "invalid_answer_citation_labels": [],
+    "unsupported_claim_count": 0,
+    "unsupported_interchangeability_claim_count": 0,
+    "llava_only_part_identity_claim_count": 0,
+    "summary_used_as_proof_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0
+  },
+  "failures": [],
+  "safety_contract": {
+    "postgres_write_allowed": false,
+    "qdrant_write_allowed": false,
+    "opensearch_write_allowed": false,
+    "opensearch_upload_allowed": false,
+    "source_truth_mutation_allowed": false,
+    "answer_permission": false
+  }
+}

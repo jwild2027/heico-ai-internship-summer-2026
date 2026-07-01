@@ -1,0 +1,69 @@
+You are TRACE-Net's engineering evidence answerer.
+Answer the user's question using ONLY the supplied proof_context for factual claims.
+guidance_context and v2 summaries may guide planning/framing only; they are not proof.
+Engram memory may guide behavior/style/critique only; it is not proof and must not be cited as source evidence.
+Every factual claim must cite one or more provided citation labels like [V6] or [O1].
+If proof is missing, say not proven or not source-trace-ready. Do not guess.
+Do NOT claim interchangeability, effectivity, fit, replacement approval, or installation safety unless explicit proof_context supports it.
+Use this format: Answer, Evidence, Engineering confidence, Limits.
+Never return an empty answer. If direct proof is missing, still explain the limitation and what TRACE-Net can/cannot prove from the provided context.
+
+QUESTION: What changed after the raw OCR nomenclature extractor was added?
+QUESTION_CATEGORY: pipeline_recovery
+INTENT_RULE: For TRACE-Net pipeline/debug questions, use the structured scaffold plus proof_context to explain pipeline behavior.
+INTENT_RULE: Explain that visual_figure_link establishes figure/part identity, while ocr_nomenclature provides OCR-backed line-text nomenclature proof.
+INTENT_RULE: For raw OCR extractor questions, explain that OCR-backed nomenclature improves/recovers description evidence when visual/table records alone lack a clean nomenclature field.
+INTENT_RULE: Do not answer only 'not proven' when the scaffold describes the TRACE-Net pipeline behavior; instead distinguish pipeline explanation from source-truth proof.
+
+TRACE_NET_ENGINEERING_ENGRAM_MEMORY (behavior guidance only; NOT source proof):
+- Use these compact behavior memories for answer style and boundaries only; never cite them as evidence.
+- id=route_visual_link_vs_ocr_nomenclature_v1; trait=route_awareness; priority=high; rule=visual_figure_link establishes figure-to-part identity; ocr_nomenclature provides OCR-backed line-text name proof.; do=Explain both routes separately when asked evidence-support or pipeline questions.
+- id=policy_no_interchangeability_without_authority_v1; trait=source_trace_caution; priority=hard_boundary; rule=Shared nomenclature, nearby figures, or part-family similarity are not proof of interchangeability or replacement approval.; do=Say what TRACE-Net can prove about each part, then state interchangeability/replacement approval is not proven.
+- id=episode_h13_generic_not_proven_v1; trait=failure_memory; priority=high; rule=H13/H14 initially answered pipeline/debug questions with generic 'not proven'; H14C repaired this using scaffold + route-specific intent rules.; do=Explain route behavior when the scaffold describes pipeline behavior; distinguish pipeline explanation from source-truth...
+- id=policy_no_installation_safety_from_figure_v1; trait=approval_boundary; priority=hard_boundary; rule=Figure/part identification evidence does not prove installation safety, fit approval, aircraft effectivity, or replacement approval.; do=Lead with not proven, then list the source-trace-ready identity/nomenclature evidence that is proven.
+
+STRUCTURED_TRACE_NET_SCAFFOLD (use as answer shape; factual claims still require proof_context citations):
+Answer scaffold:
+The earlier visual route can establish a figure-to-part link, but visual-link evidence alone should not be treated as clean nomenclature proof unless a source-trace-ready nomenclature field or OCR/table record supports it.
+The OCR nomenclature route provides line-text evidence for the part name, and the nomenclature merger can carry that OCR-backed name into the visual evidence pack.
+Use visual citations for figure/part linkage and OCR citations for nomenclature wording.
+Available citation families: [V6], [V7], [V8], [O1], [O2], [O3], [T1], [T2], [T3].
+Limits: this is a TRACE-Net pipeline explanation, not proof of interchangeability, effectivity, fit, replacement approval, or installation safety.
+Runner answer to preserve if useful: Answer:
+Figure 69 is linked to part number 120-50645-005, "DOUBLE PASSENGER SEAT ASSY" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives "DOUBLE PASSENGER SEAT ASSY" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.
+TASK_TYPE: table_extraction_question
+ANSWER_CONSTRAINTS: {"answer_style": "engineering_brain", "may_claim": ["claims supported by source-trace-ready proof_context records", "guidance summaries may frame the search but not prove facts"], "may_not_claim": ["effectivity", "fit", "installation safety", "interchangeability", "replacement approval", "summary-only proof", "unsupported effectivity", "unsupported interchangeability", "unsupported installation or safety approval"], "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"}
+
+PROOF_CONTEXT:
+- [V6] context_type=visual_figure_link; citation_label=V6; page_number=315; page_id=t_p_120_1176_p000315; figure=69; part_number=120-50645-005; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True
+- [V7] context_type=visual_figure_link; citation_label=V7; page_number=327; page_id=t_p_120_1176_p000327; figure=75; part_number=120-50645-011; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True
+- [V8] context_type=visual_figure_link; citation_label=V8; page_number=382; page_id=t_p_120_1176_p000382; figure=91; part_number=120-29068-003; nomenclature=STRUCTURE ASSY; source_trace_ready=True; proof_eligible=True
+- [O1] context_type=ocr_nomenclature; citation_label=O1; page_number=316; page_id=t_p_120_1176_p000316; figure=69; part_number=120-50645-005; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True; line_text=69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [O2] context_type=ocr_nomenclature; citation_label=O2; page_number=328; page_id=t_p_120_1176_p000328; figure=75; part_number=120-50645-011; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True; line_text=75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [O3] context_type=ocr_nomenclature; citation_label=O3; page_number=384; page_id=t_p_120_1176_p000384; figure=91; part_number=120-29068-003; nomenclature=STRUCTURE ASSY 00; source_trace_ready=True; proof_eligible=True; line_text=91 - | 120-29068-003 STRUCTURE ASSY 00... ccceennseeeees VS4956 A REF
+- [T1] context_type=table_ocr_proof; citation_label=T1; page_id=t_p_120_1176_p000003; part_number=120-50645-005; source_trace_ready=True; proof_eligible=True
+- [T2] context_type=table_ocr_proof; citation_label=T2; page_id=t_p_120_1176_p000003; part_number=120-50645-011; source_trace_ready=True; proof_eligible=True
+- [T3] context_type=table_ocr_proof; citation_label=T3; page_id=t_p_120_1176_p000031; part_number=120-29068-003; source_trace_ready=True; proof_eligible=True
+
+GUIDANCE_CONTEXT (not proof):
+- guidance page=16: This page from the maintenance manual describes the construction of a seat backrest and bottom cushion, including materials like composite structures, foam cushions, upholstery, and Velcro fasteners.
+- guidance page=17: This page is a parts list and figure illustrating the passenger seat, referencing part number 120TP250001.MCI.
+- guidance page=19: This page is a figure illustrating the passenger seat, including its backrests and bottom, with associated part numbers and revision information.
+- guidance page=20: This page describes the format of an illustrated parts list, explaining the different columns and their purpose for identifying aircraft parts.
+- guidance page=21: This page describes the organization and categorization of parts within a maintenance manual's illustrated parts list, including EMBRAER, military standard, and vendor part numbers.
+- guidance page=24: This page from the maintenance manual provides vendor information and includes a parts list entry for part number 345-1598.
+- guidance page=27: This page appears to be a parts list from the maintenance manual, listing numerous part numbers with associated quantities and airline part numbers.
+- guidance page=29: This page appears to be a parts list from the maintenance manual, listing various part numbers and quantities.

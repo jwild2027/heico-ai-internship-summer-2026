@@ -1,0 +1,167 @@
+{
+  "status": "TRACE_NET_ENGINEERING_ANSWER_CONTEXT_PACK_BUILT",
+  "quality_status": "PASS",
+  "module": "trace_net_engineering_answer_context_pack_v1",
+  "version": "v1",
+  "source_engineering_query_planner": "local_data\\organization\\trace_net\\engineering_llm_answer_smoke_h14_not_proven_rerun_v1\\runs\\q02_safe_f179f318\\runner\\planner\\trace_net_engineering_query_planner_v1.json",
+  "source_v2_summary_guidance_index": "local_data/organization/trace_net/v2_summary_guidance_index_v1/trace_net_v2_summary_guidance_index_v1.json",
+  "source_image_visual_evidence_pack": "local_data/organization/trace_net/image_visual_evidence_nomenclature_merger_v1/trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+  "source_raw_ocr_nomenclature_extractor": "local_data/organization/trace_net/raw_ocr_nomenclature_window_extractor_v1/trace_net_raw_ocr_nomenclature_window_extractor_v1.json",
+  "summary": {
+    "engineering_answer_context_pack_record_count": 1,
+    "guidance_context_count": 0,
+    "proof_context_count": 3,
+    "visual_proof_context_count": 1,
+    "ocr_nomenclature_context_count": 1,
+    "table_ocr_context_count": 1,
+    "exact_part_context_count": 0,
+    "source_trace_ready_count": 3,
+    "summary_used_as_proof_count": 0,
+    "can_answer_from_summaries_only_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0,
+    "ready_for_engineering_answer_composer": true
+  },
+  "failures": [],
+  "records": [
+    {
+      "question": "Does figure 69 prove installation safety?",
+      "task_type": "visual_part_identification",
+      "engineering_intent": "identify what a visual figure or diagram shows using image plus OCR/table proof",
+      "entities": {
+        "part_numbers": [],
+        "figures": [
+          "69"
+        ],
+        "items": [],
+        "part_families": [],
+        "topics": [
+          "figure",
+          "installation"
+        ]
+      },
+      "required_routes": [
+        "image_or_diagram",
+        "table_ocr_proof",
+        "raw_ocr_nomenclature",
+        "image_route_quality_gate"
+      ],
+      "optional_routes": [
+        "graph_leiden_neighbors",
+        "part_family"
+      ],
+      "proof_requirements": [
+        "visual figure/page evidence",
+        "linked part number proof",
+        "OCR/table nomenclature evidence",
+        "source-trace-ready citation"
+      ],
+      "guidance_context": [],
+      "proof_context": [
+        {
+          "context_type": "visual_figure_link",
+          "citation_label": "V6",
+          "page_id": "t_p_120_1176_p000315",
+          "page_number": 315,
+          "figure": "69",
+          "callout": "",
+          "part_number": "120-50645-005",
+          "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+          "nomenclature_confidence": "HIGH",
+          "proof_source": "trusted_ocr_table_figure_item_evidence",
+          "proof_strength": "linked_visual_plus_figure_page_table_proof",
+          "source_trace_ready": true,
+          "citation_ready": true,
+          "limitations": [
+            "OCR-backed nomenclature was found in raw OCR text near the linked figure/part evidence.",
+            "Figure/page proof is linked, but no exact callout/item label is present in the visual link.",
+            "This evidence does not prove interchangeability, effectivity, fit, replacement approval, or installation safety."
+          ],
+          "guidance_only": false,
+          "proof_eligible": true,
+          "answer_permission": false,
+          "source_truth_mutation_allowed": false
+        },
+        {
+          "context_type": "ocr_nomenclature",
+          "citation_label": "O1",
+          "source_visual_citation_label": "V6",
+          "page_id": "t_p_120_1176_p000316",
+          "page_number": 316,
+          "figure": "69",
+          "part_number": "120-50645-005",
+          "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+          "nomenclature_confidence": "HIGH",
+          "extraction_rule": "same_line_after_part",
+          "score_reason": "same_line_after_part;figure_on_line;part_on_line;near_visual_page;part_noun",
+          "line_text": "69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF",
+          "proof_source": "raw_ocr_nomenclature_window_extractor",
+          "proof_strength": "ocr_backed_nomenclature",
+          "source_trace_ready": true,
+          "citation_ready": true,
+          "guidance_only": false,
+          "proof_eligible": true,
+          "answer_permission": false,
+          "source_truth_mutation_allowed": false
+        },
+        {
+          "context_type": "table_ocr_proof",
+          "citation_label": "T1",
+          "page_id": "t_p_120_1176_p000003",
+          "page_number": null,
+          "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+          "row_index": 28,
+          "field_name": "covered_part_number",
+          "value": "120-50645-005",
+          "part_number": "120-50645-005",
+          "proof_source": "trusted_table_or_exact_search_artifact",
+          "proof_strength": "trusted_table_ocr_evidence",
+          "source_trace_ready": true,
+          "citation_ready": true,
+          "guidance_only": false,
+          "proof_eligible": true,
+          "answer_permission": false,
+          "source_truth_mutation_allowed": false
+        }
+      ],
+      "answer_constraints": {
+        "answer_style": "engineering_brain",
+        "may_claim": [
+          "figure/page link when supported by visual evidence",
+          "linked part number when supported by OCR/table/figure proof",
+          "OCR-backed nomenclature when source-trace-ready OCR evidence is present"
+        ],
+        "may_not_claim": [
+          "LLaVA-only part identity",
+          "effectivity",
+          "fit",
+          "installation safety",
+          "interchangeability",
+          "replacement approval",
+          "summary-only figure proof",
+          "summary-only proof",
+          "unsupported effectivity",
+          "unsupported interchangeability",
+          "unsupported installation or safety approval"
+        ],
+        "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"
+      },
+      "guidance_context_policy": "Guidance summaries may help choose routes and frame investigation, but cannot prove answer claims.",
+      "proof_context_policy": "Only source-trace-ready proof_context records may support factual answer claims.",
+      "answer_permission": false,
+      "source_truth_mutation_allowed": false,
+      "unsafe": false
+    }
+  ],
+  "paths": {
+    "context_pack": "local_data\\organization\\trace_net\\engineering_llm_answer_smoke_h14_not_proven_rerun_v1\\runs\\q02_safe_f179f318\\runner\\context_pack\\trace_net_engineering_answer_context_pack_v1.json",
+    "quality_check": "local_data\\organization\\trace_net\\engineering_llm_answer_smoke_h14_not_proven_rerun_v1\\runs\\q02_safe_f179f318\\runner\\context_pack\\trace_net_engineering_answer_context_pack_v1_quality_check.json",
+    "proof_records_csv": "local_data\\organization\\trace_net\\engineering_llm_answer_smoke_h14_not_proven_rerun_v1\\runs\\q02_safe_f179f318\\runner\\context_pack\\trace_net_engineering_answer_context_pack_v1_proof_records.csv"
+  }
+}

@@ -1,0 +1,13 @@
+question,quality_status,runner_passed,task_type,stage_pass_count,proof_context_count,answer_citation_count,source_trace_ready_citation_count,unsupported_claim_count,summary_used_as_proof_count,invalid_answer_citation_count,llava_only_part_identity_claim_count,unsafe_record_count,answer_permission_count,source_truth_mutation_allowed_count,write_attempt_count,failed_stage,failure_type,failure_reason,error
+What does figure 69 show?,PASS,True,visual_part_identification,3,3,5,3,0,0,0,0,0,0,0,0,,,,
+What does figure 75 show?,PASS,True,visual_part_identification,3,3,5,3,0,0,0,0,0,0,0,0,,,,
+What does figure 91 show?,PASS,True,visual_part_identification,3,3,5,3,0,0,0,0,0,0,0,0,,,,
+Compare figure 69 and figure 75.,PASS,True,comparison_question,3,6,5,3,0,0,0,0,0,0,0,0,,,,
+Find part number 120-50645-005 and cite the source.,PASS,True,exact_part_lookup,3,4,8,4,0,0,0,0,0,0,0,0,,,,
+Find part number 120-50645-011 and cite the source.,PASS,True,exact_part_lookup,3,4,8,4,0,0,0,0,0,0,0,0,,,,
+Find part number 120-29068-003 and cite the source.,PASS,True,exact_part_lookup,3,4,8,4,0,0,0,0,0,0,0,0,,,,
+Why was nomenclature missing from the visual route evidence?,PASS,True,troubleshooting_question,3,9,5,3,0,0,0,0,0,0,0,0,,,,
+What evidence supports part number 120-50645-005?,PASS,True,exact_part_lookup,3,4,8,4,0,0,0,0,0,0,0,0,,,,
+What can TRACE-Net not prove about part number 120-50645-005?,PASS,True,exact_part_lookup,3,4,8,4,0,0,0,0,0,0,0,0,,,,
+Is 120-50645-005 interchangeable with 120-50645-011?,PASS,True,exact_part_lookup,3,8,8,4,0,0,0,0,0,0,0,0,,,,
+Does figure 69 prove installation safety?,PASS,True,visual_part_identification,3,3,5,3,0,0,0,0,0,0,0,0,,,,

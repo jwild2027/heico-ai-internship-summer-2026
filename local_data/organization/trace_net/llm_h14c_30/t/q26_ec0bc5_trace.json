@@ -1,0 +1,55 @@
+{
+  "trace_type": "safe_reasoning_trace_not_hidden_chain_of_thought",
+  "trace_note": "This shows the evidence, prompt constraints, scaffold, and gate checks. It is not raw model hidden reasoning.",
+  "question_id": "q26",
+  "category": "unknown_figure",
+  "question": "What does figure 999 show?",
+  "task_type": "visual_part_identification",
+  "runner_quality_status": "FAIL",
+  "runner_passed": false,
+  "proof_context_count": 0,
+  "guidance_context_count": 0,
+  "available_citation_labels": [],
+  "proof_context_preview": [],
+  "answer_constraints": {
+    "answer_style": "engineering_brain",
+    "may_claim": [
+      "figure/page link when supported by visual evidence",
+      "linked part number when supported by OCR/table/figure proof",
+      "OCR-backed nomenclature when source-trace-ready OCR evidence is present"
+    ],
+    "may_not_claim": [
+      "LLaVA-only part identity",
+      "effectivity",
+      "fit",
+      "installation safety",
+      "interchangeability",
+      "replacement approval",
+      "summary-only figure proof",
+      "summary-only proof",
+      "unsupported effectivity",
+      "unsupported interchangeability",
+      "unsupported installation or safety approval"
+    ],
+    "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"
+  },
+  "intent_rules": [
+    "INTENT_RULE: For unknown part/figure questions with no proof_context, lead with 'not found / not source-trace-ready'.",
+    "INTENT_RULE: Do not cite unrelated evidence for unknown part or figure questions."
+  ],
+  "scaffold_present": true,
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h14c_30\\p\\q26_ec0bc5_p.txt",
+  "answer_path": "local_data\\organization\\trace_net\\llm_h14c_30\\a\\q26_ec0bc5_a.txt",
+  "llm_error": "",
+  "gate_result": {
+    "grade": "PARTIAL",
+    "llm_answered": true,
+    "answer_citation_count": 0,
+    "valid_answer_citation_count": 0,
+    "source_trace_ready_citation_count": 0,
+    "invalid_answer_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0
+  },
+  "answer_preview": "Answer: not found / not source-trace-ready. TRACE-Net cannot identify what figure 999 shows because there is no engineering evidence or documentation regarding this specific figure within the provided proof_context.\n\nEvidence:\n- No proof context was available.\n\nEngineering confidence:\nLOW to MEDIUM because the context pack has limited proof records. Nomenclature confidence: MEDIUM.\n\nLimits:\n- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.\n- V2 summaries, when present, are guidance only and are not used as proof in this answer."
+}

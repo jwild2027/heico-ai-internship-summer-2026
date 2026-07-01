@@ -1,0 +1,243 @@
+{
+  "status": "TRACE_NET_ENGINEERING_QUERY_PLANNER_BUILT",
+  "quality_status": "PASS",
+  "module": "trace_net_engineering_query_planner_v1",
+  "version": "v1",
+  "question": "Summarize the evidence for DOUBLE PASSENGER SEAT ASSY.",
+  "source_v2_summary_guidance_index": "local_data/organization/trace_net/v2_summary_guidance_index_v1/trace_net_v2_summary_guidance_index_v1.json",
+  "summary": {
+    "planner_record_count": 1,
+    "task_type_count": 1,
+    "required_route_count": 3,
+    "selected_guidance_page_count": 8,
+    "guidance_only_summary_count": 8,
+    "source_guidance_summary_record_count": 31,
+    "can_answer_from_summaries_only_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0,
+    "ready_for_engineering_context_pack": true
+  },
+  "failures": [],
+  "records": [
+    {
+      "module": "trace_net_engineering_query_planner_v1",
+      "version": "v1",
+      "question": "Summarize the evidence for DOUBLE PASSENGER SEAT ASSY.",
+      "task_type": "manual_section_summary",
+      "engineering_intent": "summarize likely manual section context with proof separation",
+      "entities": {
+        "part_numbers": [],
+        "figures": [],
+        "items": [],
+        "part_families": [],
+        "topics": [
+          "double passenger seat",
+          "passenger seat",
+          "evidence"
+        ]
+      },
+      "guidance_pages": [
+        {
+          "page_id": "t_p_120_1176_p000018",
+          "page_number": 18,
+          "summary_text": "This page is a parts list illustration for a double passenger seat, referencing part number 120TP250002.MCE and figure 2.",
+          "detected_figures": [
+            "2"
+          ],
+          "detected_part_numbers": [],
+          "detected_topics": [
+            "double passenger seat",
+            "figure",
+            "illustrated parts list"
+          ],
+          "manual_section_hint": "illustrated_parts_list",
+          "guidance_score": 19,
+          "guidance_reasons": [
+            "topic_overlap:double/for/passenger/seat",
+            "manual_section:illustrated_parts_list"
+          ],
+          "guidance_only": true,
+          "source_trace_ready": true
+        },
+        {
+          "page_id": "t_p_120_1176_p000017",
+          "page_number": 17,
+          "summary_text": "This page is a parts list and figure illustrating the passenger seat, referencing part number 120TP250001.MCI.",
+          "detected_figures": [],
+          "detected_part_numbers": [],
+          "detected_topics": [
+            "figure",
+            "illustrated parts list"
+          ],
+          "manual_section_hint": "illustrated_parts_list",
+          "guidance_score": 15,
+          "guidance_reasons": [
+            "topic_overlap:passenger/seat/the",
+            "manual_section:illustrated_parts_list"
+          ],
+          "guidance_only": true,
+          "source_trace_ready": true
+        },
+        {
+          "page_id": "t_p_120_1176_p000019",
+          "page_number": 19,
+          "summary_text": "This page is a figure illustrating the passenger seat, including its backrests and bottom, with associated part numbers and revision information.",
+          "detected_figures": [],
+          "detected_part_numbers": [],
+          "detected_topics": [
+            "figure"
+          ],
+          "manual_section_hint": "illustrated_parts_list",
+          "guidance_score": 15,
+          "guidance_reasons": [
+            "topic_overlap:passenger/seat/the",
+            "manual_section:illustrated_parts_list"
+          ],
+          "guidance_only": true,
+          "source_trace_ready": true
+        },
+        {
+          "page_id": "t_p_120_1176_p000016",
+          "page_number": 16,
+          "summary_text": "This page from the maintenance manual describes the construction of a seat backrest and bottom cushion, including materials like composite structures, foam cushions, upholstery, and Velcro fasteners.",
+          "detected_figures": [],
+          "detected_part_numbers": [],
+          "detected_topics": [
+            "maintenance manual",
+            "structure"
+          ],
+          "manual_section_hint": "maintenance_manual",
+          "guidance_score": 11,
+          "guidance_reasons": [
+            "topic_overlap:seat/the",
+            "manual_section:maintenance_manual"
+          ],
+          "guidance_only": true,
+          "source_trace_ready": true
+        },
+        {
+          "page_id": "t_p_120_1176_p000020",
+          "page_number": 20,
+          "summary_text": "This page describes the format of an illustrated parts list, explaining the different columns and their purpose for identifying aircraft parts.",
+          "detected_figures": [],
+          "detected_part_numbers": [],
+          "detected_topics": [
+            "illustrated parts list",
+            "table"
+          ],
+          "manual_section_hint": "illustrated_parts_list",
+          "guidance_score": 11,
+          "guidance_reasons": [
+            "topic_overlap:for/the",
+            "manual_section:illustrated_parts_list"
+          ],
+          "guidance_only": true,
+          "source_trace_ready": true
+        },
+        {
+          "page_id": "t_p_120_1176_p000024",
+          "page_number": 24,
+          "summary_text": "This page from the maintenance manual provides vendor information and includes a parts list entry for part number 345-1598.",
+          "detected_figures": [],
+          "detected_part_numbers": [],
+          "detected_topics": [
+            "illustrated parts list",
+            "maintenance manual"
+          ],
+          "manual_section_hint": "maintenance_manual",
+          "guidance_score": 11,
+          "guidance_reasons": [
+            "topic_overlap:for/the",
+            "manual_section:maintenance_manual"
+          ],
+          "guidance_only": true,
+          "source_trace_ready": true
+        },
+        {
+          "page_id": "t_p_120_1176_p000004",
+          "page_number": 4,
+          "summary_text": "This page introduces the maintenance manual, outlining its purpose and scope related to passenger cabin disassembly.",
+          "detected_figures": [],
+          "detected_part_numbers": [],
+          "detected_topics": [
+            "maintenance manual"
+          ],
+          "manual_section_hint": "maintenance_manual",
+          "guidance_score": 11,
+          "guidance_reasons": [
+            "topic_overlap:passenger/the",
+            "manual_section:maintenance_manual"
+          ],
+          "guidance_only": true,
+          "source_trace_ready": true
+        },
+        {
+          "page_id": "t_p_120_1176_p000015",
+          "page_number": 15,
+          "summary_text": "This page describes passenger seats, including armrests and snack folding tables, detailing their construction and design.",
+          "detected_figures": [],
+          "detected_part_numbers": [],
+          "detected_topics": [
+            "armrest",
+            "table"
+          ],
+          "manual_section_hint": "table",
+          "guidance_score": 7,
+          "guidance_reasons": [
+            "topic_overlap:passenger",
+            "manual_section:table"
+          ],
+          "guidance_only": true,
+          "source_trace_ready": true
+        }
+      ],
+      "guidance_page_count": 8,
+      "required_routes": [
+        "v2_summary_guidance",
+        "ocr_text_support",
+        "summary_not_proof_gate"
+      ],
+      "required_route_count": 3,
+      "optional_routes": [
+        "graph_leiden_neighbors"
+      ],
+      "proof_requirements": [
+        "OCR/page evidence supporting summary",
+        "summary guidance marked guidance-only"
+      ],
+      "forbidden_claims": [
+        "effectivity",
+        "fit",
+        "installation safety",
+        "interchangeability",
+        "replacement approval",
+        "summary-only proof",
+        "unsupported source-truth mutation"
+      ],
+      "answer_style": "engineering_brain",
+      "can_answer_from_summaries_only": false,
+      "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof",
+      "answer_permission": false,
+      "source_truth_mutation_allowed": false,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "opensearch_write_attempt": false,
+      "opensearch_upload_attempt": false,
+      "unsafe_record": false,
+      "entities_json": "{\"part_numbers\": [], \"figures\": [], \"items\": [], \"part_families\": [], \"topics\": [\"double passenger seat\", \"passenger seat\", \"evidence\"]}",
+      "required_routes_json": "[\"v2_summary_guidance\", \"ocr_text_support\", \"summary_not_proof_gate\"]",
+      "optional_routes_json": "[\"graph_leiden_neighbors\"]"
+    }
+  ],
+  "paths": {
+    "planner": "local_data\\organization\\trace_net\\engineering_llm_answer_smoke_v1_offline\\runs\\q23_nomencla_0489db6d\\runner\\planner\\trace_net_engineering_query_planner_v1.json",
+    "quality_check": "local_data\\organization\\trace_net\\engineering_llm_answer_smoke_v1_offline\\runs\\q23_nomencla_0489db6d\\runner\\planner\\trace_net_engineering_query_planner_v1_quality_check.json",
+    "records_csv": "local_data\\organization\\trace_net\\engineering_llm_answer_smoke_v1_offline\\runs\\q23_nomencla_0489db6d\\runner\\planner\\trace_net_engineering_query_planner_v1_records.csv"
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "module": "trace_net_engineering_engram_traits_v1",
+  "version": "v1",
+  "quality_status": "PASS",
+  "records": [
+    {
+      "engram_id": "policy_no_interchangeability_without_authority_v1",
+      "memory_type": "policy_trait",
+      "priority": "hard_boundary",
+      "trait": "source_trace_caution",
+      "triggers": [
+        "interchangeability",
+        "approved replacement",
+        "replacement approval",
+        "shared nomenclature"
+      ],
+      "trigger_text": "interchangeability | replacement approval | shared nomenclature",
+      "rule": "Shared nomenclature, nearby figures, or part-family similarity are not proof of interchangeability or replacement approval.",
+      "good_behavior": "Say what TRACE-Net can prove about each part, then state interchangeability/replacement approval is not proven.",
+      "bad_behavior": "Treating the same description or part-family proximity as approval or interchangeability.",
+      "source": "H14C llm smoke repair",
+      "status": "active"
+    },
+    {
+      "engram_id": "policy_no_installation_safety_from_figure_v1",
+      "memory_type": "policy_trait",
+      "priority": "hard_boundary",
+      "trait": "approval_boundary",
+      "triggers": [
+        "installation safety",
+        "safe install",
+        "fit approval",
+        "aircraft effectivity"
+      ],
+      "trigger_text": "installation safety | fit approval | aircraft effectivity",
+      "rule": "Figure/part identification evidence does not prove installation safety, fit approval, aircraft effectivity, or replacement approval.",
+      "good_behavior": "Lead with not proven, then list the source-trace-ready identity/nomenclature evidence that is proven.",
+      "bad_behavior": "Implying a figure, OCR line, or part listing authorizes installation or fit.",
+      "source": "H14C llm smoke repair",
+      "status": "active"
+    },
+    {
+      "engram_id": "policy_v2_summaries_guidance_not_proof_v1",
+      "memory_type": "policy_trait",
+      "priority": "hard_boundary",
+      "trait": "summary_boundary",
+      "triggers": [
+        "v2 summary",
+        "summaries",
+        "summary proof",
+        "summary-only"
+      ],
+      "trigger_text": "v2 summary | summary-only proof",
+      "rule": "V2 summaries may guide planning and framing, but cannot prove source claims; factual claims require proof_context citations.",
+      "good_behavior": "Use summaries only to guide route selection and answer framing; cite proof_context for claims.",
+      "bad_behavior": "Using a v2 summary as direct evidence for part identity or approval.",
+      "source": "H10/H14C semantic eval",
+      "status": "active"
+    },
+    {
+      "engram_id": "style_engineering_answer_shape_v1",
+      "memory_type": "style_trait",
+      "priority": "high",
+      "trait": "engineering_answer_shape",
+      "triggers": [
+        "engineering answer",
+        "limitations",
+        "evidence",
+        "confidence"
+      ],
+      "trigger_text": "engineering answer | limitations | evidence",
+      "rule": "Prefer answer sections: Answer, Evidence, Engineering confidence, Limits; for limitations questions, split Can prove vs Cannot prove.",
+      "good_behavior": "Give a concise direct answer, then cite proof and state limits.",
+      "bad_behavior": "Generic disclaimer-only answers, or citation dumps without answering the actual intent.",
+      "source": "H14C llm answer style",
+      "status": "active"
+    },
+    {
+      "engram_id": "style_useful_not_proven_v1",
+      "memory_type": "style_trait",
+      "priority": "high",
+      "trait": "useful_caution",
+      "triggers": [
+        "not proven",
+        "cannot prove",
+        "not source-trace-ready"
+      ],
+      "trigger_text": "not proven | cannot prove | not source-trace-ready",
+      "rule": "When a claim is not proven, still explain what TRACE-Net can prove and why the requested claim is outside the evidence.",
+      "good_behavior": "Not proven + can prove identity/nomenclature/pages + cannot prove approval/safety/effectivity.",
+      "bad_behavior": "Only saying 'not proven' without useful evidence context.",
+      "source": "H13 over-refusal repair through H14C",
+      "status": "active"
+    },
+    {
+      "engram_id": "style_unknown_part_or_figure_v1",
+      "memory_type": "style_trait",
+      "priority": "medium",
+      "trait": "unknown_handling",
+      "triggers": [
+        "unknown part",
+        "unknown figure",
+        "not found",
+        "999"
+      ],
+      "trigger_text": "unknown part | unknown figure | not found",
+      "rule": "For unknown part/figure questions with no proof_context, lead with not found / not source-trace-ready and do not cite unrelated evidence.",
+      "good_behavior": "State no proof_context was available and avoid unrelated citations.",
+      "bad_behavior": "Citing nearby known figures or parts for an unknown requested identifier.",
+      "source": "H14C partial unknown handling",
+      "status": "active"
+    },
+    {
+      "engram_id": "critic_answer_behavior_self_rag_v1",
+      "memory_type": "critic_trait",
+      "priority": "high",
+      "trait": "self_rag_behavior_check",
+      "triggers": [
+        "answer critique",
+        "Self-RAG",
+        "unsupported claim",
+        "intent mismatch"
+      ],
+      "trigger_text": "Self-RAG answer behavior critique",
+      "rule": "Self-RAG should check whether the draft obeys source-trace boundaries, answers the actual intent, cites claims, and avoids over/under-refusal.",
+      "good_behavior": "Critique answers for evidence support and behavior correctness before delivery.",
+      "bad_behavior": "Only checking citation existence while missing semantic intent failure.",
+      "source": "H10 semantic answer quality eval",
+      "status": "active"
+    },
+    {
+      "engram_id": "repair_crag_engram_repair_v1",
+      "memory_type": "repair_trait",
+      "priority": "high",
+      "trait": "crag_repair_reflex",
+      "triggers": [
+        "CRAG",
+        "repair",
+        "weak answer",
+        "retry"
+      ],
+      "trigger_text": "CRAG repair | weak answer retry",
+      "rule": "CRAG should retrieve relevant failure/repair engrams and regenerate or rewrite the answer when Self-RAG flags weak behavior or weak evidence.",
+      "good_behavior": "Use retrieved repair patterns such as 'shared nomenclature is not interchangeability' to fix weak drafts.",
+      "bad_behavior": "Retrying the same prompt without adding behavior memory or evidence diagnostics.",
+      "source": "TRACE-Net engram architecture plan",
+      "status": "active"
+    }
+  ],
+  "summary": {
+    "trait_record_count": 8,
+    "policy_trait_count": 3,
+    "style_trait_count": 3,
+    "critic_trait_count": 1,
+    "repair_trait_count": 1
+  }
+}

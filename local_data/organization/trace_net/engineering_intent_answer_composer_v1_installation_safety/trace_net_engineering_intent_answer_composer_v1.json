@@ -1,0 +1,82 @@
+{
+  "status": "TRACE_NET_ENGINEERING_INTENT_ANSWER_COMPOSER_BUILT",
+  "quality_status": "PASS",
+  "module": "trace_net_engineering_intent_answer_composer_v1",
+  "version": "v1",
+  "summary": {
+    "module": "trace_net_engineering_intent_answer_composer_v1",
+    "version": "v1",
+    "question": "Does figure 69 prove installation safety?",
+    "task_type": "visual_part_identification",
+    "intent_answer_type": "unsupported_installation_safety",
+    "proof_context_count": 3,
+    "guidance_context_count": 0,
+    "answer_char_count": 956,
+    "answer_citation_count": 6,
+    "valid_answer_citation_count": 3,
+    "source_trace_ready_citation_count": 3,
+    "invalid_answer_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0,
+    "llava_only_part_identity_claim_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0,
+    "ready_for_intent_answer_delivery": true
+  },
+  "records": [
+    {
+      "question": "Does figure 69 prove installation safety?",
+      "task_type": "visual_part_identification",
+      "intent_answer_type": "unsupported_installation_safety",
+      "quality_status": "PASS",
+      "answer_text": "Answer:\nNo. Figure 69 does not prove installation safety from the current TRACE-Net evidence. The available evidence can identify the figure-linked part, but it does not provide approved installation, safety, fit, effectivity, or replacement authority.\n\nEvidence:\n- [V6] visual figure link: Figure 69, part number 120-50645-005, \"DOUBLE PASSENGER SEAT ASSY\", page 315 [V6].\n- [O1] ocr nomenclature: Figure 69, part number 120-50645-005, \"DOUBLE PASSENGER SEAT ASSY\", page 316 [O1].\n  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF\n- [T1] table ocr proof: part number 120-50645-005 [T1].\n\nEngineering confidence:\nHIGH for the limitation: the proof context is identification evidence, not installation-safety evidence.\n\nLimits:\n- Installation safety requires approved procedure/safety/effectivity evidence not present in this answer context.\n- The figure may help identify a part, but identification is not safety approval.",
+      "answer_citations": [
+        "V6",
+        "V6",
+        "O1",
+        "O1",
+        "T1",
+        "T1"
+      ],
+      "invalid_answer_citation_labels": [],
+      "source_trace_ready_citation_labels": [
+        "O1",
+        "T1",
+        "V6"
+      ],
+      "proof_context_used_count": 3,
+      "guidance_context_used_count": 0,
+      "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof",
+      "ready_for_intent_answer_delivery": true
+    }
+  ],
+  "answer_text": "Answer:\nNo. Figure 69 does not prove installation safety from the current TRACE-Net evidence. The available evidence can identify the figure-linked part, but it does not provide approved installation, safety, fit, effectivity, or replacement authority.\n\nEvidence:\n- [V6] visual figure link: Figure 69, part number 120-50645-005, \"DOUBLE PASSENGER SEAT ASSY\", page 315 [V6].\n- [O1] ocr nomenclature: Figure 69, part number 120-50645-005, \"DOUBLE PASSENGER SEAT ASSY\", page 316 [O1].\n  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF\n- [T1] table ocr proof: part number 120-50645-005 [T1].\n\nEngineering confidence:\nHIGH for the limitation: the proof context is identification evidence, not installation-safety evidence.\n\nLimits:\n- Installation safety requires approved procedure/safety/effectivity evidence not present in this answer context.\n- The figure may help identify a part, but identification is not safety approval.",
+  "quality_gate": {
+    "quality_status": "PASS",
+    "failures": [],
+    "answer_citation_count": 6,
+    "valid_answer_citation_count": 3,
+    "source_trace_ready_citation_count": 3,
+    "invalid_answer_citation_count": 0,
+    "invalid_answer_citation_labels": [],
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0,
+    "llava_only_part_identity_claim_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0
+  },
+  "source_runner": "local_data\\organization\\trace_net\\engineering_runner_expanded_eval_set_v1\\h6_eval\\runs\\q12_fig_f179f318\\trace_net_engineering_answer_runner_v1.json",
+  "source_context_pack": "local_data\\organization\\trace_net\\engineering_runner_expanded_eval_set_v1\\h6_eval\\runs\\q12_fig_f179f318\\context_pack\\trace_net_engineering_answer_context_pack_v1.json",
+  "paths": {
+    "composer": "local_data\\organization\\trace_net\\engineering_intent_answer_composer_v1_installation_safety\\trace_net_engineering_intent_answer_composer_v1.json",
+    "quality_check": "local_data\\organization\\trace_net\\engineering_intent_answer_composer_v1_installation_safety\\trace_net_engineering_intent_answer_composer_v1_quality_check.json",
+    "records_csv": "local_data\\organization\\trace_net\\engineering_intent_answer_composer_v1_installation_safety\\trace_net_engineering_intent_answer_composer_v1_records.csv"
+  }
+}

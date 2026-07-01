@@ -1,0 +1,110 @@
+question_id,grade,category,question,runner_passed,quality_status,task_type,intent_answer_used,intent_answer_type,proof_context_count,source_trace_ready_citation_count,unsupported_claim_count,summary_used_as_proof_count,failure_reason,recommendation,answer_preview
+q05,PARTIAL,comparison,Compare figure 75 and figure 91.,True,PASS,comparison_question,True,comparison,6,4,0,0,,Improve comparison scoring/formatting for cross-figure comparisons and ensure both entities are fully addressed.,"Answer:
+Figures 75 and 91 are both source-trace-linked visual/parts evidence, but they point to different part-number records unless the source explicitly says otherwise.
+
+Comparison:
+- Figure 75: part number 120-50645-011, nomenclature ""DOUBLE PASSENGER SEAT ASSY"" [V7] [O2].
+  OCR line: 75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- Figure 91: part number 120-29068-003, nomenclature ""STRUCTURE ASSY 00"" [V8] [O3].
+  OCR line: 91 - | 120-29068-003 STRUCTURE ASSY 00... ccceennseeeees VS4956 A REF
+
+Engineering confidence:
+HIGH for figure-to-part and nomenclature comparisons when each figure has source-trace-ready visual and OCR/table support.
+
+Limits:
+- A comparison of figure-linked evidence does not prove interchangeability, effectivity, fit, replacement approval, "
+q09,PARTIAL,evidence_support,What evidence supports part number 120-50645-005?,True,PASS,exact_part_lookup,True,evidence_support,4,4,0,0,,Improve evidence-support answers so they directly explain why each citation supports the requested figure/part.,"Answer:
+The evidence supporting 120-50645-005 is the combination of source-trace-ready exact/table evidence, visual figure linkage when available, and OCR-backed nomenclature.
+
+Evidence:
+- [V6] visual figure link: Figure 69, part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"", page 315 [V6].
+- [O1] ocr nomenclature: Figure 69, part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"", page 316 [O1].
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [E1] exact part evidence: part number 120-50645-005 [E1].
+- [T1] table ocr proof: part number 120-50645-005 [T1].
+
+Engineering confidence:
+HIGH when the exact/table record, visual link, and OCR nomenclature all agree. If one of those sources is absent, treat the answer as narrower and cite the limitation.
+
+L"
+q10,PARTIAL,evidence_support,What evidence supports Figure 69?,True,PASS,visual_part_identification,True,evidence_support,3,3,0,0,,Improve evidence-support answers so they directly explain why each citation supports the requested figure/part.,"Answer:
+The evidence supporting the requested item is the combination of source-trace-ready exact/table evidence, visual figure linkage when available, and OCR-backed nomenclature.
+
+Evidence:
+- [V6] visual figure link: Figure 69, part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"", page 315 [V6].
+- [O1] ocr nomenclature: Figure 69, part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"", page 316 [O1].
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] table ocr proof: part number 120-50645-005 [T1].
+
+Engineering confidence:
+HIGH when the exact/table record, visual link, and OCR nomenclature all agree. If one of those sources is absent, treat the answer as narrower and cite the limitation.
+
+Limits:
+- This evidence does not prove interchangeabilit"
+q11,PARTIAL,limitations,What can TRACE-Net not prove about part number 120-50645-005?,True,PASS,exact_part_lookup,True,limitations,4,4,0,0,,Fix limitations wording and ensure limitations answers lead with boundary conditions before evidence details.,"Answer:
+TRACE-Net can support source-traced identification evidence for 120-50645-005, but it cannot prove interchangeability, effectivity, fit, replacement approval, or installation safety from the current evidence pack.
+
+Evidence it can support:
+- [V6] visual figure link: Figure 69, part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"", page 315 [V6].
+- [O1] ocr nomenclature: Figure 69, part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"", page 316 [O1].
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [E1] exact part evidence: part number 120-50645-005 [E1].
+- [T1] table ocr proof: part number 120-50645-005 [T1].
+
+What it cannot prove from this context:
+- Interchangeability with another part number.
+- Aircraft/effectivity applicability beyond th"
+q21,PARTIAL,replacement_limit,Is 120-50645-005 an approved replacement for 120-50645-011?,True,PASS,exact_part_lookup,True,default,8,4,0,0,,Add replacement-approval limitation answers that lead with: replacement approval is not proven without explicit source authority.,"Answer:
+Part number 120-50645-005 is present in source-trace-ready evidence and is associated with ""DOUBLE PASSENGER SEAT ASSY"" [E1] [O1] [T1] [V6].
+
+Evidence:
+- [E1] Exact-part evidence contains part number 120-50645-005 in field covered_part_number: 120-50645-005.
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the exact part lookup because multiple source-trace-ready proof records support the part number. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit,"
+q25,BLOCKED,unknown_part,Find part number 999-99999-999 and cite the source.,False,FAIL,exact_part_lookup,False,,0,0,0,0,,"Improve unknown-part handling so no-proof answers lead with not found / not source-traced, not generic low-confidence evidence language.","Answer:
+TRACE-Net found source-trace-ready engineering evidence, but the direct claim is incomplete in the context pack.
+
+Evidence:
+- No proof context was available.
+
+Engineering confidence:
+LOW to MEDIUM because the context pack has limited proof records. Nomenclature confidence: MEDIUM.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer."
+q26,BLOCKED,unknown_figure,What does figure 999 show?,False,FAIL,visual_part_identification,False,,0,0,0,0,,Improve unknown-figure handling so no-proof answers lead with not found / no source-trace-ready figure evidence.,"Answer:
+TRACE-Net found source-trace-ready engineering evidence, but the direct claim is incomplete in the context pack.
+
+Evidence:
+- No proof context was available.
+
+Engineering confidence:
+LOW to MEDIUM because the context pack has limited proof records. Nomenclature confidence: MEDIUM.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer."
+q29,PARTIAL,summary_limit,Can v2 summaries alone prove Figure 69 part identity?,True,PASS,visual_part_identification,True,default,3,3,0,0,,Add summary-limit answers that lead with: v2 summaries guide planning/framing but cannot prove source claims.,"Answer:
+Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer."

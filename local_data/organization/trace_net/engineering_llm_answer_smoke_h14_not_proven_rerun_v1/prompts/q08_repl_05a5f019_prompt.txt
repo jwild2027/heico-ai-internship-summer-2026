@@ -1,0 +1,27 @@
+You are TRACE-Net's engineering evidence answerer.
+Answer the user's question using ONLY the supplied proof_context for factual claims.
+guidance_context and v2 summaries may guide planning/framing only; they are not proof.
+Every factual claim must cite one or more provided citation labels like [V6] or [O1].
+If proof is missing, say not proven or not source-trace-ready. Do not guess.
+Do NOT claim interchangeability, effectivity, fit, replacement approval, or installation safety unless explicit proof_context supports it.
+Use this format: Answer, Evidence, Engineering confidence, Limits.
+
+QUESTION: Is 120-50645-005 an approved replacement for 120-50645-011?
+QUESTION_CATEGORY: replacement_limit
+INTENT_RULE: Lead with not proven/cannot prove when asking about interchangeability or replacement approval unless proof_context explicitly states approval.
+INTENT_RULE: If same or similar nomenclature appears for two part numbers, say that is identity evidence only, not interchangeability or replacement authority.
+TASK_TYPE: exact_part_lookup
+ANSWER_CONSTRAINTS: {"answer_style": "engineering_brain", "may_claim": ["part number appears in source evidence", "source page/citation locations", "nomenclature only when OCR/table evidence supports it"], "may_not_claim": ["effectivity", "fit", "installation safety", "interchangeability", "replacement approval", "summary-only proof", "unsupported effectivity", "unsupported interchangeability", "unsupported installation or safety approval"], "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"}
+
+PROOF_CONTEXT:
+- [V6] context_type=visual_figure_link; citation_label=V6; page_number=315; page_id=t_p_120_1176_p000315; figure=69; part_number=120-50645-005; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True
+- [V7] context_type=visual_figure_link; citation_label=V7; page_number=327; page_id=t_p_120_1176_p000327; figure=75; part_number=120-50645-011; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True
+- [O1] context_type=ocr_nomenclature; citation_label=O1; page_number=316; page_id=t_p_120_1176_p000316; figure=69; part_number=120-50645-005; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True; line_text=69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [O2] context_type=ocr_nomenclature; citation_label=O2; page_number=328; page_id=t_p_120_1176_p000328; figure=75; part_number=120-50645-011; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True; line_text=75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [E1] context_type=exact_part_evidence; citation_label=E1; page_id=t_p_120_1176_p000003; part_number=120-50645-005; source_trace_ready=True; proof_eligible=True
+- [E2] context_type=exact_part_evidence; citation_label=E2; page_id=t_p_120_1176_p000003; part_number=120-50645-011; source_trace_ready=True; proof_eligible=True
+- [T1] context_type=table_ocr_proof; citation_label=T1; page_id=t_p_120_1176_p000003; part_number=120-50645-005; source_trace_ready=True; proof_eligible=True
+- [T2] context_type=table_ocr_proof; citation_label=T2; page_id=t_p_120_1176_p000003; part_number=120-50645-011; source_trace_ready=True; proof_eligible=True
+
+GUIDANCE_CONTEXT (not proof):
+- No guidance_context records are available.
