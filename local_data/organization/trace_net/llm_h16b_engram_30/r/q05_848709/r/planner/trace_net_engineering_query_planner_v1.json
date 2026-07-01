@@ -1,0 +1,89 @@
+{
+  "status": "TRACE_NET_ENGINEERING_QUERY_PLANNER_BUILT",
+  "quality_status": "PASS",
+  "module": "trace_net_engineering_query_planner_v1",
+  "version": "v1",
+  "question": "Compare figure 75 and figure 91.",
+  "source_v2_summary_guidance_index": "local_data/organization/trace_net/v2_summary_guidance_index_v1/trace_net_v2_summary_guidance_index_v1.json",
+  "summary": {
+    "planner_record_count": 1,
+    "task_type_count": 1,
+    "required_route_count": 4,
+    "selected_guidance_page_count": 0,
+    "guidance_only_summary_count": 0,
+    "source_guidance_summary_record_count": 31,
+    "can_answer_from_summaries_only_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0,
+    "ready_for_engineering_context_pack": true
+  },
+  "failures": [],
+  "records": [
+    {
+      "module": "trace_net_engineering_query_planner_v1",
+      "version": "v1",
+      "question": "Compare figure 75 and figure 91.",
+      "task_type": "comparison_question",
+      "engineering_intent": "compare entities or evidence strength with limits",
+      "entities": {
+        "part_numbers": [],
+        "figures": [
+          "75",
+          "91"
+        ],
+        "items": [],
+        "part_families": [],
+        "topics": [
+          "figure"
+        ]
+      },
+      "guidance_pages": [],
+      "guidance_page_count": 0,
+      "required_routes": [
+        "multi_entity_retrieval",
+        "table_ocr_proof",
+        "graph_leiden_neighbors",
+        "engineering_quality_gate"
+      ],
+      "required_route_count": 4,
+      "optional_routes": [
+        "graph_leiden_neighbors"
+      ],
+      "proof_requirements": [
+        "source-trace-ready evidence",
+        "explicit assumptions and limits"
+      ],
+      "forbidden_claims": [
+        "effectivity",
+        "fit",
+        "installation safety",
+        "interchangeability",
+        "replacement approval"
+      ],
+      "answer_style": "engineering_brain",
+      "can_answer_from_summaries_only": false,
+      "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof",
+      "answer_permission": false,
+      "source_truth_mutation_allowed": false,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "opensearch_write_attempt": false,
+      "opensearch_upload_attempt": false,
+      "unsafe_record": false,
+      "entities_json": "{\"part_numbers\": [], \"figures\": [\"75\", \"91\"], \"items\": [], \"part_families\": [], \"topics\": [\"figure\"]}",
+      "required_routes_json": "[\"multi_entity_retrieval\", \"table_ocr_proof\", \"graph_leiden_neighbors\", \"engineering_quality_gate\"]",
+      "optional_routes_json": "[\"graph_leiden_neighbors\"]"
+    }
+  ],
+  "paths": {
+    "planner": "local_data\\organization\\trace_net\\llm_h16b_engram_30\\r\\q05_848709\\r\\planner\\trace_net_engineering_query_planner_v1.json",
+    "quality_check": "local_data\\organization\\trace_net\\llm_h16b_engram_30\\r\\q05_848709\\r\\planner\\trace_net_engineering_query_planner_v1_quality_check.json",
+    "records_csv": "local_data\\organization\\trace_net\\llm_h16b_engram_30\\r\\q05_848709\\r\\planner\\trace_net_engineering_query_planner_v1_records.csv"
+  }
+}

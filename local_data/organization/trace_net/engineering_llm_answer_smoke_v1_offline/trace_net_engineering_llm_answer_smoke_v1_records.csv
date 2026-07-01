@@ -1,0 +1,445 @@
+question_id,category,question,grade,runner_passed,llm_answered,llm_mode,task_type,answer_citation_count,valid_answer_citation_count,source_trace_ready_citation_count,invalid_answer_citation_count,unsupported_claim_count,summary_used_as_proof_count,llm_error,answer_preview,run_dir
+q01,figure_lookup,What does figure 69 show?,GOOD,True,True,runner_answer,visual_part_identification,5,5,5,0,0,0,,"Answer:
+Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q01_fig_3cdcd067
+q02,figure_lookup,What does figure 75 show?,GOOD,True,True,runner_answer,visual_part_identification,5,5,5,0,0,0,,"Answer:
+Figure 75 is linked to part number 120-50645-011, ""DOUBLE PASSENGER SEAT ASSY"" [V7] [O2].
+
+Evidence:
+- [V7] Visual evidence links figure 75 to part number 120-50645-011 on page 327.
+- [O2] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 328.
+  OCR line: 75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-011.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q02_fig_925499e1
+q03,figure_lookup,What does figure 91 show?,GOOD,True,True,runner_answer,visual_part_identification,5,5,5,0,0,0,,"Answer:
+Figure 91 is linked to part number 120-29068-003, ""STRUCTURE ASSY 00"" [V8] [O3].
+
+Evidence:
+- [V8] Visual evidence links figure 91 to part number 120-29068-003 on page 382.
+- [O3] OCR-backed nomenclature gives ""STRUCTURE ASSY 00"" on page 384.
+  OCR line: 91 - | 120-29068-003 STRUCTURE ASSY 00... ccceennseeeees VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-29068-003.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q03_fig_9a38c5f9
+q04,comparison,Compare figure 69 and figure 75.,GOOD,True,True,runner_answer,comparison_question,5,5,5,0,0,0,,"Answer:
+Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q04_compare_f61796ba
+q05,comparison,Compare figure 75 and figure 91.,GOOD,True,True,runner_answer,comparison_question,5,5,5,0,0,0,,"Answer:
+Figure 75 is linked to part number 120-50645-011, ""DOUBLE PASSENGER SEAT ASSY"" [V7] [O2].
+
+Evidence:
+- [V7] Visual evidence links figure 75 to part number 120-50645-011 on page 327.
+- [O2] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 328.
+  OCR line: 75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-011.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q05_compare_848709ae
+q06,exact_part_lookup,Find part number 120-50645-005 and cite the source.,GOOD,True,True,runner_answer,exact_part_lookup,8,8,8,0,0,0,,"Answer:
+Part number 120-50645-005 is present in source-trace-ready evidence and is associated with ""DOUBLE PASSENGER SEAT ASSY"" [E1] [O1] [T1] [V6].
+
+Evidence:
+- [E1] Exact-part evidence contains part number 120-50645-005 in field covered_part_number: 120-50645-005.
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the exact part lookup because multiple source-trace-ready proof records support the part number. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit,",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q06_part_078c4d4c
+q07,exact_part_lookup,Find part number 120-50645-011 and cite the source.,GOOD,True,True,runner_answer,exact_part_lookup,8,8,8,0,0,0,,"Answer:
+Part number 120-50645-011 is present in source-trace-ready evidence and is associated with ""DOUBLE PASSENGER SEAT ASSY"" [E1] [O2] [T1] [V7].
+
+Evidence:
+- [E1] Exact-part evidence contains part number 120-50645-011 in field covered_part_number: 120-50645-011.
+- [V7] Visual evidence links figure 75 to part number 120-50645-011 on page 327.
+- [O2] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 328.
+  OCR line: 75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-011.
+
+Engineering confidence:
+HIGH for the exact part lookup because multiple source-trace-ready proof records support the part number. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit,",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q07_part_4bc3891c
+q08,exact_part_lookup,Find part number 120-29068-003 and cite the source.,GOOD,True,True,runner_answer,exact_part_lookup,8,8,8,0,0,0,,"Answer:
+Part number 120-29068-003 is present in source-trace-ready evidence and is associated with ""STRUCTURE ASSY 00"" [E1] [O3] [T1] [V8].
+
+Evidence:
+- [E1] Exact-part evidence contains part number 120-29068-003 in field ipl_part_number: 120-29068-003.
+- [V8] Visual evidence links figure 91 to part number 120-29068-003 on page 382.
+- [O3] OCR-backed nomenclature gives ""STRUCTURE ASSY 00"" on page 384.
+  OCR line: 91 - | 120-29068-003 STRUCTURE ASSY 00... ccceennseeeees VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-29068-003.
+
+Engineering confidence:
+HIGH for the exact part lookup because multiple source-trace-ready proof records support the part number. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, o",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q08_part_4a4518a8
+q09,evidence_support,What evidence supports part number 120-50645-005?,GOOD,True,True,runner_answer,exact_part_lookup,8,8,8,0,0,0,,"Answer:
+Part number 120-50645-005 is present in source-trace-ready evidence and is associated with ""DOUBLE PASSENGER SEAT ASSY"" [E1] [O1] [T1] [V6].
+
+Evidence:
+- [E1] Exact-part evidence contains part number 120-50645-005 in field covered_part_number: 120-50645-005.
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the exact part lookup because multiple source-trace-ready proof records support the part number. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit,",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q09_part_ca2ae526
+q10,evidence_support,What evidence supports Figure 69?,GOOD,True,True,runner_answer,visual_part_identification,5,5,5,0,0,0,,"Answer:
+Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q10_fig_1803e70e
+q11,limitations,What can TRACE-Net not prove about part number 120-50645-005?,GOOD,True,True,runner_answer,exact_part_lookup,8,8,8,0,0,0,,"Answer:
+Part number 120-50645-005 is present in source-trace-ready evidence and is associated with ""DOUBLE PASSENGER SEAT ASSY"" [E1] [O1] [T1] [V6].
+
+Evidence:
+- [E1] Exact-part evidence contains part number 120-50645-005 in field covered_part_number: 120-50645-005.
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the exact part lookup because multiple source-trace-ready proof records support the part number. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit,",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q11_limit_6613baac
+q12,interchangeability,Is 120-50645-005 interchangeable with 120-50645-011?,GOOD,True,True,runner_answer,exact_part_lookup,8,8,8,0,0,0,,"Answer:
+Part number 120-50645-005 is present in source-trace-ready evidence and is associated with ""DOUBLE PASSENGER SEAT ASSY"" [E1] [O1] [T1] [V6].
+
+Evidence:
+- [E1] Exact-part evidence contains part number 120-50645-005 in field covered_part_number: 120-50645-005.
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the exact part lookup because multiple source-trace-ready proof records support the part number. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit,",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q12_inter_04f8cbbd
+q13,installation_safety,Does figure 69 prove installation safety?,GOOD,True,True,runner_answer,visual_part_identification,5,5,5,0,0,0,,"Answer:
+Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q13_safe_f179f318
+q14,fit_limit,Does figure 75 prove fit approval?,GOOD,True,True,runner_answer,visual_part_identification,5,5,5,0,0,0,,"Answer:
+Figure 75 is linked to part number 120-50645-011, ""DOUBLE PASSENGER SEAT ASSY"" [V7] [O2].
+
+Evidence:
+- [V7] Visual evidence links figure 75 to part number 120-50645-011 on page 327.
+- [O2] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 328.
+  OCR line: 75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-011.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q14_fig_098f39ee
+q15,effectivity_limit,Does figure 91 prove aircraft effectivity?,GOOD,True,True,runner_answer,visual_part_identification,5,5,5,0,0,0,,"Answer:
+Figure 91 is linked to part number 120-29068-003, ""STRUCTURE ASSY 00"" [V8] [O3].
+
+Evidence:
+- [V8] Visual evidence links figure 91 to part number 120-29068-003 on page 382.
+- [O3] OCR-backed nomenclature gives ""STRUCTURE ASSY 00"" on page 384.
+  OCR line: 91 - | 120-29068-003 STRUCTURE ASSY 00... ccceennseeeees VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-29068-003.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q15_fig_30f10ddf
+q16,troubleshooting,Why was nomenclature missing from the visual route evidence?,GOOD,True,True,runner_answer,troubleshooting_question,5,5,5,0,0,0,,"Answer:
+Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q16_why_4d90ecc1
+q17,troubleshooting,Why does the visual route need OCR nomenclature evidence?,GOOD,True,True,runner_answer,troubleshooting_question,5,5,5,0,0,0,,"Answer:
+Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q17_why_6d0a39b8
+q18,pipeline_recovery,What changed after the raw OCR nomenclature extractor was added?,GOOD,True,True,runner_answer,table_extraction_question,5,5,5,0,0,0,,"Answer:
+Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q18_pipeline_1578a903
+q19,source_page,What source page supports the nomenclature for Figure 69?,GOOD,True,True,runner_answer,visual_part_identification,5,5,5,0,0,0,,"Answer:
+Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q19_fig_9c6c93ac
+q20,source_page,Cite the proof for Figure 75's part number.,GOOD,True,True,runner_answer,visual_part_identification,5,5,5,0,0,0,,"Answer:
+Figure 75 is linked to part number 120-50645-011, ""DOUBLE PASSENGER SEAT ASSY"" [V7] [O2].
+
+Evidence:
+- [V7] Visual evidence links figure 75 to part number 120-50645-011 on page 327.
+- [O2] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 328.
+  OCR line: 75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-011.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q20_fig_72bfaf10
+q21,replacement_limit,Is 120-50645-005 an approved replacement for 120-50645-011?,GOOD,True,True,runner_answer,exact_part_lookup,8,8,8,0,0,0,,"Answer:
+Part number 120-50645-005 is present in source-trace-ready evidence and is associated with ""DOUBLE PASSENGER SEAT ASSY"" [E1] [O1] [T1] [V6].
+
+Evidence:
+- [E1] Exact-part evidence contains part number 120-50645-005 in field covered_part_number: 120-50645-005.
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the exact part lookup because multiple source-trace-ready proof records support the part number. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit,",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q21_repl_05a5f019
+q22,installation_safety,Can I safely install 120-50645-005 based only on Figure 69?,GOOD,True,True,runner_answer,visual_part_identification,6,6,6,0,0,0,,"Answer:
+Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1].
+
+Evidence:
+- [E1] Exact-part evidence contains part number 120-50645-005 in field covered_part_number: 120-50645-005.
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation sa",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q22_safe_8a240f73
+q23,nomenclature_summary,Summarize the evidence for DOUBLE PASSENGER SEAT ASSY.,GOOD,True,True,runner_answer,manual_section_summary,5,5,5,0,0,0,,"Answer:
+Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q23_nomencla_0489db6d
+q24,nomenclature_summary,Which figures link to DOUBLE PASSENGER SEAT ASSY?,GOOD,True,True,runner_answer,general_engineering_question,5,5,5,0,0,0,,"Answer:
+Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q24_fig_697330c3
+q25,unknown_part,Find part number 999-99999-999 and cite the source.,PARTIAL,False,True,runner_answer,exact_part_lookup,0,0,0,0,0,0,,"Answer:
+TRACE-Net found source-trace-ready engineering evidence, but the direct claim is incomplete in the context pack.
+
+Evidence:
+- No proof context was available.
+
+Engineering confidence:
+LOW to MEDIUM because the context pack has limited proof records. Nomenclature confidence: MEDIUM.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q25_part_ea6f4b45
+q26,unknown_figure,What does figure 999 show?,PARTIAL,False,True,runner_answer,visual_part_identification,0,0,0,0,0,0,,"Answer:
+TRACE-Net found source-trace-ready engineering evidence, but the direct claim is incomplete in the context pack.
+
+Evidence:
+- No proof context was available.
+
+Engineering confidence:
+LOW to MEDIUM because the context pack has limited proof records. Nomenclature confidence: MEDIUM.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q26_fig_ec0bc550
+q27,evidence_explanation,Explain the difference between visual proof and OCR proof for Figure 69.,GOOD,True,True,runner_answer,comparison_question,5,5,5,0,0,0,,"Answer:
+Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q27_fig_1c4dc9c0
+q28,route_explanation,What routes were required to answer what Figure 69 shows?,GOOD,True,True,runner_answer,visual_part_identification,5,5,5,0,0,0,,"Answer:
+Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q28_fig_75703adb
+q29,summary_limit,Can v2 summaries alone prove Figure 69 part identity?,GOOD,True,True,runner_answer,visual_part_identification,5,5,5,0,0,0,,"Answer:
+Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q29_fig_d11ba39e
+q30,limitations,Give the engineering limitations for Figure 91.,GOOD,True,True,runner_answer,visual_part_identification,5,5,5,0,0,0,,"Answer:
+Figure 91 is linked to part number 120-29068-003, ""STRUCTURE ASSY 00"" [V8] [O3].
+
+Evidence:
+- [V8] Visual evidence links figure 91 to part number 120-29068-003 on page 382.
+- [O3] OCR-backed nomenclature gives ""STRUCTURE ASSY 00"" on page 384.
+  OCR line: 91 - | 120-29068-003 STRUCTURE ASSY 00... ccceennseeeees VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-29068-003.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1_offline\runs\q30_limit_dfb8f027

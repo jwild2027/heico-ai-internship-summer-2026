@@ -1,0 +1,304 @@
+question_id,category,question,grade,runner_passed,llm_answered,llm_mode,task_type,answer_citation_count,valid_answer_citation_count,source_trace_ready_citation_count,invalid_answer_citation_count,unsupported_claim_count,summary_used_as_proof_count,llm_error,answer_preview,run_dir
+q01,figure_lookup,What does figure 69 show?,GOOD,True,True,ollama,visual_part_identification,2,2,2,0,0,0,,"**Answer**
+Figure 69 shows the DOUBLE PASSENGER SEAT ASSY, part number 120-50645-005 [V6, O1].
+
+**Evidence**
+* Visual figure link for Figure 69 identifies part number 120-50645-005 as the DOUBLE PASSENGER SEAT ASSY [V6].
+* OCR text from page 316 explicitly links item 69 to part number 120-50645-005 with the nomenclature DOUBLE PASSENGER SEAT ASSY [O1].
+
+**Engineering confidence**
+High
+
+**Limits**
+Identification is strictly limited to the part number and nomenclature provided in the source documentation.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q01_fig_3cdcd067
+q02,figure_lookup,What does figure 75 show?,GOOD,True,True,ollama,visual_part_identification,2,2,2,0,0,0,,"**Answer:**
+Figure 75 shows the DOUBLE PASSENGER SEAT ASSY, part number 120-50645-011 [V7, O2].
+
+**Evidence:**
+* [V7] identifies figure 75 as part number 120-50645-011 with the nomenclature DOUBLE PASSENGER SEAT ASSY.
+* [O2] provides OCR text confirming that item 75 corresponds to part number 120-50645-011, identified as DOUBLE PASSENGER SEAT ASSY.
+
+**Engineering confidence:**
+High
+
+**Limits:**
+The identification is strictly limited to the nomenclature and part number explicitly linked to figure 75 in the provided documentation.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q02_fig_925499e1
+q03,figure_lookup,What does figure 91 show?,GOOD,True,True,ollama,visual_part_identification,4,4,4,0,0,0,,"**Answer**
+Figure 91 shows part number 120-29068-003, identified as STRUCTURE ASSY [V8] or STRUCTURE ASSY 00 [O3].
+
+**Evidence**
+* [V8] links figure 91 to part number 120-29068-003 with the nomenclature STRUCTURE ASSY.
+* [O3] provides OCR text for line 91, identifying part number 120-29068-003 as STRUCTURE ASSY 00.
+
+**Engineering confidence**
+High
+
+**Limits**
+The identification is limited to the part number and nomenclature explicitly linked to figure 91 in the provided documentation.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q03_fig_9a38c5f9
+q04,comparison,Compare figure 69 and figure 75.,GOOD,True,True,ollama,comparison_question,2,2,2,0,0,0,,"**Answer**
+Figure 69 and Figure 75 both represent a ""DOUBLE PASSENGER SEAT ASSY"" [V6, V7, O1, O2] and share the same reference text ""VS4956 A REF"" [O1, O2]. They are distinguished by their part numbers: Figure 69 is associated with part number 120-50645-005 [V6, O1], while Figure 75 is associated with part number 120-50645-011 [V7, O2].
+
+**Evidence**
+* **Figure 69:** Part number 120-50645-005 [V6, O1]; Nomenclature: DOUBLE PASSENGER SEAT ASSY [V6, O1]; Reference text: VS4956 A REF [O1].
+* **Figure 75:** Part number 120-50645-011 [V7, O2]; Nomenclature: DOUBLE PASSENGER SEAT ASSY [V7, O2]; Reference text: VS4956 A REF [O2].
+
+**Engineering confidence**
+High
+
+**Limits**
+The provided documentation does not contain information regarding the physical differences, functional differences, or inter",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q04_compare_f61796ba
+q05,comparison,Compare figure 75 and figure 91.,GOOD,True,True,ollama,comparison_question,2,2,2,0,0,0,,"**Answer**
+Figure 75 and Figure 91 represent different assemblies with distinct part numbers and nomenclatures, though both share a common reference string in their nomenclature lines. Figure 75 refers to part number 120-50645-011, identified as ""DOUBLE PASSENGER SEAT ASSY"" [V7, O2]. Figure 91 refers to part number 120-29068-003, identified as ""STRUCTURE ASSY"" [V8, O3]. Both figures contain the reference ""VS4956 A REF"" within their respective nomenclature text [O2, O3].
+
+**Evidence**
+*   Figure 75 is associated with part number 120-50645-011 and the nomenclature ""DOUBLE PASSENGER SEAT ASSY"" [V7, O2].
+*   Figure 91 is associated with part number 120-29068-003 and the nomenclature ""STRUCTURE ASSY"" [V8, O3].
+*   The line text for Figure 75 includes ""VS4956 A REF"" [O2].
+*   The line text for F",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q05_compare_848709ae
+q06,exact_part_lookup,Find part number 120-50645-005 and cite the source.,GOOD,True,True,ollama,exact_part_lookup,6,6,6,0,0,0,,"**Answer**: Part number 120-50645-005 is identified as the DOUBLE PASSENGER SEAT ASSY [V6, O1]. This part number is associated with Figure 69 on page 315 [V6] and appears in the OCR text for item 69 on page 316 [O1]. Evidence of this part number is also present on page 3 [E1, T1].
+
+**Evidence**: [V6], [O1], [E1], [T1]
+
+**Engineering confidence**: High
+
+**Limits**: This identification is limited to the nomenclature and locations explicitly documented in the provided source context.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q06_part_078c4d4c
+q07,exact_part_lookup,Find part number 120-50645-011 and cite the source.,GOOD,True,True,ollama,exact_part_lookup,2,2,2,0,0,0,,"**Answer**
+Part number 120-50645-011 is identified as DOUBLE PASSENGER SEAT ASSY [V7, O2].
+
+**Evidence**
+* [V7] identifies part number 120-50645-011 in Figure 75 on page 327 with the nomenclature DOUBLE PASSENGER SEAT ASSY.
+* [O2] provides OCR text from page 328, line 75, identifying 120-50645-011 as DOUBLE PASSENGER SEAT ASSY.
+
+**Engineering confidence**
+High; the part number and nomenclature are explicitly matched in both visual figure links and OCR text.
+
+**Limits**
+This identification is limited to the nomenclature provided in the source documents; no information regarding effectivity, fit, interchangeability, or installation safety is present in the provided context.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q07_part_4bc3891c
+q08,exact_part_lookup,Find part number 120-29068-003 and cite the source.,GOOD,True,True,ollama,exact_part_lookup,2,2,2,0,0,0,,"**Answer**
+Part number 120-29068-003 is identified as STRUCTURE ASSY [or STRUCTURE ASSY 00].
+
+**Evidence**
+*   Page 382, Figure 91 identifies part 120-29068-003 as STRUCTURE ASSY [V8].
+*   Page 384, line 91 contains OCR text identifying part 120-29068-003 as ""STRUCTURE ASSY 00"" [O3].
+*   Part number 120-29068-003 is documented on page 31 [E1, T1].
+
+**Engineering confidence**
+High
+
+**Limits**
+This identification is limited to the nomenclature and presence of the part number within the provided documentation; no information regarding effectivity, fit, or installation safety is present in the source material.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q08_part_4a4518a8
+q09,evidence_support,What evidence supports part number 120-50645-005?,GOOD,True,True,ollama,exact_part_lookup,5,5,5,0,0,0,,"**Answer**
+Part number 120-50645-005 is identified as ""DOUBLE PASSENGER SEAT ASSY"" [V6, O1]. This part is associated with Figure 69 on page 315 [V6] and page 316 [O1]. OCR text for line 69 specifically lists the part number with the nomenclature ""DOUBLE PASSENGER SEAT ASSY"" and includes the reference string ""VS4956 A REF"" [O1]. The part number is also documented on page 3 [E1, T1].
+
+**Evidence**
+* **[V6]**: Visual figure link for Figure 69 (page 315) identifies part number 120-50645-005 as DOUBLE PASSENGER SEAT ASSY.
+* **[O1]**: OCR nomenclature from page 316 (Figure 69) identifies part number 120-50645-005 as DOUBLE PASSENGER SEAT ASSY and includes the text ""69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF"".
+* **[E1, T1]**: Exact part evidence and table OCR proof co",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q09_part_ca2ae526
+q10,evidence_support,What evidence supports Figure 69?,GOOD,True,True,ollama,visual_part_identification,2,2,2,0,0,0,,"**Answer**
+Figure 69 is identified as part number 120-50645-005, which corresponds to the DOUBLE PASSENGER SEAT ASSY [V6, O1].
+
+**Evidence**
+*   A visual figure link on page 315 connects Figure 69 to part number 120-50645-005 and the nomenclature ""DOUBLE PASSENGER SEAT ASSY"" [V6].
+*   OCR text from page 316 explicitly lists item 69 as part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [O1].
+
+**Engineering confidence**
+High
+
+**Limits**
+The provided evidence is limited to the identification of the part number and nomenclature for Figure 69; there is no evidence provided regarding the installation, effectivity, fit, or interchangeability of this part.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q10_fig_1803e70e
+q11,limitations,What can TRACE-Net not prove about part number 120-50645-005?,GOOD,True,True,ollama,exact_part_lookup,2,2,2,0,0,0,,"**Answer**
+TRACE-Net cannot prove the effectivity, fit, installation safety, interchangeability, or replacement approval for part number 120-50645-005. The available documentation is limited to identifying the part's nomenclature and its presence within specific pages of the provided records.
+
+**Evidence**
+The provided context only confirms that part number 120-50645-005 is identified as ""DOUBLE PASSENGER SEAT ASSY"" [V6, O1] and can be located on page 3 [E1, T1], page 315 [V6], and page 316 [O1].
+
+**Engineering confidence**
+High regarding the identification of nomenclature and part existence; zero regarding any claims of effectivity, fit, or safety.
+
+**Limits**
+The provided proof_context contains no data regarding the application of this part to specific aircraft, its physical compatibilit",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q11_limit_6613baac
+q12,interchangeability,Is 120-50645-005 interchangeable with 120-50645-011?,PARTIAL,True,True,ollama,exact_part_lookup,0,0,0,0,0,0,,"**Answer**
+Not proven.
+
+**Evidence**
+Both part number 120-50645-005 [V6, O1] and part number 120-50645-011 [V7, O2] are identified with the same nomenclature: ""DOUBLE PASSENGER SEAT ASSY"" [V6, O1, V7, O2].
+
+**Engineering confidence**
+N/A (The provided documentation does not address interchangeability).
+
+**Limits**
+The provided source material only contains nomenclature for both parts; there is no explicit evidence regarding interchangeability, fit, or replacement approval.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q12_inter_04f8cbbd
+q13,installation_safety,Does figure 69 prove installation safety?,PARTIAL,True,True,ollama,visual_part_identification,0,0,0,0,0,0,,"**Answer**: Not proven.
+
+**Evidence**: Figure 69 is identified as being associated with part number 120-50645-005, DOUBLE PASSENGER SEAT ASSY [V6, O1]. The provided documentation contains no information regarding installation safety, safety approvals, or installation procedures [V6, O1].
+
+**Engineering confidence**: High.
+
+**Limits**: The available proof is limited to part identification and nomenclature; it does not contain engineering specifications for safety or installation verification.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q13_safe_f179f318
+q14,fit_limit,Does figure 75 prove fit approval?,PARTIAL,True,True,ollama,visual_part_identification,0,0,0,0,0,0,,"**Answer**
+No, Figure 75 does not prove fit approval.
+
+**Evidence**
+Figure 75 is identified as being associated with part number 120-50645-011, which has the nomenclature DOUBLE PASSENGER SEAT ASSY [V7, O2]. The provided documentation contains no evidence or claims regarding fit approval, installation safety, or effectivity for this part.
+
+**Engineering confidence**
+High
+
+**Limits**
+The available proof is limited to part identification and nomenclature; it does not contain engineering validation, fitment certification, or installation instructions.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q14_fig_098f39ee
+q15,effectivity_limit,Does figure 91 prove aircraft effectivity?,PARTIAL,True,True,ollama,visual_part_identification,1,1,1,0,0,0,,"**Answer**
+No, Figure 91 does not prove aircraft effectivity.
+
+**Evidence**
+Figure 91 is associated with part number 120-29068-003 and the nomenclature ""STRUCTURE ASSY"" [V8, O3]. While OCR text related to figure 91 contains the string ""VS4956 A REF"" [O3], there is no explicit definition or label within the provided context stating that this string represents an aircraft effectivity.
+
+**Engineering confidence**
+High
+
+**Limits**
+The conclusion is limited to the provided `proof_context`, which lacks a legend, key, or explicit declaration defining the alphanumeric string ""VS4956"" as an aircraft effectivity indicator.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q15_fig_30f10ddf
+q16,troubleshooting,Why was nomenclature missing from the visual route evidence?,GOOD,True,True,ollama,troubleshooting_question,6,6,6,0,0,0,,"**Answer**
+Not proven.
+
+**Evidence**
+The provided `proof_context` does not contain information explaining why nomenclature would be missing from visual route evidence; furthermore, the records indicate that nomenclature is present for all identified visual figure links ([V6], [V7], [V8]) and their corresponding OCR nomenclature entries ([O1], [O2], [O3]).
+
+**Engineering confidence**
+N/A (The premise of the question cannot be verified by the provided data).
+
+**Limits**
+This response is strictly limited to the information contained within the provided `proof_context`.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q16_why_4d90ecc1
+q17,troubleshooting,Why does the visual route need OCR nomenclature evidence?,GOOD,True,True,ollama,troubleshooting_question,6,6,6,0,0,0,,"**Answer**
+Not proven.
+
+**Evidence**
+The provided `proof_context` contains matching data between visual figure links ([V6], [V7], [V8]) and OCR nomenclature records ([O1], [O2], [O3]) for specific part numbers (e.g., 120-50645-005 [V6, O1]; 120-50645-011 [V7, O2]; 120-29068-003 [V8, O3]), but the context does not contain an explicit statement or engineering requirement explaining why the visual route requires OCR nomenclature evidence.
+
+**Engineering confidence**
+High (regarding the absence of supporting proof in the provided context).
+
+**Limits**
+This response is strictly limited to the provided `proof_context`. The `guidance_context` was used only for framing and does not constitute proof of a requirement.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q17_why_6d0a39b8
+q18,pipeline_recovery,What changed after the raw OCR nomenclature extractor was added?,PARTIAL,True,True,ollama,table_extraction_question,0,0,0,0,0,0,,"**Answer**
+Not proven.
+
+**Evidence**
+The provided `proof_context` does not contain any information regarding the addition of a ""raw OCR nomenclature extractor"" or any documented changes resulting from such an event. While there are",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q18_pipeline_1578a903
+q19,source_page,What source page supports the nomenclature for Figure 69?,GOOD,True,True,ollama,visual_part_identification,4,4,4,0,0,0,,"Answer: Page 316 contains the OCR-backed nomenclature for Figure 69 [O1], while page 315 provides a visual figure link connecting Figure 69 to the same nomenclature [V6].
+
+Evidence:
+- OCR text on page 316 explicitly identifies item 69 as ""120-50645-005 DOUBLE PASSENGER SEAT ASSY"" [O1].
+- Page 315 contains a visual figure link for Figure 69 with the nomenclature ""DOUBLE PASSENGER SEAT ASSY"" [V6].
+
+Engineering confidence: High
+
+Limits: This identification is limited to the nomenclature and part number as explicitly stated in the provided OCR and figure links.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q19_fig_9c6c93ac
+q20,source_page,Cite the proof for Figure 75's part number.,GOOD,True,True,ollama,visual_part_identification,2,2,2,0,0,0,,"**Answer**
+The part number associated with Figure 75 is 120-50645-011 [V7, O2].
+
+**Evidence**
+* **Visual Link:** A visual figure link on page 327 identifies Figure 75 as part number 120-50645-011, described as DOUBLE PASSENGER SEAT ASSY [V7].
+* **OCR Verification:** OCR text from page 328 explicitly links item/figure 75 to part number 120-50645-011 and the nomenclature DOUBLE PASSENGER SEAT ASSY [O2].
+
+**Engineering confidence**
+High; the part number is corroborated by both visual figure linking and OCR text extraction.
+
+**Limits**
+This identification is strictly limited to the part number provided in the source documentation for Figure 75.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q20_fig_72bfaf10
+q21,replacement_limit,Is 120-50645-005 an approved replacement for 120-50645-011?,PARTIAL,True,True,ollama,exact_part_lookup,0,0,0,0,0,0,,"**Answer**: Not proven.
+
+**Evidence**: Both 120-50645-005 [V6, O1] and 120-50645-011 [V7, O2] are identified as ""DOUBLE PASSENGER SEAT ASSY"", but the provided documentation contains no information regarding replacement approval or interchangeability between these two part numbers.
+
+**Engineering confidence**: Low.
+
+**Limits**: The provided context is limited to part nomenclature and does not include data regarding part supersession, effectivity, or approved replacements.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q21_repl_05a5f019
+q22,installation_safety,Can I safely install 120-50645-005 based only on Figure 69?,PARTIAL,True,True,ollama,visual_part_identification,0,0,0,0,0,0,,"**Answer**: Not proven. While Figure 69 identifies part number 120-50645-005 as ""DOUBLE PASSENGER SEAT ASSY"" [V6, O1], the provided documentation contains no information regarding installation procedures, safety protocols, or approval for installation.
+
+**Evidence**:
+* Figure 69 and associated OCR text confirm that part number 120-50645-005 is identified as ""DOUBLE PASSENGER SEAT ASSY"" [V6, O1].
+
+**Engineering confidence**: High (regarding the absence of installation/safety proof).
+
+**Limits**: The provided context is limited to part identification and nomenclature; it does not include instructions for installation, safety verification, or fitment/effectivity for installation purposes.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q22_safe_8a240f73
+q23,nomenclature_summary,Summarize the evidence for DOUBLE PASSENGER SEAT ASSY.,GOOD,True,True,ollama,manual_section_summary,4,4,4,0,0,0,,"**Answer**
+The documentation identifies two distinct part numbers associated with the nomenclature DOUBLE PASSENGER SEAT ASSY: 
+1. Part Number 120-50645-005, which is referenced in Figure 69 [V6, O1].
+2. Part Number 120-50645-011, which is referenced in Figure 75 [V7, O2].
+
+**Evidence**
+* **P/N 120-50645-005**: Identified as DOUBLE PASSENGER SEAT ASSY via visual figure link [V6] and OCR nomenclature text [O1] (associated with Figure 69).
+* **P/N 120-50645-011**: Identified as DOUBLE PASSENGER SEAT ASSY via visual figure link [V7] and OCR nomenclature text [O2] (associated with Figure 75).
+
+**Engineering confidence**
+High. The nomenclature is explicitly linked to both part numbers in both the visual figure metadata and the corresponding OCR line text.
+
+**Limits**
+There is no evidence provid",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q23_nomencla_0489db6d
+q24,nomenclature_summary,Which figures link to DOUBLE PASSENGER SEAT ASSY?,PARTIAL,True,True,ollama,general_engineering_question,0,0,0,0,0,0,,"**Answer**
+Figures 69 and 75 are linked to the nomenclature ""DOUBLE PASSENGER SEAT ASSY"".
+
+**Evidence**
+*   Figure 69 is associated with part number 120-50645-005, identified as DOUBLE PASSENGER SEAT ASSY [V6, O1].
+*   Figure 75 is associated with part number 120-50645-011, identified as DOUBLE PASSENGER SEAT ASSY [V7, O2].
+
+**Engineering confidence**
+High
+
+**Limits**
+This answer is strictly limited to the figures and nomenclature provided in the supplied documentation.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q24_fig_697330c3
+q25,unknown_part,Find part number 999-99999-999 and cite the source.,PARTIAL,False,True,ollama,exact_part_lookup,0,0,0,0,0,0,,"**Answer**: Not proven.
+
+**Evidence**: No proof_context records were provided for review; therefore, part number 999-99999-999 cannot be located or verified within the available documentation.
+
+**Engineering confidence**: N/A
+
+**Limits**: This response is strictly limited to the provided `proof_context`. Since no context was supplied, no part numbers can be identified or traced to a source.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q25_part_ea6f4b45
+q26,unknown_figure,What does figure 999 show?,PARTIAL,False,True,ollama,visual_part_identification,0,0,0,0,0,0,,"Answer: Not source-trace-ready.
+
+Evidence: No proof_context was provided containing information regarding Figure 999.
+
+Engineering confidence: N/A
+
+Limits: The response is limited by the total absence of supporting documentation or visual evidence in the provided context.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q26_fig_ec0bc550
+q27,evidence_explanation,Explain the difference between visual proof and OCR proof for Figure 69.,GOOD,True,True,ollama,comparison_question,4,4,4,0,0,0,,"**Answer**
+For Figure 69, the difference between visual proof and OCR proof lies in the method of data extraction: visual proof is provided via a `visual_figure_link` [V6], whereas OCR proof is provided through `ocr_nomenclature` extracted from line text (line 69) [O1]. Both methods identify part number 120-50645-005 as the DOUBLE PASSENGER SEAT ASSY [V6, O1].
+
+**Evidence**
+*   Visual proof for Figure 69 is a `visual_figure_link` [V6].
+*   OCR proof for Figure 69 is `ocr_nomenclature` extracted from line text (line 69) [O1].
+
+**Engineering confidence**
+High
+
+**Limits**
+This comparison is limited to the specific data types and extraction methods documented for Figure 69 in the provided context.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q27_fig_1c4dc9c0
+q28,route_explanation,What routes were required to answer what Figure 69 shows?,GOOD,True,True,ollama,visual_part_identification,4,4,4,0,0,0,,"**Answer**
+The identification of the subject matter for Figure 69 was achieved through a two-part route: utilizing a visual figure link [V6] to associate the figure with a specific part number and nomenclature, and cross-referencing this with OCR text extraction [O1] that explicitly maps index ""69"" to that part.
+
+**Evidence**
+*   [V6] provides a visual figure link for Figure 69 on page 315, identifying the associated part number as 120-50645-005 and the nomenclature as DOUBLE PASSENGER SEAT ASSY.
+*   [O1] provides OCR text from page 316 that explicitly links ""69"" to part number 120-50645-005 and the nomenclature DOUBLE PASSENGER SEAT ASSY.
+
+**Engineering confidence**
+High
+
+**Limits**
+This identification is limited to the metadata and OCR mapping provided in the proof context; it does not c",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q28_fig_75703adb
+q29,summary_limit,Can v2 summaries alone prove Figure 69 part identity?,GOOD,True,True,ollama,visual_part_identification,2,2,2,0,0,0,,"**Answer**
+No, v2 summaries alone cannot prove Figure 69 part identity.
+
+**Evidence**
+According to the summary guidance policy, v2 summaries ""must not be used as proof"" and may only guide route planning and answer framing. The identification of the part associated with Figure 69 (part number 120-50645-005, DOUBLE PASSENGER SEAT ASSY) is supported by visual figure link [V6] and OCR nomenclature [O1].
+
+**Engineering confidence**
+High
+
+**Limits**
+This assessment is strictly limited to the provided `summary_guidance_policy` and the available `proof_context`.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q29_fig_d11ba39e
+q30,limitations,Give the engineering limitations for Figure 91.,PARTIAL,True,True,ollama,visual_part_identification,0,0,0,0,0,0,,"Answer: Not proven.
+
+Evidence: The provided proof context identifies Figure 91 as part number 120-29068-003, nomenclature STRUCTURE ASSY [V8, O3], but contains no information regarding engineering limitations for this part.
+
+Engineering confidence: N/A (The requested technical data is absent from the provided source).
+
+Limits: The available documentation is limited to part identification and nomenclature; it does not include technical specifications, tolerances, or performance constraints.",local_data\organization\trace_net\engineering_llm_answer_smoke_v1\runs\q30_limit_dfb8f027

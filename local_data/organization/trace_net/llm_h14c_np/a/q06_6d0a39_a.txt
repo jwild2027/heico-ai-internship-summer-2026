@@ -1,0 +1,14 @@
+Answer:
+The visual route (`visual_figure_link`) establishes a link between a figure and a part number [V6, V7, V8], but visual-link evidence alone should not be treated as clean nomenclature proof unless a source-trace-ready nomenclature field or OCR/table record supports it. The `ocr_nomenclature` route is necessary because it provides the specific line-text evidence for the part name (nomenclature) [O1, O2, O3]. This allows the nomenclature merger to carry that OCR-backed name into the visual evidence pack, which improves or recovers description evidence when visual/table records alone lack a clean nomenclature field.
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 [V6].
+- [O1] OCR-backed nomenclature provides the specific line-text "DOUBLE PASSENGER SEAT ASSY" for figure 69 [O1].
+- [T1] Table/OCR proof supports part number 120-50645-005 [T1].
+
+Engineering confidence:
+HIGH for the pipeline explanation because the distinction between `visual_figure_link` (identity linkage) and `ocr_nomenclature` (textual nomenclature proof) is supported by the provided context types.
+
+Limits:
+- This is a TRACE-Net pipeline explanation, not proof of interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries are guidance only and are not used as proof in this answer.

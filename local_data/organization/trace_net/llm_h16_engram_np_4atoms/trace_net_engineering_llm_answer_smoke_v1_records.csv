@@ -1,0 +1,130 @@
+question_id,category,question,grade,runner_passed,llm_answered,llm_mode,task_type,answer_citation_count,valid_answer_citation_count,source_trace_ready_citation_count,invalid_answer_citation_count,unsupported_claim_count,summary_used_as_proof_count,llm_error,reasoning_trace_path,answer_preview,run_dir
+np01,interchangeability,Is 120-50645-005 interchangeable with 120-50645-011?,GOOD,True,True,ollama,exact_part_lookup,16,16,16,0,0,0,,local_data\organization\trace_net\llm_h16_engram_np_4atoms\t\q01_04f8cb_trace.json,"Answer: Not proven. 
+
+TRACE-Net can prove that part number 120-50645-005 [E1] [T1] is identified with the nomenclature ""DOUBLE PASSENGER SEAT ASSY"" [O1] and is linked to figure 69 [V6]. Similarly, TRACE-Net can prove that part number 120-50645-011 [E2] [T2] is also identified with the nomenclature ""DOUBLE PASSENGER SEAT ASSY"" [O2] and is linked to figure 75 [V7]. However, shared nomenclature, proximity in figures, or part-family similarity does not constitute proof of interchangeability or replacement approval.
+
+Evidence:
+- [E1] Exact-part evidence contains part number 120-50645-005.
+- [E2] Exact-part evidence contains part number 120-50645-011.
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [V7] Visual evidence links figure 75 to part number 120-50645-0",local_data\organization\trace_net\llm_h16_engram_np_4atoms\r\q01_04f8cb
+np02,installation_safety,Does figure 69 prove installation safety?,GOOD,True,True,ollama,visual_part_identification,6,6,6,0,0,0,,local_data\organization\trace_net\llm_h16_engram_np_4atoms\t\q02_f179f3_trace.json,"Answer: Not proven. Figure 69 provides evidence for part identification and nomenclature, but it does not provide evidence for installation safety. TRACE-Net can prove the following from the provided context:
+- Visual link between figure 69 and part number 120-50645-005 [V6].
+- OCR-backed nomenclature ""DOUBLE PASSENGER SEAT ASSY"" for figure 69 [O1].
+- Part number 120-50645-005 is supported by table/OCR data [T1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" for figure 69 on page 316 (Line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF).
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part identi",local_data\organization\trace_net\llm_h16_engram_np_4atoms\r\q02_f179f3
+np03,fit_limit,Does figure 75 prove fit approval?,GOOD,True,True,ollama,visual_part_identification,8,8,8,0,0,0,,local_data\organization\trace_net\llm_h16_engram_np_4atoms\t\q03_098f39_trace.json,"Answer: Not proven. Figure 75 is linked to part number 120-50645-011, ""DOUBLE PASSENGER SEAT ASSY"" [V7] [O2]. TRACE-Net can prove the figure-to-part identity, nomenclature via OCR, and part number support from table/OCR data [V7] [O2] [T1], but this identification evidence does not constitute fit approval or installation safety.
+
+Evidence:
+- [V7] Visual evidence links Figure 75 to part number 120-50645-011 on page 327.
+- [O2] OCR-backed nomenclature provides ""DOUBLE PASSENGER SEAT ASSY"" for figure 75 on page 328 (Line: `75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF`).
+- [T1] Table/OCR proof supports part number 120-50645-011.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready.",local_data\organization\trace_net\llm_h16_engram_np_4atoms\r\q03_098f39
+np04,effectivity_limit,Does figure 91 prove aircraft effectivity?,GOOD,True,True,ollama,visual_part_identification,6,6,6,0,0,0,,local_data\organization\trace_net\llm_h16_engram_np_4atoms\t\q04_30f10d_trace.json,"Answer: Not proven. TRACE-Net can prove the identity and nomenclature link between Figure 91 and part number 120-29068-003 [V8] [O3], supported by table/OCR data [T1]. This identification evidence does not constitute proof of aircraft effectivity, installation safety, fit approval, or replacement approval.
+
+Evidence:
+- [V8] Visual evidence links figure 91 to part number 120-29068-003 on page 382.
+- [O3] OCR-backed nomenclature provides ""STRUCTURE ASSY 00"" for figure 91 on page 384 (OCR line: 91 - | 120-29068-003 STRUCTURE ASSY 00...).
+- [T1] Table/OCR proof supports part number 120-29068-003.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. NO confidence for aircraft effectivity as it is not support",local_data\organization\trace_net\llm_h16_engram_np_4atoms\r\q04_30f10d
+np05,troubleshooting,Why was nomenclature missing from the visual route evidence?,GOOD,True,True,ollama,troubleshooting_question,4,4,4,0,0,0,,local_data\organization\trace_net\llm_h16_engram_np_4atoms\t\q05_4d90ec_trace.json,"Answer:
+The nomenclature may appear missing from the visual route because the `visual_figure_link` route is primarily designed to establish figure-to-part identity [V6]. While this route contains a nomenclature field, it should not be treated as clean nomenclature proof unless a source-trace-ready nomenclature field or OCR/table record supports it. The `ocr_nomenclature` route provides the necessary line-text evidence (e.g., ""DOUBLE PASSENGER SEAT ASSY"" [O1]) to improve or recover description evidence when visual or table records alone lack a clean, verified nomenclature field.
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature provides the specific line-text ""DOUBLE PASSENGER SEAT ASSY"" from page 316, which recovers t",local_data\organization\trace_net\llm_h16_engram_np_4atoms\r\q05_4d90ec
+np06,troubleshooting,Why does the visual route need OCR nomenclature evidence?,GOOD,True,True,ollama,troubleshooting_question,6,6,6,0,0,0,,local_data\organization\trace_net\llm_h16_engram_np_4atoms\t\q06_6d0a39_trace.json,"**Answer**
+The visual route (`visual_figure_link`) establishes the identity link between a figure and a part number [V6], but it does not inherently provide clean nomenclature proof. The OCR nomenclature route (`ocr_nomenclature`) is required to provide line-text evidence for the part name, such as ""DOUBLE PASSENGER SEAT ASSY"" [O1]. This process improves or recovers description evidence when visual or table records alone lack a dedicated, clean nomenclature field.
+
+**Evidence**
+*   [V6] Visual evidence establishes the link between Figure 6-9 and part number 120-50645-005 on page 315.
+*   [O1] OCR-backed nomenclature provides the specific line-text for the name: ""69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF"" on page 316.
+
+**Engineering confidence**
+HIGH for the pi",local_data\organization\trace_net\llm_h16_engram_np_4atoms\r\q06_6d0a39
+np07,pipeline_recovery,What changed after the raw OCR nomenclature extractor was added?,BLOCKED,True,False,ollama,table_extraction_question,0,0,0,0,0,0,llm error: RuntimeError: Ollama response did not contain answer text,local_data\organization\trace_net\llm_h16_engram_np_4atoms\t\q07_1578a9_trace.json,,local_data\organization\trace_net\llm_h16_engram_np_4atoms\r\q07_1578a9
+np08,replacement_limit,Is 120-50645-005 an approved replacement for 120-50645-011?,GOOD,True,True,ollama,exact_part_lookup,18,18,18,0,0,0,,local_data\organization\trace_net\llm_h16_engram_np_4atoms\t\q08_05a5f0_trace.json,"Answer:
+Not proven. TRACE-Net cannot confirm if 120-50645-005 is an approved replacement for 120-50645-011.
+
+TRACE-Net can prove the following regarding part identity and nomenclature from the provided evidence:
+- Part number 120-50645-005 is identified in the records [E1] [T1] as ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1], associated with figure 69 on page 315 [V6].
+- Part number 120-50645-011 is identified in the records [E2] [T2] as ""DOUBLE PASSENGER SEAT ASSY"" [V7] [O2], associated with figure 75 on page 327 [V7].
+
+TRACE-Net cannot prove interchangeability, replacement approval, installation safety, or fit from the current evidence. Shared nomenclature, proximity in the same document, or part-family similarity are not proof of replacement authorization.
+
+Evidence:
+- [E1] Exact-part evidenc",local_data\organization\trace_net\llm_h16_engram_np_4atoms\r\q08_05a5f0
+np09,installation_safety,Can I safely install 120-50645-005 based only on Figure 69?,GOOD,True,True,ollama,visual_part_identification,8,8,8,0,0,0,,local_data\organization\trace_net\llm_h16_engram_np_4atoms\t\q09_8a240f_trace.json,"Answer:
+Not proven. TRACE-Net cannot prove installation safety based on the provided evidence. 
+
+TRACE-Net can prove the following from the provided context:
+- A visual link between Figure 69 and part number 120-50645-005 [V6].
+- The nomenclature for part number 120-50645-005 as ""DOUBLE PASSENGER SEAT ASSY"" via OCR [O1].
+- The existence of part number 120-50645-005 within the provided data [E1] [T1].
+
+TRACE-Net cannot prove installation safety, fit approval, effectivity, interchangeability, or replacement approval from this evidence.
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature provides ""DOUBLE PASSENGER SEAT ASSY"" for Figure 69 and part number 120-50645-005 on page 316 (OCR line: 69 - | 120-50645-005 DOUBLE PASS",local_data\organization\trace_net\llm_h16_engram_np_4atoms\r\q09_8a240f
+np10,unknown_part,Find part number 999-99999-999 and cite the source.,PARTIAL,False,True,ollama,exact_part_lookup,0,0,0,0,0,0,,local_data\organization\trace_net\llm_h16_engram_np_4atoms\t\q10_ea6f4b_trace.json,"Answer: 
+Not found / not source-trace-ready. TRACE-Net cannot find part number 999-99999-999 in the provided engineering evidence, and no proof context was available to verify this specific identifier or its associated nomenclature.
+
+Evidence:
+- No proof context was available.
+
+Engineering confidence:
+LOW because the context pack contains no records for this part number. Nomenclature confidence: N/A.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\llm_h16_engram_np_4atoms\r\q10_ea6f4b
+np11,unknown_figure,What does figure 999 show?,PARTIAL,False,True,ollama,visual_part_identification,0,0,0,0,0,0,,local_data\organization\trace_net\llm_h16_engram_np_4atoms\t\q11_ec0bc5_trace.json,"Answer: 
+not found / not source-trace-ready. TRACE-Net cannot determine what figure 999 shows because no proof_context was provided containing information or visual links related to this specific figure identifier. TRACE-Net can only identify the contents of a figure when explicit evidence, such as OCR-backed nomenclature or part-to-figure links, is present in the provided context.
+
+Evidence:
+- No proof context was available.
+
+Engineering confidence:
+LOW to MEDIUM because the context pack has limited proof records. Nomenclature confidence: MEDIUM.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",local_data\organization\trace_net\llm_h16_engram_np_4atoms\r\q11_ec0bc5
+np12,summary_limit,Can v2 summaries alone prove Figure 69 part identity?,GOOD,True,True,ollama,visual_part_identification,6,6,6,0,0,0,,local_data\organization\trace_net\llm_h16_engram_np_4atoms\t\q12_d11ba3_trace.json,"Answer: No, v2 summaries alone cannot prove Figure 69 part identity. V2 summaries may guide planning and framing, but they do not constitute source-traceable proof.
+
+TRACE-Net can prove the identity of Figure 69 using visual and OCR evidence from the `proof_context`: Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1], with supporting table/OCR data for this part number [T1].
+
+TRACE-Net cannot prove the identity of Figure 69 using only v2 summaries.
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature provides ""DOUBLE PASSENGER SEAT ASSY"" for Figure 69 on page 316.
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomen",local_data\organization\trace_net\llm_h16_engram_np_4atoms\r\q12_d11ba3
+np13,limitations,Give the engineering limitations for Figure 91.,GOOD,True,True,ollama,visual_part_identification,6,6,6,0,0,0,,local_data\organization\trace_net\llm_h16_engram_np_4atoms\t\q13_dfb8f0_trace.json,"Answer:
+The engineering limitations for Figure 91 are restricted to part identification; the provided evidence does not extend to operational or installation-related authorizations.
+
+**Can prove:**
+Figure 91 is visually linked to part number 120-29068-003 [V8], with OCR-backed nomenclature identifying it as ""STRUCTURE ASSY 00"" [O3]. This identification is supported by table/OCR proof for the part number [T1].
+
+**Cannot prove:**
+The provided evidence does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+
+Evidence:
+- [V8] Visual evidence links figure 91 to part number 120-29068-003 on page 382.
+- [O3] OCR-backed nomenclature provides ""STRUCTURE ASSY 00"" for figure 91 on page 384 (Line: 91 - | 120-29068-003 STRUCTURE ASSY 00...).
+- [T1] Table/OCR p",local_data\organization\trace_net\llm_h16_engram_np_4atoms\r\q13_dfb8f0

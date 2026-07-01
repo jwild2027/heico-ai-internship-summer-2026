@@ -1,0 +1,51 @@
+{
+  "module": "trace_net_engineering_engram_core_v1",
+  "version": "v1",
+  "status": "TRACE_NET_ENGINEERING_ENGRAM_CORE_QUALITY_CHECKED",
+  "quality_status": "PASS",
+  "summary": {
+    "module": "trace_net_engineering_engram_core_v1",
+    "version": "v1",
+    "engram_atom_count": 15,
+    "policy_trait_count": 3,
+    "style_trait_count": 3,
+    "route_behavior_count": 2,
+    "episodic_failure_memory_count": 4,
+    "episodic_eval_memory_count": 1,
+    "critic_trait_count": 1,
+    "repair_trait_count": 1,
+    "memory_type_count": 7,
+    "hard_boundary_count": 3,
+    "eval_source_count": 1,
+    "traits": [
+      "approval_boundary",
+      "crag_repair_reflex",
+      "engineering_answer_shape",
+      "eval_history",
+      "failure_memory",
+      "partial_answer_memory",
+      "route_awareness",
+      "self_rag_behavior_check",
+      "source_trace_caution",
+      "summary_boundary",
+      "unknown_handling",
+      "useful_caution"
+    ],
+    "ready_for_engram_prompt_injector": true,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0
+  },
+  "quality_gate": {
+    "quality_status": "PASS",
+    "failures": [],
+    "engram_atom_count": 15,
+    "policy_trait_count": 3,
+    "memory_type_count": 7
+  }
+}

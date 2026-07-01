@@ -1,0 +1,14 @@
+Answer:
+The addition of the raw OCR nomenclature extractor allows the pipeline to provide OCR-backed description evidence, improving or recovering nomenclature when visual/table records alone lack a clean nomenclature field. While the earlier visual route (`visual_figure_link`) can establish a figure-to-part link [V6, V7, V8], visual-link evidence alone should not be treated as clean nomenclature proof unless a source-trace-ready nomenclature field or OCR/table record supports it. The OCR nomenclature route (`ocr_nomenclature`) provides line-text evidence for the part name (e.g., "DOUBLE PASSENGER SEAT ASSY" [O1, O2]) and allows the nomenclature merger to carry that OCR-backed name into the visual evidence pack.
+
+Evidence:
+- [V6, V7, V8] Visual evidence links figures (e.g., 69, 75, 91) to specific part numbers (e.g., 120-50645-005, 120-50645-011, 120-29068-003).
+- [O1, O2] OCR nomenclature provides the specific line-text for part names (e.g., "DOUBLE PASSENGER SEAT ASSY" on page 316 and 328).
+- [O3] OCR nomenclature provides line-text evidence for part names (e.g., "STRUCTURE ASSY 00" on page 384).
+
+Engineering confidence:
+HIGH for the pipeline explanation because the provided `context_type` records ([V6, V7, V8] vs [O1, O2, O3]) explicitly demonstrate the distinction between visual figure-to-part linkage and OCR-backed nomenclature text.
+
+Limits:
+- This is a TRACE-Net pipeline explanation, not proof of interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.

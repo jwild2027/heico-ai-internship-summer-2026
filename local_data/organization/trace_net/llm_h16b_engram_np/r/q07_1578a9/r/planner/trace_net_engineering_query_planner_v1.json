@@ -1,0 +1,238 @@
+{
+  "status": "TRACE_NET_ENGINEERING_QUERY_PLANNER_BUILT",
+  "quality_status": "PASS",
+  "module": "trace_net_engineering_query_planner_v1",
+  "version": "v1",
+  "question": "What changed after the raw OCR nomenclature extractor was added?",
+  "source_v2_summary_guidance_index": "local_data/organization/trace_net/v2_summary_guidance_index_v1/trace_net_v2_summary_guidance_index_v1.json",
+  "summary": {
+    "planner_record_count": 1,
+    "task_type_count": 1,
+    "required_route_count": 3,
+    "selected_guidance_page_count": 8,
+    "guidance_only_summary_count": 8,
+    "source_guidance_summary_record_count": 31,
+    "can_answer_from_summaries_only_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0,
+    "ready_for_engineering_context_pack": true
+  },
+  "failures": [],
+  "records": [
+    {
+      "module": "trace_net_engineering_query_planner_v1",
+      "version": "v1",
+      "question": "What changed after the raw OCR nomenclature extractor was added?",
+      "task_type": "table_extraction_question",
+      "engineering_intent": "inspect or extract structured table/OCR records",
+      "entities": {
+        "part_numbers": [],
+        "figures": [],
+        "items": [],
+        "part_families": [],
+        "topics": [
+          "nomenclature"
+        ]
+      },
+      "guidance_pages": [
+        {
+          "page_id": "t_p_120_1176_p000016",
+          "page_number": 16,
+          "summary_text": "This page from the maintenance manual describes the construction of a seat backrest and bottom cushion, including materials like composite structures, foam cushions, upholstery, and Velcro fasteners.",
+          "detected_figures": [],
+          "detected_part_numbers": [],
+          "detected_topics": [
+            "maintenance manual",
+            "structure"
+          ],
+          "manual_section_hint": "maintenance_manual",
+          "guidance_score": 7,
+          "guidance_reasons": [
+            "topic_overlap:the",
+            "manual_section:maintenance_manual"
+          ],
+          "guidance_only": true,
+          "source_trace_ready": true
+        },
+        {
+          "page_id": "t_p_120_1176_p000017",
+          "page_number": 17,
+          "summary_text": "This page is a parts list and figure illustrating the passenger seat, referencing part number 120TP250001.MCI.",
+          "detected_figures": [],
+          "detected_part_numbers": [],
+          "detected_topics": [
+            "figure",
+            "illustrated parts list"
+          ],
+          "manual_section_hint": "illustrated_parts_list",
+          "guidance_score": 7,
+          "guidance_reasons": [
+            "topic_overlap:the",
+            "manual_section:illustrated_parts_list"
+          ],
+          "guidance_only": true,
+          "source_trace_ready": true
+        },
+        {
+          "page_id": "t_p_120_1176_p000019",
+          "page_number": 19,
+          "summary_text": "This page is a figure illustrating the passenger seat, including its backrests and bottom, with associated part numbers and revision information.",
+          "detected_figures": [],
+          "detected_part_numbers": [],
+          "detected_topics": [
+            "figure"
+          ],
+          "manual_section_hint": "illustrated_parts_list",
+          "guidance_score": 7,
+          "guidance_reasons": [
+            "topic_overlap:the",
+            "manual_section:illustrated_parts_list"
+          ],
+          "guidance_only": true,
+          "source_trace_ready": true
+        },
+        {
+          "page_id": "t_p_120_1176_p000020",
+          "page_number": 20,
+          "summary_text": "This page describes the format of an illustrated parts list, explaining the different columns and their purpose for identifying aircraft parts.",
+          "detected_figures": [],
+          "detected_part_numbers": [],
+          "detected_topics": [
+            "illustrated parts list",
+            "table"
+          ],
+          "manual_section_hint": "illustrated_parts_list",
+          "guidance_score": 7,
+          "guidance_reasons": [
+            "topic_overlap:the",
+            "manual_section:illustrated_parts_list"
+          ],
+          "guidance_only": true,
+          "source_trace_ready": true
+        },
+        {
+          "page_id": "t_p_120_1176_p000021",
+          "page_number": 21,
+          "summary_text": "This page describes the organization and categorization of parts within a maintenance manual's illustrated parts list, including EMBRAER, military standard, and vendor part numbers.",
+          "detected_figures": [],
+          "detected_part_numbers": [],
+          "detected_topics": [
+            "illustrated parts list",
+            "maintenance manual"
+          ],
+          "manual_section_hint": "illustrated_parts_list",
+          "guidance_score": 7,
+          "guidance_reasons": [
+            "topic_overlap:the",
+            "manual_section:illustrated_parts_list"
+          ],
+          "guidance_only": true,
+          "source_trace_ready": true
+        },
+        {
+          "page_id": "t_p_120_1176_p000024",
+          "page_number": 24,
+          "summary_text": "This page from the maintenance manual provides vendor information and includes a parts list entry for part number 345-1598.",
+          "detected_figures": [],
+          "detected_part_numbers": [],
+          "detected_topics": [
+            "illustrated parts list",
+            "maintenance manual"
+          ],
+          "manual_section_hint": "maintenance_manual",
+          "guidance_score": 7,
+          "guidance_reasons": [
+            "topic_overlap:the",
+            "manual_section:maintenance_manual"
+          ],
+          "guidance_only": true,
+          "source_trace_ready": true
+        },
+        {
+          "page_id": "t_p_120_1176_p000027",
+          "page_number": 27,
+          "summary_text": "This page appears to be a parts list from the maintenance manual, listing numerous part numbers with associated quantities and airline part numbers.",
+          "detected_figures": [],
+          "detected_part_numbers": [],
+          "detected_topics": [
+            "illustrated parts list",
+            "maintenance manual"
+          ],
+          "manual_section_hint": "maintenance_manual",
+          "guidance_score": 7,
+          "guidance_reasons": [
+            "topic_overlap:the",
+            "manual_section:maintenance_manual"
+          ],
+          "guidance_only": true,
+          "source_trace_ready": true
+        },
+        {
+          "page_id": "t_p_120_1176_p000029",
+          "page_number": 29,
+          "summary_text": "This page appears to be a parts list from the maintenance manual, listing various part numbers and quantities.",
+          "detected_figures": [],
+          "detected_part_numbers": [],
+          "detected_topics": [
+            "illustrated parts list",
+            "maintenance manual"
+          ],
+          "manual_section_hint": "maintenance_manual",
+          "guidance_score": 7,
+          "guidance_reasons": [
+            "topic_overlap:the",
+            "manual_section:maintenance_manual"
+          ],
+          "guidance_only": true,
+          "source_trace_ready": true
+        }
+      ],
+      "guidance_page_count": 8,
+      "required_routes": [
+        "table_route",
+        "ocr_table_proof",
+        "table_quality_gate"
+      ],
+      "required_route_count": 3,
+      "optional_routes": [
+        "graph_leiden_neighbors"
+      ],
+      "proof_requirements": [
+        "table/OCR cell or row evidence",
+        "source cell/page trace",
+        "quality-check status"
+      ],
+      "forbidden_claims": [
+        "effectivity",
+        "fit",
+        "installation safety",
+        "interchangeability",
+        "replacement approval"
+      ],
+      "answer_style": "engineering_brain",
+      "can_answer_from_summaries_only": false,
+      "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof",
+      "answer_permission": false,
+      "source_truth_mutation_allowed": false,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "opensearch_write_attempt": false,
+      "opensearch_upload_attempt": false,
+      "unsafe_record": false,
+      "entities_json": "{\"part_numbers\": [], \"figures\": [], \"items\": [], \"part_families\": [], \"topics\": [\"nomenclature\"]}",
+      "required_routes_json": "[\"table_route\", \"ocr_table_proof\", \"table_quality_gate\"]",
+      "optional_routes_json": "[\"graph_leiden_neighbors\"]"
+    }
+  ],
+  "paths": {
+    "planner": "local_data\\organization\\trace_net\\llm_h16b_engram_np\\r\\q07_1578a9\\r\\planner\\trace_net_engineering_query_planner_v1.json",
+    "quality_check": "local_data\\organization\\trace_net\\llm_h16b_engram_np\\r\\q07_1578a9\\r\\planner\\trace_net_engineering_query_planner_v1_quality_check.json",
+    "records_csv": "local_data\\organization\\trace_net\\llm_h16b_engram_np\\r\\q07_1578a9\\r\\planner\\trace_net_engineering_query_planner_v1_records.csv"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "status": "TRACE_NET_ENGINEERING_INTENT_ANSWER_COMPOSER_BUILT",
+  "quality_status": "PASS",
+  "module": "trace_net_engineering_intent_answer_composer_v1",
+  "version": "v1",
+  "summary": {
+    "module": "trace_net_engineering_intent_answer_composer_v1",
+    "version": "v1",
+    "question": "Compare figure 75 and figure 91.",
+    "task_type": "comparison_question",
+    "intent_answer_type": "comparison",
+    "proof_context_count": 6,
+    "guidance_context_count": 0,
+    "answer_char_count": 823,
+    "answer_citation_count": 4,
+    "valid_answer_citation_count": 4,
+    "source_trace_ready_citation_count": 4,
+    "invalid_answer_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0,
+    "llava_only_part_identity_claim_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0,
+    "ready_for_intent_answer_delivery": true
+  },
+  "records": [
+    {
+      "question": "Compare figure 75 and figure 91.",
+      "task_type": "comparison_question",
+      "intent_answer_type": "comparison",
+      "quality_status": "PASS",
+      "answer_text": "Answer:\nFigures 75 and 91 are both source-trace-linked visual/parts evidence, but they point to different part-number records unless the source explicitly says otherwise.\n\nComparison:\n- Figure 75: part number 120-50645-011, nomenclature \"DOUBLE PASSENGER SEAT ASSY\" [V7] [O2].\n  OCR line: 75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF\n- Figure 91: part number 120-29068-003, nomenclature \"STRUCTURE ASSY 00\" [V8] [O3].\n  OCR line: 91 - | 120-29068-003 STRUCTURE ASSY 00... ccceennseeeees VS4956 A REF\n\nEngineering confidence:\nHIGH for figure-to-part and nomenclature comparisons when each figure has source-trace-ready visual and OCR/table support.\n\nLimits:\n- A comparison of figure-linked evidence does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.",
+      "answer_citations": [
+        "V7",
+        "O2",
+        "V8",
+        "O3"
+      ],
+      "invalid_answer_citation_labels": [],
+      "source_trace_ready_citation_labels": [
+        "O2",
+        "O3",
+        "V7",
+        "V8"
+      ],
+      "proof_context_used_count": 6,
+      "guidance_context_used_count": 0,
+      "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof",
+      "ready_for_intent_answer_delivery": true
+    }
+  ],
+  "answer_text": "Answer:\nFigures 75 and 91 are both source-trace-linked visual/parts evidence, but they point to different part-number records unless the source explicitly says otherwise.\n\nComparison:\n- Figure 75: part number 120-50645-011, nomenclature \"DOUBLE PASSENGER SEAT ASSY\" [V7] [O2].\n  OCR line: 75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF\n- Figure 91: part number 120-29068-003, nomenclature \"STRUCTURE ASSY 00\" [V8] [O3].\n  OCR line: 91 - | 120-29068-003 STRUCTURE ASSY 00... ccceennseeeees VS4956 A REF\n\nEngineering confidence:\nHIGH for figure-to-part and nomenclature comparisons when each figure has source-trace-ready visual and OCR/table support.\n\nLimits:\n- A comparison of figure-linked evidence does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.",
+  "quality_gate": {
+    "quality_status": "PASS",
+    "failures": [],
+    "answer_citation_count": 4,
+    "valid_answer_citation_count": 4,
+    "source_trace_ready_citation_count": 4,
+    "invalid_answer_citation_count": 0,
+    "invalid_answer_citation_labels": [],
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0,
+    "llava_only_part_identity_claim_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0
+  },
+  "source_runner": "local_data\\organization\\trace_net\\engineering_real_answer_smoke_test_v1\\runs\\q05_fig_848709ae\\trace_net_engineering_answer_runner_v1.json",
+  "source_context_pack": "local_data\\organization\\trace_net\\engineering_real_answer_smoke_test_v1\\runs\\q05_fig_848709ae\\context_pack\\trace_net_engineering_answer_context_pack_v1.json",
+  "paths": {
+    "composer": "local_data\\organization\\trace_net\\engineering_real_answer_smoke_test_v1\\runs\\q05_fig_848709ae\\intent_answer\\trace_net_engineering_intent_answer_composer_v1.json",
+    "quality_check": "local_data\\organization\\trace_net\\engineering_real_answer_smoke_test_v1\\runs\\q05_fig_848709ae\\intent_answer\\trace_net_engineering_intent_answer_composer_v1_quality_check.json",
+    "records_csv": "local_data\\organization\\trace_net\\engineering_real_answer_smoke_test_v1\\runs\\q05_fig_848709ae\\intent_answer\\trace_net_engineering_intent_answer_composer_v1_records.csv"
+  }
+}

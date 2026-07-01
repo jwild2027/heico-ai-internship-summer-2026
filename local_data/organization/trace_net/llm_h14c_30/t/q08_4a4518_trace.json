@@ -1,0 +1,92 @@
+{
+  "trace_type": "safe_reasoning_trace_not_hidden_chain_of_thought",
+  "trace_note": "This shows the evidence, prompt constraints, scaffold, and gate checks. It is not raw model hidden reasoning.",
+  "question_id": "q08",
+  "category": "exact_part_lookup",
+  "question": "Find part number 120-29068-003 and cite the source.",
+  "task_type": "exact_part_lookup",
+  "runner_quality_status": "PASS",
+  "runner_passed": true,
+  "proof_context_count": 4,
+  "guidance_context_count": 0,
+  "available_citation_labels": [
+    "E1",
+    "O3",
+    "T1",
+    "V8"
+  ],
+  "proof_context_preview": [
+    {
+      "citation_label": "V8",
+      "context_type": "visual_figure_link",
+      "figure": "91",
+      "part_number": "120-29068-003",
+      "nomenclature": "STRUCTURE ASSY",
+      "page_number": 382,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "O3",
+      "context_type": "ocr_nomenclature",
+      "figure": "91",
+      "part_number": "120-29068-003",
+      "nomenclature": "STRUCTURE ASSY 00",
+      "page_number": 384,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "E1",
+      "context_type": "exact_part_evidence",
+      "figure": null,
+      "part_number": "120-29068-003",
+      "nomenclature": "",
+      "page_number": null,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "T1",
+      "context_type": "table_ocr_proof",
+      "figure": null,
+      "part_number": "120-29068-003",
+      "nomenclature": null,
+      "page_number": null,
+      "source_trace_ready": true
+    }
+  ],
+  "answer_constraints": {
+    "answer_style": "engineering_brain",
+    "may_claim": [
+      "part number appears in source evidence",
+      "source page/citation locations",
+      "nomenclature only when OCR/table evidence supports it"
+    ],
+    "may_not_claim": [
+      "effectivity",
+      "fit",
+      "installation safety",
+      "interchangeability",
+      "replacement approval",
+      "summary-only proof",
+      "unsupported effectivity",
+      "unsupported interchangeability",
+      "unsupported installation or safety approval"
+    ],
+    "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"
+  },
+  "intent_rules": [],
+  "scaffold_present": true,
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h14c_30\\p\\q08_4a4518_p.txt",
+  "answer_path": "local_data\\organization\\trace_net\\llm_h14c_30\\a\\q08_4a4518_a.txt",
+  "llm_error": "",
+  "gate_result": {
+    "grade": "GOOD",
+    "llm_answered": true,
+    "answer_citation_count": 6,
+    "valid_answer_citation_count": 6,
+    "source_trace_ready_citation_count": 6,
+    "invalid_answer_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0
+  },
+  "answer_preview": "Answer:\nPart number 120-29068-003 is present in source-trace-ready evidence and is associated with \"STRUCTURE ASSY\" [V8] and \"STRUCTURE ASSY 00\" [O3].\n\nEvidence:\n- [E1] Exact-part evidence contains part number 120-29068-003 on page 31.\n- [V8] Visual evidence links figure 91 to part number 120-29068-003 on page 382 with the nomenclature \"STRUCTURE ASSY\".\n- [O3] OCR-backed nomenclature provides \"STRUCTURE ASSY 00\" for part number 120-29068-003 on page 384 (OCR line: 91 - | 120-29068-003 STRUCTURE ASSY 00...).\n- [T1] Table/OCR proof supports part number 120-29068-003 on page 31.\n\nEngineering confidence:\nHIGH for the exact part lookup because multiple source-trace-ready proof records support the part number. Nomenclature confidence: HIGH.\n\nLimits:\n- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety."
+}

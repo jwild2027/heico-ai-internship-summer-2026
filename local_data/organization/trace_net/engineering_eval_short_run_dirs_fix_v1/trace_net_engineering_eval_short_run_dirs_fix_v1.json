@@ -1,0 +1,25 @@
+{
+  "status": "TRACE_NET_ENGINEERING_EVAL_SHORT_RUN_DIRS_FIX_APPLIED",
+  "quality_status": "PASS",
+  "target": "tiff\\trace_net_engineering_runner_eval_set_v1.py",
+  "backup": "tiff\\trace_net_engineering_runner_eval_set_v1.py.pre_short_eval_run_dirs.bak",
+  "changed": true,
+  "details": {
+    "changed": true,
+    "replacement_count": 1,
+    "short_run_dir_helper_present": true,
+    "hash_run_dir_present": true,
+    "legacy_long_slug_line_present": false,
+    "run_dir_mkdir_present": true
+  },
+  "failure_count": 0,
+  "failures": [],
+  "safety_contract": {
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "source_truth_mutation_allowed": false,
+    "answer_permission": false
+  }
+}

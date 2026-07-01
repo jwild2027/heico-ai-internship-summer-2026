@@ -1,0 +1,32 @@
+You are TRACE-Net's engineering evidence answerer.
+Answer the user's question using ONLY the supplied proof_context for factual claims.
+guidance_context and v2 summaries may guide planning/framing only; they are not proof.
+Every factual claim must cite one or more provided citation labels like [V6] or [O1].
+If proof is missing, say not proven or not source-trace-ready. Do not guess.
+Do NOT claim interchangeability, effectivity, fit, replacement approval, or installation safety unless explicit proof_context supports it.
+Use this format: Answer, Evidence, Engineering confidence, Limits.
+
+QUESTION: Summarize the evidence for DOUBLE PASSENGER SEAT ASSY.
+TASK_TYPE: manual_section_summary
+ANSWER_CONSTRAINTS: {"answer_style": "engineering_brain", "may_claim": ["claims supported by source-trace-ready proof_context records", "guidance summaries may frame the search but not prove facts"], "may_not_claim": ["effectivity", "fit", "installation safety", "interchangeability", "replacement approval", "summary-only proof", "unsupported source-truth mutation", "unsupported effectivity", "unsupported interchangeability", "unsupported installation or safety approval"], "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"}
+
+PROOF_CONTEXT:
+- [V6] context_type=visual_figure_link; citation_label=V6; page_number=315; page_id=t_p_120_1176_p000315; figure=69; part_number=120-50645-005; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True
+- [V7] context_type=visual_figure_link; citation_label=V7; page_number=327; page_id=t_p_120_1176_p000327; figure=75; part_number=120-50645-011; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True
+- [V8] context_type=visual_figure_link; citation_label=V8; page_number=382; page_id=t_p_120_1176_p000382; figure=91; part_number=120-29068-003; nomenclature=STRUCTURE ASSY; source_trace_ready=True; proof_eligible=True
+- [O1] context_type=ocr_nomenclature; citation_label=O1; page_number=316; page_id=t_p_120_1176_p000316; figure=69; part_number=120-50645-005; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True; line_text=69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [O2] context_type=ocr_nomenclature; citation_label=O2; page_number=328; page_id=t_p_120_1176_p000328; figure=75; part_number=120-50645-011; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True; line_text=75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [O3] context_type=ocr_nomenclature; citation_label=O3; page_number=384; page_id=t_p_120_1176_p000384; figure=91; part_number=120-29068-003; nomenclature=STRUCTURE ASSY 00; source_trace_ready=True; proof_eligible=True; line_text=91 - | 120-29068-003 STRUCTURE ASSY 00... ccceennseeeees VS4956 A REF
+- [T1] context_type=table_ocr_proof; citation_label=T1; page_id=t_p_120_1176_p000003; part_number=120-50645-005; source_trace_ready=True; proof_eligible=True
+- [T2] context_type=table_ocr_proof; citation_label=T2; page_id=t_p_120_1176_p000003; part_number=120-50645-011; source_trace_ready=True; proof_eligible=True
+- [T3] context_type=table_ocr_proof; citation_label=T3; page_id=t_p_120_1176_p000031; part_number=120-29068-003; source_trace_ready=True; proof_eligible=True
+
+GUIDANCE_CONTEXT (not proof):
+- guidance page=18: This page is a parts list illustration for a double passenger seat, referencing part number 120TP250002.MCE and figure 2.
+- guidance page=17: This page is a parts list and figure illustrating the passenger seat, referencing part number 120TP250001.MCI.
+- guidance page=19: This page is a figure illustrating the passenger seat, including its backrests and bottom, with associated part numbers and revision information.
+- guidance page=16: This page from the maintenance manual describes the construction of a seat backrest and bottom cushion, including materials like composite structures, foam cushions, upholstery, and Velcro fasteners.
+- guidance page=20: This page describes the format of an illustrated parts list, explaining the different columns and their purpose for identifying aircraft parts.
+- guidance page=24: This page from the maintenance manual provides vendor information and includes a parts list entry for part number 345-1598.
+- guidance page=4: This page introduces the maintenance manual, outlining its purpose and scope related to passenger cabin disassembly.
+- guidance page=15: This page describes passenger seats, including armrests and snack folding tables, detailing their construction and design.

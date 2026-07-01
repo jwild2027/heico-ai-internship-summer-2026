@@ -1,0 +1,113 @@
+{
+  "trace_type": "safe_reasoning_trace_not_hidden_chain_of_thought",
+  "trace_note": "This shows the evidence, prompt constraints, scaffold, and gate checks. It is not raw model hidden reasoning.",
+  "question_id": "q04",
+  "category": "comparison",
+  "question": "Compare figure 69 and figure 75.",
+  "task_type": "comparison_question",
+  "runner_quality_status": "PASS",
+  "runner_passed": true,
+  "proof_context_count": 6,
+  "guidance_context_count": 0,
+  "available_citation_labels": [
+    "O1",
+    "O2",
+    "T1",
+    "T2",
+    "V6",
+    "V7"
+  ],
+  "proof_context_preview": [
+    {
+      "citation_label": "V6",
+      "context_type": "visual_figure_link",
+      "figure": "69",
+      "part_number": "120-50645-005",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 315,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "V7",
+      "context_type": "visual_figure_link",
+      "figure": "75",
+      "part_number": "120-50645-011",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 327,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "O1",
+      "context_type": "ocr_nomenclature",
+      "figure": "69",
+      "part_number": "120-50645-005",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 316,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "O2",
+      "context_type": "ocr_nomenclature",
+      "figure": "75",
+      "part_number": "120-50645-011",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 328,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "T1",
+      "context_type": "table_ocr_proof",
+      "figure": null,
+      "part_number": "120-50645-005",
+      "nomenclature": null,
+      "page_number": null,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "T2",
+      "context_type": "table_ocr_proof",
+      "figure": null,
+      "part_number": "120-50645-011",
+      "nomenclature": null,
+      "page_number": null,
+      "source_trace_ready": true
+    }
+  ],
+  "answer_constraints": {
+    "answer_style": "engineering_brain",
+    "may_claim": [
+      "claims supported by source-trace-ready proof_context records",
+      "guidance summaries may frame the search but not prove facts"
+    ],
+    "may_not_claim": [
+      "effectivity",
+      "fit",
+      "installation safety",
+      "interchangeability",
+      "replacement approval",
+      "summary-only proof",
+      "unsupported effectivity",
+      "unsupported interchangeability",
+      "unsupported installation or safety approval"
+    ],
+    "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"
+  },
+  "intent_rules": [
+    "INTENT_RULE: For comparisons or nomenclature summaries, cover all requested entities before limits; do not collapse the answer to only the first matching figure/part."
+  ],
+  "scaffold_present": true,
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h14c_30\\p\\q04_f61796_p.txt",
+  "answer_path": "local_data\\organization\\trace_net\\llm_h14c_30\\a\\q04_f61796_a.txt",
+  "llm_error": "",
+  "gate_result": {
+    "grade": "GOOD",
+    "llm_answered": true,
+    "answer_citation_count": 6,
+    "valid_answer_citation_count": 6,
+    "source_trace_ready_citation_count": 6,
+    "invalid_answer_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0
+  },
+  "answer_preview": "Answer:\nFigure 69 and Figure 75 both share the nomenclature \"DOUBLE PASSENGER SEAT ASSY\" [V6, V7, O1, O2]. However, they are associated with different part numbers: Figure 69 is linked to part number 120-50645-005 [V6, O1, T1], while Figure 75 is linked to part number 120-50645-011 [V7, O2, T2].\n\nEvidence:\n- [V6] Visual evidence links figure 69 to part number 120-50645-005 and nomenclature \"DOUBLE PASSENGER SEAT ASSY\" on page 315.\n- [V7] Visual evidence links figure 75 to part number 120-50645-011 and nomenclature \"DOUBLE PASSENGER SEAT ASSY\" on page 327.\n- [O1] OCR line for figure 69 (page 316) identifies part number 120-50645-005 as \"DOUBLE PASSENGER SEAT ASSY\".\n- [O2] OCR line for figure 75 (page 328) identifies part number 120-50645-011 as \"DOUBLE PASSENGER SEAT ASSY\".\n- [T1] Table/OCR proof supports part number 120-50645-005.\n- [T2] Table/OCR proof supports part number 120-50645-011.\n\nEngineering confidence:\nHIGH for the identification of nomenclature and part numbers because visu"
+}

@@ -1,0 +1,136 @@
+{
+  "trace_type": "safe_reasoning_trace_not_hidden_chain_of_thought",
+  "trace_note": "This shows the evidence, prompt constraints, scaffold, and gate checks. It is not raw model hidden reasoning.",
+  "question_id": "np01",
+  "category": "interchangeability",
+  "question": "Is 120-50645-005 interchangeable with 120-50645-011?",
+  "task_type": "exact_part_lookup",
+  "runner_quality_status": "PASS",
+  "runner_passed": true,
+  "proof_context_count": 8,
+  "guidance_context_count": 0,
+  "available_citation_labels": [
+    "E1",
+    "E2",
+    "O1",
+    "O2",
+    "T1",
+    "T2",
+    "V6",
+    "V7"
+  ],
+  "proof_context_preview": [
+    {
+      "citation_label": "V6",
+      "context_type": "visual_figure_link",
+      "figure": "69",
+      "part_number": "120-50645-005",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 315,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "V7",
+      "context_type": "visual_figure_link",
+      "figure": "75",
+      "part_number": "120-50645-011",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 327,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "O1",
+      "context_type": "ocr_nomenclature",
+      "figure": "69",
+      "part_number": "120-50645-005",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 316,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "O2",
+      "context_type": "ocr_nomenclature",
+      "figure": "75",
+      "part_number": "120-50645-011",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 328,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "E1",
+      "context_type": "exact_part_evidence",
+      "figure": null,
+      "part_number": "120-50645-005",
+      "nomenclature": "",
+      "page_number": null,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "E2",
+      "context_type": "exact_part_evidence",
+      "figure": null,
+      "part_number": "120-50645-011",
+      "nomenclature": "",
+      "page_number": null,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "T1",
+      "context_type": "table_ocr_proof",
+      "figure": null,
+      "part_number": "120-50645-005",
+      "nomenclature": null,
+      "page_number": null,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "T2",
+      "context_type": "table_ocr_proof",
+      "figure": null,
+      "part_number": "120-50645-011",
+      "nomenclature": null,
+      "page_number": null,
+      "source_trace_ready": true
+    }
+  ],
+  "answer_constraints": {
+    "answer_style": "engineering_brain",
+    "may_claim": [
+      "part number appears in source evidence",
+      "source page/citation locations",
+      "nomenclature only when OCR/table evidence supports it"
+    ],
+    "may_not_claim": [
+      "effectivity",
+      "fit",
+      "installation safety",
+      "interchangeability",
+      "replacement approval",
+      "summary-only proof",
+      "unsupported effectivity",
+      "unsupported interchangeability",
+      "unsupported installation or safety approval"
+    ],
+    "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"
+  },
+  "intent_rules": [
+    "INTENT_RULE: Lead with 'Not proven' for interchangeability/replacement approval unless explicit source authority is present.",
+    "INTENT_RULE: Then explain what TRACE-Net can prove: part identity, nomenclature, figure/page links, and OCR/table support.",
+    "INTENT_RULE: Explicitly state that shared nomenclature, nearby figures, and part-family similarity are not interchangeability or replacement approval."
+  ],
+  "scaffold_present": true,
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h14c_np\\p\\q01_04f8cb_p.txt",
+  "answer_path": "local_data\\organization\\trace_net\\llm_h14c_np\\a\\q01_04f8cb_a.txt",
+  "llm_error": "",
+  "gate_result": {
+    "grade": "GOOD",
+    "llm_answered": true,
+    "answer_citation_count": 12,
+    "valid_answer_citation_count": 12,
+    "source_trace_ready_citation_count": 12,
+    "invalid_answer_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0
+  },
+  "answer_preview": "Answer: Not proven. TRACE-Net can prove the identity and nomenclature of both part numbers within the provided documentation, but it cannot prove interchangeability. Specifically, 120-50645-005 is identified as \"DOUBLE PASSENGER SEAT ASSY\" [O1] associated with figure 69 [V6], and 120-50645-011 is also identified as \"DOUBLE PASSENGER SEAT ASSY\" [O2] associated with figure 75 [V7]. TRACE-Net cannot prove interchangeability, replacement approval, effectivity, fit, or installation safety from the current evidence; shared nomenclature and part-family similarity are not proof of interchangeability.\n\nEvidence:\n- Part number 120-50645-005 is present in source-trace-ready evidence [E1], linked to figure 69 on page 315 [V6], with OCR-backed nomenclature \"DOUBLE PASSENGER SEAT ASSY\" on page 316 [O1], and supported by table/OCR proof [T1].\n- Part number 120-50645-011 is present in source-trace-ready evidence [E2], linked to figure 75 on page 327 [V7], with OCR-backed nomenclature \"DOUBLE PASSENGER"
+}

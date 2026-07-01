@@ -1,0 +1,6 @@
+record_id,question,task_type,intent_answer_type,composer_quality_status,semantic_quality_status,semantic_passed,missing_requirement_count,prohibited_phrase_count,answer_citation_count,source_trace_ready_citation_count,unsupported_claim_count,summary_used_as_proof_count
+sem_001,What can TRACE-Net not prove about part number 120-50645-005?,exact_part_lookup,limitations,PASS,PASS,True,0,0,8,4,0,0
+sem_002,Compare figure 69 and figure 75.,comparison_question,comparison,PASS,PASS,True,0,0,4,4,0,0
+sem_003,Does figure 69 prove installation safety?,visual_part_identification,unsupported_installation_safety,PASS,PASS,True,0,0,6,3,0,0
+sem_004,Is 120-50645-005 interchangeable with 120-50645-011?,exact_part_lookup,unsupported_interchangeability,PASS,PASS,True,0,0,6,6,0,0
+sem_005,Why was nomenclature missing from the visual route evidence?,troubleshooting_question,troubleshooting_nomenclature,PASS,PASS,True,0,0,4,2,0,0

@@ -1,0 +1,71 @@
+{
+  "status": "TRACE_NET_ENGINEERING_REAL_ANSWER_SMOKE_REVIEW_CHECKED",
+  "quality_status": "PASS",
+  "failures": [],
+  "summary": {
+    "module": "trace_net_engineering_real_answer_smoke_review_v1",
+    "version": "v1",
+    "source_smoke_test": "local_data/organization/trace_net/engineering_real_answer_smoke_test_v1/trace_net_engineering_real_answer_smoke_test_v1.json",
+    "smoke_question_count": 30,
+    "good_answer_count": 22,
+    "partial_answer_count": 6,
+    "bad_answer_count": 0,
+    "blocked_answer_count": 2,
+    "good_or_partial_answer_count": 28,
+    "weak_answer_count": 8,
+    "weak_category_count": 7,
+    "runner_pass_count": 28,
+    "runner_fail_count": 2,
+    "intent_answer_used_count": 14,
+    "answer_citation_count": 158,
+    "valid_answer_citation_count": 94,
+    "source_trace_ready_citation_count": 94,
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0,
+    "invalid_answer_citation_count": 0,
+    "llava_only_part_identity_claim_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0,
+    "top_weak_categories": [
+      {
+        "category": "evidence_support",
+        "weak_count": 2,
+        "recommendation": "Improve evidence-support answers so they directly explain why each citation supports the requested figure/part."
+      },
+      {
+        "category": "comparison",
+        "weak_count": 1,
+        "recommendation": "Improve comparison scoring/formatting for cross-figure comparisons and ensure both entities are fully addressed."
+      },
+      {
+        "category": "limitations",
+        "weak_count": 1,
+        "recommendation": "Fix limitations wording and ensure limitations answers lead with boundary conditions before evidence details."
+      },
+      {
+        "category": "replacement_limit",
+        "weak_count": 1,
+        "recommendation": "Add replacement-approval limitation answers that lead with: replacement approval is not proven without explicit source authority."
+      },
+      {
+        "category": "unknown_part",
+        "weak_count": 1,
+        "recommendation": "Improve unknown-part handling so no-proof answers lead with not found / not source-traced, not generic low-confidence evidence language."
+      },
+      {
+        "category": "unknown_figure",
+        "weak_count": 1,
+        "recommendation": "Improve unknown-figure handling so no-proof answers lead with not found / no source-trace-ready figure evidence."
+      },
+      {
+        "category": "summary_limit",
+        "weak_count": 1,
+        "recommendation": "Add summary-limit answers that lead with: v2 summaries guide planning/framing but cannot prove source claims."
+      }
+    ],
+    "ready_for_user_facing_answer_smoke": true,
+    "ready_for_next_intent_patch": true
+  }
+}

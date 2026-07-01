@@ -1,0 +1,85 @@
+{
+  "status": "TRACE_NET_ENGINEERING_INTENT_ANSWER_COMPOSER_BUILT",
+  "quality_status": "PASS",
+  "module": "trace_net_engineering_intent_answer_composer_v1",
+  "version": "v1",
+  "summary": {
+    "module": "trace_net_engineering_intent_answer_composer_v1",
+    "version": "v1",
+    "question": "What can TRACE-Net not prove about part number 120-50645-005?",
+    "task_type": "exact_part_lookup",
+    "intent_answer_type": "limitations",
+    "proof_context_count": 4,
+    "guidance_context_count": 0,
+    "answer_char_count": 1120,
+    "answer_citation_count": 8,
+    "valid_answer_citation_count": 4,
+    "source_trace_ready_citation_count": 4,
+    "invalid_answer_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0,
+    "llava_only_part_identity_claim_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0,
+    "ready_for_intent_answer_delivery": true
+  },
+  "records": [
+    {
+      "question": "What can TRACE-Net not prove about part number 120-50645-005?",
+      "task_type": "exact_part_lookup",
+      "intent_answer_type": "limitations",
+      "quality_status": "PASS",
+      "answer_text": "Answer:\nTRACE-Net can support source-traced identification evidence for 120-50645-005, but it cannot prove interchangeability, effectivity, fit, replacement approval, or installation safety from the current evidence pack.\n\nEvidence it can support:\n- [V6] visual figure link: Figure 69, part number 120-50645-005, \"DOUBLE PASSENGER SEAT ASSY\", page 315 [V6].\n- [O1] ocr nomenclature: Figure 69, part number 120-50645-005, \"DOUBLE PASSENGER SEAT ASSY\", page 316 [O1].\n  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF\n- [E1] exact part evidence: part number 120-50645-005 [E1].\n- [T1] table ocr proof: part number 120-50645-005 [T1].\n\nWhat it cannot prove from this context:\n- Interchangeability with another part number.\n- Aircraft/effectivity applicability beyond the cited source evidence.\n- Fit, installation safety, or replacement approval.\n- Any maintenance action approval not explicitly present in the source-trace-ready proof.\n\nEngineering confidence:\nHIGH for the boundary statement because the context pack separates identification proof from unsupported engineering approvals.",
+      "answer_citations": [
+        "V6",
+        "V6",
+        "O1",
+        "O1",
+        "E1",
+        "E1",
+        "T1",
+        "T1"
+      ],
+      "invalid_answer_citation_labels": [],
+      "source_trace_ready_citation_labels": [
+        "E1",
+        "O1",
+        "T1",
+        "V6"
+      ],
+      "proof_context_used_count": 4,
+      "guidance_context_used_count": 0,
+      "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof",
+      "ready_for_intent_answer_delivery": true
+    }
+  ],
+  "answer_text": "Answer:\nTRACE-Net can support source-traced identification evidence for 120-50645-005, but it cannot prove interchangeability, effectivity, fit, replacement approval, or installation safety from the current evidence pack.\n\nEvidence it can support:\n- [V6] visual figure link: Figure 69, part number 120-50645-005, \"DOUBLE PASSENGER SEAT ASSY\", page 315 [V6].\n- [O1] ocr nomenclature: Figure 69, part number 120-50645-005, \"DOUBLE PASSENGER SEAT ASSY\", page 316 [O1].\n  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF\n- [E1] exact part evidence: part number 120-50645-005 [E1].\n- [T1] table ocr proof: part number 120-50645-005 [T1].\n\nWhat it cannot prove from this context:\n- Interchangeability with another part number.\n- Aircraft/effectivity applicability beyond the cited source evidence.\n- Fit, installation safety, or replacement approval.\n- Any maintenance action approval not explicitly present in the source-trace-ready proof.\n\nEngineering confidence:\nHIGH for the boundary statement because the context pack separates identification proof from unsupported engineering approvals.",
+  "quality_gate": {
+    "quality_status": "PASS",
+    "failures": [],
+    "answer_citation_count": 8,
+    "valid_answer_citation_count": 4,
+    "source_trace_ready_citation_count": 4,
+    "invalid_answer_citation_count": 0,
+    "invalid_answer_citation_labels": [],
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0,
+    "llava_only_part_identity_claim_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_record_count": 0
+  },
+  "source_runner": "local_data\\organization\\trace_net\\engineering_real_answer_smoke_test_v1\\runs\\q11_part_6613baac\\trace_net_engineering_answer_runner_v1.json",
+  "source_context_pack": "local_data\\organization\\trace_net\\engineering_real_answer_smoke_test_v1\\runs\\q11_part_6613baac\\context_pack\\trace_net_engineering_answer_context_pack_v1.json",
+  "paths": {
+    "composer": "local_data\\organization\\trace_net\\engineering_real_answer_smoke_test_v1\\runs\\q11_part_6613baac\\intent_answer\\trace_net_engineering_intent_answer_composer_v1.json",
+    "quality_check": "local_data\\organization\\trace_net\\engineering_real_answer_smoke_test_v1\\runs\\q11_part_6613baac\\intent_answer\\trace_net_engineering_intent_answer_composer_v1_quality_check.json",
+    "records_csv": "local_data\\organization\\trace_net\\engineering_real_answer_smoke_test_v1\\runs\\q11_part_6613baac\\intent_answer\\trace_net_engineering_intent_answer_composer_v1_records.csv"
+  }
+}

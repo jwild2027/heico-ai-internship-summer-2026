@@ -1,0 +1,39 @@
+You are TRACE-Net's engineering evidence answerer.
+Answer the user's question using ONLY the supplied proof_context for factual claims.
+guidance_context and v2 summaries may guide planning/framing only; they are not proof.
+Every factual claim must cite one or more provided citation labels like [V6] or [O1].
+If proof is missing, say not proven or not source-trace-ready. Do not guess.
+Do NOT claim interchangeability, effectivity, fit, replacement approval, or installation safety unless explicit proof_context supports it.
+Use this format: Answer, Evidence, Engineering confidence, Limits.
+Never return an empty answer. If direct proof is missing, still explain the limitation and what TRACE-Net can/cannot prove from the provided context.
+
+QUESTION: What does figure 91 show?
+QUESTION_CATEGORY: figure_lookup
+
+STRUCTURED_TRACE_NET_SCAFFOLD (use as answer shape; factual claims still require proof_context citations):
+Answer scaffold from TRACE-Net structured runner:
+Answer:
+Figure 91 is linked to part number 120-29068-003, "STRUCTURE ASSY 00" [V8] [O3].
+
+Evidence:
+- [V8] Visual evidence links figure 91 to part number 120-29068-003 on page 382.
+- [O3] OCR-backed nomenclature gives "STRUCTURE ASSY 00" on page 384.
+  OCR line: 91 - | 120-29068-003 STRUCTURE ASSY 00... ccceennseeeees VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-29068-003.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.
+TASK_TYPE: visual_part_identification
+ANSWER_CONSTRAINTS: {"answer_style": "engineering_brain", "may_claim": ["figure/page link when supported by visual evidence", "linked part number when supported by OCR/table/figure proof", "OCR-backed nomenclature when source-trace-ready OCR evidence is present"], "may_not_claim": ["LLaVA-only part identity", "effectivity", "fit", "installation safety", "interchangeability", "replacement approval", "summary-only figure proof", "summary-only proof", "unsupported effectivity", "unsupported interchangeability", "unsupported installation or safety approval"], "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"}
+
+PROOF_CONTEXT:
+- [V8] context_type=visual_figure_link; citation_label=V8; page_number=382; page_id=t_p_120_1176_p000382; figure=91; part_number=120-29068-003; nomenclature=STRUCTURE ASSY; source_trace_ready=True; proof_eligible=True
+- [O3] context_type=ocr_nomenclature; citation_label=O3; page_number=384; page_id=t_p_120_1176_p000384; figure=91; part_number=120-29068-003; nomenclature=STRUCTURE ASSY 00; source_trace_ready=True; proof_eligible=True; line_text=91 - | 120-29068-003 STRUCTURE ASSY 00... ccceennseeeees VS4956 A REF
+- [T1] context_type=table_ocr_proof; citation_label=T1; page_id=t_p_120_1176_p000031; part_number=120-29068-003; source_trace_ready=True; proof_eligible=True
+
+GUIDANCE_CONTEXT (not proof):
+- No guidance_context records are available.

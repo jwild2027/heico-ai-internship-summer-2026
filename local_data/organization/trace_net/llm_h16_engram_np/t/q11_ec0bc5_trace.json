@@ -1,0 +1,77 @@
+{
+  "trace_type": "safe_reasoning_trace_not_hidden_chain_of_thought",
+  "trace_note": "This shows the evidence, prompt constraints, scaffold, and gate checks. It is not raw model hidden reasoning.",
+  "question_id": "np11",
+  "category": "unknown_figure",
+  "question": "What does figure 999 show?",
+  "task_type": "visual_part_identification",
+  "runner_quality_status": "FAIL",
+  "runner_passed": false,
+  "proof_context_count": 0,
+  "guidance_context_count": 0,
+  "available_citation_labels": [],
+  "proof_context_preview": [],
+  "answer_constraints": {
+    "answer_style": "engineering_brain",
+    "may_claim": [
+      "figure/page link when supported by visual evidence",
+      "linked part number when supported by OCR/table/figure proof",
+      "OCR-backed nomenclature when source-trace-ready OCR evidence is present"
+    ],
+    "may_not_claim": [
+      "LLaVA-only part identity",
+      "effectivity",
+      "fit",
+      "installation safety",
+      "interchangeability",
+      "replacement approval",
+      "summary-only figure proof",
+      "summary-only proof",
+      "unsupported effectivity",
+      "unsupported interchangeability",
+      "unsupported installation or safety approval"
+    ],
+    "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"
+  },
+  "intent_rules": [
+    "INTENT_RULE: For unknown part/figure questions with no proof_context, lead with 'not found / not source-trace-ready'.",
+    "INTENT_RULE: Do not cite unrelated evidence for unknown part or figure questions."
+  ],
+  "scaffold_present": true,
+  "engram_atom_count": 8,
+  "engram_ids": [
+    "style_unknown_part_or_figure_v1",
+    "route_visual_link_vs_ocr_nomenclature_v1",
+    "episode_partial_category_01_unknown_figure_v1",
+    "policy_no_interchangeability_without_authority_v1",
+    "policy_no_installation_safety_from_figure_v1",
+    "policy_v2_summaries_guidance_not_proof_v1",
+    "style_engineering_answer_shape_v1",
+    "style_useful_not_proven_v1"
+  ],
+  "engram_traits": [
+    "approval_boundary",
+    "engineering_answer_shape",
+    "partial_answer_memory",
+    "route_awareness",
+    "source_trace_caution",
+    "summary_boundary",
+    "unknown_handling",
+    "useful_caution"
+  ],
+  "engram_note": "Engram atoms are behavioral guidance only; they are not source proof and are not raw model reasoning.",
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h16_engram_np\\p\\q11_ec0bc5_p.txt",
+  "answer_path": "local_data\\organization\\trace_net\\llm_h16_engram_np\\a\\q11_ec0bc5_a.txt",
+  "llm_error": "",
+  "gate_result": {
+    "grade": "PARTIAL",
+    "llm_answered": true,
+    "answer_citation_count": 0,
+    "valid_answer_citation_count": 0,
+    "source_trace_ready_citation_count": 0,
+    "invalid_answer_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0
+  },
+  "answer_preview": "Answer:\nNot found / not source-trace-ready. There is no information regarding \"figure 999\" within the provided proof_context; therefore, TRACE-Net cannot identify what this figure shows.\n\nEvidence:\n- No proof context was available to verify the contents of figure 999.\n\nEngineering confidence:\nLOW because the requested identifier is not present in the current evidence pack.\n\nLimits:\n- TRACE-Net cannot prove the identity, nomenclature, or content of figure 999.\n- Without source-trace-ready evidence, no claims regarding part identification, effectivity, fit, interchangeability, or installation safety can be made for this figure."
+}

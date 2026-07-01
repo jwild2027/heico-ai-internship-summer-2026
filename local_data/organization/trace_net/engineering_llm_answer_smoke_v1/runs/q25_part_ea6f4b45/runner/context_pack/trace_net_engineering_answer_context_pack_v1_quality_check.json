@@ -1,0 +1,31 @@
+{
+  "status": "TRACE_NET_ENGINEERING_ANSWER_CONTEXT_PACK_QUALITY_CHECKED",
+  "quality_status": "FAIL",
+  "module": "trace_net_engineering_answer_context_pack_v1",
+  "version": "v1",
+  "summary": {
+    "engineering_answer_context_pack_record_count": 1,
+    "guidance_context_count": 0,
+    "proof_context_count": 0,
+    "visual_proof_context_count": 0,
+    "ocr_nomenclature_context_count": 0,
+    "table_ocr_context_count": 0,
+    "exact_part_context_count": 0,
+    "source_trace_ready_count": 0,
+    "summary_used_as_proof_count": 0,
+    "can_answer_from_summaries_only_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0,
+    "ready_for_engineering_answer_composer": false
+  },
+  "failures": [
+    "proof_context_count below minimum: 0 < 2",
+    "source_trace_ready_count below minimum: 0 < 2"
+  ]
+}

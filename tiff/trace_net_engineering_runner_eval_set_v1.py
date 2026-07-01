@@ -16,6 +16,7 @@ import re
 import traceback
 from pathlib import Path
 from typing import Any, Callable, Dict, Iterable, List, Mapping, Optional, Sequence
+import hashlib
 
 STATUS = "TRACE_NET_ENGINEERING_RUNNER_EVAL_SET_BUILT"
 CHECK_STATUS = "TRACE_NET_ENGINEERING_RUNNER_EVAL_SET_QUALITY_CHECKED"
@@ -79,6 +80,25 @@ def _slug(text: str, max_len: int = 64) -> str:
     slug = re.sub(r"[^a-zA-Z0-9]+", "_", str(text or "").strip().lower()).strip("_")
     return (slug or "question")[:max_len]
 
+
+
+def _eval_run_task_hint(question: str) -> str:
+    """Return a short stable hint for H6 eval run folders.
+
+    The full question remains inside the JSON record; the folder name is kept
+    intentionally short to avoid Windows MAX_PATH failures in nested stage
+    outputs such as trace_net_engineering_answer_context_pack_v1_quality_check.json.
+    """
+    q = str(question or "").lower()
+    if "why" in q or "missing" in q or "fail" in q or "error" in q:
+        return "debug"
+    if "compare" in q:
+        return "compare"
+    if "part number" in q or "find part" in q:
+        return "part"
+    if "figure" in q or "diagram" in q or "show" in q:
+        return "fig"
+    return "q"
 
 def _safe_int(value: Any, default: int = 0) -> int:
     try:
@@ -346,7 +366,10 @@ def build_engineering_runner_eval_set(
 
     records: List[Dict[str, Any]] = []
     for idx, question in enumerate(source_questions, start=1):
-        run_dir = runs_dir / f"q{idx:02d}_{_slug(question)}"
+        question_hash = hashlib.sha1(str(question or "").encode("utf-8")).hexdigest()[:8]
+        task_hint = _eval_run_task_hint(str(question or ""))
+        run_dir = runs_dir / f"q{idx:02d}_{task_hint}_{question_hash}"
+        run_dir.mkdir(parents=True, exist_ok=True)
         try:
             result = _call_builder(builder, {
                 "question": question,

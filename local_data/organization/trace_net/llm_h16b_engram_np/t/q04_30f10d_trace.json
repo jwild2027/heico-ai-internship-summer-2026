@@ -1,0 +1,105 @@
+{
+  "trace_type": "safe_reasoning_trace_not_hidden_chain_of_thought",
+  "trace_note": "This shows the evidence, prompt constraints, scaffold, and gate checks. It is not raw model hidden reasoning.",
+  "question_id": "np04",
+  "category": "effectivity_limit",
+  "question": "Does figure 91 prove aircraft effectivity?",
+  "task_type": "visual_part_identification",
+  "runner_quality_status": "PASS",
+  "runner_passed": true,
+  "proof_context_count": 3,
+  "guidance_context_count": 0,
+  "available_citation_labels": [
+    "O3",
+    "T1",
+    "V8"
+  ],
+  "proof_context_preview": [
+    {
+      "citation_label": "V8",
+      "context_type": "visual_figure_link",
+      "figure": "91",
+      "part_number": "120-29068-003",
+      "nomenclature": "STRUCTURE ASSY",
+      "page_number": 382,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "O3",
+      "context_type": "ocr_nomenclature",
+      "figure": "91",
+      "part_number": "120-29068-003",
+      "nomenclature": "STRUCTURE ASSY 00",
+      "page_number": 384,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "T1",
+      "context_type": "table_ocr_proof",
+      "figure": null,
+      "part_number": "120-29068-003",
+      "nomenclature": null,
+      "page_number": null,
+      "source_trace_ready": true
+    }
+  ],
+  "answer_constraints": {
+    "answer_style": "engineering_brain",
+    "may_claim": [
+      "figure/page link when supported by visual evidence",
+      "linked part number when supported by OCR/table/figure proof",
+      "OCR-backed nomenclature when source-trace-ready OCR evidence is present"
+    ],
+    "may_not_claim": [
+      "LLaVA-only part identity",
+      "effectivity",
+      "fit",
+      "installation safety",
+      "interchangeability",
+      "replacement approval",
+      "summary-only figure proof",
+      "summary-only proof",
+      "unsupported effectivity",
+      "unsupported interchangeability",
+      "unsupported installation or safety approval"
+    ],
+    "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"
+  },
+  "intent_rules": [
+    "INTENT_RULE: Lead with 'Not proven' or 'No' for safety/fit/effectivity approval unless explicit proof_context authority exists.",
+    "INTENT_RULE: Then list what TRACE-Net can prove from citations: identity, nomenclature, figure link, and OCR/table support.",
+    "INTENT_RULE: Explain that identification evidence is not installation safety, fit approval, effectivity, or replacement approval."
+  ],
+  "scaffold_present": true,
+  "engram_atom_count": 4,
+  "engram_ids": [
+    "policy_no_installation_safety_from_figure_v1",
+    "route_visual_link_vs_ocr_nomenclature_v1",
+    "policy_no_interchangeability_without_authority_v1",
+    "policy_v2_summaries_guidance_not_proof_v1"
+  ],
+  "engram_traits": [
+    "approval_boundary",
+    "route_awareness",
+    "source_trace_caution",
+    "summary_boundary"
+  ],
+  "engram_note": "Engram atoms are behavioral guidance only; they are not source proof and are not raw model reasoning.",
+  "llm_retry_used": false,
+  "llm_fallback_used": false,
+  "llm_fallback_reason": "",
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h16b_engram_np\\p\\q04_30f10d_p.txt",
+  "answer_path": "local_data\\organization\\trace_net\\llm_h16b_engram_np\\a\\q04_30f10d_a.txt",
+  "llm_error": "",
+  "gate_result": {
+    "grade": "GOOD",
+    "llm_answered": true,
+    "answer_citation_count": 6,
+    "valid_answer_citation_count": 6,
+    "source_trace_ready_citation_count": 6,
+    "invalid_answer_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0
+  },
+  "answer_preview": "Answer: Not proven. TRACE-Net can prove that Figure 91 is visually linked to part number 120-29068-003 [V8] and that OCR-backed nomenclature identifies this as \"STRUCTURE ASSY 00\" [O3], with table/OCR support for the part number [T1]. This identification evidence does not constitute proof of aircraft effectivity, installation safety, fit approval, or replacement approval.\n\nEvidence:\n- [V8] Visual evidence links figure 91 to part number 120-29068-003 on page 382.\n- [O3] OCR-backed nomenclature provides \"STRUCTURE ASSY 00\" for figure 91 on page 384 (OCR line: 91 - | 120-29068-003 STRUCTURE ASSY 00...).\n- [T1] Table/OCR proof supports part number 120-29068-003.\n\nEngineering confidence:\nHIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready.\n\nLimits:\n- This does not prove aircraft effectivity, interchangeability, fit, replacement approval, or installation safety."
+}
