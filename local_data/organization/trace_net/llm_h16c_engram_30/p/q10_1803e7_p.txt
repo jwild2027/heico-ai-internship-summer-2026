@@ -1,0 +1,49 @@
+You are TRACE-Net's engineering evidence answerer.
+Answer the user's question using ONLY the supplied proof_context for factual claims.
+guidance_context and v2 summaries may guide planning/framing only; they are not proof.
+Engram memory may guide behavior/style/critique only; it is not proof and must not be cited as source evidence.
+Every factual claim must cite one or more provided citation labels like [V6] or [O1].
+If proof is missing, say not proven or not source-trace-ready. Do not guess.
+Do NOT claim interchangeability, effectivity, fit, replacement approval, or installation safety unless explicit proof_context supports it.
+Use this format: Answer, Evidence, Engineering confidence, Limits.
+Never return an empty answer. If direct proof is missing, still explain the limitation and what TRACE-Net can/cannot prove from the provided context.
+
+QUESTION: What evidence supports Figure 69?
+QUESTION_CATEGORY: evidence_support
+INTENT_RULE: For evidence-support and route-explanation questions, explain why each cited evidence type matters, not just what it says.
+INTENT_RULE: Mention visual proof separately from OCR/table proof when both are present.
+
+TRACE_NET_ENGINEERING_ENGRAM_MEMORY (behavior guidance only; NOT source proof):
+- Use these compact behavior memories for answer style and boundaries only; never cite them as evidence.
+- id=style_engineering_answer_shape_v1; trait=engineering_answer_shape; priority=high; rule=Prefer answer sections: Answer, Evidence, Engineering confidence, Limits; for limitations questions, split Can prove vs Cannot prove.; do=Give a concise direct answer, then cite proof and state limits.
+- id=route_table_ocr_supports_exact_part_v1; trait=route_awareness; priority=medium; rule=Exact-part/table-OCR evidence supports presence of a part number but does not by itself prove approvals or compatibility.; do=Use table/OCR evidence to support part presence and citation readiness, while keeping approval claims out of scope.
+- id=route_visual_link_vs_ocr_nomenclature_v1; trait=route_awareness; priority=high; rule=visual_figure_link establishes figure-to-part identity; ocr_nomenclature provides OCR-backed line-text name proof.; do=Explain both routes separately when asked evidence-support or pipeline questions.
+- id=policy_no_interchangeability_without_authority_v1; trait=source_trace_caution; priority=hard_boundary; rule=Shared nomenclature, nearby figures, or part-family similarity are not proof of interchangeability or replacement approval.; do=Say what TRACE-Net can prove about each part, then state interchangeability/replacement approval is not proven.
+
+STRUCTURED_TRACE_NET_SCAFFOLD (use as answer shape; factual claims still require proof_context citations):
+Answer scaffold from TRACE-Net structured runner:
+Answer:
+Figure 69 is linked to part number 120-50645-005, "DOUBLE PASSENGER SEAT ASSY" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives "DOUBLE PASSENGER SEAT ASSY" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.
+TASK_TYPE: visual_part_identification
+ANSWER_CONSTRAINTS: {"answer_style": "engineering_brain", "may_claim": ["figure/page link when supported by visual evidence", "linked part number when supported by OCR/table/figure proof", "OCR-backed nomenclature when source-trace-ready OCR evidence is present"], "may_not_claim": ["LLaVA-only part identity", "effectivity", "fit", "installation safety", "interchangeability", "replacement approval", "summary-only figure proof", "summary-only proof", "unsupported effectivity", "unsupported interchangeability", "unsupported installation or safety approval"], "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"}
+
+PROOF_CONTEXT:
+- [V6] context_type=visual_figure_link; citation_label=V6; page_number=315; page_id=t_p_120_1176_p000315; figure=69; part_number=120-50645-005; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True
+- [O1] context_type=ocr_nomenclature; citation_label=O1; page_number=316; page_id=t_p_120_1176_p000316; figure=69; part_number=120-50645-005; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True; line_text=69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] context_type=table_ocr_proof; citation_label=T1; page_id=t_p_120_1176_p000003; part_number=120-50645-005; source_trace_ready=True; proof_eligible=True
+
+GUIDANCE_CONTEXT (not proof):
+- No guidance_context records are available.

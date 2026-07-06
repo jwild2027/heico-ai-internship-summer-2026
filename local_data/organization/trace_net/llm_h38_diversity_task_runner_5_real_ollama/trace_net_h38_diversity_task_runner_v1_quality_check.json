@@ -1,0 +1,30 @@
+{
+  "quality_status": "FAIL",
+  "status": "TRACE_NET_H38_DIVERSITY_TASK_RUN_CHECKED",
+  "summary": {
+    "answer_permission_count": 0,
+    "bad_answer_count": 2,
+    "contract_pass_count": 2,
+    "fallback_used_count": 0,
+    "good_answer_count": 2,
+    "module": "trace_net_h38_diversity_task_runner_v1",
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "partial_answer_count": 1,
+    "postgres_write_attempt_count": 0,
+    "qdrant_read_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_failures": [
+      "good_answer_count_below_min",
+      "contract_pass_count_below_min",
+      "bad_answer_count_nonzero",
+      "unsupported_claim_count_nonzero"
+    ],
+    "question_count": 5,
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_finding_count": 1,
+    "unsupported_claim_count": 2,
+    "version": "v1",
+    "write_attempt_count": 0
+  }
+}

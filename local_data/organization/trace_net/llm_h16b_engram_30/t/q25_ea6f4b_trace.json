@@ -1,0 +1,70 @@
+{
+  "trace_type": "safe_reasoning_trace_not_hidden_chain_of_thought",
+  "trace_note": "This shows the evidence, prompt constraints, scaffold, and gate checks. It is not raw model hidden reasoning.",
+  "question_id": "q25",
+  "category": "unknown_part",
+  "question": "Find part number 999-99999-999 and cite the source.",
+  "task_type": "exact_part_lookup",
+  "runner_quality_status": "FAIL",
+  "runner_passed": false,
+  "proof_context_count": 0,
+  "guidance_context_count": 0,
+  "available_citation_labels": [],
+  "proof_context_preview": [],
+  "answer_constraints": {
+    "answer_style": "engineering_brain",
+    "may_claim": [
+      "part number appears in source evidence",
+      "source page/citation locations",
+      "nomenclature only when OCR/table evidence supports it"
+    ],
+    "may_not_claim": [
+      "effectivity",
+      "fit",
+      "installation safety",
+      "interchangeability",
+      "replacement approval",
+      "summary-only proof",
+      "unsupported effectivity",
+      "unsupported interchangeability",
+      "unsupported installation or safety approval"
+    ],
+    "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"
+  },
+  "intent_rules": [
+    "INTENT_RULE: For unknown part/figure questions with no proof_context, lead with 'not found / not source-trace-ready'.",
+    "INTENT_RULE: Do not cite unrelated evidence for unknown part or figure questions."
+  ],
+  "scaffold_present": true,
+  "engram_atom_count": 4,
+  "engram_ids": [
+    "style_unknown_part_or_figure_v1",
+    "episode_partial_category_01_unknown_part_v1",
+    "policy_no_interchangeability_without_authority_v1",
+    "policy_no_installation_safety_from_figure_v1"
+  ],
+  "engram_traits": [
+    "approval_boundary",
+    "partial_answer_memory",
+    "source_trace_caution",
+    "unknown_handling"
+  ],
+  "engram_note": "Engram atoms are behavioral guidance only; they are not source proof and are not raw model reasoning.",
+  "llm_retry_used": false,
+  "llm_fallback_used": false,
+  "llm_fallback_reason": "",
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h16b_engram_30\\p\\q25_ea6f4b_p.txt",
+  "answer_path": "local_data\\organization\\trace_net\\llm_h16b_engram_30\\a\\q25_ea6f4b_a.txt",
+  "llm_error": "",
+  "gate_result": {
+    "grade": "PARTIAL",
+    "llm_answered": true,
+    "answer_citation_count": 0,
+    "valid_answer_citation_count": 0,
+    "source_trace_ready_citation_count": 0,
+    "invalid_answer_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0
+  },
+  "answer_preview": "Answer: Not found / not source-trace-ready. No proof_context was available to identify or locate part number 999-99999-999.\n\nEvidence:\n- No proof context was available.\n\nEngineering confidence:\nLOW because the context pack contains no records for this part number. Nomenclature confidence: N/A.\n\nLimits:\n- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.\n- V2 summaries, when present, are guidance only and are not used as proof in this answer."
+}

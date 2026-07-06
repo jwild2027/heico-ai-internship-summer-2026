@@ -1,0 +1,51 @@
+TRACE-NET H35 CUSTOM TASK CONTRACT RUNNER
+
+Use this contract as behavior guidance only. It is not proof.
+Only the evidence cards below can support factual source claims.
+Use individual citations like [V1] [O2]. Do not use grouped citations like [V1, O2].
+Do not claim interchangeability, fit, effectivity, replacement approval, or installation safety unless explicit authority appears in the evidence cards.
+Do not use Engram, summaries, feedback, graph hints, or vector retrieval as proof.
+
+QUESTION_ID: h35_q01_part_lookup
+TASK_TYPE: part_lookup
+USER QUESTION:
+Find part number 120-50645-005. Give the nomenclature if available, cite the source, and clearly state what TRACE-Net cannot prove from this evidence.
+
+TASK CONTRACT:
+{
+  "required_outputs": [
+    "answer",
+    "evidence",
+    "engineering_confidence",
+    "limits"
+  ],
+  "min_unique_evidence_labels": 3,
+  "min_unique_routes": 2,
+  "must_include": [
+    "120-50645-005",
+    "nomenclature",
+    "cannot prove"
+  ],
+  "forbidden_claims": [
+    "interchangeable",
+    "approved replacement",
+    "installation safe"
+  ]
+}
+
+EVIDENCE CARDS:
+- [O10] route=ocr | page_id=t_p_120_1176_p000316 | part=120-50645-005 | nomenclature=DOUBLE PASSENGER SEAT ASSY | line_text=69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF | supports=OCR-backed line text/nomenclature evidence
+- [V17] route=visual | page_id=t_p_120_1176_p000316 | figure=69 | part=120-50645-005 | supports=visual figure/page evidence; can support figure-to-part identity when linked
+- [V15] route=visual | page=315 | page_id=t_p_120_1176_p000315 | figure=69 | part=120-50645-005 | supports=visual figure/page evidence; can support figure-to-part identity when linked
+- [T118] route=table | page_id=t_p_120_1176_p000003 | part=120-50645-005 | supports=table/evidence-packager part or field evidence
+- [O19] route=ocr | part=120-50645-005 | line_text=Double Passenger Seat (120-50645-005/015) | supports=OCR-backed line text/nomenclature evidence
+- [O1] route=ocr | part=120-50645-005 | supports=OCR-backed line text/nomenclature evidence
+- [E101] route=exact | page_id=t_p_120_1176_p000003 | part=120-50645-005 | supports=exact-search part evidence
+- [V9] route=visual | nomenclature=source_extractor_quality_pass | supports=visual figure/page evidence; can support figure-to-part identity when linked
+
+OUTPUT RULES:
+- Use sections when appropriate: Answer, Evidence, Engineering confidence, Limits.
+- For quiz_generation: create exactly 5 quiz questions plus an answer key; cite every answer.
+- Use at least the required number of unique evidence labels and routes when available.
+- Keep the entire response under 1500 characters.
+- Finish the answer; do not stop mid-sentence.

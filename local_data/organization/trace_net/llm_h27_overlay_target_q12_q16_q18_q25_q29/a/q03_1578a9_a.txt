@@ -1,0 +1,9 @@
+Answer: The addition of the raw OCR nomenclature extractor allows the pipeline to supplement visual figure-to-part links [V6, V7, V8] with direct line-text evidence for part names [O1, O2, O3]. This enables the nomenclature merger to carry OCR-backed text into the visual evidence pack, establishing a source-trace-ready nomenclature field that visual-link evidence alone cannot provide.
+
+Evidence:
+- Visual links establish figure-to-part connections [V6, V7, V8].
+- OCR extraction provides specific `line_text` for part names and metadata [O1, O2, O3].
+
+Engineering confidence: High
+
+Limits: This explanation pertains to pipeline recovery and data extraction logic; it does not prove part interchangeability, effectivity, or safety.

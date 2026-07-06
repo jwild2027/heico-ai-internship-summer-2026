@@ -1,0 +1,47 @@
+{
+  "answer_char_count": 1650,
+  "answer_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q18\\q18_answer.txt",
+  "answer_permission": false,
+  "answer_preview": "Answer:\nArtifact-mode overlay smoke for q18: the retrieved Engram overlay is behavior guidance only, not proof. The source answer-runner answer remains the source of the candidate answer text.\n\nEvidence:\n- Manual/source claims still require current proof_context citations from the source answer-runner prompt.\n- Retrieved Engram guidance does not grant answer permission and does not mutate source truth.\n\nEngineering confidence:\nMEDIUM for integration behavior in artifact mode; no new source claim is introduced.\n\nLimits:\nThis artifact-mode smoke does not prove new manual facts. It validates prompt overlay assembly only.\n\nSource answer preview:\nAnswer:\nThe addition of the raw OCR nomenclature extractor changed the pipeline by providing a secondary route to recover description evidence when visual or table records lack a clean nomenclature field. While the `visual_figure_link` route establishes the identity between a figure and a part number (e.g., Figure 69 is linked to part number 120-50645-005 [V6]), it does not inherently provide the text-based description. The `ocr_nomenclature` route\n[TRUNCATED: compacted for targeted H25 overlay smoke; guidance remains behavior-only, not proof.]",
+  "grade": "GOOD",
+  "grade_reasons": [],
+  "llm_answered": true,
+  "llm_error": "",
+  "llm_fallback_used": false,
+  "llm_mode": "artifact",
+  "llm_model": "artifact_scaffold",
+  "llm_retry_used": false,
+  "matched_bridge_query_ids": [
+    "h19_q_safe_but_too_generic_repair"
+  ],
+  "matched_bridge_task_types": [
+    "critic_repair"
+  ],
+  "prompt_char_count": 6000,
+  "prompt_hash": "6b5b0f6efd817c8c3e6222467731d9e669eba8564df986920943224bc4050403",
+  "prompt_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q18\\q18_prompt.txt",
+  "question": "What changed after the raw OCR nomenclature extractor was added?",
+  "question_id": "q18",
+  "safety_contract": {
+    "answer_permission_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_read_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "source_truth_mutation_allowed_count": 0
+  },
+  "selected_layers": [
+    "critic_memory",
+    "episodic_memory"
+  ],
+  "selected_proof_roles": [
+    "guidance_only"
+  ],
+  "source_answer_grade": "GOOD",
+  "source_runner_passed": true,
+  "source_runner_quality_status": "PASS",
+  "trace_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q18\\q18_trace.json",
+  "unsafe": false,
+  "unsupported_claim_count": 0
+}

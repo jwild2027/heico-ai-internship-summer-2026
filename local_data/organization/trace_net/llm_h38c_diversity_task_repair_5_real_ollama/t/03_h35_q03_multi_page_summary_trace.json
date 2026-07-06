@@ -1,0 +1,54 @@
+{
+  "answer_char_count": 448,
+  "answer_citation_count": 6,
+  "answer_permission": false,
+  "answer_preview": "This summary is source-trace-ready.\n\n1. Part 120-29068-003: Proven to be identified as \"Double Passenger Seat Structure\" [O9] and \"STRUCTURE ASSY 00\" [O7] in Figure 91 [O6] [V13]. Unproven: TRACE-Net cannot prove the installation safety or effectivity of this assembly.\n\n2. Part 120-50645-005: Proven to be associated with Figure 69 [V7] on page 315 [V7] [V1]. Unproven: TRACE-Net cannot prove the fit or interchangeability of this part.\n\n3. Part 1",
+  "contract_pass": true,
+  "fallback_used": false,
+  "findings": [],
+  "grade": "GOOD",
+  "llm_error": "",
+  "query_text": "Summarize evidence across at least three different available pages, figures, or records. Keep it source-trace-ready, cite each source used, and do not use summaries as proof.",
+  "question_id": "h35_q03_multi_page_summary",
+  "repair_attempt_count": 0,
+  "repair_used": false,
+  "selected_evidence_labels": [
+    "O6",
+    "V1",
+    "V10",
+    "V7",
+    "V13",
+    "T1",
+    "O9",
+    "O7"
+  ],
+  "selected_figures": [
+    "69",
+    "75",
+    "91"
+  ],
+  "selected_pages": [
+    "315",
+    "327",
+    "382",
+    "383",
+    "384"
+  ],
+  "selected_part_numbers": [
+    "120-29068-003",
+    "120-36833-001",
+    "120-50645-005",
+    "120-50645-011"
+  ],
+  "selected_routes": [
+    "ocr",
+    "table",
+    "visual"
+  ],
+  "source_truth_mutation_allowed": false,
+  "task_type": "multi_page_summary",
+  "unsafe": false,
+  "unsupported_claim_count": 0,
+  "valid_answer_citation_count": 6,
+  "write_attempt_count": 0
+}

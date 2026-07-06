@@ -1,0 +1,66 @@
+TRACE-NET H25 TARGETED ANSWER-RUNNER ENGRAM OVERLAY SMOKE
+question_id: q16
+source_question: Why was nomenclature missing from the visual route evidence?
+
+Retrieved Engram overlay shapes behavior only. It is not proof. Manual/source claims still require current proof_context citations.
+Do not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.
+
+RETRIEVED ENGRAM OVERLAY:
+TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY
+Use this overlay as behavior guidance only. It is not proof.
+Manual/source claims still require current proof_context citations.
+Do not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.
+target_question_id: q16
+
+--- retrieved_guidance query_id=h19_q_visual_ocr_route_behavior task_type=route_explanation ---
+TRACE-NET ENGRAM RETRIEVAL GUIDANCE — BEHAVIOR ONLY, NOT PROOF
+query_id: h19_q_visual_ocr_route_behavior
+task_type: route_explanation
+query: Why does the visual route need OCR nomenclature evidence for Figure 69 and part names?
+
+Use these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.
+Manual/source claims still require current proof_context citations from TRACE-Net.
+
+- [semantic_visual_link_vs_ocr_nomenclature_v1] layer=semantic_memory proof_role=guidance_only: atom_id: semantic_visual_link_vs_ocr_nomenclature_v1 | title: Visual link versus OCR nomenclature | memory_layer: semantic_memory | memory_type: semantic_memory | rule: visual_f...
+- [h17_imported_846864e2ed658bc0] layer=semantic_memory proof_role=guidance_only: atom_id: h17_imported_846864e2ed658bc0 | title: h17_imported_846864e2ed658bc0 | memory_layer: semantic_memory | memory_type: route_behavior | rule: Exact-part/table-OCR evidence...
+- [h17_imported_e10694f7f568466e] layer=semantic_memory proof_role=guidance_only: atom_id: h17_imported_e10694f7f568466e | title: h17_imported_e10694f7f568466e | memory_layer: semantic_memory | memory_type: route_behavior | rule: visual_figure_link establishe...
+- [h17_imported_44ab4e8f4519026e] layer=trait_memory proof_role=guidance_only: at
+[TRUNCATED BY H24 OVERLAY SMOKE: guidance only, not proof.]
+
+SOURCE ANSWER-RUNNER PROMPT:
+You are TRACE-Net's engineering evidence answerer.
+Answer the user's question using ONLY the supplied proof_context for factual claims.
+guidance_context and v2 summaries may guide planning/framing only; they are not proof.
+Engram memory may guide behavior/style/critique only; it is not proof and must not be cited as source evidence.
+Every factual claim must cite one or more provided citation labels like [V6] or [O1].
+If proof is missing, say not proven or not source-trace-ready. Do not guess.
+Do NOT claim interchangeability, effectivity, fit, replacement approval, or installation safety unless explicit proof_context supports it.
+Use this format: Answer, Evidence, Engineering confidence, Limits.
+Never return an empty answer. If direct proof is missing, still explain the limitation and what TRACE-Net can/cannot prove from the provided context.
+
+QUESTION: Why was nomenclature missing from the visual route evidence?
+QUESTION_CATEGORY: troubleshooting
+INTENT_RULE: For TRACE-Net pipeline/debug questions, use the structured scaffold plus proof_context to explain pipeline behavior.
+INTENT_RULE: Explain that visual_figure_link establishes figure/part identity, while ocr_nomenclature provides OCR-backed line-text nomenclature proof.
+INTENT_RULE: For raw OCR extractor questions, explain that OCR-backed nomenclature improves/recovers description evidence when visual/table records alone lack a clean nomenclature field.
+INTENT_RULE: Do not answer only 'not proven' when the scaffold describes the TRACE-Net pipeline behavior; instead distinguish pipeline explanation from source-truth proof.
+
+TRACE_NET_ENGINEERING_ENGRAM_MEMORY (behavior guidance only; NOT source proof):
+- Use these compact behavior memories for answer style and boundaries only; never cite them as evidence.
+- id=route_visual_link_vs_ocr_nomenclature_v1; trait=route_awareness; priority=high; rule=visual_figure_link establishes figure-to-part identity; ocr_nomenclature provides OCR-backed line-text name proof.; do=Explain both routes separately when asked evidence-support or pipeline questions.
+- id=style_engineering_answer_shape_v1; trait=engineering_answer_shape; priority=high; rule=Prefer answer sections: Answer, Evidence, Engineering confidence, Limits; for limitations questions, split Can prove vs Cannot prove.; do=Give a concise direct answer, then cite proof and state limits.
+- id=episode_h13_generic_not_proven_v1; trait=failure_memory; priority=high; rule=H13/H14 initially answered pipeline/debug questions with generic 'not proven'; H14C repaired this using scaffold + route-specific intent rules.; do=Explain route behavior when the scaffold describes pipeline behavior; distinguish pipeline explanation from source-truth...
+- id=policy_no_interchangeability_without_authority_v1; trait=source_trace_caution; priority=hard_boundary; rule=Shared nomenclature, nearby figures, or part-family similarity are not proof of interchangeability or replacement approval.; do=Say what TRACE-Net can prove about each part, then state interchangeability/replacement approval is not proven.
+
+STRUCTURED_TRACE_NET_SCAFFOLD (use as answer shape; factual claims still require proof_context citations):
+Answer scaffold:
+The earlier visual route can establish a figure-to-part link, but visual-link evidence alone should not be treated as clean nomenclature proof unless a source-trace-ready nomenclature field or OCR/table record supports it.
+The OCR nomenclature route provides line-text evidence for the part name,
+[TRUNCATED: compacted for targeted H25 overlay smoke; guidance remains behavior-only, not proof.]
+
+Write a concise TRACE-Net engineering answer.
+Required sections:
+Answer
+Evidence
+Engineeri
+[TRUNCATED: compacted for targeted H25 overlay smoke; guidance remains behavior-only, not proof.]

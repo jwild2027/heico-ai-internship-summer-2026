@@ -1,0 +1,51 @@
+{
+  "answer_char_count": 1650,
+  "answer_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q16\\q16_answer.txt",
+  "answer_permission": false,
+  "answer_preview": "Answer:\nArtifact-mode overlay smoke for q16: the retrieved Engram overlay is behavior guidance only, not proof. The source answer-runner answer remains the source of the candidate answer text.\n\nEvidence:\n- Manual/source claims still require current proof_context citations from the source answer-runner prompt.\n- Retrieved Engram guidance does not grant answer permission and does not mutate source truth.\n\nEngineering confidence:\nMEDIUM for integration behavior in artifact mode; no new source claim is introduced.\n\nLimits:\nThis artifact-mode smoke does not prove new manual facts. It validates prompt overlay assembly only.\n\nSource answer preview:\nAnswer:\nThe nomenclature was missing from the visual route because the `visual_figure_link` process establishes figure-to-part identity (e.g., linking Figure 69 to part number 120-50645-005 [V6]) but does not inherently provide clean, source-trace-ready nomenclature proof. The `ocr_nomenclature` route is used to provide OCR-backed line-text evidence (e.g., \"DOUBLE PASSENGER SEAT ASSY\" [O1]) to recover or improve description evidence when visual/tab\n[TRUNCATED: compacted for targeted H25 overlay smoke; guidance remains behavior-only, not proof.]",
+  "grade": "GOOD",
+  "grade_reasons": [],
+  "llm_answered": true,
+  "llm_error": "",
+  "llm_fallback_used": false,
+  "llm_mode": "artifact",
+  "llm_model": "artifact_scaffold",
+  "llm_retry_used": false,
+  "matched_bridge_query_ids": [
+    "h19_q_visual_ocr_route_behavior",
+    "h19_q_safe_but_too_generic_repair"
+  ],
+  "matched_bridge_task_types": [
+    "route_explanation",
+    "critic_repair"
+  ],
+  "prompt_char_count": 6000,
+  "prompt_hash": "35a7a37eb5b03d1a127652343c618fae19b602ce524a84e89dcd8abdacde65f1",
+  "prompt_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q16\\q16_prompt.txt",
+  "question": "Why was nomenclature missing from the visual route evidence?",
+  "question_id": "q16",
+  "safety_contract": {
+    "answer_permission_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_read_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "source_truth_mutation_allowed_count": 0
+  },
+  "selected_layers": [
+    "critic_memory",
+    "episodic_memory",
+    "semantic_memory",
+    "trait_memory"
+  ],
+  "selected_proof_roles": [
+    "guidance_only"
+  ],
+  "source_answer_grade": "GOOD",
+  "source_runner_passed": true,
+  "source_runner_quality_status": "PASS",
+  "trace_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q16\\q16_trace.json",
+  "unsafe": false,
+  "unsupported_claim_count": 0
+}

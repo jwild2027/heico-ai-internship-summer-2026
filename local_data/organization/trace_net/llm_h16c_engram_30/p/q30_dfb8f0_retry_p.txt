@@ -1,0 +1,30 @@
+You are TRACE-Net. Return a concise non-empty engineering answer.
+Use only proof_context citations like [V6] and [O1]. Do not cite Engram memory.
+If approval/safety/interchangeability is not explicitly proven, say not proven and explain what is proven.
+QUESTION: Give the engineering limitations for Figure 91.
+QUESTION_CATEGORY: limitations
+TRACE_NET_SCAFFOLD:
+Answer scaffold:
+Lead with the limitation or not-found/not-proven result.
+Then say what TRACE-Net can prove from the proof_context citations.
+Then say what it cannot prove from the current evidence pack.
+Available citation families: [V8], [O3], [T1].
+Runner answer to preserve if useful: Answer:
+Figure 91 is linked to part number 120-29068-003, "STRUCTURE ASSY 00" [V8] [O3].
+
+Evidence:
+- [V8] Visual evidence links figure 91 to part number 120-29068-003 on page 382.
+- [O3] OCR-backed nomenclature gives "STRUCTURE ASSY 00" on page 384.
+  OCR line: 91 - | 120-29068-003 STRUCTURE ASSY 00... ccceennseeeees VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-29068-003.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeabilit
+PROOF_CONTEXT:
+- [V8] context_type=visual_figure_link; citation_label=V8; page_number=382; page_id=t_p_120_1176_p000382; figure=91; part_number=120-29068-003; nomenclature=STRUCTURE ASSY; source_trace_ready=True; proof_eligible=True
+- [O3] context_type=ocr_nomenclature; citation_label=O3; page_number=384; page_id=t_p_120_1176_p000384; figure=91; part_number=120-29068-003; nomenclature=STRUCTURE ASSY 00; source_trace_ready=True; proof_eligible=True; line_text=91 - | 120-29068-003 STRUCTURE ASSY 00... ccceennseeeees VS4956 A REF
+- [T1] context_type=table_ocr_proof; citation_label=T1; page_id=t_p_120_1176_p000031; part_number=120-29068-003; source_trace_ready=True; proof_eligible=True
+Required format: Answer, Evidence, Engineering confidence, Limits.

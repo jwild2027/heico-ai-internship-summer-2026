@@ -1,0 +1,233 @@
+{
+  "gate_records": [
+    {
+      "answer_permission": false,
+      "h25_overlay_grade": "GOOD",
+      "matched_bridge_query_ids": [
+        "h19_q_interchangeability_boundary"
+      ],
+      "matched_bridge_task_types": [
+        "interchangeability_boundary"
+      ],
+      "missing_requirements": [],
+      "overlay_char_count": 1768,
+      "overlay_map_ready": true,
+      "overlay_text_preview": "TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY\nUse this overlay as behavior guidance only. It is not proof.\nManual/source claims still require current proof_context citations.\nDo not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.\ntarget_question_id: q12\n\n--- retrieved_guidance query_id=h19_q_interchangeability_boundary task_type=interchangeability_boundary ---\nTRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: h19_q_interchangeability_boundary\ntask_type: interchangeability_boundary\nquery: Is part 120-50645-005 interchangeable with 120-50645-011 or an approved replacement? Require explicit source authority.\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\n- [procedural_no_in",
+      "question": "Is 120-50645-005 interchangeable with 120-50645-011?",
+      "question_id": "q12",
+      "real_answer_smoke_overlay_enabled": false,
+      "recommended_cli_flag": "--engram-answer-runner-overlay-map",
+      "recommended_overlay_map_key": "q12",
+      "requires_explicit_cli_flag": true,
+      "selected_layers": [
+        "critic_memory",
+        "procedural_memory",
+        "trait_memory"
+      ],
+      "selected_proof_roles": [
+        "guidance_only"
+      ],
+      "source_answer_grade": "GOOD",
+      "unsafe": false,
+      "write_attempt": false
+    },
+    {
+      "answer_permission": false,
+      "h25_overlay_grade": "GOOD",
+      "matched_bridge_query_ids": [
+        "h19_q_visual_ocr_route_behavior",
+        "h19_q_safe_but_too_generic_repair"
+      ],
+      "matched_bridge_task_types": [
+        "route_explanation",
+        "critic_repair"
+      ],
+      "missing_requirements": [],
+      "overlay_char_count": 1768,
+      "overlay_map_ready": true,
+      "overlay_text_preview": "TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY\nUse this overlay as behavior guidance only. It is not proof.\nManual/source claims still require current proof_context citations.\nDo not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.\ntarget_question_id: q16\n\n--- retrieved_guidance query_id=h19_q_visual_ocr_route_behavior task_type=route_explanation ---\nTRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: h19_q_visual_ocr_route_behavior\ntask_type: route_explanation\nquery: Why does the visual route need OCR nomenclature evidence for Figure 69 and part names?\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\n- [semantic_visual_link_vs_ocr_nomenclature_v1] layer=semantic_memory proof_",
+      "question": "Why was nomenclature missing from the visual route evidence?",
+      "question_id": "q16",
+      "real_answer_smoke_overlay_enabled": false,
+      "recommended_cli_flag": "--engram-answer-runner-overlay-map",
+      "recommended_overlay_map_key": "q16",
+      "requires_explicit_cli_flag": true,
+      "selected_layers": [
+        "critic_memory",
+        "episodic_memory",
+        "semantic_memory",
+        "trait_memory"
+      ],
+      "selected_proof_roles": [
+        "guidance_only"
+      ],
+      "source_answer_grade": "GOOD",
+      "unsafe": false,
+      "write_attempt": false
+    },
+    {
+      "answer_permission": false,
+      "h25_overlay_grade": "GOOD",
+      "matched_bridge_query_ids": [
+        "h19_q_safe_but_too_generic_repair"
+      ],
+      "matched_bridge_task_types": [
+        "critic_repair"
+      ],
+      "missing_requirements": [],
+      "overlay_char_count": 1768,
+      "overlay_map_ready": true,
+      "overlay_text_preview": "TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY\nUse this overlay as behavior guidance only. It is not proof.\nManual/source claims still require current proof_context citations.\nDo not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.\ntarget_question_id: q18\n\n--- retrieved_guidance query_id=h19_q_safe_but_too_generic_repair task_type=critic_repair ---\nTRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: h19_q_safe_but_too_generic_repair\ntask_type: critic_repair\nquery: The answer was safe but too generic. Retrieve repair behavior before regenerating.\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\n- [critic_safe_but_too_generic_repair_v1] layer=critic_memory proof_role=guidance_on",
+      "question": "What changed after the raw OCR nomenclature extractor was added?",
+      "question_id": "q18",
+      "real_answer_smoke_overlay_enabled": false,
+      "recommended_cli_flag": "--engram-answer-runner-overlay-map",
+      "recommended_overlay_map_key": "q18",
+      "requires_explicit_cli_flag": true,
+      "selected_layers": [
+        "critic_memory",
+        "episodic_memory"
+      ],
+      "selected_proof_roles": [
+        "guidance_only"
+      ],
+      "source_answer_grade": "GOOD",
+      "unsafe": false,
+      "write_attempt": false
+    },
+    {
+      "answer_permission": false,
+      "h25_overlay_grade": "GOOD",
+      "matched_bridge_query_ids": [
+        "h19_q_unknown_part_not_source_trace_ready"
+      ],
+      "matched_bridge_task_types": [
+        "unknown_part"
+      ],
+      "missing_requirements": [],
+      "overlay_char_count": 1768,
+      "overlay_map_ready": true,
+      "overlay_text_preview": "TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY\nUse this overlay as behavior guidance only. It is not proof.\nManual/source claims still require current proof_context citations.\nDo not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.\ntarget_question_id: q25\n\n--- retrieved_guidance query_id=h19_q_unknown_part_not_source_trace_ready task_type=unknown_part ---\nTRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: h19_q_unknown_part_not_source_trace_ready\ntask_type: unknown_part\nquery: Find part number 999-99999-999 and cite a source when no proof_context exists.\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\n- [h17_imported_e9e7d1bcb97b344f] layer=working_memory proof_role=current_",
+      "question": "Find part number 999-99999-999 and cite the source.",
+      "question_id": "q25",
+      "real_answer_smoke_overlay_enabled": false,
+      "recommended_cli_flag": "--engram-answer-runner-overlay-map",
+      "recommended_overlay_map_key": "q25",
+      "requires_explicit_cli_flag": true,
+      "selected_layers": [
+        "episodic_memory",
+        "semantic_memory",
+        "working_memory"
+      ],
+      "selected_proof_roles": [
+        "current_proof_context_only",
+        "guidance_only"
+      ],
+      "source_answer_grade": "PARTIAL",
+      "unsafe": false,
+      "write_attempt": false
+    },
+    {
+      "answer_permission": false,
+      "h25_overlay_grade": "GOOD",
+      "matched_bridge_query_ids": [
+        "h19_q_summary_only_limit"
+      ],
+      "matched_bridge_task_types": [
+        "summary_limit"
+      ],
+      "missing_requirements": [],
+      "overlay_char_count": 1768,
+      "overlay_map_ready": true,
+      "overlay_text_preview": "TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY\nUse this overlay as behavior guidance only. It is not proof.\nManual/source claims still require current proof_context citations.\nDo not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.\ntarget_question_id: q29\n\n--- retrieved_guidance query_id=h19_q_summary_only_limit task_type=summary_limit ---\nTRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: h19_q_summary_only_limit\ntask_type: summary_limit\nquery: Can v2 summaries alone prove Figure 69 part identity or source claims?\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\n- [h17_imported_98eaef4c97e6af7b] layer=working_memory proof_role=current_proof_context_only: atom_id: h17_importe",
+      "question": "Can v2 summaries alone prove Figure 69 part identity?",
+      "question_id": "q29",
+      "real_answer_smoke_overlay_enabled": false,
+      "recommended_cli_flag": "--engram-answer-runner-overlay-map",
+      "recommended_overlay_map_key": "q29",
+      "requires_explicit_cli_flag": true,
+      "selected_layers": [
+        "procedural_memory",
+        "working_memory"
+      ],
+      "selected_proof_roles": [
+        "current_proof_context_only",
+        "guidance_only"
+      ],
+      "source_answer_grade": "GOOD",
+      "unsafe": false,
+      "write_attempt": false
+    }
+  ],
+  "integration_policy": {
+    "forbidden": [
+      "default_full_30_question_rerun_as_debug_loop",
+      "answer_permission_from_engram",
+      "source_truth_mutation_from_engram",
+      "summary_or_engram_used_as_proof",
+      "live_db_or_qdrant_io_without_explicit_gate"
+    ],
+    "mode": "artifact_only_real_answer_smoke_overlay_gate",
+    "next_patch": "add explicit --engram-answer-runner-overlay-map support to the real answer-smoke builder",
+    "proof_boundary": "Retrieved Engram overlays shape answer behavior only; factual manual claims require current proof_context citations.",
+    "required_runtime_gate": "overlay injection must be behind explicit CLI flag and targeted question set first",
+    "safety_contract": {
+      "answer_permission": false,
+      "llm_call_attempt": false,
+      "opensearch_upload_attempt": false,
+      "opensearch_write_attempt": false,
+      "postgres_write_attempt": false,
+      "qdrant_read_attempt": false,
+      "qdrant_write_attempt": false,
+      "source_truth_mutation_allowed": false,
+      "write_attempt": false
+    }
+  },
+  "module": "trace_net_engineering_engram_answer_smoke_overlay_integration_gate_v1",
+  "paths": {
+    "overlay_map": "local_data\\organization\\trace_net\\engineering_engram_answer_smoke_overlay_integration_gate_v1\\trace_net_engineering_engram_answer_smoke_overlay_map_v1.json",
+    "quality_check": "local_data\\organization\\trace_net\\engineering_engram_answer_smoke_overlay_integration_gate_v1\\trace_net_engineering_engram_answer_smoke_overlay_integration_gate_v1_quality_check.json",
+    "records_jsonl": "local_data\\organization\\trace_net\\engineering_engram_answer_smoke_overlay_integration_gate_v1\\trace_net_engineering_engram_answer_smoke_overlay_integration_gate_v1_records.jsonl"
+  },
+  "quality_status": "PASS",
+  "recommended_real_smoke_flags": {
+    "overlay_map_flag": "--engram-answer-runner-overlay-map",
+    "overlay_map_path": "local_data\\organization\\trace_net\\engineering_engram_answer_smoke_overlay_integration_gate_v1\\trace_net_engineering_engram_answer_smoke_overlay_map_v1.json",
+    "required_target_first": true,
+    "targeted_question_ids": "q12,q16,q18,q25,q29"
+  },
+  "status": "TRACE_NET_ENGINEERING_ENGRAM_ANSWER_SMOKE_OVERLAY_INTEGRATION_GATE_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "gate_record_count": 5,
+    "h24_quality_status": "PASS",
+    "h25_bad_answer_count": 0,
+    "h25_good_answer_count": 5,
+    "h25_quality_status": "PASS",
+    "h25_unsupported_claim_count": 0,
+    "module": "trace_net_engineering_engram_answer_smoke_overlay_integration_gate_v1",
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "overlay_map_record_count": 5,
+    "postgres_write_attempt_count": 0,
+    "qdrant_read_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_failures": [],
+    "ready_for_real_answer_smoke_overlay_flag_patch": true,
+    "source_answer_smoke_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "target_question_count": 5,
+    "target_question_ids": [
+      "q12",
+      "q16",
+      "q18",
+      "q25",
+      "q29"
+    ],
+    "unsafe_finding_count": 0,
+    "unsafe_findings": [],
+    "version": "v1",
+    "write_attempt_count": 0
+  },
+  "version": "v1"
+}

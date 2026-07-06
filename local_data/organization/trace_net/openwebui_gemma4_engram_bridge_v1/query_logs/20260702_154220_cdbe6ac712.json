@@ -1,0 +1,43 @@
+{
+  "answer": "```json\n{\n  \"follow_ups\": [\n    \"What parts or components are identified in Figure 1?\",\n    \"Is there any text or nomenclature available for page 468?\",\n    \"Can you search for a specific part number on this page?\",\n    \"Pick another random page.\"\n  ]\n}\n```",
+  "citations": [
+    {
+      "citation_ready": true,
+      "field": "figure",
+      "label": "V60",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000506",
+      "part_number": "",
+      "route": "visual",
+      "source_artifact": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+      "source_trace_ready": true,
+      "value": "1"
+    },
+    {
+      "citation_ready": true,
+      "field": "figure",
+      "label": "V61",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000506",
+      "part_number": "",
+      "route": "visual",
+      "source_artifact": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+      "source_trace_ready": true,
+      "value": "1"
+    }
+  ],
+  "evidence_card_count": 2,
+  "fallback_used": false,
+  "llm_error": "",
+  "model": "gemma4:26b",
+  "query": "### Task: Suggest 3-5 relevant follow-up questions or prompts that the user might naturally ask next in this conversation as a **user**, based on the chat history, to help continue or deepen the discussion. ### Guidelines: - Write all follow-up questions from the user’s point of view, directed to the assistant. - Make questions concise, clear, and directly related to the discussed topic(s). - Only suggest follow-ups that make sense given the chat content and do not repeat what was already covered. - If the conversation is very short or not specific, suggest more general (but relevant) follow-ups the user might ask. - Use the conversation's primary language; default to English if multilingual. - Response must be a JSON object with a \"follow_ups\" key containing an array of strings, no extra text or formatting. ### Output: JSON format: { \"follow_ups\": [\"Question 1?\", \"Question 2?\", \"Question 3?\"] } ### Chat History: <chat_history> USER: pick a random page ASSISTANT: **Answer** The selected page is `t_p_120_1176_p000468` (Page 468), which contains Figure 1 [V34, V35, V36, V37]. **Evidence** * Visual evidence identifies the presence of \"figure=1\" [V34, V35] and \"figure=01\" [V36, V37] on page `t_p_120_1176_p000468` [V34, V35, V36, V37]. **Engineering confidence** The identification of the figure label and its association with page `t_p_120_1176_p000468` is supported by visual callout link records [V34, V36]. Confidence in the specific content or subject matter of this page is low, as no part nomenclature or descriptive text was provided in the proof context. **Limits** The evidence is limited to identifying a figure identifier on a specific page. The provided `proof_context` does not contain part numbers, descriptions, instructions, or any information regarding the technical contents of Figure 1. </chat_history>",
+  "response": "```json\n{\n  \"follow_ups\": [\n    \"What parts or components are identified in Figure 1?\",\n    \"Is there any text or nomenclature available for page 468?\",\n    \"Can you search for a specific part number on this page?\",\n    \"Pick another random page.\"\n  ]\n}\n```",
+  "safety": {
+    "answer_permission": false,
+    "opensearch_write_attempt": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "source_truth_mutation_allowed": false
+  },
+  "task_type": "random_page"
+}

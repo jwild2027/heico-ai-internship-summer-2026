@@ -522,6 +522,8 @@ def call_ollama_generate(*, prompt: str, ollama_url: str, ollama_model: str, tim
         "model": ollama_model,
         "prompt": prompt,
         "stream": False,
+
+        "options": {"num_predict": 900, "temperature": 0.1},  # H16D_CONSERVATIVE_OLLAMA_OPTIONS_V1
         "options": {"temperature": 0.0},
     }
     body = json.dumps(payload).encode("utf-8")
@@ -879,6 +881,136 @@ def _build_reasoning_trace(
         "answer_preview": str(answer_text or "")[:1000],
     }
 
+
+
+# --- H27D Engram answer-runner overlay-map support (explicit opt-in) ---
+def _h27_load_engram_answer_runner_overlay_map(path):
+    """Load an H26/H27 overlay map artifact without performing live DB/vector IO."""
+    if not path:
+        return {}
+    import json
+    from pathlib import Path as _H27Path
+
+    p = _H27Path(path)
+    if not p.exists():
+        raise FileNotFoundError(f"H27 overlay map not found: {p}")
+    data = json.loads(p.read_text(encoding="utf-8"))
+
+    def _text_from_record(rec):
+        if not isinstance(rec, dict):
+            return ""
+        for key in (
+            "overlay_text",
+            "guidance_overlay_text",
+            "prompt_overlay_text",
+            "integration_prompt_text",
+            "prompt_guidance_text",
+            "overlay_text_preview",
+        ):
+            value = rec.get(key)
+            if isinstance(value, str) and value.strip():
+                return value.strip()
+        return ""
+
+    out = {}
+
+    if isinstance(data, dict):
+        # Direct map form: {"q12": "overlay text"} or {"q12": {record}}
+        for key, value in data.items():
+            if isinstance(key, str) and key.startswith("q"):
+                if isinstance(value, str):
+                    out[key] = value.strip()
+                elif isinstance(value, dict):
+                    text = _text_from_record(value)
+                    if text:
+                        out[key] = text
+
+        # Manifest/list forms used by H24/H26-style artifacts.
+        for list_key in (
+            "overlay_map_records",
+            "overlay_records",
+            "gate_records",
+            "records",
+            "prompt_overlay_records",
+        ):
+            records = data.get(list_key)
+            if isinstance(records, list):
+                for rec in records:
+                    if not isinstance(rec, dict):
+                        continue
+                    qid = rec.get("question_id") or rec.get("target_question_id") or rec.get("answer_runner_question_id")
+                    text = _text_from_record(rec)
+                    if isinstance(qid, str) and qid and text:
+                        out[qid] = text
+
+        nested = data.get("overlay_map")
+        if isinstance(nested, dict):
+            for key, value in nested.items():
+                if isinstance(value, str):
+                    out[str(key)] = value.strip()
+                elif isinstance(value, dict):
+                    text = _text_from_record(value)
+                    if text:
+                        out[str(key)] = text
+
+    elif isinstance(data, list):
+        for rec in data:
+            if not isinstance(rec, dict):
+                continue
+            qid = rec.get("question_id") or rec.get("target_question_id")
+            text = _text_from_record(rec)
+            if isinstance(qid, str) and qid and text:
+                out[qid] = text
+
+    return out
+
+
+def _h27_question_id_from_record(qrec):
+    if isinstance(qrec, dict):
+        for key in ("question_id", "id", "qid"):
+            value = qrec.get(key)
+            if isinstance(value, str) and value:
+                return value
+    return ""
+
+
+def _h27_apply_engram_answer_runner_overlay(prompt, qrec, overlay_map_records):
+    """Prepend retrieved Engram behavior guidance; never treats it as proof."""
+    if not overlay_map_records:
+        return prompt
+    qid = _h27_question_id_from_record(qrec)
+    overlay = overlay_map_records.get(qid)
+    if not overlay:
+        return prompt
+    boundary = (
+        "TRACE-NET H27 RETRIEVED ENGRAM OVERLAY — BEHAVIOR ONLY, NOT PROOF\n"
+        "Manual/source claims still require current proof_context citations.\n"
+        "Do not let Engram guidance grant answer permission, mutate source truth, "
+        "or replace proof_context.\n"
+    )
+    return boundary + "\n" + overlay.strip() + "\n\n--- ORIGINAL ANSWER-RUNNER PROMPT ---\n" + (prompt or "")
+# --- end H27D overlay-map support ---
+
+
+
+def _h27_append_individual_citation_instruction(prompt: str) -> str:
+    """Append a narrow citation-syntax guard for Engram overlay/retry prompts.
+
+    This is behavior-only prompt guidance. It does not add proof, grant answer
+    permission, or alter source-truth artifacts. It only tells the LLM to cite
+    existing proof-context labels as individual bracketed labels so the smoke
+    citation counter can validate them.
+    """
+    text = prompt or ""
+    required = (
+        "Citation syntax requirement: When citing proof_context labels, cite each label "
+        "individually, for example [V6] [V7] [O1]. Do not group citations inside one "
+        "bracket like [V6, V7, O1]. Engram guidance is not proof."
+    )
+    if required in text:
+        return text
+    return text.rstrip() + "\n\n" + required + "\n"
+
 def build_engineering_llm_answer_smoke(
     *,
     output_dir: Any,
@@ -917,6 +1049,7 @@ def build_engineering_llm_answer_smoke(
     max_source_truth_mutation_allowed: int = 0,
     max_write_attempts: int = 0,
     require_quality_pass: bool = False,
+    engram_answer_runner_overlay_map: str | Path | None = None,
 ) -> Dict[str, Any]:
     out_dir = Path(output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -946,6 +1079,7 @@ def build_engineering_llm_answer_smoke(
     else:
         runner_import_error = ""
 
+    _h27_engram_answer_runner_overlay_map_records = _h27_load_engram_answer_runner_overlay_map(engram_answer_runner_overlay_map)
     for idx, qrec in enumerate(questions, 1):
         question = qrec["question"]
         category = qrec.get("category") or "custom"
@@ -1038,6 +1172,12 @@ def build_engineering_llm_answer_smoke(
                         engram_core=loaded_engram_core,
                         max_engram_atoms=max_engram_atoms,
                     )
+                    prompt = _h27_apply_engram_answer_runner_overlay(
+                        prompt,
+                        qrec,
+                        _h27_engram_answer_runner_overlay_map_records,
+                    )
+                    prompt = _h27_append_individual_citation_instruction(prompt)
                     _write_text(prompt_path, prompt)
                 except Exception as exc:
                     llm_error = llm_error or f"context/prompt error: {type(exc).__name__}: {exc}"
@@ -1076,6 +1216,12 @@ def build_engineering_llm_answer_smoke(
                             scaffold_answer=scaffold_answer,
                         )
                         retry_prompt_path = prompts_dir / f"{run_dir.name}_retry_p.txt"
+                        retry_prompt = _h27_apply_engram_answer_runner_overlay(
+                            retry_prompt,
+                            qrec,
+                            _h27_engram_answer_runner_overlay_map_records,
+                        )
+                        retry_prompt = _h27_append_individual_citation_instruction(retry_prompt)
                         _write_text(retry_prompt_path, retry_prompt)
                         llm_answer = call_ollama_generate(
                             prompt=retry_prompt,
@@ -1389,6 +1535,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--min-answer-citations", type=int, default=2)
     parser.add_argument("--min-source-trace-ready-citations", type=int, default=2)
     _add_common_threshold_args(parser)
+    parser.add_argument("--engram-answer-runner-overlay-map", default=None)
     return parser
 
 

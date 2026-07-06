@@ -1,0 +1,13 @@
+Answer:
+For Figure 69, visual proof and OCR/table proof serve distinct roles in establishing part identity. Visual proof ([V6]) establishes the figure-to-part identity by visually linking the figure number to a specific part number and name. OCR/table proof ([O1], [T1]) provides textual verification of that nomenclature and part number through machine-readable text extraction from document lines.
+
+Evidence:
+- **Visual Proof**: [V6] provides a `visual_figure_link` on page 315, which establishes the connection between Figure 69 and part number 120-50645-005 ("DOUBLE PASSENGER SEAT ASSY"). This is necessary to confirm that the figure in question refers to this specific assembly.
+- **OCR/Table Proof**: [O1] provides `ocr_nomenclature` on page 316, which contains the extracted line text: "69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF". This serves as textual confirmation of the part number and name. Additionally, [T1] provides `table_ocr_proof` that supports the part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the distinction between these proof types because both visual and OCR/table evidence are present, source-trace-ready, and provide complementary identification of Figure 69.
+
+Limits:
+- This explanation is limited to the difference in how identity is established via different evidence types within the provided context.
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.

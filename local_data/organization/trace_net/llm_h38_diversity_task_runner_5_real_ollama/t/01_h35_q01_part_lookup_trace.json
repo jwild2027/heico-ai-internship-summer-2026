@@ -1,0 +1,54 @@
+{
+  "answer_char_count": 306,
+  "answer_citation_count": 3,
+  "answer_path": "local_data\\organization\\trace_net\\llm_h38_diversity_task_runner_5_real_ollama\\a\\01_h35_q01_part_lookup_a.txt",
+  "answer_permission": false,
+  "answer_preview": "**Answer:** Part number 120-50645-005 is identified as DOUBLE PASSENGER SEAT ASSY [O3]. **Evidence:** [O2] [V7] [O3] **Engineering Confidence:** High **Limits:** TRACE-Net cannot prove the part's interchangeability, fit, effectivity, replacement approval, or installation safety from the provided evidence.",
+  "contract_pass": true,
+  "fallback_used": false,
+  "findings": [],
+  "grade": "GOOD",
+  "llm_error": "",
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h38_diversity_task_runner_5_real_ollama\\p\\01_h35_q01_part_lookup_p.txt",
+  "query_text": "Find part number 120-50645-005. Give the nomenclature if available, cite the source, and clearly state what TRACE-Net cannot prove from this evidence.",
+  "question_id": "h35_q01_part_lookup",
+  "selected_evidence_labels": [
+    "O2",
+    "V7",
+    "V13",
+    "V10",
+    "V1",
+    "E1",
+    "O3",
+    "O6"
+  ],
+  "selected_figures": [
+    "69",
+    "75",
+    "91"
+  ],
+  "selected_pages": [
+    "315",
+    "316",
+    "327",
+    "382"
+  ],
+  "selected_part_numbers": [
+    "120-29068-003",
+    "120-36833-001",
+    "120-50645-005",
+    "120-50645-011"
+  ],
+  "selected_routes": [
+    "exact",
+    "ocr",
+    "visual"
+  ],
+  "source_truth_mutation_allowed": false,
+  "task_type": "part_lookup",
+  "trace_path": "local_data\\organization\\trace_net\\llm_h38_diversity_task_runner_5_real_ollama\\t\\01_h35_q01_part_lookup_trace.json",
+  "unsafe": false,
+  "unsupported_claim_count": 0,
+  "valid_answer_citation_count": 3,
+  "write_attempt_count": 0
+}

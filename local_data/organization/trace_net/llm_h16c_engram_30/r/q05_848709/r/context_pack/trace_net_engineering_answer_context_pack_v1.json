@@ -1,0 +1,226 @@
+{
+  "status": "TRACE_NET_ENGINEERING_ANSWER_CONTEXT_PACK_BUILT",
+  "quality_status": "PASS",
+  "module": "trace_net_engineering_answer_context_pack_v1",
+  "version": "v1",
+  "source_engineering_query_planner": "local_data\\organization\\trace_net\\llm_h16c_engram_30\\r\\q05_848709\\r\\planner\\trace_net_engineering_query_planner_v1.json",
+  "source_v2_summary_guidance_index": "local_data/organization/trace_net/v2_summary_guidance_index_v1/trace_net_v2_summary_guidance_index_v1.json",
+  "source_image_visual_evidence_pack": "local_data/organization/trace_net/image_visual_evidence_nomenclature_merger_v1/trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+  "source_raw_ocr_nomenclature_extractor": "local_data/organization/trace_net/raw_ocr_nomenclature_window_extractor_v1/trace_net_raw_ocr_nomenclature_window_extractor_v1.json",
+  "summary": {
+    "engineering_answer_context_pack_record_count": 1,
+    "guidance_context_count": 0,
+    "proof_context_count": 6,
+    "visual_proof_context_count": 2,
+    "ocr_nomenclature_context_count": 2,
+    "table_ocr_context_count": 2,
+    "exact_part_context_count": 0,
+    "source_trace_ready_count": 6,
+    "summary_used_as_proof_count": 0,
+    "can_answer_from_summaries_only_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0,
+    "ready_for_engineering_answer_composer": true
+  },
+  "failures": [],
+  "records": [
+    {
+      "question": "Compare figure 75 and figure 91.",
+      "task_type": "comparison_question",
+      "engineering_intent": "compare entities or evidence strength with limits",
+      "entities": {
+        "part_numbers": [],
+        "figures": [
+          "75",
+          "91"
+        ],
+        "items": [],
+        "part_families": [],
+        "topics": [
+          "figure"
+        ]
+      },
+      "required_routes": [
+        "multi_entity_retrieval",
+        "table_ocr_proof",
+        "graph_leiden_neighbors",
+        "engineering_quality_gate"
+      ],
+      "optional_routes": [
+        "graph_leiden_neighbors"
+      ],
+      "proof_requirements": [
+        "source-trace-ready evidence",
+        "explicit assumptions and limits"
+      ],
+      "guidance_context": [],
+      "proof_context": [
+        {
+          "context_type": "visual_figure_link",
+          "citation_label": "V7",
+          "page_id": "t_p_120_1176_p000327",
+          "page_number": 327,
+          "figure": "75",
+          "callout": "",
+          "part_number": "120-50645-011",
+          "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+          "nomenclature_confidence": "HIGH",
+          "proof_source": "trusted_ocr_table_figure_item_evidence",
+          "proof_strength": "linked_visual_plus_figure_page_table_proof",
+          "source_trace_ready": true,
+          "citation_ready": true,
+          "limitations": [
+            "OCR-backed nomenclature was found in raw OCR text near the linked figure/part evidence.",
+            "Figure/page proof is linked, but no exact callout/item label is present in the visual link.",
+            "This evidence does not prove interchangeability, effectivity, fit, replacement approval, or installation safety."
+          ],
+          "guidance_only": false,
+          "proof_eligible": true,
+          "answer_permission": false,
+          "source_truth_mutation_allowed": false
+        },
+        {
+          "context_type": "visual_figure_link",
+          "citation_label": "V8",
+          "page_id": "t_p_120_1176_p000382",
+          "page_number": 382,
+          "figure": "91",
+          "callout": "",
+          "part_number": "120-29068-003",
+          "nomenclature": "STRUCTURE ASSY",
+          "nomenclature_confidence": "HIGH",
+          "proof_source": "trusted_ocr_table_figure_item_evidence",
+          "proof_strength": "linked_visual_plus_figure_page_table_proof",
+          "source_trace_ready": true,
+          "citation_ready": true,
+          "limitations": [
+            "OCR-backed nomenclature was found in raw OCR text near the linked figure/part evidence.",
+            "Figure/page proof is linked, but no exact callout/item label is present in the visual link.",
+            "This evidence does not prove interchangeability, effectivity, fit, replacement approval, or installation safety."
+          ],
+          "guidance_only": false,
+          "proof_eligible": true,
+          "answer_permission": false,
+          "source_truth_mutation_allowed": false
+        },
+        {
+          "context_type": "ocr_nomenclature",
+          "citation_label": "O2",
+          "source_visual_citation_label": "V7",
+          "page_id": "t_p_120_1176_p000328",
+          "page_number": 328,
+          "figure": "75",
+          "part_number": "120-50645-011",
+          "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+          "nomenclature_confidence": "HIGH",
+          "extraction_rule": "same_line_after_part",
+          "score_reason": "same_line_after_part;figure_on_line;part_on_line;near_visual_page;part_noun",
+          "line_text": "75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF",
+          "proof_source": "raw_ocr_nomenclature_window_extractor",
+          "proof_strength": "ocr_backed_nomenclature",
+          "source_trace_ready": true,
+          "citation_ready": true,
+          "guidance_only": false,
+          "proof_eligible": true,
+          "answer_permission": false,
+          "source_truth_mutation_allowed": false
+        },
+        {
+          "context_type": "ocr_nomenclature",
+          "citation_label": "O3",
+          "source_visual_citation_label": "V8",
+          "page_id": "t_p_120_1176_p000384",
+          "page_number": 384,
+          "figure": "91",
+          "part_number": "120-29068-003",
+          "nomenclature": "STRUCTURE ASSY 00",
+          "nomenclature_confidence": "HIGH",
+          "extraction_rule": "same_line_after_part",
+          "score_reason": "same_line_after_part;figure_on_line;part_on_line;near_visual_page;part_noun",
+          "line_text": "91 - | 120-29068-003 STRUCTURE ASSY 00... ccceennseeeees VS4956 A REF",
+          "proof_source": "raw_ocr_nomenclature_window_extractor",
+          "proof_strength": "ocr_backed_nomenclature",
+          "source_trace_ready": true,
+          "citation_ready": true,
+          "guidance_only": false,
+          "proof_eligible": true,
+          "answer_permission": false,
+          "source_truth_mutation_allowed": false
+        },
+        {
+          "context_type": "table_ocr_proof",
+          "citation_label": "T1",
+          "page_id": "t_p_120_1176_p000003",
+          "page_number": null,
+          "table_id": "table__t_p_120_1176_p000003__cc6f070a67",
+          "row_index": 29,
+          "field_name": "covered_part_number",
+          "value": "120-50645-011",
+          "part_number": "120-50645-011",
+          "proof_source": "trusted_table_or_exact_search_artifact",
+          "proof_strength": "trusted_table_ocr_evidence",
+          "source_trace_ready": true,
+          "citation_ready": true,
+          "guidance_only": false,
+          "proof_eligible": true,
+          "answer_permission": false,
+          "source_truth_mutation_allowed": false
+        },
+        {
+          "context_type": "table_ocr_proof",
+          "citation_label": "T2",
+          "page_id": "t_p_120_1176_p000031",
+          "page_number": null,
+          "table_id": "table__t_p_120_1176_p000031__0bd94f1ab8",
+          "row_index": 13,
+          "field_name": "ipl_part_number",
+          "value": "120-29068-003",
+          "part_number": "120-29068-003",
+          "proof_source": "trusted_table_or_exact_search_artifact",
+          "proof_strength": "trusted_table_ocr_evidence",
+          "source_trace_ready": true,
+          "citation_ready": true,
+          "guidance_only": false,
+          "proof_eligible": true,
+          "answer_permission": false,
+          "source_truth_mutation_allowed": false
+        }
+      ],
+      "answer_constraints": {
+        "answer_style": "engineering_brain",
+        "may_claim": [
+          "claims supported by source-trace-ready proof_context records",
+          "guidance summaries may frame the search but not prove facts"
+        ],
+        "may_not_claim": [
+          "effectivity",
+          "fit",
+          "installation safety",
+          "interchangeability",
+          "replacement approval",
+          "summary-only proof",
+          "unsupported effectivity",
+          "unsupported interchangeability",
+          "unsupported installation or safety approval"
+        ],
+        "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"
+      },
+      "guidance_context_policy": "Guidance summaries may help choose routes and frame investigation, but cannot prove answer claims.",
+      "proof_context_policy": "Only source-trace-ready proof_context records may support factual answer claims.",
+      "answer_permission": false,
+      "source_truth_mutation_allowed": false,
+      "unsafe": false
+    }
+  ],
+  "paths": {
+    "context_pack": "local_data\\organization\\trace_net\\llm_h16c_engram_30\\r\\q05_848709\\r\\context_pack\\trace_net_engineering_answer_context_pack_v1.json",
+    "quality_check": "local_data\\organization\\trace_net\\llm_h16c_engram_30\\r\\q05_848709\\r\\context_pack\\trace_net_engineering_answer_context_pack_v1_quality_check.json",
+    "proof_records_csv": "local_data\\organization\\trace_net\\llm_h16c_engram_30\\r\\q05_848709\\r\\context_pack\\trace_net_engineering_answer_context_pack_v1_proof_records.csv"
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "question": {
+    "question_id": "h34b_q03_multi_page_summary",
+    "category": "custom_multi_page_summary",
+    "task_type": "multi_page_summary",
+    "question": "Summarize evidence across multiple available pages, figures, or records. Keep it source-trace-ready, cite each source used, and do not use summaries as proof.",
+    "query_terms": [
+      "page",
+      "figure",
+      "part",
+      "nomenclature",
+      "source_trace"
+    ]
+  },
+  "selected_evidence": [
+    {
+      "label": "V16",
+      "route": "visual",
+      "source_path": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+      "page_id": "t_p_120_1176_p000315",
+      "page_number": "315",
+      "figure_id": "69",
+      "part_number": "120-50645-005",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "text": "{\"answer_permission\": false, \"callout\": \"\", \"can_answer_directly\": false, \"can_prove_claims\": false, \"can_support_limited_visual_answer\": true, \"candidate_source\": \"\", \"citation_label\": \"V6\", \"citation_ready\": true, \"evidence_id\": \"image_visual_evidence_ff198f6822219919\", \"evidence_kind\": \"linked_visual_evidence\", \"figure\": \"69\", \"limitations\": [\"OCR-backed nomenclature was found in raw OCR text near the linked figure/part evidence.\", \"Figure/page proof is linked, but no exact callout/item label is present in the visual link.\", \"This evidence does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.\"], \"link_confidence\": \"MEDIUM\", \"link_reason\": \"figure_and_page_match\", \"linked\": true, \"linked_description\": \"DOUBLE PASSENGER SEAT ASSY\", \"linked_description_quality\": \"ocr_backed_high_confidence\", \"linked_part_number\": \"120-50645-005\", \"opensearch_u",
+      "raw_score_hint": 0
+    },
+    {
+      "label": "V19",
+      "route": "visual",
+      "source_path": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+      "page_id": "t_p_120_1176_p000327",
+      "page_number": "327",
+      "figure_id": "75",
+      "part_number": "120-50645-011",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "text": "{\"answer_permission\": false, \"callout\": \"\", \"can_answer_directly\": false, \"can_prove_claims\": false, \"can_support_limited_visual_answer\": true, \"candidate_source\": \"\", \"citation_label\": \"V7\", \"citation_ready\": true, \"evidence_id\": \"image_visual_evidence_1b3e78d6e52ceb85\", \"evidence_kind\": \"linked_visual_evidence\", \"figure\": \"75\", \"limitations\": [\"OCR-backed nomenclature was found in raw OCR text near the linked figure/part evidence.\", \"Figure/page proof is linked, but no exact callout/item label is present in the visual link.\", \"This evidence does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.\"], \"link_confidence\": \"MEDIUM\", \"link_reason\": \"figure_and_page_match\", \"linked\": true, \"linked_description\": \"DOUBLE PASSENGER SEAT ASSY\", \"linked_description_quality\": \"ocr_backed_high_confidence\", \"linked_part_number\": \"120-50645-011\", \"opensearch_u",
+      "raw_score_hint": 0
+    },
+    {
+      "label": "V22",
+      "route": "visual",
+      "source_path": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+      "page_id": "t_p_120_1176_p000382",
+      "page_number": "382",
+      "figure_id": "91",
+      "part_number": "120-29068-003",
+      "nomenclature": "",
+      "text": "{\"answer_permission\": false, \"callout\": \"\", \"can_answer_directly\": false, \"can_prove_claims\": false, \"can_support_limited_visual_answer\": true, \"candidate_source\": \"\", \"citation_label\": \"V8\", \"citation_ready\": true, \"evidence_id\": \"image_visual_evidence_aee49b1d7393106b\", \"evidence_kind\": \"linked_visual_evidence\", \"figure\": \"91\", \"limitations\": [\"OCR-backed nomenclature was found in raw OCR text near the linked figure/part evidence.\", \"Figure/page proof is linked, but no exact callout/item label is present in the visual link.\", \"This evidence does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.\"], \"link_confidence\": \"MEDIUM\", \"link_reason\": \"figure_and_page_match\", \"linked\": true, \"linked_description\": \"STRUCTURE ASSY\", \"linked_description_quality\": \"ocr_backed_high_confidence\", \"linked_part_number\": \"120-29068-003\", \"opensearch_upload_attemp",
+      "raw_score_hint": 0
+    },
+    {
+      "label": "V1",
+      "route": "visual",
+      "source_path": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+      "page_id": "",
+      "page_number": "",
+      "figure_id": "",
+      "part_number": "",
+      "nomenclature": "",
+      "text": "{\"authority_model\": {\"graph_leiden\": \"not_used_as_proof_in_this_pack\", \"llava\": \"visual_observation_only\", \"ocr_figure_callout_extractor\": \"visible_label_support\", \"trusted_ocr_table_figure_item_evidence\": \"proof_for_part_identity_when_linked\"}, \"checks\": [{\"name\": \"min_visual_records\", \"observed\": 26, \"expected\": \">= 1\", \"passed\": true}, {\"name\": \"min_nomenclature_merged\", \"observed\": 3, \"expected\": \">= 3\", \"passed\": true}, {\"name\": \"min_source_trace_ready\", \"observed\": 3, \"expected\": \">= 3\", \"passed\": true}, {\"name\": \"max_unsafe\", \"observed\": 0, \"expected\": \"<= 0\", \"passed\": true}, {\"name\": \"max_answer_permission\", \"observed\": 0, \"expected\": \"<= 0\", \"passed\": true}, {\"name\": \"max_source_truth_mutation_allowed\", \"observed\": 0, \"expected\": \"<= 0\", \"passed\": true}, {\"name\": \"max_write_attempts\", \"observed\": 0, \"expected\": \"<= 0\", \"passed\": true}, {\"name\": \"source_pack_quality_pass\", \"obse",
+      "raw_score_hint": 0
+    },
+    {
+      "label": "V18",
+      "route": "visual",
+      "source_path": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+      "page_id": "",
+      "page_number": "",
+      "figure_id": "69",
+      "part_number": "120-50645-005",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "text": "{\"source_module\": \"trace_net_raw_ocr_nomenclature_window_extractor_v1\", \"source_record_id\": \"raw_ocr_nomenclature_window_833bbc3bd58e5bfc\", \"source_visual_citation_label\": \"V6\", \"linked_part_number\": \"120-50645-005\", \"figure\": \"69\", \"ocr_page_id\": \"t_p_120_1176_p000316\", \"ocr_page_number\": 316, \"ocr_text_path\": \"local_data\\\\organization\\\\trace_net\\\\raw_to_answer_e2e_smoke_gemma4_001\\\\ocr_route_scan_pack_tesseract_full\\\\ocr_text\\\\t_p_120_1176_p000316.txt\", \"selected_line_text\": \"69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF\"}",
+      "raw_score_hint": 0
+    },
+    {
+      "label": "V21",
+      "route": "visual",
+      "source_path": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+      "page_id": "",
+      "page_number": "",
+      "figure_id": "75",
+      "part_number": "120-50645-011",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "text": "{\"source_module\": \"trace_net_raw_ocr_nomenclature_window_extractor_v1\", \"source_record_id\": \"raw_ocr_nomenclature_window_314536c3d53b8445\", \"source_visual_citation_label\": \"V7\", \"linked_part_number\": \"120-50645-011\", \"figure\": \"75\", \"ocr_page_id\": \"t_p_120_1176_p000328\", \"ocr_page_number\": 328, \"ocr_text_path\": \"local_data\\\\organization\\\\trace_net\\\\raw_to_answer_e2e_smoke_gemma4_001\\\\ocr_route_scan_pack_tesseract_full\\\\ocr_text\\\\t_p_120_1176_p000328.txt\", \"selected_line_text\": \"75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF\"}",
+      "raw_score_hint": 0
+    },
+    {
+      "label": "V24",
+      "route": "visual",
+      "source_path": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+      "page_id": "",
+      "page_number": "",
+      "figure_id": "91",
+      "part_number": "120-29068-003",
+      "nomenclature": "",
+      "text": "{\"source_module\": \"trace_net_raw_ocr_nomenclature_window_extractor_v1\", \"source_record_id\": \"raw_ocr_nomenclature_window_74fbc8740107f07c\", \"source_visual_citation_label\": \"V8\", \"linked_part_number\": \"120-29068-003\", \"figure\": \"91\", \"ocr_page_id\": \"t_p_120_1176_p000384\", \"ocr_page_number\": 384, \"ocr_text_path\": \"local_data\\\\organization\\\\trace_net\\\\raw_to_answer_e2e_smoke_gemma4_001\\\\ocr_route_scan_pack_tesseract_full\\\\ocr_text\\\\t_p_120_1176_p000384.txt\", \"selected_line_text\": \"91 - | 120-29068-003 STRUCTURE ASSY 00... ccceennseeeees VS4956 A REF\"}",
+      "raw_score_hint": 0
+    },
+    {
+      "label": "O9",
+      "route": "ocr",
+      "source_path": "local_data\\organization\\trace_net\\raw_ocr_nomenclature_window_extractor_v1\\trace_net_raw_ocr_nomenclature_window_extractor_v1.json",
+      "page_id": "",
+      "page_number": "",
+      "figure_id": "69",
+      "part_number": "120-50645-005",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "text": "{\"record_id\": \"raw_ocr_nomenclature_window_833bbc3bd58e5bfc\", \"schema_version\": \"trace_net_raw_ocr_nomenclature_window_extractor_v1\", \"source_visual_citation_label\": \"V6\", \"source_visual_evidence_id\": \"image_visual_evidence_ff198f6822219919\", \"linked_part_number\": \"120-50645-005\", \"figure\": \"69\", \"callout\": \"\", \"visual_page_id\": \"t_p_120_1176_p000315\", \"visual_page_number\": 315, \"matched_ocr_record_count\": 4, \"nomenclature_candidate_count\": 1, \"selected_nomenclature\": \"DOUBLE PASSENGER SEAT ASSY\", \"selected_nomenclature_confidence\": \"HIGH\", \"selected_extraction_rule\": \"same_line_after_part\", \"selected_score\": 105, \"selected_score_reason\": \"same_line_after_part;figure_on_line;part_on_line;near_visual_page;part_noun\", \"selected_ocr_page_id\": \"t_p_120_1176_p000316\", \"selected_ocr_source_page_id\": \"source_p000316\", \"selected_ocr_page_number\": 316, \"selected_ocr_file_name\": \"00000316.tif\", \"s",
+      "raw_score_hint": 0
+    },
+    {
+      "label": "O11",
+      "route": "ocr",
+      "source_path": "local_data\\organization\\trace_net\\raw_ocr_nomenclature_window_extractor_v1\\trace_net_raw_ocr_nomenclature_window_extractor_v1.json",
+      "page_id": "",
+      "page_number": "",
+      "figure_id": "75",
+      "part_number": "120-50645-011",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "text": "{\"record_id\": \"raw_ocr_nomenclature_window_314536c3d53b8445\", \"schema_version\": \"trace_net_raw_ocr_nomenclature_window_extractor_v1\", \"source_visual_citation_label\": \"V7\", \"source_visual_evidence_id\": \"image_visual_evidence_1b3e78d6e52ceb85\", \"linked_part_number\": \"120-50645-011\", \"figure\": \"75\", \"callout\": \"\", \"visual_page_id\": \"t_p_120_1176_p000327\", \"visual_page_number\": 327, \"matched_ocr_record_count\": 4, \"nomenclature_candidate_count\": 1, \"selected_nomenclature\": \"DOUBLE PASSENGER SEAT ASSY\", \"selected_nomenclature_confidence\": \"HIGH\", \"selected_extraction_rule\": \"same_line_after_part\", \"selected_score\": 105, \"selected_score_reason\": \"same_line_after_part;figure_on_line;part_on_line;near_visual_page;part_noun\", \"selected_ocr_page_id\": \"t_p_120_1176_p000328\", \"selected_ocr_source_page_id\": \"source_p000328\", \"selected_ocr_page_number\": 328, \"selected_ocr_file_name\": \"00000328.tif\", \"s",
+      "raw_score_hint": 0
+    }
+  ],
+  "record": {
+    "question_id": "h34b_q03_multi_page_summary",
+    "category": "custom_multi_page_summary",
+    "task_type": "multi_page_summary",
+    "question": "Summarize evidence across multiple available pages, figures, or records. Keep it source-trace-ready, cite each source used, and do not use summaries as proof.",
+    "grade": "GOOD",
+    "llm_answered": true,
+    "llm_mode": "ollama",
+    "llm_model": "gemma4:26b",
+    "llm_error": "<urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>",
+    "fallback_used": true,
+    "prompt_path": "local_data\\organization\\trace_net\\llm_h34b_custom_5_progress\\p\\03_h34b_q03_multi_page_summary_p.txt",
+    "answer_path": "local_data\\organization\\trace_net\\llm_h34b_custom_5_progress\\a\\03_h34b_q03_multi_page_summary_a.txt",
+    "trace_path": "local_data\\organization\\trace_net\\llm_h34b_custom_5_progress\\t\\03_h34b_q03_multi_page_summary_trace.json",
+    "answer_preview": "Answer:\nTRACE-Net can safely discuss 120-50645-005 using the selected source-trace-ready evidence [V16] [V19] [V22] [V1].\n\nEvidence:\n- [V16] [V16] route=visual | page=315 | page_id=t_p_120_1176_p000315 | figure=69 | part=120-50645-005 | nomenclature=DOUBLE PASSENGER SEAT ASSY\n  {\"answer_permission\": false, \"callout\": \"\", \"can_answer_directly\": false, \"can_prove_claims\": false, \"can_support_limited_visual_answer\": true, \"candidate_source\": \"\", \"citation_label\": \"V6\", \"citation_ready\": true, \"evidence_id\": \"image_visual_evidence_ff1...\n- [V19] [V19] route=visual | page=327 | page_id=t_p_120_1176_p000327 | figure=75 | part=120-50645-011 | nomenclature=DOUBLE PASSENGER SEAT ASSY\n  {\"answer_permission\": false, \"callout\": \"\", \"can_answer_directly\": false, \"can_prove_claims\": false, \"can_support_limited_visual_answer\": true, \"candidate_source\": \"\", \"citation_label\": \"V7\", \"citation_ready\": true, \"evidence_id\": \"image_visual_evidence_1b3...\n- [V22] [V22] route=visual | page=382 | page_id=t_p_120_1176_p000382 | figure=91 | part=120-29068-003\n  {\"answer_permission\": false, \"callout\": \"\", \"can_answer_directly\": false, \"can_prove_claims\": false, \"can_support_limited_visual_answer\": true, \"candidate_source\": \"\", \"citation_label\": \"V8\", \"citation_ready\": true, \"evidence_id\": \"image_visual_evidence_aee...\n- [V1] [V1] route=visual\n  {\"authority_model\": {\"graph_leiden\": \"not_used_as_proof_in_this_pack\", \"llava\": \"visual_observation_only\", \"ocr_figure_callout_extractor\": \"visible_label_support\", \"trusted_ocr_table_figure_item_evidence\": \"proof_for_part_identity_when_linked\"}, \"checks\": [...\n\nEngineering confidence:\nMEDIUM/HIGH for claims directly supported by the cited cards.\n\nLimits:\nThis does not prove interchangeability, effectivity, fit, replacement approval, or installation safety. Engram and summaries are guidance only, not proof.",
+    "answer_char_count": 1850,
+    "selected_evidence_count": 9,
+    "selected_evidence_labels": [
+      "V16",
+      "V19",
+      "V22",
+      "V1",
+      "V18",
+      "V21",
+      "V24",
+      "O9",
+      "O11"
+    ],
+    "selected_routes": [
+      "ocr",
+      "visual"
+    ],
+    "answer_citation_count": 12,
+    "valid_answer_citation_count": 12,
+    "grouped_citation_risk_count": 0,
+    "unsupported_claim_count": 0,
+    "answer_permission": false,
+    "source_truth_mutation_allowed": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "qdrant_read_attempt": false,
+    "opensearch_write_attempt": false,
+    "opensearch_upload_attempt": false,
+    "write_attempt": false,
+    "unsafe": false
+  }
+}

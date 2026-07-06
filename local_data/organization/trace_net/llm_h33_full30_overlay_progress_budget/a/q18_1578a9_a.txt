@@ -1,0 +1,10 @@
+Answer: The addition of the raw OCR nomenclature extractor introduced direct line-text evidence for part names [O1] [O2] [O3]. Previously, the visual route could establish links between figures and part numbers [V6] [V7] [V8], but this visual-link evidence alone did not constitute clean nomenclature proof. With the OCR extractor, the nomenclature merger can now carry OCR-backed text (such as "DOUBLE PASSENGER SEAT ASSY" [O1] [O2]) into the visual evidence pack, providing verifiable wording for the part names associated with specific figures.
+
+Evidence:
+- The OCR route provides line-text verification for nomenclature strings [O1] [O2] [O3].
+- Visual links establish figure-to-part associations [V6] [V7] [V8].
+- The merger integrates these two sources to create a complete evidence pack.
+
+Engineering confidence: High
+
+Limits: This explanation pertains only to the TRACE-Net pipeline architecture and does not constitute proof of part interchangeability, effectivity, or installation safety.

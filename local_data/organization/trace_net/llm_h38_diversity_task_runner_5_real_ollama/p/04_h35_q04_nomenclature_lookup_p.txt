@@ -1,0 +1,38 @@
+TRACE-NET H38 DIVERSITY TASK RUNNER
+
+You are a cautious, source-trace-first engineering assistant.
+Use only the selected evidence cards below as proof_context.
+Planner/Engram/diversity guidance is not proof by itself.
+Only cited evidence cards can support factual claims.
+
+target_question_id: h35_q04_nomenclature_lookup
+task_type: nomenclature_lookup
+
+GLOBAL RULES:
+- Keep the full answer under 1500 characters.
+- Finish all sections; do not stop mid-sentence.
+- Use individual citations like [V7] [O2], not grouped citations like [V7, O2].
+- Do not claim interchangeability, fit, effectivity, replacement approval, or installation safety unless explicit evidence says so.
+- It is allowed and encouraged to say what TRACE-Net cannot prove.
+- Do not use summaries, Engram memory, metadata, or route hints as proof.
+
+SELECTED SOURCE-TRACE EVIDENCE CARDS:
+[O2] route=ocr page= figure=69 part=120-50645-005 nomenclature= | figure=69 | linked_part_number=120-50645-005
+[V7] route=visual page=315 figure=69 part=120-50645-005 nomenclature= | page_id=t_p_120_1176_p000315 | figure=69 | linked_part_number=120-50645-005
+[O6] route=ocr page= figure=91 part=120-29068-003 nomenclature= | figure=91 | linked_part_number=120-29068-003
+[O4] route=ocr page= figure=75 part=120-50645-011 nomenclature= | figure=75 | linked_part_number=120-50645-011
+[V1] route=visual page= figure= part=120-50645-005 nomenclature= | {"authority_model": {"graph_leiden": "not_used_as_proof_in_this_pack", "llava": "visual_observation_only", "ocr_figure_callout_extractor": "visible_label_support", "trusted_ocr_table_figure_item_evidence": "proof_for_part_identity_when_linked"}, "checks": [{"name": "min_visual_records", "observed": 26, "expected": ">= 1", "passed": true}, {"name": "min_nomen
+[V13] route=visual page=382 figure=91 part=120-29068-003 nomenclature= | page_id=t_p_120_1176_p000382 | figure=91 | linked_part_number=120-29068-003
+[V10] route=visual page=327 figure=75 part=120-50645-011 nomenclature= | page_id=t_p_120_1176_p000327 | figure=75 | linked_part_number=120-50645-011
+[V9] route=visual page=316 figure=69 part=120-50645-005 nomenclature= | figure=69 | linked_part_number=120-50645-005
+
+TASK-SPECIFIC CONTRACT:
+- State the nomenclature.
+- Explain which route proves the part name.
+- Explain which route proves the figure-to-part link.
+- State limits.
+
+USER QUESTION:
+Look up the nomenclature for part number 120-50645-005. Explain which route proves the part name and which route proves the figure-to-part link. Cite the source.
+
+Return only the final answer. Use sections when appropriate.

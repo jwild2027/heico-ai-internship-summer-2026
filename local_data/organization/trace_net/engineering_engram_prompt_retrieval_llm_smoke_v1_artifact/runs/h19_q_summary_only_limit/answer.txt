@@ -1,0 +1,12 @@
+Answer:
+Not found / not source-trace-ready from this H22 prompt smoke.
+
+Evidence:
+- Query under test: h19_q_summary_only_limit
+- Current proof_context: none supplied in H22 smoke.
+
+Engineering confidence:
+HIGH that the prompt-retrieval guidance preserves the source-trace boundary; LOW for any manual factual claim because no proof_context was supplied.
+
+Limits:
+No current proof_context was provided; retrieved Engram guidance and summaries are not proof.

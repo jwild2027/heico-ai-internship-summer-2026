@@ -1,0 +1,104 @@
+{
+  "trace_type": "safe_reasoning_trace_not_hidden_chain_of_thought",
+  "trace_note": "This shows the evidence, prompt constraints, scaffold, and gate checks. It is not raw model hidden reasoning.",
+  "question_id": "q28",
+  "category": "route_explanation",
+  "question": "What routes were required to answer what Figure 69 shows?",
+  "task_type": "visual_part_identification",
+  "runner_quality_status": "PASS",
+  "runner_passed": true,
+  "proof_context_count": 3,
+  "guidance_context_count": 0,
+  "available_citation_labels": [
+    "O1",
+    "T1",
+    "V6"
+  ],
+  "proof_context_preview": [
+    {
+      "citation_label": "V6",
+      "context_type": "visual_figure_link",
+      "figure": "69",
+      "part_number": "120-50645-005",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 315,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "O1",
+      "context_type": "ocr_nomenclature",
+      "figure": "69",
+      "part_number": "120-50645-005",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 316,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "T1",
+      "context_type": "table_ocr_proof",
+      "figure": null,
+      "part_number": "120-50645-005",
+      "nomenclature": null,
+      "page_number": null,
+      "source_trace_ready": true
+    }
+  ],
+  "answer_constraints": {
+    "answer_style": "engineering_brain",
+    "may_claim": [
+      "figure/page link when supported by visual evidence",
+      "linked part number when supported by OCR/table/figure proof",
+      "OCR-backed nomenclature when source-trace-ready OCR evidence is present"
+    ],
+    "may_not_claim": [
+      "LLaVA-only part identity",
+      "effectivity",
+      "fit",
+      "installation safety",
+      "interchangeability",
+      "replacement approval",
+      "summary-only figure proof",
+      "summary-only proof",
+      "unsupported effectivity",
+      "unsupported interchangeability",
+      "unsupported installation or safety approval"
+    ],
+    "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"
+  },
+  "intent_rules": [
+    "INTENT_RULE: For evidence-support and route-explanation questions, explain why each cited evidence type matters, not just what it says.",
+    "INTENT_RULE: Mention visual proof separately from OCR/table proof when both are present."
+  ],
+  "scaffold_present": true,
+  "engram_atom_count": 4,
+  "engram_ids": [
+    "route_visual_link_vs_ocr_nomenclature_v1",
+    "policy_no_interchangeability_without_authority_v1",
+    "policy_no_installation_safety_from_figure_v1",
+    "policy_v2_summaries_guidance_not_proof_v1"
+  ],
+  "engram_traits": [
+    "approval_boundary",
+    "route_awareness",
+    "source_trace_caution",
+    "summary_boundary"
+  ],
+  "engram_note": "Engram atoms are behavioral guidance only; they are not source proof and are not raw model reasoning.",
+  "llm_retry_used": false,
+  "llm_fallback_used": false,
+  "llm_fallback_reason": "",
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h16b_engram_30\\p\\q28_75703a_p.txt",
+  "answer_path": "local_data\\organization\\trace_net\\llm_h16b_engram_30\\a\\q28_75703a_a.txt",
+  "llm_error": "",
+  "gate_result": {
+    "grade": "GOOD",
+    "llm_answered": true,
+    "answer_citation_count": 6,
+    "valid_answer_citation_count": 6,
+    "source_trace_ready_citation_count": 6,
+    "invalid_answer_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0
+  },
+  "answer_preview": "Answer:\nTo identify what Figure 69 shows, two distinct routes were required: a visual identification route to link the figure number to a specific part and an OCR-based nomenclature route to verify the textual description of that part.\n\nEvidence:\n- Visual Proof: [V6] provides the visual link on page 315 that connects Figure 69 to part number 120-50645-005 (\"DOUBLE PASSENGER SEAT ASSY\"), establishing the identity of the figure's subject.\n- OCR/Table Proof: [O1] provides OCR-backed nomenclature from page 316 that explicitly maps Figure 69 to part number 120-50645-005 and its description, \"DOUBLE PASSENGER SEAT ASSY,\" serving as textual confirmation of the visual link. [T1] provides table/OCR proof for part number 120-50645-005, reinforcing the identity through structured data.\n\nEngineering confidence:\nHIGH because there is direct convergence between the visual figure-to-part link [V6], the OCR-extracted nomenclature [O1], and the table-based part verification [T1].\n\nLimits:\n- This identi"
+}

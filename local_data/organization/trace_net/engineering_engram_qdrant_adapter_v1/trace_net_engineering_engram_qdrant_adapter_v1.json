@@ -1,0 +1,345 @@
+{
+  "adapter_policy": {
+    "explicit_live_flags": [
+      "--enable-live-qdrant-write",
+      "--enable-live-qdrant-read"
+    ],
+    "forbidden": [
+      "answer_permission_from_engram_vector",
+      "source_truth_mutation_from_engram_vector",
+      "summary_or_engram_used_as_proof",
+      "live_qdrant_io_without_explicit_enable_flags"
+    ],
+    "mode": "artifact_first_qdrant_adapter",
+    "proof_boundary": "Engram vectors retrieve behavior guidance only; factual manual claims still require proof_context citations."
+  },
+  "collection_plan": {
+    "collection_name": "trace_net_engineering_engram_memory_v1",
+    "distance": "Cosine",
+    "encoder": "trace_net_hashing_encoder_v1",
+    "live_qdrant_read_attempted": false,
+    "live_qdrant_read_enabled": false,
+    "live_qdrant_write_attempted": false,
+    "live_qdrant_write_enabled": false,
+    "qdrant_url": "http://127.0.0.1:6333",
+    "safety_note": "Live Qdrant IO is disabled unless explicit enable flags are used.",
+    "vector_dim": 64
+  },
+  "live_qdrant_read_results": [],
+  "live_qdrant_write_result": null,
+  "local_retrieval_records": [
+    {
+      "query_id": "q_interchangeability",
+      "query_text": "interchangeability requires explicit authority replacement approval",
+      "results": [
+        {
+          "atom_id": "h17_imported_93da9c7d59c179ab",
+          "id": "977e5a7c757b60cc85f0c404cd9d724f5b713ef155f61734976fdbe2beadd613",
+          "memory_layer": "episodic_memory",
+          "proof_role": "guidance_only",
+          "score": 0.086534,
+          "text_preview": "atom_id: h17_imported_93da9c7d59c179ab | title: h17_imported_93da9c7d59c179ab | memory_layer: episodic_memory | memory_type: episodic_failure_memory | rule: category 'unknown_part' was graded partial in a smoke eval; retrieve a more specific answer pattern bef"
+        },
+        {
+          "atom_id": "h17_imported_846864e2ed658bc0",
+          "id": "063369f8abaa8c5ac21d47037f10e39d61d991efa496d1f07178d187039978e6",
+          "memory_layer": "semantic_memory",
+          "proof_role": "guidance_only",
+          "score": 0.077963,
+          "text_preview": "atom_id: h17_imported_846864e2ed658bc0 | title: h17_imported_846864e2ed658bc0 | memory_layer: semantic_memory | memory_type: route_behavior | rule: exact-part/table-ocr evidence supports presence of a part number but does not by itself prove approvals or compa"
+        },
+        {
+          "atom_id": "h17_imported_774825e2b50c55aa",
+          "id": "4d8c2d0bcbc55441373505c4e57a58b3bafcb0c16b69c735517fd8097a32b4f7",
+          "memory_layer": "episodic_memory",
+          "proof_role": "guidance_only",
+          "score": 0.071313,
+          "text_preview": "atom_id: h17_imported_774825e2b50c55aa | title: h17_imported_774825e2b50c55aa | memory_layer: episodic_memory | memory_type: episodic_failure_memory | rule: category 'unknown_figure' was graded partial in a smoke eval; retrieve a more specific answer pattern b"
+        },
+        {
+          "atom_id": "h17_imported_81996026ec62b901",
+          "id": "38399c12042df80ded059f90fa6cdf094703e63f707176fcb9e08f8e86acf4e2",
+          "memory_layer": "episodic_memory",
+          "proof_role": "guidance_only",
+          "score": 0.064162,
+          "text_preview": "atom_id: h17_imported_81996026ec62b901 | title: h17_imported_81996026ec62b901 | memory_layer: episodic_memory | memory_type: episodic_failure_memory | rule: h14b exposed nested stage-output path failures; h14c used shorter output dirs and safe trace records to"
+        },
+        {
+          "atom_id": "h17_imported_e9e7d1bcb97b344f",
+          "id": "052b58b7d4c7b4a2c8f22e165e449f96b80a990b67ce221afbf8756d41b1d447",
+          "memory_layer": "working_memory",
+          "proof_role": "current_proof_context_only",
+          "score": 0.064011,
+          "text_preview": "atom_id: h17_imported_e9e7d1bcb97b344f | title: h17_imported_e9e7d1bcb97b344f | memory_layer: working_memory | memory_type: style_trait | rule: for unknown part/figure questions with no proof_context, lead with not found / not source-trace-ready and do not cit"
+        }
+      ]
+    },
+    {
+      "query_id": "q_visual_ocr",
+      "query_text": "visual figure link OCR nomenclature line text proof",
+      "results": [
+        {
+          "atom_id": "h17_imported_e10694f7f568466e",
+          "id": "19abad74bcfb4c7e154969dbd6d7934da7e8685a0920c7a7119c562bcb391527",
+          "memory_layer": "semantic_memory",
+          "proof_role": "guidance_only",
+          "score": 0.202017,
+          "text_preview": "atom_id: h17_imported_e10694f7f568466e | title: h17_imported_e10694f7f568466e | memory_layer: semantic_memory | memory_type: route_behavior | rule: visual_figure_link establishes figure-to-part identity; ocr_nomenclature provides ocr-backed line-text name proo"
+        },
+        {
+          "atom_id": "h17_imported_f39d3c6bcc27e0fa",
+          "id": "ccff2f2ab9d8fdfc39feb928a23e8aee450c87e116151f47a4319e5279bf93ce",
+          "memory_layer": "procedural_memory",
+          "proof_role": "guidance_only",
+          "score": 0.143694,
+          "text_preview": "atom_id: h17_imported_f39d3c6bcc27e0fa | title: h17_imported_f39d3c6bcc27e0fa | memory_layer: procedural_memory | memory_type: policy_trait | rule: shared nomenclature, nearby figures, or part-family similarity are not proof of interchangeability or replacemen"
+        },
+        {
+          "atom_id": "procedural_no_interchangeability_without_authority_v1",
+          "id": "60fd405b32d1225bd4947d559a5757470a333d648f11a5d8594df1e7832e064b",
+          "memory_layer": "procedural_memory",
+          "proof_role": "guidance_only",
+          "score": 0.124125,
+          "text_preview": "atom_id: procedural_no_interchangeability_without_authority_v1 | title: no interchangeability without explicit authority | memory_layer: procedural_memory | memory_type: procedural_memory | rule: require explicit source authority before saying parts are interc"
+        },
+        {
+          "atom_id": "semantic_visual_link_vs_ocr_nomenclature_v1",
+          "id": "369f324da64637d96cdc118fb7bcd312b7784852c4db4215c49bd2c0f8540514",
+          "memory_layer": "semantic_memory",
+          "proof_role": "guidance_only",
+          "score": 0.093199,
+          "text_preview": "atom_id: semantic_visual_link_vs_ocr_nomenclature_v1 | title: visual link versus ocr nomenclature | memory_layer: semantic_memory | memory_type: semantic_memory | rule: visual_figure_link establishes figure-to-part identity; ocr nomenclature provides source-tr"
+        },
+        {
+          "atom_id": "h17_imported_568223f7c37a12f1",
+          "id": "8b04ca4b25e62fe6dcdc3db2afdc6d579b35160a396e2a1df98f4c62798be83b",
+          "memory_layer": "procedural_memory",
+          "proof_role": "guidance_only",
+          "score": 0.078752,
+          "text_preview": "atom_id: h17_imported_568223f7c37a12f1 | title: h17_imported_568223f7c37a12f1 | memory_layer: procedural_memory | memory_type: policy_trait | rule: figure/part identification evidence does not prove installation safety, fit approval, aircraft effectivity, or r"
+        }
+      ]
+    },
+    {
+      "query_id": "q_unknown_part",
+      "query_text": "unknown part no proof_context not source trace ready",
+      "results": [
+        {
+          "atom_id": "h17_imported_81996026ec62b901",
+          "id": "38399c12042df80ded059f90fa6cdf094703e63f707176fcb9e08f8e86acf4e2",
+          "memory_layer": "episodic_memory",
+          "proof_role": "guidance_only",
+          "score": 0.38944,
+          "text_preview": "atom_id: h17_imported_81996026ec62b901 | title: h17_imported_81996026ec62b901 | memory_layer: episodic_memory | memory_type: episodic_failure_memory | rule: h14b exposed nested stage-output path failures; h14c used shorter output dirs and safe trace records to"
+        },
+        {
+          "atom_id": "procedural_no_interchangeability_without_authority_v1",
+          "id": "60fd405b32d1225bd4947d559a5757470a333d648f11a5d8594df1e7832e064b",
+          "memory_layer": "procedural_memory",
+          "proof_role": "guidance_only",
+          "score": 0.351666,
+          "text_preview": "atom_id: procedural_no_interchangeability_without_authority_v1 | title: no interchangeability without explicit authority | memory_layer: procedural_memory | memory_type: procedural_memory | rule: require explicit source authority before saying parts are interc"
+        },
+        {
+          "atom_id": "h17_imported_774825e2b50c55aa",
+          "id": "4d8c2d0bcbc55441373505c4e57a58b3bafcb0c16b69c735517fd8097a32b4f7",
+          "memory_layer": "episodic_memory",
+          "proof_role": "guidance_only",
+          "score": 0.346786,
+          "text_preview": "atom_id: h17_imported_774825e2b50c55aa | title: h17_imported_774825e2b50c55aa | memory_layer: episodic_memory | memory_type: episodic_failure_memory | rule: category 'unknown_figure' was graded partial in a smoke eval; retrieve a more specific answer pattern b"
+        },
+        {
+          "atom_id": "h17_imported_15583042313de8d5",
+          "id": "bc1fb9e65bd3c79adc88f5346c3159bf5ff23c40d7a629cdfeec0ffafa2dc01d",
+          "memory_layer": "trait_memory",
+          "proof_role": "guidance_only",
+          "score": 0.333949,
+          "text_preview": "atom_id: h17_imported_15583042313de8d5 | title: h17_imported_15583042313de8d5 | memory_layer: trait_memory | memory_type: style_trait | rule: prefer answer sections: answer, evidence, engineering confidence, limits; for limitations questions, split can prove v"
+        },
+        {
+          "atom_id": "h17_imported_93da9c7d59c179ab",
+          "id": "977e5a7c757b60cc85f0c404cd9d724f5b713ef155f61734976fdbe2beadd613",
+          "memory_layer": "episodic_memory",
+          "proof_role": "guidance_only",
+          "score": 0.306933,
+          "text_preview": "atom_id: h17_imported_93da9c7d59c179ab | title: h17_imported_93da9c7d59c179ab | memory_layer: episodic_memory | memory_type: episodic_failure_memory | rule: category 'unknown_part' was graded partial in a smoke eval; retrieve a more specific answer pattern bef"
+        }
+      ]
+    },
+    {
+      "query_id": "q_safe_generic",
+      "query_text": "safe but too generic repair critic CRAG",
+      "results": [
+        {
+          "atom_id": "h17_imported_a84215fe40232b55",
+          "id": "20e4717b1e12024139eb42af566de79f56379fab5c953b575926d7d9387b15cc",
+          "memory_layer": "critic_memory",
+          "proof_role": "guidance_only",
+          "score": 0.250675,
+          "text_preview": "atom_id: h17_imported_a84215fe40232b55 | title: h17_imported_a84215fe40232b55 | memory_layer: critic_memory | memory_type: repair_trait | rule: crag should retrieve relevant failure/repair engrams and regenerate or rewrite the answer when self-rag flags weak b"
+        },
+        {
+          "atom_id": "critic_safe_but_too_generic_repair_v1",
+          "id": "9e2f48781e28a8028109e666c31d2bf7b53ff0ac4819c9d269a8dc8e880c266b",
+          "memory_layer": "critic_memory",
+          "proof_role": "guidance_only",
+          "score": 0.232957,
+          "text_preview": "atom_id: critic_safe_but_too_generic_repair_v1 | title: safe but too generic repair | memory_layer: critic_memory | memory_type: critic_memory | rule: if an answer is safe but too generic, retrieve a repair pattern before regenerating and add the specific rout"
+        },
+        {
+          "atom_id": "episodic_h13_generic_not_proven_repair_v1",
+          "id": "e6aabe6b42ffc25c7629c1b376e74e2f15f54238525f90cacb36a6bf02c63d10",
+          "memory_layer": "episodic_memory",
+          "proof_role": "guidance_only",
+          "score": 0.160665,
+          "text_preview": "atom_id: episodic_h13_generic_not_proven_repair_v1 | title: repair generic not-proven answers | memory_layer: episodic_memory | memory_type: episodic_memory | rule: h13 overused generic not-proven wording; repairs should still explain what evidence is proven a"
+        },
+        {
+          "atom_id": "h17_imported_15583042313de8d5",
+          "id": "bc1fb9e65bd3c79adc88f5346c3159bf5ff23c40d7a629cdfeec0ffafa2dc01d",
+          "memory_layer": "trait_memory",
+          "proof_role": "guidance_only",
+          "score": 0.14349,
+          "text_preview": "atom_id: h17_imported_15583042313de8d5 | title: h17_imported_15583042313de8d5 | memory_layer: trait_memory | memory_type: style_trait | rule: prefer answer sections: answer, evidence, engineering confidence, limits; for limitations questions, split can prove v"
+        },
+        {
+          "atom_id": "procedural_no_interchangeability_without_authority_v1",
+          "id": "60fd405b32d1225bd4947d559a5757470a333d648f11a5d8594df1e7832e064b",
+          "memory_layer": "procedural_memory",
+          "proof_role": "guidance_only",
+          "score": 0.11819,
+          "text_preview": "atom_id: procedural_no_interchangeability_without_authority_v1 | title: no interchangeability without explicit authority | memory_layer: procedural_memory | memory_type: procedural_memory | rule: require explicit source authority before saying parts are interc"
+        }
+      ]
+    },
+    {
+      "query_id": "q_summary_limit",
+      "query_text": "v2 summaries guidance only not proof",
+      "results": [
+        {
+          "atom_id": "h17_imported_15583042313de8d5",
+          "id": "bc1fb9e65bd3c79adc88f5346c3159bf5ff23c40d7a629cdfeec0ffafa2dc01d",
+          "memory_layer": "trait_memory",
+          "proof_role": "guidance_only",
+          "score": 0.198106,
+          "text_preview": "atom_id: h17_imported_15583042313de8d5 | title: h17_imported_15583042313de8d5 | memory_layer: trait_memory | memory_type: style_trait | rule: prefer answer sections: answer, evidence, engineering confidence, limits; for limitations questions, split can prove v"
+        },
+        {
+          "atom_id": "trait_cautious_source_trace_helpful_v1",
+          "id": "02fb719b41c154db8c6ce4edb872cd0ae729400079b979f90a790aed577e1466",
+          "memory_layer": "trait_memory",
+          "proof_role": "guidance_only",
+          "score": 0.139887,
+          "text_preview": "atom_id: trait_cautious_source_trace_helpful_v1 | title: cautious source-trace helpfulness | memory_layer: trait_memory | memory_type: trait_memory | rule: behave as a cautious, source-trace-first engineering analyst who is helpful without overclaiming. | trig"
+        },
+        {
+          "atom_id": "procedural_no_interchangeability_without_authority_v1",
+          "id": "60fd405b32d1225bd4947d559a5757470a333d648f11a5d8594df1e7832e064b",
+          "memory_layer": "procedural_memory",
+          "proof_role": "guidance_only",
+          "score": 0.123147,
+          "text_preview": "atom_id: procedural_no_interchangeability_without_authority_v1 | title: no interchangeability without explicit authority | memory_layer: procedural_memory | memory_type: procedural_memory | rule: require explicit source authority before saying parts are interc"
+        },
+        {
+          "atom_id": "h17_imported_2b473a0ff68388c0",
+          "id": "74a35a6e8b4d21babadb83177174f62126a1ac499c6055a10c2fd59465ad5b5e",
+          "memory_layer": "critic_memory",
+          "proof_role": "guidance_only",
+          "score": 0.12,
+          "text_preview": "atom_id: h17_imported_2b473a0ff68388c0 | title: h17_imported_2b473a0ff68388c0 | memory_layer: critic_memory | memory_type: episodic_failure_memory | rule: h13/h14 initially answered pipeline/debug questions with generic 'not proven'; h14c repaired this using s"
+        },
+        {
+          "atom_id": "h17_imported_568223f7c37a12f1",
+          "id": "8b04ca4b25e62fe6dcdc3db2afdc6d579b35160a396e2a1df98f4c62798be83b",
+          "memory_layer": "procedural_memory",
+          "proof_role": "guidance_only",
+          "score": 0.087722,
+          "text_preview": "atom_id: h17_imported_568223f7c37a12f1 | title: h17_imported_568223f7c37a12f1 | memory_layer: procedural_memory | memory_type: policy_trait | rule: figure/part identification evidence does not prove installation safety, fit approval, aircraft effectivity, or r"
+        }
+      ]
+    },
+    {
+      "query_id": "q_installation_limit",
+      "query_text": "installation safety fit effectivity approval not proven",
+      "results": [
+        {
+          "atom_id": "h17_imported_568223f7c37a12f1",
+          "id": "8b04ca4b25e62fe6dcdc3db2afdc6d579b35160a396e2a1df98f4c62798be83b",
+          "memory_layer": "procedural_memory",
+          "proof_role": "guidance_only",
+          "score": 0.153645,
+          "text_preview": "atom_id: h17_imported_568223f7c37a12f1 | title: h17_imported_568223f7c37a12f1 | memory_layer: procedural_memory | memory_type: policy_trait | rule: figure/part identification evidence does not prove installation safety, fit approval, aircraft effectivity, or r"
+        },
+        {
+          "atom_id": "procedural_no_interchangeability_without_authority_v1",
+          "id": "60fd405b32d1225bd4947d559a5757470a333d648f11a5d8594df1e7832e064b",
+          "memory_layer": "procedural_memory",
+          "proof_role": "guidance_only",
+          "score": 0.149095,
+          "text_preview": "atom_id: procedural_no_interchangeability_without_authority_v1 | title: no interchangeability without explicit authority | memory_layer: procedural_memory | memory_type: procedural_memory | rule: require explicit source authority before saying parts are interc"
+        },
+        {
+          "atom_id": "h17_imported_15583042313de8d5",
+          "id": "bc1fb9e65bd3c79adc88f5346c3159bf5ff23c40d7a629cdfeec0ffafa2dc01d",
+          "memory_layer": "trait_memory",
+          "proof_role": "guidance_only",
+          "score": 0.138414,
+          "text_preview": "atom_id: h17_imported_15583042313de8d5 | title: h17_imported_15583042313de8d5 | memory_layer: trait_memory | memory_type: style_trait | rule: prefer answer sections: answer, evidence, engineering confidence, limits; for limitations questions, split can prove v"
+        },
+        {
+          "atom_id": "h17_imported_81996026ec62b901",
+          "id": "38399c12042df80ded059f90fa6cdf094703e63f707176fcb9e08f8e86acf4e2",
+          "memory_layer": "episodic_memory",
+          "proof_role": "guidance_only",
+          "score": 0.128956,
+          "text_preview": "atom_id: h17_imported_81996026ec62b901 | title: h17_imported_81996026ec62b901 | memory_layer: episodic_memory | memory_type: episodic_failure_memory | rule: h14b exposed nested stage-output path failures; h14c used shorter output dirs and safe trace records to"
+        },
+        {
+          "atom_id": "h17_imported_774825e2b50c55aa",
+          "id": "4d8c2d0bcbc55441373505c4e57a58b3bafcb0c16b69c735517fd8097a32b4f7",
+          "memory_layer": "episodic_memory",
+          "proof_role": "guidance_only",
+          "score": 0.125647,
+          "text_preview": "atom_id: h17_imported_774825e2b50c55aa | title: h17_imported_774825e2b50c55aa | memory_layer: episodic_memory | memory_type: episodic_failure_memory | rule: category 'unknown_figure' was graded partial in a smoke eval; retrieve a more specific answer pattern b"
+        }
+      ]
+    }
+  ],
+  "local_retrieval_smoke_path": "local_data\\organization\\trace_net\\engineering_engram_qdrant_adapter_v1\\trace_net_engineering_engram_qdrant_local_retrieval_smoke_v1.jsonl",
+  "module": "trace_net_engineering_engram_qdrant_adapter_v1",
+  "qdrant_point_records_path": "local_data\\organization\\trace_net\\engineering_engram_qdrant_adapter_v1\\trace_net_engineering_engram_qdrant_points_v1.jsonl",
+  "quality_status": "PASS",
+  "source_vector_loader_path": "local_data\\organization\\trace_net\\engineering_engram_vector_loader_v1\\trace_net_engineering_engram_vector_loader_v1.json",
+  "status": "TRACE_NET_ENGINEERING_ENGRAM_QDRANT_ADAPTER_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "local_retrieval_query_count": 6,
+    "memory_layer_counts": {
+      "critic_memory": 4,
+      "episodic_memory": 5,
+      "procedural_memory": 3,
+      "semantic_memory": 3,
+      "trait_memory": 3,
+      "working_memory": 3
+    },
+    "missing_layers": [],
+    "module": "trace_net_engineering_engram_qdrant_adapter_v1",
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_point_record_count": 21,
+    "qdrant_read_attempt_count": 0,
+    "qdrant_ready_record_count": 21,
+    "qdrant_write_attempt_count": 0,
+    "quality_failures": [],
+    "ready_for_live_qdrant_search": true,
+    "ready_for_live_qdrant_write": true,
+    "source_truth_mutation_allowed_count": 0,
+    "source_vector_loader_quality_status": "PASS",
+    "unsafe_finding_count": 0,
+    "unsafe_findings": [],
+    "version": "v1",
+    "write_attempt_count": 0
+  },
+  "version": "v1"
+}

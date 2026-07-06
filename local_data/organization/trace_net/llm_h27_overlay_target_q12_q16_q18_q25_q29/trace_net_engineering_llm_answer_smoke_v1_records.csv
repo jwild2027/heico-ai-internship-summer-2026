@@ -1,0 +1,53 @@
+question_id,category,question,grade,runner_passed,llm_answered,llm_mode,task_type,answer_citation_count,valid_answer_citation_count,source_trace_ready_citation_count,invalid_answer_citation_count,unsupported_claim_count,summary_used_as_proof_count,llm_error,llm_retry_used,llm_fallback_used,llm_fallback_reason,reasoning_trace_path,answer_preview,run_dir
+q12,interchangeability,Is 120-50645-005 interchangeable with 120-50645-011?,GOOD,True,True,ollama,exact_part_lookup,8,8,8,0,0,0,,False,False,,local_data\organization\trace_net\llm_h27_overlay_target_q12_q16_q18_q25_q29\t\q01_04f8cb_trace.json,"**Answer:**
+Not proven. TRACE-Net cannot confirm if part 120-50645-005 is interchangeable with or an approved replacement for 120-50645-011, as there is no explicit source authority in the provided `proof_context` to support such a claim.
+
+TRACE-Net can prove the following regarding part identity and nomenclature:
+*   **Part 120-50645-005** is identified in the documentation as ""DOUBLE PASSENGER SEAT ASSY"" [O1]. This part is associated with Figure 69 on page 315 [V6] and is supported by exact-part and table/OCR evidence [E1, T1].
+*   **Part 120-50645-011** is also identified in the documentation as ""DOUBLE PASSENGER SEAT ASSY"" [O2]. This part is associated with Figure 75 on page 327 [V7] and is supported by exact-part and table/OCR evidence [E2, T2].
+
+**Evidence:**
+*   [V6] Visual evidence",local_data\organization\trace_net\llm_h27_overlay_target_q12_q16_q18_q25_q29\r\q01_04f8cb
+q16,troubleshooting,Why was nomenclature missing from the visual route evidence?,GOOD,True,True,ollama,troubleshooting_question,4,4,4,0,0,0,,True,False,full_prompt_failed_then_minimal_retry_succeeded: RuntimeError: Ollama response did not contain answer text,local_data\organization\trace_net\llm_h27_overlay_target_q12_q16_q18_q25_q29\t\q02_4d90ec_trace.json,"Answer: Nomenclature was missing from the visual route because that route only establishes figure-to-part linkage [V6], whereas the nomenclature text must be provided by the OCR nomenclature route which contains the line-text evidence for the part name [O1].
+
+Evidence:
+- [V6] provides the visual link between Figure 69 and part number 120-50645-005.
+- [O1] provides the OCR-extracted nomenclature ""DOUBLE PASSENGER SEAT ASSY"" via line-text evidence.
+
+Engineering confidence: High
+
+Limits: This is a TRACE-Net pipeline explanation and does not constitute proof of interchangeability, effectivity, fit, replacement approval, or installation safety.",local_data\organization\trace_net\llm_h27_overlay_target_q12_q16_q18_q25_q29\r\q02_4d90ec
+q18,pipeline_recovery,What changed after the raw OCR nomenclature extractor was added?,PARTIAL,True,True,ollama,table_extraction_question,0,0,0,0,0,0,,True,False,full_prompt_failed_then_minimal_retry_succeeded: RuntimeError: Ollama response did not contain answer text,local_data\organization\trace_net\llm_h27_overlay_target_q12_q16_q18_q25_q29\t\q03_1578a9_trace.json,"Answer: The addition of the raw OCR nomenclature extractor allows the pipeline to supplement visual figure-to-part links [V6, V7, V8] with direct line-text evidence for part names [O1, O2, O3]. This enables the nomenclature merger to carry OCR-backed text into the visual evidence pack, establishing a source-trace-ready nomenclature field that visual-link evidence alone cannot provide.
+
+Evidence:
+- Visual links establish figure-to-part connections [V6, V7, V8].
+- OCR extraction provides specific `line_text` for part names and metadata [O1, O2, O3].
+
+Engineering confidence: High
+
+Limits: This explanation pertains to pipeline recovery and data extraction logic; it does not prove part interchangeability, effectivity, or safety.",local_data\organization\trace_net\llm_h27_overlay_target_q12_q16_q18_q25_q29\r\q03_1578a9
+q25,unknown_part,Find part number 999-99999-999 and cite the source.,PARTIAL,False,True,ollama,exact_part_lookup,0,0,0,0,0,0,,False,False,,local_data\organization\trace_net\llm_h27_overlay_target_q12_q16_q18_q25_q29\t\q04_ea6f4b_trace.json,"**Answer:**
+Not found / not source-trace-ready. TRACE-Net could not find part number 999-99999-999 in the provided proof_context.
+
+**Evidence:**
+- No proof_context records were available to verify this part number.
+
+**Engineering confidence:**
+LOW (No engineering evidence or nomenclature was available for verification).
+
+**Limits:**
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety. 
+- Without source-traceable documentation, the identity, applicability, and usage of this part cannot be confirmed by TRACE-Net.",local_data\organization\trace_net\llm_h27_overlay_target_q12_q16_q18_q25_q29\r\q04_ea6f4b
+q29,summary_limit,Can v2 summaries alone prove Figure 69 part identity?,GOOD,True,True,ollama,visual_part_identification,7,7,7,0,0,0,,False,False,,local_data\organization\trace_net\llm_h27_overlay_target_q12_q16_q18_q25_q29\t\q05_d11ba3_trace.json,"Answer: 
+V2 summaries alone cannot prove Figure 69 part identity. While v2 summaries may guide planning and framing for the answer, they do not constitute proof; all factual claims regarding part identity must be supported by `proof_context` citations.
+
+TRACE-Net can prove the following from the provided `proof_context`:
+- Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1].
+
+TRACE-Net cannot prove:
+- Part identity or nomenclature using only v2 summaries without corresponding visual [V6] or OCR [O1] evidence.
+- Interchangeability, effectively, fit, replacement approval, or installation safety.
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature provides ""DOUBLE PASSENGER SEAT ASSY"" f",local_data\organization\trace_net\llm_h27_overlay_target_q12_q16_q18_q25_q29\r\q05_d11ba3

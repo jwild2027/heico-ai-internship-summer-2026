@@ -1,0 +1,151 @@
+{
+  "trace_type": "safe_reasoning_trace_not_hidden_chain_of_thought",
+  "trace_note": "This shows the evidence, prompt constraints, scaffold, and gate checks. It is not raw model hidden reasoning.",
+  "question_id": "q24",
+  "category": "nomenclature_summary",
+  "question": "Which figures link to DOUBLE PASSENGER SEAT ASSY?",
+  "task_type": "general_engineering_question",
+  "runner_quality_status": "PASS",
+  "runner_passed": true,
+  "proof_context_count": 9,
+  "guidance_context_count": 8,
+  "available_citation_labels": [
+    "O1",
+    "O2",
+    "O3",
+    "T1",
+    "T2",
+    "T3",
+    "V6",
+    "V7",
+    "V8"
+  ],
+  "proof_context_preview": [
+    {
+      "citation_label": "V6",
+      "context_type": "visual_figure_link",
+      "figure": "69",
+      "part_number": "120-50645-005",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 315,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "V7",
+      "context_type": "visual_figure_link",
+      "figure": "75",
+      "part_number": "120-50645-011",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 327,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "V8",
+      "context_type": "visual_figure_link",
+      "figure": "91",
+      "part_number": "120-29068-003",
+      "nomenclature": "STRUCTURE ASSY",
+      "page_number": 382,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "O1",
+      "context_type": "ocr_nomenclature",
+      "figure": "69",
+      "part_number": "120-50645-005",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 316,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "O2",
+      "context_type": "ocr_nomenclature",
+      "figure": "75",
+      "part_number": "120-50645-011",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 328,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "O3",
+      "context_type": "ocr_nomenclature",
+      "figure": "91",
+      "part_number": "120-29068-003",
+      "nomenclature": "STRUCTURE ASSY 00",
+      "page_number": 384,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "T1",
+      "context_type": "table_ocr_proof",
+      "figure": null,
+      "part_number": "120-50645-005",
+      "nomenclature": null,
+      "page_number": null,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "T2",
+      "context_type": "table_ocr_proof",
+      "figure": null,
+      "part_number": "120-50645-011",
+      "nomenclature": null,
+      "page_number": null,
+      "source_trace_ready": true
+    }
+  ],
+  "answer_constraints": {
+    "answer_style": "engineering_brain",
+    "may_claim": [
+      "claims supported by source-trace-ready proof_context records",
+      "guidance summaries may frame the search but not prove facts"
+    ],
+    "may_not_claim": [
+      "effectivity",
+      "fit",
+      "installation safety",
+      "interchangeability",
+      "replacement approval",
+      "summary-only proof",
+      "unsupported effectivity",
+      "unsupported interchangeability",
+      "unsupported installation or safety approval"
+    ],
+    "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"
+  },
+  "intent_rules": [
+    "INTENT_RULE: For comparisons or nomenclature summaries, cover all requested entities before limits; do not collapse the answer to only the first matching figure/part."
+  ],
+  "scaffold_present": true,
+  "engram_atom_count": 4,
+  "engram_ids": [
+    "policy_v2_summaries_guidance_not_proof_v1",
+    "route_visual_link_vs_ocr_nomenclature_v1",
+    "policy_no_interchangeability_without_authority_v1",
+    "episode_h13_generic_not_proven_v1"
+  ],
+  "engram_traits": [
+    "failure_memory",
+    "route_awareness",
+    "source_trace_caution",
+    "summary_boundary"
+  ],
+  "engram_note": "Engram atoms are behavioral guidance only; they are not source proof and are not raw model reasoning.",
+  "llm_retry_used": false,
+  "llm_fallback_used": false,
+  "llm_fallback_reason": "",
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h33_full30_overlay_progress_budget\\p\\q24_697330_p.txt",
+  "answer_path": "local_data\\organization\\trace_net\\llm_h33_full30_overlay_progress_budget\\a\\q24_697330_a.txt",
+  "llm_error": "",
+  "gate_result": {
+    "grade": "GOOD",
+    "llm_answered": true,
+    "answer_citation_count": 1,
+    "valid_answer_citation_count": 1,
+    "source_trace_ready_citation_count": 1,
+    "invalid_answer_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0
+  },
+  "answer_preview": "Answer:\nFigure 69 and Figure 75 are linked to the nomenclature \"DOUBLE PASSENGER SEAT ASSY\".\n\nEvidence:\n- Figure 69 is linked to part number 120-50645-005 [V6] via visual figure link, with OCR-backed nomenclature confirming \"DOUBLE PASSENGER SEAT ASSY\" [O"
+}

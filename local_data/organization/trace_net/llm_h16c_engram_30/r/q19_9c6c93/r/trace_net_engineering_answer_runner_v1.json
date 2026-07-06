@@ -1,0 +1,103 @@
+{
+  "status": "TRACE_NET_ENGINEERING_ANSWER_RUNNER_BUILT",
+  "module": "trace_net_engineering_answer_runner_v1",
+  "version": "v1",
+  "quality_status": "PASS",
+  "question": "What source page supports the nomenclature for Figure 69?",
+  "answer_text": "Answer:\nFigure 69 is linked to part number 120-50645-005, \"DOUBLE PASSENGER SEAT ASSY\" [V6] [O1].\n\nEvidence:\n- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.\n- [O1] OCR-backed nomenclature gives \"DOUBLE PASSENGER SEAT ASSY\" on page 316.\n  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF\n- [T1] Table/OCR proof supports part number 120-50645-005.\n\nEngineering confidence:\nHIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.\n\nLimits:\n- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.\n- V2 summaries, when present, are guidance only and are not used as proof in this answer.",
+  "summary": {
+    "runner_record_count": 1,
+    "question": "What source page supports the nomenclature for Figure 69?",
+    "task_type": "visual_part_identification",
+    "engineering_intent": "identify what a visual figure or diagram shows using image plus OCR/table proof",
+    "required_route_count": 4,
+    "selected_guidance_page_count": 0,
+    "guidance_context_count": 0,
+    "proof_context_count": 3,
+    "summary_used_as_proof_count": 0,
+    "answer_citation_count": 5,
+    "valid_answer_citation_count": 3,
+    "source_trace_ready_citation_count": 3,
+    "invalid_answer_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "llava_only_part_identity_claim_count": 0,
+    "stage_count": 3,
+    "stage_pass_count": 3,
+    "stage_quality_statuses": {
+      "engineering_query_planner": "PASS",
+      "engineering_answer_context_pack": "PASS",
+      "engineering_answer_composer": "PASS"
+    },
+    "ready_for_engineering_context_pack": true,
+    "ready_for_engineering_answer_composer": true,
+    "ready_for_engineering_answer_delivery": true,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0,
+    "runner_quality_status": "PASS"
+  },
+  "failures": [],
+  "records": [
+    {
+      "question": "What source page supports the nomenclature for Figure 69?",
+      "task_type": "visual_part_identification",
+      "engineering_intent": "identify what a visual figure or diagram shows using image plus OCR/table proof",
+      "entities": {
+        "part_numbers": [],
+        "figures": [
+          "69"
+        ],
+        "items": [],
+        "part_families": [],
+        "topics": [
+          "figure",
+          "nomenclature"
+        ]
+      },
+      "required_routes": [
+        "image_or_diagram",
+        "table_ocr_proof",
+        "raw_ocr_nomenclature",
+        "image_route_quality_gate"
+      ],
+      "optional_routes": [
+        "graph_leiden_neighbors",
+        "part_family"
+      ],
+      "stage_reports": {
+        "engineering_query_planner": "local_data\\organization\\trace_net\\llm_h16c_engram_30\\r\\q19_9c6c93\\r\\planner\\trace_net_engineering_query_planner_v1.json",
+        "engineering_answer_context_pack": "local_data\\organization\\trace_net\\llm_h16c_engram_30\\r\\q19_9c6c93\\r\\context_pack\\trace_net_engineering_answer_context_pack_v1.json",
+        "engineering_answer_composer": "local_data\\organization\\trace_net\\llm_h16c_engram_30\\r\\q19_9c6c93\\r\\composer\\trace_net_engineering_answer_composer_v1.json"
+      },
+      "answer_text": "Answer:\nFigure 69 is linked to part number 120-50645-005, \"DOUBLE PASSENGER SEAT ASSY\" [V6] [O1].\n\nEvidence:\n- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.\n- [O1] OCR-backed nomenclature gives \"DOUBLE PASSENGER SEAT ASSY\" on page 316.\n  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF\n- [T1] Table/OCR proof supports part number 120-50645-005.\n\nEngineering confidence:\nHIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.\n\nLimits:\n- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.\n- V2 summaries, when present, are guidance only and are not used as proof in this answer.",
+      "answer_permission": false,
+      "source_truth_mutation_allowed": false,
+      "unsafe": false
+    }
+  ],
+  "stage_reports": {
+    "engineering_query_planner": "local_data\\organization\\trace_net\\llm_h16c_engram_30\\r\\q19_9c6c93\\r\\planner\\trace_net_engineering_query_planner_v1.json",
+    "engineering_answer_context_pack": "local_data\\organization\\trace_net\\llm_h16c_engram_30\\r\\q19_9c6c93\\r\\context_pack\\trace_net_engineering_answer_context_pack_v1.json",
+    "engineering_answer_composer": "local_data\\organization\\trace_net\\llm_h16c_engram_30\\r\\q19_9c6c93\\r\\composer\\trace_net_engineering_answer_composer_v1.json"
+  },
+  "paths": {
+    "runner": "local_data\\organization\\trace_net\\llm_h16c_engram_30\\r\\q19_9c6c93\\r\\trace_net_engineering_answer_runner_v1.json",
+    "quality_check": "local_data\\organization\\trace_net\\llm_h16c_engram_30\\r\\q19_9c6c93\\r\\trace_net_engineering_answer_runner_v1_quality_check.json",
+    "planner": "local_data\\organization\\trace_net\\llm_h16c_engram_30\\r\\q19_9c6c93\\r\\planner\\trace_net_engineering_query_planner_v1.json",
+    "context_pack": "local_data\\organization\\trace_net\\llm_h16c_engram_30\\r\\q19_9c6c93\\r\\context_pack\\trace_net_engineering_answer_context_pack_v1.json",
+    "composer": "local_data\\organization\\trace_net\\llm_h16c_engram_30\\r\\q19_9c6c93\\r\\composer\\trace_net_engineering_answer_composer_v1.json"
+  },
+  "safety_contract": {
+    "postgres_write_allowed": false,
+    "qdrant_write_allowed": false,
+    "opensearch_write_allowed": false,
+    "opensearch_upload_allowed": false,
+    "source_truth_mutation_allowed": false,
+    "answer_permission": false
+  }
+}

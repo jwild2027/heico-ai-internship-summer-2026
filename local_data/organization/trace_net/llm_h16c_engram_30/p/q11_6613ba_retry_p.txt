@@ -1,0 +1,29 @@
+You are TRACE-Net. Return a concise non-empty engineering answer.
+Use only proof_context citations like [V6] and [O1]. Do not cite Engram memory.
+If approval/safety/interchangeability is not explicitly proven, say not proven and explain what is proven.
+QUESTION: What can TRACE-Net not prove about part number 120-50645-005?
+QUESTION_CATEGORY: limitations
+TRACE_NET_SCAFFOLD:
+Answer scaffold:
+Lead with the limitation or not-found/not-proven result.
+Then say what TRACE-Net can prove from the proof_context citations.
+Then say what it cannot prove from the current evidence pack.
+Available citation families: [V6], [O1], [T1], [E1].
+Runner answer to preserve if useful: Answer:
+Part number 120-50645-005 is present in source-trace-ready evidence and is associated with "DOUBLE PASSENGER SEAT ASSY" [E1] [O1] [T1] [V6].
+
+Evidence:
+- [E1] Exact-part evidence contains part number 120-50645-005 in field covered_part_number: 120-50645-005.
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives "DOUBLE PASSENGER SEAT ASSY" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for th
+PROOF_CONTEXT:
+- [V6] context_type=visual_figure_link; citation_label=V6; page_number=315; page_id=t_p_120_1176_p000315; figure=69; part_number=120-50645-005; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True
+- [O1] context_type=ocr_nomenclature; citation_label=O1; page_number=316; page_id=t_p_120_1176_p000316; figure=69; part_number=120-50645-005; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True; line_text=69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [E1] context_type=exact_part_evidence; citation_label=E1; page_id=t_p_120_1176_p000003; part_number=120-50645-005; source_trace_ready=True; proof_eligible=True
+- [T1] context_type=table_ocr_proof; citation_label=T1; page_id=t_p_120_1176_p000003; part_number=120-50645-005; source_trace_ready=True; proof_eligible=True
+Required format: Answer, Evidence, Engineering confidence, Limits.

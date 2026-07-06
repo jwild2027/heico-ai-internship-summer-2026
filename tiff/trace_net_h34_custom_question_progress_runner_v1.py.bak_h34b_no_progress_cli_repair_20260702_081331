@@ -1,0 +1,530 @@
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import re
+import time
+import urllib.request
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Iterable, Mapping
+
+MODULE = "trace_net_h34_custom_question_progress_runner_v1"
+VERSION = "v1"
+
+DEFAULT_QUESTIONS = [
+    {
+        "question_id": "h34b_q01_part_lookup",
+        "category": "custom_part_lookup",
+        "task_type": "exact_part_lookup",
+        "question": "Find part number 120-50645-005. Give the nomenclature if available, cite the source, and clearly state what TRACE-Net cannot prove from this evidence.",
+        "query_terms": ["120-50645-005", "DOUBLE PASSENGER SEAT ASSY", "Figure 69", "covered_part_number"],
+    },
+    {
+        "question_id": "h34b_q02_representative_page",
+        "category": "custom_representative_page",
+        "task_type": "representative_page_explanation",
+        "question": "Pick one representative source-trace-ready page, figure, or record from the available evidence and tell me what TRACE-Net can safely say about it. Cite the source.",
+        "query_terms": ["figure", "page", "part_number", "source_trace_ready"],
+    },
+    {
+        "question_id": "h34b_q03_multi_page_summary",
+        "category": "custom_multi_page_summary",
+        "task_type": "multi_page_summary",
+        "question": "Summarize evidence across multiple available pages, figures, or records. Keep it source-trace-ready, cite each source used, and do not use summaries as proof.",
+        "query_terms": ["page", "figure", "part", "nomenclature", "source_trace"],
+    },
+    {
+        "question_id": "h34b_q04_nomenclature_lookup",
+        "category": "custom_nomenclature_lookup",
+        "task_type": "nomenclature_lookup",
+        "question": "Look up the nomenclature for part number 120-50645-005. Explain which route proves the part name and which route proves the figure-to-part link. Cite the source.",
+        "query_terms": ["120-50645-005", "nomenclature", "OCR", "visual_figure_link", "DOUBLE PASSENGER SEAT ASSY"],
+    },
+    {
+        "question_id": "h34b_q05_quiz_generation",
+        "category": "custom_quiz_generation",
+        "task_type": "quiz_generation",
+        "question": "Create a short 5-question quiz based only on the source-trace-ready information TRACE-Net has available. Include an answer key and cite the evidence used for each answer.",
+        "query_terms": ["figure", "part", "nomenclature", "OCR", "table", "summary"],
+    },
+]
+
+SAFETY_CONTRACT = {
+    "answer_permission": False,
+    "source_truth_mutation_allowed": False,
+    "postgres_write_attempt": False,
+    "qdrant_write_attempt": False,
+    "qdrant_read_attempt": False,
+    "opensearch_write_attempt": False,
+    "opensearch_upload_attempt": False,
+    "write_attempt": False,
+}
+
+ANSWER_BUDGET = """TRACE-NET H34B ANSWER BUDGET + COMPLETION GUARD
+Use the evidence cards below as proof_context. Use only cited evidence cards for factual claims.
+Engram/route guidance is behavior guidance only; it is not proof.
+Target answer length: 450-1300 characters. Hard max: about {hard_max_chars} characters.
+Use sections: Answer, Evidence, Engineering confidence, Limits.
+Finish all sections and do not stop mid-sentence.
+Use individual citation labels like [V1] [O2] [T1]. Do not use grouped labels like [V1, O2].
+If proof is missing, say not found / not source-trace-ready and do not cite unrelated evidence.
+Never infer interchangeability, effectivity, fit, replacement approval, or installation safety unless explicit proof_context says so.
+"""
+
+@dataclass(frozen=True)
+class EvidenceCard:
+    label: str
+    route: str
+    source_path: str
+    page_id: str
+    page_number: str
+    figure_id: str
+    part_number: str
+    nomenclature: str
+    text: str
+    raw_score_hint: int = 0
+
+    def compact(self, max_chars: int = 650) -> str:
+        bits = [f"[{self.label}] route={self.route}"]
+        if self.page_number:
+            bits.append(f"page={self.page_number}")
+        if self.page_id:
+            bits.append(f"page_id={self.page_id}")
+        if self.figure_id:
+            bits.append(f"figure={self.figure_id}")
+        if self.part_number:
+            bits.append(f"part={self.part_number}")
+        if self.nomenclature:
+            bits.append(f"nomenclature={self.nomenclature}")
+        base = " | ".join(bits)
+        text = _single_line(self.text)
+        if len(text) > max_chars:
+            text = text[: max_chars - 3].rstrip() + "..."
+        return base + "\n  " + text
+
+
+def _single_line(value: Any) -> str:
+    return re.sub(r"\s+", " ", str(value or "")).strip()
+
+
+def _load_json(path: str | Path) -> Any:
+    return json.loads(Path(path).read_text(encoding="utf-8"))
+
+
+def _iter_objects(obj: Any, depth: int = 0, max_depth: int = 9) -> Iterable[Mapping[str, Any]]:
+    if depth > max_depth:
+        return
+    if isinstance(obj, Mapping):
+        yield obj
+        for v in obj.values():
+            yield from _iter_objects(v, depth + 1, max_depth=max_depth)
+    elif isinstance(obj, list):
+        for item in obj:
+            yield from _iter_objects(item, depth + 1, max_depth=max_depth)
+
+
+def _get_any(d: Mapping[str, Any], keys: Iterable[str]) -> str:
+    for k in keys:
+        if k in d and d.get(k) not in (None, "", [], {}):
+            return _single_line(d.get(k))
+    return ""
+
+
+def _record_text(d: Mapping[str, Any]) -> str:
+    keys = [
+        "text", "line_text", "ocr_text", "answer_text", "nomenclature", "description",
+        "caption", "figure_caption", "value", "covered_part_number", "part_number",
+        "source_text", "normalized_value", "field_value", "evidence_text",
+    ]
+    parts: list[str] = []
+    for k in keys:
+        if k in d and d.get(k) not in (None, "", [], {}):
+            parts.append(f"{k}: {_single_line(d.get(k))}")
+    if not parts:
+        # Fallback for record-shaped dicts; keep short enough not to explode prompts.
+        blob = _single_line(json.dumps(d, ensure_ascii=False, default=str))
+        parts.append(blob[:900])
+    return " | ".join(parts)
+
+
+def _looks_evidence_like(d: Mapping[str, Any]) -> bool:
+    blob = _single_line(json.dumps(d, ensure_ascii=False, default=str)).lower()
+    signals = [
+        "120-", "part", "figure", "nomenclature", "ocr", "page", "source_trace",
+        "citation", "covered_part_number", "manual_page", "line_text", "table",
+    ]
+    return any(s in blob for s in signals) and len(blob) > 35
+
+
+def collect_evidence_cards(paths_by_route: Mapping[str, str | Path | None], max_cards_per_route: int = 80) -> list[EvidenceCard]:
+    cards: list[EvidenceCard] = []
+    route_prefix = {
+        "visual": "V",
+        "ocr": "O",
+        "table": "T",
+        "exact": "E",
+        "summary": "S",
+    }
+    counters = {route: 0 for route in paths_by_route}
+    seen: set[str] = set()
+
+    for route, raw_path in paths_by_route.items():
+        if not raw_path:
+            continue
+        path = Path(raw_path)
+        if not path.exists():
+            continue
+        try:
+            data = _load_json(path)
+        except Exception:
+            continue
+        prefix = route_prefix.get(route, route[:1].upper())
+        for d in _iter_objects(data):
+            if counters.get(route, 0) >= max_cards_per_route:
+                break
+            if not _looks_evidence_like(d):
+                continue
+            text = _record_text(d)
+            page_id = _get_any(d, ["page_id", "source_page_id", "manual_page_id", "page_uid"])
+            page_number = _get_any(d, ["page_number", "page", "manual_page_number", "source_page_number"])
+            figure_id = _get_any(d, ["figure_id", "figure", "figure_number", "ipl_figure"])
+            part_number = _get_any(d, ["part_number", "covered_part_number", "ipl_part_number", "matched_part_number"])
+            nomenclature = _get_any(d, ["nomenclature", "part_name", "description", "part_description"])
+
+            # Infer common values from text if explicit fields are missing.
+            if not part_number:
+                m = re.search(r"\b\d{3}-\d{5}-\d{3}\b", text)
+                if m:
+                    part_number = m.group(0)
+            if not figure_id:
+                m = re.search(r"\bfig(?:ure)?\.?\s*(\d{1,4})\b", text, flags=re.I)
+                if m:
+                    figure_id = m.group(1)
+            if not nomenclature and "DOUBLE PASSENGER SEAT ASSY" in text.upper():
+                nomenclature = "DOUBLE PASSENGER SEAT ASSY"
+
+            fp = hashlib.sha1((route + "|" + text[:1000]).encode("utf-8", "ignore")).hexdigest()[:18]
+            if fp in seen:
+                continue
+            seen.add(fp)
+            counters[route] = counters.get(route, 0) + 1
+            label = f"{prefix}{counters[route]}"
+            cards.append(EvidenceCard(
+                label=label,
+                route=route,
+                source_path=str(path),
+                page_id=page_id,
+                page_number=page_number,
+                figure_id=figure_id,
+                part_number=part_number,
+                nomenclature=nomenclature,
+                text=text,
+            ))
+    return cards
+
+
+def score_card(card: EvidenceCard, query_terms: Iterable[str], task_type: str = "") -> float:
+    blob = " ".join([card.route, card.page_id, card.page_number, card.figure_id, card.part_number, card.nomenclature, card.text]).lower()
+    score = 0.0
+    for term in query_terms:
+        t = str(term).lower().strip()
+        if not t:
+            continue
+        if t in blob:
+            score += 8.0 + min(4.0, len(t) / 8.0)
+        else:
+            for tok in re.findall(r"[a-z0-9][a-z0-9_-]{2,}", t):
+                if tok in blob:
+                    score += 1.0
+    # Route nudges by task.
+    if "nomenclature" in task_type and card.route == "ocr":
+        score += 6
+    if "part_lookup" in task_type or "exact_part" in task_type:
+        if card.route in {"exact", "table"}:
+            score += 5
+    if "multi_page" in task_type and (card.page_number or card.page_id):
+        score += 2
+    if "quiz" in task_type:
+        score += {"visual": 2, "ocr": 2, "table": 2, "exact": 1}.get(card.route, 0)
+    return score
+
+
+def select_cards(cards: list[EvidenceCard], q: Mapping[str, Any], max_cards: int = 9) -> list[EvidenceCard]:
+    terms = q.get("query_terms") or [q.get("question", "")]
+    task_type = str(q.get("task_type", ""))
+    ranked = sorted(cards, key=lambda c: score_card(c, terms, task_type), reverse=True)
+
+    selected: list[EvidenceCard] = []
+    seen_labels: set[str] = set()
+    seen_pages: set[str] = set()
+    # Prefer diversity for multi-page/quiz/random tasks.
+    diversify = any(k in task_type for k in ["multi_page", "quiz", "representative"])
+    for card in ranked:
+        if card.label in seen_labels:
+            continue
+        page_key = card.page_id or card.page_number
+        if diversify and page_key and page_key in seen_pages and len(selected) < max_cards // 2:
+            continue
+        selected.append(card)
+        seen_labels.add(card.label)
+        if page_key:
+            seen_pages.add(page_key)
+        if len(selected) >= max_cards:
+            break
+    return selected
+
+
+def build_prompt(q: Mapping[str, Any], cards: list[EvidenceCard], hard_max_chars: int = 1700) -> str:
+    evidence = "\n\n".join(c.compact() for c in cards) if cards else "No proof_context evidence cards were selected."
+    return f"""{ANSWER_BUDGET.format(hard_max_chars=hard_max_chars)}
+
+QUESTION_ID: {q.get('question_id')}
+TASK_TYPE: {q.get('task_type')}
+USER QUESTION:
+{q.get('question')}
+
+PROOF_CONTEXT EVIDENCE CARDS:
+{evidence}
+
+Write the answer now. Use only the evidence cards above for factual claims.
+"""
+
+
+def call_ollama(prompt: str, model: str, url: str, timeout_seconds: int) -> str:
+    payload = {"model": model, "prompt": prompt, "stream": False, "options": {"temperature": 0.1}}
+    req = urllib.request.Request(
+        url,
+        data=json.dumps(payload).encode("utf-8"),
+        headers={"Content-Type": "application/json"},
+    )
+    with urllib.request.urlopen(req, timeout=timeout_seconds) as resp:
+        data = json.loads(resp.read().decode("utf-8"))
+    answer = data.get("response") or data.get("answer") or ""
+    if not _single_line(answer):
+        raise RuntimeError("Ollama response did not contain answer text")
+    return answer.strip()
+
+
+def artifact_answer(q: Mapping[str, Any], cards: list[EvidenceCard]) -> str:
+    labels = " ".join(f"[{c.label}]" for c in cards[:4]) or ""
+    task = q.get("task_type")
+    if task == "quiz_generation":
+        facts = []
+        for idx, c in enumerate(cards[:5], 1):
+            fact = c.nomenclature or c.part_number or c.figure_id or c.page_number or c.route
+            facts.append(f"{idx}. What evidence card supports {fact}? Answer: {fact} [{c.label}]")
+        return "Answer:\n" + "\n".join(facts) + "\n\nEvidence:\nThe quiz uses only the cited evidence cards.\n\nEngineering confidence:\nMEDIUM/HIGH depending on each cited card.\n\nLimits:\nThis quiz does not prove interchangeability, fit, effectivity, replacement approval, or installation safety."
+    if cards:
+        c = cards[0]
+        subject = c.part_number or c.nomenclature or ("Figure " + c.figure_id if c.figure_id else "the selected evidence")
+        return f"Answer:\nTRACE-Net can safely discuss {subject} using the selected source-trace-ready evidence {labels}.\n\nEvidence:\n" + "\n".join(f"- [{x.label}] {x.compact(260)}" for x in cards[:4]) + "\n\nEngineering confidence:\nMEDIUM/HIGH for claims directly supported by the cited cards.\n\nLimits:\nThis does not prove interchangeability, effectivity, fit, replacement approval, or installation safety. Engram and summaries are guidance only, not proof."
+    return "Answer:\nNot found / not source-trace-ready. No proof_context evidence cards were selected.\n\nEvidence:\nNo cited evidence available.\n\nEngineering confidence:\nLOW.\n\nLimits:\nNo source claim can be proven without proof_context citations."
+
+
+def basic_grade(answer: str, cards: list[EvidenceCard]) -> tuple[str, dict[str, int]]:
+    citation_labels = re.findall(r"\[([A-Z]\d+)\]", answer or "")
+    valid = {c.label for c in cards}
+    valid_count = sum(1 for x in citation_labels if x in valid)
+    grouped_risk = len(re.findall(r"\[[A-Z]\d+\s*,\s*[A-Z]\d+", answer or ""))
+    unsupported = 0
+    unsafe_terms = ["interchangeable", "approved replacement", "installation safety", "safe to install"]
+    lower = (answer or "").lower()
+    # Mentioning limits is okay; claiming positive authority without explicit phrasing is risky but keep as diagnostic only.
+    if any(t in lower for t in unsafe_terms) and "does not prove" not in lower and "cannot prove" not in lower:
+        unsupported += 1
+    if cards and valid_count >= 1 and grouped_risk == 0 and unsupported == 0:
+        grade = "GOOD"
+    elif unsupported == 0:
+        grade = "PARTIAL"
+    else:
+        grade = "BAD"
+    return grade, {
+        "answer_citation_count": len(citation_labels),
+        "valid_answer_citation_count": valid_count,
+        "grouped_citation_risk_count": grouped_risk,
+        "unsupported_claim_count": unsupported,
+    }
+
+
+def read_questions(path: str | Path | None) -> list[dict[str, Any]]:
+    if not path:
+        return [dict(x) for x in DEFAULT_QUESTIONS]
+    p = Path(path)
+    if p.suffix.lower() == ".json":
+        data = _load_json(p)
+        if isinstance(data, Mapping):
+            return list(data.get("questions") or data.get("records") or [])
+        return list(data)
+    out = []
+    for line in p.read_text(encoding="utf-8").splitlines():
+        if line.strip():
+            out.append(json.loads(line))
+    return out
+
+
+def build_custom_question_run(
+    *,
+    output_dir: str | Path,
+    image_visual_evidence_pack: str | Path | None = None,
+    raw_ocr_nomenclature_extractor: str | Path | None = None,
+    table_route_evidence_packager: str | Path | None = None,
+    table_exact_search_adapter: str | Path | None = None,
+    questions: str | Path | None = None,
+    llm_mode: str = "ollama",
+    ollama_model: str = "gemma4:26b",
+    ollama_url: str = "http://127.0.0.1:11434/api/generate",
+    timeout_seconds: int = 420,
+    max_questions: int = 5,
+    max_cards_per_question: int = 9,
+    answer_hard_max_chars: int = 1700,
+    progress: bool = True,
+) -> dict[str, Any]:
+    output = Path(output_dir)
+    prompt_dir = output / "p"
+    answer_dir = output / "a"
+    trace_dir = output / "t"
+    for d in [output, prompt_dir, answer_dir, trace_dir]:
+        d.mkdir(parents=True, exist_ok=True)
+
+    cards = collect_evidence_cards({
+        "visual": image_visual_evidence_pack,
+        "ocr": raw_ocr_nomenclature_extractor,
+        "table": table_route_evidence_packager,
+        "exact": table_exact_search_adapter,
+    })
+    qlist = read_questions(questions)[:max_questions]
+    records: list[dict[str, Any]] = []
+    start = time.time()
+
+    for idx, q in enumerate(qlist, 1):
+        qid = str(q.get("question_id") or f"h34b_q{idx:02d}")
+        selected = select_cards(cards, q, max_cards=max_cards_per_question)
+        prompt = build_prompt(q, selected, hard_max_chars=answer_hard_max_chars)
+        safe_id = re.sub(r"[^A-Za-z0-9_-]+", "_", qid)[:80]
+        prompt_path = prompt_dir / f"{idx:02d}_{safe_id}_p.txt"
+        answer_path = answer_dir / f"{idx:02d}_{safe_id}_a.txt"
+        trace_path = trace_dir / f"{idx:02d}_{safe_id}_trace.json"
+        prompt_path.write_text(prompt, encoding="utf-8")
+        llm_error = ""
+        try:
+            if llm_mode == "artifact":
+                answer = artifact_answer(q, selected)
+            elif llm_mode == "ollama":
+                answer = call_ollama(prompt, ollama_model, ollama_url, timeout_seconds)
+            else:
+                raise ValueError(f"unsupported llm_mode: {llm_mode}")
+        except Exception as exc:  # Safe conservative fallback.
+            llm_error = str(exc)
+            answer = artifact_answer(q, selected)
+        answer_path.write_text(answer, encoding="utf-8")
+        grade, counts = basic_grade(answer, selected)
+        rec = {
+            "question_id": qid,
+            "category": q.get("category", "custom"),
+            "task_type": q.get("task_type", "custom_question"),
+            "question": q.get("question"),
+            "grade": grade,
+            "llm_answered": bool(_single_line(answer)),
+            "llm_mode": llm_mode,
+            "llm_model": ollama_model if llm_mode == "ollama" else "artifact",
+            "llm_error": llm_error,
+            "fallback_used": bool(llm_error),
+            "prompt_path": str(prompt_path),
+            "answer_path": str(answer_path),
+            "trace_path": str(trace_path),
+            "answer_preview": answer[:2200],
+            "answer_char_count": len(answer),
+            "selected_evidence_count": len(selected),
+            "selected_evidence_labels": [c.label for c in selected],
+            "selected_routes": sorted(set(c.route for c in selected)),
+            **counts,
+            **SAFETY_CONTRACT,
+            "unsafe": counts["unsupported_claim_count"] > 0,
+        }
+        trace_path.write_text(json.dumps({"question": q, "selected_evidence": [c.__dict__ for c in selected], "record": rec}, indent=2), encoding="utf-8")
+        records.append(rec)
+        if progress:
+            elapsed = time.time() - start
+            print(f"[H34B progress] {idx}/{len(qlist)} ({idx/len(qlist)*100:.1f}%) qid={qid} grade={grade} citations={counts['valid_answer_citation_count']} chars={len(answer)} elapsed={elapsed:.1f}s", flush=True)
+
+    summary = {
+        "module": MODULE,
+        "version": VERSION,
+        "question_count": len(qlist),
+        "llm_answered_count": sum(1 for r in records if r["llm_answered"]),
+        "good_answer_count": sum(1 for r in records if r["grade"] == "GOOD"),
+        "partial_answer_count": sum(1 for r in records if r["grade"] == "PARTIAL"),
+        "bad_answer_count": sum(1 for r in records if r["grade"] == "BAD"),
+        "fallback_used_count": sum(1 for r in records if r["fallback_used"]),
+        "evidence_card_count": len(cards),
+        "answer_permission_count": 0,
+        "source_truth_mutation_allowed_count": 0,
+        "postgres_write_attempt_count": 0,
+        "qdrant_write_attempt_count": 0,
+        "qdrant_read_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "opensearch_upload_attempt_count": 0,
+        "write_attempt_count": 0,
+        "unsafe_finding_count": sum(1 for r in records if r["unsafe"]),
+    }
+    quality_failures = []
+    if summary["bad_answer_count"] > 0:
+        quality_failures.append("bad_answers_present")
+    if summary["unsafe_finding_count"] > 0:
+        quality_failures.append("unsafe_findings_present")
+    if summary["llm_answered_count"] < len(qlist):
+        quality_failures.append("not_all_answered")
+    manifest = {
+        "status": "TRACE_NET_H34B_CUSTOM_QUESTION_PROGRESS_RUN_BUILT",
+        "quality_status": "PASS" if not quality_failures else "FAIL",
+        "summary": {**summary, "quality_failures": quality_failures},
+        "run_policy": {
+            "mode": "custom_question_progress_runner",
+            "proof_boundary": "Evidence cards are proof_context; Engram/vector/feedback guidance is not proof.",
+            "safety_contract": SAFETY_CONTRACT,
+        },
+        "records": records,
+        "evidence_card_sample": [c.__dict__ for c in cards[:20]],
+    }
+    (output / f"{MODULE}.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    (output / f"{MODULE}_records.jsonl").write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in records) + "\n", encoding="utf-8")
+    print(f"status={manifest['status']}")
+    print(f"quality_status={manifest['quality_status']}")
+    print(f"question_count={summary['question_count']}")
+    print(f"good_answer_count={summary['good_answer_count']}")
+    print(f"partial_answer_count={summary['partial_answer_count']}")
+    print(f"bad_answer_count={summary['bad_answer_count']}")
+    print(f"fallback_used_count={summary['fallback_used_count']}")
+    print(f"output={output / (MODULE + '.json')}")
+    return manifest
+
+
+def build_arg_parser() -> argparse.ArgumentParser:
+    ap = argparse.ArgumentParser(description="TRACE-Net H34B custom 5-question progress runner")
+    ap.add_argument("--output-dir", required=True)
+    ap.add_argument("--image-visual-evidence-pack")
+    ap.add_argument("--raw-ocr-nomenclature-extractor")
+    ap.add_argument("--table-route-evidence-packager")
+    ap.add_argument("--table-exact-search-adapter")
+    ap.add_argument("--questions")
+    ap.add_argument("--llm-mode", choices=["artifact", "ollama"], default="ollama")
+    ap.add_argument("--ollama-model", default="gemma4:26b")
+    ap.add_argument("--ollama-url", default="http://127.0.0.1:11434/api/generate")
+    ap.add_argument("--timeout-seconds", type=int, default=420)
+    ap.add_argument("--max-questions", type=int, default=5)
+    ap.add_argument("--max-cards-per-question", type=int, default=9)
+    ap.add_argument("--answer-hard-max-chars", type=int, default=1700)
+    ap.add_argument("--no-progress", action="store_true")
+    return ap
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = build_arg_parser().parse_args(argv)
+    build_custom_question_run(progress=not args.no_progress, **vars(args))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

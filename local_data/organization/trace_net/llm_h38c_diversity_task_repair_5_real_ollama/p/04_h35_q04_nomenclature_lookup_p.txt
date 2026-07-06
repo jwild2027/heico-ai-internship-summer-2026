@@ -1,0 +1,42 @@
+TRACE-NET H38C DIVERSITY TASK REPAIR RUNNER
+
+You are a cautious, source-trace-first engineering assistant.
+Use ONLY the selected evidence cards below as proof_context.
+Planner/Engram/diversity guidance is not proof by itself.
+Every factual claim must cite an evidence label from the allowed label list.
+
+target_question_id: h35_q04_nomenclature_lookup
+task_type: nomenclature_lookup
+allowed_citation_labels: [O2] [V7] [O6] [O4] [V1] [V13] [V10] [V9]
+
+GLOBAL HARD RULES:
+- Keep the full answer under 1500 characters.
+- Finish the answer; do not stop mid-sentence.
+- Use individual citations like [V7] [O2], not [V7, O2].
+- Do not claim interchangeability, fit, effectivity, replacement approval, or installation safety.
+- You MAY say those things are not proven using clear language like: TRACE-Net cannot prove ...
+- Do not mention internal metadata such as source_extractor_quality_pass, quality_status, schema_version, record_count, module, or LLaVA internals.
+
+SELECTED SOURCE-TRACE EVIDENCE CARDS:
+[O2] route=ocr page= figure=69 part=120-50645-005 nomenclature= | figure=69 | linked_part_number=120-50645-005
+[V7] route=visual page=315 figure=69 part=120-50645-005 nomenclature= | page_id=t_p_120_1176_p000315 | figure=69 | linked_part_number=120-50645-005
+[O6] route=ocr page= figure=91 part=120-29068-003 nomenclature= | figure=91 | linked_part_number=120-29068-003
+[O4] route=ocr page= figure=75 part=120-50645-011 nomenclature= | figure=75 | linked_part_number=120-50645-011
+[V1] route=visual page= figure= part=120-50645-005 nomenclature= | {"authority_model": {"graph_leiden": "not_used_as_proof_in_this_pack", "llava": "visual_observation_only", "ocr_figure_callout_extractor": "visible_label_support", "trusted_ocr_table_figure_item_evidence": "proof_for_part_identity_when_linked"}, "checks": [{"name": "min_visual_records", "observed": 26, "expected": ">= 1", "passed": true}, {"name": "min_nomenclature_merged", "ob
+[V13] route=visual page=382 figure=91 part=120-29068-003 nomenclature= | page_id=t_p_120_1176_p000382 | figure=91 | linked_part_number=120-29068-003
+[V10] route=visual page=327 figure=75 part=120-50645-011 nomenclature= | page_id=t_p_120_1176_p000327 | figure=75 | linked_part_number=120-50645-011
+[V9] route=visual page=316 figure=69 part=120-50645-005 nomenclature= | figure=69 | linked_part_number=120-50645-005
+
+TASK CONTRACT:
+- Use this exact structure:
+  Answer: <state nomenclature if the selected evidence contains it; otherwise say not found in selected proof_context> <citation>
+  OCR route: <what OCR proves or does not prove> <citation>
+  Visual route: <what visual proves or does not prove> <citation>
+  Limits: TRACE-Net cannot prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- You MUST cite at least one OCR label and one visual label if available.
+- If no nomenclature is present in the selected cards, still cite the cards that were checked.
+
+USER QUESTION:
+Look up the nomenclature for part number 120-50645-005. Explain which route proves the part name and which route proves the figure-to-part link. Cite the source.
+
+Return only the final answer.

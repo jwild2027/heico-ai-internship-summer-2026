@@ -1,0 +1,31 @@
+{
+  "quality_status": "PASS",
+  "summary": {
+    "answer_permission_count": 0,
+    "candidate_memory_layer_counts": {
+      "episodic_memory": 5
+    },
+    "candidate_record_count": 5,
+    "feedback_record_count": 5,
+    "feedback_source_counts": {
+      "self_rag_crag_eval": 5
+    },
+    "module": "trace_net_engineering_engram_postgres_feedback_ledger_v1",
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_read_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_failures": [],
+    "ready_for_feedback_to_engram_review": true,
+    "ready_for_postgres_feedback_table_creation": true,
+    "source_answer_smoke_quality_status": "PASS",
+    "source_crag_quality_status": "PASS",
+    "source_critic_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_finding_count": 0,
+    "unsafe_findings": [],
+    "version": "v1",
+    "write_attempt_count": 0
+  }
+}

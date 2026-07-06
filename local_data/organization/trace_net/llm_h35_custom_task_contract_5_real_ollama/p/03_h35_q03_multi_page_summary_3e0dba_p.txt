@@ -1,0 +1,50 @@
+TRACE-NET H35 CUSTOM TASK CONTRACT RUNNER
+
+Use this contract as behavior guidance only. It is not proof.
+Only the evidence cards below can support factual source claims.
+Use individual citations like [V1] [O2]. Do not use grouped citations like [V1, O2].
+Do not claim interchangeability, fit, effectivity, replacement approval, or installation safety unless explicit authority appears in the evidence cards.
+Do not use Engram, summaries, feedback, graph hints, or vector retrieval as proof.
+
+QUESTION_ID: h35_q03_multi_page_summary
+TASK_TYPE: multi_page_summary
+USER QUESTION:
+Summarize evidence across at least three different available pages, figures, or records. Keep it source-trace-ready, cite each source used, and do not use summaries as proof.
+
+TASK CONTRACT:
+{
+  "required_outputs": [
+    "answer",
+    "evidence",
+    "limits"
+  ],
+  "min_unique_evidence_labels": 3,
+  "min_unique_routes": 2,
+  "min_unique_pages_or_figures": 3,
+  "must_include": [
+    "summary",
+    "source-trace"
+  ],
+  "forbidden_claims": [
+    "summary proves",
+    "interchangeable",
+    "approved replacement"
+  ]
+}
+
+EVIDENCE CARDS:
+- [V23] route=visual | page_id=t_p_120_1176_p000384 | figure=91 | part=120-29068-003 | supports=visual figure/page evidence; can support figure-to-part identity when linked
+- [V22] route=visual | page=382 | page_id=t_p_120_1176_p000382 | figure=91 | supports=visual figure/page evidence; can support figure-to-part identity when linked
+- [V21] route=visual | page=382 | page_id=t_p_120_1176_p000382 | figure=91 | part=120-29068-003 | supports=visual figure/page evidence; can support figure-to-part identity when linked
+- [V20] route=visual | page_id=t_p_120_1176_p000328 | figure=75 | part=120-50645-011 | supports=visual figure/page evidence; can support figure-to-part identity when linked
+- [V19] route=visual | page=327 | page_id=t_p_120_1176_p000327 | figure=75 | supports=visual figure/page evidence; can support figure-to-part identity when linked
+- [V17] route=visual | page_id=t_p_120_1176_p000316 | figure=69 | part=120-50645-005 | supports=visual figure/page evidence; can support figure-to-part identity when linked
+- [V16] route=visual | page=315 | page_id=t_p_120_1176_p000315 | figure=69 | supports=visual figure/page evidence; can support figure-to-part identity when linked
+- [V41] route=visual | page=507 | page_id=t_p_120_1176_p000507 | figure=84 | supports=visual figure/page evidence; can support figure-to-part identity when linked
+
+OUTPUT RULES:
+- Use sections when appropriate: Answer, Evidence, Engineering confidence, Limits.
+- For quiz_generation: create exactly 5 quiz questions plus an answer key; cite every answer.
+- Use at least the required number of unique evidence labels and routes when available.
+- Keep the entire response under 1500 characters.
+- Finish the answer; do not stop mid-sentence.

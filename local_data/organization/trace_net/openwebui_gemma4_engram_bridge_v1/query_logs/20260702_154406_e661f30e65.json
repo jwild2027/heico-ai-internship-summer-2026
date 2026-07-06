@@ -1,0 +1,139 @@
+{
+  "answer": "Answer\nTRACE-Net retrieved source-trace evidence relevant to the query. [E1] [E27] [E28] [T1514] [T1515]\n\nEvidence\n- [E1] route=exact, page=t_p_120_1176_p000003, part=120-36833-001, nomenclature=n/a\n- [E27] route=exact, page=, part=n/a, nomenclature=can_answer_directly_count\n- [E28] route=exact, page=, part=n/a, nomenclature=can_prove_claims_count\n- [T1514] route=table, page=, part=n/a, nomenclature=can_answer_directly_count\n- [T1515] route=table, page=, part=n/a, nomenclature=can_prove_claims_count\n- [O1] route=ocr, page=t_p_120_1176_p000315, part=120-50645-005, nomenclature=n/a\n\nEngineering confidence\nMedium/high for claims directly supported by cited evidence; lower for any unclear OCR/visual observations.\n\nLimits\nThis does not prove interchangeability, effectivity, fit, replacement approval, or installation safety. Engram and summary guidance are not proof.",
+  "citations": [
+    {
+      "citation_ready": true,
+      "field": "",
+      "label": "E1",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000003",
+      "part_number": "120-36833-001",
+      "route": "exact",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": ""
+    },
+    {
+      "citation_ready": true,
+      "field": "",
+      "label": "E27",
+      "nomenclature": "can_answer_directly_count",
+      "page": "",
+      "part_number": "",
+      "route": "exact",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": ""
+    },
+    {
+      "citation_ready": true,
+      "field": "",
+      "label": "E28",
+      "nomenclature": "can_prove_claims_count",
+      "page": "",
+      "part_number": "",
+      "route": "exact",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": ""
+    },
+    {
+      "citation_ready": true,
+      "field": "",
+      "label": "T1514",
+      "nomenclature": "can_answer_directly_count",
+      "page": "",
+      "part_number": "",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_route_evidence_packager\\trace_net_table_route_evidence_packager_v1.json",
+      "source_trace_ready": true,
+      "value": ""
+    },
+    {
+      "citation_ready": true,
+      "field": "",
+      "label": "T1515",
+      "nomenclature": "can_prove_claims_count",
+      "page": "",
+      "part_number": "",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_route_evidence_packager\\trace_net_table_route_evidence_packager_v1.json",
+      "source_trace_ready": true,
+      "value": ""
+    },
+    {
+      "citation_ready": true,
+      "field": "",
+      "label": "O1",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000315",
+      "part_number": "120-50645-005",
+      "route": "ocr",
+      "source_artifact": "local_data\\organization\\trace_net\\raw_ocr_nomenclature_window_extractor_v1\\trace_net_raw_ocr_nomenclature_window_extractor_v1.json",
+      "source_trace_ready": true,
+      "value": ""
+    },
+    {
+      "citation_ready": true,
+      "field": "",
+      "label": "E33",
+      "nomenclature": "",
+      "page": "",
+      "part_number": "",
+      "route": "exact",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": ""
+    },
+    {
+      "citation_ready": true,
+      "field": "",
+      "label": "T3026",
+      "nomenclature": "",
+      "page": "",
+      "part_number": "",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_route_evidence_packager\\trace_net_table_route_evidence_packager_v1.json",
+      "source_trace_ready": true,
+      "value": ""
+    },
+    {
+      "citation_ready": true,
+      "field": "",
+      "label": "T3027",
+      "nomenclature": "",
+      "page": "",
+      "part_number": "",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_route_evidence_packager\\trace_net_table_route_evidence_packager_v1.json",
+      "source_trace_ready": true,
+      "value": ""
+    },
+    {
+      "citation_ready": true,
+      "field": "",
+      "label": "T3029",
+      "nomenclature": "",
+      "page": "",
+      "part_number": "",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_route_evidence_packager\\trace_net_table_route_evidence_packager_v1.json",
+      "source_trace_ready": true,
+      "value": ""
+    }
+  ],
+  "evidence_card_count": 10,
+  "fallback_used": true,
+  "llm_error": "TimeoutError('timed out')",
+  "model": "gemma4:26b",
+  "query": "how many pages can you look at",
+  "response": "Answer\nTRACE-Net retrieved source-trace evidence relevant to the query. [E1] [E27] [E28] [T1514] [T1515]\n\nEvidence\n- [E1] route=exact, page=t_p_120_1176_p000003, part=120-36833-001, nomenclature=n/a\n- [E27] route=exact, page=, part=n/a, nomenclature=can_answer_directly_count\n- [E28] route=exact, page=, part=n/a, nomenclature=can_prove_claims_count\n- [T1514] route=table, page=, part=n/a, nomenclature=can_answer_directly_count\n- [T1515] route=table, page=, part=n/a, nomenclature=can_prove_claims_count\n- [O1] route=ocr, page=t_p_120_1176_p000315, part=120-50645-005, nomenclature=n/a\n\nEngineering confidence\nMedium/high for claims directly supported by cited evidence; lower for any unclear OCR/visual observations.\n\nLimits\nThis does not prove interchangeability, effectivity, fit, replacement approval, or installation safety. Engram and summary guidance are not proof.",
+  "safety": {
+    "answer_permission": false,
+    "opensearch_write_attempt": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "source_truth_mutation_allowed": false
+  },
+  "task_type": "general"
+}

@@ -1,0 +1,154 @@
+{
+  "trace_type": "safe_reasoning_trace_not_hidden_chain_of_thought",
+  "trace_note": "This shows the evidence, prompt constraints, scaffold, and gate checks. It is not raw model hidden reasoning.",
+  "question_id": "q18",
+  "category": "pipeline_recovery",
+  "question": "What changed after the raw OCR nomenclature extractor was added?",
+  "task_type": "table_extraction_question",
+  "runner_quality_status": "PASS",
+  "runner_passed": true,
+  "proof_context_count": 9,
+  "guidance_context_count": 8,
+  "available_citation_labels": [
+    "O1",
+    "O2",
+    "O3",
+    "T1",
+    "T2",
+    "T3",
+    "V6",
+    "V7",
+    "V8"
+  ],
+  "proof_context_preview": [
+    {
+      "citation_label": "V6",
+      "context_type": "visual_figure_link",
+      "figure": "69",
+      "part_number": "120-50645-005",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 315,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "V7",
+      "context_type": "visual_figure_link",
+      "figure": "75",
+      "part_number": "120-50645-011",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 327,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "V8",
+      "context_type": "visual_figure_link",
+      "figure": "91",
+      "part_number": "120-29068-003",
+      "nomenclature": "STRUCTURE ASSY",
+      "page_number": 382,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "O1",
+      "context_type": "ocr_nomenclature",
+      "figure": "69",
+      "part_number": "120-50645-005",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 316,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "O2",
+      "context_type": "ocr_nomenclature",
+      "figure": "75",
+      "part_number": "120-50645-011",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 328,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "O3",
+      "context_type": "ocr_nomenclature",
+      "figure": "91",
+      "part_number": "120-29068-003",
+      "nomenclature": "STRUCTURE ASSY 00",
+      "page_number": 384,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "T1",
+      "context_type": "table_ocr_proof",
+      "figure": null,
+      "part_number": "120-50645-005",
+      "nomenclature": null,
+      "page_number": null,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "T2",
+      "context_type": "table_ocr_proof",
+      "figure": null,
+      "part_number": "120-50645-011",
+      "nomenclature": null,
+      "page_number": null,
+      "source_trace_ready": true
+    }
+  ],
+  "answer_constraints": {
+    "answer_style": "engineering_brain",
+    "may_claim": [
+      "claims supported by source-trace-ready proof_context records",
+      "guidance summaries may frame the search but not prove facts"
+    ],
+    "may_not_claim": [
+      "effectivity",
+      "fit",
+      "installation safety",
+      "interchangeability",
+      "replacement approval",
+      "summary-only proof",
+      "unsupported effectivity",
+      "unsupported interchangeability",
+      "unsupported installation or safety approval"
+    ],
+    "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"
+  },
+  "intent_rules": [
+    "INTENT_RULE: For TRACE-Net pipeline/debug questions, use the structured scaffold plus proof_context to explain pipeline behavior.",
+    "INTENT_RULE: Explain that visual_figure_link establishes figure/part identity, while ocr_nomenclature provides OCR-backed line-text nomenclature proof.",
+    "INTENT_RULE: For raw OCR extractor questions, explain that OCR-backed nomenclature improves/recovers description evidence when visual/table records alone lack a clean nomenclature field.",
+    "INTENT_RULE: Do not answer only 'not proven' when the scaffold describes the TRACE-Net pipeline behavior; instead distinguish pipeline explanation from source-truth proof."
+  ],
+  "scaffold_present": true,
+  "engram_atom_count": 4,
+  "engram_ids": [
+    "route_visual_link_vs_ocr_nomenclature_v1",
+    "policy_no_interchangeability_without_authority_v1",
+    "episode_h13_generic_not_proven_v1",
+    "policy_no_installation_safety_from_figure_v1"
+  ],
+  "engram_traits": [
+    "approval_boundary",
+    "failure_memory",
+    "route_awareness",
+    "source_trace_caution"
+  ],
+  "engram_note": "Engram atoms are behavioral guidance only; they are not source proof and are not raw model reasoning.",
+  "llm_retry_used": false,
+  "llm_fallback_used": false,
+  "llm_fallback_reason": "",
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h16d_regression_q06_q07_q09_q18\\p\\q04_1578a9_p.txt",
+  "answer_path": "local_data\\organization\\trace_net\\llm_h16d_regression_q06_q07_q09_q18\\a\\q04_1578a9_a.txt",
+  "llm_error": "",
+  "gate_result": {
+    "grade": "GOOD",
+    "llm_answered": true,
+    "answer_citation_count": 8,
+    "valid_answer_citation_count": 8,
+    "source_trace_ready_citation_count": 8,
+    "invalid_answer_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0
+  },
+  "answer_preview": "Answer:\nThe addition of the raw OCR nomenclature extractor changed the pipeline by providing a secondary route to recover or improve description evidence. While the `visual_figure_link` route establishes identity between a figure and a part number (e.g., Figure 69 is linked to part number 120-50645-005 [V6]), visual-link evidence alone should not be treated as clean nomenclature proof if a source-trace-ready nomenclature field is missing. The `ocr_nomenclature` route provides OCR-backed line-text evidence for the part name (e.g., \"DOUBLE PASSENGER SEAT ASSY\" [O1]), which can then be merged into the visual evidence pack to provide more robust description proof.\n\nEvidence:\n- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.\n- [O1] OCR-backed nomenclature provides line-text evidence for the name: \"69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF\" on page 316.\n- [V7] Visual evidence links figure 75 to part number 120-50645-011 [V7].\n- [O2"
+}

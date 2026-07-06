@@ -1,0 +1,105 @@
+{
+  "q12": {
+    "answer_permission": false,
+    "matched_bridge_query_ids": [
+      "h19_q_interchangeability_boundary"
+    ],
+    "matched_bridge_task_types": [
+      "interchangeability_boundary"
+    ],
+    "overlay_text": "TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY\nUse this overlay as behavior guidance only. It is not proof.\nManual/source claims still require current proof_context citations.\nDo not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.\ntarget_question_id: q12\n\n--- retrieved_guidance query_id=h19_q_interchangeability_boundary task_type=interchangeability_boundary ---\nTRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: h19_q_interchangeability_boundary\ntask_type: interchangeability_boundary\nquery: Is part 120-50645-005 interchangeable with 120-50645-011 or an approved replacement? Require explicit source authority.\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\n- [procedural_no_interchangeability_without_authority_v1] layer=procedural_memory proof_role=guidance_only: atom_id: procedural_no_interchangeability_without_authority_v1 | title: No interchangeability without explicit authority | memory_layer: procedural_memory | memory_type: procedu...\n- [h17_imported_f39d3c6bcc27e0fa] layer=procedural_memory proof_role=guidance_only: atom_id: h17_imported_f39d3c6bcc27e0fa | title: h17_imported_f39d3c6bcc27e0fa | memory_layer: procedural_memory | memory_type: policy_trait | rule: Shared nomenclature, nearby f...\n- [critic_safe_but_too_generic_repair_v1] layer=critic_memory proof_role=guidance_only: atom_id: critic_safe_but_too_generic_repair_v1 | title: Safe but too generic repair | memory_layer: critic_memory | memory_type: critic_memory | rule: If an answer is safe but t...\n- [t\n[TRUNCATED BY H24 OVERLAY SMOKE: guidance only, not proof.]",
+    "proof_boundary": "Engram overlay is behavior guidance only; factual claims require current proof_context citations.",
+    "selected_layers": [
+      "critic_memory",
+      "procedural_memory",
+      "trait_memory"
+    ],
+    "selected_proof_roles": [
+      "guidance_only"
+    ],
+    "source_truth_mutation_allowed": false
+  },
+  "q16": {
+    "answer_permission": false,
+    "matched_bridge_query_ids": [
+      "h19_q_visual_ocr_route_behavior",
+      "h19_q_safe_but_too_generic_repair"
+    ],
+    "matched_bridge_task_types": [
+      "route_explanation",
+      "critic_repair"
+    ],
+    "overlay_text": "TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY\nUse this overlay as behavior guidance only. It is not proof.\nManual/source claims still require current proof_context citations.\nDo not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.\ntarget_question_id: q16\n\n--- retrieved_guidance query_id=h19_q_visual_ocr_route_behavior task_type=route_explanation ---\nTRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: h19_q_visual_ocr_route_behavior\ntask_type: route_explanation\nquery: Why does the visual route need OCR nomenclature evidence for Figure 69 and part names?\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\n- [semantic_visual_link_vs_ocr_nomenclature_v1] layer=semantic_memory proof_role=guidance_only: atom_id: semantic_visual_link_vs_ocr_nomenclature_v1 | title: Visual link versus OCR nomenclature | memory_layer: semantic_memory | memory_type: semantic_memory | rule: visual_f...\n- [h17_imported_846864e2ed658bc0] layer=semantic_memory proof_role=guidance_only: atom_id: h17_imported_846864e2ed658bc0 | title: h17_imported_846864e2ed658bc0 | memory_layer: semantic_memory | memory_type: route_behavior | rule: Exact-part/table-OCR evidence...\n- [h17_imported_e10694f7f568466e] layer=semantic_memory proof_role=guidance_only: atom_id: h17_imported_e10694f7f568466e | title: h17_imported_e10694f7f568466e | memory_layer: semantic_memory | memory_type: route_behavior | rule: visual_figure_link establishe...\n- [h17_imported_44ab4e8f4519026e] layer=trait_memory proof_role=guidance_only: at\n[TRUNCATED BY H24 OVERLAY SMOKE: guidance only, not proof.]",
+    "proof_boundary": "Engram overlay is behavior guidance only; factual claims require current proof_context citations.",
+    "selected_layers": [
+      "critic_memory",
+      "episodic_memory",
+      "semantic_memory",
+      "trait_memory"
+    ],
+    "selected_proof_roles": [
+      "guidance_only"
+    ],
+    "source_truth_mutation_allowed": false
+  },
+  "q18": {
+    "answer_permission": false,
+    "matched_bridge_query_ids": [
+      "h19_q_safe_but_too_generic_repair"
+    ],
+    "matched_bridge_task_types": [
+      "critic_repair"
+    ],
+    "overlay_text": "TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY\nUse this overlay as behavior guidance only. It is not proof.\nManual/source claims still require current proof_context citations.\nDo not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.\ntarget_question_id: q18\n\n--- retrieved_guidance query_id=h19_q_safe_but_too_generic_repair task_type=critic_repair ---\nTRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: h19_q_safe_but_too_generic_repair\ntask_type: critic_repair\nquery: The answer was safe but too generic. Retrieve repair behavior before regenerating.\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\n- [critic_safe_but_too_generic_repair_v1] layer=critic_memory proof_role=guidance_only: atom_id: critic_safe_but_too_generic_repair_v1 | title: Safe but too generic repair | memory_layer: critic_memory | memory_type: critic_memory | rule: If an answer is safe but t...\n- [h17_imported_774825e2b50c55aa] layer=episodic_memory proof_role=guidance_only: atom_id: h17_imported_774825e2b50c55aa | title: h17_imported_774825e2b50c55aa | memory_layer: episodic_memory | memory_type: episodic_failure_memory | rule: Category 'unknown_fi...\n- [h17_imported_93da9c7d59c179ab] layer=episodic_memory proof_role=guidance_only: atom_id: h17_imported_93da9c7d59c179ab | title: h17_imported_93da9c7d59c179ab | memory_layer: episodic_memory | memory_type: episodic_failure_memory | rule: Category 'unknown_pa...\n- [h17_imported_a84215fe40232b55] layer=critic_memory proof_role=guidance_only: atom_id: h17_impo\n[TRUNCATED BY H24 OVERLAY SMOKE: guidance only, not proof.]",
+    "proof_boundary": "Engram overlay is behavior guidance only; factual claims require current proof_context citations.",
+    "selected_layers": [
+      "critic_memory",
+      "episodic_memory"
+    ],
+    "selected_proof_roles": [
+      "guidance_only"
+    ],
+    "source_truth_mutation_allowed": false
+  },
+  "q25": {
+    "answer_permission": false,
+    "matched_bridge_query_ids": [
+      "h19_q_unknown_part_not_source_trace_ready"
+    ],
+    "matched_bridge_task_types": [
+      "unknown_part"
+    ],
+    "overlay_text": "TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY\nUse this overlay as behavior guidance only. It is not proof.\nManual/source claims still require current proof_context citations.\nDo not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.\ntarget_question_id: q25\n\n--- retrieved_guidance query_id=h19_q_unknown_part_not_source_trace_ready task_type=unknown_part ---\nTRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: h19_q_unknown_part_not_source_trace_ready\ntask_type: unknown_part\nquery: Find part number 999-99999-999 and cite a source when no proof_context exists.\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\n- [h17_imported_e9e7d1bcb97b344f] layer=working_memory proof_role=current_proof_context_only: atom_id: h17_imported_e9e7d1bcb97b344f | title: h17_imported_e9e7d1bcb97b344f | memory_layer: working_memory | memory_type: style_trait | rule: For unknown part/figure questions...\n- [h17_imported_846864e2ed658bc0] layer=semantic_memory proof_role=guidance_only: atom_id: h17_imported_846864e2ed658bc0 | title: h17_imported_846864e2ed658bc0 | memory_layer: semantic_memory | memory_type: route_behavior | rule: Exact-part/table-OCR evidence...\n- [h17_imported_81996026ec62b901] layer=episodic_memory proof_role=guidance_only: atom_id: h17_imported_81996026ec62b901 | title: h17_imported_81996026ec62b901 | memory_layer: episodic_memory | memory_type: episodic_failure_memory | rule: H14B exposed nested...\n- [episodic_h13_generic_not_proven_repair_v1] layer=episodic_memory proof_role=gui\n[TRUNCATED BY H24 OVERLAY SMOKE: guidance only, not proof.]",
+    "proof_boundary": "Engram overlay is behavior guidance only; factual claims require current proof_context citations.",
+    "selected_layers": [
+      "episodic_memory",
+      "semantic_memory",
+      "working_memory"
+    ],
+    "selected_proof_roles": [
+      "current_proof_context_only",
+      "guidance_only"
+    ],
+    "source_truth_mutation_allowed": false
+  },
+  "q29": {
+    "answer_permission": false,
+    "matched_bridge_query_ids": [
+      "h19_q_summary_only_limit"
+    ],
+    "matched_bridge_task_types": [
+      "summary_limit"
+    ],
+    "overlay_text": "TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY\nUse this overlay as behavior guidance only. It is not proof.\nManual/source claims still require current proof_context citations.\nDo not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.\ntarget_question_id: q29\n\n--- retrieved_guidance query_id=h19_q_summary_only_limit task_type=summary_limit ---\nTRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: h19_q_summary_only_limit\ntask_type: summary_limit\nquery: Can v2 summaries alone prove Figure 69 part identity or source claims?\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\n- [h17_imported_98eaef4c97e6af7b] layer=working_memory proof_role=current_proof_context_only: atom_id: h17_imported_98eaef4c97e6af7b | title: h17_imported_98eaef4c97e6af7b | memory_layer: working_memory | memory_type: policy_trait | rule: V2 summaries may guide planning...\n- [h17_imported_e9e7d1bcb97b344f] layer=working_memory proof_role=current_proof_context_only: atom_id: h17_imported_e9e7d1bcb97b344f | title: h17_imported_e9e7d1bcb97b344f | memory_layer: working_memory | memory_type: style_trait | rule: For unknown part/figure questions...\n- [h17_imported_568223f7c37a12f1] layer=procedural_memory proof_role=guidance_only: atom_id: h17_imported_568223f7c37a12f1 | title: h17_imported_568223f7c37a12f1 | memory_layer: procedural_memory | memory_type: policy_trait | rule: Figure/part identification ev...\n- [working_current_question_context_pack_citations_v1] layer=working_memory proof_role=current_proof_\n[TRUNC\n[TRUNCATED BY H24 OVERLAY SMOKE: guidance only, not proof.]",
+    "proof_boundary": "Engram overlay is behavior guidance only; factual claims require current proof_context citations.",
+    "selected_layers": [
+      "procedural_memory",
+      "working_memory"
+    ],
+    "selected_proof_roles": [
+      "current_proof_context_only",
+      "guidance_only"
+    ],
+    "source_truth_mutation_allowed": false
+  }
+}

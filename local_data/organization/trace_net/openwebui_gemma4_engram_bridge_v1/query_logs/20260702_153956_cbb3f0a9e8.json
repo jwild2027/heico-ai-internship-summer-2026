@@ -1,0 +1,67 @@
+{
+  "answer": "**Answer**\nThe selected page is `t_p_120_1176_p000468` (Page 468), which contains Figure 1 [V34, V35, V36, V37].\n\n**Evidence**\n* Visual evidence identifies the presence of \"figure=1\" [V34, V35] and \"figure=01\" [V36, V37] on page `t_p_120_1176_p000468` [V34, V35, V36, V37].\n\n**Engineering confidence**\nThe identification of the figure label and its association with page `t_p_120_1176_p000468` is supported by visual callout link records [V34, V36]. Confidence in the specific content or subject matter of this page is low, as no part nomenclature or descriptive text was provided in the proof context.\n\n**Limits**\nThe evidence is limited to identifying a figure identifier on a specific page. The provided `proof_context` does not contain part numbers, descriptions, instructions, or any information regarding the technical contents of Figure 1.",
+  "citations": [
+    {
+      "citation_ready": true,
+      "field": "figure",
+      "label": "V34",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000468",
+      "part_number": "",
+      "route": "visual",
+      "source_artifact": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+      "source_trace_ready": true,
+      "value": "1"
+    },
+    {
+      "citation_ready": true,
+      "field": "figure",
+      "label": "V35",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000468",
+      "part_number": "",
+      "route": "visual",
+      "source_artifact": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+      "source_trace_ready": true,
+      "value": "1"
+    },
+    {
+      "citation_ready": true,
+      "field": "figure",
+      "label": "V36",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000468",
+      "part_number": "",
+      "route": "visual",
+      "source_artifact": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+      "source_trace_ready": true,
+      "value": "01"
+    },
+    {
+      "citation_ready": true,
+      "field": "figure",
+      "label": "V37",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000468",
+      "part_number": "",
+      "route": "visual",
+      "source_artifact": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+      "source_trace_ready": true,
+      "value": "01"
+    }
+  ],
+  "evidence_card_count": 4,
+  "fallback_used": false,
+  "llm_error": "",
+  "model": "gemma4:26b",
+  "query": "pick a random page",
+  "response": "**Answer**\nThe selected page is `t_p_120_1176_p000468` (Page 468), which contains Figure 1 [V34, V35, V36, V37].\n\n**Evidence**\n* Visual evidence identifies the presence of \"figure=1\" [V34, V35] and \"figure=01\" [V36, V37] on page `t_p_120_1176_p000468` [V34, V35, V36, V37].\n\n**Engineering confidence**\nThe identification of the figure label and its association with page `t_p_120_1176_p000468` is supported by visual callout link records [V34, V36]. Confidence in the specific content or subject matter of this page is low, as no part nomenclature or descriptive text was provided in the proof context.\n\n**Limits**\nThe evidence is limited to identifying a figure identifier on a specific page. The provided `proof_context` does not contain part numbers, descriptions, instructions, or any information regarding the technical contents of Figure 1.",
+  "safety": {
+    "answer_permission": false,
+    "opensearch_write_attempt": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "source_truth_mutation_allowed": false
+  },
+  "task_type": "random_page"
+}

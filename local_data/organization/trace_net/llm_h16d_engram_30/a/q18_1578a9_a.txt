@@ -1,0 +1,10 @@
+Answer:
+The addition of the raw OCR nomenclature extractor changed the pipeline by providing a secondary route to recover description evidence when visual or table records lack a clean nomenclature field. While the `visual_figure_link` route establishes the identity between a figure and a part number (e.g., Figure 69 is linked to part number 120-50645-005 [V6]), it does not inherently provide the text-based description. The `ocr_nomenclature` route provides OCR-backed line-text evidence for the part name (e.g., "DOUBLE PASSENGER SEAT ASSY" [O1]), allowing the nomenclature merger to carry that extracted wording into the visual evidence pack.
+
+Evidence:
+- The `visual_figure_link` route establishes figure-to-part identity, such as Figure 69 being linked to part number 120-50645-005 [V6].
+- The `ocr_nomenclature` route provides the specific nomenclature wording extracted from OCR line text, such as "DOUBLE PASSENGER SEAT ASSY" for part 120-50645-005 [O1].
+- Similar functionality is observed for Figure 75 and part 120-50645-011, where the visual link identifies the part [V7] and the OCR route provides the name "DOUBLE PASSENGER SEAT ASSY" [O2].
+
+Engineering confidence:
+HIGH for the

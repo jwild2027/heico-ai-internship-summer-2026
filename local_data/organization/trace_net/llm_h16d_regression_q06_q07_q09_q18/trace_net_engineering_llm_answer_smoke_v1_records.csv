@@ -1,0 +1,47 @@
+question_id,category,question,grade,runner_passed,llm_answered,llm_mode,task_type,answer_citation_count,valid_answer_citation_count,source_trace_ready_citation_count,invalid_answer_citation_count,unsupported_claim_count,summary_used_as_proof_count,llm_error,llm_retry_used,llm_fallback_used,llm_fallback_reason,reasoning_trace_path,answer_preview,run_dir
+q06,exact_part_lookup,Find part number 120-50645-005 and cite the source.,GOOD,True,True,ollama,exact_part_lookup,8,8,8,0,0,0,,False,False,,local_data\organization\trace_net\llm_h16d_regression_q06_q07_q09_q18\t\q01_078c4d_trace.json,"Answer:
+Part number 120-50645-005 is present in source-trace-ready evidence and is associated with ""DOUBLE PASSENGER SEAT ASSY"" [E1] [O1] [T1] [V6].
+
+Evidence:
+- [E1] Exact-part evidence contains part number 120-50645-005.
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature provides ""DOUBLE PASSENGER SEAT ASSY"" on page 316 (Line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF).
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the exact part lookup because multiple source-trace-ready proof records support both the part number and its associated nomenclature.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation ",local_data\organization\trace_net\llm_h16d_regression_q06_q07_q09_q18\r\q01_078c4d
+q07,exact_part_lookup,Find part number 120-50645-011 and cite the source.,GOOD,True,True,ollama,exact_part_lookup,8,8,8,0,0,0,,False,False,,local_data\organization\trace_net\llm_h16d_regression_q06_q07_q09_q18\t\q02_4bc389_trace.json,"Answer:
+Part number 120-50645-011 is present in source-trace-ready evidence and is associated with ""DOUBLE PASSENGER SEAT ASSY"" [E1] [O2] [T1] [V7].
+
+Evidence:
+- [E1] Exact-part evidence contains part number 120-50645-011.
+- [V7] Visual evidence links figure 75 to part number 120-50645-011 on page 327 with the nomenclature ""DOUBLE PASSENGER SEAT ASSY"".
+- [O2] OCR-backed nomenclature provides ""DOUBLE PASSENGER SEAT ASSY"" for part number 120-50645-011 on page 328.
+  OCR line: 75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-011.
+
+Engineering confidence:
+HIGH for the exact part lookup because multiple source-trace-ready proof records support the part number and nomenclature. Nomenclature confidence: HIGH.
+
+Limits:
+- ",local_data\organization\trace_net\llm_h16d_regression_q06_q07_q09_q18\r\q02_4bc389
+q09,evidence_support,What evidence supports part number 120-50645-005?,GOOD,True,True,ollama,exact_part_lookup,8,8,8,0,0,0,,False,False,,local_data\organization\trace_net\llm_h16d_regression_q06_q07_q09_q18\t\q03_ca2ae5_trace.json,"Answer:
+Part number 120-50645-005 is present in source-trace-ready evidence and is associated with ""DOUBLE PASSENGER SEAT ASSY"" [E1] [O1] [T1] [V6].
+
+Evidence:
+**Table, OCR, and Exact Part Evidence:**
+- [E1] Exact-part evidence contains part number 120-50645-005, which provides direct identification of the part within the system records.
+- [T1] Table/OCR proof supports the presence of part number 120-50645-005 in structured data.
+- [O1] OCR-backed nomenclature on page 316 links the part number to ""DOUBLE PASSENGER SEAT ASSY"" (Line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF), which is necessary for identifying the part's description.
+
+**Visual Evidence:**
+- [V6] Visual evidence links Figure 69 on page 315 to part number 120-50645-005 and its nomenclature, provi",local_data\organization\trace_net\llm_h16d_regression_q06_q07_q09_q18\r\q03_ca2ae5
+q18,pipeline_recovery,What changed after the raw OCR nomenclature extractor was added?,GOOD,True,True,ollama,table_extraction_question,8,8,8,0,0,0,,False,False,,local_data\organization\trace_net\llm_h16d_regression_q06_q07_q09_q18\t\q04_1578a9_trace.json,"Answer:
+The addition of the raw OCR nomenclature extractor changed the pipeline by providing a secondary route to recover or improve description evidence. While the `visual_figure_link` route establishes identity between a figure and a part number (e.g., Figure 69 is linked to part number 120-50645-005 [V6]), visual-link evidence alone should not be treated as clean nomenclature proof if a source-trace-ready nomenclature field is missing. The `ocr_nomenclature` route provides OCR-backed line-text evidence for the part name (e.g., ""DOUBLE PASSENGER SEAT ASSY"" [O1]), which can then be merged into the visual evidence pack to provide more robust description proof.
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature provides",local_data\organization\trace_net\llm_h16d_regression_q06_q07_q09_q18\r\q04_1578a9

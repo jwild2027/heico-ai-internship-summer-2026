@@ -1,0 +1,101 @@
+{
+  "trace_type": "safe_reasoning_trace_not_hidden_chain_of_thought",
+  "trace_note": "This shows the evidence, prompt constraints, scaffold, and gate checks. It is not raw model hidden reasoning.",
+  "question_id": "q20",
+  "category": "source_page",
+  "question": "Cite the proof for Figure 75's part number.",
+  "task_type": "visual_part_identification",
+  "runner_quality_status": "PASS",
+  "runner_passed": true,
+  "proof_context_count": 3,
+  "guidance_context_count": 0,
+  "available_citation_labels": [
+    "O2",
+    "T1",
+    "V7"
+  ],
+  "proof_context_preview": [
+    {
+      "citation_label": "V7",
+      "context_type": "visual_figure_link",
+      "figure": "75",
+      "part_number": "120-50645-011",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 327,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "O2",
+      "context_type": "ocr_nomenclature",
+      "figure": "75",
+      "part_number": "120-50645-011",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page_number": 328,
+      "source_trace_ready": true
+    },
+    {
+      "citation_label": "T1",
+      "context_type": "table_ocr_proof",
+      "figure": null,
+      "part_number": "120-50645-011",
+      "nomenclature": null,
+      "page_number": null,
+      "source_trace_ready": true
+    }
+  ],
+  "answer_constraints": {
+    "answer_style": "engineering_brain",
+    "may_claim": [
+      "figure/page link when supported by visual evidence",
+      "linked part number when supported by OCR/table/figure proof",
+      "OCR-backed nomenclature when source-trace-ready OCR evidence is present"
+    ],
+    "may_not_claim": [
+      "LLaVA-only part identity",
+      "effectivity",
+      "fit",
+      "installation safety",
+      "interchangeability",
+      "replacement approval",
+      "summary-only figure proof",
+      "summary-only proof",
+      "unsupported effectivity",
+      "unsupported interchangeability",
+      "unsupported installation or safety approval"
+    ],
+    "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"
+  },
+  "intent_rules": [],
+  "scaffold_present": false,
+  "engram_atom_count": 4,
+  "engram_ids": [
+    "policy_v2_summaries_guidance_not_proof_v1",
+    "route_visual_link_vs_ocr_nomenclature_v1",
+    "policy_no_interchangeability_without_authority_v1",
+    "policy_no_installation_safety_from_figure_v1"
+  ],
+  "engram_traits": [
+    "approval_boundary",
+    "route_awareness",
+    "source_trace_caution",
+    "summary_boundary"
+  ],
+  "engram_note": "Engram atoms are behavioral guidance only; they are not source proof and are not raw model reasoning.",
+  "llm_retry_used": true,
+  "llm_fallback_used": false,
+  "llm_fallback_reason": "full_prompt_failed_then_minimal_retry_succeeded: RuntimeError: Ollama response did not contain answer text",
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h16c_engram_30\\p\\q20_72bfaf_retry_p.txt",
+  "answer_path": "local_data\\organization\\trace_net\\llm_h16c_engram_30\\a\\q20_72bfaf_a.txt",
+  "llm_error": "",
+  "gate_result": {
+    "grade": "GOOD",
+    "llm_answered": true,
+    "answer_citation_count": 5,
+    "valid_answer_citation_count": 5,
+    "source_trace_ready_citation_count": 5,
+    "invalid_answer_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "summary_used_as_proof_count": 0
+  },
+  "answer_preview": "Answer:\nFigure 75 is linked to part number 120-50645-011, \"DOUBLE PASSENGER SEAT ASSY\" [V7] [O2].\n\nEvidence:\n- [V7] Visual evidence links figure 75 to part number 120-50645-011 on page 327.\n- [O2] OCR text on page 328 identifies \"75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY\".\n- [T1] Table"
+}

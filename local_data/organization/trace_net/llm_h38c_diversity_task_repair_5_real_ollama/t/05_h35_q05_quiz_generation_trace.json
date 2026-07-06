@@ -1,0 +1,60 @@
+{
+  "answer_char_count": 48,
+  "answer_citation_count": 0,
+  "answer_permission": false,
+  "answer_preview": "1. What is the nomenclature for part 120-29068-0",
+  "contract_pass": false,
+  "fallback_used": false,
+  "findings": [
+    "missing_valid_citations",
+    "too_few_quiz_questions:1<5",
+    "missing_answer_key",
+    "too_few_quiz_citations:0<4",
+    "missing_limits_quiz_item"
+  ],
+  "grade": "BAD",
+  "llm_error": "repair_failed:Ollama response did not contain answer text",
+  "query_text": "Create a 5-question technician training quiz using only source-trace-ready TRACE-Net evidence. Include an answer key and cite the evidence used for each answer.",
+  "question_id": "h35_q05_quiz_generation",
+  "repair_attempt_count": 1,
+  "repair_used": true,
+  "selected_evidence_labels": [
+    "O1",
+    "V1",
+    "V13",
+    "V10",
+    "V7",
+    "T1",
+    "E1",
+    "O9"
+  ],
+  "selected_figures": [
+    "69",
+    "75",
+    "91"
+  ],
+  "selected_pages": [
+    "315",
+    "327",
+    "382",
+    "383"
+  ],
+  "selected_part_numbers": [
+    "120-29068-003",
+    "120-36833-001",
+    "120-50645-005",
+    "120-50645-011"
+  ],
+  "selected_routes": [
+    "exact",
+    "ocr",
+    "table",
+    "visual"
+  ],
+  "source_truth_mutation_allowed": false,
+  "task_type": "quiz_generation",
+  "unsafe": false,
+  "unsupported_claim_count": 0,
+  "valid_answer_citation_count": 0,
+  "write_attempt_count": 0
+}
