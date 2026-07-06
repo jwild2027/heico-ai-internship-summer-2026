@@ -1,0 +1,123 @@
+
+=================================== ERRORS ====================================
+________ ERROR collecting tests/unit/test_tiff_rag_hybrid_retrieval.py ________
+ImportError while importing test module 'C:\Users\juswil\Documents\GitHub\heico-ai-internship-summer-2026\tests\unit\test_tiff_rag_hybrid_retrieval.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\unit\test_tiff_rag_hybrid_retrieval.py:7: in <module>
+    from tiff.rag_retriever import (
+E   ImportError: cannot import name 'classify_query_intent' from 'tiff.rag_retriever' (C:\Users\juswil\Documents\GitHub\heico-ai-internship-summer-2026\tiff\rag_retriever.py)
+_ ERROR collecting tests/unit/test_tiff_trace_net_source_citation_quality.py __
+ImportError while importing test module 'C:\Users\juswil\Documents\GitHub\heico-ai-internship-summer-2026\tests\unit\test_tiff_trace_net_source_citation_quality.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\unit\test_tiff_trace_net_source_citation_quality.py:4: in <module>
+    from tiff.trace_net_source_citation_quality import (
+tiff\trace_net_source_citation_quality.py:11: in <module>
+    from .trace_net_source_citations import DEFAULT_OUTPUT_DIR, CITATION_RECORDS_FILE, SEARCH_CITATION_RECORDS_FILE, SUMMARY_FILE, QUALITY_FILE
+E   ImportError: cannot import name 'CITATION_RECORDS_FILE' from 'tiff.trace_net_source_citations' (C:\Users\juswil\Documents\GitHub\heico-ai-internship-summer-2026\tiff\trace_net_source_citations.py)
+______ ERROR collecting tests/unit/test_tiff_visual_text_v2_3_cleanup.py ______
+ImportError while importing test module 'C:\Users\juswil\Documents\GitHub\heico-ai-internship-summer-2026\tests\unit\test_tiff_visual_text_v2_3_cleanup.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\unit\test_tiff_visual_text_v2_3_cleanup.py:6: in <module>
+    from tiff.visual_text_cleanup import (
+E   ImportError: cannot import name 'build_clean_quality_report' from 'tiff.visual_text_cleanup' (C:\Users\juswil\Documents\GitHub\heico-ai-internship-summer-2026\tiff\visual_text_cleanup.py)
+_ ERROR collecting tests/unit/test_trace_net_engineering_query_planner_v1_quality.py _
+ImportError while importing test module 'C:\Users\juswil\Documents\GitHub\heico-ai-internship-summer-2026\tests\unit\test_trace_net_engineering_query_planner_v1_quality.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\unit\test_trace_net_engineering_query_planner_v1_quality.py:4: in <module>
+    from tiff.trace_net_engineering_query_planner_v1 import check_engineering_query_planner_quality
+E   ImportError: cannot import name 'check_engineering_query_planner_quality' from 'tiff.trace_net_engineering_query_planner_v1' (C:\Users\juswil\Documents\GitHub\heico-ai-internship-summer-2026\tiff\trace_net_engineering_query_planner_v1.py)
+_ ERROR collecting tests/unit/test_trace_net_graph_explorer_v2_nomenclature_fix.py _
+tests\unit\test_trace_net_graph_explorer_v2_nomenclature_fix.py:14: in <module>
+    spec.loader.exec_module(mod)
+<frozen importlib._bootstrap_external>:755: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:892: in get_code
+    ???
+<frozen importlib._bootstrap_external>:950: in get_data
+    ???
+E   FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\scripts\\build_trace_net_graph_explorer_v2_nomenclature_fix.py'
+_ ERROR collecting tests/unit/test_trace_net_h16d_conservative_repair_apply_v1.py _
+ImportError while importing test module 'C:\Users\juswil\Documents\GitHub\heico-ai-internship-summer-2026\tests\unit\test_trace_net_h16d_conservative_repair_apply_v1.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\unit\test_trace_net_h16d_conservative_repair_apply_v1.py:3: in <module>
+    from scripts.apply_trace_net_h16d_conservative_retry_repair_v1 import (
+E   ModuleNotFoundError: No module named 'scripts.apply_trace_net_h16d_conservative_retry_repair_v1'
+_ ERROR collecting tests/unit/test_trace_net_image_route_endpoint_direct_fallback_v1.py _
+ImportError while importing test module 'C:\Users\juswil\Documents\GitHub\heico-ai-internship-summer-2026\tests\unit\test_trace_net_image_route_endpoint_direct_fallback_v1.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\unit\test_trace_net_image_route_endpoint_direct_fallback_v1.py:8: in <module>
+    from tiff.trace_net_image_route_openwebui_endpoint_v1 import build_endpoint_smoke, run_fast_chat_runner
+E   ImportError: cannot import name 'run_fast_chat_runner' from 'tiff.trace_net_image_route_openwebui_endpoint_v1' (C:\Users\juswil\Documents\GitHub\heico-ai-internship-summer-2026\tiff\trace_net_image_route_openwebui_endpoint_v1.py)
+_ ERROR collecting tests/unit/test_trace_net_image_route_endpoint_direct_smoke_hardening_v1.py _
+ImportError while importing test module 'C:\Users\juswil\Documents\GitHub\heico-ai-internship-summer-2026\tests\unit\test_trace_net_image_route_endpoint_direct_smoke_hardening_v1.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\unit\test_trace_net_image_route_endpoint_direct_smoke_hardening_v1.py:4: in <module>
+    from tiff.trace_net_image_route_openwebui_endpoint_v1 import build_endpoint_smoke, run_fast_chat_runner
+E   ImportError: cannot import name 'run_fast_chat_runner' from 'tiff.trace_net_image_route_openwebui_endpoint_v1' (C:\Users\juswil\Documents\GitHub\heico-ai-internship-summer-2026\tiff\trace_net_image_route_openwebui_endpoint_v1.py)
+_ ERROR collecting tests/unit/test_trace_net_image_route_endpoint_runner_report_fix_v1.py _
+ImportError while importing test module 'C:\Users\juswil\Documents\GitHub\heico-ai-internship-summer-2026\tests\unit\test_trace_net_image_route_endpoint_runner_report_fix_v1.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\unit\test_trace_net_image_route_endpoint_runner_report_fix_v1.py:7: in <module>
+    from tiff.trace_net_image_route_openwebui_endpoint_v1 import build_endpoint_smoke, run_fast_chat_runner
+E   ImportError: cannot import name 'run_fast_chat_runner' from 'tiff.trace_net_image_route_openwebui_endpoint_v1' (C:\Users\juswil\Documents\GitHub\heico-ai-internship-summer-2026\tiff\trace_net_image_route_openwebui_endpoint_v1.py)
+_ ERROR collecting tests/unit/test_trace_net_image_route_openwebui_endpoint_v1.py _
+ImportError while importing test module 'C:\Users\juswil\Documents\GitHub\heico-ai-internship-summer-2026\tests\unit\test_trace_net_image_route_openwebui_endpoint_v1.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\unit\test_trace_net_image_route_openwebui_endpoint_v1.py:7: in <module>
+    from tiff.trace_net_image_route_openwebui_endpoint_v1 import (
+E   ImportError: cannot import name 'build_openai_response' from 'tiff.trace_net_image_route_openwebui_endpoint_v1' (C:\Users\juswil\Documents\GitHub\heico-ai-internship-summer-2026\tiff\trace_net_image_route_openwebui_endpoint_v1.py)
+============================== warnings summary ===============================
+..\..\..\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\chromadb\telemetry\opentelemetry\__init__.py:128
+  C:\Users\juswil\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\chromadb\telemetry\opentelemetry\__init__.py:128: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    if asyncio.iscoroutinefunction(f):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR tests/unit/test_tiff_rag_hybrid_retrieval.py
+ERROR tests/unit/test_tiff_trace_net_source_citation_quality.py
+ERROR tests/unit/test_tiff_visual_text_v2_3_cleanup.py
+ERROR tests/unit/test_trace_net_engineering_query_planner_v1_quality.py
+ERROR tests/unit/test_trace_net_graph_explorer_v2_nomenclature_fix.py - FileN...
+ERROR tests/unit/test_trace_net_h16d_conservative_repair_apply_v1.py
+ERROR tests/unit/test_trace_net_image_route_endpoint_direct_fallback_v1.py
+ERROR tests/unit/test_trace_net_image_route_endpoint_direct_smoke_hardening_v1.py
+ERROR tests/unit/test_trace_net_image_route_endpoint_runner_report_fix_v1.py
+ERROR tests/unit/test_trace_net_image_route_openwebui_endpoint_v1.py
+!!!!!!!!!!!!!!!!!! Interrupted: 10 errors during collection !!!!!!!!!!!!!!!!!!!
+1 warning, 10 errors in 5.38s

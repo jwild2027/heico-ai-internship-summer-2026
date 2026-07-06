@@ -1,0 +1,346 @@
+{
+  "artifact_type": "trace_net_page_context_pack_v3",
+  "page_context_records": [
+    {
+      "ata_section": null,
+      "exact_part_hits": [],
+      "graph_neighbors": [],
+      "guidance_record_count": 5,
+      "ocr_excerpts": [],
+      "page_id": "t_p_120_1176_p000048",
+      "page_label": null,
+      "page_number": 48,
+      "page_reasoning_tasks": [
+        "Use this page only within its source-trace limits.",
+        "Prioritize table/OCR/source-file evidence; do not invent missing rows or quantities.",
+        "Candidate/guidance records may help decide what to inspect but are not proof by themselves."
+      ],
+      "part_mentions": [],
+      "primary_route": "table",
+      "proof_record_count": 1,
+      "route_evidence_priority": [
+        "source_files",
+        "source_links",
+        "table_evidence",
+        "ocr_excerpts",
+        "exact_part_hits",
+        "graph_neighbors",
+        "vector_guidance"
+      ],
+      "route_guidance": [
+        {
+          "answer_support_row_count": 0,
+          "can_answer_directly": false,
+          "can_be_used_as_proof": false,
+          "can_mutate_source_truth": false,
+          "can_prove_claims": false,
+          "candidate_unverified_merge_count": 0,
+          "catalog_supported_merge_count": 0,
+          "cell_normalizer_algorithm": "trace_net_table_cell_normalizer_part_row_repair_v1",
+          "cells": [],
+          "citation_ids": [],
+          "citation_ready": true,
+          "final_answer_allowed": false,
+          "graph_attachment_plan": {
+            "can_mutate_source_truth": false,
+            "cell_node_count": 0,
+            "page_id": "t_p_120_1176_p000048",
+            "proposed_edges": [
+              {
+                "edge_type": "HAS_NORMALIZED_TABLE",
+                "from": "t_p_120_1176_p000048",
+                "to": "normtable__cc8093467f5103"
+              },
+              {
+                "edge_type": "DERIVED_FROM_TABLE_UNDERSTANDING",
+                "from": "normtable__cc8093467f5103",
+                "to": "table__t_p_120_1176_p000048__46595c27d2"
+              }
+            ],
+            "repair_node_count": 0,
+            "row_node_count": 0,
+            "status": "planned_not_written"
+          },
+          "has_citation": false,
+          "normalization_status": "normalized_no_repairs",
+          "normalized_cell_count": 0,
+          "normalized_row_count": 0,
+          "normalized_table_id": "normtable__cc8093467f5103",
+          "page_id": "t_p_120_1176_p000048",
+          "page_number": 48,
+          "part_number_merge_candidate_count": 0,
+          "proof_role": "table_candidate_guidance_only",
+          "reason": "table_record_not_claim_proof_ready",
+          "record_type": "table_cell_normalization_record",
+          "repair_count": 0,
+          "repairs": [],
+          "requires_authority_gate": true,
+          "requires_citation": true,
+          "requires_source_resolution": true,
+          "retrieval_only_row_count": 0,
+          "route": "table_evidence",
+          "rows": [],
+          "safety_status": "table_cell_normalization_safe",
+          "schema_version": "trace_net_table_cell_normalizer_v1",
+          "source_rag_bucket": "table_retrieval_helper",
+          "source_row_count": 0,
+          "source_table_id": "table__t_p_120_1176_p000048__46595c27d2",
+          "source_table_trust_tier": "route_only",
+          "table_type": "unknown_table",
+          "unsafe_table_evidence": false
+        }
+      ],
+      "source_files": [
+        {
+          "citation_ready": true,
+          "proof_role": "source_locator",
+          "route": "source_file",
+          "source_route": "ocr_records",
+          "value": "00000048.tif"
+        }
+      ],
+      "source_links": [],
+      "source_trace_ready": true,
+      "table_evidence": [],
+      "vector_guidance": [
+        {
+          "can_be_used_as_proof": false,
+          "candidate_type": "context_retrieval_helper",
+          "proof_role": "retrieval_guidance_only",
+          "route": "vector_hit",
+          "score": null,
+          "text": "TRACE-Net context retrieval helper. Use: route search to likely pages/evidence. Do not use as direct answer proof. Page: t_p_120_1176_p000048 Role: parts_list Subrole: parts_list Summary: This page appears to be a parts list from an aircraft maintenance manual, containing numerous part numbers and associated codes. Answerable question cues: Which part numbers are listed or referenced on this page?; Where does the manual list applicability or covered part numbers? Retrieval cues: aircraft maintenance; parts list; technical documentation; text; assy; item; part; source; stock; strip; airline; bottom; ch-sec-un-fig Important entities: applicability; aircraft maintenance; parts list; technical documentation Component families: applicability Nearby context: {\"next\": \"t_p_120_1176_p000049\", \"previous\": \"t_p_120_1176_p000047\"} Query tunnel terms: aircraft maintenance; parts list; technical documentation; text; assy; item; part; source; stock; strip; airline; bottom; ch-sec-un-fig; applicabili"
+        },
+        {
+          "can_be_used_as_proof": false,
+          "candidate_type": "source_evidence",
+          "proof_role": "retrieval_guidance_only",
+          "route": "vector_hit",
+          "score": null,
+          "text": "Source evidence for page t_p_120_1176_p000048. This page is source-trace verified and can be used as citation evidence. Document: t_p_120_1176. ATA: 25-21-00. Source URL: http://localhost:8080/rescarta/t_p_120_1176/000048. TIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000048_00000048.tif. OCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000048_00000048.txt."
+        },
+        {
+          "can_be_used_as_proof": false,
+          "candidate_type": "source_text_evidence",
+          "proof_role": "retrieval_guidance_only",
+          "route": "vector_hit",
+          "score": null,
+          "text": "Source text evidence for page t_p_120_1176_p000048. This chunk is source-backed OCR/page-context text and can be searched as source text evidence. Document: t_p_120_1176. ATA: 25-21-00. Source URL: http://localhost:8080/rescarta/t_p_120_1176/000048. TIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000048_00000048.tif. OCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000048_00000048.txt. OCR text: [bottom_right_title_block] 25-21-00-39 | -261 1 25-21-00-41 -191 1 25-21-00-42 -261 1 25-21-00-43 -261 1 25-21-00-45 -191 1 25-21-00-46 -261 1 25-21-00-47 -261 1 25-21-00-48 220 1 25-21-00-49 220 1 25-21-00-51 -191 1 25-21-00-52 -201 1 25-21-00-53 -261 1 25-21-00-54 -221 1 25-21-00-55 220 1 25-21 -00-76 190 1 25-21-00-76A} 190 1 25-21-00-78 170 1 25-21-00 Page 1027 - T.P. 120/1176 Jan 15/01 [bottom_strip] Z20-21-UU-0U \u201c\u00a301 | 20-2 1-UU-4F -\u00a301 | 25-21-00-51 190 1 25-21-00-48 220 1 25-21-00-52 200 1 25-21-00-49 220 1 25-21-00-53 260 1 25-21-00-51 -191 1 25-21-00-54 220 1 25-21-00-"
+        },
+        {
+          "can_be_used_as_proof": false,
+          "candidate_type": "verified_part_evidence",
+          "proof_role": "retrieval_guidance_only",
+          "route": "vector_hit",
+          "score": null,
+          "text": "Verified part evidence for page t_p_120_1176_p000048. This record comes from the verified part evidence pool and is source-traceable. ATA: 25-21-00. Page/catalog part signals: 120-41231-003, 120-41474-002, Z20-21-UU-0U. Source URL: http://localhost:8080/rescarta/t_p_120_1176/000048."
+        }
+      ],
+      "visual_guidance": [],
+      "warnings": []
+    },
+    {
+      "ata_section": null,
+      "exact_part_hits": [],
+      "graph_neighbors": [],
+      "guidance_record_count": 4,
+      "ocr_excerpts": [],
+      "page_id": "t_p_120_1176_p000202",
+      "page_label": null,
+      "page_number": 202,
+      "page_reasoning_tasks": [
+        "Use this page only within its source-trace limits.",
+        "Use visual observations as guidance for what the page may depict; require OCR/source proof for factual source claims.",
+        "Candidate/guidance records may help decide what to inspect but are not proof by themselves."
+      ],
+      "part_mentions": [],
+      "primary_route": "image_visual",
+      "proof_record_count": 1,
+      "route_evidence_priority": [
+        "source_files",
+        "source_links",
+        "visual_guidance",
+        "ocr_excerpts",
+        "graph_neighbors",
+        "vector_guidance",
+        "table_evidence_if_present"
+      ],
+      "route_guidance": [
+        {
+          "answer_support_row_count": 0,
+          "can_answer_directly": false,
+          "can_be_used_as_proof": false,
+          "can_mutate_source_truth": false,
+          "can_prove_claims": false,
+          "candidate_unverified_merge_count": 0,
+          "catalog_supported_merge_count": 0,
+          "cell_normalizer_algorithm": "trace_net_table_cell_normalizer_part_row_repair_v1",
+          "cells": [],
+          "citation_ids": [],
+          "citation_ready": true,
+          "final_answer_allowed": false,
+          "graph_attachment_plan": {
+            "can_mutate_source_truth": false,
+            "cell_node_count": 0,
+            "page_id": "t_p_120_1176_p000202",
+            "proposed_edges": [
+              {
+                "edge_type": "HAS_NORMALIZED_TABLE",
+                "from": "t_p_120_1176_p000202",
+                "to": "normtable__a26e1faf9fbd8c"
+              },
+              {
+                "edge_type": "DERIVED_FROM_TABLE_UNDERSTANDING",
+                "from": "normtable__a26e1faf9fbd8c",
+                "to": "table__t_p_120_1176_p000202__d6a3d9a022"
+              }
+            ],
+            "repair_node_count": 0,
+            "row_node_count": 0,
+            "status": "planned_not_written"
+          },
+          "has_citation": false,
+          "normalization_status": "normalized_no_repairs",
+          "normalized_cell_count": 0,
+          "normalized_row_count": 0,
+          "normalized_table_id": "normtable__a26e1faf9fbd8c",
+          "page_id": "t_p_120_1176_p000202",
+          "page_number": 202,
+          "part_number_merge_candidate_count": 0,
+          "proof_role": "table_candidate_guidance_only",
+          "reason": "table_record_not_claim_proof_ready",
+          "record_type": "table_cell_normalization_record",
+          "repair_count": 0,
+          "repairs": [],
+          "requires_authority_gate": true,
+          "requires_citation": true,
+          "requires_source_resolution": true,
+          "retrieval_only_row_count": 0,
+          "route": "table_evidence",
+          "rows": [],
+          "safety_status": "table_cell_normalization_safe",
+          "schema_version": "trace_net_table_cell_normalizer_v1",
+          "source_rag_bucket": "table_retrieval_helper",
+          "source_row_count": 0,
+          "source_table_id": "table__t_p_120_1176_p000202__d6a3d9a022",
+          "source_table_trust_tier": "route_only",
+          "table_type": "unknown_table",
+          "unsafe_table_evidence": false
+        }
+      ],
+      "source_files": [
+        {
+          "citation_ready": true,
+          "proof_role": "source_locator",
+          "route": "source_file",
+          "source_route": "ocr_records",
+          "value": "00000202.tif"
+        }
+      ],
+      "source_links": [],
+      "source_trace_ready": true,
+      "table_evidence": [],
+      "vector_guidance": [
+        {
+          "can_be_used_as_proof": false,
+          "candidate_type": "source_evidence",
+          "proof_role": "retrieval_guidance_only",
+          "route": "vector_hit",
+          "score": null,
+          "text": "Source evidence for page t_p_120_1176_p000202. This page is source-trace verified and can be used as citation evidence. Document: t_p_120_1176. ATA: 25-21-00. Source URL: http://localhost:8080/rescarta/t_p_120_1176/000202. TIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000202_00000202.tif. OCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000202_00000202.txt."
+        },
+        {
+          "can_be_used_as_proof": false,
+          "candidate_type": "source_text_evidence",
+          "proof_role": "retrieval_guidance_only",
+          "route": "vector_hit",
+          "score": null,
+          "text": "Source text evidence for page t_p_120_1176_p000202. This chunk is source-backed OCR/page-context text and can be searched as source text evidence. Document: t_p_120_1176. ATA: 25-21-00. Source URL: http://localhost:8080/rescarta/t_p_120_1176/000202. TIFF path: local_data\\rescarta_exports\\t_p_120_1176\\pages\\000202_00000202.tif. OCR path: local_data\\rescarta_exports\\t_p_120_1176\\ocr\\000202_00000202.txt. OCR text: [bottom_right_title_block] 150 \u2014\\ 170 160 ev 115 80 120 80 0 110 80 100 Bs Ms C. LZ) 15 - 90 a Oma 115 = y 100 100 6] 130 AT Noy 3\u00b0 rio 15 / \\\" 100 115 120TP250042.MCE er Seat (120-50648-005) -igure 32 Sheet 1 25 21 00 Page 1147 T.P. 120/1176 Sep 30/98 [bottom_strip] | 2X 90 </ 90 280 KS 100 100. / 6] & 130] \\oq 125 200+} 110 \"5 / \\\" 280-\u2014\u2014 100 115 270\u2014* 120TP250042.MCE Double Passenger Seat (120-50648-005) Figure 32 Sheet 1 EFFECTIVITY: ALL 25 21 00 Page 1147 T.P. 120/1176 Sep 30/98 [top_strip] -< EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST NN Ss SN NN, 200 S 4 \\ . ["
+        },
+        {
+          "can_be_used_as_proof": false,
+          "candidate_type": "verified_part_evidence",
+          "proof_role": "retrieval_guidance_only",
+          "route": "vector_hit",
+          "score": null,
+          "text": "Verified part evidence for page t_p_120_1176_p000202. This record comes from the verified part evidence pool and is source-traceable. ATA: 25-21-00. Page/catalog part signals: 120-50648-005. Source URL: http://localhost:8080/rescarta/t_p_120_1176/000202."
+        }
+      ],
+      "visual_guidance": [],
+      "warnings": []
+    }
+  ],
+  "quality_status": "PASS",
+  "query_entities": {
+    "ata_sections": [],
+    "intent": "page_lookup",
+    "pages": [
+      48,
+      202
+    ],
+    "part_numbers": [],
+    "question": "write a paragraph about pages 48 and 202"
+  },
+  "question": "write a paragraph about pages 48 and 202",
+  "reasoning_work_order": {
+    "allowed_reasoning": [
+      "Synthesize across multiple proof records when the cited evidence supports the claim.",
+      "Use graph/vector/visual/summary records to decide what to inspect or mention, but do not treat them as proof by themselves.",
+      "State bounded inferences clearly as inferences and tie them back to source-traceable records.",
+      "For complex questions, explain what the evidence supports, what remains unknown, and what additional evidence would be needed."
+    ],
+    "answer_sections": [
+      "Answer",
+      "Evidence",
+      "Engineering confidence",
+      "Limits"
+    ],
+    "disallowed_reasoning": [
+      "Do not infer interchangeability, fit, effectivity, replacement approval, installation safety, or procurement authority without explicit source proof.",
+      "Do not cite unrelated records.",
+      "Do not use Engram, vector hits, graph neighbors, page summaries, route guidance, or visual summaries as factual proof unless a proof record backs them."
+    ],
+    "guidance_only_pages": [],
+    "model_should_think": true,
+    "proof_ready_pages": [
+      "t_p_120_1176_p000048",
+      "t_p_120_1176_p000202"
+    ],
+    "purpose": "Give the LLM a source-bounded binder plus reasoning tasks, not a canned answer.",
+    "question_intent": "page_lookup",
+    "route_awareness": {
+      "image_visual_pages": [
+        "t_p_120_1176_p000202"
+      ],
+      "table_pages": [
+        "t_p_120_1176_p000048"
+      ]
+    }
+  },
+  "safety_contract": {
+    "answer_permission": false,
+    "guidance_can_be_used_as_proof": false,
+    "opensearch_write_allowed": false,
+    "postgres_write_allowed": false,
+    "proof_context_required_for_source_claims": true,
+    "qdrant_write_allowed": false,
+    "source_truth_mutation_allowed": false
+  },
+  "summary": {
+    "answer_permission_count": 0,
+    "guidance_record_count": 9,
+    "ocr_excerpt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "proof_record_count": 2,
+    "qdrant_write_attempt_count": 0,
+    "route_guidance_count": 2,
+    "selected_page_count": 2,
+    "source_file_count": 2,
+    "source_link_count": 0,
+    "source_trace_ready_page_count": 2,
+    "source_truth_mutation_allowed_count": 0,
+    "visual_guidance_count": 0
+  },
+  "version": "3.3"
+}
