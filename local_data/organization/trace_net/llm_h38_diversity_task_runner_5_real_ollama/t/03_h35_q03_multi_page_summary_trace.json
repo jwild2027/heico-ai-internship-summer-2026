@@ -1,0 +1,55 @@
+{
+  "answer_char_count": 653,
+  "answer_citation_count": 7,
+  "answer_path": "local_data\\organization\\trace_net\\llm_h38_diversity_task_runner_5_real_ollama\\a\\03_h35_q03_multi_page_summary_a.txt",
+  "answer_permission": false,
+  "answer_preview": "The following summary is source-trace-ready: **Part 120-29068-003** Proven: This part is identified as \"Double Passenger Seat Structure\" [O9] and \"STRUCTURE ASSY 00\" [O7]. It is associated with Figure 91 [O6] [V13]. Unproven: Its dimensions, material composition, or installation safety are not provided. **Part 120-50645-005** Proven: This part is linked to Figure 69 on page 315 [V7] and is present in visual records [V1]. Unproven: The nomenclature or specific function of this part is not stated. **Part 120-50645-011** Proven: This part is associated with Figure 75 on page 327 [V10]. Unproven: Its nomenclature and functional details are unproven.",
+  "contract_pass": true,
+  "fallback_used": false,
+  "findings": [],
+  "grade": "GOOD",
+  "llm_error": "",
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h38_diversity_task_runner_5_real_ollama\\p\\03_h35_q03_multi_page_summary_p.txt",
+  "query_text": "Summarize evidence across at least three different available pages, figures, or records. Keep it source-trace-ready, cite each source used, and do not use summaries as proof.",
+  "question_id": "h35_q03_multi_page_summary",
+  "selected_evidence_labels": [
+    "O6",
+    "V1",
+    "V10",
+    "V7",
+    "V13",
+    "T1",
+    "O9",
+    "O7"
+  ],
+  "selected_figures": [
+    "69",
+    "75",
+    "91"
+  ],
+  "selected_pages": [
+    "315",
+    "327",
+    "382",
+    "383",
+    "384"
+  ],
+  "selected_part_numbers": [
+    "120-29068-003",
+    "120-36833-001",
+    "120-50645-005",
+    "120-50645-011"
+  ],
+  "selected_routes": [
+    "ocr",
+    "table",
+    "visual"
+  ],
+  "source_truth_mutation_allowed": false,
+  "task_type": "multi_page_summary",
+  "trace_path": "local_data\\organization\\trace_net\\llm_h38_diversity_task_runner_5_real_ollama\\t\\03_h35_q03_multi_page_summary_trace.json",
+  "unsafe": false,
+  "unsupported_claim_count": 0,
+  "valid_answer_citation_count": 7,
+  "write_attempt_count": 0
+}

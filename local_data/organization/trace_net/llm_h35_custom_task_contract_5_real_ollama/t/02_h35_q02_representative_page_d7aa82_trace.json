@@ -1,0 +1,182 @@
+{
+  "answer_char_count": 341,
+  "answer_citation_count": 4,
+  "answer_path": "local_data\\organization\\trace_net\\llm_h35_custom_task_contract_5_real_ollama\\a\\02_h35_q02_representative_page_d7aa82_a.txt",
+  "answer_permission": false,
+  "answer_preview": "Answer: On page 382, figure 91 [V22] identifies part 120-29068-003 [V21].\n\nEvidence: [V21] [V22]\n\nEngineering confidence: High\n\nLimits: This identification is limited to the relationship between the visual figure and the specific part number. TRACE-Net does not verify interchangeability, approved replacement status, or installation safety.",
+  "category": "custom_contract_representative_page",
+  "contract": {
+    "forbidden_claims": [
+      "interchangeable",
+      "approved replacement",
+      "installation safe"
+    ],
+    "min_unique_evidence_labels": 1,
+    "min_unique_routes": 1,
+    "must_include_any": [
+      "page",
+      "figure",
+      "record"
+    ],
+    "required_outputs": [
+      "answer",
+      "evidence",
+      "engineering_confidence",
+      "limits"
+    ]
+  },
+  "fallback_used": false,
+  "findings": [
+    "possible_forbidden_claim:approved replacement",
+    "possible_forbidden_claim:installation safe"
+  ],
+  "grade": "BAD",
+  "llm_error": "",
+  "llm_mode": "ollama",
+  "llm_model": "gemma4:26b",
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h35_custom_task_contract_5_real_ollama\\p\\02_h35_q02_representative_page_d7aa82_p.txt",
+  "question": "Pick one representative source-trace-ready page, figure, or record from the available evidence and tell me what TRACE-Net can safely say about it. Cite the source.",
+  "question_id": "h35_q02_representative_page",
+  "selected_evidence_cards": [
+    {
+      "citation_ready": true,
+      "claim_supported": "visual figure/page evidence; can support figure-to-part identity when linked",
+      "figure": "91",
+      "label": "V23",
+      "line_text": "",
+      "nomenclature": "",
+      "page": "",
+      "page_id": "t_p_120_1176_p000384",
+      "part_number": "120-29068-003",
+      "raw_id": "raw_ocr_nomenclature_window_74fbc8740107f07c",
+      "route": "visual",
+      "source": "image_visual_evidence_pack"
+    },
+    {
+      "citation_ready": true,
+      "claim_supported": "visual figure/page evidence; can support figure-to-part identity when linked",
+      "figure": "91",
+      "label": "V22",
+      "line_text": "",
+      "nomenclature": "",
+      "page": "382",
+      "page_id": "t_p_120_1176_p000382",
+      "part_number": "",
+      "raw_id": "",
+      "route": "visual",
+      "source": "image_visual_evidence_pack"
+    },
+    {
+      "citation_ready": true,
+      "claim_supported": "visual figure/page evidence; can support figure-to-part identity when linked",
+      "figure": "91",
+      "label": "V21",
+      "line_text": "",
+      "nomenclature": "",
+      "page": "382",
+      "page_id": "t_p_120_1176_p000382",
+      "part_number": "120-29068-003",
+      "raw_id": "image_visual_evidence_aee49b1d7393106b",
+      "route": "visual",
+      "source": "image_visual_evidence_pack"
+    },
+    {
+      "citation_ready": true,
+      "claim_supported": "visual figure/page evidence; can support figure-to-part identity when linked",
+      "figure": "75",
+      "label": "V20",
+      "line_text": "",
+      "nomenclature": "",
+      "page": "",
+      "page_id": "t_p_120_1176_p000328",
+      "part_number": "120-50645-011",
+      "raw_id": "raw_ocr_nomenclature_window_314536c3d53b8445",
+      "route": "visual",
+      "source": "image_visual_evidence_pack"
+    },
+    {
+      "citation_ready": true,
+      "claim_supported": "visual figure/page evidence; can support figure-to-part identity when linked",
+      "figure": "75",
+      "label": "V19",
+      "line_text": "",
+      "nomenclature": "",
+      "page": "327",
+      "page_id": "t_p_120_1176_p000327",
+      "part_number": "",
+      "raw_id": "",
+      "route": "visual",
+      "source": "image_visual_evidence_pack"
+    },
+    {
+      "citation_ready": true,
+      "claim_supported": "visual figure/page evidence; can support figure-to-part identity when linked",
+      "figure": "69",
+      "label": "V17",
+      "line_text": "",
+      "nomenclature": "",
+      "page": "",
+      "page_id": "t_p_120_1176_p000316",
+      "part_number": "120-50645-005",
+      "raw_id": "raw_ocr_nomenclature_window_833bbc3bd58e5bfc",
+      "route": "visual",
+      "source": "image_visual_evidence_pack"
+    },
+    {
+      "citation_ready": true,
+      "claim_supported": "visual figure/page evidence; can support figure-to-part identity when linked",
+      "figure": "69",
+      "label": "V16",
+      "line_text": "",
+      "nomenclature": "",
+      "page": "315",
+      "page_id": "t_p_120_1176_p000315",
+      "part_number": "",
+      "raw_id": "",
+      "route": "visual",
+      "source": "image_visual_evidence_pack"
+    },
+    {
+      "citation_ready": false,
+      "claim_supported": "visual figure/page evidence; can support figure-to-part identity when linked",
+      "figure": "84",
+      "label": "V41",
+      "line_text": "",
+      "nomenclature": "",
+      "page": "507",
+      "page_id": "t_p_120_1176_p000507",
+      "part_number": "",
+      "raw_id": "image_visual_evidence_a035f76e3a415f91",
+      "route": "visual",
+      "source": "image_visual_evidence_pack"
+    }
+  ],
+  "selected_evidence_labels": [
+    "V23",
+    "V22",
+    "V21",
+    "V20",
+    "V19",
+    "V17",
+    "V16",
+    "V41"
+  ],
+  "selected_routes": [
+    "visual"
+  ],
+  "source_truth_mutation_allowed": false,
+  "task_type": "representative_page_explanation",
+  "trace_path": "local_data\\organization\\trace_net\\llm_h35_custom_task_contract_5_real_ollama\\t\\02_h35_q02_representative_page_d7aa82_trace.json",
+  "unique_evidence_label_count": 2,
+  "unique_evidence_labels": [
+    "V21",
+    "V22"
+  ],
+  "unique_page_or_figure_count": 1,
+  "unique_route_count": 1,
+  "unique_routes": [
+    "visual"
+  ],
+  "unsafe": false,
+  "unsupported_claim_count": 2
+}

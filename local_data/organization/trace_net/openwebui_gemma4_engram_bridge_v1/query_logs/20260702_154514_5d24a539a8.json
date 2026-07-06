@@ -1,0 +1,139 @@
+{
+  "answer": "{ \"title\": \"📄 Random Page Selection\" }",
+  "citations": [
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "T1348",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000037",
+      "part_number": "120-33774-001",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000037"
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "T1395",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000037",
+      "part_number": "120-33774-501",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000037"
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "T1402",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000037",
+      "part_number": "120-33774-505",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000037"
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "T1412",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000037",
+      "part_number": "120-33774-537",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000037"
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "T1433",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000037",
+      "part_number": "120-33774-539",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000037"
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "T1446",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000037",
+      "part_number": "120-34291-001",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000037"
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "T2876",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000037",
+      "part_number": "120-33774-001",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_route_evidence_packager\\trace_net_table_route_evidence_packager_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000037"
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "T2923",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000037",
+      "part_number": "120-33774-501",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_route_evidence_packager\\trace_net_table_route_evidence_packager_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000037"
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "T2930",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000037",
+      "part_number": "120-33774-505",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_route_evidence_packager\\trace_net_table_route_evidence_packager_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000037"
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "T2940",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000037",
+      "part_number": "120-33774-537",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_route_evidence_packager\\trace_net_table_route_evidence_packager_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000037"
+    }
+  ],
+  "evidence_card_count": 10,
+  "fallback_used": false,
+  "llm_error": "",
+  "model": "gemma4:26b",
+  "query": "### Task: Generate a concise, 3-5 word title with an emoji summarizing the chat history. ### Guidelines: - The title should clearly represent the main theme or subject of the conversation. - Use emojis that enhance understanding of the topic, but avoid quotation marks or special formatting. - Write the title in the chat's primary language; default to English if multilingual. - Prioritize accuracy over excessive creativity; keep it clear and simple. - Your entire response must consist solely of the JSON object, without any introductory or concluding text. - The output must be a single, raw JSON object, without any markdown code fences or other encapsulating text. - Ensure no conversational text, affirmations, or explanations precede or follow the raw JSON output, as this will cause direct parsing failure. ### Output: JSON format: { \"title\": \"your concise title here\" } ### Examples: - { \"title\": \"📉 Stock Market Trends\" }, - { \"title\": \"🍪 Perfect Chocolate Chip Recipe\" }, - { \"title\": \"Evolution of Music Streaming\" }, - { \"title\": \"Remote Work Productivity Tips\" }, - { \"title\": \"Artificial Intelligence in Healthcare\" }, - { \"title\": \"🎮 Video Game Development Insights\" } ### Chat History: <chat_history> USER: pick a random page ASSISTANT: **Answer** The selected page is `t_p_120_1176_p000468` (Page 468), which contains Figure 1 [V34, V35, V36, V37]. **Evidence** * Visual evidence identifies the presence of \"figure=1\" [V34, V35] and \"figure=01\" [V36, V37] on page `t_p_120_1176_p000468` [V34, V35, V36, V37]. **Engineering confidence** The identification of the figure label and its association with page `t_p_120_1176_p000468` is supported by visual callout link records [V34, V36]. Confidence in the specific content or subject matter of this page is low, as no part nomenclature or descriptive text was provided in the proof context. **Limits** The evidence is limited to identifying a figure identifier on a specific page. The provided `proof_context` does not contain part numbers, descriptions, instructions, or any information regarding the technical contents of Figure 1. </chat_history>",
+  "response": "{ \"title\": \"📄 Random Page Selection\" }",
+  "safety": {
+    "answer_permission": false,
+    "opensearch_write_attempt": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "source_truth_mutation_allowed": false
+  },
+  "task_type": "random_page"
+}

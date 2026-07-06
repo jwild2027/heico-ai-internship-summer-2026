@@ -1,0 +1,18 @@
+Answer:
+TRACE-Net can safely discuss 120-50645-005 using the selected source-trace-ready evidence [V16] [V18] [O9] [O10].
+
+Evidence:
+- [V16] [V16] route=visual | page=315 | page_id=t_p_120_1176_p000315 | figure=69 | part=120-50645-005 | nomenclature=DOUBLE PASSENGER SEAT ASSY
+  {"answer_permission": false, "callout": "", "can_answer_directly": false, "can_prove_claims": false, "can_support_limited_visual_answer": true, "candidate_source": "", "citation_label": "V6", "citation_ready": true, "evidence_id": "image_visual_evidence_ff1...
+- [V18] [V18] route=visual | figure=69 | part=120-50645-005 | nomenclature=DOUBLE PASSENGER SEAT ASSY
+  {"source_module": "trace_net_raw_ocr_nomenclature_window_extractor_v1", "source_record_id": "raw_ocr_nomenclature_window_833bbc3bd58e5bfc", "source_visual_citation_label": "V6", "linked_part_number": "120-50645-005", "figure": "69", "ocr_page_id": "t_p_120_...
+- [O9] [O9] route=ocr | figure=69 | part=120-50645-005 | nomenclature=DOUBLE PASSENGER SEAT ASSY
+  {"record_id": "raw_ocr_nomenclature_window_833bbc3bd58e5bfc", "schema_version": "trace_net_raw_ocr_nomenclature_window_extractor_v1", "source_visual_citation_label": "V6", "source_visual_evidence_id": "image_visual_evidence_ff198f6822219919", "linked_part_n...
+- [O10] [O10] route=ocr | part=120-50645-005 | nomenclature=DOUBLE PASSENGER SEAT ASSY
+  line_text: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF | nomenclature: DOUBLE PASSENGER SEAT ASSY
+
+Engineering confidence:
+MEDIUM/HIGH for claims directly supported by the cited cards.
+
+Limits:
+This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety. Engram and summaries are guidance only, not proof.

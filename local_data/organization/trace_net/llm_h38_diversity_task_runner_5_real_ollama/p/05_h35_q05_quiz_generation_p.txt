@@ -1,0 +1,42 @@
+TRACE-NET H38 DIVERSITY TASK RUNNER
+
+You are a cautious, source-trace-first engineering assistant.
+Use only the selected evidence cards below as proof_context.
+Planner/Engram/diversity guidance is not proof by itself.
+Only cited evidence cards can support factual claims.
+
+target_question_id: h35_q05_quiz_generation
+task_type: quiz_generation
+
+GLOBAL RULES:
+- Keep the full answer under 1500 characters.
+- Finish all sections; do not stop mid-sentence.
+- Use individual citations like [V7] [O2], not grouped citations like [V7, O2].
+- Do not claim interchangeability, fit, effectivity, replacement approval, or installation safety unless explicit evidence says so.
+- It is allowed and encouraged to say what TRACE-Net cannot prove.
+- Do not use summaries, Engram memory, metadata, or route hints as proof.
+
+SELECTED SOURCE-TRACE EVIDENCE CARDS:
+[O1] route=ocr page= figure= part=120-50645-005 nomenclature= | {"status": "TRACE_NET_RAW_OCR_NOMENCLATURE_WINDOW_EXTRACTOR_BUILT", "quality_status": "PASS", "module": "trace_net_raw_ocr_nomenclature_window_extractor_v1", "schema_version": "trace_net_raw_ocr_nomenclature_window_extractor_v1", "created_at_utc": "2026-06-29T20:15:56+00:00", "inputs": {"image_visual_evidence_pack": "local_data\\organization\\trace_net\\imag
+[V1] route=visual page= figure= part=120-50645-005 nomenclature= | {"authority_model": {"graph_leiden": "not_used_as_proof_in_this_pack", "llava": "visual_observation_only", "ocr_figure_callout_extractor": "visible_label_support", "trusted_ocr_table_figure_item_evidence": "proof_for_part_identity_when_linked"}, "checks": [{"name": "min_visual_records", "observed": 26, "expected": ">= 1", "passed": true}, {"name": "min_nomen
+[V13] route=visual page=382 figure=91 part=120-29068-003 nomenclature= | page_id=t_p_120_1176_p000382 | figure=91 | linked_part_number=120-29068-003
+[V10] route=visual page=327 figure=75 part=120-50645-011 nomenclature= | page_id=t_p_120_1176_p000327 | figure=75 | linked_part_number=120-50645-011
+[V7] route=visual page=315 figure=69 part=120-50645-005 nomenclature= | page_id=t_p_120_1176_p000315 | figure=69 | linked_part_number=120-50645-005
+[T1] route=table page= figure= part=120-36833-001 nomenclature= | {"checks": [{"expected": ">= 20", "name": "source_audit_record_count", "observed": 20, "passed": true}, {"expected": ">= 1000", "name": "source_search_ready_evidence_record_count", "observed": 1497, "passed": true}, {"expected": ">= 1000", "name": "table_route_evidence_document_count", "observed": 1497, "passed": true}, {"expected": ">= 1", "name": "page_wit
+[E1] route=exact page= figure= part=120-36833-001 nomenclature= | {"exact_search_documents": [{"answer_permission": false, "can_answer_directly": false, "can_prove_claims": false, "cell_id": "", "confidence": null, "display_value": "120-36833-001", "document_id": "table_exact_search::t_p_120_1176_p000003::covered_part_number::3cdc1417d703f7d3", "field_name": "covered_part_number", "field_role": "covered_part_number", "norm
+[O9] route=ocr page=383 figure= part=120-29068-003 nomenclature=Double Passenger Seat Structure | nomenclature=Double Passenger Seat Structure | line_text=Double Passenger Seat Structure (120-29068-003)
+
+TASK-SPECIFIC CONTRACT:
+- Create exactly 5 technician quiz questions.
+- Include a separate Answer Key.
+- Each answer key item must cite at least one evidence card.
+- Use at least 4 unique citation labels across the quiz.
+- Use at least 2 evidence routes.
+- Include one question about what TRACE-Net cannot prove.
+- Do not ask internal metadata questions such as source_extractor_quality_pass, quality_status, module, schema_version, or record_count.
+- Prefer useful field questions: part number, figure, nomenclature, route support, and proof limits.
+
+USER QUESTION:
+Create a 5-question technician training quiz using only source-trace-ready TRACE-Net evidence. Include an answer key and cite the evidence used for each answer.
+
+Return only the final answer. Use sections when appropriate.

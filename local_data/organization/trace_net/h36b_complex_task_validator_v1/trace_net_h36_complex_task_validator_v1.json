@@ -1,0 +1,233 @@
+{
+  "quality_status": "PASS",
+  "source_contract_run": "local_data/organization/trace_net/llm_h35_custom_task_contract_5_real_ollama/trace_net_h35_custom_task_contract_runner_v1.json",
+  "status": "TRACE_NET_H36_COMPLEX_TASK_VALIDATOR_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "bad_count": 0,
+    "contract_pass_count": 4,
+    "fallback_used_count": 0,
+    "module": "trace_net_h36_complex_task_validator_v1",
+    "quality_failures": [],
+    "ready_for_h37_diversity_planner": true,
+    "record_count": 5,
+    "review_count": 1,
+    "source_contract_run_quality_status": "FAIL",
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_finding_count": 0,
+    "version": "v1",
+    "write_attempt_count": 0
+  },
+  "validator_policy": {
+    "forbidden": [
+      "answer_permission_from_validator",
+      "source_truth_mutation_from_validator",
+      "engram_or_summary_used_as_proof",
+      "live_io_from_validator"
+    ],
+    "mode": "artifact_first_complex_task_validator",
+    "negation_aware_forbidden_claims": true,
+    "proof_boundary": "Validator may grade behavior and format but cannot create proof; factual manual claims still require proof_context citations."
+  },
+  "validator_records": [
+    {
+      "answer_char_count": 481,
+      "answer_permission": false,
+      "contract_pass": true,
+      "fallback_used": false,
+      "findings": [],
+      "grouped_citations": [],
+      "h36_grade": "GOOD",
+      "question_id": "h35_q01_part_lookup",
+      "safe_boundary_mentions": [
+        "safe_negated_boundary:effectivity",
+        "safe_negated_boundary:installation safe",
+        "safe_negated_boundary:installation safety",
+        "safe_negated_boundary:interchangeability",
+        "safe_negated_boundary:replacement approval"
+      ],
+      "selected_evidence_labels": [
+        "O10",
+        "V17",
+        "V15",
+        "T118",
+        "O19",
+        "O1",
+        "E101",
+        "V9"
+      ],
+      "selected_routes": [
+        "exact",
+        "ocr",
+        "table",
+        "visual"
+      ],
+      "source_grade": "GOOD",
+      "source_truth_mutation_allowed": false,
+      "task_type": "part_lookup",
+      "unique_evidence_label_count": 8,
+      "unique_route_count": 4,
+      "unsafe": false,
+      "unsafe_forbidden_claims": [],
+      "validator_status": "PASS",
+      "warnings": []
+    },
+    {
+      "answer_char_count": 341,
+      "answer_permission": false,
+      "contract_pass": true,
+      "fallback_used": false,
+      "findings": [],
+      "grouped_citations": [],
+      "h36_grade": "GOOD",
+      "question_id": "h35_q02_representative_page",
+      "safe_boundary_mentions": [
+        "safe_negated_boundary:approved replacement",
+        "safe_negated_boundary:installation safe",
+        "safe_negated_boundary:installation safety",
+        "safe_negated_boundary:interchangeability"
+      ],
+      "selected_evidence_labels": [
+        "V23",
+        "V22",
+        "V21",
+        "V20",
+        "V19",
+        "V17",
+        "V16",
+        "V41"
+      ],
+      "selected_routes": [
+        "visual"
+      ],
+      "source_grade": "BAD",
+      "source_truth_mutation_allowed": false,
+      "task_type": "representative_page_explanation",
+      "unique_evidence_label_count": 8,
+      "unique_route_count": 1,
+      "unsafe": false,
+      "unsafe_forbidden_claims": [],
+      "validator_status": "PASS",
+      "warnings": [
+        "source_unsupported_claim_count_regraded_safe_boundary:2"
+      ]
+    },
+    {
+      "answer_char_count": 507,
+      "answer_permission": false,
+      "contract_pass": false,
+      "fallback_used": false,
+      "findings": [
+        "missing_required_phrase:source-trace"
+      ],
+      "grouped_citations": [],
+      "h36_grade": "PARTIAL",
+      "question_id": "h35_q03_multi_page_summary",
+      "safe_boundary_mentions": [
+        "safe_negated_boundary:effectivity",
+        "safe_negated_boundary:installation safe",
+        "safe_negated_boundary:installation safety",
+        "safe_negated_boundary:interchangeability",
+        "safe_negated_boundary:replacement approval"
+      ],
+      "selected_evidence_labels": [
+        "V23",
+        "V22",
+        "V21",
+        "V20",
+        "V19",
+        "V17",
+        "V16",
+        "V41"
+      ],
+      "selected_routes": [
+        "visual"
+      ],
+      "source_grade": "PARTIAL",
+      "source_truth_mutation_allowed": false,
+      "task_type": "multi_page_summary",
+      "unique_evidence_label_count": 8,
+      "unique_route_count": 1,
+      "unsafe": false,
+      "unsafe_forbidden_claims": [],
+      "validator_status": "REVIEW",
+      "warnings": []
+    },
+    {
+      "answer_char_count": 564,
+      "answer_permission": false,
+      "contract_pass": true,
+      "fallback_used": false,
+      "findings": [],
+      "grouped_citations": [],
+      "h36_grade": "GOOD",
+      "question_id": "h35_q04_nomenclature_lookup",
+      "safe_boundary_mentions": [],
+      "selected_evidence_labels": [
+        "O10",
+        "V17",
+        "V15",
+        "T118",
+        "O19",
+        "O1",
+        "E101",
+        "V9"
+      ],
+      "selected_routes": [
+        "exact",
+        "ocr",
+        "table",
+        "visual"
+      ],
+      "source_grade": "GOOD",
+      "source_truth_mutation_allowed": false,
+      "task_type": "nomenclature_lookup",
+      "unique_evidence_label_count": 8,
+      "unique_route_count": 4,
+      "unsafe": false,
+      "unsafe_forbidden_claims": [],
+      "validator_status": "PASS",
+      "warnings": []
+    },
+    {
+      "answer_char_count": 598,
+      "answer_permission": false,
+      "contract_pass": true,
+      "fallback_used": false,
+      "findings": [],
+      "grouped_citations": [],
+      "h36_grade": "GOOD",
+      "question_id": "h35_q05_quiz_generation",
+      "safe_boundary_mentions": [
+        "safe_negated_boundary:interchangeability",
+        "safe_negated_boundary:interchangeable"
+      ],
+      "selected_evidence_labels": [
+        "O18",
+        "O17",
+        "O16",
+        "O15",
+        "O12",
+        "O10",
+        "V9",
+        "V8"
+      ],
+      "selected_routes": [
+        "ocr",
+        "visual"
+      ],
+      "source_grade": "GOOD",
+      "source_truth_mutation_allowed": false,
+      "task_type": "quiz_generation",
+      "unique_evidence_label_count": 8,
+      "unique_route_count": 2,
+      "unsafe": false,
+      "unsafe_forbidden_claims": [],
+      "validator_status": "PASS",
+      "warnings": [
+        "metadata_quiz_item:source_extractor_quality_pass"
+      ]
+    }
+  ],
+  "validator_records_path": "local_data\\organization\\trace_net\\h36b_complex_task_validator_v1\\trace_net_h36_complex_task_validator_records_v1.jsonl"
+}

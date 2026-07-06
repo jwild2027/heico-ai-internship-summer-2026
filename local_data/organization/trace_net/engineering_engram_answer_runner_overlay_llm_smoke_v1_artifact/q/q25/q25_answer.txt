@@ -1,0 +1,25 @@
+Answer:
+Artifact-mode overlay smoke for q25: the retrieved Engram overlay is behavior guidance only, not proof. The source answer-runner answer remains the source of the candidate answer text.
+
+Evidence:
+- Manual/source claims still require current proof_context citations from the source answer-runner prompt.
+- Retrieved Engram guidance does not grant answer permission and does not mutate source truth.
+
+Engineering confidence:
+MEDIUM for integration behavior in artifact mode; no new source claim is introduced.
+
+Limits:
+This artifact-mode smoke does not prove new manual facts. It validates prompt overlay assembly only.
+
+Source answer preview:
+Answer: Not found / not source-trace-ready. No proof_context was available to identify or locate part number 999-99999-999. TRACE-Net cannot provide any engineering evidence for this part number from the current context pack.
+
+Evidence:
+- No proof context was available.
+
+Engineering confidence:
+LOW because the context pack has no records for this part number. Nomenclature confidence: N/A.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.

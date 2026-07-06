@@ -1,0 +1,12 @@
+Answer:
+The retrieved Engram guidance should shape behavior only.
+
+Evidence:
+- Query under test: h19_q_safe_but_too_generic_repair
+- Current proof_context: none supplied in H22 smoke.
+
+Engineering confidence:
+HIGH that the prompt-retrieval guidance preserves the source-trace boundary; LOW for any manual factual claim because no proof_context was supplied.
+
+Limits:
+Manual claims still require current proof_context citations before they can be treated as proven.

@@ -1,0 +1,26 @@
+Answer:
+Artifact-mode overlay smoke for q12: the retrieved Engram overlay is behavior guidance only, not proof. The source answer-runner answer remains the source of the candidate answer text.
+
+Evidence:
+- Manual/source claims still require current proof_context citations from the source answer-runner prompt.
+- Retrieved Engram guidance does not grant answer permission and does not mutate source truth.
+
+Engineering confidence:
+MEDIUM for integration behavior in artifact mode; no new source claim is introduced.
+
+Limits:
+This artifact-mode smoke does not prove new manual facts. It validates prompt overlay assembly only.
+
+Source answer preview:
+Answer: Not proven. 
+
+TRACE-Net can prove that part number 120-50645-005 [E1] [T1] is identified in the source evidence with the nomenclature "DOUBLE PASSENGER SEAT ASSY" [O1] and is linked to figure 69 [V6]. Similarly, TRACE-Net can prove that part number 120-50645-011 [E2] [T2] is identified with the same nomenclature "DOUBLE PASSENGER SEAT ASSY" [O2] and is linked to figure 75 [V7]. 
+
+However, shared nomenclature, nearby figures, or part-family similarity are not proof of interchangeability or replacement approval. TRACE-Net cannot prove interchangeability, effectivity, fit, replacement approval, or installation safety from the current evidence pack.
+
+Evidence:
+- [E1] Exact-part evidence contains part number 120-50645-005.
+- [E2] Exact-part evidence contains part number 120-50645-011.
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [V7] Visual evidence
+[TRUNCATED: compacted for targeted H25 overlay smoke; guidance remains behavior-only, not proof.]

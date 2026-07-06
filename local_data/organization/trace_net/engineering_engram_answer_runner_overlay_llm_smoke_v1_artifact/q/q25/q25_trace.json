@@ -1,0 +1,49 @@
+{
+  "answer_char_count": 1246,
+  "answer_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q25\\q25_answer.txt",
+  "answer_permission": false,
+  "answer_preview": "Answer:\nArtifact-mode overlay smoke for q25: the retrieved Engram overlay is behavior guidance only, not proof. The source answer-runner answer remains the source of the candidate answer text.\n\nEvidence:\n- Manual/source claims still require current proof_context citations from the source answer-runner prompt.\n- Retrieved Engram guidance does not grant answer permission and does not mutate source truth.\n\nEngineering confidence:\nMEDIUM for integration behavior in artifact mode; no new source claim is introduced.\n\nLimits:\nThis artifact-mode smoke does not prove new manual facts. It validates prompt overlay assembly only.\n\nSource answer preview:\nAnswer: Not found / not source-trace-ready. No proof_context was available to identify or locate part number 999-99999-999. TRACE-Net cannot provide any engineering evidence for this part number from the current context pack.\n\nEvidence:\n- No proof context was available.\n\nEngineering confidence:\nLOW because the context pack has no records for this part number. Nomenclature confidence: N/A.\n\nLimits:\n- This does not prove interchangeability, effectivi\n[TRUNCATED: compacted for targeted H25 overlay smoke; guidance remains behavior-only, not proof.]",
+  "grade": "GOOD",
+  "grade_reasons": [],
+  "llm_answered": true,
+  "llm_error": "",
+  "llm_fallback_used": false,
+  "llm_mode": "artifact",
+  "llm_model": "artifact_scaffold",
+  "llm_retry_used": false,
+  "matched_bridge_query_ids": [
+    "h19_q_unknown_part_not_source_trace_ready"
+  ],
+  "matched_bridge_task_types": [
+    "unknown_part"
+  ],
+  "prompt_char_count": 6000,
+  "prompt_hash": "f7ba33ad11a62a00e9cad2c31c4885c109f7263ddacbc7ee68f6d1053549b7ca",
+  "prompt_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q25\\q25_prompt.txt",
+  "question": "Find part number 999-99999-999 and cite the source.",
+  "question_id": "q25",
+  "safety_contract": {
+    "answer_permission_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_read_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "source_truth_mutation_allowed_count": 0
+  },
+  "selected_layers": [
+    "episodic_memory",
+    "semantic_memory",
+    "working_memory"
+  ],
+  "selected_proof_roles": [
+    "current_proof_context_only",
+    "guidance_only"
+  ],
+  "source_answer_grade": "PARTIAL",
+  "source_runner_passed": false,
+  "source_runner_quality_status": "FAIL",
+  "trace_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q25\\q25_trace.json",
+  "unsafe": false,
+  "unsupported_claim_count": 0
+}

@@ -1,0 +1,58 @@
+{
+  "answer_char_count": 584,
+  "answer_citation_count": 5,
+  "answer_path": "local_data\\organization\\trace_net\\llm_h38_diversity_task_runner_5_real_ollama\\a\\05_h35_q05_quiz_generation_a.txt",
+  "answer_permission": false,
+  "answer_preview": "**Technician Training Quiz** 1. What is the nomenclature for part number 120-29068-003 as identified on page 383? 2. On which figure number can part 120-50645-011 be located on page 327? 3. What is the figure number associated with part 120-29068-003 on page 382? 4. According to the visual authority model, what is the specific functional limitation of the `llava` component? 5. Which part number is identified in figure 69 on page 315? **Answer Key** 1. Double Passenger Seat Structure [O9] 2. Figure 75 [V10] 3. Figure 91 [V13] 4. Visual observation only [V1] 5. 120-50645-005 [V7]",
+  "contract_pass": false,
+  "fallback_used": false,
+  "findings": [
+    "too_few_quiz_questions:0<5",
+    "missing_limits_quiz_item"
+  ],
+  "grade": "PARTIAL",
+  "llm_error": "",
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h38_diversity_task_runner_5_real_ollama\\p\\05_h35_q05_quiz_generation_p.txt",
+  "query_text": "Create a 5-question technician training quiz using only source-trace-ready TRACE-Net evidence. Include an answer key and cite the evidence used for each answer.",
+  "question_id": "h35_q05_quiz_generation",
+  "selected_evidence_labels": [
+    "O1",
+    "V1",
+    "V13",
+    "V10",
+    "V7",
+    "T1",
+    "E1",
+    "O9"
+  ],
+  "selected_figures": [
+    "69",
+    "75",
+    "91"
+  ],
+  "selected_pages": [
+    "315",
+    "327",
+    "382",
+    "383"
+  ],
+  "selected_part_numbers": [
+    "120-29068-003",
+    "120-36833-001",
+    "120-50645-005",
+    "120-50645-011"
+  ],
+  "selected_routes": [
+    "exact",
+    "ocr",
+    "table",
+    "visual"
+  ],
+  "source_truth_mutation_allowed": false,
+  "task_type": "quiz_generation",
+  "trace_path": "local_data\\organization\\trace_net\\llm_h38_diversity_task_runner_5_real_ollama\\t\\05_h35_q05_quiz_generation_trace.json",
+  "unsafe": false,
+  "unsupported_claim_count": 0,
+  "valid_answer_citation_count": 5,
+  "write_attempt_count": 0
+}

@@ -1,0 +1,54 @@
+{
+  "answer_char_count": 152,
+  "answer_citation_count": 0,
+  "answer_path": "local_data\\organization\\trace_net\\llm_h38_diversity_task_runner_5_real_ollama\\a\\04_h35_q04_nomenclature_lookup_a.txt",
+  "answer_permission": false,
+  "answer_preview": "**Nomenclature** The provided evidence does not contain the nomenclature for part number 120-50645-005. **Figure-to-Part Link** * **OCR Route**: The OCR",
+  "contract_pass": false,
+  "fallback_used": false,
+  "findings": [
+    "missing_valid_citations"
+  ],
+  "grade": "BAD",
+  "llm_error": "",
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h38_diversity_task_runner_5_real_ollama\\p\\04_h35_q04_nomenclature_lookup_p.txt",
+  "query_text": "Look up the nomenclature for part number 120-50645-005. Explain which route proves the part name and which route proves the figure-to-part link. Cite the source.",
+  "question_id": "h35_q04_nomenclature_lookup",
+  "selected_evidence_labels": [
+    "O2",
+    "V7",
+    "O6",
+    "O4",
+    "V1",
+    "V13",
+    "V10",
+    "V9"
+  ],
+  "selected_figures": [
+    "69",
+    "75",
+    "91"
+  ],
+  "selected_pages": [
+    "315",
+    "316",
+    "327",
+    "382"
+  ],
+  "selected_part_numbers": [
+    "120-29068-003",
+    "120-50645-005",
+    "120-50645-011"
+  ],
+  "selected_routes": [
+    "ocr",
+    "visual"
+  ],
+  "source_truth_mutation_allowed": false,
+  "task_type": "nomenclature_lookup",
+  "trace_path": "local_data\\organization\\trace_net\\llm_h38_diversity_task_runner_5_real_ollama\\t\\04_h35_q04_nomenclature_lookup_trace.json",
+  "unsafe": false,
+  "unsupported_claim_count": 0,
+  "valid_answer_citation_count": 0,
+  "write_attempt_count": 0
+}

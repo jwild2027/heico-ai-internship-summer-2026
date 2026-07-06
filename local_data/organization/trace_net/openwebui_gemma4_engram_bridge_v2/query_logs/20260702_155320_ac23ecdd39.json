@@ -1,0 +1,29 @@
+{
+  "answer": "Answer\nTRACE-Net currently has 54 source pages available in the local corpus/page artifacts. The page-number range represented is 1 through 507. The first observed page id is t_p_120_1176_p000001, and the last observed page id is t_p_120_1176_p000507. [M1]\n\nEvidence\n- [M1] Corpus/page artifact scan counted 54 unique source page IDs from TRACE-Net local artifacts.\n- First sample: t_p_120_1176_p000001, t_p_120_1176_p000002, t_p_120_1176_p000003, t_p_120_1176_p000004, t_p_120_1176_p000005\n- Last sample: t_p_120_1176_p000499, t_p_120_1176_p000500, t_p_120_1176_p000503, t_p_120_1176_p000506, t_p_120_1176_p000507\n\nEngineering confidence\nHigh for the local artifact page count. This is a corpus-coverage answer, not a manual technical claim.\n\nLimits\nThe count means TRACE-Net can route/retrieve over these page artifacts. It does not mean every page has equally rich OCR, table, visual, or part-number proof. It also does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.",
+  "citations": [
+    {
+      "citation_ready": true,
+      "field": "source_page_count",
+      "label": "M1",
+      "page": "",
+      "route": "corpus_manifest",
+      "source_artifact": "TRACE-Net local artifact scan",
+      "source_trace_ready": true,
+      "value": 54
+    }
+  ],
+  "evidence_card_count": 1,
+  "fallback_used": false,
+  "llm_error": "",
+  "model": "deterministic_corpus_stats",
+  "query": "### Task: Generate 1-3 broad tags categorizing the main themes of the chat history, along with 1-3 more specific subtopic tags. ### Guidelines: - Start with high-level domains (e.g. Science, Technology, Philosophy, Arts, Politics, Business, Health, Sports, Entertainment, Education) - Consider including relevant subfields/subdomains if they are strongly represented throughout the conversation - If content is too short (less than 3 messages) or too diverse, use only [\"General\"] - Use the chat's primary language; default to English if multilingual - Prioritize accuracy over specificity ### Output: JSON format: { \"tags\": [\"tag1\", \"tag2\", \"tag3\"] } ### Chat History: <chat_history> USER: how many pages can you look at ASSISTANT: Answer TRACE-Net currently has 54 source pages available in the local corpus/page artifacts. The page-number range represented is 1 through 507. The first observed page id is t_p_120_1176_p000001, and the last observed page id is t_p_120_1176_p000507. [M1] Evidence - [M1] Corpus/page artifact scan counted 54 unique source page IDs from TRACE-Net local artifacts. - First sample: t_p_120_1176_p000001, t_p_120_1176_p000002, t_p_120_1176_p000003, t_p_120_1176_p000004, t_p_120_1176_p000005 - Last sample: t_p_120_1176_p000499, t_p_120_1176_p000500, t_p_120_1176_p000503, t_p_120_1176_p000506, t_p_120_1176_p000507 Engineering confidence High for the local artifact page count. This is a corpus-coverage answer, not a manual technical claim. Limits The count means TRACE-Net can route/retrieve over these page artifacts. It does not mean every page has equally rich OCR, table, visual, or part-number proof. It also does not prove interchangeability, effectivity, fit, replacement approval, or installation safety. </chat_history>",
+  "response": "Answer\nTRACE-Net currently has 54 source pages available in the local corpus/page artifacts. The page-number range represented is 1 through 507. The first observed page id is t_p_120_1176_p000001, and the last observed page id is t_p_120_1176_p000507. [M1]\n\nEvidence\n- [M1] Corpus/page artifact scan counted 54 unique source page IDs from TRACE-Net local artifacts.\n- First sample: t_p_120_1176_p000001, t_p_120_1176_p000002, t_p_120_1176_p000003, t_p_120_1176_p000004, t_p_120_1176_p000005\n- Last sample: t_p_120_1176_p000499, t_p_120_1176_p000500, t_p_120_1176_p000503, t_p_120_1176_p000506, t_p_120_1176_p000507\n\nEngineering confidence\nHigh for the local artifact page count. This is a corpus-coverage answer, not a manual technical claim.\n\nLimits\nThe count means TRACE-Net can route/retrieve over these page artifacts. It does not mean every page has equally rich OCR, table, visual, or part-number proof. It also does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.",
+  "safety": {
+    "answer_permission": false,
+    "opensearch_write_attempt": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "source_truth_mutation_allowed": false
+  },
+  "task_type": "corpus_stats"
+}

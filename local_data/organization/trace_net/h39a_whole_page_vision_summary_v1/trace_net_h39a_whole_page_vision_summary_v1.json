@@ -1,0 +1,139 @@
+{
+  "engram_guidance": "- Vision summaries are guidance only; they are not proof.\n- Act like a cautious engineer: observations, confidence, uncertainty, limits.\n- Do not claim interchangeability, effectivity, fit, replacement approval, or installation safety.\n- If text is hard to read, say uncertain instead of inventing.\n- OCR/table/exact/graph routes must verify factual source claims.\n- procedural_memory: Shared nomenclature, nearby figures, or part-family similarity are not proof of interchangeability or replacement approval.\n- procedural_memory: Figure/part identification evidence does not prove installation safety, fit approval, aircraft effectivity, or replacement approval.\n- working_memory: V2 summaries may guide planning and framing, but cannot prove source claims; factual claims require proof_context citations.\n- semantic_memory: visual_figure_link establishes figure-to-part identity; ocr_nomenclature provides OCR-backed line-text name proof.\n- semantic_memory: Exact-part/table-OCR evidence supports presence of a part number but does not by itself prove approvals or compatibility.\n- trait_memory: Prefer answer sections: Answer, Evidence, Engineering confidence, Limits; for limitations questions, split Can prove vs Cannot prove.\n- trait_memory: When a claim is not proven, still explain what TRACE-Net can prove and why the requested claim is outside the evidence.",
+  "missing_image_examples": [],
+  "quality_status": "FAIL",
+  "records": [
+    {
+      "answer_permission": false,
+      "converted_bytes": 52089,
+      "converted_image_path": "local_data\\organization\\trace_net\\h39a_whole_page_vision_summary_v1\\vision_input_jpeg\\t_p_120_1176_p000001_max1024.jpg",
+      "converted_size": [
+        792,
+        1024
+      ],
+      "error": "HTTPError 500: Internal Server Error; body={\"error\":\"llama-server process has terminated: exit status 1: error loading model: unknown model architecture: 'mllama'\\nerror loading model: unknown model architecture: 'mllama'\"}",
+      "jpeg_quality": 80,
+      "llm_mode": "ollama",
+      "model": "llama3.2-vision:11b",
+      "original_mode": "1",
+      "original_size": [
+        2550,
+        3299
+      ],
+      "page_id": "t_p_120_1176_p000001",
+      "page_number": "1",
+      "parsed_json": null,
+      "response_text_path": "",
+      "route": "image_visual",
+      "source_image_path": "local_data\\organization\\trace_net\\ocr_route_scan_pack\\page_images\\t_p_120_1176_p000001.tif",
+      "source_suffix": ".tif",
+      "source_truth_mutation_allowed": false,
+      "summary_status": "ERROR",
+      "unsafe": false,
+      "vision_max_side": 1024,
+      "vision_summary_guidance_only": true,
+      "write_attempt_count": 0
+    },
+    {
+      "answer_permission": false,
+      "converted_bytes": 5084,
+      "converted_image_path": "local_data\\organization\\trace_net\\h39a_whole_page_vision_summary_v1\\vision_input_jpeg\\t_p_120_1176_p000002_max1024.jpg",
+      "converted_size": [
+        791,
+        1024
+      ],
+      "error": "HTTPError 500: Internal Server Error; body={\"error\":\"llama-server process has terminated: exit status 1: error loading model: unknown model architecture: 'mllama'\\nerror loading model: unknown model architecture: 'mllama'\"}",
+      "jpeg_quality": 80,
+      "llm_mode": "ollama",
+      "model": "llama3.2-vision:11b",
+      "original_mode": "1",
+      "original_size": [
+        2546,
+        3295
+      ],
+      "page_id": "t_p_120_1176_p000002",
+      "page_number": "2",
+      "parsed_json": null,
+      "response_text_path": "",
+      "route": "image_visual",
+      "source_image_path": "local_data\\organization\\trace_net\\image_visual_summary\\page_images\\t_p_120_1176_p000002.tif",
+      "source_suffix": ".tif",
+      "source_truth_mutation_allowed": false,
+      "summary_status": "ERROR",
+      "unsafe": false,
+      "vision_max_side": 1024,
+      "vision_summary_guidance_only": true,
+      "write_attempt_count": 0
+    },
+    {
+      "answer_permission": false,
+      "converted_bytes": 154479,
+      "converted_image_path": "local_data\\organization\\trace_net\\h39a_whole_page_vision_summary_v1\\vision_input_jpeg\\t_p_120_1176_p000003_max1024.jpg",
+      "converted_size": [
+        791,
+        1024
+      ],
+      "error": "HTTPError 500: Internal Server Error; body={\"error\":\"llama-server process has terminated: exit status 1: error loading model: unknown model architecture: 'mllama'\\nerror loading model: unknown model architecture: 'mllama'\"}",
+      "jpeg_quality": 80,
+      "llm_mode": "ollama",
+      "model": "llama3.2-vision:11b",
+      "original_mode": "1",
+      "original_size": [
+        3199,
+        4141
+      ],
+      "page_id": "t_p_120_1176_p000003",
+      "page_number": "3",
+      "parsed_json": null,
+      "response_text_path": "",
+      "route": "image_visual",
+      "source_image_path": "local_data\\organization\\trace_net\\ocr_route_scan_pack\\page_images\\t_p_120_1176_p000003.tif",
+      "source_suffix": ".tif",
+      "source_truth_mutation_allowed": false,
+      "summary_status": "ERROR",
+      "unsafe": false,
+      "vision_max_side": 1024,
+      "vision_summary_guidance_only": true,
+      "write_attempt_count": 0
+    }
+  ],
+  "source_paths": {
+    "image_roots": [
+      "local_data"
+    ],
+    "image_visual_evidence_pack": "local_data/organization/trace_net/image_visual_evidence_nomenclature_merger_v1/trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+    "trace_dir": "local_data/organization/trace_net"
+  },
+  "status": "TRACE_NET_H39A_WHOLE_PAGE_VISION_SUMMARY_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "discovered_image_visual_page_count": 509,
+    "error_count": 3,
+    "llm_mode": "ollama",
+    "missing_image_count_before_limit": 0,
+    "model": "llama3.2-vision:11b",
+    "module": "trace_net_h39a_whole_page_vision_summary_v1",
+    "pass_count": 0,
+    "quality_failures": [
+      "pass_count_below_min"
+    ],
+    "record_count": 3,
+    "selected_page_count": 3,
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_finding_count": 0,
+    "version": "v1",
+    "vision_summary_guidance_only_count": 3,
+    "write_attempt_count": 0
+  },
+  "vision_policy": {
+    "forbidden": [
+      "answer_permission_from_vision_summary",
+      "source_truth_mutation_from_vision_summary",
+      "interchangeability_or_approval_claims_from_vision_only",
+      "live_db_or_vector_writes"
+    ],
+    "input_transform": "source TIFF/page image -> downscaled RGB JPEG -> vision model",
+    "mode": "whole_page_image_visual_summary",
+    "proof_boundary": "Vision summaries are guidance only. Source claims still require OCR/table/exact/graph/source-trace proof."
+  }
+}

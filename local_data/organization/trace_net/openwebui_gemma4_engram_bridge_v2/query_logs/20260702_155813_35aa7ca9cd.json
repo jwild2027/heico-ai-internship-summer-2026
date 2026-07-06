@@ -1,0 +1,91 @@
+{
+  "answer": "Answer\nPart 120-29068-059 was found in source-trace-ready evidence on page t_p_120_1176_p000032. [T939]\n\nEvidence\n- [T939] route=table, page=t_p_120_1176_p000032, part=120-29068-059, nomenclature=n/a\n- [E1] route=exact, page=t_p_120_1176_p000003, part=120-36833-001, nomenclature=n/a\n- [E2] route=exact, page=t_p_120_1176_p000003, part=n/a, nomenclature=n/a\n- [E3] route=exact, page=t_p_120_1176_p000005, part=n/a, nomenclature=n/a\n- [E4] route=exact, page=t_p_120_1176_p000006, part=n/a, nomenclature=n/a\n- [E5] route=exact, page=t_p_120_1176_p000027, part=n/a, nomenclature=n/a\n\nEngineering confidence\nMedium/high for claims directly supported by cited evidence; lower for any unclear OCR/visual observations.\n\nLimits\nThis does not prove interchangeability, effectivity, fit, replacement approval, or installation safety. Engram and summary guidance are not proof.",
+  "citations": [
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "T939",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000032",
+      "part_number": "120-29068-059",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000032"
+    },
+    {
+      "citation_ready": true,
+      "field": "",
+      "label": "E1",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000003",
+      "part_number": "120-36833-001",
+      "route": "exact",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": ""
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "E2",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000003",
+      "part_number": "",
+      "route": "exact",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000003"
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "E3",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000005",
+      "part_number": "",
+      "route": "exact",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000005"
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "E4",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000006",
+      "part_number": "",
+      "route": "exact",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000006"
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "E5",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000027",
+      "part_number": "",
+      "route": "exact",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000027"
+    }
+  ],
+  "evidence_card_count": 6,
+  "fallback_used": false,
+  "llm_error": "",
+  "model": "deterministic_fast_path",
+  "query": "### Task: Suggest 3-5 relevant follow-up questions or prompts that the user might naturally ask next in this conversation as a **user**, based on the chat history, to help continue or deepen the discussion. ### Guidelines: - Write all follow-up questions from the user’s point of view, directed to the assistant. - Make questions concise, clear, and directly related to the discussed topic(s). - Only suggest follow-ups that make sense given the chat content and do not repeat what was already covered. - If the conversation is very short or not specific, suggest more general (but relevant) follow-ups the user might ask. - Use the conversation's primary language; default to English if multilingual. - Response must be a JSON object with a \"follow_ups\" key containing an array of strings, no extra text or formatting. ### Output: JSON format: { \"follow_ups\": [\"Question 1?\", \"Question 2?\", \"Question 3?\"] } ### Chat History: <chat_history> USER: pick a random page ASSISTANT: Answer Selected representative page/record: t_p_120_1176_p000032. TRACE-Net can safely say this page has source-trace evidence for part numbers including 120-29068-059, 120-29068-061, 120-29068-063, 120-29068-073, 120-29070-001. [T939] [T940] [T944] [T948] [T952] Evidence - [T939] route=table, page=t_p_120_1176_p000032, part=120-29068-059, nomenclature=n/a - [T940] route=table, page=t_p_120_1176_p000032, part=120-29070-001, nomenclature=n/a - [T944] route=table, page=t_p_120_1176_p000032, part=120-29068-061, nomenclature=n/a - [T948] route=table, page=t_p_120_1176_p000032, part=120-29068-063, nomenclature=n/a - [T952] route=table, page=t_p_120_1176_p000032, part=120-29070-003, nomenclature=n/a - [T961] route=table, page=t_p_120_1176_p000032, part=120-29068-073, nomenclature=n/a Engineering confidence Medium/high for claims directly supported by cited evidence; lower for any unclear OCR/visual observations. Limits This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety. Engram and summary guidance are not proof. USER: write a paragraph about pages 48 and 202 ASSISTANT: **Answer** The requested information for pages 48 and 202 is not source-trace-ready, as no evidence pertaining to those specific pages was found in the provided proof context. **Evidence** The provided documentation only contains data for the following pages: * **Page 3**: Contains part numbers 120-36833-001 [E1], 120-36833-515 [T10], 120-41824-507 [T43], and 120-41826-501 [T62]. * **Page 5**: Contains page identification data [T224]. * **Page 27**: Contains page identification data [T347]. **Engineering Confidence** Not applicable; the requested pages are not present in the available evidence. **Limits** This response is limited to the provided `proof_context`. Because pages 48 and 202 were not included in the retrieved evidence, no claims can be made regarding their contents. USER: im looking for a seat assembler, where can i find it ASSISTANT: **Answer** The provided documentation does not contain a part or item explicitly identified as a \"seat assembler.\" However, the records do identify several parts listed as \"DOUBLE PASSEN_ENGER SEAT ASSY\" (Assembly). **Evidence** * Part number **120-50645-005** is identified as DOUBLE PASSENGER SEAT ASSY [O14]. * Part number **120-50645-011** is identified as DOUBLE PASSENGER SEAT ASSY [O16]. **Engineering confidence** Moderate. While the exact term \"seat assembler\" was not found in the source text, the term \"ASSY\" (a standard abbreviation for Assembly) is present in relation to specific seat parts. **Limits** The provided evidence only identifies the existence of these part numbers and their nomenclature within the OCR records; it does not provide information regarding physical locations, procurement sources, or instructions on where to find these items. </chat_history>",
+  "response": "Answer\nPart 120-29068-059 was found in source-trace-ready evidence on page t_p_120_1176_p000032. [T939]\n\nEvidence\n- [T939] route=table, page=t_p_120_1176_p000032, part=120-29068-059, nomenclature=n/a\n- [E1] route=exact, page=t_p_120_1176_p000003, part=120-36833-001, nomenclature=n/a\n- [E2] route=exact, page=t_p_120_1176_p000003, part=n/a, nomenclature=n/a\n- [E3] route=exact, page=t_p_120_1176_p000005, part=n/a, nomenclature=n/a\n- [E4] route=exact, page=t_p_120_1176_p000006, part=n/a, nomenclature=n/a\n- [E5] route=exact, page=t_p_120_1176_p000027, part=n/a, nomenclature=n/a\n\nEngineering confidence\nMedium/high for claims directly supported by cited evidence; lower for any unclear OCR/visual observations.\n\nLimits\nThis does not prove interchangeability, effectivity, fit, replacement approval, or installation safety. Engram and summary guidance are not proof.",
+  "safety": {
+    "answer_permission": false,
+    "opensearch_write_attempt": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "source_truth_mutation_allowed": false
+  },
+  "task_type": "part_lookup"
+}

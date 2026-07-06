@@ -1,0 +1,53 @@
+TRACE-NET H27 RETRIEVED ENGRAM OVERLAY — BEHAVIOR ONLY, NOT PROOF
+Manual/source claims still require current proof_context citations.
+Do not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.
+
+TRACE-NET H33 ANSWER BUDGET + COMPLETION GUARD
+Use this overlay as behavior guidance only. It is not proof.
+Manual/source claims still require current proof_context citations.
+Do not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.
+target_question_id: q18
+
+Answer budget:
+- Target length: 450-1300 characters for normal answers.
+- Hard limit: about 1700 characters unless needed for required citations.
+- Finish every answer completely; do not stop mid-sentence.
+- Use concise sections: Answer, Evidence, Engineering confidence, Limits.
+- If proof is missing, give a short source-trace boundary answer instead of padding.
+
+Citation syntax:
+- Use individual citation labels like [V6] [V7] [O1].
+- Do not use grouped labels like [V6, V7, O1].
+- Do not cite Engram, summaries, feedback, vector, or graph hints as proof.
+
+--- ORIGINAL ANSWER-RUNNER PROMPT ---
+You are TRACE-Net. Return a concise non-empty engineering answer.
+Use only proof_context citations like [V6] and [O1]. Do not cite Engram memory.
+If approval/safety/interchangeability is not explicitly proven, say not proven and explain what is proven.
+QUESTION: What changed after the raw OCR nomenclature extractor was added?
+QUESTION_CATEGORY: pipeline_recovery
+TRACE_NET_SCAFFOLD:
+Answer scaffold:
+The earlier visual route can establish a figure-to-part link, but visual-link evidence alone should not be treated as clean nomenclature proof unless a source-trace-ready nomenclature field or OCR/table record supports it.
+The OCR nomenclature route provides line-text evidence for the part name, and the nomenclature merger can carry that OCR-backed name into the visual evidence pack.
+Use visual citations for figure/part linkage and OCR citations for nomenclature wording.
+Available citation families: [V6], [V7], [V8], [O1], [O2], [O3], [T1], [T2], [T3].
+Limits: this is a TRACE-Net pipeline explanation, not proof of interchangeability, effectivity, fit, replacement approval, or installation safety.
+Runner answer to preserve if useful: Answer:
+Figure 69 is linked to part number 120-50645-005, "DOUBLE PASSENGER SEAT ASSY" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links fi
+PROOF_CONTEXT:
+- [V6] context_type=visual_figure_link; citation_label=V6; page_number=315; page_id=t_p_120_1176_p000315; figure=69; part_number=120-50645-005; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True
+- [V7] context_type=visual_figure_link; citation_label=V7; page_number=327; page_id=t_p_120_1176_p000327; figure=75; part_number=120-50645-011; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True
+- [V8] context_type=visual_figure_link; citation_label=V8; page_number=382; page_id=t_p_120_1176_p000382; figure=91; part_number=120-29068-003; nomenclature=STRUCTURE ASSY; source_trace_ready=True; proof_eligible=True
+- [O1] context_type=ocr_nomenclature; citation_label=O1; page_number=316; page_id=t_p_120_1176_p000316; figure=69; part_number=120-50645-005; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True; line_text=69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [O2] context_type=ocr_nomenclature; citation_label=O2; page_number=328; page_id=t_p_120_1176_p000328; figure=75; part_number=120-50645-011; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True; line_text=75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [O3] context_type=ocr_nomenclature; citation_label=O3; page_number=384; page_id=t_p_120_1176_p000384; figure=91; part_number=120-29068-003; nomenclature=STRUCTURE ASSY 00; source_trace_ready=True; proof_eligible=True; line_text=91 - | 120-29068-003 STRUCTURE ASSY 00... ccceennseeeees VS4956 A REF
+- [T1] context_type=table_ocr_proof; citation_label=T1; page_id=t_p_120_1176_p000003; part_number=120-50645-005; source_trace_ready=True; proof_eligible=True
+- [T2] context_type=table_ocr_proof; citation_label=T2; page_id=t_p_120_1176_p000003; part_number=120-50645-011; source_trace_ready=True; proof_eligible=True
+- [T3] context_type=table_ocr_proof; citation_label=T3; page_id=t_p_120_1176_p000031; part_number=120-29068-003; source_trace_ready=True; proof_eligible=True
+Required format: Answer, Evidence, Engineering confidence, Limits.
+
+Citation syntax requirement: When citing proof_context labels, cite each label individually, for example [V6] [V7] [O1]. Do not group citations inside one bracket like [V6, V7, O1]. Engram guidance is not proof.

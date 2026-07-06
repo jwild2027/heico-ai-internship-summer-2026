@@ -1,0 +1,190 @@
+{
+  "answer_char_count": 598,
+  "answer_citation_count": 5,
+  "answer_path": "local_data\\organization\\trace_net\\llm_h35_custom_task_contract_5_real_ollama\\a\\05_h35_q05_quiz_generation_949064_a.txt",
+  "answer_permission": false,
+  "answer_preview": "**Technician Training Quiz**\n\n1. What is the nomenclature for part number 120-29068-003?\n2. Identify the nomenclature assigned to part 120-50645-011.\n3. What is the name of part 120-50645-005?\n4. Does the provided documentation prove that part 120-29068-003 and part 120-50645-011 are interchangeable?\n5. Which evidence label supports a source_extractor_quality_pass?\n\n**Answer Key**\n\n1. Double Passenger Seat Structure [O18]\n2. DOUBLE PASSENGER SEAT ASSY [O12]\n3. DOUBLE PASSENGER SEAT ASSY [O10]\n4. No, the provided evidence limits such claims and does not prove interchangeability [O18].\n5. [V9]",
+  "category": "custom_contract_quiz_generation",
+  "contract": {
+    "forbidden_claims": [
+      "interchangeable",
+      "approved replacement",
+      "installation safe"
+    ],
+    "min_quiz_questions": 5,
+    "min_unique_evidence_labels": 4,
+    "min_unique_routes": 2,
+    "must_include": [
+      "answer key"
+    ],
+    "must_include_any": [
+      "cannot prove",
+      "not prove",
+      "limits",
+      "interchangeability"
+    ],
+    "required_outputs": [
+      "5 quiz questions",
+      "answer key",
+      "citation per answer",
+      "limits question"
+    ]
+  },
+  "fallback_used": false,
+  "findings": [
+    "contract_checks_passed"
+  ],
+  "grade": "GOOD",
+  "llm_error": "",
+  "llm_mode": "ollama",
+  "llm_model": "gemma4:26b",
+  "prompt_path": "local_data\\organization\\trace_net\\llm_h35_custom_task_contract_5_real_ollama\\p\\05_h35_q05_quiz_generation_949064_p.txt",
+  "question": "Create a 5-question technician training quiz using only source-trace-ready TRACE-Net evidence. Include an answer key and cite the evidence used for each answer.",
+  "question_id": "h35_q05_quiz_generation",
+  "selected_evidence_cards": [
+    {
+      "citation_ready": true,
+      "claim_supported": "OCR-backed line text/nomenclature evidence",
+      "figure": "",
+      "label": "O18",
+      "line_text": "Double Passenger Seat Structure (120-29068-003)",
+      "nomenclature": "Double Passenger Seat Structure",
+      "page": "",
+      "page_id": "t_p_120_1176_p000385",
+      "part_number": "120-29068-003",
+      "raw_id": "",
+      "route": "ocr",
+      "source": "raw_ocr_nomenclature_extractor"
+    },
+    {
+      "citation_ready": true,
+      "claim_supported": "OCR-backed line text/nomenclature evidence",
+      "figure": "",
+      "label": "O17",
+      "line_text": "Double Passenger Seat Structure (120-29068-003)",
+      "nomenclature": "Double Passenger Seat Structure",
+      "page": "",
+      "page_id": "t_p_120_1176_p000384",
+      "part_number": "120-29068-003",
+      "raw_id": "",
+      "route": "ocr",
+      "source": "raw_ocr_nomenclature_extractor"
+    },
+    {
+      "citation_ready": true,
+      "claim_supported": "OCR-backed line text/nomenclature evidence",
+      "figure": "",
+      "label": "O16",
+      "line_text": "Double Passenger Seat Structure (120-29068-003)",
+      "nomenclature": "Double Passenger Seat Structure",
+      "page": "",
+      "page_id": "t_p_120_1176_p000383",
+      "part_number": "120-29068-003",
+      "raw_id": "",
+      "route": "ocr",
+      "source": "raw_ocr_nomenclature_extractor"
+    },
+    {
+      "citation_ready": true,
+      "claim_supported": "OCR-backed line text/nomenclature evidence",
+      "figure": "",
+      "label": "O15",
+      "line_text": "Double Passenger Seat Structure (120-29068-003)",
+      "nomenclature": "Double Passenger Seat Structure",
+      "page": "",
+      "page_id": "t_p_120_1176_p000382",
+      "part_number": "120-29068-003",
+      "raw_id": "",
+      "route": "ocr",
+      "source": "raw_ocr_nomenclature_extractor"
+    },
+    {
+      "citation_ready": true,
+      "claim_supported": "OCR-backed line text/nomenclature evidence",
+      "figure": "",
+      "label": "O12",
+      "line_text": "75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page": "",
+      "page_id": "t_p_120_1176_p000328",
+      "part_number": "120-50645-011",
+      "raw_id": "",
+      "route": "ocr",
+      "source": "raw_ocr_nomenclature_extractor"
+    },
+    {
+      "citation_ready": true,
+      "claim_supported": "OCR-backed line text/nomenclature evidence",
+      "figure": "",
+      "label": "O10",
+      "line_text": "69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF",
+      "nomenclature": "DOUBLE PASSENGER SEAT ASSY",
+      "page": "",
+      "page_id": "t_p_120_1176_p000316",
+      "part_number": "120-50645-005",
+      "raw_id": "",
+      "route": "ocr",
+      "source": "raw_ocr_nomenclature_extractor"
+    },
+    {
+      "citation_ready": true,
+      "claim_supported": "visual figure/page evidence; can support figure-to-part identity when linked",
+      "figure": "",
+      "label": "V9",
+      "line_text": "",
+      "nomenclature": "source_extractor_quality_pass",
+      "page": "",
+      "page_id": "",
+      "part_number": "",
+      "raw_id": "",
+      "route": "visual",
+      "source": "image_visual_evidence_pack"
+    },
+    {
+      "citation_ready": true,
+      "claim_supported": "visual figure/page evidence; can support figure-to-part identity when linked",
+      "figure": "",
+      "label": "V8",
+      "line_text": "",
+      "nomenclature": "source_pack_quality_pass",
+      "page": "",
+      "page_id": "",
+      "part_number": "",
+      "raw_id": "",
+      "route": "visual",
+      "source": "image_visual_evidence_pack"
+    }
+  ],
+  "selected_evidence_labels": [
+    "O18",
+    "O17",
+    "O16",
+    "O15",
+    "O12",
+    "O10",
+    "V9",
+    "V8"
+  ],
+  "selected_routes": [
+    "ocr",
+    "visual"
+  ],
+  "source_truth_mutation_allowed": false,
+  "task_type": "quiz_generation",
+  "trace_path": "local_data\\organization\\trace_net\\llm_h35_custom_task_contract_5_real_ollama\\t\\05_h35_q05_quiz_generation_949064_trace.json",
+  "unique_evidence_label_count": 4,
+  "unique_evidence_labels": [
+    "O10",
+    "O12",
+    "O18",
+    "V9"
+  ],
+  "unique_page_or_figure_count": 4,
+  "unique_route_count": 2,
+  "unique_routes": [
+    "ocr",
+    "visual"
+  ],
+  "unsafe": false,
+  "unsupported_claim_count": 0
+}

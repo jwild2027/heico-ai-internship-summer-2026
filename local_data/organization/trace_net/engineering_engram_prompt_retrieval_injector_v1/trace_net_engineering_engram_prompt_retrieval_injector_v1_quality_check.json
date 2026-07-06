@@ -1,0 +1,51 @@
+{
+  "quality_status": "PASS",
+  "safety_contract": {
+    "answer_permission": false,
+    "engram_guidance_only": true,
+    "live_qdrant_read_attempted": false,
+    "live_qdrant_write_attempted": false,
+    "opensearch_upload_attempt": false,
+    "opensearch_write_attempt": false,
+    "postgres_write_attempt": false,
+    "qdrant_read_attempt": false,
+    "qdrant_write_attempt": false,
+    "source_truth_mutation_allowed": false
+  },
+  "status": "TRACE_NET_ENGINEERING_ENGRAM_PROMPT_RETRIEVAL_INJECTOR_CHECKED",
+  "summary": {
+    "answer_permission_count": 0,
+    "engram_guidance_only_count": 24,
+    "max_atoms_per_query": 4,
+    "max_observed_prompt_chars": 1793,
+    "max_prompt_chars": 1800,
+    "missing_selected_layers": [],
+    "module": "trace_net_engineering_engram_prompt_retrieval_injector_v1",
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "prompt_bundle_count": 6,
+    "qdrant_read_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "query_count": 6,
+    "ready_for_llm_prompt_integration": true,
+    "selected_atom_count": 24,
+    "selected_memory_layer_counts": {
+      "critic_memory": 4,
+      "episodic_memory": 4,
+      "procedural_memory": 6,
+      "semantic_memory": 4,
+      "trait_memory": 2,
+      "working_memory": 4
+    },
+    "selected_proof_role_counts": {
+      "current_proof_context_only": 4,
+      "guidance_only": 20
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_finding_count": 0,
+    "unsafe_findings": [],
+    "version": "v1",
+    "write_attempt_count": 0
+  }
+}

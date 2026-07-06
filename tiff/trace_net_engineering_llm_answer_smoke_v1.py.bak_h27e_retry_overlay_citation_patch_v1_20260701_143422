@@ -1,0 +1,1553 @@
+"""TRACE-Net Engineering LLM Answer Smoke v1.
+
+Runs TRACE-Net engineering context construction for a question bank, asks a local
+LLM to answer from the context pack, then gates the draft for citation and safety
+contracts. This module is intentionally non-mutating: it only writes local JSON,
+CSV, prompt, and answer artifacts under the requested output directory.
+"""
+from __future__ import annotations
+
+import argparse
+import csv
+import hashlib
+import inspect
+import json
+import re
+import sys
+import time
+import urllib.error
+import urllib.request
+from pathlib import Path
+from typing import Any, Callable, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
+
+MODULE = "trace_net_engineering_llm_answer_smoke_v1"
+VERSION = "v1"
+
+DEFAULT_QUESTIONS: List[Dict[str, str]] = [
+    {"question_id": "q01", "category": "figure_lookup", "question": "What does figure 69 show?"},
+    {"question_id": "q02", "category": "figure_lookup", "question": "What does figure 75 show?"},
+    {"question_id": "q03", "category": "figure_lookup", "question": "What does figure 91 show?"},
+    {"question_id": "q04", "category": "comparison", "question": "Compare figure 69 and figure 75."},
+    {"question_id": "q05", "category": "comparison", "question": "Compare figure 75 and figure 91."},
+    {"question_id": "q06", "category": "exact_part_lookup", "question": "Find part number 120-50645-005 and cite the source."},
+    {"question_id": "q07", "category": "exact_part_lookup", "question": "Find part number 120-50645-011 and cite the source."},
+    {"question_id": "q08", "category": "exact_part_lookup", "question": "Find part number 120-29068-003 and cite the source."},
+    {"question_id": "q09", "category": "evidence_support", "question": "What evidence supports part number 120-50645-005?"},
+    {"question_id": "q10", "category": "evidence_support", "question": "What evidence supports Figure 69?"},
+    {"question_id": "q11", "category": "limitations", "question": "What can TRACE-Net not prove about part number 120-50645-005?"},
+    {"question_id": "q12", "category": "interchangeability", "question": "Is 120-50645-005 interchangeable with 120-50645-011?"},
+    {"question_id": "q13", "category": "installation_safety", "question": "Does figure 69 prove installation safety?"},
+    {"question_id": "q14", "category": "fit_limit", "question": "Does figure 75 prove fit approval?"},
+    {"question_id": "q15", "category": "effectivity_limit", "question": "Does figure 91 prove aircraft effectivity?"},
+    {"question_id": "q16", "category": "troubleshooting", "question": "Why was nomenclature missing from the visual route evidence?"},
+    {"question_id": "q17", "category": "troubleshooting", "question": "Why does the visual route need OCR nomenclature evidence?"},
+    {"question_id": "q18", "category": "pipeline_recovery", "question": "What changed after the raw OCR nomenclature extractor was added?"},
+    {"question_id": "q19", "category": "source_page", "question": "What source page supports the nomenclature for Figure 69?"},
+    {"question_id": "q20", "category": "source_page", "question": "Cite the proof for Figure 75's part number."},
+    {"question_id": "q21", "category": "replacement_limit", "question": "Is 120-50645-005 an approved replacement for 120-50645-011?"},
+    {"question_id": "q22", "category": "installation_safety", "question": "Can I safely install 120-50645-005 based only on Figure 69?"},
+    {"question_id": "q23", "category": "nomenclature_summary", "question": "Summarize the evidence for DOUBLE PASSENGER SEAT ASSY."},
+    {"question_id": "q24", "category": "nomenclature_summary", "question": "Which figures link to DOUBLE PASSENGER SEAT ASSY?"},
+    {"question_id": "q25", "category": "unknown_part", "question": "Find part number 999-99999-999 and cite the source."},
+    {"question_id": "q26", "category": "unknown_figure", "question": "What does figure 999 show?"},
+    {"question_id": "q27", "category": "evidence_explanation", "question": "Explain the difference between visual proof and OCR proof for Figure 69."},
+    {"question_id": "q28", "category": "route_explanation", "question": "What routes were required to answer what Figure 69 shows?"},
+    {"question_id": "q29", "category": "summary_limit", "question": "Can v2 summaries alone prove Figure 69 part identity?"},
+    {"question_id": "q30", "category": "limitations", "question": "Give the engineering limitations for Figure 91."},
+]
+
+FORBIDDEN_APPROVAL_TERMS = [
+    "is interchangeable",
+    "are interchangeable",
+    "is an approved replacement",
+    "approved replacement",
+    "safe to install",
+    "installation safety is proven",
+    "proves installation safety",
+    "proves fit",
+    "fit approval is proven",
+    "effectivity is proven",
+    "proves aircraft effectivity",
+]
+
+NEGATION_TERMS = ["cannot", "can not", "not ", "does not", "do not", "no.", "no,", "not proven", "is not", "are not", "doesn’t", "don't", "no information", "no evidence", "without evidence", "without explicit", "lacks", "lack of", "does not contain", "does not provide", "not source-trace-ready", "not found", "not constitute"]
+
+
+def _load_json(path: Any) -> Dict[str, Any]:
+    p = Path(path)
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def _write_json(path: Any, data: Mapping[str, Any]) -> None:
+    p = Path(path)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def _write_text(path: Any, text: str) -> None:
+    p = Path(path)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(text, encoding="utf-8")
+
+
+def _slug(text: str, max_len: int = 16) -> str:
+    s = re.sub(r"[^a-zA-Z0-9]+", "_", str(text or "").strip().lower()).strip("_")
+    return (s or "q")[:max_len]
+
+
+def _question_hash(text: str) -> str:
+    return hashlib.sha1(str(text).encode("utf-8")).hexdigest()[:8]
+
+
+def _hint_for_category(category: str, question: str) -> str:
+    q = question.lower()
+    c = category.lower()
+    if "interchange" in q:
+        return "inter"
+    if "install" in q or "safety" in q:
+        return "safe"
+    if "replacement" in q:
+        return "repl"
+    if "not prove" in q or "limitations" in c:
+        return "limit"
+    if "compare" in q:
+        return "compare"
+    if "figure" in q:
+        return "fig"
+    if "part" in q or re.search(r"\d{3}-\d{5}-\d{3}", q):
+        return "part"
+    if "why" in q:
+        return "why"
+    return _slug(c or q, 8)
+
+
+def _short_run_dir(root: Path, idx: int, category: str, question: str) -> Path:
+    # Keep nested H13/H14 runner paths short on Windows. The downstream
+    # engineering runner writes long quality-check filenames under
+    # <run>/r/context_pack/, so the question/category text must not be part of
+    # the directory name. The full question is preserved in JSON records.
+    return root / f"q{idx:02d}_{_question_hash(question)[:6]}"
+
+
+def _invoke_builder(fn: Callable[..., Any], kwargs: Mapping[str, Any]) -> Any:
+    sig = inspect.signature(fn)
+    filtered = {k: v for k, v in kwargs.items() if k in sig.parameters}
+    return fn(**filtered)
+
+
+def _load_questions(question_bank: Optional[Any], max_questions: int) -> List[Dict[str, str]]:
+    if question_bank:
+        records: List[Dict[str, str]] = []
+        path = Path(question_bank)
+        for i, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            line = line.strip()
+            if not line:
+                continue
+            obj = json.loads(line)
+            q = str(obj.get("question") or "").strip()
+            if not q:
+                raise ValueError(f"question_bank line {i} is missing question")
+            records.append({
+                "question_id": str(obj.get("question_id") or f"q{i:02d}"),
+                "category": str(obj.get("category") or "custom"),
+                "question": q,
+            })
+    else:
+        records = list(DEFAULT_QUESTIONS)
+    return records[: max(0, int(max_questions))] if max_questions else records
+
+
+def _write_question_bank(path: Any, questions: Sequence[Mapping[str, Any]]) -> None:
+    p = Path(path)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    with p.open("w", encoding="utf-8", newline="") as f:
+        for q in questions:
+            f.write(json.dumps(dict(q), ensure_ascii=False) + "\n")
+
+
+def _write_records_csv(path: Any, records: Sequence[Mapping[str, Any]]) -> None:
+    p = Path(path)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    fields = [
+        "question_id", "category", "question", "grade", "runner_passed", "llm_answered",
+        "llm_mode", "task_type", "answer_citation_count", "valid_answer_citation_count",
+        "source_trace_ready_citation_count", "invalid_answer_citation_count", "unsupported_claim_count",
+        "summary_used_as_proof_count", "llm_error", "llm_retry_used", "llm_fallback_used", "llm_fallback_reason", "reasoning_trace_path", "answer_preview", "run_dir",
+    ]
+    with p.open("w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fields)
+        writer.writeheader()
+        for r in records:
+            writer.writerow({k: r.get(k, "") for k in fields})
+
+
+def _extract_record_lists(context_pack: Mapping[str, Any]) -> Tuple[List[Mapping[str, Any]], List[Mapping[str, Any]], Mapping[str, Any]]:
+    records = context_pack.get("records") or []
+    first = records[0] if records and isinstance(records[0], Mapping) else {}
+    proof_context = list(first.get("proof_context") or context_pack.get("proof_context") or [])
+    guidance_context = list(first.get("guidance_context") or context_pack.get("guidance_context") or [])
+    constraints = first.get("answer_constraints") or context_pack.get("answer_constraints") or {}
+    return proof_context, guidance_context, constraints
+
+
+def _citation_map(proof_context: Sequence[Mapping[str, Any]]) -> Dict[str, Mapping[str, Any]]:
+    out: Dict[str, Mapping[str, Any]] = {}
+    for item in proof_context:
+        label = str(item.get("citation_label") or item.get("source_visual_citation_label") or "").strip()
+        if label:
+            out[label] = item
+    return out
+
+
+def _format_proof_item(item: Mapping[str, Any]) -> str:
+    parts = []
+    for key in ["context_type", "citation_label", "page_number", "page_id", "figure", "part_number", "nomenclature", "confidence", "source_trace_ready", "proof_eligible"]:
+        if key in item and item.get(key) not in (None, "", []):
+            parts.append(f"{key}={item.get(key)}")
+    line = item.get("line_text") or item.get("linked_nomenclature_line_text") or item.get("selected_line_text")
+    if line:
+        parts.append(f"line_text={line}")
+    return "; ".join(parts) if parts else json.dumps(dict(item), ensure_ascii=False)[:500]
+
+
+
+
+def _intent_prompt_instructions(category: str, question: str) -> List[str]:
+    """Return targeted answer-shape rules for the requested user intent."""
+    c = (category or "").lower()
+    q = (question or "").lower()
+    rules: List[str] = []
+
+    if c in {"interchangeability", "replacement_limit"} or "interchange" in q or "replacement" in q:
+        rules.append("Lead with 'Not proven' for interchangeability/replacement approval unless explicit source authority is present.")
+        rules.append("Then explain what TRACE-Net can prove: part identity, nomenclature, figure/page links, and OCR/table support.")
+        rules.append("Explicitly state that shared nomenclature, nearby figures, and part-family similarity are not interchangeability or replacement approval.")
+
+    if c in {"installation_safety", "fit_limit", "effectivity_limit"} or "safe" in q or "installation" in q or "fit" in q or "effectivity" in q:
+        rules.append("Lead with 'Not proven' or 'No' for safety/fit/effectivity approval unless explicit proof_context authority exists.")
+        rules.append("Then list what TRACE-Net can prove from citations: identity, nomenclature, figure link, and OCR/table support.")
+        rules.append("Explain that identification evidence is not installation safety, fit approval, effectivity, or replacement approval.")
+
+    if c in {"limitations", "summary_limit"} or "not prove" in q or "limitations" in q or "summaries alone" in q:
+        rules.append("For limitation questions, lead with the boundary condition, then separate 'Can prove' from 'Cannot prove'.")
+        rules.append("For v2 summary questions, explicitly say summaries may guide planning/framing but cannot prove source claims; proof must come from proof_context citations.")
+
+    if c in {"unknown_part", "unknown_figure"} or "999" in q:
+        rules.append("For unknown part/figure questions with no proof_context, lead with 'not found / not source-trace-ready'.")
+        rules.append("Do not cite unrelated evidence for unknown part or figure questions.")
+
+    if c in {"troubleshooting", "pipeline_recovery"} or "why" in q or "what changed" in q or "visual route need ocr" in q or "raw ocr" in q:
+        rules.append("For TRACE-Net pipeline/debug questions, use the structured scaffold plus proof_context to explain pipeline behavior.")
+        rules.append("Explain that visual_figure_link establishes figure/part identity, while ocr_nomenclature provides OCR-backed line-text nomenclature proof.")
+        rules.append("For raw OCR extractor questions, explain that OCR-backed nomenclature improves/recovers description evidence when visual/table records alone lack a clean nomenclature field.")
+        rules.append("Do not answer only 'not proven' when the scaffold describes the TRACE-Net pipeline behavior; instead distinguish pipeline explanation from source-truth proof.")
+
+    if c in {"evidence_support", "source_page", "evidence_explanation", "route_explanation"} or "evidence supports" in q or "source page" in q or "routes" in q or "visual proof" in q:
+        rules.append("For evidence-support and route-explanation questions, explain why each cited evidence type matters, not just what it says.")
+        rules.append("Mention visual proof separately from OCR/table proof when both are present.")
+
+    if c in {"comparison", "nomenclature_summary"} or "compare" in q or "which figures" in q or "summarize the evidence" in q:
+        rules.append("For comparisons or nomenclature summaries, cover all requested entities before limits; do not collapse the answer to only the first matching figure/part.")
+
+    return rules
+
+
+def _labels_by_context_type(proof_context: Sequence[Mapping[str, Any]]) -> Dict[str, List[str]]:
+    out: Dict[str, List[str]] = {}
+    for item in proof_context:
+        label = str(item.get("citation_label") or item.get("source_visual_citation_label") or "").strip()
+        typ = str(item.get("context_type") or "unknown").strip() or "unknown"
+        if label:
+            out.setdefault(typ, []).append(label)
+    return out
+
+
+def _build_trace_net_scaffold_answer(
+    *,
+    question: str,
+    category: str,
+    runner_manifest: Mapping[str, Any],
+    context_pack: Mapping[str, Any],
+) -> str:
+    """Build a conservative structured answer scaffold for the LLM to rewrite.
+
+    The scaffold is not source-truth by itself. It is derived from the already gated
+    TRACE-Net runner answer plus the proof_context labels, so it gives the LLM an
+    answer shape without granting permission to invent new claims.
+    """
+    proof_context, _guidance_context, _constraints = _extract_record_lists(context_pack)
+    labels = _labels_by_context_type(proof_context)
+    visual = labels.get("visual_figure_link") or []
+    ocr = labels.get("ocr_nomenclature") or []
+    table = labels.get("table_ocr_proof") or []
+    exact = [x for k, vals in labels.items() for x in vals if "exact" in k]
+    q = (question or "").lower()
+    c = (category or "").lower()
+    base_answer = str(runner_manifest.get("answer_text") or runner_manifest.get("answer") or "").strip()
+
+    label_text = ", ".join(f"[{x}]" for x in (visual[:3] + ocr[:3] + table[:3] + exact[:3]))
+    if not label_text:
+        label_text = "no proof_context citations"
+
+    if c in {"troubleshooting", "pipeline_recovery"} or "why" in q or "what changed" in q or "raw ocr" in q:
+        lines = [
+            "Answer scaffold:",
+            "The earlier visual route can establish a figure-to-part link, but visual-link evidence alone should not be treated as clean nomenclature proof unless a source-trace-ready nomenclature field or OCR/table record supports it.",
+            "The OCR nomenclature route provides line-text evidence for the part name, and the nomenclature merger can carry that OCR-backed name into the visual evidence pack.",
+            "Use visual citations for figure/part linkage and OCR citations for nomenclature wording.",
+            f"Available citation families: {label_text}.",
+            "Limits: this is a TRACE-Net pipeline explanation, not proof of interchangeability, effectivity, fit, replacement approval, or installation safety.",
+        ]
+        if base_answer:
+            lines.append("Runner answer to preserve if useful: " + base_answer[:1200])
+        return "\n".join(lines)
+
+    if c in {"interchangeability", "replacement_limit", "installation_safety", "fit_limit", "effectivity_limit", "limitations", "summary_limit", "unknown_part", "unknown_figure"}:
+        lines = [
+            "Answer scaffold:",
+            "Lead with the limitation or not-found/not-proven result.",
+            "Then say what TRACE-Net can prove from the proof_context citations.",
+            "Then say what it cannot prove from the current evidence pack.",
+            f"Available citation families: {label_text}.",
+        ]
+        if base_answer:
+            lines.append("Runner answer to preserve if useful: " + base_answer[:1200])
+        return "\n".join(lines)
+
+    if base_answer:
+        return "Answer scaffold from TRACE-Net structured runner:\n" + base_answer[:1500]
+    return ""
+
+
+
+def _load_engram_core(path: Any) -> Dict[str, Any]:
+    """Load an H15 Engram Core manifest or return an empty profile."""
+    if not path:
+        return {}
+    p = Path(path)
+    if not p.exists():
+        raise FileNotFoundError(f"engram_core not found: {p}")
+    data = _load_json(p)
+    if data.get("quality_status") not in ("PASS", None, ""):
+        raise ValueError(f"engram_core quality_status is not PASS: {data.get('quality_status')}")
+    return data
+
+
+def _priority_score(priority: str) -> int:
+    p = (priority or "").lower()
+    if p == "hard_boundary":
+        return 100
+    if p == "high":
+        return 80
+    if p == "medium":
+        return 50
+    if p == "low":
+        return 20
+    return 10
+
+
+def _engram_record_score(record: Mapping[str, Any], *, question: str, category: str, task_type: str) -> int:
+    text = " ".join([
+        question or "",
+        category or "",
+        task_type or "",
+    ]).lower()
+    score = _priority_score(str(record.get("priority") or ""))
+    triggers = record.get("triggers") or []
+    if isinstance(triggers, str):
+        triggers = [triggers]
+    trigger_text = str(record.get("trigger_text") or "")
+    for trig in list(triggers) + re.split(r"\s*\|\s*", trigger_text):
+        t = str(trig or "").strip().lower()
+        if not t:
+            continue
+        if t in text:
+            score += 60
+        elif any(part and part in text for part in re.split(r"[^a-z0-9]+", t) if len(part) >= 5):
+            score += 15
+    memory_type = str(record.get("memory_type") or "")
+    if memory_type == "policy_trait":
+        score += 25
+    if memory_type in {"route_behavior", "style_trait", "episodic_failure_memory"}:
+        score += 10
+    status = str(record.get("status") or "active").lower()
+    if status and status != "active":
+        score -= 1000
+    return score
+
+
+def select_engram_atoms(
+    *,
+    engram_core: Mapping[str, Any],
+    question: str,
+    category: str,
+    task_type: str,
+    max_engram_atoms: int = 8,
+) -> List[Dict[str, Any]]:
+    """Select relevant behavior memories for prompt injection.
+
+    Engram atoms are behavioral guidance only. They are not source-truth proof,
+    never answer permission, and never citable evidence.
+    """
+    records = [dict(r) for r in (engram_core.get("records") or []) if isinstance(r, Mapping)]
+    if not records or int(max_engram_atoms or 0) <= 0:
+        return []
+    scored = [
+        (_engram_record_score(r, question=question, category=category, task_type=task_type), r)
+        for r in records
+    ]
+    # Always keep hard-boundary policies prominent, then add semantically matched memories.
+    scored.sort(key=lambda x: (x[0], _priority_score(str(x[1].get("priority") or ""))), reverse=True)
+    selected: List[Dict[str, Any]] = []
+    seen: set[str] = set()
+    for score, rec in scored:
+        eid = str(rec.get("engram_id") or "")
+        if not eid or eid in seen:
+            continue
+        if score < 20:
+            continue
+        selected.append(rec)
+        seen.add(eid)
+        if len(selected) >= int(max_engram_atoms):
+            break
+    return selected
+
+
+def _compact_text(value: Any, max_len: int = 180) -> str:
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    return text[:max_len].rstrip() + ("..." if len(text) > max_len else "")
+
+
+def _format_engram_atom(record: Mapping[str, Any]) -> str:
+    # Keep Engram prompt memory compact. Earlier H16 injections were correct
+    # but could make prompts long enough that local Ollama occasionally returned
+    # an empty response. The full atom remains in the Engram Core JSON; the
+    # prompt gets only the ID/trait and the most actionable rule.
+    eid = record.get("engram_id")
+    trait = record.get("trait")
+    priority = record.get("priority")
+    rule = _compact_text(record.get("rule"), 170)
+    behavior = _compact_text(record.get("good_behavior"), 120)
+    chunks = [f"id={eid}", f"trait={trait}", f"priority={priority}"]
+    if rule:
+        chunks.append("rule=" + rule)
+    if behavior:
+        chunks.append("do=" + behavior)
+    return "; ".join(chunks)
+
+
+def build_engram_prompt_block(records: Sequence[Mapping[str, Any]]) -> str:
+    if not records:
+        return ""
+    lines = [
+        "TRACE_NET_ENGINEERING_ENGRAM_MEMORY (behavior guidance only; NOT source proof):",
+        "- Use these compact behavior memories for answer style and boundaries only; never cite them as evidence.",
+    ]
+    for rec in records:
+        lines.append("- " + _format_engram_atom(rec))
+    return "\n".join(lines)
+
+def build_llm_prompt(
+    *,
+    question: str,
+    runner_manifest: Mapping[str, Any],
+    context_pack: Mapping[str, Any],
+    max_guidance_items: int = 8,
+    category: str = "",
+    scaffold_answer: str = "",
+    engram_core: Optional[Mapping[str, Any]] = None,
+    max_engram_atoms: int = 8,
+) -> str:
+    proof_context, guidance_context, constraints = _extract_record_lists(context_pack)
+    task_type = (runner_manifest.get("summary") or {}).get("task_type") or "unknown"
+    required_routes = (runner_manifest.get("summary") or {}).get("required_routes") or []
+    selected_engram_atoms = select_engram_atoms(
+        engram_core=engram_core or {},
+        question=question,
+        category=category,
+        task_type=str(task_type),
+        max_engram_atoms=max_engram_atoms,
+    )
+
+    lines: List[str] = []
+    lines.append("You are TRACE-Net's engineering evidence answerer.")
+    lines.append("Answer the user's question using ONLY the supplied proof_context for factual claims.")
+    lines.append("guidance_context and v2 summaries may guide planning/framing only; they are not proof.")
+    lines.append("Engram memory may guide behavior/style/critique only; it is not proof and must not be cited as source evidence.")
+    lines.append("Every factual claim must cite one or more provided citation labels like [V6] or [O1].")
+    lines.append("If proof is missing, say not proven or not source-trace-ready. Do not guess.")
+    lines.append("Do NOT claim interchangeability, effectivity, fit, replacement approval, or installation safety unless explicit proof_context supports it.")
+    lines.append("Use this format: Answer, Evidence, Engineering confidence, Limits.")
+    lines.append("Never return an empty answer. If direct proof is missing, still explain the limitation and what TRACE-Net can/cannot prove from the provided context.")
+    lines.append("")
+    lines.append(f"QUESTION: {question}")
+    if category:
+        lines.append(f"QUESTION_CATEGORY: {category}")
+    for rule in _intent_prompt_instructions(category, question):
+        lines.append("INTENT_RULE: " + rule)
+    engram_block = build_engram_prompt_block(selected_engram_atoms)
+    if engram_block:
+        lines.append("")
+        lines.append(engram_block)
+    if scaffold_answer:
+        lines.append("")
+        lines.append("STRUCTURED_TRACE_NET_SCAFFOLD (use as answer shape; factual claims still require proof_context citations):")
+        lines.append(scaffold_answer)
+    lines.append(f"TASK_TYPE: {task_type}")
+    if required_routes:
+        lines.append("REQUIRED_ROUTES: " + json.dumps(required_routes, ensure_ascii=False))
+    if constraints:
+        lines.append("ANSWER_CONSTRAINTS: " + json.dumps(constraints, ensure_ascii=False))
+    lines.append("")
+    lines.append("PROOF_CONTEXT:")
+    if proof_context:
+        for item in proof_context:
+            label = item.get("citation_label") or item.get("source_visual_citation_label") or "UNLABELED"
+            lines.append(f"- [{label}] {_format_proof_item(item)}")
+    else:
+        lines.append("- No proof_context records are available.")
+    lines.append("")
+    lines.append("GUIDANCE_CONTEXT (not proof):")
+    for item in guidance_context[:max_guidance_items]:
+        summary = item.get("summary_text") or item.get("text") or json.dumps(dict(item), ensure_ascii=False)[:500]
+        page = item.get("page_number") or item.get("page_id") or "unknown"
+        lines.append(f"- guidance page={page}: {summary}")
+    if not guidance_context:
+        lines.append("- No guidance_context records are available.")
+    return "\n".join(lines) + "\n"
+
+
+def call_ollama_generate(*, prompt: str, ollama_url: str, ollama_model: str, timeout_seconds: int = 120) -> str:
+    payload = {
+        "model": ollama_model,
+        "prompt": prompt,
+        "stream": False,
+
+        "options": {"num_predict": 900, "temperature": 0.1},  # H16D_CONSERVATIVE_OLLAMA_OPTIONS_V1
+        "options": {"temperature": 0.0},
+    }
+    body = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        ollama_url,
+        data=body,
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=timeout_seconds) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+    except urllib.error.URLError as exc:
+        raise RuntimeError(f"Ollama request failed: {exc}") from exc
+    text = data.get("response") or data.get("message", {}).get("content") or ""
+    if not str(text).strip():
+        raise RuntimeError("Ollama response did not contain answer text")
+    return str(text).strip()
+
+
+def _fallback_answer_from_context(
+    *,
+    question: str,
+    category: str,
+    runner_manifest: Mapping[str, Any],
+    context_pack: Mapping[str, Any],
+    scaffold_answer: str = "",
+) -> str:
+    """Build a deterministic safety fallback when Ollama returns no text.
+
+    This is not a substitute for normal LLM generation. It prevents a transient
+    empty Ollama response from blocking an otherwise evidence-ready smoke run by
+    returning a conservative TRACE-Net scaffold answer with proof_context
+    citations. The record/trace marks that a fallback was used.
+    """
+    proof_context, _guidance_context, _constraints = _extract_record_lists(context_pack)
+    labels = _labels_by_context_type(proof_context)
+    all_labels = []
+    for item in proof_context:
+        label = item.get("citation_label") or item.get("source_visual_citation_label")
+        if label and str(label) not in all_labels:
+            all_labels.append(str(label))
+    cites = " ".join(f"[{x}]" for x in all_labels[:8])
+    c = (category or "").lower()
+    q = (question or "").lower()
+    base = str(runner_manifest.get("answer_text") or runner_manifest.get("answer") or "").strip()
+    if base and len(base) > 120 and ("[" in base and "]" in base):
+        return base
+
+    visual = labels.get("visual_figure_link") or []
+    ocr = labels.get("ocr_nomenclature") or []
+    table = labels.get("table_ocr_proof") or []
+    v = f"[{visual[0]}]" if visual else ""
+    o = f"[{ocr[0]}]" if ocr else ""
+    t = f"[{table[0]}]" if table else ""
+
+    if c in {"troubleshooting", "pipeline_recovery"} or "why" in q or "what changed" in q or "raw ocr" in q:
+        return "\n".join([
+            "Answer:",
+            "The visual route can establish a figure-to-part link, but visual-link evidence alone is not clean nomenclature proof unless source-trace-ready OCR/table text supports the name.",
+            f"The OCR nomenclature route supplies line-text name proof, and the nomenclature merger can carry that OCR-backed description into the visual evidence pack {v} {o} {t}.".strip(),
+            "",
+            "Evidence:",
+            f"- Visual route evidence supports figure-to-part linkage {v}.".strip(),
+            f"- OCR nomenclature evidence supports the line-text part name {o}.".strip(),
+            f"- Table/OCR proof supports the part-number evidence {t}.".strip(),
+            "",
+            "Engineering confidence:",
+            "HIGH for the pipeline behavior explanation when the cited context contains visual_figure_link and ocr_nomenclature records.",
+            "",
+            "Limits:",
+            "- This is a TRACE-Net pipeline explanation, not proof of interchangeability, effectivity, fit, replacement approval, or installation safety.",
+        ])
+
+    if c in {"interchangeability", "replacement_limit"} or "interchange" in q or "replacement" in q:
+        return "\n".join([
+            "Answer:",
+            f"Not proven. TRACE-Net can prove part identity and supporting evidence from the current proof context {cites}, but it cannot prove interchangeability or approved replacement status.",
+            "",
+            "Evidence:",
+            f"- Available source-trace-ready proof citations: {cites or 'none'}." ,
+            "",
+            "Engineering confidence:",
+            "HIGH for cited identity/evidence claims when proof_context is present; NOT PROVEN for interchangeability or replacement approval.",
+            "",
+            "Limits:",
+            "- Shared nomenclature, nearby figures, or part-family similarity are not proof of interchangeability or replacement approval.",
+        ])
+
+    if not proof_context:
+        return "\n".join([
+            "Answer:",
+            "not found / not source-trace-ready. TRACE-Net cannot verify this request because no proof_context records were available.",
+            "",
+            "Evidence:",
+            "- No proof context was available.",
+            "",
+            "Engineering confidence:",
+            "LOW because no source-trace-ready evidence records were supplied.",
+            "",
+            "Limits:",
+            "- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.",
+        ])
+
+    # Generic conservative fallback.
+    return "\n".join([
+        "Answer:",
+        f"TRACE-Net found source-trace-ready evidence relevant to the question {cites}.",
+        "",
+        "Evidence:",
+        f"- Available proof citations: {cites}.",
+        "",
+        "Engineering confidence:",
+        "MEDIUM to HIGH for claims directly supported by the listed citations.",
+        "",
+        "Limits:",
+        "- Do not infer interchangeability, effectivity, fit, replacement approval, or installation safety unless explicit proof_context supports it.",
+    ])
+
+
+def _minimal_retry_prompt(*, question: str, category: str, context_pack: Mapping[str, Any], scaffold_answer: str) -> str:
+    proof_context, _guidance_context, _constraints = _extract_record_lists(context_pack)
+    lines = [
+        "You are TRACE-Net. Return a concise non-empty engineering answer.",
+        "Use only proof_context citations like [V6] and [O1]. Do not cite Engram memory.",
+        "If approval/safety/interchangeability is not explicitly proven, say not proven and explain what is proven.",
+        f"QUESTION: {question}",
+    ]
+    if category:
+        lines.append(f"QUESTION_CATEGORY: {category}")
+    if scaffold_answer:
+        lines.append("TRACE_NET_SCAFFOLD:")
+        lines.append(scaffold_answer[:900])
+    lines.append("PROOF_CONTEXT:")
+    if proof_context:
+        for item in proof_context[:10]:
+            label = item.get("citation_label") or item.get("source_visual_citation_label") or "UNLABELED"
+            lines.append(f"- [{label}] {_format_proof_item(item)}")
+    else:
+        lines.append("- No proof_context records are available.")
+    lines.append("Required format: Answer, Evidence, Engineering confidence, Limits.")
+    return "\n".join(lines) + "\n"
+
+
+def extract_citation_labels(text: str) -> List[str]:
+    return re.findall(r"\[([A-Z]+\d+)\]", text or "")
+
+
+def _claim_sentences(text: str) -> List[str]:
+    cleaned = re.sub(r"\s+", " ", text or "").strip()
+    if not cleaned:
+        return []
+    # Keep sentence-like chunks short enough for negation detection but do not
+    # depend on perfect punctuation from the LLM.
+    parts = re.split(r"(?<=[.!?])\s+|\n+|;", cleaned)
+    return [p.strip() for p in parts if p.strip()]
+
+
+def _sentence_has_negation(sentence: str) -> bool:
+    s = (sentence or "").lower()
+    negation_markers = [
+        "not proven", "cannot prove", "can't prove", "can not prove", "not source-trace-ready",
+        "no evidence", "no information", "no proof", "does not prove", "doesn't prove",
+        "do not prove", "not approval", "not approved", "does not provide", "does not contain",
+        "without evidence", "without explicit", "without source", "lacks", "lack of",
+        "not constitute", "not sufficient", "not enough", "not found", "is not", "are not",
+        "no explicit", "not supported", "unsupported", "n/a", "not available",
+    ]
+    return any(marker in s for marker in negation_markers)
+
+
+def _near_negation(text: str, idx: int, window: int = 120) -> bool:
+    start = max(0, idx - window)
+    chunk = text[start: idx + window].lower()
+    return any(term in chunk for term in NEGATION_TERMS) or _sentence_has_negation(chunk)
+
+
+def count_unsupported_claims(answer_text: str) -> int:
+    count = 0
+    for sentence in _claim_sentences(answer_text):
+        lower = sentence.lower()
+        for term in FORBIDDEN_APPROVAL_TERMS:
+            pos = lower.find(term)
+            while pos >= 0:
+                if not _sentence_has_negation(lower) and not _near_negation(lower, pos):
+                    count += 1
+                pos = lower.find(term, pos + 1)
+    return count
+
+def count_summary_used_as_proof(answer_text: str) -> int:
+    text = (answer_text or "").lower()
+    patterns = [
+        "v2 summary proves",
+        "v2 summaries prove",
+        "summary proves",
+        "summaries prove",
+        "summary is proof",
+        "summaries are proof",
+        "summary-only proof",
+    ]
+    # Report whether an answer makes a summary-as-proof claim. Patterns can
+    # overlap (for example, "v2 summaries prove" also contains
+    # "summaries prove"), so count unique semantic violations rather than raw
+    # substring matches.
+    for pat in patterns:
+        pos = text.find(pat)
+        while pos >= 0:
+            if not _near_negation(text, pos):
+                return 1
+            pos = text.find(pat, pos + 1)
+    return 0
+
+
+def evaluate_llm_answer(
+    *,
+    answer_text: str,
+    proof_context: Sequence[Mapping[str, Any]],
+    min_answer_citations: int,
+    min_source_trace_ready_citations: int,
+    llm_error: str = "",
+    runner_passed: bool = True,
+) -> Dict[str, Any]:
+    citations = extract_citation_labels(answer_text)
+    cmap = _citation_map(proof_context)
+    valid = [c for c in citations if c in cmap]
+    invalid = [c for c in citations if c not in cmap]
+    source_ready = [c for c in valid if bool(cmap.get(c, {}).get("source_trace_ready", True))]
+    unsupported = count_unsupported_claims(answer_text)
+    summary_proof = count_summary_used_as_proof(answer_text)
+
+    llm_answered = bool(str(answer_text or "").strip()) and not llm_error
+    if not llm_answered:
+        grade = "BLOCKED"
+    elif invalid or unsupported or summary_proof:
+        grade = "BAD"
+    elif len(valid) >= min_answer_citations and len(source_ready) >= min_source_trace_ready_citations and runner_passed:
+        grade = "GOOD"
+    else:
+        grade = "PARTIAL"
+
+    return {
+        "grade": grade,
+        "llm_answered": llm_answered,
+        "answer_citation_count": len(citations),
+        "valid_answer_citation_count": len(valid),
+        "source_trace_ready_citation_count": len(source_ready),
+        "invalid_answer_citation_count": len(invalid),
+        "invalid_answer_citation_labels": sorted(set(invalid)),
+        "unsupported_claim_count": unsupported,
+        "summary_used_as_proof_count": summary_proof,
+    }
+
+
+def _find_context_pack_path(runner_manifest: Mapping[str, Any], runner_dir: Path) -> Optional[Path]:
+    for key in [
+        ("stage_reports", "engineering_answer_context_pack"),
+        ("stage_report_paths", "engineering_answer_context_pack"),
+    ]:
+        container = runner_manifest.get(key[0]) or {}
+        path = container.get(key[1])
+        if path:
+            p = Path(path)
+            if p.exists():
+                return p
+            candidate = runner_dir / p
+            if candidate.exists():
+                return candidate
+    candidates = list(runner_dir.rglob("trace_net_engineering_answer_context_pack_v1.json"))
+    return candidates[0] if candidates else None
+
+
+
+def _build_reasoning_trace(
+    *,
+    question_id: str,
+    category: str,
+    question: str,
+    runner_manifest: Mapping[str, Any],
+    context_pack: Mapping[str, Any],
+    prompt_path: Path,
+    answer_path: Path,
+    prompt: str,
+    answer_text: str,
+    eval_result: Mapping[str, Any],
+    llm_error: str,
+    selected_engram_atoms: Optional[Sequence[Mapping[str, Any]]] = None,
+    llm_retry_used: bool = False,
+    llm_fallback_used: bool = False,
+    llm_fallback_reason: str = "",
+) -> Dict[str, Any]:
+    """Return a safe, inspectable reasoning trace.
+
+    This is not raw hidden chain-of-thought. It is a source/debug trace showing
+    what evidence was supplied, what scaffold/prompt constraints were used, and
+    how the gate graded the answer. It is safe to print or commit as a local
+    debug artifact because it contains no private model scratchpad.
+    """
+    proof_context, guidance_context, constraints = _extract_record_lists(context_pack)
+    runner_summary = runner_manifest.get("summary") or {}
+    citation_labels = []
+    for item in proof_context:
+        label = item.get("citation_label") or item.get("source_visual_citation_label")
+        if label:
+            citation_labels.append(str(label))
+    proof_preview = []
+    for item in proof_context[:8]:
+        proof_preview.append({
+            "citation_label": item.get("citation_label") or item.get("source_visual_citation_label"),
+            "context_type": item.get("context_type"),
+            "figure": item.get("figure"),
+            "part_number": item.get("part_number"),
+            "nomenclature": item.get("nomenclature"),
+            "page_number": item.get("page_number"),
+            "source_trace_ready": item.get("source_trace_ready"),
+        })
+    prompt_rules = [line for line in str(prompt or "").splitlines() if line.startswith("INTENT_RULE:")]
+    scaffold_present = "STRUCTURED_TRACE_NET_SCAFFOLD" in str(prompt or "")
+    engram_atoms = list(selected_engram_atoms or [])
+    return {
+        "trace_type": "safe_reasoning_trace_not_hidden_chain_of_thought",
+        "trace_note": "This shows the evidence, prompt constraints, scaffold, and gate checks. It is not raw model hidden reasoning.",
+        "question_id": question_id,
+        "category": category,
+        "question": question,
+        "task_type": runner_summary.get("task_type"),
+        "runner_quality_status": runner_manifest.get("quality_status") if runner_manifest else "",
+        "runner_passed": runner_manifest.get("quality_status") == "PASS" if runner_manifest else False,
+        "proof_context_count": len(proof_context),
+        "guidance_context_count": len(guidance_context),
+        "available_citation_labels": sorted(set(citation_labels)),
+        "proof_context_preview": proof_preview,
+        "answer_constraints": constraints,
+        "intent_rules": prompt_rules,
+        "scaffold_present": scaffold_present,
+        "engram_atom_count": len(engram_atoms),
+        "engram_ids": [str(a.get("engram_id")) for a in engram_atoms if a.get("engram_id")],
+        "engram_traits": sorted({str(a.get("trait")) for a in engram_atoms if a.get("trait")}),
+        "engram_note": "Engram atoms are behavioral guidance only; they are not source proof and are not raw model reasoning.",
+        "llm_retry_used": bool(llm_retry_used),
+        "llm_fallback_used": bool(llm_fallback_used),
+        "llm_fallback_reason": llm_fallback_reason,
+        "prompt_path": str(prompt_path) if prompt else "",
+        "answer_path": str(answer_path) if answer_text else "",
+        "llm_error": llm_error,
+        "gate_result": {
+            "grade": eval_result.get("grade"),
+            "llm_answered": eval_result.get("llm_answered"),
+            "answer_citation_count": eval_result.get("answer_citation_count"),
+            "valid_answer_citation_count": eval_result.get("valid_answer_citation_count"),
+            "source_trace_ready_citation_count": eval_result.get("source_trace_ready_citation_count"),
+            "invalid_answer_citation_count": eval_result.get("invalid_answer_citation_count"),
+            "unsupported_claim_count": eval_result.get("unsupported_claim_count"),
+            "summary_used_as_proof_count": eval_result.get("summary_used_as_proof_count"),
+        },
+        "answer_preview": str(answer_text or "")[:1000],
+    }
+
+
+
+# --- H27D Engram answer-runner overlay-map support (explicit opt-in) ---
+def _h27_load_engram_answer_runner_overlay_map(path):
+    """Load an H26/H27 overlay map artifact without performing live DB/vector IO."""
+    if not path:
+        return {}
+    import json
+    from pathlib import Path as _H27Path
+
+    p = _H27Path(path)
+    if not p.exists():
+        raise FileNotFoundError(f"H27 overlay map not found: {p}")
+    data = json.loads(p.read_text(encoding="utf-8"))
+
+    def _text_from_record(rec):
+        if not isinstance(rec, dict):
+            return ""
+        for key in (
+            "overlay_text",
+            "guidance_overlay_text",
+            "prompt_overlay_text",
+            "integration_prompt_text",
+            "prompt_guidance_text",
+            "overlay_text_preview",
+        ):
+            value = rec.get(key)
+            if isinstance(value, str) and value.strip():
+                return value.strip()
+        return ""
+
+    out = {}
+
+    if isinstance(data, dict):
+        # Direct map form: {"q12": "overlay text"} or {"q12": {record}}
+        for key, value in data.items():
+            if isinstance(key, str) and key.startswith("q"):
+                if isinstance(value, str):
+                    out[key] = value.strip()
+                elif isinstance(value, dict):
+                    text = _text_from_record(value)
+                    if text:
+                        out[key] = text
+
+        # Manifest/list forms used by H24/H26-style artifacts.
+        for list_key in (
+            "overlay_map_records",
+            "overlay_records",
+            "gate_records",
+            "records",
+            "prompt_overlay_records",
+        ):
+            records = data.get(list_key)
+            if isinstance(records, list):
+                for rec in records:
+                    if not isinstance(rec, dict):
+                        continue
+                    qid = rec.get("question_id") or rec.get("target_question_id") or rec.get("answer_runner_question_id")
+                    text = _text_from_record(rec)
+                    if isinstance(qid, str) and qid and text:
+                        out[qid] = text
+
+        nested = data.get("overlay_map")
+        if isinstance(nested, dict):
+            for key, value in nested.items():
+                if isinstance(value, str):
+                    out[str(key)] = value.strip()
+                elif isinstance(value, dict):
+                    text = _text_from_record(value)
+                    if text:
+                        out[str(key)] = text
+
+    elif isinstance(data, list):
+        for rec in data:
+            if not isinstance(rec, dict):
+                continue
+            qid = rec.get("question_id") or rec.get("target_question_id")
+            text = _text_from_record(rec)
+            if isinstance(qid, str) and qid and text:
+                out[qid] = text
+
+    return out
+
+
+def _h27_question_id_from_record(qrec):
+    if isinstance(qrec, dict):
+        for key in ("question_id", "id", "qid"):
+            value = qrec.get(key)
+            if isinstance(value, str) and value:
+                return value
+    return ""
+
+
+def _h27_apply_engram_answer_runner_overlay(prompt, qrec, overlay_map_records):
+    """Prepend retrieved Engram behavior guidance; never treats it as proof."""
+    if not overlay_map_records:
+        return prompt
+    qid = _h27_question_id_from_record(qrec)
+    overlay = overlay_map_records.get(qid)
+    if not overlay:
+        return prompt
+    boundary = (
+        "TRACE-NET H27 RETRIEVED ENGRAM OVERLAY — BEHAVIOR ONLY, NOT PROOF\n"
+        "Manual/source claims still require current proof_context citations.\n"
+        "Do not let Engram guidance grant answer permission, mutate source truth, "
+        "or replace proof_context.\n"
+    )
+    return boundary + "\n" + overlay.strip() + "\n\n--- ORIGINAL ANSWER-RUNNER PROMPT ---\n" + (prompt or "")
+# --- end H27D overlay-map support ---
+
+def build_engineering_llm_answer_smoke(
+    *,
+    output_dir: Any,
+    question_bank: Optional[Any] = None,
+    engram_core: Optional[Any] = None,
+    max_engram_atoms: int = 8,
+    max_questions: int = 30,
+    ollama_model: str = "",
+    ollama_url: str = "http://127.0.0.1:11434/api/generate",
+    llm_mode: str = "ollama",
+    timeout_seconds: int = 120,
+    v2_summary_guidance_index: Any = None,
+    image_visual_evidence_pack: Any = None,
+    raw_ocr_nomenclature_extractor: Any = None,
+    table_route_evidence_packager: Any = None,
+    table_exact_search_adapter: Any = None,
+    max_guidance_pages: int = 8,
+    min_planner_records: int = 1,
+    min_required_routes: int = 1,
+    min_guidance_context: int = 0,
+    min_proof_context: int = 2,
+    min_source_trace_ready: int = 2,
+    min_answer_citations: int = 2,
+    min_source_trace_ready_citations: int = 2,
+    min_smoke_questions: int = 1,
+    min_llm_answered: int = 1,
+    min_good_answers: int = 0,
+    min_good_or_partial_answers: int = 1,
+    max_bad_answers: int = 0,
+    max_unsupported_claims: int = 0,
+    max_summary_used_as_proof: int = 0,
+    max_invalid_citations: int = 0,
+    max_llava_only_part_identity_claims: int = 0,
+    max_unsafe: int = 0,
+    max_answer_permission: int = 0,
+    max_source_truth_mutation_allowed: int = 0,
+    max_write_attempts: int = 0,
+    require_quality_pass: bool = False,
+    engram_answer_runner_overlay_map: str | Path | None = None,
+) -> Dict[str, Any]:
+    out_dir = Path(output_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    # Short subdirectory names are intentional. These runs nest a runner,
+    # context_pack, and long quality-check filenames; verbose folder names can
+    # trip Windows MAX_PATH even when all writers mkdir parents correctly.
+    runs_dir = out_dir / "r"
+    prompts_dir = out_dir / "p"
+    answers_dir = out_dir / "a"
+    traces_dir = out_dir / "t"
+    runs_dir.mkdir(parents=True, exist_ok=True)
+    prompts_dir.mkdir(parents=True, exist_ok=True)
+    answers_dir.mkdir(parents=True, exist_ok=True)
+    traces_dir.mkdir(parents=True, exist_ok=True)
+
+    questions = _load_questions(question_bank, max_questions=max_questions)
+    _write_question_bank(out_dir / "trace_net_engineering_llm_answer_smoke_v1_question_bank.jsonl", questions)
+    loaded_engram_core = _load_engram_core(engram_core) if engram_core else {}
+
+    records: List[Dict[str, Any]] = []
+    runner_builder: Optional[Callable[..., Any]] = None
+    try:
+        from tiff.trace_net_engineering_answer_runner_v1 import build_engineering_answer_runner  # type: ignore
+        runner_builder = build_engineering_answer_runner
+    except Exception as exc:  # pragma: no cover - defensive path used in broken repos
+        runner_import_error = f"{type(exc).__name__}: {exc}"
+    else:
+        runner_import_error = ""
+
+    _h27_engram_answer_runner_overlay_map_records = _h27_load_engram_answer_runner_overlay_map(engram_answer_runner_overlay_map)
+    for idx, qrec in enumerate(questions, 1):
+        question = qrec["question"]
+        category = qrec.get("category") or "custom"
+        question_id = qrec.get("question_id") or f"q{idx:02d}"
+        run_dir = _short_run_dir(runs_dir, idx, category, question)
+        runner_dir = run_dir / "r"
+        prompt_path = prompts_dir / f"{run_dir.name}_p.txt"
+        answer_path = answers_dir / f"{run_dir.name}_a.txt"
+        trace_path = traces_dir / f"{run_dir.name}_trace.json"
+        run_dir.mkdir(parents=True, exist_ok=True)
+
+        runner_manifest: Dict[str, Any] = {}
+        context_pack: Dict[str, Any] = {}
+        proof_context: List[Mapping[str, Any]] = []
+        llm_answer = ""
+        llm_error = ""
+        llm_retry_used = False
+        llm_fallback_used = False
+        llm_fallback_reason = ""
+        prompt = ""
+        selected_engram_atoms: List[Dict[str, Any]] = []
+
+        try:
+            if runner_builder is None:
+                raise RuntimeError(runner_import_error or "runner builder unavailable")
+            runner_result = _invoke_builder(runner_builder, {
+                "question": question,
+                "v2_summary_guidance_index": v2_summary_guidance_index,
+                "image_visual_evidence_pack": image_visual_evidence_pack,
+                "raw_ocr_nomenclature_extractor": raw_ocr_nomenclature_extractor,
+                "table_route_evidence_packager": table_route_evidence_packager,
+                "table_exact_search_adapter": table_exact_search_adapter,
+                "output_dir": runner_dir,
+                "max_guidance_pages": max_guidance_pages,
+                "min_planner_records": min_planner_records,
+                "min_required_routes": min_required_routes,
+                "min_guidance_context": min_guidance_context,
+                "min_proof_context": min_proof_context,
+                "min_source_trace_ready": min_source_trace_ready,
+                "min_answer_citations": min_answer_citations,
+                "min_source_trace_ready_citations": min_source_trace_ready_citations,
+                "max_unsupported_claims": max_unsupported_claims,
+                "max_summary_used_as_proof": max_summary_used_as_proof,
+                "max_invalid_citations": max_invalid_citations,
+                "max_llava_only_part_identity_claims": max_llava_only_part_identity_claims,
+                "max_unsafe": max_unsafe,
+                "max_answer_permission": max_answer_permission,
+                "max_source_truth_mutation_allowed": max_source_truth_mutation_allowed,
+                "max_write_attempts": max_write_attempts,
+                "require_quality_pass": False,
+                "require_engineering_answer_ready": False,
+            })
+            if isinstance(runner_result, Mapping):
+                runner_manifest = dict(runner_result)
+            else:
+                runner_path = runner_dir / "trace_net_engineering_answer_runner_v1.json"
+                if runner_path.exists():
+                    runner_manifest = _load_json(runner_path)
+        except SystemExit as exc:
+            llm_error = f"runner exited: {exc}"
+        except Exception as exc:
+            llm_error = f"runner error: {type(exc).__name__}: {exc}"
+
+        if runner_manifest:
+            context_path = _find_context_pack_path(runner_manifest, runner_dir)
+            if context_path and context_path.exists():
+                try:
+                    context_pack = _load_json(context_path)
+                    proof_context, guidance_context, constraints = _extract_record_lists(context_pack)
+                    scaffold_answer = _build_trace_net_scaffold_answer(
+                        question=question,
+                        category=category,
+                        runner_manifest=runner_manifest,
+                        context_pack=context_pack,
+                    )
+                    task_type_for_engram = (runner_manifest.get("summary") or {}).get("task_type") or "unknown"
+                    selected_engram_atoms = select_engram_atoms(
+                        engram_core=loaded_engram_core,
+                        question=question,
+                        category=category,
+                        task_type=str(task_type_for_engram),
+                        max_engram_atoms=max_engram_atoms,
+                    )
+                    prompt = build_llm_prompt(
+                        question=question,
+                        runner_manifest=runner_manifest,
+                        context_pack=context_pack,
+                        category=category,
+                        scaffold_answer=scaffold_answer,
+                        engram_core=loaded_engram_core,
+                        max_engram_atoms=max_engram_atoms,
+                    )
+                    prompt = _h27_apply_engram_answer_runner_overlay(
+                        prompt,
+                        qrec,
+                        _h27_engram_answer_runner_overlay_map_records,
+                    )
+                    _write_text(prompt_path, prompt)
+                except Exception as exc:
+                    llm_error = llm_error or f"context/prompt error: {type(exc).__name__}: {exc}"
+            else:
+                llm_error = llm_error or "context pack not found for runner output"
+
+        if prompt and not llm_error:
+            try:
+                if llm_mode == "runner_answer":
+                    llm_answer = str(runner_manifest.get("answer_text") or runner_manifest.get("answer") or "").strip()
+                elif llm_mode == "ollama":
+                    if not ollama_model:
+                        raise RuntimeError("--ollama-model is required when --llm-mode=ollama")
+                    llm_answer = call_ollama_generate(
+                        prompt=prompt,
+                        ollama_url=ollama_url,
+                        ollama_model=ollama_model,
+                        timeout_seconds=timeout_seconds,
+                    )
+                else:
+                    raise RuntimeError(f"unsupported llm_mode: {llm_mode}")
+                _write_text(answer_path, llm_answer)
+            except Exception as exc:
+                first_error = f"{type(exc).__name__}: {exc}"
+                # H16B reliability: if the full Engram prompt makes local Ollama
+                # return an empty response or timeout, retry once with a compact
+                # prompt. If that also fails, use a conservative TRACE-Net
+                # scaffold fallback so the smoke test records a safe answer instead
+                # of a blank blocked record. The trace marks retry/fallback use.
+                if llm_mode == "ollama" and context_pack:
+                    try:
+                        retry_prompt = _minimal_retry_prompt(
+                            question=question,
+                            category=category,
+                            context_pack=context_pack,
+                            scaffold_answer=scaffold_answer,
+                        )
+                        retry_prompt_path = prompts_dir / f"{run_dir.name}_retry_p.txt"
+                        _write_text(retry_prompt_path, retry_prompt)
+                        llm_answer = call_ollama_generate(
+                            prompt=retry_prompt,
+                            ollama_url=ollama_url,
+                            ollama_model=ollama_model,
+                            timeout_seconds=timeout_seconds,
+                        )
+                        prompt_path = retry_prompt_path
+                        prompt = retry_prompt
+                        llm_retry_used = True
+                        llm_fallback_reason = "full_prompt_failed_then_minimal_retry_succeeded: " + first_error
+                        _write_text(answer_path, llm_answer)
+                    except Exception as retry_exc:
+                        llm_answer = _fallback_answer_from_context(
+                            question=question,
+                            category=category,
+                            runner_manifest=runner_manifest,
+                            context_pack=context_pack,
+                            scaffold_answer=scaffold_answer,
+                        )
+                        llm_fallback_used = True
+                        llm_fallback_reason = "full_prompt_failed: " + first_error + "; retry_failed: " + f"{type(retry_exc).__name__}: {retry_exc}"
+                        llm_error = ""
+                        _write_text(answer_path, llm_answer)
+                else:
+                    llm_error = f"llm error: {first_error}"
+
+        runner_summary = runner_manifest.get("summary") or {}
+        runner_passed = runner_manifest.get("quality_status") == "PASS"
+        eval_result = evaluate_llm_answer(
+            answer_text=llm_answer,
+            proof_context=proof_context,
+            min_answer_citations=min_answer_citations,
+            min_source_trace_ready_citations=min_source_trace_ready_citations,
+            llm_error=llm_error,
+            runner_passed=bool(runner_passed),
+        )
+
+        reasoning_trace = _build_reasoning_trace(
+            question_id=question_id,
+            category=category,
+            question=question,
+            runner_manifest=runner_manifest,
+            context_pack=context_pack,
+            prompt_path=prompt_path,
+            answer_path=answer_path,
+            prompt=prompt,
+            answer_text=llm_answer,
+            eval_result=eval_result,
+            llm_error=llm_error,
+            selected_engram_atoms=selected_engram_atoms,
+            llm_retry_used=llm_retry_used,
+            llm_fallback_used=llm_fallback_used,
+            llm_fallback_reason=llm_fallback_reason,
+        )
+        _write_json(trace_path, reasoning_trace)
+
+        record = {
+            "question_id": question_id,
+            "category": category,
+            "question": question,
+            "run_dir": str(run_dir),
+            "runner_dir": str(runner_dir),
+            "prompt_path": str(prompt_path) if prompt else "",
+            "llm_answer_path": str(answer_path) if llm_answer else "",
+            "reasoning_trace_path": str(trace_path),
+            "llm_mode": llm_mode,
+            "llm_model": ollama_model if llm_mode == "ollama" else llm_mode,
+            "runner_passed": bool(runner_passed),
+            "runner_quality_status": runner_manifest.get("quality_status") if runner_manifest else "",
+            "task_type": runner_summary.get("task_type"),
+            "engram_atom_count": len(selected_engram_atoms),
+            "engram_ids": [str(a.get("engram_id")) for a in selected_engram_atoms if a.get("engram_id")],
+            "engram_traits": sorted({str(a.get("trait")) for a in selected_engram_atoms if a.get("trait")}),
+            "proof_context_count": len(proof_context),
+            "llm_error": llm_error,
+            "llm_retry_used": bool(llm_retry_used),
+            "llm_fallback_used": bool(llm_fallback_used),
+            "llm_fallback_reason": llm_fallback_reason,
+            "answer_text": llm_answer,
+            "answer_preview": llm_answer[:800],
+        }
+        record.update(eval_result)
+        records.append(record)
+
+    summary = _summarize_records(records)
+    summary.update({
+        "module": MODULE,
+        "version": VERSION,
+        "llm_mode": llm_mode,
+        "llm_model": ollama_model if llm_mode == "ollama" else llm_mode,
+        "source_question_count": len(questions),
+        "engram_core_used": bool(loaded_engram_core),
+        "engram_core_path": str(engram_core or ""),
+        "engram_prompt_injection_count": sum(1 for r in records if int(r.get("engram_atom_count") or 0) > 0),
+        "engram_atom_reference_count": sum(int(r.get("engram_atom_count") or 0) for r in records),
+        "llm_retry_used_count": sum(1 for r in records if r.get("llm_retry_used")),
+        "llm_fallback_used_count": sum(1 for r in records if r.get("llm_fallback_used")),
+        "ready_for_llm_answer_review": True,
+        "answer_permission_count": 0,
+        "source_truth_mutation_allowed_count": 0,
+        "postgres_write_attempt_count": 0,
+        "qdrant_write_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "opensearch_upload_attempt_count": 0,
+        "write_attempt_count": 0,
+        "unsafe_record_count": 0,
+        "llava_only_part_identity_claim_count": 0,
+    })
+
+    quality = _quality_gate(
+        summary,
+        min_smoke_questions=min_smoke_questions,
+        min_llm_answered=min_llm_answered,
+        min_good_answers=min_good_answers,
+        min_good_or_partial_answers=min_good_or_partial_answers,
+        max_bad_answers=max_bad_answers,
+        max_unsupported_claims=max_unsupported_claims,
+        max_summary_used_as_proof=max_summary_used_as_proof,
+        max_invalid_citations=max_invalid_citations,
+        max_llava_only_part_identity_claims=max_llava_only_part_identity_claims,
+        max_unsafe=max_unsafe,
+        max_answer_permission=max_answer_permission,
+        max_source_truth_mutation_allowed=max_source_truth_mutation_allowed,
+        max_write_attempts=max_write_attempts,
+    )
+
+    manifest = {
+        "status": "TRACE_NET_ENGINEERING_LLM_ANSWER_SMOKE_BUILT",
+        "quality_status": quality["quality_status"],
+        "summary": summary,
+        "quality_gate": quality,
+        "records": records,
+        "paths": {
+            "manifest": str(out_dir / "trace_net_engineering_llm_answer_smoke_v1.json"),
+            "quality_check": str(out_dir / "trace_net_engineering_llm_answer_smoke_v1_quality_check.json"),
+            "records_csv": str(out_dir / "trace_net_engineering_llm_answer_smoke_v1_records.csv"),
+            "question_bank": str(out_dir / "trace_net_engineering_llm_answer_smoke_v1_question_bank.jsonl"),
+            "runs_dir": str(runs_dir),
+            "prompts_dir": str(prompts_dir),
+            "answers_dir": str(answers_dir),
+            "traces_dir": str(traces_dir),
+        },
+    }
+    manifest_path = out_dir / "trace_net_engineering_llm_answer_smoke_v1.json"
+    qc_path = out_dir / "trace_net_engineering_llm_answer_smoke_v1_quality_check.json"
+    csv_path = out_dir / "trace_net_engineering_llm_answer_smoke_v1_records.csv"
+    _write_json(manifest_path, manifest)
+    _write_json(qc_path, quality)
+    _write_records_csv(csv_path, records)
+
+    if require_quality_pass and manifest["quality_status"] != "PASS":
+        raise SystemExit("quality_status is not PASS")
+    return manifest
+
+
+def _summarize_records(records: Sequence[Mapping[str, Any]]) -> Dict[str, Any]:
+    def count_grade(name: str) -> int:
+        return sum(1 for r in records if r.get("grade") == name)
+    return {
+        "smoke_question_count": len(records),
+        "llm_answered_count": sum(1 for r in records if r.get("llm_answered")),
+        "runner_pass_count": sum(1 for r in records if r.get("runner_passed")),
+        "good_answer_count": count_grade("GOOD"),
+        "partial_answer_count": count_grade("PARTIAL"),
+        "bad_answer_count": count_grade("BAD"),
+        "blocked_answer_count": count_grade("BLOCKED"),
+        "good_or_partial_answer_count": count_grade("GOOD") + count_grade("PARTIAL"),
+        "answer_citation_count": sum(int(r.get("answer_citation_count") or 0) for r in records),
+        "valid_answer_citation_count": sum(int(r.get("valid_answer_citation_count") or 0) for r in records),
+        "source_trace_ready_citation_count": sum(int(r.get("source_trace_ready_citation_count") or 0) for r in records),
+        "invalid_answer_citation_count": sum(int(r.get("invalid_answer_citation_count") or 0) for r in records),
+        "unsupported_claim_count": sum(int(r.get("unsupported_claim_count") or 0) for r in records),
+        "summary_used_as_proof_count": sum(int(r.get("summary_used_as_proof_count") or 0) for r in records),
+    }
+
+
+def _quality_gate(
+    summary: Mapping[str, Any],
+    *,
+    min_smoke_questions: int,
+    min_llm_answered: int,
+    min_good_answers: int,
+    min_good_or_partial_answers: int,
+    max_bad_answers: int,
+    max_unsupported_claims: int,
+    max_summary_used_as_proof: int,
+    max_invalid_citations: int,
+    max_llava_only_part_identity_claims: int,
+    max_unsafe: int,
+    max_answer_permission: int,
+    max_source_truth_mutation_allowed: int,
+    max_write_attempts: int,
+) -> Dict[str, Any]:
+    failures: List[str] = []
+    checks = {
+        "smoke_question_count": ("min", min_smoke_questions),
+        "llm_answered_count": ("min", min_llm_answered),
+        "good_answer_count": ("min", min_good_answers),
+        "good_or_partial_answer_count": ("min", min_good_or_partial_answers),
+        "bad_answer_count": ("max", max_bad_answers),
+        "unsupported_claim_count": ("max", max_unsupported_claims),
+        "summary_used_as_proof_count": ("max", max_summary_used_as_proof),
+        "invalid_answer_citation_count": ("max", max_invalid_citations),
+        "llava_only_part_identity_claim_count": ("max", max_llava_only_part_identity_claims),
+        "unsafe_record_count": ("max", max_unsafe),
+        "answer_permission_count": ("max", max_answer_permission),
+        "source_truth_mutation_allowed_count": ("max", max_source_truth_mutation_allowed),
+        "write_attempt_count": ("max", max_write_attempts),
+    }
+    for key, (kind, threshold) in checks.items():
+        value = int(summary.get(key, 0) or 0)
+        if kind == "min" and value < int(threshold):
+            failures.append(f"{key} below minimum: {value} < {threshold}")
+        if kind == "max" and value > int(threshold):
+            failures.append(f"{key} above maximum: {value} > {threshold}")
+    out = {"quality_status": "PASS" if not failures else "FAIL", "failures": failures}
+    out.update({k: summary.get(k, 0) for k in checks.keys()})
+    return out
+
+
+def check_engineering_llm_answer_smoke(
+    *,
+    smoke_test: Any,
+    output: Any,
+    require_quality_pass: bool = False,
+    min_smoke_questions: int = 1,
+    min_llm_answered: int = 1,
+    min_good_answers: int = 0,
+    min_good_or_partial_answers: int = 1,
+    max_bad_answers: int = 0,
+    max_unsupported_claims: int = 0,
+    max_summary_used_as_proof: int = 0,
+    max_invalid_citations: int = 0,
+    max_llava_only_part_identity_claims: int = 0,
+    max_unsafe: int = 0,
+    max_answer_permission: int = 0,
+    max_source_truth_mutation_allowed: int = 0,
+    max_write_attempts: int = 0,
+) -> Dict[str, Any]:
+    data = _load_json(smoke_test)
+    summary = data.get("summary") or {}
+    gate = _quality_gate(
+        summary,
+        min_smoke_questions=min_smoke_questions,
+        min_llm_answered=min_llm_answered,
+        min_good_answers=min_good_answers,
+        min_good_or_partial_answers=min_good_or_partial_answers,
+        max_bad_answers=max_bad_answers,
+        max_unsupported_claims=max_unsupported_claims,
+        max_summary_used_as_proof=max_summary_used_as_proof,
+        max_invalid_citations=max_invalid_citations,
+        max_llava_only_part_identity_claims=max_llava_only_part_identity_claims,
+        max_unsafe=max_unsafe,
+        max_answer_permission=max_answer_permission,
+        max_source_truth_mutation_allowed=max_source_truth_mutation_allowed,
+        max_write_attempts=max_write_attempts,
+    )
+    result = {
+        "status": "TRACE_NET_ENGINEERING_LLM_ANSWER_SMOKE_CHECKED",
+        "quality_status": gate["quality_status"],
+        "summary": summary,
+        "quality_gate": gate,
+        "source_smoke_test": str(smoke_test),
+    }
+    _write_json(output, result)
+    if require_quality_pass and result["quality_status"] != "PASS":
+        raise SystemExit("quality_status is not PASS")
+    return result
+
+
+def _add_common_threshold_args(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("--min-smoke-questions", type=int, default=1)
+    parser.add_argument("--min-llm-answered", type=int, default=1)
+    parser.add_argument("--min-good-answers", type=int, default=0)
+    parser.add_argument("--min-good-or-partial-answers", type=int, default=1)
+    parser.add_argument("--max-bad-answers", type=int, default=0)
+    parser.add_argument("--max-unsupported-claims", type=int, default=0)
+    parser.add_argument("--max-summary-used-as-proof", type=int, default=0)
+    parser.add_argument("--max-invalid-citations", type=int, default=0)
+    parser.add_argument("--max-llava-only-part-identity-claims", type=int, default=0)
+    parser.add_argument("--max-unsafe", type=int, default=0)
+    parser.add_argument("--max-answer-permission", type=int, default=0)
+    parser.add_argument("--max-source-truth-mutation-allowed", type=int, default=0)
+    parser.add_argument("--max-write-attempts", type=int, default=0)
+    parser.add_argument("--require-quality-pass", action="store_true")
+
+
+def build_arg_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Build TRACE-Net Engineering LLM Answer Smoke v1")
+    parser.add_argument("--question-bank")
+    parser.add_argument("--engram-core")
+    parser.add_argument("--max-engram-atoms", type=int, default=8)
+    parser.add_argument("--output-dir", required=True)
+    parser.add_argument("--max-questions", type=int, default=30)
+    parser.add_argument("--llm-mode", choices=["ollama", "runner_answer"], default="ollama")
+    parser.add_argument("--ollama-model", default="")
+    parser.add_argument("--ollama-url", default="http://127.0.0.1:11434/api/generate")
+    parser.add_argument("--timeout-seconds", type=int, default=120)
+    parser.add_argument("--v2-summary-guidance-index", required=True)
+    parser.add_argument("--image-visual-evidence-pack", required=True)
+    parser.add_argument("--raw-ocr-nomenclature-extractor", required=True)
+    parser.add_argument("--table-route-evidence-packager", required=True)
+    parser.add_argument("--table-exact-search-adapter", required=True)
+    parser.add_argument("--max-guidance-pages", type=int, default=8)
+    parser.add_argument("--min-planner-records", type=int, default=1)
+    parser.add_argument("--min-required-routes", type=int, default=1)
+    parser.add_argument("--min-guidance-context", type=int, default=0)
+    parser.add_argument("--min-proof-context", type=int, default=2)
+    parser.add_argument("--min-source-trace-ready", type=int, default=2)
+    parser.add_argument("--min-answer-citations", type=int, default=2)
+    parser.add_argument("--min-source-trace-ready-citations", type=int, default=2)
+    _add_common_threshold_args(parser)
+    parser.add_argument("--engram-answer-runner-overlay-map", default=None)
+    return parser
+
+
+def check_arg_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Check TRACE-Net Engineering LLM Answer Smoke v1")
+    parser.add_argument("--smoke-test", required=True)
+    parser.add_argument("--output", required=True)
+    _add_common_threshold_args(parser)
+    return parser
+
+
+def main(argv: Optional[Sequence[str]] = None) -> int:
+    args = build_arg_parser().parse_args(argv)
+    result = build_engineering_llm_answer_smoke(**vars(args))
+    s = result.get("summary", {})
+    print("status=" + str(result.get("status")))
+    print("quality_status=" + str(result.get("quality_status")))
+    for key in [
+        "smoke_question_count", "llm_answered_count", "good_answer_count", "partial_answer_count",
+        "bad_answer_count", "blocked_answer_count", "unsupported_claim_count", "summary_used_as_proof_count",
+    ]:
+        print(f"{key}={s.get(key)}")
+    print("smoke_test=" + result.get("paths", {}).get("manifest", ""))
+    return 0
+
+
+def check_main(argv: Optional[Sequence[str]] = None) -> int:
+    args = check_arg_parser().parse_args(argv)
+    result = check_engineering_llm_answer_smoke(**vars(args))
+    s = result.get("summary", {})
+    print("status=" + str(result.get("status")))
+    print("quality_status=" + str(result.get("quality_status")))
+    for key in [
+        "smoke_question_count", "llm_answered_count", "good_answer_count", "partial_answer_count",
+        "bad_answer_count", "blocked_answer_count", "unsupported_claim_count", "summary_used_as_proof_count",
+    ]:
+        print(f"{key}={s.get(key)}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

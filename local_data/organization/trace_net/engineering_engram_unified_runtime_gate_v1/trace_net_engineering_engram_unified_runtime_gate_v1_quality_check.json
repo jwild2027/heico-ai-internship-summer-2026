@@ -1,0 +1,50 @@
+{
+  "quality_status": "PASS",
+  "status": "TRACE_NET_ENGINEERING_ENGRAM_UNIFIED_RUNTIME_GATE_CHECKED",
+  "summary": {
+    "answer_permission_count": 0,
+    "crag_connected": true,
+    "expected_boundary_count": 1,
+    "feedback_runtime_record_count": 5,
+    "graph_guidance_connected": false,
+    "graph_guidance_mode": "artifact_placeholder_no_live_graph_traversal",
+    "module": "trace_net_engineering_engram_unified_runtime_gate_v1",
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_feedback_ledger_connected": true,
+    "postgres_write_attempt_count": 0,
+    "qdrant_read_attempt_count": 0,
+    "qdrant_vector_adapter_connected": true,
+    "qdrant_write_attempt_count": 0,
+    "quality_failures": [],
+    "question_ids": [
+      "q12",
+      "q16",
+      "q18",
+      "q25",
+      "q29"
+    ],
+    "ready_for_optional_full_30_after_targeted_pass": true,
+    "ready_for_targeted_unified_engram_runtime_commit_gate": true,
+    "repair_attempt_count": 0,
+    "runtime_pass_count": 4,
+    "runtime_pass_or_expected_count": 5,
+    "runtime_pass_with_limit_count": 0,
+    "runtime_record_count": 5,
+    "self_rag_connected": true,
+    "source_quality": {
+      "answer_smoke": "PASS",
+      "crag_repair": "PASS",
+      "feedback_ledger": "PASS",
+      "graph_route_manifest": "NOT_SUPPLIED",
+      "qdrant_adapter": "PASS",
+      "self_rag_critic": "PASS"
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_finding_count": 0,
+    "unsafe_findings": [],
+    "vector_guidance_record_count": 5,
+    "version": "v1",
+    "write_attempt_count": 0
+  }
+}

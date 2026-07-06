@@ -1,0 +1,91 @@
+{
+  "answer": "Answer\nSelected representative page/record: t_p_120_1176_p000032. TRACE-Net can safely say this page has source-trace evidence for part numbers including 120-29068-059, 120-29068-061, 120-29068-063, 120-29068-073, 120-29070-001. [T939] [T940] [T944] [T948] [T952]\n\nEvidence\n- [T939] route=table, page=t_p_120_1176_p000032, part=120-29068-059, nomenclature=n/a\n- [T940] route=table, page=t_p_120_1176_p000032, part=120-29070-001, nomenclature=n/a\n- [T944] route=table, page=t_p_120_1176_p000032, part=120-29068-061, nomenclature=n/a\n- [T948] route=table, page=t_p_120_1176_p000032, part=120-29068-063, nomenclature=n/a\n- [T952] route=table, page=t_p_120_1176_p000032, part=120-29070-003, nomenclature=n/a\n- [T961] route=table, page=t_p_120_1176_p000032, part=120-29068-073, nomenclature=n/a\n\nEngineering confidence\nMedium/high for claims directly supported by cited evidence; lower for any unclear OCR/visual observations.\n\nLimits\nThis does not prove interchangeability, effectivity, fit, replacement approval, or installation safety. Engram and summary guidance are not proof.",
+  "citations": [
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "T939",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000032",
+      "part_number": "120-29068-059",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000032"
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "T940",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000032",
+      "part_number": "120-29070-001",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000032"
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "T944",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000032",
+      "part_number": "120-29068-061",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000032"
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "T948",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000032",
+      "part_number": "120-29068-063",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000032"
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "T952",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000032",
+      "part_number": "120-29070-003",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000032"
+    },
+    {
+      "citation_ready": true,
+      "field": "page_id",
+      "label": "T961",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000032",
+      "part_number": "120-29068-073",
+      "route": "table",
+      "source_artifact": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "source_trace_ready": true,
+      "value": "t_p_120_1176_p000032"
+    }
+  ],
+  "evidence_card_count": 6,
+  "fallback_used": false,
+  "llm_error": "",
+  "model": "deterministic_fast_path",
+  "query": "pick a random page",
+  "response": "Answer\nSelected representative page/record: t_p_120_1176_p000032. TRACE-Net can safely say this page has source-trace evidence for part numbers including 120-29068-059, 120-29068-061, 120-29068-063, 120-29068-073, 120-29070-001. [T939] [T940] [T944] [T948] [T952]\n\nEvidence\n- [T939] route=table, page=t_p_120_1176_p000032, part=120-29068-059, nomenclature=n/a\n- [T940] route=table, page=t_p_120_1176_p000032, part=120-29070-001, nomenclature=n/a\n- [T944] route=table, page=t_p_120_1176_p000032, part=120-29068-061, nomenclature=n/a\n- [T948] route=table, page=t_p_120_1176_p000032, part=120-29068-063, nomenclature=n/a\n- [T952] route=table, page=t_p_120_1176_p000032, part=120-29070-003, nomenclature=n/a\n- [T961] route=table, page=t_p_120_1176_p000032, part=120-29068-073, nomenclature=n/a\n\nEngineering confidence\nMedium/high for claims directly supported by cited evidence; lower for any unclear OCR/visual observations.\n\nLimits\nThis does not prove interchangeability, effectivity, fit, replacement approval, or installation safety. Engram and summary guidance are not proof.",
+  "safety": {
+    "answer_permission": false,
+    "opensearch_write_attempt": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "source_truth_mutation_allowed": false
+  },
+  "task_type": "random_page"
+}

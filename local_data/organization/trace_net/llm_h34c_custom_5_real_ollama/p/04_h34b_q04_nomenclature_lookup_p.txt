@@ -1,0 +1,36 @@
+TRACE-NET H34B ANSWER BUDGET + COMPLETION GUARD
+Use the evidence cards below as proof_context. Use only cited evidence cards for factual claims.
+Engram/route guidance is behavior guidance only; it is not proof.
+Target answer length: 450-1300 characters. Hard max: about 1500 characters.
+Use sections: Answer, Evidence, Engineering confidence, Limits.
+Finish all sections and do not stop mid-sentence.
+Use individual citation labels like [V1] [O2] [T1]. Do not use grouped labels like [V1, O2].
+If proof is missing, say not found / not source-trace-ready and do not cite unrelated evidence.
+Never infer interchangeability, effectivity, fit, replacement approval, or installation safety unless explicit proof_context says so.
+
+
+QUESTION_ID: h34b_q04_nomenclature_lookup
+TASK_TYPE: nomenclature_lookup
+USER QUESTION:
+Look up the nomenclature for part number 120-50645-005. Explain which route proves the part name and which route proves the figure-to-part link. Cite the source.
+
+PROOF_CONTEXT EVIDENCE CARDS:
+[O9] route=ocr | figure=69 | part=120-50645-005 | nomenclature=DOUBLE PASSENGER SEAT ASSY
+  {"record_id": "raw_ocr_nomenclature_window_833bbc3bd58e5bfc", "schema_version": "trace_net_raw_ocr_nomenclature_window_extractor_v1", "source_visual_citation_label": "V6", "source_visual_evidence_id": "image_visual_evidence_ff198f6822219919", "linked_part_number": "120-50645-005", "figure": "69", "callout": "", "visual_page_id": "t_p_120_1176_p000315", "visual_page_number": 315, "matched_ocr_record_count": 4, "nomenclature_candidate_count": 1, "selected_nomenclature": "DOUBLE PASSENGER SEAT ASSY", "selected_nomenclature_confidence": "HIGH", "selected_extraction_rule": "same_line_after_part", "selected_score": 105, "selected_score_reason":...
+
+[O10] route=ocr | part=120-50645-005 | nomenclature=DOUBLE PASSENGER SEAT ASSY
+  line_text: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF | nomenclature: DOUBLE PASSENGER SEAT ASSY
+
+[V16] route=visual | page=315 | page_id=t_p_120_1176_p000315 | figure=69 | part=120-50645-005 | nomenclature=DOUBLE PASSENGER SEAT ASSY
+  {"answer_permission": false, "callout": "", "can_answer_directly": false, "can_prove_claims": false, "can_support_limited_visual_answer": true, "candidate_source": "", "citation_label": "V6", "citation_ready": true, "evidence_id": "image_visual_evidence_ff198f6822219919", "evidence_kind": "linked_visual_evidence", "figure": "69", "limitations": ["OCR-backed nomenclature was found in raw OCR text near the linked figure/part evidence.", "Figure/page proof is linked, but no exact callout/item label is present in the visual link.", "This evidence does not prove interchangeability, effectivity, fit, replacement approval, or installation safety....
+
+[V18] route=visual | figure=69 | part=120-50645-005 | nomenclature=DOUBLE PASSENGER SEAT ASSY
+  {"source_module": "trace_net_raw_ocr_nomenclature_window_extractor_v1", "source_record_id": "raw_ocr_nomenclature_window_833bbc3bd58e5bfc", "source_visual_citation_label": "V6", "linked_part_number": "120-50645-005", "figure": "69", "ocr_page_id": "t_p_120_1176_p000316", "ocr_page_number": 316, "ocr_text_path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_001\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000316.txt", "selected_line_text": "69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF"}
+
+[O11] route=ocr | figure=75 | part=120-50645-011 | nomenclature=DOUBLE PASSENGER SEAT ASSY
+  {"record_id": "raw_ocr_nomenclature_window_314536c3d53b8445", "schema_version": "trace_net_raw_ocr_nomenclature_window_extractor_v1", "source_visual_citation_label": "V7", "source_visual_evidence_id": "image_visual_evidence_1b3e78d6e52ceb85", "linked_part_number": "120-50645-011", "figure": "75", "callout": "", "visual_page_id": "t_p_120_1176_p000327", "visual_page_number": 327, "matched_ocr_record_count": 4, "nomenclature_candidate_count": 1, "selected_nomenclature": "DOUBLE PASSENGER SEAT ASSY", "selected_nomenclature_confidence": "HIGH", "selected_extraction_rule": "same_line_after_part", "selected_score": 105, "selected_score_reason":...
+
+[O12] route=ocr | part=120-50645-011 | nomenclature=DOUBLE PASSENGER SEAT ASSY
+  line_text: 75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF | nomenclature: DOUBLE PASSENGER SEAT ASSY
+
+Write the answer now. Use only the evidence cards above for factual claims.

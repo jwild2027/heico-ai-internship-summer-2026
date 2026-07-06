@@ -1,0 +1,48 @@
+{
+  "answer_char_count": 1650,
+  "answer_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_ollama\\q\\q12\\q12_answer.txt",
+  "answer_permission": false,
+  "answer_preview": "Answer:\nArtifact-mode overlay smoke for q12: the retrieved Engram overlay is behavior guidance only, not proof. The source answer-runner answer remains the source of the candidate answer text.\n\nEvidence:\n- Manual/source claims still require current proof_context citations from the source answer-runner prompt.\n- Retrieved Engram guidance does not grant answer permission and does not mutate source truth.\n\nEngineering confidence:\nMEDIUM for integration behavior in artifact mode; no new source claim is introduced.\n\nLimits:\nThis artifact-mode smoke does not prove new manual facts. It validates prompt overlay assembly only.\n\nSource answer preview:\nAnswer: Not proven. \n\nTRACE-Net can prove that part number 120-50645-005 [E1] [T1] is identified in the source evidence with the nomenclature \"DOUBLE PASSENGER SEAT ASSY\" [O1] and is linked to figure 69 [V6]. Similarly, TRACE-Net can prove that part number 120-50645-011 [E2] [T2] is identified with the same nomenclature \"DOUBLE PASSENGER SEAT ASSY\" [O2] and is linked to figure 75 [V7]. \n\nHowever, shared nomenclature, nearby figures, or part-family\n[TRUNCATED: compacted for targeted H25 overlay smoke; guidance remains behavior-only, not proof.]",
+  "grade": "GOOD",
+  "grade_reasons": [],
+  "llm_answered": true,
+  "llm_error": "RuntimeError: Ollama response did not contain answer text",
+  "llm_fallback_used": true,
+  "llm_mode": "ollama",
+  "llm_model": "gemma4:26b",
+  "llm_retry_used": true,
+  "matched_bridge_query_ids": [
+    "h19_q_interchangeability_boundary"
+  ],
+  "matched_bridge_task_types": [
+    "interchangeability_boundary"
+  ],
+  "prompt_char_count": 6000,
+  "prompt_hash": "727611a7fddcd4d35b3daefd34941178988d7179178540a313a995dfe35fa8b4",
+  "prompt_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_ollama\\q\\q12\\q12_prompt.txt",
+  "question": "Is 120-50645-005 interchangeable with 120-50645-011?",
+  "question_id": "q12",
+  "safety_contract": {
+    "answer_permission_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_read_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "source_truth_mutation_allowed_count": 0
+  },
+  "selected_layers": [
+    "critic_memory",
+    "procedural_memory",
+    "trait_memory"
+  ],
+  "selected_proof_roles": [
+    "guidance_only"
+  ],
+  "source_answer_grade": "GOOD",
+  "source_runner_passed": true,
+  "source_runner_quality_status": "PASS",
+  "trace_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_ollama\\q\\q12\\q12_trace.json",
+  "unsafe": false,
+  "unsupported_claim_count": 0
+}

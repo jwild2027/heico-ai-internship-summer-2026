@@ -1,0 +1,25 @@
+{
+  "quality_status": "FAIL",
+  "status": "TRACE_NET_H36_COMPLEX_TASK_VALIDATOR_CHECKED",
+  "summary": {
+    "answer_permission_count": 0,
+    "bad_count": 1,
+    "contract_pass_count": 2,
+    "fallback_used_count": 0,
+    "module": "trace_net_h36_complex_task_validator_v1",
+    "quality_failures": [
+      "contract_pass_count_below_min",
+      "bad_count_above_max",
+      "unsafe_finding_count_above_max",
+      "source_quality_not_pass"
+    ],
+    "ready_for_h37_diversity_planner": true,
+    "record_count": 5,
+    "review_count": 2,
+    "source_contract_run_quality_status": "FAIL",
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_finding_count": 1,
+    "version": "v1",
+    "write_attempt_count": 0
+  }
+}

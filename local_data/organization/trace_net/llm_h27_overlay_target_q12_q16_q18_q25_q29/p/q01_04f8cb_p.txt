@@ -1,0 +1,86 @@
+TRACE-NET H27 RETRIEVED ENGRAM OVERLAY — BEHAVIOR ONLY, NOT PROOF
+Manual/source claims still require current proof_context citations.
+Do not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.
+
+TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY
+Use this overlay as behavior guidance only. It is not proof.
+Manual/source claims still require current proof_context citations.
+Do not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.
+target_question_id: q12
+
+--- retrieved_guidance query_id=h19_q_interchangeability_boundary task_type=interchangeability_boundary ---
+TRACE-NET ENGRAM RETRIEVAL GUIDANCE — BEHAVIOR ONLY, NOT PROOF
+query_id: h19_q_interchangeability_boundary
+task_type: interchangeability_boundary
+query: Is part 120-50645-005 interchangeable with 120-50645-011 or an approved replacement? Require explicit source authority.
+
+Use these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.
+Manual/source claims still require current proof_context citations from TRACE-Net.
+
+- [procedural_no_interchangeability_without_authority_v1] layer=procedural_memory proof_role=guidance_only: atom_id: procedural_no_interchangeability_without_authority_v1 | title: No interchangeability without explicit authority | memory_layer: procedural_memory | memory_type: procedu...
+- [h17_imported_f39d3c6bcc27e0fa] layer=procedural_memory proof_role=guidance_only: atom_id: h17_imported_f39d3c6bcc27e0fa | title: h17_imported_f39d3c6bcc27e0fa | memory_layer: procedural_memory | memory_type: policy_trait | rule: Shared nomenclature, nearby f...
+- [critic_safe_but_too_generic_repair_v1] layer=critic_memory proof_role=guidance_only: atom_id: critic_safe_but_too_generic_repair_v1 | title: Safe but too generic repair | memory_layer: critic_memory | memory_type: critic_memory | rule: If an answer is safe but t...
+- [t
+[TRUNCATED BY H24 OVERLAY SMOKE: guidance only, not proof.]
+
+--- ORIGINAL ANSWER-RUNNER PROMPT ---
+You are TRACE-Net's engineering evidence answerer.
+Answer the user's question using ONLY the supplied proof_context for factual claims.
+guidance_context and v2 summaries may guide planning/framing only; they are not proof.
+Engram memory may guide behavior/style/critique only; it is not proof and must not be cited as source evidence.
+Every factual claim must cite one or more provided citation labels like [V6] or [O1].
+If proof is missing, say not proven or not source-trace-ready. Do not guess.
+Do NOT claim interchangeability, effectivity, fit, replacement approval, or installation safety unless explicit proof_context supports it.
+Use this format: Answer, Evidence, Engineering confidence, Limits.
+Never return an empty answer. If direct proof is missing, still explain the limitation and what TRACE-Net can/cannot prove from the provided context.
+
+QUESTION: Is 120-50645-005 interchangeable with 120-50645-011?
+QUESTION_CATEGORY: interchangeability
+INTENT_RULE: Lead with 'Not proven' for interchangeability/replacement approval unless explicit source authority is present.
+INTENT_RULE: Then explain what TRACE-Net can prove: part identity, nomenclature, figure/page links, and OCR/table support.
+INTENT_RULE: Explicitly state that shared nomenclature, nearby figures, and part-family similarity are not interchangeability or replacement approval.
+
+TRACE_NET_ENGINEERING_ENGRAM_MEMORY (behavior guidance only; NOT source proof):
+- Use these compact behavior memories for answer style and boundaries only; never cite them as evidence.
+- id=policy_no_interchangeability_without_authority_v1; trait=source_trace_caution; priority=hard_boundary; rule=Shared nomenclature, nearby figures, or part-family similarity are not proof of interchangeability or replacement approval.; do=Say what TRACE-Net can prove about each part, then state interchangeability/replacement approval is not proven.
+- id=policy_no_installation_safety_from_figure_v1; trait=approval_boundary; priority=hard_boundary; rule=Figure/part identification evidence does not prove installation safety, fit approval, aircraft effectivity, or replacement approval.; do=Lead with not proven, then list the source-trace-ready identity/nomenclature evidence that is proven.
+- id=policy_v2_summaries_guidance_not_proof_v1; trait=summary_boundary; priority=hard_boundary; rule=V2 summaries may guide planning and framing, but cannot prove source claims; factual claims require proof_context citations.; do=Use summaries only to guide route selection and answer framing; cite proof_context for claims.
+- id=route_table_ocr_supports_exact_part_v1; trait=route_awareness; priority=medium; rule=Exact-part/table-OCR evidence supports presence of a part number but does not by itself prove approvals or compatibility.; do=Use table/OCR evidence to support part presence and citation readiness, while keeping approval claims out of scope.
+
+STRUCTURED_TRACE_NET_SCAFFOLD (use as answer shape; factual claims still require proof_context citations):
+Answer scaffold:
+Lead with the limitation or not-found/not-proven result.
+Then say what TRACE-Net can prove from the proof_context citations.
+Then say what it cannot prove from the current evidence pack.
+Available citation families: [V6], [V7], [O1], [O2], [T1], [T2], [E1], [E2].
+Runner answer to preserve if useful: Answer:
+Part number 120-50645-005 is present in source-trace-ready evidence and is associated with "DOUBLE PASSENGER SEAT ASSY" [E1] [O1] [T1] [V6].
+
+Evidence:
+- [E1] Exact-part evidence contains part number 120-50645-005 in field covered_part_number: 120-50645-005.
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives "DOUBLE PASSENGER SEAT ASSY" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the exact part lookup because multiple source-trace-ready proof records support the part number. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.
+TASK_TYPE: exact_part_lookup
+ANSWER_CONSTRAINTS: {"answer_style": "engineering_brain", "may_claim": ["part number appears in source evidence", "source page/citation locations", "nomenclature only when OCR/table evidence supports it"], "may_not_claim": ["effectivity", "fit", "installation safety", "interchangeability", "replacement approval", "summary-only proof", "unsupported effectivity", "unsupported interchangeability", "unsupported installation or safety approval"], "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof"}
+
+PROOF_CONTEXT:
+- [V6] context_type=visual_figure_link; citation_label=V6; page_number=315; page_id=t_p_120_1176_p000315; figure=69; part_number=120-50645-005; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True
+- [V7] context_type=visual_figure_link; citation_label=V7; page_number=327; page_id=t_p_120_1176_p000327; figure=75; part_number=120-50645-011; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True
+- [O1] context_type=ocr_nomenclature; citation_label=O1; page_number=316; page_id=t_p_120_1176_p000316; figure=69; part_number=120-50645-005; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True; line_text=69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [O2] context_type=ocr_nomenclature; citation_label=O2; page_number=328; page_id=t_p_120_1176_p000328; figure=75; part_number=120-50645-011; nomenclature=DOUBLE PASSENGER SEAT ASSY; source_trace_ready=True; proof_eligible=True; line_text=75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [E1] context_type=exact_part_evidence; citation_label=E1; page_id=t_p_120_1176_p000003; part_number=120-50645-005; source_trace_ready=True; proof_eligible=True
+- [E2] context_type=exact_part_evidence; citation_label=E2; page_id=t_p_120_1176_p000003; part_number=120-50645-011; source_trace_ready=True; proof_eligible=True
+- [T1] context_type=table_ocr_proof; citation_label=T1; page_id=t_p_120_1176_p000003; part_number=120-50645-005; source_trace_ready=True; proof_eligible=True
+- [T2] context_type=table_ocr_proof; citation_label=T2; page_id=t_p_120_1176_p000003; part_number=120-50645-011; source_trace_ready=True; proof_eligible=True
+
+GUIDANCE_CONTEXT (not proof):
+- No guidance_context records are available.

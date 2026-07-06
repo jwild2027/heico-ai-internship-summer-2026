@@ -1,0 +1,14 @@
+Answer:
+The addition of the raw OCR nomenclature extractor changed the pipeline by providing a secondary route to recover or improve description evidence. While the `visual_figure_link` route establishes identity between a figure and a part number (e.g., Figure 69 is linked to part number 120-50645-005 [V6]), visual-link evidence alone should not be treated as clean nomenclature proof if a source-trace-ready nomenclature field is missing. The `ocr_nomenclature` route provides OCR-backed line-text evidence for the part name (e.g., "DOUBLE PASSENGER SEAT ASSY" [O1]), which can then be merged into the visual evidence pack to provide more robust description proof.
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature provides line-text evidence for the name: "69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF" on page 316.
+- [V7] Visual evidence links figure 75 to part number 120-50645-011 [V7].
+- [O2] OCR-backed nomenclature provides line-text evidence for the name: "75 - | 120-50645-011 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF" [O2].
+
+Engineering confidence:
+HIGH for the pipeline behavior explanation because the provided context and scaffold explicitly define the functional difference between the `visual_figure_link` and `ocr_nomenclature` routes.
+
+Limits:
+- This is a TRACE-Net pipeline explanation, not proof of interchangeability, effectivity, fit, replacement approval, or installation safety.

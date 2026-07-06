@@ -1,0 +1,24 @@
+{
+  "quality_status": "FAIL",
+  "status": "TRACE_NET_H39A_WHOLE_PAGE_VISION_SUMMARY_CHECKED",
+  "summary": {
+    "answer_permission_count": 0,
+    "discovered_image_visual_page_count": 509,
+    "error_count": 3,
+    "llm_mode": "ollama",
+    "missing_image_count_before_limit": 0,
+    "model": "llama3.2-vision:11b",
+    "module": "trace_net_h39a_whole_page_vision_summary_v1",
+    "pass_count": 0,
+    "quality_failures": [
+      "pass_count_below_min"
+    ],
+    "record_count": 3,
+    "selected_page_count": 3,
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_finding_count": 0,
+    "version": "v1",
+    "vision_summary_guidance_only_count": 3,
+    "write_attempt_count": 0
+  }
+}

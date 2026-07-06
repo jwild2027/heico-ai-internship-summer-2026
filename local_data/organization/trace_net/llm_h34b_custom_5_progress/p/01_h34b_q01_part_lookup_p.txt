@@ -1,0 +1,45 @@
+TRACE-NET H34B ANSWER BUDGET + COMPLETION GUARD
+Use the evidence cards below as proof_context. Use only cited evidence cards for factual claims.
+Engram/route guidance is behavior guidance only; it is not proof.
+Target answer length: 450-1300 characters. Hard max: about 1700 characters.
+Use sections: Answer, Evidence, Engineering confidence, Limits.
+Finish all sections and do not stop mid-sentence.
+Use individual citation labels like [V1] [O2] [T1]. Do not use grouped labels like [V1, O2].
+If proof is missing, say not found / not source-trace-ready and do not cite unrelated evidence.
+Never infer interchangeability, effectivity, fit, replacement approval, or installation safety unless explicit proof_context says so.
+
+
+QUESTION_ID: h34b_q01_part_lookup
+TASK_TYPE: exact_part_lookup
+USER QUESTION:
+Find part number 120-50645-005. Give the nomenclature if available, cite the source, and clearly state what TRACE-Net cannot prove from this evidence.
+
+PROOF_CONTEXT EVIDENCE CARDS:
+[V16] route=visual | page=315 | page_id=t_p_120_1176_p000315 | figure=69 | part=120-50645-005 | nomenclature=DOUBLE PASSENGER SEAT ASSY
+  {"answer_permission": false, "callout": "", "can_answer_directly": false, "can_prove_claims": false, "can_support_limited_visual_answer": true, "candidate_source": "", "citation_label": "V6", "citation_ready": true, "evidence_id": "image_visual_evidence_ff198f6822219919", "evidence_kind": "linked_visual_evidence", "figure": "69", "limitations": ["OCR-backed nomenclature was found in raw OCR text near the linked figure/part evidence.", "Figure/page proof is linked, but no exact callout/item label is present in the visual link.", "This evidence does not prove interchangeability, effectivity, fit, replacement approval, or installation safety....
+
+[V18] route=visual | figure=69 | part=120-50645-005 | nomenclature=DOUBLE PASSENGER SEAT ASSY
+  {"source_module": "trace_net_raw_ocr_nomenclature_window_extractor_v1", "source_record_id": "raw_ocr_nomenclature_window_833bbc3bd58e5bfc", "source_visual_citation_label": "V6", "linked_part_number": "120-50645-005", "figure": "69", "ocr_page_id": "t_p_120_1176_p000316", "ocr_page_number": 316, "ocr_text_path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_001\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000316.txt", "selected_line_text": "69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF"}
+
+[O9] route=ocr | figure=69 | part=120-50645-005 | nomenclature=DOUBLE PASSENGER SEAT ASSY
+  {"record_id": "raw_ocr_nomenclature_window_833bbc3bd58e5bfc", "schema_version": "trace_net_raw_ocr_nomenclature_window_extractor_v1", "source_visual_citation_label": "V6", "source_visual_evidence_id": "image_visual_evidence_ff198f6822219919", "linked_part_number": "120-50645-005", "figure": "69", "callout": "", "visual_page_id": "t_p_120_1176_p000315", "visual_page_number": 315, "matched_ocr_record_count": 4, "nomenclature_candidate_count": 1, "selected_nomenclature": "DOUBLE PASSENGER SEAT ASSY", "selected_nomenclature_confidence": "HIGH", "selected_extraction_rule": "same_line_after_part", "selected_score": 105, "selected_score_reason":...
+
+[O10] route=ocr | part=120-50645-005 | nomenclature=DOUBLE PASSENGER SEAT ASSY
+  line_text: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF | nomenclature: DOUBLE PASSENGER SEAT ASSY
+
+[T1] route=table
+  {"checks": [{"expected": ">= 20", "name": "source_audit_record_count", "observed": 20, "passed": true}, {"expected": ">= 1000", "name": "source_search_ready_evidence_record_count", "observed": 1497, "passed": true}, {"expected": ">= 1000", "name": "table_route_evidence_document_count", "observed": 1497, "passed": true}, {"expected": ">= 1", "name": "page_with_evidence_count", "observed": 13, "passed": true}, {"expected": ">= 4", "name": "field_count", "observed": 6, "passed": true}, {"expected": ">= 100", "name": "covered_part_number_documents", "observed": 150, "passed": true}, {"expected": ">= 39", "name": "manual_page_reference_document...
+
+[T4] route=table
+  {"expected": ">= 100", "name": "covered_part_number_documents", "observed": 150, "passed": true}
+
+[T8] route=table | page_id=t_p_120_1176_p000003
+  {"field_name": "covered_part_number", "page_id": "t_p_120_1176_p000003", "source_cell_id": "table_route_cell__08901cb9713a71", "source_module": "trace_net_table_route_value_normalizer_v1", "source_value_record_id": "table_route_normalized_value__8b666283b8fc550e", "table_id": "table__t_p_120_1176_p000003__cc6f070a67"}
+
+[T10] route=table | page_id=t_p_120_1176_p000003
+  {"field_name": "covered_part_number", "page_id": "t_p_120_1176_p000003", "source_cell_id": "table_route_cell__c8ec160a2d23ef", "source_module": "trace_net_table_route_value_normalizer_v1", "source_value_record_id": "table_route_normalized_value__660dcce34a851d1a", "table_id": "table__t_p_120_1176_p000003__cc6f070a67"}
+
+[T12] route=table | page_id=t_p_120_1176_p000003
+  {"field_name": "covered_part_number", "page_id": "t_p_120_1176_p000003", "source_cell_id": "table_route_cell__3b41055258c549", "source_module": "trace_net_table_route_value_normalizer_v1", "source_value_record_id": "table_route_normalized_value__85ed25995e6587e2", "table_id": "table__t_p_120_1176_p000003__cc6f070a67"}
+
+Write the answer now. Use only the evidence cards above for factual claims.

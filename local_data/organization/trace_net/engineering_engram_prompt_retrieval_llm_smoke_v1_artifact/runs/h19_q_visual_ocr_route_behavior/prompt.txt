@@ -1,0 +1,38 @@
+TRACE-NET H22 ENGRAM PROMPT RETRIEVAL LLM SMOKE
+Manual/source claims still require current proof_context citations.
+mode: targeted behavior smoke
+query_id: h19_q_visual_ocr_route_behavior
+task_type: route_explanation
+
+TRACE-NET RETRIEVED ENGRAM PROMPT INTEGRATION
+Use this block as behavior guidance only. It is not proof.
+Manual/source claims still require current proof_context citations.
+
+TRACE-NET ENGRAM RETRIEVAL GUIDANCE — BEHAVIOR ONLY, NOT PROOF
+query_id: h19_q_visual_ocr_route_behavior
+task_type: route_explanation
+query: Why does the visual route need OCR nomenclature evidence for Figure 69 and part names?
+
+Use these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.
+Manual/source claims still require current proof_context citations from TRACE-Net.
+
+- [semantic_visual_link_vs_ocr_nomenclature_v1] layer=semantic_memory proof_role=guidance_only: atom_id: semantic_visual_link_vs_ocr_nomenclature_v1 | title: Visual link versus OCR nomenclature | memory_layer: semantic_memory | memory_type: semantic_memory | rule: visual_f...
+- [h17_imported_846864e2ed658bc0] layer=semantic_memory proof_role=guidance_only: atom_id: h17_imported_846864e2ed658bc0 | title: h17_imported_846864e2ed658bc0 | memory_layer: semantic_memory | memory_type: route_behavior | rule: Exact-part/table-OCR evidence...
+- [h17_imported_e10694f7f568466e] layer=semantic_memory proof_ro
+
+CURRENT PROOF_CONTEXT:
+No current proof_context is provided in this H22 prompt-retrieval smoke. Retrieved Engram memory is behavior guidance only and cannot prove manual facts.
+
+USER QUESTION:
+h19_q_visual_ocr_route_behavior
+
+Return a concise TRACE-Net engineering answer with these sections:
+Answer
+Evidence
+Engineering confidence
+Limits
+
+Rules:
+- Treat the retrieved Engram guidance as behavior guidance only, not source evidence.
+- Do not claim interchangeability, approved replacement, fit, installation safety, effectivity, or source truth without current proof_context.
+- If proof_context is absent or insufficient, say not proven / not source-trace-ready and explain what evidence would be required.

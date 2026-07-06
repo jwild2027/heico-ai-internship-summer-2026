@@ -1,0 +1,227 @@
+{
+  "module": "trace_net_openwebui_e2e_launcher_v1",
+  "openwebui": {
+    "connection_settings": {
+      "api_key": "trace-net-local",
+      "base_url_for_docker_openwebui": "http://host.docker.internal:8014/v1",
+      "base_url_for_windows_openwebui": "http://127.0.0.1:8014/v1",
+      "model": "trace-net-e2e-local-endpoint-v1",
+      "provider": "OpenAI"
+    },
+    "container": "open-webui",
+    "container_start_result": {
+      "action": "already_running",
+      "container": "open-webui",
+      "ok": true
+    },
+    "url": "http://localhost:3000"
+  },
+  "quality_status": "PASS",
+  "safety_contract": {
+    "endpoint_answer_permission_expected": false,
+    "launcher_no_opensearch_writes": true,
+    "launcher_no_postgres_writes": true,
+    "launcher_no_qdrant_writes": true,
+    "launcher_no_source_truth_mutation": true
+  },
+  "smoke_tests": {
+    "chat_completions": {
+      "error": "",
+      "ok": true,
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "content": "Final-gate smoke draft for query: 'Find part number 120-36833-001'. TRACE-Net found citation/source-trace-ready evidence: covered_part_number=120-36833-001 on t_p_120_1176_p000003; covered_part_number=120-36833-003 on t_p_120_1176_p000003; covered_part_number=120-36833-005 on t_p_120_1176_p000003. This draft is safe for final-gate review and remains non-mutating; it does not rewrite source truth.\n\nCitations:\n[1] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-001\n[2] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-003\n[3] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-005",
+              "role": "assistant"
+            }
+          }
+        ],
+        "created": 1783020343,
+        "id": "chatcmpl-tracenet-5a1ef78c5249416c",
+        "model": "trace-net-e2e-local-endpoint-v1",
+        "object": "chat.completion",
+        "trace_net": {
+          "endpoint_version": "v1",
+          "match_score": 38.0769,
+          "matched_artifact_response": true,
+          "safety": {
+            "answer_permission": false,
+            "can_answer_directly": false,
+            "can_prove_claims": false,
+            "response_is_smoke_draft": true,
+            "source_truth_mutation_allowed": false,
+            "uploads_to_opensearch": false,
+            "writes_to_opensearch": false,
+            "writes_to_postgres": false,
+            "writes_to_qdrant": false
+          }
+        },
+        "usage": {
+          "completion_tokens": 0,
+          "prompt_tokens": 0,
+          "total_tokens": 0
+        }
+      }
+    },
+    "chat_response_preview": "Final-gate smoke draft for query: 'Find part number 120-36833-001'. TRACE-Net found citation/source-trace-ready evidence: covered_part_number=120-36833-001 on t_p_120_1176_p000003; covered_part_number=120-36833-003 on t_p_120_1176_p000003; covered_part_number=120-36833-005 on t_p_120_1176_p000003. This draft is safe for final-gate review and remains non-mutating; it does not rewrite source truth.\n\nCitations:\n[1] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-001\n[2] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-003\n[3] page=t_p_120_1176_p000003 field=covered_part_number value=120-36833-005",
+    "models": {
+      "error": "",
+      "ok": true,
+      "response": {
+        "data": [
+          {
+            "created": 1783020343,
+            "id": "trace-net-e2e-local-endpoint-v1",
+            "object": "model",
+            "owned_by": "trace-net-local"
+          }
+        ],
+        "object": "list"
+      }
+    },
+    "native_ask": {
+      "error": "",
+      "ok": true,
+      "response": {
+        "citations": [
+          {
+            "citation_id": "generated_citation_1",
+            "citation_ready": true,
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-001",
+            "page_id": "t_p_120_1176_p000003",
+            "source_trace_ready": true
+          },
+          {
+            "citation_id": "generated_citation_2",
+            "citation_ready": true,
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-003",
+            "page_id": "t_p_120_1176_p000003",
+            "source_trace_ready": true
+          },
+          {
+            "citation_id": "generated_citation_3",
+            "citation_ready": true,
+            "field_name": "covered_part_number",
+            "normalized_value": "120-36833-005",
+            "page_id": "t_p_120_1176_p000003",
+            "source_trace_ready": true
+          }
+        ],
+        "endpoint_version": "v1",
+        "match_score": 38.0769,
+        "matched_artifact_response": true,
+        "message": {
+          "content": "Final-gate smoke draft for query: 'Find part number 120-36833-001'. TRACE-Net found citation/source-trace-ready evidence: covered_part_number=120-36833-001 on t_p_120_1176_p000003; covered_part_number=120-36833-003 on t_p_120_1176_p000003; covered_part_number=120-36833-005 on t_p_120_1176_p000003. This draft is safe for final-gate review and remains non-mutating; it does not rewrite source truth.",
+          "role": "assistant"
+        },
+        "model": "trace-net-e2e-local-endpoint-v1",
+        "object": "trace_net.e2e.local_endpoint.response",
+        "page_ids": [
+          "t_p_120_1176_p000003"
+        ],
+        "query": "Find part number 120-50645-005. Give the nomenclature if available and cite the source.",
+        "response": {
+          "answer_permission": false,
+          "api_response_status": "citation_backed_response_draft",
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "citation_count": 3,
+          "citations": [
+            {
+              "citation_id": "generated_citation_1",
+              "citation_ready": true,
+              "field_name": "covered_part_number",
+              "normalized_value": "120-36833-001",
+              "page_id": "t_p_120_1176_p000003",
+              "source_trace_ready": true
+            },
+            {
+              "citation_id": "generated_citation_2",
+              "citation_ready": true,
+              "field_name": "covered_part_number",
+              "normalized_value": "120-36833-003",
+              "page_id": "t_p_120_1176_p000003",
+              "source_trace_ready": true
+            },
+            {
+              "citation_id": "generated_citation_3",
+              "citation_ready": true,
+              "field_name": "covered_part_number",
+              "normalized_value": "120-36833-005",
+              "page_id": "t_p_120_1176_p000003",
+              "source_trace_ready": true
+            }
+          ],
+          "message": {
+            "content": "Final-gate smoke draft for query: 'Find part number 120-36833-001'. TRACE-Net found citation/source-trace-ready evidence: covered_part_number=120-36833-001 on t_p_120_1176_p000003; covered_part_number=120-36833-003 on t_p_120_1176_p000003; covered_part_number=120-36833-005 on t_p_120_1176_p000003. This draft is safe for final-gate review and remains non-mutating; it does not rewrite source truth.",
+            "role": "assistant"
+          },
+          "page_ids": [
+            "t_p_120_1176_p000003"
+          ],
+          "query_id": "e2e_query_v1_0001",
+          "query_intent": "covered_part_number",
+          "response_is_smoke_draft": true,
+          "retrieval_permission": "ranking_until_runtime_final_gate",
+          "source_truth_mutation_allowed": false,
+          "user_query": "Find part number 120-36833-001"
+        },
+        "safety": {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "response_is_smoke_draft": true,
+          "source_truth_mutation_allowed": false,
+          "uploads_to_opensearch": false,
+          "writes_to_opensearch": false,
+          "writes_to_postgres": false,
+          "writes_to_qdrant": false
+        }
+      }
+    }
+  },
+  "status": "TRACE_NET_OPENWEBUI_E2E_LAUNCHER_READY",
+  "support_containers": [],
+  "trace_endpoint": {
+    "ask_url": "http://127.0.0.1:8014/api/trace-net/ask",
+    "chat_url": "http://127.0.0.1:8014/v1/chat/completions",
+    "health_url": "http://127.0.0.1:8014/health",
+    "host": "0.0.0.0",
+    "port": 8014,
+    "start_result": {
+      "action": "started",
+      "cmd": [
+        "C:\\Users\\juswil\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-B",
+        "scripts/serve_trace_net_e2e_local_endpoint_v1.py",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8014"
+      ],
+      "health": {
+        "api_response_count": 5,
+        "module": "trace_net_e2e_local_endpoint_v1",
+        "quality_status": "PASS",
+        "safety": {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "source_truth_mutation_allowed": false
+        },
+        "status": "ok"
+      },
+      "health_error": "",
+      "ok": true,
+      "pid": 26008,
+      "stderr_log": "local_data\\organization\\trace_net\\openwebui_e2e_launcher_v1\\logs\\trace_net_endpoint_stderr.log",
+      "stdout_log": "local_data\\organization\\trace_net\\openwebui_e2e_launcher_v1\\logs\\trace_net_endpoint_stdout.log"
+    }
+  },
+  "version": "v1"
+}

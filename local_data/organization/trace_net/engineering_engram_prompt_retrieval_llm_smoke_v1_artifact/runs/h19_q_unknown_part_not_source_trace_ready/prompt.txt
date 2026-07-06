@@ -1,0 +1,38 @@
+TRACE-NET H22 ENGRAM PROMPT RETRIEVAL LLM SMOKE
+Manual/source claims still require current proof_context citations.
+mode: targeted behavior smoke
+query_id: h19_q_unknown_part_not_source_trace_ready
+task_type: unknown_part
+
+TRACE-NET RETRIEVED ENGRAM PROMPT INTEGRATION
+Use this block as behavior guidance only. It is not proof.
+Manual/source claims still require current proof_context citations.
+
+TRACE-NET ENGRAM RETRIEVAL GUIDANCE — BEHAVIOR ONLY, NOT PROOF
+query_id: h19_q_unknown_part_not_source_trace_ready
+task_type: unknown_part
+query: Find part number 999-99999-999 and cite a source when no proof_context exists.
+
+Use these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.
+Manual/source claims still require current proof_context citations from TRACE-Net.
+
+- [h17_imported_e9e7d1bcb97b344f] layer=working_memory proof_role=current_proof_context_only: atom_id: h17_imported_e9e7d1bcb97b344f | title: h17_imported_e9e7d1bcb97b344f | memory_layer: working_memory | memory_type: style_trait | rule: For unknown part/figure questions...
+- [h17_imported_846864e2ed658bc0] layer=semantic_memory proof_role=guidance_only: atom_id: h17_imported_846864e2ed658bc0 | title: h17_imported_846864e2ed658bc0 | memory_layer: semantic_memory | memory_type: route_behavior | rule: Exact-part/table-OCR evidence...
+- [h17_imported_81996026ec62b901] layer=episodic_memory proof_role=gu
+
+CURRENT PROOF_CONTEXT:
+No current proof_context is provided in this H22 prompt-retrieval smoke. Retrieved Engram memory is behavior guidance only and cannot prove manual facts.
+
+USER QUESTION:
+h19_q_unknown_part_not_source_trace_ready
+
+Return a concise TRACE-Net engineering answer with these sections:
+Answer
+Evidence
+Engineering confidence
+Limits
+
+Rules:
+- Treat the retrieved Engram guidance as behavior guidance only, not source evidence.
+- Do not claim interchangeability, approved replacement, fit, installation safety, effectivity, or source truth without current proof_context.
+- If proof_context is absent or insufficient, say not proven / not source-trace-ready and explain what evidence would be required.

@@ -1,0 +1,43 @@
+{
+  "answer": "Answer\nSelected representative page/record: t_p_120_1176_p000491. TRACE-Net can safely say this page has source-trace evidence. [V44] [V45]\n\nEvidence\n- [V44] route=visual, page=t_p_120_1176_p000491, part=n/a, nomenclature=n/a\n- [V45] route=visual, page=t_p_120_1176_p000491, part=n/a, nomenclature=n/a\n\nEngineering confidence\nMedium/high for claims directly supported by cited evidence; lower for any unclear OCR/visual observations.\n\nLimits\nThis does not prove interchangeability, effectivity, fit, replacement approval, or installation safety. Engram and summary guidance are not proof.",
+  "citations": [
+    {
+      "citation_ready": true,
+      "field": "figure",
+      "label": "V44",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000491",
+      "part_number": "",
+      "route": "visual",
+      "source_artifact": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+      "source_trace_ready": true,
+      "value": "601"
+    },
+    {
+      "citation_ready": true,
+      "field": "figure",
+      "label": "V45",
+      "nomenclature": "",
+      "page": "t_p_120_1176_p000491",
+      "part_number": "",
+      "route": "visual",
+      "source_artifact": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+      "source_trace_ready": true,
+      "value": "601"
+    }
+  ],
+  "evidence_card_count": 2,
+  "fallback_used": true,
+  "llm_error": "TimeoutError('timed out')",
+  "model": "gemma4:26b",
+  "query": "### Task: Generate 1-3 broad tags categorizing the main themes of the chat history, along with 1-3 more specific subtopic tags. ### Guidelines: - Start with high-level domains (e.g. Science, Technology, Philosophy, Arts, Politics, Business, Health, Sports, Entertainment, Education) - Consider including relevant subfields/subdomains if they are strongly represented throughout the conversation - If content is too short (less than 3 messages) or too diverse, use only [\"General\"] - Use the chat's primary language; default to English if multilingual - Prioritize accuracy over specificity ### Output: JSON format: { \"tags\": [\"tag1\", \"tag2\", \"tag3\"] } ### Chat History: <chat_history> USER: pick a random page ASSISTANT: **Answer** The selected page is `t_p_120_1176_p000468` (Page 468), which contains Figure 1 [V34, V35, V36, V37]. **Evidence** * Visual evidence identifies the presence of \"figure=1\" [V34, V35] and \"figure=01\" [V36, V37] on page `t_p_120_1176_p000468` [V34, V35, V36, V37]. **Engineering confidence** The identification of the figure label and its association with page `t_p_120_1176_p000468` is supported by visual callout link records [V34, V36]. Confidence in the specific content or subject matter of this page is low, as no part nomenclature or descriptive text was provided in the proof context. **Limits** The evidence is limited to identifying a figure identifier on a specific page. The provided `proof_context` does not contain part numbers, descriptions, instructions, or any information regarding the technical contents of Figure 1. </chat_history>",
+  "response": "Answer\nSelected representative page/record: t_p_120_1176_p000491. TRACE-Net can safely say this page has source-trace evidence. [V44] [V45]\n\nEvidence\n- [V44] route=visual, page=t_p_120_1176_p000491, part=n/a, nomenclature=n/a\n- [V45] route=visual, page=t_p_120_1176_p000491, part=n/a, nomenclature=n/a\n\nEngineering confidence\nMedium/high for claims directly supported by cited evidence; lower for any unclear OCR/visual observations.\n\nLimits\nThis does not prove interchangeability, effectivity, fit, replacement approval, or installation safety. Engram and summary guidance are not proof.",
+  "safety": {
+    "answer_permission": false,
+    "opensearch_write_attempt": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "source_truth_mutation_allowed": false
+  },
+  "task_type": "random_page"
+}

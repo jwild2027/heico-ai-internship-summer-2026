@@ -1,0 +1,282 @@
+{
+  "integration_policy": {
+    "forbidden": [
+      "answer_permission_from_engram",
+      "source_truth_mutation_from_engram",
+      "summary_or_engram_used_as_proof",
+      "live_db_or_qdrant_io_without_explicit_gate",
+      "full_30_question_rerun_as_default_debug_loop"
+    ],
+    "mode": "artifact_only_answer_runner_prompt_overlay_smoke",
+    "next_patch": "targeted LLM answer-runner overlay smoke behind explicit CLI flag",
+    "proof_boundary": "Retrieved Engram overlays shape answer behavior only; factual manual claims require current proof_context citations."
+  },
+  "output_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_prompt_overlay_smoke_v1\\trace_net_engineering_engram_answer_runner_prompt_overlay_smoke_v1.json",
+  "overlay_map_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_prompt_overlay_smoke_v1\\trace_net_engineering_engram_answer_runner_prompt_overlay_smoke_v1_overlay_map.json",
+  "overlay_records": [
+    {
+      "answer_permission": false,
+      "answer_runner_overlay_mode": "artifact_only_prompt_overlay_smoke",
+      "engram_is_proof": false,
+      "live_qdrant_io_attempted": false,
+      "matched_bridge_query_ids": [
+        "h19_q_interchangeability_boundary"
+      ],
+      "matched_bridge_record_count": 1,
+      "matched_bridge_task_types": [
+        "interchangeability_boundary"
+      ],
+      "opensearch_upload_attempt": false,
+      "opensearch_write_attempt": false,
+      "overlay_char_count": 1768,
+      "overlay_text": "TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY\nUse this overlay as behavior guidance only. It is not proof.\nManual/source claims still require current proof_context citations.\nDo not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.\ntarget_question_id: q12\n\n--- retrieved_guidance query_id=h19_q_interchangeability_boundary task_type=interchangeability_boundary ---\nTRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: h19_q_interchangeability_boundary\ntask_type: interchangeability_boundary\nquery: Is part 120-50645-005 interchangeable with 120-50645-011 or an approved replacement? Require explicit source authority.\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\n- [procedural_no_interchangeability_without_authority_v1] layer=procedural_memory proof_role=guidance_only: atom_id: procedural_no_interchangeability_without_authority_v1 | title: No interchangeability without explicit authority | memory_layer: procedural_memory | memory_type: procedu...\n- [h17_imported_f39d3c6bcc27e0fa] layer=procedural_memory proof_role=guidance_only: atom_id: h17_imported_f39d3c6bcc27e0fa | title: h17_imported_f39d3c6bcc27e0fa | memory_layer: procedural_memory | memory_type: policy_trait | rule: Shared nomenclature, nearby f...\n- [critic_safe_but_too_generic_repair_v1] layer=critic_memory proof_role=guidance_only: atom_id: critic_safe_but_too_generic_repair_v1 | title: Safe but too generic repair | memory_layer: critic_memory | memory_type: critic_memory | rule: If an answer is safe but t...\n- [t\n[TRUNCATED BY H24 OVERLAY SMOKE: guidance only, not proof.]",
+      "postgres_write_attempt": false,
+      "qdrant_read_attempt": false,
+      "qdrant_write_attempt": false,
+      "question_id": "q12",
+      "ready_for_targeted_llm_overlay_smoke": true,
+      "selected_layers": [
+        "critic_memory",
+        "procedural_memory",
+        "trait_memory"
+      ],
+      "selected_proof_roles": [
+        "guidance_only"
+      ],
+      "source_category": "interchangeability",
+      "source_grade": "GOOD",
+      "source_proof_context_count": 8,
+      "source_question": "Is 120-50645-005 interchangeable with 120-50645-011?",
+      "source_runner_quality_status": "PASS",
+      "source_task_type": "exact_part_lookup",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "unsafe_findings": [],
+      "write_attempt": false
+    },
+    {
+      "answer_permission": false,
+      "answer_runner_overlay_mode": "artifact_only_prompt_overlay_smoke",
+      "engram_is_proof": false,
+      "live_qdrant_io_attempted": false,
+      "matched_bridge_query_ids": [
+        "h19_q_visual_ocr_route_behavior",
+        "h19_q_safe_but_too_generic_repair"
+      ],
+      "matched_bridge_record_count": 2,
+      "matched_bridge_task_types": [
+        "route_explanation",
+        "critic_repair"
+      ],
+      "opensearch_upload_attempt": false,
+      "opensearch_write_attempt": false,
+      "overlay_char_count": 1768,
+      "overlay_text": "TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY\nUse this overlay as behavior guidance only. It is not proof.\nManual/source claims still require current proof_context citations.\nDo not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.\ntarget_question_id: q16\n\n--- retrieved_guidance query_id=h19_q_visual_ocr_route_behavior task_type=route_explanation ---\nTRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: h19_q_visual_ocr_route_behavior\ntask_type: route_explanation\nquery: Why does the visual route need OCR nomenclature evidence for Figure 69 and part names?\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\n- [semantic_visual_link_vs_ocr_nomenclature_v1] layer=semantic_memory proof_role=guidance_only: atom_id: semantic_visual_link_vs_ocr_nomenclature_v1 | title: Visual link versus OCR nomenclature | memory_layer: semantic_memory | memory_type: semantic_memory | rule: visual_f...\n- [h17_imported_846864e2ed658bc0] layer=semantic_memory proof_role=guidance_only: atom_id: h17_imported_846864e2ed658bc0 | title: h17_imported_846864e2ed658bc0 | memory_layer: semantic_memory | memory_type: route_behavior | rule: Exact-part/table-OCR evidence...\n- [h17_imported_e10694f7f568466e] layer=semantic_memory proof_role=guidance_only: atom_id: h17_imported_e10694f7f568466e | title: h17_imported_e10694f7f568466e | memory_layer: semantic_memory | memory_type: route_behavior | rule: visual_figure_link establishe...\n- [h17_imported_44ab4e8f4519026e] layer=trait_memory proof_role=guidance_only: at\n[TRUNCATED BY H24 OVERLAY SMOKE: guidance only, not proof.]",
+      "postgres_write_attempt": false,
+      "qdrant_read_attempt": false,
+      "qdrant_write_attempt": false,
+      "question_id": "q16",
+      "ready_for_targeted_llm_overlay_smoke": true,
+      "selected_layers": [
+        "critic_memory",
+        "episodic_memory",
+        "semantic_memory",
+        "trait_memory"
+      ],
+      "selected_proof_roles": [
+        "guidance_only"
+      ],
+      "source_category": "troubleshooting",
+      "source_grade": "GOOD",
+      "source_proof_context_count": 9,
+      "source_question": "Why was nomenclature missing from the visual route evidence?",
+      "source_runner_quality_status": "PASS",
+      "source_task_type": "troubleshooting_question",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "unsafe_findings": [],
+      "write_attempt": false
+    },
+    {
+      "answer_permission": false,
+      "answer_runner_overlay_mode": "artifact_only_prompt_overlay_smoke",
+      "engram_is_proof": false,
+      "live_qdrant_io_attempted": false,
+      "matched_bridge_query_ids": [
+        "h19_q_safe_but_too_generic_repair"
+      ],
+      "matched_bridge_record_count": 1,
+      "matched_bridge_task_types": [
+        "critic_repair"
+      ],
+      "opensearch_upload_attempt": false,
+      "opensearch_write_attempt": false,
+      "overlay_char_count": 1768,
+      "overlay_text": "TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY\nUse this overlay as behavior guidance only. It is not proof.\nManual/source claims still require current proof_context citations.\nDo not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.\ntarget_question_id: q18\n\n--- retrieved_guidance query_id=h19_q_safe_but_too_generic_repair task_type=critic_repair ---\nTRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: h19_q_safe_but_too_generic_repair\ntask_type: critic_repair\nquery: The answer was safe but too generic. Retrieve repair behavior before regenerating.\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\n- [critic_safe_but_too_generic_repair_v1] layer=critic_memory proof_role=guidance_only: atom_id: critic_safe_but_too_generic_repair_v1 | title: Safe but too generic repair | memory_layer: critic_memory | memory_type: critic_memory | rule: If an answer is safe but t...\n- [h17_imported_774825e2b50c55aa] layer=episodic_memory proof_role=guidance_only: atom_id: h17_imported_774825e2b50c55aa | title: h17_imported_774825e2b50c55aa | memory_layer: episodic_memory | memory_type: episodic_failure_memory | rule: Category 'unknown_fi...\n- [h17_imported_93da9c7d59c179ab] layer=episodic_memory proof_role=guidance_only: atom_id: h17_imported_93da9c7d59c179ab | title: h17_imported_93da9c7d59c179ab | memory_layer: episodic_memory | memory_type: episodic_failure_memory | rule: Category 'unknown_pa...\n- [h17_imported_a84215fe40232b55] layer=critic_memory proof_role=guidance_only: atom_id: h17_impo\n[TRUNCATED BY H24 OVERLAY SMOKE: guidance only, not proof.]",
+      "postgres_write_attempt": false,
+      "qdrant_read_attempt": false,
+      "qdrant_write_attempt": false,
+      "question_id": "q18",
+      "ready_for_targeted_llm_overlay_smoke": true,
+      "selected_layers": [
+        "critic_memory",
+        "episodic_memory"
+      ],
+      "selected_proof_roles": [
+        "guidance_only"
+      ],
+      "source_category": "pipeline_recovery",
+      "source_grade": "GOOD",
+      "source_proof_context_count": 9,
+      "source_question": "What changed after the raw OCR nomenclature extractor was added?",
+      "source_runner_quality_status": "PASS",
+      "source_task_type": "table_extraction_question",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "unsafe_findings": [],
+      "write_attempt": false
+    },
+    {
+      "answer_permission": false,
+      "answer_runner_overlay_mode": "artifact_only_prompt_overlay_smoke",
+      "engram_is_proof": false,
+      "live_qdrant_io_attempted": false,
+      "matched_bridge_query_ids": [
+        "h19_q_unknown_part_not_source_trace_ready"
+      ],
+      "matched_bridge_record_count": 1,
+      "matched_bridge_task_types": [
+        "unknown_part"
+      ],
+      "opensearch_upload_attempt": false,
+      "opensearch_write_attempt": false,
+      "overlay_char_count": 1768,
+      "overlay_text": "TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY\nUse this overlay as behavior guidance only. It is not proof.\nManual/source claims still require current proof_context citations.\nDo not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.\ntarget_question_id: q25\n\n--- retrieved_guidance query_id=h19_q_unknown_part_not_source_trace_ready task_type=unknown_part ---\nTRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: h19_q_unknown_part_not_source_trace_ready\ntask_type: unknown_part\nquery: Find part number 999-99999-999 and cite a source when no proof_context exists.\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\n- [h17_imported_e9e7d1bcb97b344f] layer=working_memory proof_role=current_proof_context_only: atom_id: h17_imported_e9e7d1bcb97b344f | title: h17_imported_e9e7d1bcb97b344f | memory_layer: working_memory | memory_type: style_trait | rule: For unknown part/figure questions...\n- [h17_imported_846864e2ed658bc0] layer=semantic_memory proof_role=guidance_only: atom_id: h17_imported_846864e2ed658bc0 | title: h17_imported_846864e2ed658bc0 | memory_layer: semantic_memory | memory_type: route_behavior | rule: Exact-part/table-OCR evidence...\n- [h17_imported_81996026ec62b901] layer=episodic_memory proof_role=guidance_only: atom_id: h17_imported_81996026ec62b901 | title: h17_imported_81996026ec62b901 | memory_layer: episodic_memory | memory_type: episodic_failure_memory | rule: H14B exposed nested...\n- [episodic_h13_generic_not_proven_repair_v1] layer=episodic_memory proof_role=gui\n[TRUNCATED BY H24 OVERLAY SMOKE: guidance only, not proof.]",
+      "postgres_write_attempt": false,
+      "qdrant_read_attempt": false,
+      "qdrant_write_attempt": false,
+      "question_id": "q25",
+      "ready_for_targeted_llm_overlay_smoke": true,
+      "selected_layers": [
+        "episodic_memory",
+        "semantic_memory",
+        "working_memory"
+      ],
+      "selected_proof_roles": [
+        "current_proof_context_only",
+        "guidance_only"
+      ],
+      "source_category": "unknown_part",
+      "source_grade": "PARTIAL",
+      "source_proof_context_count": 0,
+      "source_question": "Find part number 999-99999-999 and cite the source.",
+      "source_runner_quality_status": "FAIL",
+      "source_task_type": "exact_part_lookup",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "unsafe_findings": [],
+      "write_attempt": false
+    },
+    {
+      "answer_permission": false,
+      "answer_runner_overlay_mode": "artifact_only_prompt_overlay_smoke",
+      "engram_is_proof": false,
+      "live_qdrant_io_attempted": false,
+      "matched_bridge_query_ids": [
+        "h19_q_summary_only_limit"
+      ],
+      "matched_bridge_record_count": 1,
+      "matched_bridge_task_types": [
+        "summary_limit"
+      ],
+      "opensearch_upload_attempt": false,
+      "opensearch_write_attempt": false,
+      "overlay_char_count": 1768,
+      "overlay_text": "TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY\nUse this overlay as behavior guidance only. It is not proof.\nManual/source claims still require current proof_context citations.\nDo not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.\ntarget_question_id: q29\n\n--- retrieved_guidance query_id=h19_q_summary_only_limit task_type=summary_limit ---\nTRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: h19_q_summary_only_limit\ntask_type: summary_limit\nquery: Can v2 summaries alone prove Figure 69 part identity or source claims?\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\n- [h17_imported_98eaef4c97e6af7b] layer=working_memory proof_role=current_proof_context_only: atom_id: h17_imported_98eaef4c97e6af7b | title: h17_imported_98eaef4c97e6af7b | memory_layer: working_memory | memory_type: policy_trait | rule: V2 summaries may guide planning...\n- [h17_imported_e9e7d1bcb97b344f] layer=working_memory proof_role=current_proof_context_only: atom_id: h17_imported_e9e7d1bcb97b344f | title: h17_imported_e9e7d1bcb97b344f | memory_layer: working_memory | memory_type: style_trait | rule: For unknown part/figure questions...\n- [h17_imported_568223f7c37a12f1] layer=procedural_memory proof_role=guidance_only: atom_id: h17_imported_568223f7c37a12f1 | title: h17_imported_568223f7c37a12f1 | memory_layer: procedural_memory | memory_type: policy_trait | rule: Figure/part identification ev...\n- [working_current_question_context_pack_citations_v1] layer=working_memory proof_role=current_proof_\n[TRUNC\n[TRUNCATED BY H24 OVERLAY SMOKE: guidance only, not proof.]",
+      "postgres_write_attempt": false,
+      "qdrant_read_attempt": false,
+      "qdrant_write_attempt": false,
+      "question_id": "q29",
+      "ready_for_targeted_llm_overlay_smoke": true,
+      "selected_layers": [
+        "procedural_memory",
+        "working_memory"
+      ],
+      "selected_proof_roles": [
+        "current_proof_context_only",
+        "guidance_only"
+      ],
+      "source_category": "summary_limit",
+      "source_grade": "GOOD",
+      "source_proof_context_count": 3,
+      "source_question": "Can v2 summaries alone prove Figure 69 part identity?",
+      "source_runner_quality_status": "PASS",
+      "source_task_type": "visual_part_identification",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "unsafe_findings": [],
+      "write_attempt": false
+    }
+  ],
+  "quality_check_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_prompt_overlay_smoke_v1\\trace_net_engineering_engram_answer_runner_prompt_overlay_smoke_v1_quality_check.json",
+  "quality_failures": [],
+  "quality_status": "PASS",
+  "records_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_prompt_overlay_smoke_v1\\trace_net_engineering_engram_answer_runner_prompt_overlay_smoke_v1_records.jsonl",
+  "safety_contract": {
+    "answer_permission": false,
+    "engram_is_proof": false,
+    "live_qdrant_io_attempted": false,
+    "opensearch_upload_attempt": false,
+    "opensearch_write_attempt": false,
+    "postgres_write_attempt": false,
+    "qdrant_read_attempt": false,
+    "qdrant_write_attempt": false,
+    "source_truth_mutation_allowed": false,
+    "write_attempt": false
+  },
+  "source_answer_smoke_path": "local_data\\organization\\trace_net\\llm_h16d_engram_30\\trace_net_engineering_llm_answer_smoke_v1.json",
+  "source_bridge_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_retrieval_bridge_v1\\trace_net_engineering_engram_answer_runner_retrieval_bridge_v1.json",
+  "status": "TRACE_NET_ENGINEERING_ENGRAM_ANSWER_RUNNER_PROMPT_OVERLAY_SMOKE_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "matched_bridge_record_count": 6,
+    "matched_bridge_task_type_counts": {
+      "critic_repair": 2,
+      "interchangeability_boundary": 1,
+      "route_explanation": 1,
+      "summary_limit": 1,
+      "unknown_part": 1
+    },
+    "module": "trace_net_engineering_engram_answer_runner_prompt_overlay_smoke_v1",
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "overlay_record_count": 5,
+    "postgres_write_attempt_count": 0,
+    "qdrant_read_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_failures": [],
+    "ready_for_targeted_llm_overlay_smoke": true,
+    "selected_memory_layer_counts": {
+      "critic_memory": 3,
+      "episodic_memory": 3,
+      "procedural_memory": 2,
+      "semantic_memory": 2,
+      "trait_memory": 2,
+      "working_memory": 2
+    },
+    "source_answer_smoke_quality_status": "PASS",
+    "source_bridge_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "target_question_count": 5,
+    "target_question_ids": [
+      "q12",
+      "q16",
+      "q18",
+      "q25",
+      "q29"
+    ],
+    "unsafe_finding_count": 0,
+    "version": "v1",
+    "write_attempt_count": 0
+  }
+}

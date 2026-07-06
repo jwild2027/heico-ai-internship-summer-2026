@@ -1,0 +1,297 @@
+{
+  "integration_policy": {
+    "forbidden": [
+      "answer_permission_from_engram",
+      "source_truth_mutation_from_engram",
+      "summary_or_engram_used_as_proof",
+      "live_db_or_qdrant_io_without_explicit_gate",
+      "full_30_question_rerun_as_default_debug_loop"
+    ],
+    "mode": "targeted_answer_runner_overlay_llm_smoke",
+    "next_patch": "wire overlay prompt into answer runner behind explicit CLI flag",
+    "proof_boundary": "Retrieved Engram overlay shapes behavior only. It is not proof. Manual/source claims still require current proof_context citations."
+  },
+  "quality_status": "PASS",
+  "smoke_records": [
+    {
+      "answer_char_count": 1650,
+      "answer_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q12\\q12_answer.txt",
+      "answer_permission": false,
+      "answer_preview": "Answer:\nArtifact-mode overlay smoke for q12: the retrieved Engram overlay is behavior guidance only, not proof. The source answer-runner answer remains the source of the candidate answer text.\n\nEvidence:\n- Manual/source claims still require current proof_context citations from the source answer-runner prompt.\n- Retrieved Engram guidance does not grant answer permission and does not mutate source truth.\n\nEngineering confidence:\nMEDIUM for integration behavior in artifact mode; no new source claim is introduced.\n\nLimits:\nThis artifact-mode smoke does not prove new manual facts. It validates prompt overlay assembly only.\n\nSource answer preview:\nAnswer: Not proven. \n\nTRACE-Net can prove that part number 120-50645-005 [E1] [T1] is identified in the source evidence with the nomenclature \"DOUBLE PASSENGER SEAT ASSY\" [O1] and is linked to figure 69 [V6]. Similarly, TRACE-Net can prove that part number 120-50645-011 [E2] [T2] is identified with the same nomenclature \"DOUBLE PASSENGER SEAT ASSY\" [O2] and is linked to figure 75 [V7]. \n\nHowever, shared nomenclature, nearby figures, or part-family\n[TRUNCATED: compacted for targeted H25 overlay smoke; guidance remains behavior-only, not proof.]",
+      "grade": "GOOD",
+      "grade_reasons": [],
+      "llm_answered": true,
+      "llm_error": "",
+      "llm_fallback_used": false,
+      "llm_mode": "artifact",
+      "llm_model": "artifact_scaffold",
+      "llm_retry_used": false,
+      "matched_bridge_query_ids": [
+        "h19_q_interchangeability_boundary"
+      ],
+      "matched_bridge_task_types": [
+        "interchangeability_boundary"
+      ],
+      "prompt_char_count": 6000,
+      "prompt_hash": "727611a7fddcd4d35b3daefd34941178988d7179178540a313a995dfe35fa8b4",
+      "prompt_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q12\\q12_prompt.txt",
+      "question": "Is 120-50645-005 interchangeable with 120-50645-011?",
+      "question_id": "q12",
+      "safety_contract": {
+        "answer_permission_count": 0,
+        "opensearch_upload_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "qdrant_read_attempt_count": 0,
+        "qdrant_write_attempt_count": 0,
+        "source_truth_mutation_allowed_count": 0
+      },
+      "selected_layers": [
+        "critic_memory",
+        "procedural_memory",
+        "trait_memory"
+      ],
+      "selected_proof_roles": [
+        "guidance_only"
+      ],
+      "source_answer_grade": "GOOD",
+      "source_runner_passed": true,
+      "source_runner_quality_status": "PASS",
+      "trace_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q12\\q12_trace.json",
+      "unsafe": false,
+      "unsupported_claim_count": 0
+    },
+    {
+      "answer_char_count": 1650,
+      "answer_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q16\\q16_answer.txt",
+      "answer_permission": false,
+      "answer_preview": "Answer:\nArtifact-mode overlay smoke for q16: the retrieved Engram overlay is behavior guidance only, not proof. The source answer-runner answer remains the source of the candidate answer text.\n\nEvidence:\n- Manual/source claims still require current proof_context citations from the source answer-runner prompt.\n- Retrieved Engram guidance does not grant answer permission and does not mutate source truth.\n\nEngineering confidence:\nMEDIUM for integration behavior in artifact mode; no new source claim is introduced.\n\nLimits:\nThis artifact-mode smoke does not prove new manual facts. It validates prompt overlay assembly only.\n\nSource answer preview:\nAnswer:\nThe nomenclature was missing from the visual route because the `visual_figure_link` process establishes figure-to-part identity (e.g., linking Figure 69 to part number 120-50645-005 [V6]) but does not inherently provide clean, source-trace-ready nomenclature proof. The `ocr_nomenclature` route is used to provide OCR-backed line-text evidence (e.g., \"DOUBLE PASSENGER SEAT ASSY\" [O1]) to recover or improve description evidence when visual/tab\n[TRUNCATED: compacted for targeted H25 overlay smoke; guidance remains behavior-only, not proof.]",
+      "grade": "GOOD",
+      "grade_reasons": [],
+      "llm_answered": true,
+      "llm_error": "",
+      "llm_fallback_used": false,
+      "llm_mode": "artifact",
+      "llm_model": "artifact_scaffold",
+      "llm_retry_used": false,
+      "matched_bridge_query_ids": [
+        "h19_q_visual_ocr_route_behavior",
+        "h19_q_safe_but_too_generic_repair"
+      ],
+      "matched_bridge_task_types": [
+        "route_explanation",
+        "critic_repair"
+      ],
+      "prompt_char_count": 6000,
+      "prompt_hash": "35a7a37eb5b03d1a127652343c618fae19b602ce524a84e89dcd8abdacde65f1",
+      "prompt_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q16\\q16_prompt.txt",
+      "question": "Why was nomenclature missing from the visual route evidence?",
+      "question_id": "q16",
+      "safety_contract": {
+        "answer_permission_count": 0,
+        "opensearch_upload_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "qdrant_read_attempt_count": 0,
+        "qdrant_write_attempt_count": 0,
+        "source_truth_mutation_allowed_count": 0
+      },
+      "selected_layers": [
+        "critic_memory",
+        "episodic_memory",
+        "semantic_memory",
+        "trait_memory"
+      ],
+      "selected_proof_roles": [
+        "guidance_only"
+      ],
+      "source_answer_grade": "GOOD",
+      "source_runner_passed": true,
+      "source_runner_quality_status": "PASS",
+      "trace_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q16\\q16_trace.json",
+      "unsafe": false,
+      "unsupported_claim_count": 0
+    },
+    {
+      "answer_char_count": 1650,
+      "answer_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q18\\q18_answer.txt",
+      "answer_permission": false,
+      "answer_preview": "Answer:\nArtifact-mode overlay smoke for q18: the retrieved Engram overlay is behavior guidance only, not proof. The source answer-runner answer remains the source of the candidate answer text.\n\nEvidence:\n- Manual/source claims still require current proof_context citations from the source answer-runner prompt.\n- Retrieved Engram guidance does not grant answer permission and does not mutate source truth.\n\nEngineering confidence:\nMEDIUM for integration behavior in artifact mode; no new source claim is introduced.\n\nLimits:\nThis artifact-mode smoke does not prove new manual facts. It validates prompt overlay assembly only.\n\nSource answer preview:\nAnswer:\nThe addition of the raw OCR nomenclature extractor changed the pipeline by providing a secondary route to recover description evidence when visual or table records lack a clean nomenclature field. While the `visual_figure_link` route establishes the identity between a figure and a part number (e.g., Figure 69 is linked to part number 120-50645-005 [V6]), it does not inherently provide the text-based description. The `ocr_nomenclature` route\n[TRUNCATED: compacted for targeted H25 overlay smoke; guidance remains behavior-only, not proof.]",
+      "grade": "GOOD",
+      "grade_reasons": [],
+      "llm_answered": true,
+      "llm_error": "",
+      "llm_fallback_used": false,
+      "llm_mode": "artifact",
+      "llm_model": "artifact_scaffold",
+      "llm_retry_used": false,
+      "matched_bridge_query_ids": [
+        "h19_q_safe_but_too_generic_repair"
+      ],
+      "matched_bridge_task_types": [
+        "critic_repair"
+      ],
+      "prompt_char_count": 6000,
+      "prompt_hash": "6b5b0f6efd817c8c3e6222467731d9e669eba8564df986920943224bc4050403",
+      "prompt_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q18\\q18_prompt.txt",
+      "question": "What changed after the raw OCR nomenclature extractor was added?",
+      "question_id": "q18",
+      "safety_contract": {
+        "answer_permission_count": 0,
+        "opensearch_upload_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "qdrant_read_attempt_count": 0,
+        "qdrant_write_attempt_count": 0,
+        "source_truth_mutation_allowed_count": 0
+      },
+      "selected_layers": [
+        "critic_memory",
+        "episodic_memory"
+      ],
+      "selected_proof_roles": [
+        "guidance_only"
+      ],
+      "source_answer_grade": "GOOD",
+      "source_runner_passed": true,
+      "source_runner_quality_status": "PASS",
+      "trace_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q18\\q18_trace.json",
+      "unsafe": false,
+      "unsupported_claim_count": 0
+    },
+    {
+      "answer_char_count": 1246,
+      "answer_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q25\\q25_answer.txt",
+      "answer_permission": false,
+      "answer_preview": "Answer:\nArtifact-mode overlay smoke for q25: the retrieved Engram overlay is behavior guidance only, not proof. The source answer-runner answer remains the source of the candidate answer text.\n\nEvidence:\n- Manual/source claims still require current proof_context citations from the source answer-runner prompt.\n- Retrieved Engram guidance does not grant answer permission and does not mutate source truth.\n\nEngineering confidence:\nMEDIUM for integration behavior in artifact mode; no new source claim is introduced.\n\nLimits:\nThis artifact-mode smoke does not prove new manual facts. It validates prompt overlay assembly only.\n\nSource answer preview:\nAnswer: Not found / not source-trace-ready. No proof_context was available to identify or locate part number 999-99999-999. TRACE-Net cannot provide any engineering evidence for this part number from the current context pack.\n\nEvidence:\n- No proof context was available.\n\nEngineering confidence:\nLOW because the context pack has no records for this part number. Nomenclature confidence: N/A.\n\nLimits:\n- This does not prove interchangeability, effectivi\n[TRUNCATED: compacted for targeted H25 overlay smoke; guidance remains behavior-only, not proof.]",
+      "grade": "GOOD",
+      "grade_reasons": [],
+      "llm_answered": true,
+      "llm_error": "",
+      "llm_fallback_used": false,
+      "llm_mode": "artifact",
+      "llm_model": "artifact_scaffold",
+      "llm_retry_used": false,
+      "matched_bridge_query_ids": [
+        "h19_q_unknown_part_not_source_trace_ready"
+      ],
+      "matched_bridge_task_types": [
+        "unknown_part"
+      ],
+      "prompt_char_count": 6000,
+      "prompt_hash": "f7ba33ad11a62a00e9cad2c31c4885c109f7263ddacbc7ee68f6d1053549b7ca",
+      "prompt_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q25\\q25_prompt.txt",
+      "question": "Find part number 999-99999-999 and cite the source.",
+      "question_id": "q25",
+      "safety_contract": {
+        "answer_permission_count": 0,
+        "opensearch_upload_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "qdrant_read_attempt_count": 0,
+        "qdrant_write_attempt_count": 0,
+        "source_truth_mutation_allowed_count": 0
+      },
+      "selected_layers": [
+        "episodic_memory",
+        "semantic_memory",
+        "working_memory"
+      ],
+      "selected_proof_roles": [
+        "current_proof_context_only",
+        "guidance_only"
+      ],
+      "source_answer_grade": "PARTIAL",
+      "source_runner_passed": false,
+      "source_runner_quality_status": "FAIL",
+      "trace_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q25\\q25_trace.json",
+      "unsafe": false,
+      "unsupported_claim_count": 0
+    },
+    {
+      "answer_char_count": 1650,
+      "answer_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q29\\q29_answer.txt",
+      "answer_permission": false,
+      "answer_preview": "Answer:\nArtifact-mode overlay smoke for q29: the retrieved Engram overlay is behavior guidance only, not proof. The source answer-runner answer remains the source of the candidate answer text.\n\nEvidence:\n- Manual/source claims still require current proof_context citations from the source answer-runner prompt.\n- Retrieved Engram guidance does not grant answer permission and does not mutate source truth.\n\nEngineering confidence:\nMEDIUM for integration behavior in artifact mode; no new source claim is introduced.\n\nLimits:\nThis artifact-mode smoke does not prove new manual facts. It validates prompt overlay assembly only.\n\nSource answer preview:\nAnswer: No, v2 summaries alone cannot prove Figure 69 part identity. V2 summaries may guide planning and framing, but they do not constitute source-traceable proof; factual claims regarding part identity must be supported by the `proof_context`.\n\nWhat TRACE-Net can prove:\nUsing the provided `proof_context`, TRACE-Net can prove that Figure 69 is linked to part number 120-50645-005, \"DOUBLE PASSENGER SEAT ASSY\" [V6] [O1], with supporting table/OCR ev\n[TRUNCATED: compacted for targeted H25 overlay smoke; guidance remains behavior-only, not proof.]",
+      "grade": "GOOD",
+      "grade_reasons": [],
+      "llm_answered": true,
+      "llm_error": "",
+      "llm_fallback_used": false,
+      "llm_mode": "artifact",
+      "llm_model": "artifact_scaffold",
+      "llm_retry_used": false,
+      "matched_bridge_query_ids": [
+        "h19_q_summary_only_limit"
+      ],
+      "matched_bridge_task_types": [
+        "summary_limit"
+      ],
+      "prompt_char_count": 6000,
+      "prompt_hash": "8cef5551c0c5dd0fac838e5da9f42fc30f3d7f467b3fcee3aa9a66432d0ee2c9",
+      "prompt_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q29\\q29_prompt.txt",
+      "question": "Can v2 summaries alone prove Figure 69 part identity?",
+      "question_id": "q29",
+      "safety_contract": {
+        "answer_permission_count": 0,
+        "opensearch_upload_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "qdrant_read_attempt_count": 0,
+        "qdrant_write_attempt_count": 0,
+        "source_truth_mutation_allowed_count": 0
+      },
+      "selected_layers": [
+        "procedural_memory",
+        "working_memory"
+      ],
+      "selected_proof_roles": [
+        "current_proof_context_only",
+        "guidance_only"
+      ],
+      "source_answer_grade": "GOOD",
+      "source_runner_passed": true,
+      "source_runner_quality_status": "PASS",
+      "trace_path": "local_data\\organization\\trace_net\\engineering_engram_answer_runner_overlay_llm_smoke_v1_artifact\\q\\q29\\q29_trace.json",
+      "unsafe": false,
+      "unsupported_claim_count": 0
+    }
+  ],
+  "status": "TRACE_NET_ENGINEERING_ENGRAM_ANSWER_RUNNER_OVERLAY_LLM_SMOKE_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "bad_answer_count": 0,
+    "good_answer_count": 5,
+    "good_or_partial_answer_count": 5,
+    "llm_answered_count": 5,
+    "llm_fallback_used_count": 0,
+    "llm_mode": "artifact",
+    "llm_model": "artifact_scaffold",
+    "llm_retry_used_count": 0,
+    "module": "trace_net_engineering_engram_answer_runner_overlay_llm_smoke_v1",
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "partial_answer_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_read_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_failures": [],
+    "query_count": 5,
+    "ready_for_answer_runner_overlay_patch": true,
+    "source_answer_smoke_quality_status": "PASS",
+    "source_h24_overlay_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "target_question_ids": [
+      "q12",
+      "q16",
+      "q18",
+      "q25",
+      "q29"
+    ],
+    "unsafe_finding_count": 0,
+    "unsafe_findings": [],
+    "unsupported_claim_count": 0,
+    "version": "v1",
+    "write_attempt_count": 0
+  }
+}

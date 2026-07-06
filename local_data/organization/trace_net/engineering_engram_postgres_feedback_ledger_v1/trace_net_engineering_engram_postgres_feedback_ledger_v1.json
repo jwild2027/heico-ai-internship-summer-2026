@@ -1,0 +1,278 @@
+{
+  "candidate_records": [
+    {
+      "answer_permission": false,
+      "candidate_id": "cand_77bd5d724315bfa5a6e862f4",
+      "candidate_rule": "answer passed critic checks; preserve this response pattern as behavior guidance.",
+      "candidate_trigger": "critic pass; citation safe; proof boundary preserved",
+      "feedback_id": "fb_f2f94d78f6026c2fda143dc9",
+      "memory_layer": "episodic_memory",
+      "memory_type": "episodic_memory",
+      "payload": {
+        "feedback_id": "fb_f2f94d78f6026c2fda143dc9",
+        "feedback_source": "self_rag_crag_eval",
+        "rating": "thumbs_up"
+      },
+      "proof_role": "guidance_only",
+      "source_question_id": "q12",
+      "source_truth_mutation_allowed": false,
+      "status": "pending_human_review"
+    },
+    {
+      "answer_permission": false,
+      "candidate_id": "cand_aef79e00c25789f3b958ee9b",
+      "candidate_rule": "answer passed critic checks; preserve this response pattern as behavior guidance.",
+      "candidate_trigger": "critic pass; citation safe; proof boundary preserved",
+      "feedback_id": "fb_777e86889ff9cdc0bfd304a1",
+      "memory_layer": "episodic_memory",
+      "memory_type": "episodic_memory",
+      "payload": {
+        "feedback_id": "fb_777e86889ff9cdc0bfd304a1",
+        "feedback_source": "self_rag_crag_eval",
+        "rating": "thumbs_up"
+      },
+      "proof_role": "guidance_only",
+      "source_question_id": "q16",
+      "source_truth_mutation_allowed": false,
+      "status": "pending_human_review"
+    },
+    {
+      "answer_permission": false,
+      "candidate_id": "cand_ac2425c30845e574a11ce48b",
+      "candidate_rule": "answer passed critic checks; preserve this response pattern as behavior guidance.",
+      "candidate_trigger": "critic pass; citation safe; proof boundary preserved",
+      "feedback_id": "fb_012504baf579e6a6832f1bba",
+      "memory_layer": "episodic_memory",
+      "memory_type": "episodic_memory",
+      "payload": {
+        "feedback_id": "fb_012504baf579e6a6832f1bba",
+        "feedback_source": "self_rag_crag_eval",
+        "rating": "thumbs_up"
+      },
+      "proof_role": "guidance_only",
+      "source_question_id": "q18",
+      "source_truth_mutation_allowed": false,
+      "status": "pending_human_review"
+    },
+    {
+      "answer_permission": false,
+      "candidate_id": "cand_d63656aea1b3921f20cadc94",
+      "candidate_rule": "expected unknown/no-proof boundary was preserved safely; do not over-repair this case.",
+      "candidate_trigger": "unknown part; no proof_context; not source-trace-ready",
+      "feedback_id": "fb_5f975f9bf0e492f334a76d8e",
+      "memory_layer": "episodic_memory",
+      "memory_type": "episodic_memory",
+      "payload": {
+        "feedback_id": "fb_5f975f9bf0e492f334a76d8e",
+        "feedback_source": "self_rag_crag_eval",
+        "rating": "expected_boundary"
+      },
+      "proof_role": "guidance_only",
+      "source_question_id": "q25",
+      "source_truth_mutation_allowed": false,
+      "status": "pending_human_review"
+    },
+    {
+      "answer_permission": false,
+      "candidate_id": "cand_5be5e3294fd15ea8c9f8ad13",
+      "candidate_rule": "answer passed critic checks; preserve this response pattern as behavior guidance.",
+      "candidate_trigger": "critic pass; citation safe; proof boundary preserved",
+      "feedback_id": "fb_40a2173dbb18acf2e0c1fff0",
+      "memory_layer": "episodic_memory",
+      "memory_type": "episodic_memory",
+      "payload": {
+        "feedback_id": "fb_40a2173dbb18acf2e0c1fff0",
+        "feedback_source": "self_rag_crag_eval",
+        "rating": "thumbs_up"
+      },
+      "proof_role": "guidance_only",
+      "source_question_id": "q29",
+      "source_truth_mutation_allowed": false,
+      "status": "pending_human_review"
+    }
+  ],
+  "candidate_records_path": "local_data\\organization\\trace_net\\engineering_engram_postgres_feedback_ledger_v1\\trace_net_engineering_engram_feedback_to_memory_candidates_v1.jsonl",
+  "feedback_records": [
+    {
+      "answer_permission": false,
+      "candidate_trigger": "critic pass; citation safe; proof boundary preserved",
+      "crag_status": "NO_REPAIR_REQUIRED",
+      "critic_status": "PASS",
+      "explanation": "answer passed critic checks; preserve this response pattern as behavior guidance.",
+      "feedback_id": "fb_f2f94d78f6026c2fda143dc9",
+      "feedback_source": "self_rag_crag_eval",
+      "payload": {
+        "crag_status": "NO_REPAIR_REQUIRED",
+        "critic_findings": [
+          "missing_preferred_answer_sections"
+        ],
+        "critic_repair_hints": [
+          "Use Answer, Evidence, Engineering confidence, and Limits sections."
+        ],
+        "question": "Is 120-50645-005 interchangeable with 120-50645-011?",
+        "source_grade": "GOOD"
+      },
+      "proof_role": "guidance_only",
+      "rating": "thumbs_up",
+      "recommended_memory_layer": "episodic_memory",
+      "recommended_memory_type": "episodic_memory",
+      "source_grade": "GOOD",
+      "source_question_id": "q12",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "candidate_trigger": "critic pass; citation safe; proof boundary preserved",
+      "crag_status": "NO_REPAIR_REQUIRED",
+      "critic_status": "PASS",
+      "explanation": "answer passed critic checks; preserve this response pattern as behavior guidance.",
+      "feedback_id": "fb_777e86889ff9cdc0bfd304a1",
+      "feedback_source": "self_rag_crag_eval",
+      "payload": {
+        "crag_status": "NO_REPAIR_REQUIRED",
+        "critic_findings": [
+          "critic_checks_passed"
+        ],
+        "critic_repair_hints": [],
+        "question": "Why was nomenclature missing from the visual route evidence?",
+        "source_grade": "GOOD"
+      },
+      "proof_role": "guidance_only",
+      "rating": "thumbs_up",
+      "recommended_memory_layer": "episodic_memory",
+      "recommended_memory_type": "episodic_memory",
+      "source_grade": "GOOD",
+      "source_question_id": "q16",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "candidate_trigger": "critic pass; citation safe; proof boundary preserved",
+      "crag_status": "NO_REPAIR_REQUIRED",
+      "critic_status": "PASS",
+      "explanation": "answer passed critic checks; preserve this response pattern as behavior guidance.",
+      "feedback_id": "fb_012504baf579e6a6832f1bba",
+      "feedback_source": "self_rag_crag_eval",
+      "payload": {
+        "crag_status": "NO_REPAIR_REQUIRED",
+        "critic_findings": [
+          "critic_checks_passed"
+        ],
+        "critic_repair_hints": [],
+        "question": "What changed after the raw OCR nomenclature extractor was added?",
+        "source_grade": "GOOD"
+      },
+      "proof_role": "guidance_only",
+      "rating": "thumbs_up",
+      "recommended_memory_layer": "episodic_memory",
+      "recommended_memory_type": "episodic_memory",
+      "source_grade": "GOOD",
+      "source_question_id": "q18",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "candidate_trigger": "unknown part; no proof_context; not source-trace-ready",
+      "crag_status": "EXPECTED_BOUNDARY_PRESERVED",
+      "critic_status": "EXPECTED_BOUNDARY",
+      "explanation": "expected unknown/no-proof boundary was preserved safely; do not over-repair this case.",
+      "feedback_id": "fb_5f975f9bf0e492f334a76d8e",
+      "feedback_source": "self_rag_crag_eval",
+      "payload": {
+        "crag_status": "EXPECTED_BOUNDARY_PRESERVED",
+        "critic_findings": [
+          "expected_unknown_boundary_partial"
+        ],
+        "critic_repair_hints": [
+          "No repair required if unknown/no-proof cases remain safe and clearly not source-trace-ready."
+        ],
+        "question": "Find part number 999-99999-999 and cite the source.",
+        "source_grade": "PARTIAL"
+      },
+      "proof_role": "guidance_only",
+      "rating": "expected_boundary",
+      "recommended_memory_layer": "episodic_memory",
+      "recommended_memory_type": "episodic_memory",
+      "source_grade": "PARTIAL",
+      "source_question_id": "q25",
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "answer_permission": false,
+      "candidate_trigger": "critic pass; citation safe; proof boundary preserved",
+      "crag_status": "NO_REPAIR_REQUIRED",
+      "critic_status": "PASS",
+      "explanation": "answer passed critic checks; preserve this response pattern as behavior guidance.",
+      "feedback_id": "fb_40a2173dbb18acf2e0c1fff0",
+      "feedback_source": "self_rag_crag_eval",
+      "payload": {
+        "crag_status": "NO_REPAIR_REQUIRED",
+        "critic_findings": [
+          "critic_checks_passed"
+        ],
+        "critic_repair_hints": [],
+        "question": "Can v2 summaries alone prove Figure 69 part identity?",
+        "source_grade": "GOOD"
+      },
+      "proof_role": "guidance_only",
+      "rating": "thumbs_up",
+      "recommended_memory_layer": "episodic_memory",
+      "recommended_memory_type": "episodic_memory",
+      "source_grade": "GOOD",
+      "source_question_id": "q29",
+      "source_truth_mutation_allowed": false
+    }
+  ],
+  "feedback_records_path": "local_data\\organization\\trace_net\\engineering_engram_postgres_feedback_ledger_v1\\trace_net_engineering_engram_feedback_ledger_records_v1.jsonl",
+  "ledger_policy": {
+    "explicit_live_flags": [
+      "--enable-live-postgres-write"
+    ],
+    "forbidden": [
+      "answer_permission_from_feedback",
+      "source_truth_mutation_from_feedback",
+      "feedback_or_engram_used_as_proof",
+      "live_postgres_write_without_explicit_enable_flag"
+    ],
+    "mode": "artifact_first_postgres_feedback_ledger",
+    "proof_boundary": "Feedback and Engram memory candidates shape behavior only; factual manual claims still require proof_context citations."
+  },
+  "postgres_plan": {
+    "live_postgres_write_attempted": false,
+    "live_postgres_write_enabled": false,
+    "postgres_dsn_configured": false,
+    "safety_note": "V1 emits schema and ledger rows. Live writes require explicit enable flag and are not executed by default."
+  },
+  "quality_check_path": "local_data\\organization\\trace_net\\engineering_engram_postgres_feedback_ledger_v1\\trace_net_engineering_engram_postgres_feedback_ledger_v1_quality_check.json",
+  "quality_status": "PASS",
+  "schema_path": "local_data\\organization\\trace_net\\engineering_engram_postgres_feedback_ledger_v1\\trace_net_engineering_engram_feedback_ledger_schema_v1.sql",
+  "status": "TRACE_NET_ENGINEERING_ENGRAM_POSTGRES_FEEDBACK_LEDGER_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "candidate_memory_layer_counts": {
+      "episodic_memory": 5
+    },
+    "candidate_record_count": 5,
+    "feedback_record_count": 5,
+    "feedback_source_counts": {
+      "self_rag_crag_eval": 5
+    },
+    "module": "trace_net_engineering_engram_postgres_feedback_ledger_v1",
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_read_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_failures": [],
+    "ready_for_feedback_to_engram_review": true,
+    "ready_for_postgres_feedback_table_creation": true,
+    "source_answer_smoke_quality_status": "PASS",
+    "source_crag_quality_status": "PASS",
+    "source_critic_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "unsafe_finding_count": 0,
+    "unsafe_findings": [],
+    "version": "v1",
+    "write_attempt_count": 0
+  }
+}
