@@ -517,6 +517,12 @@ def select_pages(
 
     return selected[:max_pages]
 
+
+def print_progress(message: str, *, enabled: bool) -> None:
+    if enabled:
+        print(message, flush=True)
+
+
 def extract_part_numbers(*texts: Any, max_items: int = 25) -> List[str]:
     seen = set()
     out: List[str] = []
@@ -755,6 +761,8 @@ def build_v2_gemma_summary_sample(
     require_ocr_text: bool = False,
     ocr_records_paths: Sequence[str | Path] = (),
     max_candidate_pages: int = 25,
+    progress: bool = False,
+    progress_every: int = 1,
     model: str = DEFAULT_MODEL,
     ollama_url: str = DEFAULT_OLLAMA_URL,
     timeout_seconds: int = 240,
@@ -801,14 +809,34 @@ def build_v2_gemma_summary_sample(
     errors: List[Dict[str, Any]] = []
 
     attempted_page_count = 0
+    skipped_missing_ocr_count = 0
+    progress_every = max(1, int(progress_every or 1))
+    print_progress(
+        f"[trace-net-v2-gemma] starting requested={max_pages} candidates={len(selected)} model={model}",
+        enabled=progress,
+    )
+
     for page_id, rec in selected:
         if len(records) >= max_pages:
             break
         attempted_page_count += 1
         page = make_page_input(page_id, rec, max_ocr_chars=max_ocr_chars, ocr_by_page=ocr_by_page)
+
+        if progress and (attempted_page_count == 1 or attempted_page_count % progress_every == 0):
+            print_progress(
+                f"[trace-net-v2-gemma] start candidate={attempted_page_count}/{len(selected)} completed={len(records)}/{max_pages} page_id={page_id}",
+                enabled=True,
+            )
+
         if require_ocr_text and not norm(page.get("ocr_text")):
+            skipped_missing_ocr_count += 1
             errors.append({"page_id": page_id, "error_type": "MissingOCRText", "error": "No OCR/text available after hydration."})
+            print_progress(
+                f"[trace-net-v2-gemma] skip candidate={attempted_page_count}/{len(selected)} completed={len(records)}/{max_pages} page_id={page_id} reason=missing_ocr_text",
+                enabled=progress,
+            )
             continue
+
         try:
             card, prompt_meta = build_gemma_card_for_page(
                 page,
@@ -823,8 +851,21 @@ def build_v2_gemma_summary_sample(
             records.append(card)
             prompt_records.append(prompt_meta)
             validations.append({"page_id": card.get("page_id"), "validation": validation})
+            print_progress(
+                f"[trace-net-v2-gemma] done {len(records)}/{max_pages} candidate={attempted_page_count}/{len(selected)} page_id={card.get('page_id')} status={card.get('llm_status')}",
+                enabled=progress,
+            )
         except Exception as exc:
             errors.append({"page_id": page_id, "error_type": type(exc).__name__, "error": str(exc)[:700]})
+            print_progress(
+                f"[trace-net-v2-gemma] error candidate={attempted_page_count}/{len(selected)} completed={len(records)}/{max_pages} page_id={page_id} error_type={type(exc).__name__}",
+                enabled=progress,
+            )
+
+    print_progress(
+        f"[trace-net-v2-gemma] finished completed={len(records)}/{max_pages} attempted={attempted_page_count} errors={len(errors)}",
+        enabled=progress,
+    )
 
     validation_failure_count = sum(1 for v in validations if (v.get("validation") or {}).get("quality_status") != "PASS")
     llm_called_count = sum(1 for r in records if truthy(r.get("llm_called")))
@@ -873,6 +914,9 @@ def build_v2_gemma_summary_sample(
             "max_candidate_pages": candidate_limit,
             "candidate_page_count": len(selected),
             "attempted_page_count": attempted_page_count,
+            "skipped_missing_ocr_count": skipped_missing_ocr_count,
+            "progress_enabled": progress,
+            "progress_every": progress_every,
             "require_ocr_text": require_ocr_text,
             "sample_record_count": len(records),
             "prompt_record_count": len(prompt_records),
@@ -969,6 +1013,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--require-ocr-text", action="store_true")
     p.add_argument("--ocr-records", action="append", default=[], help="Optional OCR JSON/JSONL artifact used to hydrate page text. If omitted, the default fishnet OCR artifact is used when present.")
     p.add_argument("--max-candidate-pages", type=int, default=25, help="Try this many candidate pages to get max-pages successful Gemma summaries.")
+    p.add_argument("--progress", action="store_true", help="Print live progress such as done 1/509, 2/509, etc.")
+    p.add_argument("--progress-every", type=int, default=1, help="Print start progress every N candidates; completed pages always print when --progress is enabled.")
     p.add_argument("--model", default=DEFAULT_MODEL)
     p.add_argument("--ollama-url", default=DEFAULT_OLLAMA_URL)
     p.add_argument("--timeout-seconds", type=int, default=240)
@@ -1004,6 +1050,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         require_ocr_text=args.require_ocr_text,
         ocr_records_paths=args.ocr_records,
         max_candidate_pages=args.max_candidate_pages,
+        progress=args.progress,
+        progress_every=args.progress_every,
         model=args.model,
         ollama_url=args.ollama_url,
         timeout_seconds=args.timeout_seconds,
