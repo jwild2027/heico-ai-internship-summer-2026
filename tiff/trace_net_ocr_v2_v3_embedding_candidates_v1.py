@@ -29,6 +29,11 @@ DEFAULT_JSONL = "trace_net_ocr_v2_v3_embedding_candidates_v1.jsonl"
 DEFAULT_SUMMARY = "trace_net_ocr_v2_v3_embedding_candidates_v1_summary.json"
 DEFAULT_QUALITY = "trace_net_ocr_v2_v3_embedding_candidates_v1_quality.json"
 DEFAULT_REJECTED = "trace_net_ocr_v2_v3_embedding_candidates_v1_rejected.jsonl"
+# Compatibility aliases for the existing trace_net_qdrant_loader_v1 quality detector.
+# The loader looks for the older embedding-candidates quality/manifest names next
+# to the candidates file, even when the candidates file itself is explicitly passed.
+LEGACY_EMBEDDING_QUALITY = "trace_net_embedding_candidates_v1_quality.json"
+LEGACY_EMBEDDING_MANIFEST = "trace_net_embedding_candidates_v1_manifest.json"
 
 SAFETY_CONTRACT = {
     "embedding_candidates_are_source_truth": False,
@@ -207,6 +212,19 @@ def base_candidate(
 ) -> dict[str, Any]:
     content_sha = sha256_text(embedding_text)
     embedding_candidate_id = "embcand:" + stable_id(source_kind, source_candidate_id, rag_bucket, content_sha, length=28)
+    traceability = {
+        "page_id": page_id,
+        "page_number": page_number,
+        "source_kind": source_kind,
+        "source_table": source_kind,
+        "source_candidate_id": source_candidate_id,
+        "source_record_id": source_record_id or source_candidate_id,
+        "source_path": source_path,
+        "source_artifact_role": "rebuildable_retrieval_index_candidate",
+        "source_resolution_required": True,
+        "source_resolution_hint": "Resolve this vector hit through TRACE-Net page/source artifacts before answer use.",
+        "proof_boundary": "Vector payload is retrieval guidance only and cannot prove claims.",
+    }
     return {
         "schema_version": SCHEMA_VERSION,
         "embedding_candidate_id": embedding_candidate_id,
@@ -230,12 +248,28 @@ def base_candidate(
         "text_preview": shorten(embedding_text, 700),
         "content_sha256": content_sha,
         "safe_vector_allowed_use": SAFE_VECTOR_ALLOWED_USE,
+        "allowed_use": SAFE_VECTOR_ALLOWED_USE,
+        "authority": "retrieval_helper",
+        "trust_tier": "retrieval_guidance",
+        "final_trust_tier": "retrieval_guidance",
+        "requires_source_resolution": True,
+        "requires_authority_gate": True,
+        "must_resolve_through_postgres": True,
+        "must_pass_authority_gate": True,
+        "must_use_source_citation": True,
+        "requires_source_check": True,
+        "requires_citation": True,
+        "citation_ready": False,
+        "source_trace_ready": True,
+        "traceability": traceability,
         "guidance_only": True,
         "canonical_source_truth": False,
         "can_answer_directly": False,
         "can_prove_claims": False,
-        "requires_source_check": True,
-        "requires_citation": True,
+        "qdrant_is_source_truth": False,
+        "qdrant_can_answer_directly": False,
+        "qdrant_can_prove_claims": False,
+        "embedding_answer_authority_allowed": False,
         "source_truth_mutation_allowed": False,
         "answer_permission": False,
         "answer_permission_count": 0,
@@ -245,7 +279,6 @@ def base_candidate(
         "safety_reasons": [],
         "metadata": dict(metadata or {}),
     }
-
 
 def build_ocr_candidate(record: Mapping[str, Any], *, canonical_prefix: str, max_text_chars: int) -> dict[str, Any]:
     page_id = canonical_page_id(record, canonical_prefix=canonical_prefix)
@@ -264,7 +297,7 @@ def build_ocr_candidate(record: Mapping[str, Any], *, canonical_prefix: str, max
         page_id=page_id,
         page_number=int(page_number) if page_number not in (None, "") else page_number_from_page_id(page_id),
         candidate_type="ocr_page_text",
-        rag_bucket="ocr_page_text",
+        rag_bucket="context_helper",
         embedding_text=shorten(text, max_text_chars),
         source_path=norm_text(record.get("source_path")),
         source_record_id=norm_text(record.get("page_id")),
@@ -347,6 +380,14 @@ def validate_candidate(candidate: Mapping[str, Any]) -> list[str]:
         reasons.append("candidate_can_prove_claims")
     if candidate.get("source_truth_mutation_allowed") is True:
         reasons.append("candidate_allows_source_truth_mutation")
+    if not candidate.get("traceability"):
+        reasons.append("missing_traceability")
+    if candidate.get("requires_source_resolution") is not True:
+        reasons.append("requires_source_resolution_not_true")
+    if candidate.get("must_pass_authority_gate") is not True:
+        reasons.append("must_pass_authority_gate_not_true")
+    if candidate.get("must_use_source_citation") is not True:
+        reasons.append("must_use_source_citation_not_true")
     return reasons
 
 
@@ -463,6 +504,10 @@ def summarize_candidates(records: list[Mapping[str, Any]], rejected: list[Mappin
         "postgres_write_attempt_count": sum(int(r.get("postgres_write_attempt_count") or 0) for r in records),
         "qdrant_write_attempt_count": sum(int(r.get("qdrant_write_attempt_count") or 0) for r in records),
         "opensearch_write_attempt_count": sum(int(r.get("opensearch_write_attempt_count") or 0) for r in records),
+        "missing_traceability_count": sum(1 for r in records if not r.get("traceability")),
+        "requires_source_resolution_false_count": sum(1 for r in records if r.get("requires_source_resolution") is not True),
+        "must_pass_authority_gate_false_count": sum(1 for r in records if r.get("must_pass_authority_gate") is not True),
+        "must_use_source_citation_false_count": sum(1 for r in records if r.get("must_use_source_citation") is not True),
         "unsafe_embedding_candidate_count": sum(
             1
             for r in records
@@ -470,6 +515,7 @@ def summarize_candidates(records: list[Mapping[str, Any]], rejected: list[Mappin
             or r.get("can_answer_directly")
             or r.get("can_prove_claims")
             or r.get("source_truth_mutation_allowed")
+            or r.get("embedding_answer_authority_allowed")
         ),
     }
 
@@ -489,7 +535,16 @@ def evaluate_quality(
         failures.append(f"safe_embedding_candidate_count_not_expected:{summary.get('safe_embedding_candidate_count')}!={expected_records}")
     if int(summary.get("page_count") or 0) < min_pages_with_candidates:
         failures.append(f"page_count_below_min:{summary.get('page_count')}<{min_pages_with_candidates}")
-    for key in ("missing_page_id_count", "missing_source_candidate_id_count", "missing_embedding_text_count", "duplicate_embedding_candidate_id_count"):
+    for key in (
+        "missing_page_id_count",
+        "missing_source_candidate_id_count",
+        "missing_embedding_text_count",
+        "duplicate_embedding_candidate_id_count",
+        "missing_traceability_count",
+        "requires_source_resolution_false_count",
+        "must_pass_authority_gate_false_count",
+        "must_use_source_citation_false_count",
+    ):
         if int(summary.get(key) or 0) != 0:
             failures.append(f"{key}_nonzero")
     if int(summary.get("unsafe_embedding_candidate_count") or 0) > max_unsafe:
@@ -513,12 +568,29 @@ def write_bundle(bundle: Mapping[str, Any], output_dir: Path) -> dict[str, Path]
         for rec in bundle.get("records", []):
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
     write_json(summary, bundle.get("summary", {}))
-    write_json(quality, {
+    quality_payload = {
+        "status": bundle.get("quality_status"),
         "quality_status": bundle.get("quality_status"),
         "failure_reasons": bundle.get("failure_reasons", []),
         "summary": bundle.get("summary", {}),
         "safety_contract": bundle.get("safety_contract", {}),
+    }
+    write_json(quality, quality_payload)
+
+    # Legacy aliases for trace_net_qdrant_loader_v1 --require-candidate-quality-pass.
+    legacy_quality = output_dir / LEGACY_EMBEDDING_QUALITY
+    legacy_manifest = output_dir / LEGACY_EMBEDDING_MANIFEST
+    write_json(legacy_quality, quality_payload)
+    write_json(legacy_manifest, {
+        "schema_version": "trace_net_embedding_candidates_v1",
+        "compatibility_source_schema_version": SCHEMA_VERSION,
+        "quality_status": bundle.get("quality_status"),
+        "status": bundle.get("quality_status"),
+        "candidate_record_count": len(bundle.get("records", [])),
+        "candidates_path": str(manifest),
+        "summary": bundle.get("summary", {}),
     })
+
     with rejected_path.open("w", encoding="utf-8") as f:
         for rec in bundle.get("rejected", []):
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
@@ -527,6 +599,8 @@ def write_bundle(bundle: Mapping[str, Any], output_dir: Path) -> dict[str, Path]
         "jsonl": jsonl,
         "summary": summary,
         "quality": quality,
+        "legacy_quality": legacy_quality,
+        "legacy_manifest": legacy_manifest,
         "rejected": rejected_path,
     }
 

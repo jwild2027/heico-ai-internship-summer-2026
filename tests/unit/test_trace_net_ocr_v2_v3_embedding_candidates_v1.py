@@ -94,6 +94,11 @@ def test_builds_ocr_v2_v3_candidates(tmp_path: Path):
     assert bundle["summary"]["unsafe_embedding_candidate_count"] == 0
     assert all(r["can_answer_directly"] is False for r in bundle["records"])
     assert all(r["canonical_source_truth"] is False for r in bundle["records"])
+    assert all(r["traceability"] for r in bundle["records"])
+    assert all(r["requires_source_resolution"] is True for r in bundle["records"])
+    assert all(r["must_pass_authority_gate"] is True for r in bundle["records"])
+    assert all(r["must_use_source_citation"] is True for r in bundle["records"])
+    assert bundle["summary"]["missing_traceability_count"] == 0
 
 
 def test_quality_check_round_trip(tmp_path: Path):
@@ -132,6 +137,8 @@ def test_quality_check_round_trip(tmp_path: Path):
         min_pages_with_candidates=1,
     )
     paths = write_bundle(bundle, tmp_path / "out")
+    assert paths["legacy_quality"].name == "trace_net_embedding_candidates_v1_quality.json"
+    assert paths["legacy_manifest"].name == "trace_net_embedding_candidates_v1_manifest.json"
     result = check_candidate_manifest(
         paths["manifest"],
         min_records=3,

@@ -23,3 +23,17 @@ Safety contract:
 - embedding candidates cannot answer directly
 - embedding candidates cannot prove claims
 - retrieval must verify against source OCR/table/visual/source-trace evidence
+
+
+## Qdrant loader compatibility fix
+
+This version emits the legacy quality/manifest aliases expected by
+`trace_net_qdrant_loader_v1`:
+
+- `trace_net_embedding_candidates_v1_quality.json`
+- `trace_net_embedding_candidates_v1_manifest.json`
+
+It also maps OCR page text candidates into the loader-safe `context_helper`
+bucket while preserving `candidate_type: ocr_page_text`, and every candidate now
+carries a non-empty `traceability` object plus source-resolution and authority
+gate flags.
