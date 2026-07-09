@@ -1,5 +1,5 @@
-#!/usr/bin/env python
 from __future__ import annotations
+
 from pathlib import Path
 import sys
 
@@ -7,8 +7,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-
-from tiff.trace_net_engineering_real_answer_smoke_overlay_flag_v1 import main
+from tiff.trace_net_engineering_real_answer_overlay_question_id_aligner_v1 import main
 
 if __name__ == "__main__":
     raise SystemExit(main())
