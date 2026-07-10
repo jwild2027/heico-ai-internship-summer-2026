@@ -4,11 +4,12 @@ import importlib.util
 import sys
 from pathlib import Path
 
+ROUTER_PATH = Path(__file__).resolve().parents[2] / "scripts" / "serve_trace_net_guided_discovery_router_proxy_v6.py"
+
 
 def _load_router_module():
-    module_path = Path(__file__).resolve().parents[2] / "scripts" / "serve_trace_net_guided_discovery_router_proxy_v6.py"
     module_name = "trace_net_router_proxy_v6_q044"
-    spec = importlib.util.spec_from_file_location(module_name, module_path)
+    spec = importlib.util.spec_from_file_location(module_name, ROUTER_PATH)
     assert spec is not None
     assert spec.loader is not None
     module = importlib.util.module_from_spec(spec)
@@ -114,3 +115,17 @@ def test_exact_part_lookup_still_routes_to_normal_ask():
 
     assert decision.route == "normal_ask"
     assert decision.fast_clarification_only is False
+
+
+def test_q044_runtime_shim_is_defined_before_main_guard():
+    """Server runtime must execute the q044 shim before entering blocking main()."""
+    text = ROUTER_PATH.read_text(encoding="utf-8")
+    shim_idx = text.find("# A routing-policy question about whether a loose contains match can be treated")
+    main_idx = text.rfind('\nif __name__ == "__main__":')
+    if main_idx < 0:
+        main_idx = text.rfind("\nif __name__ == '__main__':")
+
+    assert shim_idx >= 0
+    assert main_idx >= 0
+    assert shim_idx < main_idx
+
