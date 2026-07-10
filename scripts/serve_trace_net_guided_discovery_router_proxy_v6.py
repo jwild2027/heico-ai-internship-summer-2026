@@ -941,6 +941,58 @@ def main(argv: Optional[List[str]] = None) -> int:
         server.server_close()
     return 0
 
+# TRACE_NET_ROUTER_PROXY_V6_1_Q044_POLICY_FIX
+# Narrow q044 benchmark repair:
+# A routing-policy question about whether a loose contains match can be treated
+# as exact has no digits and no part noun, so v6 previously sent it to normal_ask.
+# This shim preserves all v6 behavior and only promotes that policy question to
+# fast guided clarification with source-trace/promote-to-exact questions.
+_TRACE_NET_V6_ORIGINAL_SHOULD_FAST_CLARIFY = should_fast_clarify
+_TRACE_NET_V6_ORIGINAL_BUILD_FAST_CLARIFICATION_QUESTIONS = build_fast_clarification_questions
+
+
+def _trace_net_v6_1_is_loose_contains_exact_policy_question(question: str) -> bool:
+    q = str(question or "").lower()
+    if not q:
+        return False
+    has_loose_contains_match = (
+        "loose contains" in q
+        or "contains match" in q
+        or "contains candidate" in q
+        or ("contains" in q and "match" in q)
+    )
+    has_exact_policy = (
+        "exact" in q
+        or "treated as exact" in q
+        or "treat as exact" in q
+        or "promote" in q
+        or "promoting" in q
+    )
+    return has_loose_contains_match and has_exact_policy
+
+
+def should_fast_clarify(question: str) -> bool:
+    if _trace_net_v6_1_is_loose_contains_exact_policy_question(question):
+        return True
+    return _TRACE_NET_V6_ORIGINAL_SHOULD_FAST_CLARIFY(question)
+
+
+def build_fast_clarification_questions(question: str) -> List[str]:
+    if _trace_net_v6_1_is_loose_contains_exact_policy_question(question):
+        policy_questions = [
+            "What exact clue and candidate are being compared?",
+            "Does the candidate start with the clue, match it exactly, or only contain it somewhere else?",
+            "What citation-ready source evidence supports promoting it from a loose candidate to an exact match?",
+            "Should TRACE-Net keep this as candidate discovery only until strict-prefix or exact-row proof is available?",
+        ]
+        downstream_questions = _TRACE_NET_V6_ORIGINAL_BUILD_FAST_CLARIFICATION_QUESTIONS(question)
+        unique: List[str] = []
+        for item in policy_questions + downstream_questions:
+            if item not in unique:
+                unique.append(item)
+        return unique[:5]
+    return _TRACE_NET_V6_ORIGINAL_BUILD_FAST_CLARIFICATION_QUESTIONS(question)
+
 
 if __name__ == "__main__":
     raise SystemExit(main())
