@@ -1,0 +1,62 @@
+{
+  "inputs": {
+    "ocr_roots": [],
+    "repo_root": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026",
+    "route_manifest": "local_data\\organization\\trace_net\\calibrated_cascade_route_brain_v35_3\\trace_net_cascade_route_decisions_v35_3.jsonl",
+    "tiff_roots": [
+      "local_data\\ocr\\full_509_psm3\\pages"
+    ],
+    "tiff_zips": []
+  },
+  "module": "trace_net_meaningful_image_route_detector_v1",
+  "outputs": {
+    "accepted_image_visual_contact_sheet": "local_data\\organization\\trace_net\\meaningful_image_route_detector_v1\\accepted_meaningful_image_visual_contact_sheet.png",
+    "jsonl": "local_data\\organization\\trace_net\\meaningful_image_route_detector_v1\\trace_net_meaningful_image_route_detector_v1.jsonl",
+    "rejected_table_or_text_contact_sheet": "local_data\\organization\\trace_net\\meaningful_image_route_detector_v1\\rejected_old_image_table_or_text_contact_sheet.png",
+    "route_disagreement_contact_sheet": "local_data\\organization\\trace_net\\meaningful_image_route_detector_v1\\route_disagreement_contact_sheet.png",
+    "summary": "local_data\\organization\\trace_net\\meaningful_image_route_detector_v1\\summary.json",
+    "uncertain_review_contact_sheet": "local_data\\organization\\trace_net\\meaningful_image_route_detector_v1\\uncertain_review_contact_sheet.png"
+  },
+  "quality_failures": [],
+  "quality_status": "PASS",
+  "safety_contract": {
+    "answer_permission": false,
+    "does_not_call_llm": true,
+    "does_not_call_ollama": true,
+    "does_not_mutate_source_truth": true,
+    "does_not_write_opensearch": true,
+    "does_not_write_postgres": true,
+    "does_not_write_qdrant": true,
+    "final_answer_allowed": false,
+    "read_only_detector": true
+  },
+  "status": "TRACE_NET_MEANINGFUL_IMAGE_ROUTE_DETECTOR_V1_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "final_answer_allowed_true_count": 0,
+    "llm_call_attempt_count": 0,
+    "new_meaningful_image_visual_count": 154,
+    "new_route_counts": {
+      "blank_candidate": 14,
+      "image_visual": 154,
+      "normal_text": 13,
+      "review_candidate": 325,
+      "table": 3
+    },
+    "old_image_visual_candidate_count": 185,
+    "old_image_visual_kept_count": 94,
+    "old_image_visual_rejected_count": 91,
+    "ollama_call_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "possible_missed_visual_candidate_count": 60,
+    "postgres_write_attempt_count": 0,
+    "processed_page_count": 509,
+    "qdrant_write_attempt_count": 0,
+    "route_disagreement_count": 151,
+    "route_manifest_page_count": 509,
+    "source_truth_mutation_allowed_count": 0,
+    "table_false_positive_count": 0,
+    "text_or_front_matter_false_positive_count": 0,
+    "uncertain_review_count": 325
+  }
+}

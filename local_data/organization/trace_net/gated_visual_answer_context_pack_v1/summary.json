@@ -1,0 +1,53 @@
+{
+  "inputs": {
+    "auto_queries": true,
+    "gated_visual_retrieval_documents_jsonl": "local_data\\organization\\trace_net\\gated_visual_retrieval_adapter_v1_1\\trace_net_gated_visual_retrieval_documents_v1_1.jsonl",
+    "review_only_documents_jsonl": "local_data\\organization\\trace_net\\gated_visual_retrieval_adapter_v1_1\\trace_net_gated_visual_candidate_review_documents_v1_1.jsonl",
+    "top_k": 8
+  },
+  "module": "trace_net_gated_visual_answer_context_pack_v1",
+  "outputs": {
+    "context_pack_jsonl": "local_data\\organization\\trace_net\\gated_visual_answer_context_pack_v1\\trace_net_gated_visual_answer_context_pack_v1.jsonl",
+    "report": "local_data\\organization\\trace_net\\gated_visual_answer_context_pack_v1\\trace_net_gated_visual_answer_context_pack_v1_report.txt",
+    "summary": "local_data\\organization\\trace_net\\gated_visual_answer_context_pack_v1\\summary.json"
+  },
+  "quality_failures": [],
+  "quality_status": "PASS",
+  "safety_contract": {
+    "answer_permission": false,
+    "does_not_call_llm": true,
+    "does_not_call_ollama": true,
+    "does_not_mutate_source_truth": true,
+    "does_not_write_opensearch": true,
+    "does_not_write_postgres": true,
+    "does_not_write_qdrant": true,
+    "final_answer_allowed": false,
+    "read_only_context_pack_builder": true
+  },
+  "status": "TRACE_NET_GATED_VISUAL_ANSWER_CONTEXT_PACK_V1_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "cited_page_count": 30,
+    "final_answer_allowed_true_count": 0,
+    "llm_call_attempt_count": 0,
+    "ollama_call_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "query_count": 5,
+    "retrieval_document_count": 104,
+    "review_only_docs_used_for_context_count": 0,
+    "review_only_document_count": 81,
+    "source_truth_mutation_allowed_count": 0,
+    "successful_query_count": 5,
+    "total_citation_count": 40,
+    "visual_route_counts": {
+      "image_visual": 40
+    },
+    "visual_subtype_counts": {
+      "confirmed_diagram_dominant": 40
+    }
+  }
+}

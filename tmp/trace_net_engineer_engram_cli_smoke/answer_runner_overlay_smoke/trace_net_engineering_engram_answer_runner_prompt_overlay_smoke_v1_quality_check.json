@@ -1,0 +1,34 @@
+{
+  "quality_failures": [],
+  "quality_status": "PASS",
+  "status": "TRACE_NET_ENGINEERING_ENGRAM_ANSWER_RUNNER_PROMPT_OVERLAY_SMOKE_CHECKED",
+  "summary": {
+    "answer_permission_count": 0,
+    "matched_bridge_record_count": 1,
+    "matched_bridge_task_type_counts": {
+      "engram_memory_retrieval": 1
+    },
+    "module": "trace_net_engineering_engram_answer_runner_prompt_overlay_smoke_v1",
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "overlay_record_count": 1,
+    "postgres_write_attempt_count": 0,
+    "qdrant_read_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_failures": [],
+    "ready_for_targeted_llm_overlay_smoke": true,
+    "selected_memory_layer_counts": {
+      "working_memory": 1
+    },
+    "source_answer_smoke_quality_status": null,
+    "source_bridge_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "target_question_count": 1,
+    "target_question_ids": [
+      "query_03c00bf1bc3dc91140ef9ea1"
+    ],
+    "unsafe_finding_count": 0,
+    "version": "v1",
+    "write_attempt_count": 0
+  }
+}

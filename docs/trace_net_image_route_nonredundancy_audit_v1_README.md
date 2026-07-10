@@ -1,0 +1,2 @@
+# TRACE-Net Image Route Non-Redundancy Audit v1
+Read-only inventory of existing image-route code/artifacts. It prevents rebuilding route dispatch, LLaVA observation, OCR/callout extraction, evidence packaging, nomenclature merge, verification, linking, and retrieval adapters when they already exist. It outputs a capability inventory and V2/V3 field gap map. It performs no inference and no database writes.

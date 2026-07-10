@@ -425,7 +425,7 @@ def build_answer_runner_overlay_llm_smoke(
             )
             if not answer:
                 llm_retry_used = True
-                retry_prompt = prompt + "\n\nRetry once: return a complete concise answer with Answer, Evidence, Engineering confidence, Limits."
+                retry_prompt = prompt + "\n\nRetry once: return a complete concise answer with Answer, Evidence, Engineering confidence, Limits. You must explicitly say whether proof_context is missing or insufficient, whether the answer is not source-trace-ready, and that retrieved Engram overlay guidance is behavior guidance only, not source proof. Do not make eligibility, interchangeability, fit, effectivity, approved replacement, or installation-safety claims without current proof_context citations."
                 answer, llm_error = _call_ollama(
                     retry_prompt,
                     ollama_model=ollama_model,

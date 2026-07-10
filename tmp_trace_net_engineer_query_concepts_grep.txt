@@ -1,0 +1,300 @@
+tiff/api_adapter_backend.py:77:def part_lookup_from_store(part_number: str, *, limit: int = 8, bundle: StoreBundle | None = None) -> JsonDict:
+tiff/api_adapter_backend.py:79:    part = bundle.catalog.get_part(part_number)
+tiff/api_adapter_backend.py:81:        return {"status": "not_found", "part_number": part_number, "pages": [], "pages_total": 0}
+tiff/api_adapter_backend.py:85:    trace = _unwrap_trace(bundle.trace.trace_part(part_number, limit=limit))
+tiff/api_adapter_backend.py:92:        "part_number": _part_number(part) or part_number,
+tiff/api_adapter_backend.py:135:def trace_part_from_store(part_number: str, *, limit: int = 8, bundle: StoreBundle | None = None) -> JsonDict:
+tiff/api_adapter_backend.py:137:    return _unwrap_trace(bundle.trace.trace_part(part_number, limit=limit))
+tiff/api_adapter_backend.py:244:def _part_number(record: Mapping[str, Any]) -> str | None:
+tiff/api_adapter_backend.py:245:    value = _first(record, "part_number", "part", "number", "id", "label")
+tiff/api_adapter_services.py:85:    def part_lookup(self, part_number: str, *, limit: int = 8) -> dict[str, Any]:
+tiff/api_adapter_services.py:86:        raw = self.stores.catalog.get_part(part_number, limit=limit)
+tiff/api_adapter_services.py:92:            "part_number": raw.get("part_number", part_number),
+tiff/api_adapter_services.py:120:    def trace_part(self, part_number: str, *, limit: int = 8) -> dict[str, Any]:
+tiff/api_adapter_services.py:122:            return self.stores.trace.trace_part(part_number, limit=limit)
+tiff/api_adapter_services.py:123:        return self.part_lookup(part_number, limit=limit)
+tiff/api_adapter_services.py:213:def part_lookup(part_number: str, *, limit: int = 8) -> dict[str, Any]:
+tiff/api_adapter_services.py:214:    return get_default_services().part_lookup(part_number, limit=limit)
+tiff/api_adapter_services.py:225:def trace_part(part_number: str, *, limit: int = 8) -> dict[str, Any]:
+tiff/api_adapter_services.py:226:    return get_default_services().trace_part(part_number, limit=limit)
+tiff/api_adapter_services.py:298:        return {"part_number": str(part)}
+tiff/api_adapter_services.py:300:        "part_number": _first_nonempty(part, "part_number", "part", "label", "id"),
+tiff/api_backend.py:116:                fields = [node.id, node.label, node.prop("part_number", default=""), node.prop("page_id", default=""), node.prop("ata_code", default="")]
+tiff/api_backend.py:121:        def find_part(self, part_number: str | None = None):
+tiff/api_backend.py:122:            return self.find_one("part", part_number) if part_number else self.find_one("part")
+tiff/api_backend.py:284:def part_lookup(part_number: str, paths: ApiPaths | None = None, limit: int = 8) -> dict[str, Any]:
+tiff/api_backend.py:286:    part = graph.find_part(part_number)
+tiff/api_backend.py:288:        return {"status": "not_found", "part_number": part_number, "pages": []}
+tiff/api_backend.py:293:        "part_number": part.prop("part_number", default=part.label),
+tiff/api_backend.py:324:def trace_part(part_number: str, paths: ApiPaths | None = None, limit: int = 8) -> dict[str, Any]:
+tiff/api_backend.py:328:    report = build_traceability_report(graph_dir=paths.graph_dir, part=part_number, limit=limit, strict=True)
+tiff/api_backend.py:452:        "part_number": part.prop("part_number", default=part.label),
+tiff/api_backend.py:460:    ata = _first_neighbor(graph, page.id, "BELONGS_TO_ATA", "ata_section")
+tiff/api_contract_tests.py:81:            description="ATA lookup returns pages/source evidence for the section.",
+tiff/api_contract_tests.py:95:            description="Page trace resolves document, ATA, source, context, and parts.",
+tiff/api_contract_tests.py:115:            json_body={"question": "What is part number 120-37313-001?", "timeout_seconds": 120},
+tiff/api_contract_tests.py:124:                "question": "What is part number 120-37313-001?",
+tiff/api_store_adapters.py:65:            if any(k in obj for k in ("page_id", "part_number", "part", "ata_code", "source_url", "pages")):
+tiff/api_store_adapters.py:130:    def get_part(self, part_number: str) -> dict[str, Any]: ...
+tiff/api_store_adapters.py:136:    def trace_part(self, part_number: str, limit: int = 8) -> dict[str, Any]: ...
+tiff/api_store_adapters.py:178:    def get_part(self, part_number: str) -> dict[str, Any]:
+tiff/api_store_adapters.py:179:        target_norm = _norm_key(part_number)
+tiff/api_store_adapters.py:188:                        candidates.insert(0, {"part_number": key, **value})
+tiff/api_store_adapters.py:190:                        candidates.insert(0, {"part_number": key, "value": value})
+tiff/api_store_adapters.py:193:            number = _first(item.get("part_number"), item.get("part"), item.get("number"), item.get("id"))
+tiff/api_store_adapters.py:198:                    "part_number": str(number),
+tiff/api_store_adapters.py:204:        return {"found": False, "part_number": part_number, "record": None}
+tiff/api_store_adapters.py:264:    def trace_part(self, part_number: str, limit: int = 8) -> dict[str, Any]:
+tiff/api_store_adapters.py:265:        args = [sys.executable, "scripts/trace_document_graph.py", "--part", part_number, "--limit", str(limit), "--strict", "--write-json"]
+tiff/changed_page_backend.py:57:    affected_part_numbers: list[str] = field(default_factory=list)
+tiff/changed_page_backend.py:291:def _fetch_affected_part_numbers(conn: sqlite3.Connection, page_ids: Sequence[str]) -> set[str]:
+tiff/changed_page_backend.py:295:        if {"page_id", "part_number_normalized"}.issubset(cols):
+tiff/changed_page_backend.py:297:                f"SELECT DISTINCT part_number_normalized FROM part_mentions WHERE page_id IN ({_placeholders(page_ids)})",
+tiff/changed_page_backend.py:303:        if {"page_id", "part_number_normalized"}.issubset(cols):
+tiff/changed_page_backend.py:305:                f"SELECT DISTINCT part_number_normalized FROM part_catalog WHERE page_id IN ({_placeholders(page_ids)})",
+tiff/changed_page_backend.py:323:        ORDER BY part_number_normalized, page_sequence, catalog_id
+tiff/changed_page_backend.py:332:        affected_parts.add(row["part_number_normalized"])
+tiff/changed_page_backend.py:336:                catalog_id, part_number_display, part_number_normalized, raw_nomenclature,
+tiff/changed_page_backend.py:344:                row["part_number_display"],
+tiff/changed_page_backend.py:345:                row["part_number_normalized"],
+tiff/changed_page_backend.py:374:        conn.execute("DELETE FROM part_catalog_clean WHERE part_number_normalized = ?", (part_norm,))
+tiff/changed_page_backend.py:381:                part_number_normalized, part_number_display, canonical_nomenclature,
+tiff/changed_page_backend.py:388:                canonical.part_number_normalized,
+tiff/changed_page_backend.py:389:                canonical.part_number_display,
+tiff/changed_page_backend.py:426:        old_part_norms = _fetch_affected_part_numbers(conn, page_ids_tuple)
+tiff/changed_page_backend.py:458:                pm.part_number_display, pm.part_number_normalized
+tiff/changed_page_backend.py:463:            ORDER BY p.manual_id, p.page_sequence, pm.part_number_normalized
+tiff/changed_page_backend.py:470:            key = (row["page_id"], row["part_number_normalized"], row["part_number_display"])
+tiff/changed_page_backend.py:474:            entry = extract_catalog_entry_from_page(row, row["part_number_display"], row["part_number_normalized"])
+tiff/changed_page_backend.py:482:        affected_parts = old_part_norms | new_part_norms | _fetch_affected_part_numbers(conn, page_ids_tuple)
+tiff/changed_page_backend.py:484:        summary.affected_part_numbers = sorted(affected_parts)
+tiff/changed_page_backend.py:550:            part_numbers, nomenclatures = _fetch_page_parts(conn, page["page_id"])
+tiff/changed_page_backend.py:570:                    part_numbers_json=json_dumps(part_numbers),
+tiff/changed_page_backend.py:615:        affected_part_numbers=catalog.affected_part_numbers,
+tiff/changed_page_backend.py:637:        "affected_part_numbers": list(summary.affected_part_numbers),
+tiff/changed_page_update.py:15:* canonical part_catalog_clean rows for affected part numbers
+tiff/changed_page_update.py:91:    affected_part_numbers: list[str] = field(default_factory=list)
+tiff/changed_page_update.py:290:            pm.part_number_display, pm.part_number_normalized
+tiff/changed_page_update.py:295:        ORDER BY p.manual_id, p.page_sequence, pm.part_number_normalized
+tiff/changed_page_update.py:320:            catalog_id, part_number_display, part_number_normalized, raw_nomenclature,
+tiff/changed_page_update.py:328:            row["part_number_display"],
+tiff/changed_page_update.py:329:            row["part_number_normalized"],
+tiff/changed_page_update.py:347:    return row["part_number_normalized"] if clean_name else None
+tiff/changed_page_update.py:353:        conn.execute("DELETE FROM part_catalog_clean WHERE part_number_normalized = ?", (part_norm,))
+tiff/changed_page_update.py:358:            part_number_normalized, part_number_display, canonical_nomenclature,
+tiff/changed_page_update.py:365:            canonical.part_number_normalized,
+tiff/changed_page_update.py:366:            canonical.part_number_display,
+tiff/changed_page_update.py:405:                f"SELECT DISTINCT part_number_normalized FROM part_catalog WHERE page_id IN ({placeholders})",
+tiff/changed_page_update.py:416:            key = (row["page_id"], row["part_number_normalized"], row["part_number_display"])
+tiff/changed_page_update.py:420:            entry = extract_catalog_entry_from_page(row, row["part_number_display"], row["part_number_normalized"])
+tiff/changed_page_update.py:430:            ORDER BY part_number_normalized, page_sequence, catalog_id
+tiff/changed_page_update.py:486:            part_numbers, nomenclatures = _fetch_page_parts(conn, page["page_id"])
+tiff/changed_page_update.py:506:                    part_numbers_json=json_dumps(part_numbers),
+tiff/changed_page_update.py:599:    summary.affected_part_numbers = sorted(affected_parts)
+tiff/document_batch_audit.py:19:METADATA_EXTENSIONS = {".xml", ".json", ".csv", ".mets", ".mods"}
+tiff/document_batch_audit.py:310:    metadata = [record for record in records if record.suffix in METADATA_EXTENSIONS]
+tiff/document_batch_audit.py:313:    known_exts = TIFF_EXTENSIONS | OCR_EXTENSIONS | METADATA_EXTENSIONS | IMAGE_EXTENSIONS | DOCUMENT_EXTENSIONS
+tiff/document_classifier.py:71:        if getattr(manual_metadata, "part_numbers", None):
+tiff/document_classifier.py:72:            signals.append("part_numbers")
+tiff/document_classifier.py:77:        if drawing_metadata.part_number:
+tiff/document_classifier.py:78:            signals.append("part_number")
+tiff/document_classifier.py:93:    # signals before calling something an engineering drawing.
+tiff/document_classifier.py:103:            detected_type="engineering_drawing",
+tiff/document_graph_quality.py:110:        for key in ("label", "name", "title", "part_number", "page_id", "summary", "short_summary"):
+tiff/document_graph_quality.py:184:    def find_part(self, part_number: str) -> Mapping[str, Any] | None:
+tiff/document_graph_quality.py:185:        norm = _normalize_part(part_number)
+tiff/document_graph_quality.py:188:            part_value = str(_prop(node, "part_number", "part", default=label))
+tiff/document_graph_quality.py:365:        and graph.neighbors(page_id, "BELONGS_TO_ATA")
+tiff/document_graph_quality.py:411:    pages_without_ata = _count_pages_missing(graph, "BELONGS_TO_ATA") if graph_present else 0
+tiff/document_graph_quality.py:462:        f"Pages without ATA edges={pages_without_ata}; max allowed is {limits.max_pages_without_ata}.",
+tiff/document_graph_quality.py:492:        "Sample page traces to document, ATA, source link, and AI context." if page_trace_ok else "Sample page trace is incomplete.",
+tiff/document_graph_traceability.py:6:    page -> document / ATA / parts / source links / page context
+tiff/document_graph_traceability.py:139:            part_number = fallback.prop("part_number", default=fallback.label)
+tiff/document_graph_traceability.py:140:            traces.append(trace_part_to_sources(graph, str(part_number), limit=limit, strict=strict))
+tiff/document_graph_traceability.py:162:def trace_part_to_sources(graph: GraphStore, part_number: str, limit: int = 8, strict: bool = False) -> TracePath:
+tiff/document_graph_traceability.py:163:    part = graph.find_part(part_number)
+tiff/document_graph_traceability.py:167:            description=f"Part -> pages -> source links/context trace for {part_number}.",
+tiff/document_graph_traceability.py:169:            errors=[f"Part not found in graph: {part_number}"],
+tiff/document_graph_traceability.py:194:        ata = _first_neighbor_any(graph, page.id, ("BELONGS_TO_ATA",), "ata_section")
+tiff/document_graph_traceability.py:198:            steps.append(_step(f"Page {sample_count} ATA", ata, "BELONGS_TO_ATA"))
+tiff/document_graph_traceability.py:223:        "part_number": part_number,
+tiff/document_graph_traceability.py:248:            description=f"Page -> document/ATA/parts/source/context trace for {page_id}.",
+tiff/document_graph_traceability.py:257:    ata = _first_neighbor_any(graph, page.id, ("BELONGS_TO_ATA",), "ata_section")
+tiff/document_graph_traceability.py:267:        steps.append(_step("ATA section", ata, "BELONGS_TO_ATA"))
+tiff/document_graph_traceability.py:269:        errors.append(f"Page has no ATA trace: {page.id}")
+tiff/document_graph_traceability.py:297:        description="Trace a page to document, ATA, parts, nomenclature, source, and AI context.",
+tiff/document_graph_traceability.py:308:    """Trace an ATA section to pages, source links, AI context, and sampled parts."""
+tiff/document_graph_traceability.py:313:            description=f"ATA -> pages -> source links/context trace for {ata_code}.",
+tiff/document_graph_traceability.py:315:            errors=[f"ATA section not found in graph: {ata_code}"],
+tiff/document_graph_traceability.py:320:    steps = [_step("Start ATA section", ata)]
+tiff/document_graph_traceability.py:322:    documents = _incoming_neighbors(graph, ata.id, "HAS_ATA_SECTION", "document")
+tiff/document_graph_traceability.py:324:        steps.append(_step("Owning document", documents[0], "HAS_ATA_SECTION"))
+tiff/document_graph_traceability.py:326:        errors.append(f"ATA section has no owning document: {ata.id}")
+tiff/document_graph_traceability.py:335:        steps.append(_step(f"ATA page {sample_count}", page, "CONTAINS_PAGE"))
+tiff/document_graph_traceability.py:345:            msg = f"ATA page missing source link: {page.id}"
+tiff/document_graph_traceability.py:359:            warnings.append(f"ATA page has no AI context yet: {page.id}")
+tiff/document_graph_traceability.py:364:        errors.append(f"ATA section has no CONTAINS_PAGE/BELONGS_TO_ATA trace: {ata.id}")
+tiff/document_graph_traceability.py:366:    # Count all distinct parts in the ATA even if we only show a small page sample.
+tiff/document_graph_traceability.py:383:        description="Trace an ATA section to pages, source links, AI page context, and sampled parts.",
+tiff/document_graph_traceability.py:523:    # Fallback for graph exports that only contain Page -> ATA edges.
+tiff/document_graph_traceability.py:524:    for page in _incoming_neighbors(graph, ata.id, "BELONGS_TO_ATA", "page"):
+tiff/document_graph_traversal.py:180:                "part_number", "page_id", "manual", "manual_id", "document_id", "title", "publication_number", "ata", "ata_code"
+tiff/document_graph_traversal.py:186:    def find_part(self, part_number: str | None = None) -> GraphNode | None:
+tiff/document_graph_traversal.py:187:        if part_number:
+tiff/document_graph_traversal.py:188:            return self.find_one("part", part_number)
+tiff/document_graph_traversal.py:531:        "part_number",
+tiff/document_graph_traversal.py:608:    return sorted(parts, key=lambda n: _part_number(n))[0]
+tiff/document_graph_traversal.py:727:        "part_number",
+tiff/document_organization_audit.py:5:can inspect how pages group by manual, ATA, and part number before scaling to a
+tiff/document_organization_audit.py:37:    part_number: str
+tiff/document_organization_audit.py:161:def _part_number(row: Mapping[str, Any]) -> str:
+tiff/document_organization_audit.py:162:    """Return the human/display part number from any known part table schema.
+tiff/document_organization_audit.py:164:    The main search-index schema stores mentions as ``part_number_display`` and
+tiff/document_organization_audit.py:165:    ``part_number_normalized``. Earlier/local test tables used simpler names
+tiff/document_organization_audit.py:166:    such as ``part_number``. Prefer display values so the logical tree is human
+tiff/document_organization_audit.py:172:            "part_number_display",
+tiff/document_organization_audit.py:173:            "part_number",
+tiff/document_organization_audit.py:174:            "canonical_part_number",
+tiff/document_organization_audit.py:177:            "matched_part_number",
+tiff/document_organization_audit.py:178:            "part_number_normalized",
+tiff/document_organization_audit.py:179:            "normalized_part_number",
+tiff/document_organization_audit.py:185:def _part_number_keys(row: Mapping[str, Any]) -> tuple[str, ...]:
+tiff/document_organization_audit.py:189:        "part_number_display",
+tiff/document_organization_audit.py:190:        "part_number",
+tiff/document_organization_audit.py:191:        "canonical_part_number",
+tiff/document_organization_audit.py:192:        "matched_part_number",
+tiff/document_organization_audit.py:195:        "part_number_normalized",
+tiff/document_organization_audit.py:196:        "normalized_part_number",
+tiff/document_organization_audit.py:244:    ``(display_part_number, nomenclature)`` plus a boolean indicating whether a
+tiff/document_organization_audit.py:257:            display = _part_number(row)
+tiff/document_organization_audit.py:263:            keys = _part_number_keys(row) or (display,)
+tiff/document_organization_audit.py:282:            for part_key in _part_number_keys(row):
+tiff/document_organization_audit.py:290:    return _select_all(conn, "part_mentions", order_cols=("part_number", "part_number_display", "page_id"))
+tiff/document_organization_audit.py:305:    display = _part_number(row)
+tiff/document_organization_audit.py:306:    keys = _part_number_keys(row) or ((display,) if display else ())
+tiff/document_organization_audit.py:333:    """Build a read-only logical manual/ATA/part organization summary."""
+tiff/document_organization_audit.py:396:        raw_part = _part_number(row)
+tiff/document_organization_audit.py:459:                part_number=part,
+tiff/document_organization_audit.py:467:    part_rows.sort(key=lambda item: (-item.page_count, -item.mention_count, item.part_number))
+tiff/document_organization_audit.py:470:        warnings.append(f"{pages_without_ata} pages do not have an ATA code in the logical organization layer.")
+tiff/document_organization_audit.py:472:        warnings.append("no ATA groups were inferred; check OCR/header extraction before scaling.")
+tiff/document_organization_audit.py:530:    lines.append(f"  ATA groups: {summary.ata_groups_total}")
+tiff/document_organization_audit.py:531:    lines.append(f"  Pages with ATA: {summary.pages_with_ata}")
+tiff/document_organization_audit.py:532:    lines.append(f"  Pages without ATA: {summary.pages_without_ata}")
+tiff/document_organization_audit.py:545:        lines.append("Top manual/ATA groups:")
+tiff/document_organization_audit.py:549:                f"  {idx}. {label} | ATA {row.ata_code} | pages={row.page_count} "
+tiff/document_organization_audit.py:562:                f"  {idx}. {row.part_number}{name} | pages={row.page_count} mentions={row.mention_count} ATA={atas}"
+tiff/document_organization_export.py:178:def _part_number(row: Mapping[str, Any]) -> str:
+tiff/document_organization_export.py:182:            "part_number_display",
+tiff/document_organization_export.py:183:            "part_number",
+tiff/document_organization_export.py:184:            "canonical_part_number",
+tiff/document_organization_export.py:187:            "matched_part_number",
+tiff/document_organization_export.py:188:            "part_number_normalized",
+tiff/document_organization_export.py:189:            "normalized_part_number",
+tiff/document_organization_export.py:195:def _part_number_keys(row: Mapping[str, Any]) -> tuple[str, ...]:
+tiff/document_organization_export.py:198:        "part_number_display",
+tiff/document_organization_export.py:199:        "part_number",
+tiff/document_organization_export.py:200:        "canonical_part_number",
+tiff/document_organization_export.py:201:        "matched_part_number",
+tiff/document_organization_export.py:204:        "part_number_normalized",
+tiff/document_organization_export.py:205:        "normalized_part_number",
+tiff/document_organization_export.py:237:            for part_key in _part_number_keys(row):
+tiff/document_organization_export.py:245:    return _select_all(conn, "part_mentions", order_cols=("page_id", "part_number", "part_number_display"))
+tiff/document_organization_export.py:266:        "part_numbers": sorted(page_parts.get(pid, set())),
+tiff/document_organization_export.py:335:        raw_part = _part_number(row)
+tiff/document_organization_export.py:389:        manual["part_mention_count"] += len(page["part_numbers"])
+tiff/document_organization_export.py:411:        ata["part_mention_count"] += len(page["part_numbers"])
+tiff/document_organization_export.py:420:            distinct_parts.update(page["part_numbers"])
+tiff/document_organization_export.py:438:                "part_number": part,
+tiff/document_organization_export.py:447:    part_list.sort(key=lambda item: (-int(item["page_count"]), -int(item["mention_count"]), str(item["part_number"])))
+tiff/document_organization_export.py:452:    pages_with_parts = len([p for p in page_records if p["part_numbers"]])
+tiff/document_organization_export.py:543:    lines.append(f"  ATA groups: {summary.ata_group_count}")
+tiff/document_organization_export.py:544:    lines.append(f"  Pages with ATA: {summary.pages_with_ata}")
+tiff/document_organization_export.py:545:    lines.append(f"  Pages without ATA: {summary.pages_without_ata}")
+tiff/document_organization_graph.py:242:    return _as_records(part_tree, likely_id_keys=("part_number", "part", "id"))
+tiff/document_organization_graph.py:323:        _add_node(nodes, ata_node, "ata_section", f"ATA {ata_code}", {"ata_code": ata_code, "manual_id": manual_id, "manual": manual_label})
+tiff/document_organization_graph.py:328:        _add_edge(edges, "HAS_ATA_SECTION", document_node, ata_node)
+tiff/document_organization_graph.py:329:        _add_edge(edges, "BELONGS_TO_ATA", page_node, ata_node)
+tiff/document_organization_graph.py:348:    # Add or enrich ATA groups from ata_tree. This handles groups with page/part counts.
+tiff/document_organization_graph.py:359:            f"ATA {ata_code}",
+tiff/document_organization_graph.py:370:        _add_edge(edges, "HAS_ATA_SECTION", document_node, ata_node)
+tiff/document_organization_graph.py:374:        part_number = _norm_text(_first_nonempty(part, ("part_number", "part", "id"), ""))
+tiff/document_organization_graph.py:375:        if not part_number:
+tiff/document_organization_graph.py:376:            warnings.append("skipped part with no part_number")
+tiff/document_organization_graph.py:379:        part_node = _node_id("part", part_number)
+tiff/document_organization_graph.py:384:            part_number,
+tiff/document_organization_graph.py:386:                "part_number": part_number,
+tiff/document_organization_graph.py:405:            mention_node = _node_id("part_mention", f"{part_number}:{page_id}")
+tiff/document_organization_graph.py:410:                f"{part_number} on {page_id}",
+tiff/document_organization_graph.py:412:                    "part_number": part_number,
+tiff/document_organization_graph.py:467:        for part_number in important_parts:
+tiff/document_organization_graph.py:468:            part_node = _node_id("part", part_number)
+tiff/document_organization_inspector.py:134:        number = _get_first(part, ("part_number", "part", "id", "key", "number"))
+tiff/document_organization_inspector.py:136:            part["part_number"] = str(number)
+tiff/document_organization_inspector.py:177:    # Deduplicate by manual+ATA.
+tiff/document_organization_inspector.py:196:        "part_number": part.get("part_number"),
+tiff/document_organization_inspector.py:238:    result.part_count = len([p for p in parts if p.get("part_number")])
+tiff/document_organization_inspector.py:247:        result.errors.append("ata_tree.json/manual_ata_tree.json did not expose any ATA groups.")
+tiff/document_organization_inspector.py:249:    by_part = {str(p.get("part_number", "")).upper(): p for p in parts if p.get("part_number")}
+tiff/document_organization_inspector.py:253:    for part_number in sample_parts or []:
+tiff/document_organization_inspector.py:254:        key = str(part_number).upper()
+tiff/document_organization_inspector.py:257:            result.errors.append(f"Sample part not found in exported part_tree.json: {part_number}")
+tiff/document_organization_inspector.py:271:            result.errors.append(f"Sample ATA not found in exported ATA tree: {ata}")
+tiff/document_organization_query.py:22:PART_KEYS = ("part_number", "part", "number", "canonical_part_number")
+tiff/document_organization_query.py:23:ATA_KEYS = ("ata", "ata_code", "ataCode")
+tiff/document_organization_query.py:100:def query_part(export: OrganizationExport, part_number: str, *, limit: int = 10) -> list[dict[str, Any]]:
+tiff/document_organization_query.py:101:    """Find exported part-tree entries by exact part number, case-insensitive."""
+tiff/document_organization_query.py:102:    needle = _norm(part_number)
+tiff/document_organization_query.py:103:    matches = [entry for entry in collect_parts(export) if _norm(_part_number(entry)) == needle]
+tiff/document_organization_query.py:108:    """Find exported ATA entries by exact ATA code, case-insensitive."""
+tiff/document_organization_query.py:127:    return _collect_named_collection(export.part_tree, "parts", value_keys=PART_KEYS, key_name="part_number")
+tiff/document_organization_query.py:131:    """Collect top-level ATA group entries, excluding nested page rows.
+tiff/document_organization_query.py:133:    The exported ATA tree contains ATA records that themselves contain page
+tiff/document_organization_query.py:135:    collector used for parts/pages would over-count ATA groups and produce many
+tiff/document_organization_query.py:137:    group-level ATA records.
+tiff/document_organization_query.py:165:    part = _part_number(entry) or "-"
+tiff/document_organization_query.py:191:    return f"ATA {ata} | manual={manual} | pages={pages} parts={parts}"
+tiff/document_organization_query.py:201:    return f"{page_id} | ATA {ata} | page {label}\n  Source: {source}\n  TIFF: {tiff}\n  OCR: {ocr}"
+tiff/document_organization_query.py:214:    pages, or ATA groups when the export contains a tree with nested objects.
+tiff/document_organization_query.py:264:        # ATA search results. ATA group records have aggregate fields such as
+tiff/document_organization_query.py:348:            # A mapping keyed by part number, ATA code, or page id.
+tiff/document_organization_query.py:368:    if key_name == "part_number":
+tiff/document_organization_query.py:421:def _part_number(entry: dict[str, Any]) -> str | None:
+tiff/document_organization_query.py:426:    return _first_text(entry, *ATA_KEYS)
+tiff/entity_trait_graph.py:16:The shortcut makes browsing and filtering fast, while the assertion node keeps
+tiff/entity_trait_graph.py:127:            "part_number",
+tiff/entity_trait_graph.py:187:                    item.get("part_number")
+tiff/entity_trait_graph.py:549:def _page_part_numbers(graph: GraphView, page: Mapping[str, Any]) -> list[str]:
+tiff/entity_trait_graph.py:552:        number = _text(_prop(part, "part_number", "part", default=_node_label(part)))
+tiff/entity_trait_graph.py:617:        if graph.has_edge(page_id, "BELONGS_TO_ATA"):
+tiff/entity_trait_graph.py:619:            parent = graph.first_neighbor(page_id, "BELONGS_TO_ATA")
+tiff/entity_trait_graph.py:661:            for part_number in _context_parts(context):
+tiff/entity_trait_graph.py:665:                    part_number,
+tiff/entity_trait_graph.py:887:                or _page_part_numbers(graph, page)
+tiff/entity_trait_graph.py:960:        ata = graph.first_neighbor(page_id, "BELONGS_TO_ATA")
+tiff/entity_trait_graph.py:963:        parts = _page_part_numbers(graph, page)
+tiff/entity_trait_graph.py:1032:                "part_number": _text(_prop(part, "part_number", default=_node_label(part))),
+tiff/entity_trait_graph.py:1041:    return sorted(cards, key=lambda card: _normalize_part(card.get("part_number")))
+tiff/graph_org_chart_site.py:136:                    record.setdefault("part_number", child_key if "part" in key else record.get("part_number"))
+tiff/graph_org_chart_site.py:291:    raw = _first_mapping_value(card, ("parts", "part_mentions", "mentioned_parts", "part_numbers"), [])
+tiff/graph_org_chart_site.py:304:                ("part_number", "part_number_display", "part", "id", "value", "number"),
+tiff/graph_org_chart_site.py:309:                    "part_number": _strip_entity_prefix(number),
+tiff/graph_org_chart_site.py:316:            parts.append({"part_number": _strip_entity_prefix(item), "nomenclature": "", "item_number": "", "quantity": ""})
+tiff/graph_org_chart_site.py:321:        number = str(part.get("part_number") or "").strip()
+tiff/graph_org_chart_site.py:450:            _first_mapping_value(record, ("part_number", "part_number_display", "id", "entity_id", "number"), "")
+tiff/graph_org_chart_site.py:468:                "part_number": number,
+tiff/graph_org_chart_site.py:480:        page["page_id"]: {str(part.get("part_number")) for part in page.get("parts", []) if part.get("part_number")}
+tiff/graph_org_chart_site.py:484:        number = str(part.get("part_number") or "").strip()
+tiff/graph_org_chart_site.py:496:                    "part_number": number,
+tiff/graph_org_chart_site.py:589:                    seen = {part.get("part_number") for part in current.get("parts", [])}
+tiff/graph_org_chart_site.py:591:                        if part.get("part_number") not in seen:
+tiff/graph_org_chart_site.py:593:                            seen.add(part.get("part_number"))
+tiff/graph_org_chart_site.py:642:            ata_parts = {part.get("part_number") for page in ata["pages"] for part in page.get("parts", []) if part.get("part_number")}
+tiff/graph_org_chart_site.py:701:        "parts": sorted(part_cards, key=lambda item: str(item.get("part_number") or "")),
+tiff/graph_org_chart_site.py:755:  backdrop-filter: blur(12px);
+tiff/graph_org_chart_site.py:934:      <div class=\"subtitle\">Interactive document → ATA → page → source/context/part/trait view</div>
+tiff/graph_org_chart_site.py:939:    <input id=\"searchBox\" placeholder=\"Search page, part, ATA, source, trait, summary…\" />
+tiff/graph_org_chart_site.py:940:    <select id=\"ataFilter\"><option value=\"\">All ATA sections</option></select>
+tiff/graph_org_chart_site.py:952:        <span><i class=\"dot\" style=\"background:var(--ata)\"></i>ATA</span>
+tiff/graph_org_chart_site.py:963:      <p class=\"drawer-title\">Select a page, ATA, document, or part</p>
+tiff/graph_org_chart_site.py:970:window.HEICO_GRAPH_DATA = {embedded};

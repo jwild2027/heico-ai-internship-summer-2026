@@ -330,8 +330,166 @@ def seed_layer_atoms() -> List[Dict[str, Any]]:
     return [dict(a) for a in DEFAULT_LAYER_SEED_ATOMS]
 
 
-def build_layered_atoms(core: Mapping[str, Any], *, source_core_path: str = "", include_seed_atoms: bool = True) -> List[Dict[str, Any]]:
+
+def _collect_query_planner_records(planner: Mapping[str, Any]) -> List[Dict[str, Any]]:
+    records = planner.get("records")
+    if isinstance(records, list):
+        return [dict(r) for r in records if isinstance(r, Mapping)]
+    record = planner.get("record")
+    if isinstance(record, Mapping):
+        return [dict(record)]
+    return []
+
+
+def _profile_triggers(profile: Mapping[str, Any]) -> List[str]:
+    clues = profile.get("extracted_engineer_clues") if isinstance(profile.get("extracted_engineer_clues"), Mapping) else {}
+    filters = profile.get("facet_filters") if isinstance(profile.get("facet_filters"), Mapping) else {}
+
+    values: List[str] = [
+        "engineer query clarification",
+        "part number",
+        "partial identifier",
+        "NHA",
+        "ATA",
+        "fleet",
+        "IPC",
+        "CMM",
+        "SB",
+        "eligibility",
+        "applicability",
+        "effectivity",
+    ]
+
+    for key in (
+        "part_number_candidates",
+        "partial_identifier_candidates",
+        "nha_candidates",
+        "requested_doc_types",
+        "engine_candidates",
+        "fleet_candidates",
+        "ata_candidates",
+        "part_description_candidates",
+    ):
+        for value in _as_list(clues.get(key)):
+            if value:
+                values.append(str(value))
+
+    for key in ("document_type", "evidence_language", "fleet_or_aircraft", "ata"):
+        for value in _as_list(filters.get(key)):
+            if value:
+                values.append(str(value))
+
+    seen = set()
+    out: List[str] = []
+    for value in values:
+        clean = str(value).strip()
+        key = clean.lower()
+        if clean and key not in seen:
+            seen.add(key)
+            out.append(clean)
+    return out[:40]
+
+
+def engineer_query_clarification_profile_to_atom(
+    *,
+    profile: Mapping[str, Any],
+    question: str = "",
+    source_query_planner_path: str = "",
+    source_record_index: int = 0,
+) -> Dict[str, Any]:
+    """Convert a planner clarification profile into a guidance-only Engram atom."""
+    stable_payload = {
+        "question": question,
+        "profile_type": profile.get("profile_type"),
+        "extracted_engineer_clues": profile.get("extracted_engineer_clues"),
+        "facet_filters": profile.get("facet_filters"),
+        "risk_flags": profile.get("risk_flags"),
+    }
+    atom_id = "working_engineer_query_clarification_" + stable_hash(stable_payload)[:16]
+
+    payload = {
+        "question": question,
+        "profile_type": profile.get("profile_type") or "engineer_query_clarification_profile_v1",
+        "extracted_engineer_clues": profile.get("extracted_engineer_clues") or {},
+        "facet_filters": profile.get("facet_filters") or {},
+        "clarifying_questions": profile.get("clarifying_questions") or [],
+        "risk_flags": profile.get("risk_flags") or [],
+        "recommended_first_pass": profile.get("recommended_first_pass") or [],
+    }
+
+    return {
+        "atom_id": atom_id,
+        "memory_layer": "working_memory",
+        "memory_type": "engineer_query_clarification",
+        "proof_role": "guidance_only",
+        "title": "Engineer query clarification profile",
+        "rule": (
+            "Use extracted engineer clues, facet filters, clarifying questions, "
+            "and risk flags to narrow retrieval before answering. This is not "
+            "source proof; manual/source claims still require current proof_context citations."
+        ),
+        "triggers": _profile_triggers(profile),
+        "payload": payload,
+        "source_module": "trace_net_engineering_query_planner_v1",
+        "source_query_planner_path": source_query_planner_path,
+        "source_record_index": source_record_index,
+        "answer_permission": False,
+        "source_truth_mutation_allowed": False,
+        "can_be_used_as_proof": False,
+        "safety": {
+            "answer_permission": False,
+            "source_truth_mutation_allowed": False,
+            "can_be_used_as_proof": False,
+        },
+    }
+
+
+def extract_engineer_query_clarification_atoms(
+    query_planner_manifests: Optional[Sequence[Mapping[str, Any]]] = None,
+    *,
+    source_paths: Optional[Sequence[str]] = None,
+) -> List[Dict[str, Any]]:
+    atoms: List[Dict[str, Any]] = []
+    manifests = list(query_planner_manifests or [])
+    paths = list(source_paths or [])
+
+    for manifest_index, planner in enumerate(manifests):
+        source_path = paths[manifest_index] if manifest_index < len(paths) else ""
+        for record_index, record in enumerate(_collect_query_planner_records(planner)):
+            profile = record.get("engineer_clarification_profile")
+            if not isinstance(profile, Mapping):
+                continue
+            if profile.get("profile_type") != "engineer_query_clarification_profile_v1":
+                continue
+            atoms.append(engineer_query_clarification_profile_to_atom(
+                profile=profile,
+                question=str(record.get("question") or planner.get("question") or ""),
+                source_query_planner_path=source_path,
+                source_record_index=record_index,
+            ))
+
+    deduped: List[Dict[str, Any]] = []
+    seen = set()
+    for atom in atoms:
+        atom_id = str(atom.get("atom_id") or "")
+        if atom_id and atom_id not in seen:
+            seen.add(atom_id)
+            deduped.append(atom)
+    return deduped
+
+def build_layered_atoms(
+    core: Mapping[str, Any],
+    *,
+    source_core_path: str = "",
+    include_seed_atoms: bool = True,
+    query_planner_manifests: Optional[Sequence[Mapping[str, Any]]] = None,
+    query_planner_source_paths: Optional[Sequence[str]] = None,
+) -> List[Dict[str, Any]]:
     atoms = [normalize_atom(a, source_core_path=source_core_path) for a in extract_engram_atoms(core)]
+    atoms.extend(extract_engineer_query_clarification_atoms(
+        query_planner_manifests,
+        source_paths=query_planner_source_paths,
+    ))
     if include_seed_atoms:
         existing = {a["atom_id"] for a in atoms}
         for seed in seed_layer_atoms():
@@ -441,6 +599,18 @@ def validate_layered_manifest(
     return not errors, errors, metrics
 
 
+
+def load_query_planner_manifests(paths: Optional[Sequence[Any]] = None):
+    manifests: List[Dict[str, Any]] = []
+    source_paths: List[str] = []
+    for raw_path in paths or []:
+        p = Path(raw_path)
+        data = load_json(p)
+        if isinstance(data, Mapping):
+            manifests.append(dict(data))
+            source_paths.append(str(p))
+    return manifests, source_paths
+
 def build_memory_layer_manifest(
     *,
     engram_core_path: Path | str,
@@ -448,12 +618,17 @@ def build_memory_layer_manifest(
     include_seed_atoms: bool = True,
     min_atoms: int = 6,
     require_all_layers: bool = True,
-    max_unsafe: int = 0,
+    max_unsafe: int = 0,    query_planner_paths: Optional[Sequence[Any]] = None,
 ) -> Dict[str, Any]:
     core_path = Path(engram_core_path)
     out_dir = Path(output_dir)
     core = load_json(core_path)
+    query_planner_manifests, query_planner_source_paths = load_query_planner_manifests(query_planner_paths)
     atoms = build_layered_atoms(core if isinstance(core, Mapping) else {}, source_core_path=str(core_path), include_seed_atoms=include_seed_atoms)
+    atoms.extend(extract_engineer_query_clarification_atoms(
+        query_planner_manifests,
+        source_paths=query_planner_source_paths,
+    ))
     layer_counts = group_layer_counts(atoms)
     generated_at = utc_now_iso()
 
@@ -482,6 +657,8 @@ def build_memory_layer_manifest(
             "seed_atom_count": len(DEFAULT_LAYER_SEED_ATOMS) if include_seed_atoms else 0,
             "engram_memory_guidance_only_count": sum(1 for a in atoms if a.get("proof_role") == "guidance_only"),
             "working_memory_current_proof_context_count": sum(1 for a in atoms if a.get("proof_role") == "current_proof_context_only"),
+            "engineer_query_clarification_atom_count": sum(1 for a in atoms if a.get("memory_type") == "engineer_query_clarification"),
+            "source_query_planner_count": len(query_planner_manifests),
             "answer_permission_count": 0,
             "source_truth_mutation_allowed_count": 0,
             "postgres_write_attempt_count": 0,

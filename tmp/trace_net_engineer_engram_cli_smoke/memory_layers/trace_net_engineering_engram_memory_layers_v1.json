@@ -1,0 +1,242 @@
+{
+  "status": "TRACE_NET_ENGINEERING_ENGRAM_MEMORY_LAYERS_BUILT",
+  "module": "trace_net_engineering_engram_memory_layers_v1",
+  "version": "v1",
+  "generated_at": "2026-07-08T16:59:15Z",
+  "quality_status": "PASS",
+  "safety_contract": "no_db_writes_no_vector_writes_no_search_writes_no_source_truth_mutation_no_answer_permission",
+  "source_engram_core_path": "tmp\\trace_net_engineer_engram_cli_smoke\\empty_core.json",
+  "taxonomy": {
+    "memory_layers": [
+      "working_memory",
+      "semantic_memory",
+      "procedural_memory",
+      "episodic_memory",
+      "trait_memory",
+      "critic_memory"
+    ],
+    "layer_definitions": {
+      "working_memory": {
+        "description": "Current question, current context pack, and current proof citations used only at answer time.",
+        "runtime_role": "temporary_answer_state",
+        "proof_role": "current_proof_context_only",
+        "allowed_sources": [
+          "current_question",
+          "context_pack",
+          "proof_context",
+          "answer_citations"
+        ],
+        "must_not_persist_source_truth": true
+      },
+      "semantic_memory": {
+        "description": "Stable route and evidence-meaning knowledge, such as what visual, OCR, table, and summary records can and cannot prove.",
+        "runtime_role": "route_meaning_guidance",
+        "proof_role": "guidance_only",
+        "allowed_sources": [
+          "reviewed_policy",
+          "route_contract",
+          "eval_lesson",
+          "engram_core"
+        ],
+        "must_not_persist_source_truth": true
+      },
+      "procedural_memory": {
+        "description": "If/then behavior rules that control boundaries such as interchangeability, replacement approval, fit, effectivity, and unknown-part responses.",
+        "runtime_role": "answer_boundary_control",
+        "proof_role": "guidance_only",
+        "allowed_sources": [
+          "reviewed_policy",
+          "safety_rule",
+          "eval_lesson",
+          "engram_core"
+        ],
+        "must_not_persist_source_truth": true
+      },
+      "episodic_memory": {
+        "description": "Past runs, smoke-test outcomes, failures, repairs, and regression lessons.",
+        "runtime_role": "failure_recall_and_regression_prevention",
+        "proof_role": "guidance_only",
+        "allowed_sources": [
+          "eval_result",
+          "smoke_test",
+          "repair_note",
+          "engram_core"
+        ],
+        "must_not_persist_source_truth": true
+      },
+      "trait_memory": {
+        "description": "Stable engineering behavior profile: cautious, source-trace-first, useful, calm, and not overclaiming.",
+        "runtime_role": "consistent_engineering_style",
+        "proof_role": "guidance_only",
+        "allowed_sources": [
+          "reviewed_trait",
+          "style_rule",
+          "answer_shape",
+          "engram_core"
+        ],
+        "must_not_persist_source_truth": true
+      },
+      "critic_memory": {
+        "description": "Self-RAG and CRAG critique/repair lessons, including safe-but-too-generic drafts, retry patterns, and repair examples.",
+        "runtime_role": "draft_critique_and_repair",
+        "proof_role": "guidance_only",
+        "allowed_sources": [
+          "critic_lesson",
+          "repair_lesson",
+          "eval_failure",
+          "engram_core"
+        ],
+        "must_not_persist_source_truth": true
+      }
+    },
+    "proof_boundary": "Engram memory is behavior guidance only. Manual facts must still come from current proof_context citations.",
+    "working_memory_note": "Working memory can carry current proof citations at answer time but is not persisted as source truth by this artifact."
+  },
+  "memory_atoms": [
+    {
+      "atom_id": "working_engineer_query_clarification_949cd861906b602e",
+      "memory_layer": "working_memory",
+      "memory_type": "engineer_query_clarification",
+      "proof_role": "guidance_only",
+      "title": "Engineer query clarification profile",
+      "rule": "Use extracted engineer clues, facet filters, clarifying questions, and risk flags to narrow retrieval before answering. This is not source proof; manual/source claims still require current proof_context citations.",
+      "triggers": [
+        "engineer query clarification",
+        "part number",
+        "partial identifier",
+        "NHA",
+        "ATA",
+        "fleet",
+        "IPC",
+        "CMM",
+        "SB",
+        "eligibility",
+        "applicability",
+        "effectivity",
+        "DF250040-501",
+        "A319",
+        "A320",
+        "A321",
+        "B737",
+        "B787",
+        "25",
+        "paper towel dispenser",
+        "approved installation",
+        "interchangeability"
+      ],
+      "payload": {
+        "question": "Looking for elegibility documents for PN DF250040-501 Paper towel dispenser. Likely used on a mixed fleet of A319-321 and boeing 737-787",
+        "profile_type": "engineer_query_clarification_profile_v1",
+        "extracted_engineer_clues": {
+          "part_number_candidates": [
+            "DF250040-501"
+          ],
+          "partial_identifier_candidates": [],
+          "nha_candidates": [],
+          "requested_doc_types": [],
+          "engine_candidates": [],
+          "fleet_candidates": [
+            "A319",
+            "A320",
+            "A321",
+            "B737",
+            "B787"
+          ],
+          "ata_candidates": [
+            "25"
+          ],
+          "part_description_candidates": [
+            "paper towel dispenser"
+          ],
+          "eligibility_or_applicability_intent": true,
+          "nha_intent": false
+        },
+        "facet_filters": {
+          "part_number": [
+            "DF250040-501"
+          ],
+          "partial_identifier": [],
+          "nha": [],
+          "document_type": [],
+          "engine": [],
+          "fleet_or_aircraft": [
+            "A319",
+            "A320",
+            "A321",
+            "B737",
+            "B787"
+          ],
+          "ata": [
+            "25"
+          ],
+          "description": [
+            "paper towel dispenser"
+          ],
+          "evidence_language": [
+            "eligibility",
+            "applicability",
+            "effectivity",
+            "approved installation",
+            "interchangeability"
+          ]
+        },
+        "clarifying_questions": [
+          "Do you need eligibility by aircraft platform, document type, or approval/effectivity proof?",
+          "Should I narrow by fleet/platform first: A319, A320, A321, B737, B787?"
+        ],
+        "risk_flags": [
+          "source_evidence_required",
+          "eligibility_requires_authority_not_mention_only",
+          "fleet_or_platform_filter_required"
+        ],
+        "recommended_first_pass": [
+          "use exact part number when available",
+          "use partial/NHA filters only as narrowing hints",
+          "use V2/V3 summaries as routing guidance only",
+          "resolve candidate result back to OCR/table/visual/source-trace evidence before answering"
+        ]
+      },
+      "source_module": "trace_net_engineering_query_planner_v1",
+      "source_query_planner_path": "tmp\\trace_net_engineer_engram_cli_smoke\\planner\\trace_net_engineering_query_planner_v1.json",
+      "source_record_index": 0,
+      "answer_permission": false,
+      "source_truth_mutation_allowed": false,
+      "can_be_used_as_proof": false,
+      "safety": {
+        "answer_permission": false,
+        "source_truth_mutation_allowed": false,
+        "can_be_used_as_proof": false
+      }
+    }
+  ],
+  "summary": {
+    "module": "trace_net_engineering_engram_memory_layers_v1",
+    "version": "v1",
+    "memory_layer_count": 6,
+    "memory_atom_count": 1,
+    "layer_counts": {
+      "working_memory": 1,
+      "semantic_memory": 0,
+      "procedural_memory": 0,
+      "episodic_memory": 0,
+      "trait_memory": 0,
+      "critic_memory": 0
+    },
+    "source_engram_atom_count": 0,
+    "seed_atom_count": 0,
+    "engram_memory_guidance_only_count": 1,
+    "working_memory_current_proof_context_count": 0,
+    "engineer_query_clarification_atom_count": 1,
+    "source_query_planner_count": 1,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_finding_count": 0,
+    "unsafe_findings": []
+  },
+  "quality_errors": []
+}

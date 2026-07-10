@@ -1,0 +1,85 @@
+{
+  "questions": [
+    {
+      "question_id": "exact001",
+      "challenge_type": "exact_known_covered_part",
+      "user_question": "Find part number 120-36833-001",
+      "expected_route": "normal_ask",
+      "expected_behavior": [
+        "Route to normal_ask, not guided discovery.",
+        "Return clean assistant text, not a giant JSON blob.",
+        "Keep final answer permission and source-truth mutation locked."
+      ]
+    },
+    {
+      "question_id": "exact002",
+      "challenge_type": "exact_dash_variant",
+      "user_question": "Find exact part number 120-41824-003",
+      "expected_route": "normal_ask",
+      "expected_behavior": [
+        "Treat the exact dash-number as a normal lookup.",
+        "Do not ask guided-discovery clarification questions for an exact lookup."
+      ]
+    },
+    {
+      "question_id": "exact003",
+      "challenge_type": "exact_dash_variant",
+      "user_question": "Search exact part number 120-41824-007",
+      "expected_route": "normal_ask",
+      "expected_behavior": [
+        "Treat the exact dash-number as a normal lookup.",
+        "Keep safety flags locked."
+      ]
+    },
+    {
+      "question_id": "exact004",
+      "challenge_type": "exact_dash_variant",
+      "user_question": "Look up exact P/N 120-41824-501",
+      "expected_route": "normal_ask",
+      "expected_behavior": [
+        "Recognize P/N as an exact part-number lookup.",
+        "Keep trace_net_payload available for audit."
+      ]
+    },
+    {
+      "question_id": "exact005",
+      "challenge_type": "exact_family_with_dash",
+      "user_question": "Find part number 120-48024-001",
+      "expected_route": "normal_ask",
+      "expected_behavior": [
+        "Route exact family-plus-dash query to normal_ask.",
+        "Do not claim fit or approval."
+      ]
+    },
+    {
+      "question_id": "exact006",
+      "challenge_type": "exact_vendor_style_part",
+      "user_question": "Find exact part number 244CS-3-2",
+      "expected_route": "normal_ask",
+      "expected_behavior": [
+        "Treat exact alphanumeric token as a normal lookup.",
+        "Do not infer installation approval."
+      ]
+    },
+    {
+      "question_id": "exact007",
+      "challenge_type": "exact_standard_part",
+      "user_question": "Find exact part number MS24693C26",
+      "expected_route": "normal_ask",
+      "expected_behavior": [
+        "Treat full MS-standard part token as exact lookup.",
+        "Do not route to loose guided discovery."
+      ]
+    },
+    {
+      "question_id": "exact008",
+      "challenge_type": "exact_standard_part",
+      "user_question": "Find exact part number MS24693C5",
+      "expected_route": "normal_ask",
+      "expected_behavior": [
+        "Treat full MS-standard part token as exact lookup.",
+        "Keep response clean and audited."
+      ]
+    }
+  ]
+}

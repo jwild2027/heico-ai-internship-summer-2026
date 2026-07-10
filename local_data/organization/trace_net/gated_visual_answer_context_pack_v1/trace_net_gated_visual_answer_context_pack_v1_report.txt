@@ -1,0 +1,49 @@
+TRACE-Net gated visual answer context pack v1
+quality_status: PASS
+retrieval documents: 104
+review-only documents available but not used: 81
+
+QUERY: seat assembly diagram callouts
+  status: visual_context_candidates_found
+  citations: 8
+  - t_p_120_1176_p000499 score=8.5468 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000446 score=7.717 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000172 score=7.7098 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000202 score=7.7098 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000325 score=7.7098 route=image_visual subtype=confirmed_diagram_dominant
+
+QUERY: figure passenger seat assembly parts
+  status: visual_context_candidates_found
+  citations: 8
+  - t_p_120_1176_p000499 score=9.0585 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000172 score=8.9195 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000104 score=8.9056 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000114 score=8.9056 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000236 score=8.9056 route=image_visual subtype=confirmed_diagram_dominant
+
+QUERY: visual diagram part numbers nomenclature
+  status: visual_context_candidates_found
+  citations: 8
+  - t_p_120_1176_p000184 score=7.6961 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000248 score=7.6961 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000275 score=7.6961 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000357 score=7.6961 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000117 score=7.6896 route=image_visual subtype=confirmed_diagram_dominant
+
+QUERY: technical drawing callout item reference
+  status: visual_context_candidates_found
+  citations: 8
+  - t_p_120_1176_p000019 score=7.584 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000017 score=7.5803 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000491 score=7.5734 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000499 score=7.5234 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000081 score=4.5 route=image_visual subtype=confirmed_diagram_dominant
+
+QUERY: exploded view assembly figure
+  status: visual_context_candidates_found
+  citations: 8
+  - t_p_120_1176_p000499 score=5.5234 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000454 score=5.116 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000492 score=5.1122 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000446 score=5.1085 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000172 score=5.1049 route=image_visual subtype=confirmed_diagram_dominant

@@ -1,0 +1,18 @@
+{
+  "engram_memory_retrieval": {
+    "answer_permission": false,
+    "engram_is_proof": false,
+    "guidance_overlay_text": "TRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: query_03c00bf1bc3dc91140ef9ea1\ntask_type: engram_memory_retrieval\nquery: eligibility documents DF250040-501 paper towel dispenser A319 A320 A321 B737 B787 ATA 25\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\nRetrieved behavior atoms:\n- [working_engineer_query_clarification_949cd861906b602e] layer=working_memory proof_role=guidance_only score=-0.015655: atom_id: working_engineer_query_clarification_949cd861906b602e | title: Engineer query clarification profile | memory_layer: working_memory | memory_type: engineer_query_clarification | rule: Use extracted engineer clues, facet filters, clarifying questions, and risk flags to narrow retrieval before answering. This is not source proof; manual/source claims still require current proof_context citations. | proof_rol...\n\nRequired boundary: if proof_context is missing or insufficient, answer not found / not source-trace-ready and explain the limitation.\nForbidden: do not infer interchangeability, fit, installation safety, effectivity, or replacement approval from Engram memory.",
+    "proof_boundary": "Retrieved Engram guidance shapes answer behavior only; factual manual claims require current proof_context citations.",
+    "query_id": "query_03c00bf1bc3dc91140ef9ea1",
+    "selected_layers": [
+      "working_memory"
+    ],
+    "selected_proof_roles": [
+      "guidance_only"
+    ],
+    "target_answer_runner_question_ids": [
+      "query_03c00bf1bc3dc91140ef9ea1"
+    ]
+  }
+}

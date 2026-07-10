@@ -1,0 +1,300 @@
+tiff/page_context_v2.py:33:    "source_truth_mutation_allowed": False,
+tiff/page_context_v2.py:247:    "source_truth_mutation_allowed": false
+tiff/page_context_v2.py:574:        "source_truth_mutation_records": count_if(lambda r: bool(r.get("authority", {}).get("source_truth_mutation_allowed"))),
+tiff/page_context_v2_quality.py:36:        "source_truth_mutation_records": sum(1 for r in records if r.get("authority", {}).get("source_truth_mutation_allowed")),
+tiff/trace_net_ai_trace_pack_v1.py:470:                "no_answer_permission": True,
+tiff/trace_net_ai_trace_pack_v1.py:476:            "source_truth_mutation_allowed": False,
+tiff/trace_net_ai_trace_pack_v1.py:522:            "no_answer_permission": True,
+tiff/trace_net_ai_trace_pack_v1.py:568:        "source_truth_mutation_allowed_count": 0,
+tiff/trace_net_ai_trace_pack_v1.py:585:    max_source_truth_mutation_allowed: int = 0
+tiff/trace_net_ai_trace_pack_v1.py:591:    require_no_answer_permission: bool = False
+tiff/trace_net_ai_trace_pack_v1.py:615:    require_max("source_truth_mutation_allowed_count", thresholds.max_source_truth_mutation_allowed)
+tiff/trace_net_ai_trace_pack_v1.py:629:    if thresholds.require_no_answer_permission:
+tiff/trace_net_ai_trace_pack_v1.py:700:        "source_truth_mutation_allowed_count",
+tiff/trace_net_ai_trace_pack_v1.py:753:        max_source_truth_mutation_allowed=args.max_source_truth_mutation_allowed,
+tiff/trace_net_ai_trace_pack_v1.py:759:        require_no_answer_permission=args.require_no_answer_permission,
+tiff/trace_net_anchor_aware_graph_leiden_expander_v1.py:39:    "answer_permission": False,
+tiff/trace_net_anchor_aware_graph_leiden_expander_v1.py:42:    "source_truth_mutation_allowed": False,
+tiff/trace_net_anchor_aware_graph_leiden_expander_v1.py:449:    lines.append("SAFETY: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true.")
+tiff/trace_net_anchor_aware_graph_leiden_expander_v1.py:534:        r["answer_permission"] = False
+tiff/trace_net_anchor_aware_graph_leiden_expander_v1.py:537:        r["source_truth_mutation_allowed"] = False
+tiff/trace_net_anchor_aware_graph_leiden_expander_v1.py:608:            "answer_permission": False,
+tiff/trace_net_anchor_aware_graph_leiden_expander_v1.py:611:            "source_truth_mutation_allowed": False,
+tiff/trace_net_anchor_aware_graph_leiden_expander_v1.py:651:    require_no_answer_permission: bool = False,
+tiff/trace_net_anchor_aware_graph_leiden_expander_v1.py:684:    if require_no_answer_permission:
+tiff/trace_net_anchor_aware_graph_leiden_expander_v1.py:685:        fail_if(summary.get("answer_permission_count", 0) != 0, "require_no_answer_permission")
+tiff/trace_net_anchor_aware_graph_leiden_expander_v1.py:687:        fail_if(summary.get("source_truth_mutation_allowed_count", 0) != 0, "require_no_source_truth_mutation")
+tiff/trace_net_anchor_aware_graph_leiden_expander_v1.py:762:        require_no_answer_permission=args.require_no_answer_permission,
+tiff/trace_net_answer_claim_critic_v1.py:248:    if as_bool(claim.get("source_truth_mutation_allowed")) or as_bool(claim.get("can_mutate_source_truth")):
+tiff/trace_net_answer_claim_critic_v1.py:295:        "source_truth_mutation_allowed": False,
+tiff/trace_net_answer_claim_critic_v1.py:394:    if as_int(result.get("source_truth_mutation_allowed_count")) or as_bool(result.get("source_truth_mutation_allowed")):
+tiff/trace_net_answer_claim_critic_v1.py:456:        "source_truth_mutation_allowed_count": as_int(result.get("source_truth_mutation_allowed_count")),
+tiff/trace_net_answer_claim_critic_v1.py:460:        "source_truth_mutation_allowed": False,
+tiff/trace_net_answer_claim_critic_v1.py:527:    source_truth_mutation_allowed = sum(1 for r in records if as_bool(r.get("source_truth_mutation_allowed")) or as_bool(r.get("can_mutate_source_truth")))
+tiff/trace_net_answer_claim_critic_v1.py:528:    source_truth_mutation_allowed += sum(1 for c in claims if as_bool(c.get("source_truth_mutation_allowed")) or as_bool(c.get("can_mutate_source_truth")))
+tiff/trace_net_answer_claim_critic_v1.py:579:        "source_truth_mutation_allowed_count": source_truth_mutation_allowed,
+tiff/trace_net_answer_claim_critic_v1.py:601:        source_truth_mutation_allowed,
+tiff/trace_net_answer_claim_critic_v1.py:628:        "source_truth_mutation_allowed_zero": as_int(summary.get("source_truth_mutation_allowed_count")) == 0,
+tiff/trace_net_answer_claim_critic_v1.py:679:        "source_truth_mutation_allowed_count",
+tiff/trace_net_answer_claim_critic_v1.py:829:        "source_truth_mutation_allowed_count",
+tiff/trace_net_answer_claim_critic_v1.py:870:        "source_truth_mutation_allowed_count",
+tiff/trace_net_answer_context_anchor_injector_v1.py:50:        "proof_role",
+tiff/trace_net_answer_context_anchor_injector_v1.py:123:        candidates = [r for r in _records(probe_payload, "records") if r.get("proof_role") == DIRECT_PROOF_ROLE]
+tiff/trace_net_answer_context_anchor_injector_v1.py:127:        if record.get("proof_role") != DIRECT_PROOF_ROLE:
+tiff/trace_net_answer_context_anchor_injector_v1.py:147:            if r.get("proof_role") in REFERENCE_ROLES or r.get("hit_class") == "trusted_metadata_hit"
+tiff/trace_net_answer_context_anchor_injector_v1.py:205:        "proof_role": source.get("proof_role") or anchor_role,
+tiff/trace_net_answer_context_anchor_injector_v1.py:217:        "answer_permission": False,
+tiff/trace_net_answer_context_anchor_injector_v1.py:220:        "source_truth_mutation_allowed": False,
+tiff/trace_net_answer_context_anchor_injector_v1.py:241:        "proof_role": source.get("proof_role") or source.get("exact_row_proof_status") or source.get("graph_context_role"),
+tiff/trace_net_answer_context_anchor_injector_v1.py:253:        "answer_permission": False,
+tiff/trace_net_answer_context_anchor_injector_v1.py:256:        "source_truth_mutation_allowed": False,
+tiff/trace_net_answer_context_anchor_injector_v1.py:319:        "SAFETY: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true.",
+tiff/trace_net_answer_context_anchor_injector_v1.py:434:    answer_permission_count = sum(1 for r in records if r.get("answer_permission"))
+tiff/trace_net_answer_context_anchor_injector_v1.py:435:    source_truth_mutation_allowed_count = sum(1 for r in records if r.get("source_truth_mutation_allowed"))
+tiff/trace_net_answer_context_anchor_injector_v1.py:475:        "answer_permission_count": answer_permission_count,
+tiff/trace_net_answer_context_anchor_injector_v1.py:478:        "source_truth_mutation_allowed_count": source_truth_mutation_allowed_count,
+tiff/trace_net_answer_context_anchor_injector_v1.py:513:        f"Safety: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true.\n",
+tiff/trace_net_answer_context_anchor_injector_v1.py:540:    require_no_answer_permission: bool = False,
+tiff/trace_net_answer_context_anchor_injector_v1.py:569:    if require_no_answer_permission and (summary.get("answer_permission_count") or 0) > 0:
+tiff/trace_net_answer_context_anchor_injector_v1.py:570:        failures.append("require_no_answer_permission")
+tiff/trace_net_answer_context_anchor_injector_v1.py:571:    if require_no_source_truth_mutation and (summary.get("source_truth_mutation_allowed_count") or 0) > 0:
+tiff/trace_net_answer_context_anchor_injector_v1.py:647:        require_no_answer_permission=args.require_no_answer_permission,
+tiff/trace_net_answer_context_engineering_pack_v1.py:195:        "answer_permission": False,
+tiff/trace_net_answer_context_engineering_pack_v1.py:196:        "source_truth_mutation_allowed": False,
+tiff/trace_net_answer_context_engineering_pack_v1.py:315:    lines.append("SAFETY: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true.")
+tiff/trace_net_answer_context_engineering_pack_v1.py:374:        if record.get("answer_permission") is not False:
+tiff/trace_net_answer_context_engineering_pack_v1.py:375:            violations.append("answer_permission_not_false")
+tiff/trace_net_answer_context_engineering_pack_v1.py:376:        if record.get("source_truth_mutation_allowed") is not False:
+tiff/trace_net_answer_context_engineering_pack_v1.py:390:    answer_permission_count = 0
+tiff/trace_net_answer_context_engineering_pack_v1.py:391:    source_truth_mutation_allowed_count = 0
+tiff/trace_net_answer_context_engineering_pack_v1.py:410:    if answer_permission_count:
+tiff/trace_net_answer_context_engineering_pack_v1.py:412:    if source_truth_mutation_allowed_count:
+tiff/trace_net_answer_context_engineering_pack_v1.py:440:        "answer_permission_count": answer_permission_count,
+tiff/trace_net_answer_context_engineering_pack_v1.py:443:        "source_truth_mutation_allowed_count": source_truth_mutation_allowed_count,
+tiff/trace_net_answer_context_engineering_pack_v1.py:474:            "answer_permission": False,
+tiff/trace_net_answer_context_engineering_pack_v1.py:475:            "source_truth_mutation_allowed": False,
+tiff/trace_net_answer_context_engineering_pack_v1.py:518:    require_no_answer_permission: bool = False,
+tiff/trace_net_answer_context_engineering_pack_v1.py:550:    if require_no_answer_permission and _to_int(summary.get("answer_permission_count"), 0) != 0:
+tiff/trace_net_answer_context_engineering_pack_v1.py:552:    if require_no_source_truth_mutation and _to_int(summary.get("source_truth_mutation_allowed_count"), 0) != 0:
+tiff/trace_net_answer_context_engineering_pack_v1.py:622:        require_no_answer_permission=args.require_no_answer_permission,
+tiff/trace_net_answer_context_evidence_enricher_v1.py:57:    "answer_permission_count",
+tiff/trace_net_answer_context_evidence_enricher_v1.py:58:    "source_truth_mutation_allowed_count",
+tiff/trace_net_answer_context_evidence_enricher_v1.py:380:    lines.append("SAFETY: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true.")
+tiff/trace_net_answer_context_evidence_enricher_v1.py:500:            "answer_permission": False,
+tiff/trace_net_answer_context_evidence_enricher_v1.py:503:            "source_truth_mutation_allowed": False,
+tiff/trace_net_answer_context_evidence_enricher_v1.py:567:        "answer_permission_count": 0,
+tiff/trace_net_answer_context_evidence_enricher_v1.py:570:        "source_truth_mutation_allowed_count": 0,
+tiff/trace_net_answer_context_evidence_enricher_v1.py:655:    require_no_answer_permission: bool = False,
+tiff/trace_net_answer_context_evidence_enricher_v1.py:693:    if require_no_answer_permission and count("answer_permission_count"):
+tiff/trace_net_answer_context_evidence_enricher_v1.py:694:        failures.append("answer_permission_count")
+tiff/trace_net_answer_context_evidence_enricher_v1.py:695:    if require_no_source_truth_mutation and count("source_truth_mutation_allowed_count"):
+tiff/trace_net_answer_context_evidence_enricher_v1.py:696:        failures.append("source_truth_mutation_allowed_count")
+tiff/trace_net_answer_context_evidence_enricher_v1.py:770:        require_no_answer_permission=args.require_no_answer_permission,
+tiff/trace_net_answer_context_exact_row_proof_v1.py:34:    "answer_permission",
+tiff/trace_net_answer_context_exact_row_proof_v1.py:37:    "source_truth_mutation_allowed",
+tiff/trace_net_answer_context_exact_row_proof_v1.py:424:    lines.append("SAFETY: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true.")
+tiff/trace_net_answer_context_exact_row_proof_v1.py:519:                "answer_permission": False,
+tiff/trace_net_answer_context_exact_row_proof_v1.py:522:                "source_truth_mutation_allowed": False,
+tiff/trace_net_answer_context_exact_row_proof_v1.py:590:        "answer_permission_count": 0,
+tiff/trace_net_answer_context_exact_row_proof_v1.py:593:        "source_truth_mutation_allowed_count": 0,
+tiff/trace_net_answer_context_exact_row_proof_v1.py:708:    require_no_answer_permission: bool = False,
+tiff/trace_net_answer_context_exact_row_proof_v1.py:738:    if require_no_answer_permission:
+tiff/trace_net_answer_context_exact_row_proof_v1.py:739:        fail_if(summary.get("answer_permission_count", 0) != 0 or summary.get("can_answer_directly_count", 0) != 0 or summary.get("can_prove_claims_count", 0) != 0, "answer_permission")
+tiff/trace_net_answer_context_exact_row_proof_v1.py:741:        fail_if(summary.get("source_truth_mutation_allowed_count", 0) != 0, "source_truth_mutation")
+tiff/trace_net_answer_context_graph_leiden_expander_v1.py:104:    "answer_permission_count",
+tiff/trace_net_answer_context_graph_leiden_expander_v1.py:105:    "source_truth_mutation_allowed_count",
+tiff/trace_net_answer_context_graph_leiden_expander_v1.py:535:    lines.extend(["", "SAFETY: answer_permission=false; source_truth_mutation_allowed=false; dry_run_only=true."])
+tiff/trace_net_answer_context_graph_leiden_expander_v1.py:640:                "answer_permission": False,
+tiff/trace_net_answer_context_graph_leiden_expander_v1.py:643:                "source_truth_mutation_allowed": False,
+tiff/trace_net_answer_context_graph_leiden_expander_v1.py:727:        "answer_permission_count": 0,
+tiff/trace_net_answer_context_graph_leiden_expander_v1.py:730:        "source_truth_mutation_allowed_count": 0,
+tiff/trace_net_answer_context_graph_leiden_expander_v1.py:817:    require_no_answer_permission: bool = False,
+tiff/trace_net_answer_context_graph_leiden_expander_v1.py:854:    if require_no_answer_permission and count("answer_permission_count"):
+tiff/trace_net_answer_context_graph_leiden_expander_v1.py:855:        failures.append("answer_permission_count")
+tiff/trace_net_answer_context_graph_leiden_expander_v1.py:856:    if require_no_source_truth_mutation and count("source_truth_mutation_allowed_count"):
+tiff/trace_net_answer_context_graph_leiden_expander_v1.py:857:        failures.append("source_truth_mutation_allowed_count")
+tiff/trace_net_answer_context_graph_leiden_expander_v1.py:933:        require_no_answer_permission=args.require_no_answer_permission,
+tiff/trace_net_answer_context_pack_v1.py:842:        "source_truth_mutation_allowed_count": sum(1 for record in records if as_bool(record.get("can_mutate_source_truth"), default=False)),
+tiff/trace_net_answer_context_pack_v1.py:913:        "source_truth_mutation_allowed_count",
+tiff/trace_net_answer_context_pack_v1.py:947:        f"- Source-truth mutation allowed: `{summary.get('source_truth_mutation_allowed_count')}`",
+tiff/trace_net_answer_context_pack_v1.py:1319:        "source_truth_mutation_allowed_count",
+tiff/trace_net_answer_context_pack_v1.py:1366:        "source_truth_mutation_allowed_count",
+tiff/trace_net_answer_quality_gate_v1.py:192:        if record.get("proof_strength") in proofs or record.get("proof_role") in proofs:
+tiff/trace_net_answer_quality_gate_v1.py:373:            proof_strength=str(record.get("proof_strength") or record.get("proof_role") or ""),
+tiff/trace_net_answer_quality_gate_v1.py:380:        "answer_permission_count": 0,
+tiff/trace_net_answer_quality_gate_v1.py:383:        "source_truth_mutation_allowed_count": 0,
+tiff/trace_net_answer_quality_gate_v1.py:530:    require_no_answer_permission: bool = False,
+tiff/trace_net_answer_quality_gate_v1.py:570:    if require_no_answer_permission:
+tiff/trace_net_answer_quality_gate_v1.py:571:        require((summary.get("answer_permission_count") or 0) == 0, "answer_permission_count is not zero")
+tiff/trace_net_answer_quality_gate_v1.py:575:        require((summary.get("source_truth_mutation_allowed_count") or 0) == 0, "source_truth_mutation_allowed_count is not zero")
+tiff/trace_net_answer_quality_gate_v1.py:651:        require_no_answer_permission=args.require_no_answer_permission,
+tiff/trace_net_artifact_dependency_registry_v1.py:404:    source_truth_count = count_summary_flags(summary, "source_truth_mutation_allowed_count") + count_summary_flags(summary, "source_truth_mutations_performed")
+tiff/trace_net_artifact_dependency_registry_v1.py:431:        "source_truth_mutation_allowed_count": source_truth_count,
+tiff/trace_net_artifact_dependency_registry_v1.py:436:        "source_truth_mutation_allowed": False,
+tiff/trace_net_artifact_dependency_registry_v1.py:474:                    "source_truth_mutation_allowed_count": 0,
+tiff/trace_net_artifact_dependency_registry_v1.py:479:                    "source_truth_mutation_allowed": False,
+tiff/trace_net_artifact_dependency_registry_v1.py:526:                    "source_truth_mutation_allowed": False,
+tiff/trace_net_artifact_dependency_registry_v1.py:644:        "source_truth_mutation_allowed_count": sum(int(r.get("source_truth_mutation_allowed_count") or 0) for r in records),
+tiff/trace_net_artifact_dependency_registry_v1.py:681:        "source_truth_mutation_allowed_count",
+tiff/trace_net_artifact_dependency_registry_v1.py:727:        "source_truth_mutation_allowed_count",
+tiff/trace_net_artifact_dependency_registry_v1.py:905:        "source_truth_mutation_allowed_count",
+tiff/trace_net_artifact_detector_v1.py:75:    "answer_permission_count",
+tiff/trace_net_artifact_detector_v1.py:78:    "source_truth_mutation_allowed_count",
+tiff/trace_net_artifact_detector_v1.py:256:        "answer_permission_count",
+tiff/trace_net_artifact_detector_v1.py:259:        "source_truth_mutation_allowed_count",
+tiff/trace_net_artifact_detector_v1.py:360:        "answer_permission_count": counters.get("answer_permission_count", 0),
+tiff/trace_net_artifact_detector_v1.py:363:        "source_truth_mutation_allowed_count": counters.get("source_truth_mutation_allowed_count", 0),
+tiff/trace_net_artifact_detector_v1.py:466:            "answer_permission": False,
+tiff/trace_net_artifact_detector_v1.py:469:            "source_truth_mutation_allowed": False,
+tiff/trace_net_artifact_detector_v1.py:506:            "answer_permission": False,
+tiff/trace_net_artifact_detector_v1.py:509:            "source_truth_mutation_allowed": False,
+tiff/trace_net_artifact_detector_v1.py:537:            "answer_permission": False,
+tiff/trace_net_artifact_detector_v1.py:540:            "source_truth_mutation_allowed": False,
+tiff/trace_net_artifact_detector_v1.py:577:    safe_for_routing_answer_permission_count = sum(
+tiff/trace_net_artifact_detector_v1.py:578:        _safe_int(card.get("answer_permission_count"))
+tiff/trace_net_artifact_detector_v1.py:582:    safe_for_routing_source_truth_mutation_allowed_count = sum(
+tiff/trace_net_artifact_detector_v1.py:583:        _safe_int(card.get("source_truth_mutation_allowed_count"))
+tiff/trace_net_artifact_detector_v1.py:588:    answer_permission_count = sum(_safe_int(card.get("answer_permission_count")) for card in artifact_cards)
+tiff/trace_net_artifact_detector_v1.py:591:    source_truth_mutation_allowed_count = sum(_safe_int(card.get("source_truth_mutation_allowed_count")) for card in artifact_cards)
+tiff/trace_net_artifact_detector_v1.py:603:        "safe_for_routing_answer_permission_count": safe_for_routing_answer_permission_count,
+tiff/trace_net_artifact_detector_v1.py:604:        "safe_for_routing_source_truth_mutation_allowed_count": safe_for_routing_source_truth_mutation_allowed_count,
+tiff/trace_net_artifact_detector_v1.py:615:        "answer_permission_count": answer_permission_count,
+tiff/trace_net_artifact_detector_v1.py:618:        "source_truth_mutation_allowed_count": source_truth_mutation_allowed_count,
+tiff/trace_net_artifact_detector_v1.py:679:        max_answer_permission_count=args.max_answer_permission_count,
+tiff/trace_net_artifact_detector_v1.py:680:        max_source_truth_mutation_allowed=args.max_source_truth_mutation_allowed,
+tiff/trace_net_artifact_detector_v1.py:682:        require_no_answer_permission=args.require_no_answer_permission,
+tiff/trace_net_artifact_detector_v1.py:720:        "answer_permission_count",
+tiff/trace_net_artifact_detector_v1.py:723:        "source_truth_mutation_allowed_count",
+tiff/trace_net_artifact_detector_v1_quality.py:18:    max_answer_permission_count: int = 0
+tiff/trace_net_artifact_detector_v1_quality.py:19:    max_source_truth_mutation_allowed: int = 0
+tiff/trace_net_artifact_detector_v1_quality.py:21:    require_no_answer_permission: bool = False
+tiff/trace_net_artifact_detector_v1_quality.py:45:    safe_for_routing_answer_permission_count = _int(summary.get("safe_for_routing_answer_permission_count"))
+tiff/trace_net_artifact_detector_v1_quality.py:46:    safe_for_routing_source_truth_mutation_allowed_count = _int(summary.get("safe_for_routing_source_truth_mutation_allowed_count"))
+tiff/trace_net_artifact_detector_v1_quality.py:47:    answer_permission_count = _int(summary.get("answer_permission_count"))
+tiff/trace_net_artifact_detector_v1_quality.py:48:    source_truth_mutation_allowed_count = _int(summary.get("source_truth_mutation_allowed_count"))
+tiff/trace_net_artifact_detector_v1_quality.py:56:        "answer_permission_within_limit": safe_for_routing_answer_permission_count <= thresholds.max_answer_permission_count,
+tiff/trace_net_artifact_detector_v1_quality.py:57:        "source_truth_mutation_allowed_within_limit": safe_for_routing_source_truth_mutation_allowed_count <= thresholds.max_source_truth_mutation_allowed,
+tiff/trace_net_artifact_detector_v1_quality.py:61:    if thresholds.require_no_answer_permission:
+tiff/trace_net_artifact_detector_v1_quality.py:62:        checks["no_answer_permission"] = safe_for_routing_answer_permission_count == 0
+tiff/trace_net_artifact_detector_v1_quality.py:79:        "safe_for_routing_answer_permission_count": safe_for_routing_answer_permission_count,
+tiff/trace_net_artifact_detector_v1_quality.py:80:        "safe_for_routing_source_truth_mutation_allowed_count": safe_for_routing_source_truth_mutation_allowed_count,
+tiff/trace_net_artifact_detector_v1_quality.py:81:        "answer_permission_count": answer_permission_count,
+tiff/trace_net_artifact_detector_v1_quality.py:82:        "source_truth_mutation_allowed_count": source_truth_mutation_allowed_count,
+tiff/trace_net_artifact_dirty_planner_v1.py:37:    "source_truth_mutation_allowed_count",
+tiff/trace_net_artifact_dirty_planner_v1.py:646:            "answer_permission": False,
+tiff/trace_net_artifact_dirty_planner_v1.py:717:        "source_truth_mutation_allowed_count",
+tiff/trace_net_artifact_dirty_planner_v1.py:747:        "source_truth_mutation_allowed_count",
+tiff/trace_net_artifact_dirty_planner_v1.py:770:        "source_truth_mutation_allowed_count",
+tiff/trace_net_ask_api_dynamic_retrieval_v2.py:336:                "source_truth_mutation_allowed": False,
+tiff/trace_net_ask_api_dynamic_retrieval_v2.py:424:        "source_truth_mutation_allowed": False,
+tiff/trace_net_ask_api_dynamic_retrieval_v2.py:432:        "source_truth_mutation_allowed_count": 0,
+tiff/trace_net_ask_api_dynamic_retrieval_v2.py:464:            "source_truth_mutation_allowed": False,
+tiff/trace_net_ask_api_dynamic_retrieval_v2.py:543:        "source_truth_mutation_allowed_count": 0,
+tiff/trace_net_ask_api_dynamic_retrieval_v2.py:575:        "source_truth_mutation_allowed_zero": int(summary.get("source_truth_mutation_allowed_count", 999)) == 0,
+tiff/trace_net_ask_api_dynamic_retrieval_v2.py:600:            "source_truth_mutation_allowed_count": summary.get("source_truth_mutation_allowed_count", 0),
+tiff/trace_net_ask_api_final_return_policy_hybrid_v3_v22.py:40:    "answer_permission_count",
+tiff/trace_net_ask_api_final_return_policy_hybrid_v3_v22.py:44:    "source_truth_mutation_allowed_count",
+tiff/trace_net_ask_api_final_return_policy_hybrid_v3_v22.py:264:    if as_bool(group.get("source_truth_mutation_allowed"), False):
+tiff/trace_net_ask_api_final_return_policy_hybrid_v3_v22.py:266:    if as_bool(group.get("answer_permission"), False):
+tiff/trace_net_ask_api_final_return_policy_hybrid_v3_v22.py:285:        "source_truth_mutation_allowed": False,
+tiff/trace_net_ask_api_final_return_policy_hybrid_v3_v22.py:345:        "source_truth_mutation_allowed_zero": as_int(summary.get("source_truth_mutation_allowed_count"), 0) == 0,
+tiff/trace_net_ask_api_final_return_policy_hybrid_v3_v22.py:346:        "answer_permission_zero_from_hybrid_groups": as_int(summary.get("answer_permission_count"), 0) == 0,
+tiff/trace_net_ask_api_final_return_policy_hybrid_v3_v22.py:484:        "source_truth_mutation_allowed_count": 0,
+tiff/trace_net_ask_api_final_return_policy_v21.py:80:    "source_truth_mutation_allowed_count",
+tiff/trace_net_ask_api_final_return_policy_v21.py:296:        if as_bool(record.get("source_truth_mutation_allowed"), False):
+tiff/trace_net_ask_api_final_return_policy_v21.py:297:            counters["source_truth_mutation_allowed_count"] += 1
+tiff/trace_net_ask_api_final_return_policy_v21.py:299:            counters["source_truth_mutation_allowed_count"] += 1
+tiff/trace_net_ask_api_final_return_policy_v21.py:477:        "source_truth_mutation_allowed": False,
+tiff/trace_net_ask_api_final_return_policy_v21.py:483:        "source_truth_mutation_allowed_count": counters.get("source_truth_mutation_allowed_count", 0),
+tiff/trace_net_ask_api_final_return_policy_v21.py:572:        "source_truth_mutation_allowed_count": sum(as_int(r.get("source_truth_mutation_allowed_count", 0)) for r in records),
+tiff/trace_net_ask_api_final_return_policy_v21.py:588:    if summary["can_answer_directly_count"] or summary["can_prove_claims_count"] or summary["source_truth_mutation_allowed_count"]:
+tiff/trace_net_ask_api_final_return_policy_v21.py:652:        "source_truth_mutation_allowed_count",
+tiff/trace_net_ask_api_final_return_policy_v21.py:692:        "source_truth_mutation_allowed_count": as_int(summary.get("source_truth_mutation_allowed_count", 0)),
+tiff/trace_net_ask_api_final_return_policy_v21.py:744:        "source_truth_mutation_allowed_count",
+tiff/trace_net_ask_api_final_return_policy_v21.py:803:                    "source_truth_mutation_allowed": False,
+tiff/trace_net_ask_api_final_return_policy_v21.py:830:                "source_truth_mutation_allowed": False,
+tiff/trace_net_ask_api_final_return_policy_v21.py:835:                "source_truth_mutation_allowed_count": record.get("source_truth_mutation_allowed_count", 0),
+tiff/trace_net_ask_api_final_return_policy_v21.py:1001:        "source_truth_mutation_allowed_count",
+tiff/trace_net_ask_api_hybrid_v3_routing_v1.py:305:                "source_truth_mutation_allowed": False,
+tiff/trace_net_ask_api_hybrid_v3_routing_v1.py:396:        "source_truth_mutation_allowed": False,
+tiff/trace_net_ask_api_hybrid_v3_routing_v1.py:405:        "source_truth_mutation_allowed_count": 0,
+tiff/trace_net_ask_api_hybrid_v3_routing_v1.py:427:            "source_truth_mutation_allowed": False,
+tiff/trace_net_ask_api_hybrid_v3_routing_v1.py:500:        "source_truth_mutation_allowed_count": 0,
+tiff/trace_net_ask_api_hybrid_v3_routing_v1.py:533:        "source_truth_mutation_allowed_zero": int_value(summary.get("source_truth_mutation_allowed_count"), 999) == 0,
+tiff/trace_net_ask_api_hybrid_v3_routing_v1.py:564:            "source_truth_mutation_allowed_count": summary.get("source_truth_mutation_allowed_count", 0),
+tiff/trace_net_ask_api_v1.py:323:        "source_truth_mutation_allowed": False,
+tiff/trace_net_ask_api_v1.py:344:            "source_truth_mutation_allowed": False,
+tiff/trace_net_ask_api_v1.py:399:        "source_truth_mutation_allowed_false": True,
+tiff/trace_net_ask_api_v1.py:418:        "source_truth_mutation_allowed_count": 0,
+tiff/trace_net_ask_api_v1.py:447:    max_source_truth_mutation_allowed: int = 0,
+tiff/trace_net_ask_api_v1.py:453:        "source_truth_mutation_allowed_ok": int(summary.get("source_truth_mutation_allowed_count", 999)) <= max_source_truth_mutation_allowed,
+tiff/trace_net_ask_api_v1.py:471:            "source_truth_mutation_allowed_count": summary.get("source_truth_mutation_allowed_count", 0),
+tiff/trace_net_ask_final_gate_v1.py:241:            "source_truth_mutation_allowed_count": sum(1 for claim in claims if as_bool(claim.get("source_truth_mutation_allowed"), default=False) or as_bool(claim.get("can_mutate_source_truth"), default=False)),
+tiff/trace_net_ask_final_gate_v1.py:288:        and as_int(final_summary.get("source_truth_mutation_allowed_count")) == 0
+tiff/trace_net_ask_final_gate_v1.py:319:        "source_truth_mutation_allowed_count": as_int(final_summary.get("source_truth_mutation_allowed_count")),
+tiff/trace_net_ask_final_gate_v1.py:368:    add("no_source_truth_mutation", as_int(summary.get("source_truth_mutation_allowed_count")) == 0, summary.get("source_truth_mutation_allowed_count"), 0)
+tiff/trace_net_ask_final_gate_v1.py:674:        "source_truth_mutation_allowed_count",
+tiff/trace_net_ask_final_gate_v1.py:705:        "source_truth_mutation_allowed_count",
+tiff/trace_net_ask_hybrid_flag_v1.py:252:        and as_int(summary.get("case_source_truth_mutation_allowed_count")) == 0
+tiff/trace_net_ask_hybrid_flag_v1.py:420:        "source_truth_mutation_allowed_group_count": sum(1 for g in groups if as_bool(g.get("can_mutate_source_truth"), default=False)),
+tiff/trace_net_ask_hybrid_flag_v1.py:457:        "source_truth_mutation_allowed_group_count",
+tiff/trace_net_ask_hybrid_flag_v1.py:515:    check("source_truth_mutation_blocked", as_int(summary.get("source_truth_mutation_allowed_group_count")) == 0, f"mutations={summary.get('source_truth_mutation_allowed_group_count')}")
+tiff/trace_net_ask_hybrid_flag_v1.py:579:            "source_truth_mutation_allowed_group_count": 0,
+tiff/trace_net_ask_hybrid_flag_v1.py:871:        "source_truth_mutation_allowed_group_count",
+tiff/trace_net_ask_hybrid_flag_v1.py:929:        "source_truth_mutation_allowed_group_count",
+tiff/trace_net_callout_visual_part_verifier_v1.py:509:        "source_truth_mutation_allowed_count": len(source_truth_mutation),
+tiff/trace_net_callout_visual_part_verifier_v1.py:537:        "max_source_truth_mutation_allowed": config.get("max_source_truth_mutation_allowed", 0),
+tiff/trace_net_callout_visual_part_verifier_v1.py:548:    check("source_truth_mutation_allowed_count", summary["source_truth_mutation_allowed_count"] <= thresholds["max_source_truth_mutation_allowed"], summary["source_truth_mutation_allowed_count"], f"<= {thresholds['max_source_truth_mutation_allowed']}")
+tiff/trace_net_callout_visual_part_verifier_v1.py:572:        f"- Source truth mutations allowed: {s.get('source_truth_mutation_allowed_count', 0)}",
+tiff/trace_net_callout_visual_part_verifier_v1.py:828:        "source_truth_mutation_allowed_count",
+tiff/trace_net_callout_visual_part_verifier_v1.py:850:        "source_truth_mutation_allowed_count",
+tiff/trace_net_canonical_runtime_map_v1.py:496:        "source_truth_mutation_allowed_count": 0,
+tiff/trace_net_canonical_runtime_map_v1.py:500:        "answer_permission_count": 0,
+tiff/trace_net_canonical_runtime_map_v1.py:658:        "source_truth_mutation_allowed_count",
+tiff/trace_net_canonical_runtime_map_v1.py:662:        "answer_permission_count",
+tiff/trace_net_category_aware_graph_ui_overlay_v1.py:33:    "source_truth_mutation_allowed",
+tiff/trace_net_category_aware_graph_ui_overlay_v1.py:159:    props.setdefault("source_truth_mutation_allowed", False)
+tiff/trace_net_category_aware_graph_ui_overlay_v1.py:480:    source_truth_mutation_allowed = 0
+tiff/trace_net_category_aware_graph_ui_overlay_v1.py:483:        if truthy(obj.get("source_truth_mutation_allowed")) or truthy(props.get("source_truth_mutation_allowed")):
+tiff/trace_net_category_aware_graph_ui_overlay_v1.py:484:            source_truth_mutation_allowed += 1
+tiff/trace_net_category_aware_graph_ui_overlay_v1.py:523:        "source_truth_mutation_allowed_count": source_truth_mutation_allowed,
+tiff/trace_net_category_aware_graph_ui_overlay_v1.py:562:    if int(summary.get("source_truth_mutation_allowed_count") or 0) != 0:
+tiff/trace_net_category_aware_graph_ui_overlay_v1.py:563:        issues.append("source_truth_mutation_allowed_count must be zero")
+tiff/trace_net_category_aware_graph_ui_overlay_v1.py:583:            "source_truth_mutation_allowed_count": summary.get("source_truth_mutation_allowed_count"),
+tiff/trace_net_category_aware_graph_ui_overlay_v1.py:612:        "source_truth_mutation_allowed_count",
+tiff/trace_net_category_aware_graph_ui_overlay_v1.py:722:        "source_truth_mutation_allowed_count",
+tiff/trace_net_category_aware_leiden_overlay_v1.py:34:    "source_truth_mutation_allowed",
+tiff/trace_net_category_aware_leiden_overlay_v1.py:192:    payload.setdefault("source_truth_mutation_allowed", False)
+tiff/trace_net_category_aware_leiden_overlay_v1.py:317:    profile["source_truth_mutation_allowed"] = False
+tiff/trace_net_category_aware_leiden_overlay_v1.py:500:            "source_truth_mutation_allowed": False,
+tiff/trace_net_category_aware_leiden_overlay_v1.py:549:                "source_truth_mutation_allowed": False,
+tiff/trace_net_category_aware_leiden_overlay_v1.py:716:    source_truth_mutation_allowed = 0
+tiff/trace_net_category_aware_leiden_overlay_v1.py:724:        if truthy(obj.get("source_truth_mutation_allowed")) or truthy(props.get("source_truth_mutation_allowed")):
+tiff/trace_net_category_aware_leiden_overlay_v1.py:725:            source_truth_mutation_allowed += 1
+tiff/trace_net_category_aware_leiden_overlay_v1.py:771:        "source_truth_mutation_allowed_count": source_truth_mutation_allowed,
+tiff/trace_net_category_aware_leiden_overlay_v1.py:814:        "source_truth_mutation_allowed_count",
+tiff/trace_net_category_aware_leiden_overlay_v1.py:835:            "source_truth_mutation_allowed_count": summary.get("source_truth_mutation_allowed_count"),
+tiff/trace_net_category_aware_leiden_overlay_v1.py:865:        "source_truth_mutation_allowed_count",
+tiff/trace_net_category_aware_leiden_overlay_v1.py:994:        "source_truth_mutation_allowed_count",
+tiff/trace_net_citation_answer_draft_v1.py:359:        "source_truth_mutation_allowed": False,
+tiff/trace_net_citation_answer_draft_v1.py:492:    source_truth_mutation_allowed_count = sum(1 for claim in claims if as_bool(claim.get("can_mutate_source_truth"), default=False) or as_bool(claim.get("source_truth_mutation_allowed"), default=False))
+tiff/trace_net_citation_answer_draft_v1.py:524:        "source_truth_mutation_allowed_count": source_truth_mutation_allowed_count,
+tiff/trace_net_citation_answer_draft_v1.py:577:        "source_truth_mutation_allowed_count",
+tiff/trace_net_citation_answer_draft_v1.py:631:        f"- Source-truth mutation allowed: `{summary.get('source_truth_mutation_allowed_count')}`",
+tiff/trace_net_citation_answer_draft_v1.py:874:    print(f" source_truth_mutation_allowed_count: {summary.get('source_truth_mutation_allowed_count')}")
+tiff/trace_net_citation_answer_draft_v1.py:913:        "source_truth_mutation_allowed_count",
+tiff/trace_net_claim_evidence_entailment_v1.py:98:    "source_truth_mutation_allowed_count",
+tiff/trace_net_claim_evidence_entailment_v1.py:719:        "source_truth_mutation_allowed_count": 0,
+tiff/trace_net_claim_evidence_entailment_v1.py:835:        "source_truth_mutation_allowed_count",
+tiff/trace_net_claim_evidence_entailment_v1.py:875:        "source_truth_mutation_allowed_count",
+tiff/trace_net_community_aware_retrieval_sim_v1.py:430:        "source_truth_mutation_allowed": as_bool(group.get("can_mutate_source_truth"), default=False),
+tiff/trace_net_community_aware_retrieval_sim_v1.py:520:        "source_truth_mutation_allowed_count": sum(1 for g in groups if as_bool(g.get("can_mutate_source_truth"), default=False) or as_bool(g.get("source_truth_mutation_allowed"), default=False)),
+tiff/trace_net_community_aware_retrieval_sim_v1.py:562:    add("source_truth_mutation_allowed_zero", int(summary.get("source_truth_mutation_allowed_count") or 0) == 0, summary.get("source_truth_mutation_allowed_count"), 0)
+tiff/trace_net_community_aware_retrieval_sim_v1.py:594:        "source_truth_mutation_allowed_count",
+tiff/trace_net_community_aware_retrieval_sim_v1.py:949:        "source_truth_mutation_allowed_count",
+tiff/trace_net_community_aware_retrieval_sim_v1.py:986:        "source_truth_mutation_allowed_count",
+tiff/trace_net_community_aware_retrieval_v2.py:32:    "source_truth_mutation_allowed_count",
+tiff/trace_net_community_aware_retrieval_v2.py:481:        "source_truth_mutation_allowed_count": 0,
+tiff/trace_net_community_aware_retrieval_v2.py:513:    at_most("source_truth_mutation_allowed_count", "max_source_truth_mutation_allowed")
+tiff/trace_net_community_aware_retrieval_v2.py:519:    if thresholds.get("require_no_answer_permission"):
+tiff/trace_net_community_aware_retrieval_v2.py:700:        "source_truth_mutation_allowed_count",

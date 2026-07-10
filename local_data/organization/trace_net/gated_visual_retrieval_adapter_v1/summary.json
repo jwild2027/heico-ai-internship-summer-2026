@@ -1,0 +1,61 @@
+{
+  "inputs": {
+    "confirmed_image_context_jsonl": "local_data\\organization\\trace_net\\visual_question_context_gate_v1\\trace_net_visual_question_context_gate_v1_confirmed_image_context.jsonl",
+    "visual_candidate_review_jsonl": "local_data\\organization\\trace_net\\visual_question_context_gate_v1\\trace_net_visual_question_context_gate_v1_visual_candidate_review.jsonl"
+  },
+  "module": "trace_net_gated_visual_retrieval_adapter_v1",
+  "outputs": {
+    "combined_documents_jsonl": "local_data\\organization\\trace_net\\gated_visual_retrieval_adapter_v1\\trace_net_gated_visual_retrieval_all_documents_v1.jsonl",
+    "review_only_documents_jsonl": "local_data\\organization\\trace_net\\gated_visual_retrieval_adapter_v1\\trace_net_gated_visual_candidate_review_documents_v1.jsonl",
+    "search_ready_documents_jsonl": "local_data\\organization\\trace_net\\gated_visual_retrieval_adapter_v1\\trace_net_gated_visual_retrieval_documents_v1.jsonl",
+    "summary": "local_data\\organization\\trace_net\\gated_visual_retrieval_adapter_v1\\summary.json"
+  },
+  "quality_failures": [
+    "pages_with_summary:7 < 100"
+  ],
+  "quality_status": "FAIL",
+  "safety_contract": {
+    "answer_permission": false,
+    "does_not_call_llm": true,
+    "does_not_call_ollama": true,
+    "does_not_mutate_source_truth": true,
+    "does_not_write_opensearch": true,
+    "does_not_write_postgres": true,
+    "does_not_write_qdrant": true,
+    "final_answer_allowed": false,
+    "read_only_adapter": true
+  },
+  "status": "TRACE_NET_GATED_VISUAL_RETRIEVAL_ADAPTER_V1_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "combined_document_count": 185,
+    "confirmed_context_count": 104,
+    "confirmed_route_counts": {
+      "image_visual": 103,
+      "mixed_visual_table": 1
+    },
+    "confirmed_visual_subtype_counts": {
+      "confirmed_diagram_dominant": 103,
+      "mixed_visual_table": 1
+    },
+    "empty_search_text_count": 0,
+    "final_answer_allowed_true_count": 0,
+    "llm_call_attempt_count": 0,
+    "ollama_call_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "pages_with_figure_refs": 103,
+    "pages_with_part_numbers": 91,
+    "pages_with_summary": 7,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "review_only_document_count": 81,
+    "review_route_counts": {
+      "visual_candidate_review": 81
+    },
+    "search_ready_document_count": 104,
+    "source_truth_mutation_allowed_count": 0,
+    "visual_candidate_review_context_count": 81
+  }
+}

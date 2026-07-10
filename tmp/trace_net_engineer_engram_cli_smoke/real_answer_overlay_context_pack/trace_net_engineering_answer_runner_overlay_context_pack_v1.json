@@ -1,0 +1,57 @@
+{
+  "module": "trace_net_engineering_answer_runner_overlay_context_pack_v1",
+  "overlay_map_path": "tmp\\trace_net_engineer_engram_cli_smoke\\answer_runner_overlay_gate_ollama_strict\\trace_net_engineering_engram_answer_smoke_overlay_map_v1.json",
+  "quality_status": "PASS",
+  "records": [
+    {
+      "answer_permission": false,
+      "engram_is_proof": false,
+      "matched_overlay": true,
+      "module": "trace_net_engineering_answer_runner_overlay_context_pack_v1",
+      "overlay_char_count": 1768,
+      "prompt_char_count": 3522,
+      "prompt_text": "TRACE-NET ANSWER-RUNNER WORK ORDER CONTEXT PACK\nquestion_id: query_03c00bf1bc3dc91140ef9ea1\n\nUSER QUESTION:\nLooking for eligibility documents for PN DF250040-501 Paper towel dispenser. Likely used on a mixed fleet of A319-321 and Boeing 737-787.\n\nENGRAM OVERLAY \u2014 BEHAVIOR GUIDANCE ONLY:\nUse the retrieved Engram overlay as behavior guidance only. It is not proof.\nTRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY\nUse this overlay as behavior guidance only. It is not proof.\nManual/source claims still require current proof_context citations.\nDo not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.\ntarget_question_id: query_03c00bf1bc3dc91140ef9ea1\n\n--- retrieved_guidance query_id=query_03c00bf1bc3dc91140ef9ea1 task_type=engram_memory_retrieval ---\nTRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: query_03c00bf1bc3dc91140ef9ea1\ntask_type: engram_memory_retrieval\nquery: eligibility documents DF250040-501 paper towel dispenser A319 A320 A321 B737 B787 ATA 25\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\nRetrieved behavior atoms:\n- [working_engineer_query_clarification_949cd861906b602e] layer=working_memory proof_role=guidance_only score=-0.015655: atom_id: working_engineer_query_clarification_949cd861906b602e | title: Engineer query clarification profile | memory_layer: working_memory | memory_type: engineer_query_clarification | rule: Use extracted engineer clues, facet filters, clarifying questions, and risk flags to narrow retrieval before answering. This is not source proof; manual/source claims still require current proof_context citations. | proof_rol...\n\nRequired boundary: if proof_context is missing or insufficient, answer not found / not source-trace-ready and explain the limitation.\nForbidden: do not infer interchangeability, fit, installation safety, effectivity, or replacement approval from Engram memory.\n\nRequired respo\n[TRUNCATED BY H24 OVERLAY SMOKE: guidance only, not proof.]\n\nV2/V3 ROUTE HINTS \u2014 NOT PROOF:\nNo V2/V3 hints supplied in this context pack.\n\nSOURCE EVIDENCE / PROOF_CONTEXT:\nNo current proof_context citations were supplied.\n\nBOUNDARIES:\nRetrieved Engram overlay shapes behavior only. It is not proof. Manual/source claims still require current proof_context citations. V2/V3 summaries and graph proximity are routing hints only; they cannot prove eligibility, interchangeability, fit, effectivity, or installation approval.\nIf proof_context is missing or insufficient, answer not found / not source-trace-ready.\nDo not infer eligibility, applicability, interchangeability, fit, effectivity, approved replacement, or installation safety from Engram memory, summaries, graph proximity, shared nomenclature, or visual similarity.\n\nSOURCE ANSWER-RUNNER PROMPT:\nTRACE-NET SOURCE ANSWER-RUNNER PROMPT \u2014 LOCAL ARTIFACT SMOKE\n\nUser question:\nLooking for eligibility documents for PN DF250040-501 Paper towel dispenser. Likely used on a mixed fleet of A319-321 and Boeing 737-787.\n\nCurrent proof_context:\nNone supplied in this standalone smoke.\n\nRequired answer discipline:\n- Do not claim eligibility, applicability, approval, interchangeability, fit, or installation safety without current proof_context citations.\n- If proof_context is missing, say the answer is not source-trace-ready.\n- Use retrieved guidance only to shape search behavior and boundaries.",
+      "proof_context_count": 0,
+      "question": "Looking for eligibility documents for PN DF250040-501 Paper towel dispenser. Likely used on a mixed fleet of A319-321 and Boeing 737-787.",
+      "question_id": "query_03c00bf1bc3dc91140ef9ea1",
+      "ready_for_real_answer_runner": true,
+      "safety_contract": {
+        "answer_permission": false,
+        "engram_is_proof": false,
+        "opensearch_upload_attempt": false,
+        "opensearch_write_attempt": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "source_truth_mutation_allowed": false,
+        "write_attempt": false
+      },
+      "source_answer_grade": "PARTIAL",
+      "source_evidence_record_count": 0,
+      "source_prompt_path": "tmp/trace_net_engineer_engram_cli_smoke/source_answer_smoke/prompts/query_03c00bf1bc3dc91140ef9ea1_prompt.txt",
+      "source_runner_quality_status": "PASS",
+      "source_truth_mutation_allowed": false,
+      "v2_v3_hint_count": 0,
+      "version": "v1",
+      "work_order_prompt_path": "tmp\\trace_net_engineer_engram_cli_smoke\\real_answer_overlay_context_pack\\prompts\\query_03c00bf1bc3dc91140ef9ea1_work_order_prompt.txt"
+    }
+  ],
+  "records_path": "tmp\\trace_net_engineer_engram_cli_smoke\\real_answer_overlay_context_pack\\trace_net_engineering_answer_runner_overlay_context_pack_v1_records.jsonl",
+  "source_answer_smoke_path": "tmp\\trace_net_engineer_engram_cli_smoke\\source_answer_smoke\\source_answer_smoke.json",
+  "summary": {
+    "answer_permission_count": 0,
+    "context_pack_record_count": 1,
+    "matched_overlay_count": 1,
+    "module": "trace_net_engineering_answer_runner_overlay_context_pack_v1",
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_failures": [],
+    "ready_for_real_answer_runner_overlay_smoke": true,
+    "source_answer_smoke_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "version": "v1",
+    "write_attempt_count": 0
+  },
+  "version": "v1"
+}

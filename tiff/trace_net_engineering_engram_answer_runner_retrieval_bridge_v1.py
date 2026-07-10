@@ -168,6 +168,20 @@ def build_bridge_records(
             "unsafe": bool(unsafe_findings),
             **SAFETY_CONTRACT,
         }
+        # Standalone smoke fallback:
+        # If no H22/source answer-runner mapping was supplied, attach this guidance
+        # to the prompt bundle query_id itself. This does not grant answer permission;
+        # it only gives the overlay bridge a safe work-order/question key.
+        if not _as_list(record.get("target_answer_runner_question_ids")) and query_id:
+            record["target_answer_runner_question_ids"] = [query_id]
+            record["target_answer_runner_question_count"] = 1
+            record["standalone_prompt_bundle_target_fallback"] = True
+            record["unsafe_findings"] = [
+                f for f in _as_list(record.get("unsafe_findings"))
+                if f != "no_target_questions_for_task_type"
+            ]
+            record["unsafe"] = bool(record.get("unsafe_findings"))
+
         records.append(record)
     return records
 

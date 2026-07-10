@@ -1,0 +1,177 @@
+{
+  "status": "TRACE_NET_ENGINEERING_QUERY_PLANNER_BUILT",
+  "quality_status": "PASS",
+  "module": "trace_net_engineering_query_planner_v1",
+  "version": "v1",
+  "question": "What does figure 69 show?",
+  "source_v2_summary_guidance_index": "local_data/organization/trace_net/v2_summary_guidance_index_v1/trace_net_v2_summary_guidance_index_v1.json",
+  "summary": {
+    "planner_record_count": 1,
+    "task_type_count": 1,
+    "required_route_count": 4,
+    "selected_guidance_page_count": 0,
+    "guidance_only_summary_count": 0,
+    "source_guidance_summary_record_count": 31,
+    "can_answer_from_summaries_only_count": 0,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "opensearch_upload_attempt_count": 0,
+    "write_attempt_count": 0,
+    "unsafe_record_count": 0,
+    "ready_for_engineering_context_pack": true
+  },
+  "failures": [],
+  "records": [
+    {
+      "module": "trace_net_engineering_query_planner_v1",
+      "version": "v1",
+      "question": "What does figure 69 show?",
+      "task_type": "visual_part_identification",
+      "engineering_intent": "identify what a visual figure or diagram shows using image plus OCR/table proof",
+      "entities": {
+        "part_numbers": [],
+        "figures": [
+          "69"
+        ],
+        "items": [],
+        "part_families": [],
+        "topics": [
+          "figure"
+        ]
+      },
+      "engineer_clarification_profile": {
+        "profile_type": "engineer_query_clarification_profile_v1",
+        "memory_layer": "working_memory",
+        "secondary_memory_layers": [
+          "procedural_memory",
+          "semantic_memory",
+          "critic_memory"
+        ],
+        "proof_role": "guidance_only",
+        "can_be_used_as_proof": false,
+        "guidance_only": true,
+        "extracted_engineer_clues": {
+          "part_number_candidates": [],
+          "partial_identifier_candidates": [],
+          "nha_candidates": [],
+          "requested_doc_types": [],
+          "engine_candidates": [],
+          "fleet_candidates": [],
+          "ata_candidates": [],
+          "part_description_candidates": [],
+          "eligibility_or_applicability_intent": false,
+          "nha_intent": false
+        },
+        "facet_filters": {
+          "part_number": [],
+          "partial_identifier": [],
+          "nha": [],
+          "document_type": [],
+          "engine": [],
+          "fleet_or_aircraft": [],
+          "ata": [],
+          "description": [],
+          "evidence_language": []
+        },
+        "clarifying_questions": [
+          "Should I prioritize exact part matches, ATA/manual family, or source-proof evidence first?"
+        ],
+        "risk_flags": [
+          "source_evidence_required"
+        ],
+        "recommended_first_pass": [
+          "use exact part number when available",
+          "use partial/NHA filters only as narrowing hints",
+          "use V2/V3 summaries as routing guidance only",
+          "resolve candidate result back to OCR/table/visual/source-trace evidence before answering"
+        ],
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "extracted_engineer_clues": {
+        "part_number_candidates": [],
+        "partial_identifier_candidates": [],
+        "nha_candidates": [],
+        "requested_doc_types": [],
+        "engine_candidates": [],
+        "fleet_candidates": [],
+        "ata_candidates": [],
+        "part_description_candidates": [],
+        "eligibility_or_applicability_intent": false,
+        "nha_intent": false
+      },
+      "facet_filters": {
+        "part_number": [],
+        "partial_identifier": [],
+        "nha": [],
+        "document_type": [],
+        "engine": [],
+        "fleet_or_aircraft": [],
+        "ata": [],
+        "description": [],
+        "evidence_language": []
+      },
+      "clarifying_questions": [
+        "Should I prioritize exact part matches, ATA/manual family, or source-proof evidence first?"
+      ],
+      "risk_flags": [
+        "source_evidence_required"
+      ],
+      "guidance_pages": [],
+      "guidance_page_count": 0,
+      "required_routes": [
+        "image_or_diagram",
+        "table_ocr_proof",
+        "raw_ocr_nomenclature",
+        "image_route_quality_gate"
+      ],
+      "required_route_count": 4,
+      "optional_routes": [
+        "graph_leiden_neighbors",
+        "part_family"
+      ],
+      "proof_requirements": [
+        "visual figure/page evidence",
+        "linked part number proof",
+        "OCR/table nomenclature evidence",
+        "source-trace-ready citation"
+      ],
+      "forbidden_claims": [
+        "LLaVA-only part identity",
+        "effectivity",
+        "fit",
+        "installation safety",
+        "interchangeability",
+        "replacement approval",
+        "summary-only figure proof"
+      ],
+      "answer_style": "engineering_brain",
+      "can_answer_from_summaries_only": false,
+      "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof",
+      "answer_permission": false,
+      "source_truth_mutation_allowed": false,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "opensearch_write_attempt": false,
+      "opensearch_upload_attempt": false,
+      "unsafe_record": false,
+      "entities_json": "{\"part_numbers\": [], \"figures\": [\"69\"], \"items\": [], \"part_families\": [], \"topics\": [\"figure\"]}",
+      "engineer_clarification_profile_json": "{\"profile_type\": \"engineer_query_clarification_profile_v1\", \"memory_layer\": \"working_memory\", \"secondary_memory_layers\": [\"procedural_memory\", \"semantic_memory\", \"critic_memory\"], \"proof_role\": \"guidance_only\", \"can_be_used_as_proof\": false, \"guidance_only\": true, \"extracted_engineer_clues\": {\"part_number_candidates\": [], \"partial_identifier_candidates\": [], \"nha_candidates\": [], \"requested_doc_types\": [], \"engine_candidates\": [], \"fleet_candidates\": [], \"ata_candidates\": [], \"part_description_candidates\": [], \"eligibility_or_applicability_intent\": false, \"nha_intent\": false}, \"facet_filters\": {\"part_number\": [], \"partial_identifier\": [], \"nha\": [], \"document_type\": [], \"engine\": [], \"fleet_or_aircraft\": [], \"ata\": [], \"description\": [], \"evidence_language\": []}, \"clarifying_questions\": [\"Should I prioritize exact part matches, ATA/manual family, or source-proof evidence first?\"], \"risk_flags\": [\"source_evidence_required\"], \"recommended_first_pass\": [\"use exact part number when available\", \"use partial/NHA filters only as narrowing hints\", \"use V2/V3 summaries as routing guidance only\", \"resolve candidate result back to OCR/table/visual/source-trace evidence before answering\"], \"answer_permission\": false, \"can_answer_directly\": false, \"can_prove_claims\": false, \"source_truth_mutation_allowed\": false}",
+      "facet_filters_json": "{\"part_number\": [], \"partial_identifier\": [], \"nha\": [], \"document_type\": [], \"engine\": [], \"fleet_or_aircraft\": [], \"ata\": [], \"description\": [], \"evidence_language\": []}",
+      "clarifying_questions_json": "[\"Should I prioritize exact part matches, ATA/manual family, or source-proof evidence first?\"]",
+      "risk_flags_json": "[\"source_evidence_required\"]",
+      "required_routes_json": "[\"image_or_diagram\", \"table_ocr_proof\", \"raw_ocr_nomenclature\", \"image_route_quality_gate\"]",
+      "optional_routes_json": "[\"graph_leiden_neighbors\", \"part_family\"]"
+    }
+  ],
+  "paths": {
+    "planner": "tmp\\trace_net_engineer_engram_cli_smoke\\real_answer_smoke_with_overlay_flag\\runs\\q01_fig_3cdcd067\\planner\\trace_net_engineering_query_planner_v1.json",
+    "quality_check": "tmp\\trace_net_engineer_engram_cli_smoke\\real_answer_smoke_with_overlay_flag\\runs\\q01_fig_3cdcd067\\planner\\trace_net_engineering_query_planner_v1_quality_check.json",
+    "records_csv": "tmp\\trace_net_engineer_engram_cli_smoke\\real_answer_smoke_with_overlay_flag\\runs\\q01_fig_3cdcd067\\planner\\trace_net_engineering_query_planner_v1_records.csv"
+  }
+}

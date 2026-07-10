@@ -326,6 +326,261 @@ def _optional_routes(task_type: str) -> List[str]:
     return ["graph_leiden_neighbors"]
 
 
+
+def _unique_preserve_order(values: Sequence[str]) -> List[str]:
+    seen = set()
+    out: List[str] = []
+    for value in values:
+        text = str(value or "").strip()
+        if not text:
+            continue
+        key = text.upper()
+        if key not in seen:
+            seen.add(key)
+            out.append(text)
+    return out
+
+
+
+def _extract_engineer_part_number_candidates(question: str) -> List[str]:
+    """Extract loose engineering part-number candidates from messy prompts."""
+    out: List[str] = []
+
+    # Strong explicit PN pattern: "PN DF250040-501"
+    for match in re.finditer(r"\bPN\s+([A-Z0-9][A-Z0-9-]{4,})\b", question, flags=re.IGNORECASE):
+        out.append(match.group(1).upper())
+
+    # Mixed alpha/digit engineering IDs, with or without hyphens.
+    for match in re.finditer(r"\b[A-Z0-9]*[A-Z][A-Z0-9-]*[0-9][A-Z0-9-]*\b|\b[A-Z0-9]*[0-9][A-Z0-9-]*[A-Z][A-Z0-9-]*\b", question, flags=re.IGNORECASE):
+        raw_value = match.group(0).strip("-")
+        value = raw_value.upper()
+
+        # Messy prompts often write "2312M87G01-sealFace"; keep the real PN
+        # and drop obvious English/nomenclature suffixes.
+        if "-" in raw_value:
+            first, rest = raw_value.split("-", 1)
+            if re.search(r"[0-9]", first) and re.search(r"[A-Za-z]", first) and rest.isalpha():
+                value = first.upper()
+
+        if len(value) < 6:
+            continue
+        if value.startswith("GENX"):
+            continue
+        if value in {"BOEING"}:
+            continue
+
+        # Aircraft/platform strings are filters, not part numbers.
+        if re.fullmatch(r"A3[0-9]{2}|B?7[0-9]{2}", value):
+            continue
+        if re.fullmatch(r"A3[0-9]{2}-[0-9]{3}", value):
+            continue
+        if re.fullmatch(r"A3[0-9]{2}-A?3[0-9]{2}", value):
+            continue
+        if re.fullmatch(r"B?7[0-9]{2}-B?7[0-9]{2}", value):
+            continue
+
+        out.append(value)
+
+    return _unique_preserve_order(out)
+
+def _extract_requested_doc_types(question: str) -> List[str]:
+    q = _norm_text(question).upper()
+    doc_types: List[str] = []
+    for doc_type in ("IPC", "CMM", "SB", "AMM", "SRM", "WDM", "IPL"):
+        if doc_type in q.replace("/", " ").replace(",", " ").split() or f"/{doc_type}" in q or f"{doc_type}/" in q:
+            doc_types.append(doc_type)
+    if "SERVICE BULLETIN" in q:
+        doc_types.append("SB")
+    if "ILLUSTRATED PARTS" in q:
+        doc_types.append("IPC")
+    if "COMPONENT MAINTENANCE" in q:
+        doc_types.append("CMM")
+    return _unique_preserve_order(doc_types)
+
+
+def _extract_partial_identifier_candidates(question: str) -> List[str]:
+    out: List[str] = []
+    for match in re.finditer(r"\b([A-Z0-9]{3,}[A-Z][A-Z0-9]*)\s*(?:\.\.\.|…)", question, flags=re.IGNORECASE):
+        out.append(match.group(1).upper())
+    return _unique_preserve_order(out)
+
+
+def _extract_engine_candidates(question: str) -> List[str]:
+    out: List[str] = []
+    for match in re.finditer(r"\bGEnx[-\s]*[0-9][A-Za-z0-9-]*\b", question, flags=re.IGNORECASE):
+        value = match.group(0).replace(" ", "-")
+        value = value[:4] + value[4:].upper() if value.lower().startswith("genx") else value
+        out.append(value)
+    return _unique_preserve_order(out)
+
+
+def _extract_fleet_candidates(question: str) -> List[str]:
+    q = _norm_text(question)
+    out: List[str] = []
+
+    for match in re.finditer(r"\bA(3[0-9]{2})\s*[-–]\s*(?:A)?(3[0-9]{2})\b", q, flags=re.IGNORECASE):
+        start = int(match.group(1))
+        end = int(match.group(2))
+        if start <= end and end - start <= 10:
+            out.extend([f"A{i}" for i in range(start, end + 1)])
+
+    for match in re.finditer(r"\b(?:B|BOEING\s*)?(7[0-9]{2})\b", q, flags=re.IGNORECASE):
+        value = match.group(1)
+        out.append(f"B{value}" if "boeing" in q.lower() or value in {"737", "747", "757", "767", "777", "787"} else value)
+
+    for match in re.finditer(r"\bA3[0-9]{2}\b", q, flags=re.IGNORECASE):
+        out.append(match.group(0).upper())
+
+    return _unique_preserve_order(out)
+
+
+def _extract_part_description_candidates(question: str) -> List[str]:
+    q = _norm_text(question)
+    lowered = q.lower()
+    descriptions: List[str] = []
+
+    known_phrases = [
+        "paper towel dispenser",
+        "seal face",
+        "sealface",
+        "gearbox assy",
+        "gearbox assembly",
+        "module assy",
+        "access gearbox",
+        "accessory gearbox",
+    ]
+    for phrase in known_phrases:
+        if phrase in lowered:
+            descriptions.append("seal face" if phrase == "sealface" else phrase)
+
+    pn_match = re.search(r"\bPN\s+[A-Z0-9-]+\s+([A-Za-z][A-Za-z0-9 /-]{3,80})", q, flags=re.IGNORECASE)
+    if pn_match:
+        candidate = pn_match.group(1).strip(" ?.!,;:")
+        candidate = re.split(r"\bLikely\b|\bUsed\b|\bFleet\b", candidate, flags=re.IGNORECASE)[0].strip(" ?.!,;:")
+        if candidate:
+            descriptions.append(candidate)
+
+    return _unique_preserve_order(descriptions)
+
+
+def _infer_ata_candidates(question: str, descriptions: Sequence[str]) -> List[str]:
+    q = _norm_text(question).lower()
+    joined = " ".join(descriptions).lower()
+    candidates: List[str] = []
+
+    explicit = re.findall(r"\bATA\s*([0-9]{2}(?:-[0-9]{2})?)\b", question, flags=re.IGNORECASE)
+    candidates.extend(explicit)
+
+    if any(term in q or term in joined for term in ["paper towel", "dispenser", "cabin", "interior", "lavatory", "galley"]):
+        candidates.append("25")
+
+    return _unique_preserve_order(candidates)
+
+
+def build_engineer_clarification_profile(question: str, entities: Mapping[str, Any], task_type: str) -> Dict[str, Any]:
+    """Build engineer-facing narrowing filters and follow-up questions.
+
+    This is guidance only. It does not execute retrieval, call an LLM, mutate
+    source truth, or grant answer permission.
+    """
+    q = _norm_text(question)
+    lowered = q.lower()
+
+    part_numbers = _unique_preserve_order(
+        [str(x) for x in entities.get("part_numbers") or []]
+        + _extract_engineer_part_number_candidates(question)
+    )
+    partial_ids = _extract_partial_identifier_candidates(question)
+    doc_types = _extract_requested_doc_types(question)
+    engines = _extract_engine_candidates(question)
+    fleets = _extract_fleet_candidates(question)
+    descriptions = _extract_part_description_candidates(question)
+    ata_candidates = _infer_ata_candidates(question, descriptions)
+
+    eligibility_intent = any(w in lowered for w in ["eligib", "elegib", "applicab", "effectiv", "approved", "approval", "interchange", "installation authorization"])
+    nha_intent = "nha" in lowered or "next higher" in lowered
+
+    extracted = {
+        "part_number_candidates": part_numbers,
+        "partial_identifier_candidates": partial_ids,
+        "nha_candidates": partial_ids if nha_intent else [],
+        "requested_doc_types": doc_types,
+        "engine_candidates": engines,
+        "fleet_candidates": fleets,
+        "ata_candidates": ata_candidates,
+        "part_description_candidates": descriptions,
+        "eligibility_or_applicability_intent": eligibility_intent,
+        "nha_intent": nha_intent,
+    }
+
+    facet_filters = {
+        "part_number": part_numbers,
+        "partial_identifier": partial_ids,
+        "nha": partial_ids if nha_intent else [],
+        "document_type": doc_types,
+        "engine": engines,
+        "fleet_or_aircraft": fleets,
+        "ata": ata_candidates,
+        "description": descriptions,
+        "evidence_language": (
+            ["eligibility", "applicability", "effectivity", "approved installation", "interchangeability"]
+            if eligibility_intent else []
+        ),
+    }
+
+    risk_flags: List[str] = ["source_evidence_required"]
+    if partial_ids:
+        risk_flags.append("partial_identifier_requires_clarification")
+    if len(doc_types) > 1:
+        risk_flags.append("multiple_document_types_requested")
+    if eligibility_intent:
+        risk_flags.append("eligibility_requires_authority_not_mention_only")
+    if fleets:
+        risk_flags.append("fleet_or_platform_filter_required")
+    if nha_intent:
+        risk_flags.append("nha_filter_required")
+    if not part_numbers and partial_ids:
+        risk_flags.append("no_complete_part_number_detected")
+
+    questions: List[str] = []
+    if len(doc_types) > 1:
+        questions.append("Which document type should I prioritize first: " + ", ".join(doc_types) + "?")
+    if partial_ids:
+        questions.append("Can you confirm the full NHA or partial identifier that starts with " + ", ".join(partial_ids) + "?")
+    if eligibility_intent:
+        questions.append("Do you need eligibility by aircraft platform, document type, or approval/effectivity proof?")
+    if fleets:
+        questions.append("Should I narrow by fleet/platform first: " + ", ".join(fleets) + "?")
+    if not questions:
+        questions.append("Should I prioritize exact part matches, ATA/manual family, or source-proof evidence first?")
+
+    return {
+        "profile_type": "engineer_query_clarification_profile_v1",
+        "memory_layer": "working_memory",
+        "secondary_memory_layers": [
+            "procedural_memory",
+            "semantic_memory",
+            "critic_memory",
+        ],
+        "proof_role": "guidance_only",
+        "can_be_used_as_proof": False,
+        "guidance_only": True,
+        "extracted_engineer_clues": extracted,
+        "facet_filters": facet_filters,
+        "clarifying_questions": _unique_preserve_order(questions)[:4],
+        "risk_flags": _unique_preserve_order(risk_flags),
+        "recommended_first_pass": [
+            "use exact part number when available",
+            "use partial/NHA filters only as narrowing hints",
+            "use V2/V3 summaries as routing guidance only",
+            "resolve candidate result back to OCR/table/visual/source-trace evidence before answering",
+        ],
+        "answer_permission": False,
+        "can_answer_directly": False,
+        "can_prove_claims": False,
+        "source_truth_mutation_allowed": False,
+    }
+
 def build_plan_record(question: str, index: Mapping[str, Any], max_guidance_pages: int = 8) -> Dict[str, Any]:
     entities = extract_entities(question)
     task_type = classify_task(question, entities)
@@ -339,6 +594,8 @@ def build_plan_record(question: str, index: Mapping[str, Any], max_guidance_page
         forbidden.extend(["LLaVA-only part identity", "summary-only figure proof"])
 
     can_answer_from_summaries_only = False
+    engineer_clarification_profile = build_engineer_clarification_profile(question, entities, task_type)
+
     record = {
         "module": MODULE,
         "version": VERSION,
@@ -346,6 +603,11 @@ def build_plan_record(question: str, index: Mapping[str, Any], max_guidance_page
         "task_type": task_type,
         "engineering_intent": TASK_INTENTS.get(task_type, TASK_INTENTS["general_engineering_question"]),
         "entities": entities,
+        "engineer_clarification_profile": engineer_clarification_profile,
+        "extracted_engineer_clues": engineer_clarification_profile.get("extracted_engineer_clues", {}),
+        "facet_filters": engineer_clarification_profile.get("facet_filters", {}),
+        "clarifying_questions": engineer_clarification_profile.get("clarifying_questions", []),
+        "risk_flags": engineer_clarification_profile.get("risk_flags", []),
         "guidance_pages": guidance_pages,
         "guidance_page_count": len(guidance_pages),
         "required_routes": required_routes,
@@ -365,6 +627,10 @@ def build_plan_record(question: str, index: Mapping[str, Any], max_guidance_page
         "unsafe_record": False,
     }
     record["entities_json"] = json.dumps(entities, ensure_ascii=False)
+    record["engineer_clarification_profile_json"] = json.dumps(engineer_clarification_profile, ensure_ascii=False)
+    record["facet_filters_json"] = json.dumps(record["facet_filters"], ensure_ascii=False)
+    record["clarifying_questions_json"] = json.dumps(record["clarifying_questions"], ensure_ascii=False)
+    record["risk_flags_json"] = json.dumps(record["risk_flags"], ensure_ascii=False)
     record["required_routes_json"] = json.dumps(required_routes, ensure_ascii=False)
     record["optional_routes_json"] = json.dumps(record["optional_routes"], ensure_ascii=False)
     return record
@@ -600,6 +866,67 @@ def check_main(argv: Optional[Sequence[str]] = None) -> int:
     print(f"write_attempt_count={summary.get('write_attempt_count')}")
     return 0 if result.get("quality_status") == "PASS" else 1
 
+
+
+# Compatibility aliases for older scripts/tests.
+# Keep these names because the script wrapper and unit tests import them directly.
+def check_engineering_query_planner_quality(
+    *,
+    report_path,
+    output=None,
+    require_no_llm_calls=False,
+    require_no_retrieval_execution=False,
+    require_no_answer_permission=False,
+    require_no_source_truth_mutation=True,
+    require_no_unsafe=True,
+):
+    """Compatibility quality checker for older tests/scripts.
+
+    This checks a planner/report JSON summary without executing retrieval,
+    calling an LLM, mutating source truth, or granting answer permission.
+    """
+    data = _load_json(report_path)
+    summary = data.get("summary") if isinstance(data.get("summary"), dict) else data
+
+    failures = []
+
+    if require_no_unsafe and int(summary.get("unsafe_record_count") or 0) != 0:
+        failures.append("unsafe_record_count must be 0")
+
+    if require_no_answer_permission and int(summary.get("answer_permission_count") or 0) != 0:
+        failures.append("answer_permission_count must be 0")
+
+    if require_no_answer_permission and int(summary.get("can_answer_directly_count") or 0) != 0:
+        failures.append("can_answer_directly_count must be 0")
+
+    if require_no_answer_permission and int(summary.get("can_prove_claims_count") or 0) != 0:
+        failures.append("can_prove_claims_count must be 0")
+
+    if require_no_llm_calls and int(summary.get("llm_call_allowed_count") or 0) != 0:
+        failures.append("llm_call_allowed_count must be 0")
+
+    if require_no_retrieval_execution and int(summary.get("retrieval_execution_allowed_count") or 0) != 0:
+        failures.append("retrieval_execution_allowed_count must be 0")
+
+    if require_no_source_truth_mutation and int(summary.get("source_truth_mutation_allowed_count") or 0) != 0:
+        failures.append("source_truth_mutation_allowed_count must be 0")
+
+    result = {
+        "status": STATUS_CHECKED,
+        "quality_status": "PASS" if not failures else "FAIL",
+        "summary": summary,
+        "failures": failures,
+        "source_report": str(report_path),
+    }
+
+    if output is not None:
+        _write_json(output, result)
+
+    return result
+
+
+def main_check(argv=None):
+    return check_main(argv)
 
 if __name__ == "__main__":
     raise SystemExit(main())
