@@ -32,7 +32,11 @@ MODEL_ID = "trace-net-full-gemma-user-query-canary-v1"
 PART_RE = re.compile(r"\b\d{2,3}-\d{5}(?:-\d{3})?\b")
 MANUAL_RE = re.compile(r"\b\d{2}-\d{2}-\d{2}\b")
 PAGE_RE = re.compile(r"\bt_p_[A-Za-z0-9_]+\b")
-FIGURE_RE = re.compile(r"\b(?:figure|fig\.?)\s*(\d{1,4})(?:\s+sheet\s+(\d{1,3}))?\b", re.I)
+FIGURE_RE = re.compile(
+    r"(?<![A-Za-z])(?:figure|fig\.?|-igure)\s*(\d{1,4})"
+    r"(?:\s*[,;:-]?\s*sheet\s*(\d{1,3}))?\b",
+    re.I,
+)
 CITATION_RE = re.compile(r"\[(\d{1,3})\]")
 DANGEROUS = (
     "interchangeable",
@@ -120,10 +124,10 @@ def trace_payload(response: Mapping[str, Any]) -> Dict[str, Any]:
 def allowed_figure_refs(blob: str) -> set[str]:
     values = set()
     for match in FIGURE_RE.finditer(blob):
-        value = f"figure {match.group(1)}"
+        number = match.group(1)
+        values.add(f"figure {number}".lower())
         if match.group(2):
-            value += f" sheet {match.group(2)}"
-        values.add(value.lower())
+            values.add(f"figure {number} sheet {match.group(2)}".lower())
     return values
 
 
@@ -156,11 +160,21 @@ def validate_composed_answer(
         if value not in allowed_pages:
             failures.append(f"unsupported_page_id:{value}")
     for match in FIGURE_RE.finditer(text):
-        value = f"figure {match.group(1)}"
-        if match.group(2):
-            value += f" sheet {match.group(2)}"
-        if value.lower() not in allowed_figures:
-            failures.append(f"unsupported_figure_reference:{value}")
+        number_only = f"figure {match.group(1)}".lower()
+        with_sheet = (
+            f"figure {match.group(1)} sheet {match.group(2)}".lower()
+            if match.group(2)
+            else ""
+        )
+        if number_only not in allowed_figures:
+            failures.append(
+                f"unsupported_figure_reference:figure {match.group(1)}"
+                + (f" sheet {match.group(2)}" if match.group(2) else "")
+            )
+        elif with_sheet and with_sheet not in allowed_figures:
+            failures.append(
+                f"unsupported_figure_sheet:figure {match.group(1)} sheet {match.group(2)}"
+            )
 
     citations = trace.get("citations")
     allowed_ids = {
@@ -393,6 +407,19 @@ class Runtime:
             timeout=self.timeout,
         )
         final_answer = composed or upstream_answer
+
+        followups = list(trace.get("follow_up_questions") or [])
+        should_append_followups = bool(
+            trace.get("clarification_required")
+            or trace.get("clarification_recommended")
+            or str(trace.get("route") or "") == "guided_discovery"
+        )
+        final_answer = append_followups(
+            final_answer,
+            followups,
+            should_append=should_append_followups,
+        )
+        final_answer = preserve_safety_boundary(final_answer, upstream_answer)
 
         choices = upstream.get("choices")
         if isinstance(choices, list) and choices:
