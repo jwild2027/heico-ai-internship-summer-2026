@@ -23,16 +23,29 @@ def load_json(path: Path) -> Dict[str, Any]:
     return value
 
 
-def run_retrieval(query: str, state: Mapping[str, Any]) -> Dict[str, Any]:
+def run_retrieval(
+    query: str,
+    state: Mapping[str, Any],
+    *,
+    llm_mode: str = "simulate",
+    llm_model: str = "gemma4:26b",
+    llm_base_url: str = "http://127.0.0.1:11434/v1",
+    llm_api_key: str = "ollama",
+    request_timeout: int = 240,
+) -> Dict[str, Any]:
     from tiff import trace_net_e2e_live_orchestrator_stage_timing_fastpath_v27 as v27
 
     mutable_state = dict(state)
-    mutable_state["llm_mode"] = "simulate"
+    mutable_state["llm_mode"] = llm_mode
+    mutable_state["llm_model"] = llm_model
+    mutable_state["llm_base_url"] = llm_base_url
+    mutable_state["llm_api_key"] = llm_api_key
+    mutable_state["request_timeout"] = request_timeout
     result = v27.run_live_query_v27(
         query,
         mutable_state,
-        llm_mode="simulate",
-        request_timeout=60,
+        llm_mode=llm_mode,
+        request_timeout=request_timeout,
     )
     retrieval = result.get("retrieval") if isinstance(result.get("retrieval"), Mapping) else {}
     direct = retrieval.get("direct_evidence") if isinstance(retrieval.get("direct_evidence"), list) else []
@@ -48,6 +61,7 @@ def evaluate_record(
     record: Mapping[str, Any],
     *,
     retrieval_state: Optional[Mapping[str, Any]],
+    retrieval_config: Optional[Mapping[str, Any]] = None,
 ) -> Dict[str, Any]:
     query = str(record.get("query") or "")
     decision = analyze_query(query)
@@ -82,7 +96,16 @@ def evaluate_record(
     retrieval_expectation = str(record.get("retrieval_expectation") or "not_checked")
     retrieval_result: Optional[Dict[str, Any]] = None
     if retrieval_state is not None and retrieval_expectation != "not_checked":
-        retrieval_result = run_retrieval(query, retrieval_state)
+        config = dict(retrieval_config or {})
+        retrieval_result = run_retrieval(
+            query,
+            retrieval_state,
+            llm_mode=str(config.get("llm_mode") or "simulate"),
+            llm_model=str(config.get("llm_model") or "gemma4:26b"),
+            llm_base_url=str(config.get("llm_base_url") or "http://127.0.0.1:11434/v1"),
+            llm_api_key=str(config.get("llm_api_key") or "ollama"),
+            request_timeout=int(config.get("request_timeout") or 240),
+        )
         direct_count = int(retrieval_result["direct_evidence_count"])
         gate = str(retrieval_result["final_gate_status"] or "")
         if retrieval_expectation == "positive":
@@ -176,6 +199,16 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--min-question-count", type=int, default=150)
     parser.add_argument(
+        "--llm-mode",
+        choices=["simulate", "ollama"],
+        default="simulate",
+        help="Answer-writer mode for manifest retrieval checks.",
+    )
+    parser.add_argument("--llm-model", default="gemma4:26b")
+    parser.add_argument("--llm-base-url", default="http://127.0.0.1:11434/v1")
+    parser.add_argument("--llm-api-key", default="ollama")
+    parser.add_argument("--request-timeout", type=int, default=240)
+    parser.add_argument(
         "--no-progress",
         action="store_true",
         help="Disable per-question progress lines.",
@@ -209,10 +242,20 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             print(
                 f"[{index}/{total}] RUNNING {question_id} "
                 f"category={category} retrieval={retrieval_expectation} "
-                f"query={query[:140]}",
+                f"llm_mode={args.llm_mode} query={query[:140]}",
                 flush=True,
             )
-        result = evaluate_record(row, retrieval_state=retrieval_state)
+        result = evaluate_record(
+            row,
+            retrieval_state=retrieval_state,
+            retrieval_config={
+                "llm_mode": args.llm_mode,
+                "llm_model": args.llm_model,
+                "llm_base_url": args.llm_base_url,
+                "llm_api_key": args.llm_api_key,
+                "request_timeout": args.request_timeout,
+            },
+        )
         results.append(result)
         if not args.no_progress:
             retrieval = result.get("retrieval")
@@ -273,6 +316,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "category_counts": dict(Counter(r["category"] for r in results)),
         "failed_records": failed,
         "manifest": args.manifest or None,
+        "llm_mode": args.llm_mode,
+        "llm_model": args.llm_model,
+        "llm_base_url": args.llm_base_url,
+        "request_timeout": args.request_timeout,
         "safety_contract": {
             "read_only": True,
             "answer_permission": False,
