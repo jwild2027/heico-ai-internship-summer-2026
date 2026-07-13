@@ -175,6 +175,11 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--min-question-count", type=int, default=150)
+    parser.add_argument(
+        "--no-progress",
+        action="store_true",
+        help="Disable per-question progress lines.",
+    )
     return parser
 
 
@@ -192,11 +197,38 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         from tiff import trace_net_e2e_live_orchestrator_stage_timing_fastpath_v27 as v27
         retrieval_state = v27.load_state_for_serving(Path(args.manifest))
 
-    results = [
-        evaluate_record(row, retrieval_state=retrieval_state)
-        for row in rows
-        if isinstance(row, Mapping)
-    ]
+    valid_rows = [row for row in rows if isinstance(row, Mapping)]
+    total = len(valid_rows)
+    results = []
+    for index, row in enumerate(valid_rows, 1):
+        query = str(row.get("query") or "")
+        question_id = str(row.get("question_id") or f"q{index:03d}")
+        category = str(row.get("category") or "unknown")
+        retrieval_expectation = str(row.get("retrieval_expectation") or "not_checked")
+        if not args.no_progress:
+            print(
+                f"[{index}/{total}] RUNNING {question_id} "
+                f"category={category} retrieval={retrieval_expectation} "
+                f"query={query[:140]}",
+                flush=True,
+            )
+        result = evaluate_record(row, retrieval_state=retrieval_state)
+        results.append(result)
+        if not args.no_progress:
+            retrieval = result.get("retrieval")
+            direct_count = (
+                int(retrieval.get("direct_evidence_count") or 0)
+                if isinstance(retrieval, Mapping)
+                else 0
+            )
+            print(
+                f"[{index}/{total}] {result.get('quality_status')} "
+                f"route={result.get('actual_execution_route')} "
+                f"tunnel={result.get('actual_tunnel')} "
+                f"followups={result.get('follow_up_question_count')} "
+                f"direct_evidence={direct_count}",
+                flush=True,
+            )
 
     route_correct = sum(r["actual_execution_route"] == r["expected_execution_route"] for r in results)
     tunnel_correct = sum(r["actual_tunnel"] == r["expected_tunnel"] for r in results)
