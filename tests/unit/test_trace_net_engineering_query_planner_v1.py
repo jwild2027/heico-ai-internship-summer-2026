@@ -172,3 +172,57 @@ def test_specific_part_query_only_uses_exact_part_guidance(tmp_path):
     assert record["task_type"] == "exact_part_lookup"
     assert [g["page_number"] for g in record["guidance_pages"]] == [316]
     assert record["guidance_pages"][0]["guidance_reasons"][0] == "part_hint:120-50645-005"
+
+def test_engineer_clarification_profile_extracts_engine_nha_doc_types():
+    from tiff.trace_net_engineering_query_planner_v1 import build_plan_record
+
+    record = build_plan_record(
+        "please locate engine IPC/SB/CMM for the 2312M87G01-sealFace? "
+        "NHA: 2330M... -Gearbox assy-access, 2330m...-Modeule Assy-Access gearbox "
+        "engine: GEnx-2b67B",
+        {"records": [], "summary": {"summary_record_count": 0}},
+    )
+
+    profile = record["engineer_clarification_profile"]
+    clues = profile["extracted_engineer_clues"]
+
+    assert "2312M87G01" in clues["part_number_candidates"]
+    assert "2330M" in clues["partial_identifier_candidates"]
+    assert "2330M" in clues["nha_candidates"]
+    assert set(["IPC", "SB", "CMM"]).issubset(set(clues["requested_doc_types"]))
+    assert any(x.upper().startswith("GENX-2B67B") for x in clues["engine_candidates"])
+    assert "multiple_document_types_requested" in profile["risk_flags"]
+    assert "partial_identifier_requires_clarification" in profile["risk_flags"]
+    assert profile["answer_permission"] is False
+    assert profile["source_truth_mutation_allowed"] is False
+
+
+def test_engineer_clarification_profile_flags_eligibility_not_mention_only():
+    from tiff.trace_net_engineering_query_planner_v1 import build_plan_record
+
+    record = build_plan_record(
+        "Looking for elegibility documents for PN DF250040-501 Paper towel dispenser. "
+        "Likely used on a mixed fleet of A319-321 and boeing 737-787",
+        {"records": [], "summary": {"summary_record_count": 0}},
+    )
+
+    profile = record["engineer_clarification_profile"]
+    clues = profile["extracted_engineer_clues"]
+
+    assert "DF250040-501" in clues["part_number_candidates"]
+    assert "A319-321" not in clues["part_number_candidates"]
+    assert profile["memory_layer"] == "working_memory"
+    assert "procedural_memory" in profile["secondary_memory_layers"]
+    assert "critic_memory" in profile["secondary_memory_layers"]
+    assert profile["proof_role"] == "guidance_only"
+    assert profile["can_be_used_as_proof"] is False
+    assert "paper towel dispenser" in [x.lower() for x in clues["part_description_candidates"]]
+    assert set(["A319", "A320", "A321"]).issubset(set(clues["fleet_candidates"]))
+    assert "B737" in clues["fleet_candidates"]
+    assert "B787" in clues["fleet_candidates"]
+    assert "25" in clues["ata_candidates"]
+    assert clues["eligibility_or_applicability_intent"] is True
+    assert "eligibility_requires_authority_not_mention_only" in profile["risk_flags"]
+    assert any("eligibility" in q.lower() for q in profile["clarifying_questions"])
+    assert profile["can_answer_directly"] is False
+    assert profile["can_prove_claims"] is False

@@ -1,0 +1,104 @@
+{
+  "integration_policy": {
+    "forbidden": [
+      "answer_permission_from_engram",
+      "source_truth_mutation_from_engram",
+      "summary_or_engram_used_as_proof",
+      "live_db_or_qdrant_io_without_explicit_gate",
+      "full_30_question_rerun_as_default_debug_loop"
+    ],
+    "mode": "artifact_only_answer_runner_prompt_overlay_smoke",
+    "next_patch": "targeted LLM answer-runner overlay smoke behind explicit CLI flag",
+    "proof_boundary": "Retrieved Engram overlays shape answer behavior only; factual manual claims require current proof_context citations."
+  },
+  "output_path": "tmp\\trace_net_engineer_engram_cli_smoke\\answer_runner_overlay_smoke\\trace_net_engineering_engram_answer_runner_prompt_overlay_smoke_v1.json",
+  "overlay_map_path": "tmp\\trace_net_engineer_engram_cli_smoke\\answer_runner_overlay_smoke\\trace_net_engineering_engram_answer_runner_prompt_overlay_smoke_v1_overlay_map.json",
+  "overlay_records": [
+    {
+      "answer_permission": false,
+      "answer_runner_overlay_mode": "artifact_only_prompt_overlay_smoke",
+      "engram_is_proof": false,
+      "live_qdrant_io_attempted": false,
+      "matched_bridge_query_ids": [
+        "query_03c00bf1bc3dc91140ef9ea1"
+      ],
+      "matched_bridge_record_count": 1,
+      "matched_bridge_task_types": [
+        "engram_memory_retrieval"
+      ],
+      "opensearch_upload_attempt": false,
+      "opensearch_write_attempt": false,
+      "overlay_char_count": 1768,
+      "overlay_text": "TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY\nUse this overlay as behavior guidance only. It is not proof.\nManual/source claims still require current proof_context citations.\nDo not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.\ntarget_question_id: query_03c00bf1bc3dc91140ef9ea1\n\n--- retrieved_guidance query_id=query_03c00bf1bc3dc91140ef9ea1 task_type=engram_memory_retrieval ---\nTRACE-NET ENGRAM RETRIEVAL GUIDANCE \u2014 BEHAVIOR ONLY, NOT PROOF\nquery_id: query_03c00bf1bc3dc91140ef9ea1\ntask_type: engram_memory_retrieval\nquery: eligibility documents DF250040-501 paper towel dispenser A319 A320 A321 B737 B787 ATA 25\n\nUse these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.\nManual/source claims still require current proof_context citations from TRACE-Net.\n\nRetrieved behavior atoms:\n- [working_engineer_query_clarification_949cd861906b602e] layer=working_memory proof_role=guidance_only score=-0.015655: atom_id: working_engineer_query_clarification_949cd861906b602e | title: Engineer query clarification profile | memory_layer: working_memory | memory_type: engineer_query_clarification | rule: Use extracted engineer clues, facet filters, clarifying questions, and risk flags to narrow retrieval before answering. This is not source proof; manual/source claims still require current proof_context citations. | proof_rol...\n\nRequired boundary: if proof_context is missing or insufficient, answer not found / not source-trace-ready and explain the limitation.\nForbidden: do not infer interchangeability, fit, installation safety, effectivity, or replacement approval from Engram memory.\n\nRequired respo\n[TRUNCATED BY H24 OVERLAY SMOKE: guidance only, not proof.]",
+      "postgres_write_attempt": false,
+      "qdrant_read_attempt": false,
+      "qdrant_write_attempt": false,
+      "question_id": "query_03c00bf1bc3dc91140ef9ea1",
+      "ready_for_targeted_llm_overlay_smoke": true,
+      "selected_layers": [
+        "working_memory"
+      ],
+      "selected_proof_roles": [
+        "guidance_only"
+      ],
+      "source_category": "",
+      "source_grade": "",
+      "source_proof_context_count": 0,
+      "source_question": "",
+      "source_runner_quality_status": "",
+      "source_task_type": "",
+      "source_truth_mutation_allowed": false,
+      "unsafe": false,
+      "unsafe_findings": [],
+      "write_attempt": false
+    }
+  ],
+  "quality_check_path": "tmp\\trace_net_engineer_engram_cli_smoke\\answer_runner_overlay_smoke\\trace_net_engineering_engram_answer_runner_prompt_overlay_smoke_v1_quality_check.json",
+  "quality_failures": [],
+  "quality_status": "PASS",
+  "records_path": "tmp\\trace_net_engineer_engram_cli_smoke\\answer_runner_overlay_smoke\\trace_net_engineering_engram_answer_runner_prompt_overlay_smoke_v1_records.jsonl",
+  "safety_contract": {
+    "answer_permission": false,
+    "engram_is_proof": false,
+    "live_qdrant_io_attempted": false,
+    "opensearch_upload_attempt": false,
+    "opensearch_write_attempt": false,
+    "postgres_write_attempt": false,
+    "qdrant_read_attempt": false,
+    "qdrant_write_attempt": false,
+    "source_truth_mutation_allowed": false,
+    "write_attempt": false
+  },
+  "source_answer_smoke_path": "",
+  "source_bridge_path": "tmp\\trace_net_engineer_engram_cli_smoke\\answer_runner_bridge\\trace_net_engineering_engram_answer_runner_retrieval_bridge_v1.json",
+  "status": "TRACE_NET_ENGINEERING_ENGRAM_ANSWER_RUNNER_PROMPT_OVERLAY_SMOKE_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "matched_bridge_record_count": 1,
+    "matched_bridge_task_type_counts": {
+      "engram_memory_retrieval": 1
+    },
+    "module": "trace_net_engineering_engram_answer_runner_prompt_overlay_smoke_v1",
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "overlay_record_count": 1,
+    "postgres_write_attempt_count": 0,
+    "qdrant_read_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_failures": [],
+    "ready_for_targeted_llm_overlay_smoke": true,
+    "selected_memory_layer_counts": {
+      "working_memory": 1
+    },
+    "source_answer_smoke_quality_status": null,
+    "source_bridge_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "target_question_count": 1,
+    "target_question_ids": [
+      "query_03c00bf1bc3dc91140ef9ea1"
+    ],
+    "unsafe_finding_count": 0,
+    "version": "v1",
+    "write_attempt_count": 0
+  }
+}

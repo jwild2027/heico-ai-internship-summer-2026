@@ -1,0 +1,433 @@
+{
+  "module": "trace_net_v2_gemma_summary_sample_runner_v1",
+  "version": "1.0.0",
+  "created_at": "2026-07-07T12:19:12.287885+00:00",
+  "status": "TRACE_NET_V2_GEMMA_SUMMARY_SAMPLE_BUILT",
+  "quality_status": "FAIL",
+  "failure_reasons": [
+    "sample_record_count_below_requested:4<5",
+    "error_count_nonzero:1",
+    "llm_called_count_below_requested:4<5",
+    "gemma_success_count_below_requested:4<5"
+  ],
+  "summary": {
+    "context_file": "local_data\\organization\\context\\page_contexts.json",
+    "context_file_exists": true,
+    "context_record_count": 509,
+    "requested_max_pages": 5,
+    "sample_record_count": 4,
+    "prompt_record_count": 4,
+    "validation_failure_count": 0,
+    "error_count": 1,
+    "llm_called_count": 4,
+    "gemma_success_count": 4,
+    "generation_model": "gemma4:26b",
+    "ollama_url": "http://127.0.0.1:11434/api/generate",
+    "dry_run": false,
+    "allow_heuristic_fallback": false,
+    "require_gemma": true,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "v3_preview_attached": true
+  },
+  "records_path": "local_data/organization/trace_net/v2_gemma_summary_sample_runner_v1/sample_5/trace_net_v2_gemma_summary_sample_runner_v1_records.jsonl",
+  "prompts_path": "local_data/organization/trace_net/v2_gemma_summary_sample_runner_v1/sample_5/trace_net_v2_gemma_summary_sample_runner_v1_prompts.jsonl",
+  "records": [
+    {
+      "page_id": "t_p_120_1176_p000001",
+      "role": "unknown",
+      "subrole": "none",
+      "confidence": "low",
+      "short_summary": "No OCR content or context was provided for this page.",
+      "retrieval_summary": "Information unavailable; no source text was provided to determine retrieval utility.",
+      "answerable_questions": [
+        "What is this page about in the manual?",
+        "Which source page should be checked for details related to this topic?"
+      ],
+      "retrieval_cues": [
+        "unknown",
+        "general"
+      ],
+      "important_entities": [],
+      "component_families": [],
+      "important_parts": [],
+      "nearby_context": {
+        "previous": "unknown",
+        "next": "unknown",
+        "same_section_hint": "unknown"
+      },
+      "source_grounding": {
+        "has_ocr": false,
+        "source_url_present": true,
+        "supporting_ocr_phrases": []
+      },
+      "not_good_for": [
+        "answering any technical or maintenance questions due to lack of input text"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false,
+        "requires_source_check": true
+      },
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "generation_provider": "ollama",
+      "generation_model": "gemma4:26b",
+      "llm_called": true,
+      "llm_response_preview": "```json\n{\n  \"page_id\": \"t_p_120_1176_p000001\",\n  \"role\": \"unknown\",\n  \"subrole\": \"none\",\n  \"confidence\": \"low\",\n  \"short_summary\": \"No OCR content or context was provided for this page.\",\n  \"retrieval_summary\": \"Information unavailable; no source text was provided to determine retrieval utility.\",\n  \"answerable_questions\": [],\n  \"retrieval_cues\": [],\n  \"important_entities\": [],\n  \"component_families\": [],\n  \"important_parts\": [],\n  \"nearby_context\": {\n    \"previous\": \"unknown\",\n    \"next\": \"unknown\",\n    \"same_section_hint\": \"unknown\"\n  },\n  \"source_grounding\": {\n    \"has_ocr\": false,\n    \"source_url_present\": true,\n    \"supporting_ocr_phrases\": []\n  },\n  \"not_good_for\": [\n    \"answering any",
+      "guidance_only": true,
+      "can_prove_claims": false,
+      "source_truth_mutation_allowed": false,
+      "v3_preview": {
+        "page_type": "unknown",
+        "route_signals": [
+          "unknown",
+          "general"
+        ],
+        "part_numbers": [],
+        "candidate_evidence_usefulness_for_rag": "guidance_only_candidate; requires proof_context/source_trace before factual use",
+        "engram_guidance": "behavior/proof-boundary guidance only; not factual proof",
+        "leiden_community_guidance": "not joined in this V2 Gemma sample runner",
+        "dublin_core": {
+          "type": "PageContextGuidance",
+          "format": "application/json",
+          "identifier": "t_p_120_1176_p000001",
+          "source": "http://localhost:8080/rescarta/t_p_120_1176/000001"
+        }
+      },
+      "llm_status": "GEMMA_JSON_SUMMARY_SUCCEEDED",
+      "generation_warnings": []
+    },
+    {
+      "page_id": "t_p_120_1176_p000002",
+      "role": "unknown",
+      "subrole": "none",
+      "confidence": "low",
+      "short_summary": "No OCR text or context was provided for this page to allow for analysis.",
+      "retrieval_summary": "This page cannot be used for retrieval as no source content is available in the provided input.",
+      "answerable_questions": [
+        "What is this page about in the manual?",
+        "Which source page should be checked for details related to this topic?"
+      ],
+      "retrieval_cues": [
+        "unknown",
+        "general"
+      ],
+      "important_entities": [],
+      "component_families": [],
+      "important_parts": [],
+      "nearby_context": {
+        "previous": "unknown",
+        "next": "unknown",
+        "same_section_hint": "unknown"
+      },
+      "source_grounding": {
+        "has_ocr": false,
+        "source_url_present": true,
+        "supporting_ocr_phrases": []
+      },
+      "not_good_for": [
+        "answering any technical queries as no content is available"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false,
+        "requires_source_check": true
+      },
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "generation_provider": "ollama",
+      "generation_model": "gemma4:26b",
+      "llm_called": true,
+      "llm_response_preview": "```json\n{\n  \"page_id\": \"t_p_120_1176_p000002\",\n  \"role\": \"unknown\",\n  \"subrole\": \"none\",\n  \"confidence\": \"low\",\n  \"short_summary\": \"No OCR text or context was provided for this page to allow for analysis.\",\n  \"retrieval_summary\": \"This page cannot be used for retrieval as no source content is available in the provided input.\",\n  \"answerable_questions\": [],\n  \"retrieval_cues\": [],\n  \"important_entities\": [],\n  \"component_families\": [],\n  \"important_parts\": [],\n  \"nearby_context\": {\n    \"previous\": \"unknown\",\n    \"next\": \"unknown\",\n    \"same_section_hint\": \"unknown\"\n  },\n  \"source_grounding\": {\n    \"has_ocr\": false,\n    \"source_url_present\": true,\n    \"supporting_ocr_phrases\": []\n  },\n  \"not_g",
+      "guidance_only": true,
+      "can_prove_claims": false,
+      "source_truth_mutation_allowed": false,
+      "v3_preview": {
+        "page_type": "unknown",
+        "route_signals": [
+          "unknown",
+          "general"
+        ],
+        "part_numbers": [],
+        "candidate_evidence_usefulness_for_rag": "guidance_only_candidate; requires proof_context/source_trace before factual use",
+        "engram_guidance": "behavior/proof-boundary guidance only; not factual proof",
+        "leiden_community_guidance": "not joined in this V2 Gemma sample runner",
+        "dublin_core": {
+          "type": "PageContextGuidance",
+          "format": "application/json",
+          "identifier": "t_p_120_1176_p000002",
+          "source": "http://localhost:8080/rescarta/t_p_120_1176/000002"
+        }
+      },
+      "llm_status": "GEMMA_JSON_SUMMARY_SUCCEEDED",
+      "generation_warnings": []
+    },
+    {
+      "page_id": "t_p_120_1176_p000003",
+      "role": "unknown",
+      "subrole": "none",
+      "confidence": "low",
+      "short_summary": "No OCR text or context was provided in the input for analysis.",
+      "retrieval_summary": "Unable to determine retrieval utility as no source content is available for this page.",
+      "answerable_questions": [
+        "What is this page about in the manual?",
+        "Which source page should be checked for details related to this topic?"
+      ],
+      "retrieval_cues": [
+        "unknown",
+        "general"
+      ],
+      "important_entities": [],
+      "component_families": [],
+      "important_parts": [],
+      "nearby_context": {
+        "previous": "unknown",
+        "next": "unknown",
+        "same_section_hint": "unknown"
+      },
+      "source_grounding": {
+        "has_ocr": false,
+        "source_url_present": true,
+        "supporting_ocr_phrases": []
+      },
+      "not_good_for": [
+        "answering any specific technical queries due to lack of input text"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false,
+        "requires_source_check": true
+      },
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "generation_provider": "ollama",
+      "generation_model": "gemma4:26b",
+      "llm_called": true,
+      "llm_response_preview": "```json\n{\n  \"page_id\": \"t_p_120_1176_p000003\",\n  \"role\": \"unknown\",\n  \"subrole\": \"none\",\n  \"confidence\": \"low\",\n  \"short_summary\": \"No OCR text or context was provided in the input for analysis.\",\n  \"retrieval_summary\": \"Unable to determine retrieval utility as no source content is available for this page.\",\n  \"answerable_questions\": [],\n  \"retrieval_cues\": [],\n  \"important_entities\": [],\n  \"component_families\": [],\n  \"important_parts\": [],\n  \"nearby_context\": {\n    \"previous\": \"unknown\",\n    \"next\": \"unknown\",\n    \"same_section_hint\": \"unknown\"\n  },\n  \"source_grounding\": {\n    \"has_ocr\": false,\n    \"source_url_present\": true,\n    \"supporting_ocr_phrases\": []\n  },\n  \"not_good_for\": [\n    \"an",
+      "guidance_only": true,
+      "can_prove_claims": false,
+      "source_truth_mutation_allowed": false,
+      "v3_preview": {
+        "page_type": "unknown",
+        "route_signals": [
+          "unknown",
+          "general"
+        ],
+        "part_numbers": [],
+        "candidate_evidence_usefulness_for_rag": "guidance_only_candidate; requires proof_context/source_trace before factual use",
+        "engram_guidance": "behavior/proof-boundary guidance only; not factual proof",
+        "leiden_community_guidance": "not joined in this V2 Gemma sample runner",
+        "dublin_core": {
+          "type": "PageContextGuidance",
+          "format": "application/json",
+          "identifier": "t_p_120_1176_p000003",
+          "source": "http://localhost:8080/rescarta/t_p_120_1176/000003"
+        }
+      },
+      "llm_status": "GEMMA_JSON_SUMMARY_SUCCEEDED",
+      "generation_warnings": []
+    },
+    {
+      "page_id": "t_p_120_1176_p000004",
+      "role": "unknown",
+      "subrole": "none",
+      "confidence": "low",
+      "short_summary": "No OCR content was provided for analysis.",
+      "retrieval_summary": "Unable to determine retrieval utility because the source text is missing from the input.",
+      "answerable_questions": [
+        "What is this page about in the manual?",
+        "Which source page should be checked for details related to this topic?"
+      ],
+      "retrieval_cues": [
+        "unknown",
+        "general"
+      ],
+      "important_entities": [],
+      "component_families": [],
+      "important_parts": [],
+      "nearby_context": {
+        "previous": "unknown",
+        "next": "unknown",
+        "same_section_hint": "unknown"
+      },
+      "source_grounding": {
+        "has_ocr": false,
+        "source_url_present": true,
+        "supporting_ocr_phrases": []
+      },
+      "not_good_for": [
+        "answering any technical questions due to lack of source text"
+      ],
+      "authority": {
+        "trust_scope": "page_context_summary",
+        "rag_role": "retrieval_helper",
+        "can_answer_directly": false,
+        "can_support_answer": true,
+        "canonical_source_truth": false,
+        "requires_citation": true,
+        "source_truth_mutation_allowed": false,
+        "requires_source_check": true
+      },
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "generation_provider": "ollama",
+      "generation_model": "gemma4:26b",
+      "llm_called": true,
+      "llm_response_preview": "```json\n{\n  \"page_id\": \"t_p_120_1176_p000004\",\n  \"role\": \"unknown\",\n  \"subrole\": \"none\",\n  \"confidence\": \"low\",\n  \"short_summary\": \"No OCR content was provided for analysis.\",\n  \"retrieval_summary\": \"Unable to determine retrieval utility because the source text is missing from the input.\",\n  \"answerable_questions\": [],\n  \"retrieval_cues\": [],\n  \"important_entities\": [],\n  \"component_families\": [],\n  \"important_parts\": [],\n  \"nearby_context\": {\n    \"previous\": \"unknown\",\n    \"next\": \"unknown\",\n    \"same_section_hint\": \"unknown\"\n  },\n  \"source_grounding\": {\n    \"has_ocr\": false,\n    \"source_url_present\": true,\n    \"supporting_ocr_phrases\": []\n  },\n  \"not_good_for\": [\n    \"answering any technic",
+      "guidance_only": true,
+      "can_prove_claims": false,
+      "source_truth_mutation_allowed": false,
+      "v3_preview": {
+        "page_type": "unknown",
+        "route_signals": [
+          "unknown",
+          "general"
+        ],
+        "part_numbers": [],
+        "candidate_evidence_usefulness_for_rag": "guidance_only_candidate; requires proof_context/source_trace before factual use",
+        "engram_guidance": "behavior/proof-boundary guidance only; not factual proof",
+        "leiden_community_guidance": "not joined in this V2 Gemma sample runner",
+        "dublin_core": {
+          "type": "PageContextGuidance",
+          "format": "application/json",
+          "identifier": "t_p_120_1176_p000004",
+          "source": "http://localhost:8080/rescarta/t_p_120_1176/000004"
+        }
+      },
+      "llm_status": "GEMMA_JSON_SUMMARY_SUCCEEDED",
+      "generation_warnings": []
+    }
+  ],
+  "prompt_records": [
+    {
+      "page_id": "t_p_120_1176_p000001",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "prompt_length": 2584,
+      "prompt_preview": "You are creating a TRACE-Net Page Context v2 query-guidance card for a scanned aircraft maintenance manual page.\n\nWrite a structured retrieval helper card, not a final answer. The card helps RAG find the right source page later.\nDo not invent facts. Use only the OCR/source/context below. If unsure, say so using conservative wording.\nThe context is derived retrieval context only: it is not canonical source truth and cannot answer directly without source citation.\n\nReturn ONLY valid JSON with this exact shape:\n{\n  \"page_id\": \"t_p_120_1176_p000001\",\n  \"role\": \"parts_list|figure|table|procedure|front_matter|blank|unknown\",\n  \"subrole\": \"short_snake_case_subrole\",\n  \"confidence\": \"high|medium|low\",\n  \"short_summary\": \"1 sentence: what is on this page\",\n  \"retrieval_summary\": \"1-2 sentences: what user queries this page should help retrieve\",\n  \"answerable_questions\": [\"question this page can help route toward\"],\n  \"retrieval_cues\": [\"phrases users may search for, including synonyms and manual terms\"],\n  \"important_entities\": [\"component or concept names, not just topics\"],\n  \"component_families\": [\"higher level part/component families\"],\n  \"important_parts\": [\"part numbers only when present in OCR/context\"],\n  \"nearby_context\": {\"previous\": \"...\", \"next\": \"...\", \"same_section_hint\": \"...\"},\n  \"source_grounding\": {\"has_ocr\": true, \"source_url_present\": true, \"supporting_ocr_phrases\": [\"short source-backed phrases\"]},\n  \"not_good_for\": [\"what this page should not be used to answer directly\"],\n  \"authority\": {\n    \"rag_role\": \"retrieval_helper\",\n    \"can_answer_directly\": false,\n    \"can_support_answer\": true,\n    \"canonical_source_truth\": false,\n    \"requires_citation\": true\n  }\n}\n\nExample style:\nPage: t_p_120_1176_p000015\nRole: passenger seat overview / parts list / design description\nWhat this page can help answer:\n- What passenger seat components are shown or described?\n- Which pages discuss the seat bottom, backrest, armrest, or snack table?\n- Where does the manual describe general passenger seat construction?\nRetrieval cues: passenger seat, seat bottom, backrest, armrest, snack table, seat assembly, upholstery, design, frame, component maintenance manual\nImportant entities: passenger seat, armrest, snack table, seat bottom, backrest\nAuthority: derived retrieval context only, not canonical source truth, requires source citation\n\nCurrent page inputs:\npage_id: t_p_120_1176_p000001\nexisting_role: \nexisting_confidence: \nexisting_summary: \nexisting_topics: []\nexisting_highlighted_parts: []\nsource_url_present: True\nocr_classification: \nOCR excerpt:",
+      "llm_status": "GEMMA_JSON_SUMMARY_SUCCEEDED",
+      "llm_called": true,
+      "raw_response_preview": "```json\n{\n  \"page_id\": \"t_p_120_1176_p000001\",\n  \"role\": \"unknown\",\n  \"subrole\": \"none\",\n  \"confidence\": \"low\",\n  \"short_summary\": \"No OCR content or context was provided for this page.\",\n  \"retrieval_summary\": \"Information unavailable; no source text was provided to determine retrieval utility.\",\n  \"answerable_questions\": [],\n  \"retrieval_cues\": [],\n  \"important_entities\": [],\n  \"component_families\": [],\n  \"important_parts\": [],\n  \"nearby_context\": {\n    \"previous\": \"unknown\",\n    \"next\": \"unknown\",\n    \"same_section_hint\": \"unknown\"\n  },\n  \"source_grounding\": {\n    \"has_ocr\": false,\n    \"source_url_present\": true,\n    \"supporting_ocr_phrases\": []\n  },\n  \"not_good_for\": [\n    \"answering any technical or maintenance questions due to lack of input text\"\n  ],\n  \"authority\": {\n    \"rag_role\": \"retrieval_helper\",\n    \"can_answer_directly\": false,\n    \"can_support_answer\": false,\n    \"canonical_source_truth\": false,\n    \"requires_citation\": true\n  }\n}\n```",
+      "warnings": []
+    },
+    {
+      "page_id": "t_p_120_1176_p000002",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "prompt_length": 2584,
+      "prompt_preview": "You are creating a TRACE-Net Page Context v2 query-guidance card for a scanned aircraft maintenance manual page.\n\nWrite a structured retrieval helper card, not a final answer. The card helps RAG find the right source page later.\nDo not invent facts. Use only the OCR/source/context below. If unsure, say so using conservative wording.\nThe context is derived retrieval context only: it is not canonical source truth and cannot answer directly without source citation.\n\nReturn ONLY valid JSON with this exact shape:\n{\n  \"page_id\": \"t_p_120_1176_p000002\",\n  \"role\": \"parts_list|figure|table|procedure|front_matter|blank|unknown\",\n  \"subrole\": \"short_snake_case_subrole\",\n  \"confidence\": \"high|medium|low\",\n  \"short_summary\": \"1 sentence: what is on this page\",\n  \"retrieval_summary\": \"1-2 sentences: what user queries this page should help retrieve\",\n  \"answerable_questions\": [\"question this page can help route toward\"],\n  \"retrieval_cues\": [\"phrases users may search for, including synonyms and manual terms\"],\n  \"important_entities\": [\"component or concept names, not just topics\"],\n  \"component_families\": [\"higher level part/component families\"],\n  \"important_parts\": [\"part numbers only when present in OCR/context\"],\n  \"nearby_context\": {\"previous\": \"...\", \"next\": \"...\", \"same_section_hint\": \"...\"},\n  \"source_grounding\": {\"has_ocr\": true, \"source_url_present\": true, \"supporting_ocr_phrases\": [\"short source-backed phrases\"]},\n  \"not_good_for\": [\"what this page should not be used to answer directly\"],\n  \"authority\": {\n    \"rag_role\": \"retrieval_helper\",\n    \"can_answer_directly\": false,\n    \"can_support_answer\": true,\n    \"canonical_source_truth\": false,\n    \"requires_citation\": true\n  }\n}\n\nExample style:\nPage: t_p_120_1176_p000015\nRole: passenger seat overview / parts list / design description\nWhat this page can help answer:\n- What passenger seat components are shown or described?\n- Which pages discuss the seat bottom, backrest, armrest, or snack table?\n- Where does the manual describe general passenger seat construction?\nRetrieval cues: passenger seat, seat bottom, backrest, armrest, snack table, seat assembly, upholstery, design, frame, component maintenance manual\nImportant entities: passenger seat, armrest, snack table, seat bottom, backrest\nAuthority: derived retrieval context only, not canonical source truth, requires source citation\n\nCurrent page inputs:\npage_id: t_p_120_1176_p000002\nexisting_role: \nexisting_confidence: \nexisting_summary: \nexisting_topics: []\nexisting_highlighted_parts: []\nsource_url_present: True\nocr_classification: \nOCR excerpt:",
+      "llm_status": "GEMMA_JSON_SUMMARY_SUCCEEDED",
+      "llm_called": true,
+      "raw_response_preview": "```json\n{\n  \"page_id\": \"t_p_120_1176_p000002\",\n  \"role\": \"unknown\",\n  \"subrole\": \"none\",\n  \"confidence\": \"low\",\n  \"short_summary\": \"No OCR text or context was provided for this page to allow for analysis.\",\n  \"retrieval_summary\": \"This page cannot be used for retrieval as no source content is available in the provided input.\",\n  \"answerable_questions\": [],\n  \"retrieval_cues\": [],\n  \"important_entities\": [],\n  \"component_families\": [],\n  \"important_parts\": [],\n  \"nearby_context\": {\n    \"previous\": \"unknown\",\n    \"next\": \"unknown\",\n    \"same_section_hint\": \"unknown\"\n  },\n  \"source_grounding\": {\n    \"has_ocr\": false,\n    \"source_url_present\": true,\n    \"supporting_ocr_phrases\": []\n  },\n  \"not_good_for\": [\n    \"answering any technical queries as no content is available\"\n  ],\n  \"authority\": {\n    \"rag_role\": \"retrieval_helper\",\n    \"can_answer_directly\": false,\n    \"can_support_answer\": false,\n    \"canonical_source_truth\": false,\n    \"requires_citation\": true\n  }\n}\n```",
+      "warnings": []
+    },
+    {
+      "page_id": "t_p_120_1176_p000003",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "prompt_length": 2584,
+      "prompt_preview": "You are creating a TRACE-Net Page Context v2 query-guidance card for a scanned aircraft maintenance manual page.\n\nWrite a structured retrieval helper card, not a final answer. The card helps RAG find the right source page later.\nDo not invent facts. Use only the OCR/source/context below. If unsure, say so using conservative wording.\nThe context is derived retrieval context only: it is not canonical source truth and cannot answer directly without source citation.\n\nReturn ONLY valid JSON with this exact shape:\n{\n  \"page_id\": \"t_p_120_1176_p000003\",\n  \"role\": \"parts_list|figure|table|procedure|front_matter|blank|unknown\",\n  \"subrole\": \"short_snake_case_subrole\",\n  \"confidence\": \"high|medium|low\",\n  \"short_summary\": \"1 sentence: what is on this page\",\n  \"retrieval_summary\": \"1-2 sentences: what user queries this page should help retrieve\",\n  \"answerable_questions\": [\"question this page can help route toward\"],\n  \"retrieval_cues\": [\"phrases users may search for, including synonyms and manual terms\"],\n  \"important_entities\": [\"component or concept names, not just topics\"],\n  \"component_families\": [\"higher level part/component families\"],\n  \"important_parts\": [\"part numbers only when present in OCR/context\"],\n  \"nearby_context\": {\"previous\": \"...\", \"next\": \"...\", \"same_section_hint\": \"...\"},\n  \"source_grounding\": {\"has_ocr\": true, \"source_url_present\": true, \"supporting_ocr_phrases\": [\"short source-backed phrases\"]},\n  \"not_good_for\": [\"what this page should not be used to answer directly\"],\n  \"authority\": {\n    \"rag_role\": \"retrieval_helper\",\n    \"can_answer_directly\": false,\n    \"can_support_answer\": true,\n    \"canonical_source_truth\": false,\n    \"requires_citation\": true\n  }\n}\n\nExample style:\nPage: t_p_120_1176_p000015\nRole: passenger seat overview / parts list / design description\nWhat this page can help answer:\n- What passenger seat components are shown or described?\n- Which pages discuss the seat bottom, backrest, armrest, or snack table?\n- Where does the manual describe general passenger seat construction?\nRetrieval cues: passenger seat, seat bottom, backrest, armrest, snack table, seat assembly, upholstery, design, frame, component maintenance manual\nImportant entities: passenger seat, armrest, snack table, seat bottom, backrest\nAuthority: derived retrieval context only, not canonical source truth, requires source citation\n\nCurrent page inputs:\npage_id: t_p_120_1176_p000003\nexisting_role: \nexisting_confidence: \nexisting_summary: \nexisting_topics: []\nexisting_highlighted_parts: []\nsource_url_present: True\nocr_classification: \nOCR excerpt:",
+      "llm_status": "GEMMA_JSON_SUMMARY_SUCCEEDED",
+      "llm_called": true,
+      "raw_response_preview": "```json\n{\n  \"page_id\": \"t_p_120_1176_p000003\",\n  \"role\": \"unknown\",\n  \"subrole\": \"none\",\n  \"confidence\": \"low\",\n  \"short_summary\": \"No OCR text or context was provided in the input for analysis.\",\n  \"retrieval_summary\": \"Unable to determine retrieval utility as no source content is available for this page.\",\n  \"answerable_questions\": [],\n  \"retrieval_cues\": [],\n  \"important_entities\": [],\n  \"component_families\": [],\n  \"important_parts\": [],\n  \"nearby_context\": {\n    \"previous\": \"unknown\",\n    \"next\": \"unknown\",\n    \"same_section_hint\": \"unknown\"\n  },\n  \"source_grounding\": {\n    \"has_ocr\": false,\n    \"source_url_present\": true,\n    \"supporting_ocr_phrases\": []\n  },\n  \"not_good_for\": [\n    \"answering any specific technical queries due to lack of input text\"\n  ],\n  \"authority\": {\n    \"rag_role\": \"retrieval_helper\",\n    \"can_answer_directly\": false,\n    \"can_support_answer\": false,\n    \"canonical_source_truth\": false,\n    \"requires_citation\": true\n  }\n}\n```",
+      "warnings": []
+    },
+    {
+      "page_id": "t_p_120_1176_p000004",
+      "prompt_version": "page_context_v2_query_guidance_card",
+      "prompt_length": 2584,
+      "prompt_preview": "You are creating a TRACE-Net Page Context v2 query-guidance card for a scanned aircraft maintenance manual page.\n\nWrite a structured retrieval helper card, not a final answer. The card helps RAG find the right source page later.\nDo not invent facts. Use only the OCR/source/context below. If unsure, say so using conservative wording.\nThe context is derived retrieval context only: it is not canonical source truth and cannot answer directly without source citation.\n\nReturn ONLY valid JSON with this exact shape:\n{\n  \"page_id\": \"t_p_120_1176_p000004\",\n  \"role\": \"parts_list|figure|table|procedure|front_matter|blank|unknown\",\n  \"subrole\": \"short_snake_case_subrole\",\n  \"confidence\": \"high|medium|low\",\n  \"short_summary\": \"1 sentence: what is on this page\",\n  \"retrieval_summary\": \"1-2 sentences: what user queries this page should help retrieve\",\n  \"answerable_questions\": [\"question this page can help route toward\"],\n  \"retrieval_cues\": [\"phrases users may search for, including synonyms and manual terms\"],\n  \"important_entities\": [\"component or concept names, not just topics\"],\n  \"component_families\": [\"higher level part/component families\"],\n  \"important_parts\": [\"part numbers only when present in OCR/context\"],\n  \"nearby_context\": {\"previous\": \"...\", \"next\": \"...\", \"same_section_hint\": \"...\"},\n  \"source_grounding\": {\"has_ocr\": true, \"source_url_present\": true, \"supporting_ocr_phrases\": [\"short source-backed phrases\"]},\n  \"not_good_for\": [\"what this page should not be used to answer directly\"],\n  \"authority\": {\n    \"rag_role\": \"retrieval_helper\",\n    \"can_answer_directly\": false,\n    \"can_support_answer\": true,\n    \"canonical_source_truth\": false,\n    \"requires_citation\": true\n  }\n}\n\nExample style:\nPage: t_p_120_1176_p000015\nRole: passenger seat overview / parts list / design description\nWhat this page can help answer:\n- What passenger seat components are shown or described?\n- Which pages discuss the seat bottom, backrest, armrest, or snack table?\n- Where does the manual describe general passenger seat construction?\nRetrieval cues: passenger seat, seat bottom, backrest, armrest, snack table, seat assembly, upholstery, design, frame, component maintenance manual\nImportant entities: passenger seat, armrest, snack table, seat bottom, backrest\nAuthority: derived retrieval context only, not canonical source truth, requires source citation\n\nCurrent page inputs:\npage_id: t_p_120_1176_p000004\nexisting_role: \nexisting_confidence: \nexisting_summary: \nexisting_topics: []\nexisting_highlighted_parts: []\nsource_url_present: True\nocr_classification: \nOCR excerpt:",
+      "llm_status": "GEMMA_JSON_SUMMARY_SUCCEEDED",
+      "llm_called": true,
+      "raw_response_preview": "```json\n{\n  \"page_id\": \"t_p_120_1176_p000004\",\n  \"role\": \"unknown\",\n  \"subrole\": \"none\",\n  \"confidence\": \"low\",\n  \"short_summary\": \"No OCR content was provided for analysis.\",\n  \"retrieval_summary\": \"Unable to determine retrieval utility because the source text is missing from the input.\",\n  \"answerable_questions\": [],\n  \"retrieval_cues\": [],\n  \"important_entities\": [],\n  \"component_families\": [],\n  \"important_parts\": [],\n  \"nearby_context\": {\n    \"previous\": \"unknown\",\n    \"next\": \"unknown\",\n    \"same_section_hint\": \"unknown\"\n  },\n  \"source_grounding\": {\n    \"has_ocr\": false,\n    \"source_url_present\": true,\n    \"supporting_ocr_phrases\": []\n  },\n  \"not_good_for\": [\n    \"answering any technical questions due to lack of source text\"\n  ],\n  \"authority\": {\n    \"rag_role\": \"retrieval_helper\",\n    \"can_answer_directly\": false,\n    \"can_support_answer\": false,\n    \"canonical_source_truth\": false,\n    \"requires_citation\": true\n  }\n}\n```",
+      "warnings": []
+    }
+  ],
+  "validations": [
+    {
+      "page_id": "t_p_120_1176_p000001",
+      "validation": {
+        "quality_status": "PASS",
+        "failure_reasons": [],
+        "missing_fields": [],
+        "empty_required_fields": [],
+        "bad_list_fields": [],
+        "answer_permission": false,
+        "canonical_source_truth": false,
+        "source_truth_mutation_allowed": false,
+        "llm_called": true
+      }
+    },
+    {
+      "page_id": "t_p_120_1176_p000002",
+      "validation": {
+        "quality_status": "PASS",
+        "failure_reasons": [],
+        "missing_fields": [],
+        "empty_required_fields": [],
+        "bad_list_fields": [],
+        "answer_permission": false,
+        "canonical_source_truth": false,
+        "source_truth_mutation_allowed": false,
+        "llm_called": true
+      }
+    },
+    {
+      "page_id": "t_p_120_1176_p000003",
+      "validation": {
+        "quality_status": "PASS",
+        "failure_reasons": [],
+        "missing_fields": [],
+        "empty_required_fields": [],
+        "bad_list_fields": [],
+        "answer_permission": false,
+        "canonical_source_truth": false,
+        "source_truth_mutation_allowed": false,
+        "llm_called": true
+      }
+    },
+    {
+      "page_id": "t_p_120_1176_p000004",
+      "validation": {
+        "quality_status": "PASS",
+        "failure_reasons": [],
+        "missing_fields": [],
+        "empty_required_fields": [],
+        "bad_list_fields": [],
+        "answer_permission": false,
+        "canonical_source_truth": false,
+        "source_truth_mutation_allowed": false,
+        "llm_called": true
+      }
+    }
+  ],
+  "errors": [
+    {
+      "page_id": "t_p_120_1176_p000042",
+      "error_type": "RuntimeError",
+      "error": "Gemma response was not valid JSON"
+    }
+  ],
+  "safety_contract": {
+    "source_truth_mutation_allowed": false,
+    "answer_permission": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "opensearch_write_attempt": false,
+    "v2_summary_is_proof": false,
+    "v2_summary_role": "retrieval_guidance_only",
+    "gemma4_makes_summaries": true
+  }
+}

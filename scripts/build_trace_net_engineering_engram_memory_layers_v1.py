@@ -10,6 +10,7 @@ from tiff.trace_net_engineering_engram_memory_layers_v1 import build_memory_laye
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Build TRACE-Net Engineering Engram Memory Layers v1")
     parser.add_argument("--engram-core", required=True)
+    parser.add_argument("--query-planner", action="append", default=[], help="Optional engineering query planner manifest; may be repeated.")
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--min-atoms", type=int, default=6)
     parser.add_argument("--max-unsafe", type=int, default=0)
@@ -26,6 +27,7 @@ def main(argv=None) -> int:
         include_seed_atoms=not args.no_seed_atoms,
         min_atoms=args.min_atoms,
         require_all_layers=not args.no_require_all_layers,
+        query_planner_paths=args.query_planner,
         max_unsafe=args.max_unsafe,
     )
     output = Path(args.output_dir) / "trace_net_engineering_engram_memory_layers_v1.json"

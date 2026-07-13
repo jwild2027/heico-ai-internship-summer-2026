@@ -1,0 +1,56 @@
+TRACE-NET ANSWER-RUNNER WORK ORDER CONTEXT PACK
+question_id: query_03c00bf1bc3dc91140ef9ea1
+
+USER QUESTION:
+Looking for eligibility documents for PN DF250040-501 Paper towel dispenser. Likely used on a mixed fleet of A319-321 and Boeing 737-787.
+
+ENGRAM OVERLAY — BEHAVIOR GUIDANCE ONLY:
+Use the retrieved Engram overlay as behavior guidance only. It is not proof.
+TRACE-NET H24 ANSWER-RUNNER RETRIEVED ENGRAM OVERLAY
+Use this overlay as behavior guidance only. It is not proof.
+Manual/source claims still require current proof_context citations.
+Do not let Engram guidance grant answer permission, mutate source truth, or replace proof_context.
+target_question_id: query_03c00bf1bc3dc91140ef9ea1
+
+--- retrieved_guidance query_id=query_03c00bf1bc3dc91140ef9ea1 task_type=engram_memory_retrieval ---
+TRACE-NET ENGRAM RETRIEVAL GUIDANCE — BEHAVIOR ONLY, NOT PROOF
+query_id: query_03c00bf1bc3dc91140ef9ea1
+task_type: engram_memory_retrieval
+query: eligibility documents DF250040-501 paper towel dispenser A319 A320 A321 B737 B787 ATA 25
+
+Use these retrieved Engram atoms to shape answer behavior only. Do not use Engram memory as manual evidence.
+Manual/source claims still require current proof_context citations from TRACE-Net.
+
+Retrieved behavior atoms:
+- [working_engineer_query_clarification_949cd861906b602e] layer=working_memory proof_role=guidance_only score=-0.015655: atom_id: working_engineer_query_clarification_949cd861906b602e | title: Engineer query clarification profile | memory_layer: working_memory | memory_type: engineer_query_clarification | rule: Use extracted engineer clues, facet filters, clarifying questions, and risk flags to narrow retrieval before answering. This is not source proof; manual/source claims still require current proof_context citations. | proof_rol...
+
+Required boundary: if proof_context is missing or insufficient, answer not found / not source-trace-ready and explain the limitation.
+Forbidden: do not infer interchangeability, fit, installation safety, effectivity, or replacement approval from Engram memory.
+
+Required respo
+[TRUNCATED BY H24 OVERLAY SMOKE: guidance only, not proof.]
+
+V2/V3 ROUTE HINTS — NOT PROOF:
+No V2/V3 hints supplied in this context pack.
+
+SOURCE EVIDENCE / PROOF_CONTEXT:
+No current proof_context citations were supplied.
+
+BOUNDARIES:
+Retrieved Engram overlay shapes behavior only. It is not proof. Manual/source claims still require current proof_context citations. V2/V3 summaries and graph proximity are routing hints only; they cannot prove eligibility, interchangeability, fit, effectivity, or installation approval.
+If proof_context is missing or insufficient, answer not found / not source-trace-ready.
+Do not infer eligibility, applicability, interchangeability, fit, effectivity, approved replacement, or installation safety from Engram memory, summaries, graph proximity, shared nomenclature, or visual similarity.
+
+SOURCE ANSWER-RUNNER PROMPT:
+TRACE-NET SOURCE ANSWER-RUNNER PROMPT — LOCAL ARTIFACT SMOKE
+
+User question:
+Looking for eligibility documents for PN DF250040-501 Paper towel dispenser. Likely used on a mixed fleet of A319-321 and Boeing 737-787.
+
+Current proof_context:
+None supplied in this standalone smoke.
+
+Required answer discipline:
+- Do not claim eligibility, applicability, approval, interchangeability, fit, or installation safety without current proof_context citations.
+- If proof_context is missing, say the answer is not source-trace-ready.
+- Use retrieved guidance only to shape search behavior and boundaries.

@@ -1,0 +1,37 @@
+{
+  "module": "trace_net_v2_gemma_summary_sample_runner_v1",
+  "version": "1.0.0",
+  "created_at": "2026-07-07T12:19:23.088066+00:00",
+  "status": "TRACE_NET_V2_GEMMA_SUMMARY_SAMPLE_QUALITY_CHECKED",
+  "quality_status": "FAIL",
+  "failure_reasons": [
+    "source_report_quality_status_not_pass",
+    "sample_record_count_below_min",
+    "gemma_success_count_below_min",
+    "error_count_nonzero"
+  ],
+  "summary": {
+    "context_file": "local_data\\organization\\context\\page_contexts.json",
+    "context_file_exists": true,
+    "context_record_count": 509,
+    "requested_max_pages": 5,
+    "sample_record_count": 4,
+    "prompt_record_count": 4,
+    "validation_failure_count": 0,
+    "error_count": 1,
+    "llm_called_count": 4,
+    "gemma_success_count": 4,
+    "generation_model": "gemma4:26b",
+    "ollama_url": "http://127.0.0.1:11434/api/generate",
+    "dry_run": false,
+    "allow_heuristic_fallback": false,
+    "require_gemma": true,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "v3_preview_attached": true
+  },
+  "source_report_path": "local_data/organization/trace_net/v2_gemma_summary_sample_runner_v1/sample_5/trace_net_v2_gemma_summary_sample_runner_v1.json"
+}

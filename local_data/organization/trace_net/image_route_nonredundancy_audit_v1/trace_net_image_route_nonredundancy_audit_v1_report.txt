@@ -1,0 +1,34 @@
+quality_status=PASS
+artifact_match_count=156
+
+Existing capabilities:
+- route_dispatch: existing_reuse (30 files)
+- llava_visual_observation: existing_reuse (23 files)
+- visual_summary: existing_reuse (12 files)
+- image_ocr_callout_extraction: existing_reuse (2 files)
+- visual_evidence_pack: existing_reuse (2 files)
+- nomenclature_merge: existing_reuse (6 files)
+- callout_part_verification: existing_reuse (5 files)
+- figure_chart_understanding: existing_reuse (5 files)
+- callout_table_linking: existing_reuse (4 files)
+- visual_context_builder: existing_reuse (8 files)
+- retrieval_adapter: existing_reuse (6 files)
+- page_context_v2: existing_reuse (9 files)
+
+Non-redundancy contract:
+- do_not_rebuild:route_dispatch
+- do_not_rebuild:llava_visual_observation
+- do_not_rebuild:image_ocr_callout_extraction
+- do_not_rebuild:visual_evidence_pack
+- do_not_rebuild:nomenclature_merge
+- do_not_rebuild:callout_part_verification
+- do_not_rebuild:figure_chart_understanding
+- do_not_rebuild:callout_table_linking
+- do_not_rebuild:retrieval_adapter
+
+Recommended new work:
+- build_read_only_visual_summary_v2_v3_adapter_over_existing_artifacts
+- add_explicit_ocr_vs_existing_llava_token_reconciliation_only_if_not_already_present
+- link_visual_summary_to_existing_page_context_v2_without_renaming_HAS_CONTEXT_V2
+- use_targeted_llava_retry_only_for_unresolved_regions_or_character_conflicts
+- preserve_candidate_only_and_no_answer_permission_defaults

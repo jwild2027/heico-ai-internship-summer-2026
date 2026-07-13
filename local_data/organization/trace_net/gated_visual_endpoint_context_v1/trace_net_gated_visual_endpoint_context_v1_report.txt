@@ -1,0 +1,29 @@
+TRACE-Net gated visual endpoint context v1
+quality_status: PASS
+retrieval documents: 104
+review-only documents available but not used: 81
+
+QUERY: Find the passenger seat assembly diagram with callouts
+  triggered: True triggers=['assembly', 'callouts', 'diagram', 'seat', 'seat assembly', 'callout']
+  status: visual_context_candidates_found
+  citations: 8
+  - t_p_120_1176_p000499 score=11.0649 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000446 score=10.3254 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000172 score=10.3146 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000202 score=10.3146 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000325 score=10.3146 route=image_visual subtype=confirmed_diagram_dominant
+
+QUERY: Show figure references for visual diagram part numbers
+  triggered: True triggers=['diagram', 'figure', 'part', 'visual', 'part number']
+  status: visual_context_candidates_found
+  citations: 8
+  - t_p_120_1176_p000184 score=10.2942 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000248 score=10.2942 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000275 score=10.2942 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000357 score=10.2942 route=image_visual subtype=confirmed_diagram_dominant
+  - t_p_120_1176_p000117 score=10.2844 route=image_visual subtype=confirmed_diagram_dominant
+
+QUERY: What is the torque limit
+  triggered: False triggers=[]
+  status: visual_route_not_triggered
+  citations: 0

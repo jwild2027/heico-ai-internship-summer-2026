@@ -1,0 +1,62 @@
+{
+  "endpoint_contract": {
+    "answer_permission": false,
+    "context_payload_type": "trace_net_route_context",
+    "excludes_review_only_visual_candidates": true,
+    "final_answer_allowed": false,
+    "only_uses_search_ready_confirmed_visual_docs": true,
+    "route_name": "gated_image_visual"
+  },
+  "inputs": {
+    "gated_visual_retrieval_documents_jsonl": "local_data\\organization\\trace_net\\gated_visual_retrieval_adapter_v1_1\\trace_net_gated_visual_retrieval_documents_v1_1.jsonl",
+    "min_score": 0.001,
+    "review_only_documents_jsonl": "local_data\\organization\\trace_net\\gated_visual_retrieval_adapter_v1_1\\trace_net_gated_visual_candidate_review_documents_v1_1.jsonl",
+    "top_k": 8
+  },
+  "module": "trace_net_gated_visual_endpoint_context_v1",
+  "outputs": {
+    "endpoint_context_jsonl": "local_data\\organization\\trace_net\\gated_visual_endpoint_context_v1\\trace_net_gated_visual_endpoint_context_v1.jsonl",
+    "report": "local_data\\organization\\trace_net\\gated_visual_endpoint_context_v1\\trace_net_gated_visual_endpoint_context_v1_report.txt",
+    "summary": "local_data\\organization\\trace_net\\gated_visual_endpoint_context_v1\\summary.json"
+  },
+  "quality_failures": [],
+  "quality_status": "PASS",
+  "safety_contract": {
+    "answer_permission": false,
+    "does_not_call_llm": true,
+    "does_not_call_ollama": true,
+    "does_not_mutate_source_truth": true,
+    "does_not_write_opensearch": true,
+    "does_not_write_postgres": true,
+    "does_not_write_qdrant": true,
+    "final_answer_allowed": false,
+    "read_only_endpoint_context_adapter": true
+  },
+  "status": "TRACE_NET_GATED_VISUAL_ENDPOINT_CONTEXT_V1_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "can_answer_directly_count": 0,
+    "can_prove_claims_count": 0,
+    "cited_page_count": 16,
+    "final_answer_allowed_true_count": 0,
+    "llm_call_attempt_count": 0,
+    "ollama_call_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "query_count": 3,
+    "retrieval_document_count": 104,
+    "review_only_docs_used_for_context_count": 0,
+    "review_only_document_count": 81,
+    "source_truth_mutation_allowed_count": 0,
+    "successful_query_count": 2,
+    "total_citation_count": 16,
+    "triggered_query_count": 2,
+    "visual_route_counts": {
+      "image_visual": 16
+    },
+    "visual_subtype_counts": {
+      "confirmed_diagram_dominant": 16
+    }
+  }
+}

@@ -1,0 +1,150 @@
+Question 01: What ZIP file was inspected?
+Answer 01: The inspected ZIP file is metadata.zip.
+
+Question 02: What metadata file inside the ZIP was used as the main source?
+Answer 02: metadata.xml was used as the main METS/MODS source file.
+
+Question 03: What title is recorded inside metadata.xml?
+Answer 03: The recorded title is EMB CMM ATA 25-21-00 REV.4.
+
+Question 04: What METS LABEL is recorded on the root mets:mets element?
+Answer 04: The root METS LABEL is EMB CMM ATA 25-21-00 REV.4.
+
+Question 05: What OBJID is recorded on the root mets:mets element?
+Answer 05: The root OBJID is heico001/00003594/00000027.
+
+Question 06: What METS TYPE is recorded for this package?
+Answer 06: The METS TYPE is ResCarta Monograph Metadata v3.1.
+
+Question 07: What is the local identifier in the MODS metadata?
+Answer 07: The MODS local identifier is heico001/00003594/00000027.
+
+Question 08: What location URL is recorded in the MODS metadata?
+Answer 08: The MODS location URL is heico001/00003594/00000027.
+
+Question 09: Who or what is listed as the owner/namePart?
+Answer 09: The MODS namePart is HDL.
+
+Question 10: What owner role terms are recorded?
+Answer 10: The recorded role terms are own, Owner.
+
+Question 11: What typeOfResource is recorded?
+Answer 11: The MODS typeOfResource is text.
+
+Question 12: What genre is recorded?
+Answer 12: The MODS genre is book.
+
+Question 13: What language code is recorded?
+Answer 13: The MODS language code is eng.
+
+Question 14: What abstract is recorded?
+Answer 14: The MODS abstract says: Various CMMs from Embraer site.
+
+Question 15: What dateCaptured is recorded?
+Answer 15: The MODS dateCaptured is 2013-08-02.
+
+Question 16: What issuance type is recorded?
+Answer 16: The MODS issuance is monographic.
+
+Question 17: What page range is recorded in the MODS extent?
+Answer 17: The MODS extent records pages 1 through 509.
+
+Question 18: How many pages does the MODS extent report?
+Answer 18: The MODS extent reports 509 pages.
+
+Question 19: How many TIFF image files are listed in the ZIP?
+Answer 19: The ZIP contains 509 TIFF image entries.
+
+Question 20: How many mets:file image records are listed in metadata.xml?
+Answer 20: metadata.xml lists 509 mets:file image records.
+
+Question 21: How many page divs are listed in the METS structMap?
+Answer 21: The METS structMap lists 509 page divs.
+
+Question 22: Do the ZIP TIFF count, mets:file count, and structMap page count agree?
+Answer 22: Yes: ZIP TIFFs=509, mets:file records=509, structMap pages=509.
+
+Question 23: What MIME type is recorded for the image files?
+Answer 23: The image file MIME type(s) recorded in mets:file are: image/tiff.
+
+Question 24: What MIX MIMEType is recorded in the technical metadata?
+Answer 24: The MIX technical metadata MIMEType is image/tiff.
+
+Question 25: What byte order is recorded in the MIX image metadata?
+Answer 25: The recorded byte order is little-endian.
+
+Question 26: What compression scheme is recorded in the MIX image metadata?
+Answer 26: The recorded compression scheme is 4.
+
+Question 27: What color space is recorded in the MIX image metadata?
+Answer 27: The recorded color space is 1.
+
+Question 28: What checksum type is used for the image file records?
+Answer 28: 509 of 509 image file records use SHA-1 checksums.
+
+Question 29: Do the recorded checksums look like valid SHA-1 hex strings?
+Answer 29: Yes: 509 of 509 checksums match the 40-character SHA-1 hex pattern.
+
+Question 30: Are all image checksums unique?
+Answer 30: Yes: 509 unique checksum values were found across 509 records.
+
+Question 31: Are the mets:file IDs sequential?
+Answer 31: Yes: the file IDs are expected to run from FID0001 through FID0509.
+
+Question 32: Are the structMap page orders sequential?
+Answer 32: Yes: page ORDER values are expected to run from 1 through 509.
+
+Question 33: Do page LABEL values match their ORDER values?
+Answer 33: Yes: page LABEL values were checked against their ORDER values.
+
+Question 34: Do xlink page labels follow the PPG#### pattern?
+Answer 34: Yes: xlink labels were checked against PPG0001 through PPG0509.
+
+Question 35: Does every structMap fptr FILEID point to a mets:file record?
+Answer 35: Yes: every page fptr FILEID was checked against the mets:file records.
+
+Question 36: Does every mets:file href have a matching TIFF entry in the ZIP?
+Answer 36: Yes: missing ZIP TIFFs from METS hrefs = 0.
+
+Question 37: Are there TIFF files in the ZIP that are not referenced by metadata.xml?
+Answer 37: No: unreferenced ZIP TIFF entries = 0.
+
+Question 38: Do METS file sizes match the ZIP entry sizes?
+Answer 38: Yes: mismatched size records = 0.
+
+Question 39: What is the first page mapped to?
+Answer 39: Page 1 maps to 00000001.tif with FILEID FID0001, xlink label PPG0001, and size 16,245 bytes.
+
+Question 40: What is the last page mapped to?
+Answer 40: Page 509 maps to 00000509.tif with FILEID FID0509, xlink label PPG0509, and size 21,907 bytes.
+
+Question 41: What file is mapped to page 25?
+Answer 41: Page 25 maps to 00000025.tif, FILEID FID0025, xlink label PPG0025, size 3,243 bytes.
+
+Question 42: What file is mapped to page 100?
+Answer 42: Page 100 maps to 00000100.tif, FILEID FID0100, xlink label PPG0100, size 48,619 bytes.
+
+Question 43: What file is mapped to page 250?
+Answer 43: Page 250 maps to 00000250.tif, FILEID FID0250, xlink label PPG0250, size 47,279 bytes.
+
+Question 44: What file is mapped to page 509?
+Answer 44: Page 509 maps to 00000509.tif, FILEID FID0509, xlink label PPG0509, size 21,907 bytes.
+
+Question 45: Which page has the largest recorded TIFF size?
+Answer 45: The largest recorded TIFF is page 6 -> 00000006.tif at 77,604 bytes.
+
+Question 46: Which page has the smallest recorded TIFF size?
+Answer 46: The smallest recorded TIFF is page 2 -> 00000002.tif at 3,239 bytes.
+
+Question 47: What are the five largest page image records?
+Answer 47: page 6 -> 00000006.tif (77,604 bytes); page 3 -> 00000003.tif (70,153 bytes); page 5 -> 00000005.tif (70,074 bytes); page 9 -> 00000009.tif (63,596 bytes); page 7 -> 00000007.tif (63,274 bytes)
+
+Question 48: What are the five smallest page image records?
+Answer 48: page 2 -> 00000002.tif (3,239 bytes); page 12 -> 00000012.tif (3,243 bytes); page 25 -> 00000025.tif (3,243 bytes); page 35 -> 00000035.tif (3,243 bytes); page 79 -> 00000079.tif (3,243 bytes)
+
+Question 49: What is the total recorded size of all page TIFFs?
+Answer 49: The total recorded size of all page TIFFs is 21,669,039 bytes.
+
+Question 50: What is the median recorded TIFF size per page?
+Answer 50: The median recorded TIFF size per page is about 44,166 bytes.
+

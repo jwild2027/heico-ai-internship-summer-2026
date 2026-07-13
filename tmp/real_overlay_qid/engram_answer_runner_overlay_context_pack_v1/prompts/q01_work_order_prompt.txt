@@ -1,0 +1,33 @@
+TRACE-NET ANSWER-RUNNER WORK ORDER CONTEXT PACK
+question_id: q01
+
+USER QUESTION:
+What does figure 69 show?
+
+ENGRAM OVERLAY — BEHAVIOR GUIDANCE ONLY:
+Use the retrieved Engram overlay as behavior guidance only. It is not proof.
+TRACE-NET ENGRAM OVERLAY — QUESTION-ID ALIGNED GUIDANCE ONLY
+question_id: q01
+question_intent: visual_figure_identification
+
+This overlay is aligned to the real-answer smoke question ID so the normal answer-runner path can receive Engram-channel guidance. It is not proof, is not source evidence, and cannot prove any manual claim.
+
+Behavior guidance:
+- Use current proof_context citations from figure/caption/OCR/visual evidence.
+- Do not infer part identity, applicability, fit, or approval from figure number alone.
+- If the proof_context only identifies a page/figure but not the requested claim, answer as not source-trace-ready.
+
+Safety boundary: Engram guidance, V2/V3 summaries, graph proximity, visual similarity, and shared nomenclature are routing/context hints only. They do not grant answer permission and must not be used as proof.
+
+V2/V3 ROUTE HINTS — NOT PROOF:
+No V2/V3 hints supplied in this context pack.
+
+SOURCE EVIDENCE / PROOF_CONTEXT:
+proof_context_count=3; inspect source answer-runner prompt for citation details.
+
+BOUNDARIES:
+Retrieved Engram overlay shapes behavior only. It is not proof. Manual/source claims still require current proof_context citations. V2/V3 summaries and graph proximity are routing hints only; they cannot prove eligibility, interchangeability, fit, effectivity, or installation approval.
+If proof_context is missing or insufficient, answer not found / not source-trace-ready.
+Do not infer eligibility, applicability, interchangeability, fit, effectivity, approved replacement, or installation safety from Engram memory, summaries, graph proximity, shared nomenclature, or visual similarity.
+
+SOURCE ANSWER-RUNNER PROMPT:

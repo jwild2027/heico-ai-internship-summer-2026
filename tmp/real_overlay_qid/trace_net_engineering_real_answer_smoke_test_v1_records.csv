@@ -1,0 +1,16 @@
+question_id,category,question,grade,runner_passed,quality_status,task_type,intent_answer_used,intent_answer_type,stage_pass_count,proof_context_count,answer_citation_count,source_trace_ready_citation_count,unsupported_claim_count,summary_used_as_proof_count,invalid_answer_citation_count,unsafe_record_count,answer_permission_count,source_truth_mutation_allowed_count,write_attempt_count,failure_reason,answer_preview,run_dir
+q01,figure_lookup,What does figure 69 show?,GOOD,True,PASS,visual_part_identification,False,,3,3,5,3,0,0,0,0,0,0,0,,"Answer:
+Figure 69 is linked to part number 120-50645-005, ""DOUBLE PASSENGER SEAT ASSY"" [V6] [O1].
+
+Evidence:
+- [V6] Visual evidence links figure 69 to part number 120-50645-005 on page 315.
+- [O1] OCR-backed nomenclature gives ""DOUBLE PASSENGER SEAT ASSY"" on page 316.
+  OCR line: 69 - | 120-50645-005 DOUBLE PASSENGER SEAT ASSY .......... VS4956 A REF
+- [T1] Table/OCR proof supports part number 120-50645-005.
+
+Engineering confidence:
+HIGH for the figure-to-part and nomenclature claim because visual, OCR, and table/OCR proof are source-trace-ready. Nomenclature confidence: HIGH.
+
+Limits:
+- This does not prove interchangeability, effectivity, fit, replacement approval, or installation safety.
+- V2 summaries, when present, are guidance only and are not used as proof in this answer.",tmp\real_overlay_qid\runs\q01_fig_3cdcd067

@@ -1,0 +1,96 @@
+{
+  "integration_policy": {
+    "forbidden": [
+      "answer_permission_from_engram",
+      "source_truth_mutation_from_engram",
+      "summary_or_engram_used_as_proof",
+      "live_db_or_qdrant_io_without_explicit_gate",
+      "full_30_question_rerun_as_default_debug_loop"
+    ],
+    "mode": "targeted_answer_runner_overlay_llm_smoke",
+    "next_patch": "wire overlay prompt into answer runner behind explicit CLI flag",
+    "proof_boundary": "Retrieved Engram overlay shapes behavior only. It is not proof. Manual/source claims still require current proof_context citations."
+  },
+  "quality_status": "PASS",
+  "smoke_records": [
+    {
+      "answer_char_count": 688,
+      "answer_path": "tmp\\trace_net_engineer_engram_cli_smoke\\answer_runner_overlay_llm_smoke_ollama_strict\\q\\query_03c00bf1bc3dc91140ef9ea1\\query_03c00bf1bc3dc91140ef9ea1_answer.txt",
+      "answer_permission": false,
+      "answer_preview": "**Answer**\nThe requested eligibility documents for PN DF250040-501 (Paper towel dispenser) cannot be provided as the query was submitted without a `proof_context`. The answer is not source-trace-ready.\n\n**Evidence**\nNo technical manuals, IPCs, or effectivity documents were supplied in the current request to verify the applicability of PN DF250040-501 to the A319/A321 or B737/B787 fleets.\n\n**Engineering confidence**\nN/A (Insufficient data)\n\n**Limits**\nThis response is limited by the absence of verifiable source documentation. No conclusions regarding interchangeability, installation safety, or aircraft effectivity can be drawn without direct citations from approved technical data.",
+      "grade": "GOOD",
+      "grade_reasons": [],
+      "llm_answered": true,
+      "llm_error": "",
+      "llm_fallback_used": false,
+      "llm_mode": "ollama",
+      "llm_model": "gemma4:26b",
+      "llm_retry_used": false,
+      "matched_bridge_query_ids": [
+        "query_03c00bf1bc3dc91140ef9ea1"
+      ],
+      "matched_bridge_task_types": [
+        "engram_memory_retrieval"
+      ],
+      "prompt_char_count": 3524,
+      "prompt_hash": "02d6f5fd60dffa0e8862614636813501ab769eaf8f09c7e446cb1bd5f064a974",
+      "prompt_path": "tmp\\trace_net_engineer_engram_cli_smoke\\answer_runner_overlay_llm_smoke_ollama_strict\\q\\query_03c00bf1bc3dc91140ef9ea1\\query_03c00bf1bc3dc91140ef9ea1_prompt.txt",
+      "question": "Looking for eligibility documents for PN DF250040-501 Paper towel dispenser. Likely used on a mixed fleet of A319-321 and Boeing 737-787.",
+      "question_id": "query_03c00bf1bc3dc91140ef9ea1",
+      "safety_contract": {
+        "answer_permission_count": 0,
+        "opensearch_upload_attempt_count": 0,
+        "opensearch_write_attempt_count": 0,
+        "postgres_write_attempt_count": 0,
+        "qdrant_read_attempt_count": 0,
+        "qdrant_write_attempt_count": 0,
+        "source_truth_mutation_allowed_count": 0
+      },
+      "selected_layers": [
+        "working_memory"
+      ],
+      "selected_proof_roles": [
+        "guidance_only"
+      ],
+      "source_answer_grade": "PARTIAL",
+      "source_runner_passed": null,
+      "source_runner_quality_status": "PASS",
+      "trace_path": "tmp\\trace_net_engineer_engram_cli_smoke\\answer_runner_overlay_llm_smoke_ollama_strict\\q\\query_03c00bf1bc3dc91140ef9ea1\\query_03c00bf1bc3dc91140ef9ea1_trace.json",
+      "unsafe": false,
+      "unsupported_claim_count": 0
+    }
+  ],
+  "status": "TRACE_NET_ENGINEERING_ENGRAM_ANSWER_RUNNER_OVERLAY_LLM_SMOKE_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "bad_answer_count": 0,
+    "good_answer_count": 1,
+    "good_or_partial_answer_count": 1,
+    "llm_answered_count": 1,
+    "llm_fallback_used_count": 0,
+    "llm_mode": "ollama",
+    "llm_model": "gemma4:26b",
+    "llm_retry_used_count": 0,
+    "module": "trace_net_engineering_engram_answer_runner_overlay_llm_smoke_v1",
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "partial_answer_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_read_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "quality_failures": [],
+    "query_count": 1,
+    "ready_for_answer_runner_overlay_patch": true,
+    "source_answer_smoke_quality_status": "PASS",
+    "source_h24_overlay_quality_status": "PASS",
+    "source_truth_mutation_allowed_count": 0,
+    "target_question_ids": [
+      "query_03c00bf1bc3dc91140ef9ea1"
+    ],
+    "unsafe_finding_count": 0,
+    "unsafe_findings": [],
+    "unsupported_claim_count": 0,
+    "version": "v1",
+    "write_attempt_count": 0
+  }
+}

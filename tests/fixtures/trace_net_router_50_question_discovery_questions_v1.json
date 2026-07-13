@@ -1,0 +1,506 @@
+{
+  "schema_version": "trace_net_router_50_question_discovery_questions_v1",
+  "purpose": "Challenge TRACE-Net router/proxy v3 and guided-discovery output behavior with ambiguous, under-specified, or safety-sensitive aviation manual questions. Each item includes three unanswered follow-up questions to compare against what the system asks.",
+  "records": [
+    {
+      "id": "q001",
+      "user_question": "I only know the part starts with 24.",
+      "challenge_type": "partial_prefix",
+      "expected_followup_questions": [
+        "Do you know the manufacturer or company connected to the part?",
+        "Do you remember what the part physically looked like or its nomenclature?",
+        "Was it seen in a figure, table, body text, or a specific page?"
+      ]
+    },
+    {
+      "id": "q002",
+      "user_question": "I am looking for a fastener that starts with 244 but I do not know the rest.",
+      "challenge_type": "partial_prefix_with_nomenclature",
+      "expected_followup_questions": [
+        "Do you know whether the fastener was a screw, bolt, clip, pin, or other fastener type?",
+        "Do you remember the ATA/system area or manual section?",
+        "Was the fastener listed in an IPL table or called out in a figure?"
+      ]
+    },
+    {
+      "id": "q003",
+      "user_question": "The part had 36833 in it and I think it was on the first few pages.",
+      "challenge_type": "contains_digits_page_hint",
+      "expected_followup_questions": [
+        "Do you know whether 36833 was at the start, middle, or end of the part number?",
+        "Do you remember the item name or assembly it belonged to?",
+        "Should I restrict the search to early pages only or search the full manual?"
+      ]
+    },
+    {
+      "id": "q004",
+      "user_question": "Find the seat assembly number but I only remember it started with 120-41824.",
+      "challenge_type": "partial_part_family",
+      "expected_followup_questions": [
+        "Do you need the base assembly or a specific dash-number variant?",
+        "Do you know the seat position, configuration, or effectivity?",
+        "Was the number found in a parts list, figure, or cover page?"
+      ]
+    },
+    {
+      "id": "q005",
+      "user_question": "I saw a ring locking part and the number had 48024 somewhere.",
+      "challenge_type": "nomenclature_plus_contains_digits",
+      "expected_followup_questions": [
+        "Do you know whether the part number started with 120 or another prefix?",
+        "Was the nomenclature exactly RING, LOCKING or only similar?",
+        "Do you remember a page, figure, or table where it appeared?"
+      ]
+    },
+    {
+      "id": "q006",
+      "user_question": "There was an MS screw ending in S24, but I do not have the full number.",
+      "challenge_type": "suffix_partial",
+      "expected_followup_questions": [
+        "Do you remember the MS standard prefix digits before S24?",
+        "Was the screw used with a seat, table, ashtray, or another assembly?",
+        "Was it in an IPL row with quantity and item number?"
+      ]
+    },
+    {
+      "id": "q007",
+      "user_question": "I need the part from the snack folding table, maybe something like MS24693 but I am not sure.",
+      "challenge_type": "standard_prefix_with_nomenclature",
+      "expected_followup_questions": [
+        "Do you know the dash suffix after MS24693?",
+        "Was the part a screw, fastener, table assembly, or related hardware?",
+        "Do you know the page or figure for the snack folding table?"
+      ]
+    },
+    {
+      "id": "q008",
+      "user_question": "The ashtray part had C26 in the number; can you help narrow it down?",
+      "challenge_type": "suffix_with_nomenclature",
+      "expected_followup_questions": [
+        "Do you know whether C26 was part of an MS number or another vendor number?",
+        "Was the ashtray standalone or part of a larger assembly?",
+        "Do you remember a nearby part name or item number?"
+      ]
+    },
+    {
+      "id": "q009",
+      "user_question": "I need a part that has 41824 but I do not know if it is -003, -007, or -501.",
+      "challenge_type": "variant_disambiguation",
+      "expected_followup_questions": [
+        "Do you know the intended configuration or effectivity for the dash number?",
+        "Do you know whether you need the full assembly or a subassembly?",
+        "Do you have a page, figure, or table context where the variant appeared?"
+      ]
+    },
+    {
+      "id": "q010",
+      "user_question": "Can 120-41824-003 be used instead of 120-41824-007?",
+      "challenge_type": "safety_sensitive_interchangeability",
+      "expected_followup_questions": [
+        "Do you have an explicit interchangeability or replacement note from the manual?",
+        "What aircraft, configuration, or effectivity does this apply to?",
+        "Which source page or table connects both part numbers to the same approved use?"
+      ]
+    },
+    {
+      "id": "q011",
+      "user_question": "I am trying to identify a cabin interiors part but only know it starts with 120-4.",
+      "challenge_type": "ata_area_partial_prefix",
+      "expected_followup_questions": [
+        "Do you know the item name, such as seat, table, ring, latch, or cover?",
+        "Do you know any digits after 120-4?",
+        "Was the part found in ATA 25 or only assumed to be cabin/interiors?"
+      ]
+    },
+    {
+      "id": "q012",
+      "user_question": "There is a part with C5 in a folding table area. What should I look for next?",
+      "challenge_type": "short_suffix_and_context",
+      "expected_followup_questions": [
+        "Do you know the prefix before C5, such as MS24693?",
+        "Was C5 printed in a parts table or inside body text?",
+        "Do you remember a neighboring item number or quantity?"
+      ]
+    },
+    {
+      "id": "q013",
+      "user_question": "The manual had a fastener on a page near the back, maybe page 491, but I only know it starts 24.",
+      "challenge_type": "page_hint_partial_prefix",
+      "expected_followup_questions": [
+        "Do you want the search constrained to page 491 or nearby pages?",
+        "Do you know whether the fastener was part of a table, diagram callout, or OCR text?",
+        "Do you remember any letters after 24, such as CS?"
+      ]
+    },
+    {
+      "id": "q014",
+      "user_question": "A part number looked like 244CS but I cannot read the suffix from the scan.",
+      "challenge_type": "ocr_uncertain_partial_token",
+      "expected_followup_questions": [
+        "Can you provide the page or crop where the OCR is unclear?",
+        "Do you know whether the suffix had one or multiple dash sections?",
+        "Was the number in a table cell or a visual callout?"
+      ]
+    },
+    {
+      "id": "q015",
+      "user_question": "I need the table part, maybe snack folding, but I only know it had 24693.",
+      "challenge_type": "contains_digits_with_assembly",
+      "expected_followup_questions": [
+        "Do you know the letters and dash suffix around 24693?",
+        "Do you need the table assembly or a small hardware item for the table?",
+        "Was it tied to a quantity, item number, or figure callout?"
+      ]
+    },
+    {
+      "id": "q016",
+      "user_question": "The part is probably in ATA 25 and has 120 in front, but I do not know more.",
+      "challenge_type": "broad_prefix",
+      "expected_followup_questions": [
+        "Do you know the subsystem, such as seat, cabin table, ashtray, or dispenser?",
+        "Do you know any middle or ending digits after 120?",
+        "Should the search include all ATA 25 pages or a specific section?"
+      ]
+    },
+    {
+      "id": "q017",
+      "user_question": "I only remember a part ending in -001 from a seat assembly page.",
+      "challenge_type": "suffix_and_context",
+      "expected_followup_questions": [
+        "Do you know any prefix digits before -001?",
+        "Was the seat assembly single passenger, double passenger, or another configuration?",
+        "Do you remember the page, table, or figure where the -001 appeared?"
+      ]
+    },
+    {
+      "id": "q018",
+      "user_question": "Which 120-36833 part is the right one if I only know it is for this manual?",
+      "challenge_type": "part_family_ambiguous",
+      "expected_followup_questions": [
+        "Do you need a specific dash number such as -001, -003, or -005?",
+        "Do you know the configuration, effectivity, or item context?",
+        "Was your source a cover page, parts list, figure, or table?"
+      ]
+    },
+    {
+      "id": "q019",
+      "user_question": "Find the part with 48024 and tell me if it fits.",
+      "challenge_type": "contains_digits_plus_fit_claim",
+      "expected_followup_questions": [
+        "What exact assembly or installation are you checking fit against?",
+        "Do you have an approved source page that states fit or applicability?",
+        "Do you know the full part number and aircraft/effectivity context?"
+      ]
+    },
+    {
+      "id": "q020",
+      "user_question": "I have a partial number MS24693 and need the correct screw for an ashtray.",
+      "challenge_type": "standard_prefix_plus_component",
+      "expected_followup_questions": [
+        "Do you know the suffix such as C26, C5, or S24?",
+        "Was the ashtray part name or just nearby context?",
+        "Do you remember the IPL item number or quantity?"
+      ]
+    },
+    {
+      "id": "q021",
+      "user_question": "A scanned page showed 120-41824 but the dash number was blurry.",
+      "challenge_type": "ocr_uncertain_dash_variant",
+      "expected_followup_questions": [
+        "Can you share the page, crop, or OCR text around the blurry dash number?",
+        "Do you know whether the dash had three digits?",
+        "Was the row tied to a specific seat assembly or configuration?"
+      ]
+    },
+    {
+      "id": "q022",
+      "user_question": "The item was a locking ring and I think it is safe to use with the seat assembly. Is that right?",
+      "challenge_type": "safety_sensitive_fit_without_exact_part",
+      "expected_followup_questions": [
+        "What exact locking ring part number are you asking about?",
+        "Which seat assembly part number and configuration is involved?",
+        "What source evidence states the locking ring is approved for that assembly?"
+      ]
+    },
+    {
+      "id": "q023",
+      "user_question": "I am looking for a part from a figure callout, but I only remember the number started with MS24.",
+      "challenge_type": "visual_context_partial_prefix",
+      "expected_followup_questions": [
+        "Do you know the figure number or approximate page?",
+        "Do you remember the callout number or nearby labels?",
+        "Was the part a screw, fastener, or another MS-standard item?"
+      ]
+    },
+    {
+      "id": "q024",
+      "user_question": "The part number had 24693 in it but I do not know if it was C5, C26, or S24.",
+      "challenge_type": "multiple_suffix_candidates",
+      "expected_followup_questions": [
+        "Do you know the component context, such as table, ashtray, or screw?",
+        "Was the suffix after a hyphen and did it include a letter?",
+        "Do you have a page, row, or figure callout to disambiguate the suffix?"
+      ]
+    },
+    {
+      "id": "q025",
+      "user_question": "Can you find the approval for replacing one 120-41824 seat assembly variant with another?",
+      "challenge_type": "safety_sensitive_replacement",
+      "expected_followup_questions": [
+        "Which exact source and target dash numbers are being compared?",
+        "Do you have a replacement, supersedure, or interchangeability note?",
+        "What aircraft or configuration effectivity should be checked?"
+      ]
+    },
+    {
+      "id": "q026",
+      "user_question": "I think the part is on page 3 but I only know it is a covered part number.",
+      "challenge_type": "page_context_broad",
+      "expected_followup_questions": [
+        "Do you remember any digits, prefix, or dash number from the part?",
+        "Do you know the nomenclature or assembly name on page 3?",
+        "Are you asking for candidates from page 3 only or the whole manual?"
+      ]
+    },
+    {
+      "id": "q027",
+      "user_question": "Find possible parts that start with 120 and relate to single passenger seat assembly.",
+      "challenge_type": "prefix_plus_nomenclature",
+      "expected_followup_questions": [
+        "Do you need all matching candidates or one exact part number?",
+        "Do you know a dash suffix or variant such as -003, -007, or -501?",
+        "Do you need source-trace proof from page 3 or other pages as well?"
+      ]
+    },
+    {
+      "id": "q028",
+      "user_question": "I only know the part starts with 1 and 2 and maybe has 4 later.",
+      "challenge_type": "weak_digit_sequence",
+      "expected_followup_questions": [
+        "Should the known prefix be interpreted as 12, 120, or only digits appearing somewhere?",
+        "Do you know any part name or assembly context?",
+        "Do you want strict prefix matches only or loose contains matches too?"
+      ]
+    },
+    {
+      "id": "q029",
+      "user_question": "The scan shows something like 120-4802?-001. What questions should we ask before choosing a part?",
+      "challenge_type": "ocr_uncertain_character",
+      "expected_followup_questions": [
+        "Can the uncertain character be read from a higher-resolution crop?",
+        "Do you know the nomenclature or surrounding table row?",
+        "Should the search compare visually similar candidate numbers before selecting one?"
+      ]
+    },
+    {
+      "id": "q030",
+      "user_question": "I need a candidate part list for a number that contains 824 but not necessarily starts with it.",
+      "challenge_type": "loose_contains_digits",
+      "expected_followup_questions": [
+        "Do you want loose contains matches or only structured part-like tokens?",
+        "Do you know any prefix, suffix, or dash pattern?",
+        "Do you have an assembly name or manual section to reduce false matches?"
+      ]
+    },
+    {
+      "id": "q031",
+      "user_question": "Can you tell me if 244CS-3-2 is approved for installation?",
+      "challenge_type": "safety_sensitive_installation_approval",
+      "expected_followup_questions": [
+        "What installation or assembly is 244CS-3-2 being checked against?",
+        "Do you have a source page that explicitly states installation approval?",
+        "What aircraft, configuration, or effectivity applies to the installation?"
+      ]
+    },
+    {
+      "id": "q032",
+      "user_question": "I only know the part is an AR fastener and starts with 244.",
+      "challenge_type": "nomenclature_plus_prefix",
+      "expected_followup_questions": [
+        "Do you know whether AR means as-required quantity or part of the nomenclature?",
+        "Do you remember any suffix after 244?",
+        "Was this from OCR text, a table, or visual review evidence?"
+      ]
+    },
+    {
+      "id": "q033",
+      "user_question": "The part is from a table but I do not know if the OCR row is reliable.",
+      "challenge_type": "table_ocr_uncertainty",
+      "expected_followup_questions": [
+        "What part number or partial token appears in the table row?",
+        "Do you have the table page or row/column context?",
+        "Should the system require table evidence plus OCR/source-trace agreement before using it?"
+      ]
+    },
+    {
+      "id": "q034",
+      "user_question": "Search for candidates around page 70 where an ashtray is mentioned.",
+      "challenge_type": "page_plus_nomenclature_no_part",
+      "expected_followup_questions": [
+        "Do you know any part-number digits near the ashtray mention?",
+        "Do you want candidates only from page 70 or nearby pages too?",
+        "Are you looking for the ashtray assembly or related fasteners?"
+      ]
+    },
+    {
+      "id": "q035",
+      "user_question": "There was a part in the gold label review workbook with S24. Should I trust it?",
+      "challenge_type": "review_artifact_trust",
+      "expected_followup_questions": [
+        "What full candidate part number from the review workbook are you checking?",
+        "Is there source OCR/table/page evidence that confirms the workbook entry?",
+        "Do you need the candidate only or a final source-trace-ready claim?"
+      ]
+    },
+    {
+      "id": "q036",
+      "user_question": "Find the correct candidate when my clue is just 'seat assy' and '-501'.",
+      "challenge_type": "suffix_plus_nomenclature",
+      "expected_followup_questions": [
+        "Do you know the prefix before -501?",
+        "Is the nomenclature exactly SINGLE PASSENGER SEAT ASSY?",
+        "Do you need candidates from page 3 or across the full manual?"
+      ]
+    },
+    {
+      "id": "q037",
+      "user_question": "I need a source-trace-ready answer for a partial part number. It starts with 24.",
+      "challenge_type": "partial_prefix_with_source_trace_pressure",
+      "expected_followup_questions": [
+        "Do you have enough context to identify one exact part number rather than candidates?",
+        "Do you know the page, figure, or table source for the 24 prefix?",
+        "Should the result remain candidate-discovery-only until a full part is confirmed?"
+      ]
+    },
+    {
+      "id": "q038",
+      "user_question": "Which candidate should I pick from MS24693-C5 and MS24693-C26?",
+      "challenge_type": "two_candidate_disambiguation",
+      "expected_followup_questions": [
+        "What component or assembly are you trying to service?",
+        "Do you know whether the context is snack folding table or ashtray?",
+        "Do you have a source page or item number for the intended use?"
+      ]
+    },
+    {
+      "id": "q039",
+      "user_question": "I found 120-41824 on a graph community card. Is that enough evidence?",
+      "challenge_type": "graph_evidence_not_proof",
+      "expected_followup_questions": [
+        "Is there page-level OCR, table, or visual evidence confirming the part number?",
+        "What claim are you trying to prove with the graph card?",
+        "Do you need graph discovery hints or source-trace-ready proof?"
+      ]
+    },
+    {
+      "id": "q040",
+      "user_question": "What should the assistant ask if the user only says they need 'the fastener from the seat manual'?",
+      "challenge_type": "no_part_number_nomenclature_only",
+      "expected_followup_questions": [
+        "Do you know any part-number digits, prefix, or standard number?",
+        "Which assembly, page, figure, or table was the fastener associated with?",
+        "Do you know the fastener type or quantity?"
+      ]
+    },
+    {
+      "id": "q041",
+      "user_question": "I need the correct part for a cabin table but only remember C5.",
+      "challenge_type": "short_suffix_component_context",
+      "expected_followup_questions": [
+        "Do you know whether C5 belongs to an MS24693 part number?",
+        "Was the cabin table a snack folding table or another table assembly?",
+        "Do you remember the page, figure, or item row?"
+      ]
+    },
+    {
+      "id": "q042",
+      "user_question": "The answer mentions page t_p_120_1176_p000003. What should we ask to make the user narrow the part?",
+      "challenge_type": "page_has_multiple_candidates",
+      "expected_followup_questions": [
+        "Which part number or dash variant on page 3 are you asking about?",
+        "Do you need the nomenclature or the applicability/effectivity?",
+        "Are you comparing candidates or asking for one exact citation-backed record?"
+      ]
+    },
+    {
+      "id": "q043",
+      "user_question": "Can the system answer if the user only gives 'SINGLE PASSENGER SEAT ASSY' with no part number?",
+      "challenge_type": "nomenclature_only",
+      "expected_followup_questions": [
+        "Do you need all part-number candidates for that nomenclature?",
+        "Do you know a dash suffix or other identifying detail?",
+        "Do you need evidence from a specific page or across the manual?"
+      ]
+    },
+    {
+      "id": "q044",
+      "user_question": "I want to know if a loose contains match should be treated as exact.",
+      "challenge_type": "ranking_policy_question",
+      "expected_followup_questions": [
+        "What exact clue and candidate are being compared?",
+        "Does the candidate start with the clue or only contain it?",
+        "What source evidence supports promoting it from loose candidate to exact match?"
+      ]
+    },
+    {
+      "id": "q045",
+      "user_question": "The candidate has OCR, graph, table, and visual evidence. Does that mean it is approved?",
+      "challenge_type": "evidence_type_vs_approval",
+      "expected_followup_questions": [
+        "What approval claim is being made?",
+        "Is there explicit source text connecting the candidate to approval or effectivity?",
+        "Which page or row is the authoritative source for the approval claim?"
+      ]
+    },
+    {
+      "id": "q046",
+      "user_question": "Ask follow-up questions for a user who says they need a part from ATA 25 but has no number.",
+      "challenge_type": "ata_only",
+      "expected_followup_questions": [
+        "What component or subsystem in ATA 25 is involved?",
+        "Do you remember any part-number digits, item number, figure, or page?",
+        "Are you looking for candidate discovery or a citation-backed final answer?"
+      ]
+    },
+    {
+      "id": "q047",
+      "user_question": "A user says the number starts with 2 and 4 but does not know if those are next to each other.",
+      "challenge_type": "ambiguous_digit_relation",
+      "expected_followup_questions": [
+        "Should the digits be treated as prefix 24 or as digits appearing anywhere?",
+        "Do you know any letters, dashes, or additional digits?",
+        "Do you have a part name, page, figure, or table context?"
+      ]
+    },
+    {
+      "id": "q048",
+      "user_question": "I need help turning a fuzzy visual callout into part candidates, but I only know it had 120 and maybe 824.",
+      "challenge_type": "visual_callout_fuzzy_digits",
+      "expected_followup_questions": [
+        "Do you have the figure number, page, or callout label?",
+        "Should 120 be treated as a prefix and 824 as contained digits?",
+        "Do you remember the component or nearby labels in the diagram?"
+      ]
+    },
+    {
+      "id": "q049",
+      "user_question": "What questions should the assistant ask before saying a part is interchangeable?",
+      "challenge_type": "meta_interchangeability_safety",
+      "expected_followup_questions": [
+        "Which two exact part numbers are being compared?",
+        "What source explicitly states interchangeability, replacement, or supersedure?",
+        "What aircraft, configuration, and effectivity scope applies?"
+      ]
+    },
+    {
+      "id": "q050",
+      "user_question": "The user gives a partial number and asks for an answer, not candidates. How should TRACE-Net respond?",
+      "challenge_type": "partial_query_answer_pressure",
+      "expected_followup_questions": [
+        "What exact part number or stronger clue can the user provide?",
+        "Which source page, table, or figure should be used as authority?",
+        "Should the result remain candidate-discovery-only until enough evidence exists?"
+      ]
+    }
+  ]
+}

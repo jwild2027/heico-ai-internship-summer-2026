@@ -1,0 +1,210 @@
+{
+  "quality_status": "PASS",
+  "question": "Looking for elegibility documents for PN DF250040-501 Paper towel dispenser. Likely used on a mixed fleet of A319-321 and boeing 737-787",
+  "records": [
+    {
+      "module": "trace_net_engineering_query_planner_v1",
+      "version": "v1",
+      "question": "Looking for elegibility documents for PN DF250040-501 Paper towel dispenser. Likely used on a mixed fleet of A319-321 and boeing 737-787",
+      "task_type": "general_engineering_question",
+      "engineering_intent": "answer a broad engineering question with proof and limits",
+      "entities": {
+        "part_numbers": [],
+        "figures": [],
+        "items": [],
+        "part_families": [],
+        "topics": []
+      },
+      "engineer_clarification_profile": {
+        "profile_type": "engineer_query_clarification_profile_v1",
+        "memory_layer": "working_memory",
+        "secondary_memory_layers": [
+          "procedural_memory",
+          "semantic_memory",
+          "critic_memory"
+        ],
+        "proof_role": "guidance_only",
+        "can_be_used_as_proof": false,
+        "guidance_only": true,
+        "extracted_engineer_clues": {
+          "part_number_candidates": [
+            "DF250040-501"
+          ],
+          "partial_identifier_candidates": [],
+          "nha_candidates": [],
+          "requested_doc_types": [],
+          "engine_candidates": [],
+          "fleet_candidates": [
+            "A319",
+            "A320",
+            "A321",
+            "B737",
+            "B787"
+          ],
+          "ata_candidates": [
+            "25"
+          ],
+          "part_description_candidates": [
+            "paper towel dispenser"
+          ],
+          "eligibility_or_applicability_intent": true,
+          "nha_intent": false
+        },
+        "facet_filters": {
+          "part_number": [
+            "DF250040-501"
+          ],
+          "partial_identifier": [],
+          "nha": [],
+          "document_type": [],
+          "engine": [],
+          "fleet_or_aircraft": [
+            "A319",
+            "A320",
+            "A321",
+            "B737",
+            "B787"
+          ],
+          "ata": [
+            "25"
+          ],
+          "description": [
+            "paper towel dispenser"
+          ],
+          "evidence_language": [
+            "eligibility",
+            "applicability",
+            "effectivity",
+            "approved installation",
+            "interchangeability"
+          ]
+        },
+        "clarifying_questions": [
+          "Do you need eligibility by aircraft platform, document type, or approval/effectivity proof?",
+          "Should I narrow by fleet/platform first: A319, A320, A321, B737, B787?"
+        ],
+        "risk_flags": [
+          "source_evidence_required",
+          "eligibility_requires_authority_not_mention_only",
+          "fleet_or_platform_filter_required"
+        ],
+        "recommended_first_pass": [
+          "use exact part number when available",
+          "use partial/NHA filters only as narrowing hints",
+          "use V2/V3 summaries as routing guidance only",
+          "resolve candidate result back to OCR/table/visual/source-trace evidence before answering"
+        ],
+        "answer_permission": false,
+        "can_answer_directly": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "extracted_engineer_clues": {
+        "part_number_candidates": [
+          "DF250040-501"
+        ],
+        "partial_identifier_candidates": [],
+        "nha_candidates": [],
+        "requested_doc_types": [],
+        "engine_candidates": [],
+        "fleet_candidates": [
+          "A319",
+          "A320",
+          "A321",
+          "B737",
+          "B787"
+        ],
+        "ata_candidates": [
+          "25"
+        ],
+        "part_description_candidates": [
+          "paper towel dispenser"
+        ],
+        "eligibility_or_applicability_intent": true,
+        "nha_intent": false
+      },
+      "facet_filters": {
+        "part_number": [
+          "DF250040-501"
+        ],
+        "partial_identifier": [],
+        "nha": [],
+        "document_type": [],
+        "engine": [],
+        "fleet_or_aircraft": [
+          "A319",
+          "A320",
+          "A321",
+          "B737",
+          "B787"
+        ],
+        "ata": [
+          "25"
+        ],
+        "description": [
+          "paper towel dispenser"
+        ],
+        "evidence_language": [
+          "eligibility",
+          "applicability",
+          "effectivity",
+          "approved installation",
+          "interchangeability"
+        ]
+      },
+      "clarifying_questions": [
+        "Do you need eligibility by aircraft platform, document type, or approval/effectivity proof?",
+        "Should I narrow by fleet/platform first: A319, A320, A321, B737, B787?"
+      ],
+      "risk_flags": [
+        "source_evidence_required",
+        "eligibility_requires_authority_not_mention_only",
+        "fleet_or_platform_filter_required"
+      ],
+      "guidance_pages": [],
+      "guidance_page_count": 0,
+      "required_routes": [
+        "v2_summary_guidance",
+        "ocr_text_support",
+        "engineering_quality_gate"
+      ],
+      "required_route_count": 3,
+      "optional_routes": [
+        "graph_leiden_neighbors"
+      ],
+      "proof_requirements": [
+        "source-trace-ready evidence",
+        "explicit assumptions and limits"
+      ],
+      "forbidden_claims": [
+        "effectivity",
+        "fit",
+        "installation safety",
+        "interchangeability",
+        "replacement approval"
+      ],
+      "answer_style": "engineering_brain",
+      "can_answer_from_summaries_only": false,
+      "summary_guidance_policy": "v2 summaries may guide route planning and answer framing, but must not be used as proof",
+      "answer_permission": false,
+      "source_truth_mutation_allowed": false,
+      "postgres_write_attempt": false,
+      "qdrant_write_attempt": false,
+      "opensearch_write_attempt": false,
+      "opensearch_upload_attempt": false,
+      "unsafe_record": false,
+      "entities_json": "{\"part_numbers\": [], \"figures\": [], \"items\": [], \"part_families\": [], \"topics\": []}",
+      "engineer_clarification_profile_json": "{\"profile_type\": \"engineer_query_clarification_profile_v1\", \"memory_layer\": \"working_memory\", \"secondary_memory_layers\": [\"procedural_memory\", \"semantic_memory\", \"critic_memory\"], \"proof_role\": \"guidance_only\", \"can_be_used_as_proof\": false, \"guidance_only\": true, \"extracted_engineer_clues\": {\"part_number_candidates\": [\"DF250040-501\"], \"partial_identifier_candidates\": [], \"nha_candidates\": [], \"requested_doc_types\": [], \"engine_candidates\": [], \"fleet_candidates\": [\"A319\", \"A320\", \"A321\", \"B737\", \"B787\"], \"ata_candidates\": [\"25\"], \"part_description_candidates\": [\"paper towel dispenser\"], \"eligibility_or_applicability_intent\": true, \"nha_intent\": false}, \"facet_filters\": {\"part_number\": [\"DF250040-501\"], \"partial_identifier\": [], \"nha\": [], \"document_type\": [], \"engine\": [], \"fleet_or_aircraft\": [\"A319\", \"A320\", \"A321\", \"B737\", \"B787\"], \"ata\": [\"25\"], \"description\": [\"paper towel dispenser\"], \"evidence_language\": [\"eligibility\", \"applicability\", \"effectivity\", \"approved installation\", \"interchangeability\"]}, \"clarifying_questions\": [\"Do you need eligibility by aircraft platform, document type, or approval/effectivity proof?\", \"Should I narrow by fleet/platform first: A319, A320, A321, B737, B787?\"], \"risk_flags\": [\"source_evidence_required\", \"eligibility_requires_authority_not_mention_only\", \"fleet_or_platform_filter_required\"], \"recommended_first_pass\": [\"use exact part number when available\", \"use partial/NHA filters only as narrowing hints\", \"use V2/V3 summaries as routing guidance only\", \"resolve candidate result back to OCR/table/visual/source-trace evidence before answering\"], \"answer_permission\": false, \"can_answer_directly\": false, \"can_prove_claims\": false, \"source_truth_mutation_allowed\": false}",
+      "facet_filters_json": "{\"part_number\": [\"DF250040-501\"], \"partial_identifier\": [], \"nha\": [], \"document_type\": [], \"engine\": [], \"fleet_or_aircraft\": [\"A319\", \"A320\", \"A321\", \"B737\", \"B787\"], \"ata\": [\"25\"], \"description\": [\"paper towel dispenser\"], \"evidence_language\": [\"eligibility\", \"applicability\", \"effectivity\", \"approved installation\", \"interchangeability\"]}",
+      "clarifying_questions_json": "[\"Do you need eligibility by aircraft platform, document type, or approval/effectivity proof?\", \"Should I narrow by fleet/platform first: A319, A320, A321, B737, B787?\"]",
+      "risk_flags_json": "[\"source_evidence_required\", \"eligibility_requires_authority_not_mention_only\", \"fleet_or_platform_filter_required\"]",
+      "required_routes_json": "[\"v2_summary_guidance\", \"ocr_text_support\", \"engineering_quality_gate\"]",
+      "optional_routes_json": "[\"graph_leiden_neighbors\"]"
+    }
+  ],
+  "summary": {
+    "planner_record_count": 1,
+    "answer_permission_count": 0,
+    "source_truth_mutation_allowed_count": 0
+  }
+}

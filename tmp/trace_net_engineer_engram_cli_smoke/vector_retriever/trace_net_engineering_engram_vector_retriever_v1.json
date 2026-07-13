@@ -1,0 +1,109 @@
+{
+  "collection_plan": {
+    "collection_name": "trace_net_engineer_engram_cli_smoke",
+    "distance": "Cosine",
+    "encoder": "trace_net_hashing_encoder_v1",
+    "live_qdrant_read_attempted": false,
+    "live_qdrant_write_attempted": false,
+    "note": "Artifact-only local retrieval over Qdrant-ready Engram records; no live Qdrant IO.",
+    "retriever": "trace_net_local_hashing_retriever_v1",
+    "vector_dim": 64
+  },
+  "module": "trace_net_engineering_engram_vector_retriever_v1",
+  "output_path": "tmp\\trace_net_engineer_engram_cli_smoke\\vector_retriever\\trace_net_engineering_engram_vector_retriever_v1.json",
+  "quality_check_path": "tmp\\trace_net_engineer_engram_cli_smoke\\vector_retriever\\trace_net_engineering_engram_vector_retriever_v1_quality_check.json",
+  "quality_status": "PASS",
+  "retrieval_queries": [
+    {
+      "expected_layers": [],
+      "query_id": "query_03c00bf1bc3dc91140ef9ea1",
+      "task_type": "engram_memory_retrieval",
+      "text": "eligibility documents DF250040-501 paper towel dispenser A319 A320 A321 B737 B787 ATA 25"
+    }
+  ],
+  "retrieval_records": [
+    {
+      "covered_layers": [
+        "working_memory"
+      ],
+      "expected_layers": [],
+      "query_id": "query_03c00bf1bc3dc91140ef9ea1",
+      "query_text": "eligibility documents DF250040-501 paper towel dispenser A319 A320 A321 B737 B787 ATA 25",
+      "result_count": 1,
+      "results": [
+        {
+          "answer_permission": false,
+          "atom_id": "working_engineer_query_clarification_949cd861906b602e",
+          "keyword_overlap_score": 0.0,
+          "layer_bonus": 0.0,
+          "memory_layer": "working_memory",
+          "point_id": "f056e67b0fffad12b804440076a9fa41ec4aaec95a44de3b6db80ad0b7313e54",
+          "proof_role": "guidance_only",
+          "qdrant_write_attempt": false,
+          "rank": 1,
+          "retrieval_score": -0.015655,
+          "similarity_score": -0.021744,
+          "source_truth_mutation_allowed": false,
+          "text_preview": "atom_id: working_engineer_query_clarification_949cd861906b602e | title: Engineer query clarification profile | memory_layer: working_memory | memory_type: engineer_query_clarification | rule: Use extracted engineer clues, facet filters, clarifying questions, and risk flags to narrow retrieval before answering. This is not source proof; manual/source claims still require current proof_context citations. | proof_role: guidance_only | working_engineer_query_clarification_949cd861906b602e | working_memory | guidance_only | Engineer query clarification profile | Use extracted engineer clues, facet filters, clarifying questions, and risk flags to narrow retrieval before answering. This is not sour",
+          "title": "Engineer query clarification profile"
+        }
+      ],
+      "task_type": "engram_memory_retrieval",
+      "top_k": 5
+    }
+  ],
+  "retrieval_records_path": "tmp\\trace_net_engineer_engram_cli_smoke\\vector_retriever\\trace_net_engineering_engram_vector_retriever_v1_retrieval_records.jsonl",
+  "safety_contract": {
+    "answer_permission": false,
+    "live_qdrant_read_attempted": false,
+    "live_qdrant_write_attempted": false,
+    "opensearch_upload_attempt": false,
+    "opensearch_write_attempt": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "source_truth_mutation_allowed": false
+  },
+  "source_vector_loader_path": "tmp/trace_net_engineer_engram_cli_smoke/vector_loader/trace_net_engineering_engram_vector_loader_v1.json",
+  "status": "TRACE_NET_ENGINEERING_ENGRAM_VECTOR_RETRIEVER_BUILT",
+  "summary": {
+    "answer_permission_count": 0,
+    "indexed_memory_layer_counts": {
+      "working_memory": 1
+    },
+    "missing_indexed_layers": [
+      "semantic_memory",
+      "procedural_memory",
+      "episodic_memory",
+      "trait_memory",
+      "critic_memory"
+    ],
+    "missing_retrieved_layers": [
+      "semantic_memory",
+      "procedural_memory",
+      "episodic_memory",
+      "trait_memory",
+      "critic_memory"
+    ],
+    "module": "trace_net_engineering_engram_vector_retriever_v1",
+    "opensearch_upload_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_ready_record_count": 1,
+    "qdrant_write_attempt_count": 0,
+    "query_count": 1,
+    "ready_for_engram_prompt_retrieval": true,
+    "retrieval_record_count": 1,
+    "retrieved_memory_layer_counts": {
+      "working_memory": 1
+    },
+    "source_truth_mutation_allowed_count": 0,
+    "top_k": 5,
+    "total_retrieved_item_count": 1,
+    "unsafe_finding_count": 0,
+    "unsafe_findings": [],
+    "vector_dim": 64,
+    "version": "v1",
+    "write_attempt_count": 0
+  },
+  "version": "v1"
+}
