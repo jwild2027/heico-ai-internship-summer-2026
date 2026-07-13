@@ -284,6 +284,15 @@ def doc_page(doc: Mapping[str, Any]) -> str:
     return first_str(doc, ("page_id", "source_page_id", "page"))
 
 
+
+def _significant_text_tokens(value: str) -> set[str]:
+    stop = {"a", "an", "and", "or", "the", "of", "for", "to", "in", "on", "with"}
+    return {
+        token
+        for token in re.findall(r"[a-z0-9]+", normalize_value(value))
+        if len(token) > 1 and token not in stop
+    }
+
 def _target_matches_value(target: str, value: str, intent: str) -> Tuple[bool, str, int]:
     target_comp = compact_value(target)
     value_comp = compact_value(value)
@@ -293,13 +302,22 @@ def _target_matches_value(target: str, value: str, intent: str) -> Tuple[bool, s
         return True, "exact_value_match", 1100
     if value_comp == target_comp:
         return True, "compact_value_match", 1000
-    # Free-text table searches may match a longer cell or OCR-normalized value.
-    # Structured part/manual-reference targets require exact normalized/compact equality
+    # Free-text table/nomenclature searches may match a longer cell or OCR-normalized
+    # value. They also support token-order-insensitive matching, so queries like
+    # "LOCKING RING" can match source nomenclature written as "RING, LOCKING".
+    # Structured part/manual-reference targets remain exact normalized/compact equality
     # so unrelated values do not inflate counts or create false positives.
-    if intent == "table_text" and target_comp in value_comp and len(target_comp) > 3:
-        return True, "target_contained_in_value", 800
-    if intent == "table_text" and value_comp in target_comp and len(value_comp) > 3:
-        return True, "value_contained_in_target", 500
+    if intent == "table_text":
+        target_tokens = _significant_text_tokens(target)
+        value_tokens = _significant_text_tokens(value)
+        if target_tokens and target_tokens.issubset(value_tokens):
+            return True, "target_tokens_in_value_any_order", 750
+        if value_tokens and value_tokens.issubset(target_tokens):
+            return True, "value_tokens_in_target_any_order", 550
+        if target_comp in value_comp and len(target_comp) > 3:
+            return True, "target_contained_in_value", 800
+        if value_comp in target_comp and len(value_comp) > 3:
+            return True, "value_contained_in_target", 500
     return False, "no_match", 0
 
 
@@ -364,7 +382,8 @@ def retrieve_source_truth_evidence(
         is_tiny_ocr = len(compact_value(value)) <= 1
         is_direct = field in required_fields and not is_tiny_ocr
         if target:
-            is_direct = is_direct and (compact_value(target) in compact_value(value) or compact_value(value) in compact_value(target))
+            matched_for_direct, _, _ = _target_matches_value(target, value, str(plan.get("query_intent") or ""))
+            is_direct = is_direct and matched_for_direct
         if is_direct and len(direct_rows) < top_k:
             if key in seen_direct:
                 seen_direct[key]["occurrence_count"] += 1

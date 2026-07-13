@@ -15,31 +15,55 @@ This does not OCR files, scan TIFFs, or write to Postgres/Qdrant/OpenSearch.
 from __future__ import annotations
 
 import argparse
-import hashlib
 import importlib
 import json
 import re
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
 PAGE_RE = re.compile(r"(?:^|[^a-z0-9])(p\d{6}|t_p_[A-Za-z0-9_]+)(?:$|[^a-z0-9])", re.I)
 PART_RE = re.compile(r"\b\d{2,3}-\d{5}(?:-\d{3})?\b")
 MANUAL_RE = re.compile(r"\b\d{2}-\d{2}-\d{2}\b")
+TOKEN_RE = re.compile(r"[A-Za-z0-9]+")
 
 FIELD_ALIASES = {
     "covered_part_number": "covered_part_number",
     "ipl_part_number": "ipl_part_number",
     "part_number": "part_number",
     "part_numbers": "part_number",
+    "candidate_part_number": "part_number",
+    "candidate_value": "part_number",
+    "part_no": "part_number",
+    "partno": "part_number",
+    "pn": "part_number",
+    "p_n": "part_number",
     "nomenclature": "nomenclature",
+    "candidate_nomenclature": "nomenclature",
+    "description": "nomenclature",
+    "part_description": "nomenclature",
+    "item_description": "nomenclature",
     "manual_page_reference": "manual_page_reference",
     "manual_reference": "manual_page_reference",
     "manual_references": "manual_page_reference",
     "table_text": "table_text",
     "ipl_text": "ipl_text",
     "cell_text": "table_text",
+    "cell_value": "table_text",
     "row_text": "table_text",
+    "citation_text": "table_text",
+    "source_text": "table_text",
+    "retrieval_text": "table_text",
+    "text_preview": "table_text",
+    "embedding_text_preview": "table_text",
+    "extracted_text": "table_text",
+    "tile_text": "table_text",
+    "sample_text": "table_text",
     "ocr_text": "ocr_text",
     "page_text": "ocr_text",
     "procedure_text": "procedure_text",
@@ -53,7 +77,7 @@ SUMMARY_KEYS = (
 )
 COMMUNITY_KEYS = ("community_id", "leiden_community_id", "community", "cluster_id")
 PAGE_KEYS = ("page_id", "source_page_id", "page", "page_key")
-DOC_KEYS = ("document_id", "source_document_id", "manual_id", "source_id")
+DOC_KEYS = ("document_id", "source_document_id", "manual_id", "source_id", "document")
 
 
 def compact(value: Any, limit: int = 12000) -> str:
@@ -70,8 +94,9 @@ def compact(value: Any, limit: int = 12000) -> str:
 
 
 def first(row: Mapping[str, Any], keys: Sequence[str]) -> str:
+    lookup = {str(k).lower(): v for k, v in row.items()}
     for key in keys:
-        value = row.get(key)
+        value = lookup.get(str(key).lower())
         text = compact(value, 1000)
         if text:
             return text
@@ -116,26 +141,54 @@ def read_records(path: Path) -> Iterable[Any]:
             return
 
 
+def file_priority(path: Path) -> int:
+    low = str(path).replace("\\", "/").lower()
+    weights = {
+        "guided_candidate_discovery": 100,
+        "source_citations": 95,
+        "graph_explorer_edges": 90,
+        "graph_explorer_nodes": 88,
+        "page_context_overlay": 86,
+        "page_context_v2": 80,
+        "page_intelligence": 78,
+        "leiden": 76,
+        "community": 72,
+        "nomenclature": 70,
+        "part": 65,
+        "table": 62,
+        "ocr_route_scan_pack_tesseract_full": 60,
+        "ocr": 45,
+        "embedding_candidates": 35,
+        "draft": -10,
+        "retry_prompt": -10,
+    }
+    return sum(weight for token, weight in weights.items() if token in low)
+
+
 def candidate_files(root: Path, explicit: Sequence[str], max_files: int) -> List[Path]:
-    files: List[Path] = []
-    for raw in explicit:
-        path = Path(raw)
-        if path.exists() and path.is_file():
-            files.append(path)
-    if not explicit:
-        preferred = (
-            "ocr", "table", "part", "nomenclature", "page_context", "page_intelligence",
-            "v2", "v3", "leiden", "community", "source_citation", "rag_candidate",
-        )
-        for path in sorted(root.rglob("*")):
-            if len(files) >= max_files:
-                break
-            if path.suffix.lower() not in {".json", ".jsonl"}:
-                continue
-            low = path.name.lower()
-            if any(token in low for token in preferred):
+    if explicit:
+        files: List[Path] = []
+        for raw in explicit:
+            path = Path(raw)
+            if path.exists() and path.is_file():
                 files.append(path)
-    return list(dict.fromkeys(files))
+        return list(dict.fromkeys(files))
+
+    preferred = (
+        "ocr", "table", "part", "nomenclature", "page_context", "page_intelligence",
+        "v2", "v3", "leiden", "community", "source_citation", "source_citations",
+        "rag_candidate", "guided_candidate_discovery", "graph_explorer",
+        "page_context_overlay", "embedding_candidates",
+    )
+    found: List[Path] = []
+    for path in root.rglob("*"):
+        if path.suffix.lower() not in {".json", ".jsonl"}:
+            continue
+        low = str(path).replace("\\", "/").lower()
+        if any(token in low for token in preferred):
+            found.append(path)
+    found.sort(key=lambda p: (-file_priority(p), len(str(p)), str(p).lower()))
+    return list(dict.fromkeys(found[:max_files]))
 
 
 def values_for(key: str, value: Any) -> List[str]:
@@ -145,6 +198,66 @@ def values_for(key: str, value: Any) -> List[str]:
         return []
     text = compact(value, 6000)
     return [text] if text else []
+
+
+def is_noise_text(value: str) -> bool:
+    text = compact(value, 400)
+    token_count = len(TOKEN_RE.findall(text))
+    if token_count == 0:
+        return True
+    if len(text) <= 2:
+        return True
+    return False
+
+
+def graph_nomenclatures(blob: str) -> List[str]:
+    """Extract labels from graph strings like nomenclature:nomenclature:ring_locking."""
+    out: List[str] = []
+    for raw in re.findall(r"nomenclature[:_]+(?:nomenclature[:_]+)?([A-Za-z0-9_,\- ]{3,80})", blob, flags=re.I):
+        token = raw.strip(" :;,.\"'[]{}()")
+        token = re.split(r"[\"'{}\[\]/\\]", token)[0].strip(" :;,.")
+        if not token:
+            continue
+        if "_" in token:
+            pieces = [p for p in token.split("_") if p]
+            if len(pieces) == 2:
+                value = f"{pieces[0].upper()}, {pieces[1].upper()}"
+            else:
+                value = " ".join(pieces).upper()
+        else:
+            value = token.upper()
+        if len(TOKEN_RE.findall(value)) >= 1:
+            out.append(value)
+    return list(dict.fromkeys(out))
+
+
+def add_exact(
+    exact: Dict[Tuple[str, str, str], Dict[str, Any]],
+    *,
+    page: str,
+    field: str,
+    value: str,
+    row: Mapping[str, Any],
+    document_id: str,
+    path: Path,
+) -> None:
+    normalized = compact(value, 6000)
+    if not page or not normalized or is_noise_text(normalized):
+        return
+    key = (page, field, normalized)
+    exact.setdefault(key, {
+        "document_id": document_id,
+        "page_id": page,
+        "field_name": field,
+        "normalized_value": normalized,
+        "search_text": compact(row, 12000),
+        "source_artifact_path": str(path),
+        "source_trace_ready": True,
+        "direct_proof_authority": field not in {
+            "ocr_text", "procedure_text", "warning_text", "caution_text",
+            "note_text", "retrieval_text",
+        },
+    })
 
 
 def build(args: argparse.Namespace) -> Dict[str, Any]:
@@ -171,38 +284,37 @@ def build(args: argparse.Namespace) -> Dict[str, Any]:
                     continue
                 page_seen.add(page)
                 document_id = first(row, DOC_KEYS)
+                row_lookup = {str(k).lower(): v for k, v in row.items()}
+                row_blob = compact(row, 12000)
+
+                for part in PART_RE.findall(row_blob):
+                    add_exact(exact, page=page, field="part_number", value=part, row=row, document_id=document_id, path=path)
+                for manual in MANUAL_RE.findall(row_blob):
+                    add_exact(exact, page=page, field="manual_page_reference", value=manual, row=row, document_id=document_id, path=path)
+                for nomenclature in graph_nomenclatures(row_blob):
+                    add_exact(exact, page=page, field="nomenclature", value=nomenclature, row=row, document_id=document_id, path=path)
+                    add_exact(exact, page=page, field="table_text", value=nomenclature, row=row, document_id=document_id, path=path)
 
                 for key, canonical in FIELD_ALIASES.items():
-                    if key not in row:
+                    if key not in row_lookup:
                         continue
-                    for value in values_for(key, row.get(key)):
+                    for value in values_for(key, row_lookup.get(key)):
                         if canonical == "part_number":
                             found = PART_RE.findall(value)
-                            candidates = found or [value]
+                            candidates = found or ([value] if key in {"candidate_part_number", "part_number", "part_no", "partno", "pn", "p_n"} else [])
                         elif canonical == "manual_page_reference":
                             found = MANUAL_RE.findall(value)
                             candidates = found or [value]
                         else:
                             candidates = [value]
                         for normalized in candidates:
-                            normalized = compact(normalized, 6000)
-                            if len(normalized) <= 1:
-                                continue
-                            evidence_key = (page, canonical, normalized)
-                            exact.setdefault(evidence_key, {
-                                "document_id": document_id,
-                                "page_id": page,
-                                "field_name": canonical,
-                                "normalized_value": normalized,
-                                "search_text": compact(row, 12000),
-                                "source_artifact_path": str(path),
-                                "source_trace_ready": True,
-                                "direct_proof_authority": canonical not in {"ocr_text", "procedure_text", "warning_text", "caution_text", "note_text", "nomenclature"},
-                            })
+                            add_exact(exact, page=page, field=canonical, value=normalized, row=row, document_id=document_id, path=path)
+                            if canonical == "nomenclature":
+                                add_exact(exact, page=page, field="table_text", value=normalized, row=row, document_id=document_id, path=path)
 
                 for key in SUMMARY_KEYS:
-                    if key in row:
-                        summary = compact(row.get(key), 12000)
+                    if key in row_lookup:
+                        summary = compact(row_lookup.get(key), 12000)
                         if summary and len(summary) >= args.min_summary_chars:
                             current = summaries.get(page, "")
                             if len(summary) > len(current):
@@ -215,12 +327,11 @@ def build(args: argparse.Namespace) -> Dict[str, Any]:
 
         file_stats.append({
             "path": str(path),
+            "priority": file_priority(path),
             "page_count": len(page_seen),
             "new_exact_document_count": len(exact) - before,
         })
 
-    # Every page gets a deterministic singleton community fallback so graph guidance
-    # remains bounded and inspectable when a true Leiden artifact is missing.
     all_pages = sorted({k[0] for k in exact} | set(summaries) | set(page_to_community))
     fallback_count = 0
     for page in all_pages:
