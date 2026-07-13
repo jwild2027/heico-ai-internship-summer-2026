@@ -11,6 +11,7 @@ import urllib.request
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
+from tiff.trace_net_answer_quality_guard_v1 import evaluate_answer_quality
 
 
 def load_json(path: Path) -> Dict[str, Any]:
@@ -129,6 +130,7 @@ def evaluate(
         failures.append(f"follow_up_count:{len(followups)}<{minimum}")
     if minimum > 0 and "?" not in answer:
         failures.append("followups_not_visible_in_answer")
+    failures.extend(evaluate_answer_quality(query=str(record.get("query") or ""), answer=answer, trace=trace))
 
     for key in (
         "answer_permission",

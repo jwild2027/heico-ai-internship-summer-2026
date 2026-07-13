@@ -194,24 +194,26 @@ def preserve_sources(composed: str, upstream_answer: str) -> str:
     marker = "\n\nSources:\n"
     if marker not in upstream_answer or "Sources:" in composed:
         return composed
-    sources = upstream_answer.split(marker, 1)[1].strip()
-    return composed.rstrip() + "\n\nSources:\n" + sources if sources else composed
+    raw_lines = upstream_answer.split(marker, 1)[1].strip().splitlines()
+    compact=[]
+    for raw in raw_lines[:10]:
+        line=re.sub(r"\s+"," ",raw).strip()
+        compact.append(line[:357].rstrip()+"..." if len(line)>360 else line)
+    return composed.rstrip()+"\n\nSources:\n"+"\n".join(compact) if compact else composed
 
 
-def append_followups(
-    composed: str,
-    questions: Sequence[str],
-    *,
-    should_append: bool,
-) -> str:
+def append_followups(composed: str, questions: Sequence[str], *, should_append: bool) -> str:
     if not should_append:
         return composed
-    clean = [str(q).strip() for q in questions if str(q).strip()]
-    if not clean:
-        return composed
-    lines = [composed.rstrip(), "", "Helpful follow-up questions:"]
-    lines.extend(f"- {question}" for question in clean[:5])
-    return "\n".join(lines).strip()
+    body=re.sub(r"\s+"," ",composed.lower());clean=[];seen=set()
+    for raw in questions:
+        question=str(raw or "").strip();norm=re.sub(r"[^a-z0-9]+"," ",question.lower()).strip()
+        if not norm or norm in seen:continue
+        seen.add(norm);keywords=[w for w in norm.split() if len(w)>=5][:5]
+        if keywords and sum(w in body for w in keywords)>=max(2,len(keywords)-1):continue
+        clean.append(question)
+    if not clean:return composed
+    return "\n".join([composed.rstrip(),"","Helpful follow-up questions:"]+[f"- {q}" for q in clean[:5]]).strip()
 
 
 def preserve_safety_boundary(composed: str, upstream_answer: str) -> str:
@@ -243,8 +245,8 @@ def compose_with_gemma(
         "part numbers, ATA/manual references, pages, figures, citations, candidates, "
         "approval, fit, effectivity, interchangeability, eligibility, or safety "
         "claims. Preserve uncertainty and no-evidence conclusions. Candidate and "
-        "visual results are guidance only. When follow-up questions are supplied, "
-        "respond naturally and ask for those missing clues instead of pretending a "
+        "visual results are guidance only. Do not restate the supplied follow-up questions in your prose; TRACE-Net appends them once. "
+        "Do not pretend a "
         "part has been identified. Do not output JSON or internal metadata."
     )
     context = {
