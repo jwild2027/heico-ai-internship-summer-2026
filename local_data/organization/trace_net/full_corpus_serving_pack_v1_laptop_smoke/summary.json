@@ -1,0 +1,2540 @@
+{
+  "status": "TRACE_NET_FULL_CORPUS_SERVING_PACK_V1_DONE",
+  "quality_status": "PASS",
+  "quality_failures": [],
+  "input_file_count": 500,
+  "parsed_record_count": 1727026,
+  "exact_search_document_count": 3254,
+  "page_summary_count": 514,
+  "leiden_page_membership_count": 515,
+  "true_or_discovered_community_count": 336,
+  "singleton_fallback_community_count": 0,
+  "field_counts": {
+    "part_number": 2659,
+    "covered_part_number": 2,
+    "ipl_part_number": 2,
+    "ipl_text": 3,
+    "manual_page_reference": 4,
+    "table_text": 574,
+    "nomenclature": 10
+  },
+  "paths": {
+    "adapter": "local_data\\organization\\trace_net\\full_corpus_serving_pack_v1_laptop_smoke\\trace_net_full_corpus_exact_search_adapter_v1.json",
+    "page_context_v2": "local_data\\organization\\trace_net\\full_corpus_serving_pack_v1_laptop_smoke\\trace_net_full_corpus_page_context_v2_v1.json",
+    "leiden": "local_data\\organization\\trace_net\\full_corpus_serving_pack_v1_laptop_smoke\\trace_net_full_corpus_leiden_guidance_v1.json",
+    "v27_manifest": "local_data\\organization\\trace_net\\full_corpus_serving_pack_v1_laptop_smoke\\trace_net_full_corpus_v27_serving_manifest_v1.json"
+  },
+  "file_stats": [
+    {
+      "path": "local_data\\organization\\trace_net\\anchor_aware_graph_leiden_expander_gemma4_native_001\\trace_net_anchor_aware_graph_leiden_expander_v1.json",
+      "page_count": 17,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\anchor_aware_graph_leiden_expander_gemma4_native_001\\trace_net_anchor_aware_graph_leiden_expander_v1_citation_map.jsonl",
+      "page_count": 17,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\anchor_aware_graph_leiden_expander_gemma4_native_001\\trace_net_anchor_aware_graph_leiden_expander_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\anchor_aware_graph_leiden_expander_gemma4_native_001\\trace_net_anchor_aware_graph_leiden_expander_v1_records.jsonl",
+      "page_count": 17,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\anchor_aware_graph_leiden_expander_gemma4_native_001\\trace_net_anchor_aware_graph_leiden_expander_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\answer_context_graph_leiden_expander_gemma4_native_001\\trace_net_answer_context_graph_leiden_expander_v1.json",
+      "page_count": 8,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\answer_context_graph_leiden_expander_gemma4_native_001\\trace_net_answer_context_graph_leiden_expander_v1_citation_map.jsonl",
+      "page_count": 8,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\answer_context_graph_leiden_expander_gemma4_native_001\\trace_net_answer_context_graph_leiden_expander_v1_quality_check.json",
+      "page_count": 8,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\answer_context_graph_leiden_expander_gemma4_native_001\\trace_net_answer_context_graph_leiden_expander_v1_records.jsonl",
+      "page_count": 8,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\answer_context_graph_leiden_expander_gemma4_native_001\\trace_net_answer_context_graph_leiden_expander_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ask_api_dynamic_retrieval_v2\\trace_net_ask_api_dynamic_retrieval_v2.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ask_api_dynamic_retrieval_v2\\trace_net_ask_api_dynamic_retrieval_v2_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ask_api_dynamic_retrieval_v2\\trace_net_ask_api_dynamic_retrieval_v2_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ask_api_final_return_policy_hybrid_v3_v22\\trace_net_ask_api_final_return_policy_hybrid_v3_v22.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ask_api_final_return_policy_hybrid_v3_v22\\trace_net_ask_api_final_return_policy_hybrid_v3_v22_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ask_api_final_return_policy_hybrid_v3_v22\\trace_net_ask_api_final_return_policy_hybrid_v3_v22_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ask_api_final_return_policy_hybrid_v3_v22\\trace_net_ask_api_final_return_policy_hybrid_v3_v22_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ask_api_final_return_policy_v21\\trace_net_ask_api_final_return_policy_v21.json",
+      "page_count": 2,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ask_api_final_return_policy_v21\\trace_net_ask_api_final_return_policy_v21_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ask_api_final_return_policy_v21\\trace_net_ask_api_final_return_policy_v21_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ask_api_final_return_policy_v21\\trace_net_ask_api_final_return_policy_v21_records.jsonl",
+      "page_count": 2,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ask_api_final_return_policy_v21\\trace_net_ask_api_final_return_policy_v21_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ask_api_hybrid_v3_routing\\trace_net_ask_api_hybrid_v3_routing_v1.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ask_api_hybrid_v3_routing\\trace_net_ask_api_hybrid_v3_routing_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ask_api_hybrid_v3_routing\\trace_net_ask_api_hybrid_v3_routing_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ask_api_hybrid_v3_routing\\trace_net_ask_api_hybrid_v3_routing_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\calibrated_cascade_route_brain_v35_3\\trace_net_calibrated_cascade_route_brain_v35_3.json",
+      "page_count": 19,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\calibrated_cascade_route_brain_v35_3\\trace_net_cascade_route_decisions_v35_3.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\calibrated_cascade_route_brain_v35_3\\trace_net_cascade_route_manifest_v35_3.json",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\calibrated_cascade_route_brain_v35_3\\trace_net_fishnet_review_queue_v35_3.jsonl",
+      "page_count": 259,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\callout_visual_part_verifier\\trace_net_callout_visual_part_verifier_v1.json",
+      "page_count": 85,
+      "new_exact_document_count": 68
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\callout_visual_part_verifier\\trace_net_callout_visual_part_verifier_v1_callouts.jsonl",
+      "page_count": 5,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\callout_visual_part_verifier\\trace_net_callout_visual_part_verifier_v1_links.jsonl",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\callout_visual_part_verifier\\trace_net_callout_visual_part_verifier_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\callout_visual_part_verifier\\trace_net_callout_visual_part_verifier_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\callout_visual_part_verifier\\trace_net_callout_visual_part_verifier_v1_records.jsonl",
+      "page_count": 85,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\callout_visual_part_verifier\\trace_net_callout_visual_part_verifier_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\cascade_route_feature_audit_v35_2\\trace_net_cascade_route_confusion_matrix_v35_2.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\cascade_route_feature_audit_v35_2\\trace_net_cascade_route_feature_audit_v35_2.json",
+      "page_count": 10,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\cascade_route_feature_audit_v35_2\\trace_net_cascade_route_feature_records_v35_2.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\category_aware_graph_ui_overlay\\trace_net_category_aware_graph_ui_overlay_v1_community_cards.jsonl",
+      "page_count": 198,
+      "new_exact_document_count": 853
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\category_aware_leiden_overlay\\trace_net_category_aware_leiden_overlay_v1.json",
+      "page_count": 509,
+      "new_exact_document_count": 124
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\category_aware_leiden_overlay\\trace_net_category_aware_leiden_overlay_v1_communities.jsonl",
+      "page_count": 198,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\category_aware_leiden_overlay\\trace_net_category_aware_leiden_overlay_v1_edges.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\category_aware_leiden_overlay\\trace_net_category_aware_leiden_overlay_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\category_aware_leiden_overlay\\trace_net_category_aware_leiden_overlay_v1_nodes.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\category_aware_leiden_overlay\\trace_net_category_aware_leiden_overlay_v1_page_membership.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\category_aware_leiden_overlay\\trace_net_category_aware_leiden_overlay_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\category_aware_leiden_overlay\\trace_net_category_aware_leiden_overlay_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\citations\\trace_net_source_citation_graph_edges.json",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\citations\\trace_net_source_citation_graph_nodes.json",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\citations\\trace_net_source_citation_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\citations\\trace_net_source_citation_summary.json",
+      "page_count": 50,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\citations\\trace_net_source_citations.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\community_aware_retrieval_sim\\trace_net_community_aware_retrieval_sim_v1.json",
+      "page_count": 38,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\community_aware_retrieval_sim\\trace_net_community_aware_retrieval_sim_v1_groups.jsonl",
+      "page_count": 38,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\community_aware_retrieval_sim\\trace_net_community_aware_retrieval_sim_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\community_aware_retrieval_sim\\trace_net_community_aware_retrieval_sim_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\community_aware_retrieval_sim\\trace_net_community_aware_retrieval_sim_v1_results.jsonl",
+      "page_count": 38,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\community_aware_retrieval_sim\\trace_net_community_aware_retrieval_sim_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\community_aware_retrieval_v2\\trace_net_community_aware_retrieval_v2.json",
+      "page_count": 28,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\community_aware_retrieval_v2\\trace_net_community_aware_retrieval_v2_page_boosts.jsonl",
+      "page_count": 28,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\community_aware_retrieval_v2\\trace_net_community_aware_retrieval_v2_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\community_aware_retrieval_v2\\trace_net_community_aware_retrieval_v2_records.jsonl",
+      "page_count": 23,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\community_navigation_metadata_bridge\\trace_net_community_navigation_metadata_bridge_v1.json",
+      "page_count": 198,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\corrected_visual_context_builder_v35_4\\trace_net_corrected_visual_context_builder_v35_4.json",
+      "page_count": 5,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\corrected_visual_context_builder_v35_4\\trace_net_corrected_visual_context_cards_v35_4.jsonl",
+      "page_count": 185,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\corrected_visual_context_builder_v35_4\\trace_net_corrected_visual_context_missing_pages_v35_4.jsonl",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\corrected_visual_context_builder_v35_4\\trace_net_corrected_visual_prompt_context_v35_4.jsonl",
+      "page_count": 185,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\corrected_visual_context_builder_v35_4\\trace_net_fishnet_visual_review_candidates_skipped_v35_4.jsonl",
+      "page_count": 61,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_dynamic_query_tunnels\\trace_net_e2e_dynamic_query_tunnel_plans_v3.jsonl",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_dynamic_query_tunnels\\trace_net_e2e_dynamic_query_tunnels_v3.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_dynamic_query_tunnels\\trace_net_e2e_dynamic_query_tunnels_v3_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_image_visual_observer_route\\trace_net_e2e_image_visual_observer_route_records_v34.jsonl",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_image_visual_observer_route\\trace_net_e2e_image_visual_observer_route_v34.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_image_visual_observer_route_v34_1\\trace_net_e2e_image_visual_observer_route_records_v34_1.jsonl",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_image_visual_observer_route_v34_1\\trace_net_e2e_image_visual_observer_route_v34_1.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_image_visual_observer_route_v34_2\\trace_net_e2e_image_visual_observer_route_records_v34_2.jsonl",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_image_visual_observer_route_v34_2\\trace_net_e2e_image_visual_observer_route_v34_2.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_image_visual_observer_route_v34_3\\trace_net_e2e_image_visual_observer_route_records_v34_3.jsonl",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_image_visual_observer_route_v34_3\\trace_net_e2e_image_visual_observer_route_v34_3.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_deterministic_answer_planner\\trace_net_e2e_live_deterministic_answer_planner_samples_v28.jsonl",
+      "page_count": 12,
+      "new_exact_document_count": 2
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_deterministic_answer_planner\\trace_net_e2e_live_deterministic_answer_planner_v28.json",
+      "page_count": 13,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_eval_latency_harness\\trace_net_e2e_live_eval_latency_harness_records_v26.jsonl",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_eval_latency_harness\\trace_net_e2e_live_eval_latency_harness_v26.json",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_eval_latency_harness_v27_endpoint\\trace_net_e2e_live_eval_latency_harness_records_v26.jsonl",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_eval_latency_harness_v27_endpoint\\trace_net_e2e_live_eval_latency_harness_v26.json",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_eval_latency_harness_v28_endpoint\\trace_net_e2e_live_eval_latency_harness_records_v26.jsonl",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_eval_latency_harness_v28_endpoint\\trace_net_e2e_live_eval_latency_harness_v26.json",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_gemma_answer_writer_endpoint\\trace_net_e2e_live_gemma_answer_writer_endpoint_samples_v32.jsonl",
+      "page_count": 2,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_gemma_answer_writer_endpoint\\trace_net_e2e_live_gemma_answer_writer_endpoint_v32.json",
+      "page_count": 2,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_gemma_answer_writer_endpoint_v33\\trace_net_e2e_live_gemma_answer_writer_endpoint_samples_v33.jsonl",
+      "page_count": 2,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_gemma_answer_writer_endpoint_v33\\trace_net_e2e_live_gemma_answer_writer_endpoint_v33.json",
+      "page_count": 2,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_llm_draft_adapter\\trace_net_e2e_live_llm_draft_adapter_records_v22.jsonl",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_llm_draft_adapter\\trace_net_e2e_live_llm_draft_adapter_v22.json",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_llm_draft_adapter_smoke\\trace_net_e2e_live_llm_draft_adapter_records_v22.jsonl",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_llm_draft_adapter_smoke\\trace_net_e2e_live_llm_draft_adapter_v22.json",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_llm_final_gate\\trace_net_e2e_live_llm_final_answers_v23.jsonl",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_llm_final_gate\\trace_net_e2e_live_llm_final_gate_records_v23.jsonl",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_llm_final_gate\\trace_net_e2e_live_llm_final_gate_v23.json",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_llm_prompt_contract\\trace_net_e2e_live_llm_prompt_contract_records_v21.jsonl",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_llm_prompt_contract\\trace_net_e2e_live_llm_prompt_contract_v21.json",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_llm_prompt_contract\\trace_net_e2e_live_llm_prompt_messages_v21.jsonl",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_orchestrator_endpoint\\trace_net_e2e_live_orchestrator_endpoint_samples_v25.jsonl",
+      "page_count": 12,
+      "new_exact_document_count": 2
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_orchestrator_endpoint\\trace_net_e2e_live_orchestrator_endpoint_v25.json",
+      "page_count": 13,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_orchestrator_endpoint\\trace_net_e2e_live_orchestrator_endpoint_v25_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_orchestrator_stage_timing_fastpath\\trace_net_e2e_live_orchestrator_stage_timing_fastpath_samples_v27.jsonl",
+      "page_count": 12,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_orchestrator_stage_timing_fastpath\\trace_net_e2e_live_orchestrator_stage_timing_fastpath_v27.json",
+      "page_count": 13,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_relationship_final_gated_endpoint\\trace_net_e2e_live_relationship_final_gated_endpoint_samples_v31.jsonl",
+      "page_count": 2,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_relationship_final_gated_endpoint\\trace_net_e2e_live_relationship_final_gated_endpoint_v31.json",
+      "page_count": 2,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_relationship_synthesis_planner\\trace_net_e2e_live_relationship_synthesis_planner_samples_v29.jsonl",
+      "page_count": 10,
+      "new_exact_document_count": 2
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_relationship_synthesis_planner\\trace_net_e2e_live_relationship_synthesis_planner_v29.json",
+      "page_count": 11,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_self_rag_crag_evaluator\\trace_net_e2e_live_self_rag_crag_evaluator_crag_plans_v20.jsonl",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_self_rag_crag_evaluator\\trace_net_e2e_live_self_rag_crag_evaluator_records_v20.jsonl",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_self_rag_crag_evaluator\\trace_net_e2e_live_self_rag_crag_evaluator_v20.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_webui_final_gated_gemma_endpoint\\trace_net_e2e_live_webui_final_gated_gemma_endpoint_responses_v24.jsonl",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_live_webui_final_gated_gemma_endpoint\\trace_net_e2e_live_webui_final_gated_gemma_endpoint_v24.json",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_relationship_final_gate_hardener\\trace_net_e2e_relationship_final_gate_hardener_records_v30.jsonl",
+      "page_count": 2,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_relationship_final_gate_hardener\\trace_net_e2e_relationship_final_gate_hardener_v30.json",
+      "page_count": 2,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_relationship_router_hardening\\trace_net_e2e_relationship_router_hardening_samples_v29_1.jsonl",
+      "page_count": 2,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\e2e_relationship_router_hardening\\trace_net_e2e_relationship_router_hardening_v29_1.json",
+      "page_count": 2,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\fast_chat_runner_part_family_120_29073\\part_family_fast_answer_composer\\trace_net_part_family_fast_answer_composer_v1.json",
+      "page_count": 9,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\fast_chat_runner_part_family_120_29073\\part_family_fast_answer_composer\\trace_net_part_family_fast_answer_composer_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\fast_chat_runner_part_family_120_29073\\part_family_fast_answer_composer\\trace_net_part_family_fast_answer_composer_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\fast_chat_runner_part_family_120_29073_integrated_gate\\part_family_fast_answer_composer\\trace_net_part_family_fast_answer_composer_v1.json",
+      "page_count": 9,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\fast_chat_runner_part_family_120_29073_integrated_gate\\part_family_fast_answer_composer\\trace_net_part_family_fast_answer_composer_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\fast_chat_runner_part_family_120_29073_integrated_gate\\part_family_fast_answer_composer\\trace_net_part_family_fast_answer_composer_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\fishnet_ocr_grid\\trace_net_fishnet_ocr_grid_v1.json",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\fishnet_ocr_grid\\trace_net_fishnet_ocr_grid_v1_cards.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\fishnet_ocr_grid\\trace_net_fishnet_ocr_grid_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\fishnet_ocr_grid\\trace_net_fishnet_ocr_grid_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\fishnet_ocr_grid\\trace_net_fishnet_ocr_grid_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\fishnet_route_dispatch_handoff\\table\\trace_net_fishnet_route_dispatch_handoff_v1_table.json",
+      "page_count": 21,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\fishnet_route_dispatch_handoff\\table\\trace_net_fishnet_route_dispatch_handoff_v1_table.jsonl",
+      "page_count": 21,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\full_corpus_serving_pack_v1_laptop_smoke\\trace_net_full_corpus_leiden_guidance_v1.json",
+      "page_count": 88,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\full_corpus_serving_pack_v1_laptop_smoke\\trace_net_full_corpus_page_context_v2_v1.json",
+      "page_count": 514,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_explorer\\trace_net_graph_explorer_v2_nomenclature_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_overlay_part_lineage\\trace_net_graph_overlay_part_lineage_v1.json",
+      "page_count": 3467,
+      "new_exact_document_count": 574
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_overlay_part_lineage\\trace_net_graph_overlay_part_lineage_v1_edges.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_overlay_part_lineage\\trace_net_graph_overlay_part_lineage_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_overlay_part_lineage\\trace_net_graph_overlay_part_lineage_v1_nodes.jsonl",
+      "page_count": 3467,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_overlay_part_lineage\\trace_net_graph_overlay_part_lineage_v1_part_candidates.jsonl",
+      "page_count": 188,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_overlay_part_lineage\\trace_net_graph_overlay_part_lineage_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_overlay_part_lineage\\trace_net_graph_overlay_part_lineage_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_overlay_part_property_normalizer\\trace_net_graph_overlay_part_property_normalizer_v1.json",
+      "page_count": 3467,
+      "new_exact_document_count": 128
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_overlay_part_property_normalizer\\trace_net_graph_overlay_part_property_normalizer_v1_edges.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_overlay_part_property_normalizer\\trace_net_graph_overlay_part_property_normalizer_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_overlay_part_property_normalizer\\trace_net_graph_overlay_part_property_normalizer_v1_nodes.jsonl",
+      "page_count": 3467,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_overlay_part_property_normalizer\\trace_net_graph_overlay_part_property_normalizer_v1_part_candidates.jsonl",
+      "page_count": 188,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_overlay_part_property_normalizer\\trace_net_graph_overlay_part_property_normalizer_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_overlay_part_property_normalizer\\trace_net_graph_overlay_part_property_normalizer_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_ui_community_overlay\\trace_net_graph_ui_community_overlay_v1.json",
+      "page_count": 3467,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_ui_community_overlay\\trace_net_graph_ui_community_overlay_v1_communities.jsonl",
+      "page_count": 198,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_ui_community_overlay\\trace_net_graph_ui_community_overlay_v1_edges.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_ui_community_overlay\\trace_net_graph_ui_community_overlay_v1_feedback_memory.jsonl",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_ui_community_overlay\\trace_net_graph_ui_community_overlay_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_ui_community_overlay\\trace_net_graph_ui_community_overlay_v1_nodes.jsonl",
+      "page_count": 3467,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_ui_community_overlay\\trace_net_graph_ui_community_overlay_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_ui_community_overlay\\trace_net_graph_ui_community_overlay_v1_results.jsonl",
+      "page_count": 38,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\graph_ui_community_overlay\\trace_net_graph_ui_community_overlay_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\human_review_queue\\trace_net_human_review_queue_table_geometry_integration_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\human_review_queue\\trace_net_human_review_queue_table_geometry_integration_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\hybrid_retrieval_v2\\trace_net_hybrid_retrieval_v2.json",
+      "page_count": 31,
+      "new_exact_document_count": 69
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\hybrid_retrieval_v2\\trace_net_hybrid_retrieval_v2_groups.jsonl",
+      "page_count": 31,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\hybrid_retrieval_v2\\trace_net_hybrid_retrieval_v2_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\hybrid_retrieval_v2\\trace_net_hybrid_retrieval_v2_quality.json",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\hybrid_retrieval_v2\\trace_net_hybrid_retrieval_v2_results.jsonl",
+      "page_count": 31,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\hybrid_retrieval_v2\\trace_net_hybrid_retrieval_v2_summary.json",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\hybrid_retrieval_v3\\trace_net_hybrid_retrieval_v3.json",
+      "page_count": 32,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\hybrid_retrieval_v3\\trace_net_hybrid_retrieval_v3_groups.jsonl",
+      "page_count": 32,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\hybrid_retrieval_v3\\trace_net_hybrid_retrieval_v3_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\hybrid_retrieval_v3\\trace_net_hybrid_retrieval_v3_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\hybrid_retrieval_v3\\trace_net_hybrid_retrieval_v3_results.jsonl",
+      "page_count": 32,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\hybrid_retrieval_v3\\trace_net_hybrid_retrieval_v3_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\image_ocr_figure_callout_extractor_v1\\trace_net_image_ocr_figure_callout_extractor_v1.json",
+      "page_count": 21,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\image_ocr_figure_callout_extractor_v1\\trace_net_image_ocr_figure_callout_extractor_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\image_ocr_figure_callout_extractor_v1\\trace_net_image_ocr_figure_callout_extractor_v1_quality_check_cli.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\image_ocr_figure_callout_extractor_v1\\trace_net_image_ocr_figure_callout_extractor_v1_records.jsonl",
+      "page_count": 21,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_nomenclature_merger_v1.json",
+      "page_count": 4,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_nomenclature_merger_v1_missing.jsonl",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_nomenclature_merger_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_nomenclature_merger_v1_quality_check_cli.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_nomenclature_merger_v1_records.jsonl",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\image_visual_evidence_nomenclature_merger_v1\\trace_net_image_visual_evidence_pack_with_nomenclature_v1.json",
+      "page_count": 24,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\community_aware_retrieval_sim\\trace_net_community_aware_retrieval_sim_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\graph_overlay_part_lineage\\trace_net_graph_overlay_part_lineage_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\graph_overlay_part_property_normalizer\\trace_net_graph_overlay_part_property_normalizer_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\issue_community_as_proof\\issue_community_as_proof_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\issue_community_missing_membership\\issue_community_missing_membership_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\issue_incremental_needs_leiden\\issue_incremental_needs_leiden_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\issue_ocr_missing_clean_text\\issue_ocr_missing_clean_text_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\issue_ocr_needs_retry\\issue_ocr_needs_retry_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\issue_ocr_raw_index_risk\\issue_ocr_raw_index_risk_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\issue_ocr_unsafe_text\\issue_ocr_unsafe_text_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\issue_page_registry_needs_table\\issue_page_registry_needs_table_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\issue_table_missing_source\\issue_table_missing_source_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\issue_table_repair_review\\issue_table_repair_review_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\issue_table_uncited_answer\\issue_table_uncited_answer_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\issue_table_unsafe\\issue_table_unsafe_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\issue_table_unverified_rows\\issue_table_unverified_rows_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\leiden_graph_communities\\trace_net_leiden_graph_communities_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\table_cell_normalizer\\trace_net_table_cell_normalizer_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\it_issue_origin_test_matrix\\synthetic_trace_net_root\\table_understanding\\trace_net_table_understanding_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_category_summary_hydrator\\trace_net_leiden_category_summary_hydrator_v1.json",
+      "page_count": 220,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_category_summary_hydrator\\trace_net_leiden_category_summary_hydrator_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_category_summary_hydrator\\trace_net_leiden_category_summary_hydrator_v1_records.jsonl",
+      "page_count": 220,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_communities\\trace_net_leiden_communities_v1.json",
+      "page_count": 509,
+      "new_exact_document_count": 86
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_community_quality_audit\\trace_net_leiden_community_quality_audit_v1.json",
+      "page_count": 220,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_community_quality_audit\\trace_net_leiden_community_quality_audit_v1_quality.json",
+      "page_count": 220,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_graph_communities\\trace_net_leiden_graph_communities_v1.json",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_graph_communities\\trace_net_leiden_graph_communities_v1_communities.jsonl",
+      "page_count": 220,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_graph_communities\\trace_net_leiden_graph_communities_v1_edges.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_graph_communities\\trace_net_leiden_graph_communities_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_graph_communities\\trace_net_leiden_graph_communities_v1_node_membership.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_graph_communities\\trace_net_leiden_graph_communities_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_graph_communities\\trace_net_leiden_graph_communities_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_navigation_metadata_bridge\\trace_net_leiden_navigation_metadata_bridge_v1.json",
+      "page_count": 470,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_navigation_metadata_bridge\\trace_net_leiden_navigation_metadata_bridge_v1_page_hints.jsonl",
+      "page_count": 470,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_navigation_metadata_bridge\\trace_net_leiden_navigation_metadata_bridge_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_navigation_metadata_bridge\\trace_net_leiden_navigation_metadata_bridge_v1_records.jsonl",
+      "page_count": 220,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_representative_label_tightening\\trace_net_leiden_representative_label_tightening_v1.json",
+      "page_count": 470,
+      "new_exact_document_count": 101
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_representative_label_tightening\\trace_net_leiden_representative_label_tightening_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_representative_label_tightening\\trace_net_leiden_representative_label_tightening_v1_records.jsonl",
+      "page_count": 470,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\leiden_representative_label_tightening\\trace_net_leiden_representative_label_tightening_v1_review_records.jsonl",
+      "page_count": 39,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\llama32_vision_image_route_summary_v2\\trace_net_llama32_vision_image_route_summary_v2.json",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\llm_h34b_custom_5_progress\\t\\01_h34b_q01_part_lookup_trace.json",
+      "page_count": 3,
+      "new_exact_document_count": 3
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\llm_h34b_custom_5_progress\\t\\04_h34b_q04_nomenclature_lookup_trace.json",
+      "page_count": 4,
+      "new_exact_document_count": 4
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\llm_h34c_custom_5_real_ollama\\t\\01_h34b_q01_part_lookup_trace.json",
+      "page_count": 2,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\llm_h34c_custom_5_real_ollama\\t\\04_h34b_q04_nomenclature_lookup_trace.json",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\llm_h35_custom_task_contract_5_real_ollama\\t\\01_h35_q01_part_lookup_5a6af5_trace.json",
+      "page_count": 3,
+      "new_exact_document_count": 1
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\llm_h35_custom_task_contract_5_real_ollama\\t\\04_h35_q04_nomenclature_lookup_a78bdf_trace.json",
+      "page_count": 3,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\llm_h38_diversity_task_runner_5_real_ollama\\t\\01_h35_q01_part_lookup_trace.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\llm_h38_diversity_task_runner_5_real_ollama\\t\\04_h35_q04_nomenclature_lookup_trace.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\llm_h38c_diversity_task_repair_5_real_ollama\\t\\01_h35_q01_part_lookup_trace.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\llm_h38c_diversity_task_repair_5_real_ollama\\t\\04_h35_q04_nomenclature_lookup_trace.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1.json",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_page_comparison_manifest.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_records.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_classifier_rerun_002\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1.json",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_classifier_rerun_002\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_page_comparison_manifest.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_classifier_rerun_002\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_classifier_rerun_002\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_records.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_classifier_rerun_002\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_classifier_rerun_002\\trace_net_ocr_classifier_pipeline_runner_v1.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_classifier_rerun_002\\trace_net_ocr_classifier_pipeline_runner_v1_command_records.jsonl",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_classifier_rerun_002\\trace_net_ocr_classifier_pipeline_runner_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_classifier_rerun_002\\trace_net_ocr_classifier_pipeline_runner_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack\\trace_net_ocr_route_scan_pack_v1.json",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack\\trace_net_ocr_route_scan_pack_v1_page_comparison_manifest.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack\\trace_net_ocr_route_scan_pack_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack\\trace_net_ocr_route_scan_pack_v1_records.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack\\trace_net_ocr_route_scan_pack_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack_tesseract_encoding_smoke\\trace_net_ocr_route_scan_pack_v1.json",
+      "page_count": 5,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack_tesseract_encoding_smoke\\trace_net_ocr_route_scan_pack_v1_page_comparison_manifest.jsonl",
+      "page_count": 5,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack_tesseract_encoding_smoke\\trace_net_ocr_route_scan_pack_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack_tesseract_encoding_smoke\\trace_net_ocr_route_scan_pack_v1_records.jsonl",
+      "page_count": 5,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack_tesseract_encoding_smoke\\trace_net_ocr_route_scan_pack_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1.json",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_page_comparison_manifest.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_records.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack_tesseract_smoke\\trace_net_ocr_route_scan_pack_v1.json",
+      "page_count": 14,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack_tesseract_smoke\\trace_net_ocr_route_scan_pack_v1_page_comparison_manifest.jsonl",
+      "page_count": 14,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack_tesseract_smoke\\trace_net_ocr_route_scan_pack_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack_tesseract_smoke\\trace_net_ocr_route_scan_pack_v1_records.jsonl",
+      "page_count": 14,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\ocr_route_scan_pack_tesseract_smoke\\trace_net_ocr_route_scan_pack_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\openwebui_page_context_bridge_v1\\trace_net_openwebui_page_context_bridge_v1_preflight.json",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\openwebui_page_context_bridge_v1\\trace_net_openwebui_page_context_bridge_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\openwebui_page_context_bridge_v1\\trace_net_page_context_pack_v3_openwebui_pages_48_202.json",
+      "page_count": 4,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_overlay\\trace_net_page_context_overlay_graph_edges.json",
+      "page_count": 509,
+      "new_exact_document_count": 1159
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_overlay\\trace_net_page_context_overlay_graph_nodes.json",
+      "page_count": 510,
+      "new_exact_document_count": 1
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_overlay\\trace_net_page_context_overlay_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_overlay\\trace_net_page_context_overlay_records.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_overlay\\trace_net_page_context_overlay_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_pack_v3\\trace_net_page_context_pack_v3_openwebui_pages_48_202.json",
+      "page_count": 4,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_pack_v3\\trace_net_page_context_pack_v3_pages_48_202.json",
+      "page_count": 2,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_pack_v3\\trace_net_page_context_pack_v3_pages_48_202_hydrated.json",
+      "page_count": 4,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_pack_v3\\trace_net_page_context_pack_v3_pages_48_202_hydrated_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_pack_v3\\trace_net_page_context_pack_v3_pages_48_202_hydrated_v3_2.json",
+      "page_count": 4,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_pack_v3\\trace_net_page_context_pack_v3_pages_48_202_hydrated_v3_2_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_pack_v3\\trace_net_page_context_pack_v3_pages_48_202_hydrated_v3_3.json",
+      "page_count": 4,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_pack_v3\\trace_net_page_context_pack_v3_pages_48_202_hydrated_v3_3_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_pack_v3\\trace_net_page_context_pack_v3_pages_48_202_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2.json",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2_graph_edges.json",
+      "page_count": 17,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2_graph_nodes.json",
+      "page_count": 22,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2_records.jsonl",
+      "page_count": 22,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_context_v2\\trace_net_page_context_v2_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_retrieval_large_eval_v2\\trace_net_page_retrieval_large_eval_v2.json",
+      "page_count": 401,
+      "new_exact_document_count": 5
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_retrieval_large_eval_v2\\trace_net_page_retrieval_large_eval_v2_llm_graph_path_cards.jsonl",
+      "page_count": 200,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_retrieval_large_eval_v2\\trace_net_page_retrieval_large_eval_v2_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\page_retrieval_large_eval_v2\\trace_net_page_retrieval_large_eval_v2_queries.jsonl",
+      "page_count": 401,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\part_family_fast_answer_120_29073\\trace_net_part_family_fast_answer_composer_v1.json",
+      "page_count": 9,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\part_family_fast_answer_120_29073\\trace_net_part_family_fast_answer_composer_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\part_family_fast_answer_120_29073\\trace_net_part_family_fast_answer_composer_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\part_number_exact_retrieval_probe_gemma4_native_001\\trace_net_part_number_exact_retrieval_probe_v1.json",
+      "page_count": 17,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\part_number_exact_retrieval_probe_gemma4_native_001\\trace_net_part_number_exact_retrieval_probe_v1_exact_hits.jsonl",
+      "page_count": 9,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\part_number_exact_retrieval_probe_gemma4_native_001\\trace_net_part_number_exact_retrieval_probe_v1_family_variant_hits.jsonl",
+      "page_count": 14,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\part_number_exact_retrieval_probe_gemma4_native_001\\trace_net_part_number_exact_retrieval_probe_v1_quality_check.json",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\part_number_exact_retrieval_probe_gemma4_native_001\\trace_net_part_number_exact_retrieval_probe_v1_records.jsonl",
+      "page_count": 9,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\part_number_exact_retrieval_probe_gemma4_native_001\\trace_net_part_number_exact_retrieval_probe_v1_summary.json",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\rag_candidates\\rag_candidate_chunks.jsonl",
+      "page_count": 569,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\rag_candidates\\rag_candidate_derived_chunks.jsonl",
+      "page_count": 76,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\rag_candidates\\rag_candidate_graph_edges.json",
+      "page_count": 569,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\rag_candidates\\rag_candidate_graph_nodes.json",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\rag_candidates\\rag_candidate_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\rag_candidates\\rag_candidate_source_chunks.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\rag_candidates\\rag_candidate_source_text_chunks.jsonl",
+      "page_count": 495,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\rag_candidates\\rag_candidate_summary.json",
+      "page_count": 99,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\rag_candidates\\rag_candidate_verified_part_chunks.jsonl",
+      "page_count": 362,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\rag_eligibility\\rag_eligible_verified_part_evidence.jsonl",
+      "page_count": 362,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_ocr_nomenclature_window_extractor_v1\\trace_net_raw_ocr_nomenclature_window_extractor_v1.json",
+      "page_count": 6,
+      "new_exact_document_count": 5
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_ocr_nomenclature_window_extractor_v1\\trace_net_raw_ocr_nomenclature_window_extractor_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_ocr_nomenclature_window_extractor_v1\\trace_net_raw_ocr_nomenclature_window_extractor_v1_quality_check_cli.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_ocr_nomenclature_window_extractor_v1\\trace_net_raw_ocr_nomenclature_window_extractor_v1_records.jsonl",
+      "page_count": 6,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_ocr_nomenclature_window_extractor_v1\\trace_net_raw_ocr_nomenclature_window_extractor_v1_rejected_windows.jsonl",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_context_engineered_native_gemma4_001\\context_engineering\\part_number_exact_retrieval_probe\\trace_net_part_number_exact_retrieval_probe_v1.json",
+      "page_count": 17,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_context_engineered_native_gemma4_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1.json",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_context_engineered_native_gemma4_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_page_comparison_manifest.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_context_engineered_native_gemma4_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_context_engineered_native_gemma4_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_records.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_context_engineered_native_gemma4_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_context_engineered_native_gemma4_001\\trace_net_ocr_classifier_pipeline_runner_v1.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_context_engineered_native_gemma4_001\\trace_net_ocr_classifier_pipeline_runner_v1_command_records.jsonl",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_context_engineered_native_gemma4_001\\trace_net_ocr_classifier_pipeline_runner_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_context_engineered_native_gemma4_001\\trace_net_ocr_classifier_pipeline_runner_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1.json",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_page_comparison_manifest.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_records.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_001\\trace_net_ocr_classifier_pipeline_runner_v1.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_001\\trace_net_ocr_classifier_pipeline_runner_v1_command_records.jsonl",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_001\\trace_net_ocr_classifier_pipeline_runner_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_001\\trace_net_ocr_classifier_pipeline_runner_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_native_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1.json",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_native_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_page_comparison_manifest.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_native_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_native_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_records.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_native_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_native_001\\trace_net_ocr_classifier_pipeline_runner_v1.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_native_001\\trace_net_ocr_classifier_pipeline_runner_v1_command_records.jsonl",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_native_001\\trace_net_ocr_classifier_pipeline_runner_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_native_001\\trace_net_ocr_classifier_pipeline_runner_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1.json",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_page_comparison_manifest.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_records.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001\\trace_net_ocr_classifier_pipeline_runner_v1.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001\\trace_net_ocr_classifier_pipeline_runner_v1_command_records.jsonl",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001\\trace_net_ocr_classifier_pipeline_runner_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_001\\trace_net_ocr_classifier_pipeline_runner_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_8192\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1.json",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_8192\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_page_comparison_manifest.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_8192\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_8192\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_records.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_8192\\ocr_route_scan_pack_tesseract_full\\trace_net_ocr_route_scan_pack_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_8192\\trace_net_ocr_classifier_pipeline_runner_v1.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_8192\\trace_net_ocr_classifier_pipeline_runner_v1_command_records.jsonl",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_8192\\trace_net_ocr_classifier_pipeline_runner_v1_quality_check.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\raw_to_answer_e2e_smoke_gemma4_strict_8192\\trace_net_ocr_classifier_pipeline_runner_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\route_brain_image_page_audit_v35_1\\trace_net_actual_diagram_pages_v35_1.jsonl",
+      "page_count": 159,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\route_brain_image_page_audit_v35_1\\trace_net_missed_diagram_pages_v35_1.jsonl",
+      "page_count": 141,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\route_brain_image_page_audit_v35_1\\trace_net_overbroad_image_visual_candidates_v35_1.jsonl",
+      "page_count": 104,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\route_brain_image_page_audit_v35_1\\trace_net_route_brain_corrections_v35_1.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\route_brain_image_page_audit_v35_1\\trace_net_route_brain_image_page_audit_v35_1.json",
+      "page_count": 24,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\route_dispatch_processor_contract\\table_allowed_pages.json",
+      "page_count": 33,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\route_scoped_visual_context_builder_v35\\trace_net_route_scoped_visual_context_builder_v35.json",
+      "page_count": 13,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\route_scoped_visual_context_builder_v35\\trace_net_route_scoped_visual_context_candidates_v35.jsonl",
+      "page_count": 509,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\route_scoped_visual_context_builder_v35\\trace_net_route_scoped_visual_context_cards_v35.jsonl",
+      "page_count": 25,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\route_scoped_visual_context_builder_v35\\trace_net_route_scoped_visual_prompt_context_v35.jsonl",
+      "page_count": 25,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\runtime_hybrid_v3_v22\\trace_net_runtime_hybrid_v3_v22.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\runtime_hybrid_v3_v22\\trace_net_runtime_hybrid_v3_v22_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\runtime_hybrid_v3_v22\\trace_net_runtime_hybrid_v3_v22_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\runtime_hybrid_v3_v22\\trace_net_runtime_hybrid_v3_v22_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_bbox_resolver\\trace_net_table_bbox_resolver_v1.json",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_bbox_resolver\\trace_net_table_bbox_resolver_v1_cards.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_bbox_resolver\\trace_net_table_bbox_resolver_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_bbox_resolver\\trace_net_table_bbox_resolver_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_bbox_resolver\\trace_net_table_bbox_resolver_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_bbox_scoped_cell_extraction\\trace_net_table_bbox_scoped_cell_extraction_v1.json",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_bbox_scoped_cell_extraction\\trace_net_table_bbox_scoped_cell_extraction_v1_legacy_unscoped_records.jsonl",
+      "page_count": 475,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_bbox_scoped_cell_extraction\\trace_net_table_bbox_scoped_cell_extraction_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_bbox_scoped_cell_extraction\\trace_net_table_bbox_scoped_cell_extraction_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_bbox_scoped_cell_extraction\\trace_net_table_bbox_scoped_cell_extraction_v1_records.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_bbox_scoped_cell_extraction\\trace_net_table_bbox_scoped_cell_extraction_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_bbox_scoped_cell_extraction\\trace_net_table_bbox_scoped_cell_extraction_v1_values.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_cell_normalizer\\trace_net_table_cell_normalizer_v1.json",
+      "page_count": 990,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_cell_normalizer\\trace_net_table_cell_normalizer_v1_cells.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_cell_normalizer\\trace_net_table_cell_normalizer_v1_graph_attachment_plan.jsonl",
+      "page_count": 990,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_cell_normalizer\\trace_net_table_cell_normalizer_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_cell_normalizer\\trace_net_table_cell_normalizer_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_cell_normalizer\\trace_net_table_cell_normalizer_v1_records.jsonl",
+      "page_count": 990,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_cell_normalizer\\trace_net_table_cell_normalizer_v1_repairs.jsonl",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_cell_normalizer\\trace_net_table_cell_normalizer_v1_rows.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_cell_normalizer\\trace_net_table_cell_normalizer_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_crop_completeness_guard\\trace_net_table_crop_completeness_guard_v1.json",
+      "page_count": 21,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_crop_completeness_guard\\trace_net_table_crop_completeness_guard_v1_cards.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_crop_completeness_guard\\trace_net_table_crop_completeness_guard_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_crop_completeness_guard\\trace_net_table_crop_completeness_guard_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_crop_completeness_guard\\trace_net_table_crop_completeness_guard_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_crop_margin_expansion_experiment\\trace_net_table_crop_margin_expansion_experiment_v1.json",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_crop_margin_expansion_experiment\\trace_net_table_crop_margin_expansion_experiment_v1_cards.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_crop_margin_expansion_experiment\\trace_net_table_crop_margin_expansion_experiment_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_crop_margin_expansion_experiment\\trace_net_table_crop_margin_expansion_experiment_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_crop_margin_expansion_experiment\\trace_net_table_crop_margin_expansion_experiment_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_crop_selection_diagnostics\\trace_net_table_crop_selection_diagnostics_v1.json",
+      "page_count": 21,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_crop_selection_diagnostics\\trace_net_table_crop_selection_diagnostics_v1_cards.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_crop_selection_diagnostics\\trace_net_table_crop_selection_diagnostics_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_crop_selection_diagnostics\\trace_net_table_crop_selection_diagnostics_v1_quality.json",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_crop_selection_diagnostics\\trace_net_table_crop_selection_diagnostics_v1_summary.json",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_detector_overlay_audit\\trace_net_table_detector_overlay_audit_v1.json",
+      "page_count": 21,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_detector_overlay_audit\\trace_net_table_detector_overlay_audit_v1_cards.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_detector_overlay_audit\\trace_net_table_detector_overlay_audit_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_detector_overlay_audit\\trace_net_table_detector_overlay_audit_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_detector_overlay_audit\\trace_net_table_detector_overlay_audit_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_detector_overlay_review_pack\\trace_net_table_detector_overlay_review_pack_v1.json",
+      "page_count": 21,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_detector_overlay_review_pack\\trace_net_table_detector_overlay_review_pack_v1_cards.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_detector_overlay_review_pack\\trace_net_table_detector_overlay_review_pack_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_detector_overlay_review_pack\\trace_net_table_detector_overlay_review_pack_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_detector_overlay_review_pack\\trace_net_table_detector_overlay_review_pack_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_detector_overlay_verdict_ingest\\trace_net_table_detector_overlay_verdict_ingest_v1.json",
+      "page_count": 21,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_detector_overlay_verdict_ingest\\trace_net_table_detector_overlay_verdict_ingest_v1_cards.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_detector_overlay_verdict_ingest\\trace_net_table_detector_overlay_verdict_ingest_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_detector_overlay_verdict_ingest\\trace_net_table_detector_overlay_verdict_ingest_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1.json",
+      "page_count": 13,
+      "new_exact_document_count": 3
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_adapter_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_documents_v1.jsonl",
+      "page_count": 13,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_exact_search_adapter\\trace_net_table_exact_search_mapping_v1.json",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_exact_search_smoke\\trace_net_table_exact_search_smoke_results_v1.jsonl",
+      "page_count": 12,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_exact_search_smoke\\trace_net_table_exact_search_smoke_v1.json",
+      "page_count": 12,
+      "new_exact_document_count": 3
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_exact_search_smoke\\trace_net_table_exact_search_smoke_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_extraction_bbox_overlay_export\\trace_net_table_extraction_bbox_overlay_export_v1.json",
+      "page_count": 21,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_extraction_bbox_overlay_export\\trace_net_table_extraction_bbox_overlay_export_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_extraction_bbox_overlay_export\\trace_net_table_extraction_bbox_overlay_export_v1_records.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_extraction_bbox_overlay_export\\trace_net_table_extraction_bbox_overlay_export_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_full_enclosure_bbox_overlay_export\\trace_net_table_full_enclosure_bbox_overlay_export_v1.json",
+      "page_count": 21,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_full_enclosure_bbox_overlay_export\\trace_net_table_full_enclosure_bbox_overlay_export_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_full_enclosure_bbox_overlay_export\\trace_net_table_full_enclosure_bbox_overlay_export_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_full_enclosure_bbox_overlay_export\\trace_net_table_full_enclosure_bbox_overlay_export_v1_records.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_full_enclosure_bbox_overlay_export\\trace_net_table_full_enclosure_bbox_overlay_export_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_full_enclosure_bbox_reconstructor\\trace_net_table_full_enclosure_bbox_reconstructor_v1.json",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_full_enclosure_bbox_reconstructor\\trace_net_table_full_enclosure_bbox_reconstructor_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_full_enclosure_bbox_reconstructor\\trace_net_table_full_enclosure_bbox_reconstructor_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_full_enclosure_bbox_reconstructor\\trace_net_table_full_enclosure_bbox_reconstructor_v1_reconstructed_records.jsonl",
+      "page_count": 19,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_full_enclosure_bbox_reconstructor\\trace_net_table_full_enclosure_bbox_reconstructor_v1_records.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_full_enclosure_bbox_reconstructor\\trace_net_table_full_enclosure_bbox_reconstructor_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_full_region_recovery\\trace_net_table_full_region_recovery_v1.json",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_full_region_recovery\\trace_net_table_full_region_recovery_v1_cards.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_full_region_recovery\\trace_net_table_full_region_recovery_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_full_region_recovery\\trace_net_table_full_region_recovery_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_full_region_recovery\\trace_net_table_full_region_recovery_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_geometry_review_bridge\\trace_net_table_geometry_review_bridge_v1.json",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_geometry_review_bridge\\trace_net_table_geometry_review_bridge_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_geometry_review_bridge\\trace_net_table_geometry_review_bridge_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_geometry_review_bridge\\trace_net_table_geometry_review_bridge_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_geometry_review_bridge\\trace_net_table_geometry_review_bridge_v1_tasks.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_hybrid_retrieval_bridge\\trace_net_table_hybrid_retrieval_bridge_query_groups_v1.jsonl",
+      "page_count": 12,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_hybrid_retrieval_bridge\\trace_net_table_hybrid_retrieval_bridge_records_v1.jsonl",
+      "page_count": 13,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_hybrid_retrieval_bridge\\trace_net_table_hybrid_retrieval_bridge_v1.json",
+      "page_count": 13,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_hybrid_retrieval_bridge\\trace_net_table_hybrid_retrieval_bridge_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_hybrid_retrieval_integration_audit\\trace_net_table_hybrid_retrieval_integration_audit_records_v1.jsonl",
+      "page_count": 13,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_hybrid_retrieval_integration_audit\\trace_net_table_hybrid_retrieval_integration_audit_v1.json",
+      "page_count": 13,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_hybrid_retrieval_integration_audit\\trace_net_table_hybrid_retrieval_integration_audit_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_image_resolver\\trace_net_table_image_resolver_v1.json",
+      "page_count": 21,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_image_resolver\\trace_net_table_image_resolver_v1_cards.jsonl",
+      "page_count": 21,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_image_resolver\\trace_net_table_image_resolver_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_image_resolver\\trace_net_table_image_resolver_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_image_resolver\\trace_net_table_image_resolver_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_line_geometry\\trace_net_table_line_geometry_v1.json",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_line_geometry\\trace_net_table_line_geometry_v1_cards.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_line_geometry\\trace_net_table_line_geometry_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_line_geometry\\trace_net_table_line_geometry_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_line_geometry\\trace_net_table_line_geometry_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_line_geometry_route_contract_audit\\trace_net_table_line_geometry_route_contract_audit_v1.json",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_line_geometry_route_contract_audit\\trace_net_table_line_geometry_route_contract_audit_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_margin_detector_parity\\trace_net_table_margin_detector_parity_v1.json",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_margin_detector_parity\\trace_net_table_margin_detector_parity_v1_cards.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_margin_detector_parity\\trace_net_table_margin_detector_parity_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_margin_detector_parity\\trace_net_table_margin_detector_parity_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_margin_detector_parity\\trace_net_table_margin_detector_parity_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_margin_morphology_parity\\trace_net_table_margin_morphology_parity_v1.json",
+      "page_count": 21,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_margin_morphology_parity\\trace_net_table_margin_morphology_parity_v1_cards.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_margin_morphology_parity\\trace_net_table_margin_morphology_parity_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_margin_morphology_parity\\trace_net_table_margin_morphology_parity_v1_quality.json",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_margin_morphology_parity\\trace_net_table_margin_morphology_parity_v1_summary.json",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_ocr_bbox_enrichment\\trace_net_table_ocr_bbox_enrichment_v1.json",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_ocr_bbox_enrichment\\trace_net_table_ocr_bbox_enrichment_v1_cards.jsonl",
+      "page_count": 20,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_ocr_bbox_enrichment\\trace_net_table_ocr_bbox_enrichment_v1_manifest.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_ocr_bbox_enrichment\\trace_net_table_ocr_bbox_enrichment_v1_quality.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_ocr_bbox_enrichment\\trace_net_table_ocr_bbox_enrichment_v1_summary.json",
+      "page_count": 0,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_ocr_bbox_sidecars\\sidecars\\t_p_120_1176_p000003__zip_page_000003_00000003_ocr_bboxes.jsonl",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_ocr_bbox_sidecars\\sidecars\\t_p_120_1176_p000003__zip_page_000003_00000003_ocr_lines.jsonl",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_ocr_bbox_sidecars\\sidecars\\t_p_120_1176_p000003__zip_page_000003_00000003_part_number_matches.jsonl",
+      "page_count": 1,
+      "new_exact_document_count": 61
+    },
+    {
+      "path": "local_data\\organization\\trace_net\\table_ocr_bbox_sidecars\\sidecars\\t_p_120_1176_p000005__zip_page_000005_00000005_ocr_bboxes.jsonl",
+      "page_count": 1,
+      "new_exact_document_count": 0
+    }
+  ],
+  "safety_contract": {
+    "read_only_inputs": true,
+    "raw_tiff_scan": false,
+    "ocr_run": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "opensearch_write_attempt": false,
+    "source_truth_mutation_allowed": false,
+    "answer_permission": false,
+    "final_answer_allowed": false
+  }
+}

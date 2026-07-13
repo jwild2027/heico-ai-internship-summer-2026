@@ -32,6 +32,7 @@ def run_retrieval(
     llm_base_url: str = "http://127.0.0.1:11434/v1",
     llm_api_key: str = "ollama",
     request_timeout: int = 240,
+    fast_path_mode: str = "exact",
 ) -> Dict[str, Any]:
     from tiff import trace_net_e2e_live_orchestrator_stage_timing_fastpath_v27 as v27
 
@@ -41,6 +42,7 @@ def run_retrieval(
     mutable_state["llm_base_url"] = llm_base_url
     mutable_state["llm_api_key"] = llm_api_key
     mutable_state["request_timeout"] = request_timeout
+    mutable_state["fast_path_mode"] = fast_path_mode
     result = v27.run_live_query_v27(
         query,
         mutable_state,
@@ -49,10 +51,35 @@ def run_retrieval(
     )
     retrieval = result.get("retrieval") if isinstance(result.get("retrieval"), Mapping) else {}
     direct = retrieval.get("direct_evidence") if isinstance(retrieval.get("direct_evidence"), list) else []
+    plan = result.get("query_plan") if isinstance(result.get("query_plan"), Mapping) else {}
+    latency = result.get("latency_summary") if isinstance(result.get("latency_summary"), Mapping) else {}
     return {
         "final_gate_status": result.get("final_gate_status"),
         "direct_evidence_count": len(direct),
+        "direct_evidence_preview": [
+            {
+                "page_id": row.get("page_id"),
+                "field_name": row.get("field_name"),
+                "normalized_value": row.get("normalized_value"),
+                "match_reason": row.get("match_reason"),
+            }
+            for row in direct[:5]
+            if isinstance(row, Mapping)
+        ],
         "total_match_count": int(retrieval.get("total_match_count") or 0),
+        "query_intent": plan.get("query_intent"),
+        "target_value": plan.get("target_value"),
+        "strict_target_match_required": bool(plan.get("strict_target_match_required")),
+        "required_source_truth_fields": list(plan.get("required_source_truth_fields") or []),
+        "llm_mode": result.get("llm_mode"),
+        "llm_model": llm_model,
+        "llm_status": result.get("llm_status"),
+        "llm_called": bool(result.get("llm_called")),
+        "fast_path_used": bool(result.get("fast_path_used")),
+        "fast_path_reason": result.get("fast_path_reason"),
+        "llm_draft_ms": float(latency.get("llm_draft_ms") or 0.0),
+        "total_request_ms": float(latency.get("total_request_ms") or 0.0),
+        "llm_draft_preview": str(result.get("llm_draft_text") or "")[:500],
         "final_answer_preview": str(result.get("final_answer") or "")[:500],
     }
 
@@ -105,9 +132,33 @@ def evaluate_record(
             llm_base_url=str(config.get("llm_base_url") or "http://127.0.0.1:11434/v1"),
             llm_api_key=str(config.get("llm_api_key") or "ollama"),
             request_timeout=int(config.get("request_timeout") or 240),
+            fast_path_mode=str(config.get("fast_path_mode") or "exact"),
         )
         direct_count = int(retrieval_result["direct_evidence_count"])
         gate = str(retrieval_result["final_gate_status"] or "")
+
+        expected_intent_by_category = {
+            "exact_part_lookup": "part_number",
+            "manual_reference_lookup": "manual_page_reference",
+            "table_structured_retrieval": "table_text",
+        }
+        expected_query_intent = expected_intent_by_category.get(str(record.get("category") or ""))
+        actual_query_intent = str(retrieval_result.get("query_intent") or "")
+        if expected_query_intent and actual_query_intent != expected_query_intent:
+            failures.append(
+                f"retrieval_query_intent:{actual_query_intent}!={expected_query_intent}"
+            )
+        if expected_query_intent and not str(retrieval_result.get("target_value") or "").strip():
+            failures.append("retrieval_missing_strict_target")
+        if expected_query_intent and not retrieval_result.get("strict_target_match_required"):
+            failures.append("retrieval_strict_target_match_not_required")
+        if bool(config.get("require_gemma_call")):
+            if str(config.get("llm_mode") or "") != "ollama":
+                failures.append("retrieval_require_gemma_call_without_ollama_mode")
+            elif retrieval_result.get("llm_status") != "LLM_CALL_SUCCEEDED":
+                failures.append(
+                    f"retrieval_gemma_not_called:{retrieval_result.get('llm_status')}"
+                )
         if retrieval_expectation == "positive":
             if direct_count <= 0:
                 failures.append("retrieval_expected_positive_but_no_direct_evidence")
@@ -209,6 +260,17 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--llm-api-key", default="ollama")
     parser.add_argument("--request-timeout", type=int, default=240)
     parser.add_argument(
+        "--fast-path-mode",
+        choices=["exact", "all_direct", "off"],
+        default="exact",
+        help="Use off to force Gemma for every manifest retrieval check.",
+    )
+    parser.add_argument(
+        "--require-gemma-call",
+        action="store_true",
+        help="Fail a retrieval record unless Gemma/Ollama was actually called successfully.",
+    )
+    parser.add_argument(
         "--no-progress",
         action="store_true",
         help="Disable per-question progress lines.",
@@ -254,6 +316,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                 "llm_base_url": args.llm_base_url,
                 "llm_api_key": args.llm_api_key,
                 "request_timeout": args.request_timeout,
+                "fast_path_mode": args.fast_path_mode,
+                "require_gemma_call": args.require_gemma_call,
             },
         )
         results.append(result)
@@ -264,12 +328,29 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                 if isinstance(retrieval, Mapping)
                 else 0
             )
+            llm_status = (
+                str(retrieval.get("llm_status") or "NOT_RUN")
+                if isinstance(retrieval, Mapping)
+                else "NOT_RUN"
+            )
+            fast_path_used = (
+                bool(retrieval.get("fast_path_used"))
+                if isinstance(retrieval, Mapping)
+                else False
+            )
+            total_ms = (
+                float(retrieval.get("total_request_ms") or 0.0)
+                if isinstance(retrieval, Mapping)
+                else 0.0
+            )
             print(
                 f"[{index}/{total}] {result.get('quality_status')} "
                 f"route={result.get('actual_execution_route')} "
                 f"tunnel={result.get('actual_tunnel')} "
                 f"followups={result.get('follow_up_question_count')} "
-                f"direct_evidence={direct_count}",
+                f"direct_evidence={direct_count} "
+                f"llm={llm_status} fast_path={fast_path_used} "
+                f"latency_ms={total_ms:.1f}",
                 flush=True,
             )
 
@@ -289,6 +370,18 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     ]
     retrieval_pass = sum(
         not any(failure.startswith("retrieval_") for failure in r["failures"])
+        for r in retrieval_rows
+    )
+    retrieval_llm_call_count = sum(
+        (r.get("retrieval") or {}).get("llm_status") == "LLM_CALL_SUCCEEDED"
+        for r in retrieval_rows
+    )
+    retrieval_fast_path_skip_count = sum(
+        (r.get("retrieval") or {}).get("llm_status") == "LLM_SKIPPED_FAST_PATH"
+        for r in retrieval_rows
+    )
+    retrieval_llm_failure_count = sum(
+        str((r.get("retrieval") or {}).get("llm_status") or "").startswith("LLM_CALL_FAILED")
         for r in retrieval_rows
     )
     failed = [r for r in results if r["quality_status"] != "PASS"]
@@ -311,6 +404,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "follow_up_policy_pass_percent": round(100.0 * follow_up_pass / count, 2),
         "retrieval_check_count": len(retrieval_rows),
         "retrieval_pass_count": retrieval_pass,
+        "retrieval_llm_call_count": retrieval_llm_call_count,
+        "retrieval_fast_path_skip_count": retrieval_fast_path_skip_count,
+        "retrieval_llm_failure_count": retrieval_llm_failure_count,
         "route_counts": dict(Counter(r["actual_execution_route"] for r in results)),
         "tunnel_counts": dict(Counter(r["actual_tunnel"] for r in results)),
         "category_counts": dict(Counter(r["category"] for r in results)),
@@ -320,6 +416,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "llm_model": args.llm_model,
         "llm_base_url": args.llm_base_url,
         "request_timeout": args.request_timeout,
+        "fast_path_mode": args.fast_path_mode,
+        "require_gemma_call": bool(args.require_gemma_call),
         "safety_contract": {
             "read_only": True,
             "answer_permission": False,
@@ -350,6 +448,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "follow_up_policy_pass_percent",
         "retrieval_check_count",
         "retrieval_pass_count",
+        "retrieval_llm_call_count",
+        "retrieval_fast_path_skip_count",
+        "retrieval_llm_failure_count",
     ):
         print(f"{key}={summary[key]}")
     if quality_failures:

@@ -216,15 +216,49 @@ def _extract_requested_part_number(query: str, canonical_part_numbers: Sequence[
     return (token or None), False
 
 
+TABLE_QUERY_CUE_RE = re.compile(
+    r"\b(?:table|ipl|illustrated\s+parts\s+list|parts\s+list|row|column|cell|index|nomenclature|item\s+number)\b",
+    re.I,
+)
+
+
+def _clean_requested_text(value: str) -> str:
+    text = str(value or "").strip().strip("\"'`")
+    text = re.sub(r"[?.!,;:]+$", "", text).strip()
+    return text
+
+
+def _extract_requested_table_text(query: str) -> Tuple[Optional[str], bool]:
+    """Extract the requested row/cell/nomenclature text from natural table queries.
+
+    The second return value indicates that the query contains a table/IPL cue,
+    even when no safe target could be extracted. That lets the planner fail closed
+    instead of turning an unresolved table request into broad direct evidence.
+    """
+    text = str(query or "").strip()
+    patterns = (
+        r"\bsearch\s+table\s+text\s+(.+)$",
+        r"\bsearch\s+(?:the\s+)?(?:ipl(?:\s+table)?|illustrated\s+parts\s+list|parts\s+list|table|index)\s+(?:for|containing|with)\s+(.+)$",
+        r"\bfind\s+(?:(?:a|the)\s+)?(?:table\s+)?(?:ipl\s+)?(?:row|cell|column|entry|nomenclature(?:\s+row)?|item\s+number|column\s+value)\s+(?:for|containing|with)\s+(.+)$",
+        r"\bwhich\s+table\s+contains\s+(.+)$",
+        r"\bfind\s+(.+?)\s+in\s+(?:the\s+)?(?:illustrated\s+parts\s+list|parts\s+list|ipl(?:\s+table)?|table|index)\b",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, text, flags=re.I)
+        if not match:
+            continue
+        target = _clean_requested_text(match.group(1))
+        if target:
+            return target, True
+    return None, bool(TABLE_QUERY_CUE_RE.search(text))
+
+
 def detect_query_plan(query: str) -> Dict[str, Any]:
     normalized = normalize_query(query)
     part_numbers = PART_NUMBER_RE.findall(query or "")
     raw_part_target, raw_part_target_is_canonical = _extract_requested_part_number(query, part_numbers)
     manual_refs = MANUAL_REF_RE.findall(query or "")
-    table_text = ""
-    m = re.search(r"search\s+table\s+text\s+(.+)$", query or "", flags=re.I)
-    if m:
-        table_text = m.group(1).strip()
+    table_text, table_cue_present = _extract_requested_table_text(query)
 
     if raw_part_target:
         intent = "part_number"
@@ -236,21 +270,31 @@ def detect_query_plan(query: str) -> Dict[str, Any]:
         target = None
         fields = ["covered_part_number"]
         subquery_type = "field_aware_source_truth_lookup"
-    elif manual_refs and ("manual" in normalized or "reference" in normalized or "used" in normalized):
-        intent = "manual_page_reference"
-        target = manual_refs[0]
-        fields = ["manual_page_reference", "ipl_part_number"]
-        subquery_type = "manual_reference_lookup"
     elif table_text:
         intent = "table_text"
         target = table_text
-        fields = ["ipl_text", "table_text"]
+        fields = ["ipl_text", "table_text", "nomenclature"]
         subquery_type = "table_text_lookup"
+    elif manual_refs:
+        # A canonical ATA/manual reference is always an exact target. Requiring the
+        # words "manual", "reference", or "used" caused "Search ATA 98-98-98" to
+        # fall into broad retrieval and falsely return thousands of unrelated rows.
+        intent = "manual_page_reference"
+        target = manual_refs[0]
+        fields = ["manual_page_reference"]
+        subquery_type = "manual_reference_lookup"
+    elif table_cue_present:
+        intent = "table_text_unresolved"
+        target = None
+        fields = []
+        subquery_type = "clarification_required_before_table_retrieval"
     else:
+        # Unknown dynamic questions are guidance/clarification requests, not
+        # permission to promote every indexed field to direct proof.
         intent = "unknown_dynamic_query"
         target = None
-        fields = ["covered_part_number", "ipl_part_number", "manual_page_reference", "ipl_text", "table_text"]
-        subquery_type = "broad_source_truth_lookup"
+        fields = []
+        subquery_type = "unresolved_query_no_direct_source_truth"
 
     return {
         "query_intent": intent,
@@ -261,8 +305,9 @@ def detect_query_plan(query: str) -> Dict[str, Any]:
         "secondary_tunnels": ["table_hybrid_bridge_tunnel", "qdrant_page_profile_tunnel"],
         "guidance_tunnels": ["page_summary_tunnel", "graph_community_tunnel", "graph_navigation_tunnel", "route_metadata_tunnel"],
         "subqueries": [{"subquery_type": subquery_type, "target_value": target, "required_source_truth_fields": fields}],
-        "target_format_valid": bool(raw_part_target_is_canonical) if intent == "part_number" else True,
+        "target_format_valid": bool(raw_part_target_is_canonical) if intent == "part_number" else bool(target) if intent in {"table_text", "manual_page_reference"} else True,
         "strict_target_match_required": bool(target),
+        "broad_direct_retrieval_allowed": False,
         "authority": {
             "source_truth_evidence_is_proof": True,
             "graph_leiden_guidance_is_proof": False,

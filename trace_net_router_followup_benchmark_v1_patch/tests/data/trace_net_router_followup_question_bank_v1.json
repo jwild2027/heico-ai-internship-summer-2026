@@ -1,0 +1,2229 @@
+{
+  "module": "trace_net_router_followup_question_bank_v1",
+  "question_count": 180,
+  "purpose": "Router, retrieval, and contextual follow-up regression bank.",
+  "records": [
+    {
+      "question_id": "q001",
+      "category": "partial_part_prefix",
+      "query": "I only know the part starts with 123",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q002",
+      "category": "partial_part_prefix",
+      "query": "I only remember a part number that begins with 24",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q003",
+      "category": "partial_part_prefix",
+      "query": "The part starts with 120-4 but I do not know the rest",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q004",
+      "category": "partial_part_prefix",
+      "query": "All I know is the part begins with 120",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q005",
+      "category": "partial_part_prefix",
+      "query": "I think the part number starts with 48",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q006",
+      "category": "partial_part_prefix",
+      "query": "The P/N starts with MS49 and I cannot remember more",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q007",
+      "category": "partial_part_prefix",
+      "query": "I have a partial part that starts with 345",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q008",
+      "category": "partial_part_prefix",
+      "query": "The item number begins with PE13",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q009",
+      "category": "partial_part_prefix",
+      "query": "I only know the component number starts with 429",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q010",
+      "category": "partial_part_prefix",
+      "query": "The part starts with NAS and I am not sure of the rest",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q011",
+      "category": "partial_part_prefix",
+      "query": "I only remember the part starts with AN3",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q012",
+      "category": "partial_part_prefix",
+      "query": "The nomenclature number begins with 120-50",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q013",
+      "category": "partial_part_contains",
+      "query": "I only remember the part contains 824",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "manufacturer",
+        "physical_description"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q014",
+      "category": "partial_part_contains",
+      "query": "The part number contains 50645 somewhere",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "manufacturer",
+        "physical_description"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q015",
+      "category": "partial_part_contains",
+      "query": "I think the P/N contains 29073",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "manufacturer",
+        "physical_description"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q016",
+      "category": "partial_part_contains",
+      "query": "All I know is the item number contains 48024",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "manufacturer",
+        "physical_description"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q017",
+      "category": "partial_part_contains",
+      "query": "The component number contains 41824 but I do not know the prefix",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "manufacturer",
+        "physical_description"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q018",
+      "category": "partial_part_contains",
+      "query": "I only know the part contains 61548",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "manufacturer",
+        "physical_description"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q019",
+      "category": "partial_part_contains",
+      "query": "The number might contain 34291",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "manufacturer",
+        "physical_description"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q020",
+      "category": "partial_part_contains",
+      "query": "I cannot remember the part, but it contains 61382",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "guided_candidate_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "manufacturer",
+        "physical_description"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q021",
+      "category": "descriptive_part_nomenclature",
+      "query": "I would like a part that is a hinge",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q022",
+      "category": "descriptive_part_nomenclature",
+      "query": "Find me a bracket part",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q023",
+      "category": "descriptive_part_nomenclature",
+      "query": "I am looking for a latch",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q024",
+      "category": "descriptive_part_nomenclature",
+      "query": "I would like a part that is a locking ring",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q025",
+      "category": "descriptive_part_nomenclature",
+      "query": "Find me a seat leg part",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q026",
+      "category": "descriptive_part_nomenclature",
+      "query": "I am looking for a armrest",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q027",
+      "category": "descriptive_part_nomenclature",
+      "query": "I would like a part that is a ashtray",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q028",
+      "category": "descriptive_part_nomenclature",
+      "query": "Find me a panel part",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q029",
+      "category": "descriptive_part_nomenclature",
+      "query": "I am looking for a cover",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q030",
+      "category": "descriptive_part_nomenclature",
+      "query": "I would like a part that is a pin",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q031",
+      "category": "descriptive_part_nomenclature",
+      "query": "Find me a bolt part",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q032",
+      "category": "descriptive_part_nomenclature",
+      "query": "I am looking for a fastener",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q033",
+      "category": "descriptive_part_nomenclature",
+      "query": "I would like a part that is a spring",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q034",
+      "category": "descriptive_part_nomenclature",
+      "query": "Find me a washer part",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q035",
+      "category": "descriptive_part_nomenclature",
+      "query": "I am looking for a bearing",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q036",
+      "category": "descriptive_part_nomenclature",
+      "query": "I would like a part that is a support rail",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q037",
+      "category": "descriptive_part_nomenclature",
+      "query": "Find me a buckle part",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q038",
+      "category": "descriptive_part_nomenclature",
+      "query": "I am looking for a actuator",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q039",
+      "category": "descriptive_part_nomenclature",
+      "query": "I would like a part that is a switch",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q040",
+      "category": "descriptive_part_nomenclature",
+      "query": "Find me a valve part",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q041",
+      "category": "descriptive_part_nomenclature",
+      "query": "I am looking for a hose",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q042",
+      "category": "descriptive_part_nomenclature",
+      "query": "I would like a part that is a connector",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q043",
+      "category": "descriptive_part_nomenclature",
+      "query": "Find me a clamp part",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q044",
+      "category": "descriptive_part_nomenclature",
+      "query": "I am looking for a lever",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q045",
+      "category": "descriptive_part_function",
+      "query": "I need a part that lets the seat pivot",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q046",
+      "category": "descriptive_part_function",
+      "query": "Find the component that supports the armrest",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q047",
+      "category": "descriptive_part_function",
+      "query": "I want a part that locks the tray closed",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q048",
+      "category": "descriptive_part_function",
+      "query": "I need something that connects the seat leg to the frame",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q049",
+      "category": "descriptive_part_function",
+      "query": "Find a component that slides along the seat track",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q050",
+      "category": "descriptive_part_function",
+      "query": "I am looking for the part that releases the latch",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q051",
+      "category": "descriptive_part_function",
+      "query": "Which part protects the luggage area",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q052",
+      "category": "descriptive_part_function",
+      "query": "I need the item that retains the pin",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q053",
+      "category": "descriptive_part_function",
+      "query": "Find the component that adjusts the seat back",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q054",
+      "category": "descriptive_part_function",
+      "query": "I want the part that guides the rail",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q055",
+      "category": "descriptive_part_function",
+      "query": "I need the piece that secures the panel",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q056",
+      "category": "descriptive_part_function",
+      "query": "Find the component that stops the armrest movement",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 4,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q057",
+      "category": "manufacturer_plus_description",
+      "query": "I need a Honeywell hinge part",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "part_number",
+        "ata_system"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q058",
+      "category": "manufacturer_plus_description",
+      "query": "Find an Embraer seat bracket",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "part_number",
+        "ata_system"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q059",
+      "category": "manufacturer_plus_description",
+      "query": "I am looking for a Collins latch component",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "part_number",
+        "ata_system"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q060",
+      "category": "manufacturer_plus_description",
+      "query": "I want a Safran seat fitting",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "part_number",
+        "ata_system"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q061",
+      "category": "manufacturer_plus_description",
+      "query": "Find me a Boeing panel fastener",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "part_number",
+        "ata_system"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q062",
+      "category": "manufacturer_plus_description",
+      "query": "I need an Airbus armrest hinge",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "part_number",
+        "ata_system"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q063",
+      "category": "manufacturer_plus_description",
+      "query": "Locate a Recaro seat buckle part",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "part_number",
+        "ata_system"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q064",
+      "category": "manufacturer_plus_description",
+      "query": "I am looking for a Parker valve component",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "part_number",
+        "ata_system"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q065",
+      "category": "ata_plus_description",
+      "query": "Find a hinge in ATA 25-21-00",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q066",
+      "category": "ata_plus_description",
+      "query": "I need a seat bracket from ATA 25-21-00",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q067",
+      "category": "ata_plus_description",
+      "query": "Locate a locking ring in manual 25-21-00",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q068",
+      "category": "ata_plus_description",
+      "query": "I want an armrest part in ATA 25",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q069",
+      "category": "ata_plus_description",
+      "query": "Find a latch component in ATA 25",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q070",
+      "category": "ata_plus_description",
+      "query": "I need a seat leg item from 25-21-00",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q071",
+      "category": "ata_plus_description",
+      "query": "Find a panel fastener under ATA 25",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q072",
+      "category": "ata_plus_description",
+      "query": "I am looking for a buckle in ATA 25-21-00",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "descriptive_part_discovery",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "part_number",
+        "manufacturer"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q073",
+      "category": "exact_part_lookup",
+      "query": "Find part number 120-41824-003",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "positive"
+    },
+    {
+      "question_id": "q074",
+      "category": "exact_part_lookup",
+      "query": "Where is P/N 120-41824-003 listed?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "positive"
+    },
+    {
+      "question_id": "q075",
+      "category": "exact_part_lookup",
+      "query": "Search for item 120-41824-003",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "positive"
+    },
+    {
+      "question_id": "q076",
+      "category": "exact_part_lookup",
+      "query": "Find part number 120-48024-001",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "positive"
+    },
+    {
+      "question_id": "q077",
+      "category": "exact_part_lookup",
+      "query": "Where does 120-48024-001 appear?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "positive"
+    },
+    {
+      "question_id": "q078",
+      "category": "exact_part_lookup",
+      "query": "Locate P/N 120-48024-001",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "positive"
+    },
+    {
+      "question_id": "q079",
+      "category": "exact_part_lookup",
+      "query": "Find part number 120-29073-001",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q080",
+      "category": "exact_part_lookup",
+      "query": "Locate 120-50645-003",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q081",
+      "category": "exact_part_lookup",
+      "query": "Search for 120-34291-001",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q082",
+      "category": "exact_part_lookup",
+      "query": "Find P/N 120-61382-501",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q083",
+      "category": "exact_part_lookup",
+      "query": "Locate part 120-61548-503",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q084",
+      "category": "exact_part_lookup",
+      "query": "Search part number 120-50648-531",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q085",
+      "category": "exact_part_lookup",
+      "query": "Find part number 999-99999-999",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "negative"
+    },
+    {
+      "question_id": "q086",
+      "category": "exact_part_lookup",
+      "query": "Locate P/N 998-88888-888",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "negative"
+    },
+    {
+      "question_id": "q087",
+      "category": "exact_part_lookup",
+      "query": "Search for item 997-77777-777",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "negative"
+    },
+    {
+      "question_id": "q088",
+      "category": "exact_part_lookup",
+      "query": "Find part number 996-66666-666",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "negative"
+    },
+    {
+      "question_id": "q089",
+      "category": "exact_part_lookup",
+      "query": "Locate part 995-55555-555",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "negative"
+    },
+    {
+      "question_id": "q090",
+      "category": "exact_part_lookup",
+      "query": "Search P/N 994-44444-444",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "negative"
+    },
+    {
+      "question_id": "q091",
+      "category": "manual_reference_lookup",
+      "query": "Where is manual reference 25-21-00 used?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "positive"
+    },
+    {
+      "question_id": "q092",
+      "category": "manual_reference_lookup",
+      "query": "Find ATA 25-21-00",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "positive"
+    },
+    {
+      "question_id": "q093",
+      "category": "manual_reference_lookup",
+      "query": "Search manual section 25-21-00",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "positive"
+    },
+    {
+      "question_id": "q094",
+      "category": "manual_reference_lookup",
+      "query": "What pages reference 25-21-00?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "positive"
+    },
+    {
+      "question_id": "q095",
+      "category": "manual_reference_lookup",
+      "query": "Find manual reference 99-99-99",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "negative"
+    },
+    {
+      "question_id": "q096",
+      "category": "manual_reference_lookup",
+      "query": "Search ATA 98-98-98",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "negative"
+    },
+    {
+      "question_id": "q097",
+      "category": "manual_reference_lookup",
+      "query": "Locate manual section 97-97-97",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "negative"
+    },
+    {
+      "question_id": "q098",
+      "category": "manual_reference_lookup",
+      "query": "What pages reference 96-96-96?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "exact_source_lookup",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "negative"
+    },
+    {
+      "question_id": "q099",
+      "category": "visual_figure_retrieval",
+      "query": "Show me a diagram of the hinge",
+      "expected_execution_route": "gemma_confirmed_image_visual",
+      "expected_tunnel": "visual_figure_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "part_number",
+        "figure_page"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q100",
+      "category": "visual_figure_retrieval",
+      "query": "Find a figure for the passenger seat assembly",
+      "expected_execution_route": "gemma_confirmed_image_visual",
+      "expected_tunnel": "visual_figure_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "part_number",
+        "figure_page"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q101",
+      "category": "visual_figure_retrieval",
+      "query": "Show the exploded view of the armrest",
+      "expected_execution_route": "gemma_confirmed_image_visual",
+      "expected_tunnel": "visual_figure_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "part_number",
+        "figure_page"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q102",
+      "category": "visual_figure_retrieval",
+      "query": "Find an image of the locking ring",
+      "expected_execution_route": "gemma_confirmed_image_visual",
+      "expected_tunnel": "visual_figure_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "part_number",
+        "figure_page"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q103",
+      "category": "visual_figure_retrieval",
+      "query": "Which figure shows the seat leg?",
+      "expected_execution_route": "gemma_confirmed_image_visual",
+      "expected_tunnel": "visual_figure_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "part_number",
+        "figure_page"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q104",
+      "category": "visual_figure_retrieval",
+      "query": "Show figure 69 for the seat assembly",
+      "expected_execution_route": "gemma_confirmed_image_visual",
+      "expected_tunnel": "visual_figure_retrieval",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q105",
+      "category": "visual_figure_retrieval",
+      "query": "Find figure 608",
+      "expected_execution_route": "gemma_confirmed_image_visual",
+      "expected_tunnel": "visual_figure_retrieval",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q106",
+      "category": "visual_figure_retrieval",
+      "query": "Show the drawing for part 120-41824-003",
+      "expected_execution_route": "gemma_confirmed_image_visual",
+      "expected_tunnel": "visual_figure_retrieval",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q107",
+      "category": "visual_figure_retrieval",
+      "query": "Find the diagram containing 120-48024-001",
+      "expected_execution_route": "gemma_confirmed_image_visual",
+      "expected_tunnel": "visual_figure_retrieval",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q108",
+      "category": "visual_figure_retrieval",
+      "query": "Show a schematic of the latch",
+      "expected_execution_route": "gemma_confirmed_image_visual",
+      "expected_tunnel": "visual_figure_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "part_number",
+        "figure_page"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q109",
+      "category": "visual_figure_retrieval",
+      "query": "Find a visual with callout 12",
+      "expected_execution_route": "gemma_confirmed_image_visual",
+      "expected_tunnel": "visual_figure_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "part_number",
+        "figure_page"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q110",
+      "category": "visual_figure_retrieval",
+      "query": "Show the illustration for the tray table",
+      "expected_execution_route": "gemma_confirmed_image_visual",
+      "expected_tunnel": "visual_figure_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "part_number",
+        "figure_page"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q111",
+      "category": "visual_figure_retrieval",
+      "query": "Which drawing shows the buckle?",
+      "expected_execution_route": "gemma_confirmed_image_visual",
+      "expected_tunnel": "visual_figure_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "part_number",
+        "figure_page"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q112",
+      "category": "visual_figure_retrieval",
+      "query": "Find an exploded view of the seat track",
+      "expected_execution_route": "gemma_confirmed_image_visual",
+      "expected_tunnel": "visual_figure_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "part_number",
+        "figure_page"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q113",
+      "category": "visual_figure_retrieval",
+      "query": "Show the image on page 55",
+      "expected_execution_route": "gemma_confirmed_image_visual",
+      "expected_tunnel": "visual_figure_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "part_number"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q114",
+      "category": "visual_figure_retrieval",
+      "query": "Find the figure sheet for the panel fastener",
+      "expected_execution_route": "gemma_confirmed_image_visual",
+      "expected_tunnel": "visual_figure_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "part_number",
+        "figure_page"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q115",
+      "category": "table_structured_retrieval",
+      "query": "Search table text LOCKING RING",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "table_exact_or_structured_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "exact_text",
+        "part_number"
+      ],
+      "retrieval_expectation": "positive"
+    },
+    {
+      "question_id": "q116",
+      "category": "table_structured_retrieval",
+      "query": "Search the IPL table for RING, LOCKING",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "table_exact_or_structured_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "exact_text",
+        "part_number"
+      ],
+      "retrieval_expectation": "positive"
+    },
+    {
+      "question_id": "q117",
+      "category": "table_structured_retrieval",
+      "query": "Find locking ring in the illustrated parts list",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "table_exact_or_structured_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "exact_text",
+        "part_number"
+      ],
+      "retrieval_expectation": "positive"
+    },
+    {
+      "question_id": "q118",
+      "category": "table_structured_retrieval",
+      "query": "Search the parts list for seat hinge",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "table_exact_or_structured_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "exact_text",
+        "part_number"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q119",
+      "category": "table_structured_retrieval",
+      "query": "Find the row for passenger seat assembly",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "table_exact_or_structured_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "exact_text",
+        "part_number"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q120",
+      "category": "table_structured_retrieval",
+      "query": "Search table text ARMREST",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "table_exact_or_structured_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "exact_text",
+        "part_number"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q121",
+      "category": "table_structured_retrieval",
+      "query": "Find the item number for the seat leg",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "table_exact_or_structured_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "exact_text",
+        "part_number"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q122",
+      "category": "table_structured_retrieval",
+      "query": "Search the IPL for bracket",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "table_exact_or_structured_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "exact_text",
+        "part_number"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q123",
+      "category": "table_structured_retrieval",
+      "query": "Find a table cell containing buckle",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "table_exact_or_structured_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "exact_text",
+        "part_number"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q124",
+      "category": "table_structured_retrieval",
+      "query": "Search the index for ashtray",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "table_exact_or_structured_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "exact_text",
+        "part_number"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q125",
+      "category": "table_structured_retrieval",
+      "query": "Find the nomenclature row for latch",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "table_exact_or_structured_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "exact_text",
+        "part_number"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q126",
+      "category": "table_structured_retrieval",
+      "query": "Search the parts list for panel fastener",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "table_exact_or_structured_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "exact_text",
+        "part_number"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q127",
+      "category": "table_structured_retrieval",
+      "query": "Which table contains 120-41824-003?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "table_exact_or_structured_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "exact_text"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q128",
+      "category": "table_structured_retrieval",
+      "query": "Find the column value for 120-48024-001",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "table_exact_or_structured_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "exact_text"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q129",
+      "category": "table_structured_retrieval",
+      "query": "Search table text DOES NOT EXIST",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "table_exact_or_structured_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "exact_text",
+        "part_number"
+      ],
+      "retrieval_expectation": "negative"
+    },
+    {
+      "question_id": "q130",
+      "category": "table_structured_retrieval",
+      "query": "Find the IPL row for NONEXISTENT COMPONENT",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "table_exact_or_structured_retrieval",
+      "min_follow_up_questions": 2,
+      "required_follow_up_topics": [
+        "exact_text",
+        "part_number"
+      ],
+      "retrieval_expectation": "negative"
+    },
+    {
+      "question_id": "q131",
+      "category": "procedure_warning_retrieval",
+      "query": "What is the removal procedure for the armrest?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "procedure_warning_text_retrieval",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "task_scope",
+        "manual_revision"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q132",
+      "category": "procedure_warning_retrieval",
+      "query": "How do I install the seat leg?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "procedure_warning_text_retrieval",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "task_scope",
+        "manual_revision"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q133",
+      "category": "procedure_warning_retrieval",
+      "query": "Find the inspection steps for the hinge",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "procedure_warning_text_retrieval",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "task_scope",
+        "manual_revision"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q134",
+      "category": "procedure_warning_retrieval",
+      "query": "Show the repair procedure for the panel",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "procedure_warning_text_retrieval",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "task_scope",
+        "manual_revision"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q135",
+      "category": "procedure_warning_retrieval",
+      "query": "How is the seat assembly disassembled?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "procedure_warning_text_retrieval",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "task_scope",
+        "manual_revision"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q136",
+      "category": "procedure_warning_retrieval",
+      "query": "Find the reassembly steps for the latch",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "procedure_warning_text_retrieval",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "task_scope",
+        "manual_revision"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q137",
+      "category": "procedure_warning_retrieval",
+      "query": "What torque is used for the bracket fastener?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "procedure_warning_text_retrieval",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "task_scope",
+        "manual_revision"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q138",
+      "category": "procedure_warning_retrieval",
+      "query": "How do I clean the tray table?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "procedure_warning_text_retrieval",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "task_scope",
+        "manual_revision"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q139",
+      "category": "procedure_warning_retrieval",
+      "query": "Find the test procedure for the switch",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "procedure_warning_text_retrieval",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "task_scope",
+        "manual_revision"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q140",
+      "category": "procedure_warning_retrieval",
+      "query": "How is the seat back adjusted?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "procedure_warning_text_retrieval",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "task_scope",
+        "manual_revision"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q141",
+      "category": "procedure_warning_retrieval",
+      "query": "Show the replacement steps for the buckle",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "procedure_warning_text_retrieval",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "task_scope",
+        "manual_revision"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q142",
+      "category": "procedure_warning_retrieval",
+      "query": "Find cautions for removing the armrest",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "procedure_warning_text_retrieval",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "task_scope",
+        "manual_revision"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q143",
+      "category": "procedure_warning_retrieval",
+      "query": "What warning applies to seat installation?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "procedure_warning_text_retrieval",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "task_scope",
+        "manual_revision"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q144",
+      "category": "procedure_warning_retrieval",
+      "query": "Find the repair materials for the seat leg",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "procedure_warning_text_retrieval",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "task_scope",
+        "manual_revision"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q145",
+      "category": "procedure_warning_retrieval",
+      "query": "How do I inspect part 120-41824-003?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "procedure_warning_text_retrieval",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "task_scope",
+        "manual_revision"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q146",
+      "category": "procedure_warning_retrieval",
+      "query": "Find installation notes for 120-48024-001",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "procedure_warning_text_retrieval",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "task_scope",
+        "manual_revision"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q147",
+      "category": "safety_authority_search",
+      "query": "Is 120-41824-003 an approved interchangeable replacement?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "safety_authority_search",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "exact_parts",
+        "source_authority"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q148",
+      "category": "safety_authority_search",
+      "query": "Is part 120-48024-001 safe to install?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "safety_authority_search",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "exact_parts",
+        "source_authority"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q149",
+      "category": "safety_authority_search",
+      "query": "Does this hinge fit every seat model?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "safety_authority_search",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "exact_parts",
+        "source_authority"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q150",
+      "category": "safety_authority_search",
+      "query": "Can I use this bracket as an authorized substitute?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "safety_authority_search",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "exact_parts",
+        "source_authority"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q151",
+      "category": "safety_authority_search",
+      "query": "Is the locking ring eligible for this aircraft?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "safety_authority_search",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "exact_parts",
+        "source_authority"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q152",
+      "category": "safety_authority_search",
+      "query": "What effectivity applies to 120-41824-003?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "safety_authority_search",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "exact_parts",
+        "source_authority"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q153",
+      "category": "safety_authority_search",
+      "query": "Can part 120-48024-001 replace 120-41824-003?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "safety_authority_search",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "exact_parts",
+        "source_authority"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q154",
+      "category": "safety_authority_search",
+      "query": "Is this seat assembly approved for installation?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "safety_authority_search",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "exact_parts",
+        "source_authority"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q155",
+      "category": "safety_authority_search",
+      "query": "Are these two parts interchangeable?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "safety_authority_search",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "exact_parts",
+        "source_authority"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q156",
+      "category": "safety_authority_search",
+      "query": "Does this latch fit the Embraer seat?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "safety_authority_search",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "exact_parts",
+        "source_authority"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q157",
+      "category": "safety_authority_search",
+      "query": "Is this buckle an approved replacement?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "safety_authority_search",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "exact_parts",
+        "source_authority"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q158",
+      "category": "safety_authority_search",
+      "query": "Can I install the part without another approval?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "safety_authority_search",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "exact_parts",
+        "source_authority"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q159",
+      "category": "safety_authority_search",
+      "query": "Which source proves installation safety?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "safety_authority_search",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "exact_parts",
+        "source_authority"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q160",
+      "category": "safety_authority_search",
+      "query": "Does the manual establish interchangeability?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "safety_authority_search",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "exact_parts",
+        "source_authority"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q161",
+      "category": "safety_authority_search",
+      "query": "Is the substitute part eligible for all serial numbers?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "safety_authority_search",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "exact_parts",
+        "source_authority"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q162",
+      "category": "safety_authority_search",
+      "query": "What approved source authorizes this replacement?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "safety_authority_search",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "exact_parts",
+        "source_authority"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q163",
+      "category": "fast_clarification",
+      "query": "I only remember something from the first few pages",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "fast_clarification",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "search_goal",
+        "identifiers"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q164",
+      "category": "fast_clarification",
+      "query": "I am not sure, but it was somewhere in the manual",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "fast_clarification",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "search_goal",
+        "identifiers"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q165",
+      "category": "fast_clarification",
+      "query": "I cannot remember whether it was a table or figure",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "fast_clarification",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "search_goal",
+        "identifiers"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q166",
+      "category": "fast_clarification",
+      "query": "All I know is that it looked like a small component",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "fast_clarification",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "search_goal",
+        "identifiers"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q167",
+      "category": "fast_clarification",
+      "query": "I think it was near a warning but I do not know what",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "fast_clarification",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "search_goal",
+        "identifiers"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q168",
+      "category": "fast_clarification",
+      "query": "I only remember a number somewhere",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "fast_clarification",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "search_goal",
+        "identifiers"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q169",
+      "category": "fast_clarification",
+      "query": "I do not know the page or the part",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "fast_clarification",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "search_goal",
+        "identifiers"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q170",
+      "category": "fast_clarification",
+      "query": "I might be looking for something in the cabin section",
+      "expected_execution_route": "guided_discovery",
+      "expected_tunnel": "fast_clarification",
+      "min_follow_up_questions": 3,
+      "required_follow_up_topics": [
+        "search_goal",
+        "identifiers"
+      ],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q171",
+      "category": "general_source_truth",
+      "query": "Summarize what this manual covers",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "general_source_truth_retrieval",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q172",
+      "category": "general_source_truth",
+      "query": "What kinds of information are available?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "general_source_truth_retrieval",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q173",
+      "category": "general_source_truth",
+      "query": "Tell me about the document structure",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "general_source_truth_retrieval",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q174",
+      "category": "general_source_truth",
+      "query": "What sections are in the manual?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "general_source_truth_retrieval",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q175",
+      "category": "general_source_truth",
+      "query": "Explain the scope of this maintenance manual",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "general_source_truth_retrieval",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q176",
+      "category": "general_source_truth",
+      "query": "What topics are covered for passenger seats?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "general_source_truth_retrieval",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q177",
+      "category": "general_source_truth",
+      "query": "Give me an overview of the source material",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "general_source_truth_retrieval",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q178",
+      "category": "general_source_truth",
+      "query": "What evidence types does TRACE-Net have?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "general_source_truth_retrieval",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q179",
+      "category": "general_source_truth",
+      "query": "What information is available about cabin interiors?",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "general_source_truth_retrieval",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    },
+    {
+      "question_id": "q180",
+      "category": "general_source_truth",
+      "query": "Describe the manual at a high level",
+      "expected_execution_route": "normal_ask",
+      "expected_tunnel": "general_source_truth_retrieval",
+      "min_follow_up_questions": 0,
+      "required_follow_up_topics": [],
+      "retrieval_expectation": "not_checked"
+    }
+  ],
+  "safety_contract": {
+    "answer_permission": false,
+    "final_answer_allowed": false,
+    "source_truth_mutation_allowed": false
+  }
+}

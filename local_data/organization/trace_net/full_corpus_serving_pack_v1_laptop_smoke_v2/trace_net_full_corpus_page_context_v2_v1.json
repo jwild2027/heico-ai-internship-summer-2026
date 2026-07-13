@@ -1,0 +1,2064 @@
+{
+  "page_context_v2_records": [
+    {
+      "page_id": "p000001",
+      "v2_summary": "{\"answer_permission_count\": 0, \"best_route_candidate_before_review_counts\": {\"blank_candidate\": 14, \"image_visual\": 11, \"normal_text\": 353, \"table\": 131}, \"can_answer_directly_count\": 0, \"can_prove_claims_count\": 0, \"expected_cells_per_page\": 48, \"grid_cols\": 6, \"grid_rows\": 8, \"mean_route_confidence\": 0.2398, \"ocr_empty_page_count\": 14, \"ocr_engine_status_counts\": {\"empty\": 14, \"ok\": 495}, \"ocr_error_examples\": [{\"count\": 14, \"error\": \"Tesseract ran but produced empty text. This usually means the page needs OCR preprocessing, a different psm, or the source image is mostly visual/blank. v1.2 records this as empty, not ok. attempted=['original|--psm 6', 'original|--oem 3 --\"}], \"ocr_failed_page_count\": 0, \"ocr_nonempty_page_count\": 495, \"ocr_ok_page_count\": 495, \"ocr_unavailable_page_count\": 0, \"opensearch_write_attempt_count\": 0, \"page_record_count\": 509, \"pages_with_ocr_word_boxes_count\": 495, \"postgres_write_attempt_count\": 0, \"qdrant_write_attempt_count\": 0, \"review_required_count\": 158, \"route_candidate_counts\": {\"image_visual\": 3, \"normal_text\": 311, \"review_required\": 158, \"table\": 37}, \"source_page_count\": 509, \"source_truth_mutation_allowed_count\": 0, \"total_cell_count\": 24432, \"total_ocr_text_char_count\": 493498, \"total_ocr_word_box_count\": 83741, \"unsafe_record_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000001",
+      "v2_summary": "{\"algorithm\": \"trace_net_read_only_graph_ui_community_overlay_v1\", \"community_as_proof_count\": 0, \"community_aware_quality_status\": \"PASS\", \"community_aware_result_node_count\": 40, \"community_aware_results_linked_count\": 40, \"community_count\": 229, \"community_node_count\": 229, \"confirmed_blank_pages_preserve_source_trace_count\": 14, \"edge_type_counts\": {\"COMMUNITY_BOOSTS_RETRIEVAL_RESULT\": 50, \"HAS_BLANK_SOURCE_TRACE_PRESERVATION\": 14, \"HAS_CALLOUT_CANDIDATE\": 9092, \"HAS_CITATION\": 2860, \"HAS_COMMUNITY_MEMBER\": 32446, \"HAS_EVIDENCE_CANDIDATE\": 1476, \"HAS_FEEDBACK_MEMORY_SIGNAL\": 25, \"HAS_FISHNET_ACTION\": 6368, \"HAS_FISHNET_RETRY_PLAN\": 509, \"HAS_PAGE_ELEMENT_REGISTRY\": 509, \"HAS_TABLE_CELL\": 3090, \"HAS_TABLE_CELL_REPAIR\": 2, \"HAS_TABLE_ELEMENT\": 495, \"HAS_TABLE_ROW\": 1414, \"HAS_TRUST_AUTHORITY\": 1971, \"HAS_VISUAL_REGION\": 509, \"HAS_VISUAL_UNDERSTANDING\": 509, \"MAY_REFER_TO_PART\": 892, \"PAGE_HAS_COMMUNITY_AWARE_RESULT\": 40, \"RECOMMENDS_EXTRACTION_ROUTE\": 6197}, \"feedback_as_proof_count\": 0, \"feedback_memory_nodes_count\": 4, \"feedback_memory_quality_status\": \"PASS\", \"feedback_memory_record_count\": 4, \"feedback_memory_records_linked_count\": 3, \"has_context_v2_edges_preserved\": 50, \"has_nomenclature_edges_preserved\": 386, \"leiden_quality_status\": \"PASS\", \"node_type_counts\": {\"BlankSourceTracePreservation\": 14, \"CalloutCandidate\": 9092, \"Citation\": 1446, \"CommunityAwareRetrievalResult\": 40, \"EvidenceCandidate\": 1476, \"ExtractionRoutePlan\": 6197, \"FeedbackMemory\": 4, \"FishnetRetryAction\": 6368, \"FishnetRetryPlan\": 509, \"LeidenCommunity\": 229, \"Page\": 509, \"PageElementRegistry\": 509, \"PartCandidate\": 301, \"TableCell\": 3090, \"TableCellRepair\": 2, \"TableElement\": 495, \"TableRow\": 1414, \"TrustAuthority\": 6, \"VisualRegion\": 509, \"VisualUnderstanding\": 509}, \"orphan_community_edge_count\": 0, \"orphan_edge_count\": 0, \"overlay_edge_count\": 68468, \"overlay_node_count\": 32719, \"page_count\": 509, \"page_nodes_with_community_count\": 509, \"part_candidate_nodes_with_community_count\": 301, \"postgres_write_attempt_count\": 0, \"quality_status\": \"PASS\", \"retrieval_only_answer_allowed_count\": 0, \"schema_version\": \"trace_net_graph_ui_community_overlay_v1\", \"source_overlay_quality_status\": \"PASS\", \"source_summaries\": {\"community_aware_retrieval\": {\"algorithm\": \"trace_net_community_feedback_advisory_ranker_v1\", \"community_as_proof_count\": 0, \"community_aware_query_count\": 5, \"community_boosted_result_count\": 40, \"community_count\": 229, \"community_feedback_answer_policy\": \"advisory_only_no_proof_no_source_truth_mutation\", \"direct_answer_allowed_result_count\": 0, \"feedback_adjusted_result_count\": 6, \"feedback_as_proof_count\": 0, \"feedback_boosted_result_count\": 6, \"feedback_can_answer_directly_count\": 0, \"feedback_can_mutate_source_truth_count\": 0, \"feedback_can_prove_claims_count\": 0, \"feedback_event_count\": 4, \"feedback_memory_quality_status\": \"PASS\", \"feedback_memory_record_count\": 4, \"feedback_penalized_result_count\": 0, \"grouped_result_count\": 40, \"hybrid_quality_status\": \"PASS\", \"leiden_quality_status\": \"PASS\", \"missing_page_id_count\": 0, \"page_count\": 509, \"prompt_injection_flagged_count\": 1, \"queries_with_results_count\": 5, \"raw_feedback_direct_to_llm_count\": 0, \"retrieval_only_answer_allowed_count\": 0, \"schema_version\": \"trace_net_community_aware_retrieval_sim_v1\", \"source_truth_mutation_allowed_count\": 0, \"unsafe_result_count\": 0}, \"feedback_memory\": {\"authority_counts\": {\"feedback_advisory_only\": 4}, \"feedback_can_answer_directly_count\": 0, \"feedback_can_mutate_source_truth_count\": 0, \"feedback_can_prove_claims_count\": 0, \"feedback_event_count\": 4, \"llm_reference_allowed_count\": 3, \"local_path_flagged_count\": 0, \"memory_record_count\": 4, \"memory_signal_counts\": {\"boost_answer_for_similar_queries\": 1, \"boost_community_for_similar_queries\": 1, \"demote_page_for_similar_queries\": 1, \"quarantine_feedback_for_review\": 1}, \"memory_without_sanitized_payload_count\": 0, \"memory_without_summary_count\": 0, \"missing_rating_count\": 0, \"missing_target_count\": 0, \"pii_or_secret_flagged_count\": 0, \"prompt_injection_flagged_count\": 1, \"rating_counts\": {\"-1\": 2, \"1\": 2}, \"raw_feedback_direct_to_llm_count\": 0, \"retrieval_advisory_allowed_count\": 4, \"schema_version\": \"trace_net_feedback_memory_v1\", \"target_type_counts\": {\"answer\": 2, \"citation\": 1, \"community\": 1}}, \"leiden\": {\"algorithm\": \"trace_net_leiden_graph_communities_v1\", \"authority\": \"community_retrieval_and_review_only\", \"can_answer_directly\": false, \"can_mutate_source_truth\": false, \"can_prove_claims\": false, \"claim_proof_allowed_count\": 0, \"community_algorithm_requested\": \"auto\", \"community_algorithm_used\": \"leiden\", \"community_count\": 229, \"community_graph_edge_count\": 33936, \"community_size_counts\": {\"1\": 6, \"111\": 5, \"115\": 4, \"117\": 5, \"118\": 1, \"119\": 1, \"137\": 1, \"140\": 1, \"160\": 1, \"166\": 3, \"170\": 3, \"172\": 2, \"173\": 19, \"174\": 1, \"175\": 10, \"176\": 3, \"177\": 5, \"184\": 1, \"21\": 10, \"22\": 4, \"223\": 1, \"225\": 2, \"228\": 3, \"229\": 1, \"231\": 1, \"233\": 2, \"234\": 2, \"235\": 1, \"240\": 1, \"255\": 1, \"256\": 1, \"257\": 1, \"259\": 1, \"261\": 1, \"262\": 1, \"264\": 1, \"265\": 1, \"267\": 1, \"271\": 1, \"274\": 2, \"276\": 1, \"277\": 1, \"278\": 1, \"28\": 8, \"285\": 1, \"29\": 6, \"290\": 1, \"292\": 3, \"296\": 1, \"30\": 2, \"31\": 4, \"32\": 1, \"33\": 2, \"336\": 1, \"34\": 1, \"344\": 1, \"345\": 2, \"349\": 1, \"35\": 1, \"350\": 1, \"351\": 3, \"359\": 1, \"38\": 1, \"383\": 1, \"401\": 1, \"436\": 1, \"465\": 1, \"469\": 1, \"51\": 1, \"52\": 4, \"53\": 4, \"54\": 4, \"55\": 36, \"57\": 1, \"58\": 13, \"587\": 1, \"705\": 1, \"762\": 1, \"785\": 1}, \"confirmed_blank_pages_preserve_source_trace_count\": 14, \"direct_answer_allowed_count\": 0, \"edge_count\": 35907, \"fallback_used\": false, \"has_context_v2_edges_preserved\": 50, \"has_nomenclature_edges_preserved\": 386, \"largest_community_node_count\": 785, \"leiden_used\": true, \"node_count\": 32446, \"node_type_counts\": {\"BlankSourceTracePreservation\": 14, \"CalloutCandidate\": 9092, \"Citation\": 1446, \"EvidenceCandidate\": 1476, \"ExtractionRoutePlan\": 6197, \"FishnetRetryAction\": 6368, \"FishnetRetryPlan\": 509, \"Page\": 509, \"PageElementRegistry\": 509, \"PartCandidate\": 301, \"TableCell\": 3090, \"TableCellRepair\": 2, \"TableElement\": 495, \"TableRow\": 1414, \"TrustAuthority\": 6, \"VisualRegion\": 509, \"VisualUnderstanding\": 509}, \"orphan_edge_count\": 0, \"page_count\": 509, \"page_nodes_with_community_count\": 509, \"part_candidate_node_count\": 301, \"part_candidate_nodes_with_community_count\": 301, \"resolution\": 1.0, \"retrieval_only_answer_allowed_count\": 0, \"schema_version\": \"trace_net_leiden_graph_communities_v1\", \"smallest_community_node_count\": 1, \"source_overlay_quality_status\": \"PASS\", \"source_truth_mutation_allowed_count\": 0, \"table_cell_node_count\": 3090, \"table_cell_nodes_with_community_count\": 3090}, \"source_overlay\": {\"algorithm\": \"trace_net_part_candidate_property_normalizer_v1\", \"citation_edge_count\": 2860, \"claim_proof_allowed_count\": 0, \"confirmed_blank_pages_preserve_source_trace_count\": 14, \"direct_answer_allowed_count\": 0, \"edge_type_counts\": {\"HAS_BLANK_SOURCE_TRACE_PRESERVATION\": 14, \"HAS_CALLOUT_CANDIDATE\": 9092, \"HAS_CITATION\": 2860, \"HAS_EVIDENCE_CANDIDATE\": 1476, \"HAS_FISHNET_ACTION\": 6368, \"HAS_FISHNET_RETRY_PLAN\": 509, \"HAS_PAGE_ELEMENT_REGISTRY\": 509, \"HAS_TABLE_CELL\": 3090, \"HAS_TABLE_CELL_REPAIR\": 2, \"HAS_TABLE_ELEMENT\": 495, \"HAS_TABLE_ROW\": 1414, \"HAS_TRUST_AUTHORITY\": 1971, \"HAS_VISUAL_REGION\": 509, \"HAS_VISUAL_UNDERSTANDING\": 509, \"MAY_REFER_TO_PART\": 892, \"RECOMMENDS_EXTRACTION_ROUTE\": 6197}, \"fishnet_node_count\": 509, \"has_context_v2_edges_preserved\": 50, \"has_nomenclature_edges_preserved\": 386, \"missing_page_id_count\": 0, \"node_type_counts\": {\"BlankSourceTracePreservation\": 14, \"CalloutCandidate\": 9092, \"Citation\": 1446, \"EvidenceCandidate\": 1476, \"ExtractionRoutePlan\": 6197, \"FishnetRetryAction\": 6368, \"FishnetRetryPlan\": 509, \"Page\": 509, \"PageElementRegistry\": 509, \"PartCandidate\": 301, \"TableCell\": 3090, \"TableCellRepair\": 2, \"TableElement\": 495, \"TableRow\": 1414, \"TrustAuthority\": 6, \"VisualRegion\": 509, \"VisualUnderstanding\": 509}, \"orphan_edge_count\": 0, \"overlay_edge_count\": 35907, \"overlay_node_count\": 32446, \"page_count\": 509, \"page_node_count\": 509, \"page_scoped_missing_page_id_count\": 0, \"part_candidate_missing_part_number_count\": 0, \"part_candidate_missing_source_page_ids_count\": 0, \"part_candidate_node_count\": 301, \"part_candidate_nodes_with_part_number_count\": 301, \"part_candidate_nodes_with_source_page_ids_count\": 301, \"part_candidate_source_page_link_count\": 892, \"part_family_count\": 92, \"postgres_write_attempt_count\": 0, \"postgres_write_attempted\": false, \"retrieval_only_answer_allowed_count\": 0, \"schema_version\": \"trace_net_graph_overlay_part_property_normalizer_v1\", \"source_lineage_quality_status\": \"PASS\", \"source_lineage_status\": \"GRAPH_OVERLAY_PART_LINEAGE_BUILT\", \"source_truth_mutation_allowed_count\": 0, \"table_cell_node_count\": 3090, \"unsafe_property_record_count\": 0, \"visual_node_count\": 1018, \"writeback_mode\": \"dry_run_overlay_part_property_normalization\"}}, \"source_truth_mutation_allowed_count\": 0, \"table_cell_nodes_with_community_count\": 3090, \"writeback_mode\": \"dry_run_ui_overlay\"}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000002",
+      "v2_summary": "{\"answer_capable_payload_count\": 0, \"blank_evaluated_count\": 11, \"blank_expected_count\": 11, \"blank_target_hit_at_k_count\": 11, \"can_answer_directly_count\": 0, \"can_prove_claims_count\": 0, \"claim_proof_payload_count\": 0, \"context_v2_query_count\": 200, \"evaluated_record_count\": 200, \"graph_path_missing_count\": 0, \"graph_path_resolved_count\": 200, \"llm_graph_path_card_count\": 200, \"llm_must_follow_graph_path_count\": 200, \"miss_reason_counts\": {\"semantic_page_target_miss\": 2}, \"opensearch_write_attempt_count\": 0, \"postgres_write_attempt_count\": 0, \"qdrant_write_attempt_count\": 0, \"query_embedding_cache_enabled\": true, \"query_embedding_cache_final_record_count\": 200, \"query_embedding_cache_hit_count\": 170, \"query_embedding_cache_initial_record_count\": 170, \"query_embedding_cache_miss_count\": 30, \"query_embedding_cache_path\": \"local_data\\\\organization\\\\trace_net\\\\page_retrieval_large_eval_v2\\\\query_embedding_cache_ollama_bge_m3.jsonl\", \"query_embedding_cache_write_count\": 30, \"query_embedding_ollama_request_count\": 3, \"query_record_count\": 200, \"query_type_counts\": {\"blank_page_graph_check\": 11, \"page_source_context_graph_check\": 189}, \"retrieval_route_counts\": {\"graph_first_blank_confirmation\": 11, \"graph_first_page_source_context\": 189}, \"schema_version\": \"trace_net_page_retrieval_large_eval_v2\", \"source_identity_resolved_count\": 200, \"source_link_resolved_count\": 200, \"source_load_statuses\": {\"dublin_core_source_package_extension\": \"LOADED\", \"graph_nodes_edges\": \"LOADED\", \"metadata_zip\": \"LOADED\", \"ollama_model\": \"bge-m3:latest\", \"profile_quality_status\": null, \"profiles\": \"LOADED\", \"qdrant_collection\": \"trace_net_page_retrieval_profiles_ollama_bge_m3_v1\", \"qdrant_eval\": \"EVALUATED\", \"query_embedding_cache\": {\"enabled\": true, \"final_record_count\": 200, \"hit_count\": 170, \"initial_record_count\": 170, \"miss_count\": 30, \"ollama_request_count\": 3, \"path\": \"local_data\\\\organization\\\\trace_net\\\\page_retrieval_large_eval_v2\\\\query_embedding_cache_ollama_bge_m3.jsonl\", \"reset\": false, \"write_count\": 30}}, \"source_truth_mutation_allowed_count\": 0, \"status\": \"PASS\", \"target_hit_at_10_count\": 195, \"target_hit_at_10_rate\": 0.975, \"target_hit_at_1_count\": 150, \"target_hit_at_1_rate\": 0.75, \"target_hit_at_3_count\": 176, \"target_hit_at_5_count\": 184, \"target_hit_at_k_count\": 198, \"target_hit_at_k_rate\": 0.99, \"top_k\": 20}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000003",
+      "v2_summary": "{\"answer_permission_count\": 0, \"can_answer_directly_count\": 0, \"can_prove_claims_count\": 0, \"high_priority_task_count\": 15, \"image_line_detection_missing_task_count\": 0, \"issue_type_counts\": {\"table_geometry_low_confidence\": 8, \"table_geometry_review_flag\": 12}, \"low_priority_task_count\": 5, \"medium_priority_task_count\": 0, \"merged_cell_review_task_count\": 0, \"opensearch_write_attempt_count\": 0, \"part_number_table_review_task_count\": 9, \"postgres_write_attempt_count\": 0, \"priority_counts\": {\"HIGH\": 15, \"LOW\": 5}, \"qdrant_write_attempt_count\": 0, \"quality_fail_reasons\": [], \"quality_status\": \"PASS\", \"recommended_action_counts\": {\"calibrate_morphological_line_thresholds\": 8, \"compare_morphological_grid_against_normalized_table_records\": 12, \"confirm_row_column_boundaries\": 20, \"confirm_table_cell_assignment\": 20, \"require_crop_vertical_or_intersection_gain_before_selection\": 7, \"resolve_crop_completeness_guard_before_selecting_crop_morphology\": 20, \"review_recovered_full_table_bbox_against_source_page\": 14, \"tighten_or_review_full_table_region_recovery_before_crop_morphology\": 6, \"verify_table_geometry_against_source_page\": 20, \"verify_table_lines_against_resolved_tiff\": 8}, \"retrieval_only_answer_allowed_count\": 0, \"review_flag_counts\": {\"calibrated_morphology_signal_not_full_grid\": 8, \"crop_selection_blocked_by_completeness_guard\": 20, \"crop_selection_rejected_no_vertical_or_intersection_gain\": 7, \"morphology_lines_have_no_intersections\": 1, \"no_vertical_lines_detected\": 7, \"table_full_region_recovery::detector_disagreement_requires_overlay_review\": 20, \"table_full_region_recovery::full_table_region_recovery_advisory_only\": 6, \"table_full_region_recovery::full_table_region_recovery_ready_for_review\": 14, \"table_full_region_recovery::overlay_verdict_not_reviewed\": 20, \"table_full_region_recovery::recovered_bbox_too_page_like\": 6, \"table_full_region_recovery_crop_rejected\": 6, \"table_full_region_recovery_used_for_crop\": 14, \"visual_row_count_mismatch_with_ocr_fallback\": 12, \"weak_morphology_grid_signal\": 8}, \"review_required_task_count\": 20, \"review_task_count\": 20, \"schema_version\": \"trace_net_table_geometry_review_bridge_v1\", \"source_quality_status\": \"PASS\", \"source_schema_version\": \"trace_net_table_line_geometry_v1\", \"source_table_geometry_card_count\": 20, \"source_truth_mutation_allowed_count\": 0, \"status\": \"TABLE_GEOMETRY_REVIEW_BRIDGE_BUILT\", \"table_type_counts\": {\"ata_index_table\": 3, \"index_table\": 2, \"list_of_effective_pages\": 9, \"parts_list_table\": 6}, \"unsafe_review_task_count\": 0, \"unsafe_source_card_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000003_32c16dab5af8c021",
+      "v2_summary": "{\"answer_permission_count\": 0, \"can_answer_directly_count\": 0, \"can_prove_claims_count\": 0, \"crop_completeness_card_count\": 20, \"crop_completeness_fail_block_selection_card_count\": 0, \"crop_completeness_full_region_recovery_pass_card_count\": 2, \"crop_completeness_pass_card_count\": 2, \"crop_completeness_review_required_card_count\": 18, \"crop_completeness_standard_pass_card_count\": 0, \"crop_selection_allowed_card_count\": 2, \"crop_selection_blocked_card_count\": 18, \"detector_disagreement_card_count\": 20, \"detector_disagreement_without_safe_verdict_card_count\": 20, \"full_region_recovery_gate_allowed_card_count\": 2, \"margin_expansion_selected_card_count\": 0, \"opensearch_write_attempt_count\": 0, \"overlay_review_available_card_count\": 20, \"overlay_unreviewed_card_count\": 20, \"postgres_write_attempt_count\": 0, \"qdrant_write_attempt_count\": 0, \"quality_fail_reasons\": [], \"quality_status\": \"PASS\", \"recommended_action_counts\": {\"do_not_use_crop_as_cell_boundary_authority\": 8, \"do_not_use_crop_as_column_boundary_authority\": 7, \"do_not_use_full_region_crop_as_cell_boundary_authority\": 7, \"do_not_use_full_region_crop_as_column_boundary_authority\": 7, \"expand_or_recompute_bbox_to_cover_header_and_body_rows\": 11, \"full_region_recovery_ready_crop_candidate_allowed\": 2, \"keep_page_morphology_selected_until_recovered_crop_has_grid_signal\": 7, \"keep_table_geometry_review_routing_until_full_grid_validated\": 8, \"label_detector_overlay_before_relaxing_crop_selection\": 20, \"require_recovered_crop_grid_gain_before_selection\": 12, \"tighten_or_review_full_table_region_recovery_before_crop_selection\": 6, \"verify_estimator_lines_are_table_rules_not_text_strokes\": 19}, \"review_flag_counts\": {\"crop_coverage_may_be_too_small_for_full_table\": 11, \"detector_disagreement_without_human_verdict\": 20, \"estimator_grid_evidence_unreviewed\": 19, \"full_region_crop_did_not_produce_grid_signal\": 7, \"full_region_crop_has_no_intersections\": 7, \"full_region_crop_has_no_vertical_lines\": 7, \"full_region_crop_has_no_vertical_or_intersection_gain\": 12, \"full_region_recovery_not_ready\": 6, \"no_table_rule_intersections_confirmed\": 8, \"no_vertical_table_rules_confirmed\": 7, \"selected_or_page_morphology_not_full_grid\": 8}, \"schema_version\": \"trace_net_table_crop_completeness_guard_v1\", \"source_quality_statuses\": {\"overlay_review_pack\": \"PASS\", \"table_bbox_resolver\": \"PASS\", \"table_full_region_recovery\": \"PASS\", \"table_line_geometry\": \"PASS\"}, \"source_truth_mutation_allowed_count\": 0, \"source_truth_mutations_performed\": 0, \"status\": \"PASS\", \"table_full_region_recovery_available_card_count\": 20, \"table_full_region_recovery_ready_card_count\": 14, \"table_full_region_recovery_too_page_like_card_count\": 6, \"table_full_region_recovery_used_for_crop_card_count\": 14, \"table_region_crop_selected_card_count\": 0, \"thresholds\": {\"allow_full_region_recovery_ready_selection\": true, \"max_answer_permission_count\": 0, \"max_full_region_coverage_ratio\": 0.95, \"max_source_truth_mutation_allowed\": 0, \"max_unsafe_completeness_cards\": 0, \"min_completeness_cards\": 20, \"min_full_region_recovery_gate_allowed_cards\": 1, \"min_full_table_coverage_ratio\": 0.45, \"require_no_answer_permission\": true, \"require_overlay_review_pack_quality_pass\": true, \"require_table_bbox_resolver_quality_pass\": true, \"require_table_full_region_recovery_quality_pass\": true, \"require_table_line_geometry_quality_pass\": true}, \"unsafe_crop_completeness_card_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000003__zip_page_000003_00000003_ocr_bboxes",
+      "v2_summary": "{\"answer_permission_count\": 0, \"attempted_page_count\": 20, \"can_answer_directly_count\": 0, \"can_prove_claims_count\": 0, \"failed_sidecar_page_count\": 0, \"generated_sidecar_page_count\": 20, \"image_not_found_count\": 0, \"jsonl_sidecar_count\": 20, \"ocr_line_record_count\": 924, \"ocr_word_record_count\": 5671, \"opensearch_write_attempt_count\": 0, \"part_number_match_count\": 246, \"postgres_write_attempt_count\": 0, \"qdrant_write_attempt_count\": 0, \"quality_status\": \"PASS\", \"retrieval_only_answer_allowed_count\": 0, \"review_required_card_count\": 0, \"schema_version\": \"trace_net_table_ocr_bbox_sidecar_generator_v1\", \"sidecar_output_dir\": \"local_data/organization/trace_net/table_ocr_bbox_sidecars/sidecars\", \"source_table_image_card_count\": 20, \"source_truth_mutation_allowed_count\": 0, \"source_truth_mutations_performed\": 0, \"status\": \"TABLE_OCR_BBOX_SIDECARS_BUILT\", \"table_candidate_bbox_count\": 20, \"table_cell_normalizer_quality_status\": \"PASS\", \"table_image_resolver_quality_status\": \"PASS\", \"table_line_geometry_quality_status\": \"PASS\", \"tesseract_available\": true, \"tesseract_cmd\": \"C:/Users/juswil/AppData/Local/Programs/Tesseract-OCR/tesseract.exe\", \"tesseract_error_count\": 0, \"tesseract_lang\": \"eng\", \"tesseract_psm\": \"6\", \"tsv_sidecar_count\": 20, \"unsafe_sidecar_card_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000003_normtable__f81df1cc10f27d_bbox_overlay",
+      "v2_summary": "{\"answer_permission_count\": 0, \"blank_canvas_overlay_count\": 0, \"can_answer_directly_count\": 0, \"can_prove_claims_count\": 0, \"contact_sheet_created\": true, \"contact_sheet_path\": \"local_data\\\\organization\\\\trace_net\\\\table_extraction_bbox_overlay_export\\\\trace_net_table_extraction_bbox_overlay_contact_sheet_v1.png\", \"generated_at_utc\": \"2026-06-19T15:52:06Z\", \"missing_extraction_bbox_count\": 0, \"opensearch_write_attempt_count\": 0, \"overlay_png_count\": 20, \"overlay_record_count\": 20, \"paddle_style_extraction_bbox_count\": 20, \"postgres_write_attempt_count\": 0, \"qdrant_write_attempt_count\": 0, \"review_required_count\": 20, \"schema_version\": \"trace_net_table_extraction_bbox_overlay_export_v1\", \"source_image_found_count\": 20, \"source_truth_mutation_allowed_count\": 0, \"table_line_geometry_path\": \"local_data\\\\organization\\\\trace_net\\\\table_line_geometry\\\\trace_net_table_line_geometry_v1.json\", \"table_line_geometry_quality_status\": \"PASS\", \"unsafe_record_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000003_table__t_p_120_1176_p000003__cc6f070a67",
+      "v2_summary": "{\"answer_permission_count\": 0, \"can_answer_directly_count\": 0, \"can_prove_claims_count\": 0, \"confirmed_table_overlay_count\": 2, \"contact_sheet_path\": \"local_data\\\\organization\\\\trace_net\\\\table_full_enclosure_bbox_overlay_export\\\\trace_net_table_full_enclosure_bbox_overlay_contact_sheet_v1.png\", \"contact_sheet_written_count\": 1, \"final_bbox_ready_overlay_count\": 19, \"full_enclosure_recommended_overlay_count\": 18, \"full_enclosure_reconstructed_overlay_count\": 19, \"full_page_bbox_overlay_count\": 19, \"full_table_boundary_reconstructed_overlay_count\": 0, \"image_available_record_count\": 20, \"opensearch_write_attempt_count\": 0, \"overlay_png_written_count\": 20, \"overlay_record_count\": 20, \"postgres_write_attempt_count\": 0, \"qdrant_write_attempt_count\": 0, \"quality_fail_reasons\": [], \"quality_status\": \"PASS\", \"schema_version\": \"trace_net_table_full_enclosure_bbox_overlay_export_v1\", \"source_record_count\": 20, \"source_table_full_enclosure_bbox_reconstructor_path\": \"local_data\\\\organization\\\\trace_net\\\\table_full_enclosure_bbox_reconstructor\\\\trace_net_table_full_enclosure_bbox_reconstructor_v1.json\", \"source_table_full_enclosure_bbox_reconstructor_quality_status\": \"PASS\", \"source_truth_mutation_allowed_count\": 0, \"status\": \"TABLE_FULL_ENCLOSURE_BBOX_OVERLAY_EXPORT_BUILT\", \"structure_passthrough_overlay_count\": 0, \"unsafe_table_full_enclosure_overlay_record_count\": 0, \"weak_table_overlay_count\": 18}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000003_tile_t_p_120_1176_p000003_tile_001",
+      "v2_summary": "local_data\\organization\\trace_net\\rag_candidates\\rag_candidate_summary.json"
+    },
+    {
+      "page_id": "t_p_120_1176_p000004",
+      "v2_summary": "This page provides the introduction to the Embraer maintenance manual and illustrated parts list, specifically regarding operations following passenger cabin disassembly."
+    },
+    {
+      "page_id": "t_p_120_1176_p000005",
+      "v2_summary": "{\"answer_permission_count\": 0, \"can_answer_directly_count\": 0, \"can_prove_claims_count\": 0, \"citation_count\": 8, \"community_annotation_count\": 5, \"community_assignment_record_count\": 223, \"community_index_key_count\": 220, \"context_prompt_char_count\": 9736, \"direct_exact_match_candidate_count\": 1, \"direct_exact_match_proven_count\": 0, \"dry_run_only\": true, \"explicit_graph_neighbor_count\": 0, \"graph_context_ready\": true, \"graph_context_role_counts\": {\"direct_exact_match_candidate\": 1, \"similar_table_candidate\": 7}, \"graph_expanded_context_record_count\": 8, \"graph_input_record_count\": 229, \"graph_relation_annotation_count\": 1, \"human_review_required_count\": 0, \"lineage_ready_count\": 8, \"manual_review_required_count\": 0, \"missing_lineage_count\": 0, \"module\": \"trace_net_answer_context_graph_leiden_expander_v1\", \"opensearch_write_attempt_count\": 0, \"page_id_join_key_count\": 446, \"page_number_join_key_count\": 0, \"postgres_write_attempt_count\": 0, \"proof_strength_counts\": {\"direct_candidate\": 1, \"weak_candidate\": 7}, \"qdrant_write_attempt_count\": 0, \"query_part_number_count\": 1, \"query_part_numbers\": [\"120-29073-001\"], \"question\": \"Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.\", \"ready_for_gemma_graph_context_prompt\": true, \"relation_record_count\": 813, \"same_anchor_leiden_community_count\": 1, \"source_community_aware_retrieval\": \"local_data\\\\organization\\\\trace_net\\\\community_aware_retrieval_v2\\\\trace_net_community_aware_retrieval_v2.json\", \"source_community_aware_retrieval_quality_status\": \"PASS\", \"source_evidence_enricher\": \"local_data\\\\organization\\\\trace_net\\\\answer_context_evidence_enricher_gemma4_native_001\\\\trace_net_answer_context_evidence_enricher_v1.json\", \"source_evidence_enricher_quality_status\": \"PASS\", \"source_graph_report\": null, \"source_graph_report_quality_status\": null, \"source_leiden_communities\": \"local_data\\\\organization\\\\trace_net\\\\leiden_communities\\\\trace_net_leiden_communities_v1.json\", \"source_leiden_communities_quality_status\": \"PASS\", \"source_member_join_key_count\": 0, \"source_truth_mutation_allowed_count\": 0, \"unsafe_record_count\": 0, \"version\": \"v1\", \"violation_record_count\": 0, \"write_attempt_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000006",
+      "v2_summary": "A List of Effective Pages (LEP) for the EMBRAER maintenance manual, detailing page numbers, subjects, and revision dates."
+    },
+    {
+      "page_id": "t_p_120_1176_p000007",
+      "v2_summary": "This page is a list of effective pages within a maintenance manual, detailing revisions and deletions with associated dates and part numbers."
+    },
+    {
+      "page_id": "t_p_120_1176_p000008",
+      "v2_summary": "This page is a List of Effective Pages for an Embraer Maintenance Manual, documenting revision dates and status for various Illustrated Parts List (IPL) pages."
+    },
+    {
+      "page_id": "t_p_120_1176_p000009",
+      "v2_summary": "{\"algorithm\": \"trace_net_part_candidate_page_lineage_refiner_v1\", \"answer_capable_without_citation_count\": 0, \"citation_edge_count\": 2860, \"claim_proof_allowed_count\": 0, \"confirmed_blank_pages_preserve_source_trace_count\": 14, \"direct_answer_allowed_count\": 0, \"edge_type_counts\": {\"HAS_BLANK_SOURCE_TRACE_PRESERVATION\": 14, \"HAS_CALLOUT_CANDIDATE\": 9092, \"HAS_CITATION\": 2860, \"HAS_EVIDENCE_CANDIDATE\": 1476, \"HAS_FISHNET_ACTION\": 6368, \"HAS_FISHNET_RETRY_PLAN\": 509, \"HAS_PAGE_ELEMENT_REGISTRY\": 509, \"HAS_TABLE_CELL\": 3090, \"HAS_TABLE_CELL_REPAIR\": 2, \"HAS_TABLE_ELEMENT\": 495, \"HAS_TABLE_ROW\": 1414, \"HAS_TRUST_AUTHORITY\": 1971, \"HAS_VISUAL_REGION\": 509, \"HAS_VISUAL_UNDERSTANDING\": 509, \"MAY_REFER_TO_PART\": 892, \"RECOMMENDS_EXTRACTION_ROUTE\": 6197}, \"fishnet_node_count\": 509, \"has_context_v2_edges_preserved\": 50, \"has_nomenclature_edges_preserved\": 386, \"missing_page_id_count\": 307, \"node_type_counts\": {\"BlankSourceTracePreservation\": 14, \"CalloutCandidate\": 9092, \"Citation\": 1446, \"EvidenceCandidate\": 1476, \"ExtractionRoutePlan\": 6197, \"FishnetRetryAction\": 6368, \"FishnetRetryPlan\": 509, \"Page\": 509, \"PageElementRegistry\": 509, \"PartCandidate\": 301, \"TableCell\": 3090, \"TableCellRepair\": 2, \"TableElement\": 495, \"TableRow\": 1414, \"TrustAuthority\": 6, \"VisualRegion\": 509, \"VisualUnderstanding\": 509}, \"orphan_edge_count\": 0, \"overlay_edge_count\": 35907, \"overlay_node_count\": 32446, \"page_count\": 509, \"page_node_count\": 509, \"page_scoped_missing_page_id_count\": 0, \"part_candidate_lineage_edge_count\": 892, \"part_candidate_max_source_page_count\": 28, \"part_candidate_missing_source_page_ids_count\": 0, \"part_candidate_missing_source_page_node_ids\": [], \"part_candidate_node_count\": 301, \"part_candidate_nodes_with_source_page_ids_count\": 301, \"part_candidate_source_page_link_count\": 892, \"postgres_write_attempt_count\": 0, \"postgres_write_attempted\": false, \"retrieval_only_answer_allowed_count\": 0, \"schema_version\": \"trace_net_graph_overlay_part_lineage_v1\", \"source_graph_overlay_quality_status\": \"PASS\", \"source_graph_overlay_status\": \"GRAPH_WRITEBACK_OVERLAY_BUILT\", \"source_graph_overlay_writeback_mode\": \"dry_run_overlay\", \"source_truth_mutation_allowed_count\": 0, \"table_cell_node_count\": 3090, \"visual_node_count\": 1018, \"writeback_mode\": \"dry_run_lineage_refinement\"}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000010",
+      "v2_summary": "This page is the List of Effective Pages (LEP) for an Embraer Maintenance Manual with Illustrated Parts List, detailing revision dates and page status."
+    },
+    {
+      "page_id": "t_p_120_1176_p000011",
+      "v2_summary": "This page contains the List of Effective Pages (LEP) for the Embraer maintenance manual, detailing revision dates and status for various IPL sections."
+    },
+    {
+      "page_id": "t_p_120_1176_p000012",
+      "v2_summary": "Page 12 from T.P. 120/1176 in ATA 25-21-00 has empty OCR text."
+    },
+    {
+      "page_id": "t_p_120_1176_p000013",
+      "v2_summary": "This page is the Record of Revisions for the Embraer Component Maintenance Manual (CMM) with Illustrated Parts List, used to track manual updates and page insertions."
+    },
+    {
+      "page_id": "t_p_120_1176_p000014",
+      "v2_summary": "This page explains the purpose of Information Bulletins (IB) and their classification alongside Service Bulletins under 'Other Directives'."
+    },
+    {
+      "page_id": "t_p_120_1176_p000015",
+      "v2_summary": "{\"answer_permission_count\": 0, \"callout_candidate_record_count\": 0, \"citation_ready_count\": 21, \"extractor_record_count\": 21, \"figure_candidate_record_count\": 5, \"ocr_medium_or_high_label_record_count\": 5, \"ocr_page_text_record_count\": 990, \"ocr_text_available_count\": 21, \"opensearch_upload_attempt_count\": 0, \"opensearch_write_attempt_count\": 0, \"postgres_write_attempt_count\": 0, \"qdrant_write_attempt_count\": 0, \"ready_for_visual_linker_v2\": true, \"requires_human_review_count\": 16, \"source_trace_ready_count\": 21, \"source_truth_mutation_allowed_count\": 0, \"unsafe_record_count\": 0, \"visual_summary_record_count\": 21, \"write_attempt_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000016",
+      "v2_summary": "{\"answer_permission_count\": 0, \"can_answer_from_summaries_only_count\": 0, \"guidance_only_summary_count\": 8, \"opensearch_upload_attempt_count\": 0, \"opensearch_write_attempt_count\": 0, \"planner_record_count\": 1, \"postgres_write_attempt_count\": 0, \"qdrant_write_attempt_count\": 0, \"ready_for_engineering_context_pack\": true, \"required_route_count\": 3, \"selected_guidance_page_count\": 8, \"source_guidance_summary_record_count\": 31, \"source_truth_mutation_allowed_count\": 0, \"task_type_count\": 1, \"unsafe_record_count\": 0, \"write_attempt_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000017",
+      "v2_summary": "{\"answer_permission_count\": 0, \"blank_candidate_route_count\": 0, \"can_answer_directly_count\": 0, \"can_prove_claims_count\": 0, \"comparison_manifest_record_count\": 5, \"image_feature_status_counts\": {\"ok\": 5}, \"image_visual_route_count\": 3, \"normal_text_route_count\": 0, \"one_to_one_comparison_ready_count\": 5, \"opensearch_write_attempt_count\": 0, \"page_with_ocr_text_count\": 5, \"page_with_part_number_count\": 0, \"postgres_write_attempt_count\": 0, \"qdrant_write_attempt_count\": 0, \"raw_image_hash_count\": 5, \"review_required_route_count\": 0, \"route_counts\": {\"image_visual\": 3, \"table\": 2}, \"run_tesseract\": true, \"scan_record_count\": 5, \"source_package\": \"C:\\\\Users\\\\juswil\\\\Desktop\\\\metadata.zip\", \"source_page_count\": 5, \"source_truth_mutation_allowed_count\": 0, \"table_route_count\": 2, \"tesseract_execution_status_counts\": {\"ok\": 5}, \"unsafe_record_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000018",
+      "v2_summary": "This page is an illustrated parts list for a double passenger seat, specifically referencing Figure 2 and part number 120TP250002.MCE."
+    },
+    {
+      "page_id": "t_p_120_1176_p000019",
+      "v2_summary": "Figure 3 illustrating components of the triple passenger seat, specifically the floatable seat bottom and seat backrests."
+    },
+    {
+      "page_id": "t_p_120_1176_p000020",
+      "v2_summary": "This page describes the column structure and numbering conventions used in the Illustrated Parts List (IPL)."
+    },
+    {
+      "page_id": "t_p_120_1176_p000021",
+      "v2_summary": "This page defines the categorization and numbering conventions for EMBRAER, military standard, and vendor part numbers within the illustrated parts list."
+    },
+    {
+      "page_id": "t_p_120_1176_p000022",
+      "v2_summary": "This page defines the abbreviations, symbols, and conventions used within the Detailed Parts List."
+    },
+    {
+      "page_id": "t_p_120_1176_p000023",
+      "v2_summary": "This page defines specific abbreviations (REF, AR) and instructions regarding part stock exhaustion and replenishment used in the Embraer parts list."
+    },
+    {
+      "page_id": "t_p_120_1176_p000024",
+      "v2_summary": "This page provides a list of vendor names and addresses associated with the maintenance manual for Embraer aircraft."
+    },
+    {
+      "page_id": "t_p_120_1176_p000025",
+      "v2_summary": "Page 25 from T.P. 120/1176 in ATA 25-21-00 has empty OCR text."
+    },
+    {
+      "page_id": "t_p_120_1176_p000026",
+      "v2_summary": "This is the title page for an Embraer Maintenance Manual with Illustrated Parts List, specifically identifying ATA code 25-21-00."
+    },
+    {
+      "page_id": "t_p_120_1176_p000027",
+      "v2_summary": "This page appears to be a parts list from the maintenance manual, listing numerous part numbers with associated quantities and airline part numbers."
+    },
+    {
+      "page_id": "t_p_120_1176_p000028",
+      "v2_summary": "This page appears to be a parts list from an aircraft maintenance manual, detailing various part numbers and their associated information."
+    },
+    {
+      "page_id": "t_p_120_1176_p000029",
+      "v2_summary": "This page appears to be a parts list from the maintenance manual, listing various part numbers and quantities."
+    },
+    {
+      "page_id": "t_p_120_1176_p000030",
+      "v2_summary": "This page appears to be a parts list from an aircraft maintenance manual, detailing part numbers and quantities."
+    },
+    {
+      "page_id": "t_p_120_1176_p000031",
+      "v2_summary": "{\"algorithm\": \"trace_net_category_aware_leiden_overlay_builder_v1\", \"category_as_proof_count\": 0, \"category_aware_community_label_counts\": {\"Blank / source-trace review community\": 14, \"Chart / visual review community\": 30, \"Parts-list table review community\": 6, \"TRACE-Net graph community\": 6, \"Table + parts + diagram review community\": 33, \"Table evidence review community\": 4, \"Text / source evidence community\": 17, \"Text / source evidence review community\": 5, \"Visual / diagram review community\": 2, \"Visual part / diagram review community\": 112}, \"category_overlay_edge_count\": 10710, \"category_overlay_node_count\": 4165, \"category_similarity_edge_count\": 977, \"claim_proof_allowed_count\": 0, \"communities_with_category_summary_count\": 223, \"communities_with_review_summary_count\": 206, \"community_category_summary_edge_count\": 229, \"community_category_summary_node_count\": 229, \"community_count\": 229, \"direct_answer_allowed_count\": 0, \"element_family_total_counts\": {\"blank\": 32, \"chart\": 441, \"citation\": 4318, \"community\": 34991, \"context\": 486, \"diagram\": 44051, \"evidence\": 2934, \"feedback\": 15, \"operation\": 27166, \"other\": 3599, \"page_trait\": 3472, \"part\": 5596, \"review\": 1476, \"search\": 8692, \"source\": 6529, \"table\": 26491, \"text\": 990, \"visual\": 4494}, \"final_answer_allowed_count\": 0, \"giant_global_category_hub_count\": 0, \"graph_ui_community_count\": 229, \"opensearch_write_attempt_count\": 0, \"orphan_category_overlay_edge_count\": 0, \"page_category_hint_edge_count\": 3936, \"page_category_label_counts\": {\"blank_source_trace_page\": 14, \"table_page_review\": 11, \"table_parts_diagram_page_review\": 9, \"text_source_page\": 17, \"text_source_page_review\": 5, \"visual_diagram_page_review\": 66, \"visual_part_candidate_page_review\": 387}, \"page_category_membership_count\": 713, \"page_category_profile_count\": 509, \"page_count\": 509, \"page_local_category_node_count\": 3936, \"page_nodes_with_category_profile_count\": 509, \"postgres_write_attempt_count\": 0, \"qdrant_write_attempt_count\": 0, \"retrieval_only_answer_allowed_count\": 0, \"schema_version\": \"trace_net_category_aware_leiden_overlay_v1\", \"source_dublin_core_refined_quality_status\": \"PASS\", \"source_graph_ui_overlay_quality_status\": \"PASS\", \"source_leiden_community_count\": 229, \"source_leiden_quality_status\": \"PASS\", \"source_taxonomy_quality_status\": \"PASS\", \"source_truth_mutation_allowed_count\": 0, \"source_truth_mutations_performed\": 0, \"status\": \"PASS\", \"taxonomy_category_count\": 95, \"taxonomy_family_count\": 18, \"taxonomy_table_hint_without_table_type_count\": 0, \"taxonomy_visual_hint_without_visual_type_count\": 0, \"writeback_mode\": \"dry_run_category_overlay\"}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000032",
+      "v2_summary": "{\"answer_permission_count\": 0, \"can_answer_directly_count\": 0, \"can_prove_claims_count\": 0, \"citation_count\": 52, \"context_seed_prompt_char_count\": 12729, \"direct_exact_page_count\": 9, \"direct_exact_page_ids\": [\"t_p_120_1176_p000032\", \"t_p_120_1176_p000343\", \"t_p_120_1176_p000346\", \"t_p_120_1176_p000349\", \"t_p_120_1176_p000352\", \"t_p_120_1176_p000355\", \"t_p_120_1176_p000358\", \"t_p_120_1176_p000361\", \"t_p_120_1176_p000364\"], \"direct_exact_page_numbers\": [343, 346, 349, 352, 355, 358, 361, 364], \"dry_run_only\": true, \"exact_direct_hit_count\": 16, \"exact_hit_count\": 52, \"exact_page_count\": 9, \"exact_page_ids\": [\"t_p_120_1176_p000032\", \"t_p_120_1176_p000343\", \"t_p_120_1176_p000346\", \"t_p_120_1176_p000349\", \"t_p_120_1176_p000352\", \"t_p_120_1176_p000355\", \"t_p_120_1176_p000358\", \"t_p_120_1176_p000361\", \"t_p_120_1176_p000364\"], \"exact_page_numbers\": [32, 343, 346, 349, 352, 355, 358, 361, 364], \"exact_reference_hit_count\": 36, \"exact_retrieval_probe_ready\": true, \"family_variant_hit_count\": 83, \"hit_class_counts\": {\"trusted_metadata_hit\": 36, \"trusted_ocr_text_hit\": 8, \"trusted_table_evidence_hit\": 3, \"trusted_table_exact_hit\": 5}, \"human_review_required_count\": 0, \"manual_review_required_count\": 0, \"module\": \"trace_net_part_number_exact_retrieval_probe_v1\", \"opensearch_write_attempt_count\": 0, \"postgres_write_attempt_count\": 0, \"proof_role_counts\": {\"direct_exact_match_proven\": 16, \"exact_metadata_candidate\": 36}, \"qdrant_write_attempt_count\": 0, \"query_part_number_count\": 1, \"query_part_numbers\": [\"120-29073-001\"], \"question\": \"Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.\", \"ready_for_context_anchor_injection\": true, \"source_file_count\": 4, \"source_quality_statuses\": {\"ocr_route_scan_pack\": \"PASS\", \"page_context_v2\": \"PASS\", \"table_evidence_package\": \"PASS\", \"table_exact_search_adapter\": \"PASS\"}, \"source_record_counts\": {\"ocr_route_scan_pack\": 1018, \"page_context_v2\": 509, \"table_evidence_package\": 2994, \"table_exact_search_adapter\": 2994}, \"source_truth_mutation_allowed_count\": 0, \"unsafe_record_count\": 0, \"version\": \"v1\", \"violation_record_count\": 0, \"write_attempt_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000033",
+      "v2_summary": "{\"algorithm\": \"trace_net_tightened_leiden_navigation_hint_retriever_v2\", \"can_answer_directly_count\": 0, \"can_prove_claims_count\": 0, \"category_as_proof_count\": 0, \"community_as_proof_count\": 0, \"community_navigation_record_count\": 229, \"excluded_hint_count\": 0, \"high_confidence_navigation_result_count\": 29, \"low_confidence_hints_used_count\": 0, \"mixed_navigation_result_count\": 4, \"moderate_confidence_navigation_result_count\": 8, \"navigation_result_count\": 37, \"opensearch_write_attempt_count\": 0, \"page_navigation_boost_count\": 43, \"part_family_navigation_result_count\": 25, \"postgres_write_attempt_count\": 0, \"qdrant_write_attempt_count\": 0, \"queries_with_navigation_hints_count\": 5, \"query_count\": 5, \"retrieval_only_answer_allowed_count\": 0, \"review_only_hints_used_count\": 0, \"schema_version\": \"trace_net_community_aware_retrieval_v2\", \"source_bridge_low_navigation_confidence_count\": 2, \"source_bridge_review_only_community_count\": 6, \"source_hybrid_v2_quality_status\": \"PASS\", \"source_navigation_bridge_quality_status\": \"PASS\", \"source_page_navigation_hint_count\": 506, \"source_quality_statuses\": {\"hybrid_v2\": \"PASS\", \"leiden_navigation_metadata_bridge\": \"PASS\"}, \"source_retrieval_navigation_hint_count\": 221, \"source_truth_mutation_allowed_count\": 0, \"status\": \"PASS\", \"table_navigation_result_count\": 2, \"visual_navigation_result_count\": 6}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000034",
+      "v2_summary": "This page is an illustrated parts list for Embraer aircraft, specifically detailing part numbers and stock information under ATA 25-21-00."
+    },
+    {
+      "page_id": "t_p_120_1176_p000035",
+      "v2_summary": "Page 35 from T.P. 120/1176 in ATA 25-21-00 has empty OCR text."
+    },
+    {
+      "page_id": "t_p_120_1176_p000036",
+      "v2_summary": "This page appears to be a parts list from a maintenance manual, listing part numbers and associated codes."
+    },
+    {
+      "page_id": "t_p_120_1176_p000037",
+      "v2_summary": "This page appears to be a parts list from an aircraft maintenance manual, detailing part numbers and quantities."
+    },
+    {
+      "page_id": "t_p_120_1176_p000038",
+      "v2_summary": "This page appears to be a parts list from the maintenance manual, listing various part numbers and associated data."
+    },
+    {
+      "page_id": "t_p_120_1176_p000039",
+      "v2_summary": "This page from the maintenance manual appears to be a parts list with associated part numbers and quantities."
+    },
+    {
+      "page_id": "t_p_120_1176_p000040",
+      "v2_summary": "This page from the maintenance manual lists part numbers and associated codes, likely related to a parts list or assembly numbering system."
+    },
+    {
+      "page_id": "t_p_120_1176_p000041",
+      "v2_summary": "This page appears to be a parts list from an aircraft maintenance manual, detailing various part numbers and quantities."
+    },
+    {
+      "page_id": "t_p_120_1176_p000042",
+      "v2_summary": "This page appears to be a parts list from a maintenance manual, listing various part numbers and associated codes."
+    },
+    {
+      "page_id": "t_p_120_1176_p000043",
+      "v2_summary": "This page appears to be a parts list from the maintenance manual, listing numerous part numbers and associated data."
+    },
+    {
+      "page_id": "t_p_120_1176_p000044",
+      "v2_summary": "This page appears to be a parts list from an aircraft maintenance manual, detailing numerous part numbers and associated quantities."
+    },
+    {
+      "page_id": "t_p_120_1176_p000045",
+      "v2_summary": "This page is a parts list from an Embraer maintenance manual, specifically detailing assembly numbers, part numbers, and quantities for ATA 25-21-00."
+    },
+    {
+      "page_id": "t_p_120_1176_p000046",
+      "v2_summary": "This page appears to be a parts list from an aircraft maintenance manual, listing part numbers and quantities."
+    },
+    {
+      "page_id": "t_p_120_1176_p000047",
+      "v2_summary": "This page appears to be a parts list from a maintenance manual, listing numerous part numbers and associated data."
+    },
+    {
+      "page_id": "t_p_120_1176_p000048",
+      "v2_summary": "{\"answer_permission_count\": 0, \"guidance_record_count\": 9, \"ocr_excerpt_count\": 0, \"opensearch_write_attempt_count\": 0, \"postgres_write_attempt_count\": 0, \"proof_record_count\": 2, \"qdrant_write_attempt_count\": 0, \"route_guidance_count\": 2, \"selected_page_count\": 2, \"source_file_count\": 2, \"source_link_count\": 0, \"source_trace_ready_page_count\": 2, \"source_truth_mutation_allowed_count\": 0, \"visual_guidance_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000049",
+      "v2_summary": "This page appears to be a parts list or table from a maintenance manual, listing numerous part numbers (primarily in the 25-21-00 range) with associated quantities."
+    },
+    {
+      "page_id": "t_p_120_1176_p000050",
+      "v2_summary": "This page appears to be a parts list from an aircraft maintenance manual, listing part numbers and quantities."
+    },
+    {
+      "page_id": "t_p_120_1176_p000051",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 51."
+    },
+    {
+      "page_id": "t_p_120_1176_p000052",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 52."
+    },
+    {
+      "page_id": "t_p_120_1176_p000053",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 53."
+    },
+    {
+      "page_id": "t_p_120_1176_p000054",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 54."
+    },
+    {
+      "page_id": "t_p_120_1176_p000055",
+      "v2_summary": "{\"algorithm\": \"trace_net_leiden_graph_communities_v1\", \"authority\": \"community_retrieval_and_review_only\", \"can_answer_directly\": false, \"can_mutate_source_truth\": false, \"can_prove_claims\": false, \"claim_proof_allowed_count\": 0, \"community_algorithm_requested\": \"auto\", \"community_algorithm_used\": \"leiden\", \"community_count\": 229, \"community_graph_edge_count\": 33936, \"community_size_counts\": {\"1\": 6, \"111\": 5, \"115\": 4, \"117\": 5, \"118\": 1, \"119\": 1, \"137\": 1, \"140\": 1, \"160\": 1, \"166\": 3, \"170\": 3, \"172\": 2, \"173\": 19, \"174\": 1, \"175\": 10, \"176\": 3, \"177\": 5, \"184\": 1, \"21\": 10, \"22\": 4, \"223\": 1, \"225\": 2, \"228\": 3, \"229\": 1, \"231\": 1, \"233\": 2, \"234\": 2, \"235\": 1, \"240\": 1, \"255\": 1, \"256\": 1, \"257\": 1, \"259\": 1, \"261\": 1, \"262\": 1, \"264\": 1, \"265\": 1, \"267\": 1, \"271\": 1, \"274\": 2, \"276\": 1, \"277\": 1, \"278\": 1, \"28\": 8, \"285\": 1, \"29\": 6, \"290\": 1, \"292\": 3, \"296\": 1, \"30\": 2, \"31\": 4, \"32\": 1, \"33\": 2, \"336\": 1, \"34\": 1, \"344\": 1, \"345\": 2, \"349\": 1, \"35\": 1, \"350\": 1, \"351\": 3, \"359\": 1, \"38\": 1, \"383\": 1, \"401\": 1, \"436\": 1, \"465\": 1, \"469\": 1, \"51\": 1, \"52\": 4, \"53\": 4, \"54\": 4, \"55\": 36, \"57\": 1, \"58\": 13, \"587\": 1, \"705\": 1, \"762\": 1, \"785\": 1}, \"confirmed_blank_pages_preserve_source_trace_count\": 14, \"direct_answer_allowed_count\": 0, \"edge_count\": 35907, \"fallback_used\": false, \"has_context_v2_edges_preserved\": 50, \"has_nomenclature_edges_preserved\": 386, \"largest_community_node_count\": 785, \"leiden_used\": true, \"node_count\": 32446, \"node_type_counts\": {\"BlankSourceTracePreservation\": 14, \"CalloutCandidate\": 9092, \"Citation\": 1446, \"EvidenceCandidate\": 1476, \"ExtractionRoutePlan\": 6197, \"FishnetRetryAction\": 6368, \"FishnetRetryPlan\": 509, \"Page\": 509, \"PageElementRegistry\": 509, \"PartCandidate\": 301, \"TableCell\": 3090, \"TableCellRepair\": 2, \"TableElement\": 495, \"TableRow\": 1414, \"TrustAuthority\": 6, \"VisualRegion\": 509, \"VisualUnderstanding\": 509}, \"orphan_edge_count\": 0, \"page_count\": 509, \"page_nodes_with_community_count\": 509, \"part_candidate_node_count\": 301, \"part_candidate_nodes_with_community_count\": 301, \"resolution\": 1.0, \"retrieval_only_answer_allowed_count\": 0, \"schema_version\": \"trace_net_leiden_graph_communities_v1\", \"smallest_community_node_count\": 1, \"source_overlay_quality_status\": \"PASS\", \"source_truth_mutation_allowed_count\": 0, \"table_cell_node_count\": 3090, \"table_cell_nodes_with_community_count\": 3090}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000056",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 56."
+    },
+    {
+      "page_id": "t_p_120_1176_p000057",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 57."
+    },
+    {
+      "page_id": "t_p_120_1176_p000058",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 58."
+    },
+    {
+      "page_id": "t_p_120_1176_p000059",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 59."
+    },
+    {
+      "page_id": "t_p_120_1176_p000060",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 60."
+    },
+    {
+      "page_id": "t_p_120_1176_p000061",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 61."
+    },
+    {
+      "page_id": "t_p_120_1176_p000062",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 62."
+    },
+    {
+      "page_id": "t_p_120_1176_p000063",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 63."
+    },
+    {
+      "page_id": "t_p_120_1176_p000064",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 64."
+    },
+    {
+      "page_id": "t_p_120_1176_p000065",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 65."
+    },
+    {
+      "page_id": "t_p_120_1176_p000066",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 66."
+    },
+    {
+      "page_id": "t_p_120_1176_p000067",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 67."
+    },
+    {
+      "page_id": "t_p_120_1176_p000068",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 68."
+    },
+    {
+      "page_id": "t_p_120_1176_p000069",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 69."
+    },
+    {
+      "page_id": "t_p_120_1176_p000070",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 70."
+    },
+    {
+      "page_id": "t_p_120_1176_p000071",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 71."
+    },
+    {
+      "page_id": "t_p_120_1176_p000072",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 72."
+    },
+    {
+      "page_id": "t_p_120_1176_p000073",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 73."
+    },
+    {
+      "page_id": "t_p_120_1176_p000074",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 74."
+    },
+    {
+      "page_id": "t_p_120_1176_p000075",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 75."
+    },
+    {
+      "page_id": "t_p_120_1176_p000076",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 76."
+    },
+    {
+      "page_id": "t_p_120_1176_p000077",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 77."
+    },
+    {
+      "page_id": "t_p_120_1176_p000078",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 78."
+    },
+    {
+      "page_id": "t_p_120_1176_p000079",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 79."
+    },
+    {
+      "page_id": "t_p_120_1176_p000080",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 80."
+    },
+    {
+      "page_id": "t_p_120_1176_p000081",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 81."
+    },
+    {
+      "page_id": "t_p_120_1176_p000082",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 82."
+    },
+    {
+      "page_id": "t_p_120_1176_p000083",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 83."
+    },
+    {
+      "page_id": "t_p_120_1176_p000084",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 84."
+    },
+    {
+      "page_id": "t_p_120_1176_p000085",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 85."
+    },
+    {
+      "page_id": "t_p_120_1176_p000086",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 86."
+    },
+    {
+      "page_id": "t_p_120_1176_p000087",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 87."
+    },
+    {
+      "page_id": "t_p_120_1176_p000088",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 88."
+    },
+    {
+      "page_id": "t_p_120_1176_p000089",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 89."
+    },
+    {
+      "page_id": "t_p_120_1176_p000090",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 90."
+    },
+    {
+      "page_id": "t_p_120_1176_p000091",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 91."
+    },
+    {
+      "page_id": "t_p_120_1176_p000092",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 92."
+    },
+    {
+      "page_id": "t_p_120_1176_p000093",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 93."
+    },
+    {
+      "page_id": "t_p_120_1176_p000094",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 94."
+    },
+    {
+      "page_id": "t_p_120_1176_p000095",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 95."
+    },
+    {
+      "page_id": "t_p_120_1176_p000096",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 96."
+    },
+    {
+      "page_id": "t_p_120_1176_p000097",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 97."
+    },
+    {
+      "page_id": "t_p_120_1176_p000098",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 98."
+    },
+    {
+      "page_id": "t_p_120_1176_p000099",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 99."
+    },
+    {
+      "page_id": "t_p_120_1176_p000100",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 100."
+    },
+    {
+      "page_id": "t_p_120_1176_p000101",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 101."
+    },
+    {
+      "page_id": "t_p_120_1176_p000102",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 102."
+    },
+    {
+      "page_id": "t_p_120_1176_p000103",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 103."
+    },
+    {
+      "page_id": "t_p_120_1176_p000104",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 104."
+    },
+    {
+      "page_id": "t_p_120_1176_p000105",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 105."
+    },
+    {
+      "page_id": "t_p_120_1176_p000106",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 106."
+    },
+    {
+      "page_id": "t_p_120_1176_p000107",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 107."
+    },
+    {
+      "page_id": "t_p_120_1176_p000108",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 108."
+    },
+    {
+      "page_id": "t_p_120_1176_p000109",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 109."
+    },
+    {
+      "page_id": "t_p_120_1176_p000110",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 110."
+    },
+    {
+      "page_id": "t_p_120_1176_p000111",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 111."
+    },
+    {
+      "page_id": "t_p_120_1176_p000112",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 112."
+    },
+    {
+      "page_id": "t_p_120_1176_p000113",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 113."
+    },
+    {
+      "page_id": "t_p_120_1176_p000114",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 114."
+    },
+    {
+      "page_id": "t_p_120_1176_p000115",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 115."
+    },
+    {
+      "page_id": "t_p_120_1176_p000116",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 116."
+    },
+    {
+      "page_id": "t_p_120_1176_p000117",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 117."
+    },
+    {
+      "page_id": "t_p_120_1176_p000118",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 118."
+    },
+    {
+      "page_id": "t_p_120_1176_p000119",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 119."
+    },
+    {
+      "page_id": "t_p_120_1176_p000120",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 120."
+    },
+    {
+      "page_id": "t_p_120_1176_p000121",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 121."
+    },
+    {
+      "page_id": "t_p_120_1176_p000122",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 122."
+    },
+    {
+      "page_id": "t_p_120_1176_p000123",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 123."
+    },
+    {
+      "page_id": "t_p_120_1176_p000124",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 124."
+    },
+    {
+      "page_id": "t_p_120_1176_p000125",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 125."
+    },
+    {
+      "page_id": "t_p_120_1176_p000126",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 126."
+    },
+    {
+      "page_id": "t_p_120_1176_p000127",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 127."
+    },
+    {
+      "page_id": "t_p_120_1176_p000128",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 128."
+    },
+    {
+      "page_id": "t_p_120_1176_p000129",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 129."
+    },
+    {
+      "page_id": "t_p_120_1176_p000130",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 130."
+    },
+    {
+      "page_id": "t_p_120_1176_p000131",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 131."
+    },
+    {
+      "page_id": "t_p_120_1176_p000132",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 132."
+    },
+    {
+      "page_id": "t_p_120_1176_p000133",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 133."
+    },
+    {
+      "page_id": "t_p_120_1176_p000134",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 134."
+    },
+    {
+      "page_id": "t_p_120_1176_p000135",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 135."
+    },
+    {
+      "page_id": "t_p_120_1176_p000136",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 136."
+    },
+    {
+      "page_id": "t_p_120_1176_p000137",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 137."
+    },
+    {
+      "page_id": "t_p_120_1176_p000138",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 138."
+    },
+    {
+      "page_id": "t_p_120_1176_p000139",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 139."
+    },
+    {
+      "page_id": "t_p_120_1176_p000140",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 140."
+    },
+    {
+      "page_id": "t_p_120_1176_p000141",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 141."
+    },
+    {
+      "page_id": "t_p_120_1176_p000142",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 142."
+    },
+    {
+      "page_id": "t_p_120_1176_p000143",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 143."
+    },
+    {
+      "page_id": "t_p_120_1176_p000144",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 144."
+    },
+    {
+      "page_id": "t_p_120_1176_p000145",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 145."
+    },
+    {
+      "page_id": "t_p_120_1176_p000146",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 146."
+    },
+    {
+      "page_id": "t_p_120_1176_p000147",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 147."
+    },
+    {
+      "page_id": "t_p_120_1176_p000148",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 148."
+    },
+    {
+      "page_id": "t_p_120_1176_p000149",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 149."
+    },
+    {
+      "page_id": "t_p_120_1176_p000150",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 150."
+    },
+    {
+      "page_id": "t_p_120_1176_p000151",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 151."
+    },
+    {
+      "page_id": "t_p_120_1176_p000152",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 152."
+    },
+    {
+      "page_id": "t_p_120_1176_p000153",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 153."
+    },
+    {
+      "page_id": "t_p_120_1176_p000154",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 154."
+    },
+    {
+      "page_id": "t_p_120_1176_p000155",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 155."
+    },
+    {
+      "page_id": "t_p_120_1176_p000156",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 156."
+    },
+    {
+      "page_id": "t_p_120_1176_p000157",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 157."
+    },
+    {
+      "page_id": "t_p_120_1176_p000158",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 158."
+    },
+    {
+      "page_id": "t_p_120_1176_p000159",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 159."
+    },
+    {
+      "page_id": "t_p_120_1176_p000160",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 160."
+    },
+    {
+      "page_id": "t_p_120_1176_p000161",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 161."
+    },
+    {
+      "page_id": "t_p_120_1176_p000162",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 162."
+    },
+    {
+      "page_id": "t_p_120_1176_p000163",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 163."
+    },
+    {
+      "page_id": "t_p_120_1176_p000164",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 164."
+    },
+    {
+      "page_id": "t_p_120_1176_p000165",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 165."
+    },
+    {
+      "page_id": "t_p_120_1176_p000166",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 166."
+    },
+    {
+      "page_id": "t_p_120_1176_p000167",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 167."
+    },
+    {
+      "page_id": "t_p_120_1176_p000168",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 168."
+    },
+    {
+      "page_id": "t_p_120_1176_p000169",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 169."
+    },
+    {
+      "page_id": "t_p_120_1176_p000170",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 170."
+    },
+    {
+      "page_id": "t_p_120_1176_p000171",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 171."
+    },
+    {
+      "page_id": "t_p_120_1176_p000172",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 172."
+    },
+    {
+      "page_id": "t_p_120_1176_p000173",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 173."
+    },
+    {
+      "page_id": "t_p_120_1176_p000174",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 174."
+    },
+    {
+      "page_id": "t_p_120_1176_p000175",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 175."
+    },
+    {
+      "page_id": "t_p_120_1176_p000176",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 176."
+    },
+    {
+      "page_id": "t_p_120_1176_p000177",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 177."
+    },
+    {
+      "page_id": "t_p_120_1176_p000178",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 178."
+    },
+    {
+      "page_id": "t_p_120_1176_p000179",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 179."
+    },
+    {
+      "page_id": "t_p_120_1176_p000180",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 180."
+    },
+    {
+      "page_id": "t_p_120_1176_p000181",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 181."
+    },
+    {
+      "page_id": "t_p_120_1176_p000182",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 182."
+    },
+    {
+      "page_id": "t_p_120_1176_p000183",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 183."
+    },
+    {
+      "page_id": "t_p_120_1176_p000184",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 184."
+    },
+    {
+      "page_id": "t_p_120_1176_p000185",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 185."
+    },
+    {
+      "page_id": "t_p_120_1176_p000186",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 186."
+    },
+    {
+      "page_id": "t_p_120_1176_p000187",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 187."
+    },
+    {
+      "page_id": "t_p_120_1176_p000188",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 188."
+    },
+    {
+      "page_id": "t_p_120_1176_p000189",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 189."
+    },
+    {
+      "page_id": "t_p_120_1176_p000190",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 190."
+    },
+    {
+      "page_id": "t_p_120_1176_p000191",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 191."
+    },
+    {
+      "page_id": "t_p_120_1176_p000192",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 192."
+    },
+    {
+      "page_id": "t_p_120_1176_p000193",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 193."
+    },
+    {
+      "page_id": "t_p_120_1176_p000194",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 194."
+    },
+    {
+      "page_id": "t_p_120_1176_p000195",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 195."
+    },
+    {
+      "page_id": "t_p_120_1176_p000196",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 196."
+    },
+    {
+      "page_id": "t_p_120_1176_p000197",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 197."
+    },
+    {
+      "page_id": "t_p_120_1176_p000198",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 198."
+    },
+    {
+      "page_id": "t_p_120_1176_p000199",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 199."
+    },
+    {
+      "page_id": "t_p_120_1176_p000200",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 200."
+    },
+    {
+      "page_id": "t_p_120_1176_p000201",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 201."
+    },
+    {
+      "page_id": "t_p_120_1176_p000202",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 202."
+    },
+    {
+      "page_id": "t_p_120_1176_p000203",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 203."
+    },
+    {
+      "page_id": "t_p_120_1176_p000204",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 204."
+    },
+    {
+      "page_id": "t_p_120_1176_p000205",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 205."
+    },
+    {
+      "page_id": "t_p_120_1176_p000206",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 206."
+    },
+    {
+      "page_id": "t_p_120_1176_p000207",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 207."
+    },
+    {
+      "page_id": "t_p_120_1176_p000208",
+      "v2_summary": "{\"algorithm\": \"trace_net_dynamic_retrieval_to_citation_authority_gate_v1\", \"answer_status_counts\": {\"DYNAMIC_FINAL_GATE_APPROVED\": 1}, \"blocked_claim_count\": 4, \"blocked_reason_counts\": {\"missing_citation\": 4, \"no_answer_support_authority\": 4, \"retrieval_only_group\": 4}, \"category_as_proof_count\": 0, \"cited_final_claim_count\": 4, \"community_as_proof_count\": 0, \"dynamic_final_gate_approved_count\": 1, \"dynamic_gate_query_count\": 1, \"feedback_as_proof_count\": 0, \"final_answer_allowed_count\": 1, \"final_answer_gate_quality_status\": \"PASS\", \"final_artifact_answer_count\": 0, \"final_claim_count\": 4, \"hybrid_v2_quality_status\": \"PASS\", \"local_path_leak_count\": 0, \"missing_citation_blocked_claim_count\": 4, \"missing_page_id_blocked_claim_count\": 0, \"no_answer_support_blocked_claim_count\": 4, \"opensearch_write_attempt_count\": 0, \"postgres_write_attempt_count\": 0, \"qdrant_write_attempt_count\": 0, \"raw_bytes_repr_count\": 0, \"retrieval_only_final_claim_count\": 0, \"retrieval_only_result_count\": 0, \"schema_version\": \"trace_net_dynamic_final_gate_execution_v1\", \"source_truth_mutation_allowed_count\": 0, \"status\": \"PASS\", \"uncited_final_claim_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000209",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 209."
+    },
+    {
+      "page_id": "t_p_120_1176_p000210",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 210."
+    },
+    {
+      "page_id": "t_p_120_1176_p000211",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 211."
+    },
+    {
+      "page_id": "t_p_120_1176_p000212",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 212."
+    },
+    {
+      "page_id": "t_p_120_1176_p000213",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 213."
+    },
+    {
+      "page_id": "t_p_120_1176_p000214",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 214."
+    },
+    {
+      "page_id": "t_p_120_1176_p000215",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 215."
+    },
+    {
+      "page_id": "t_p_120_1176_p000216",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 216."
+    },
+    {
+      "page_id": "t_p_120_1176_p000217",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 217."
+    },
+    {
+      "page_id": "t_p_120_1176_p000218",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 218."
+    },
+    {
+      "page_id": "t_p_120_1176_p000219",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 219."
+    },
+    {
+      "page_id": "t_p_120_1176_p000220",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 220."
+    },
+    {
+      "page_id": "t_p_120_1176_p000221",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 221."
+    },
+    {
+      "page_id": "t_p_120_1176_p000222",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 222."
+    },
+    {
+      "page_id": "t_p_120_1176_p000223",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 223."
+    },
+    {
+      "page_id": "t_p_120_1176_p000224",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 224."
+    },
+    {
+      "page_id": "t_p_120_1176_p000225",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 225."
+    },
+    {
+      "page_id": "t_p_120_1176_p000226",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 226."
+    },
+    {
+      "page_id": "t_p_120_1176_p000227",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 227."
+    },
+    {
+      "page_id": "t_p_120_1176_p000228",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 228."
+    },
+    {
+      "page_id": "t_p_120_1176_p000229",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 229."
+    },
+    {
+      "page_id": "t_p_120_1176_p000230",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 230."
+    },
+    {
+      "page_id": "t_p_120_1176_p000231",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 231."
+    },
+    {
+      "page_id": "t_p_120_1176_p000232",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 232."
+    },
+    {
+      "page_id": "t_p_120_1176_p000233",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 233."
+    },
+    {
+      "page_id": "t_p_120_1176_p000234",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 234."
+    },
+    {
+      "page_id": "t_p_120_1176_p000235",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 235."
+    },
+    {
+      "page_id": "t_p_120_1176_p000236",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 236."
+    },
+    {
+      "page_id": "t_p_120_1176_p000237",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 237."
+    },
+    {
+      "page_id": "t_p_120_1176_p000238",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 238."
+    },
+    {
+      "page_id": "t_p_120_1176_p000239",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 239."
+    },
+    {
+      "page_id": "t_p_120_1176_p000240",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 240."
+    },
+    {
+      "page_id": "t_p_120_1176_p000241",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 241."
+    },
+    {
+      "page_id": "t_p_120_1176_p000242",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 242."
+    },
+    {
+      "page_id": "t_p_120_1176_p000243",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 243."
+    },
+    {
+      "page_id": "t_p_120_1176_p000244",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 244."
+    },
+    {
+      "page_id": "t_p_120_1176_p000245",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 245."
+    },
+    {
+      "page_id": "t_p_120_1176_p000246",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 246."
+    },
+    {
+      "page_id": "t_p_120_1176_p000247",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 247."
+    },
+    {
+      "page_id": "t_p_120_1176_p000248",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 248."
+    },
+    {
+      "page_id": "t_p_120_1176_p000249",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 249."
+    },
+    {
+      "page_id": "t_p_120_1176_p000250",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 250."
+    },
+    {
+      "page_id": "t_p_120_1176_p000251",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 251."
+    },
+    {
+      "page_id": "t_p_120_1176_p000252",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 252."
+    },
+    {
+      "page_id": "t_p_120_1176_p000253",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 253."
+    },
+    {
+      "page_id": "t_p_120_1176_p000254",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 254."
+    },
+    {
+      "page_id": "t_p_120_1176_p000255",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 255."
+    },
+    {
+      "page_id": "t_p_120_1176_p000256",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 256."
+    },
+    {
+      "page_id": "t_p_120_1176_p000257",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 257."
+    },
+    {
+      "page_id": "t_p_120_1176_p000258",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 258."
+    },
+    {
+      "page_id": "t_p_120_1176_p000259",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 259."
+    },
+    {
+      "page_id": "t_p_120_1176_p000260",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 260."
+    },
+    {
+      "page_id": "t_p_120_1176_p000261",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 261."
+    },
+    {
+      "page_id": "t_p_120_1176_p000262",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 262."
+    },
+    {
+      "page_id": "t_p_120_1176_p000263",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 263."
+    },
+    {
+      "page_id": "t_p_120_1176_p000264",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 264."
+    },
+    {
+      "page_id": "t_p_120_1176_p000265",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 265."
+    },
+    {
+      "page_id": "t_p_120_1176_p000266",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 266."
+    },
+    {
+      "page_id": "t_p_120_1176_p000267",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 267."
+    },
+    {
+      "page_id": "t_p_120_1176_p000268",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 268."
+    },
+    {
+      "page_id": "t_p_120_1176_p000269",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 269."
+    },
+    {
+      "page_id": "t_p_120_1176_p000270",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 270."
+    },
+    {
+      "page_id": "t_p_120_1176_p000271",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 271."
+    },
+    {
+      "page_id": "t_p_120_1176_p000272",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 272."
+    },
+    {
+      "page_id": "t_p_120_1176_p000273",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 273."
+    },
+    {
+      "page_id": "t_p_120_1176_p000274",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 274."
+    },
+    {
+      "page_id": "t_p_120_1176_p000275",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 275."
+    },
+    {
+      "page_id": "t_p_120_1176_p000276",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 276."
+    },
+    {
+      "page_id": "t_p_120_1176_p000277",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 277."
+    },
+    {
+      "page_id": "t_p_120_1176_p000278",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 278."
+    },
+    {
+      "page_id": "t_p_120_1176_p000279",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 279."
+    },
+    {
+      "page_id": "t_p_120_1176_p000280",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 280."
+    },
+    {
+      "page_id": "t_p_120_1176_p000281",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 281."
+    },
+    {
+      "page_id": "t_p_120_1176_p000282",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 282."
+    },
+    {
+      "page_id": "t_p_120_1176_p000283",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 283."
+    },
+    {
+      "page_id": "t_p_120_1176_p000284",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 284."
+    },
+    {
+      "page_id": "t_p_120_1176_p000285",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 285."
+    },
+    {
+      "page_id": "t_p_120_1176_p000286",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 286."
+    },
+    {
+      "page_id": "t_p_120_1176_p000287",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 287."
+    },
+    {
+      "page_id": "t_p_120_1176_p000288",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 288."
+    },
+    {
+      "page_id": "t_p_120_1176_p000289",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 289."
+    },
+    {
+      "page_id": "t_p_120_1176_p000290",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 290."
+    },
+    {
+      "page_id": "t_p_120_1176_p000291",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 291."
+    },
+    {
+      "page_id": "t_p_120_1176_p000292",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 292."
+    },
+    {
+      "page_id": "t_p_120_1176_p000293",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 293."
+    },
+    {
+      "page_id": "t_p_120_1176_p000294",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 294."
+    },
+    {
+      "page_id": "t_p_120_1176_p000295",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 295."
+    },
+    {
+      "page_id": "t_p_120_1176_p000296",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 296."
+    },
+    {
+      "page_id": "t_p_120_1176_p000297",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 297."
+    },
+    {
+      "page_id": "t_p_120_1176_p000298",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 298."
+    },
+    {
+      "page_id": "t_p_120_1176_p000299",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 299."
+    },
+    {
+      "page_id": "t_p_120_1176_p000300",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 300."
+    },
+    {
+      "page_id": "t_p_120_1176_p000301",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 301."
+    },
+    {
+      "page_id": "t_p_120_1176_p000302",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 302."
+    },
+    {
+      "page_id": "t_p_120_1176_p000303",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 303."
+    },
+    {
+      "page_id": "t_p_120_1176_p000304",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 304."
+    },
+    {
+      "page_id": "t_p_120_1176_p000305",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 305."
+    },
+    {
+      "page_id": "t_p_120_1176_p000306",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 306."
+    },
+    {
+      "page_id": "t_p_120_1176_p000307",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 307."
+    },
+    {
+      "page_id": "t_p_120_1176_p000308",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 308."
+    },
+    {
+      "page_id": "t_p_120_1176_p000309",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 309."
+    },
+    {
+      "page_id": "t_p_120_1176_p000310",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 310."
+    },
+    {
+      "page_id": "t_p_120_1176_p000311",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 311."
+    },
+    {
+      "page_id": "t_p_120_1176_p000312",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 312."
+    },
+    {
+      "page_id": "t_p_120_1176_p000313",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 313."
+    },
+    {
+      "page_id": "t_p_120_1176_p000314",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 314."
+    },
+    {
+      "page_id": "t_p_120_1176_p000315",
+      "v2_summary": "{\"answer_permission_count\": 0, \"can_answer_from_summaries_only_count\": 0, \"engineering_answer_context_pack_record_count\": 1, \"exact_part_context_count\": 1, \"guidance_context_count\": 0, \"ocr_nomenclature_context_count\": 1, \"opensearch_upload_attempt_count\": 0, \"opensearch_write_attempt_count\": 0, \"postgres_write_attempt_count\": 0, \"proof_context_count\": 4, \"qdrant_write_attempt_count\": 0, \"ready_for_engineering_answer_composer\": true, \"source_trace_ready_count\": 4, \"source_truth_mutation_allowed_count\": 0, \"summary_used_as_proof_count\": 0, \"table_ocr_context_count\": 1, \"unsafe_record_count\": 0, \"visual_proof_context_count\": 1, \"write_attempt_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000316",
+      "v2_summary": "{\"answer_permission_count\": 0, \"high_confidence_count\": 3, \"linked_visual_part_count\": 3, \"low_confidence_count\": 0, \"matched_ocr_record_count\": 16, \"medium_confidence_count\": 0, \"nomenclature_candidate_count\": 11, \"nomenclature_missing_count\": 0, \"nomenclature_selected_count\": 3, \"nomenclature_window_record_count\": 3, \"ocr_record_count\": 990, \"ocr_scan_pack_count\": 2, \"opensearch_upload_attempt_count\": 0, \"opensearch_write_attempt_count\": 0, \"postgres_write_attempt_count\": 0, \"qdrant_write_attempt_count\": 0, \"ready_for_visual_nomenclature_enrichment\": true, \"source_trace_ready_count\": 3, \"source_truth_mutation_allowed_count\": 0, \"unsafe_record_count\": 0, \"write_attempt_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000317",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 317."
+    },
+    {
+      "page_id": "t_p_120_1176_p000318",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 318."
+    },
+    {
+      "page_id": "t_p_120_1176_p000319",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 319."
+    },
+    {
+      "page_id": "t_p_120_1176_p000320",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 320."
+    },
+    {
+      "page_id": "t_p_120_1176_p000321",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 321."
+    },
+    {
+      "page_id": "t_p_120_1176_p000322",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 322."
+    },
+    {
+      "page_id": "t_p_120_1176_p000323",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 323."
+    },
+    {
+      "page_id": "t_p_120_1176_p000324",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 324."
+    },
+    {
+      "page_id": "t_p_120_1176_p000325",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 325."
+    },
+    {
+      "page_id": "t_p_120_1176_p000326",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 326."
+    },
+    {
+      "page_id": "t_p_120_1176_p000327",
+      "v2_summary": "{\"answer_permission_count\": 0, \"can_answer_from_summaries_only_count\": 0, \"engineering_answer_context_pack_record_count\": 1, \"exact_part_context_count\": 1, \"guidance_context_count\": 0, \"ocr_nomenclature_context_count\": 1, \"opensearch_upload_attempt_count\": 0, \"opensearch_write_attempt_count\": 0, \"postgres_write_attempt_count\": 0, \"proof_context_count\": 4, \"qdrant_write_attempt_count\": 0, \"ready_for_engineering_answer_composer\": true, \"source_trace_ready_count\": 4, \"source_truth_mutation_allowed_count\": 0, \"summary_used_as_proof_count\": 0, \"table_ocr_context_count\": 1, \"unsafe_record_count\": 0, \"visual_proof_context_count\": 1, \"write_attempt_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000328",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 328."
+    },
+    {
+      "page_id": "t_p_120_1176_p000329",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 329."
+    },
+    {
+      "page_id": "t_p_120_1176_p000330",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 330."
+    },
+    {
+      "page_id": "t_p_120_1176_p000331",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 331."
+    },
+    {
+      "page_id": "t_p_120_1176_p000332",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 332."
+    },
+    {
+      "page_id": "t_p_120_1176_p000333",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 333."
+    },
+    {
+      "page_id": "t_p_120_1176_p000334",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 334."
+    },
+    {
+      "page_id": "t_p_120_1176_p000335",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 335."
+    },
+    {
+      "page_id": "t_p_120_1176_p000336",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 336."
+    },
+    {
+      "page_id": "t_p_120_1176_p000337",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 337."
+    },
+    {
+      "page_id": "t_p_120_1176_p000338",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 338."
+    },
+    {
+      "page_id": "t_p_120_1176_p000339",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 339."
+    },
+    {
+      "page_id": "t_p_120_1176_p000340",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 340."
+    },
+    {
+      "page_id": "t_p_120_1176_p000341",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 341."
+    },
+    {
+      "page_id": "t_p_120_1176_p000342",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 342."
+    },
+    {
+      "page_id": "t_p_120_1176_p000343",
+      "v2_summary": "{\"anchor_aware_record_count\": 36, \"anchor_aware_role_counts\": {\"direct_exact_match_anchor\": 8, \"exact_reference_anchor\": 8, \"family_variant_anchor\": 8, \"same_anchor_community_variant\": 4, \"same_anchor_leiden_community_neighbor\": 1, \"similar_table_candidate\": 6, \"superseded_direct_candidate\": 1}, \"anchor_community_count\": 10, \"anchor_community_ids\": [\"1\", \"24\", \"4\", \"50\", \"87\", \"tracenet_community_00001\", \"tracenet_community_00004\", \"tracenet_community_00024\", \"tracenet_community_00050\", \"tracenet_community_00087\"], \"anchor_relation_type_counts\": {\"exact_anchor\": 8, \"exact_reference\": 8, \"part_family_variant\": 8, \"retained_support_context\": 6, \"same_anchor_leiden_community\": 1, \"same_anchor_leiden_community_variant\": 4, \"superseded_by_exact_anchors\": 1}, \"answer_permission_count\": 0, \"can_answer_directly_count\": 0, \"can_prove_claims_count\": 0, \"citation_count\": 36, \"community_annotation_count\": 36, \"community_assignment_record_count\": 32755, \"community_index_key_count\": 1034, \"context_prompt_char_count\": 22941, \"direct_exact_anchor_count\": 8, \"direct_exact_anchor_page_count\": 8, \"direct_exact_anchor_page_numbers\": [343, 346, 349, 352, 355, 358, 361, 364], \"dry_run_only\": true, \"human_review_required_count\": 0, \"manual_review_required_count\": 0, \"module\": \"trace_net_anchor_aware_graph_leiden_expander_v1\", \"nearby_anchor_page_neighbor_count\": 0, \"opensearch_write_attempt_count\": 0, \"page_id_join_key_count\": 32242, \"page_number_join_key_count\": 32182, \"postgres_write_attempt_count\": 0, \"proof_strength_counts\": {\"direct_candidate\": 1, \"direct_exact_proof\": 8, \"exact_reference\": 8, \"related_variant\": 12, \"weak_candidate\": 7}, \"qdrant_write_attempt_count\": 0, \"query_part_numbers\": [\"120-29073-001\"], \"question\": \"Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.\", \"ready_for_answer_quality_gate\": true, \"ready_for_gemma_anchor_aware_prompt\": true, \"same_anchor_leiden_community_count\": 17, \"same_anchor_variant_count\": 4, \"source_anchor_injector\": \"local_data/organization/trace_net/answer_context_anchor_injector_gemma4_native_001/trace_net_answer_context_anchor_injector_v1.json\", \"source_community_aware_retrieval\": \"local_data/organization/trace_net/community_aware_retrieval_v2/trace_net_community_aware_retrieval_v2.json\", \"source_graph_report\": null, \"source_leiden_communities\": \"local_data/organization/trace_net/leiden_communities/trace_net_leiden_communities_v1.json\", \"source_quality_statuses\": {\"anchor_injector\": \"PASS\", \"community_aware_retrieval\": \"PASS\", \"graph_report\": null, \"leiden_communities\": \"PASS\"}, \"source_record_count\": 36, \"source_truth_mutation_allowed_count\": 0, \"superseded_old_direct_candidate_count\": 1, \"unsafe_record_count\": 0, \"version\": \"v1\", \"violation_record_count\": 0, \"write_attempt_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000344",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 344."
+    },
+    {
+      "page_id": "t_p_120_1176_p000345",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 345."
+    },
+    {
+      "page_id": "t_p_120_1176_p000346",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 346."
+    },
+    {
+      "page_id": "t_p_120_1176_p000347",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 347."
+    },
+    {
+      "page_id": "t_p_120_1176_p000348",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 348."
+    },
+    {
+      "page_id": "t_p_120_1176_p000349",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 349."
+    },
+    {
+      "page_id": "t_p_120_1176_p000350",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 350."
+    },
+    {
+      "page_id": "t_p_120_1176_p000351",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 351."
+    },
+    {
+      "page_id": "t_p_120_1176_p000352",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 352."
+    },
+    {
+      "page_id": "t_p_120_1176_p000353",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 353."
+    },
+    {
+      "page_id": "t_p_120_1176_p000354",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 354."
+    },
+    {
+      "page_id": "t_p_120_1176_p000355",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 355."
+    },
+    {
+      "page_id": "t_p_120_1176_p000356",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 356."
+    },
+    {
+      "page_id": "t_p_120_1176_p000357",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 357."
+    },
+    {
+      "page_id": "t_p_120_1176_p000358",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 358."
+    },
+    {
+      "page_id": "t_p_120_1176_p000359",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 359."
+    },
+    {
+      "page_id": "t_p_120_1176_p000360",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 360."
+    },
+    {
+      "page_id": "t_p_120_1176_p000361",
+      "v2_summary": "{\"answer_char_count\": 628, \"answer_citation_count\": 23, \"answer_permission_count\": 0, \"can_answer_directly_count\": 0, \"can_prove_claims_count\": 0, \"composer_record_count\": 23, \"dry_run_only\": true, \"human_review_required_count\": 0, \"invalid_answer_citation_count\": 0, \"invalid_answer_citation_labels\": [], \"manual_review_required_count\": 0, \"module\": \"trace_net_part_family_fast_answer_composer_v1\", \"opensearch_write_attempt_count\": 0, \"part_family\": \"120-29073\", \"part_family_answer_record_count\": 23, \"part_family_direct_record_count\": 8, \"part_family_fast_answer_ready\": true, \"part_family_leiden_context_record_count\": 23, \"part_family_page_count\": 9, \"part_family_page_numbers\": [\"361\", \"346\", \"349\", \"355\", \"358\", \"343\", \"352\", \"364\", \"32\"], \"part_family_part_number_count\": 3, \"part_family_part_numbers\": [\"120-29073-001\", \"120-29073-005\", \"120-29073-007\"], \"part_family_variant_record_count\": 12, \"postgres_write_attempt_count\": 0, \"qdrant_write_attempt_count\": 0, \"question\": \"Show the 120-29073 family.\", \"ready_for_fast_chat_runner\": true, \"source_context_module\": \"trace_net_anchor_aware_graph_leiden_expander_v1\", \"source_context_pack\": \"local_data/organization/trace_net/anchor_aware_graph_leiden_expander_gemma4_native_001/trace_net_anchor_aware_graph_leiden_expander_v1.json\", \"source_context_quality_status\": \"PASS\", \"source_record_count\": 36, \"source_truth_mutation_allowed_count\": 0, \"unsafe_record_count\": 0, \"valid_answer_citation_count\": 23, \"version\": \"v1\", \"violation_record_count\": 0, \"violation_severity_counts\": {}, \"write_attempt_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000362",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 362."
+    },
+    {
+      "page_id": "t_p_120_1176_p000363",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 363."
+    },
+    {
+      "page_id": "t_p_120_1176_p000364",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 364."
+    },
+    {
+      "page_id": "t_p_120_1176_p000365",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 365."
+    },
+    {
+      "page_id": "t_p_120_1176_p000366",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 366."
+    },
+    {
+      "page_id": "t_p_120_1176_p000367",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 367."
+    },
+    {
+      "page_id": "t_p_120_1176_p000368",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 368."
+    },
+    {
+      "page_id": "t_p_120_1176_p000369",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 369."
+    },
+    {
+      "page_id": "t_p_120_1176_p000370",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 370."
+    },
+    {
+      "page_id": "t_p_120_1176_p000371",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 371."
+    },
+    {
+      "page_id": "t_p_120_1176_p000372",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 372."
+    },
+    {
+      "page_id": "t_p_120_1176_p000373",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 373."
+    },
+    {
+      "page_id": "t_p_120_1176_p000374",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 374."
+    },
+    {
+      "page_id": "t_p_120_1176_p000375",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 375."
+    },
+    {
+      "page_id": "t_p_120_1176_p000376",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 376."
+    },
+    {
+      "page_id": "t_p_120_1176_p000377",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 377."
+    },
+    {
+      "page_id": "t_p_120_1176_p000378",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 378."
+    },
+    {
+      "page_id": "t_p_120_1176_p000379",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 379."
+    },
+    {
+      "page_id": "t_p_120_1176_p000380",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 380."
+    },
+    {
+      "page_id": "t_p_120_1176_p000381",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 381."
+    },
+    {
+      "page_id": "t_p_120_1176_p000382",
+      "v2_summary": "{\"answer_permission_count\": 0, \"can_answer_from_summaries_only_count\": 0, \"engineering_answer_context_pack_record_count\": 1, \"exact_part_context_count\": 1, \"guidance_context_count\": 0, \"ocr_nomenclature_context_count\": 1, \"opensearch_upload_attempt_count\": 0, \"opensearch_write_attempt_count\": 0, \"postgres_write_attempt_count\": 0, \"proof_context_count\": 4, \"qdrant_write_attempt_count\": 0, \"ready_for_engineering_answer_composer\": true, \"source_trace_ready_count\": 4, \"source_truth_mutation_allowed_count\": 0, \"summary_used_as_proof_count\": 0, \"table_ocr_context_count\": 1, \"unsafe_record_count\": 0, \"visual_proof_context_count\": 1, \"write_attempt_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000383",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 383."
+    },
+    {
+      "page_id": "t_p_120_1176_p000384",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 384."
+    },
+    {
+      "page_id": "t_p_120_1176_p000385",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 385."
+    },
+    {
+      "page_id": "t_p_120_1176_p000386",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 386."
+    },
+    {
+      "page_id": "t_p_120_1176_p000387",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 387."
+    },
+    {
+      "page_id": "t_p_120_1176_p000388",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 388."
+    },
+    {
+      "page_id": "t_p_120_1176_p000389",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 389."
+    },
+    {
+      "page_id": "t_p_120_1176_p000390",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 390."
+    },
+    {
+      "page_id": "t_p_120_1176_p000391",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 391."
+    },
+    {
+      "page_id": "t_p_120_1176_p000392",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 392."
+    },
+    {
+      "page_id": "t_p_120_1176_p000393",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 393."
+    },
+    {
+      "page_id": "t_p_120_1176_p000394",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 394."
+    },
+    {
+      "page_id": "t_p_120_1176_p000395",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 395."
+    },
+    {
+      "page_id": "t_p_120_1176_p000396",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 396."
+    },
+    {
+      "page_id": "t_p_120_1176_p000397",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 397."
+    },
+    {
+      "page_id": "t_p_120_1176_p000398",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 398."
+    },
+    {
+      "page_id": "t_p_120_1176_p000399",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 399."
+    },
+    {
+      "page_id": "t_p_120_1176_p000400",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 400."
+    },
+    {
+      "page_id": "t_p_120_1176_p000401",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 401."
+    },
+    {
+      "page_id": "t_p_120_1176_p000402",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 402."
+    },
+    {
+      "page_id": "t_p_120_1176_p000403",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 403."
+    },
+    {
+      "page_id": "t_p_120_1176_p000404",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 404."
+    },
+    {
+      "page_id": "t_p_120_1176_p000405",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 405."
+    },
+    {
+      "page_id": "t_p_120_1176_p000406",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 406."
+    },
+    {
+      "page_id": "t_p_120_1176_p000407",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 407."
+    },
+    {
+      "page_id": "t_p_120_1176_p000408",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 408."
+    },
+    {
+      "page_id": "t_p_120_1176_p000409",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 409."
+    },
+    {
+      "page_id": "t_p_120_1176_p000410",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 410."
+    },
+    {
+      "page_id": "t_p_120_1176_p000411",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 411."
+    },
+    {
+      "page_id": "t_p_120_1176_p000412",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 412."
+    },
+    {
+      "page_id": "t_p_120_1176_p000413",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 413."
+    },
+    {
+      "page_id": "t_p_120_1176_p000414",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 414."
+    },
+    {
+      "page_id": "t_p_120_1176_p000415",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 415."
+    },
+    {
+      "page_id": "t_p_120_1176_p000416",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 416."
+    },
+    {
+      "page_id": "t_p_120_1176_p000417",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 417."
+    },
+    {
+      "page_id": "t_p_120_1176_p000418",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 418."
+    },
+    {
+      "page_id": "t_p_120_1176_p000419",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 419."
+    },
+    {
+      "page_id": "t_p_120_1176_p000420",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 420."
+    },
+    {
+      "page_id": "t_p_120_1176_p000421",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 421."
+    },
+    {
+      "page_id": "t_p_120_1176_p000422",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 422."
+    },
+    {
+      "page_id": "t_p_120_1176_p000423",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 423."
+    },
+    {
+      "page_id": "t_p_120_1176_p000424",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 424."
+    },
+    {
+      "page_id": "t_p_120_1176_p000425",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 425."
+    },
+    {
+      "page_id": "t_p_120_1176_p000426",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 426."
+    },
+    {
+      "page_id": "t_p_120_1176_p000427",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 427."
+    },
+    {
+      "page_id": "t_p_120_1176_p000428",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 428."
+    },
+    {
+      "page_id": "t_p_120_1176_p000429",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 429."
+    },
+    {
+      "page_id": "t_p_120_1176_p000430",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 430."
+    },
+    {
+      "page_id": "t_p_120_1176_p000431",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 431."
+    },
+    {
+      "page_id": "t_p_120_1176_p000432",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 432."
+    },
+    {
+      "page_id": "t_p_120_1176_p000433",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 433."
+    },
+    {
+      "page_id": "t_p_120_1176_p000434",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 434."
+    },
+    {
+      "page_id": "t_p_120_1176_p000435",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 435."
+    },
+    {
+      "page_id": "t_p_120_1176_p000436",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 436."
+    },
+    {
+      "page_id": "t_p_120_1176_p000437",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 437."
+    },
+    {
+      "page_id": "t_p_120_1176_p000438",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 438."
+    },
+    {
+      "page_id": "t_p_120_1176_p000439",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 439."
+    },
+    {
+      "page_id": "t_p_120_1176_p000440",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 440."
+    },
+    {
+      "page_id": "t_p_120_1176_p000441",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 441."
+    },
+    {
+      "page_id": "t_p_120_1176_p000442",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 442."
+    },
+    {
+      "page_id": "t_p_120_1176_p000443",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 443."
+    },
+    {
+      "page_id": "t_p_120_1176_p000444",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 444."
+    },
+    {
+      "page_id": "t_p_120_1176_p000445",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 445."
+    },
+    {
+      "page_id": "t_p_120_1176_p000446",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 446."
+    },
+    {
+      "page_id": "t_p_120_1176_p000447",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 447."
+    },
+    {
+      "page_id": "t_p_120_1176_p000448",
+      "v2_summary": "{\"answer_permission_count\": 0, \"guidance_record_count\": 8, \"ocr_excerpt_count\": 0, \"opensearch_write_attempt_count\": 0, \"postgres_write_attempt_count\": 0, \"proof_record_count\": 2, \"qdrant_write_attempt_count\": 0, \"route_guidance_count\": 2, \"selected_page_count\": 2, \"source_file_count\": 2, \"source_link_count\": 0, \"source_trace_ready_page_count\": 2, \"source_truth_mutation_allowed_count\": 0, \"visual_guidance_count\": 0}"
+    },
+    {
+      "page_id": "t_p_120_1176_p000449",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 449."
+    },
+    {
+      "page_id": "t_p_120_1176_p000450",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 450."
+    },
+    {
+      "page_id": "t_p_120_1176_p000451",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 451."
+    },
+    {
+      "page_id": "t_p_120_1176_p000452",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 452."
+    },
+    {
+      "page_id": "t_p_120_1176_p000453",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 453."
+    },
+    {
+      "page_id": "t_p_120_1176_p000454",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 454."
+    },
+    {
+      "page_id": "t_p_120_1176_p000455",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 455."
+    },
+    {
+      "page_id": "t_p_120_1176_p000456",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 456."
+    },
+    {
+      "page_id": "t_p_120_1176_p000457",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 457."
+    },
+    {
+      "page_id": "t_p_120_1176_p000458",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 458."
+    },
+    {
+      "page_id": "t_p_120_1176_p000459",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 459."
+    },
+    {
+      "page_id": "t_p_120_1176_p000460",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 460."
+    },
+    {
+      "page_id": "t_p_120_1176_p000461",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 461."
+    },
+    {
+      "page_id": "t_p_120_1176_p000462",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 462."
+    },
+    {
+      "page_id": "t_p_120_1176_p000463",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 463."
+    },
+    {
+      "page_id": "t_p_120_1176_p000464",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 464."
+    },
+    {
+      "page_id": "t_p_120_1176_p000465",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 465."
+    },
+    {
+      "page_id": "t_p_120_1176_p000466",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 466."
+    },
+    {
+      "page_id": "t_p_120_1176_p000467",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 467."
+    },
+    {
+      "page_id": "t_p_120_1176_p000468",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 468."
+    },
+    {
+      "page_id": "t_p_120_1176_p000469",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 469."
+    },
+    {
+      "page_id": "t_p_120_1176_p000470",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 470."
+    },
+    {
+      "page_id": "t_p_120_1176_p000471",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 471."
+    },
+    {
+      "page_id": "t_p_120_1176_p000472",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 472."
+    },
+    {
+      "page_id": "t_p_120_1176_p000473",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 473."
+    },
+    {
+      "page_id": "t_p_120_1176_p000474",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 474."
+    },
+    {
+      "page_id": "t_p_120_1176_p000475",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 475."
+    },
+    {
+      "page_id": "t_p_120_1176_p000476",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 476."
+    },
+    {
+      "page_id": "t_p_120_1176_p000477",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 477."
+    },
+    {
+      "page_id": "t_p_120_1176_p000478",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 478."
+    },
+    {
+      "page_id": "t_p_120_1176_p000479",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 479."
+    },
+    {
+      "page_id": "t_p_120_1176_p000480",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 480."
+    },
+    {
+      "page_id": "t_p_120_1176_p000481",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 481."
+    },
+    {
+      "page_id": "t_p_120_1176_p000482",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 482."
+    },
+    {
+      "page_id": "t_p_120_1176_p000483",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 483."
+    },
+    {
+      "page_id": "t_p_120_1176_p000484",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 484."
+    },
+    {
+      "page_id": "t_p_120_1176_p000485",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 485."
+    },
+    {
+      "page_id": "t_p_120_1176_p000486",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 486."
+    },
+    {
+      "page_id": "t_p_120_1176_p000487",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 487."
+    },
+    {
+      "page_id": "t_p_120_1176_p000488",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 488."
+    },
+    {
+      "page_id": "t_p_120_1176_p000489",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 489."
+    },
+    {
+      "page_id": "t_p_120_1176_p000490",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 490."
+    },
+    {
+      "page_id": "t_p_120_1176_p000491",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 491."
+    },
+    {
+      "page_id": "t_p_120_1176_p000492",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 492."
+    },
+    {
+      "page_id": "t_p_120_1176_p000493",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 493."
+    },
+    {
+      "page_id": "t_p_120_1176_p000494",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 494."
+    },
+    {
+      "page_id": "t_p_120_1176_p000495",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 495."
+    },
+    {
+      "page_id": "t_p_120_1176_p000496",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 496."
+    },
+    {
+      "page_id": "t_p_120_1176_p000497",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 497."
+    },
+    {
+      "page_id": "t_p_120_1176_p000498",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 498."
+    },
+    {
+      "page_id": "t_p_120_1176_p000499",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 499."
+    },
+    {
+      "page_id": "t_p_120_1176_p000500",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 500."
+    },
+    {
+      "page_id": "t_p_120_1176_p000501",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 501."
+    },
+    {
+      "page_id": "t_p_120_1176_p000502",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 502."
+    },
+    {
+      "page_id": "t_p_120_1176_p000503",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 503."
+    },
+    {
+      "page_id": "t_p_120_1176_p000504",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 504."
+    },
+    {
+      "page_id": "t_p_120_1176_p000505",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 505."
+    },
+    {
+      "page_id": "t_p_120_1176_p000506",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 506."
+    },
+    {
+      "page_id": "t_p_120_1176_p000507",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 507."
+    },
+    {
+      "page_id": "t_p_120_1176_p000508",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 508."
+    },
+    {
+      "page_id": "t_p_120_1176_p000509",
+      "v2_summary": "Page-level retrieval profile for t_p_120_1176 page 509."
+    }
+  ]
+}
