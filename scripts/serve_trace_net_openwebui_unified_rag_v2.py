@@ -30,6 +30,8 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any, Callable, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
 
+from tiff.trace_net_query_atom_router_v1 import analyze_query
+
 MODULE = "trace_net_openwebui_unified_rag_v2"
 MODEL_ID = "trace-net-openwebui-unified-rag-v2"
 
@@ -621,7 +623,8 @@ class UnifiedRuntime:
         conversation = resolve_conversation(payload)
         query = conversation["resolved_query"]
         latest = conversation["latest_query"]
-        route = route_kind(query)
+        router_decision = analyze_query(query)
+        route = str(router_decision["execution_route"])
         engrams = self.engram.select(query)
         qhits, qpage_scores, qerror = self.qdrant_guidance(query)
         repair_attempts: List[Dict[str, Any]] = []
@@ -724,6 +727,8 @@ class UnifiedRuntime:
         result.update({
             "module": MODULE,
             "model": MODEL_ID,
+            "router_decision": router_decision,
+            "retrieval_tunnel": router_decision.get("selected_tunnel"),
             "query": latest,
             "resolved_query": query,
             "working_memory": conversation["working_memory"],
