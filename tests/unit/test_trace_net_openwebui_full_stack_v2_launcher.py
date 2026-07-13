@@ -31,3 +31,21 @@ def test_expected_service_identities():
     assert mod.expected_identity(8014) == "trace_net_live_rag_normal_v2"
     assert mod.expected_identity(8016) == "trace_net_guided_candidate_discovery_endpoint_v1"
     assert mod.expected_identity(8017) == "trace_net_openwebui_unified_rag_v2"
+
+def test_front_door_defaults_local_only():
+    mod = load()
+    args = mod.build_parser().parse_args([])
+    commands = mod.build_commands(args)
+    unified = commands["unified_8017"]
+    assert unified[unified.index("--host") + 1] == "127.0.0.1"
+
+def test_front_door_can_bind_to_network_without_exposing_internal_services():
+    mod = load()
+    args = mod.build_parser().parse_args(["--front-door-host", "0.0.0.0"])
+    commands = mod.build_commands(args)
+    normal = commands["normal_8014"]
+    guided = commands["guided_8016"]
+    unified = commands["unified_8017"]
+    assert normal[normal.index("--host") + 1] == "127.0.0.1"
+    assert guided[guided.index("--host") + 1] == "127.0.0.1"
+    assert unified[unified.index("--host") + 1] == "0.0.0.0"

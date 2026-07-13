@@ -4,6 +4,8 @@
 8014: v27 live source-truth normal route
 8016: real guided candidate-discovery endpoint
 8017: authenticated unified OpenWebUI front door
+
+Only 8017 may be exposed to the network. Keep 8014 and 8016 on 127.0.0.1.
 """
 
 from __future__ import annotations
@@ -11,7 +13,6 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import signal
 import socket
 import subprocess
 import sys
@@ -65,14 +66,7 @@ def service_identity(health: Mapping[str, Any]) -> str:
     return str(health.get("module") or health.get("service") or "")
 
 
-def start(
-    name: str,
-    cmd: List[str],
-    port: int,
-    api_key: str,
-    processes: List[subprocess.Popen],
-    runtime_dir: Path,
-) -> None:
+def start(name: str, cmd: List[str], port: int, api_key: str, processes: List[subprocess.Popen], runtime_dir: Path) -> None:
     if port_open("127.0.0.1", port):
         status, health = http_json(f"http://127.0.0.1:{port}/health", timeout=2)
         identity = service_identity(health)
@@ -130,7 +124,7 @@ def build_commands(args: argparse.Namespace) -> Dict[str, List[str]]:
     ]
     unified = [
         py, "-B", "scripts/serve_trace_net_openwebui_unified_rag_v2.py",
-        "--host", "127.0.0.1", "--port", "8017",
+        "--host", args.front_door_host, "--port", "8017",
         "--normal-base-url", "http://127.0.0.1:8014",
         "--guided-base-url", "http://127.0.0.1:8016",
         "--visual-documents-jsonl", args.visual_documents,
@@ -154,6 +148,11 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--engram-core", default=DEFAULT_ENGRAM)
     p.add_argument("--artifact-root", default="local_data/organization/trace_net")
     p.add_argument("--api-key", default=os.environ.get("TRACE_NET_API_KEY", "trace-net-local"))
+    p.add_argument(
+        "--front-door-host",
+        default=os.environ.get("TRACE_NET_FRONT_DOOR_HOST", "127.0.0.1"),
+        help="Bind address for external port 8017 only. Use 0.0.0.0 for LAN access.",
+    )
     p.add_argument("--llm-base-url", default="http://127.0.0.1:11434/v1")
     p.add_argument("--llm-model", default="gemma4:26b")
     p.add_argument("--llm-api-key", default="ollama")
@@ -170,6 +169,12 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
     args = build_parser().parse_args(argv)
+    if args.front_door_host not in {"127.0.0.1", "0.0.0.0", "::"}:
+        raise SystemExit(
+            "--front-door-host must be 127.0.0.1, 0.0.0.0, or ::. "
+            "Use 0.0.0.0 for IPv4 LAN access."
+        )
+
     for path in (
         args.v27_manifest, args.visual_documents, args.engram_core,
         "scripts/serve_trace_net_live_rag_normal_v2.py",
@@ -190,12 +195,19 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         start("unified_8017", commands["unified_8017"], 8017, args.api_key, processes, RUNTIME_DIR)
         unified_health = wait_identity("unified_8017", 8017, args.health_timeout)
 
+        network_url = (
+            "http://10.100.1.238:8017/v1"
+            if args.front_door_host in {"0.0.0.0", "::"}
+            else "not exposed; bound to localhost"
+        )
         summary = {
             "status": "TRACE_NET_OPENWEBUI_TRUTHFUL_LIVE_STACK_V2_READY",
             "quality_status": "PASS",
             "services": {"normal": normal_health, "guided": guided_health, "unified": unified_health},
             "openwebui": {
                 "base_url": "http://127.0.0.1:8017/v1",
+                "network_base_url": network_url,
+                "front_door_host": args.front_door_host,
                 "api_key": args.api_key,
                 "model": MODEL_ID,
             },
@@ -204,6 +216,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         print("\nstatus=TRACE_NET_OPENWEBUI_TRUTHFUL_LIVE_STACK_V2_READY")
         print("quality_status=PASS")
         print("OpenWebUI Base URL: http://127.0.0.1:8017/v1")
+        print(f"Front-door bind: {args.front_door_host}:8017")
+        print(f"Network Base URL: {network_url}")
         print(f"API key: {args.api_key}")
         print(f"Model: {MODEL_ID}")
         if args.exit_after_health:
