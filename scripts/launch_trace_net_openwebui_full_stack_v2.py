@@ -6,6 +6,8 @@
 8017: authenticated unified OpenWebUI front door
 
 Only 8017 may be exposed to the network. Keep 8014 and 8016 on 127.0.0.1.
+Qdrant is optional by default for coworker/API use and may be required explicitly
+with --require-qdrant.
 """
 
 from __future__ import annotations
@@ -136,8 +138,9 @@ def build_commands(args: argparse.Namespace) -> Dict[str, List[str]]:
         "--api-key", args.api_key,
         "--downstream-api-key", args.api_key,
         "--timeout-seconds", str(args.request_timeout),
-        "--require-qdrant",
     ]
+    if args.require_qdrant:
+        unified.append("--require-qdrant")
     return {"normal_8014": normal, "guided_8016": guided, "unified_8017": unified}
 
 
@@ -152,6 +155,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--front-door-host",
         default=os.environ.get("TRACE_NET_FRONT_DOOR_HOST", "127.0.0.1"),
         help="Bind address for external port 8017 only. Use 0.0.0.0 for LAN access.",
+    )
+    p.add_argument(
+        "--require-qdrant",
+        action="store_true",
+        help="Fail startup unless Qdrant is healthy. Omit for coworker/API mode where Qdrant is optional guidance.",
     )
     p.add_argument("--llm-base-url", default="http://127.0.0.1:11434/v1")
     p.add_argument("--llm-model", default="gemma4:26b")
@@ -211,6 +219,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                 "api_key": args.api_key,
                 "model": MODEL_ID,
             },
+            "qdrant": {
+                "required": bool(args.require_qdrant),
+                "mode": "required" if args.require_qdrant else "optional_guidance",
+            },
         }
         (RUNTIME_DIR / "health_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
         print("\nstatus=TRACE_NET_OPENWEBUI_TRUTHFUL_LIVE_STACK_V2_READY")
@@ -218,6 +230,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         print("OpenWebUI Base URL: http://127.0.0.1:8017/v1")
         print(f"Front-door bind: {args.front_door_host}:8017")
         print(f"Network Base URL: {network_url}")
+        print(f"Qdrant mode: {'required' if args.require_qdrant else 'optional guidance'}")
         print(f"API key: {args.api_key}")
         print(f"Model: {MODEL_ID}")
         if args.exit_after_health:

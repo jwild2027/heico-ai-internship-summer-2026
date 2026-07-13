@@ -24,7 +24,6 @@ def test_launcher_uses_live_v27_and_real_guided_endpoint():
     assert "serve_trace_net_guided_candidate_discovery_endpoint_v1.py" in guided
     assert "serve_trace_net_guided_discovery_router_proxy_v6.py" not in guided
     assert "serve_trace_net_openwebui_unified_rag_v2.py" in unified
-    assert "--require-qdrant" in unified
 
 def test_expected_service_identities():
     mod = load()
@@ -49,3 +48,15 @@ def test_front_door_can_bind_to_network_without_exposing_internal_services():
     assert normal[normal.index("--host") + 1] == "127.0.0.1"
     assert guided[guided.index("--host") + 1] == "127.0.0.1"
     assert unified[unified.index("--host") + 1] == "0.0.0.0"
+
+def test_qdrant_is_optional_by_default_for_coworker_mode():
+    mod = load()
+    args = mod.build_parser().parse_args([])
+    commands = mod.build_commands(args)
+    assert "--require-qdrant" not in commands["unified_8017"]
+
+def test_qdrant_can_still_be_required_explicitly():
+    mod = load()
+    args = mod.build_parser().parse_args(["--require-qdrant"])
+    commands = mod.build_commands(args)
+    assert "--require-qdrant" in commands["unified_8017"]
