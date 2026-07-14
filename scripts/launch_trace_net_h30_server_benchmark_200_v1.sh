@@ -4,10 +4,14 @@ set -euo pipefail
 REPO="${TRACE_NET_REPO:-/data/trace_net/repos/trace-net-h30-canary}"
 VENV="${TRACE_NET_VENV:-/home/jwild/rag-workspace/.venv}"
 PYTHON="$VENV/bin/python"
-RUNTIME="${TRACE_NET_BENCHMARK_RUNTIME:-/data/trace_net_runs/cognitive_benchmark_200_v1_answer_quality}"
+RUNTIME="${TRACE_NET_BENCHMARK_RUNTIME:-/data/trace_net_runs/cognitive_benchmark_200_gemma_every_question_v1}"
 BASE_URL="${TRACE_NET_BENCHMARK_BASE_URL:-http://127.0.0.1:8128}"
 API_KEY="${TRACE_NET_BENCHMARK_API_KEY:-trace-net-gemma-cognitive-local}"
 TIMEOUT="${TRACE_NET_BENCHMARK_TIMEOUT_SECONDS:-1200}"
+GEMMA_URL="${TRACE_NET_BENCHMARK_GEMMA_URL:-http://127.0.0.1:11434/api/chat}"
+GEMMA_TAGS_URL="${TRACE_NET_BENCHMARK_GEMMA_TAGS_URL:-http://127.0.0.1:11434/api/tags}"
+GEMMA_MODEL="${TRACE_NET_BENCHMARK_GEMMA_MODEL:-gemma4:26b}"
+GEMMA_TIMEOUT="${TRACE_NET_BENCHMARK_GEMMA_TIMEOUT_SECONDS:-1200}"
 OUTPUT="$RUNTIME/trace_net_h30_server_benchmark_200_v1.json"
 LOG="$RUNTIME/trace_net_h30_server_benchmark_200_v1_console.log"
 
@@ -15,6 +19,7 @@ cd "$REPO"
 source "$VENV/bin/activate"
 export PYTHONPATH="$REPO/scripts:$REPO${PYTHONPATH:+:$PYTHONPATH}"
 export PYTHONUNBUFFERED=1
+export TRACE_NET_REQUIRED_GEMMA_MODEL="$GEMMA_MODEL"
 mkdir -p "$RUNTIME"
 
 echo "============================================================"
@@ -25,6 +30,9 @@ echo "commit=$(git rev-parse HEAD)"
 echo "base_url=$BASE_URL"
 echo "output=$OUTPUT"
 echo "console_log=$LOG"
+echo "gemma_model=$GEMMA_MODEL"
+echo "gemma_url=$GEMMA_URL"
+echo "gemma_required_for_every_question=true"
 echo
 
 if pgrep -af "run_trace_net_h30_server_benchmark_200_v1.py" | grep -v "$$" >/dev/null 2>&1; then
@@ -68,6 +76,16 @@ assert value.get("stream_normalization") is True, value
 print("port_8131=PASS stream_normalization=true")
 '
 
+curl --fail-with-body --silent --show-error "$GEMMA_TAGS_URL" \
+  | "$PYTHON" -c '
+import json,os,sys
+value=json.load(sys.stdin)
+required=os.environ["TRACE_NET_REQUIRED_GEMMA_MODEL"]
+names={str(row.get("name") or row.get("model")) for row in value.get("models",[]) if isinstance(row,dict)}
+assert required in names, (required, sorted(names))
+print(f"gemma_model={required} READY")
+'
+
 echo
 echo "============================================================"
 echo "COMPILING AND TESTING BENCHMARK HARNESS"
@@ -86,7 +104,8 @@ echo
 echo "============================================================"
 echo "RUNNING 200 LIVE FULL-STACK QUESTIONS"
 echo "============================================================"
-echo "Progress will print as [001/200], [002/200], ... [200/200]."
+echo "Progress will print TRACE_NET_START/DONE and GEMMA_START/DONE for every question."
+echo "Every one of the 200 questions must call $GEMMA_MODEL before it can pass."
 echo "A checkpoint JSON is rewritten after every completed question."
 echo
 
@@ -95,6 +114,10 @@ set +e
   --base-url "$BASE_URL" \
   --api-key "$API_KEY" \
   --timeout-seconds "$TIMEOUT" \
+  --gemma-url "$GEMMA_URL" \
+  --gemma-tags-url "$GEMMA_TAGS_URL" \
+  --gemma-model "$GEMMA_MODEL" \
+  --gemma-timeout-seconds "$GEMMA_TIMEOUT" \
   --output "$OUTPUT" \
   --resume \
   2>&1 | tee -a "$LOG"
@@ -120,6 +143,9 @@ print(f"pass_count={summary.get('pass_count')}")
 print(f"semantic_answer_pass_count={summary.get('semantic_answer_pass_count')}")
 print(f"failure_count={summary.get('failure_count')}")
 print(f"routes_covered={len(summary.get('routes_covered') or [])}/19")
+print(f"gemma_every_question={summary.get('gemma_every_question_count')}/200")
+print(f"gemma_every_question_pass={summary.get('gemma_every_question_pass_count')}/200")
+print(f"gemma_model={summary.get('gemma_model')}")
 print(f"json={path}")
 print(f"jsonl={value.get('output_paths',{}).get('jsonl')}")
 print(f"checkpoint={value.get('output_paths',{}).get('checkpoint')}")

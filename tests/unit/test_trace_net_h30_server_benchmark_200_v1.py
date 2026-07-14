@@ -265,4 +265,126 @@ def test_server_launcher_payload_is_git_bash_compatible_and_lf_only():
     assert b"\r\n" not in raw
     text = raw.decode("utf-8")
     assert "run_trace_net_h30_server_benchmark_200_v1.py" in text
-    assert "Progress will print as [001/200]" in text
+    assert "GEMMA_START/DONE" in text
+    assert "TRACE_NET_BENCHMARK_GEMMA_MODEL" in text
+    assert "gemma_required_for_every_question=true" in text
+
+
+
+def test_gemma_every_question_parser_accepts_strict_json_and_deduplicates_followups():
+    runner = load_module(RUNNER_PATH, "trace_net_benchmark_200_gemma_parser_test")
+    parsed = runner.parse_gemma_json('{\"answer\":\"Hello.\",\"follow_up_questions\":[\"What part?\",\"What part?\"],\"review\":{\"safety_boundary\":\"PASS\"}}')
+    assert parsed["answer"] == "Hello."
+    result = runner.call_gemma_every_question
+    assert callable(result)
+
+
+def test_gemma_every_question_prompt_preserves_fail_closed_contract():
+    runner = load_module(RUNNER_PATH, "trace_net_benchmark_200_gemma_prompt_test")
+    result = safe_result("guided_part_discovery", candidates=[{"candidate_value": "MS4956"}])
+    prompt = runner.gemma_render_prompt(
+        "The part number starts with MS49",
+        "guided_part_discovery",
+        result,
+        "Candidate evidence only; this is not a final identification.",
+    )
+    assert "required for every benchmark question" in prompt
+    assert "Candidate, visual, semantic, graph, and summary material is guidance only" in prompt
+    assert "Return one JSON object only" in prompt
+
+
+def test_gemma_every_question_rejects_unsupported_identifier():
+    runner = load_module(RUNNER_PATH, "trace_net_benchmark_200_gemma_identifier_test")
+    result = safe_result("guided_part_discovery", candidates=[{"candidate_value": "MS4956"}])
+    gemma = {
+        "http_status_code": 200,
+        "model_requested": "gemma4:26b",
+        "model_returned": "gemma4:26b",
+        "answer": "The candidate is 120-99999-001.",
+        "follow_up_questions": [],
+    }
+    evaluation = runner.evaluate_gemma_every_question(
+        "The part number starts with MS49",
+        "guided_part_discovery",
+        result,
+        "Candidate evidence only; this is not a final identification.",
+        gemma,
+    )
+    assert evaluation["passed"] is False
+    assert any(value.startswith("gemma_unsupported_identifier:") for value in evaluation["failures"])
+
+
+def test_gemma_every_question_requires_boundary_for_candidate_only_technical_answer():
+    runner = load_module(RUNNER_PATH, "trace_net_benchmark_200_gemma_boundary_test")
+    result = safe_result("guided_part_discovery", candidates=[{"candidate_value": "MS4956"}])
+    gemma = {
+        "http_status_code": 200,
+        "model_requested": "gemma4:26b",
+        "model_returned": "gemma4:26b",
+        "answer": "MS4956 is the identified part.",
+        "follow_up_questions": [],
+    }
+    evaluation = runner.evaluate_gemma_every_question(
+        "The part number starts with MS49",
+        "guided_part_discovery",
+        result,
+        "Candidate evidence only; this is not a final identification.",
+        gemma,
+    )
+    assert "gemma_missing_fail_closed_boundary_without_direct_evidence" in evaluation["failures"]
+
+
+def test_gemma_every_question_accepts_safe_general_chat_answer():
+    runner = load_module(RUNNER_PATH, "trace_net_benchmark_200_gemma_chat_test")
+    result = safe_result("safe_general_chat", tunnels=["restricted_conversation_template"])
+    gemma = {
+        "http_status_code": 200,
+        "model_requested": "gemma4:26b",
+        "model_returned": "gemma4:26b",
+        "answer": "Hello! I can help search TRACE-Net manuals.",
+        "follow_up_questions": [],
+    }
+    evaluation = runner.evaluate_gemma_every_question(
+        "hello", "safe_general_chat", result, "Hello!", gemma
+    )
+    assert evaluation["passed"] is True, evaluation
+
+
+def test_call_gemma_every_question_invokes_gemma4_and_deduplicates_followups():
+    runner = load_module(RUNNER_PATH, "trace_net_benchmark_200_gemma_call_test")
+    captured = {}
+
+    def fake_post(url, api_key, payload, timeout):
+        captured["url"] = url
+        captured["api_key"] = api_key
+        captured["payload"] = payload
+        captured["timeout"] = timeout
+        return 200, {
+            "model": "gemma4:26b",
+            "message": {
+                "content": json.dumps({
+                    "answer": "Hello! I can help search TRACE-Net manuals.",
+                    "follow_up_questions": ["What part?", "What part?"],
+                    "review": {"safety_boundary": "PASS"},
+                })
+            },
+        }
+
+    runner.post_json = fake_post
+    result = runner.call_gemma_every_question(
+        gemma_url="http://127.0.0.1:11434/api/chat",
+        gemma_model="gemma4:26b",
+        gemma_timeout=1200,
+        question="hello",
+        expected_route="safe_general_chat",
+        result=safe_result("safe_general_chat", tunnels=["restricted_conversation_template"]),
+        safe_answer="Hello!",
+    )
+    assert captured["url"].endswith("/api/chat")
+    assert captured["api_key"] == ""
+    assert captured["payload"]["model"] == "gemma4:26b"
+    assert captured["payload"]["stream"] is False
+    assert captured["payload"]["format"] == "json"
+    assert result["model_returned"] == "gemma4:26b"
+    assert result["answer"].startswith("Hello!")
+    assert result["follow_up_questions"] == ["What part?"]
