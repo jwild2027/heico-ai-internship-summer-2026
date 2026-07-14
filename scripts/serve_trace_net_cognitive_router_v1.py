@@ -33,6 +33,8 @@ from dataclasses import asdict, dataclass, field
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
 
+from scripts.trace_net_h30_answer_boundary_v1 import enforce_h30_answer_boundaries
+
 MODULE = "trace_net_cognitive_router_v1"
 MODEL_ID = "trace-net-cognitive-router-v1"
 
@@ -1093,6 +1095,13 @@ class CognitiveRuntime:
 
         final_critic = critic_before
         content = self.render(plan, atoms, envelope, final_critic)
+        content = enforce_h30_answer_boundaries(
+            route=plan.primary_route,
+            query=atoms.latest_query,
+            query_atoms=asdict(atoms),
+            evidence_envelope=asdict(envelope),
+            answer=content,
+        )
 
         return {
             "module": MODULE,

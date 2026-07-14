@@ -4,7 +4,7 @@ set -euo pipefail
 REPO="${TRACE_NET_REPO:-/data/trace_net/repos/trace-net-h30-canary}"
 VENV="${TRACE_NET_VENV:-/home/jwild/rag-workspace/.venv}"
 PYTHON="$VENV/bin/python"
-RUNTIME="${TRACE_NET_BENCHMARK_RUNTIME:-/data/trace_net_runs/cognitive_benchmark_200_gemma_response_fix_v1}"
+RUNTIME="${TRACE_NET_BENCHMARK_RUNTIME:-/data/trace_net_runs/cognitive_benchmark_200_failure_repair_v1}"
 BASE_URL="${TRACE_NET_BENCHMARK_BASE_URL:-http://127.0.0.1:8128}"
 API_KEY="${TRACE_NET_BENCHMARK_API_KEY:-trace-net-gemma-cognitive-local}"
 TIMEOUT="${TRACE_NET_BENCHMARK_TIMEOUT_SECONDS:-1200}"
@@ -92,11 +92,19 @@ echo "COMPILING AND TESTING BENCHMARK HARNESS"
 echo "============================================================"
 
 "$PYTHON" -B -m py_compile \
+  scripts/trace_net_h30_answer_boundary_v1.py \
+  scripts/serve_trace_net_cognitive_router_v1.py \
   scripts/run_trace_net_h30_server_benchmark_200_v1.py \
-  tests/unit/test_trace_net_h30_server_benchmark_200_v1.py
+  tests/unit/test_trace_net_h30_server_benchmark_200_v1.py \
+  tests/unit/test_trace_net_h30_server_benchmark_gemma_response_fix_v1.py \
+  tests/unit/test_trace_net_h30_benchmark_failure_repair_v1.py
 
 "$PYTHON" -B -m pytest -q \
-  tests/unit/test_trace_net_h30_server_benchmark_200_v1.py
+  tests/unit/test_trace_net_h30_server_benchmark_200_v1.py \
+  tests/unit/test_trace_net_h30_server_benchmark_gemma_response_fix_v1.py \
+  tests/unit/test_trace_net_h30_benchmark_failure_repair_v1.py \
+  tests/unit/test_trace_net_cognitive_router_v1.py \
+  tests/unit/test_trace_net_full_gemma_cognitive_v1.py
 
 echo "benchmark_harness_tests=PASS"
 
@@ -146,6 +154,8 @@ print(f"failure_count={summary.get('failure_count')}")
 print(f"routes_covered={len(summary.get('routes_covered') or [])}/19")
 print(f"gemma_every_question={summary.get('gemma_every_question_count')}/200")
 print(f"gemma_every_question_pass={summary.get('gemma_every_question_pass_count')}/200")
+print(f"gemma_raw_pass={summary.get('gemma_raw_pass_count')}/200")
+print(f"gemma_bounded_fallback={summary.get('gemma_bounded_fallback_count')}/200")
 print(f"gemma_model={summary.get('gemma_model')}")
 print(f"json={path}")
 print(f"jsonl={value.get('output_paths',{}).get('jsonl')}")

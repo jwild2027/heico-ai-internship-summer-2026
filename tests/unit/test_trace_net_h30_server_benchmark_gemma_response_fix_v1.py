@@ -156,6 +156,6 @@ def test_preflight_passes_only_with_nonempty_answers_and_thinking_disabled():
 
 def test_launcher_uses_fresh_runtime_and_structured_preflight():
     text = LAUNCHER_PATH.read_text(encoding="utf-8")
-    assert "cognitive_benchmark_200_gemma_response_fix_v1" in text
+    assert "cognitive_benchmark_200_failure_repair_v1" in text
     assert "--gemma-preflight-count 3" in text
     assert "think=false" in text
