@@ -31,13 +31,13 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
 
 MODULE = "trace_net_h30_server_benchmark_200_v1"
 VERSION = "v1"
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 4
 DEFAULT_BANK = ""
 EMBEDDED_QUESTION_BANK_JSON = r'''{"module":"trace_net_h30_server_benchmark_200_question_bank_v1","version":"v1","question_count":200,"route_count":19,"routes":["safe_general_chat","exact_identifier_lookup","guided_part_discovery","ata_system_discovery","nomenclature_function_search","exact_table_ipl_lookup","visual_figure_callout_lookup","procedure_task_lookup","warning_caution_note_lookup","authority_eligibility_verification","document_page_navigation","graph_relationship_reasoning","semantic_discovery","cross_source_comparison","contradiction_resolution","ocr_scan_recovery","high_degree_entity_aggregation","multi_question_research","clarification_no_evidence"],"expected_route_counts":{"safe_general_chat":10,"exact_identifier_lookup":11,"guided_part_discovery":10,"ata_system_discovery":11,"nomenclature_function_search":10,"exact_table_ipl_lookup":10,"visual_figure_callout_lookup":12,"procedure_task_lookup":10,"warning_caution_note_lookup":10,"authority_eligibility_verification":12,"document_page_navigation":10,"graph_relationship_reasoning":10,"semantic_discovery":10,"cross_source_comparison":11,"contradiction_resolution":10,"ocr_scan_recovery":11,"high_degree_entity_aggregation":11,"multi_question_research":11,"clarification_no_evidence":10},"purpose":"Exercise every H30 cognitive route plus the legacy normal, guided, visual, table, OCR, graph, semantic, Self-RAG, CRAG, and Gemma validation paths.","safety_contract":{"read_only":true,"source_truth_mutation_allowed":false,"postgres_write_attempt":false,"qdrant_write_attempt":false,"opensearch_write_attempt":false},"questions":[{"question_id":"q001","suite":"route_core","expected_route":"safe_general_chat","legacy_family":"general_chat","question":"hello"},{"question_id":"q002","suite":"route_core","expected_route":"safe_general_chat","legacy_family":"general_chat","question":"hi"},{"question_id":"q003","suite":"route_core","expected_route":"safe_general_chat","legacy_family":"general_chat","question":"hey"},{"question_id":"q004","suite":"route_core","expected_route":"safe_general_chat","legacy_family":"general_chat","question":"good morning"},{"question_id":"q005","suite":"route_core","expected_route":"safe_general_chat","legacy_family":"general_chat","question":"good afternoon"},{"question_id":"q006","suite":"route_core","expected_route":"safe_general_chat","legacy_family":"general_chat","question":"good evening"},{"question_id":"q007","suite":"route_core","expected_route":"safe_general_chat","legacy_family":"general_chat","question":"howdy"},{"question_id":"q008","suite":"route_core","expected_route":"safe_general_chat","legacy_family":"general_chat","question":"thanks"},{"question_id":"q009","suite":"route_core","expected_route":"safe_general_chat","legacy_family":"general_chat","question":"thank you"},{"question_id":"q010","suite":"route_core","expected_route":"safe_general_chat","legacy_family":"general_chat","question":"what can you do?"},{"question_id":"q011","suite":"route_core","expected_route":"exact_identifier_lookup","legacy_family":"normal_source_truth_plus_guided_visual_recovery","question":"Find part 120-41824-003"},{"question_id":"q012","suite":"route_core","expected_route":"exact_identifier_lookup","legacy_family":"normal_source_truth_plus_guided_visual_recovery","question":"Look up part 120-41824-007"},{"question_id":"q013","suite":"route_core","expected_route":"exact_identifier_lookup","legacy_family":"normal_source_truth_plus_guided_visual_recovery","question":"Search for P/N 120-41824-001"},{"question_id":"q014","suite":"route_core","expected_route":"exact_identifier_lookup","legacy_family":"normal_source_truth_plus_guided_visual_recovery","question":"Locate part 120-45850-007"},{"question_id":"q015","suite":"route_core","expected_route":"exact_identifier_lookup","legacy_family":"normal_source_truth_plus_guided_visual_recovery","question":"Find component 120-45850-507"},{"question_id":"q016","suite":"route_core","expected_route":"exact_identifier_lookup","legacy_family":"normal_source_truth_plus_guided_visual_recovery","question":"Look up P/N 120-41824-009"},{"question_id":"q017","suite":"route_core","expected_route":"exact_identifier_lookup","legacy_family":"normal_source_truth_plus_guided_visual_recovery","question":"Find part 120-41824-297"},{"question_id":"q018","suite":"route_core","expected_route":"exact_identifier_lookup","legacy_family":"normal_source_truth_plus_guided_visual_recovery","question":"Search for part 120-11760-084"},{"question_id":"q019","suite":"route_core","expected_route":"exact_identifier_lookup","legacy_family":"normal_source_truth_plus_guided_visual_recovery","question":"Locate P/N 120-45850-003"},{"question_id":"q020","suite":"route_core","expected_route":"exact_identifier_lookup","legacy_family":"normal_source_truth_plus_guided_visual_recovery","question":"Find part 120-41824"},{"question_id":"q021","suite":"route_core","expected_route":"guided_part_discovery","legacy_family":"guided_candidate_discovery_plus_source_resolution","question":"The P/N contains 41824"},{"question_id":"q022","suite":"route_core","expected_route":"guided_part_discovery","legacy_family":"guided_candidate_discovery_plus_source_resolution","question":"The part number starts with MS49"},{"question_id":"q023","suite":"route_core","expected_route":"guided_part_discovery","legacy_family":"guided_candidate_discovery_plus_source_resolution","question":"The P/N ends with 003"},{"question_id":"q024","suite":"route_core","expected_route":"guided_part_discovery","legacy_family":"guided_candidate_discovery_plus_source_resolution","question":"I only remember that the P/N starts with NAS"},{"question_id":"q025","suite":"route_core","expected_route":"guided_part_discovery","legacy_family":"guided_candidate_discovery_plus_source_resolution","question":"The component number contains 45850"},{"question_id":"q026","suite":"route_core","expected_route":"guided_part_discovery","legacy_family":"guided_candidate_discovery_plus_source_resolution","question":"The part begins with 120-4"},{"question_id":"q027","suite":"route_core","expected_route":"guided_part_discovery","legacy_family":"guided_candidate_discovery_plus_source_resolution","question":"I only know the part number contains 4956"},{"question_id":"q028","suite":"route_core","expected_route":"guided_part_discovery","legacy_family":"guided_candidate_discovery_plus_source_resolution","question":"The P/N suffix is 007"},{"question_id":"q029","suite":"route_core","expected_route":"guided_part_discovery","legacy_family":"guided_candidate_discovery_plus_source_resolution","question":"The component number starts with MS"},{"question_id":"q030","suite":"route_core","expected_route":"guided_part_discovery","legacy_family":"guided_candidate_discovery_plus_source_resolution","question":"I only remember a part number fragment 41824"},{"question_id":"q031","suite":"route_core","expected_route":"ata_system_discovery","legacy_family":"guided_normal_semantic_hybrid","question":"I have a part I want to find, ATA number starts with 25"},{"question_id":"q032","suite":"route_core","expected_route":"ata_system_discovery","legacy_family":"guided_normal_semantic_hybrid","question":"Search ATA 25"},{"question_id":"q033","suite":"route_core","expected_route":"ata_system_discovery","legacy_family":"guided_normal_semantic_hybrid","question":"Find material under ATA 25-21-00"},{"question_id":"q034","suite":"route_core","expected_route":"ata_system_discovery","legacy_family":"guided_normal_semantic_hybrid","question":"The ATA chapter begins with 32"},{"question_id":"q035","suite":"route_core","expected_route":"ata_system_discovery","legacy_family":"guided_normal_semantic_hybrid","question":"Look in chapter 21"},{"question_id":"q036","suite":"route_core","expected_route":"ata_system_discovery","legacy_family":"guided_normal_semantic_hybrid","question":"ATA code starts with 27"},{"question_id":"q037","suite":"route_core","expected_route":"ata_system_discovery","legacy_family":"guided_normal_semantic_hybrid","question":"The component is somewhere in ATA 33"},{"question_id":"q038","suite":"route_core","expected_route":"ata_system_discovery","legacy_family":"guided_normal_semantic_hybrid","question":"Search the ATA 35 system area"},{"question_id":"q039","suite":"route_core","expected_route":"ata_system_discovery","legacy_family":"guided_normal_semantic_hybrid","question":"I only know the ATA chapter is 24"},{"question_id":"q040","suite":"route_core","expected_route":"ata_system_discovery","legacy_family":"guided_normal_semantic_hybrid","question":"Find the relevant section in ATA 52"},{"question_id":"q041","suite":"route_core","expected_route":"nomenclature_function_search","legacy_family":"guided_normal_visual_hybrid","question":"Find the locking ring near the seat"},{"question_id":"q042","suite":"route_core","expected_route":"nomenclature_function_search","legacy_family":"guided_normal_visual_hybrid","question":"Search for a retaining ring in the cabin"},{"question_id":"q043","suite":"route_core","expected_route":"nomenclature_function_search","legacy_family":"guided_normal_visual_hybrid","question":"Find the bracket near the armrest"},{"question_id":"q044","suite":"route_core","expected_route":"nomenclature_function_search","legacy_family":"guided_normal_visual_hybrid","question":"Locate the latch near the seat"},{"question_id":"q045","suite":"route_core","expected_route":"nomenclature_function_search","legacy_family":"guided_normal_visual_hybrid","question":"Find a fastener near the seat assembly"},{"question_id":"q046","suite":"route_core","expected_route":"nomenclature_function_search","legacy_family":"guided_normal_visual_hybrid","question":"Search for the hinge by the armrest"},{"question_id":"q047","suite":"route_core","expected_route":"nomenclature_function_search","legacy_family":"guided_normal_visual_hybrid","question":"Find the washer used near the seat"},{"question_id":"q048","suite":"route_core","expected_route":"nomenclature_function_search","legacy_family":"guided_normal_visual_hybrid","question":"Locate the spring in the cabin panel"},{"question_id":"q049","suite":"route_core","expected_route":"nomenclature_function_search","legacy_family":"guided_normal_visual_hybrid","question":"Find the clip near the seat"},{"question_id":"q050","suite":"route_core","expected_route":"nomenclature_function_search","legacy_family":"guided_normal_visual_hybrid","question":"Search for a fitting in the galley"},{"question_id":"q051","suite":"route_core","expected_route":"exact_table_ipl_lookup","legacy_family":"normal_table_structured_retrieval","question":"Search the IPL table for item 14"},{"question_id":"q052","suite":"route_core","expected_route":"exact_table_ipl_lookup","legacy_family":"normal_table_structured_retrieval","question":"Find item 17 in the illustrated parts list"},{"question_id":"q053","suite":"route_core","expected_route":"exact_table_ipl_lookup","legacy_family":"normal_table_structured_retrieval","question":"Show the table row for item 3"},{"question_id":"q054","suite":"route_core","expected_route":"exact_table_ipl_lookup","legacy_family":"normal_table_structured_retrieval","question":"Search the IPL for nomenclature RING LOCKING"},{"question_id":"q055","suite":"route_core","expected_route":"exact_table_ipl_lookup","legacy_family":"normal_table_structured_retrieval","question":"Find the quantity column for item 22"},{"question_id":"q056","suite":"route_core","expected_route":"exact_table_ipl_lookup","legacy_family":"normal_table_structured_retrieval","question":"Look up item 8 in the parts table"},{"question_id":"q057","suite":"route_core","expected_route":"exact_table_ipl_lookup","legacy_family":"normal_table_structured_retrieval","question":"Search the row containing 120-41824-003"},{"question_id":"q058","suite":"route_core","expected_route":"exact_table_ipl_lookup","legacy_family":"normal_table_structured_retrieval","question":"Find the table entry for SINGLE PASSENGER SEAT ASSY"},{"question_id":"q059","suite":"route_core","expected_route":"exact_table_ipl_lookup","legacy_family":"normal_table_structured_retrieval","question":"Show item 5 from the IPL"},{"question_id":"q060","suite":"route_core","expected_route":"exact_table_ipl_lookup","legacy_family":"normal_table_structured_retrieval","question":"Which column lists the vendor code in the table?"},{"question_id":"q061","suite":"route_core","expected_route":"visual_figure_callout_lookup","legacy_family":"visual_figure_retrieval","question":"Show the diagram for this component"},{"question_id":"q062","suite":"route_core","expected_route":"visual_figure_callout_lookup","legacy_family":"visual_figure_retrieval","question":"Find figure 2 sheet 1"},{"question_id":"q063","suite":"route_core","expected_route":"visual_figure_callout_lookup","legacy_family":"visual_figure_retrieval","question":"Show the drawing for part 120-41824-003"},{"question_id":"q064","suite":"route_core","expected_route":"visual_figure_callout_lookup","legacy_family":"visual_figure_retrieval","question":"Which callout points to the locking ring?"},{"question_id":"q065","suite":"route_core","expected_route":"visual_figure_callout_lookup","legacy_family":"visual_figure_retrieval","question":"Find an exploded view of the seat assembly"},{"question_id":"q066","suite":"route_core","expected_route":"visual_figure_callout_lookup","legacy_family":"visual_figure_retrieval","question":"Show the illustration for the armrest"},{"question_id":"q067","suite":"route_core","expected_route":"visual_figure_callout_lookup","legacy_family":"visual_figure_retrieval","question":"Locate figure 15"},{"question_id":"q068","suite":"route_core","expected_route":"visual_figure_callout_lookup","legacy_family":"visual_figure_retrieval","question":"Find the schematic for the seat latch"},{"question_id":"q069","suite":"route_core","expected_route":"visual_figure_callout_lookup","legacy_family":"visual_figure_retrieval","question":"Show the image containing part 120-45850-007"},{"question_id":"q070","suite":"route_core","expected_route":"visual_figure_callout_lookup","legacy_family":"visual_figure_retrieval","question":"Find the visual page for callout 17"},{"question_id":"q071","suite":"route_core","expected_route":"procedure_task_lookup","legacy_family":"normal_procedure_retrieval","question":"How do I remove this assembly?"},{"question_id":"q072","suite":"route_core","expected_route":"procedure_task_lookup","legacy_family":"normal_procedure_retrieval","question":"What are the installation steps for the seat latch?"},{"question_id":"q073","suite":"route_core","expected_route":"procedure_task_lookup","legacy_family":"normal_procedure_retrieval","question":"Give the procedure for replacing the armrest"},{"question_id":"q074","suite":"route_core","expected_route":"procedure_task_lookup","legacy_family":"normal_procedure_retrieval","question":"What tools are required for this task?"},{"question_id":"q075","suite":"route_core","expected_route":"procedure_task_lookup","legacy_family":"normal_procedure_retrieval","question":"Show the disassembly steps for the seat assembly"},{"question_id":"q076","suite":"route_core","expected_route":"procedure_task_lookup","legacy_family":"normal_procedure_retrieval","question":"How is the bracket installed?"},{"question_id":"q077","suite":"route_core","expected_route":"procedure_task_lookup","legacy_family":"normal_procedure_retrieval","question":"What step follows removal of the panel?"},{"question_id":"q078","suite":"route_core","expected_route":"procedure_task_lookup","legacy_family":"normal_procedure_retrieval","question":"Find the assembly procedure for the seat"},{"question_id":"q079","suite":"route_core","expected_route":"procedure_task_lookup","legacy_family":"normal_procedure_retrieval","question":"How do I replace the fitting?"},{"question_id":"q080","suite":"route_core","expected_route":"procedure_task_lookup","legacy_family":"normal_procedure_retrieval","question":"List the steps to remove the cover"},{"question_id":"q081","suite":"route_core","expected_route":"warning_caution_note_lookup","legacy_family":"normal_warning_retrieval","question":"What warning applies to this task?"},{"question_id":"q082","suite":"route_core","expected_route":"warning_caution_note_lookup","legacy_family":"normal_warning_retrieval","question":"Find the caution for seat removal"},{"question_id":"q083","suite":"route_core","expected_route":"warning_caution_note_lookup","legacy_family":"normal_warning_retrieval","question":"Show the note associated with the procedure"},{"question_id":"q084","suite":"route_core","expected_route":"warning_caution_note_lookup","legacy_family":"normal_warning_retrieval","question":"What safety precaution applies here?"},{"question_id":"q085","suite":"route_core","expected_route":"warning_caution_note_lookup","legacy_family":"normal_warning_retrieval","question":"Find any hazard statement for this task"},{"question_id":"q086","suite":"route_core","expected_route":"warning_caution_note_lookup","legacy_family":"normal_warning_retrieval","question":"What caution appears before installation?"},{"question_id":"q087","suite":"route_core","expected_route":"warning_caution_note_lookup","legacy_family":"normal_warning_retrieval","question":"Show warnings for the panel procedure"},{"question_id":"q088","suite":"route_core","expected_route":"warning_caution_note_lookup","legacy_family":"normal_warning_retrieval","question":"Find the safety note for this assembly"},{"question_id":"q089","suite":"route_core","expected_route":"warning_caution_note_lookup","legacy_family":"normal_warning_retrieval","question":"What precaution applies to removing the seat?"},{"question_id":"q090","suite":"route_core","expected_route":"warning_caution_note_lookup","legacy_family":"normal_warning_retrieval","question":"Find the warning block related to the fitting"},{"question_id":"q091","suite":"route_core","expected_route":"authority_eligibility_verification","legacy_family":"normal_authority_retrieval","question":"Is part 120-41824-003 an approved replacement?"},{"question_id":"q092","suite":"route_core","expected_route":"authority_eligibility_verification","legacy_family":"normal_authority_retrieval","question":"What effectivity applies to part 120-41824-007?"},{"question_id":"q093","suite":"route_core","expected_route":"authority_eligibility_verification","legacy_family":"normal_authority_retrieval","question":"Is this component interchangeable?"},{"question_id":"q094","suite":"route_core","expected_route":"authority_eligibility_verification","legacy_family":"normal_authority_retrieval","question":"Is part 120-45850-007 eligible?"},{"question_id":"q095","suite":"route_core","expected_route":"authority_eligibility_verification","legacy_family":"normal_authority_retrieval","question":"Does this part fitment have explicit authority?"},{"question_id":"q096","suite":"route_core","expected_route":"authority_eligibility_verification","legacy_family":"normal_authority_retrieval","question":"What installation authority applies to this component?"},{"question_id":"q097","suite":"route_core","expected_route":"authority_eligibility_verification","legacy_family":"normal_authority_retrieval","question":"What applicability authority exists for this component?"},{"question_id":"q098","suite":"route_core","expected_route":"authority_eligibility_verification","legacy_family":"normal_authority_retrieval","question":"Is 120-41824-001 approved for installation?"},{"question_id":"q099","suite":"route_core","expected_route":"authority_eligibility_verification","legacy_family":"normal_authority_retrieval","question":"Can part 120-41824-009 be used as an approved replacement?"},{"question_id":"q100","suite":"route_core","expected_route":"authority_eligibility_verification","legacy_family":"normal_authority_retrieval","question":"What interchangeability authority exists for 120-41824-003?"},{"question_id":"q101","suite":"route_core","expected_route":"document_page_navigation","legacy_family":"normal_navigation_retrieval","question":"Which page discusses the component?"},{"question_id":"q102","suite":"route_core","expected_route":"document_page_navigation","legacy_family":"normal_navigation_retrieval","question":"Where is the seat assembly discussed?"},{"question_id":"q103","suite":"route_core","expected_route":"document_page_navigation","legacy_family":"normal_navigation_retrieval","question":"Find the page containing the locking ring"},{"question_id":"q104","suite":"route_core","expected_route":"document_page_navigation","legacy_family":"normal_navigation_retrieval","question":"Take me to the manual location for the armrest"},{"question_id":"q105","suite":"route_core","expected_route":"document_page_navigation","legacy_family":"normal_navigation_retrieval","question":"Which page contains part 120-41824-003?"},{"question_id":"q106","suite":"route_core","expected_route":"document_page_navigation","legacy_family":"normal_navigation_retrieval","question":"Where does the manual mention the seat latch?"},{"question_id":"q107","suite":"route_core","expected_route":"document_page_navigation","legacy_family":"normal_navigation_retrieval","question":"Find the first page for the cabin panel"},{"question_id":"q108","suite":"route_core","expected_route":"document_page_navigation","legacy_family":"normal_navigation_retrieval","question":"Show nearby pages for t_p_120_1176_p000084"},{"question_id":"q109","suite":"route_core","expected_route":"document_page_navigation","legacy_family":"normal_navigation_retrieval","question":"What is the location in the manual for the fitting?"},{"question_id":"q110","suite":"route_core","expected_route":"document_page_navigation","legacy_family":"normal_navigation_retrieval","question":"Find the page where the bracket appears"},{"question_id":"q111","suite":"route_core","expected_route":"graph_relationship_reasoning","legacy_family":"graph_guidance_plus_source_resolution","question":"What assembly contains this part?"},{"question_id":"q112","suite":"route_core","expected_route":"graph_relationship_reasoning","legacy_family":"graph_guidance_plus_source_resolution","question":"Which components are connected to the seat assembly?"},{"question_id":"q113","suite":"route_core","expected_route":"graph_relationship_reasoning","legacy_family":"graph_guidance_plus_source_resolution","question":"What is linked to the armrest?"},{"question_id":"q114","suite":"route_core","expected_route":"graph_relationship_reasoning","legacy_family":"graph_guidance_plus_source_resolution","question":"Which parts are mentioned together with the latch?"},{"question_id":"q115","suite":"route_core","expected_route":"graph_relationship_reasoning","legacy_family":"graph_guidance_plus_source_resolution","question":"What relationship connects the bracket and seat assembly?"},{"question_id":"q116","suite":"route_core","expected_route":"graph_relationship_reasoning","legacy_family":"graph_guidance_plus_source_resolution","question":"Which assembly contains the locking ring?"},{"question_id":"q117","suite":"route_core","expected_route":"graph_relationship_reasoning","legacy_family":"graph_guidance_plus_source_resolution","question":"What references this component?"},{"question_id":"q118","suite":"route_core","expected_route":"graph_relationship_reasoning","legacy_family":"graph_guidance_plus_source_resolution","question":"What is connected to part 120-41824-003?"},{"question_id":"q119","suite":"route_core","expected_route":"graph_relationship_reasoning","legacy_family":"graph_guidance_plus_source_resolution","question":"Which components are linked to the cabin panel?"},{"question_id":"q120","suite":"route_core","expected_route":"graph_relationship_reasoning","legacy_family":"graph_guidance_plus_source_resolution","question":"What assembly relationship exists for the seat fitting?"},{"question_id":"q121","suite":"route_core","expected_route":"semantic_discovery","legacy_family":"qdrant_summary_graph_plus_source_resolution","question":"Find pages about corrosion prevention topics"},{"question_id":"q122","suite":"route_core","expected_route":"semantic_discovery","legacy_family":"qdrant_summary_graph_plus_source_resolution","question":"Search for information related to electrical bonding"},{"question_id":"q123","suite":"route_core","expected_route":"semantic_discovery","legacy_family":"qdrant_summary_graph_plus_source_resolution","question":"Find material about passenger comfort systems"},{"question_id":"q124","suite":"route_core","expected_route":"semantic_discovery","legacy_family":"qdrant_summary_graph_plus_source_resolution","question":"Find content related to surface treatment"},{"question_id":"q125","suite":"route_core","expected_route":"semantic_discovery","legacy_family":"qdrant_summary_graph_plus_source_resolution","question":"Search for pages on structural inspection"},{"question_id":"q126","suite":"route_core","expected_route":"semantic_discovery","legacy_family":"qdrant_summary_graph_plus_source_resolution","question":"Find something about corrosion control"},{"question_id":"q127","suite":"route_core","expected_route":"semantic_discovery","legacy_family":"qdrant_summary_graph_plus_source_resolution","question":"Locate information about cleaning materials"},{"question_id":"q128","suite":"route_core","expected_route":"semantic_discovery","legacy_family":"qdrant_summary_graph_plus_source_resolution","question":"Search the topic of environmental protection"},{"question_id":"q129","suite":"route_core","expected_route":"semantic_discovery","legacy_family":"qdrant_summary_graph_plus_source_resolution","question":"What does the manual discuss about lubrication requirements?"},{"question_id":"q130","suite":"route_core","expected_route":"semantic_discovery","legacy_family":"qdrant_summary_graph_plus_source_resolution","question":"Find pages on general maintenance philosophy"},{"question_id":"q131","suite":"route_core","expected_route":"cross_source_comparison","legacy_family":"normal_cross_source_retrieval","question":"Compare both manuals for the same topic"},{"question_id":"q132","suite":"route_core","expected_route":"cross_source_comparison","legacy_family":"normal_cross_source_retrieval","question":"Compare the two revisions for this component"},{"question_id":"q133","suite":"route_core","expected_route":"cross_source_comparison","legacy_family":"normal_cross_source_retrieval","question":"What is the difference between revision 3 and revision 4?"},{"question_id":"q134","suite":"route_core","expected_route":"cross_source_comparison","legacy_family":"normal_cross_source_retrieval","question":"Compare the nomenclature used in both manuals"},{"question_id":"q135","suite":"route_core","expected_route":"cross_source_comparison","legacy_family":"normal_cross_source_retrieval","question":"Compare source A with source B for this part"},{"question_id":"q136","suite":"route_core","expected_route":"cross_source_comparison","legacy_family":"normal_cross_source_retrieval","question":"What changed between revisions?"},{"question_id":"q137","suite":"route_core","expected_route":"cross_source_comparison","legacy_family":"normal_cross_source_retrieval","question":"Compare both manuals for ATA 25-21-00"},{"question_id":"q138","suite":"route_core","expected_route":"cross_source_comparison","legacy_family":"normal_cross_source_retrieval","question":"Compare the table descriptions between revisions"},{"question_id":"q139","suite":"route_core","expected_route":"cross_source_comparison","legacy_family":"normal_cross_source_retrieval","question":"Show the difference between two manual versions"},{"question_id":"q140","suite":"route_core","expected_route":"cross_source_comparison","legacy_family":"normal_cross_source_retrieval","question":"Compare how each revision describes the component"},{"question_id":"q141","suite":"route_core","expected_route":"contradiction_resolution","legacy_family":"normal_conflict_resolution","question":"These two sources disagree and show different numbers"},{"question_id":"q142","suite":"route_core","expected_route":"contradiction_resolution","legacy_family":"normal_conflict_resolution","question":"Resolve the conflict between these part references"},{"question_id":"q143","suite":"route_core","expected_route":"contradiction_resolution","legacy_family":"normal_conflict_resolution","question":"Why is there a mismatch between the two records?"},{"question_id":"q144","suite":"route_core","expected_route":"contradiction_resolution","legacy_family":"normal_conflict_resolution","question":"The pages show different numbers; which one is supported?"},{"question_id":"q145","suite":"route_core","expected_route":"contradiction_resolution","legacy_family":"normal_conflict_resolution","question":"Find the contradiction in the revision data"},{"question_id":"q146","suite":"route_core","expected_route":"contradiction_resolution","legacy_family":"normal_conflict_resolution","question":"The OCR and table disagree about the value"},{"question_id":"q147","suite":"route_core","expected_route":"contradiction_resolution","legacy_family":"normal_conflict_resolution","question":"Resolve conflicting ATA references"},{"question_id":"q148","suite":"route_core","expected_route":"contradiction_resolution","legacy_family":"normal_conflict_resolution","question":"Find the contradiction between these sources"},{"question_id":"q149","suite":"route_core","expected_route":"contradiction_resolution","legacy_family":"normal_conflict_resolution","question":"Explain the metadata mismatch for the candidate"},{"question_id":"q150","suite":"route_core","expected_route":"contradiction_resolution","legacy_family":"normal_conflict_resolution","question":"Two manual entries disagree about the nomenclature"},{"question_id":"q151","suite":"route_core","expected_route":"ocr_scan_recovery","legacy_family":"ocr_visual_recovery","question":"The scan is blurry; read the image"},{"question_id":"q152","suite":"route_core","expected_route":"ocr_scan_recovery","legacy_family":"ocr_visual_recovery","question":"Use OCR on the faint page"},{"question_id":"q153","suite":"route_core","expected_route":"ocr_scan_recovery","legacy_family":"ocr_visual_recovery","question":"The number is hard to read in the scan"},{"question_id":"q154","suite":"route_core","expected_route":"ocr_scan_recovery","legacy_family":"ocr_visual_recovery","question":"Read the image because the text is blurry"},{"question_id":"q155","suite":"route_core","expected_route":"ocr_scan_recovery","legacy_family":"ocr_visual_recovery","question":"Recover the value from the scanned page"},{"question_id":"q156","suite":"route_core","expected_route":"ocr_scan_recovery","legacy_family":"ocr_visual_recovery","question":"Check OCR for the faded label"},{"question_id":"q157","suite":"route_core","expected_route":"ocr_scan_recovery","legacy_family":"ocr_visual_recovery","question":"The scan is faint and difficult to read"},{"question_id":"q158","suite":"route_core","expected_route":"ocr_scan_recovery","legacy_family":"ocr_visual_recovery","question":"Read the blurry callout"},{"question_id":"q159","suite":"route_core","expected_route":"ocr_scan_recovery","legacy_family":"ocr_visual_recovery","question":"Use OCR to recover the table value"},{"question_id":"q160","suite":"route_core","expected_route":"ocr_scan_recovery","legacy_family":"ocr_visual_recovery","question":"The scanned text is hard to read"},{"question_id":"q161","suite":"route_core","expected_route":"high_degree_entity_aggregation","legacy_family":"graph_aggregation_plus_source_retrieval","question":"Show every document mentioning this component"},{"question_id":"q162","suite":"route_core","expected_route":"high_degree_entity_aggregation","legacy_family":"graph_aggregation_plus_source_retrieval","question":"List all references to this part"},{"question_id":"q163","suite":"route_core","expected_route":"high_degree_entity_aggregation","legacy_family":"graph_aggregation_plus_source_retrieval","question":"Find all pages for this component"},{"question_id":"q164","suite":"route_core","expected_route":"high_degree_entity_aggregation","legacy_family":"graph_aggregation_plus_source_retrieval","question":"Search across the manuals for this identifier"},{"question_id":"q165","suite":"route_core","expected_route":"high_degree_entity_aggregation","legacy_family":"graph_aggregation_plus_source_retrieval","question":"Show every page mentioning the seat assembly"},{"question_id":"q166","suite":"route_core","expected_route":"high_degree_entity_aggregation","legacy_family":"graph_aggregation_plus_source_retrieval","question":"Summarize all references to the bracket"},{"question_id":"q167","suite":"route_core","expected_route":"high_degree_entity_aggregation","legacy_family":"graph_aggregation_plus_source_retrieval","question":"Where is this part used across the manuals?"},{"question_id":"q168","suite":"route_core","expected_route":"high_degree_entity_aggregation","legacy_family":"graph_aggregation_plus_source_retrieval","question":"Find every document containing 120-41824-003"},{"question_id":"q169","suite":"route_core","expected_route":"high_degree_entity_aggregation","legacy_family":"graph_aggregation_plus_source_retrieval","question":"Show all pages that reference the fitting"},{"question_id":"q170","suite":"route_core","expected_route":"high_degree_entity_aggregation","legacy_family":"graph_aggregation_plus_source_retrieval","question":"List every page related to this component"},{"question_id":"q171","suite":"route_core","expected_route":"multi_question_research","legacy_family":"multi_route_decomposition","question":"Find part 120-41824-003 and show its figure"},{"question_id":"q172","suite":"route_core","expected_route":"multi_question_research","legacy_family":"multi_route_decomposition","question":"Find part 120-41824-007 and determine whether it is approved"},{"question_id":"q173","suite":"route_core","expected_route":"multi_question_research","legacy_family":"multi_route_decomposition","question":"Search the IPL table and show the warning for item 14"},{"question_id":"q174","suite":"route_core","expected_route":"multi_question_research","legacy_family":"multi_route_decomposition","question":"Locate ATA 25-21-00 and compare both manuals"},{"question_id":"q175","suite":"route_core","expected_route":"multi_question_research","legacy_family":"multi_route_decomposition","question":"Find the procedure and show the associated figure"},{"question_id":"q176","suite":"route_core","expected_route":"multi_question_research","legacy_family":"multi_route_decomposition","question":"Find part 120-45850-007 and identify its table row"},{"question_id":"q177","suite":"route_core","expected_route":"multi_question_research","legacy_family":"multi_route_decomposition","question":"Show the caution and removal procedure for the assembly"},{"question_id":"q178","suite":"route_core","expected_route":"multi_question_research","legacy_family":"multi_route_decomposition","question":"Find figure 15 and determine the installation authority"},{"question_id":"q179","suite":"route_core","expected_route":"multi_question_research","legacy_family":"multi_route_decomposition","question":"Locate page t_p_120_1176_p000084 and compare its revision"},{"question_id":"q180","suite":"route_core","expected_route":"multi_question_research","legacy_family":"multi_route_decomposition","question":"Find part 120-41824-003 and identify its ATA 25-21-00 section"},{"question_id":"q181","suite":"route_core","expected_route":"clarification_no_evidence","legacy_family":"clarification_exit","question":"Can you assist me?"},{"question_id":"q182","suite":"route_core","expected_route":"clarification_no_evidence","legacy_family":"clarification_exit","question":"I need help with something"},{"question_id":"q183","suite":"route_core","expected_route":"clarification_no_evidence","legacy_family":"clarification_exit","question":"I am looking for something"},{"question_id":"q184","suite":"route_core","expected_route":"clarification_no_evidence","legacy_family":"clarification_exit","question":"Can you search for it?"},{"question_id":"q185","suite":"route_core","expected_route":"clarification_no_evidence","legacy_family":"clarification_exit","question":"I do not remember enough details"},{"question_id":"q186","suite":"route_core","expected_route":"clarification_no_evidence","legacy_family":"clarification_exit","question":"Where should I begin?"},{"question_id":"q187","suite":"route_core","expected_route":"clarification_no_evidence","legacy_family":"clarification_exit","question":"I need to find an unknown thing"},{"question_id":"q188","suite":"route_core","expected_route":"clarification_no_evidence","legacy_family":"clarification_exit","question":"Can you identify what detail is missing?"},{"question_id":"q189","suite":"route_core","expected_route":"clarification_no_evidence","legacy_family":"clarification_exit","question":"I have very little information"},{"question_id":"q190","suite":"route_core","expected_route":"clarification_no_evidence","legacy_family":"clarification_exit","question":"Please help me identify it"},{"question_id":"q191","suite":"cross_route_regression","expected_route":"exact_identifier_lookup","legacy_family":"normal_source_truth_plus_guided_visual_recovery","question":"Hello, find part 120-41824-003"},{"question_id":"q192","suite":"cross_route_regression","expected_route":"ata_system_discovery","legacy_family":"guided_normal_semantic_hybrid","question":"ATA number starts with 25, not the part number"},{"question_id":"q193","suite":"cross_route_regression","expected_route":"visual_figure_callout_lookup","legacy_family":"visual_figure_retrieval","question":"Show figure 2 for part 120-41824-003"},{"question_id":"q194","suite":"cross_route_regression","expected_route":"authority_eligibility_verification","legacy_family":"normal_authority_retrieval","question":"Is part 120-41824-003 approved for installation?"},{"question_id":"q195","suite":"cross_route_regression","expected_route":"ocr_scan_recovery","legacy_family":"ocr_visual_recovery","question":"The scan is blurry and the table is hard to read"},{"question_id":"q196","suite":"cross_route_regression","expected_route":"cross_source_comparison","legacy_family":"normal_cross_source_retrieval","question":"Compare warnings between revisions"},{"question_id":"q197","suite":"cross_route_regression","expected_route":"high_degree_entity_aggregation","legacy_family":"graph_aggregation_plus_source_retrieval","question":"Show every page about the locking ring"},{"question_id":"q198","suite":"cross_route_regression","expected_route":"visual_figure_callout_lookup","legacy_family":"visual_figure_retrieval","question":"Which page has figure 15?"},{"question_id":"q199","suite":"cross_route_regression","expected_route":"multi_question_research","legacy_family":"multi_route_decomposition","question":"Find part 120-41824-003 and show item 14 in the IPL"},{"question_id":"q200","suite":"cross_route_regression","expected_route":"authority_eligibility_verification","legacy_family":"normal_authority_retrieval","question":"The P/N contains 41824 and is it approved?"}]}'''
 DEFAULT_BASE_URL = "http://127.0.0.1:8128"
 DEFAULT_API_KEY = "trace-net-gemma-cognitive-local"
 DEFAULT_OUTPUT = (
-    "/data/trace_net_runs/cognitive_benchmark_200_gemma_every_question_v1/"
+    "/data/trace_net_runs/cognitive_benchmark_200_gemma_response_fix_v1/"
     "trace_net_h30_server_benchmark_200_v1.json"
 )
 DEFAULT_GEMMA_URL = "http://127.0.0.1:11434/api/chat"
@@ -327,6 +327,65 @@ BOUNDED TRACE-NET MATERIAL
 """
 
 
+def _ollama_text(value: Any) -> str:
+    if isinstance(value, str):
+        return value.strip()
+    if isinstance(value, list):
+        parts: List[str] = []
+        for item in value:
+            if isinstance(item, Mapping):
+                child = item.get("text") or item.get("content")
+                if child:
+                    parts.append(str(child))
+            elif item is not None:
+                parts.append(str(item))
+        return "\n".join(parts).strip()
+    return ""
+
+
+def extract_ollama_chat_text(response: Mapping[str, Any]) -> Tuple[str, str]:
+    """Return parseable structured output from supported Ollama response fields.
+
+    Gemma thinking models may populate ``message.thinking`` while leaving
+    ``message.content`` empty. The benchmark requests ``think=false``, but this
+    guarded fallback keeps response parsing compatible across Ollama versions.
+    """
+    message = response.get("message") if isinstance(response, Mapping) else None
+    candidates: List[Tuple[str, Any]] = []
+    if isinstance(message, Mapping):
+        candidates.extend((
+            ("message.content", message.get("content")),
+            ("message.thinking", message.get("thinking")),
+        ))
+    candidates.append(("response", response.get("response") if isinstance(response, Mapping) else None))
+
+    nonempty: List[Tuple[str, str]] = []
+    for source, raw in candidates:
+        text = _ollama_text(raw)
+        if not text:
+            continue
+        nonempty.append((source, text))
+        parsed = parse_gemma_json(text)
+        if parsed.get("answer"):
+            return text, source
+    return nonempty[0] if nonempty else ("", "none")
+
+
+def gemma_response_diagnostic(response: Mapping[str, Any]) -> Dict[str, Any]:
+    message = response.get("message") if isinstance(response, Mapping) else None
+    message_map = message if isinstance(message, Mapping) else {}
+    return {
+        "top_level_keys": sorted(str(key) for key in response.keys()) if isinstance(response, Mapping) else [],
+        "message_keys": sorted(str(key) for key in message_map.keys()),
+        "message_content_chars": len(_ollama_text(message_map.get("content"))),
+        "message_thinking_chars": len(_ollama_text(message_map.get("thinking"))),
+        "response_chars": len(_ollama_text(response.get("response") if isinstance(response, Mapping) else None)),
+        "done": response.get("done") if isinstance(response, Mapping) else None,
+        "done_reason": response.get("done_reason") if isinstance(response, Mapping) else None,
+        "eval_count": response.get("eval_count") if isinstance(response, Mapping) else None,
+    }
+
+
 def call_gemma_every_question(
     *,
     gemma_url: str,
@@ -336,8 +395,9 @@ def call_gemma_every_question(
     expected_route: str,
     result: Mapping[str, Any],
     safe_answer: str,
+    max_attempts: int = 2,
 ) -> Dict[str, Any]:
-    payload = {
+    base_payload = {
         "model": gemma_model,
         "messages": [
             {"role": "system", "content": "Follow the TRACE-Net evidence-only benchmark rules exactly."},
@@ -345,29 +405,128 @@ def call_gemma_every_question(
         ],
         "stream": False,
         "format": "json",
+        "think": False,
         "options": {"temperature": 0, "num_predict": 900},
     }
-    started = time.time()
-    status, response = post_json(gemma_url, "", payload, gemma_timeout)
-    elapsed = round(time.time() - started, 3)
-    message = response.get("message") if isinstance(response, Mapping) else None
-    content = str(message.get("content") or "") if isinstance(message, Mapping) else ""
-    parsed = parse_gemma_json(content)
-    answer = str(parsed.get("answer") or "").strip()
-    followups_raw = parsed.get("follow_up_questions")
+    overall_started = time.time()
+    attempts: List[Dict[str, Any]] = []
+    final_status = 599
+    final_response: Dict[str, Any] = {}
+    final_content = ""
+    final_source = "none"
+    final_parsed: Dict[str, Any] = {}
+
+    for attempt_index in range(1, max(1, int(max_attempts)) + 1):
+        payload = dict(base_payload)
+        if attempt_index > 1:
+            payload["messages"] = list(base_payload["messages"]) + [{
+                "role": "user",
+                "content": "The prior response was empty or malformed. Return the required JSON object now.",
+            }]
+        attempt_started = time.time()
+        status, response = post_json(gemma_url, "", payload, gemma_timeout)
+        attempt_elapsed = round(time.time() - attempt_started, 3)
+        content, content_source = extract_ollama_chat_text(response)
+        parsed = parse_gemma_json(content)
+        answer = str(parsed.get("answer") or "").strip()
+        diagnostic = gemma_response_diagnostic(response)
+        attempts.append({
+            "attempt": attempt_index,
+            "http_status_code": status,
+            "elapsed_seconds": attempt_elapsed,
+            "content_source": content_source,
+            "answer_character_count": len(answer),
+            "diagnostic": diagnostic,
+        })
+        final_status = status
+        final_response = dict(response) if isinstance(response, Mapping) else {}
+        final_content = content
+        final_source = content_source
+        final_parsed = parsed
+        if status == 200 and answer:
+            break
+
+    elapsed = round(time.time() - overall_started, 3)
+    answer = str(final_parsed.get("answer") or "").strip()
+    followups_raw = final_parsed.get("follow_up_questions")
     followups = unique_strings(followups_raw if isinstance(followups_raw, list) else [])
-    review = parsed.get("review") if isinstance(parsed.get("review"), Mapping) else {}
+    review = final_parsed.get("review") if isinstance(final_parsed.get("review"), Mapping) else {}
     return {
-        "http_status_code": status,
+        "http_status_code": final_status,
         "model_requested": gemma_model,
-        "model_returned": response.get("model") if isinstance(response, Mapping) else None,
+        "model_returned": final_response.get("model"),
         "elapsed_seconds": elapsed,
-        "raw_content": content,
-        "parsed": parsed,
+        "raw_content": final_content,
+        "content_source": final_source,
+        "thinking_disabled": True,
+        "attempt_count": len(attempts),
+        "attempts": attempts,
+        "response_diagnostic": gemma_response_diagnostic(final_response),
+        "parsed": final_parsed,
         "answer": answer,
         "follow_up_questions": followups,
         "review": dict(review),
-        "error": response.get("error") if isinstance(response, Mapping) else None,
+        "error": final_response.get("error"),
+    }
+
+
+def preflight_gemma_structured_output(
+    *,
+    gemma_url: str,
+    gemma_model: str,
+    gemma_timeout: float,
+    probe_count: int,
+) -> Dict[str, Any]:
+    probes = ("hello", "hi", "what can you do?")
+    records: List[Dict[str, Any]] = []
+    for index in range(max(1, int(probe_count))):
+        question = probes[index % len(probes)]
+        result = {
+            "route": "safe_general_chat",
+            "answer_permission": False,
+            "final_answer_allowed": False,
+            "can_answer_directly": False,
+            "can_prove_claims": False,
+            "source_truth_mutation_allowed": False,
+            "writer_mode": "deterministic_fail_closed",
+            "post_answer_validation": {"accepted": True, "quality_status": "PASS", "failures": []},
+            "evidence_envelope": {
+                "direct_evidence": [], "candidate_evidence": [], "visual_guidance": [],
+                "semantic_guidance": [], "authority_evidence": [], "contradictions": [],
+                "uncertainties": [], "retrieval_tunnels_used": ["restricted_conversation_template"],
+            },
+        }
+        gemma = call_gemma_every_question(
+            gemma_url=gemma_url,
+            gemma_model=gemma_model,
+            gemma_timeout=gemma_timeout,
+            question=question,
+            expected_route="safe_general_chat",
+            result=result,
+            safe_answer="Hello! I can help search TRACE-Net manuals.",
+        )
+        passed = (
+            gemma.get("http_status_code") == 200
+            and bool(str(gemma.get("answer") or "").strip())
+            and gemma.get("thinking_disabled") is True
+        )
+        records.append({
+            "probe": index + 1,
+            "question": question,
+            "passed": passed,
+            "http_status_code": gemma.get("http_status_code"),
+            "answer_character_count": len(str(gemma.get("answer") or "")),
+            "content_source": gemma.get("content_source"),
+            "attempt_count": gemma.get("attempt_count"),
+            "elapsed_seconds": gemma.get("elapsed_seconds"),
+            "response_diagnostic": gemma.get("response_diagnostic"),
+        })
+    return {
+        "quality_status": "PASS" if all(row["passed"] for row in records) else "FAIL",
+        "probe_count": len(records),
+        "pass_count": sum(1 for row in records if row["passed"]),
+        "thinking_disabled": True,
+        "records": records,
     }
 
 
@@ -1055,6 +1214,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument("--gemma-tags-url", default=DEFAULT_GEMMA_TAGS_URL)
     parser.add_argument("--gemma-model", default=DEFAULT_GEMMA_MODEL)
     parser.add_argument("--gemma-timeout-seconds", type=float, default=1200.0)
+    parser.add_argument("--gemma-preflight-count", type=int, default=3)
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--start-index", type=int, default=1)
     parser.add_argument("--max-questions", type=int, default=0)
@@ -1138,8 +1298,22 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             f"required_model={args.gemma_model} available={sorted(model_names)}"
         )
     print(
-        f"GEMMA_EVERY_QUESTION_PREFLIGHT=PASS model={args.gemma_model} "
-        f"url={args.gemma_url}",
+        f"GEMMA_MODEL_PREFLIGHT=PASS model={args.gemma_model} url={args.gemma_url}",
+        flush=True,
+    )
+    structured_preflight = preflight_gemma_structured_output(
+        gemma_url=args.gemma_url,
+        gemma_model=args.gemma_model,
+        gemma_timeout=args.gemma_timeout_seconds,
+        probe_count=args.gemma_preflight_count,
+    )
+    print(json.dumps({"gemma_structured_preflight": structured_preflight}, indent=2), flush=True)
+    if structured_preflight.get("quality_status") != "PASS":
+        raise SystemExit("GEMMA_STRUCTURED_OUTPUT_PREFLIGHT_FAILED")
+    print(
+        f"GEMMA_STRUCTURED_OUTPUT_PREFLIGHT=PASS "
+        f"probes={structured_preflight.get('pass_count')}/{structured_preflight.get('probe_count')} "
+        f"think=false",
         flush=True,
     )
 
@@ -1203,7 +1377,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                 f"[{bank_index:03d}/{total}] GEMMA_DONE "
                 f"status={gemma.get('http_status_code')} "
                 f"elapsed={float(gemma.get('elapsed_seconds') or 0.0):.3f}s "
-                f"accepted={str(gemma_pass).lower()}",
+                f"accepted={str(gemma_pass).lower()} "
+                f"source={gemma.get('content_source') or 'none'} "
+                f"attempts={gemma.get('attempt_count') or 0} think=false",
                 flush=True,
             )
 

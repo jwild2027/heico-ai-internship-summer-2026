@@ -4,7 +4,7 @@ set -euo pipefail
 REPO="${TRACE_NET_REPO:-/data/trace_net/repos/trace-net-h30-canary}"
 VENV="${TRACE_NET_VENV:-/home/jwild/rag-workspace/.venv}"
 PYTHON="$VENV/bin/python"
-RUNTIME="${TRACE_NET_BENCHMARK_RUNTIME:-/data/trace_net_runs/cognitive_benchmark_200_gemma_every_question_v1}"
+RUNTIME="${TRACE_NET_BENCHMARK_RUNTIME:-/data/trace_net_runs/cognitive_benchmark_200_gemma_response_fix_v1}"
 BASE_URL="${TRACE_NET_BENCHMARK_BASE_URL:-http://127.0.0.1:8128}"
 API_KEY="${TRACE_NET_BENCHMARK_API_KEY:-trace-net-gemma-cognitive-local}"
 TIMEOUT="${TRACE_NET_BENCHMARK_TIMEOUT_SECONDS:-1200}"
@@ -105,7 +105,7 @@ echo "============================================================"
 echo "RUNNING 200 LIVE FULL-STACK QUESTIONS"
 echo "============================================================"
 echo "Progress will print TRACE_NET_START/DONE and GEMMA_START/DONE for every question."
-echo "Every one of the 200 questions must call $GEMMA_MODEL before it can pass."
+echo "Every question uses $GEMMA_MODEL with think=false; three structured probes must pass before question 1."
 echo "A checkpoint JSON is rewritten after every completed question."
 echo
 
@@ -118,6 +118,7 @@ set +e
   --gemma-tags-url "$GEMMA_TAGS_URL" \
   --gemma-model "$GEMMA_MODEL" \
   --gemma-timeout-seconds "$GEMMA_TIMEOUT" \
+  --gemma-preflight-count 3 \
   --output "$OUTPUT" \
   --resume \
   2>&1 | tee -a "$LOG"
