@@ -633,6 +633,55 @@ def evaluate_gemma_every_question(
     }
 
 
+def evaluate_gemma_acceptance(
+    question: str,
+    expected_route: str,
+    result: Mapping[str, Any],
+    safe_answer: str,
+    gemma: Mapping[str, Any],
+) -> Dict[str, Any]:
+    """Require Gemma output to pass renderer and full semantic gates."""
+
+    renderer_evaluation = evaluate_gemma_every_question(
+        question,
+        expected_route,
+        result,
+        safe_answer,
+        gemma,
+    )
+
+    answer = str(gemma.get("answer") or "").strip()
+    followups_raw = gemma.get("follow_up_questions")
+    followups = unique_strings(
+        followups_raw if isinstance(followups_raw, list) else []
+    )
+    semantic_evaluation = evaluate_answer_quality(
+        question,
+        expected_route,
+        result,
+        answer,
+        followups,
+    )
+
+    failures = list(renderer_evaluation.get("failures") or [])
+    if not semantic_evaluation.get("passed"):
+        failures.extend(
+            f"gemma_semantic:{failure}"
+            for failure in semantic_evaluation.get("failures") or []
+        )
+
+    unique_failures = list(dict.fromkeys(str(value) for value in failures))
+    merged = dict(renderer_evaluation)
+    merged.update({
+        "quality_status": "PASS" if not unique_failures else "FAIL",
+        "passed": not unique_failures,
+        "failures": unique_failures,
+        "renderer_evaluation": dict(renderer_evaluation),
+        "semantic_evaluation": dict(semantic_evaluation),
+    })
+    return merged
+
+
 def evidence_counts(result: Mapping[str, Any]) -> Dict[str, int]:
     envelope = result.get("evidence_envelope")
     if not isinstance(envelope, Mapping):
@@ -1390,7 +1439,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                 result=result,
                 safe_answer=safe_answer,
             )
-            raw_gemma_evaluation = evaluate_gemma_every_question(
+            raw_gemma_evaluation = evaluate_gemma_acceptance(
                 question, expected_route, result, safe_answer, gemma
             )
             raw_gemma_pass = bool(raw_gemma_evaluation["passed"])
@@ -1402,7 +1451,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                     failures=raw_gemma_evaluation.get("failures") or [],
                     follow_up_questions=production_followups,
                 )
-            gemma_evaluation = evaluate_gemma_every_question(
+            gemma_evaluation = evaluate_gemma_acceptance(
                 question, expected_route, result, safe_answer, gemma
             )
             gemma_pass = bool(gemma_evaluation["passed"])
@@ -1462,6 +1511,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                 "benchmark_gemma_raw_follow_up_questions": gemma.get("raw_model_follow_up_questions", gemma.get("follow_up_questions")),
                 "benchmark_gemma_review": gemma.get("review"),
                 "benchmark_gemma_raw_evaluation": raw_gemma_evaluation,
+                "benchmark_gemma_raw_semantic_evaluation": raw_gemma_evaluation.get("semantic_evaluation"),
                 "benchmark_gemma_raw_pass": raw_gemma_pass,
                 "benchmark_gemma_repair_applied": bool(gemma.get("repair_applied")),
                 "benchmark_gemma_repair_reasons": gemma.get("repair_reasons") or [],

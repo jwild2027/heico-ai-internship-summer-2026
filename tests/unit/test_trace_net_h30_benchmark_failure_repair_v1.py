@@ -223,3 +223,80 @@ def test_all_200_embedded_questions_pass_semantic_checks_with_canonical_no_evide
             failures.append((row["question_id"], route, evaluation["failures"], answer))
 
     assert failures == []
+
+def test_raw_gemma_semantic_acceptance_gate_rejects_requested_field_drift():
+    boundary = load(BOUNDARY_PATH, "h30_boundary_semantic_acceptance")
+    runner = load(RUNNER_PATH, "h30_runner_semantic_acceptance")
+
+    route = "contradiction_resolution"
+    question = "The pages show different numbers; which one is supported?"
+    result = result_for(route, {})
+    result["evidence_envelope"]["semantic_guidance"] = [
+        {"page_id": "t_p_120_1176_p000156", "guidance_only": True},
+        {"page_id": "t_p_120_1176_p000165", "guidance_only": True},
+    ]
+
+    safe_answer = boundary.enforce_h30_answer_boundaries(
+        route=route,
+        query=question,
+        query_atoms={},
+        evidence_envelope=result["evidence_envelope"],
+        answer=(
+            "TRACE-Net found semantic guidance, but it did not resolve to "
+            "direct source-truth evidence."
+        ),
+    )
+
+    raw = {
+        "http_status_code": 200,
+        "model_requested": "gemma4:26b",
+        "model_returned": "gemma4:26b",
+        "answer": (
+            "No direct citation-ready source evidence was found to resolve "
+            "which number is supported. Semantic guidance did not resolve to "
+            "direct source-truth evidence. Candidate, visual, semantic, graph, "
+            "and summary materials are guidance only and do not establish a "
+            "technical claim or resolve the discrepancy."
+        ),
+        "follow_up_questions": [],
+        "review": {},
+    }
+
+    narrow = runner.evaluate_gemma_every_question(
+        question,
+        route,
+        result,
+        safe_answer,
+        raw,
+    )
+    assert narrow["passed"] is True, narrow
+
+    acceptance = runner.evaluate_gemma_acceptance(
+        question,
+        route,
+        result,
+        safe_answer,
+        raw,
+    )
+    assert acceptance["passed"] is False
+    assert (
+        "gemma_semantic:requested_field_not_addressed"
+        in acceptance["failures"]
+    )
+
+    repaired = boundary.apply_bounded_gemma_fallback(
+        raw,
+        safe_answer=safe_answer,
+        failures=acceptance["failures"],
+        follow_up_questions=[],
+    )
+    final_acceptance = runner.evaluate_gemma_acceptance(
+        question,
+        route,
+        result,
+        safe_answer,
+        repaired,
+    )
+    assert final_acceptance["passed"] is True, final_acceptance
+    assert repaired["answer"] == safe_answer
+
