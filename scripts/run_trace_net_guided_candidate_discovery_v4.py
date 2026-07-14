@@ -122,6 +122,7 @@ class QueryClues:
     low_context: bool = True
     missing_clues: List[str] = field(default_factory=list)
     clarifying_questions: List[str] = field(default_factory=list)
+    description_terms: List[str] = field(default_factory=list)
 
 
 @dataclass
@@ -233,6 +234,12 @@ def classify_candidate_quality(token: str, snippet: str = "", source_path: str =
         return "rejected_noise", "file/page artifact token, not a part number"
     if DECIMAL_NOISE_RE.fullmatch(t):
         return "rejected_noise", "decimal/OCR numeric noise, not a part-number shape"
+    if re.fullmatch(r"\d+\.\d+[A-Za-z]?", t):
+        return "rejected_noise", "decimal/measurement OCR noise"
+    if re.fullmatch(r"\d{5,}[A-Fa-f]-\d{2}", t):
+        return "rejected_noise", "scientific-notation/OCR artifact"
+    if re.fullmatch(r"[nN]\d{2,3}-\d{4,6}(?:-\d{3})?", t):
+        return "rejected_noise", "OCR-prefixed duplicate"
     if HEXISH_RE.fullmatch(norm) and len(norm) >= 10 and not re.search(r"[-.]", t):
         return "rejected_noise", "hash-like or graph-id-like token"
     if UUIDISH_HYPHEN_RE.fullmatch(t):
@@ -264,82 +271,25 @@ def classify_candidate_quality(token: str, snippet: str = "", source_path: str =
 
 def parse_query_clues(question: str) -> QueryClues:
     q = question.lower()
-    strict = bool(re.search(r"\b(starts?|begins?|prefix(?:ed)?|first)\b.{0,30}\b(?:with|digits?|numbers?)\b", q))
-    # Capture common natural language forms: "starts with 24", "starts with numbers 2 and 4".
-    prefix: Optional[str] = None
+    strict = bool(re.search(r"\b(starts?|begins?|prefix(?:ed)?|first)\b", q))
+    prefix = None
     raw_digits: List[str] = []
-
-    compact_match = re.search(r"(?:starts?|begins?|prefix(?:ed)?|first).{0,40}?([0-9][0-9A-Z-]{1,})", q)
-    if compact_match:
-        digits = re.findall(r"\d", compact_match.group(1))
-        if digits:
-            prefix = "".join(digits[:8])
-            raw_digits = digits
-
-    if prefix is None:
-        words_after = re.search(r"(?:starts?|begins?|prefix(?:ed)?|first).{0,60}", q)
-        if words_after:
-            digits = re.findall(r"\b\d\b|\bzero\b|\bone\b|\btwo\b|\bthree\b|\bfour\b|\bfive\b|\bsix\b|\bseven\b|\beight\b|\bnine\b", words_after.group(0))
-            word_to_digit = {
-                "zero": "0",
-                "one": "1",
-                "two": "2",
-                "three": "3",
-                "four": "4",
-                "five": "5",
-                "six": "6",
-                "seven": "7",
-                "eight": "8",
-                "nine": "9",
-            }
-            normalized_digits = [word_to_digit.get(d, d) for d in digits]
-            if normalized_digits:
-                prefix = "".join(normalized_digits[:8])
-                raw_digits = normalized_digits
-
-    contains_digits: Optional[str] = None
-    contains_match = re.search(r"(?:contains?|has|with).{0,30}?([0-9]{2,})", q)
-    if contains_match and not strict:
-        contains_digits = contains_match.group(1)
-
-    if prefix is None and strict:
-        # Last chance: if the user says "numbers 2 and 4" anywhere in a starts/begins query.
-        digits = re.findall(r"\b\d\b", q)
-        if len(digits) >= 2:
-            prefix = "".join(digits[:2])
-            raw_digits = digits[:2]
-
-    missing = [
-        "manufacturer_or_company",
-        "physical_description_or_nomenclature",
-        "ata_or_system_area",
-        "figure_table_or_text_context",
-        "nearby_words_page_or_figure_number",
-    ]
-    questions = [
-        "Do you know the manufacturer or company, such as Honeywell, Airbus, Embraer, Boeing, Collins, or Safran?",
-        "Do you know what the part physically looked like, such as bolt, bracket, seat assembly, dispenser, panel, latch, pin, fitting, or cover?",
-        "Do you know the ATA/system area, such as ATA 25 cabin/interiors, or another ATA section?",
-        "Was it seen in a figure, a table, or body text? Do you remember a page or figure number?",
-    ]
-    if prefix:
-        intent = "partial_part_prefix_lookup"
-    elif contains_digits:
-        intent = "partial_part_contains_lookup"
-    else:
-        intent = "low_context_part_discovery"
-
-    return QueryClues(
-        question=question,
-        intent=intent,
-        part_prefix=prefix,
-        contains_digits=contains_digits,
-        raw_digits=raw_digits,
-        strict_prefix_requested=bool(prefix and strict),
-        low_context=True,
-        missing_clues=missing,
-        clarifying_questions=questions,
-    )
+    m = re.search(r"(?:starts?|begins?|prefix(?:ed)?|first).{0,35}?(?:with\s+)?([a-z0-9][a-z0-9.-]{1,15})", q, re.I)
+    if m:
+        candidate = m.group(1).strip(" .,:;")
+        if candidate.lower() not in {"with","number","numbers","digits","part","item"}:
+            prefix = re.sub(r"[^A-Z0-9]", "", candidate.upper())[:16]
+            raw_digits = re.findall(r"\d", prefix)
+    contains_digits = None
+    cm = re.search(r"(?:contains?|has|with).{0,30}?([0-9]{2,})", q)
+    if cm and not strict:
+        contains_digits = cm.group(1)
+    vocab=("hinge","bracket","latch","locking ring","ring","seat leg","leg","armrest","ashtray","panel","cover","pin","bolt","fastener","spring","washer","bearing","support rail","rail","buckle","actuator","switch","valve","hose","fitting","screw","clip","assembly")
+    description_terms=[term for term in vocab if re.search(r"\b"+re.escape(term)+r"\b",q)]
+    missing=["manufacturer_or_company","physical_description_or_nomenclature","ata_or_system_area","figure_table_or_text_context","nearby_words_page_or_figure_number"]
+    questions=["Do you remember any possible part-number characters, prefix, suffix, digits, or dash number?","Do you know the manufacturer or company, such as Honeywell, Embraer, Collins, Safran, Boeing, or Airbus?","Which ATA chapter, aircraft system, cabin area, or manual section was the part associated with?","Can you narrow the description—for example its location, material, shape, size, function, or connected assembly?","Was it seen in an illustrated parts list, a figure callout, a drawing, a page, or nearby text?"]
+    intent="partial_part_prefix_lookup" if prefix else "partial_part_contains_lookup" if contains_digits else "descriptive_part_discovery" if description_terms else "low_context_part_discovery"
+    return QueryClues(question=question,intent=intent,part_prefix=prefix,contains_digits=contains_digits,raw_digits=raw_digits,strict_prefix_requested=bool(prefix and strict),low_context=True,missing_clues=missing,clarifying_questions=questions,description_terms=description_terms)
 
 
 def iter_text_files(root: Path, max_files: int = 250000) -> Iterable[Path]:
@@ -495,11 +445,6 @@ def classify_match(part: str, clues: QueryClues) -> Tuple[Optional[str], Optiona
         prefix = clues.part_prefix.upper()
         if norm.startswith(prefix):
             return "strict_prefix", f"part starts with prefix {clues.part_prefix}", 100
-        if prefix in norm:
-            return "loose_contains", f"part contains {clues.part_prefix}, but does not start with {clues.part_prefix}", 45
-        # For phrase "numbers 2 and 4", include very weak candidates only if all digits are present.
-        if clues.raw_digits and all(d in norm for d in clues.raw_digits):
-            return "weak_digit_overlap", f"part contains the digits {', '.join(clues.raw_digits)}, but not as the requested prefix", 15
         return None, None, 0
     if clues.contains_digits:
         needle = clues.contains_digits.upper()
@@ -542,6 +487,10 @@ def collect_evidence(root: Path, clues: QueryClues, max_files: int = 250000) -> 
             if not match_type:
                 continue
             snip = snippet_around(text, m.start(), m.end())
+            if clues.description_terms:
+                matched=[term for term in clues.description_terms if term in snip.lower()]
+                if not matched: continue
+                match_type="broad_candidate";reason="source-near description match: "+", ".join(matched);base_score=80
             candidate_quality, quality_reason = classify_candidate_quality(part, snip, source_path)
             if candidate_quality == "rejected_noise":
                 rejected_noise_count += 1
@@ -677,7 +626,10 @@ def build_result(question: str, routes: Sequence[CandidateRoute], clues: QueryCl
             "contains_digits": clues.contains_digits,
             "raw_digits": clues.raw_digits,
             "strict_prefix_requested": clues.strict_prefix_requested,
+            "description_terms": clues.description_terms,
         },
+        "ranking_policy": "exact clue satisfaction, candidate quality, source-trace completeness, evidence count",
+        "result_coverage_note": "top representative candidates only; drill down for more",
         "missing_clues": clues.missing_clues,
         "clarifying_questions": clues.clarifying_questions,
         "candidate_routes": [asdict(r) for r in routes],

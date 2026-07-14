@@ -1,0 +1,623 @@
+{
+  "status": "TRACE_NET_GUIDED_CANDIDATE_DISCOVERY_ENDPOINT_V1_DONE",
+  "quality_status": "PASS",
+  "runner": "guided_candidate_discovery_v4",
+  "question_id": "q01",
+  "question": "I only know the part starts with 24",
+  "intent": "partial_part_prefix_lookup",
+  "known_clues": {
+    "part_prefix": "24",
+    "contains_digits": null,
+    "raw_digits": [
+      "2",
+      "4"
+    ],
+    "strict_prefix_requested": true
+  },
+  "missing_clues": [
+    "manufacturer_or_company",
+    "physical_description_or_nomenclature",
+    "ata_or_system_area",
+    "figure_table_or_text_context",
+    "nearby_words_page_or_figure_number"
+  ],
+  "clarifying_questions": [
+    "Do you know the manufacturer or company, such as Honeywell, Airbus, Embraer, Boeing, Collins, or Safran?",
+    "Do you know what the part physically looked like, such as bolt, bracket, seat assembly, dispenser, panel, latch, pin, fitting, or cover?",
+    "Do you know the ATA/system area, such as ATA 25 cabin/interiors, or another ATA section?",
+    "Was it seen in a figure, a table, or body text? Do you remember a page or figure number?"
+  ],
+  "strict_prefix_candidates": [
+    {
+      "route_id": "route_1",
+      "route_group": "strict_prefix",
+      "candidate_part_number": "244CS-3-2",
+      "ata": "unknown",
+      "nomenclature": "AR - FASTENER",
+      "page_id": "t_p_120_1176_p000491",
+      "document": "unknown",
+      "evidence_types": [
+        "OCR",
+        "review",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "high",
+      "why_matched": "part starts with prefix 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "structured hyphen/dot part-like token",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 34,
+      "source_examples": [
+        "gold_label_auto_review_seed\\trace_net_gold_label_auto_review_seed_v1.csv",
+        "gold_label_decision_merge\\trace_net_gold_label_decision_merge_v1_final_labels.csv",
+        "gold_label_decision_merge\\trace_net_gold_label_decision_merge_v1_unresolved_review_queue.csv"
+      ]
+    }
+  ],
+  "contains_candidates": [],
+  "loose_candidates": [
+    {
+      "route_id": "route_2",
+      "route_group": "loose_contains",
+      "candidate_part_number": "MS24693-C5",
+      "ata": "25-21-00",
+      "nomenclature": "TABLE, SNACK FOLDING, ASSY",
+      "page_id": "t_p_120_1176_p000071",
+      "document": "EMB CMM ATA 25-21-00 REV.4",
+      "evidence_types": [
+        "OCR",
+        "artifact",
+        "graph",
+        "review",
+        "summary",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "medium",
+      "why_matched": "part contains 24, but does not start with 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "structured hyphen/dot part-like token",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 1436,
+      "source_examples": [
+        "ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000089.txt",
+        "ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000167.txt",
+        "ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000190.txt"
+      ]
+    },
+    {
+      "route_id": "route_3",
+      "route_group": "loose_contains",
+      "candidate_part_number": "MS24693-C26",
+      "ata": "25-21-00",
+      "nomenclature": "AM03078-22 ASHTRAY",
+      "page_id": "t_p_120_1176_p000070",
+      "document": "EMB CMM ATA 25-21-00 REV.4",
+      "evidence_types": [
+        "OCR",
+        "artifact",
+        "graph",
+        "review",
+        "summary",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "medium",
+      "why_matched": "part contains 24, but does not start with 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "structured hyphen/dot part-like token",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 865,
+      "source_examples": [
+        "ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000083.txt",
+        "ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000086.txt",
+        "ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000096.txt"
+      ]
+    },
+    {
+      "route_id": "route_4",
+      "route_group": "loose_contains",
+      "candidate_part_number": "120-41824",
+      "ata": "unknown",
+      "nomenclature": "unknown",
+      "page_id": "t_p_120_1176_p000094",
+      "document": "unknown",
+      "evidence_types": [
+        "OCR",
+        "artifact",
+        "graph",
+        "review",
+        "summary",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "medium",
+      "why_matched": "part contains 24, but does not start with 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "plain numeric token with explicit part-number context",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 521,
+      "source_examples": [
+        "leiden_navigation_metadata_bridge\\trace_net_leiden_navigation_metadata_bridge_v1_records.jsonl",
+        "leiden_navigation_metadata_bridge\\trace_net_leiden_navigation_metadata_bridge_v1_records.jsonl",
+        "leiden_navigation_metadata_bridge\\trace_net_leiden_navigation_metadata_bridge_v1_records.jsonl"
+      ]
+    },
+    {
+      "route_id": "route_5",
+      "route_group": "loose_contains",
+      "candidate_part_number": "MS24693-S24",
+      "ata": "25-21-00",
+      "nomenclature": "SCREW 0",
+      "page_id": "t_p_120_1176_p000165",
+      "document": "EMB CMM ATA 25-21-00 REV.4",
+      "evidence_types": [
+        "OCR",
+        "artifact",
+        "graph",
+        "review",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "medium",
+      "why_matched": "part contains 24, but does not start with 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "structured hyphen/dot part-like token",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 460,
+      "source_examples": [
+        "gold_label_auto_review_seed\\trace_net_gold_label_auto_review_seed_v1.json",
+        "gold_label_auto_review_seed\\trace_net_gold_label_auto_review_seed_v1_records.jsonl",
+        "gold_label_review_reduction\\medium_priority_review.csv"
+      ]
+    },
+    {
+      "route_id": "route_6",
+      "route_group": "loose_contains",
+      "candidate_part_number": "120-48024-001",
+      "ata": "25-21-00",
+      "nomenclature": "RING, LOCKING",
+      "page_id": "t_p_120_1176_p000055",
+      "document": "EMB CMM ATA 25-21-00 REV.4",
+      "evidence_types": [
+        "OCR",
+        "artifact",
+        "graph",
+        "review",
+        "summary",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "medium",
+      "why_matched": "part contains 24, but does not start with 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "plain numeric token with explicit part-number context",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 407,
+      "source_examples": [
+        "rag_candidates\\rag_candidate_source_text_chunks.jsonl",
+        "answer_context_anchor_injector_gemma4_native_001\\trace_net_answer_context_anchor_injector_v1.json",
+        "it_operations_console\\trace_net_it_operations_console_v1.json"
+      ]
+    },
+    {
+      "route_id": "route_7",
+      "route_group": "loose_contains",
+      "candidate_part_number": "120-41824-007",
+      "ata": "25-21-00",
+      "nomenclature": "SINGLE PASSENGER SEAT ASSY",
+      "page_id": "t_p_120_1176_p000003",
+      "document": "EMB CMM ATA 25-21-00 REV.4",
+      "evidence_types": [
+        "OCR",
+        "artifact",
+        "graph",
+        "review",
+        "summary",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "medium",
+      "why_matched": "part contains 24, but does not start with 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "plain numeric token with explicit part-number context",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 336,
+      "source_examples": [
+        "rag_candidates\\rag_candidate_verified_part_chunks.jsonl",
+        "gold_label_auto_review_seed\\trace_net_gold_label_auto_review_seed_v1.csv",
+        "gold_label_decision_merge\\trace_net_gold_label_decision_merge_v1_final_labels.csv"
+      ]
+    },
+    {
+      "route_id": "route_8",
+      "route_group": "loose_contains",
+      "candidate_part_number": "120-41824-501",
+      "ata": "25-21-00",
+      "nomenclature": "SINGLE PASSENGER SEAT ASSY",
+      "page_id": "t_p_120_1176_p000003",
+      "document": "EMB CMM ATA 25-21-00 REV.4",
+      "evidence_types": [
+        "OCR",
+        "artifact",
+        "graph",
+        "review",
+        "summary",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "medium",
+      "why_matched": "part contains 24, but does not start with 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "plain numeric token with explicit part-number context",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 252,
+      "source_examples": [
+        "ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000082.txt",
+        "ocr_classifier_rerun_002\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000082.txt",
+        "ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000082.txt"
+      ]
+    },
+    {
+      "route_id": "route_9",
+      "route_group": "loose_contains",
+      "candidate_part_number": "120-41824-003",
+      "ata": "25-21-00",
+      "nomenclature": "SINGLE PASSENGER SEAT ASSY",
+      "page_id": "t_p_120_1176_p000003",
+      "document": "EMB CMM ATA 25-21-00 REV.4",
+      "evidence_types": [
+        "OCR",
+        "artifact",
+        "graph",
+        "review",
+        "summary",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "medium",
+      "why_matched": "part contains 24, but does not start with 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "plain numeric token with explicit part-number context",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 233,
+      "source_examples": [
+        "answer_context_evidence_enricher_gemma4_native_001\\trace_net_answer_context_evidence_enricher_v1.json",
+        "answer_context_evidence_enricher_gemma4_native_001\\trace_net_answer_context_evidence_enricher_v1_quality_check.json",
+        "answer_context_exact_row_proof_gemma4_native_001\\trace_net_answer_context_exact_row_proof_v1_records.csv"
+      ]
+    }
+  ],
+  "candidate_routes": [
+    {
+      "route_id": "route_1",
+      "route_group": "strict_prefix",
+      "candidate_part_number": "244CS-3-2",
+      "ata": "unknown",
+      "nomenclature": "AR - FASTENER",
+      "page_id": "t_p_120_1176_p000491",
+      "document": "unknown",
+      "evidence_types": [
+        "OCR",
+        "review",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "high",
+      "why_matched": "part starts with prefix 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "structured hyphen/dot part-like token",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 34,
+      "source_examples": [
+        "gold_label_auto_review_seed\\trace_net_gold_label_auto_review_seed_v1.csv",
+        "gold_label_decision_merge\\trace_net_gold_label_decision_merge_v1_final_labels.csv",
+        "gold_label_decision_merge\\trace_net_gold_label_decision_merge_v1_unresolved_review_queue.csv"
+      ]
+    },
+    {
+      "route_id": "route_2",
+      "route_group": "loose_contains",
+      "candidate_part_number": "MS24693-C5",
+      "ata": "25-21-00",
+      "nomenclature": "TABLE, SNACK FOLDING, ASSY",
+      "page_id": "t_p_120_1176_p000071",
+      "document": "EMB CMM ATA 25-21-00 REV.4",
+      "evidence_types": [
+        "OCR",
+        "artifact",
+        "graph",
+        "review",
+        "summary",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "medium",
+      "why_matched": "part contains 24, but does not start with 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "structured hyphen/dot part-like token",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 1436,
+      "source_examples": [
+        "ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000089.txt",
+        "ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000167.txt",
+        "ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000190.txt"
+      ]
+    },
+    {
+      "route_id": "route_3",
+      "route_group": "loose_contains",
+      "candidate_part_number": "MS24693-C26",
+      "ata": "25-21-00",
+      "nomenclature": "AM03078-22 ASHTRAY",
+      "page_id": "t_p_120_1176_p000070",
+      "document": "EMB CMM ATA 25-21-00 REV.4",
+      "evidence_types": [
+        "OCR",
+        "artifact",
+        "graph",
+        "review",
+        "summary",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "medium",
+      "why_matched": "part contains 24, but does not start with 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "structured hyphen/dot part-like token",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 865,
+      "source_examples": [
+        "ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000083.txt",
+        "ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000086.txt",
+        "ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000096.txt"
+      ]
+    },
+    {
+      "route_id": "route_4",
+      "route_group": "loose_contains",
+      "candidate_part_number": "120-41824",
+      "ata": "unknown",
+      "nomenclature": "unknown",
+      "page_id": "t_p_120_1176_p000094",
+      "document": "unknown",
+      "evidence_types": [
+        "OCR",
+        "artifact",
+        "graph",
+        "review",
+        "summary",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "medium",
+      "why_matched": "part contains 24, but does not start with 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "plain numeric token with explicit part-number context",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 521,
+      "source_examples": [
+        "leiden_navigation_metadata_bridge\\trace_net_leiden_navigation_metadata_bridge_v1_records.jsonl",
+        "leiden_navigation_metadata_bridge\\trace_net_leiden_navigation_metadata_bridge_v1_records.jsonl",
+        "leiden_navigation_metadata_bridge\\trace_net_leiden_navigation_metadata_bridge_v1_records.jsonl"
+      ]
+    },
+    {
+      "route_id": "route_5",
+      "route_group": "loose_contains",
+      "candidate_part_number": "MS24693-S24",
+      "ata": "25-21-00",
+      "nomenclature": "SCREW 0",
+      "page_id": "t_p_120_1176_p000165",
+      "document": "EMB CMM ATA 25-21-00 REV.4",
+      "evidence_types": [
+        "OCR",
+        "artifact",
+        "graph",
+        "review",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "medium",
+      "why_matched": "part contains 24, but does not start with 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "structured hyphen/dot part-like token",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 460,
+      "source_examples": [
+        "gold_label_auto_review_seed\\trace_net_gold_label_auto_review_seed_v1.json",
+        "gold_label_auto_review_seed\\trace_net_gold_label_auto_review_seed_v1_records.jsonl",
+        "gold_label_review_reduction\\medium_priority_review.csv"
+      ]
+    },
+    {
+      "route_id": "route_6",
+      "route_group": "loose_contains",
+      "candidate_part_number": "120-48024-001",
+      "ata": "25-21-00",
+      "nomenclature": "RING, LOCKING",
+      "page_id": "t_p_120_1176_p000055",
+      "document": "EMB CMM ATA 25-21-00 REV.4",
+      "evidence_types": [
+        "OCR",
+        "artifact",
+        "graph",
+        "review",
+        "summary",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "medium",
+      "why_matched": "part contains 24, but does not start with 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "plain numeric token with explicit part-number context",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 407,
+      "source_examples": [
+        "rag_candidates\\rag_candidate_source_text_chunks.jsonl",
+        "answer_context_anchor_injector_gemma4_native_001\\trace_net_answer_context_anchor_injector_v1.json",
+        "it_operations_console\\trace_net_it_operations_console_v1.json"
+      ]
+    },
+    {
+      "route_id": "route_7",
+      "route_group": "loose_contains",
+      "candidate_part_number": "120-41824-007",
+      "ata": "25-21-00",
+      "nomenclature": "SINGLE PASSENGER SEAT ASSY",
+      "page_id": "t_p_120_1176_p000003",
+      "document": "EMB CMM ATA 25-21-00 REV.4",
+      "evidence_types": [
+        "OCR",
+        "artifact",
+        "graph",
+        "review",
+        "summary",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "medium",
+      "why_matched": "part contains 24, but does not start with 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "plain numeric token with explicit part-number context",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 336,
+      "source_examples": [
+        "rag_candidates\\rag_candidate_verified_part_chunks.jsonl",
+        "gold_label_auto_review_seed\\trace_net_gold_label_auto_review_seed_v1.csv",
+        "gold_label_decision_merge\\trace_net_gold_label_decision_merge_v1_final_labels.csv"
+      ]
+    },
+    {
+      "route_id": "route_8",
+      "route_group": "loose_contains",
+      "candidate_part_number": "120-41824-501",
+      "ata": "25-21-00",
+      "nomenclature": "SINGLE PASSENGER SEAT ASSY",
+      "page_id": "t_p_120_1176_p000003",
+      "document": "EMB CMM ATA 25-21-00 REV.4",
+      "evidence_types": [
+        "OCR",
+        "artifact",
+        "graph",
+        "review",
+        "summary",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "medium",
+      "why_matched": "part contains 24, but does not start with 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "plain numeric token with explicit part-number context",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 252,
+      "source_examples": [
+        "ocr_classifier_rerun_001\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000082.txt",
+        "ocr_classifier_rerun_002\\ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000082.txt",
+        "ocr_route_scan_pack_tesseract_full\\ocr_text\\t_p_120_1176_p000082.txt"
+      ]
+    },
+    {
+      "route_id": "route_9",
+      "route_group": "loose_contains",
+      "candidate_part_number": "120-41824-003",
+      "ata": "25-21-00",
+      "nomenclature": "SINGLE PASSENGER SEAT ASSY",
+      "page_id": "t_p_120_1176_p000003",
+      "document": "EMB CMM ATA 25-21-00 REV.4",
+      "evidence_types": [
+        "OCR",
+        "artifact",
+        "graph",
+        "review",
+        "summary",
+        "table",
+        "visual"
+      ],
+      "v2_summary": "not found in selected evidence",
+      "v3_summary": "not found in selected evidence",
+      "confidence": "medium",
+      "why_matched": "part contains 24, but does not start with 24",
+      "candidate_quality": "valid_part_like",
+      "quality_reason": "plain numeric token with explicit part-number context",
+      "source_trace_status": "candidate-discovery-only",
+      "final_answer_allowed": false,
+      "evidence_count": 233,
+      "source_examples": [
+        "answer_context_evidence_enricher_gemma4_native_001\\trace_net_answer_context_evidence_enricher_v1.json",
+        "answer_context_evidence_enricher_gemma4_native_001\\trace_net_answer_context_evidence_enricher_v1_quality_check.json",
+        "answer_context_exact_row_proof_gemma4_native_001\\trace_net_answer_context_exact_row_proof_v1_records.csv"
+      ]
+    }
+  ],
+  "strict_prefix_candidate_count": 1,
+  "contains_candidate_count": 0,
+  "loose_candidate_count": 8,
+  "total_candidate_route_count": 9,
+  "evidence_record_count": 79468,
+  "rejected_noise_token_count": 194710,
+  "weak_token_count": 210719,
+  "source_trace_status": "candidate-discovery-only",
+  "final_answer_allowed": false,
+  "safety_contract": {
+    "read_only": true,
+    "source_truth_mutation_allowed_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0,
+    "answer_permission_count": 0
+  },
+  "elapsed_seconds": 38.21
+}

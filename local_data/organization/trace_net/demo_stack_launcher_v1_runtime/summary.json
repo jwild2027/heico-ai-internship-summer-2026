@@ -1,0 +1,92 @@
+{
+  "model": "trace-net-router-proxy-v6-gated-visual-v1-1",
+  "module": "trace_net_demo_stack_launcher_v1",
+  "openai_base_url": "http://127.0.0.1:8017/v1",
+  "quality_status": "PASS",
+  "safety_contract": {
+    "opensearch_write_attempt_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "source_truth_mutation_allowed": false
+  },
+  "services": {
+    "guided_discovery": {
+      "health": {
+        "artifact_root": "local_data\\organization\\trace_net",
+        "artifact_root_exists": true,
+        "final_answer_allowed": false,
+        "output_dir": "local_data\\organization\\trace_net\\guided_candidate_discovery_endpoint_v1_runtime",
+        "quality_status": "PASS",
+        "runner": "guided_candidate_discovery_v4",
+        "runner_error": null,
+        "runner_importable": true,
+        "safety_contract": {
+          "answer_permission_count": 0,
+          "opensearch_write_attempt_count": 0,
+          "postgres_write_attempt_count": 0,
+          "qdrant_write_attempt_count": 0,
+          "read_only": true,
+          "source_truth_mutation_allowed_count": 0
+        },
+        "service": "trace_net_guided_candidate_discovery_endpoint_v1",
+        "status": "TRACE_NET_GUIDED_CANDIDATE_DISCOVERY_ENDPOINT_V1_READY"
+      },
+      "health_url": "http://127.0.0.1:8016/health",
+      "log_path": "local_data\\organization\\trace_net\\demo_stack_launcher_v1_runtime\\guided_8016.log",
+      "pid": 40308,
+      "port": 8016
+    },
+    "normal_ask": {
+      "health": {
+        "api_response_count": 5,
+        "module": "trace_net_e2e_local_endpoint_v1",
+        "quality_status": "PASS",
+        "safety": {
+          "answer_permission": false,
+          "can_answer_directly": false,
+          "can_prove_claims": false,
+          "source_truth_mutation_allowed": false
+        },
+        "status": "ok"
+      },
+      "health_url": "http://127.0.0.1:8014/health",
+      "log_path": "local_data\\organization\\trace_net\\demo_stack_launcher_v1_runtime\\normal_8014.log",
+      "pid": 30460,
+      "port": 8014
+    },
+    "router_proxy": {
+      "health": {
+        "guided_base_url": "http://127.0.0.1:8016",
+        "model": "trace-net-router-proxy-v6-gated-visual-v1-1",
+        "normal_base_url": "http://127.0.0.1:8014",
+        "quality_status": "PASS",
+        "router": "trace_net_router_proxy_v6_gated_visual_v1_1",
+        "routes": {
+          "ask": "/api/trace-net/ask",
+          "chat": "/v1/chat/completions",
+          "router": "/api/trace-net/router"
+        },
+        "safety_contract": {
+          "answer_permission": false,
+          "final_answer_allowed": false,
+          "llm_call_attempt_count_for_visual_route": 0,
+          "ollama_call_attempt_count_for_visual_route": 0,
+          "opensearch_write_attempt_count": 0,
+          "postgres_write_attempt_count": 0,
+          "qdrant_write_attempt_count": 0,
+          "read_only": true,
+          "source_truth_mutation_allowed_count": 0
+        },
+        "status": "TRACE_NET_ROUTER_PROXY_V6_GATED_VISUAL_V1_1_READY",
+        "visual_retrieval_document_count": 104,
+        "visual_review_only_document_count": 81,
+        "visual_route_name": "gated_image_visual"
+      },
+      "health_url": "http://127.0.0.1:8017/health",
+      "log_path": "local_data\\organization\\trace_net\\demo_stack_launcher_v1_runtime\\router_8017.log",
+      "pid": 19300,
+      "port": 8017
+    }
+  },
+  "status": "TRACE_NET_DEMO_STACK_LAUNCHER_V1_READY"
+}

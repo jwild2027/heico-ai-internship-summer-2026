@@ -1,0 +1,35 @@
+{
+  "answer_permission_count": 0,
+  "confirmed_image_summary_count": 104,
+  "contract": {
+    "front_half_layer": true,
+    "gemma_role": "schema_normalization_only",
+    "llava_role": "visual_layout_observation_only",
+    "ocr_role": "source_text_authority_when_available",
+    "requires_non_visual_source_trace_for_final_claims": true,
+    "visual_context_is_retrieval_guidance_only": true
+  },
+  "elapsed_seconds": 0.023,
+  "final_answer_allowed_true_count": 0,
+  "gemma_call_attempt_count": 0,
+  "input_document_count": 104,
+  "llava_call_attempt_count": 0,
+  "llava_observation_loaded_count": 0,
+  "module": "trace_net_confirmed_image_page_summary_v1",
+  "opensearch_write_attempt_count": 0,
+  "outputs": {
+    "cards": "local_data\\organization\\trace_net\\confirmed_image_page_summary_v1\\trace_net_confirmed_image_page_summary_v1.jsonl",
+    "report": "local_data\\organization\\trace_net\\confirmed_image_page_summary_v1\\trace_net_confirmed_image_page_summary_v1_report.txt",
+    "retrieval_documents": "local_data\\organization\\trace_net\\confirmed_image_page_summary_v1\\trace_net_confirmed_image_page_summary_v1_retrieval_documents.jsonl",
+    "summary": "local_data\\organization\\trace_net\\confirmed_image_page_summary_v1\\summary.json"
+  },
+  "pages_with_clean_figure_refs": 0,
+  "pages_with_part_numbers": 93,
+  "postgres_write_attempt_count": 0,
+  "qdrant_write_attempt_count": 0,
+  "quality_reasons": [],
+  "quality_status": "PASS",
+  "retrieval_document_count": 104,
+  "source_truth_mutation_allowed_count": 0,
+  "status": "TRACE_NET_CONFIRMED_IMAGE_PAGE_SUMMARY_V1_BUILT"
+}

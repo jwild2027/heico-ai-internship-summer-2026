@@ -30,6 +30,8 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any, Callable, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
 
+from tiff.trace_net_query_atom_router_v1 import analyze_query
+
 MODULE = "trace_net_openwebui_unified_rag_v2"
 MODEL_ID = "trace-net-openwebui-unified-rag-v2"
 
@@ -444,13 +446,8 @@ class QdrantGuide:
 
 
 def route_kind(query: str) -> str:
-    q = query.lower()
-    has_part_word = any(term in q for term in ("part", "p/n", "pn", "part number", "item number", "nomenclature"))
-    if has_part_word and any(marker in q for marker in PARTIAL_MARKERS):
-        return "guided_discovery"
-    if any(term in set(tokenize(query)) for term in VISUAL_TERMS):
-        return "gemma_confirmed_image_visual"
-    return "normal_ask"
+    """Compatibility wrapper around the deterministic query-atom router."""
+    return str(analyze_query(query)["execution_route"])
 
 
 def http_json(
@@ -513,6 +510,35 @@ def guided_answer(payload: Mapping[str, Any]) -> str:
         for q in questions[:5]:
             lines.append(f"- {q}")
     return "\n".join(lines)
+
+
+def router_clarification_payload(
+    query: str,
+    router_decision: Mapping[str, Any],
+) -> Dict[str, Any]:
+    plan = (
+        router_decision.get("follow_up_plan")
+        if isinstance(router_decision.get("follow_up_plan"), Mapping)
+        else {}
+    )
+    atoms = (
+        router_decision.get("atoms")
+        if isinstance(router_decision.get("atoms"), Mapping)
+        else {}
+    )
+    return {
+        "quality_status": "PASS",
+        "intent": router_decision.get("selected_tunnel"),
+        "known_clues": dict(atoms),
+        "missing_clues": list(plan.get("follow_up_topics") or []),
+        "candidate_routes": [],
+        "strict_prefix_candidates": [],
+        "clarifying_questions": list(plan.get("clarifying_questions") or []),
+        "source_trace_status": "clarification-before-expensive-search",
+        "answer_permission": False,
+        "final_answer_allowed": False,
+        "source_truth_mutation_allowed": False,
+    }
 
 
 def fast_clarification(query: str) -> Dict[str, Any]:
@@ -621,7 +647,8 @@ class UnifiedRuntime:
         conversation = resolve_conversation(payload)
         query = conversation["resolved_query"]
         latest = conversation["latest_query"]
-        route = route_kind(query)
+        router_decision = analyze_query(query)
+        route = str(router_decision["execution_route"])
         engrams = self.engram.select(query)
         qhits, qpage_scores, qerror = self.qdrant_guidance(query)
         repair_attempts: List[Dict[str, Any]] = []
@@ -652,12 +679,21 @@ class UnifiedRuntime:
                 critic = self_rag_critic(route, result, query)
 
         elif route == "guided_discovery":
-            status, downstream = http_json(
-                self.guided_base_url + "/api/trace-net/guided-discovery",
-                {"question": query, "top_k": int(payload.get("top_k") or 8), "loose_top_k": int(payload.get("loose_top_k") or 8), "include_view": False},
-                api_key=None,
-                timeout=self.timeout,
-            )
+            tunnel = str(router_decision.get("selected_tunnel") or "")
+            if tunnel in {"descriptive_part_discovery", "fast_clarification"}:
+                status = 200
+                downstream = router_clarification_payload(query, router_decision)
+            else:
+                status, downstream = http_json(
+                    self.guided_base_url + "/api/trace-net/guided-discovery",
+                    {"question": query, "top_k": int(payload.get("top_k") or 8), "loose_top_k": int(payload.get("loose_top_k") or 8), "include_view": False},
+                    api_key=None,
+                    timeout=self.timeout,
+                )
+                if status == 200:
+                    router_questions = list(router_decision.get("clarifying_questions") or [])
+                    downstream_questions = list(downstream.get("clarifying_questions") or [])
+                    downstream["clarifying_questions"] = list(dict.fromkeys(router_questions + downstream_questions))[:5]
             result = {
                 "quality_status": "PASS" if status == 200 and downstream.get("quality_status") == "PASS" else "WARN",
                 "route": route,
@@ -717,6 +753,27 @@ class UnifiedRuntime:
                     )
                 repair_attempts.append({"repair": "qdrant_semantic_guidance_attached_without_promoting_to_proof", "hit_count": len(qhits)})
 
+        follow_up_questions = list(router_decision.get("clarifying_questions") or [])
+        should_surface_followups = (
+            route == "guided_discovery"
+            or (
+                route == "gemma_confirmed_image_visual"
+                and int(result.get("citation_count") or 0) == 0
+            )
+            or (
+                route == "normal_ask"
+                and (
+                    result.get("final_gate_status") == "LIVE_ORCHESTRATOR_AUDIT_ONLY"
+                    or router_decision.get("selected_tunnel") == "safety_authority_search"
+                )
+            )
+        )
+        if route != "guided_discovery" and should_surface_followups and follow_up_questions:
+            content = str(result.get("content") or "").rstrip()
+            lines = [content, "", "Helpful follow-up questions:"] if content else ["Helpful follow-up questions:"]
+            lines.extend(f"- {question}" for question in follow_up_questions[:5])
+            result["content"] = "\n".join(lines)
+
         safety_rules = [e for e in engrams if str(e.get("priority")) == "hard_boundary"]
         if safety_rules and any(term in query.lower() for term in DANGEROUS):
             result["content"] = result.get("content", "").rstrip() + "\n\nSafety boundary: TRACE-Net requires explicit source authority before making approval, fit, effectivity, interchangeability, eligibility, or installation claims."
@@ -724,6 +781,12 @@ class UnifiedRuntime:
         result.update({
             "module": MODULE,
             "model": MODEL_ID,
+            "router_decision": router_decision,
+            "retrieval_tunnel": router_decision.get("selected_tunnel"),
+            "follow_up_plan": router_decision.get("follow_up_plan"),
+            "follow_up_questions": list(router_decision.get("clarifying_questions") or []),
+            "clarification_required": bool(router_decision.get("clarification_required")),
+            "clarification_recommended": bool(router_decision.get("clarification_recommended")),
             "query": latest,
             "resolved_query": query,
             "working_memory": conversation["working_memory"],
