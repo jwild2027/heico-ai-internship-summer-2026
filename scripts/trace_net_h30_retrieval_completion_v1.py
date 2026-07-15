@@ -369,6 +369,8 @@ class LocalArtifactResolver:
                     continue
                 source_type = _source_type(path, row)
                 record = _record_from_row(path, row, source_type)
+                record["match_basis"] = "exact_part" if matched_by_part else "seed_page"
+                record["exact_entity_match"] = matched_by_part
                 if not record["page_id"] and not record["value"]:
                     continue
                 record_count += 1
@@ -452,14 +454,41 @@ class LocalArtifactResolver:
         return dict(result)
 
 
-def _seed_pages(envelope: Any) -> List[str]:
+def _seed_pages(
+    envelope: Any,
+    requested_parts: Sequence[str] = (),
+) -> List[str]:
+    """Return entity-grounded page seeds.
+
+    Exact-part navigation must not expand every semantic hit into page-local OCR
+    tokens. Direct, candidate, and visual rows may establish a page seed. Pure
+    semantic guidance is intentionally excluded when an exact entity is known.
+    """
+    requested = {
+        str(value).upper()
+        for value in requested_parts
+        if value
+    }
     output = []
-    for attribute in ("direct_evidence", "candidate_evidence", "visual_guidance", "semantic_guidance"):
-        for row in getattr(envelope, attribute, []) or []:
-            if isinstance(row, Mapping):
-                page = _compact(row.get("page_id"), 300)
-                if page and page not in output:
-                    output.append(page)
+    attributes = (
+        "direct_evidence",
+        "candidate_evidence",
+        "visual_guidance",
+    )
+    if not requested:
+        attributes = attributes + ("semantic_guidance",)
+
+    for attribute in attributes:
+        for raw in getattr(envelope, attribute, []) or []:
+            if not isinstance(raw, Mapping):
+                continue
+            row = dict(raw)
+            observed = _row_parts(row)
+            if requested and observed and observed.isdisjoint(requested):
+                continue
+            page = _compact(row.get("page_id"), 300)
+            if page and page not in output:
+                output.append(page)
     return output
 
 
@@ -570,7 +599,10 @@ def build_claim_results(atoms: Any, envelope: Any) -> Dict[str, Any]:
     return output
 
 
-def _lead_rows(envelope: Any) -> List[Dict[str, Any]]:
+def _lead_rows(
+    envelope: Any,
+    requested_parts: Sequence[str] = (),
+) -> List[Dict[str, Any]]:
     coverage = envelope.coverage if isinstance(envelope.coverage, Mapping) else {}
     rows = [dict(row) for row in coverage.get("navigation_leads", []) if isinstance(row, Mapping)]
     for raw in envelope.visual_guidance or []:
@@ -591,10 +623,60 @@ def _lead_rows(envelope: Any) -> List[Dict[str, Any]]:
             row.setdefault("source_type", "semantic")
             row.setdefault("guidance_only", True)
             rows.append(row)
-    rank = {"source_citation": 0, "ocr": 1, "table": 2, "visual": 3, "candidate": 4, "semantic": 5, "record": 6}
-    rows = _dedupe(rows, ("page_id", "document", "source_type", "snippet", "subject"))
-    rows.sort(key=lambda row: (rank.get(str(row.get("source_type") or "record"), 9), _compact(row.get("page_id"), 200)))
-    return rows
+
+    requested = {
+        str(value).upper()
+        for value in requested_parts
+        if value
+    }
+    for row in rows:
+        observed = _row_parts(row)
+        row["_exact_entity_match"] = bool(
+            requested and observed.intersection(requested)
+        )
+
+    exact_rows = [
+        row
+        for row in rows
+        if row.get("_exact_entity_match")
+    ]
+    if exact_rows:
+        rows = exact_rows
+
+    rank = {
+        "source_citation": 0,
+        "visual": 1,
+        "table": 2,
+        "ocr": 3,
+        "candidate": 4,
+        "semantic": 5,
+        "record": 6,
+    }
+    rows = _dedupe(
+        rows,
+        ("page_id", "document", "source_type", "snippet", "subject"),
+    )
+    rows.sort(
+        key=lambda row: (
+            0 if row.get("_exact_entity_match") else 1,
+            0 if row.get("citation_ready") else 1,
+            rank.get(str(row.get("source_type") or "record"), 9),
+            0 if row.get("figure_refs") else 1,
+            _compact(row.get("page_id"), 200),
+        )
+    )
+
+    # Navigation is page-oriented, so keep only the strongest row per page.
+    page_best: List[Dict[str, Any]] = []
+    seen_pages = set()
+    for row in rows:
+        page = _compact(row.get("page_id"), 200)
+        if not page or page in seen_pages:
+            continue
+        seen_pages.add(page)
+        row.pop("_exact_entity_match", None)
+        page_best.append(row)
+    return page_best
 
 
 def render_navigation_answer(atoms: Any, envelope: Any, critic: Mapping[str, Any]) -> str:
@@ -607,7 +689,14 @@ def render_navigation_answer(atoms: Any, envelope: Any, critic: Mapping[str, Any
             lines.append(f"- [{index}] {document + '; ' if document else ''}page {page}: {value}")
         return "\n".join(lines)
 
-    leads = [row for row in _lead_rows(envelope) if _compact(row.get("page_id"), 200)]
+    leads = [
+        row
+        for row in _lead_rows(
+            envelope,
+            getattr(atoms, "exact_part_numbers", ()) or (),
+        )
+        if _compact(row.get("page_id"), 200)
+    ]
     if not leads:
         return (
             "TRACE-Net did not resolve a direct source page or a matching navigation lead for the requested identifier. "
@@ -630,7 +719,7 @@ def render_navigation_answer(atoms: Any, envelope: Any, critic: Mapping[str, Any
             details.append(subject)
         lines.append(f"- {'; '.join(details)} — {source_type} guidance")
     lines.append(
-        "These page locations are navigation guidance. They identify where to inspect next but do not by themselves prove nomenclature, applicability, approval, or interchangeability."
+        "These page locations are navigation guidance only. They identify where to inspect next but do not establish any technical claim."
     )
     return "\n".join(lines)
 
@@ -640,7 +729,10 @@ def render_ocr_answer(atoms: Any, envelope: Any, critic: Mapping[str, Any]) -> s
     rows = [dict(row) for row in coverage.get("ocr_evidence", []) if isinstance(row, Mapping)]
     if not rows:
         pages = []
-        for row in _lead_rows(envelope):
+        for row in _lead_rows(
+            envelope,
+            getattr(atoms, "exact_part_numbers", ()) or (),
+        ):
             page = _compact(row.get("page_id"), 200)
             if page and page not in pages:
                 pages.append(page)
@@ -674,7 +766,10 @@ def render_aggregation_answer(atoms: Any, envelope: Any, critic: Mapping[str, An
     local = coverage.get("retrieval_completion", {}) if isinstance(coverage.get("retrieval_completion"), Mapping) else {}
     rows = [dict(row) for row in coverage.get("aggregate_records", []) if isinstance(row, Mapping)]
     if not rows:
-        for row in _lead_rows(envelope):
+        for row in _lead_rows(
+            envelope,
+            getattr(atoms, "exact_part_numbers", ()) or (),
+        ):
             rows.append({
                 "page_id": _compact(row.get("page_id"), 200),
                 "document": _compact(row.get("document"), 500),
@@ -831,7 +926,10 @@ def install_retrieval_completion(router: MutableMapping[str, Any]) -> None:
             query=atoms.latest_query,
             route=route,
             requested_parts=atoms.exact_part_numbers,
-            seed_pages=_seed_pages(envelope),
+            seed_pages=_seed_pages(
+                envelope,
+                getattr(atoms, "exact_part_numbers", ()) or (),
+            ),
             limit=250,
         )
         merge_local_resolution(envelope, resolution, router)

@@ -248,10 +248,15 @@ def enforce_h30_answer_boundaries(
     if not direct:
         _append_unique(lines, PROOF_BOUNDARY)
 
+    requested_claims = {
+        str(value)
+        for value in (query_atoms.get("requested_claims") or [])
+        if value
+    }
     authority_sensitive = (
         route == "authority_eligibility_verification"
+        or "authority" in requested_claims
         or _contains_any(query, AUTHORITY_TERMS)
-        or _contains_any("\n".join(lines), AUTHORITY_TERMS)
     )
     if authority_sensitive and not authority:
         _append_unique(lines, AUTHORITY_BOUNDARY)
