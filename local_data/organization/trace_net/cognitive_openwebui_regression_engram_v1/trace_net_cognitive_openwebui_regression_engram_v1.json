@@ -28,7 +28,15 @@
       ],
       "proof_role": "guidance_only",
       "activation_status": "active",
-      "source": "H30 OpenWebUI live route regression"
+      "source": "H30 OpenWebUI live route regression",
+      "canonical_rule_id": "query_clue_token_boundaries",
+      "policy_effects": {
+        "critic_policy": {
+          "checks": [
+            "query_clue_boundary"
+          ]
+        }
+      }
     },
     {
       "atom_id": "h30_openwebui_identifier_shape_v1",
@@ -55,7 +63,15 @@
       ],
       "proof_role": "guidance_only",
       "activation_status": "active",
-      "source": "H30 OpenWebUI live route regression"
+      "source": "H30 OpenWebUI live route regression",
+      "canonical_rule_id": "identifier_shape_validation",
+      "policy_effects": {
+        "critic_policy": {
+          "checks": [
+            "identifier_shape_valid"
+          ]
+        }
+      }
     },
     {
       "atom_id": "h30_openwebui_semantic_intent_priority_v1",
@@ -78,7 +94,23 @@
       ],
       "proof_role": "guidance_only",
       "activation_status": "active",
-      "source": "H30 OpenWebUI live route regression"
+      "source": "H30 OpenWebUI live route regression",
+      "canonical_rule_id": "semantic_intent_priority",
+      "policy_effects": {
+        "retrieval_policy": {
+          "ranking_profile": "semantic_discovery",
+          "preferred_evidence_order": [
+            "source_citation",
+            "semantic",
+            "table",
+            "visual",
+            "ocr",
+            "candidate",
+            "graph",
+            "record"
+          ]
+        }
+      }
     },
     {
       "atom_id": "h30_openwebui_exact_entity_gate_v1",
@@ -112,7 +144,18 @@
       ],
       "proof_role": "guidance_only",
       "activation_status": "active",
-      "source": "H30 OpenWebUI live route regression"
+      "source": "H30 OpenWebUI live route regression",
+      "canonical_rule_id": "exact_entity_gate",
+      "policy_effects": {
+        "retrieval_policy": {
+          "exact_entity_gate": true
+        },
+        "critic_policy": {
+          "checks": [
+            "exact_entity_mismatch"
+          ]
+        }
+      }
     },
     {
       "atom_id": "h30_openwebui_claim_decomposition_v1",
@@ -141,7 +184,22 @@
       ],
       "proof_role": "guidance_only",
       "activation_status": "active",
-      "source": "H30 OpenWebUI live route regression"
+      "source": "H30 OpenWebUI live route regression",
+      "canonical_rule_id": "claim_decomposition",
+      "policy_effects": {
+        "retrieval_policy": {
+          "ranking_profile": "claim_by_claim",
+          "group_by": "claim"
+        },
+        "critic_policy": {
+          "checks": [
+            "claim_buckets_present"
+          ]
+        },
+        "presentation_policy": {
+          "template": "claim_by_claim"
+        }
+      }
     },
     {
       "atom_id": "h30_openwebui_specialized_before_fallback_v1",
@@ -176,7 +234,23 @@
       ],
       "proof_role": "guidance_only",
       "activation_status": "active",
-      "source": "H30 OpenWebUI live route regression"
+      "source": "H30 OpenWebUI live route regression",
+      "canonical_rule_id": "specialized_tunnel_first",
+      "policy_effects": {
+        "retrieval_policy": {
+          "specialized_tunnel_first": true
+        },
+        "critic_policy": {
+          "checks": [
+            "wrong_tunnel_for_route"
+          ]
+        },
+        "repair_policy": {
+          "hints": [
+            "retry_specialized_tunnel"
+          ]
+        }
+      }
     },
     {
       "atom_id": "h30_openwebui_guidance_not_proof_v1",
@@ -207,7 +281,18 @@
       "proof_role": "guidance_only",
       "activation_status": "active",
       "universal": true,
-      "source": "H15-H30 Engram safety contract"
+      "source": "H15-H30 Engram safety contract",
+      "canonical_rule_id": "guidance_is_not_proof",
+      "policy_effects": {
+        "critic_policy": {
+          "checks": [
+            "guidance_promoted_to_proof"
+          ]
+        },
+        "presentation_policy": {
+          "show_proof_boundary": true
+        }
+      }
     },
     {
       "atom_id": "h30_openwebui_authority_boundary_v1",
@@ -236,7 +321,26 @@
       ],
       "proof_role": "guidance_only",
       "activation_status": "active",
-      "source": "H14-H30 authority safety contract"
+      "source": "H14-H30 authority safety contract",
+      "canonical_rule_id": "authority_requires_explicit_proof",
+      "policy_effects": {
+        "critic_policy": {
+          "checks": [
+            "authority_requires_explicit_evidence"
+          ]
+        },
+        "repair_policy": {
+          "hints": [
+            "retry_authority_fields"
+          ]
+        },
+        "presentation_policy": {
+          "show_authority_warning": true
+        }
+      }
     }
-  ]
+  ],
+  "policy_compiler_compatible": true,
+  "canonical_rule_deduplication": true,
+  "policy_effect_schema": "trace_net_h30_engram_policy_compiler_v1"
 }

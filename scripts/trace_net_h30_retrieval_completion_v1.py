@@ -599,6 +599,35 @@ def build_claim_results(atoms: Any, envelope: Any) -> Dict[str, Any]:
     return output
 
 
+def _engram_policy(envelope: Any) -> Mapping[str, Any]:
+    coverage = envelope.coverage if isinstance(envelope.coverage, Mapping) else {}
+    policy = coverage.get("engram_policy")
+    return policy if isinstance(policy, Mapping) else {}
+
+
+def _presentation_policy(envelope: Any) -> Mapping[str, Any]:
+    policy = _engram_policy(envelope)
+    presentation = policy.get("presentation_policy")
+    return presentation if isinstance(presentation, Mapping) else {}
+
+
+def _retrieval_policy(envelope: Any) -> Mapping[str, Any]:
+    policy = _engram_policy(envelope)
+    retrieval = policy.get("retrieval_policy")
+    return retrieval if isinstance(retrieval, Mapping) else {}
+
+
+def _user_facing_document(value: Any, *, hide_internal_ids: bool) -> str:
+    text = _compact(value, 500)
+    if not hide_internal_ids:
+        return text
+    if "::" in text:
+        return ""
+    if re.search(r"\b[a-f0-9]{16,}\b", text, re.I):
+        return ""
+    return text
+
+
 def _lead_rows(
     envelope: Any,
     requested_parts: Sequence[str] = (),
@@ -643,14 +672,18 @@ def _lead_rows(
     if exact_rows:
         rows = exact_rows
 
+    preferred = _retrieval_policy(envelope).get(
+        "preferred_evidence_order",
+        [],
+    )
+    if not isinstance(preferred, list) or not preferred:
+        preferred = [
+            "source_citation", "visual", "table", "ocr",
+            "candidate", "semantic", "graph", "record",
+        ]
     rank = {
-        "source_citation": 0,
-        "visual": 1,
-        "table": 2,
-        "ocr": 3,
-        "candidate": 4,
-        "semantic": 5,
-        "record": 6,
+        str(source_type): index
+        for index, source_type in enumerate(preferred)
     }
     rows = _dedupe(
         rows,
@@ -680,13 +713,23 @@ def _lead_rows(
 
 
 def render_navigation_answer(atoms: Any, envelope: Any, critic: Mapping[str, Any]) -> str:
+    presentation = _presentation_policy(envelope)
+    hide_internal_ids = bool(presentation.get("hide_internal_ids", True))
+    primary_limit = max(1, min(8, int(presentation.get("primary_result_limit", 8) or 8)))
+    supporting_limit = max(0, min(12, int(presentation.get("supporting_result_limit", 0) or 0)))
+    template = str(presentation.get("template") or "route_default")
+
     if envelope.direct_evidence:
         lines = ["TRACE-Net found citation-ready source-location evidence:"]
-        for index, row in enumerate(envelope.direct_evidence[:8], 1):
+        for index, row in enumerate(envelope.direct_evidence[:primary_limit], 1):
             page = _compact(row.get("page_id"), 200) or "unknown page"
-            document = _compact(row.get("document"), 500)
+            document = _user_facing_document(
+                row.get("document"), hide_internal_ids=hide_internal_ids
+            )
             value = _compact(row.get("normalized_value") or row.get("value"), 600)
-            lines.append(f"- [{index}] {document + '; ' if document else ''}page {page}: {value}")
+            lines.append(
+                f"- [{index}] {document + '; ' if document else ''}page {page}: {value}"
+            )
         return "\n".join(lines)
 
     leads = [
@@ -699,16 +742,21 @@ def render_navigation_answer(atoms: Any, envelope: Any, critic: Mapping[str, Any
     ]
     if not leads:
         return (
-            "TRACE-Net did not resolve a direct source page or a matching navigation lead for the requested identifier. "
+            "TRACE-Net did not resolve a direct source page or a matching "
+            "navigation lead for the requested identifier. "
             "No source-location claim is made."
         )
-    lines = ["Strongest currently resolved navigation lead(s):"]
-    for row in leads[:8]:
+
+    def render_row(row: Mapping[str, Any]) -> str:
         page = _compact(row.get("page_id"), 200)
-        document = _compact(row.get("document"), 500)
+        document = _user_facing_document(
+            row.get("document"), hide_internal_ids=hide_internal_ids
+        )
         source_type = _compact(row.get("source_type"), 100) or "guidance"
         figures = row.get("figure_refs") if isinstance(row.get("figure_refs"), list) else []
-        subject = _compact(row.get("subject") or row.get("snippet") or row.get("value"), 450)
+        subject = _compact(
+            row.get("subject") or row.get("snippet") or row.get("value"), 450
+        )
         details = []
         if document:
             details.append(document)
@@ -717,12 +765,27 @@ def render_navigation_answer(atoms: Any, envelope: Any, critic: Mapping[str, Any
             details.append(", ".join(str(value) for value in figures[:5]))
         if subject:
             details.append(subject)
-        lines.append(f"- {'; '.join(details)} — {source_type} guidance")
+        return f"- {'; '.join(details)} — {source_type} guidance"
+
+    if template == "strongest_then_supporting":
+        lines = ["Strongest currently resolved navigation lead:"]
+        for row in leads[:primary_limit]:
+            lines.append(render_row(row))
+        supporting = leads[primary_limit: primary_limit + supporting_limit]
+        if supporting:
+            lines.append("Supporting page leads:")
+            for row in supporting:
+                lines.append(render_row(row))
+    else:
+        lines = ["Strongest currently resolved navigation lead(s):"]
+        for row in leads[:primary_limit]:
+            lines.append(render_row(row))
+
     lines.append(
-        "These page locations are navigation guidance only. They identify where to inspect next but do not establish any technical claim."
+        "These page locations are navigation guidance only. "
+        "They identify where to inspect next but do not establish any technical claim."
     )
     return "\n".join(lines)
-
 
 def render_ocr_answer(atoms: Any, envelope: Any, critic: Mapping[str, Any]) -> str:
     coverage = envelope.coverage if isinstance(envelope.coverage, Mapping) else {}
@@ -957,8 +1020,31 @@ def install_retrieval_completion(router: MutableMapping[str, Any]) -> None:
 
     def gather_v2(self: Any, plan: Any, atoms: Any) -> Any:
         envelope = original_gather(self, plan, atoms)
+        envelope.coverage["engram_policy"] = dict(
+            getattr(plan, "engram_policy", {}) or {}
+        )
+        envelope.coverage["working_memory"] = dict(
+            getattr(plan, "working_memory", {}) or {}
+        )
         route = plan.primary_route
-        if route == "document_page_navigation" and atoms.exact_part_numbers:
+        policy = getattr(plan, "engram_policy", {}) or {}
+        retrieval_policy = (
+            policy.get("retrieval_policy", {})
+            if isinstance(policy, Mapping)
+            else {}
+        )
+        policy_present = bool(policy)
+        specialized_tunnel_first = bool(
+            retrieval_policy.get("specialized_tunnel_first", not policy_present)
+        )
+        direct_source_before_fallback = bool(
+            retrieval_policy.get("direct_source_before_fallback", not policy_present)
+        )
+        if (
+            specialized_tunnel_first
+            and route == "document_page_navigation"
+            and atoms.exact_part_numbers
+        ):
             for part in atoms.exact_part_numbers[:2]:
                 self.add_unified(
                     envelope,
@@ -976,11 +1062,15 @@ def install_retrieval_completion(router: MutableMapping[str, Any]) -> None:
                     atoms,
                     "navigation_candidate_page_fallback",
                 )
-        if atoms.exact_part_numbers and route in {
-            "document_page_navigation", "ocr_scan_recovery",
-            "high_degree_entity_aggregation", "multi_question_research",
-            "exact_identifier_lookup", "exact_table_ipl_lookup",
-        }:
+        if (
+            direct_source_before_fallback
+            and atoms.exact_part_numbers
+            and route in {
+                "document_page_navigation", "ocr_scan_recovery",
+                "high_degree_entity_aggregation", "multi_question_research",
+                "exact_identifier_lookup", "exact_table_ipl_lookup",
+            }
+        ):
             for part in atoms.exact_part_numbers[:1]:
                 self.add_unified(
                     envelope,
@@ -1027,6 +1117,11 @@ def install_retrieval_completion(router: MutableMapping[str, Any]) -> None:
             "aggregation_coverage_connected": True,
             "claim_level_rendering_connected": True,
             "route_specific_clue_rendering_expected": True,
+            "engram_policy_compiler_connected": True,
+            "engram_selection_before_retrieval": True,
+            "dynamic_working_memory_connected": True,
+            "policy_driven_navigation_ranking": True,
+            "policy_driven_presentation": True,
         })
         return result
 

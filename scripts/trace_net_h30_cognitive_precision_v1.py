@@ -270,7 +270,10 @@ def select_engram_memory(
         score = 0
         routes = {str(value) for value in atom.get("routes", []) if value}
         claims = {str(value) for value in atom.get("claims", []) if value}
-        triggers = [str(value) for value in atom.get("triggers", []) if value]
+        trigger_values = atom.get("triggers")
+        if not isinstance(trigger_values, list):
+            trigger_values = atom.get("trigger", [])
+        triggers = [str(value) for value in trigger_values if value]
         if route in routes:
             score += 8
         score += 4 * len(claim_set.intersection(claims))
@@ -285,15 +288,37 @@ def select_engram_memory(
             scored.append((score, str(atom.get("atom_id") or ""), atom))
 
     scored.sort(key=lambda item: (-item[0], item[1]))
-    selected = [item[2] for item in scored[: max(1, maximum_atoms)]]
+    deduplicated = []
+    seen_canonical_rules = set()
+    duplicate_atom_count = 0
+    for score, atom_id, atom in scored:
+        canonical_rule_id = str(
+            atom.get("canonical_rule_id")
+            or atom.get("atom_id")
+            or atom_id
+        )
+        if canonical_rule_id in seen_canonical_rules:
+            duplicate_atom_count += 1
+            continue
+        seen_canonical_rules.add(canonical_rule_id)
+        deduplicated.append((score, atom_id, atom))
+    selected = [
+        item[2]
+        for item in deduplicated[: max(1, maximum_atoms)]
+    ]
     compact_atoms = []
     for atom in selected:
         compact_atoms.append({
             "atom_id": atom.get("atom_id"),
+            "canonical_rule_id": (
+                atom.get("canonical_rule_id")
+                or atom.get("atom_id")
+            ),
             "memory_layer": atom.get("memory_layer"),
             "title": atom.get("title"),
             "rule": atom.get("rule"),
             "examples": atom.get("examples", [])[:2] if isinstance(atom.get("examples"), list) else [],
+            "policy_effects": atom.get("policy_effects", {}),
             "proof_role": "guidance_only",
             "source": atom.get("source"),
         })
@@ -302,6 +327,9 @@ def select_engram_memory(
         "paths": path_values,
         "loaded_atom_count": len(all_atoms),
         "load_errors": load_errors,
+        "scored_atom_count": len(scored),
+        "deduplicated_rule_count": len(deduplicated),
+        "duplicate_atom_count": duplicate_atom_count,
         "atom_count": len(compact_atoms),
         "atom_ids": [atom.get("atom_id") for atom in compact_atoms],
         "memory_layers": list(dict.fromkeys(atom.get("memory_layer") for atom in compact_atoms)),

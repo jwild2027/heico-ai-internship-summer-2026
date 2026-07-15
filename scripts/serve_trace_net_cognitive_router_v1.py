@@ -34,6 +34,11 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
 
 from scripts.trace_net_h30_answer_boundary_v1 import enforce_h30_answer_boundaries
+from scripts.trace_net_h30_engram_policy_compiler_v1 import (
+    build_working_memory,
+    compile_engram_policy,
+    refresh_working_memory,
+)
 from scripts.trace_net_h30_retrieval_completion_v1 import install_retrieval_completion
 from scripts.trace_net_h30_cognitive_precision_v1 import (
     decompose_claim_queries,
@@ -183,6 +188,8 @@ class RoutePlan:
     authority_required: bool
     repair_budget: int
     rationale: List[str]
+    engram_policy: Dict[str, Any] = field(default_factory=dict)
+    working_memory: Dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass
@@ -1136,7 +1143,35 @@ class CognitiveRuntime:
         query = extract_latest_user(payload)
         atoms = extract_query_atoms(query)
         plan = plan_route(atoms)
+
+        # Engram is selected before retrieval and compiled into a validated
+        # preference policy. Adapters and absolute safety remain deterministic.
+        engram_memory = select_engram_memory(
+            atoms.latest_query,
+            plan.primary_route,
+            atoms.requested_claims,
+            maximum_atoms=6,
+        )
+        plan.engram_policy = compile_engram_policy(
+            engram_memory,
+            plan.primary_route,
+            atoms.requested_claims,
+        )
+        plan.working_memory = build_working_memory(
+            query,
+            atoms,
+            plan,
+            plan.engram_policy,
+        )
+
         envelope = self.gather_initial(plan, atoms)
+        envelope.coverage["engram_policy"] = plan.engram_policy
+        plan.working_memory = refresh_working_memory(
+            plan.working_memory,
+            envelope,
+            plan,
+        )
+        envelope.coverage["working_memory"] = plan.working_memory
         critic_before = self.critic(plan, atoms, envelope)
 
         for _ in range(plan.repair_budget):
@@ -1146,15 +1181,21 @@ class CognitiveRuntime:
             self.repair(plan, atoms, envelope, critic_before)
             if len(envelope.crag_repairs) == previous_repairs:
                 break
+            plan.working_memory = refresh_working_memory(
+                plan.working_memory,
+                envelope,
+                plan,
+            )
+            envelope.coverage["working_memory"] = plan.working_memory
             critic_before = self.critic(plan, atoms, envelope)
 
         final_critic = critic_before
-        engram_memory = select_engram_memory(
-            atoms.latest_query,
-            plan.primary_route,
-            atoms.requested_claims,
-            maximum_atoms=6,
+        plan.working_memory = refresh_working_memory(
+            plan.working_memory,
+            envelope,
+            plan,
         )
+        envelope.coverage["working_memory"] = plan.working_memory
         content = self.render(plan, atoms, envelope, final_critic)
         content = enforce_h30_answer_boundaries(
             route=plan.primary_route,
@@ -1174,6 +1215,8 @@ class CognitiveRuntime:
             "route_registry": list(ALL_ROUTES),
             "query_atoms": asdict(atoms),
             "engram_memory": engram_memory,
+            "engram_policy": plan.engram_policy,
+            "working_memory": plan.working_memory,
             "content": content,
             "evidence_envelope": asdict(envelope),
             "self_rag_critic": final_critic,
@@ -1310,15 +1353,32 @@ def make_handler(runtime: CognitiveRuntime):
                 if path == "/api/trace-net/plan":
                     atoms = extract_query_atoms(query)
                     plan = plan_route(atoms)
+                    engram_memory = select_engram_memory(
+                        atoms.latest_query,
+                        plan.primary_route,
+                        atoms.requested_claims,
+                        maximum_atoms=6,
+                    )
+                    plan.engram_policy = compile_engram_policy(
+                        engram_memory,
+                        plan.primary_route,
+                        atoms.requested_claims,
+                    )
+                    plan.working_memory = build_working_memory(
+                        query,
+                        atoms,
+                        plan,
+                        plan.engram_policy,
+                    )
                     self.send_json(200, {
                         "quality_status": "PASS",
                         "module": MODULE,
                         "query": query,
                         "query_atoms": asdict(atoms),
                         "route_plan": asdict(plan),
-                        "engram_memory": select_engram_memory(
-                            atoms.latest_query, plan.primary_route, atoms.requested_claims, maximum_atoms=6
-                        ),
+                        "engram_memory": engram_memory,
+                        "engram_policy": plan.engram_policy,
+                        "working_memory": plan.working_memory,
                         "route_registry": list(ALL_ROUTES),
                         "retrieval_executed": False,
                         "answer_permission": False,
