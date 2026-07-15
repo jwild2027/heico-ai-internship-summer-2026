@@ -1,6 +1,6 @@
 # TRACE-Net Engram Non-Redundancy Plan
 
-## Phase 1 — policy compiler foundation
+## Phase 1 — policy compiler foundation — COMPLETE
 
 - Select Engram before retrieval.
 - Deduplicate selected memories by canonical rule ID.
@@ -8,17 +8,20 @@
 - Create fresh request-local working memory.
 - Let retrieval completion consume ranking and presentation policy.
 
-Gate: all existing route tests pass; policy cannot execute arbitrary actions.
+Gate passed: policy cannot execute arbitrary actions and the focused runtime
+suite passed.
 
-## Phase 2 — clean the memory taxonomy
+## Phase 2 — clean the memory taxonomy — CURRENT PATCH
 
-- Move static `working_memory` rules into semantic or procedural memory.
+- Move static `working_memory` rules into semantic, procedural, or episodic memory.
 - Keep working memory request-local only.
-- Rename hashed H17 atom IDs and titles with readable canonical names.
-- Populate meaningful allowed and forbidden behavior fields.
-- Keep aliases for old IDs so history remains traceable.
+- Use readable core `engram_id` values instead of generated hash IDs.
+- Keep old IDs as aliases so history remains traceable.
+- Preserve meaningful allowed and forbidden behavior fields.
+- Reject persisted static working-memory atoms.
 
-Gate: every static atom has the correct layer and a readable canonical ID.
+Gate: static working-memory count is 0; every active persisted atom has a
+readable canonical ID, allowed behavior, and forbidden behavior.
 
 ## Phase 3 — canonical rule registry
 

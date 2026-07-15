@@ -32,6 +32,50 @@ MEMORY_LAYERS: Tuple[str, ...] = (
     "critic_memory",
 )
 
+# Working memory is created fresh for each request. The committed artifact stores
+# only the five long-lived behavior/experience layers.
+PERSISTED_MEMORY_LAYERS: Tuple[str, ...] = tuple(
+    layer for layer in MEMORY_LAYERS
+    if layer != "working_memory"
+)
+
+MEMORY_TYPE_LAYER_MAP: Dict[str, str] = {
+    "working_memory": "working_memory",
+    "semantic_memory": "semantic_memory",
+    "route_behavior": "semantic_memory",
+    "procedural_memory": "procedural_memory",
+    "policy_trait": "procedural_memory",
+    "episodic_memory": "episodic_memory",
+    "episodic_failure_memory": "episodic_memory",
+    "episodic_eval_memory": "episodic_memory",
+    "engineer_query_clarification": "episodic_memory",
+    "engineer_query_clarification_episode": "episodic_memory",
+    "trait_memory": "trait_memory",
+    "style_trait": "trait_memory",
+    "critic_memory": "critic_memory",
+    "critic_trait": "critic_memory",
+    "repair_trait": "critic_memory",
+}
+
+MEMORY_ID_LAYER_OVERRIDES: Dict[str, str] = {
+    "policy_v2_summaries_guidance_not_proof_v1": "semantic_memory",
+    "style_unknown_part_or_figure_v1": "procedural_memory",
+}
+
+RUNTIME_WORKING_MEMORY_FIELDS: Tuple[str, ...] = (
+    "question",
+    "route",
+    "requested_claims",
+    "requested_part_numbers",
+    "searches_attempted",
+    "evidence_found",
+    "evidence_rejected_count",
+    "best_result",
+    "unresolved_fields",
+    "repair_budget_remaining",
+    "engram_policy_hash",
+)
+
 LAYER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
     "working_memory": {
         "description": "Current question, current context pack, and current proof citations used only at answer time.",
@@ -79,17 +123,36 @@ LAYER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
 
 DEFAULT_LAYER_SEED_ATOMS: List[Dict[str, Any]] = [
     {
-        "atom_id": "working_current_question_context_pack_citations_v1",
-        "memory_layer": "working_memory",
-        "memory_type": "working_memory",
-        "title": "Current answer working set",
-        "trigger": ["every answer"],
-        "rule": "Use the current user question, current context pack, and current proof citations as the only answer-time factual working set.",
-        "allowed_behavior": "Ground the draft in current proof_context and citation labels.",
-        "forbidden_behavior": "Do not import proof from old Engram memories or summaries.",
-        "proof_role": "current_proof_context_only",
+        "atom_id": "procedural_working_memory_runtime_boundary_v2",
+        "canonical_rule_id": "working_memory_runtime_boundary",
+        "legacy_atom_ids": [
+            "working_current_question_context_pack_citations_v1",
+        ],
+        "memory_layer": "procedural_memory",
+        "memory_type": "procedural_memory",
+        "title": "Working memory is request-local",
+        "trigger": [
+            "working memory",
+            "current question",
+            "current context pack",
+            "every answer",
+        ],
+        "rule": (
+            "Create working memory fresh for the current request. Use only the "
+            "current question, context pack, evidence, and proof citations; do "
+            "not persist that temporary state as Engram source truth."
+        ),
+        "allowed_behavior": (
+            "Track current claims, searches, evidence, rejected evidence, best "
+            "result, unresolved fields, and repair budget during the request."
+        ),
+        "forbidden_behavior": (
+            "Do not store current manual facts or citations as permanent Engram "
+            "memory, and do not import proof from previous requests."
+        ),
+        "proof_role": "guidance_only",
         "activation_status": "active",
-        "source": "h17_seed_taxonomy",
+        "source": "h17_seed_taxonomy_phase2_cleanup",
     },
     {
         "atom_id": "semantic_visual_link_vs_ocr_nomenclature_v1",
@@ -246,7 +309,12 @@ def extract_engram_atoms(core: Mapping[str, Any]) -> List[Dict[str, Any]]:
     seen: set[str] = set()
     out: List[Dict[str, Any]] = []
     for atom in atoms:
-        key = str(atom.get("atom_id") or atom.get("id") or stable_hash(atom))
+        key = str(
+            atom.get("atom_id")
+            or atom.get("id")
+            or atom.get("engram_id")
+            or stable_hash(atom)
+        )
         if key in seen:
             continue
         seen.add(key)
@@ -255,11 +323,29 @@ def extract_engram_atoms(core: Mapping[str, Any]) -> List[Dict[str, Any]]:
 
 
 def infer_memory_layer(atom: Mapping[str, Any]) -> str:
+    identifier = str(
+        atom.get("atom_id")
+        or atom.get("id")
+        or atom.get("engram_id")
+        or ""
+    ).strip()
+    if identifier in MEMORY_ID_LAYER_OVERRIDES:
+        return MEMORY_ID_LAYER_OVERRIDES[identifier]
+
+    memory_type = str(atom.get("memory_type") or "").strip().lower()
+    memory_type = memory_type.replace("-", "_").replace(" ", "_")
+    if memory_type in MEMORY_TYPE_LAYER_MAP:
+        return MEMORY_TYPE_LAYER_MAP[memory_type]
+
+    explicit = str(atom.get("memory_layer") or "").strip().lower()
+    explicit = explicit.replace("-", "_").replace(" ", "_")
+    if explicit in MEMORY_LAYERS:
+        return explicit
+
     text = _lower_text(
         atom.get("memory_layer"),
         atom.get("memory_type"),
-        atom.get("atom_id"),
-        atom.get("id"),
+        identifier,
         atom.get("title"),
         atom.get("trait"),
         atom.get("traits"),
@@ -271,23 +357,33 @@ def infer_memory_layer(atom: Mapping[str, Any]) -> str:
         atom.get("failure_pattern"),
         atom.get("repair_pattern"),
     )
-    explicit = str(atom.get("memory_layer") or atom.get("memory_type") or "").strip().lower()
-    explicit = explicit.replace("-", "_").replace(" ", "_")
-    if explicit in MEMORY_LAYERS:
-        return explicit
-
-    if any(k in text for k in ("working_memory", "working memory", "current question", "context pack", "proof_context")):
-        return "working_memory"
-    if any(k in text for k in ("critic", "self-rag", "self_rag", "crag", "repair", "fallback", "retry", "too generic")):
+    if any(k in text for k in (
+        "critic", "self-rag", "self_rag", "crag", "repair",
+        "fallback", "retry", "too generic",
+    )):
         return "critic_memory"
-    if any(k in text for k in ("episodic", "episode", "h13", "h14", "h16", "eval", "smoke", "failure", "regression")):
+    if any(k in text for k in (
+        "episodic", "episode", "h13", "h14", "h16",
+        "eval", "smoke", "failure", "regression",
+    )):
         return "episodic_memory"
-    if any(k in text for k in ("procedural", "policy", "rule", "if user", "interchange", "replacement", "effectivity", "fit", "installation")):
+    if any(k in text for k in (
+        "procedural", "policy", "rule", "if user", "interchange",
+        "replacement", "effectivity", "fit", "installation",
+    )):
         return "procedural_memory"
-    if any(k in text for k in ("trait", "style", "tone", "answer shape", "cautious", "helpful", "confidence")):
+    if any(k in text for k in (
+        "trait", "style", "tone", "answer shape",
+        "cautious", "helpful", "confidence",
+    )):
         return "trait_memory"
-    if any(k in text for k in ("semantic", "route", "visual", "ocr", "table", "nomenclature", "summary", "graph", "leiden")):
+    if any(k in text for k in (
+        "semantic", "route", "visual", "ocr", "table",
+        "nomenclature", "summary", "graph", "leiden",
+    )):
         return "semantic_memory"
+    if atom.get("runtime_generated") is True:
+        return "working_memory"
     return "semantic_memory"
 
 
@@ -300,34 +396,145 @@ def infer_proof_role(atom: Mapping[str, Any], layer: str) -> str:
     return "guidance_only"
 
 
-def normalize_atom(atom: Mapping[str, Any], *, source_core_path: str = "") -> Dict[str, Any]:
+def readable_atom_title(atom_id: str) -> str:
+    value = str(atom_id or "").strip()
+    value = re.sub(
+        r"^(?:policy|route|style|episode|critic|repair|semantic|procedural|trait)_",
+        "",
+        value,
+    )
+    value = re.sub(r"_v\d+$", "", value)
+    words = value.split("_")
+    acronyms = {
+        "ata": "ATA",
+        "crag": "CRAG",
+        "h13": "H13",
+        "h14": "H14",
+        "h14b": "H14B",
+        "h14c": "H14C",
+        "llm": "LLM",
+        "ocr": "OCR",
+        "rag": "RAG",
+        "self": "Self",
+        "v2": "V2",
+    }
+    rendered = [
+        acronyms.get(word.lower(), word)
+        for word in words
+        if word
+    ]
+    title = " ".join(rendered).strip()
+    return title[:1].upper() + title[1:] if title else "Engram memory"
+
+
+def normalize_atom(
+    atom: Mapping[str, Any],
+    *,
+    source_core_path: str = "",
+) -> Dict[str, Any]:
     layer = infer_memory_layer(atom)
-    atom_id = str(atom.get("atom_id") or atom.get("id") or f"h17_imported_{stable_hash(atom)}")
+    source_hash = stable_hash(atom)
+    legacy_hash_id = f"h17_imported_{source_hash}"
+    atom_id = str(
+        atom.get("atom_id")
+        or atom.get("id")
+        or atom.get("engram_id")
+        or legacy_hash_id
+    )
     proof_role = infer_proof_role(atom, layer)
+    if layer != "working_memory":
+        proof_role = "guidance_only"
+
+    aliases = [
+        str(value)
+        for value in _as_list(
+            atom.get("legacy_atom_ids")
+            or atom.get("aliases")
+        )
+        if value
+    ]
+    if atom_id != legacy_hash_id and legacy_hash_id not in aliases:
+        aliases.append(legacy_hash_id)
+
     normalized: Dict[str, Any] = {
         "atom_id": atom_id,
+        "canonical_rule_id": str(
+            atom.get("canonical_rule_id")
+            or atom.get("engram_id")
+            or atom_id
+        ),
+        "legacy_atom_ids": aliases,
         "memory_layer": layer,
         "memory_type": str(atom.get("memory_type") or layer),
-        "title": str(atom.get("title") or atom.get("name") or atom_id),
-        "trigger": _as_list(atom.get("trigger") or atom.get("triggers") or atom.get("intent_triggers") or atom.get("tags")),
-        "rule": str(atom.get("rule") or atom.get("description") or atom.get("guidance") or atom.get("content") or atom.get("value") or "").strip(),
-        "allowed_behavior": str(atom.get("allowed_behavior") or atom.get("positive_behavior") or atom.get("do") or "").strip(),
-        "forbidden_behavior": str(atom.get("forbidden_behavior") or atom.get("negative_behavior") or atom.get("do_not") or "").strip(),
+        "title": str(
+            atom.get("title")
+            or atom.get("name")
+            or readable_atom_title(atom_id)
+        ),
+        "trigger": _as_list(
+            atom.get("trigger")
+            or atom.get("triggers")
+            or atom.get("intent_triggers")
+            or atom.get("tags")
+        ),
+        "rule": str(
+            atom.get("rule")
+            or atom.get("description")
+            or atom.get("guidance")
+            or atom.get("content")
+            or atom.get("value")
+            or ""
+        ).strip(),
+        "allowed_behavior": str(
+            atom.get("allowed_behavior")
+            or atom.get("positive_behavior")
+            or atom.get("good_behavior")
+            or atom.get("do")
+            or ""
+        ).strip(),
+        "forbidden_behavior": str(
+            atom.get("forbidden_behavior")
+            or atom.get("negative_behavior")
+            or atom.get("bad_behavior")
+            or atom.get("do_not")
+            or ""
+        ).strip(),
         "proof_role": proof_role,
-        "activation_status": str(atom.get("activation_status") or atom.get("status") or "active"),
-        "source": str(atom.get("source") or atom.get("source_key") or "engram_core"),
+        "activation_status": str(
+            atom.get("activation_status")
+            or atom.get("status")
+            or "active"
+        ),
+        "source": str(
+            atom.get("source")
+            or atom.get("source_key")
+            or "engram_core"
+        ),
         "source_core_path": source_core_path,
-        "source_hash": stable_hash(atom),
+        "source_hash": source_hash,
     }
-    # Preserve compact provenance/debug metadata without trusting it as proof.
-    for key in ("category", "traits", "trait", "memory_id", "eval_id", "question_id", "grade", "repair_pattern", "failure_pattern"):
+    if atom.get("engram_id"):
+        normalized["source_engram_id"] = atom.get("engram_id")
+    for key in (
+        "category", "traits", "trait", "memory_id", "eval_id",
+        "question_id", "grade", "repair_pattern", "failure_pattern",
+    ):
         if key in atom and atom.get(key) not in (None, ""):
             normalized[key] = atom.get(key)
     return normalized
 
 
 def seed_layer_atoms() -> List[Dict[str, Any]]:
-    return [dict(a) for a in DEFAULT_LAYER_SEED_ATOMS]
+    output: List[Dict[str, Any]] = []
+    for raw in DEFAULT_LAYER_SEED_ATOMS:
+        atom = dict(raw)
+        atom.setdefault(
+            "canonical_rule_id",
+            atom.get("atom_id"),
+        )
+        atom.setdefault("legacy_atom_ids", [])
+        output.append(atom)
+    return output
 
 
 
@@ -397,7 +604,7 @@ def engineer_query_clarification_profile_to_atom(
     source_query_planner_path: str = "",
     source_record_index: int = 0,
 ) -> Dict[str, Any]:
-    """Convert a planner clarification profile into a guidance-only Engram atom."""
+    """Convert a saved planner profile into episodic guidance memory."""
     stable_payload = {
         "question": question,
         "profile_type": profile.get("profile_type"),
@@ -405,28 +612,49 @@ def engineer_query_clarification_profile_to_atom(
         "facet_filters": profile.get("facet_filters"),
         "risk_flags": profile.get("risk_flags"),
     }
-    atom_id = "working_engineer_query_clarification_" + stable_hash(stable_payload)[:16]
+    suffix = stable_hash(stable_payload)[:16]
+    atom_id = "episode_engineer_query_clarification_" + suffix
+    legacy_atom_id = "working_engineer_query_clarification_" + suffix
 
     payload = {
         "question": question,
-        "profile_type": profile.get("profile_type") or "engineer_query_clarification_profile_v1",
-        "extracted_engineer_clues": profile.get("extracted_engineer_clues") or {},
+        "profile_type": (
+            profile.get("profile_type")
+            or "engineer_query_clarification_profile_v1"
+        ),
+        "extracted_engineer_clues": (
+            profile.get("extracted_engineer_clues") or {}
+        ),
         "facet_filters": profile.get("facet_filters") or {},
-        "clarifying_questions": profile.get("clarifying_questions") or [],
+        "clarifying_questions": (
+            profile.get("clarifying_questions") or []
+        ),
         "risk_flags": profile.get("risk_flags") or [],
-        "recommended_first_pass": profile.get("recommended_first_pass") or [],
+        "recommended_first_pass": (
+            profile.get("recommended_first_pass") or []
+        ),
     }
 
     return {
         "atom_id": atom_id,
-        "memory_layer": "working_memory",
-        "memory_type": "engineer_query_clarification",
+        "canonical_rule_id": "engineer_query_clarification_episode",
+        "legacy_atom_ids": [legacy_atom_id],
+        "memory_layer": "episodic_memory",
+        "memory_type": "engineer_query_clarification_episode",
         "proof_role": "guidance_only",
-        "title": "Engineer query clarification profile",
+        "title": "Engineer query clarification episode",
         "rule": (
-            "Use extracted engineer clues, facet filters, clarifying questions, "
-            "and risk flags to narrow retrieval before answering. This is not "
-            "source proof; manual/source claims still require current proof_context citations."
+            "Recall this reviewed planner example when a similar question "
+            "appears. Re-extract current clues into request-local working "
+            "memory; do not reuse the old question as current source proof."
+        ),
+        "allowed_behavior": (
+            "Use the prior clue pattern, facet choices, clarifying questions, "
+            "and risk flags to improve current planning."
+        ),
+        "forbidden_behavior": (
+            "Do not treat the saved question, filters, or planner output as "
+            "current manual evidence or persistent working memory."
         ),
         "triggers": _profile_triggers(profile),
         "payload": payload,
@@ -557,28 +785,80 @@ def validate_layered_manifest(
     if len(atoms) < min_atoms:
         errors.append(f"memory atom count below minimum: {len(atoms)} < {min_atoms}")
 
-    layer_counts = group_layer_counts([a for a in atoms if isinstance(a, Mapping)])
+    mapped_atoms = [
+        atom for atom in atoms
+        if isinstance(atom, Mapping)
+    ]
+    layer_counts = group_layer_counts(mapped_atoms)
     if require_all_layers:
-        missing = [layer for layer, count in layer_counts.items() if count <= 0]
+        missing = [
+            layer
+            for layer in PERSISTED_MEMORY_LAYERS
+            if layer_counts.get(layer, 0) <= 0
+        ]
         if missing:
-            errors.append("missing required memory layers: " + ",".join(missing))
+            errors.append(
+                "missing required persisted memory layers: "
+                + ",".join(missing)
+            )
 
     for idx, atom in enumerate(atoms):
         if not isinstance(atom, Mapping):
             errors.append(f"atom {idx} is not an object")
             continue
+        atom_id = str(atom.get("atom_id") or idx)
         layer = str(atom.get("memory_layer") or "")
         if layer not in MEMORY_LAYERS:
-            errors.append(f"atom {atom.get('atom_id', idx)} has invalid memory_layer={layer!r}")
+            errors.append(
+                f"atom {atom_id} has invalid memory_layer={layer!r}"
+            )
         proof_role = str(atom.get("proof_role") or "")
         if not proof_role:
-            errors.append(f"atom {atom.get('atom_id', idx)} missing proof_role")
+            errors.append(f"atom {atom_id} missing proof_role")
         if layer != "working_memory" and proof_role != "guidance_only":
-            errors.append(f"atom {atom.get('atom_id', idx)} non-working memory must be guidance_only, got {proof_role!r}")
-        if layer == "working_memory" and proof_role not in ("current_proof_context_only", "guidance_only"):
-            errors.append(f"working atom {atom.get('atom_id', idx)} has invalid proof_role={proof_role!r}")
-        if atom.get("answer_permission") is True or atom.get("answer_permission_allowed") is True:
-            errors.append(f"atom {atom.get('atom_id', idx)} grants answer permission")
+            errors.append(
+                f"atom {atom_id} non-working memory must be "
+                f"guidance_only, got {proof_role!r}"
+            )
+        if layer == "working_memory":
+            if atom.get("runtime_generated") is not True:
+                errors.append(
+                    f"atom {atom_id}: working_memory is runtime-only; "
+                    "static persisted working memory is not allowed"
+                )
+            if proof_role not in (
+                "current_proof_context_only",
+                "guidance_only",
+            ):
+                errors.append(
+                    f"working atom {atom_id} has invalid "
+                    f"proof_role={proof_role!r}"
+                )
+        if atom_id.startswith("h17_imported_"):
+            errors.append(
+                f"atom {atom_id} must use a readable canonical ID"
+            )
+        if not str(atom.get("canonical_rule_id") or "").strip():
+            errors.append(
+                f"atom {atom_id} missing canonical_rule_id"
+            )
+        if str(atom.get("title") or "").strip() in ("", atom_id):
+            errors.append(
+                f"atom {atom_id} missing readable title"
+            )
+        if not str(atom.get("allowed_behavior") or "").strip():
+            errors.append(
+                f"atom {atom_id} missing allowed_behavior"
+            )
+        if not str(atom.get("forbidden_behavior") or "").strip():
+            errors.append(
+                f"atom {atom_id} missing forbidden_behavior"
+            )
+        if (
+            atom.get("answer_permission") is True
+            or atom.get("answer_permission_allowed") is True
+        ):
+            errors.append(f"atom {atom_id} grants answer permission")
 
     findings = unsafe_findings([a for a in atoms if isinstance(a, Mapping)], manifest)
     if len(findings) > max_unsafe:
@@ -590,9 +870,47 @@ def validate_layered_manifest(
         if answer_permission_count:
             errors.append(f"answer_permission_count must be 0, got {answer_permission_count}")
 
+    static_working = [
+        atom for atom in mapped_atoms
+        if atom.get("memory_layer") == "working_memory"
+        and atom.get("runtime_generated") is not True
+    ]
+    runtime_working = [
+        atom for atom in mapped_atoms
+        if atom.get("memory_layer") == "working_memory"
+        and atom.get("runtime_generated") is True
+    ]
     metrics = {
         "memory_atom_count": len(atoms),
         "layer_counts": layer_counts,
+        "persistent_layer_counts": {
+            layer: layer_counts.get(layer, 0)
+            for layer in PERSISTED_MEMORY_LAYERS
+        },
+        "static_working_memory_atom_count": len(static_working),
+        "runtime_generated_working_memory_atom_count": len(runtime_working),
+        "readable_atom_id_count": sum(
+            1 for atom in mapped_atoms
+            if not str(atom.get("atom_id") or "").startswith(
+                "h17_imported_"
+            )
+        ),
+        "canonical_rule_id_count": sum(
+            1 for atom in mapped_atoms
+            if str(atom.get("canonical_rule_id") or "").strip()
+        ),
+        "legacy_alias_count": sum(
+            len(_as_list(atom.get("legacy_atom_ids")))
+            for atom in mapped_atoms
+        ),
+        "allowed_behavior_populated_count": sum(
+            1 for atom in mapped_atoms
+            if str(atom.get("allowed_behavior") or "").strip()
+        ),
+        "forbidden_behavior_populated_count": sum(
+            1 for atom in mapped_atoms
+            if str(atom.get("forbidden_behavior") or "").strip()
+        ),
         "unsafe_finding_count": len(findings),
         "unsafe_findings": findings,
     }
@@ -642,15 +960,30 @@ def build_memory_layer_manifest(
         "source_engram_core_path": str(core_path),
         "taxonomy": {
             "memory_layers": list(MEMORY_LAYERS),
+            "persisted_memory_layers": list(PERSISTED_MEMORY_LAYERS),
             "layer_definitions": LAYER_DEFINITIONS,
-            "proof_boundary": "Engram memory is behavior guidance only. Manual facts must still come from current proof_context citations.",
-            "working_memory_note": "Working memory can carry current proof citations at answer time but is not persisted as source truth by this artifact.",
+            "working_memory_storage": "runtime_only",
+            "runtime_working_memory_fields": list(
+                RUNTIME_WORKING_MEMORY_FIELDS
+            ),
+            "proof_boundary": (
+                "Engram memory is behavior guidance only. Manual facts must "
+                "still come from current proof_context citations."
+            ),
+            "working_memory_note": (
+                "Working memory is created fresh for each request and is not "
+                "stored in this persisted behavior-memory artifact."
+            ),
         },
         "memory_atoms": atoms,
         "summary": {
             "module": MODULE,
             "version": VERSION,
             "memory_layer_count": len(MEMORY_LAYERS),
+            "persisted_memory_layer_count": len(
+                PERSISTED_MEMORY_LAYERS
+            ),
+            "dynamic_working_memory_enabled": True,
             "memory_atom_count": len(atoms),
             "layer_counts": layer_counts,
             "source_engram_atom_count": len(extract_engram_atoms(core if isinstance(core, Mapping) else {})),
