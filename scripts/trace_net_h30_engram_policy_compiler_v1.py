@@ -130,13 +130,25 @@ def compile_engram_policy(
     for raw_atom in atoms:
         atom = _mapping(raw_atom)
         atom_id = str(atom.get("atom_id") or "")
-        canonical_id = str(atom.get("canonical_rule_id") or atom_id)
+        inherited_ids = atom.get("inherited_rule_ids", [])
+        if not isinstance(inherited_ids, list):
+            inherited_ids = []
+        canonical_id = str(
+            atom.get("canonical_rule_id")
+            or atom_id
+        )
         effects = _mapping(atom.get("policy_effects"))
         if not effects:
             continue
         if atom_id:
             source_atom_ids.append(atom_id)
-        if canonical_id:
+        if inherited_ids:
+            source_rule_ids.extend(
+                str(value)
+                for value in inherited_ids
+                if value
+            )
+        elif canonical_id:
             source_rule_ids.append(canonical_id)
 
         retrieval_effect = _mapping(effects.get("retrieval_policy"))
@@ -206,12 +218,22 @@ def compile_engram_policy(
                     presentation["template"] = template
             else:
                 rejected_effect_count += 1
-        if "primary_result_limit" in presentation_effect:
+        # Selected atoms are ordered from strongest to weakest. The first
+        # explicit scalar presentation choice owns the value; lower-ranked
+        # memories may add list checks and true safety flags, but must not
+        # overwrite the route-specific result limits.
+        if (
+            "primary_result_limit" in presentation_effect
+            and presentation["primary_result_limit"] == 8
+        ):
             presentation["primary_result_limit"] = _bounded_int(
                 presentation_effect.get("primary_result_limit"),
                 presentation["primary_result_limit"], 1, 8,
             )
-        if "supporting_result_limit" in presentation_effect:
+        if (
+            "supporting_result_limit" in presentation_effect
+            and presentation["supporting_result_limit"] == 0
+        ):
             presentation["supporting_result_limit"] = _bounded_int(
                 presentation_effect.get("supporting_result_limit"),
                 presentation["supporting_result_limit"], 0, 12,

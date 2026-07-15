@@ -1,0 +1,480 @@
+{
+  "status": "TRACE_NET_ENGRAM_CANONICAL_RULE_REGISTRY_BUILT",
+  "module": "trace_net_h30_engram_canonical_registry_v1",
+  "version": "v1",
+  "quality_status": "PASS",
+  "safety_contract": "behavior_guidance_only_no_source_truth_no_answer_permission_no_db_writes_no_arbitrary_execution",
+  "canonical_rules": [
+    {
+      "canonical_rule_id": "query_clue_token_boundaries",
+      "title": "Match technical clues at token boundaries",
+      "memory_layer": "procedural_memory",
+      "rule": "A technical clue must match a complete word or phrase. A substring inside an unrelated word is not a valid route or nomenclature clue.",
+      "allowed_behavior": "Use token- or phrase-boundary matching when extracting route and nomenclature clues.",
+      "forbidden_behavior": "Do not let recover or coverage activate the separate word cover.",
+      "policy_effects": {
+        "critic_policy": {
+          "checks": [
+            "query_clue_boundary"
+          ]
+        }
+      },
+      "source_atom_ids": [
+        "h30_openwebui_lexical_boundary_v1"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "citable": false,
+      "answer_permission": false,
+      "source_truth": false,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "canonical_rule_id": "identifier_shape_validation",
+      "title": "Validate partial identifier shape",
+      "memory_layer": "procedural_memory",
+      "rule": "Do not convert ordinary prose into a partial part number. A partial identifier clue must be explicitly entity-bound and identifier-shaped, normally including at least one digit.",
+      "allowed_behavior": "Accept explicitly labeled partial part-number clues that have an identifier-like shape.",
+      "forbidden_behavior": "Do not extract ordinary words such as THE from prose as part number fragments.",
+      "policy_effects": {
+        "critic_policy": {
+          "checks": [
+            "identifier_shape_valid"
+          ]
+        }
+      },
+      "source_atom_ids": [
+        "h30_openwebui_identifier_shape_v1"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "citable": false,
+      "answer_permission": false,
+      "source_truth": false,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "canonical_rule_id": "semantic_intent_priority",
+      "title": "Prioritize explicit topical discovery",
+      "memory_layer": "semantic_memory",
+      "rule": "When the user explicitly asks for topical or concept-level page discovery, route semantically even when the query also contains component nouns.",
+      "allowed_behavior": "Treat explicit topical language as the primary retrieval intent.",
+      "forbidden_behavior": "Do not let an incidental component noun override a clear semantic-discovery request.",
+      "policy_effects": {
+        "retrieval_policy": {
+          "ranking_profile": "semantic_discovery",
+          "preferred_evidence_order": [
+            "source_citation",
+            "semantic",
+            "table",
+            "visual",
+            "ocr",
+            "candidate",
+            "graph",
+            "record"
+          ]
+        }
+      },
+      "source_atom_ids": [
+        "h30_openwebui_semantic_intent_priority_v1"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "citable": false,
+      "answer_permission": false,
+      "source_truth": false,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "canonical_rule_id": "exact_entity_gate",
+      "title": "Remove exact-entity mismatches",
+      "memory_layer": "critic_memory",
+      "rule": "Evidence that explicitly names only different part numbers is irrelevant to an exact-part claim and must be removed before rendering.",
+      "allowed_behavior": "Keep exact matches and context records that do not explicitly contradict the requested entity.",
+      "forbidden_behavior": "Do not surface records that explicitly identify only a different part number for the requested exact-part claim.",
+      "policy_effects": {
+        "retrieval_policy": {
+          "exact_entity_gate": true
+        },
+        "critic_policy": {
+          "checks": [
+            "exact_entity_mismatch"
+          ]
+        }
+      },
+      "source_atom_ids": [
+        "h30_openwebui_exact_entity_gate_v1"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "citable": false,
+      "answer_permission": false,
+      "source_truth": false,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "canonical_rule_id": "claim_decomposition",
+      "title": "Decompose multi-question requests by claim",
+      "memory_layer": "procedural_memory",
+      "rule": "Split a multi-question request into bounded claim-specific searches and validate evidence separately for each claim type.",
+      "allowed_behavior": "Create separate identity, nomenclature, table, visual, relationship, procedure, warning, comparison, and authority searches when requested.",
+      "forbidden_behavior": "Do not let evidence for one claim silently satisfy another claim.",
+      "policy_effects": {
+        "retrieval_policy": {
+          "ranking_profile": "claim_by_claim",
+          "group_by": "claim"
+        },
+        "critic_policy": {
+          "checks": [
+            "claim_buckets_present"
+          ]
+        },
+        "presentation_policy": {
+          "template": "claim_by_claim"
+        }
+      },
+      "source_atom_ids": [
+        "h30_openwebui_claim_decomposition_v1"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "citable": false,
+      "answer_permission": false,
+      "source_truth": false,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "canonical_rule_id": "specialized_tunnel_first",
+      "title": "Run the specialized tunnel before broad fallback",
+      "memory_layer": "procedural_memory",
+      "rule": "A specialized route must attempt its typed retrieval tunnel and source resolution before settling for broad semantic guidance.",
+      "allowed_behavior": "Use the registered table, procedure, warning, OCR, aggregation, comparison, navigation, or other route-specific adapter first.",
+      "forbidden_behavior": "Do not treat a correct route label as success when only a broad semantic fallback executed.",
+      "policy_effects": {
+        "retrieval_policy": {
+          "specialized_tunnel_first": true
+        },
+        "critic_policy": {
+          "checks": [
+            "wrong_tunnel_for_route"
+          ]
+        },
+        "repair_policy": {
+          "hints": [
+            "retry_specialized_tunnel"
+          ]
+        }
+      },
+      "source_atom_ids": [
+        "h30_openwebui_specialized_before_fallback_v1",
+        "h30_correct_route_requires_correct_tunnel_v2"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "citable": false,
+      "answer_permission": false,
+      "source_truth": false,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "canonical_rule_id": "guidance_is_not_proof",
+      "title": "Keep guidance separate from proof",
+      "memory_layer": "trait_memory",
+      "rule": "Candidate, visual, semantic, graph, summary, and unresolved OCR evidence may guide retrieval but cannot prove a technical claim.",
+      "allowed_behavior": "Report useful guidance with its evidence type, uncertainty, and next source-resolution step.",
+      "forbidden_behavior": "Do not promote guidance to source truth, authority, or a citation-ready technical claim.",
+      "policy_effects": {
+        "critic_policy": {
+          "checks": [
+            "guidance_promoted_to_proof"
+          ]
+        },
+        "presentation_policy": {
+          "show_proof_boundary": true
+        }
+      },
+      "source_atom_ids": [
+        "h30_openwebui_guidance_not_proof_v1"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "citable": false,
+      "answer_permission": false,
+      "source_truth": false,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "canonical_rule_id": "authority_requires_explicit_proof",
+      "title": "Require explicit authority evidence",
+      "memory_layer": "procedural_memory",
+      "rule": "Approval, replacement, interchangeability, effectivity, applicability, eligibility, fit, and installation claims require explicit current source authority.",
+      "allowed_behavior": "Search authority fields and report the claim only when matching authority evidence is resolved.",
+      "forbidden_behavior": "Do not infer authority from similarity, shared nomenclature, nearby figures, or part-family membership.",
+      "policy_effects": {
+        "critic_policy": {
+          "checks": [
+            "authority_requires_explicit_evidence"
+          ]
+        },
+        "repair_policy": {
+          "hints": [
+            "retry_authority_fields"
+          ]
+        },
+        "presentation_policy": {
+          "show_authority_warning": true
+        }
+      },
+      "source_atom_ids": [
+        "h30_openwebui_authority_boundary_v1"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "citable": false,
+      "answer_permission": false,
+      "source_truth": false,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "canonical_rule_id": "navigation_exact_entity_presentation",
+      "title": "Present the strongest exact navigation lead first",
+      "memory_layer": "procedural_memory",
+      "rule": "For exact-entity navigation, rank matching source, visual, table, OCR, candidate, and semantic page leads; show one strongest lead and separate weaker supporting pages.",
+      "allowed_behavior": "Group records by page, rank exact entity matches first, and hide internal retrieval identifiers.",
+      "forbidden_behavior": "Do not dump token-level OCR rows, expose internal IDs, or present all page leads as equally strong.",
+      "policy_effects": {
+        "retrieval_policy": {
+          "ranking_profile": "exact_entity_navigation",
+          "preferred_evidence_order": [
+            "source_citation",
+            "visual",
+            "table",
+            "ocr",
+            "candidate",
+            "semantic",
+            "graph",
+            "record"
+          ],
+          "group_by": "page_id",
+          "specialized_tunnel_first": true,
+          "direct_source_before_fallback": true,
+          "exact_entity_gate": true
+        },
+        "critic_policy": {
+          "checks": [
+            "top_result_matches_exact_entity",
+            "no_token_level_ocr_spam",
+            "no_internal_identifier_exposure"
+          ]
+        },
+        "repair_policy": {
+          "hints": [
+            "rerank_exact_entity",
+            "collapse_page_rows",
+            "sanitize_internal_ids"
+          ]
+        },
+        "presentation_policy": {
+          "template": "strongest_then_supporting",
+          "primary_result_limit": 1,
+          "supporting_result_limit": 5,
+          "hide_internal_ids": true,
+          "collapse_by_page": true,
+          "show_proof_boundary": true
+        }
+      },
+      "source_atom_ids": [
+        "h30_navigation_guidance_value_v2"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "citable": false,
+      "answer_permission": false,
+      "source_truth": false,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "canonical_rule_id": "actual_ocr_record_required",
+      "title": "Require actual OCR records for OCR answers",
+      "memory_layer": "procedural_memory",
+      "rule": "An OCR answer must distinguish stored OCR text, engine, confidence, and page from semantic or visual page leads.",
+      "allowed_behavior": "Report the stored OCR record and uncertainty, or clearly state that no matching OCR record was resolved.",
+      "forbidden_behavior": "Do not report semantic similarity or a visual page lead as recovered OCR text.",
+      "policy_effects": {
+        "retrieval_policy": {
+          "ranking_profile": "ocr_recovery",
+          "preferred_evidence_order": [
+            "source_citation",
+            "ocr",
+            "visual",
+            "table",
+            "semantic",
+            "candidate",
+            "graph",
+            "record"
+          ],
+          "specialized_tunnel_first": true,
+          "direct_source_before_fallback": true
+        },
+        "critic_policy": {
+          "checks": [
+            "actual_ocr_record_required",
+            "no_token_level_ocr_spam"
+          ]
+        },
+        "repair_policy": {
+          "hints": [
+            "retry_ocr_records"
+          ]
+        },
+        "presentation_policy": {
+          "template": "ocr_recovery",
+          "hide_internal_ids": true,
+          "show_proof_boundary": true
+        }
+      },
+      "source_atom_ids": [
+        "h30_actual_ocr_record_required_v2"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "citable": false,
+      "answer_permission": false,
+      "source_truth": false,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "canonical_rule_id": "aggregation_coverage_required",
+      "title": "Require aggregation coverage metadata",
+      "memory_layer": "critic_memory",
+      "rule": "A broad entity aggregation must report unique pages, documents, evidence-family counts, scan scope, capping, and current indexed coverage status.",
+      "allowed_behavior": "State the bounded artifact scope, displayed versus total results, and whether the candidate artifact set was fully scanned.",
+      "forbidden_behavior": "Do not describe a small result list as every page or every manual without coverage metadata.",
+      "policy_effects": {
+        "retrieval_policy": {
+          "ranking_profile": "aggregation",
+          "preferred_evidence_order": [
+            "source_citation",
+            "table",
+            "visual",
+            "ocr",
+            "graph",
+            "candidate",
+            "semantic",
+            "record"
+          ],
+          "group_by": "page_id",
+          "specialized_tunnel_first": true,
+          "direct_source_before_fallback": true
+        },
+        "critic_policy": {
+          "checks": [
+            "aggregation_coverage_required"
+          ]
+        },
+        "repair_policy": {
+          "hints": [
+            "expand_aggregation_coverage"
+          ]
+        },
+        "presentation_policy": {
+          "template": "coverage_summary",
+          "supporting_result_limit": 12,
+          "hide_internal_ids": true,
+          "show_proof_boundary": true
+        }
+      },
+      "source_atom_ids": [
+        "h30_aggregation_coverage_metadata_v2"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "citable": false,
+      "answer_permission": false,
+      "source_truth": false,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "canonical_rule_id": "claim_buckets_survive_rendering",
+      "title": "Keep claim buckets separate through rendering",
+      "memory_layer": "trait_memory",
+      "rule": "After decomposing a multi-question request, preserve a separate status and evidence bucket for every claim through rendering.",
+      "allowed_behavior": "Show direct, guidance-only, and not-found status separately for each requested claim.",
+      "forbidden_behavior": "Do not collapse the answer to the first evidence type that returned or use one claim's evidence for another claim.",
+      "policy_effects": {
+        "retrieval_policy": {
+          "ranking_profile": "claim_by_claim",
+          "group_by": "claim",
+          "specialized_tunnel_first": true
+        },
+        "critic_policy": {
+          "checks": [
+            "claim_buckets_collapsed"
+          ]
+        },
+        "repair_policy": {
+          "hints": [
+            "rebuild_claim_buckets"
+          ]
+        },
+        "presentation_policy": {
+          "template": "claim_by_claim",
+          "hide_internal_ids": true,
+          "show_proof_boundary": true
+        }
+      },
+      "source_atom_ids": [
+        "h30_claim_buckets_must_survive_rendering_v2"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "citable": false,
+      "answer_permission": false,
+      "source_truth": false,
+      "source_truth_mutation_allowed": false
+    },
+    {
+      "canonical_rule_id": "direct_source_before_fallback",
+      "title": "Attempt direct source resolution before final fallback",
+      "memory_layer": "procedural_memory",
+      "rule": "Before returning a guidance-only fallback for an exact entity, attempt to resolve existing source-citation, OCR, table, visual, and graph artifacts.",
+      "allowed_behavior": "Promote only records explicitly marked citation-ready or source-trace-ready.",
+      "forbidden_behavior": "Do not skip available direct-source resolution or promote an unmarked guidance record.",
+      "policy_effects": {
+        "retrieval_policy": {
+          "direct_source_before_fallback": true
+        },
+        "critic_policy": {
+          "checks": [
+            "direct_source_attempted"
+          ]
+        },
+        "repair_policy": {
+          "hints": [
+            "retry_direct_source_resolution"
+          ]
+        }
+      },
+      "source_atom_ids": [
+        "h30_direct_source_resolution_before_final_fallback_v2"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "citable": false,
+      "answer_permission": false,
+      "source_truth": false,
+      "source_truth_mutation_allowed": false
+    }
+  ],
+  "summary": {
+    "canonical_rule_count": 13,
+    "active_rule_count": 13,
+    "duplicate_rule_id_count": 0,
+    "duplicate_normalized_meaning_count": 0,
+    "unresolved_inheritance_count": 0,
+    "policy_effect_rule_count": 13,
+    "answer_permission_count": 0,
+    "source_truth_count": 0,
+    "write_attempt_count": 0
+  }
+}

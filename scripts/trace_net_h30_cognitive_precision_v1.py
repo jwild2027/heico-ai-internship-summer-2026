@@ -13,6 +13,11 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Sequence, Tuple
 
+from scripts.trace_net_h30_engram_canonical_registry_v1 import (
+    load_canonical_registry,
+    resolve_atom_inheritance,
+)
+
 PART_RE = re.compile(r"\b\d{2,3}-\d{5}(?:-\d{3})?\b", re.I)
 TOKEN_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.\-/]*")
 DEFAULT_ENGRAM_PATHS = (
@@ -247,33 +252,88 @@ def select_engram_memory(
     requested_claims: Sequence[str],
     *,
     path: str | None = None,
+    registry_path: str | None = None,
     maximum_atoms: int = 6,
 ) -> Dict[str, Any]:
-    configured = path or os.environ.get("TRACE_NET_COGNITIVE_ENGRAM_PATHS") or os.environ.get("TRACE_NET_COGNITIVE_ENGRAM_PATH")
-    path_values = [value for value in str(configured).split(os.pathsep) if value] if configured else [str(value) for value in DEFAULT_ENGRAM_PATHS]
+    configured = (
+        path
+        or os.environ.get("TRACE_NET_COGNITIVE_ENGRAM_PATHS")
+        or os.environ.get("TRACE_NET_COGNITIVE_ENGRAM_PATH")
+    )
+    path_values = (
+        [
+            value
+            for value in str(configured).split(os.pathsep)
+            if value
+        ]
+        if configured
+        else [str(value) for value in DEFAULT_ENGRAM_PATHS]
+    )
     loaded_packs = [load_engram(value) for value in path_values]
+    registry = load_canonical_registry(registry_path)
+
     all_atoms: List[Any] = []
     load_errors: List[str] = []
     for pack in loaded_packs:
         all_atoms.extend(pack.get("memory_atoms", []))
         if pack.get("error"):
-            load_errors.append(f"{pack.get('path')}: {pack.get('error')}")
+            load_errors.append(
+                f"{pack.get('path')}: {pack.get('error')}"
+            )
+
     query_text = str(query or "")
-    query_tokens = {token.lower() for token in TOKEN_RE.findall(query_text)}
+    query_tokens = {
+        token.lower()
+        for token in TOKEN_RE.findall(query_text)
+    }
     claim_set = {str(value) for value in requested_claims}
     scored: List[Tuple[int, str, Dict[str, Any]]] = []
+    unresolved_inheritance: List[Dict[str, Any]] = []
 
     for raw in all_atoms:
-        if not isinstance(raw, Mapping) or raw.get("activation_status", "active") != "active":
+        if (
+            not isinstance(raw, Mapping)
+            or raw.get("activation_status", "active") != "active"
+        ):
             continue
         atom = dict(raw)
+        declared = [
+            str(value)
+            for value in atom.get("inherits", [])
+            if value
+        ] if isinstance(atom.get("inherits"), list) else []
+        if declared:
+            resolved = resolve_atom_inheritance(atom, registry)
+            missing = resolved.get("unresolved_inheritance", [])
+            if missing:
+                for rule_id in missing:
+                    unresolved_inheritance.append({
+                        "atom_id": atom.get("atom_id"),
+                        "canonical_rule_id": rule_id,
+                    })
+                # Fail closed: an incomplete inherited policy does not
+                # participate in route or answer behavior.
+                continue
+
         score = 0
-        routes = {str(value) for value in atom.get("routes", []) if value}
-        claims = {str(value) for value in atom.get("claims", []) if value}
+        routes = {
+            str(value)
+            for value in atom.get("routes", [])
+            if value
+        }
+        claims = {
+            str(value)
+            for value in atom.get("claims", [])
+            if value
+        }
         trigger_values = atom.get("triggers")
         if not isinstance(trigger_values, list):
             trigger_values = atom.get("trigger", [])
-        triggers = [str(value) for value in trigger_values if value]
+        triggers = [
+            str(value)
+            for value in trigger_values
+            if value
+        ]
         if route in routes:
             score += 8
         score += 4 * len(claim_set.intersection(claims))
@@ -285,54 +345,156 @@ def select_engram_memory(
         if atom.get("universal"):
             score += 1
         if score > 0:
-            scored.append((score, str(atom.get("atom_id") or ""), atom))
+            scored.append((
+                score,
+                str(atom.get("atom_id") or ""),
+                atom,
+            ))
 
     scored.sort(key=lambda item: (-item[0], item[1]))
-    deduplicated = []
-    seen_canonical_rules = set()
+
+    deduplicated: List[Tuple[int, str, Dict[str, Any]]] = []
+    seen_rule_ids = set()
     duplicate_atom_count = 0
+    duplicate_rule_reference_count = 0
+
     for score, atom_id, atom in scored:
-        canonical_rule_id = str(
-            atom.get("canonical_rule_id")
-            or atom.get("atom_id")
-            or atom_id
-        )
-        if canonical_rule_id in seen_canonical_rules:
-            duplicate_atom_count += 1
-            continue
-        seen_canonical_rules.add(canonical_rule_id)
-        deduplicated.append((score, atom_id, atom))
+        declared = [
+            str(value)
+            for value in atom.get("inherits", [])
+            if value
+        ] if isinstance(atom.get("inherits"), list) else []
+
+        if declared:
+            new_rule_ids = [
+                rule_id
+                for rule_id in declared
+                if rule_id not in seen_rule_ids
+            ]
+            duplicate_rule_reference_count += (
+                len(declared) - len(new_rule_ids)
+            )
+            if not new_rule_ids and not atom.get("policy_effects"):
+                duplicate_atom_count += 1
+                continue
+            resolved = resolve_atom_inheritance(
+                atom,
+                registry,
+                include_rule_ids=new_rule_ids,
+            )
+            if resolved.get("unresolved_inheritance"):
+                duplicate_atom_count += 1
+                continue
+            seen_rule_ids.update(new_rule_ids)
+        else:
+            canonical_rule_id = str(
+                atom.get("canonical_rule_id")
+                or atom.get("atom_id")
+                or atom_id
+            )
+            if canonical_rule_id in seen_rule_ids:
+                duplicate_atom_count += 1
+                duplicate_rule_reference_count += 1
+                continue
+            seen_rule_ids.add(canonical_rule_id)
+            resolved = resolve_atom_inheritance(atom, registry)
+
+        deduplicated.append((score, atom_id, resolved))
+
     selected = [
         item[2]
         for item in deduplicated[: max(1, maximum_atoms)]
     ]
+
     compact_atoms = []
+    # This metric tracks only rules actually resolved through the canonical
+    # registry. Selected legacy/local atoms remain visible in atom_ids but do
+    # not inflate resolved_rule_count.
+    selected_rule_ids: List[str] = []
     for atom in selected:
+        inherited_rule_ids = list(
+            atom.get("inherited_rule_ids", [])
+        )
+        if inherited_rule_ids:
+            selected_rule_ids.extend(inherited_rule_ids)
+
         compact_atoms.append({
             "atom_id": atom.get("atom_id"),
             "canonical_rule_id": (
                 atom.get("canonical_rule_id")
                 or atom.get("atom_id")
             ),
+            "declared_inherits": atom.get(
+                "declared_inherits", []
+            ),
+            "inherited_rule_ids": inherited_rule_ids,
+            "resolved_rules": atom.get("resolved_rules", []),
             "memory_layer": atom.get("memory_layer"),
             "title": atom.get("title"),
+            "route_context": atom.get("route_context"),
             "rule": atom.get("rule"),
-            "examples": atom.get("examples", [])[:2] if isinstance(atom.get("examples"), list) else [],
+            "examples": (
+                atom.get("examples", [])[:2]
+                if isinstance(atom.get("examples"), list)
+                else []
+            ),
             "policy_effects": atom.get("policy_effects", {}),
             "proof_role": "guidance_only",
             "source": atom.get("source"),
         })
+
+    registry_ok = registry.get("quality_status") == "PASS"
+    quality_status = (
+        "PASS"
+        if all_atoms
+        and registry_ok
+        and not unresolved_inheritance
+        else "WARN"
+    )
+
     return {
-        "quality_status": "PASS" if all_atoms else "WARN",
+        "quality_status": quality_status,
         "paths": path_values,
         "loaded_atom_count": len(all_atoms),
         "load_errors": load_errors,
+        "registry_path": registry.get("path"),
+        "registry_quality_status": registry.get(
+            "quality_status"
+        ),
+        "canonical_registry_rule_count": registry.get(
+            "canonical_rule_count", 0
+        ),
+        "registry_duplicate_rule_id_count": registry.get(
+            "duplicate_rule_id_count", 0
+        ),
+        "registry_duplicate_meaning_count": registry.get(
+            "duplicate_normalized_meaning_count", 0
+        ),
+        "unresolved_inheritance": unresolved_inheritance,
+        "unresolved_inheritance_count": len(
+            unresolved_inheritance
+        ),
         "scored_atom_count": len(scored),
-        "deduplicated_rule_count": len(deduplicated),
+        "deduplicated_rule_count": len(seen_rule_ids),
         "duplicate_atom_count": duplicate_atom_count,
+        "duplicate_rule_reference_count": (
+            duplicate_rule_reference_count
+        ),
+        "resolved_rule_count": len(
+            set(selected_rule_ids)
+        ),
+        "resolved_rule_ids": list(
+            dict.fromkeys(selected_rule_ids)
+        ),
         "atom_count": len(compact_atoms),
-        "atom_ids": [atom.get("atom_id") for atom in compact_atoms],
-        "memory_layers": list(dict.fromkeys(atom.get("memory_layer") for atom in compact_atoms)),
+        "atom_ids": [
+            atom.get("atom_id")
+            for atom in compact_atoms
+        ],
+        "memory_layers": list(dict.fromkeys(
+            atom.get("memory_layer")
+            for atom in compact_atoms
+        )),
         "atoms": compact_atoms,
         "proof_role": "guidance_only",
         "citable": False,

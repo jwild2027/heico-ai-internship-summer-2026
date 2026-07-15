@@ -24,7 +24,6 @@
         "procedure_task_lookup"
       ],
       "claims": [],
-      "rule": "A response is incomplete when the planner selects the correct route but executes only a broad semantic search. The route-specific source must be attempted and its result reported.",
       "examples": [
         "An OCR route must inspect OCR records rather than only semantic page similarity.",
         "A navigation route should preserve a matching visual page as a navigation lead."
@@ -32,22 +31,12 @@
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "H30 OpenWebUI retrieval-completion regression",
-      "canonical_rule_id": "specialized_tunnel_first",
-      "policy_effects": {
-        "retrieval_policy": {
-          "specialized_tunnel_first": true
-        },
-        "critic_policy": {
-          "checks": [
-            "wrong_tunnel_for_route"
-          ]
-        },
-        "repair_policy": {
-          "hints": [
-            "retry_specialized_tunnel"
-          ]
-        }
-      }
+      "inherits": [
+        "specialized_tunnel_first"
+      ],
+      "rule_ref": "specialized_tunnel_first",
+      "route_context": "A correct route name is not enough",
+      "rule_storage": "canonical_registry"
     },
     {
       "atom_id": "h30_navigation_guidance_value_v2",
@@ -65,7 +54,6 @@
       "claims": [
         "exact_identifier"
       ],
-      "rule": "When direct proof is absent, a matching visual, OCR, table, candidate, or semantic page may still be reported as a clearly labeled navigation lead. Do not discard a correct page merely because it is not proof.",
       "examples": [
         "Page 84 may be reported as a visual navigation lead for the exact requested part.",
         "The page lead must not be described as approval or nomenclature proof."
@@ -73,48 +61,16 @@
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "H30 OpenWebUI navigation regression",
-      "canonical_rule_id": "navigation_exact_entity_presentation",
-      "policy_effects": {
-        "retrieval_policy": {
-          "ranking_profile": "exact_entity_navigation",
-          "preferred_evidence_order": [
-            "source_citation",
-            "visual",
-            "table",
-            "ocr",
-            "candidate",
-            "semantic",
-            "graph",
-            "record"
-          ],
-          "group_by": "page_id",
-          "specialized_tunnel_first": true,
-          "direct_source_before_fallback": true,
-          "exact_entity_gate": true
-        },
-        "critic_policy": {
-          "checks": [
-            "top_result_matches_exact_entity",
-            "no_token_level_ocr_spam",
-            "no_internal_identifier_exposure"
-          ]
-        },
-        "repair_policy": {
-          "hints": [
-            "rerank_exact_entity",
-            "collapse_page_rows",
-            "sanitize_internal_ids"
-          ]
-        },
-        "presentation_policy": {
-          "template": "strongest_then_supporting",
-          "primary_result_limit": 1,
-          "supporting_result_limit": 5,
-          "hide_internal_ids": true,
-          "collapse_by_page": true,
-          "show_proof_boundary": true
-        }
-      }
+      "inherits": [
+        "navigation_exact_entity_presentation",
+        "guidance_is_not_proof",
+        "exact_entity_gate",
+        "specialized_tunnel_first",
+        "direct_source_before_fallback"
+      ],
+      "rule_ref": "navigation_exact_entity_presentation",
+      "route_context": "Keep matching navigation leads useful",
+      "rule_storage": "canonical_registry"
     },
     {
       "atom_id": "h30_actual_ocr_record_required_v2",
@@ -133,7 +89,6 @@
       "claims": [
         "ocr"
       ],
-      "rule": "An OCR answer must distinguish actual stored OCR text, engine, confidence, and page from semantic or visual page leads. Semantic similarity is not recovered OCR text.",
       "examples": [
         "Report the stored OCR snippet and confidence when present.",
         "When no OCR record is resolved, say so and list pages for retry."
@@ -141,40 +96,15 @@
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "H30 OpenWebUI OCR regression",
-      "canonical_rule_id": "actual_ocr_record_required",
-      "policy_effects": {
-        "retrieval_policy": {
-          "ranking_profile": "ocr_recovery",
-          "preferred_evidence_order": [
-            "source_citation",
-            "ocr",
-            "visual",
-            "table",
-            "semantic",
-            "candidate",
-            "graph",
-            "record"
-          ],
-          "specialized_tunnel_first": true,
-          "direct_source_before_fallback": true
-        },
-        "critic_policy": {
-          "checks": [
-            "actual_ocr_record_required",
-            "no_token_level_ocr_spam"
-          ]
-        },
-        "repair_policy": {
-          "hints": [
-            "retry_ocr_records"
-          ]
-        },
-        "presentation_policy": {
-          "template": "ocr_recovery",
-          "hide_internal_ids": true,
-          "show_proof_boundary": true
-        }
-      }
+      "inherits": [
+        "actual_ocr_record_required",
+        "guidance_is_not_proof",
+        "specialized_tunnel_first",
+        "direct_source_before_fallback"
+      ],
+      "rule_ref": "actual_ocr_record_required",
+      "route_context": "OCR answers require OCR records",
+      "rule_storage": "canonical_registry"
     },
     {
       "atom_id": "h30_aggregation_coverage_metadata_v2",
@@ -192,7 +122,6 @@
       "claims": [
         "exact_identifier"
       ],
-      "rule": "A broad entity aggregation must report unique pages, documents, evidence-family counts, scan scope, capping, and whether coverage is complete for the current indexed artifact set.",
       "examples": [
         "Two semantic hits alone do not establish every-page coverage.",
         "State that indexed-artifact coverage is not the same as all external manuals."
@@ -200,41 +129,15 @@
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "H30 OpenWebUI aggregation regression",
-      "canonical_rule_id": "aggregation_coverage_required",
-      "policy_effects": {
-        "retrieval_policy": {
-          "ranking_profile": "aggregation",
-          "preferred_evidence_order": [
-            "source_citation",
-            "table",
-            "visual",
-            "ocr",
-            "graph",
-            "candidate",
-            "semantic",
-            "record"
-          ],
-          "group_by": "page_id",
-          "specialized_tunnel_first": true,
-          "direct_source_before_fallback": true
-        },
-        "critic_policy": {
-          "checks": [
-            "aggregation_coverage_required"
-          ]
-        },
-        "repair_policy": {
-          "hints": [
-            "expand_aggregation_coverage"
-          ]
-        },
-        "presentation_policy": {
-          "template": "coverage_summary",
-          "supporting_result_limit": 12,
-          "hide_internal_ids": true,
-          "show_proof_boundary": true
-        }
-      }
+      "inherits": [
+        "aggregation_coverage_required",
+        "guidance_is_not_proof",
+        "specialized_tunnel_first",
+        "direct_source_before_fallback"
+      ],
+      "rule_ref": "aggregation_coverage_required",
+      "route_context": "Broad aggregation needs coverage metadata",
+      "rule_storage": "canonical_registry"
     },
     {
       "atom_id": "h30_claim_buckets_must_survive_rendering_v2",
@@ -259,7 +162,6 @@
         "table_value",
         "authority"
       ],
-      "rule": "After decomposing a multi-question request, preserve a separate status and evidence bucket for every claim through rendering. Do not collapse the answer to whichever evidence type happened to return first.",
       "examples": [
         "A figure can be guidance-found while nomenclature remains unresolved.",
         "No authority evidence means the replacement claim is not confirmed even when identity guidance exists."
@@ -267,29 +169,15 @@
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "H30 OpenWebUI multi-claim regression",
-      "canonical_rule_id": "claim_buckets_survive_rendering",
-      "policy_effects": {
-        "retrieval_policy": {
-          "ranking_profile": "claim_by_claim",
-          "group_by": "claim",
-          "specialized_tunnel_first": true
-        },
-        "critic_policy": {
-          "checks": [
-            "claim_buckets_collapsed"
-          ]
-        },
-        "repair_policy": {
-          "hints": [
-            "rebuild_claim_buckets"
-          ]
-        },
-        "presentation_policy": {
-          "template": "claim_by_claim",
-          "hide_internal_ids": true,
-          "show_proof_boundary": true
-        }
-      }
+      "inherits": [
+        "claim_buckets_survive_rendering",
+        "claim_decomposition",
+        "guidance_is_not_proof",
+        "specialized_tunnel_first"
+      ],
+      "rule_ref": "claim_buckets_survive_rendering",
+      "route_context": "Keep decomposed claims separate in the answer",
+      "rule_storage": "canonical_registry"
     },
     {
       "atom_id": "h30_direct_source_resolution_before_final_fallback_v2",
@@ -314,7 +202,6 @@
         "table_value",
         "ocr"
       ],
-      "rule": "Before returning a guidance-only fallback for an exact entity, attempt to resolve existing local source-citation, OCR, table, visual, and graph artifacts. Promote only records explicitly marked citation-ready or source-trace-ready.",
       "examples": [
         "A source-citation row with page, field, and value may become direct evidence.",
         "An unmarked OCR or visual row remains guidance."
@@ -322,25 +209,21 @@
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "H30 retrieval completion architecture",
-      "canonical_rule_id": "direct_source_before_fallback",
-      "policy_effects": {
-        "retrieval_policy": {
-          "direct_source_before_fallback": true
-        },
-        "critic_policy": {
-          "checks": [
-            "direct_source_attempted"
-          ]
-        },
-        "repair_policy": {
-          "hints": [
-            "retry_direct_source_resolution"
-          ]
-        }
-      }
+      "inherits": [
+        "direct_source_before_fallback"
+      ],
+      "rule_ref": "direct_source_before_fallback",
+      "route_context": "Attempt source-trace resolution before final fallback",
+      "rule_storage": "canonical_registry"
     }
   ],
   "policy_compiler_compatible": true,
   "canonical_rule_deduplication": true,
-  "policy_effect_schema": "trace_net_h30_engram_policy_compiler_v1"
+  "policy_effect_schema": "trace_net_h30_engram_policy_compiler_v1",
+  "canonical_rule_registry": "local_data/organization/trace_net/engram_canonical_rule_registry_v1/trace_net_engram_canonical_rule_registry_v1.json",
+  "canonical_rule_registry_required": true,
+  "inheritance_schema": "trace_net_h30_engram_canonical_registry_v1",
+  "inherited_rule_reference_count": 19,
+  "local_policy_effect_count": 0,
+  "local_rule_text_count": 0
 }

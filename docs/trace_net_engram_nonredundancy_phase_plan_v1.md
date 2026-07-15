@@ -3,7 +3,6 @@
 ## Phase 1 — policy compiler foundation — COMPLETE
 
 - Select Engram before retrieval.
-- Deduplicate selected memories by canonical rule ID.
 - Compile allowlisted retrieval, critic, repair, and presentation policy.
 - Create fresh request-local working memory.
 - Let retrieval completion consume ranking and presentation policy.
@@ -11,26 +10,28 @@
 Gate passed: policy cannot execute arbitrary actions and the focused runtime
 suite passed.
 
-## Phase 2 — clean the memory taxonomy — CURRENT PATCH
+## Phase 2 — clean the memory taxonomy — COMPLETE
 
-- Move static `working_memory` rules into semantic, procedural, or episodic memory.
+- Move static `working_memory` rules into persistent behavior layers.
 - Keep working memory request-local only.
-- Use readable core `engram_id` values instead of generated hash IDs.
-- Keep old IDs as aliases so history remains traceable.
-- Preserve meaningful allowed and forbidden behavior fields.
+- Preserve readable core IDs and legacy aliases.
+- Preserve allowed and forbidden behavior fields.
 - Reject persisted static working-memory atoms.
 
-Gate: static working-memory count is 0; every active persisted atom has a
-readable canonical ID, allowed behavior, and forbidden behavior.
+Gate passed: static working-memory count is 0; all 21 persisted atoms have
+readable IDs and populated behavior fields.
 
-## Phase 3 — canonical rule registry
+## Phase 3 — canonical rule registry — CURRENT PATCH
 
-- Create one canonical record for each shared lesson.
-- Replace copied rule text with `canonical_rule_id` references.
-- Let route atoms inherit shared rules instead of repeating them.
-- Add duplicate detection by canonical ID and normalized meaning.
+- Store each reusable lesson once.
+- Replace copied rule text and policy effects with `inherits` references.
+- Resolve multi-rule inheritance before policy compilation.
+- Remove duplicate rule references across selected atoms.
+- Fail closed when an inherited rule cannot be resolved.
+- Detect duplicate canonical IDs and duplicate normalized meanings.
 
-Gate: no duplicate active canonical rules and all references resolve.
+Gate: all references resolve, local copied rule/policy count is 0 in the H30
+runtime packs, and the navigation policy remains unchanged.
 
 ## Phase 4 — policy-aware Self-RAG and CRAG
 
