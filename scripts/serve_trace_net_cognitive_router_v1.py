@@ -40,6 +40,7 @@ from scripts.trace_net_h30_engram_policy_compiler_v1 import (
     refresh_working_memory,
 )
 from scripts.trace_net_h30_retrieval_completion_v1 import install_retrieval_completion
+from scripts.trace_net_h30_engram_critic_repair_v1 import install_engram_critic_repair
 from scripts.trace_net_h30_cognitive_precision_v1 import (
     decompose_claim_queries,
     explicit_semantic_intent,
@@ -1447,6 +1448,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
 
 install_retrieval_completion(globals())
+install_engram_critic_repair(globals())
 
 if __name__ == "__main__":
     raise SystemExit(main())

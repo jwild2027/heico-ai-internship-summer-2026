@@ -21,26 +21,29 @@ suite passed.
 Gate passed: static working-memory count is 0; all 21 persisted atoms have
 readable IDs and populated behavior fields.
 
-## Phase 3 — canonical rule registry — CURRENT PATCH
+## Phase 3 — canonical rule registry — COMPLETE
 
 - Store each reusable lesson once.
 - Replace copied rule text and policy effects with `inherits` references.
 - Resolve multi-rule inheritance before policy compilation.
 - Remove duplicate rule references across selected atoms.
-- Fail closed when an inherited rule cannot be resolved.
-- Detect duplicate canonical IDs and duplicate normalized meanings.
+- Fail closed when inherited rules cannot be resolved.
 
-Gate: all references resolve, local copied rule/policy count is 0 in the H30
-runtime packs, and the navigation policy remains unchanged.
+Gate passed: 13 unique canonical rules, zero unresolved references, zero local
+copied rule/policy blocks, and unchanged live navigation policy.
 
-## Phase 4 — policy-aware Self-RAG and CRAG
+## Phase 4 — policy-aware Self-RAG and CRAG — CURRENT PATCH
 
-- Run critic checks selected by `critic_policy`.
-- Record which checks passed or failed.
-- Map allowlisted repair hints to existing bounded repair functions.
-- Never let memory create free-form searches or exceed repair budgets.
+- Run only selected, route-applicable `critic_policy` checks.
+- Record PASS, WARN, FAIL, and route-skipped checks.
+- Preserve the deterministic critic as the safety floor.
+- Map failed checks to selected allowlisted repair hints.
+- Execute at most one read-only repair per iteration.
+- Keep the existing repair budget as the hard maximum.
+- Return critic and repair execution records in the evidence envelope.
 
-Gate: every repair is allowlisted, inspectable, bounded, and read-only.
+Gate: all checks and repairs are selected, route-filtered, inspectable,
+bounded, read-only, and incapable of granting answer permission.
 
 ## Phase 5 — policy-aware route execution
 
