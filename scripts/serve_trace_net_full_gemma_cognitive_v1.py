@@ -120,14 +120,27 @@ def authority_evidence(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
 
 
 def allowed_identifiers(query: str, result: Mapping[str, Any]) -> Dict[str, set[str]]:
-    # Only user-supplied identifiers and direct/authority evidence are allowed in
-    # a Gemma-written answer. Candidate, semantic, graph, summary, and visual
-    # guidance must not silently become direct claims.
-    blob = query + " " + compact(direct_evidence(result), 100000) + " " + compact(authority_evidence(result), 50000)
+    # Part and ATA claims remain limited to the user query plus direct/authority
+    # evidence. Page identifiers may also come from explicitly labeled navigation
+    # and OCR guidance because mentioning a page as a lead is not a technical claim.
+    envelope = result.get("evidence_envelope") if isinstance(result.get("evidence_envelope"), Mapping) else {}
+    coverage = envelope.get("coverage") if isinstance(envelope.get("coverage"), Mapping) else {}
+    proof_blob = (
+        query + " " + compact(direct_evidence(result), 100000)
+        + " " + compact(authority_evidence(result), 50000)
+    )
+    page_guidance_blob = compact({
+        "navigation_leads": coverage.get("navigation_leads", []),
+        "ocr_evidence": coverage.get("ocr_evidence", []),
+        "claim_results": coverage.get("claim_results", {}),
+    }, 100000)
     return {
-        "parts": {value.upper() for value in PART_RE.findall(blob)},
-        "atas": {value.upper() for value in ATA_RE.findall(blob)},
-        "pages": {value.upper() for value in PAGE_RE.findall(blob)},
+        "parts": {value.upper() for value in PART_RE.findall(proof_blob)},
+        "atas": {value.upper() for value in ATA_RE.findall(proof_blob)},
+        "pages": {
+            value.upper()
+            for value in PAGE_RE.findall(proof_blob + " " + page_guidance_blob)
+        },
     }
 
 
@@ -236,6 +249,15 @@ AUTHORITY EVIDENCE
 
 CONTRADICTIONS
 {compact(envelope.get('contradictions'), 12000) if envelope.get('contradictions') else 'NONE'}
+
+RETRIEVAL COMPLETION — GUIDANCE REMAINS GUIDANCE
+{compact(envelope.get('coverage'), 30000) if envelope.get('coverage') else 'NONE'}
+
+CLAIM-LEVEL RULE
+For a multi-question request, preserve each claim bucket separately. A figure,
+candidate, OCR result, or shared family cannot satisfy nomenclature, table,
+relationship, procedure, warning, or authority claims unless that specific
+claim has matching direct evidence.
 
 Write the final user-facing answer. Use no facts beyond this material."""
 

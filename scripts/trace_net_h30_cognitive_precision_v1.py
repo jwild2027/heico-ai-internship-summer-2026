@@ -24,6 +24,10 @@ DEFAULT_ENGRAM_PATHS = (
         "local_data/organization/trace_net/cognitive_openwebui_regression_engram_v1/"
         "trace_net_cognitive_openwebui_regression_engram_v1.json"
     ),
+    Path(
+        "local_data/organization/trace_net/cognitive_openwebui_regression_engram_v2/"
+        "trace_net_cognitive_openwebui_regression_engram_v2.json"
+    ),
 )
 PART_FRAGMENT_STOPWORDS = {
     "A", "AN", "AND", "ARE", "AS", "AT", "BE", "BY", "CONTAIN", "CONTAINS",
@@ -128,6 +132,8 @@ def decompose_claim_queries(query: str, atoms: Any, maximum: int = 6) -> List[st
 
     if "exact_identifier" in requested_claims:
         queries.append(f"Find exact citation-ready source evidence for part {primary}")
+    if "nomenclature" in requested_claims:
+        queries.append(f"Find citation-ready nomenclature or component-name evidence for part {primary}")
     if "table_value" in requested_claims:
         target = f"item {items[0]}" if items else f"part {primary}"
         queries.append(f"Search the illustrated parts list table for {target}")

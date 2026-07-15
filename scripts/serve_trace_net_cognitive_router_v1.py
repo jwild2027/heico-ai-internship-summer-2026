@@ -34,6 +34,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
 
 from scripts.trace_net_h30_answer_boundary_v1 import enforce_h30_answer_boundaries
+from scripts.trace_net_h30_retrieval_completion_v1 import install_retrieval_completion
 from scripts.trace_net_h30_cognitive_precision_v1 import (
     decompose_claim_queries,
     explicit_semantic_intent,
@@ -45,7 +46,7 @@ from scripts.trace_net_h30_cognitive_precision_v1 import (
 )
 
 MODULE = "trace_net_cognitive_router_v1"
-PATCH_ID = "trace_net_h30_cognitive_precision_engram_v1_1"
+PATCH_ID = "trace_net_h30_retrieval_completion_v2"
 MODEL_ID = "trace-net-cognitive-router-v1"
 
 PART_EXACT_RE = re.compile(r"\b\d{2,3}-\d{5}(?:-\d{3})?\b", re.I)
@@ -1384,6 +1385,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     server.serve_forever()
     return 0
 
+
+install_retrieval_completion(globals())
 
 if __name__ == "__main__":
     raise SystemExit(main())

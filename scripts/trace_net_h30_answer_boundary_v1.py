@@ -146,7 +146,7 @@ def _unique_strings(values: Iterable[Any]) -> List[str]:
     return output
 
 
-def query_clue_lines(query: str, query_atoms: Mapping[str, Any]) -> List[str]:
+def query_clue_lines(query: str, query_atoms: Mapping[str, Any], route: str = "") -> List[str]:
     """Return explicit, non-assertive lines that preserve user-supplied clues."""
 
     lines: List[str] = []
@@ -184,7 +184,16 @@ def query_clue_lines(query: str, query_atoms: Mapping[str, Any]) -> List[str]:
         lines.append("Requested manual page clue: " + ", ".join(pages) + ".")
 
     nomenclature = _unique_strings(query_atoms.get("nomenclature_terms") or [])
-    if nomenclature:
+    nomenclature_routes = {
+        "guided_part_discovery",
+        "nomenclature_function_search",
+        "exact_identifier_lookup",
+        "exact_table_ipl_lookup",
+        "visual_figure_callout_lookup",
+        "graph_relationship_reasoning",
+        "multi_question_research",
+    }
+    if nomenclature and route in nomenclature_routes:
         lines.append("Requested nomenclature clue: " + ", ".join(nomenclature) + ".")
 
     manufacturer = _normalized(query_atoms.get("manufacturer"))
@@ -225,7 +234,7 @@ def enforce_h30_answer_boundaries(
         _append_unique(lines, ROUTE_FOCUS_LINES[route])
 
     combined = "\n".join(lines)
-    for clue_line in query_clue_lines(query, query_atoms):
+    for clue_line in query_clue_lines(query, query_atoms, route=route):
         # Keep each explicit clue visible, even when other generic identifiers occur.
         clue_payload = clue_line.split(":", 1)[-1].strip().rstrip(".")
         if clue_payload and clue_payload.casefold() not in combined.casefold():
