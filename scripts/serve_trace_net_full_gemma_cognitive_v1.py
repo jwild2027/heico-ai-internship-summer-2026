@@ -21,6 +21,8 @@ import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
 
+from scripts.trace_net_h30_cold_start_streaming_v1 import install_gemma_latency_support
+
 MODULE = "trace_net_full_gemma_cognitive_v1"
 MODEL_ID = "trace-net-gemma4-cognitive-rag-v1"
 PART_RE = re.compile(r"\b\d{2,3}-\d{5}(?:-\d{3})?\b", re.I)
@@ -554,6 +556,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     print("post_answer_validation=true")
     server.serve_forever()
     return 0
+
+
+install_gemma_latency_support(globals())
 
 
 if __name__ == "__main__":

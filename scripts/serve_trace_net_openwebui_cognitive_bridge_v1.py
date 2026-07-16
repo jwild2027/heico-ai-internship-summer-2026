@@ -12,6 +12,8 @@ import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any, Dict, Mapping, Optional, Sequence, Tuple
 
+from scripts.trace_net_h30_cold_start_streaming_v1 import install_bridge_streaming_support
+
 MODULE = "trace_net_openwebui_cognitive_bridge_v1"
 DEFAULT_MODEL = "trace-net-gemma4-cognitive-rag-v1"
 
@@ -226,6 +228,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     print("stream_normalization=true")
     server.serve_forever()
     return 0
+
+
+install_bridge_streaming_support(globals())
 
 
 if __name__ == "__main__":

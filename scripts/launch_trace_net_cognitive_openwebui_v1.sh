@@ -13,6 +13,7 @@ GEMMA_KEY="${TRACE_NET_GEMMA_COGNITIVE_KEY:-trace-net-gemma-cognitive-local}"
 PUBLIC_KEY="${TRACE_NET_OPENWEBUI_COGNITIVE_KEY:-trace-net-openwebui-cognitive}"
 PUBLIC_MODEL="${TRACE_NET_OPENWEBUI_COGNITIVE_MODEL:-trace-net-gemma4-cognitive-rag-v1}"
 GEMMA_MODEL="${TRACE_NET_GEMMA_MODEL:-gemma4:26b}"
+GEMMA_KEEP_ALIVE="${TRACE_NET_GEMMA_KEEP_ALIVE:-1h}"
 
 cd "$REPO"
 source "$VENV/bin/activate"
@@ -23,6 +24,7 @@ for required in \
   scripts/serve_trace_net_cognitive_router_v1.py \
   scripts/serve_trace_net_full_gemma_cognitive_v1.py \
   scripts/serve_trace_net_openwebui_cognitive_bridge_v1.py \
+  scripts/trace_net_h30_cold_start_streaming_v1.py \
   scripts/run_trace_net_cognitive_route_smoke_v1.py; do
   if [[ ! -f "$required" ]]; then
     echo "missing_required_file=$required"
@@ -61,6 +63,64 @@ if ! curl -sS --max-time 15 http://127.0.0.1:11434/api/tags | grep -Fq "$GEMMA_M
   exit 1
 fi
 
+
+echo
+echo "============================================================"
+echo "PRELOADING GEMMA IN OLLAMA"
+echo "============================================================"
+
+"$PYTHON" - "$GEMMA_MODEL" "$GEMMA_KEEP_ALIVE" "$RUNTIME/gemma_preload.json" <<'PY'
+import json
+import sys
+import time
+import urllib.request
+from pathlib import Path
+
+model, keep_alive, output = sys.argv[1:]
+payload = {"model": model, "prompt": "", "stream": False, "keep_alive": keep_alive}
+request = urllib.request.Request(
+    "http://127.0.0.1:11434/api/generate",
+    data=json.dumps(payload).encode("utf-8"),
+    headers={"Content-Type": "application/json"},
+    method="POST",
+)
+started = time.monotonic()
+with urllib.request.urlopen(request, timeout=1200) as response:
+    result = json.loads(response.read().decode("utf-8", errors="replace"))
+elapsed_ms = round((time.monotonic() - started) * 1000.0, 3)
+result["preload_wall_ms"] = elapsed_ms
+result["requested_keep_alive"] = keep_alive
+Path(output).write_text(json.dumps(result, indent=2), encoding="utf-8")
+if result.get("error"):
+    raise SystemExit("Ollama preload returned an error: " + str(result["error"]))
+print("gemma_preload_status=PASS")
+print(f"gemma_preload_wall_ms={elapsed_ms}")
+print(f"gemma_keep_alive={keep_alive}")
+PY
+
+curl --fail-with-body --silent --show-error \
+  http://127.0.0.1:11434/api/ps \
+  > "$RUNTIME/ollama_ps_after_preload.json"
+
+"$PYTHON" - "$GEMMA_MODEL" "$RUNTIME/ollama_ps_after_preload.json" <<'PY'
+import json
+import sys
+from pathlib import Path
+model, filename = sys.argv[1:]
+data = json.loads(Path(filename).read_text(encoding="utf-8"))
+names = {
+    str(row.get("name") or row.get("model"))
+    for row in data.get("models", [])
+    if isinstance(row, dict)
+}
+print("ollama_loaded_models=" + ",".join(sorted(names)))
+if model not in names:
+    raise SystemExit(f"preloaded model is not resident according to /api/ps: {model}")
+print("gemma_resident_status=PASS")
+PY
+
+command -v ollama >/dev/null && ollama ps || true
+
 echo
 echo "============================================================"
 echo "COMPILING H30 COGNITIVE STACK"
@@ -70,13 +130,15 @@ echo "============================================================"
   scripts/serve_trace_net_cognitive_router_v1.py \
   scripts/serve_trace_net_full_gemma_cognitive_v1.py \
   scripts/serve_trace_net_openwebui_cognitive_bridge_v1.py \
+  scripts/trace_net_h30_cold_start_streaming_v1.py \
   scripts/run_trace_net_cognitive_route_smoke_v1.py
 
 echo "compile_status=PASS"
 
 "$PYTHON" -m pytest -q \
   tests/unit/test_trace_net_cognitive_router_v1.py \
-  tests/unit/test_trace_net_full_gemma_cognitive_v1.py
+  tests/unit/test_trace_net_full_gemma_cognitive_v1.py \
+  tests/unit/test_trace_net_h30_cold_start_streaming_v1.py
 
 echo "unit_test_status=PASS"
 
@@ -117,6 +179,7 @@ cat > /tmp/start_trace_net_gemma_cognitive_8128.sh <<INNER
 set -euo pipefail
 cd "$REPO"
 export PYTHONPATH="$REPO/scripts:$REPO"
+export TRACE_NET_GEMMA_KEEP_ALIVE="$GEMMA_KEEP_ALIVE"
 exec "$PYTHON" -u -B scripts/serve_trace_net_full_gemma_cognitive_v1.py \\
   --host 127.0.0.1 \\
   --port 8128 \\
@@ -269,7 +332,11 @@ cat > "$RUNTIME/openwebui_connection.json" <<JSON
   "self_rag": true,
   "crag": true,
   "direct_evidence_only_gemma_writing": true,
-  "post_answer_validation": true
+  "post_answer_validation": true,
+  "gemma_preload": true,
+  "gemma_keep_alive": "$GEMMA_KEEP_ALIVE",
+  "streaming_mode": "upstream_sse_with_validated_answer_release",
+  "raw_unvalidated_tokens_exposed": false
 }
 JSON
 
@@ -286,6 +353,12 @@ echo "  $PUBLIC_KEY"
 echo
 echo "Model:"
 echo "  $PUBLIC_MODEL"
+echo
+echo "Gemma keep-alive:"
+echo "  $GEMMA_KEEP_ALIVE"
+echo
+echo "Streaming mode:"
+echo "  upstream SSE with validated answer release"
 echo
 echo "Connection file:"
 echo "  $RUNTIME/openwebui_connection.json"
