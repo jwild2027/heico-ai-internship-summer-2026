@@ -42,6 +42,7 @@ from scripts.trace_net_h30_engram_policy_compiler_v1 import (
 from scripts.trace_net_h30_retrieval_completion_v1 import install_retrieval_completion
 from scripts.trace_net_h30_engram_critic_repair_v1 import install_engram_critic_repair
 from scripts.trace_net_h30_user_facing_renderer_v1 import install_user_facing_renderer
+from scripts.trace_net_h30_navigation_latency_fastpath_v1 import install_navigation_latency_fastpath
 from scripts.trace_net_h30_cognitive_precision_v1 import (
     decompose_claim_queries,
     explicit_semantic_intent,
@@ -1451,6 +1452,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 install_retrieval_completion(globals())
 install_engram_critic_repair(globals())
 install_user_facing_renderer(globals())
+install_navigation_latency_fastpath(globals())
 
 if __name__ == "__main__":
     raise SystemExit(main())
