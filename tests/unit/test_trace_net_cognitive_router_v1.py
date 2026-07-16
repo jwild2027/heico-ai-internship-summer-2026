@@ -193,3 +193,60 @@ def test_metadata_conflict_is_not_promoted():
     })
     assert conflict
     assert conflict["type"] == "ata_document_mismatch"
+
+
+def test_ocr_exact_part_is_scope_not_a_second_claim():
+    mod = load()
+    query = (
+        "Recover the OCR labels for part 120-41824-003 from the "
+        "blurry scan. Include the page, OCR engine, confidence, "
+        "and readable text."
+    )
+    atoms = mod.extract_query_atoms(query)
+    plan = mod.plan_route(atoms)
+
+    assert atoms.ocr_requested is True
+    assert atoms.exact_part_numbers == ["120-41824-003"]
+    assert set(atoms.requested_claims) == {
+        "exact_identifier",
+        "ocr",
+    }
+    assert atoms.multi_question is False
+    assert plan.primary_route == "ocr_scan_recovery"
+
+
+def test_explicit_identity_plus_ocr_remains_multi_question():
+    mod = load()
+    query = (
+        "Find part 120-41824-003 and recover its OCR labels "
+        "from the blurry scan."
+    )
+    atoms = mod.extract_query_atoms(query)
+    plan = mod.plan_route(atoms)
+
+    assert atoms.ocr_requested is True
+    assert atoms.multi_question is True
+    assert plan.primary_route == "multi_question_research"
+
+
+def test_pronoun_only_navigation_fails_closed_to_clarification():
+    mod = load()
+    atoms = mod.extract_query_atoms("Which page contains it?")
+    plan = mod.plan_route(atoms)
+
+    assert atoms.exact_part_numbers == []
+    assert atoms.requested_claims == []
+    assert atoms.navigation_requested is False
+    assert atoms.multi_question is False
+    assert plan.primary_route == "clarification_no_evidence"
+
+
+def test_named_navigation_target_still_routes_navigation():
+    mod = load()
+    atoms = mod.extract_query_atoms(
+        "Which page discusses the component?"
+    )
+    plan = mod.plan_route(atoms)
+
+    assert atoms.navigation_requested is True
+    assert plan.primary_route == "document_page_navigation"

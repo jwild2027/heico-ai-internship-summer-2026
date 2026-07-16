@@ -961,12 +961,63 @@ def install_retrieval_completion(router: MutableMapping[str, Any]) -> None:
                 atoms.requested_claims.append("nomenclature")
         if atoms.ocr_requested and "ocr" not in atoms.requested_claims:
             atoms.requested_claims.append("ocr")
+
+        # A pronoun-only navigation request has no resolvable retrieval target.
+        # Fail closed to clarification instead of launching expensive page,
+        # graph, semantic, and CRAG searches for words such as "it".
+        entity_bearing_clue = bool(
+            atoms.exact_part_numbers
+            or atoms.ata_exact
+            or atoms.ata_prefix
+            or atoms.part_prefix
+            or atoms.part_contains
+            or atoms.part_suffix
+            or atoms.page_ids
+            or atoms.figures
+            or atoms.items
+            or atoms.nomenclature_terms
+            or atoms.assembly_context
+            or atoms.manufacturer
+            or re.search(
+                r"\b(?:part|component|assembly|figure|table|manual|"
+                r"warning|procedure|task|chapter|ata)\b",
+                low,
+            )
+        )
+        unresolved_pronoun_navigation = bool(
+            atoms.navigation_requested
+            and re.search(r"\b(?:it|this|that|these|those)\b", low)
+            and not entity_bearing_clue
+        )
+        if unresolved_pronoun_navigation:
+            atoms.navigation_requested = False
+
         material_claims = set(atoms.requested_claims)
         # OCR requests commonly contain visual wording such as "read the image".
         # OCR and visual_identity are overlapping retrieval clues here, not two
-        # independent user claims. Preserve the dedicated OCR route.
+        # independent user claims.
         if atoms.ocr_requested:
             material_claims.discard("visual_identity")
+
+            # An exact identifier in "recover OCR for part X" scopes the OCR
+            # search. It is not a separate identity claim unless the user also
+            # explicitly asks to find, identify, confirm, or verify the part.
+            independent_identity_request = any(
+                phrase in low
+                for phrase in (
+                    "find part",
+                    "identify part",
+                    "identify the part",
+                    "confirm part",
+                    "confirm the part",
+                    "verify part",
+                    "verify the part",
+                    "determine the part number",
+                )
+            )
+            if not independent_identity_request:
+                material_claims.discard("exact_identifier")
+
         atoms.multi_question = len(material_claims) >= 2 and any(
             connector in low for connector in (" and ", ";", " also ", " then ", " plus ")
         )
