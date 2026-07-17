@@ -43,6 +43,7 @@ from scripts.trace_net_h30_retrieval_completion_v1 import install_retrieval_comp
 from scripts.trace_net_h30_engram_critic_repair_v1 import install_engram_critic_repair
 from scripts.trace_net_h30_user_facing_renderer_v1 import install_user_facing_renderer
 from scripts.trace_net_h30_navigation_latency_fastpath_v1 import install_navigation_latency_fastpath
+from scripts.trace_net_h30_part_intent_source_resolution_v1 import install_part_intent_source_resolution
 from scripts.trace_net_h30_cognitive_precision_v1 import (
     decompose_claim_queries,
     explicit_semantic_intent,
@@ -161,6 +162,12 @@ class QueryAtoms:
     part_prefix: Optional[str] = None
     part_suffix: Optional[str] = None
     part_contains: Optional[str] = None
+    identifier_mode: str = "none"
+    normalized_identifier: str = ""
+    family_identifier: Optional[str] = None
+    allow_family_expansion: bool = False
+    allow_partial_candidates: bool = False
+    explicit_partial_wording: bool = False
     page_ids: List[str] = field(default_factory=list)
     figures: List[str] = field(default_factory=list)
     items: List[str] = field(default_factory=list)
@@ -210,6 +217,8 @@ class EvidenceEnvelope:
     coverage: Dict[str, Any] = field(default_factory=dict)
     upstream_results: List[Dict[str, Any]] = field(default_factory=list)
     crag_repairs: List[Dict[str, Any]] = field(default_factory=list)
+    source_resolution: List[Dict[str, Any]] = field(default_factory=list)
+    claim_evidence: Dict[str, List[Dict[str, Any]]] = field(default_factory=dict)
     safety_contract: Dict[str, Any] = field(default_factory=lambda: {
         "read_only": True,
         "answer_permission": False,
@@ -1453,6 +1462,7 @@ install_retrieval_completion(globals())
 install_engram_critic_repair(globals())
 install_user_facing_renderer(globals())
 install_navigation_latency_fastpath(globals())
+install_part_intent_source_resolution(globals())
 
 if __name__ == "__main__":
     raise SystemExit(main())
