@@ -22,6 +22,12 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
 
 from scripts.trace_net_h30_cold_start_streaming_v1 import install_gemma_latency_support
+from scripts.trace_net_h30_engineer_answer_contract_v1 import (
+    apply_engineer_answer_contract,
+    clean_engineer_text,
+    engineer_answer_contract_health,
+    engineer_answer_contract_prompt_rules,
+)
 
 MODULE = "trace_net_full_gemma_cognitive_v1"
 MODEL_ID = "trace-net-gemma4-cognitive-rag-v1"
@@ -260,6 +266,9 @@ For a multi-question request, preserve each claim bucket separately. A figure,
 candidate, OCR result, or shared family cannot satisfy nomenclature, table,
 relationship, procedure, warning, or authority claims unless that specific
 claim has matching direct evidence.
+
+ENGINEER ANSWER CONTRACT
+{engineer_answer_contract_prompt_rules()}
 
 Write the final user-facing answer. Use no facts beyond this material."""
 

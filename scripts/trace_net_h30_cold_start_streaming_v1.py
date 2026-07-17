@@ -308,6 +308,9 @@ def install_gemma_latency_support(module: MutableMapping[str, Any]) -> None:
             "can_prove_claims": False,
             "source_truth_mutation_allowed": False,
         })
+        contract_applier = module.get("apply_engineer_answer_contract")
+        if callable(contract_applier):
+            result = contract_applier(result)
         return result
 
     def health_v1(self: Any) -> Dict[str, Any]:
@@ -328,6 +331,9 @@ def install_gemma_latency_support(module: MutableMapping[str, Any]) -> None:
             "validated_sse_enabled": True,
             "raw_unvalidated_tokens_exposed": False,
         })
+        contract_health = module.get("engineer_answer_contract_health")
+        if callable(contract_health):
+            result.update(contract_health())
         return result
 
     def make_handler_v1(runtime: Any):
