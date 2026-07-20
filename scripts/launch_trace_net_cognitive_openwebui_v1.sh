@@ -14,6 +14,11 @@ PUBLIC_KEY="${TRACE_NET_OPENWEBUI_COGNITIVE_KEY:-trace-net-openwebui-cognitive}"
 PUBLIC_MODEL="${TRACE_NET_OPENWEBUI_COGNITIVE_MODEL:-trace-net-gemma4-cognitive-rag-v1}"
 GEMMA_MODEL="${TRACE_NET_GEMMA_MODEL:-gemma4:26b}"
 GEMMA_KEEP_ALIVE="${TRACE_NET_GEMMA_KEEP_ALIVE:-1h}"
+SHADOW_PLANNER_ENABLED="${TRACE_NET_H30_SHADOW_PLANNER_ENABLED:-1}"
+SHADOW_PLANNER_BASE_URL="${TRACE_NET_H30_SHADOW_PLANNER_BASE_URL:-http://127.0.0.1:11434/v1}"
+SHADOW_PLANNER_API_KEY="${TRACE_NET_H30_SHADOW_PLANNER_API_KEY:-ollama}"
+SHADOW_PLANNER_MODEL="${TRACE_NET_H30_SHADOW_PLANNER_MODEL:-$GEMMA_MODEL}"
+SHADOW_PLANNER_TIMEOUT="${TRACE_NET_H30_SHADOW_PLANNER_TIMEOUT_SECONDS:-300}"
 
 cd "$REPO"
 source "$VENV/bin/activate"
@@ -22,6 +27,7 @@ mkdir -p "$RUNTIME"
 
 for required in \
   scripts/serve_trace_net_cognitive_router_v1.py \
+  scripts/trace_net_h30_shadow_planner_v1.py \
   scripts/serve_trace_net_full_gemma_cognitive_v1.py \
   scripts/serve_trace_net_openwebui_cognitive_bridge_v1.py \
   scripts/trace_net_h30_cold_start_streaming_v1.py \
@@ -128,6 +134,9 @@ echo "============================================================"
 
 "$PYTHON" -m py_compile \
   scripts/serve_trace_net_cognitive_router_v1.py \
+  scripts/trace_net_h30_shadow_planner_v1.py \
+  scripts/check_trace_net_h30_shadow_planner_v1.py \
+  scripts/run_trace_net_h30_shadow_planner_benchmark_v1.py \
   scripts/serve_trace_net_full_gemma_cognitive_v1.py \
   scripts/serve_trace_net_openwebui_cognitive_bridge_v1.py \
   scripts/trace_net_h30_cold_start_streaming_v1.py \
@@ -137,6 +146,7 @@ echo "compile_status=PASS"
 
 "$PYTHON" -m pytest -q \
   tests/unit/test_trace_net_cognitive_router_v1.py \
+  tests/unit/test_trace_net_h30_shadow_planner_v1.py \
   tests/unit/test_trace_net_full_gemma_cognitive_v1.py \
   tests/unit/test_trace_net_h30_cold_start_streaming_v1.py
 
@@ -162,6 +172,11 @@ cat > /tmp/start_trace_net_cognitive_8118.sh <<INNER
 set -euo pipefail
 cd "$REPO"
 export PYTHONPATH="$REPO/scripts:$REPO"
+export TRACE_NET_H30_SHADOW_PLANNER_ENABLED="$SHADOW_PLANNER_ENABLED"
+export TRACE_NET_H30_SHADOW_PLANNER_BASE_URL="$SHADOW_PLANNER_BASE_URL"
+export TRACE_NET_H30_SHADOW_PLANNER_API_KEY="$SHADOW_PLANNER_API_KEY"
+export TRACE_NET_H30_SHADOW_PLANNER_MODEL="$SHADOW_PLANNER_MODEL"
+export TRACE_NET_H30_SHADOW_PLANNER_TIMEOUT_SECONDS="$SHADOW_PLANNER_TIMEOUT"
 exec "$PYTHON" -u -B scripts/serve_trace_net_cognitive_router_v1.py \\
   --host 127.0.0.1 \\
   --port 8118 \\
