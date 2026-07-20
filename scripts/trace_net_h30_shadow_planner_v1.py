@@ -21,7 +21,9 @@ MODULE = "trace_net_h30_shadow_planner_v1"
 PATCH_ID = "trace_net_h30_phase4_4_shadow_planner_v1"
 VERSION = "v1"
 SEED_VERSION = "trace_net_h30_shadow_planner_seed_v1"
-PROMPT_VERSION = "trace_net_h30_shadow_planner_prompt_v1"
+PROMPT_VERSION = "trace_net_h30_shadow_planner_prompt_v1_1"
+REPAIR_PROMPT_VERSION = "trace_net_h30_shadow_planner_schema_repair_prompt_v1"
+SHADOW_SCHEMA_REPAIR_VERSION = "v1"
 
 IDENTIFIER_MODES = {"none", "exact", "prefix", "contains", "suffix", "family", "descriptive"}
 ENTITY_TYPES = {
@@ -122,6 +124,33 @@ DEVELOPER_PROMPT = """Non-negotiable rules:
 - requested_claims may contain at most 8 values.
 - uncertainties may contain at most 8 short strings.
 - This is proposal-only shadow mode. The proposal will not control execution."""
+
+
+PROPOSAL_SCHEMA_GUIDANCE = """Required JSON shape:
+{
+  "identifier_mode": "none|exact|prefix|contains|suffix|family|descriptive",
+  "identifier": "an identifier copied from the query or null",
+  "entity_type": "part_number|ata_reference|figure_reference|table_reference|page_reference|document_reference|component_description|unknown",
+  "requested_claims": ["only values from the requested-claim allow-list"],
+  "suggested_routes": ["only values copied from allowed_routes"],
+  "suggested_tunnels": ["only values copied from allowed_tunnels"],
+  "uncertainties": [],
+  "answer_permission": false,
+  "final_answer_allowed": false,
+  "can_answer_directly": false,
+  "can_prove_claims": false,
+  "source_truth_mutation_allowed": false
+}
+Allowed requested_claims:
+part_identity, nomenclature, assembly_relationship, figure_callout, table_item,
+procedure_step, warning_or_caution, authority_approval, page_location,
+document_overview, ocr_text, comparison, contradiction.
+Use entity_type part_number, never the shorthand part.
+For exact, prefix, contains, suffix, or family mode, identifier is required and
+must be copied exactly from query or candidate_tokens.
+Do not replace requested_claims with natural-language sentences.
+Include every required field even when the value is null, an empty list, or false.
+"""
 
 
 def normalize_identifier(value: Any) -> str:
@@ -499,11 +528,12 @@ def call_shadow_planner(
     payload = {
         "model": str(config.get("model") or "gemma4:26b"),
         "messages": [
-            {"role": "system", "content": SYSTEM_PROMPT + "\n\n" + DEVELOPER_PROMPT},
+            {"role": "system", "content": SYSTEM_PROMPT + "\n\n" + DEVELOPER_PROMPT + "\n\n" + PROPOSAL_SCHEMA_GUIDANCE},
             {"role": "user", "content": json.dumps(dict(seed), ensure_ascii=False, sort_keys=True)},
         ],
         "temperature": 0,
         "stream": False,
+        "response_format": {"type": "json_object"},
     }
     request = urllib.request.Request(
         _planner_url(str(config.get("base_url") or "")),
@@ -555,6 +585,67 @@ def call_shadow_planner(
         }
 
 
+_REPAIRABLE_FAILURE_PREFIXES = (
+    "missing_fields:",
+    "invalid_identifier_mode:",
+    "invalid_entity_type:",
+    "claim_not_allowlisted:",
+    "identifier_required_for_identifier_mode",
+    "requested_claims_not_bounded_string_list",
+    "suggested_routes_not_bounded_string_list",
+    "suggested_tunnels_not_bounded_string_list",
+    "uncertainties_not_bounded_string_list",
+    "unsafe_or_missing_false:",
+)
+_NON_REPAIRABLE_FAILURE_PREFIXES = (
+    "identifier_not_grounded",
+    "route_not_allowlisted:",
+    "tunnel_not_allowlisted:",
+    "ata_value_misclassified_as_part",
+    "exact_mode_conflicts_with_partial_wording",
+    "unknown_fields:",
+)
+
+
+def should_attempt_schema_repair(
+    proposal: Mapping[str, Any],
+    validation: Mapping[str, Any],
+) -> bool:
+    """Permit one format repair, never a safety or grounding override."""
+    if validation.get("accepted"):
+        return False
+    failures = [str(item) for item in validation.get("failures") or []]
+    if not failures:
+        return False
+    for key in SAFETY_KEYS:
+        if key in proposal and proposal.get(key) is not False:
+            return False
+    if any(item.startswith(_NON_REPAIRABLE_FAILURE_PREFIXES) for item in failures):
+        return False
+    return any(item.startswith(_REPAIRABLE_FAILURE_PREFIXES) for item in failures)
+
+
+def build_schema_repair_seed(
+    seed: Mapping[str, Any],
+    proposal: Mapping[str, Any],
+    validation: Mapping[str, Any],
+) -> Dict[str, Any]:
+    """Build one bounded correction request without adding retrieved evidence."""
+    value = dict(seed)
+    value["planner_mode"] = "shadow_proposal_schema_repair"
+    value["repair_prompt_version"] = REPAIR_PROMPT_VERSION
+    value["previous_proposal"] = _bounded(dict(proposal or {}))
+    value["validator_failures"] = [str(item)[:300] for item in list(validation.get("failures") or [])[:20]]
+    value["repair_instruction"] = (
+        "Return one complete corrected JSON object matching PROPOSAL_SCHEMA_GUIDANCE. "
+        "Correct only the listed contract failures. Preserve query grounding, use only "
+        "allow-listed routes/tunnels/claims, include every required field, and keep every "
+        "safety boolean false. Do not explain the correction."
+    )
+    value["retrieved_evidence_in_seed"] = False
+    return value
+
+
 def _disabled_shadow_record(config: Mapping[str, Any], reason: str) -> Dict[str, Any]:
     return {
         "module": MODULE,
@@ -592,6 +683,7 @@ def install_shadow_planner(
     module: MutableMapping[str, Any],
     *,
     planner_callable: Optional[Callable[[Mapping[str, Any], Mapping[str, Any]], Mapping[str, Any]]] = None,
+    planner_repair_callable: Optional[Callable[[Mapping[str, Any], Mapping[str, Any]], Mapping[str, Any]]] = None,
 ) -> None:
     """Install shadow planning without changing deterministic route execution."""
     marker = "_TRACE_NET_H30_SHADOW_PLANNER_V1_INSTALLED"
@@ -685,6 +777,64 @@ def install_shadow_planner(
                 "can_prove_claims": False,
                 "source_truth_mutation_allowed": False,
             }
+
+        initial_proposal = dict(proposal)
+        initial_validation = dict(validation)
+        schema_repair_attempted = False
+        schema_repair_used = False
+        schema_repair_call_status = "SKIPPED"
+        schema_repair_latency_ms = 0.0
+        schema_repair_error = ""
+
+        repair_is_available = planner_callable is None or planner_repair_callable is not None
+        if (
+            call_result.get("call_status") == "PASS"
+            and repair_is_available
+            and should_attempt_schema_repair(proposal, validation)
+        ):
+            schema_repair_attempted = True
+            repair_seed = build_schema_repair_seed(seed, proposal, validation)
+            if planner_repair_callable is None:
+                repair_result = call_shadow_planner(repair_seed, config)
+            else:
+                repair_started = time.perf_counter()
+                try:
+                    supplied_repair = planner_repair_callable(repair_seed, config)
+                    if isinstance(supplied_repair, Mapping) and "proposal" in supplied_repair:
+                        repair_result = dict(supplied_repair)
+                        repair_result.setdefault("call_status", "PASS")
+                        repair_result.setdefault("http_status", 200)
+                        repair_result.setdefault("latency_ms", round((time.perf_counter() - repair_started) * 1000.0, 3))
+                        repair_result.setdefault("error", "")
+                    else:
+                        repair_result = {
+                            "call_status": "PASS",
+                            "http_status": 200,
+                            "proposal": dict(supplied_repair or {}),
+                            "content_preview": "",
+                            "latency_ms": round((time.perf_counter() - repair_started) * 1000.0, 3),
+                            "error": "",
+                        }
+                except Exception as exc:
+                    repair_result = {
+                        "call_status": "ERROR",
+                        "http_status": 599,
+                        "proposal": {},
+                        "content_preview": "",
+                        "latency_ms": round((time.perf_counter() - repair_started) * 1000.0, 3),
+                        "error": f"{type(exc).__name__}: {exc}",
+                    }
+
+            schema_repair_call_status = str(repair_result.get("call_status") or "ERROR")
+            schema_repair_latency_ms = float(repair_result.get("latency_ms") or 0.0)
+            schema_repair_error = str(repair_result.get("error") or "")
+            if repair_result.get("call_status") == "PASS":
+                repaired_proposal = dict(repair_result.get("proposal") or {})
+                repaired_validation = validate_shadow_planner_proposal(repaired_proposal, seed=seed)
+                proposal = repaired_proposal
+                validation = repaired_validation
+                schema_repair_used = bool(repaired_validation.get("accepted"))
+
         comparison = compare_shadow_to_deterministic(proposal, validation, seed)
         return {
             "module": MODULE,
@@ -699,6 +849,13 @@ def install_shadow_planner(
             "latency_ms": call_result.get("latency_ms"),
             "error": call_result.get("error") or "",
             "seed": seed,
+            "initial_proposal": initial_proposal,
+            "initial_validation": initial_validation,
+            "schema_repair_attempted": schema_repair_attempted,
+            "schema_repair_used": schema_repair_used,
+            "schema_repair_call_status": schema_repair_call_status,
+            "schema_repair_latency_ms": schema_repair_latency_ms,
+            "schema_repair_error": schema_repair_error,
             "proposal": proposal,
             "validation": validation,
             "comparison": comparison,
@@ -737,6 +894,8 @@ def install_shadow_planner(
                     "enabled": shadow.get("enabled"),
                     "call_status": shadow.get("call_status"),
                     "accepted": bool((shadow.get("validation") or {}).get("accepted")),
+                    "schema_repair_attempted": bool(shadow.get("schema_repair_attempted")),
+                    "schema_repair_used": bool(shadow.get("schema_repair_used")),
                     "route_disagreement": bool((shadow.get("comparison") or {}).get("route_disagreement")),
                     "planner_route_applied": False,
                     "retrieval_influenced": False,
@@ -762,6 +921,10 @@ def install_shadow_planner(
             "shadow_planner_uses_engram_policy": True,
             "shadow_planner_seed_contains_retrieved_evidence": False,
             "shadow_planner_validator_fail_closed": True,
+            "shadow_planner_bounded_schema_repair": True,
+            "shadow_planner_max_schema_repairs": 1,
+            "shadow_planner_schema_repair_revalidated": True,
+            "shadow_planner_schema_repair_can_override_grounding": False,
             "answer_permission": False,
             "final_answer_allowed": False,
             "can_answer_directly": False,

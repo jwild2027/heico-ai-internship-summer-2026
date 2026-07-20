@@ -84,6 +84,9 @@ def evaluate(query: str, status: int, response: Mapping[str, Any], error: str, l
         "call_status": response.get("call_status"),
         "validation_status": validation.get("quality_status"),
         "proposal_accepted": bool(validation.get("accepted")),
+        "schema_repair_attempted": bool(response.get("schema_repair_attempted")),
+        "schema_repair_used": bool(response.get("schema_repair_used")),
+        "schema_repair_call_status": response.get("schema_repair_call_status"),
         "deterministic_route": comparison.get("deterministic_route"),
         "planner_route": comparison.get("planner_primary_route"),
         "route_disagreement": bool(comparison.get("route_disagreement")),
@@ -122,6 +125,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             print(
                 f"[{index}/{len(QUERIES)}] {row['quality_status']} "
                 f"accepted={int(row['proposal_accepted'])} "
+                f"repair={int(row['schema_repair_used'])} "
                 f"det={row['deterministic_route']} planner={row['planner_route']} "
                 f"latency_ms={latency:.1f}",
                 flush=True,
@@ -130,6 +134,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     failed = [row for row in records if row["quality_status"] != "PASS"]
     accepted = [row for row in records if row["proposal_accepted"]]
     disagreements = [row for row in records if row["route_disagreement"]]
+    repair_attempted = [row for row in records if row["schema_repair_attempted"]]
+    repair_used = [row for row in records if row["schema_repair_used"]]
     summary = {
         "module": MODULE,
         "quality_status": "PASS" if not failed and len(records) == len(QUERIES) else "FAIL",
@@ -141,6 +147,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "proposal_rejected_count": len(records) - len(accepted),
         "planner_acceptance_rate": round(len(accepted) / len(records), 4) if records else 0.0,
         "route_disagreement_count": len(disagreements),
+        "schema_repair_attempted_count": len(repair_attempted),
+        "schema_repair_used_count": len(repair_used),
+        "schema_repair_success_rate": round(len(repair_used) / len(repair_attempted), 4) if repair_attempted else 0.0,
         "deterministic_route_counts": dict(Counter(str(row.get("deterministic_route") or "unknown") for row in records)),
         "planner_route_counts": dict(Counter(str(row.get("planner_route") or "none") for row in records)),
         "validation_status_counts": dict(Counter(str(row.get("validation_status") or "unknown") for row in records)),
