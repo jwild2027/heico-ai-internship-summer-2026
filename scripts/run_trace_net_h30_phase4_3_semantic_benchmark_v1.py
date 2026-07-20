@@ -17,6 +17,7 @@ from scripts.trace_net_h30_part_intent_source_resolution_v1 import (
     derive_part_intent,
     identifier_is_well_formed,
 )
+from scripts.trace_net_h30_phase4_3_1_exact_identifier_v1 import expected_h30_routes
 
 MODULE = "trace_net_h30_phase4_3_semantic_benchmark_v1"
 
@@ -26,7 +27,24 @@ FOCUSED_QUERIES = (
     "The P/N starts with MS49",
     "Find the 120-41824 family",
     "Find the locking ring near the seat",
+    "Find VS4956",
+    "Locate E075221",
+    "Search for 1002-F",
+    "Find ATA 25-21-00",
+    "Find manual n25-IPL",
+    "Describe the manual at a high level",
 )
+
+FOCUSED_ROUTE_EXPECTATIONS = {
+    "Find VS4956": {"category": "exact_part_lookup", "expected_tunnel": "exact_source_lookup"},
+    "Locate E075221": {"category": "exact_part_lookup", "expected_tunnel": "exact_source_lookup"},
+    "Search for 1002-F": {"category": "exact_part_lookup", "expected_tunnel": "exact_source_lookup"},
+    "Find ATA 25-21-00": {"category": "manual_reference_lookup", "expected_tunnel": "exact_source_lookup"},
+    "Describe the manual at a high level": {
+        "category": "general_source_truth",
+        "expected_tunnel": "general_source_truth_retrieval",
+    },
+}
 
 
 def compact(value: Any, limit: int = 1000) -> str:
@@ -78,6 +96,7 @@ def evaluate_semantic_response(
     status_code: int,
     response: Mapping[str, Any],
     transport_error: str = "",
+    record: Optional[Mapping[str, Any]] = None,
 ) -> Dict[str, Any]:
     answer = answer_text(response)
     trace = dict(response.get("trace_net")) if isinstance(response.get("trace_net"), Mapping) else {}
@@ -112,6 +131,16 @@ def evaluate_semantic_response(
     ):
         if trace.get(key) is not False:
             failures.append(f"unsafe_or_missing_false_flag:{key}")
+
+    expected_routes = expected_h30_routes(record or {})
+    actual_route = str(trace.get("route") or "")
+    if expected_routes and actual_route not in expected_routes:
+        failures.append(
+            "route_not_suitable:"
+            + actual_route
+            + " not in "
+            + ",".join(sorted(expected_routes))
+        )
 
     intent = derive_part_intent(query)
     expected_mode = str(intent.get("identifier_mode") or "none")
@@ -169,6 +198,8 @@ def evaluate_semantic_response(
         "failures": failures,
         "warnings": warnings,
         "route": trace.get("route"),
+        "expected_h30_routes": sorted(expected_routes),
+        "route_suitable": not expected_routes or actual_route in expected_routes,
         "identifier_mode": actual_mode,
         "expected_identifier_mode": expected_mode,
         "candidate_count": len(candidates),
@@ -248,7 +279,11 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: Optional[Sequence[str]] = None) -> int:
     args = build_parser().parse_args(argv)
     if args.focused:
-        records = [{"question_id": f"phase43_{index:02d}", "query": query} for index, query in enumerate(FOCUSED_QUERIES, 1)]
+        records = []
+        for index, query in enumerate(FOCUSED_QUERIES, 1):
+            record = {"question_id": f"phase43_{index:02d}", "query": query}
+            record.update(FOCUSED_ROUTE_EXPECTATIONS.get(query, {}))
+            records.append(record)
     else:
         records = load_queries(Path(args.question_bank))
     if args.limit > 0:
@@ -277,6 +312,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                 status_code=status,
                 response=response,
                 transport_error=error,
+                record=record,
             )
             result.update({
                 "question_id": qid,

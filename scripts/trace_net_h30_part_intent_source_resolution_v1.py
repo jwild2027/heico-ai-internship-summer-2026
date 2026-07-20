@@ -13,6 +13,18 @@ import re
 from dataclasses import asdict
 from typing import Any, Dict, Iterable, List, Mapping, MutableMapping, Optional, Sequence, Tuple
 
+
+from scripts.trace_net_h30_phase4_3_1_exact_identifier_v1 import (
+    build_planner_seed,
+    enforce_final_identifier_filter,
+    explicit_part_partial_wording,
+    general_source_overview_requested,
+    infer_exact_identifier_candidate,
+    normalize_identifier as normalize_identifier_v431,
+    part_fragment_is_explicit,
+    phase4_3_1_health,
+)
+
 MODULE = "trace_net_h30_part_intent_source_resolution_v1"
 PATCH_ID = "trace_net_h30_phase4_3_part_intent_source_resolution_v1"
 VERSION = "v1"
@@ -171,10 +183,30 @@ def derive_part_intent(query: str, atoms: Optional[Any] = None) -> Dict[str, Any
     suffix = _match_value(SUFFIX_RE, text)
     family = _match_value(FAMILY_BEFORE_RE, text) or _match_value(FAMILY_AFTER_RE, text)
 
+    atom_prefix = clean_identifier(getattr(atoms, "part_prefix", "")) if atoms is not None else ""
+    atom_contains = clean_identifier(getattr(atoms, "part_contains", "")) if atoms is not None else ""
+    atom_suffix = clean_identifier(getattr(atoms, "part_suffix", "")) if atoms is not None else ""
     if atoms is not None:
-        prefix = prefix or clean_identifier(getattr(atoms, "part_prefix", "")) or None
-        contains = contains or clean_identifier(getattr(atoms, "part_contains", "")) or None
-        suffix = suffix or clean_identifier(getattr(atoms, "part_suffix", "")) or None
+        prefix = prefix or atom_prefix or None
+        contains = contains or atom_contains or None
+        suffix = suffix or atom_suffix or None
+
+    # Generic words such as "table contains" must not become partial part intent.
+    if prefix and not (
+        part_fragment_is_explicit(text, prefix, "prefix")
+        or normalize_identifier_v431(prefix) == normalize_identifier_v431(atom_prefix)
+    ):
+        prefix = None
+    if contains and not (
+        part_fragment_is_explicit(text, contains, "contains")
+        or normalize_identifier_v431(contains) == normalize_identifier_v431(atom_contains)
+    ):
+        contains = None
+    if suffix and not (
+        part_fragment_is_explicit(text, suffix, "suffix")
+        or normalize_identifier_v431(suffix) == normalize_identifier_v431(atom_suffix)
+    ):
+        suffix = None
 
     ata_fragment_suppressed = False
     if _is_ata_bound_fragment(text, prefix, atoms):
@@ -190,12 +222,24 @@ def derive_part_intent(query: str, atoms: Optional[Any] = None) -> Dict[str, Any
         family = None
         ata_fragment_suppressed = True
 
-    fallback_identifier = _first_identifier(text)
-    if _is_ata_bound_fragment(text, fallback_identifier, atoms):
-        fallback_identifier = None
+    legacy_identifier = _first_identifier(text)
+    if _is_ata_bound_fragment(text, legacy_identifier, atoms):
+        # Record that an ATA-shaped token was intentionally suppressed even
+        # though the exact-identifier classifier will also reject it.
+        legacy_identifier = None
         ata_fragment_suppressed = True
 
-    explicit_partial = any(phrase in low for phrase in PARTIAL_WORDS)
+    explicit_partial = explicit_part_partial_wording(text) or bool(family)
+    if explicit_partial:
+        # A complete-looking token can still be an uncertain/partial clue when
+        # the user explicitly says it is partial or only remembered.
+        fallback_identifier = legacy_identifier
+    else:
+        fallback_identifier = infer_exact_identifier_candidate(
+            text,
+            atoms,
+            legacy_identifier=legacy_identifier,
+        )
     token = family or prefix or contains or suffix or fallback_identifier
 
     mode = "none"
@@ -447,6 +491,7 @@ def install_part_intent_source_resolution(module: MutableMapping[str, Any]) -> N
     runtime_cls = module["CognitiveRuntime"]
     original_gather = runtime_cls.gather_initial
     original_critic = runtime_cls.critic
+    original_repair = getattr(runtime_cls, "repair", None)
     original_health = runtime_cls.health
     unique_dicts = module["unique_dicts"]
     apply_exact_entity_gate = module["apply_exact_entity_gate"]
@@ -476,6 +521,21 @@ def install_part_intent_source_resolution(module: MutableMapping[str, Any]) -> N
     def plan_route_v1(atoms: Any) -> Any:
         plan = original_plan(atoms)
         mode = str(getattr(atoms, "identifier_mode", "none"))
+        if (
+            general_source_overview_requested(getattr(atoms, "latest_query", ""))
+            and plan.primary_route in {
+                "clarification_no_evidence", "semantic_discovery",
+                "nomenclature_function_search",
+            }
+        ):
+            plan.primary_route = "semantic_discovery"
+            plan.secondary_routes = ["document_page_navigation"]
+            plan.retrieval_tunnels = [
+                "qdrant_guidance", "v2_v3_summary_guidance",
+                "graph_leiden_guidance", "normal_source_resolution",
+            ]
+            plan.rationale = ["Phase 4.3.1 general manual/source overview intent"]
+            return plan
         protected = {
             "safe_general_chat", "multi_question_research", "authority_eligibility_verification",
             "contradiction_resolution", "cross_source_comparison", "ocr_scan_recovery",
@@ -548,6 +608,41 @@ def install_part_intent_source_resolution(module: MutableMapping[str, Any]) -> N
                 if candidate_matches_intent(candidate_value(row), intent)
             ]
 
+    def _refresh_phase4_3_1_metadata(envelope: Any, atoms: Any, plan: Any) -> Dict[str, Any]:
+        intent = atoms_intent(atoms)
+        _strict_filter_direct(envelope, atoms)
+        apply_exact_entity_gate(envelope, atoms)
+        final_filter = enforce_final_identifier_filter(envelope, intent)
+        envelope.claim_evidence = build_claim_evidence(envelope.direct_evidence)
+        envelope.source_resolution = build_source_resolution(envelope, atoms)
+        resolved = sum(
+            row.get("resolution_status") == "resolved"
+            for row in envelope.source_resolution
+        )
+        envelope.coverage.update({
+            "phase4_3_1_final_filter": final_filter,
+            "phase4_3_1_planner_seed": build_planner_seed(
+                getattr(atoms, "latest_query", ""),
+                intent,
+                getattr(plan, "primary_route", ""),
+                engram_policy=getattr(plan, "engram_policy", None),
+            ),
+            "source_resolution_attempt_count": len(envelope.source_resolution),
+            "source_resolution_resolved_count": resolved,
+            "source_resolution_unresolved_count": len(envelope.source_resolution) - resolved,
+            "claim_evidence_bucket_count": len(envelope.claim_evidence),
+            "source_truth_mutation_allowed": False,
+        })
+        envelope.safety_contract.update({
+            "answer_permission": False,
+            "final_answer_allowed": False,
+            "source_truth_mutation_allowed": False,
+            "postgres_write_attempt": False,
+            "qdrant_write_attempt": False,
+            "opensearch_write_attempt": False,
+        })
+        return final_filter
+
     def gather_initial_v1(self: Any, plan: Any, atoms: Any) -> Any:
         envelope = original_gather(self, plan, atoms)
         intent = atoms_intent(atoms)
@@ -618,7 +713,21 @@ def install_part_intent_source_resolution(module: MutableMapping[str, Any]) -> N
             "qdrant_write_attempt": False,
             "opensearch_write_attempt": False,
         })
+        _refresh_phase4_3_1_metadata(envelope, atoms, plan)
         return envelope
+
+    def repair_v1(
+        self: Any,
+        plan: Any,
+        atoms: Any,
+        envelope: Any,
+        critic: Mapping[str, Any],
+    ) -> None:
+        if original_repair is not None:
+            original_repair(self, plan, atoms, envelope, critic)
+        # CRAG and source-resolution calls may add new rows. Reapply exact intent
+        # after every repair rather than trusting only the initial extraction pass.
+        _refresh_phase4_3_1_metadata(envelope, atoms, plan)
 
     def critic_v1(self: Any, plan: Any, atoms: Any, envelope: Any) -> Dict[str, Any]:
         result = dict(original_critic(self, plan, atoms, envelope))
@@ -660,6 +769,7 @@ def install_part_intent_source_resolution(module: MutableMapping[str, Any]) -> N
     def health_v1(self: Any) -> Dict[str, Any]:
         result = dict(original_health(self))
         result.update(part_intent_source_resolution_health())
+        result.update(phase4_3_1_health())
         return result
 
     module["extract_query_atoms"] = extract_query_atoms_v1
@@ -667,6 +777,8 @@ def install_part_intent_source_resolution(module: MutableMapping[str, Any]) -> N
     module["candidate_matches_atoms"] = candidate_matches_atoms_v1
     module["extract_candidates"] = extract_candidates_v1
     runtime_cls.gather_initial = gather_initial_v1
+    if original_repair is not None:
+        runtime_cls.repair = repair_v1
     runtime_cls.critic = critic_v1
     runtime_cls.health = health_v1
     module[marker] = True
