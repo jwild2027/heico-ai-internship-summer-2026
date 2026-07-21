@@ -57,18 +57,27 @@ def extract_candidate_tokens(answer: str) -> list[str]:
     return output
 
 
+def normalize_followup_text(value: str) -> str:
+    """Normalize presentation punctuation without collapsing distinct questions."""
+    return " ".join(re.findall(r"[a-z0-9]+", str(value or "").lower()))
+
+
 def duplicate_followup_count(answer: str, followups: Sequence[str]) -> int:
-    low = re.sub(r"\s+", " ", str(answer or "").lower())
-    count = 0
-    for question in followups:
-        words = [
-            word
-            for word in re.findall(r"[a-z0-9]+", str(question).lower())
-            if len(word) >= 5
-        ][:5]
-        if words and sum(low.count(word) >= 2 for word in words) >= max(2, len(words) // 2):
-            count += 1
-    return count
+    """Count only full follow-up questions that appear more than once.
+
+    Shared words across different questions are expected and are not duplicates.
+    """
+    normalized_answer = normalize_followup_text(answer)
+    duplicated = 0
+    seen = set()
+    for raw in followups:
+        normalized_question = normalize_followup_text(raw)
+        if not normalized_question or normalized_question in seen:
+            continue
+        seen.add(normalized_question)
+        if normalized_answer.count(normalized_question) > 1:
+            duplicated += 1
+    return duplicated
 
 
 def evaluate_answer_quality(
