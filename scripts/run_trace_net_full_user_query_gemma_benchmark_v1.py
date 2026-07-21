@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Send every benchmark question through the full-Gemma user-query canary."""
+"""Run the 180-question bank against the current H30 mature cognitive contract."""
 from __future__ import annotations
 
 import argparse
@@ -11,7 +11,27 @@ import urllib.request
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
+
+from scripts.serve_trace_net_cognitive_router_v1 import extract_query_atoms, plan_route
 from tiff.trace_net_answer_quality_guard_v1 import evaluate_answer_quality
+
+
+CURRENT_WRITER_SUCCESS = {
+    "LLM_CALL_SUCCEEDED_AND_VALIDATED",
+    "LLM_CALL_SUCCEEDED",
+}
+CURRENT_WRITER_SKIP = {"SKIPPED_NO_DIRECT_EVIDENCE"}
+TOPIC_KEYWORDS = {
+    "part_number": ("part number", "characters", "digits", "prefix", "suffix"),
+    "manufacturer": ("manufacturer", "vendor", "supplier", "company"),
+    "component": ("component", "assembly", "function", "nomenclature"),
+    "function": ("function", "used for", "purpose"),
+    "appearance": ("appearance", "look like", "shape", "color", "marking"),
+    "ata": ("ata", "chapter", "system"),
+    "figure": ("figure", "diagram", "callout"),
+    "table": ("table", "ipl", "item"),
+    "page": ("page", "manual location"),
+}
 
 
 def load_json(path: Path) -> Dict[str, Any]:
@@ -87,6 +107,88 @@ def answer_text(response: Mapping[str, Any]) -> str:
     return str(message.get("content") or "").strip()
 
 
+def _mapping(value: Any) -> Dict[str, Any]:
+    return dict(value) if isinstance(value, Mapping) else {}
+
+
+def _string_list(value: Any) -> List[str]:
+    return [str(item) for item in value if str(item)] if isinstance(value, list) else []
+
+
+def mature_expected_plan(record: Mapping[str, Any]) -> Tuple[str, List[str]]:
+    query = str(record.get("query") or "")
+    plan = plan_route(extract_query_atoms(query))
+    return plan.primary_route, list(plan.retrieval_tunnels)
+
+
+def is_mature_contract(trace: Mapping[str, Any]) -> bool:
+    return bool(
+        isinstance(trace.get("route_plan"), Mapping)
+        or isinstance(trace.get("evidence_envelope"), Mapping)
+        or "writer_mode" in trace
+        or "gemma_status" in trace
+    )
+
+
+def question_visible(answer: str, question: str) -> bool:
+    normalize = lambda value: " ".join(
+        "".join(ch.lower() if ch.isalnum() else " " for ch in str(value)).split()
+    )
+    needle = normalize(question)
+    haystack = normalize(answer)
+    return bool(needle and needle in haystack)
+
+
+def topic_visible(topic: str, questions: Sequence[str]) -> bool:
+    blob = " ".join(str(value).lower() for value in questions)
+    keywords = TOPIC_KEYWORDS.get(str(topic), tuple(str(topic).lower().split("_")))
+    return any(keyword in blob for keyword in keywords)
+
+
+def current_writer_contract(
+    trace: Mapping[str, Any],
+    *,
+    route: str,
+    direct_count: int,
+) -> Dict[str, Any]:
+    writer_mode = str(trace.get("writer_mode") or "")
+    gemma_status = str(trace.get("gemma_status") or "")
+    old_called = bool(trace.get("response_composer_called"))
+    old_status = str(trace.get("response_composer_status") or "")
+    old_model = str(trace.get("response_composer_model") or "")
+
+    if writer_mode or gemma_status:
+        expected = direct_count > 0 and route != "safe_general_chat"
+        called = expected and gemma_status not in CURRENT_WRITER_SKIP
+        successful = gemma_status in CURRENT_WRITER_SUCCESS
+        skipped_expected = (not expected) and gemma_status in CURRENT_WRITER_SKIP
+        acceptable = successful if expected else skipped_expected
+        return {
+            "contract": "h30_mature_cognitive",
+            "expected": expected,
+            "called": called,
+            "successful": successful,
+            "skipped_expected": skipped_expected,
+            "acceptable": acceptable,
+            "status": gemma_status,
+            "mode": writer_mode,
+            "model": str(trace.get("answer_model") or ""),
+        }
+
+    successful = old_status == "LLM_CALL_SUCCEEDED"
+    return {
+        "contract": "legacy_full_user_query_canary",
+        "expected": True,
+        "called": old_called,
+        "successful": successful,
+        "skipped_expected": False,
+        "acceptable": old_called and successful,
+        "status": old_status,
+        "mode": "",
+        "model": old_model,
+    }
+
+
 def evaluate(
     record: Mapping[str, Any],
     *,
@@ -96,7 +198,7 @@ def evaluate(
     transport_error: str,
 ) -> Dict[str, Any]:
     answer = answer_text(response)
-    trace = dict(response.get("trace_net")) if isinstance(response.get("trace_net"), Mapping) else {}
+    trace = _mapping(response.get("trace_net"))
     failures: List[str] = []
 
     if status_code != 200:
@@ -108,29 +210,88 @@ def evaluate(
     if answer.startswith("{") or "TRACE-NET LIVE CONTEXT PACK" in answer:
         failures.append("internal_or_json_leak")
 
-    expected_route = str(record.get("expected_execution_route") or "")
-    expected_tunnel = str(record.get("expected_tunnel") or "")
+    legacy_expected_route = str(record.get("expected_execution_route") or "")
+    legacy_expected_tunnel = str(record.get("expected_tunnel") or "")
     actual_route = str(trace.get("route") or "")
-    actual_tunnel = str(trace.get("retrieval_tunnel") or "")
-    if actual_route != expected_route:
-        failures.append(f"route:{actual_route}!={expected_route}")
-    if actual_tunnel != expected_tunnel:
-        failures.append(f"tunnel:{actual_tunnel}!={expected_tunnel}")
+    mature = is_mature_contract(trace)
 
-    if not trace.get("response_composer_called"):
-        failures.append("gemma_not_called")
-    if trace.get("response_composer_status") != "LLM_CALL_SUCCEEDED":
-        failures.append(
-            f"gemma_status:{trace.get('response_composer_status') or 'missing'}"
-        )
+    route_plan = _mapping(trace.get("route_plan"))
+    envelope = _mapping(trace.get("evidence_envelope"))
+    planned_tunnels = _string_list(route_plan.get("retrieval_tunnels"))
+    used_tunnels = _string_list(envelope.get("retrieval_tunnels_used"))
+    old_tunnel = str(trace.get("retrieval_tunnel") or "")
 
-    followups = list(trace.get("follow_up_questions") or [])
+    if mature:
+        expected_route, expected_tunnels = mature_expected_plan(record)
+        if actual_route != expected_route:
+            failures.append(f"route:{actual_route}!={expected_route}")
+        if not planned_tunnels:
+            failures.append("mature_route_plan_tunnels_missing")
+        elif planned_tunnels != expected_tunnels:
+            failures.append(
+                "planned_tunnels:"
+                + ",".join(planned_tunnels)
+                + "!="
+                + ",".join(expected_tunnels)
+            )
+        if used_tunnels and any(value not in planned_tunnels for value in used_tunnels):
+            failures.append("used_tunnel_not_planned")
+        actual_tunnels = used_tunnels or planned_tunnels
+    else:
+        expected_route = legacy_expected_route
+        expected_tunnels = [legacy_expected_tunnel] if legacy_expected_tunnel else []
+        if actual_route != expected_route:
+            failures.append(f"route:{actual_route}!={expected_route}")
+        if legacy_expected_tunnel and old_tunnel != legacy_expected_tunnel:
+            failures.append(f"tunnel:{old_tunnel}!={legacy_expected_tunnel}")
+        actual_tunnels = [old_tunnel] if old_tunnel else []
+
+    direct_rows = [
+        dict(row)
+        for row in envelope.get("direct_evidence", [])
+        if isinstance(row, Mapping)
+    ] if isinstance(envelope.get("direct_evidence"), list) else []
+    candidate_rows = [
+        dict(row)
+        for row in envelope.get("candidate_evidence", [])
+        if isinstance(row, Mapping)
+    ] if isinstance(envelope.get("candidate_evidence"), list) else []
+    direct_count = len(direct_rows)
+    citations = int(trace.get("citation_count") or 0)
+
+    writer = current_writer_contract(
+        trace,
+        route=actual_route,
+        direct_count=direct_count,
+    )
+    if not writer["acceptable"]:
+        if writer["expected"]:
+            failures.append("writer_not_validated:" + (writer["status"] or "missing"))
+        else:
+            failures.append(
+                "candidate_or_guidance_writer_not_skipped:"
+                + (writer["status"] or "missing")
+            )
+
+    followups = _string_list(trace.get("follow_up_questions"))
     minimum = int(record.get("min_follow_up_questions") or 0)
     if len(followups) < minimum:
         failures.append(f"follow_up_count:{len(followups)}<{minimum}")
-    if minimum > 0 and "?" not in answer:
-        failures.append("followups_not_visible_in_answer")
-    failures.extend(evaluate_answer_quality(query=str(record.get("query") or ""), answer=answer, trace=trace))
+    if minimum > 0:
+        visible = sum(question_visible(answer, question) for question in followups)
+        if visible < minimum:
+            failures.append(f"followups_visible:{visible}<{minimum}")
+        for topic in record.get("required_follow_up_topics") or []:
+            if not topic_visible(str(topic), followups):
+                failures.append(f"followup_topic_missing:{topic}")
+
+    failures.extend(
+        evaluate_answer_quality(
+            query=str(record.get("query") or ""),
+            answer=answer,
+            trace=trace,
+        )
+    )
 
     for key in (
         "answer_permission",
@@ -142,45 +303,63 @@ def evaluate(
         if trace.get(key):
             failures.append(f"safety_true:{key}")
 
-    expectation = str(record.get("retrieval_expectation") or "not_checked")
-    citations = int(trace.get("citation_count") or 0)
-    gate = str(trace.get("final_gate_status") or "")
-    if expectation == "positive" and actual_route == "normal_ask":
-        if citations <= 0:
-            failures.append("positive_query_has_no_citations")
-        if gate != "LIVE_ORCHESTRATOR_FINAL_GATE_PASS":
-            failures.append(f"positive_query_gate:{gate}")
-    elif expectation == "negative" and actual_route == "normal_ask":
-        if citations != 0:
-            failures.append(f"negative_query_has_citations:{citations}")
-        if gate != "LIVE_ORCHESTRATOR_AUDIT_ONLY":
-            failures.append(f"negative_query_gate:{gate}")
+    if mature:
+        if direct_count > 0 and citations <= 0:
+            failures.append("direct_evidence_has_no_citations")
+        if direct_count == 0 and citations != 0:
+            failures.append(f"guidance_only_has_citations:{citations}")
+        if candidate_rows and direct_count == 0:
+            lower = answer.lower()
+            if "candidate" not in lower or "not a final identification" not in lower:
+                failures.append("candidate_safety_boundary_missing")
+    else:
+        expectation = str(record.get("retrieval_expectation") or "not_checked")
+        gate = str(trace.get("final_gate_status") or "")
+        if expectation == "positive" and actual_route == "normal_ask":
+            if citations <= 0:
+                failures.append("positive_query_has_no_citations")
+            if gate != "LIVE_ORCHESTRATOR_FINAL_GATE_PASS":
+                failures.append(f"positive_query_gate:{gate}")
+        elif expectation == "negative" and actual_route == "normal_ask":
+            if citations != 0:
+                failures.append(f"negative_query_has_citations:{citations}")
+            if gate != "LIVE_ORCHESTRATOR_AUDIT_ONLY":
+                failures.append(f"negative_query_gate:{gate}")
 
+    failures = list(dict.fromkeys(failures))
     return {
         "question_id": record.get("question_id"),
         "category": record.get("category"),
         "query": record.get("query"),
+        "contract": "h30_mature_cognitive" if mature else "legacy_full_user_query_canary",
+        "legacy_expected_route": legacy_expected_route,
         "expected_route": expected_route,
         "actual_route": actual_route,
-        "expected_tunnel": expected_tunnel,
-        "actual_tunnel": actual_tunnel,
+        "legacy_expected_tunnel": legacy_expected_tunnel,
+        "expected_tunnels": expected_tunnels,
+        "planned_tunnels": planned_tunnels,
+        "used_tunnels": used_tunnels,
+        "actual_tunnels": actual_tunnels,
         "http_status": status_code,
         "latency_ms": latency_ms,
         "transport_error": transport_error,
         "answer": answer,
         "answer_character_count": len(answer),
         "citation_count": citations,
-        "final_gate_status": gate,
+        "direct_evidence_count": direct_count,
+        "candidate_evidence_count": len(candidate_rows),
         "follow_up_questions": followups,
-        "response_composer_called": bool(trace.get("response_composer_called")),
-        "response_composer_status": trace.get("response_composer_status"),
-        "response_composer_model": trace.get("response_composer_model"),
-        "response_composer_latency_ms": float(
-            trace.get("response_composer_latency_ms") or 0.0
-        ),
-        "response_composer_validation_failures": list(
-            trace.get("response_composer_validation_failures") or []
-        ),
+        "writer_contract": writer["contract"],
+        "writer_expected": writer["expected"],
+        "writer_called": writer["called"],
+        "writer_successful": writer["successful"],
+        "writer_skipped_expected": writer["skipped_expected"],
+        "writer_status": writer["status"],
+        "writer_mode": writer["mode"],
+        "writer_model": writer["model"],
+        "response_composer_called": writer["called"],
+        "response_composer_status": writer["status"],
+        "response_composer_model": writer["model"],
         "quality_status": "PASS" if not failures else "FAIL",
         "failures": failures,
         "trace_net": trace,
@@ -193,16 +372,13 @@ def build_parser() -> argparse.ArgumentParser:
         "--question-bank",
         default="tests/data/trace_net_router_followup_question_bank_v1.json",
     )
-    parser.add_argument("--base-url", default="http://127.0.0.1:8127")
-    parser.add_argument("--api-key", default="trace-net-user-query-canary")
-    parser.add_argument(
-        "--model",
-        default="trace-net-full-gemma-user-query-canary-v1",
-    )
+    parser.add_argument("--base-url", default="http://172.17.0.1:8131")
+    parser.add_argument("--api-key", default="trace-net-openwebui-cognitive")
+    parser.add_argument("--model", default="trace-net-gemma4-cognitive-rag-v1")
     parser.add_argument("--request-timeout", type=int, default=1200)
     parser.add_argument(
         "--output-dir",
-        default="local_data/organization/trace_net/full_user_query_gemma_benchmark_v1",
+        default="local_data/organization/trace_net/h30_mature_full_180_v1",
     )
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--continue-on-error", action="store_true")
@@ -257,13 +433,18 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             print(
                 f"[{index}/{total}] {result['quality_status']} "
                 f"route={result['actual_route']} "
-                f"tunnel={result['actual_tunnel']} "
-                f"gemma={result['response_composer_status']} "
+                f"writer={result['writer_status'] or 'missing'} "
                 f"citations={result['citation_count']} "
                 f"followups={len(result['follow_up_questions'])} "
                 f"latency_ms={result['latency_ms']:.1f}",
                 flush=True,
             )
+            if result["failures"]:
+                print(
+                    f"[{index}/{total}] FAILURES "
+                    + " | ".join(result["failures"]),
+                    flush=True,
+                )
             print(f"[{index}/{total}] ANSWER {preview}", flush=True)
 
             if status == 599 and not args.continue_on_error:
@@ -280,24 +461,26 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     elapsed = round(time.perf_counter() - all_start, 3)
 
     summary = {
-        "status": "TRACE_NET_FULL_USER_QUERY_GEMMA_BENCHMARK_V1_DONE",
-        "quality_status": (
-            "PASS" if len(results) == total and not failed else "FAIL"
-        ),
+        "status": "TRACE_NET_H30_MATURE_FULL_180_BENCHMARK_V1_DONE",
+        "quality_status": "PASS" if len(results) == total and not failed else "FAIL",
+        "contract": "h30_mature_cognitive_with_legacy_bank_adapter",
         "question_count": len(results),
         "expected_question_count": total,
         "pass_count": len(results) - len(failed),
         "fail_count": len(failed),
         "all_questions_sent_as_user_messages": len(results) == total,
-        "gemma_call_count": sum(
-            bool(row.get("response_composer_called")) for row in results
-        ),
-        "gemma_success_count": sum(
-            row.get("response_composer_status") == "LLM_CALL_SUCCEEDED"
+        "writer_expected_count": sum(bool(row.get("writer_expected")) for row in results),
+        "writer_call_count": sum(bool(row.get("writer_called")) for row in results),
+        "writer_success_count": sum(bool(row.get("writer_successful")) for row in results),
+        "writer_expected_skip_count": sum(bool(row.get("writer_skipped_expected")) for row in results),
+        "writer_failure_count": sum(
+            bool(row.get("writer_expected")) and not bool(row.get("writer_successful"))
             for row in results
         ),
+        "gemma_call_count": sum(bool(row.get("writer_called")) for row in results),
+        "gemma_success_count": sum(bool(row.get("writer_successful")) for row in results),
         "gemma_failure_count": sum(
-            row.get("response_composer_status") != "LLM_CALL_SUCCEEDED"
+            bool(row.get("writer_expected")) and not bool(row.get("writer_successful"))
             for row in results
         ),
         "average_latency_ms": round(statistics.mean(latencies), 3) if latencies else 0.0,
@@ -311,12 +494,17 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             2,
         ) if results else 0.0,
         "route_counts": dict(Counter(row["actual_route"] for row in results)),
-        "tunnel_counts": dict(Counter(row["actual_tunnel"] for row in results)),
+        "writer_status_counts": dict(Counter(row["writer_status"] or "missing" for row in results)),
         "category_counts": dict(Counter(row["category"] for row in results)),
         "category_average_latency_ms": {
             category: round(statistics.mean(values), 3)
             for category, values in sorted(category_latencies.items())
         },
+        "failure_counts": dict(Counter(
+            failure
+            for row in failed
+            for failure in row.get("failures", [])
+        )),
         "failed_records": failed,
         "base_url": args.base_url,
         "model": args.model,
@@ -334,17 +522,19 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         },
     }
     (output / "summary.json").write_text(
-        json.dumps(summary, indent=2), encoding="utf-8"
+        json.dumps(summary, indent=2),
+        encoding="utf-8",
     )
 
     report = [
-        "# TRACE-Net Full User-Query Gemma Benchmark v1",
+        "# TRACE-Net H30 Mature Full-180 Benchmark",
         "",
         f"- Quality: **{summary['quality_status']}**",
         f"- Questions: `{summary['question_count']}`",
         f"- Passed: `{summary['pass_count']}`",
         f"- Failed: `{summary['fail_count']}`",
-        f"- Gemma successes: `{summary['gemma_success_count']}`",
+        f"- Writer successes: `{summary['writer_success_count']}`",
+        f"- Expected deterministic skips: `{summary['writer_expected_skip_count']}`",
         f"- Average latency: `{summary['average_latency_ms']} ms`",
         f"- P95 latency: `{summary['p95_latency_ms']} ms`",
         f"- Total elapsed: `{summary['total_elapsed_seconds']} seconds`",
@@ -364,13 +554,16 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     for key in (
         "status",
         "quality_status",
+        "contract",
         "question_count",
         "pass_count",
         "fail_count",
         "all_questions_sent_as_user_messages",
-        "gemma_call_count",
-        "gemma_success_count",
-        "gemma_failure_count",
+        "writer_expected_count",
+        "writer_call_count",
+        "writer_success_count",
+        "writer_expected_skip_count",
+        "writer_failure_count",
         "average_latency_ms",
         "median_latency_ms",
         "p95_latency_ms",
@@ -378,7 +571,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     ):
         print(f"{key}={summary[key]}")
     print("output_dir=" + str(output))
-    return 0 if summary["quality_status"] == "PASS" else 2
+    return 0 if summary["quality_status"] == "PASS" else 1
 
 
 if __name__ == "__main__":

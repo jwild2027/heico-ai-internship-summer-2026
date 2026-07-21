@@ -273,6 +273,44 @@ ENGINEER ANSWER CONTRACT
 Write the final user-facing answer. Use no facts beyond this material."""
 
 
+def append_follow_up_questions(
+    answer: str,
+    questions: Sequence[str],
+    *,
+    should_append: bool,
+) -> str:
+    """Append deterministic follow-ups once without allowing them to become evidence."""
+    text = str(answer or "").strip()
+    if not should_append:
+        return text
+
+    normalized_answer = re.sub(r"\s+", " ", text.lower())
+    clean: List[str] = []
+    seen = set()
+    normalized_answer_words = re.sub(
+        r"[^a-z0-9]+",
+        " ",
+        normalized_answer,
+    )
+    for raw in questions:
+        question = re.sub(r"\s+", " ", str(raw or "")).strip()
+        normalized = re.sub(r"[^a-z0-9]+", " ", question.lower()).strip()
+        if not normalized or normalized in seen:
+            continue
+        seen.add(normalized)
+        if normalized in normalized_answer_words:
+            continue
+        clean.append(question)
+
+    if not clean:
+        return text
+    return (
+        text.rstrip()
+        + "\n\nHelpful follow-up questions:\n"
+        + "\n".join(f"- {question}" for question in clean[:5])
+    ).strip()
+
+
 class Runtime:
     def __init__(
         self,
@@ -368,6 +406,18 @@ class Runtime:
             else:
                 writer_mode = "deterministic_fallback_after_gemma_error"
                 gemma_status = f"LLM_CALL_FAILED_STATUS_{status}"
+
+        follow_up_questions = [
+            str(question)
+            for question in (result.get("follow_up_questions") or [])
+            if str(question).strip()
+        ]
+        final_text = append_follow_up_questions(
+            final_text,
+            follow_up_questions,
+            should_append=bool(follow_up_questions)
+            and route in {"guided_part_discovery", "clarification_no_evidence"},
+        )
 
         result = dict(result)
         result.update({

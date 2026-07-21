@@ -574,6 +574,79 @@ def plan_route(atoms: QueryAtoms) -> RoutePlan:
     )
 
 
+def build_follow_up_questions(
+    atoms: QueryAtoms,
+    route: str,
+) -> List[str]:
+    """Build bounded clarification questions without treating them as evidence."""
+    if route != "guided_part_discovery":
+        return []
+
+    questions: List[str] = []
+    if atoms.part_prefix:
+        questions.append(
+            "What additional part number characters do you remember after "
+            f"the prefix {atoms.part_prefix}?"
+        )
+    elif atoms.part_contains:
+        questions.append(
+            "What characters appear before or after "
+            f"{atoms.part_contains} in the part number?"
+        )
+    elif atoms.part_suffix:
+        questions.append(
+            "What part number characters appear before "
+            f"the suffix {atoms.part_suffix}?"
+        )
+    else:
+        questions.append(
+            "What additional part number characters, digits, or separators "
+            "do you remember?"
+        )
+
+    if not atoms.manufacturer:
+        questions.append(
+            "Do you know the manufacturer, vendor, or supplier?"
+        )
+    else:
+        questions.append(
+            "Are there any additional vendor markings or supplier codes?"
+        )
+
+    if not atoms.nomenclature_terms and not atoms.assembly_context:
+        questions.append(
+            "What component, function, or assembly is the part associated with?"
+        )
+    else:
+        questions.append(
+            "What nearby component or assembly details can narrow the candidate?"
+        )
+
+    if not atoms.ata_exact and not atoms.ata_prefix:
+        questions.append(
+            "Do you know the ATA chapter or aircraft system?"
+        )
+
+    if not atoms.figures and not atoms.items and not atoms.page_ids:
+        questions.append(
+            "Do you remember a figure, diagram, IPL table, item number, or page?"
+        )
+
+    questions.append(
+        "What does the part look like, and where is it installed?"
+    )
+
+    output: List[str] = []
+    seen = set()
+    for question in questions:
+        normalized = re.sub(r"\s+", " ", question).strip().lower()
+        if not normalized or normalized in seen:
+            continue
+        seen.add(normalized)
+        output.append(question)
+    return output[:5]
+
+
 def http_json(
     url: str,
     payload: Optional[Mapping[str, Any]],
@@ -1218,6 +1291,10 @@ class CognitiveRuntime:
             evidence_envelope=asdict(envelope),
             answer=content,
         )
+        follow_up_questions = build_follow_up_questions(
+            atoms,
+            plan.primary_route,
+        )
 
         return {
             "module": MODULE,
@@ -1232,6 +1309,9 @@ class CognitiveRuntime:
             "engram_policy": plan.engram_policy,
             "working_memory": plan.working_memory,
             "content": content,
+            "follow_up_questions": follow_up_questions,
+            "clarification_required": plan.primary_route == "guided_part_discovery",
+            "clarification_recommended": bool(follow_up_questions),
             "evidence_envelope": asdict(envelope),
             "self_rag_critic": final_critic,
             "crag_repair_attempts": envelope.crag_repairs,
