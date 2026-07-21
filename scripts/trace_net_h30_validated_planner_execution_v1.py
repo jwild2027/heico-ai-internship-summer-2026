@@ -365,6 +365,7 @@ def canonicalize_planner_contract(
         "changes": [],
         "blocked_reasons": [],
         "dropped_fields": [],
+        "dropped_advisory_tunnels": [],
     }
 
     for key in SAFETY_KEYS:
@@ -380,9 +381,16 @@ def canonicalize_planner_contract(
     for route in raw_routes:
         if str(route) not in allowed_routes:
             audit["blocked_reasons"].append(f"route_not_allowlisted:{route}")
+    # Planner tunnel suggestions are advisory only. TRACE-Net always selects the
+    # executed tunnel plan from ROUTE_TUNNELS after route validation. Therefore an
+    # invented, non-unsafe advisory tunnel is removed and audited rather than being
+    # allowed to discard an otherwise grounded route proposal. Unsafe write/admin
+    # tunnel language is still blocked above by _contains_unsafe_instruction().
     for tunnel in raw_tunnels:
         if str(tunnel) not in allowed_tunnels:
-            audit["blocked_reasons"].append(f"tunnel_not_allowlisted:{tunnel}")
+            audit["dropped_advisory_tunnels"].append(str(tunnel))
+    if audit["dropped_advisory_tunnels"]:
+        audit["changes"].append("invalid_advisory_tunnels_dropped")
 
     query = str(seed.get("query") or "")
     candidate_tokens = [str(value) for value in seed.get("candidate_tokens") or []]
@@ -571,7 +579,8 @@ def build_validated_execution_decision(
     raw_proposal = dict(shadow.get("proposal") or {})
     validation = dict(shadow.get("validation") or {})
     canonicalization = {
-        "attempted": False, "used": False, "changes": [], "blocked_reasons": [], "dropped_fields": [],
+        "attempted": False, "used": False, "changes": [], "blocked_reasons": [],
+        "dropped_fields": [], "dropped_advisory_tunnels": [],
     }
     proposal = raw_proposal
 

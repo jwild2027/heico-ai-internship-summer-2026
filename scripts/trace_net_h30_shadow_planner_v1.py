@@ -545,46 +545,75 @@ def call_shadow_planner(
         method="POST",
     )
     open_url = opener or urllib.request.urlopen
-    started = time.perf_counter()
-    try:
-        with open_url(request, timeout=float(config.get("timeout_seconds") or 300.0)) as response:
-            raw = response.read().decode("utf-8", errors="replace")
-            status_code = int(getattr(response, "status", 200))
-        decoded = json.loads(raw)
-        choices = decoded.get("choices") if isinstance(decoded, Mapping) else None
-        first = choices[0] if isinstance(choices, list) and choices else {}
-        message = first.get("message") if isinstance(first, Mapping) else {}
-        content = str(message.get("content") or "") if isinstance(message, Mapping) else ""
-        proposal = parse_json_object(content)
-        return {
-            "call_status": "PASS",
-            "http_status": status_code,
-            "proposal": proposal,
-            "content_preview": content[:1000],
-            "latency_ms": round((time.perf_counter() - started) * 1000.0, 3),
-            "error": "",
-        }
-    except urllib.error.HTTPError as exc:
-        detail = exc.read().decode("utf-8", errors="replace")[:1000]
-        return {
-            "call_status": "ERROR",
-            "http_status": int(exc.code),
-            "proposal": {},
-            "content_preview": "",
-            "latency_ms": round((time.perf_counter() - started) * 1000.0, 3),
-            "error": f"HTTPError: {detail}",
-        }
-    except Exception as exc:
-        return {
-            "call_status": "ERROR",
-            "http_status": 599,
-            "proposal": {},
-            "content_preview": "",
-            "latency_ms": round((time.perf_counter() - started) * 1000.0, 3),
-            "error": f"{type(exc).__name__}: {exc}",
-        }
+    overall_started = time.perf_counter()
+    initial_call_error = ""
+    initial_content_preview = ""
 
+    # Retry exactly once only when the model response has no JSON object.
+    # HTTP and transport failures still fail closed immediately.
+    for attempt_index in range(2):
+        retry_used = attempt_index > 0
+        content = ""
+        try:
+            with open_url(request, timeout=float(config.get("timeout_seconds") or 300.0)) as response:
+                raw = response.read().decode("utf-8", errors="replace")
+                status_code = int(getattr(response, "status", 200))
+            decoded = json.loads(raw)
+            choices = decoded.get("choices") if isinstance(decoded, Mapping) else None
+            first = choices[0] if isinstance(choices, list) and choices else {}
+            message = first.get("message") if isinstance(first, Mapping) else {}
+            content = str(message.get("content") or "") if isinstance(message, Mapping) else ""
+            proposal = parse_json_object(content)
+            return {
+                "call_status": "PASS",
+                "http_status": status_code,
+                "proposal": proposal,
+                "content_preview": content[:1000],
+                "latency_ms": round((time.perf_counter() - overall_started) * 1000.0, 3),
+                "error": "",
+                "json_output_retry_used": retry_used,
+                "planner_call_attempt_count": attempt_index + 1,
+                "initial_call_error": initial_call_error,
+                "initial_content_preview": initial_content_preview,
+            }
+        except urllib.error.HTTPError as exc:
+            detail = exc.read().decode("utf-8", errors="replace")[:1000]
+            return {
+                "call_status": "ERROR",
+                "http_status": int(exc.code),
+                "proposal": {},
+                "content_preview": "",
+                "latency_ms": round((time.perf_counter() - overall_started) * 1000.0, 3),
+                "error": f"HTTPError: {detail}",
+                "json_output_retry_used": retry_used,
+                "planner_call_attempt_count": attempt_index + 1,
+                "initial_call_error": initial_call_error,
+                "initial_content_preview": initial_content_preview,
+            }
+        except Exception as exc:
+            error = f"{type(exc).__name__}: {exc}"
+            is_json_object_failure = (
+                isinstance(exc, ValueError)
+                and str(exc) == "planner_output_did_not_contain_json_object"
+            )
+            if is_json_object_failure and attempt_index == 0:
+                initial_call_error = error
+                initial_content_preview = content[:1000]
+                continue
+            return {
+                "call_status": "ERROR",
+                "http_status": 599,
+                "proposal": {},
+                "content_preview": content[:1000],
+                "latency_ms": round((time.perf_counter() - overall_started) * 1000.0, 3),
+                "error": error,
+                "json_output_retry_used": retry_used,
+                "planner_call_attempt_count": attempt_index + 1,
+                "initial_call_error": initial_call_error,
+                "initial_content_preview": initial_content_preview,
+            }
 
+    raise AssertionError("planner JSON retry loop exited unexpectedly")
 _REPAIRABLE_FAILURE_PREFIXES = (
     "missing_fields:",
     "invalid_identifier_mode:",
