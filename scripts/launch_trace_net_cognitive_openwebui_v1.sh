@@ -19,6 +19,22 @@ SHADOW_PLANNER_BASE_URL="${TRACE_NET_H30_SHADOW_PLANNER_BASE_URL:-http://127.0.0
 SHADOW_PLANNER_API_KEY="${TRACE_NET_H30_SHADOW_PLANNER_API_KEY:-ollama}"
 SHADOW_PLANNER_MODEL="${TRACE_NET_H30_SHADOW_PLANNER_MODEL:-$GEMMA_MODEL}"
 SHADOW_PLANNER_TIMEOUT="${TRACE_NET_H30_SHADOW_PLANNER_TIMEOUT_SECONDS:-300}"
+# TRACE_NET_H30_PHASE4_5_1_LAUNCHER_ENV_V1: capture validated-planner rollout settings.
+PLANNER_ROLLOUT_MODE="${TRACE_NET_H30_PLANNER_ROLLOUT_MODE:-validate_only}"
+PLANNER_EXECUTION_ENABLED="${TRACE_NET_H30_PLANNER_EXECUTION_ENABLED:-0}"
+PLANNER_MAX_LATENCY_MS="${TRACE_NET_H30_PLANNER_MAX_LATENCY_MS:-90000}"
+PLANNER_BREAKER_FAILURE_THRESHOLD="${TRACE_NET_H30_PLANNER_BREAKER_FAILURE_THRESHOLD:-2}"
+PLANNER_BREAKER_SECONDS="${TRACE_NET_H30_PLANNER_BREAKER_SECONDS:-300}"
+PLANNER_CANONICAL_BRIDGE_ENABLED="${TRACE_NET_H30_PLANNER_CANONICAL_BRIDGE_ENABLED:-1}"
+PLANNER_REQUIRE_ROUTE="${TRACE_NET_H30_PLANNER_REQUIRE_ROUTE:-1}"
+
+case "$PLANNER_ROLLOUT_MODE" in
+  validate_only|narrow|broad|mature) ;;
+  *)
+    echo "invalid_planner_rollout_mode=$PLANNER_ROLLOUT_MODE"
+    exit 1
+    ;;
+esac
 
 cd "$REPO"
 source "$VENV/bin/activate"
@@ -177,6 +193,14 @@ export TRACE_NET_H30_SHADOW_PLANNER_BASE_URL="$SHADOW_PLANNER_BASE_URL"
 export TRACE_NET_H30_SHADOW_PLANNER_API_KEY="$SHADOW_PLANNER_API_KEY"
 export TRACE_NET_H30_SHADOW_PLANNER_MODEL="$SHADOW_PLANNER_MODEL"
 export TRACE_NET_H30_SHADOW_PLANNER_TIMEOUT_SECONDS="$SHADOW_PLANNER_TIMEOUT"
+# TRACE_NET_H30_PHASE4_5_1_LAUNCHER_ENV_V1: propagate settings into the tmux process.
+export TRACE_NET_H30_PLANNER_ROLLOUT_MODE="$PLANNER_ROLLOUT_MODE"
+export TRACE_NET_H30_PLANNER_EXECUTION_ENABLED="$PLANNER_EXECUTION_ENABLED"
+export TRACE_NET_H30_PLANNER_MAX_LATENCY_MS="$PLANNER_MAX_LATENCY_MS"
+export TRACE_NET_H30_PLANNER_BREAKER_FAILURE_THRESHOLD="$PLANNER_BREAKER_FAILURE_THRESHOLD"
+export TRACE_NET_H30_PLANNER_BREAKER_SECONDS="$PLANNER_BREAKER_SECONDS"
+export TRACE_NET_H30_PLANNER_CANONICAL_BRIDGE_ENABLED="$PLANNER_CANONICAL_BRIDGE_ENABLED"
+export TRACE_NET_H30_PLANNER_REQUIRE_ROUTE="$PLANNER_REQUIRE_ROUTE"
 exec "$PYTHON" -u -B scripts/serve_trace_net_cognitive_router_v1.py \\
   --host 127.0.0.1 \\
   --port 8118 \\
@@ -261,7 +285,44 @@ tmux new-session -d -s trace-net-openwebui-cognitive-8131 \
 wait_port "$BRIDGE_HOST" 8131
 
 # If docker0 uses a non-default address, verify that exact address too.
-curl --fail-with-body --silent --show-error http://127.0.0.1:8118/health | "$PYTHON" -m json.tool
+# TRACE_NET_H30_PHASE4_5_1_LAUNCHER_ENV_V1: verify the live router received the requested mode.
+curl --fail-with-body --silent --show-error \
+  http://127.0.0.1:8118/health \
+  > "$RUNTIME/8118_health.json"
+"$PYTHON" -m json.tool "$RUNTIME/8118_health.json"
+"$PYTHON" - "$RUNTIME/8118_health.json" "$PLANNER_ROLLOUT_MODE" "$PLANNER_EXECUTION_ENABLED" <<'PY'
+import json
+import sys
+from pathlib import Path
+
+filename, requested_mode, raw_enabled = sys.argv[1:]
+health = json.loads(Path(filename).read_text(encoding="utf-8"))
+requested_enabled = raw_enabled.strip().lower() in {"1", "true", "yes", "on"}
+expected_execution = requested_enabled and requested_mode != "validate_only"
+actual_mode = str(health.get("planner_rollout_mode") or "")
+actual_execution = bool(health.get("planner_execution_enabled"))
+phase_by_mode = {"validate_only": 2, "narrow": 3, "broad": 4, "mature": 5}
+actual_phase = health.get("planner_rollout_phase")
+expected_phase = phase_by_mode[requested_mode]
+
+print(f"requested_planner_mode={requested_mode}")
+print(f"live_planner_mode={actual_mode}")
+print(f"expected_planner_execution={str(expected_execution).lower()}")
+print(f"live_planner_execution={str(actual_execution).lower()}")
+print(f"expected_planner_phase={expected_phase}")
+print(f"live_planner_phase={actual_phase}")
+
+failures = []
+if actual_mode != requested_mode:
+    failures.append(f"mode:{actual_mode}!={requested_mode}")
+if actual_execution is not expected_execution:
+    failures.append(f"execution:{actual_execution}!={expected_execution}")
+if actual_phase != expected_phase:
+    failures.append(f"phase:{actual_phase}!={expected_phase}")
+if failures:
+    raise SystemExit("planner launcher environment mismatch: " + ", ".join(failures))
+print("planner_launcher_env_check=PASS")
+PY
 curl --fail-with-body --silent --show-error http://127.0.0.1:8128/health | "$PYTHON" -m json.tool
 curl --fail-with-body --silent --show-error "http://$BRIDGE_HOST:8131/health" | "$PYTHON" -m json.tool
 
