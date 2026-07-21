@@ -311,6 +311,37 @@ def install_gemma_latency_support(module: MutableMapping[str, Any]) -> None:
         contract_applier = module.get("apply_engineer_answer_contract")
         if callable(contract_applier):
             result = contract_applier(result)
+
+        # The native Ollama wrapper replaces Runtime.process, so user-facing
+        # guided follow-ups must be restored here after the engineer answer
+        # contract has finished formatting the answer.
+        follow_up_questions = [
+            str(question).strip()
+            for question in (result.get("follow_up_questions") or [])
+            if str(question).strip()
+        ]
+        follow_up_appender = module.get("append_follow_up_questions")
+        should_append_followups = bool(follow_up_questions) and route in {
+            "guided_part_discovery",
+            "clarification_no_evidence",
+        }
+        if callable(follow_up_appender):
+            result["content"] = follow_up_appender(
+                str(result.get("content") or ""),
+                follow_up_questions,
+                should_append=should_append_followups,
+            )
+
+        visible_count = sum(
+            question in str(result.get("content") or "")
+            for question in follow_up_questions
+        )
+        result["follow_up_questions_visible_count"] = visible_count
+        result["follow_up_questions_visible"] = (
+            visible_count == len(follow_up_questions)
+            if follow_up_questions
+            else True
+        )
         return result
 
     def health_v1(self: Any) -> Dict[str, Any]:

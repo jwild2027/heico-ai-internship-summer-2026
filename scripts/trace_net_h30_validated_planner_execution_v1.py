@@ -78,10 +78,12 @@ MATURE_ROUTES: Set[str] = BROAD_ROUTES | {
 ROUTE_TUNNELS: Dict[str, Tuple[str, ...]] = {
     "safe_general_chat": ("restricted_conversation_template",),
     "exact_identifier_lookup": (
-        "normal_source_truth", "guided_exact_candidate", "confirmed_visual", "qdrant_guidance",
+        "normal_source_truth", "guided_exact_candidate", "confirmed_visual",
+        "phase4_3_exact_source_resolution", "qdrant_guidance",
     ),
     "guided_part_discovery": (
-        "guided_candidate_discovery", "normal_source_resolution", "qdrant_guidance",
+        "guided_candidate_discovery", "normal_source_resolution",
+        "phase4_3_candidate_source_resolution", "qdrant_guidance",
     ),
     "ata_system_discovery": (
         "normal_source_truth", "document_metadata", "guided_broad_candidates",
