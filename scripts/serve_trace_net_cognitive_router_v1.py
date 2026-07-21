@@ -45,6 +45,7 @@ from scripts.trace_net_h30_user_facing_renderer_v1 import install_user_facing_re
 from scripts.trace_net_h30_navigation_latency_fastpath_v1 import install_navigation_latency_fastpath
 from scripts.trace_net_h30_part_intent_source_resolution_v1 import install_part_intent_source_resolution
 from scripts.trace_net_h30_shadow_planner_v1 import install_shadow_planner
+from scripts.trace_net_h30_validated_planner_execution_v1 import install_validated_planner_execution
 from scripts.trace_net_h30_cognitive_precision_v1 import (
     decompose_claim_queries,
     explicit_semantic_intent,
@@ -1366,6 +1367,9 @@ def make_handler(runtime: CognitiveRuntime):
                 if path == "/api/trace-net/shadow-plan":
                     self.send_json(200, runtime.shadow_plan(query))
                     return
+                if path == "/api/trace-net/planner-decision":
+                    self.send_json(200, runtime.planner_decision(query))
+                    return
                 if path == "/api/trace-net/plan":
                     atoms = extract_query_atoms(query)
                     plan = plan_route(atoms)
@@ -1468,6 +1472,7 @@ install_user_facing_renderer(globals())
 install_navigation_latency_fastpath(globals())
 install_part_intent_source_resolution(globals())
 install_shadow_planner(globals())
+install_validated_planner_execution(globals())
 
 if __name__ == "__main__":
     raise SystemExit(main())
