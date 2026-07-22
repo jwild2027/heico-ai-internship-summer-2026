@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import statistics
 import time
@@ -15,6 +16,14 @@ from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
 
 from scripts.serve_trace_net_cognitive_router_v1 import extract_query_atoms, plan_route
 from tiff.trace_net_answer_quality_guard_v1 import evaluate_answer_quality
+from scripts.trace_net_benchmark_reporting_v1 import (
+    build_run_metadata,
+    completed_question_ids,
+    load_records_jsonl,
+    rewrite_records_jsonl,
+    write_json,
+    write_qa_reports,
+)
 
 
 CURRENT_WRITER_SUCCESS = {
@@ -434,6 +443,23 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--continue-on-error", action="store_true")
+    parser.add_argument(
+        "--resume",
+        action="store_true",
+        help="Append to an existing records.jsonl and skip completed question IDs.",
+    )
+    parser.add_argument(
+        "--report-every",
+        type=int,
+        default=1,
+        help="Rewrite complete Q&A reports after every N newly completed records; 0 disables periodic writes.",
+    )
+    parser.add_argument(
+        "--preview-chars",
+        type=int,
+        default=180,
+        help="Terminal-only answer preview length. Stored reports always contain the full answer.",
+    )
     return parser
 
 
@@ -450,58 +476,111 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     output = Path(args.output_dir)
     output.mkdir(parents=True, exist_ok=True)
     records_path = output / "records.jsonl"
-    results: List[Dict[str, Any]] = []
+    existing_results: List[Dict[str, Any]] = []
+    load_warnings: List[str] = []
+    if args.resume:
+        existing_results, load_warnings = load_records_jsonl(records_path)
+        if load_warnings:
+            rewrite_records_jsonl(records_path, existing_results)
+    results: List[Dict[str, Any]] = list(existing_results)
+    completed_ids = set(completed_question_ids(existing_results))
+    resumed_record_count = len(existing_results)
     total = len(records)
     all_start = time.perf_counter()
+    interrupted = False
 
-    with records_path.open("w", encoding="utf-8") as handle:
-        for index, record in enumerate(records, 1):
-            query = str(record.get("query") or "")
-            qid = str(record.get("question_id") or f"q{index:03d}")
-            category = str(record.get("category") or "unknown")
-            print(
-                f"[{index}/{total}] USER {qid} category={category} query={query[:160]}",
-                flush=True,
-            )
-            status, response, latency, error = post_chat(
-                base_url=args.base_url,
-                api_key=args.api_key,
-                model=args.model,
-                query=query,
-                timeout=args.request_timeout,
-            )
-            result = evaluate(
-                record,
-                status_code=status,
-                response=response,
-                latency_ms=latency,
-                transport_error=error,
-            )
-            results.append(result)
-            handle.write(json.dumps(result, ensure_ascii=False) + "\n")
-            handle.flush()
+    run_metadata = build_run_metadata(
+        repo_root=Path.cwd(),
+        question_bank=Path(args.question_bank),
+        output_dir=output,
+        base_url=args.base_url,
+        model=args.model,
+        request_timeout=args.request_timeout,
+        expected_question_count=total,
+        resume_enabled=args.resume,
+        existing_record_count=resumed_record_count,
+    )
+    write_json(output / "run_metadata.json", run_metadata)
 
-            preview = result["answer"].replace("\n", " ")[:180]
-            print(
-                f"[{index}/{total}] {result['quality_status']} "
-                f"route={result['actual_route']} "
-                f"writer={result['writer_status'] or 'missing'} "
-                f"citations={result['citation_count']} "
-                f"followups={len(result['follow_up_questions'])} "
-                f"latency_ms={result['latency_ms']:.1f}",
-                flush=True,
-            )
-            if result["failures"]:
+    file_mode = "a" if args.resume else "w"
+    newly_completed = 0
+    try:
+        with records_path.open(file_mode, encoding="utf-8") as handle:
+            for index, record in enumerate(records, 1):
+                query = str(record.get("query") or "")
+                qid = str(record.get("question_id") or f"q{index:03d}")
+                category = str(record.get("category") or "unknown")
+                if qid in completed_ids:
+                    print(f"[{index}/{total}] SKIP {qid} already_completed", flush=True)
+                    continue
                 print(
-                    f"[{index}/{total}] FAILURES "
-                    + " | ".join(result["failures"]),
+                    f"[{index}/{total}] USER {qid} category={category} query={query[:160]}",
                     flush=True,
                 )
-            print(f"[{index}/{total}] ANSWER {preview}", flush=True)
+                status, response, latency, error = post_chat(
+                    base_url=args.base_url,
+                    api_key=args.api_key,
+                    model=args.model,
+                    query=query,
+                    timeout=args.request_timeout,
+                )
+                result = evaluate(
+                    record,
+                    status_code=status,
+                    response=response,
+                    latency_ms=latency,
+                    transport_error=error,
+                )
+                results.append(result)
+                completed_ids.add(qid)
+                newly_completed += 1
+                handle.write(json.dumps(result, ensure_ascii=False) + "\n")
+                handle.flush()
+                os.fsync(handle.fileno())
 
-            if status == 599 and not args.continue_on_error:
-                print("Transport error; stopping early.", flush=True)
-                break
+                if args.report_every > 0 and newly_completed % args.report_every == 0:
+                    write_qa_reports(
+                        results,
+                        output_dir=output,
+                        expected_question_count=total,
+                        interrupted=False,
+                        load_warnings=load_warnings,
+                        run_metadata=run_metadata,
+                    )
+
+                preview = result["answer"].replace("\n", " ")[: max(0, args.preview_chars)]
+                print(
+                    f"[{index}/{total}] {result['quality_status']} "
+                    f"route={result['actual_route']} "
+                    f"writer={result['writer_status'] or 'missing'} "
+                    f"citations={result['citation_count']} "
+                    f"followups={len(result['follow_up_questions'])} "
+                    f"latency_ms={result['latency_ms']:.1f}",
+                    flush=True,
+                )
+                if result["failures"]:
+                    print(
+                        f"[{index}/{total}] FAILURES "
+                        + " | ".join(result["failures"]),
+                        flush=True,
+                    )
+                print(f"[{index}/{total}] ANSWER_PREVIEW {preview}", flush=True)
+
+                if status == 599 and not args.continue_on_error:
+                    print("Transport error; stopping early.", flush=True)
+                    break
+    except KeyboardInterrupt:
+        interrupted = True
+        print("Benchmark interrupted; preserving completed records and reports.", flush=True)
+    finally:
+        report_outputs = write_qa_reports(
+            results,
+            output_dir=output,
+            expected_question_count=total,
+            interrupted=interrupted,
+            load_warnings=load_warnings,
+            run_metadata=run_metadata,
+        )
 
     latencies = [float(row["latency_ms"]) for row in results]
     category_latencies: Dict[str, List[float]] = defaultdict(list)
@@ -513,8 +592,18 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     elapsed = round(time.perf_counter() - all_start, 3)
 
     summary = {
-        "status": "TRACE_NET_H30_MATURE_FULL_180_BENCHMARK_V1_DONE",
-        "quality_status": "PASS" if len(results) == total and not failed else "FAIL",
+        "status": (
+            "TRACE_NET_H30_MATURE_FULL_180_BENCHMARK_V1_INTERRUPTED"
+            if interrupted
+            else "TRACE_NET_H30_MATURE_FULL_180_BENCHMARK_V1_DONE"
+        ),
+        "quality_status": "PASS" if len(results) == total and not failed and not interrupted else "FAIL",
+        "interrupted": interrupted,
+        "resume_enabled": args.resume,
+        "resumed_record_count": resumed_record_count,
+        "newly_completed_record_count": newly_completed,
+        "load_warnings": load_warnings,
+        "run_metadata": run_metadata,
         "contract": "h30_mature_cognitive_with_legacy_bank_adapter",
         "question_count": len(results),
         "expected_question_count": total,
@@ -564,6 +653,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             "summary": str(output / "summary.json"),
             "records": str(records_path),
             "report": str(output / "report.md"),
+            **report_outputs,
+            "run_metadata": str(output / "run_metadata.json"),
         },
         "safety_contract": {
             "read_only_queries": True,
@@ -623,6 +714,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     ):
         print(f"{key}={summary[key]}")
     print("output_dir=" + str(output))
+    if interrupted:
+        return 130
     return 0 if summary["quality_status"] == "PASS" else 1
 
 
