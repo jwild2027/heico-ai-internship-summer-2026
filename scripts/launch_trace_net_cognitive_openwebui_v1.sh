@@ -35,6 +35,10 @@ ENGRAM_SKILL_PLANNER_GUIDANCE_MAX_CHARS="${TRACE_NET_H30_ENGRAM_SKILL_PLANNER_GU
 TYPED_EVIDENCE_ENABLED="${TRACE_NET_H30_TYPED_EVIDENCE_ENABLED:-0}"
 EVIDENCE_AWARE_ANSWER_MODES_ENABLED="${TRACE_NET_H30_EVIDENCE_AWARE_ANSWER_MODES_ENABLED:-0}"
 EVIDENCE_AWARE_ANSWER_MODES_MAX_ITEMS="${TRACE_NET_H30_EVIDENCE_AWARE_ANSWER_MODES_MAX_ITEMS:-6}"
+FINAL_ENGRAM_ROLLOUT_ENABLED="${TRACE_NET_H30_FINAL_ENGRAM_ROLLOUT_ENABLED:-0}"
+FINAL_ENGRAM_MAX_FOLLOWUPS="${TRACE_NET_H30_FINAL_ENGRAM_MAX_FOLLOWUPS:-3}"
+FINAL_ENGRAM_MAX_REPAIRS="${TRACE_NET_H30_FINAL_ENGRAM_MAX_REPAIRS:-1}"
+RUN_CRITICAL_LIVE_ROUTE_SMOKE="${TRACE_NET_RUN_CRITICAL_LIVE_ROUTE_SMOKE:-0}"
 
 case "$PLANNER_ROLLOUT_MODE" in
   validate_only|narrow|broad|mature) ;;
@@ -61,6 +65,18 @@ for required in \
   scripts/run_trace_net_cognitive_route_smoke_v1.py; do
   if [[ ! -f "$required" ]]; then
     echo "missing_required_file=$required"
+    exit 1
+  fi
+done
+
+# TRACE_NET_H30_FINAL_PHASES6_10_REQUIRED_FILES_V1
+for final_required in \
+  scripts/trace_net_h30_final_engram_rollout_v1.py \
+  scripts/check_trace_net_h30_final_engram_rollout_v1.py \
+  scripts/run_trace_net_h30_final_rollout_live_smoke_v1.py \
+  scripts/run_trace_net_h30_final_engram_benchmark_v1.py; do
+  if [[ ! -f "$final_required" ]]; then
+    echo "missing_final_rollout_file=$final_required"
     exit 1
   fi
 done
@@ -191,6 +207,21 @@ echo "compile_status=PASS"
 
 echo "unit_test_status=PASS"
 
+# TRACE_NET_H30_FINAL_PHASES6_10_COMPILE_TEST_V1
+"$PYTHON" -m py_compile \
+  scripts/trace_net_h30_final_engram_rollout_v1.py \
+  scripts/check_trace_net_h30_final_engram_rollout_v1.py \
+  scripts/run_trace_net_h30_final_rollout_live_smoke_v1.py \
+  scripts/run_trace_net_h30_final_engram_benchmark_v1.py
+
+echo "final_rollout_compile_status=PASS"
+
+"$PYTHON" -m pytest -q \
+  tests/unit/test_trace_net_h30_final_engram_rollout_v1.py
+
+echo "final_rollout_unit_test_status=PASS"
+
+
 stop_session() {
   local session="$1"
   local port="$2"
@@ -253,6 +284,9 @@ export TRACE_NET_H30_ENGRAM_SKILL_CARDS_PATH="$ENGRAM_SKILL_CARDS_PATH"
 export TRACE_NET_H30_ENGRAM_SKILL_SHADOW_MAX_SKILLS="$ENGRAM_SKILL_SHADOW_MAX_SKILLS"
 export TRACE_NET_H30_EVIDENCE_AWARE_ANSWER_MODES_ENABLED="$EVIDENCE_AWARE_ANSWER_MODES_ENABLED"
 export TRACE_NET_H30_EVIDENCE_AWARE_ANSWER_MODES_MAX_ITEMS="$EVIDENCE_AWARE_ANSWER_MODES_MAX_ITEMS"
+export TRACE_NET_H30_FINAL_ENGRAM_ROLLOUT_ENABLED="$FINAL_ENGRAM_ROLLOUT_ENABLED"
+export TRACE_NET_H30_FINAL_ENGRAM_MAX_FOLLOWUPS="$FINAL_ENGRAM_MAX_FOLLOWUPS"
+export TRACE_NET_H30_FINAL_ENGRAM_MAX_REPAIRS="$FINAL_ENGRAM_MAX_REPAIRS"
 exec "$PYTHON" -u -B scripts/serve_trace_net_full_gemma_cognitive_v1.py \\
   --host 127.0.0.1 \\
   --port 8128 \\
@@ -369,6 +403,8 @@ echo "============================================================"
   --base-url http://127.0.0.1:8118 \
   --api-key "$COGNITIVE_KEY" \
   --output "$RUNTIME/all_route_plan_smoke.json"
+# TRACE_NET_H30_CRITICAL_LIVE_ROUTE_SMOKE_SWITCH_V1
+if [[ "$RUN_CRITICAL_LIVE_ROUTE_SMOKE" == "1" ]]; then
 
 echo
 echo "============================================================"
@@ -381,6 +417,14 @@ echo "============================================================"
   --timeout-seconds 1200 \
   --live \
   --output "$RUNTIME/critical_live_route_smoke.json"
+else
+  echo
+  echo "============================================================"
+  echo "SKIPPING FIVE CRITICAL LIVE ROUTE TESTS"
+  echo "============================================================"
+  echo "TRACE_NET_RUN_CRITICAL_LIVE_ROUTE_SMOKE=0"
+  echo "Enable only for router/retrieval/release gates."
+fi
 
 echo
 echo "============================================================"

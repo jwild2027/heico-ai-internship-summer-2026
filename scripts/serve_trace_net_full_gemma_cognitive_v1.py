@@ -24,6 +24,7 @@ from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
 from scripts.trace_net_h30_cold_start_streaming_v1 import install_gemma_latency_support
 from scripts.trace_net_h30_engram_skill_shadow_v1 import install_engram_skill_shadow
 from scripts.trace_net_h30_evidence_aware_answer_modes_v1 import install_evidence_aware_answer_modes
+from scripts.trace_net_h30_final_engram_rollout_v1 import install_final_engram_rollout
 from scripts.trace_net_h30_engineer_answer_contract_v1 import (
     apply_engineer_answer_contract,
     clean_engineer_text,
@@ -621,6 +622,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 install_gemma_latency_support(globals())
 install_engram_skill_shadow(globals())
 install_evidence_aware_answer_modes(globals())
+install_final_engram_rollout(globals())
 
 
 if __name__ == "__main__":
