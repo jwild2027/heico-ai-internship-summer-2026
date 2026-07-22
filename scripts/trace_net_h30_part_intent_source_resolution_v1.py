@@ -30,7 +30,8 @@ PATCH_ID = "trace_net_h30_phase4_3_part_intent_source_resolution_v1"
 VERSION = "v1"
 
 PART_CONTEXT_RE = re.compile(
-    r"\b(?:p/?n|part(?:\s+number)?|component(?:\s+number)?)\b"
+    r"\b(?:p/?n|part(?:\s+number)?|component(?:\s+number)?|"
+    r"item(?:\s+number)?|nomenclature(?:\s+number)?)\b"
     r"\s*(?:is|=|:|#)?\s*([A-Za-z0-9][A-Za-z0-9./-]{2,31})",
     re.I,
 )
@@ -62,6 +63,8 @@ AUTHORITY_FIELD_HINTS = (
     "approval", "approved", "interchange", "effectivity", "eligibility",
     "installation_authority", "applicability", "fitment",
 )
+
+KNOWN_ALPHA_PART_PREFIXES = {"NAS", "BAC", "MIL"}
 
 
 def compact(value: Any, limit: int = 4000) -> str:
@@ -128,7 +131,9 @@ def _match_value(pattern: re.Pattern[str], query: str) -> Optional[str]:
     if not re.fullmatch(r"[A-Z0-9]+(?:-[A-Z0-9]+)*", value):
         return None
     normalized = normalize_identifier(value)
-    if len(normalized) < 2 or not any(ch.isdigit() for ch in normalized):
+    if len(normalized) < 2:
+        return None
+    if not any(ch.isdigit() for ch in normalized) and normalized not in KNOWN_ALPHA_PART_PREFIXES:
         return None
     return value
 
@@ -543,7 +548,12 @@ def install_part_intent_source_resolution(module: MutableMapping[str, Any]) -> N
             "visual_figure_callout_lookup", "high_degree_entity_aggregation",
             "graph_relationship_reasoning", "document_page_navigation",
         }
-        if plan.primary_route not in protected:
+        partial_identifier_overrides_table = bool(
+            plan.primary_route == "exact_table_ipl_lookup"
+            and mode in {"prefix", "contains", "suffix", "partial", "family"}
+            and explicit_part_partial_wording(getattr(atoms, "latest_query", ""))
+        )
+        if plan.primary_route not in protected or partial_identifier_overrides_table:
             if mode == "exact":
                 plan.primary_route = "exact_identifier_lookup"
                 plan.secondary_routes = ["guided_part_discovery", "visual_figure_callout_lookup"]

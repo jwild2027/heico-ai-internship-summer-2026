@@ -119,6 +119,8 @@ NOMENCLATURE_TERMS = {
     "ring", "locking ring", "retaining ring", "bracket", "latch", "pin", "bolt",
     "screw", "fastener", "fitting", "cover", "panel", "seat", "armrest",
     "tray table", "table", "hinge", "clip", "spring", "washer", "nut",
+    "ashtray", "bearing", "support rail", "rail", "buckle", "actuator",
+    "switch", "valve", "hose", "connector", "clamp", "lever",
 }
 
 AUTHORITY_FIELD_HINTS = {
@@ -574,12 +576,20 @@ def plan_route(atoms: QueryAtoms) -> RoutePlan:
     )
 
 
+DISCOVERY_FOLLOWUP_ROUTES = {
+    "guided_part_discovery",
+    "nomenclature_function_search",
+    "semantic_discovery",
+    "clarification_no_evidence",
+}
+
+
 def build_follow_up_questions(
     atoms: QueryAtoms,
     route: str,
 ) -> List[str]:
-    """Build bounded clarification questions without treating them as evidence."""
-    if route != "guided_part_discovery":
+    """Build five bounded discovery questions without treating them as evidence."""
+    if route not in DISCOVERY_FOLLOWUP_ROUTES:
         return []
 
     questions: List[str] = []
@@ -600,50 +610,44 @@ def build_follow_up_questions(
         )
     else:
         questions.append(
-            "What additional part number characters, digits, or separators "
-            "do you remember?"
-        )
-
-    if not atoms.manufacturer:
-        questions.append(
-            "Do you know the manufacturer, vendor, or supplier?"
-        )
-    else:
-        questions.append(
-            "Are there any additional vendor markings or supplier codes?"
-        )
-
-    if not atoms.nomenclature_terms and not atoms.assembly_context:
-        questions.append(
-            "What component, function, or assembly is the part associated with?"
-        )
-    else:
-        questions.append(
-            "What nearby component or assembly details can narrow the candidate?"
-        )
-
-    if not atoms.ata_exact and not atoms.ata_prefix:
-        questions.append(
-            "Do you know the ATA chapter or aircraft system?"
-        )
-
-    if not atoms.figures and not atoms.items and not atoms.page_ids:
-        questions.append(
-            "Do you remember a figure, diagram, IPL table, item number, or page?"
+            "Do you remember any part number characters, digits, separators, "
+            "or stamped markings?"
         )
 
     questions.append(
-        "What does the part look like, and where is it installed?"
+        "Do you know the manufacturer, vendor, or supplier?"
+        if not atoms.manufacturer
+        else "Are there any additional vendor markings or supplier codes?"
+    )
+
+    if atoms.nomenclature_terms or atoms.assembly_context:
+        clue = atoms.nomenclature_terms[0] if atoms.nomenclature_terms else atoms.assembly_context[0]
+        questions.append(
+            f"What function does the {clue} perform, and what assembly or "
+            "installation location is it associated with?"
+        )
+    else:
+        questions.append(
+            "What component, function, assembly, or installation location is "
+            "the part associated with?"
+        )
+
+    questions.append(
+        "What does the part look like, including its shape, color, size, "
+        "markings, and nearby hardware?"
+    )
+    questions.append(
+        "Do you know the ATA chapter, aircraft system, figure, diagram, IPL "
+        "item, table, manual, or page?"
     )
 
     output: List[str] = []
     seen = set()
     for question in questions:
         normalized = re.sub(r"\s+", " ", question).strip().lower()
-        if not normalized or normalized in seen:
-            continue
-        seen.add(normalized)
-        output.append(question)
+        if normalized and normalized not in seen:
+            seen.add(normalized)
+            output.append(question)
     return output[:5]
 
 
@@ -1310,7 +1314,7 @@ class CognitiveRuntime:
             "working_memory": plan.working_memory,
             "content": content,
             "follow_up_questions": follow_up_questions,
-            "clarification_required": plan.primary_route == "guided_part_discovery",
+            "clarification_required": bool(follow_up_questions),
             "clarification_recommended": bool(follow_up_questions),
             "evidence_envelope": asdict(envelope),
             "self_rag_critic": final_critic,

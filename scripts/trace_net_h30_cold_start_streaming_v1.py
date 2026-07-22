@@ -321,10 +321,7 @@ def install_gemma_latency_support(module: MutableMapping[str, Any]) -> None:
             if str(question).strip()
         ]
         follow_up_appender = module.get("append_follow_up_questions")
-        should_append_followups = bool(follow_up_questions) and route in {
-            "guided_part_discovery",
-            "clarification_no_evidence",
-        }
+        should_append_followups = bool(follow_up_questions)
         if callable(follow_up_appender):
             result["content"] = follow_up_appender(
                 str(result.get("content") or ""),

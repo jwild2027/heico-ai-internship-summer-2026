@@ -415,8 +415,7 @@ class Runtime:
         final_text = append_follow_up_questions(
             final_text,
             follow_up_questions,
-            should_append=bool(follow_up_questions)
-            and route in {"guided_part_discovery", "clarification_no_evidence"},
+            should_append=bool(follow_up_questions),
         )
 
         result = dict(result)

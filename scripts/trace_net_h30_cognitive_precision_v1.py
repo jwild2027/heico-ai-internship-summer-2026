@@ -40,6 +40,7 @@ PART_FRAGMENT_STOPWORDS = {
     "ON", "OR", "PAGE", "PART", "SOURCE", "STRONGEST", "THE", "THIS", "TO",
     "VALUE", "WHAT", "WHERE", "WHICH", "WITH",
 }
+KNOWN_ALPHA_PART_PREFIXES = {"NAS", "BAC", "MIL"}
 
 
 def _phrase_regex(phrase: str) -> re.Pattern[str]:
@@ -65,10 +66,13 @@ def valid_identifier_fragment(value: str) -> bool:
     normalized = re.sub(r"[^A-Z0-9]", "", raw)
     if not (2 <= len(normalized) <= 16):
         return False
+    if normalized in KNOWN_ALPHA_PART_PREFIXES:
+        return True
     if normalized in PART_FRAGMENT_STOPWORDS:
         return False
-    # Partial aviation identifiers should look identifier-like, not like prose.
-    # A digit is required; this still permits examples such as MS49 and 41824.
+    # Most partial aviation identifiers contain a digit. A small explicit
+    # allow-list supports standard-family prefixes such as NAS without
+    # accepting arbitrary prose words as part-number clues.
     return any(character.isdigit() for character in normalized)
 
 

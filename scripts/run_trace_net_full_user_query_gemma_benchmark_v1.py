@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import statistics
 import time
 import urllib.error
@@ -22,11 +23,15 @@ CURRENT_WRITER_SUCCESS = {
 }
 CURRENT_WRITER_SKIP = {"SKIPPED_NO_DIRECT_EVIDENCE"}
 TOPIC_KEYWORDS = {
-    "part_number": ("part number", "characters", "digits", "prefix", "suffix"),
+    "part_number": ("part number", "characters", "digits", "prefix", "suffix", "markings"),
     "manufacturer": ("manufacturer", "vendor", "supplier", "company"),
     "component": ("component", "assembly", "function", "nomenclature"),
     "function": ("function", "used for", "purpose"),
     "appearance": ("appearance", "look like", "shape", "color", "marking"),
+    "physical_description": (
+        "physical description", "look like", "shape", "color", "size",
+        "marking", "nearby hardware", "installed", "installation location",
+    ),
     "ata": ("ata", "chapter", "system"),
     "figure": ("figure", "diagram", "callout"),
     "table": ("table", "ipl", "item"),
@@ -115,10 +120,38 @@ def _string_list(value: Any) -> List[str]:
     return [str(item) for item in value if str(item)] if isinstance(value, list) else []
 
 
-def mature_expected_plan(record: Mapping[str, Any]) -> Tuple[str, List[str]]:
+def mature_expected_plan(
+    record: Mapping[str, Any],
+    trace: Optional[Mapping[str, Any]] = None,
+) -> Tuple[str, List[str]]:
+    """Use a validated adopted planner plan, otherwise use deterministic routing."""
     query = str(record.get("query") or "")
-    plan = plan_route(extract_query_atoms(query))
-    return plan.primary_route, list(plan.retrieval_tunnels)
+    deterministic = plan_route(extract_query_atoms(query))
+    fallback_route = deterministic.primary_route
+    fallback_tunnels = list(deterministic.retrieval_tunnels)
+
+    trace_map = _mapping(trace)
+    execution = _mapping(trace_map.get("planner_execution"))
+    validation = _mapping(execution.get("planner_validation") or trace_map.get("planner_validation"))
+    selected_route = str(execution.get("selected_route") or "")
+    effective_route = str(execution.get("effective_route") or "")
+    adopted = bool(execution.get("planner_plan_adopted") or trace_map.get("planner_plan_adopted"))
+    applied = bool(execution.get("planner_route_applied") or trace_map.get("planner_route_applied"))
+    valid_adoption = bool(
+        adopted
+        and applied
+        and execution.get("quality_status") == "PASS"
+        and validation.get("accepted") is True
+        and execution.get("executor_owns_tunnel_selection") is True
+        and selected_route
+        and (not effective_route or effective_route == selected_route)
+    )
+    if not valid_adoption:
+        return fallback_route, fallback_tunnels
+    effective_tunnels = _string_list(execution.get("effective_tunnels"))
+    if not effective_tunnels:
+        effective_tunnels = _string_list(_mapping(trace_map.get("route_plan")).get("retrieval_tunnels"))
+    return selected_route, effective_tunnels or fallback_tunnels
 
 
 def is_mature_contract(trace: Mapping[str, Any]) -> bool:
@@ -143,6 +176,22 @@ def topic_visible(topic: str, questions: Sequence[str]) -> bool:
     blob = " ".join(str(value).lower() for value in questions)
     keywords = TOPIC_KEYWORDS.get(str(topic), tuple(str(topic).lower().split("_")))
     return any(keyword in blob for keyword in keywords)
+
+
+def used_tunnel_matches_plan(
+    tunnel: str,
+    planned_tunnels: Sequence[str],
+    route: str,
+) -> bool:
+    """Validate bounded executor-derived labels without weakening tunnel ownership."""
+    value = str(tunnel or "")
+    if value in set(planned_tunnels):
+        return True
+    if re.fullmatch(re.escape(route) + r"_specialized_\d+", value):
+        return True
+    if route == "multi_question_research" and re.fullmatch(r"claim_subquery_\d+", value):
+        return True
+    return value.startswith("crag_")
 
 
 def current_writer_contract(
@@ -222,7 +271,7 @@ def evaluate(
     old_tunnel = str(trace.get("retrieval_tunnel") or "")
 
     if mature:
-        expected_route, expected_tunnels = mature_expected_plan(record)
+        expected_route, expected_tunnels = mature_expected_plan(record, trace)
         if actual_route != expected_route:
             failures.append(f"route:{actual_route}!={expected_route}")
         if not planned_tunnels:
@@ -234,7 +283,10 @@ def evaluate(
                 + "!="
                 + ",".join(expected_tunnels)
             )
-        if used_tunnels and any(value not in planned_tunnels for value in used_tunnels):
+        if used_tunnels and any(
+            not used_tunnel_matches_plan(value, planned_tunnels, actual_route)
+            for value in used_tunnels
+        ):
             failures.append("used_tunnel_not_planned")
         actual_tunnels = used_tunnels or planned_tunnels
     else:

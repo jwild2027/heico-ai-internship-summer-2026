@@ -44,17 +44,35 @@ def is_noise_candidate(value: str) -> bool:
     )
 
 
+CANDIDATE_BULLET_RE = re.compile(
+    r"^\s*-\s+([A-Z0-9][A-Z0-9.-]{3,24})(?=\s*(?:—|$))",
+    re.I,
+)
+INLINE_CANDIDATE_RE = re.compile(
+    r"candidate evidence,\s*not a final identification:\s*"
+    r"([A-Z0-9][A-Z0-9.-]{3,24})(?=\s*(?:—|$))",
+    re.I,
+)
+
+
 def extract_candidate_tokens(answer: str) -> list[str]:
+    """Extract displayed candidate identifiers, not tokens inside descriptions."""
+    text = str(answer or "")
     output = []
-    for token in PARTISH_RE.findall(str(answer or "")):
-        token = token.strip(".,:;")
-        if re.fullmatch(r"\d{2}-\d{2}-\d{2}", token):
-            continue
-        if is_revision_metadata(token):
-            continue
-        if any(char.isdigit() for char in token):
-            output.append(token)
-    return output
+    for line in text.splitlines():
+        match = CANDIDATE_BULLET_RE.match(line)
+        if match:
+            output.append(match.group(1).strip(".,:;"))
+    if not output:
+        match = INLINE_CANDIDATE_RE.search(text)
+        if match:
+            output.append(match.group(1).strip(".,:;"))
+    return [
+        token for token in output
+        if not re.fullmatch(r"\d{2}-\d{2}-\d{2}", token)
+        and not is_revision_metadata(token)
+        and any(char.isdigit() for char in token)
+    ]
 
 
 def normalize_followup_text(value: str) -> str:
