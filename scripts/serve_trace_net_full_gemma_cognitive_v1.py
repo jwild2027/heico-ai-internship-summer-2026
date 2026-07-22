@@ -22,6 +22,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
 
 from scripts.trace_net_h30_cold_start_streaming_v1 import install_gemma_latency_support
+from scripts.trace_net_h30_engram_skill_shadow_v1 import install_engram_skill_shadow
 from scripts.trace_net_h30_engineer_answer_contract_v1 import (
     apply_engineer_answer_contract,
     clean_engineer_text,
@@ -617,6 +618,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
 
 install_gemma_latency_support(globals())
+install_engram_skill_shadow(globals())
 
 
 if __name__ == "__main__":

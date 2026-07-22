@@ -118,31 +118,47 @@ def _normalize_atom_name(value: Any) -> str:
 
 
 def _flatten_query_atoms(value: Any, *, prefix: str = "") -> Set[str]:
-    """Flatten flexible router/query-atom payloads into stable searchable tokens."""
+    """Flatten only populated router/query-atom values.
+
+    Dataclass payloads contain many fields whose keys are always present even
+    when their values are None, False, an empty string, or an empty list.
+    Those empty keys must not become positive Engram-selection atoms.
+    """
     output: Set[str] = set()
     if isinstance(value, Mapping):
         for raw_key, child in value.items():
             key = _normalize_atom_name(raw_key)
+            child_tokens = _flatten_query_atoms(
+                child,
+                prefix=key or prefix,
+            )
+            if not child_tokens:
+                continue
             if key:
                 output.add(key)
                 if prefix:
-                    output.add(_normalize_atom_name(prefix + "_" + key))
-            output.update(_flatten_query_atoms(child, prefix=key or prefix))
+                    output.add(
+                        _normalize_atom_name(prefix + "_" + key)
+                    )
+            output.update(child_tokens)
     elif isinstance(value, (list, tuple, set)):
         for child in value:
-            output.update(_flatten_query_atoms(child, prefix=prefix))
+            output.update(
+                _flatten_query_atoms(child, prefix=prefix)
+            )
     elif isinstance(value, bool):
         if value and prefix:
             output.add(_normalize_atom_name(prefix))
     elif value not in (None, ""):
         text = str(value).strip().lower()
+        if not text:
+            return output
         if prefix:
             output.add(_normalize_atom_name(prefix))
-        if text:
-            output.add(_normalize_atom_name(text))
-            for part in re.split(r"[^a-z0-9]+", text):
-                if part:
-                    output.add(_normalize_atom_name(part))
+        output.add(_normalize_atom_name(text))
+        for part in re.split(r"[^a-z0-9]+", text):
+            if part:
+                output.add(_normalize_atom_name(part))
     return {item for item in output if item}
 
 
