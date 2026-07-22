@@ -1,0 +1,657 @@
+{
+  "module": "trace_net_engram_skill_cards_v1",
+  "version": "v1",
+  "status": "TRACE_NET_ENGRAM_SKILL_CARDS_V1_LIBRARY",
+  "description": "Phase 1 reusable reasoning skills for the TRACE-Net middle-ground Engram + mature LLM architecture.",
+  "runtime_injection_status": "NOT_WIRED_PHASE1_LIBRARY_AND_SELECTOR_ONLY",
+  "skill_card_count": 5,
+  "skill_cards": [
+    {
+      "skill_id": "partial_identifier_discovery",
+      "version": "1.0.0",
+      "title": "Partial identifier discovery",
+      "description": "Narrow incomplete part-number prefixes or contains clues without falsely identifying a final part.",
+      "memory_layers": [
+        "procedural_memory",
+        "episodic_memory",
+        "critic_memory",
+        "trait_memory"
+      ],
+      "applies_when": [
+        "The user knows only the beginning of a part or item number.",
+        "The user remembers digits or characters contained somewhere in the identifier.",
+        "The user explicitly says the identifier is incomplete or uncertain."
+      ],
+      "does_not_apply_when": [
+        "A complete exact identifier is supplied with no uncertainty.",
+        "The request is only about a known page, figure, or procedure."
+      ],
+      "selection": {
+        "primary_routes": [
+          "guided_part_discovery"
+        ],
+        "required_any_atoms": [
+          "partial_identifier",
+          "partial_identifier_prefix",
+          "partial_identifier_contains"
+        ],
+        "required_all_atoms": [],
+        "optional_atoms": [
+          "low_context",
+          "component_description",
+          "manufacturer_constraint",
+          "ata_constraint"
+        ],
+        "exclude_atoms": [
+          "exact_lookup_intent"
+        ],
+        "trigger_terms": [
+          "starts with",
+          "begins with",
+          "contains",
+          "only know",
+          "only remember",
+          "cannot remember",
+          "not sure"
+        ],
+        "priority": 50
+      },
+      "reasoning_goal": "Use exact partial-identifier retrieval first, deduplicate and rank candidates, explain why each top candidate matches, and ask only questions that meaningfully separate the remaining candidates.",
+      "required_first_searches": [
+        "Search exact identifier indexes for the supplied prefix or contains fragment.",
+        "Search source-resolved IPL/table identifier fields before broad semantic retrieval.",
+        "Deduplicate candidate identities across graph, table, OCR, and visual guidance."
+      ],
+      "allowed_tunnels": [
+        "guided_candidate_discovery",
+        "normal_source_resolution",
+        "phase4_3_candidate_source_resolution",
+        "qdrant_guidance"
+      ],
+      "forbidden_tunnels": [
+        "Unbounded semantic-only search as the first search.",
+        "Treating the first returned candidate as confirmed identity.",
+        "Using Engram examples as current source evidence."
+      ],
+      "ranking_policy": [
+        "Exact prefix or contains match outranks semantic similarity.",
+        "Source-resolved nomenclature and manual/ATA agreement outrank guidance-only matches.",
+        "Candidates matching additional user constraints outrank candidates matching only the fragment.",
+        "Keep the candidate set diverse and do not repeat aliases as separate candidates."
+      ],
+      "evidence_sufficiency": {
+        "direct_answer_requires": "A source-resolved exact identity that satisfies the supplied fragment and current constraints.",
+        "candidate_mode_when": "One or more credible matches exist but the supplied clue does not uniquely identify a part.",
+        "guidance_mode_when": "Only visual, semantic, OCR, graph, or summary leads exist without source resolution."
+      },
+      "answer_mode_rules": {
+        "default": "candidate_discovery",
+        "direct_if": "A unique source-resolved candidate exists and the current evidence permits the exact claim.",
+        "fail_closed_if": "No source-resolved or credible candidate evidence exists after bounded retrieval."
+      },
+      "answer_requirements": [
+        "Lead with the number of useful candidates or the strongest current candidate.",
+        "For each displayed candidate, explain which part of the user clue it matches.",
+        "State what prevents final identification without repeating generic disclaimer sections.",
+        "Show only the most useful candidates and say when more candidates exist.",
+        "End with discriminating follow-up questions derived from unresolved candidate differences."
+      ],
+      "follow_up_policy": [
+        "Ask for additional identifier characters first when that would split the candidate set.",
+        "Ask for manufacturer, component/function, installation location, appearance, ATA, figure, or manual only when the missing field changes ranking.",
+        "Do not ask five generic questions merely to satisfy a benchmark count."
+      ],
+      "positive_examples": [
+        "Query: I only know the part starts with 123 | Expected behavior: Search the 123 prefix, rank source-backed candidates, explain why 1234567 is only a candidate, and ask for the next characters or a differentiating clue.",
+        "Query: The part starts with 120-4 but I do not know the rest | Expected behavior: Use exact prefix search before semantic guidance and group candidates by source-resolved identity.",
+        "Query: I think the P/N contains 29073 | Expected behavior: Search contains fields and return 120-29073 variants with source strength and ambiguity.",
+        "Query: The component number contains 41824 but I do not know the prefix | Expected behavior: Search identifier contains indexes, not only page semantics.",
+        "Query: The P/N starts with MS49 and I cannot remember more | Expected behavior: Preserve the alphanumeric prefix and avoid normalizing away letters."
+      ],
+      "negative_examples": [
+        "Query: Find part number 120-41824-003 | Expected behavior: This is exact identifier lookup, not partial discovery.",
+        "Query: Find a hinge in ATA 25-21-00 | Expected behavior: This is ATA plus description, not partial identifier discovery.",
+        "Query: Which page contains Figure 69? | Expected behavior: This is document/figure navigation."
+      ],
+      "known_failure_lessons": [
+        "Q001 passed the old contract but produced generic candidate boilerplate; future output must explain why the candidate matches and what clue would distinguish it.",
+        "Do not let semantic page guidance outrank an exact prefix or contains match.",
+        "Do not ask broad generic follow-ups when candidate-level differences can produce a smaller, higher-information question set."
+      ],
+      "safety_contract": {
+        "engram_guidance_only": true,
+        "answer_permission": false,
+        "source_truth_mutation_allowed": false,
+        "can_be_used_as_proof": false,
+        "retrieval_execution_allowed": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "opensearch_write_attempt": false
+      }
+    },
+    {
+      "skill_id": "exact_identifier_lookup",
+      "version": "1.0.0",
+      "title": "Exact identifier lookup",
+      "description": "Resolve a complete part or item identifier using deterministic exact search before broader reasoning.",
+      "memory_layers": [
+        "procedural_memory",
+        "episodic_memory",
+        "critic_memory",
+        "trait_memory"
+      ],
+      "applies_when": [
+        "The user supplies a complete part or item identifier.",
+        "The user asks where an exact identifier is listed or appears.",
+        "The user asks to locate or search for an exact P/N."
+      ],
+      "does_not_apply_when": [
+        "The identifier is explicitly incomplete, a prefix, or a contains clue.",
+        "The apparent number is an ATA chapter rather than a part number."
+      ],
+      "selection": {
+        "primary_routes": [
+          "exact_identifier_lookup",
+          "exact_table_ipl_lookup",
+          "document_page_navigation"
+        ],
+        "required_any_atoms": [
+          "exact_identifier",
+          "exact_lookup_intent"
+        ],
+        "required_all_atoms": [],
+        "optional_atoms": [
+          "location_intent",
+          "identifier"
+        ],
+        "exclude_atoms": [
+          "partial_identifier"
+        ],
+        "trigger_terms": [
+          "find part number",
+          "locate p/n",
+          "search for",
+          "where is",
+          "where does",
+          "listed",
+          "appear"
+        ],
+        "priority": 60
+      },
+      "reasoning_goal": "Run deterministic exact identifier retrieval first, distinguish identity questions from location questions, and provide a direct source-backed answer when proof exists.",
+      "required_first_searches": [
+        "Search exact normalized identifier fields without semantic expansion.",
+        "Resolve exact table/IPL and source page records.",
+        "Use page navigation when the user asks where the identifier appears."
+      ],
+      "allowed_tunnels": [
+        "exact_identifier_lookup",
+        "exact_table_ipl_lookup",
+        "document_page_navigation",
+        "normal_source_resolution"
+      ],
+      "forbidden_tunnels": [
+        "Broad semantic retrieval before exact lookup.",
+        "Returning candidate boilerplate when exact proof exists.",
+        "Changing or fuzzy-correcting the supplied identifier without saying so."
+      ],
+      "ranking_policy": [
+        "Exact character-for-character matches rank first.",
+        "Source-resolved table/IPL rows rank above OCR or semantic leads.",
+        "For location questions, rank the strongest indexed source page first and show supporting locations separately.",
+        "Do not merge distinct dash-number variants."
+      ],
+      "evidence_sufficiency": {
+        "direct_answer_requires": "An exact source-resolved identifier record or exact source page occurrence.",
+        "candidate_mode_when": "Only non-source-resolved exact-looking guidance is available.",
+        "guidance_mode_when": "Only OCR or semantic leads exist and exact source resolution fails."
+      },
+      "answer_mode_rules": {
+        "default": "direct_answer",
+        "location_if": "The user asks where, listed, appears, page, or manual location.",
+        "candidate_if": "The identifier appears only in guidance-level artifacts."
+      },
+      "answer_requirements": [
+        "Lead with the exact result or strongest indexed location.",
+        "Repeat the exact identifier exactly as supplied or explicitly state normalization.",
+        "Provide nomenclature, document, page, figure, or table context supported by current evidence.",
+        "Use candidate wording only when direct proof is absent.",
+        "Do not bury a successful exact match under process language."
+      ],
+      "follow_up_policy": [
+        "Do not require follow-ups when the exact request is answered.",
+        "Ask for manual, aircraft, or variant only when exact duplicates remain unresolved.",
+        "For no-result cases, ask the user to verify characters or dash numbers."
+      ],
+      "positive_examples": [
+        "Query: Find part number 120-41824-003 | Expected behavior: Search exact indexes first and return direct identity or exact source location.",
+        "Query: Where is P/N 120-41824-003 listed? | Expected behavior: Use document page navigation and show the strongest page plus supporting occurrences.",
+        "Query: Locate 120-48024-001 | Expected behavior: Preserve the full dash number and run exact lookup.",
+        "Query: Where does 120-48024-001 appear? | Expected behavior: Return page/document locations rather than a generic candidate list.",
+        "Query: Search for 120-34291-001 | Expected behavior: Use exact identifier search before semantic retrieval."
+      ],
+      "negative_examples": [
+        "Query: The part starts with 120-4 | Expected behavior: This is partial identifier discovery.",
+        "Query: Locate a locking ring in manual 25-21-00 | Expected behavior: This is ATA plus description.",
+        "Query: Find a bracket part | Expected behavior: This is nomenclature discovery."
+      ],
+      "known_failure_lessons": [
+        "Q073\u2013Q080 found useful exact evidence but failed because executed tunnels were not represented in the plan; exact lookup must be a declared first search.",
+        "Do not answer a successful exact lookup with candidate-discovery boilerplate.",
+        "Location intent must change answer shape even when the underlying identifier is the same."
+      ],
+      "safety_contract": {
+        "engram_guidance_only": true,
+        "answer_permission": false,
+        "source_truth_mutation_allowed": false,
+        "can_be_used_as_proof": false,
+        "retrieval_execution_allowed": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "opensearch_write_attempt": false
+      }
+    },
+    {
+      "skill_id": "nomenclature_function_discovery",
+      "version": "1.0.0",
+      "title": "Nomenclature or function discovery",
+      "description": "Find parts from a component name, physical role, or requested function while preserving the exact descriptive constraint.",
+      "memory_layers": [
+        "semantic_memory",
+        "procedural_memory",
+        "episodic_memory",
+        "critic_memory",
+        "trait_memory"
+      ],
+      "applies_when": [
+        "The user names a component such as hinge, bracket, latch, pin, or armrest.",
+        "The user describes what a component does rather than giving a part number.",
+        "The user asks for a part by nomenclature or installation function."
+      ],
+      "does_not_apply_when": [
+        "A complete exact identifier is the main clue.",
+        "An ATA or manufacturer constraint should own the primary skill."
+      ],
+      "selection": {
+        "primary_routes": [
+          "nomenclature_function_search",
+          "semantic_discovery"
+        ],
+        "required_any_atoms": [
+          "nomenclature",
+          "component_description",
+          "function",
+          "functional_description"
+        ],
+        "required_all_atoms": [],
+        "optional_atoms": [
+          "low_context",
+          "location_intent"
+        ],
+        "exclude_atoms": [
+          "exact_identifier",
+          "ata_constraint",
+          "manufacturer_constraint"
+        ],
+        "trigger_terms": [
+          "hinge",
+          "bracket",
+          "latch",
+          "locking ring",
+          "armrest",
+          "pin",
+          "bolt",
+          "fastener",
+          "spring",
+          "washer",
+          "bearing",
+          "buckle",
+          "actuator",
+          "switch",
+          "valve",
+          "connector",
+          "clamp",
+          "lever",
+          "part that",
+          "component that"
+        ],
+        "priority": 40
+      },
+      "reasoning_goal": "Preserve the requested noun or function, retrieve exact nomenclature and source-backed component evidence before broad semantics, and reject visually similar but semantically unrelated results.",
+      "required_first_searches": [
+        "Search normalized nomenclature and table/IPL descriptions.",
+        "Search functional synonyms while retaining the original requested phrase.",
+        "Cross-link visual pages only after a relevant component identity is established."
+      ],
+      "allowed_tunnels": [
+        "nomenclature_function_search",
+        "semantic_discovery",
+        "exact_table_ipl_lookup",
+        "visual_figure_link",
+        "normal_source_resolution"
+      ],
+      "forbidden_tunnels": [
+        "Returning the same generic visual page for unrelated nouns.",
+        "Dropping the requested function during semantic expansion.",
+        "Treating visual similarity as nomenclature proof."
+      ],
+      "ranking_policy": [
+        "Exact nomenclature matches outrank broad semantic similarity.",
+        "Functional matches must explain the relationship to the requested action.",
+        "Source-resolved table descriptions outrank visual guidance.",
+        "Penalize candidates that do not contain or clearly support the requested noun/function."
+      ],
+      "evidence_sufficiency": {
+        "direct_answer_requires": "A source-resolved component description matching the requested noun or function.",
+        "candidate_mode_when": "Several plausible parts match the description or function.",
+        "guidance_mode_when": "Only related pages or visual leads exist."
+      },
+      "answer_mode_rules": {
+        "default": "candidate_discovery",
+        "direct_if": "A source-resolved unique component clearly matches the request.",
+        "guidance_if": "Only related visual or semantic pages are available."
+      },
+      "answer_requirements": [
+        "Repeat the requested noun or function in the answer.",
+        "Explain how each candidate satisfies the description.",
+        "Separate exact nomenclature matches from functional inferences.",
+        "Do not present an unrelated visual page as the answer.",
+        "Ask for installation location, assembly, appearance, or manual only when it narrows candidates."
+      ],
+      "follow_up_policy": [
+        "Ask which assembly or location contains the component when several matches remain.",
+        "Ask for appearance or nearby hardware for visually distinguishable candidates.",
+        "Ask for part-number characters, manufacturer, ATA, or manual only when relevant."
+      ],
+      "positive_examples": [
+        "Query: Find me a bracket part | Expected behavior: Search exact BRACKET nomenclature and rank source-resolved candidates.",
+        "Query: I am looking for a latch | Expected behavior: Preserve LATCH and do not substitute unrelated covers or hinges.",
+        "Query: I need a part that lets the seat pivot | Expected behavior: Map pivot function to hinge/pivot components but label functional inference.",
+        "Query: Find the component that supports the armrest | Expected behavior: Retain armrest support as a two-part functional constraint.",
+        "Query: I need the item that retains the pin | Expected behavior: Search retain/pin descriptions and ask where the pin is installed if ambiguous."
+      ],
+      "negative_examples": [
+        "Query: I need a Honeywell hinge part | Expected behavior: Manufacturer plus description should be primary.",
+        "Query: Find a hinge in ATA 25-21-00 | Expected behavior: ATA plus description should be primary.",
+        "Query: Find part number 120-41824-003 | Expected behavior: Exact identifier lookup."
+      ],
+      "known_failure_lessons": [
+        "Several Q021\u2013Q056 answers repeated the same visual pages for unrelated components; require noun/function relevance before ranking visual guidance.",
+        "Semantic similarity is guidance, not proof of nomenclature.",
+        "A safe answer can still be low quality when it ignores the requested component relationship."
+      ],
+      "safety_contract": {
+        "engram_guidance_only": true,
+        "answer_permission": false,
+        "source_truth_mutation_allowed": false,
+        "can_be_used_as_proof": false,
+        "retrieval_execution_allowed": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "opensearch_write_attempt": false
+      }
+    },
+    {
+      "skill_id": "ata_plus_description_discovery",
+      "version": "1.0.0",
+      "title": "ATA plus description discovery",
+      "description": "Search within an ATA or manual-system constraint while preserving the requested component description.",
+      "memory_layers": [
+        "semantic_memory",
+        "procedural_memory",
+        "episodic_memory",
+        "critic_memory",
+        "trait_memory"
+      ],
+      "applies_when": [
+        "The user provides an ATA chapter and a component name or function.",
+        "The user names a manual chapter such as 25-21-00 and asks for a part.",
+        "The user uses an ATA constraint to narrow discovery."
+      ],
+      "does_not_apply_when": [
+        "The number is clearly a complete part number rather than an ATA code.",
+        "No ATA/manual-system constraint is present."
+      ],
+      "selection": {
+        "primary_routes": [
+          "ata_system_discovery"
+        ],
+        "required_any_atoms": [
+          "ata",
+          "ata_constraint"
+        ],
+        "required_all_atoms": [],
+        "optional_atoms": [
+          "nomenclature",
+          "component_description",
+          "function",
+          "functional_description"
+        ],
+        "exclude_atoms": [
+          "exact_identifier"
+        ],
+        "trigger_terms": [
+          "ata ",
+          "in ata",
+          "under ata",
+          "from ata",
+          "manual 25-21-00",
+          "chapter"
+        ],
+        "priority": 70
+      },
+      "reasoning_goal": "Interpret the ATA value as a system/manual constraint, retain the component description, search inside that bounded area, and ask only for clues that distinguish remaining candidates.",
+      "required_first_searches": [
+        "Resolve the ATA or manual-system scope.",
+        "Search source-resolved nomenclature/table records inside the ATA scope.",
+        "Use semantic or visual retrieval only as bounded guidance within the same scope."
+      ],
+      "allowed_tunnels": [
+        "ata_system_discovery",
+        "nomenclature_function_search",
+        "exact_table_ipl_lookup",
+        "normal_source_resolution",
+        "qdrant_guidance"
+      ],
+      "forbidden_tunnels": [
+        "Treating an ATA code as a part-number prefix.",
+        "Returning only a generic ATA description while ignoring the requested component.",
+        "Searching outside the ATA scope without an explicit repair reason."
+      ],
+      "ranking_policy": [
+        "Candidates matching both ATA and component description rank first.",
+        "ATA-only pages without component relevance rank below source-resolved component records.",
+        "Exact nomenclature within the ATA scope outranks broad semantic similarity.",
+        "State when the ATA scope is known but no matching component is source-resolved."
+      ],
+      "evidence_sufficiency": {
+        "direct_answer_requires": "A source-resolved component record inside the requested ATA/manual scope.",
+        "candidate_mode_when": "Multiple components inside the ATA scope match the description.",
+        "guidance_mode_when": "Only ATA-level or semantic page leads exist."
+      },
+      "answer_mode_rules": {
+        "default": "candidate_discovery",
+        "direct_if": "One source-resolved component satisfies both ATA and description constraints.",
+        "guidance_if": "Only the ATA area is resolved, not the requested component."
+      },
+      "answer_requirements": [
+        "State that the number was interpreted as ATA/manual scope.",
+        "Repeat the requested component or function.",
+        "Show candidates that satisfy both constraints.",
+        "Do not stop after listing the ATA document area.",
+        "Use a candidate boundary when direct source evidence is absent."
+      ],
+      "follow_up_policy": [
+        "Ask for part-number characters, manufacturer, installation location, figure, or manual page when those clues discriminate candidates.",
+        "Do not force a manufacturer question when it does not narrow the ATA candidate set.",
+        "Do not return zero follow-ups when the answer remains candidate-only and the benchmark expects guided discovery."
+      ],
+      "positive_examples": [
+        "Query: Find a hinge in ATA 25-21-00 | Expected behavior: Scope to ATA 25-21-00 and search hinge nomenclature inside it.",
+        "Query: I need a seat bracket from ATA 25-21-00 | Expected behavior: Preserve both seat bracket and ATA constraints.",
+        "Query: Locate a locking ring in manual 25-21-00 | Expected behavior: Treat 25-21-00 as manual scope and search locking ring inside it.",
+        "Query: I want an armrest part in ATA 25 | Expected behavior: Search the broader ATA 25 scope while retaining armrest.",
+        "Query: Find a panel fastener under ATA 25 | Expected behavior: Require panel/fastener relevance inside ATA 25."
+      ],
+      "negative_examples": [
+        "Query: The part starts with 25 | Expected behavior: Partial identifier unless ATA context is explicit.",
+        "Query: Find part number 120-41824-003 | Expected behavior: Exact identifier lookup.",
+        "Query: Find a hinge | Expected behavior: Nomenclature discovery without ATA."
+      ],
+      "known_failure_lessons": [
+        "Q065\u2013Q072 often resolved the ATA area but ignored the requested component and returned no follow-ups.",
+        "Correct ATA interpretation is not enough; the answer must also satisfy the descriptive constraint.",
+        "Candidate safety language and follow-up rendering must remain visible when no direct evidence exists."
+      ],
+      "safety_contract": {
+        "engram_guidance_only": true,
+        "answer_permission": false,
+        "source_truth_mutation_allowed": false,
+        "can_be_used_as_proof": false,
+        "retrieval_execution_allowed": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "opensearch_write_attempt": false
+      }
+    },
+    {
+      "skill_id": "manufacturer_plus_description_discovery",
+      "version": "1.0.0",
+      "title": "Manufacturer plus description discovery",
+      "description": "Search for a component while retaining an explicit manufacturer, vendor, or supplier constraint.",
+      "memory_layers": [
+        "semantic_memory",
+        "procedural_memory",
+        "episodic_memory",
+        "critic_memory",
+        "trait_memory"
+      ],
+      "applies_when": [
+        "The user names a manufacturer and a component.",
+        "The user requests a vendor-specific part family or function.",
+        "Manufacturer identity is a required narrowing constraint."
+      ],
+      "does_not_apply_when": [
+        "No manufacturer/vendor/supplier is present.",
+        "A complete exact identifier is the stronger primary clue."
+      ],
+      "selection": {
+        "primary_routes": [
+          "nomenclature_function_search",
+          "manufacturer_discovery"
+        ],
+        "required_any_atoms": [
+          "manufacturer",
+          "manufacturer_constraint"
+        ],
+        "required_all_atoms": [],
+        "optional_atoms": [
+          "nomenclature",
+          "component_description",
+          "function",
+          "functional_description"
+        ],
+        "exclude_atoms": [
+          "exact_identifier"
+        ],
+        "trigger_terms": [
+          "honeywell",
+          "embraer",
+          "collins",
+          "safran",
+          "boeing",
+          "airbus",
+          "recaro",
+          "parker",
+          "manufacturer",
+          "vendor",
+          "supplier"
+        ],
+        "priority": 65
+      },
+      "reasoning_goal": "Retain manufacturer and component as separate mandatory constraints, distinguish confirmed manufacturer evidence from user-supplied preference, and avoid silently dropping the manufacturer during semantic retrieval.",
+      "required_first_searches": [
+        "Resolve normalized manufacturer/vendor names and aliases.",
+        "Search source-resolved component descriptions with the manufacturer constraint.",
+        "Only broaden to component-only guidance when clearly labeled as not manufacturer-confirmed."
+      ],
+      "allowed_tunnels": [
+        "manufacturer_discovery",
+        "nomenclature_function_search",
+        "exact_table_ipl_lookup",
+        "normal_source_resolution",
+        "qdrant_guidance"
+      ],
+      "forbidden_tunnels": [
+        "Dropping the manufacturer constraint without disclosure.",
+        "Claiming manufacturer identity from the user query alone.",
+        "Returning a generic component candidate as if it matched the named vendor."
+      ],
+      "ranking_policy": [
+        "Source-resolved manufacturer plus component matches rank first.",
+        "Manufacturer-confirmed records outrank component-only candidates.",
+        "Component-only guidance may be shown separately but must not be labeled manufacturer-matched.",
+        "Vendor aliases may merge only when supported by reviewed normalization."
+      ],
+      "evidence_sufficiency": {
+        "direct_answer_requires": "Source evidence confirming both manufacturer and component identity.",
+        "candidate_mode_when": "Manufacturer-scoped candidates exist but are not uniquely resolved.",
+        "guidance_mode_when": "Only component matches or unverified vendor associations exist."
+      },
+      "answer_mode_rules": {
+        "default": "candidate_discovery",
+        "direct_if": "A source-resolved record confirms the named manufacturer and requested component.",
+        "guidance_if": "The component is found but manufacturer is not source-confirmed."
+      },
+      "answer_requirements": [
+        "Repeat the named manufacturer and requested component.",
+        "State whether manufacturer evidence is confirmed, missing, or only user-supplied.",
+        "Separate manufacturer-matched candidates from component-only leads.",
+        "Explain why each top candidate satisfies both constraints.",
+        "Do not imply vendor identity from document proximity."
+      ],
+      "follow_up_policy": [
+        "Ask for part-number characters, vendor markings, manual, assembly, or installation location when useful.",
+        "Ask whether alternate or parent-company names are acceptable only when alias ambiguity exists.",
+        "Do not ask generic questions unrelated to manufacturer verification."
+      ],
+      "positive_examples": [
+        "Query: I need a Honeywell hinge part | Expected behavior: Require source evidence for both Honeywell and hinge.",
+        "Query: Find an Embraer seat bracket | Expected behavior: Retain Embraer and seat bracket throughout ranking.",
+        "Query: I am looking for a Collins latch component | Expected behavior: Do not return a generic latch as Collins-confirmed.",
+        "Query: I want a Safran seat fitting | Expected behavior: Search Safran aliases and seat fitting descriptions.",
+        "Query: I am looking for a Parker valve component | Expected behavior: Require Parker evidence before making a vendor claim."
+      ],
+      "negative_examples": [
+        "Query: Find me a bracket part | Expected behavior: No manufacturer constraint.",
+        "Query: Find a hinge in ATA 25-21-00 | Expected behavior: ATA plus description.",
+        "Query: Locate P/N 120-48024-001 | Expected behavior: Exact identifier lookup."
+      ],
+      "known_failure_lessons": [
+        "Q057\u2013Q064 often returned component matches without visible evidence that the named manufacturer was honored.",
+        "A user-supplied manufacturer is a search constraint, not proof that a candidate belongs to that manufacturer.",
+        "Component relevance cannot compensate for missing manufacturer verification."
+      ],
+      "safety_contract": {
+        "engram_guidance_only": true,
+        "answer_permission": false,
+        "source_truth_mutation_allowed": false,
+        "can_be_used_as_proof": false,
+        "retrieval_execution_allowed": false,
+        "postgres_write_attempt": false,
+        "qdrant_write_attempt": false,
+        "opensearch_write_attempt": false
+      }
+    }
+  ],
+  "safety_contract": {
+    "engram_guidance_only": true,
+    "answer_permission": false,
+    "source_truth_mutation_allowed": false,
+    "can_be_used_as_proof": false,
+    "retrieval_execution_allowed": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "opensearch_write_attempt": false
+  }
+}
