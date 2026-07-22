@@ -30,6 +30,8 @@ PLANNER_REQUIRE_ROUTE="${TRACE_NET_H30_PLANNER_REQUIRE_ROUTE:-1}"
 ENGRAM_SKILL_SHADOW_ENABLED="${TRACE_NET_H30_ENGRAM_SKILL_SHADOW_ENABLED:-1}"
 ENGRAM_SKILL_CARDS_PATH="${TRACE_NET_H30_ENGRAM_SKILL_CARDS_PATH:-$REPO/local_data/organization/trace_net/engram_skill_cards_v1/trace_net_engram_skill_cards_v1.json}"
 ENGRAM_SKILL_SHADOW_MAX_SKILLS="${TRACE_NET_H30_ENGRAM_SKILL_SHADOW_MAX_SKILLS:-3}"
+ENGRAM_SKILL_PLANNER_GUIDANCE_ENABLED="${TRACE_NET_H30_ENGRAM_SKILL_PLANNER_GUIDANCE_ENABLED:-0}"
+ENGRAM_SKILL_PLANNER_GUIDANCE_MAX_CHARS="${TRACE_NET_H30_ENGRAM_SKILL_PLANNER_GUIDANCE_MAX_CHARS:-3200}"
 
 case "$PLANNER_ROLLOUT_MODE" in
   validate_only|narrow|broad|mature) ;;
@@ -47,6 +49,7 @@ mkdir -p "$RUNTIME"
 for required in \
   scripts/serve_trace_net_cognitive_router_v1.py \
   scripts/trace_net_h30_shadow_planner_v1.py \
+  scripts/trace_net_h30_engram_skill_planner_guidance_v1.py \
   scripts/serve_trace_net_full_gemma_cognitive_v1.py \
   scripts/serve_trace_net_openwebui_cognitive_bridge_v1.py \
   scripts/trace_net_h30_cold_start_streaming_v1.py \
@@ -154,6 +157,9 @@ echo "============================================================"
 "$PYTHON" -m py_compile \
   scripts/serve_trace_net_cognitive_router_v1.py \
   scripts/trace_net_h30_shadow_planner_v1.py \
+  scripts/trace_net_h30_engram_skill_planner_guidance_v1.py \
+  scripts/check_trace_net_engram_skill_planner_guidance_v1.py \
+  scripts/run_trace_net_engram_skill_planner_guidance_live_smoke_v1.py \
   scripts/check_trace_net_h30_shadow_planner_v1.py \
   scripts/run_trace_net_h30_shadow_planner_benchmark_v1.py \
   scripts/serve_trace_net_full_gemma_cognitive_v1.py \
@@ -166,6 +172,7 @@ echo "compile_status=PASS"
 "$PYTHON" -m pytest -q \
   tests/unit/test_trace_net_cognitive_router_v1.py \
   tests/unit/test_trace_net_h30_shadow_planner_v1.py \
+  tests/unit/test_trace_net_engram_skill_planner_guidance_v1.py \
   tests/unit/test_trace_net_full_gemma_cognitive_v1.py \
   tests/unit/test_trace_net_h30_cold_start_streaming_v1.py
 
@@ -207,6 +214,8 @@ export TRACE_NET_H30_PLANNER_REQUIRE_ROUTE="$PLANNER_REQUIRE_ROUTE"
 export TRACE_NET_H30_ENGRAM_SKILL_SHADOW_ENABLED="$ENGRAM_SKILL_SHADOW_ENABLED"
 export TRACE_NET_H30_ENGRAM_SKILL_CARDS_PATH="$ENGRAM_SKILL_CARDS_PATH"
 export TRACE_NET_H30_ENGRAM_SKILL_SHADOW_MAX_SKILLS="$ENGRAM_SKILL_SHADOW_MAX_SKILLS"
+export TRACE_NET_H30_ENGRAM_SKILL_PLANNER_GUIDANCE_ENABLED="$ENGRAM_SKILL_PLANNER_GUIDANCE_ENABLED"
+export TRACE_NET_H30_ENGRAM_SKILL_PLANNER_GUIDANCE_MAX_CHARS="$ENGRAM_SKILL_PLANNER_GUIDANCE_MAX_CHARS"
 exec "$PYTHON" -u -B scripts/serve_trace_net_cognitive_router_v1.py \\
   --host 127.0.0.1 \\
   --port 8118 \\

@@ -17,6 +17,8 @@ import urllib.request
 from dataclasses import asdict, is_dataclass
 from typing import Any, Callable, Dict, Iterable, List, Mapping, MutableMapping, Optional, Sequence, Set, Tuple
 
+from scripts.trace_net_h30_engram_skill_planner_guidance_v1 import augment_shadow_planner_seed
+
 MODULE = "trace_net_h30_shadow_planner_v1"
 PATCH_ID = "trace_net_h30_phase4_4_shadow_planner_v1"
 VERSION = "v1"
@@ -123,6 +125,7 @@ DEVELOPER_PROMPT = """Non-negotiable rules:
 - suggested_tunnels may contain at most 5 values.
 - requested_claims may contain at most 8 values.
 - uncertainties may contain at most 8 short strings.
+- When engram_skill_planner_guidance.applied is true, preserve its required route, identifier mode, identifier, entity type, and claims.
 - This is proposal-only shadow mode. The proposal will not control execution."""
 
 
@@ -246,7 +249,7 @@ def build_shadow_planner_seed(
 ) -> Dict[str, Any]:
     atom_map = _mapping(atoms)
     plan_map = _mapping(plan)
-    return {
+    seed = {
         "seed_version": SEED_VERSION,
         "planner_mode": "shadow_proposal_only",
         "query": str(query or ""),
@@ -286,6 +289,7 @@ def build_shadow_planner_seed(
         },
         "retrieved_evidence_in_seed": False,
     }
+    return augment_shadow_planner_seed(seed)
 
 
 def _is_string_list(value: Any, maximum: int) -> bool:

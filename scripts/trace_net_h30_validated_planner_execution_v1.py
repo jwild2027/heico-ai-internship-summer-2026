@@ -34,6 +34,10 @@ from scripts.trace_net_h30_shadow_planner_v1 import (
     normalize_identifier,
     validate_shadow_planner_proposal,
 )
+from scripts.trace_net_h30_engram_skill_planner_guidance_v1 import (
+    planner_guidance_health,
+    validate_skill_guided_planner_proposal,
+)
 
 MODULE = "trace_net_h30_validated_planner_execution_v1"
 PATCH_ID = "trace_net_h30_phase4_5_validated_planner_autonomy_v1"
@@ -598,11 +602,29 @@ def build_validated_execution_decision(
             proposal = dict(bridged.get("proposal") or {})
             validation = dict(bridged.get("validation") or {})
 
+    skill_guidance_validation = validate_skill_guided_planner_proposal(
+        proposal=proposal,
+        seed=seed,
+    )
+
     mode = str(config.get("rollout_mode") or "validate_only")
     phase = _phase_number(mode)
     allowed = routes_for_mode(mode, registered_routes)
     failures: List[str] = []
     warnings: List[str] = []
+    if (
+        validation.get("accepted")
+        and skill_guidance_validation.get("applied")
+        and not skill_guidance_validation.get("accepted")
+    ):
+        failures.extend(
+            "engram_skill_planner_guidance:" + str(item)
+            for item in skill_guidance_validation.get("failures") or []
+        )
+    warnings.extend(
+        "engram_skill_planner_guidance:" + str(item)
+        for item in skill_guidance_validation.get("warnings") or []
+    )
 
     if shadow.get("call_status") != "PASS":
         failures.append("planner_call_not_pass")
@@ -670,6 +692,10 @@ def build_validated_execution_decision(
         "secondary_routes": secondary,
         "effective_tunnels": list(ROUTE_TUNNELS.get(selected_route, ())),
         "planner_suggested_tunnels": list(proposal.get("suggested_tunnels") or [])[:5],
+        "engram_skill_planner_guidance_applied": bool(
+            skill_guidance_validation.get("applied")
+        ),
+        "engram_skill_planner_guidance_validation": skill_guidance_validation,
         "executor_owns_tunnel_selection": True,
         "planner_plan_adopted": adopted,
         "planner_route_applied": adopted,
@@ -937,6 +963,7 @@ def install_validated_planner_execution(module: MutableMapping[str, Any]) -> Non
             breaker = dict(breaker_state)
         result.update({
             "phase4_5_validated_planner_execution_v1": True,
+            "engram_skill_planner_guidance": planner_guidance_health(),
             "planner_rollout_modes_implemented": list(ROLLOUT_MODES),
             "planner_rollout_mode": config.get("rollout_mode"),
             "planner_rollout_phase": _phase_number(str(config.get("rollout_mode"))),
