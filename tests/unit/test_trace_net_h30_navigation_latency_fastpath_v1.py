@@ -145,7 +145,11 @@ def test_second_call_can_resolve_page_and_stops_remaining_calls():
     )
 
 
-def test_non_navigation_route_is_unchanged():
+def test_non_navigation_route_is_unchanged(monkeypatch):
+    # Isolate from the launcher's ambient environment: this asserts the
+    # navigation fastpath does not activate for a non-navigation route, which is
+    # only observable with the general retrieval budget off.
+    monkeypatch.delenv("TRACE_NET_H30_RETRIEVAL_BUDGET_ENABLED", raising=False)
     mod = load_module()
     router = router_mapping(route="exact_identifier_lookup")
     mod.install_navigation_latency_fastpath(router)
@@ -162,7 +166,10 @@ def test_non_navigation_route_is_unchanged():
     assert info["skipped_upstream_calls"] == 0
 
 
-def test_navigation_without_full_part_number_is_unchanged():
+def test_navigation_without_full_part_number_is_unchanged(monkeypatch):
+    # Isolate from the launcher's ambient environment (general budget off) so the
+    # assertion reflects the navigation-fastpath default, not the budget flag.
+    monkeypatch.delenv("TRACE_NET_H30_RETRIEVAL_BUDGET_ENABLED", raising=False)
     mod = load_module()
     router = router_mapping(exact=False)
     mod.install_navigation_latency_fastpath(router)
@@ -259,3 +266,70 @@ def test_health_exposes_retrieval_budget(monkeypatch):
     assert health["retrieval_budget_enabled"] is True
     assert health["retrieval_budget_all_routes"] is True
     assert health["retrieval_max_tunnels"] == 7
+
+
+def test_guided_semantic_status_is_not_parsed_as_http_integer(monkeypatch):
+    # The guided endpoint returns a SEMANTIC completion label in its payload's
+    # "status" field, not an HTTP integer. The budget wrapper must read the real
+    # HTTP status from envelope.upstream_results[].status_code instead of int()-ing
+    # the payload status (which previously crashed the whole request with a 500).
+    monkeypatch.setenv("TRACE_NET_H30_RETRIEVAL_BUDGET_ENABLED", "1")
+    mod = load_module()
+
+    class Env:
+        def __init__(self):
+            self.direct_evidence = []
+            self.visual_guidance = []
+            self.candidate_evidence = []
+            self.coverage = {}
+            self.upstream_results = []
+
+    class Base:
+        def add_unified(self, envelope, query, label):
+            envelope.upstream_results.append({"tunnel": label, "status_code": 200})
+            return {"status": "PASS"}
+
+        def add_guided(self, envelope, query, atoms, label, *, allow_broad=False):
+            # Transport status recorded exactly like CognitiveRuntime.add_guided.
+            envelope.upstream_results.append({"tunnel": label, "status_code": 200})
+            return {
+                "status": "TRACE_NET_GUIDED_CANDIDATE_DISCOVERY_ENDPOINT_V1_DONE",
+                "quality_status": "PASS",
+            }
+
+        def process(self, payload):
+            env = Env()
+            guided = self.add_guided(env, "q", None, "guided_candidate_discovery")
+            return {
+                "route": "guided_part_discovery",
+                "content": "ok",
+                "evidence_envelope": {"coverage": {}},
+                "guided_result": guided,
+            }
+
+        def health(self):
+            return {"quality_status": "PASS"}
+
+    router = {
+        "CognitiveRuntime": type("Runtime", (Base,), {}),
+        "extract_latest_user": lambda payload: str(payload.get("query") or ""),
+        "extract_query_atoms": lambda q: SimpleNamespace(
+            latest_query=q, exact_part_numbers=[]
+        ),
+        "plan_route": lambda a: SimpleNamespace(primary_route="guided_part_discovery"),
+    }
+    mod.install_navigation_latency_fastpath(router)
+    runtime = router["CognitiveRuntime"]()
+
+    # Must not raise ValueError on the semantic status string.
+    result = runtime.process({"query": "The P/N contains 41824"})
+
+    # Semantic status is preserved on the returned payload.
+    assert (
+        result["guided_result"]["status"]
+        == "TRACE_NET_GUIDED_CANDIDATE_DISCOVERY_ENDPOINT_V1_DONE"
+    )
+    # Tunnel timing records the real HTTP 200 from upstream_results.
+    timings = result["retrieval_budget"]["tunnel_timings"]
+    assert timings, "expected a tunnel timing record"
+    assert timings[-1]["status_code"] == 200

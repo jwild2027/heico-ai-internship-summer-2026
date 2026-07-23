@@ -193,6 +193,19 @@ def _skipped_result(
     }
 
 
+def _numeric_status(value: Any, default: int = 200) -> int:
+    """Coerce a transport status_code to an int. Upstream *payloads* use
+    semantic string statuses (e.g. TRACE_NET_..._DONE), so only genuine numeric
+    values are accepted; anything else falls back to the default."""
+    if isinstance(value, bool):
+        return default
+    if isinstance(value, int):
+        return value
+    if isinstance(value, str) and value.strip().isdigit():
+        return int(value.strip())
+    return default
+
+
 def install_navigation_latency_fastpath(router: MutableMapping[str, Any]) -> None:
     """Install after retrieval completion, critic repair, and user-facing rendering."""
     if router.get("_H30_NAVIGATION_LATENCY_FASTPATH_V1_INSTALLED"):
@@ -235,10 +248,23 @@ def install_navigation_latency_fastpath(router: MutableMapping[str, Any]) -> Non
 
         state["used_calls"] += 1
         started = time.monotonic()
-        status = 599
+        status = 200
         try:
             result = invoke()
-            status = int(result.get("status") or 200) if isinstance(result, Mapping) else 200
+            # The HTTP status was already recorded by add_unified/add_guided in
+            # envelope.upstream_results[].status_code. Read it from there. Never
+            # int() result["status"]: upstream payloads carry a SEMANTIC string
+            # status such as TRACE_NET_GUIDED_CANDIDATE_DISCOVERY_ENDPOINT_V1_DONE.
+            for row in reversed(getattr(envelope, "upstream_results", None) or []):
+                if not isinstance(row, Mapping):
+                    continue
+                if str(row.get("tunnel") or "") != label:
+                    continue
+                status = _numeric_status(row.get("status_code"), 200)
+                break
+            else:
+                if isinstance(result, Mapping):
+                    status = _numeric_status(result.get("status_code"), 200)
             return result
         finally:
             elapsed_ms = (time.monotonic() - started) * 1000.0
