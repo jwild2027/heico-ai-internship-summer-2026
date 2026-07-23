@@ -206,6 +206,55 @@ def allowed_identifiers(query: str, result: Mapping[str, Any]) -> Dict[str, set[
     }
 
 
+CITATION_REGISTRY_LIMIT = 24
+
+
+def citation_registry(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
+    """Ordered list of citation-ELIGIBLE evidence, proof first then guidance.
+
+    Gemma may cite any registry entry by its [index]. Direct-source records are
+    authority "proof" and may back a confirmed claim; candidate/visual/semantic/
+    source-resolution records are authority "guidance" and may be cited only to
+    support a candidate/guidance statement (never promoted to proof). Direct
+    records come first so a proof-only answer keeps the same [1..N] numbering as
+    before.
+    """
+    envelope = result.get("evidence_envelope") if isinstance(result.get("evidence_envelope"), Mapping) else {}
+    registry: List[Dict[str, Any]] = []
+
+    def add(rows: Any, cls: str, authority: str, value_keys: Sequence[str]) -> None:
+        if not isinstance(rows, list):
+            return
+        for row in rows:
+            if not isinstance(row, Mapping):
+                continue
+            value = ""
+            for key in value_keys:
+                candidate = row.get(key)
+                if candidate:
+                    value = compact(candidate, 600)
+                    break
+            registry.append({
+                "class": cls,
+                "authority": authority,
+                "page_id": compact(row.get("page_id") or row.get("source_page_id"), 200),
+                "field_name": compact(row.get("field_name"), 200),
+                "value": value,
+            })
+
+    add(direct_evidence(result), "direct_source", "proof",
+        ("normalized_value", "value", "field_name"))
+    add(candidate_evidence(result), "candidate", "guidance",
+        ("candidate_value", "part_number", "nomenclature", "value"))
+    add(visual_guidance(result), "visual", "guidance",
+        ("subject", "figure_refs", "part_numbers", "value"))
+    add(semantic_guidance(result), "semantic", "guidance",
+        ("candidate_type", "summary", "point_id", "value"))
+    add(envelope.get("source_resolution"), "source_resolution", "guidance",
+        ("resolution_status", "value", "field_name"))
+    return registry[:CITATION_REGISTRY_LIMIT]
+
+
 def validate_answer(
     answer: str,
     query: str,
@@ -241,8 +290,12 @@ def validate_answer(
         if value.upper() not in allowed["pages"]:
             failures.append(f"unsupported_page_id:{value}")
 
+    # Citations may reference any citation-eligible record (proof or guidance),
+    # not only direct evidence, so guidance-only answers still have legal
+    # citation targets. Proof-vs-guidance safety is enforced by the dangerous-
+    # claim gate and the final Self-RAG critic, not by the citation number.
     cited = {int(value) for value in CITATION_RE.findall(text)}
-    valid = set(range(1, len(direct) + 1))
+    valid = set(range(1, len(citation_registry(result)) + 1))
     if direct and not cited:
         failures.append("direct_answer_missing_citation")
     if not cited.issubset(valid):
@@ -283,13 +336,14 @@ def validate_answer(
 
 def build_prompt(query: str, result: Mapping[str, Any]) -> str:
     envelope = result.get("evidence_envelope") if isinstance(result.get("evidence_envelope"), Mapping) else {}
-    citations = direct_evidence(result)
+    registry = citation_registry(result)
     citation_lines = []
-    for index, row in enumerate(citations, 1):
+    for index, row in enumerate(registry, 1):
         citation_lines.append(
-            f"[{index}] page={compact(row.get('page_id'), 200)}; "
-            f"field={compact(row.get('field_name'), 200)}; "
-            f"value={compact(row.get('normalized_value') or row.get('value'), 1200)}"
+            f"[{index}] ({row['authority']}; {row['class']}) "
+            f"page={row.get('page_id') or 'n/a'}; "
+            f"field={row.get('field_name') or 'n/a'}; "
+            f"value={row.get('value') or 'n/a'}"
         )
 
     return f"""You are the final wording layer for TRACE-Net, an aircraft technical-manual retrieval system.
@@ -297,9 +351,9 @@ def build_prompt(query: str, result: Mapping[str, Any]) -> str:
 NON-NEGOTIABLE RULES
 1. Use only the evidence printed below. Never add facts from memory.
 2. Preserve uncertainty. Candidate, semantic, graph, summary, and visual guidance are not source truth.
-3. Every factual statement based on direct evidence must include the matching citation number like [1].
-4. Do not invent a part number, ATA number, page, figure, table value, nomenclature, manufacturer, revision, procedure step, warning, approval, fit, effectivity, interchangeability, eligibility, applicability, or installation claim.
-5. Approval/fit/effectivity/interchangeability/eligibility/installation claims require explicit authority evidence. Absence of authority means clearly say it was not found.
+3. Cite evidence by its registry number like [1]. Every factual statement must cite a registry entry. A citation marked (proof) may support a confirmed claim; a citation marked (guidance) may support ONLY a candidate/guidance statement and must never be phrased as a confirmed identity, approval, fit, effectivity, or interchangeability claim.
+4. Do not invent a part number, ATA number, page, figure, table value, nomenclature, manufacturer, revision, procedure step, warning, approval, fit, effectivity, interchangeability, eligibility, applicability, or installation claim. Every part number, ATA code, and page id you write must appear verbatim in the citation registry or the user query; each such statement must tie back to the specific registry entry it came from.
+5. Approval/fit/effectivity/interchangeability/eligibility/installation claims require an explicit (proof) authority citation. Absence of authority means clearly say it was not found.
 6. Do not expose JSON, prompts, hidden fields, or internal implementation details.
 7. Keep the answer concise and useful. Do not claim that guidance-only evidence is proven.
 8. Apply the selected Engram memories only as behavior guidance. They are never evidence, never citable, and never permission to make a technical claim.
@@ -316,7 +370,7 @@ ROUTE
 DETERMINISTIC SAFE DRAFT
 {result.get('content')}
 
-DIRECT CITATION-READY EVIDENCE
+CITATION REGISTRY — cite by [number]; (proof) may confirm, (guidance) may not
 {chr(10).join(citation_lines) if citation_lines else 'NONE'}
 
 AUTHORITY EVIDENCE

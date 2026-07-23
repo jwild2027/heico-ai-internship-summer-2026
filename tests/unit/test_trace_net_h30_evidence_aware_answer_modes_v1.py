@@ -384,3 +384,67 @@ def test_validate_answer_extra_allowed_permits_candidate_identifiers():
     )
     assert not unsafe["accepted"]
     assert "dangerous_claim_without_explicit_authority" in unsafe["failures"]
+
+
+def _load_writer():
+    spec = importlib.util.spec_from_file_location(
+        "trace_net_full_gemma_writer_test", WRITER_PATH
+    )
+    writer = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = writer
+    assert spec and spec.loader
+    spec.loader.exec_module(writer)
+    return writer
+
+
+def test_citation_registry_allows_guidance_only_citations():
+    writer = _load_writer()
+    # Guidance-only result (no direct evidence) — the q02/q12 scenario.
+    result_obj = {
+        "route": "guided_part_discovery",
+        "evidence_envelope": {
+            "direct_evidence": [],
+            "candidate_evidence": [
+                {"candidate_value": "120-41824-003", "page_id": "t_p_demo_p1"}
+            ],
+        },
+    }
+    registry = writer.citation_registry(result_obj)
+    assert len(registry) == 1
+    assert registry[0]["authority"] == "guidance"
+    assert registry[0]["class"] == "candidate"
+
+    extra = writer.synthesis_allowed_identifiers("The P/N contains 41824", result_obj)
+    # Citing the guidance record [1] must be accepted (previously rejected as
+    # unknown_citation_id because only direct evidence was citable).
+    ok = writer.validate_answer(
+        "TRACE-Net found a candidate [1]; this is a candidate, not confirmed.",
+        "The P/N contains 41824",
+        result_obj,
+        extra_allowed=extra,
+    )
+    assert "unknown_citation_id" not in ok["failures"]
+
+    # A citation beyond the registry is still rejected.
+    bad = writer.validate_answer("See [2].", "q", result_obj)
+    assert "unknown_citation_id" in bad["failures"]
+
+
+def test_citation_registry_direct_first_preserves_proof_numbering():
+    writer = _load_writer()
+    result_obj = {
+        "route": "exact_identifier_lookup",
+        "evidence_envelope": {
+            "direct_evidence": [
+                {"page_id": "t_p_demo_p1", "field_name": "part_number", "value": "120-41824-003"}
+            ],
+            "candidate_evidence": [
+                {"candidate_value": "120-99999-001", "page_id": "t_p_demo_p9"}
+            ],
+        },
+    }
+    registry = writer.citation_registry(result_obj)
+    # Direct evidence is [1] (proof); guidance follows.
+    assert registry[0]["authority"] == "proof"
+    assert registry[0]["class"] == "direct_source"
+    assert registry[1]["authority"] == "guidance"
