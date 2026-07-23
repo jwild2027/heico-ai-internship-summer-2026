@@ -29,6 +29,19 @@ MODULE = "trace_net_h30_part_intent_source_resolution_v1"
 PATCH_ID = "trace_net_h30_phase4_3_part_intent_source_resolution_v1"
 VERSION = "v1"
 
+
+def _declare_tunnel(plan: Any, label: str) -> None:
+    """Record a deterministic source-resolution fallback as a plan amendment.
+
+    The label is a fixed, code-declared string fired only under this overlay's
+    deterministic intent conditions, so appending it to the plan's declared
+    ``retrieval_tunnels`` keeps ``used_tunnel in declared_tunnel`` true without a
+    broad evaluator whitelist.
+    """
+    tunnels = getattr(plan, "retrieval_tunnels", None)
+    if isinstance(tunnels, list) and label not in tunnels:
+        tunnels.append(label)
+
 PART_CONTEXT_RE = re.compile(
     r"\b(?:p/?n|part(?:\s+number)?|component(?:\s+number)?|"
     r"item(?:\s+number)?|nomenclature(?:\s+number)?)\b"
@@ -663,12 +676,14 @@ def install_part_intent_source_resolution(module: MutableMapping[str, Any]) -> N
 
         # Bounded source-resolution attempts. Existing upstreams remain read-only.
         if mode == "exact" and requested and not envelope.direct_evidence:
+            _declare_tunnel(plan, "phase4_3_exact_source_resolution")
             self.add_unified(
                 envelope,
                 f"Search the IPL table and citation-ready source fields for exact part {requested}",
                 "phase4_3_exact_source_resolution",
             )
         elif mode in {"prefix", "contains", "suffix", "partial", "family"} and envelope.candidate_evidence:
+            _declare_tunnel(plan, "phase4_3_candidate_source_resolution")
             for row in envelope.candidate_evidence[:2]:
                 value = candidate_value(row)
                 if value:

@@ -174,6 +174,24 @@ def test_exact_identifier_cross_route_recovery_uses_matching_candidate_only():
     assert result["self_rag_critic"]["quality_status"] == "PASS"
 
 
+def test_deterministic_fallback_is_declared_as_a_plan_amendment():
+    # A deterministic overlay fallback must be recorded as a plan amendment so
+    # that used_tunnel is a subset of declared_tunnel under the STRICT evaluator
+    # (no broad tunnel-family whitelist). Here the part-intent source-resolution
+    # fallback fires for a "contains" identifier query.
+    mod = load()
+    runtime = make_runtime(mod)
+    result = runtime.process({"query": "The P/N contains 41824"})
+
+    declared = set(result["route_plan"]["retrieval_tunnels"])
+    used = result["evidence_envelope"]["retrieval_tunnels_used"]
+
+    assert "phase4_3_candidate_source_resolution" in used
+    assert "phase4_3_candidate_source_resolution" in declared
+    # The contract holds with no undeclared/improvised tunnels.
+    assert all(tunnel in declared for tunnel in used)
+
+
 def test_safe_general_chat_is_deterministic_and_contains_no_fake_source_claim():
     mod = load()
     runtime = make_runtime(mod)

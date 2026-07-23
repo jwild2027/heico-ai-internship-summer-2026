@@ -185,3 +185,77 @@ def test_health_exposes_fastpath_contract():
     assert health["navigation_max_upstream_calls"] == 2
     assert health["navigation_stops_after_entity_page"] is True
     assert health["navigation_other_routes_unchanged"] is True
+
+
+def test_general_budget_caps_total_tunnels_on_any_route(monkeypatch):
+    monkeypatch.setenv("TRACE_NET_H30_RETRIEVAL_BUDGET_ENABLED", "1")
+    monkeypatch.setenv("TRACE_NET_H30_RETRIEVAL_MAX_TUNNELS", "2")
+    mod = load_module()
+    router = router_mapping(route="nomenclature_function_search", exact=False)
+    mod.install_navigation_latency_fastpath(router)
+    runtime = router["CognitiveRuntime"](resolve_on_call=99)
+
+    result = runtime.process({
+        "query": "I need the item that retains the pin",
+        "_route": "nomenclature_function_search",
+    })
+    info = result["retrieval_budget"]
+
+    # The general budget applies to a non-navigation route and stops the serial
+    # fan-out after the configured maximum number of executed tunnels.
+    assert info["active"] is True
+    assert info["nav_active"] is False
+    assert info["budget_enabled"] is True
+    assert info["used_upstream_calls"] == 2
+    assert info["skipped_upstream_calls"] == 3
+    assert info["retrieval_max_tunnels_exhausted"] is True
+    assert len(runtime.real_calls) == 2
+    assert all(
+        row["reason"] == "retrieval_max_tunnels_exhausted"
+        for row in info["skipped_tunnels"]
+    )
+
+
+def test_general_budget_deadline_is_a_hard_bound():
+    mod = load_module()
+    envelope = Envelope()
+    state = {
+        "nav_active": False,
+        "budget_enabled": True,
+        "used_calls": 0,
+        "global_max_calls": 16,
+        "deadline": mod.time.monotonic() - 1.0,
+    }
+    assert mod._skip_reason(state, envelope) == "retrieval_deadline_exhausted"
+
+
+def test_general_budget_disabled_by_default_leaves_routes_unchanged(monkeypatch):
+    monkeypatch.delenv("TRACE_NET_H30_RETRIEVAL_BUDGET_ENABLED", raising=False)
+    mod = load_module()
+    router = router_mapping(route="nomenclature_function_search", exact=False)
+    mod.install_navigation_latency_fastpath(router)
+    runtime = router["CognitiveRuntime"](resolve_on_call=99)
+
+    result = runtime.process({
+        "query": "I need the item that retains the pin",
+        "_route": "nomenclature_function_search",
+    })
+    info = result["retrieval_budget"]
+
+    assert info["active"] is False
+    assert info["budget_enabled"] is False
+    assert info["skipped_upstream_calls"] == 0
+    assert len(runtime.real_calls) == 5
+
+
+def test_health_exposes_retrieval_budget(monkeypatch):
+    monkeypatch.setenv("TRACE_NET_H30_RETRIEVAL_BUDGET_ENABLED", "1")
+    monkeypatch.setenv("TRACE_NET_H30_RETRIEVAL_MAX_TUNNELS", "7")
+    mod = load_module()
+    router = router_mapping()
+    mod.install_navigation_latency_fastpath(router)
+    health = router["CognitiveRuntime"]().health()
+
+    assert health["retrieval_budget_enabled"] is True
+    assert health["retrieval_budget_all_routes"] is True
+    assert health["retrieval_max_tunnels"] == 7

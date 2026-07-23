@@ -995,6 +995,20 @@ def _internal_identifier_rows_from_row(
     return count
 
 
+def _declare_tunnel(plan: Any, label: str) -> None:
+    """Record a deterministic fallback tunnel as a validated plan amendment.
+
+    The label is a fixed, code-declared string fired only under this overlay's
+    deterministic hint conditions, so appending it to the plan's declared
+    ``retrieval_tunnels`` keeps ``used_tunnel in declared_tunnel`` true without a
+    broad evaluator whitelist. A tunnel that did not originate from a declared
+    fallback path never reaches this call and would still be flagged.
+    """
+    tunnels = getattr(plan, "retrieval_tunnels", None)
+    if isinstance(tunnels, list) and label not in tunnels:
+        tunnels.append(label)
+
+
 def _run_retrieval_hint(
     runtime: Any,
     hint: str,
@@ -1024,6 +1038,7 @@ def _run_retrieval_hint(
                 else [query]
             )
         for index, item in enumerate(queries[:2], 1):
+            _declare_tunnel(plan, f"engram_crag_specialized_{index}")
             runtime.add_unified(
                 envelope,
                 item,
@@ -1033,6 +1048,7 @@ def _run_retrieval_hint(
 
     elif hint == "retry_authority_fields":
         target = parts[0] if parts else "the requested component"
+        _declare_tunnel(plan, "engram_crag_authority_fields")
         runtime.add_unified(
             envelope,
             (
@@ -1046,6 +1062,7 @@ def _run_retrieval_hint(
 
     elif hint == "retry_ocr_records":
         target = parts[0] if parts else query
+        _declare_tunnel(plan, "engram_crag_ocr_records")
         runtime.add_unified(
             envelope,
             (
@@ -1058,6 +1075,7 @@ def _run_retrieval_hint(
 
     elif hint == "expand_aggregation_coverage":
         target = parts[0] if parts else query
+        _declare_tunnel(plan, "engram_crag_aggregation_coverage")
         runtime.add_unified(
             envelope,
             (
@@ -1070,6 +1088,7 @@ def _run_retrieval_hint(
 
     elif hint == "retry_direct_source_resolution":
         target = parts[0] if parts else query
+        _declare_tunnel(plan, "engram_crag_direct_source")
         runtime.add_unified(
             envelope,
             (

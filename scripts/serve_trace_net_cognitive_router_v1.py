@@ -878,7 +878,7 @@ class CognitiveRuntime:
             self.unified_base_url + "/api/trace-net/ask",
             {"query": query, "messages": [{"role": "user", "content": query}], "top_k": top_k},
             api_key=self.unified_api_key,
-            timeout=self.timeout,
+            timeout=getattr(self, "retrieval_timeout", None) or self.timeout,
         )
 
     def call_guided(self, query: str, *, top_k: int = 8) -> Tuple[int, Dict[str, Any]]:
@@ -886,7 +886,7 @@ class CognitiveRuntime:
             self.guided_base_url + "/api/trace-net/guided-discovery",
             {"question": query, "top_k": top_k, "loose_top_k": top_k, "include_view": False},
             api_key=None,
-            timeout=self.timeout,
+            timeout=getattr(self, "retrieval_timeout", None) or self.timeout,
         )
 
     def add_unified(self, envelope: EvidenceEnvelope, query: str, label: str) -> Dict[str, Any]:
@@ -918,7 +918,11 @@ class CognitiveRuntime:
             "quality_status": result.get("quality_status"),
             "candidate_count": result.get("total_candidate_route_count"),
         })
-        envelope.candidate_evidence.extend(extract_candidates(result, atoms, allow_broad=allow_broad))
+        new_candidates = extract_candidates(result, atoms, allow_broad=allow_broad)
+        per_tunnel_cap = getattr(self, "max_candidates_per_tunnel", 0) or 0
+        if per_tunnel_cap > 0:
+            new_candidates = new_candidates[:per_tunnel_cap]
+        envelope.candidate_evidence.extend(new_candidates)
         if status != 200:
             envelope.uncertainties.append(f"{label} returned status {status}")
         return result

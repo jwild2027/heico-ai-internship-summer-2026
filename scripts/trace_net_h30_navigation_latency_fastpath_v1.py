@@ -1,12 +1,25 @@
 #!/usr/bin/env python3
-"""Exact-part navigation latency fastpath for TRACE-Net H30.
+"""Exact-part navigation latency fastpath and general retrieval budget for TRACE-Net H30.
 
-This overlay bounds only document/page navigation requests that contain a full
-part number. It stops launching additional retrieval tunnels after an
-entity-matching page has been found and caps the route's upstream calls.
+This overlay bounds retrieval latency in two complementary ways, both using the
+same thread-local per-request budget state and the same add_unified/add_guided
+chokepoint:
+
+1. Navigation fastpath (always active for document/page navigation requests that
+   contain a full part number): stops launching additional retrieval tunnels
+   after an entity-matching page has been found and caps that route's upstream
+   calls.
+
+2. General retrieval budget (env-gated via TRACE_NET_H30_RETRIEVAL_BUDGET_ENABLED,
+   applies to every route): enforces an overall wall-clock retrieval deadline, a
+   per-tunnel upstream timeout, a maximum number of executed tunnels, and a
+   per-tunnel candidate cap. This is the bound that prevents an unbounded serial
+   fan-out of upstream calls (each otherwise limited only by the 1200s socket
+   timeout) from summing to hundreds of seconds on a single question.
 
 It does not change retrieved records, evidence classification, critic rules,
-answer rendering, source truth, or database state.
+answer rendering, source truth, or database state. Skipping a tunnel only
+prevents an additional upstream call; it never fabricates evidence.
 """
 from __future__ import annotations
 
@@ -87,26 +100,91 @@ def _max_calls() -> int:
     return max(1, min(value, 5))
 
 
+def _bool_env(name: str, default: bool = False) -> bool:
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    return str(raw).strip().lower() in {"1", "true", "yes", "on"}
+
+
+def _budget_float(name: str, default: float, low: float, high: float) -> float:
+    raw = os.environ.get(name)
+    try:
+        value = float(raw)
+    except (TypeError, ValueError):
+        value = default
+    return max(low, min(value, high))
+
+
+def _budget_int(name: str, default: int, low: int, high: int) -> int:
+    raw = os.environ.get(name)
+    try:
+        value = int(raw)
+    except (TypeError, ValueError):
+        value = default
+    return max(low, min(value, high))
+
+
+def _budget_enabled() -> bool:
+    # Off at the module level so unit tests and direct process invocation keep
+    # legacy behavior; the deployment launcher opts in with =1.
+    return _bool_env("TRACE_NET_H30_RETRIEVAL_BUDGET_ENABLED", False)
+
+
+def _retrieval_deadline_seconds() -> float:
+    return _budget_float("TRACE_NET_H30_RETRIEVAL_DEADLINE_SECONDS", 120.0, 5.0, 1200.0)
+
+
+def _retrieval_per_tunnel_timeout() -> float:
+    return _budget_float("TRACE_NET_H30_RETRIEVAL_PER_TUNNEL_TIMEOUT_SECONDS", 45.0, 1.0, 1200.0)
+
+
+def _retrieval_max_tunnels() -> int:
+    return _budget_int("TRACE_NET_H30_RETRIEVAL_MAX_TUNNELS", 16, 1, 64)
+
+
+def _retrieval_max_candidates_per_tunnel() -> int:
+    return _budget_int("TRACE_NET_H30_RETRIEVAL_MAX_CANDIDATES_PER_TUNNEL", 10, 1, 100)
+
+
 def _current_state() -> Optional[Dict[str, Any]]:
     value = getattr(_STATE, "value", None)
     return value if isinstance(value, dict) and value.get("active") else None
 
 
 def _skip_reason(state: Mapping[str, Any], envelope: Any) -> str:
-    if (
-        int(state.get("used_calls") or 0) >= 1
-        and _has_entity_page(envelope, set(state.get("requested_parts") or []))
-    ):
-        return "entity_matching_page_already_resolved"
-    if int(state.get("used_calls") or 0) >= int(state.get("max_calls") or 2):
-        return "navigation_upstream_budget_exhausted"
+    used = int(state.get("used_calls") or 0)
+
+    # Navigation-specific early stop: only for the exact-part navigation fastpath.
+    if state.get("nav_active"):
+        if used >= 1 and _has_entity_page(
+            envelope, set(state.get("requested_parts") or [])
+        ):
+            return "entity_matching_page_already_resolved"
+        if used >= int(state.get("max_calls") or 2):
+            return "navigation_upstream_budget_exhausted"
+
+    # General retrieval budget: applies to every route when enabled. Both the
+    # overall wall-clock deadline and the max-tunnels count are hard bounds; the
+    # deadline is checked before each call so worst-case latency is the deadline
+    # plus at most one per-tunnel timeout.
+    if state.get("budget_enabled"):
+        deadline = state.get("deadline")
+        if deadline is not None and time.monotonic() >= float(deadline):
+            return "retrieval_deadline_exhausted"
+        if used >= int(state.get("global_max_calls") or 16):
+            return "retrieval_max_tunnels_exhausted"
     return ""
 
 
-def _skipped_result(label: str, reason: str) -> Dict[str, Any]:
+def _skipped_result(
+    label: str,
+    reason: str,
+    route: str = "document_page_navigation",
+) -> Dict[str, Any]:
     return {
         "quality_status": "SKIPPED",
-        "route": "document_page_navigation",
+        "route": route,
         "skip_reason": reason,
         "tunnel": label,
         "read_only": True,
@@ -149,7 +227,11 @@ def install_navigation_latency_fastpath(router: MutableMapping[str, Any]) -> Non
                 "tunnel": label,
                 "reason": reason,
             })
-            return _skipped_result(label, reason)
+            return _skipped_result(
+                label,
+                reason,
+                str(state.get("route") or "document_page_navigation"),
+            )
 
         state["used_calls"] += 1
         started = time.monotonic()
@@ -211,22 +293,45 @@ def install_navigation_latency_fastpath(router: MutableMapping[str, Any]) -> Non
         atoms = extract_query_atoms(query)
         plan = plan_route(atoms)
         requested = _requested_parts(atoms)
-        active = bool(
+        nav_active = bool(
             getattr(plan, "primary_route", "") == "document_page_navigation"
             and requested
         )
+        budget_enabled = _budget_enabled()
+        active = bool(nav_active or budget_enabled)
 
+        deadline_seconds = _retrieval_deadline_seconds()
+        per_tunnel_timeout = _retrieval_per_tunnel_timeout()
+        global_max_calls = _retrieval_max_tunnels()
+        max_candidates = _retrieval_max_candidates_per_tunnel()
+
+        request_started = time.monotonic()
         state: Dict[str, Any] = {
             "active": active,
+            "nav_active": nav_active,
+            "budget_enabled": budget_enabled,
             "route": getattr(plan, "primary_route", ""),
             "requested_parts": sorted(requested),
             "max_calls": _max_calls(),
+            "global_max_calls": global_max_calls,
+            "deadline": (request_started + deadline_seconds) if budget_enabled else None,
+            "deadline_seconds": deadline_seconds,
+            "per_tunnel_timeout": per_tunnel_timeout,
+            "max_candidates_per_tunnel": max_candidates,
             "used_calls": 0,
             "skipped_tunnels": [],
             "tunnel_timings": [],
         }
 
-        request_started = time.monotonic()
+        # Bound each upstream call and per-tunnel candidate volume when the
+        # general budget is enabled. These are static config values (identical
+        # across concurrent requests), so setting them on the shared runtime
+        # instance is safe; the base call_unified/call_guided/add_guided read
+        # them via getattr and fall back to legacy behavior when unset.
+        if budget_enabled:
+            self.retrieval_timeout = per_tunnel_timeout
+            self.max_candidates_per_tunnel = max_candidates
+
         previous = getattr(_STATE, "value", None)
         _STATE.value = state
         try:
@@ -239,10 +344,12 @@ def install_navigation_latency_fastpath(router: MutableMapping[str, Any]) -> Non
             float(row.get("elapsed_ms") or 0)
             for row in state["tunnel_timings"]
         )
+        skip_reasons = [str(row.get("reason") or "") for row in state["skipped_tunnels"]]
         summary = {
             "module": MODULE,
             "patch_id": PATCH_ID,
             "active": active,
+            "nav_active": nav_active,
             "route": state["route"],
             "requested_parts": state["requested_parts"],
             "max_upstream_calls": state["max_calls"],
@@ -254,11 +361,19 @@ def install_navigation_latency_fastpath(router: MutableMapping[str, Any]) -> Non
             "request_total_ms": round(total_ms, 3),
             "non_upstream_ms": round(max(0.0, total_ms - upstream_ms), 3),
             "stops_after_entity_page": True,
+            "budget_enabled": budget_enabled,
+            "retrieval_deadline_seconds": deadline_seconds if budget_enabled else None,
+            "retrieval_per_tunnel_timeout_seconds": per_tunnel_timeout if budget_enabled else None,
+            "retrieval_max_tunnels": global_max_calls if budget_enabled else None,
+            "retrieval_max_candidates_per_tunnel": max_candidates if budget_enabled else None,
+            "retrieval_deadline_exhausted": "retrieval_deadline_exhausted" in skip_reasons,
+            "retrieval_max_tunnels_exhausted": "retrieval_max_tunnels_exhausted" in skip_reasons,
             "read_only": True,
             "answer_permission": False,
             "source_truth_mutation_allowed": False,
         }
         result["navigation_latency_fastpath"] = summary
+        result["retrieval_budget"] = summary
 
         envelope = result.get("evidence_envelope")
         if isinstance(envelope, MutableMapping):
@@ -267,6 +382,7 @@ def install_navigation_latency_fastpath(router: MutableMapping[str, Any]) -> Non
                 coverage = {}
                 envelope["coverage"] = coverage
             coverage["navigation_latency_fastpath"] = summary
+            coverage["retrieval_budget"] = summary
 
         return result
 
@@ -278,6 +394,12 @@ def install_navigation_latency_fastpath(router: MutableMapping[str, Any]) -> Non
             "navigation_stops_after_entity_page": True,
             "navigation_other_routes_unchanged": True,
             "navigation_latency_metrics": True,
+            "retrieval_budget_enabled": _budget_enabled(),
+            "retrieval_budget_all_routes": True,
+            "retrieval_deadline_seconds": _retrieval_deadline_seconds(),
+            "retrieval_per_tunnel_timeout_seconds": _retrieval_per_tunnel_timeout(),
+            "retrieval_max_tunnels": _retrieval_max_tunnels(),
+            "retrieval_max_candidates_per_tunnel": _retrieval_max_candidates_per_tunnel(),
         })
         return result
 

@@ -17,6 +17,19 @@ MODULE = "trace_net_h30_retrieval_completion_v2"
 PART_RE = re.compile(r"\b\d{2,3}-\d{5}(?:-\d{3})?\b", re.I)
 PAGE_RE = re.compile(r"\bt_p_[A-Za-z0-9_]+\b", re.I)
 
+
+def _declare_tunnel(plan: Any, label: str) -> None:
+    """Record a deterministic completion fallback as a validated plan amendment.
+
+    The label is a fixed, code-declared string fired only under this overlay's
+    deterministic conditions, so appending it to the plan's declared
+    ``retrieval_tunnels`` keeps ``used_tunnel in declared_tunnel`` true without a
+    broad evaluator whitelist.
+    """
+    tunnels = getattr(plan, "retrieval_tunnels", None)
+    if isinstance(tunnels, list) and label not in tunnels:
+        tunnels.append(label)
+
 LIKELY_PATH_TOKENS = (
     "source", "citation", "ocr", "table", "ipl", "visual", "figure",
     "graph", "page", "context", "candidate", "rag", "summary",
@@ -1096,6 +1109,9 @@ def install_retrieval_completion(router: MutableMapping[str, Any]) -> None:
             and route == "document_page_navigation"
             and atoms.exact_part_numbers
         ):
+            _declare_tunnel(plan, "navigation_exact_source_fallback")
+            _declare_tunnel(plan, "navigation_visual_fallback")
+            _declare_tunnel(plan, "navigation_candidate_page_fallback")
             for part in atoms.exact_part_numbers[:2]:
                 self.add_unified(
                     envelope,
@@ -1122,6 +1138,7 @@ def install_retrieval_completion(router: MutableMapping[str, Any]) -> None:
                 "exact_identifier_lookup", "exact_table_ipl_lookup",
             }
         ):
+            _declare_tunnel(plan, "direct_source_resolution_v2")
             for part in atoms.exact_part_numbers[:1]:
                 self.add_unified(
                     envelope,

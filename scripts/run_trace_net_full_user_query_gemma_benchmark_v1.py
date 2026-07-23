@@ -31,6 +31,11 @@ CURRENT_WRITER_SUCCESS = {
     "LLM_CALL_SUCCEEDED",
 }
 CURRENT_WRITER_SKIP = {"SKIPPED_NO_DIRECT_EVIDENCE"}
+# Emitted by the evidence-aware answer-mode layer when a non-confirmed-direct
+# question is rendered deterministically. It is a legitimate skip (no Gemma call
+# was made) even when direct evidence rows exist but none is claim-supporting, so
+# it must not be counted as a writer call nor scored as a writer failure.
+TYPED_EVIDENCE_WRITER_SKIP = "SKIPPED_BY_TYPED_EVIDENCE_MODE"
 TOPIC_KEYWORDS = {
     "part_number": ("part number", "characters", "digits", "prefix", "suffix", "markings"),
     "manufacturer": ("manufacturer", "vendor", "supplier", "company"),
@@ -217,16 +222,27 @@ def current_writer_contract(
 
     if writer_mode or gemma_status:
         expected = direct_count > 0 and route != "safe_general_chat"
-        called = expected and gemma_status not in CURRENT_WRITER_SKIP
+        typed_evidence_skip = gemma_status == TYPED_EVIDENCE_WRITER_SKIP
+        # A typed-evidence deterministic render never issues a Gemma call, so it
+        # is not a writer call regardless of how many direct rows were present.
+        called = (
+            expected
+            and gemma_status not in CURRENT_WRITER_SKIP
+            and not typed_evidence_skip
+        )
         successful = gemma_status in CURRENT_WRITER_SUCCESS
-        skipped_expected = (not expected) and gemma_status in CURRENT_WRITER_SKIP
-        acceptable = successful if expected else skipped_expected
+        skipped_expected = (
+            ((not expected) and gemma_status in CURRENT_WRITER_SKIP)
+            or typed_evidence_skip
+        )
+        acceptable = (successful or typed_evidence_skip) if expected else skipped_expected
         return {
             "contract": "h30_mature_cognitive",
             "expected": expected,
             "called": called,
             "successful": successful,
             "skipped_expected": skipped_expected,
+            "typed_evidence_deterministic": typed_evidence_skip,
             "acceptable": acceptable,
             "status": gemma_status,
             "mode": writer_mode,

@@ -21,6 +21,19 @@ Only `confirmed_direct` may use Gemma. All other technical modes are
 deterministic. Routes, retrieval, evidence selection, Self-RAG, CRAG, source
 truth, and databases remain unchanged.
 
+## Default state
+
+Enabled by default in the deployment launcher
+(`scripts/launch_trace_net_cognitive_openwebui_v1.sh`) alongside
+`TRACE_NET_H30_TYPED_EVIDENCE_ENABLED` (required — the mode classifier reads the
+typed evidence envelope) and `TRACE_NET_H30_FINAL_ENGRAM_ROLLOUT_ENABLED` (the
+final deterministic validator). The Python module still defaults to disabled
+when the env var is unset, so unit tests keep legacy behavior; the launcher opts
+in with `TRACE_NET_H30_EVIDENCE_AWARE_ANSWER_MODES_ENABLED=1`. With this layer
+on, a non-`confirmed_direct` question is rendered deterministically and reports
+`gemma_status=SKIPPED_BY_TYPED_EVIDENCE_MODE` — the design target of zero or one
+Gemma call per question, never two.
+
 Rollback:
 
 ```text
