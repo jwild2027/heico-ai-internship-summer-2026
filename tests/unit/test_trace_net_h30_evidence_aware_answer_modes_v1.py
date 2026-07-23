@@ -262,3 +262,125 @@ def test_runtime_files_are_wired():
         "test_trace_net_h30_evidence_aware_answer_modes_v1.py"
         in launcher
     )
+
+
+# --- Evidence synthesis (Phase 4) -------------------------------------------
+
+
+def _install_on_fake(module, sample):
+    class FakeRuntime:
+        _sample = sample
+
+        def process(self, payload):
+            return dict(self._sample)
+
+        def health(self):
+            return {"quality_status": "PASS"}
+
+    module_dict = {"Runtime": FakeRuntime}
+    module.install_evidence_aware_answer_modes(module_dict)
+    return FakeRuntime
+
+
+def test_ensure_mode_disclaimer_inserts_into_body_before_followups():
+    module = load_module()
+    content = (
+        "Found two candidates.\n\n"
+        "Helpful follow-up questions:\n- What comes before the fragment?"
+    )
+    out = module._ensure_mode_disclaimer(content, module.MODE_CANDIDATE)
+    # Disclaimer lands in the body, above the follow-up marker (which the
+    # final rollout strips and re-adds), and contains the critic's phrase.
+    body = out.split(module.FOLLOWUP_MARKER, 1)[0]
+    assert "not a final identification" in body.lower()
+    assert out.index("not a final identification") < out.index(module.FOLLOWUP_MARKER)
+
+
+def test_synthesis_answer_is_kept_not_overwritten(monkeypatch):
+    monkeypatch.setenv("TRACE_NET_H30_EVIDENCE_AWARE_ANSWER_MODES_ENABLED", "1")
+    module = load_module()
+    gemma_answer = (
+        "TRACE-Net found candidate identifiers near the hinge figure; the "
+        "strongest is 120-41824-003."
+    )
+    sample = result(
+        "guided_part_discovery",
+        [record("candidate_evidence", candidate="120-41824-003")],
+    )
+    sample["content"] = gemma_answer
+    sample["gemma_status"] = "LLM_CALL_SUCCEEDED_AND_VALIDATED"
+    sample["evidence_synthesis"] = {
+        "enabled": True,
+        "attempted": True,
+        "written": True,
+    }
+    runtime = _install_on_fake(module, sample)()
+    out = runtime.process({})
+
+    # Gemma's synthesis is preserved (not replaced by the deterministic template)
+    # and the safety disclaimer is present; the writer status is not downgraded.
+    assert "120-41824-003" in out["content"]
+    assert "candidate identifiers near the hinge figure" in out["content"]
+    assert "not a final identification" in out["content"].lower()
+    assert out["gemma_status"] == "LLM_CALL_SUCCEEDED_AND_VALIDATED"
+    assert out["writer_mode"] == "evidence_aware_synthesis_candidate_discovery"
+    assert out["answer_permission"] is False
+
+
+def test_without_synthesis_marker_still_renders_deterministically(monkeypatch):
+    monkeypatch.setenv("TRACE_NET_H30_EVIDENCE_AWARE_ANSWER_MODES_ENABLED", "1")
+    module = load_module()
+    sample = result(
+        "guided_part_discovery",
+        [record("candidate_evidence", candidate="120-41824-003")],
+    )
+    sample["content"] = "some raw model text that must not survive"
+    sample["gemma_status"] = "SKIPPED_NO_DIRECT_EVIDENCE"
+    # No evidence_synthesis marker -> deterministic behavior unchanged.
+    runtime = _install_on_fake(module, sample)()
+    out = runtime.process({})
+
+    assert out["gemma_status"] == "SKIPPED_BY_TYPED_EVIDENCE_MODE"
+    assert out["writer_mode"] == "evidence_aware_candidate_discovery"
+    assert "not a final identification" in out["content"].lower()
+    assert "must not survive" not in out["content"]
+
+
+def test_validate_answer_extra_allowed_permits_candidate_identifiers():
+    spec = importlib.util.spec_from_file_location(
+        "trace_net_full_gemma_writer_test", WRITER_PATH
+    )
+    writer = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = writer
+    assert spec and spec.loader
+    spec.loader.exec_module(writer)
+
+    result_obj = {
+        "route": "guided_part_discovery",
+        "evidence_envelope": {
+            "candidate_evidence": [{"candidate_value": "120-41824-003"}],
+        },
+    }
+    answer = "The strongest candidate is 120-41824-003, but this is not confirmed."
+
+    # Without extra_allowed the candidate identifier is unsupported (proof-only).
+    strict = writer.validate_answer(answer, "The P/N contains 41824", result_obj)
+    assert not strict["accepted"]
+    assert any(f.startswith("unsupported_part_number") for f in strict["failures"])
+
+    # With synthesis extra_allowed the candidate may be mentioned as a lead.
+    extra = writer.synthesis_allowed_identifiers("The P/N contains 41824", result_obj)
+    lenient = writer.validate_answer(
+        answer, "The P/N contains 41824", result_obj, extra_allowed=extra
+    )
+    assert lenient["accepted"]
+
+    # But a dangerous claim without authority is still blocked in synthesis mode.
+    unsafe = writer.validate_answer(
+        "120-41824-003 is an approved replacement.",
+        "The P/N contains 41824",
+        result_obj,
+        extra_allowed=extra,
+    )
+    assert not unsafe["accepted"]
+    assert "dangerous_claim_without_explicit_authority" in unsafe["failures"]

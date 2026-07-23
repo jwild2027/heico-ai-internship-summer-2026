@@ -48,6 +48,12 @@ EVIDENCE_AWARE_ANSWER_MODES_MAX_ITEMS="${TRACE_NET_H30_EVIDENCE_AWARE_ANSWER_MOD
 FINAL_ENGRAM_ROLLOUT_ENABLED="${TRACE_NET_H30_FINAL_ENGRAM_ROLLOUT_ENABLED:-1}"
 FINAL_ENGRAM_MAX_FOLLOWUPS="${TRACE_NET_H30_FINAL_ENGRAM_MAX_FOLLOWUPS:-3}"
 FINAL_ENGRAM_MAX_REPAIRS="${TRACE_NET_H30_FINAL_ENGRAM_MAX_REPAIRS:-1}"
+# Evidence synthesis (writer): let Gemma write evidence-bearing answers for
+# candidate/visual/semantic/conflict modes instead of a deterministic template.
+# Strict claim guardrails (unsupported identifier, dangerous claim without
+# authority, positive-proof patterns) still bound the output and fall back to
+# the safe deterministic render on any violation. Set =0 to roll back.
+EVIDENCE_SYNTHESIS_ENABLED="${TRACE_NET_H30_EVIDENCE_SYNTHESIS_ENABLED:-1}"
 # General retrieval budget (router, all routes): overall wall-clock deadline,
 # per-tunnel upstream timeout, max executed tunnels, and per-tunnel candidate
 # cap. This bounds the serial upstream fan-out that otherwise let a single
@@ -58,6 +64,13 @@ RETRIEVAL_DEADLINE_SECONDS="${TRACE_NET_H30_RETRIEVAL_DEADLINE_SECONDS:-120}"
 RETRIEVAL_PER_TUNNEL_TIMEOUT_SECONDS="${TRACE_NET_H30_RETRIEVAL_PER_TUNNEL_TIMEOUT_SECONDS:-45}"
 RETRIEVAL_MAX_TUNNELS="${TRACE_NET_H30_RETRIEVAL_MAX_TUNNELS:-16}"
 RETRIEVAL_MAX_CANDIDATES_PER_TUNNEL="${TRACE_NET_H30_RETRIEVAL_MAX_CANDIDATES_PER_TUNNEL:-10}"
+# Deterministic graph-source traversal (router): connect a query's exact/partial
+# part, ATA chapter, or nomenclature noun to the pages and source traces that
+# mention it, added to the envelope as guidance-only candidate/navigation leads
+# (never proof). Set =0 to roll back.
+GRAPH_RETRIEVAL_ENABLED="${TRACE_NET_H30_GRAPH_RETRIEVAL_ENABLED:-1}"
+GRAPH_NODES_PATH="${TRACE_NET_H30_GRAPH_NODES_PATH:-$REPO/local_data/organization/graph/graph_nodes.json}"
+GRAPH_EDGES_PATH="${TRACE_NET_H30_GRAPH_EDGES_PATH:-$REPO/local_data/organization/graph/graph_edges.json}"
 RUN_CRITICAL_LIVE_ROUTE_SMOKE="${TRACE_NET_RUN_CRITICAL_LIVE_ROUTE_SMOKE:-0}"
 
 case "$PLANNER_ROLLOUT_MODE" in
@@ -286,6 +299,9 @@ export TRACE_NET_H30_RETRIEVAL_DEADLINE_SECONDS="$RETRIEVAL_DEADLINE_SECONDS"
 export TRACE_NET_H30_RETRIEVAL_PER_TUNNEL_TIMEOUT_SECONDS="$RETRIEVAL_PER_TUNNEL_TIMEOUT_SECONDS"
 export TRACE_NET_H30_RETRIEVAL_MAX_TUNNELS="$RETRIEVAL_MAX_TUNNELS"
 export TRACE_NET_H30_RETRIEVAL_MAX_CANDIDATES_PER_TUNNEL="$RETRIEVAL_MAX_CANDIDATES_PER_TUNNEL"
+export TRACE_NET_H30_GRAPH_RETRIEVAL_ENABLED="$GRAPH_RETRIEVAL_ENABLED"
+export TRACE_NET_H30_GRAPH_NODES_PATH="$GRAPH_NODES_PATH"
+export TRACE_NET_H30_GRAPH_EDGES_PATH="$GRAPH_EDGES_PATH"
 exec "$PYTHON" -u -B scripts/serve_trace_net_cognitive_router_v1.py \\
   --host 127.0.0.1 \\
   --port 8118 \\
@@ -312,6 +328,7 @@ export TRACE_NET_H30_EVIDENCE_AWARE_ANSWER_MODES_MAX_ITEMS="$EVIDENCE_AWARE_ANSW
 export TRACE_NET_H30_FINAL_ENGRAM_ROLLOUT_ENABLED="$FINAL_ENGRAM_ROLLOUT_ENABLED"
 export TRACE_NET_H30_FINAL_ENGRAM_MAX_FOLLOWUPS="$FINAL_ENGRAM_MAX_FOLLOWUPS"
 export TRACE_NET_H30_FINAL_ENGRAM_MAX_REPAIRS="$FINAL_ENGRAM_MAX_REPAIRS"
+export TRACE_NET_H30_EVIDENCE_SYNTHESIS_ENABLED="$EVIDENCE_SYNTHESIS_ENABLED"
 exec "$PYTHON" -u -B scripts/serve_trace_net_full_gemma_cognitive_v1.py \\
   --host 127.0.0.1 \\
   --port 8128 \\

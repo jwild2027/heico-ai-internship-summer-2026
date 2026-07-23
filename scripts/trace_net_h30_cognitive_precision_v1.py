@@ -40,7 +40,7 @@ PART_FRAGMENT_STOPWORDS = {
     "ON", "OR", "PAGE", "PART", "SOURCE", "STRONGEST", "THE", "THIS", "TO",
     "VALUE", "WHAT", "WHERE", "WHICH", "WITH",
 }
-KNOWN_ALPHA_PART_PREFIXES = {"NAS", "BAC", "MIL"}
+KNOWN_ALPHA_PART_PREFIXES = {"NAS", "BAC", "MIL", "MS", "AN"}
 
 
 def _phrase_regex(phrase: str) -> re.Pattern[str]:

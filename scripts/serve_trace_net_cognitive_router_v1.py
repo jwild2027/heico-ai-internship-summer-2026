@@ -48,6 +48,7 @@ from scripts.trace_net_h30_shadow_planner_v1 import install_shadow_planner
 from scripts.trace_net_h30_validated_planner_execution_v1 import install_validated_planner_execution
 from scripts.trace_net_h30_engram_skill_shadow_v1 import install_engram_skill_shadow
 from scripts.trace_net_h30_typed_evidence_envelope_v1 import install_typed_evidence_envelope
+from scripts.trace_net_h30_graph_source_retrieval_v1 import install_graph_source_retrieval
 from scripts.trace_net_h30_cognitive_precision_v1 import (
     decompose_claim_queries,
     explicit_semantic_intent,
@@ -89,9 +90,13 @@ VISUAL_TERMS = {
 TABLE_TERMS = {"table", "ipl", "illustrated parts list", "row", "column", "item"}
 PROCEDURE_TERMS = {
     "procedure", "steps", "step", "remove", "removal", "install", "installation",
-    "assemble", "disassemble", "replace", "tools required", "task",
+    "installed", "removed", "assemble", "disassemble", "replace", "tools required",
+    "task",
 }
-WARNING_TERMS = {"warning", "caution", "note", "precaution", "hazard", "safety"}
+WARNING_TERMS = {
+    "warning", "warnings", "caution", "cautions", "note", "notes",
+    "precaution", "hazard", "safety",
+}
 AUTHORITY_TERMS = {
     "interchangeable", "interchangeability", "approved", "approved replacement", "approved for",
     "safe to install", "fit approval", "fits", "fitment", "effectivity",
@@ -111,8 +116,13 @@ SEMANTIC_TERMS = {
     "about", "related to", "discusses", "pages on", "something about", "topic",
 }
 COMPARE_TERMS = {"compare", "both manuals", "between revisions", "difference between"}
-CONFLICT_TERMS = {"conflict", "contradiction", "disagree", "different numbers", "mismatch"}
-OCR_TERMS = {"blurry", "scan", "ocr", "read the image", "hard to read", "faint"}
+CONFLICT_TERMS = {
+    "conflict", "conflicts", "conflicting", "contradiction", "contradict",
+    "disagree", "disagrees", "different numbers", "mismatch",
+}
+OCR_TERMS = {
+    "blurry", "scan", "scanned", "ocr", "read the image", "hard to read", "faint",
+}
 AGGREGATE_TERMS = {
     "every document", "all references", "all pages", "across the manuals",
     "every page", "summarize all", "where is this used",
@@ -474,21 +484,30 @@ def plan_route(atoms: QueryAtoms) -> RoutePlan:
             repair_budget=0,
             rationale=["query matches a narrow nontechnical conversational allow-list"],
         )
-    if atoms.multi_question:
+    # Specialized single-intent signals (conflict resolution, scan recovery) take
+    # precedence over the multi-question heuristic when there is no strong
+    # independent claim: "the OCR and table disagree" or "the scan is blurry and
+    # the table is hard to read" is one intent, not two. But an exact identifier
+    # (or page id) alongside those signals IS a genuine second claim and stays
+    # multi-question (e.g. "find part 120-... and recover its OCR labels").
+    strong_multi = bool(
+        atoms.multi_question and (atoms.exact_part_numbers or atoms.page_ids)
+    )
+    if atoms.contradiction_requested and not strong_multi:
+        route = "contradiction_resolution"
+        rationale.append("query explicitly asks about conflicting or disagreeing evidence")
+    elif atoms.ocr_requested and not strong_multi:
+        route = "ocr_scan_recovery"
+        rationale.append("query asks to recover information from a difficult scan")
+    elif atoms.multi_question:
         route = "multi_question_research"
         rationale.append("multiple independent technical claims were requested")
     elif atoms.authority_requested:
         route = "authority_eligibility_verification"
         rationale.append("approval/effectivity/interchangeability authority is requested")
-    elif atoms.contradiction_requested:
-        route = "contradiction_resolution"
-        rationale.append("query explicitly asks about conflicting evidence")
     elif atoms.comparison_requested:
         route = "cross_source_comparison"
         rationale.append("query requests source or revision comparison")
-    elif atoms.ocr_requested:
-        route = "ocr_scan_recovery"
-        rationale.append("query asks to recover information from a difficult scan")
     elif atoms.warning_requested:
         route = "warning_caution_note_lookup"
         rationale.append("query targets warning/caution/note evidence")
@@ -1565,6 +1584,7 @@ install_shadow_planner(globals())
 install_validated_planner_execution(globals())
 install_engram_skill_shadow(globals())
 install_typed_evidence_envelope(globals())
+install_graph_source_retrieval(globals())
 
 if __name__ == "__main__":
     raise SystemExit(main())

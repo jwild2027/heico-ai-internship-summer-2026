@@ -209,6 +209,16 @@ def install_gemma_latency_support(module: MutableMapping[str, Any]) -> None:
     error_payload = module["error_payload"]
     openai_response = module["openai_response"]
     model_id = module["MODEL_ID"]
+    # Evidence-synthesis helpers (Phase 4). Fetched lazily so this module also
+    # imports cleanly against older builds that predate them.
+    candidate_evidence = module.get("candidate_evidence") or (lambda result: [])
+    visual_guidance = module.get("visual_guidance") or (lambda result: [])
+    semantic_guidance = module.get("semantic_guidance") or (lambda result: [])
+    authority_evidence = module.get("authority_evidence") or (lambda result: [])
+    evidence_synthesis_enabled = module.get("evidence_synthesis_enabled") or (lambda: False)
+    synthesis_allowed_identifiers = module.get("synthesis_allowed_identifiers") or (
+        lambda query, result: {"parts": set(), "atas": set(), "pages": set()}
+    )
 
     def process_v1(self: Any, payload: Mapping[str, Any]) -> Dict[str, Any]:
         request_started = time.monotonic()
@@ -251,7 +261,28 @@ def install_gemma_latency_support(module: MutableMapping[str, Any]) -> None:
         gemma_status = "SKIPPED_NO_DIRECT_EVIDENCE"
         validation = {"quality_status": "PASS", "failures": [], "accepted": True}
 
-        if direct and route != "safe_general_chat":
+        # Evidence-synthesis gate (Phase 4): when enabled, Gemma also writes for
+        # evidence-bearing non-direct modes (candidate/visual/semantic guidance)
+        # instead of falling through to a deterministic template. The strict
+        # claim guardrails in validate_answer (unsupported identifier, dangerous
+        # claim without authority, citation rules) still bound the output, and a
+        # rejected answer falls back to the deterministic safe draft.
+        synthesis_enabled = bool(evidence_synthesis_enabled())
+        has_guidance = bool(
+            candidate_evidence(result)
+            or visual_guidance(result)
+            or semantic_guidance(result)
+        )
+        synthesis_only = bool(
+            synthesis_enabled
+            and not direct
+            and has_guidance
+            and route not in {"safe_general_chat", "authority_eligibility_verification"}
+        )
+        write_gemma = (bool(direct) or synthesis_only) and route != "safe_general_chat"
+        synthesis_written = False
+
+        if write_gemma:
             timing["gemma_called"] = True
             prompt = build_prompt(query, result)
             status, answer, ollama_final, ollama_metrics = native_ollama_chat(
@@ -266,10 +297,21 @@ def install_gemma_latency_support(module: MutableMapping[str, Any]) -> None:
             )
             timing.update(ollama_metrics)
             if status == 200:
-                validation = validate_answer(answer, query, result)
+                extra_allowed = (
+                    synthesis_allowed_identifiers(query, result)
+                    if synthesis_only
+                    else None
+                )
+                validation = validate_answer(
+                    answer, query, result, extra_allowed=extra_allowed
+                )
                 if validation["accepted"]:
                     final_text = answer
-                    writer_mode = "gemma_validated_direct_evidence"
+                    if synthesis_only:
+                        writer_mode = "gemma_synthesis_guidance"
+                        synthesis_written = True
+                    else:
+                        writer_mode = "gemma_validated_direct_evidence"
                     gemma_status = "LLM_CALL_SUCCEEDED_AND_VALIDATED"
                 else:
                     final_text = safe_draft
@@ -293,6 +335,11 @@ def install_gemma_latency_support(module: MutableMapping[str, Any]) -> None:
             "answer_model": self.gemma_model,
             "writer_mode": writer_mode,
             "gemma_status": gemma_status,
+            "evidence_synthesis": {
+                "enabled": synthesis_enabled,
+                "attempted": bool(synthesis_only and write_gemma),
+                "written": bool(synthesis_written),
+            },
             "post_answer_validation": validation,
             "timing": timing,
             "cold_start_support": {

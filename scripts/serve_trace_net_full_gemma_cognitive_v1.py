@@ -130,6 +130,57 @@ def authority_evidence(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
     return [dict(row) for row in rows if isinstance(row, Mapping)] if isinstance(rows, list) else []
 
 
+def _guidance_rows(result: Mapping[str, Any], key: str) -> List[Dict[str, Any]]:
+    envelope = result.get("evidence_envelope")
+    if not isinstance(envelope, Mapping):
+        return []
+    rows = envelope.get(key)
+    return [dict(row) for row in rows if isinstance(row, Mapping)] if isinstance(rows, list) else []
+
+
+def candidate_evidence(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
+    return _guidance_rows(result, "candidate_evidence")
+
+
+def visual_guidance(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
+    return _guidance_rows(result, "visual_guidance")
+
+
+def semantic_guidance(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
+    return _guidance_rows(result, "semantic_guidance")
+
+
+def evidence_synthesis_enabled(environ: Optional[Mapping[str, str]] = None) -> bool:
+    # Off at the module level so unit tests and direct invocation keep the
+    # deterministic-only behavior; the deployment launcher opts in with =1.
+    env = os.environ if environ is None else environ
+    raw = env.get("TRACE_NET_H30_EVIDENCE_SYNTHESIS_ENABLED")
+    if raw is None:
+        return False
+    return str(raw).strip().lower() in {"1", "true", "yes", "on"}
+
+
+def synthesis_allowed_identifiers(query: str, result: Mapping[str, Any]) -> Dict[str, set[str]]:
+    """Identifiers Gemma may MENTION as candidate/guidance leads, not as proof.
+
+    These come from retrieval (candidate/visual/semantic guidance) and exist in
+    the corpus, so naming them as candidates is safe. They are unioned into the
+    validator's allowed set only in synthesis mode; the DANGEROUS_TERMS/authority
+    gate and citation rules still block over-claiming (approval, fit,
+    interchangeability, confirmed identity).
+    """
+    blob = compact({
+        "candidate_evidence": candidate_evidence(result),
+        "visual_guidance": visual_guidance(result),
+        "semantic_guidance": semantic_guidance(result),
+    }, 120000)
+    return {
+        "parts": {value.upper() for value in PART_RE.findall(blob)},
+        "atas": {value.upper() for value in ATA_RE.findall(blob)},
+        "pages": {value.upper() for value in PAGE_RE.findall(blob)},
+    }
+
+
 def allowed_identifiers(query: str, result: Mapping[str, Any]) -> Dict[str, set[str]]:
     # Part and ATA claims remain limited to the user query plus direct/authority
     # evidence. Page identifiers may also come from explicitly labeled navigation
@@ -155,12 +206,25 @@ def allowed_identifiers(query: str, result: Mapping[str, Any]) -> Dict[str, set[
     }
 
 
-def validate_answer(answer: str, query: str, result: Mapping[str, Any]) -> Dict[str, Any]:
+def validate_answer(
+    answer: str,
+    query: str,
+    result: Mapping[str, Any],
+    *,
+    extra_allowed: Optional[Mapping[str, Any]] = None,
+) -> Dict[str, Any]:
     failures: List[str] = []
     text = str(answer or "").strip()
     direct = direct_evidence(result)
     authority = authority_evidence(result)
     allowed = allowed_identifiers(query, result)
+    # In synthesis mode, candidate/visual/semantic identifiers may be mentioned
+    # as leads. This never relaxes the dangerous-claim/authority/citation gates.
+    if extra_allowed:
+        for key in ("parts", "atas", "pages"):
+            extra = extra_allowed.get(key)
+            if extra:
+                allowed[key] = set(allowed[key]) | set(extra)
 
     if not text:
         failures.append("empty_answer")
