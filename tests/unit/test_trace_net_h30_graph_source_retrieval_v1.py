@@ -262,6 +262,21 @@ def test_overlay_disabled_by_default_is_noop(monkeypatch, tmp_path):
     assert "graph_source_traversal" not in plan.retrieval_tunnels
 
 
+def test_overlay_fires_for_multi_question_research_route(monkeypatch, tmp_path):
+    # A compound "find part X and explain its nomenclature/page/source" request
+    # routes to multi_question_research; the graph overlay must still traverse so
+    # the exact part's nomenclature and source pages are surfaced (regression for
+    # the live run where q01-q03 returned candidates=0 / nomenclature not found).
+    module = _fake_graph(monkeypatch, tmp_path)
+    monkeypatch.setenv("TRACE_NET_H30_GRAPH_RETRIEVAL_ENABLED", "1")
+    runtime = _fake_router(module)()
+    env = runtime.gather_initial(_Plan("multi_question_research"), _Atoms())
+
+    assert "multi_question_research" in module.GRAPH_ROUTES
+    assert any(c.get("graph_source_traversal") for c in env.candidate_evidence)
+    assert "graph_source_traversal" in env.retrieval_tunnels_used
+
+
 def test_overlay_skips_non_graph_routes(monkeypatch, tmp_path):
     module = _fake_graph(monkeypatch, tmp_path)
     monkeypatch.setenv("TRACE_NET_H30_GRAPH_RETRIEVAL_ENABLED", "1")

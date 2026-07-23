@@ -55,6 +55,10 @@ GRAPH_TUNNEL = "graph_source_traversal"
 
 # Routes for which graph traversal adds value (part/ATA/nomenclature discovery
 # and document navigation). Authority and general chat are intentionally excluded.
+# multi_question_research is included because a compound request such as "find
+# part X and explain its nomenclature, connected page, and source evidence"
+# routes here yet still carries an exact/partial/ATA/nomenclature clue whose
+# graph-connected part, nomenclature, and source pages must be surfaced.
 GRAPH_ROUTES = {
     "exact_identifier_lookup",
     "guided_part_discovery",
@@ -66,6 +70,7 @@ GRAPH_ROUTES = {
     "high_degree_entity_aggregation",
     "graph_relationship_reasoning",
     "semantic_discovery",
+    "multi_question_research",
 }
 
 _TOKEN_RE = re.compile(r"[A-Za-z0-9]+")
