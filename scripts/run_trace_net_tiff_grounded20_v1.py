@@ -82,13 +82,74 @@ def parts_of(card: Mapping[str, Any]) -> list[str]:
 
 
 def v3_path(repo: Path) -> Path:
-    exact = repo / "local_data/organization/trace_net/v3_page_intelligence/trace_net_v3_page_intelligence_cards_v1.json"
-    if exact.exists():
-        return exact
-    found = sorted((repo / "local_data/organization/trace_net").glob("**/trace_net_v3_page_intelligence_cards_v1.json"))
-    if not found:
-        raise FileNotFoundError("trace_net_v3_page_intelligence_cards_v1.json not found")
-    return found[0]
+    """Locate either raw V3 cards or the deployed 509-page candidate bundle."""
+    root = repo / "local_data/organization/trace_net"
+    preferred = (
+        root / "v3_page_intelligence/trace_net_v3_page_intelligence_cards_v1.json",
+        root / "ocr_v2_v3_embedding_candidates/trace_net_ocr_v2_v3_embedding_candidates_v1.json",
+    )
+    for path in preferred:
+        if path.exists():
+            return path
+
+    patterns = (
+        "**/trace_net_v3_page_intelligence_cards_v1.json",
+        "**/trace_net_ocr_v2_v3_embedding_candidates_v1.json",
+    )
+    for pattern in patterns:
+        found = sorted(root.glob(pattern))
+        if found:
+            return found[0]
+
+    raise FileNotFoundError(
+        "Neither raw V3 cards nor the OCR/V2/V3 embedding candidate bundle was found"
+    )
+
+
+def v3_cards(payload: Any) -> list[dict[str, Any]]:
+    """Return a uniform 509-page V3-card view from either artifact shape."""
+    raw = records(payload)
+    if not raw:
+        return []
+
+    # Raw V3 manifests already contain page-intelligence cards.
+    if any(str(row.get("record_type") or "") == "v3_page_intelligence_card" for row in raw):
+        return raw
+
+    # The deployed Qdrant-source bundle contains three candidates per page. Keep
+    # only its V3 candidate and adapt the safe metadata into the card fields used
+    # by this benchmark. This bundle is the server artifact with 509 V3 pages.
+    cards: list[dict[str, Any]] = []
+    for row in raw:
+        if str(row.get("candidate_type") or row.get("source_kind") or "") != "v3_page_intelligence":
+            continue
+        metadata = row.get("metadata") if isinstance(row.get("metadata"), Mapping) else {}
+        embedding_text = str(
+            row.get("embedding_text")
+            or row.get("text")
+            or row.get("chunk_text")
+            or ""
+        )
+        cards.append({
+            "record_type": "v3_page_intelligence_card_adapter",
+            "page_id": row.get("page_id"),
+            "page_number": row.get("page_number"),
+            "source_path": row.get("source_path"),
+            "route": {
+                "recommended_route_candidate": metadata.get("recommended_route_candidate"),
+                "review_required": bool(metadata.get("review_required")),
+            },
+            "retrieval_profile": {"text": embedding_text},
+            "important_parts": PART_RE.findall(embedding_text),
+            "ocr": {"sample_text": embedding_text},
+            "v2_retrieval_summary": embedding_text,
+            "proof_policy": {
+                "guidance_only": True,
+                "can_answer_directly": False,
+                "can_prove_claims": False,
+            },
+        })
+    return cards
 
 
 def truth(repo: Path) -> dict[str, Any]:
@@ -105,7 +166,9 @@ def truth(repo: Path) -> dict[str, Any]:
     nodes = extract_nodes(load_json_any(np))
     edges = extract_edges(load_json_any(ep))
     graph = GraphIndex(nodes, edges)
-    cards = records(load_json(vp))
+    cards = v3_cards(load_json(vp))
+    if not cards:
+        raise ValueError(f"No V3 page-intelligence records found in {vp}")
 
     part_rows: list[dict[str, Any]] = []
     seen: set[str] = set()
