@@ -137,7 +137,9 @@ def test_final_filter_removes_post_repair_unrelated_candidates():
 
 def test_final_filter_reasserts_candidate_and_safety_flags():
     envelope = SimpleNamespace(
-        candidate_evidence=[{"candidate_value": "VS4956"}],
+        # Page-backed so the candidate survives the query-echo guard; the point
+        # of this test is safety-flag reassertion on a kept candidate.
+        candidate_evidence=[{"candidate_value": "VS4956", "page_id": "t_p_demo_p1"}],
         direct_evidence=[],
         coverage={},
         safety_contract={"answer_permission": True},
@@ -152,6 +154,39 @@ def test_final_filter_reasserts_candidate_and_safety_flags():
     assert row["final_answer_allowed"] is False
     assert envelope.safety_contract["answer_permission"] is False
     assert envelope.safety_contract["source_truth_mutation_allowed"] is False
+
+
+def test_final_filter_drops_unbacked_query_echo():
+    # Negative-control fabrication: a candidate equal to the requested identifier
+    # with no direct support and no concrete source page is a query echo.
+    envelope = SimpleNamespace(
+        candidate_evidence=[{"candidate_value": "999-99999-999", "page_id": "unknown"}],
+        direct_evidence=[],
+        coverage={},
+        safety_contract={},
+    )
+    summary = enforce_final_identifier_filter(
+        envelope,
+        {"identifier_mode": "exact", "normalized_identifier": "99999999999"},
+    )
+    assert envelope.candidate_evidence == []
+    assert summary["query_echo_drop_count"] == 1
+
+
+def test_final_filter_keeps_exact_candidate_backed_by_direct_evidence():
+    envelope = SimpleNamespace(
+        candidate_evidence=[{"candidate_value": "120-20970-001", "page_id": "unknown"}],
+        direct_evidence=[{"field_name": "part_number", "value": "120-20970-001"}],
+        coverage={},
+        safety_contract={},
+    )
+    summary = enforce_final_identifier_filter(
+        envelope,
+        {"identifier_mode": "exact", "normalized_identifier": "12020970001"},
+    )
+    # Direct-evidence corroboration is real backing even without a candidate page.
+    assert [r["candidate_value"] for r in envelope.candidate_evidence] == ["120-20970-001"]
+    assert summary["query_echo_drop_count"] == 0
 
 
 def test_planner_seed_is_proposal_only_and_engram_aware():

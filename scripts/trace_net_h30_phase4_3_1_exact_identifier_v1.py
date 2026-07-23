@@ -270,6 +270,32 @@ def _row_supports_identifier(row: Mapping[str, Any], requested: str) -> bool:
     return target in normalize_identifier(blob)
 
 
+_UNBACKED_PAGE_VALUES = {"", "unknown", "none", "n/a", "null"}
+
+
+def _candidate_page_backed(row: Mapping[str, Any]) -> bool:
+    """True when the candidate carries a concrete source page id (its own or a
+    graph page). An echoed query token resolves to page_id 'unknown'/empty."""
+    page = str(row.get("page_id") or "").strip().lower()
+    if page and page not in _UNBACKED_PAGE_VALUES:
+        return True
+    pages = row.get("graph_pages")
+    if isinstance(pages, list):
+        for graph_page in pages:
+            if isinstance(graph_page, Mapping):
+                gpid = str(graph_page.get("page_id") or "").strip().lower()
+                if gpid and gpid not in _UNBACKED_PAGE_VALUES:
+                    return True
+    return False
+
+
+def _candidate_is_backed(row: Mapping[str, Any], direct_supports: bool) -> bool:
+    """An exact-equal candidate is real only if corroborated by a retrieved
+    record: direct-evidence support for the identifier, or a concrete source
+    page on the candidate. A pure query echo has neither and must be dropped."""
+    return bool(direct_supports) or _candidate_page_backed(row)
+
+
 def enforce_final_identifier_filter(envelope: Any, intent: Mapping[str, Any]) -> Dict[str, Any]:
     """Reapply exact constraints after initial retrieval and every CRAG repair."""
     mode = str(intent.get("identifier_mode") or "none")
@@ -278,15 +304,23 @@ def enforce_final_identifier_filter(envelope: Any, intent: Mapping[str, Any]) ->
     dropped_direct = 0
 
     candidates = list(getattr(envelope, "candidate_evidence", []) or [])
+    echo_dropped = 0
     if mode == "exact" and requested:
-        kept = [
+        direct = list(getattr(envelope, "direct_evidence", []) or [])
+        direct_supports = any(_row_supports_identifier(row, requested) for row in direct)
+        matching = [
             row for row in candidates
             if normalize_identifier(_candidate_value(row)) == requested
         ]
+        # A candidate equal to the requested identifier must be backed by a real
+        # retrieved record, not a query echo. This closes the negative-control
+        # fabrication where a self-contaminated guided-discovery artifact echoed
+        # the query's own part id with page_id "unknown".
+        kept = [row for row in matching if _candidate_is_backed(row, direct_supports)]
+        echo_dropped = len(matching) - len(kept)
         dropped_candidates = len(candidates) - len(kept)
         envelope.candidate_evidence = kept
 
-        direct = list(getattr(envelope, "direct_evidence", []) or [])
         kept_direct = [row for row in direct if _row_supports_identifier(row, requested)]
         dropped_direct = len(direct) - len(kept_direct)
         envelope.direct_evidence = kept_direct
@@ -313,12 +347,14 @@ def enforce_final_identifier_filter(envelope: Any, intent: Mapping[str, Any]) ->
         coverage["phase4_3_1_final_filter_applied"] = mode != "none"
         coverage["phase4_3_1_final_candidate_drop_count"] = dropped_candidates
         coverage["phase4_3_1_final_direct_drop_count"] = dropped_direct
+        coverage["phase4_3_1_query_echo_drop_count"] = echo_dropped
 
     return {
         "identifier_mode": mode,
         "requested_identifier": requested,
         "candidate_drop_count": dropped_candidates,
         "direct_drop_count": dropped_direct,
+        "query_echo_drop_count": echo_dropped,
         "applied_after_repair": True,
         "answer_permission": False,
         "source_truth_mutation_allowed": False,
