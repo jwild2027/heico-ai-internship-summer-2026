@@ -121,6 +121,20 @@ def test_ata_navigation_leads(monkeypatch, tmp_path):
     assert out["navigation_leads"][0]["page_id"] == "t_p_demo_p1"
 
 
+def test_page_pinning_is_exact_not_substring(monkeypatch, tmp_path):
+    module = _fake_graph(monkeypatch, tmp_path)
+    # A full canonical page id pins exactly that page's source trace.
+    exact = module.graph_retrieve(page_ids=["t_p_demo_p1"])
+    assert exact["stats"]["pinned_page_count"] == 1
+    assert exact["navigation_leads"][0]["page_id"] == "t_p_demo_p1"
+    # A substring of a page id must NOT match (the p000018 -> p000181 defect).
+    sub = module.graph_retrieve(page_ids=["t_p_demo_p"])
+    assert sub["stats"]["pinned_page_count"] == 0
+    # A nonexistent page id resolves to nothing (no fabricated page).
+    missing = module.graph_retrieve(page_ids=["t_p_demo_p999999"])
+    assert missing["stats"]["pinned_page_count"] == 0
+
+
 def test_nomenclature_noun_traversal(monkeypatch, tmp_path):
     module = _fake_graph(monkeypatch, tmp_path)
     out = module.graph_retrieve(nomenclature_terms=["ring"])

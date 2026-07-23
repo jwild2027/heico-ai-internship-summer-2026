@@ -67,6 +67,8 @@ GRAPH_ROUTES = {
     "exact_table_ipl_lookup",
     "document_page_navigation",
     "visual_figure_callout_lookup",
+    "procedure_task_lookup",
+    "warning_caution_note_lookup",
     "high_degree_entity_aggregation",
     "graph_relationship_reasoning",
     "semantic_discovery",
@@ -310,10 +312,14 @@ def graph_retrieve(
     fragments: Sequence[str] = (),
     ata_codes: Sequence[str] = (),
     nomenclature_terms: Sequence[str] = (),
+    page_ids: Sequence[str] = (),
 ) -> Dict[str, Any]:
     """Deterministic traversal. Returns candidate parts (with page/source trace)
-    and ATA navigation-lead page cards. Never raises; returns available=False
-    when the graph artifact is missing so callers can no-op safely."""
+    and ATA/page navigation-lead page cards. When a full canonical page id is
+    supplied it PINS that exact page (exact-equality lookup), returning that
+    page's source trace and part mentions rather than semantically similar
+    pages. Never raises; returns available=False when the graph artifact is
+    missing so callers can no-op safely."""
     graph = _load_graph()
     if graph is None:
         return {"available": False, "candidates": [], "navigation_leads": [], "stats": {}}
@@ -360,6 +366,20 @@ def graph_retrieve(
 
     navigation_leads: List[Dict[str, Any]] = []
     seen_pages: set = set()
+
+    # Exact page-id pinning: a supplied canonical page id returns THAT page's
+    # source trace and part mentions (find_page_nodes is exact-equality), never
+    # a semantically similar page. A nonexistent page id resolves to nothing.
+    pinned = 0
+    for pid_query in page_ids:
+        for page in graph.find_page_nodes(pid_query):
+            pid = _page_id(page)
+            if pid in seen_pages:
+                continue
+            seen_pages.add(pid)
+            navigation_leads.append(page_card(graph, page, include_parts=True))
+            pinned += 1
+
     for code in ata_codes:
         for page in graph.page_nodes_with_ata(code):
             pid = _page_id(page)
@@ -377,6 +397,7 @@ def graph_retrieve(
         "stats": {
             "candidate_count": len(candidates),
             "navigation_lead_count": len(navigation_leads),
+            "pinned_page_count": pinned,
             "graph_node_count": len(graph.nodes),
             "graph_edge_count": len(graph.edges),
         },
@@ -443,8 +464,9 @@ def install_graph_source_retrieval(router: MutableMapping[str, Any]) -> None:
         nomenclature_terms = _atom_list(atoms, "nomenclature_terms") + _atom_list(
             atoms, "assembly_context"
         )
+        page_id_atoms = _atom_list(atoms, "page_ids")
 
-        if not (exact_parts or fragments or ata_codes or nomenclature_terms):
+        if not (exact_parts or fragments or ata_codes or nomenclature_terms or page_id_atoms):
             return envelope
 
         found = graph_retrieve(
@@ -452,6 +474,7 @@ def install_graph_source_retrieval(router: MutableMapping[str, Any]) -> None:
             fragments=fragments,
             ata_codes=ata_codes,
             nomenclature_terms=nomenclature_terms,
+            page_ids=page_id_atoms,
         )
         if not found.get("available"):
             envelope.coverage["graph_source_traversal"] = {"available": False}
