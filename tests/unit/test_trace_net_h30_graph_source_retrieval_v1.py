@@ -77,9 +77,18 @@ def _fake_graph(monkeypatch, tmp_path):
     return module
 
 
-def test_disabled_by_default():
+def test_disabled_by_default(monkeypatch):
+    # Verify the code's default independently of the launcher's ambient
+    # environment, which enables the flag before running unit tests.
+    monkeypatch.delenv("TRACE_NET_H30_GRAPH_RETRIEVAL_ENABLED", raising=False)
     module = load_module()
     assert module.graph_retrieval_enabled() is False
+
+
+def test_enabled_by_environment(monkeypatch):
+    monkeypatch.setenv("TRACE_NET_H30_GRAPH_RETRIEVAL_ENABLED", "1")
+    module = load_module()
+    assert module.graph_retrieval_enabled() is True
 
 
 def test_exact_part_traversal(monkeypatch, tmp_path):
@@ -187,6 +196,58 @@ def test_overlay_adds_candidates_and_declares_tunnel(monkeypatch, tmp_path):
     # Declared as a plan amendment so used_tunnel stays a subset of declared.
     assert "graph_source_traversal" in plan.retrieval_tunnels
     assert env.coverage["graph_source_traversal"]["available"] is True
+
+
+def test_overlay_merges_graph_into_existing_candidate(monkeypatch, tmp_path):
+    module = _fake_graph(monkeypatch, tmp_path)
+    monkeypatch.setenv("TRACE_NET_H30_GRAPH_RETRIEVAL_ENABLED", "1")
+
+    # Base retrieval already produced this part (different page, no graph data).
+    base_row = {
+        "candidate_value": "120-41824-003",
+        "page_id": "t_p_other_p999",
+        "nomenclature": [],
+        "source_resolved": False,
+        "guidance_only": True,
+    }
+
+    class FakeRuntime:
+        def gather_initial(self, plan, atoms):
+            env = _Env()
+            env.candidate_evidence.append(dict(base_row))
+            return env
+
+        def health(self):
+            return {"quality_status": "PASS"}
+
+    router = {
+        "CognitiveRuntime": FakeRuntime,
+        "candidate_matches_atoms": lambda value, atoms: True,
+        "is_garbage_candidate": lambda value: False,
+        # normalize_identifier intentionally omitted -> module fallback is used.
+    }
+    module.install_graph_source_retrieval(router)
+    env = FakeRuntime().gather_initial(_Plan("guided_part_discovery"), _Atoms())
+
+    matches = [
+        c for c in env.candidate_evidence if c.get("candidate_value") == "120-41824-003"
+    ]
+    # Exactly one candidate for the part, identity by normalized candidate_value.
+    assert len(matches) == 1
+    assert len(env.candidate_evidence) == 1
+    row = matches[0]
+    # Graph metadata merged into the existing row.
+    assert row["graph_source_traversal"] is True
+    assert any(
+        page.get("page_id") == "t_p_demo_p1" for page in row.get("graph_pages") or []
+    )
+    assert "RING, LOCKING" in row.get("nomenclature")
+    assert row["source_resolved"] is True
+    assert row.get("graph_match_reasons")
+    # The overlay reports a merge, not an append.
+    cov = env.coverage["graph_source_traversal"]
+    assert cov["candidates_merged"] == 1
+    assert cov["candidates_added"] == 0
 
 
 def test_overlay_disabled_by_default_is_noop(monkeypatch, tmp_path):

@@ -237,6 +237,65 @@ def _candidate_record(
     }
 
 
+def _normalize_identifier(value: Any) -> str:
+    return re.sub(r"[^A-Z0-9]", "", str(value or "").upper())
+
+
+def _merge_graph_record(
+    existing: MutableMapping[str, Any],
+    graph_record: Mapping[str, Any],
+) -> None:
+    """Merge a graph candidate into an existing candidate row, in place.
+
+    Candidate identity is the normalized part number: the same part found by
+    both base retrieval and the graph is a single row that gains the graph's
+    connected pages, nomenclature, ATA codes, and source-resolution status. No
+    duplicate row is created.
+    """
+    pages = existing.get("graph_pages")
+    if not isinstance(pages, list):
+        pages = []
+    seen_pages = {p.get("page_id") for p in pages if isinstance(p, Mapping)}
+    for page in graph_record.get("graph_pages") or []:
+        if isinstance(page, Mapping) and page.get("page_id") not in seen_pages:
+            pages.append(page)
+            seen_pages.add(page.get("page_id"))
+    existing["graph_pages"] = pages
+
+    nomenclature = list(existing.get("nomenclature") or [])
+    for name in graph_record.get("nomenclature") or []:
+        if name not in nomenclature:
+            nomenclature.append(name)
+    existing["nomenclature"] = nomenclature
+
+    ata_codes = list(existing.get("ata_codes") or [])
+    for code in graph_record.get("ata_codes") or []:
+        if code not in ata_codes:
+            ata_codes.append(code)
+    if ata_codes:
+        existing["ata_codes"] = ata_codes
+    if not existing.get("page_id") and graph_record.get("page_id"):
+        existing["page_id"] = graph_record.get("page_id")
+    if not existing.get("ata") and graph_record.get("ata"):
+        existing["ata"] = graph_record.get("ata")
+
+    # Preserve or upgrade source resolution; mark graph provenance.
+    existing["source_resolved"] = bool(existing.get("source_resolved")) or bool(
+        graph_record.get("source_resolved")
+    )
+    existing["graph_source_traversal"] = True
+
+    reasons = existing.get("graph_match_reasons")
+    if not isinstance(reasons, list):
+        reasons = []
+        if existing.get("graph_match_reason"):
+            reasons.append(existing.get("graph_match_reason"))
+    reason = graph_record.get("graph_match_reason")
+    if reason and reason not in reasons:
+        reasons.append(reason)
+    existing["graph_match_reasons"] = reasons
+
+
 # --- public retrieval --------------------------------------------------------
 
 
@@ -347,7 +406,7 @@ def install_graph_source_retrieval(router: MutableMapping[str, Any]) -> None:
     original_health = runtime_cls.health
     candidate_matches_atoms = router.get("candidate_matches_atoms")
     is_garbage_candidate = router.get("is_garbage_candidate")
-    unique_dicts = router.get("unique_dicts")
+    normalize_identifier = router.get("normalize_identifier") or _normalize_identifier
 
     def _declare_tunnel(plan: Any, label: str) -> None:
         tunnels = getattr(plan, "retrieval_tunnels", None)
@@ -395,8 +454,19 @@ def install_graph_source_retrieval(router: MutableMapping[str, Any]) -> None:
 
         # Add graph candidate parts, but only those consistent with an explicit
         # identifier clue (so the deterministic critic's clue-fidelity check is
-        # never violated) and that are not garbage tokens.
+        # never violated) and that are not garbage tokens. Candidate identity is
+        # the normalized part number: a graph record for a part already present
+        # in the envelope is MERGED into that row (union pages/nomenclature/ATA,
+        # upgrade source_resolved) rather than appended as a page/ATA duplicate.
+        index: Dict[str, MutableMapping[str, Any]] = {}
+        for row in envelope.candidate_evidence:
+            if isinstance(row, MutableMapping):
+                key = normalize_identifier(row.get("candidate_value"))
+                if key and key not in index:
+                    index[key] = row
+
         added = 0
+        merged = 0
         for record in found["candidates"]:
             value = str(record.get("candidate_value") or "")
             if not value:
@@ -405,14 +475,23 @@ def install_graph_source_retrieval(router: MutableMapping[str, Any]) -> None:
                 continue
             if callable(candidate_matches_atoms) and not candidate_matches_atoms(value, atoms):
                 continue
-            envelope.candidate_evidence.append(dict(record))
-            added += 1
-
-        if callable(unique_dicts):
-            envelope.candidate_evidence = unique_dicts(
-                envelope.candidate_evidence,
-                ("candidate_value", "page_id", "document", "ata"),
-            )
+            key = normalize_identifier(value)
+            if not key:
+                continue
+            existing = index.get(key)
+            if existing is not None:
+                _merge_graph_record(existing, record)
+                merged += 1
+            else:
+                new_row = dict(record)
+                new_row["graph_match_reasons"] = (
+                    [new_row["graph_match_reason"]]
+                    if new_row.get("graph_match_reason")
+                    else []
+                )
+                envelope.candidate_evidence.append(new_row)
+                index[key] = new_row
+                added += 1
 
         # Navigation leads (page cards with source trace) go into coverage so the
         # writer prompt and page-citation allow-list can use them without being
@@ -427,6 +506,7 @@ def install_graph_source_retrieval(router: MutableMapping[str, Any]) -> None:
         envelope.coverage["graph_source_traversal"] = {
             "available": True,
             "candidates_added": added,
+            "candidates_merged": merged,
             "navigation_leads": len(leads),
             "stats": found.get("stats", {}),
             "guidance_only": True,
