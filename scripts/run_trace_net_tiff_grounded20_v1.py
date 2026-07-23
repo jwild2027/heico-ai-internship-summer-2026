@@ -237,7 +237,7 @@ def build_bank(t: Mapping[str, Any]) -> list[dict[str, Any]]:
     for i in range(1, 4):
         row = take_part(True); page = row["pages"][0]
         bank.append(q(f"q{i:02d}", "exact_part",
-            f"Find part {row['part']} and explain its nomenclature, connected page, and source evidence.",
+            f"Find part {row['part']}.",
             "exact_identifier_lookup", [row["part"]], [page["page_id"]], row["nomenclature"], {"part": row["part"], "page": page}))
 
     # 3 partial modes.
@@ -295,7 +295,7 @@ def build_bank(t: Mapping[str, Any]) -> list[dict[str, Any]]:
     if len(table_cards) < 2: table_cards = choose_cards(lambda c: True, 2)
     for i, card in enumerate(table_cards, 12):
         pid = page_of(card); cp = parts_of(card)
-        text = f"Search the IPL table for part {cp[0]} and show the matching row or source page." if cp else f"Search the IPL table on page {pid} and summarize the listed part information."
+        text = f"Locate part {cp[0]} in the IPL table." if cp else f"Show the IPL table on page {pid}."
         bank.append(q(f"q{i:02d}", "table_ipl", text, "exact_table_ipl_lookup", cp[:1], [pid], basis={"page": pid, "route": route_of(card), "parts": cp, "source_path": card.get("source_path")})); used_pages.add(pid)
 
     # 2 visual.
@@ -303,28 +303,57 @@ def build_bank(t: Mapping[str, Any]) -> list[dict[str, Any]]:
     if len(visual_cards) < 2: visual_cards = choose_cards(lambda c: True, 2)
     for i, card in enumerate(visual_cards, 14):
         pid = page_of(card); cp = parts_of(card)
-        text = f"Show and explain the diagram for part {cp[0]} on page {pid}." if cp else f"Show and explain the component diagram on page {pid}."
+        text = f"Show the diagram for part {cp[0]} on page {pid}." if cp else f"Show the diagram on page {pid}."
         bank.append(q(f"q{i:02d}", "visual_figure", text, "visual_figure_callout_lookup", cp[:1], [pid], basis={"page": pid, "route": route_of(card), "source_path": card.get("source_path")})); used_pages.add(pid)
 
     # 1 procedure.
     proc = choose_cards(lambda c: route_of(c) == "procedure_or_description" or "procedure" in str(c.get("v2_role") or "").lower() or "procedure" in str(c.get("v2_subrole") or "").lower(), 1)
     if not proc: proc = choose_cards(lambda c: True, 1)
     card = proc[0]; pid = page_of(card)
-    bank.append(q("q16", "procedure", f"What procedure or task is described on page {pid}? Give only steps supported by the source and note any limits.", "procedure_task_lookup", pages=[pid], basis={"page": pid, "route": route_of(card), "summary": card.get("v2_retrieval_summary"), "source_path": card.get("source_path")}))
+    bank.append(q("q16", "procedure", f"What procedure is described on page {pid}?", "procedure_task_lookup", pages=[pid], basis={"page": pid, "route": route_of(card), "summary": card.get("v2_retrieval_summary"), "source_path": card.get("source_path")}))
 
-    # 1 OCR recovery using a real OCR clue but no page-id atom.
+    # 1 OCR recovery. Pick a clue that is UNIQUE to one page, not a repeated
+    # header/boilerplate: score every 8-word window of every OCR sample by the
+    # cross-page document frequency of its tokens and take the rarest one.
     ocr_cards = [c for c in cards if len(compact((c.get("ocr") or {}).get("sample_text"), 1000)) >= 25]
-    ocr_cards.sort(key=lambda c: (not bool((c.get("route") or {}).get("review_required")), page_of(c)))
     if not ocr_cards: raise RuntimeError("No OCR card")
-    card = ocr_cards[0]; sample = compact((card.get("ocr") or {}).get("sample_text"), 1000); clue = " ".join(sample.split()[:8])
+
+    def _ocr_toks(s: str) -> list[str]:
+        return re.findall(r"[A-Za-z0-9]{4,}", str(s).upper())
+
+    _df: Counter = Counter()
+    _samples: dict[str, str] = {}
+    for c in ocr_cards:
+        s = compact((c.get("ocr") or {}).get("sample_text"), 1000)
+        _samples[page_of(c)] = s
+        _df.update(set(_ocr_toks(s)))
+
+    def _rarest_window(s: str) -> tuple[str, int]:
+        words = s.split()
+        if len(words) <= 8:
+            return s, sum(_df[w] for w in _ocr_toks(s))
+        best, best_score = words[:8], None
+        for i in range(0, len(words) - 7):
+            window = words[i:i + 8]
+            score = sum(_df[w] for w in _ocr_toks(" ".join(window)))
+            if best_score is None or score < best_score:
+                best_score, best = score, window
+        return " ".join(best), int(best_score or 0)
+
+    scored = sorted(
+        ((pid, *_rarest_window(s)) for pid, s in _samples.items() if s),
+        key=lambda x: (x[2], x[0]),
+    )
+    target_page, clue, _score = scored[0]
+    card = next(c for c in ocr_cards if page_of(c) == target_page)
     bank.append(q("q17", "ocr_recovery", f"Recover the text from the blurry scanned page containing this OCR clue: '{clue}'. Cross-check the scan and report uncertainty.", "ocr_scan_recovery", pages=[page_of(card)], terms=[clue], basis={"page": page_of(card), "clue": clue, "source_path": card.get("source_path")}))
 
     # 1 graph relationship.
     row = next(r for r in parts if r["nomenclature"] and r["source_resolved"]); page = row["pages"][0]
-    bank.append(q("q18", "graph_relationship", f"What assembly or nomenclature is connected to part {row['part']}, and which source page contains it?", "graph_relationship_reasoning", [row["part"]], [page["page_id"]], row["nomenclature"], {"part": row["part"], "page": page}))
+    bank.append(q("q18", "graph_relationship", f"What assembly is connected to part {row['part']}?", "graph_relationship_reasoning", [row["part"]], [page["page_id"]], row["nomenclature"], {"part": row["part"], "page": page}))
 
     # 2 negative controls.
-    bank.append(q("q19", "negative_part", "Find part 999-99999-999 and show its source page and nomenclature.", "exact_identifier_lookup", ["999-99999-999"], negative=True, basis={"reason": "nonexistent part"}))
+    bank.append(q("q19", "negative_part", "Find part 999-99999-999.", "exact_identifier_lookup", ["999-99999-999"], negative=True, basis={"reason": "nonexistent part"}))
     bank.append(q("q20", "negative_page", "Open page t_p_120_1176_p999999 and explain what it contains.", "document_page_navigation", pages=["t_p_120_1176_p999999"], negative=True, basis={"reason": "nonexistent page"}))
     assert len(bank) == 20
     return bank
@@ -362,13 +391,36 @@ def page_ids(value: Any) -> set[str]:
     return out
 
 
+def evidence_page_ids(env: Mapping[str, Any]) -> set[str]:
+    """Page ids that appear in an EVIDENCE record only.
+
+    Never counts the user's query echo or the model's answer text: a page is
+    "recovered" only when retrieval actually produced it (direct/candidate graph
+    pages/visual/semantic/source-resolution/citation/navigation lead)."""
+    out: set[str] = set()
+    if not isinstance(env, Mapping):
+        return out
+    for key in ("direct_evidence", "candidate_evidence", "visual_guidance",
+                "semantic_guidance", "source_resolution", "citations", "authority_evidence"):
+        out |= page_ids(env.get(key))
+    cov = env.get("coverage") if isinstance(env.get("coverage"), Mapping) else {}
+    for key in ("navigation_leads", "graph_source_traversal", "ocr_evidence", "claim_results"):
+        out |= page_ids(cov.get(key))
+    return out
+
+
 def evaluate(item: Mapping[str, Any], payload: Mapping[str, Any], status: int, ms: float, error: str) -> dict[str, Any]:
     text = answer(payload); trace = payload.get("trace_net") if isinstance(payload.get("trace_net"), Mapping) else {}
     env = trace.get("evidence_envelope") if isinstance(trace.get("evidence_envelope"), Mapping) else {}
     candidates = [str(r.get("candidate_value") or r.get("part_number") or "") for r in env.get("candidate_evidence") or [] if isinstance(r, Mapping)]
     norms = [norm_id(x) for x in candidates if norm_id(x)]
     expected_ids = {norm_id(x) for x in item["expected_identifiers"]}
-    recovered_pages = page_ids(env) | page_ids(text)
+    # Evidence-only recovery: never credit the query echo or the answer text.
+    recovered_pages = evidence_page_ids(env)
+    direct_id_blob = norm_id(compact(env.get("direct_evidence"), 40000))
+    recovered_ids = set(norms) | {x for x in expected_ids if x and x in direct_id_blob}
+    identifier_question = bool(expected_ids) and not item["negative_control"]
+    page_question = bool(item["expected_pages"]) and not item["negative_control"]
     expected_pages = {x.lower() for x in item["expected_pages"]}
     validation = trace.get("post_answer_validation") if isinstance(trace.get("post_answer_validation"), Mapping) else {}
     synthesis = trace.get("evidence_synthesis") if isinstance(trace.get("evidence_synthesis"), Mapping) else {}
@@ -387,7 +439,8 @@ def evaluate(item: Mapping[str, Any], payload: Mapping[str, Any], status: int, m
         "post_validation_accepted": validation.get("accepted"), "post_validation_failures": list(validation.get("failures") or []),
         "unknown_citation_id": "unknown_citation_id" in (validation.get("failures") or []),
         "candidate_count": len(candidates), "candidate_values": candidates, "duplicate_candidate_count": len(norms) - len(set(norms)),
-        "expected_identifier_recovered": bool(expected_ids & set(norms)) or any(x and x in norm_id(text) for x in expected_ids),
+        "identifier_question": identifier_question, "page_question": page_question,
+        "expected_identifier_recovered": bool(expected_ids & recovered_ids),
         "expected_page_recovered": bool(expected_pages & recovered_pages) if expected_pages else False,
         "recovered_page_ids": sorted(recovered_pages), "source_resolved": source_resolved,
         "retrieval_tunnels_used": used, "negative_control_fabricated": negative_fabricated, "answer": text,
@@ -397,19 +450,33 @@ def evaluate(item: Mapping[str, Any], payload: Mapping[str, Any], status: int, m
 def summarize(rows: list[dict[str, Any]], t: Mapping[str, Any]) -> dict[str, Any]:
     positives = [r for r in rows if not r["negative_control"]]; negatives = [r for r in rows if r["negative_control"]]
     failures = Counter(f for r in rows for f in r["post_validation_failures"])
+    identifier_questions = [r for r in positives if r["identifier_question"]]
+    page_questions = [r for r in positives if r["page_question"]]
+    id_recovered = sum(r["expected_identifier_recovered"] for r in identifier_questions)
+    page_recovered = sum(r["expected_page_recovered"] for r in page_questions)
+    route_matches = sum(r["route_match"] for r in rows)
+
     hard = []
     if sum(r["http_status"] == 200 for r in rows) != 20: hard.append("not_all_http_200")
     if sum(r["nonempty_answer"] for r in rows) != 20: hard.append("empty_answers")
     if any(r["duplicate_candidate_count"] for r in rows): hard.append("duplicate_candidates")
     if any(r["negative_control_fabricated"] for r in negatives): hard.append("negative_fabrication")
     if any(r["over_180_seconds"] for r in rows): hard.append("over_180_seconds")
+
+    # Soft thresholds downgrade PASS -> WARN so route/retrieval quality affects
+    # the reported status (evidence-only recovery, identifier questions only).
+    soft = []
+    if route_matches < 18: soft.append("route_match_below_threshold")
+    if identifier_questions and id_recovered < 0.8 * len(identifier_questions): soft.append("identifier_recovery_below_threshold")
+    if page_questions and page_recovered < 0.8 * len(page_questions): soft.append("page_recovery_below_threshold")
+
     return {
-        "quality_status": "PASS" if not hard else "WARN", "hard_failures": hard,
+        "quality_status": "FAIL" if hard else ("WARN" if soft else "PASS"), "hard_failures": hard, "soft_failures": soft,
         "question_count": 20, "artifact_counts": t["counts"], "artifact_paths": t["paths"],
         "http_200_count": sum(r["http_status"] == 200 for r in rows), "nonempty_answer_count": sum(r["nonempty_answer"] for r in rows),
-        "route_match_count": sum(r["route_match"] for r in rows),
-        "expected_identifier_recovered_count": sum(r["expected_identifier_recovered"] for r in positives),
-        "expected_page_recovered_count": sum(r["expected_page_recovered"] for r in positives), "source_resolved_count": sum(r["source_resolved"] for r in positives),
+        "route_match_count": route_matches,
+        "expected_identifier_recovered_count": id_recovered, "identifier_question_count": len(identifier_questions),
+        "expected_page_recovered_count": page_recovered, "page_question_count": len(page_questions), "source_resolved_count": sum(r["source_resolved"] for r in positives),
         "gemma_called_count": sum(r["gemma_called"] for r in rows), "synthesis_attempted_count": sum(bool(r["synthesis_attempted"]) for r in rows),
         "synthesis_written_count": sum(bool(r["synthesis_written"]) for r in rows), "post_validation_accepted_count": sum(bool(r["post_validation_accepted"]) for r in rows),
         "unknown_citation_id_count": sum(r["unknown_citation_id"] for r in rows), "post_validation_failure_counts": dict(failures),
