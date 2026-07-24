@@ -49,6 +49,7 @@ from scripts.trace_net_h30_validated_planner_execution_v1 import install_validat
 from scripts.trace_net_h30_engram_skill_shadow_v1 import install_engram_skill_shadow
 from scripts.trace_net_h30_typed_evidence_envelope_v1 import install_typed_evidence_envelope
 from scripts.trace_net_h30_graph_source_retrieval_v1 import install_graph_source_retrieval
+from scripts.trace_net_h30_page_content_bridge_v1 import install_page_content_bridge
 from scripts.trace_net_h30_cognitive_precision_v1 import (
     decompose_claim_queries,
     explicit_semantic_intent,
@@ -1585,6 +1586,7 @@ install_validated_planner_execution(globals())
 install_engram_skill_shadow(globals())
 install_typed_evidence_envelope(globals())
 install_graph_source_retrieval(globals())
+install_page_content_bridge(globals())
 
 if __name__ == "__main__":
     raise SystemExit(main())

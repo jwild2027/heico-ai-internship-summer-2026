@@ -71,6 +71,10 @@ RETRIEVAL_MAX_CANDIDATES_PER_TUNNEL="${TRACE_NET_H30_RETRIEVAL_MAX_CANDIDATES_PE
 GRAPH_RETRIEVAL_ENABLED="${TRACE_NET_H30_GRAPH_RETRIEVAL_ENABLED:-1}"
 GRAPH_NODES_PATH="${TRACE_NET_H30_GRAPH_NODES_PATH:-$REPO/local_data/organization/graph/graph_nodes.json}"
 GRAPH_EDGES_PATH="${TRACE_NET_H30_GRAPH_EDGES_PATH:-$REPO/local_data/organization/graph/graph_edges.json}"
+# Exact-page content bridge (router): a supplied canonical page id assembles a
+# typed page-content pack (V2/V3/OCR/table/visual) from the exact graph page.
+# Guidance only; read-only; adds no second Gemma call. Set =0 to roll back.
+PAGE_CONTENT_BRIDGE_ENABLED="${TRACE_NET_H30_PAGE_CONTENT_BRIDGE_ENABLED:-1}"
 RUN_CRITICAL_LIVE_ROUTE_SMOKE="${TRACE_NET_RUN_CRITICAL_LIVE_ROUTE_SMOKE:-0}"
 
 case "$PLANNER_ROLLOUT_MODE" in
@@ -302,6 +306,7 @@ export TRACE_NET_H30_RETRIEVAL_MAX_CANDIDATES_PER_TUNNEL="$RETRIEVAL_MAX_CANDIDA
 export TRACE_NET_H30_GRAPH_RETRIEVAL_ENABLED="$GRAPH_RETRIEVAL_ENABLED"
 export TRACE_NET_H30_GRAPH_NODES_PATH="$GRAPH_NODES_PATH"
 export TRACE_NET_H30_GRAPH_EDGES_PATH="$GRAPH_EDGES_PATH"
+export TRACE_NET_H30_PAGE_CONTENT_BRIDGE_ENABLED="$PAGE_CONTENT_BRIDGE_ENABLED"
 exec "$PYTHON" -u -B scripts/serve_trace_net_cognitive_router_v1.py \\
   --host 127.0.0.1 \\
   --port 8118 \\

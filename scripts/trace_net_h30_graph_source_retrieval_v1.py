@@ -153,6 +153,12 @@ def _load_graph() -> Optional["GraphIndex"]:
         return graph
 
 
+def load_graph_index() -> Optional["GraphIndex"]:
+    """Public accessor for the shared cached canonical graph (used by the
+    page-content bridge so both overlays share one in-memory graph)."""
+    return _load_graph()
+
+
 def _tokens(text: str) -> List[str]:
     out: List[str] = []
     for raw in _TOKEN_RE.findall(str(text or "").upper()):

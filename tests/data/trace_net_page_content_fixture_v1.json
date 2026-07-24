@@ -1,0 +1,42 @@
+{
+  "_comment": "Minimal page-content bridge fixture for t_p_120_1176_p000018, _p000081, _p000482 only. Not production data. Edge names HAS_CONTEXT_V2 and HAS_V3_PAGE_INTELLIGENCE are the mandated V2/V3 contracts.",
+  "nodes": [
+    {"id": "page:p18", "type": "page", "label": "T.P. 120/1176 page 18", "properties": {"page_id": "t_p_120_1176_p000018", "ata_code": "25-21-00", "source_url": "http://localhost/rescarta/t_p_120_1176/000018", "tiff_path": "local_data/demo/000018.tif"}},
+    {"id": "v2:p18", "type": "page_context", "label": "v2 context p18", "properties": {"text": "This page appears to show the passenger seat structure assembly diagram with numbered callouts.", "ata_code": "25-21-00", "v2_role": "figure"}},
+    {"id": "v3:p18", "type": "v3_page_intelligence", "label": "v3 p18", "properties": {"role": "image_visual_diagram", "retrieval_summary": "Exploded view of the seat structure assembly.", "ata_code": "25-21-00"}},
+    {"id": "ocr:p18", "type": "ocr", "label": "ocr p18", "properties": {"text": "SEAT STRUCTURE ASSY FIGURE 2 SHEET 1", "ocr_engine": "tesseract", "confidence": 0.82}},
+    {"id": "visual:p18", "type": "visual", "label": "visual p18", "properties": {"text": "Figure 2 sheet 1 exploded seat structure view", "figure_refs": ["figure 2 sheet 1"], "callouts": ["1", "2", "3"], "part_numbers": ["120-20970-001"], "source_resolved": false}},
+    {"id": "part:120-20970-001", "type": "part", "label": "120-20970-001", "properties": {"part_number": "120-20970-001", "nomenclature": "STRUCTURE, ARMREST"}},
+
+    {"id": "page:p81", "type": "page", "label": "T.P. 120/1176 page 81", "properties": {"page_id": "t_p_120_1176_p000081", "ata_code": "25-21-00", "source_url": "http://localhost/rescarta/t_p_120_1176/000081", "tiff_path": "local_data/demo/000081.tif"}},
+    {"id": "v2:p81", "type": "page_context", "label": "v2 context p81", "properties": {"text": "This page appears to show an armrest cover diagram.", "ata_code": "25-21-00", "v2_role": "figure"}},
+    {"id": "v3:p81", "type": "v3_page_intelligence", "label": "v3 p81", "properties": {"role": "image_visual_diagram", "retrieval_summary": "Armrest cover with callouts.", "ata_code": "25-21-00"}},
+    {"id": "ocr:p81", "type": "ocr", "label": "ocr p81", "properties": {"text": "ARMREST COVER", "ata_code": "51-25-00", "ocr_engine": "tesseract", "confidence": 0.6}},
+    {"id": "visual:p81", "type": "visual", "label": "visual p81", "properties": {"text": "Figure 5 armrest cover", "figure_refs": ["figure 5"], "source_resolved": false}},
+
+    {"id": "page:p482", "type": "page", "label": "T.P. 120/1176 page 482", "properties": {"page_id": "t_p_120_1176_p000482", "ata_code": "25-21-00", "source_url": "http://localhost/rescarta/t_p_120_1176/000482", "tiff_path": "local_data/demo/000482.tif"}},
+    {"id": "v2:p482", "type": "page_context", "label": "v2 context p482", "properties": {"text": "This page appears to describe a removal procedure for the seat cushion.", "v2_role": "procedure"}},
+    {"id": "v3:p482", "type": "v3_page_intelligence", "label": "v3 p482", "properties": {"role": "procedure_or_description", "subrole": "removal", "retrieval_summary": "Seat cushion removal steps."}},
+    {"id": "ocr:p482", "type": "ocr", "label": "ocr p482", "properties": {"text": "STEP 1 REMOVE THE COVER STEP 2 LIFT THE CUSHION", "ocr_engine": "tesseract", "confidence": 0.75}},
+    {"id": "table:p482", "type": "table", "label": "table p482", "properties": {"text": "25-21-00-85 item 1 qty 1 120-29073-006", "ata_code": "25-21-00"}},
+    {"id": "part:120-29073-006", "type": "part", "label": "120-29073-006", "properties": {"part_number": "120-29073-006", "nomenclature": "CUSHION ASSY"}}
+  ],
+  "edges": [
+    {"type": "HAS_CONTEXT_V2", "source": "page:p18", "target": "v2:p18"},
+    {"type": "HAS_V3_PAGE_INTELLIGENCE", "source": "page:p18", "target": "v3:p18"},
+    {"type": "HAS_OCR", "source": "page:p18", "target": "ocr:p18"},
+    {"type": "HAS_VISUAL", "source": "page:p18", "target": "visual:p18"},
+    {"type": "APPEARS_ON", "source": "part:120-20970-001", "target": "page:p18"},
+
+    {"type": "HAS_CONTEXT_V2", "source": "page:p81", "target": "v2:p81"},
+    {"type": "HAS_V3_PAGE_INTELLIGENCE", "source": "page:p81", "target": "v3:p81"},
+    {"type": "HAS_OCR", "source": "page:p81", "target": "ocr:p81"},
+    {"type": "HAS_VISUAL", "source": "page:p81", "target": "visual:p81"},
+
+    {"type": "HAS_CONTEXT_V2", "source": "page:p482", "target": "v2:p482"},
+    {"type": "HAS_V3_PAGE_INTELLIGENCE", "source": "page:p482", "target": "v3:p482"},
+    {"type": "HAS_OCR", "source": "page:p482", "target": "ocr:p482"},
+    {"type": "HAS_TABLE", "source": "page:p482", "target": "table:p482"},
+    {"type": "APPEARS_ON", "source": "part:120-29073-006", "target": "page:p482"}
+  ]
+}
