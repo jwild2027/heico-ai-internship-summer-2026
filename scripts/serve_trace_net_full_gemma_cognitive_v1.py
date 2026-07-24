@@ -23,6 +23,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
 
 from scripts.trace_net_h30_cold_start_streaming_v1 import install_gemma_latency_support
+from scripts.trace_net_h30_page_content_bridge_v1 import render_page_content_prompt
 from scripts.trace_net_h30_engram_skill_shadow_v1 import install_engram_skill_shadow
 from scripts.trace_net_h30_evidence_aware_answer_modes_v1 import install_evidence_aware_answer_modes
 from scripts.trace_net_h30_final_engram_rollout_v1 import install_final_engram_rollout
@@ -438,6 +439,9 @@ ROUTE
 
 DETERMINISTIC SAFE DRAFT
 {result.get('content')}
+
+EXACT PAGE CONTENT — explain the exact requested page from this; cite its page id; OCR/table are stronger than V1/V2/V3 summaries; surface any conflict; never turn guidance into an approval/fit/effectivity/safety/interchangeability claim
+{render_page_content_prompt(result) or 'NONE'}
 
 DIRECTLY SUPPORTED EVIDENCE — proof; a cited claim here may be stated as confirmed
 {chr(10).join(proof_lines) if proof_lines else 'NONE'}

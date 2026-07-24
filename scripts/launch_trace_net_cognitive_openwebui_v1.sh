@@ -75,6 +75,9 @@ GRAPH_EDGES_PATH="${TRACE_NET_H30_GRAPH_EDGES_PATH:-$REPO/local_data/organizatio
 # typed page-content pack (V2/V3/OCR/table/visual) from the exact graph page.
 # Guidance only; read-only; adds no second Gemma call. Set =0 to roll back.
 PAGE_CONTENT_BRIDGE_ENABLED="${TRACE_NET_H30_PAGE_CONTENT_BRIDGE_ENABLED:-1}"
+PAGE_V2_ARTIFACT="${TRACE_NET_H30_PAGE_V2_ARTIFACT:-$REPO/local_data/organization/trace_net/page_context_v2/trace_net_page_context_v2.json}"
+PAGE_V3_ARTIFACT="${TRACE_NET_H30_PAGE_V3_ARTIFACT:-$REPO/local_data/organization/trace_net/v3_page_intelligence/trace_net_v3_page_intelligence_cards_v1.json}"
+PAGE_TABLE_ARTIFACT="${TRACE_NET_H30_PAGE_TABLE_ARTIFACT:-$REPO/local_data/organization/trace_net/table_exact_search_adapter/trace_net_table_exact_search_documents_v1.jsonl}"
 RUN_CRITICAL_LIVE_ROUTE_SMOKE="${TRACE_NET_RUN_CRITICAL_LIVE_ROUTE_SMOKE:-0}"
 
 case "$PLANNER_ROLLOUT_MODE" in
@@ -307,6 +310,9 @@ export TRACE_NET_H30_GRAPH_RETRIEVAL_ENABLED="$GRAPH_RETRIEVAL_ENABLED"
 export TRACE_NET_H30_GRAPH_NODES_PATH="$GRAPH_NODES_PATH"
 export TRACE_NET_H30_GRAPH_EDGES_PATH="$GRAPH_EDGES_PATH"
 export TRACE_NET_H30_PAGE_CONTENT_BRIDGE_ENABLED="$PAGE_CONTENT_BRIDGE_ENABLED"
+export TRACE_NET_H30_PAGE_V2_ARTIFACT="$PAGE_V2_ARTIFACT"
+export TRACE_NET_H30_PAGE_V3_ARTIFACT="$PAGE_V3_ARTIFACT"
+export TRACE_NET_H30_PAGE_TABLE_ARTIFACT="$PAGE_TABLE_ARTIFACT"
 exec "$PYTHON" -u -B scripts/serve_trace_net_cognitive_router_v1.py \\
   --host 127.0.0.1 \\
   --port 8118 \\

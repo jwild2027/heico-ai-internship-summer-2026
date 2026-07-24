@@ -2,40 +2,46 @@
 """Exact-page content bridge for TRACE-Net H30.
 
 Given a full canonical page id, this bridge assembles a typed page-content
-evidence pack by traversing the canonical graph from the EXACT page node to its
-linked V2 page-context, V3 page-intelligence, OCR/page-text, table, and visual
-records, plus part mentions and source trace. The pack feeds the single Gemma
-answer; it never adds a second model call and never mutates any store.
+evidence pack by (1) traversing the canonical graph from the EXACT page node to
+its linked V1/V2/V3 context, OCR, table, and visual records, then (2) filling any
+missing section from the corresponding page artifact using exact page_id
+equality. The pack feeds the single existing Gemma writer; the router adds no
+second model call and mutates no store.
 
 Flow:
     canonical page id
       -> exact graph page (exact-equality; never a similar page)
-      -> exact V2 page-context record (edge HAS_CONTEXT_V2, alias HAS_CONTEXT)
-      -> exact V3 page-intelligence record (edge HAS_V3_PAGE_INTELLIGENCE)
-      -> exact OCR/page text (edge HAS_OCR)
-      -> exact table records, when present (edge HAS_TABLE)
-      -> exact visual observation, when present (edge HAS_VISUAL)
-      -> typed page-content evidence pack (with conflicts surfaced)
+      -> retrieve any linked graph records
+      -> fill missing sections from artifacts by exact page_id
+      -> typed page-content evidence pack (conflicts surfaced)
 
-Evidence rules:
-- OCR, tables, and direct source fields are stronger than generated summaries.
-- V2 and V3 are guidance/context; they never independently prove a claim.
-- Visual observations remain guidance unless source-resolved.
-- Disagreements across V2/V3/OCR/table/visual are surfaced as conflicts and never
-  silently resolved to fact.
-- V2/V3 guidance cannot prove approval, fit, effectivity, safety, or
-  interchangeability (enforced downstream by the dangerous-claim gate).
+Three separate, preserved context contracts (never aliased to one another):
+- v1_context            from edge HAS_CONTEXT
+- v2_context            from edge HAS_CONTEXT_V2
+- v3_page_intelligence  from edge HAS_V3_PAGE_INTELLIGENCE
 
-The mandated graph edge-name contracts HAS_CONTEXT_V2 and HAS_V3_PAGE_INTELLIGENCE
-are preserved (traversed by exactly those names; HAS_CONTEXT is accepted as a V2
-alias for the current graph build). Enabled with
-TRACE_NET_H30_PAGE_CONTENT_BRIDGE_ENABLED=1 (off at the module level).
+Established graph edge-name contracts (not renamed / not invented):
+- OCR:    HAS_OCR
+- Tables: HAS_TABLE_ELEMENT -> HAS_TABLE_ROW -> HAS_TABLE_CELL
+- Visual: HAS_VISUAL_UNDERSTANDING -> HAS_VISUAL_REGION
+
+Source priority:
+- Strongest: exact OCR text, table cells/rows, direct source fields.
+- Guidance:  V1 context, V2 context, V3 intelligence, unresolved visual.
+- V1/V2/V3 and visual guidance never independently prove approval, fit,
+  effectivity, safety, or interchangeability (enforced by the dangerous-claim
+  gate in the writer).
+
+Enabled with TRACE_NET_H30_PAGE_CONTENT_BRIDGE_ENABLED=1 (off at module level).
 """
 from __future__ import annotations
 
+import json
 import os
 import re
-from typing import Any, Dict, List, Mapping, MutableMapping, Optional, Sequence
+import threading
+from pathlib import Path
+from typing import Any, Dict, List, Mapping, MutableMapping, Optional, Sequence, Tuple
 
 try:
     from tiff.trace_net_graph_query_helper_v1 import (
@@ -60,15 +66,20 @@ MODULE = "trace_net_h30_page_content_bridge_v1"
 PATCH_ID = "trace_net_h30_phase3_page_content_bridge_v1"
 BRIDGE_TUNNEL = "page_content_bridge"
 
-# Mandated edge-name contracts (do not rename). HAS_CONTEXT is accepted as the
-# current graph build's V2 alias.
-V2_EDGES = ("HAS_CONTEXT_V2", "HAS_CONTEXT")
+# Separate, preserved context contracts.
+V1_EDGES = ("HAS_CONTEXT",)
+V2_EDGES = ("HAS_CONTEXT_V2",)
 V3_EDGES = ("HAS_V3_PAGE_INTELLIGENCE",)
-OCR_EDGES = ("HAS_OCR", "HAS_OCR_TEXT")
-TABLE_EDGES = ("HAS_TABLE", "HAS_TABLE_ROW")
-VISUAL_EDGES = ("HAS_VISUAL", "HAS_VISUAL_OBSERVATION")
+OCR_EDGES = ("HAS_OCR",)
+# Established table/visual chains (multi-hop). Do not introduce HAS_TABLE or
+# HAS_VISUAL / HAS_VISUAL_OBSERVATION.
+TABLE_CHAIN = (("HAS_TABLE_ELEMENT",), ("HAS_TABLE_ROW",), ("HAS_TABLE_CELL",))
+VISUAL_CHAIN = (("HAS_VISUAL_UNDERSTANDING",), ("HAS_VISUAL_REGION",))
 
-# Routes for which explaining an exact page adds value.
+# Section key -> (authority). Guidance vs supporting per the source-priority rule.
+GUIDANCE = "guidance"
+SUPPORTING = "supporting"
+
 PAGE_ROUTES = {
     "document_page_navigation",
     "visual_figure_callout_lookup",
@@ -78,6 +89,19 @@ PAGE_ROUTES = {
     "exact_table_ipl_lookup",
     "multi_question_research",
 }
+
+_PAGE_KEYS = ("page_id", "source_page_id", "document_page_id", "page")
+_ARTIFACT_CACHE: Dict[Tuple[str, ...], Dict[str, Dict[str, List[Dict[str, Any]]]]] = {}
+_LOCK = threading.RLock()
+
+
+def _max_per_section() -> int:
+    """Cap records kept per section so a page with hundreds of table cells does
+    not bloat the single Gemma prompt."""
+    try:
+        return max(1, min(int(os.environ.get("TRACE_NET_H30_PAGE_CONTENT_MAX_PER_SECTION", "15")), 200))
+    except (TypeError, ValueError):
+        return 15
 
 
 def page_content_bridge_enabled() -> bool:
@@ -94,8 +118,6 @@ def _compact(value: Any, limit: int = 2000) -> str:
         text = value
     else:
         try:
-            import json
-
             text = json.dumps(value, ensure_ascii=False, sort_keys=True)
         except Exception:
             text = str(value)
@@ -112,40 +134,54 @@ def _as_list(value: Any) -> List[str]:
     return [str(value)]
 
 
-def _record(node: Mapping[str, Any], kind: str, authority: str) -> Dict[str, Any]:
-    props = node.get("properties") if isinstance(node.get("properties"), Mapping) else {}
+def _fields(props: Mapping[str, Any], kind: str, origin: str, authority: str, page_id: str) -> Dict[str, Any]:
     source_resolved = bool(props.get("source_resolved"))
-    # Visual is guidance unless source-resolved; V2/V3 are always guidance;
-    # OCR/table are stronger than summaries (supporting).
-    guidance_only = authority == "guidance" or (kind == "visual" and not source_resolved)
+    guidance_only = authority == GUIDANCE or (kind == "visual" and not source_resolved)
     return {
         "kind": kind,
-        "node_id": node.get("node_id"),
+        "origin": origin,
         "authority": authority,
         "guidance_only": guidance_only,
         "can_prove_claims": False,
+        "page_id": page_id,
         "text": _compact(
-            props.get("summary")
-            or props.get("text")
+            props.get("page_summary")
+            or props.get("summary")
             or props.get("retrieval_summary")
-            or props.get("v2_summary")
-            or node.get("label"),
+            or props.get("text")
+            or props.get("display_value")
+            or props.get("normalized_value")
+            or props.get("label"),
             2000,
         ),
-        "role": _compact(props.get("role") or props.get("v2_role") or props.get("v3_role"), 200),
+        "role": _compact(props.get("role") or props.get("v2_role") or props.get("v3_role") or props.get("page_route_hint") or props.get("field_role"), 200),
         "subrole": _compact(props.get("subrole") or props.get("v2_subrole"), 200),
         "nomenclature": _as_list(props.get("nomenclature")),
         "ata": _compact(props.get("ata_code") or props.get("ata"), 100),
         "figure_refs": _as_list(props.get("figure_refs")),
         "callouts": _as_list(props.get("callouts") or props.get("labels")),
-        "part_numbers": _as_list(props.get("part_numbers")),
+        "part_numbers": _as_list(props.get("part_numbers") or props.get("covered_part_number") or props.get("part_number")),
+        "field_name": _compact(props.get("field_name"), 200),
         "ocr_engine": _compact(props.get("ocr_engine") or props.get("engine"), 100),
         "ocr_confidence": props.get("confidence") if isinstance(props.get("confidence"), (int, float)) else None,
         "source_resolved": source_resolved,
     }
 
 
-def _collect(graph: Any, page: Mapping[str, Any], edge_names: Sequence[str], kind: str, authority: str) -> List[Dict[str, Any]]:
+def _graph_record(node: Mapping[str, Any], kind: str, authority: str, page_id: str) -> Dict[str, Any]:
+    props = node.get("properties") if isinstance(node.get("properties"), Mapping) else {}
+    record = _fields(props, kind, "graph", authority, page_id)
+    record["node_id"] = node.get("node_id")
+    if not record["text"]:
+        record["text"] = _compact(node.get("label"), 2000)
+    return record
+
+
+def _artifact_record(raw: Mapping[str, Any], kind: str, authority: str, page_id: str) -> Dict[str, Any]:
+    return _fields(raw, kind, "artifact", authority, page_id)
+
+
+def _collect(graph: Any, page: Mapping[str, Any], edge_names: Sequence[str], kind: str, authority: str, pid: str) -> List[Dict[str, Any]]:
     out: List[Dict[str, Any]] = []
     seen = set()
     for _edge, node in graph.out_neighbors(page["node_id"], edge_names):
@@ -153,12 +189,31 @@ def _collect(graph: Any, page: Mapping[str, Any], edge_names: Sequence[str], kin
         if node_id in seen:
             continue
         seen.add(node_id)
-        out.append(_record(node, kind, authority))
+        out.append(_graph_record(node, kind, authority, pid))
+    return out
+
+
+def _collect_chain(graph: Any, page: Mapping[str, Any], edge_levels: Sequence[Sequence[str]], kind: str, authority: str, pid: str) -> List[Dict[str, Any]]:
+    """Follow a multi-hop edge chain (e.g. element -> row -> cell) from the page,
+    collecting every node reached at each level."""
+    out: List[Dict[str, Any]] = []
+    seen = set()
+    frontier = [page]
+    for edges in edge_levels:
+        nxt = []
+        for node in frontier:
+            for _edge, neighbor in graph.out_neighbors(node["node_id"], edges):
+                node_id = neighbor.get("node_id")
+                if node_id in seen:
+                    continue
+                seen.add(node_id)
+                out.append(_graph_record(neighbor, kind, authority, pid))
+                nxt.append(neighbor)
+        frontier = nxt
     return out
 
 
 def _detect_conflicts(records: Sequence[Mapping[str, Any]]) -> List[Dict[str, Any]]:
-    """Surface disagreement across page-content records; never resolve to fact."""
     conflicts: List[Dict[str, Any]] = []
     for field in ("ata", "nomenclature"):
         values: Dict[str, set] = {}
@@ -180,34 +235,161 @@ def _detect_conflicts(records: Sequence[Mapping[str, Any]]) -> List[Dict[str, An
     return conflicts
 
 
-def page_content_pack(graph: Any, page_id_query: str) -> Dict[str, Any]:
-    """Typed page-content evidence pack for the EXACT canonical page id.
+# --- artifact loading (exact page_id keyed) ----------------------------------
 
-    Returns found=False (no page-content evidence) for a nonexistent page and
-    never substitutes a similar page. Pure/read-only: it does not mutate the
-    graph or any store, and it never calls a model."""
+
+def _artifact_paths() -> Dict[str, str]:
+    base = os.environ.get("TRACE_NET_REPO", ".")
+    default = {
+        "v2_context": f"{base}/local_data/organization/trace_net/page_context_v2/trace_net_page_context_v2.json",
+        "v3_page_intelligence": f"{base}/local_data/organization/trace_net/v3_page_intelligence/trace_net_v3_page_intelligence_cards_v1.json",
+        "tables": f"{base}/local_data/organization/trace_net/table_exact_search_adapter/trace_net_table_exact_search_documents_v1.jsonl",
+        "ocr": "",       # configure via env when a per-page OCR artifact is available
+        "visuals": "",   # configure via env when a per-page visual artifact is available
+    }
+    return {
+        "v2_context": os.environ.get("TRACE_NET_H30_PAGE_V2_ARTIFACT", default["v2_context"]),
+        "v3_page_intelligence": os.environ.get("TRACE_NET_H30_PAGE_V3_ARTIFACT", default["v3_page_intelligence"]),
+        "tables": os.environ.get("TRACE_NET_H30_PAGE_TABLE_ARTIFACT", default["tables"]),
+        "ocr": os.environ.get("TRACE_NET_H30_PAGE_OCR_ARTIFACT", default["ocr"]),
+        "visuals": os.environ.get("TRACE_NET_H30_PAGE_VISUAL_ARTIFACT", default["visuals"]),
+    }
+
+
+def _extract_rows(data: Any) -> List[Dict[str, Any]]:
+    if isinstance(data, list):
+        return [r for r in data if isinstance(r, dict)]
+    if isinstance(data, Mapping):
+        for key in ("page_context_records", "records", "cards", "items", "page_records", "page_intelligence_cards"):
+            value = data.get(key)
+            if isinstance(value, list):
+                return [r for r in value if isinstance(r, dict)]
+        if data and all(isinstance(v, Mapping) for v in data.values()):
+            rows = []
+            for key, value in data.items():
+                row = dict(value)
+                row.setdefault("page_id", key)
+                rows.append(row)
+            return rows
+    return []
+
+
+def _load_artifact_index(path: str) -> Dict[str, List[Dict[str, Any]]]:
+    index: Dict[str, List[Dict[str, Any]]] = {}
+    if not path or not Path(path).exists():
+        return index
+    try:
+        if str(path).endswith(".jsonl"):
+            rows = []
+            with Path(path).open("r", encoding="utf-8") as handle:
+                for line in handle:
+                    line = line.strip()
+                    if line:
+                        rows.append(json.loads(line))
+        else:
+            rows = _extract_rows(json.loads(Path(path).read_text(encoding="utf-8")))
+        for row in rows:
+            if not isinstance(row, Mapping):
+                continue
+            pid = ""
+            for key in _PAGE_KEYS:
+                if row.get(key):
+                    pid = str(row.get(key)).strip()
+                    break
+            if pid:
+                index.setdefault(pid, []).append(dict(row))
+    except Exception:
+        return {}
+    return index
+
+
+def load_page_artifacts() -> Dict[str, Dict[str, List[Dict[str, Any]]]]:
+    """Load and cache the exact-page-id artifact indexes for fallback."""
+    paths = _artifact_paths()
+    key = tuple(paths[name] for name in ("v2_context", "v3_page_intelligence", "tables", "ocr", "visuals"))
+    with _LOCK:
+        if key in _ARTIFACT_CACHE:
+            return _ARTIFACT_CACHE[key]
+        indexes = {name: _load_artifact_index(path) for name, path in paths.items()}
+        _ARTIFACT_CACHE[key] = indexes
+        return indexes
+
+
+# --- public retrieval --------------------------------------------------------
+
+_ARTIFACT_AUTHORITY = {
+    "v2_context": GUIDANCE,
+    "v3_page_intelligence": GUIDANCE,
+    "tables": SUPPORTING,
+    "ocr": SUPPORTING,
+    "visuals": GUIDANCE,
+}
+_ARTIFACT_KIND = {
+    "v2_context": "v2_context",
+    "v3_page_intelligence": "v3_page_intelligence",
+    "tables": "table",
+    "ocr": "ocr",
+    "visuals": "visual",
+}
+
+
+def page_content_pack(graph: Any, page_id_query: str, *, artifacts: Optional[Mapping[str, Mapping[str, Sequence[Mapping[str, Any]]]]] = None) -> Dict[str, Any]:
+    """Typed page-content pack for the EXACT canonical page id. Read-only; never
+    substitutes a similar page; makes no model call."""
     query = str(page_id_query or "").strip()
+    empty = {
+        "available": bool(graph is not None), "found": False, "page_id": query,
+        "v1_context": [], "v2_context": [], "v3_page_intelligence": [],
+        "ocr": [], "tables": [], "visuals": [], "parts": [], "conflicts": [],
+        "source_trace": {}, "telemetry": _telemetry([], [], [], [], [], [], exact=False),
+    }
     if graph is None or not query:
-        return {"available": False, "found": False, "page_id": query,
-                "v2": [], "v3": [], "ocr": [], "tables": [], "visuals": [],
-                "parts": [], "conflicts": [], "source_trace": {}}
+        empty["available"] = False
+        return empty
 
     pages = graph.find_page_nodes(query)  # exact-equality only
     if not pages:
-        return {"available": True, "found": False, "page_id": query,
-                "v2": [], "v3": [], "ocr": [], "tables": [], "visuals": [],
-                "parts": [], "conflicts": [], "source_trace": {}}
+        return empty
 
     page = pages[0]
     pid = _page_id(page)
     source_links, tiff_files = collect_sources(graph, page)
-    v2 = _collect(graph, page, V2_EDGES, "v2_context", "guidance")
-    v3 = _collect(graph, page, V3_EDGES, "v3_page_intelligence", "guidance")
-    ocr = _collect(graph, page, OCR_EDGES, "ocr", "supporting")
-    tables = _collect(graph, page, TABLE_EDGES, "table", "supporting")
-    visuals = _collect(graph, page, VISUAL_EDGES, "visual", "guidance")
+
+    v1 = _collect(graph, page, V1_EDGES, "v1_context", GUIDANCE, pid)
+    v2 = _collect(graph, page, V2_EDGES, "v2_context", GUIDANCE, pid)
+    v3 = _collect(graph, page, V3_EDGES, "v3_page_intelligence", GUIDANCE, pid)
+    ocr = _collect(graph, page, OCR_EDGES, "ocr", SUPPORTING, pid)
+    tables = _collect_chain(graph, page, TABLE_CHAIN, "table", SUPPORTING, pid)
+    visuals = _collect_chain(graph, page, VISUAL_CHAIN, "visual", GUIDANCE, pid)
     parts = collect_page_parts(graph, page)
-    conflicts = _detect_conflicts(v2 + v3 + ocr + tables + visuals)
+
+    # Artifact fallback: only fill a section the graph left empty, by exact pid.
+    sections = {
+        "v2_context": v2,
+        "v3_page_intelligence": v3,
+        "tables": tables,
+        "ocr": ocr,
+        "visuals": visuals,
+    }
+    if artifacts:
+        for name, current in sections.items():
+            if current:
+                continue
+            index = artifacts.get(name) or {}
+            for raw in index.get(pid, []) or []:
+                if isinstance(raw, Mapping):
+                    current.append(_artifact_record(raw, _ARTIFACT_KIND[name], _ARTIFACT_AUTHORITY[name], pid))
+
+    v2, v3, tables, ocr, visuals = (
+        sections["v2_context"], sections["v3_page_intelligence"],
+        sections["tables"], sections["ocr"], sections["visuals"],
+    )
+    # Conflicts are detected across the full set before capping, then each
+    # section is bounded so the prompt stays a reasonable size.
+    conflicts = _detect_conflicts(v1 + v2 + v3 + ocr + tables + visuals)
+    cap = _max_per_section()
+    v1, v2, v3 = v1[:cap], v2[:cap], v3[:cap]
+    ocr, tables, visuals = ocr[:cap], tables[:cap], visuals[:cap]
 
     return {
         "available": True,
@@ -220,46 +402,47 @@ def page_content_pack(graph: Any, page_id_query: str) -> Dict[str, Any]:
             "source_files": tiff_files,
             "source_resolved": bool(source_links or tiff_files),
         },
-        "v2": v2,
-        "v3": v3,
+        "v1_context": v1,
+        "v2_context": v2,
+        "v3_page_intelligence": v3,
         "ocr": ocr,
         "tables": tables,
         "visuals": visuals,
         "parts": parts,
         "conflicts": conflicts,
-        # Bridge output is guidance/context; only linked direct/OCR/table records
-        # (source-resolved) may support a claim, enforced downstream.
         "guidance_only": True,
         "can_prove_claims": False,
+        "telemetry": _telemetry(v1, v2, v3, ocr, tables, visuals, exact=True, pid=pid),
     }
 
 
-def _page_content_summary(pack: Mapping[str, Any]) -> str:
-    parts = []
-    if pack.get("v2"):
-        parts.append("v2: " + _compact(pack["v2"][0].get("text"), 300))
-    if pack.get("v3"):
-        parts.append("v3: " + _compact(pack["v3"][0].get("text"), 300))
-    if pack.get("ocr"):
-        parts.append("ocr: " + _compact(pack["ocr"][0].get("text"), 300))
-    if pack.get("visuals"):
-        parts.append("visual: " + _compact(pack["visuals"][0].get("text"), 300))
-    if pack.get("conflicts"):
-        parts.append(f"conflicts: {len(pack['conflicts'])} unresolved")
-    return " | ".join(parts) or "page-content records found"
+def _telemetry(v1, v2, v3, ocr, tables, visuals, *, exact: bool, pid: str = "") -> Dict[str, Any]:
+    records = list(v1) + list(v2) + list(v3) + list(ocr) + list(tables) + list(visuals)
+    graph_records = sum(1 for r in records if r.get("origin") == "graph")
+    artifact_records = sum(1 for r in records if r.get("origin") == "artifact")
+    cross_page = sum(
+        1 for r in records
+        if r.get("page_id") and pid and str(r.get("page_id")) != str(pid)
+    )
+    return {
+        "v1_record_count": len(v1),
+        "v2_record_count": len(v2),
+        "v3_record_count": len(v3),
+        "ocr_record_count": len(ocr),
+        "table_record_count": len(tables),
+        "visual_record_count": len(visuals),
+        "graph_record_count": graph_records,
+        "artifact_fallback_record_count": artifact_records,
+        "exact_page_match": bool(exact),
+        "cross_page_record_count": cross_page,
+        "gemma_call_count_added": 0,
+    }
 
 
 # --- router overlay ----------------------------------------------------------
 
 
 def install_page_content_bridge(router: MutableMapping[str, Any]) -> None:
-    """Attach exact-page content packs to the envelope for page-oriented routes.
-
-    Read-only and additive: it never calls add_unified/add_guided (no upstream or
-    model call) and never mutates source data. The pack is placed in
-    coverage['page_content'] (fed to the single Gemma answer) plus one citable
-    per-page guidance summary, and any conflicts are surfaced.
-    """
     marker = "_TRACE_NET_H30_PAGE_CONTENT_BRIDGE_V1_INSTALLED"
     if router.get(marker):
         return
@@ -292,15 +475,22 @@ def install_page_content_bridge(router: MutableMapping[str, Any]) -> None:
         if graph is None:
             envelope.coverage["page_content"] = {"available": False}
             return envelope
+        artifacts = load_page_artifacts()
 
         packs = []
+        totals = {
+            "v1_record_count": 0, "v2_record_count": 0, "v3_record_count": 0,
+            "ocr_record_count": 0, "table_record_count": 0, "visual_record_count": 0,
+            "graph_record_count": 0, "artifact_fallback_record_count": 0,
+            "cross_page_record_count": 0,
+        }
         for pid in page_ids:
-            pack = page_content_pack(graph, pid)
+            pack = page_content_pack(graph, pid, artifacts=artifacts)
             if not pack.get("found"):
                 continue
             packs.append(pack)
-            # One citable, guidance-only summary per page so the answer can cite
-            # the exact page content by id. Full pack goes into coverage below.
+            for key in totals:
+                totals[key] += int(pack["telemetry"].get(key, 0))
             envelope.semantic_guidance.append({
                 "page_id": pack["page_id"],
                 "candidate_type": "page_content",
@@ -312,9 +502,7 @@ def install_page_content_bridge(router: MutableMapping[str, Any]) -> None:
             })
             for conflict in pack["conflicts"]:
                 envelope.contradictions.append({
-                    "page_id": pack["page_id"],
-                    "page_content_conflict": True,
-                    **conflict,
+                    "page_id": pack["page_id"], "page_content_conflict": True, **conflict,
                 })
 
         if packs:
@@ -324,6 +512,14 @@ def install_page_content_bridge(router: MutableMapping[str, Any]) -> None:
                 "page_count": len(packs),
                 "guidance_only": True,
                 "source_truth_confirmation_required": True,
+                "telemetry": {
+                    **totals,
+                    "exact_page_match": True,
+                    "gemma_call_count_added": 0,
+                    # Set true by the writer when the pack is rendered into the
+                    # single Gemma prompt.
+                    "page_content_prompt_included": False,
+                },
             }
             if BRIDGE_TUNNEL not in envelope.retrieval_tunnels_used:
                 envelope.retrieval_tunnels_used.append(BRIDGE_TUNNEL)
@@ -336,10 +532,13 @@ def install_page_content_bridge(router: MutableMapping[str, Any]) -> None:
             "page_content_bridge_enabled": page_content_bridge_enabled(),
             "page_content_bridge_read_only": True,
             "page_content_bridge_helper_available": _HELPER_AVAILABLE,
+            "page_content_bridge_v1_edge": "HAS_CONTEXT",
             "page_content_bridge_v2_edge": "HAS_CONTEXT_V2",
             "page_content_bridge_v3_edge": "HAS_V3_PAGE_INTELLIGENCE",
+            "page_content_bridge_table_chain": list(TABLE_CHAIN),
+            "page_content_bridge_visual_chain": list(VISUAL_CHAIN),
+            "page_content_bridge_artifact_fallback": True,
             "page_content_bridge_adds_gemma_call": False,
-            "page_content_guidance_only": True,
             "answer_permission": False,
             "source_truth_mutation_allowed": False,
         })
@@ -348,3 +547,54 @@ def install_page_content_bridge(router: MutableMapping[str, Any]) -> None:
     runtime_cls.gather_initial = gather_with_page_content
     runtime_cls.health = health_with_page_content
     router[marker] = True
+
+
+def _page_content_summary(pack: Mapping[str, Any]) -> str:
+    parts = []
+    for label, key in (("v1", "v1_context"), ("v2", "v2_context"), ("v3", "v3_page_intelligence"), ("ocr", "ocr"), ("table", "tables"), ("visual", "visuals")):
+        rows = pack.get(key) or []
+        if rows:
+            parts.append(f"{label}: " + _compact(rows[0].get("text"), 240))
+    if pack.get("conflicts"):
+        parts.append(f"conflicts: {len(pack['conflicts'])} unresolved")
+    return " | ".join(parts) or "page-content records found"
+
+
+def render_page_content_prompt(result: Mapping[str, Any]) -> str:
+    """Render the full page-content pack for the single Gemma prompt (not only
+    coverage metadata). Returns '' when there is no page content."""
+    envelope = result.get("evidence_envelope") if isinstance(result.get("evidence_envelope"), Mapping) else {}
+    coverage = envelope.get("coverage") if isinstance(envelope.get("coverage"), Mapping) else {}
+    page_content = coverage.get("page_content") if isinstance(coverage.get("page_content"), Mapping) else {}
+    pages = page_content.get("pages") if isinstance(page_content.get("pages"), list) else []
+    if not pages:
+        return ""
+
+    blocks: List[str] = []
+    for pack in pages:
+        if not isinstance(pack, Mapping):
+            continue
+        trace = pack.get("source_trace") if isinstance(pack.get("source_trace"), Mapping) else {}
+
+        def _join(key: str, limit: int = 600) -> str:
+            rows = pack.get(key) or []
+            texts = [_compact(r.get("text"), limit) for r in rows if isinstance(r, Mapping) and r.get("text")]
+            return " || ".join(texts) if texts else "none"
+
+        parts = [str(p.get("part_number")) for p in (pack.get("parts") or []) if isinstance(p, Mapping) and p.get("part_number")]
+        conflict_note = "; ".join(
+            f"{c.get('field')}: {', '.join(c.get('conflicting_values') or [])}"
+            for c in (pack.get("conflicts") or []) if isinstance(c, Mapping)
+        )
+        blocks.append(
+            f"PAGE {pack.get('page_id')} (source_resolved={bool(trace.get('source_resolved'))}):\n"
+            f"  V1 context (guidance): {_join('v1_context')}\n"
+            f"  V2 context (guidance): {_join('v2_context')}\n"
+            f"  V3 intelligence (guidance): {_join('v3_page_intelligence')}\n"
+            f"  OCR text (supporting): {_join('ocr')}\n"
+            f"  Table content (supporting): {_join('tables')}\n"
+            f"  Visual understanding (guidance): {_join('visuals')}\n"
+            f"  Related parts: {', '.join(parts) if parts else 'none'}\n"
+            f"  Conflicts (unresolved; never resolve to fact): {conflict_note or 'none'}"
+        )
+    return "\n".join(blocks)

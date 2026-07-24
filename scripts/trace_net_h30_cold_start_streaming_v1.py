@@ -335,6 +335,18 @@ def install_gemma_latency_support(module: MutableMapping[str, Any]) -> None:
             final_text = cleaner(final_text)
 
         timing["writer_total_ms"] = round((time.monotonic() - request_started) * 1000.0, 3)
+
+        # Record whether the exact-page content pack reached the single Gemma
+        # prompt (build_prompt renders it when the envelope carries page content
+        # and Gemma was actually called). The bridge itself adds no Gemma call.
+        _cov = result.get("evidence_envelope", {}).get("coverage", {}) if isinstance(result.get("evidence_envelope"), Mapping) else {}
+        _pc = _cov.get("page_content") if isinstance(_cov, Mapping) else None
+        page_content_prompt_included = bool(
+            write_gemma and isinstance(_pc, Mapping) and _pc.get("available") and _pc.get("pages")
+        )
+        if isinstance(_pc, Mapping) and isinstance(_pc.get("telemetry"), MutableMapping):
+            _pc["telemetry"]["page_content_prompt_included"] = page_content_prompt_included
+
         result = dict(result)
         result.update({
             "module": module["MODULE"],
@@ -350,6 +362,7 @@ def install_gemma_latency_support(module: MutableMapping[str, Any]) -> None:
             },
             "citation_registry_size": len(registry),
             "citation_registry_digest": citation_registry_digest(registry) if registry else "",
+            "page_content_prompt_included": page_content_prompt_included,
             "post_answer_validation": validation,
             "timing": timing,
             "cold_start_support": {
