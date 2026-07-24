@@ -346,7 +346,7 @@ def build_bank(t: Mapping[str, Any]) -> list[dict[str, Any]]:
     )
     target_page, clue, _score = scored[0]
     card = next(c for c in ocr_cards if page_of(c) == target_page)
-    bank.append(q("q17", "ocr_recovery", f"Recover the text from the blurry scanned page containing this OCR clue: '{clue}'. Cross-check the scan and report uncertainty.", "ocr_scan_recovery", pages=[page_of(card)], terms=[clue], basis={"page": page_of(card), "clue": clue, "source_path": card.get("source_path")}))
+    bank.append(q("q17", "ocr_recovery", f"Locate the scanned page containing this OCR clue: '{clue}'. Reconstruct the surrounding text and table relationships, and report any uncertainty.", "ocr_scan_recovery", pages=[page_of(card)], terms=[clue], basis={"page": page_of(card), "clue": clue, "source_path": card.get("source_path"), "scan_quality_assumed": False, "layout_reconstruction_expected": True}))
 
     # 1 graph relationship.
     row = next(r for r in parts if r["nomenclature"] and r["source_resolved"]); page = row["pages"][0]
