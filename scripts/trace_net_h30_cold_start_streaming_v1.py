@@ -219,6 +219,8 @@ def install_gemma_latency_support(module: MutableMapping[str, Any]) -> None:
     synthesis_allowed_identifiers = module.get("synthesis_allowed_identifiers") or (
         lambda query, result: {"parts": set(), "atas": set(), "pages": set()}
     )
+    citation_registry = module.get("citation_registry") or (lambda result: [])
+    citation_registry_digest = module.get("citation_registry_digest") or (lambda registry: "")
 
     def process_v1(self: Any, payload: Mapping[str, Any]) -> Dict[str, Any]:
         request_started = time.monotonic()
@@ -281,10 +283,14 @@ def install_gemma_latency_support(module: MutableMapping[str, Any]) -> None:
         )
         write_gemma = (bool(direct) or synthesis_only) and route != "safe_general_chat"
         synthesis_written = False
+        registry: List[Dict[str, Any]] = []
 
         if write_gemma:
             timing["gemma_called"] = True
-            prompt = build_prompt(query, result)
+            # Build the immutable citation registry once and share the exact
+            # instance with the validator so ids never drift.
+            registry = citation_registry(result)
+            prompt = build_prompt(query, result, registry=registry)
             status, answer, ollama_final, ollama_metrics = native_ollama_chat(
                 base_url=self.gemma_base_url,
                 model=self.gemma_model,
@@ -305,7 +311,7 @@ def install_gemma_latency_support(module: MutableMapping[str, Any]) -> None:
                 # and the final Self-RAG critic.
                 extra_allowed = synthesis_allowed_identifiers(query, result)
                 validation = validate_answer(
-                    answer, query, result, extra_allowed=extra_allowed
+                    answer, query, result, extra_allowed=extra_allowed, registry=registry
                 )
                 if validation["accepted"]:
                     final_text = answer
@@ -342,6 +348,8 @@ def install_gemma_latency_support(module: MutableMapping[str, Any]) -> None:
                 "attempted": bool(synthesis_only and write_gemma),
                 "written": bool(synthesis_written),
             },
+            "citation_registry_size": len(registry),
+            "citation_registry_digest": citation_registry_digest(registry) if registry else "",
             "post_answer_validation": validation,
             "timing": timing,
             "cold_start_support": {

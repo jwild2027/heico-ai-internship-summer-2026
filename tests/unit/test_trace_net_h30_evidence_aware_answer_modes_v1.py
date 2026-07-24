@@ -437,6 +437,71 @@ def test_citation_registry_allows_guidance_only_citations():
     assert "unknown_citation_id" in bad["failures"]
 
 
+def _q06_result():
+    return {
+        "route": "guided_part_discovery",
+        "evidence_envelope": {
+            "direct_evidence": [
+                {
+                    "page_id": "t_p_120_1176_p000003",
+                    "field_name": "covered_part_number",
+                    "value": "120-36833-005",
+                }
+            ],
+            "candidate_evidence": [
+                {"candidate_value": "120-29067-005", "page_id": "t_p_120_1176_p000351"},
+                {"candidate_value": "120-29068-005", "page_id": "t_p_120_1176_p000398"},
+            ],
+        },
+    }
+
+
+def test_mixed_direct_candidate_answer_validates_with_per_class_citations():
+    # q06: one direct exact hit plus several suffix candidates. Gemma cites the
+    # direct hit with its proof id and each candidate with its own guidance id;
+    # the answer must validate with no unsupported / uncited failures.
+    writer = _load_writer()
+    result_obj = _q06_result()
+    registry = writer.citation_registry(result_obj)
+    assert registry[0]["can_prove_claims"] is True
+    assert registry[0]["class"] == "direct_source"
+    assert all(entry["guidance_only"] for entry in registry[1:])
+    assert writer.citation_registry_digest(registry)
+
+    extra = writer.synthesis_allowed_identifiers("ends with 005", result_obj)
+    answer = (
+        "## Directly supported\n"
+        "Part 120-36833-005 appears on page t_p_120_1176_p000003 [1].\n"
+        "## Possible candidates\n"
+        "Candidate 120-29067-005 is listed on page t_p_120_1176_p000351 [2].\n"
+        "Candidate 120-29068-005 is listed on page t_p_120_1176_p000398 [3]."
+    )
+    v = writer.validate_answer(
+        answer, "ends with 005", result_obj, extra_allowed=extra, registry=registry
+    )
+    assert v["accepted"], v["failures"]
+    assert "uncited_factual_line" not in v["failures"]
+    assert not any(f.startswith("unsupported_") for f in v["failures"])
+
+
+def test_candidate_factual_line_without_citation_is_rejected():
+    # Negative: a candidate factual line with no citation must still fail
+    # uncited_factual_line (the guard is not weakened).
+    writer = _load_writer()
+    result_obj = _q06_result()
+    registry = writer.citation_registry(result_obj)
+    extra = writer.synthesis_allowed_identifiers("ends with 005", result_obj)
+    answer = (
+        "Part 120-36833-005 appears on page t_p_120_1176_p000003 [1].\n"
+        "Candidate 120-29067-005 is listed on page t_p_120_1176_p000351."
+    )
+    v = writer.validate_answer(
+        answer, "ends with 005", result_obj, extra_allowed=extra, registry=registry
+    )
+    assert not v["accepted"]
+    assert "uncited_factual_line" in v["failures"]
+
+
 def test_citation_registry_direct_first_preserves_proof_numbering():
     writer = _load_writer()
     result_obj = {
