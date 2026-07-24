@@ -898,12 +898,12 @@ def render_page_content_prompt(result: Mapping[str, Any]) -> str:
         )
         blocks.append(
             f"PAGE {pack.get('page_id')} (source_resolved={bool(trace.get('source_resolved'))}):\n"
-            f"  OCR text (supporting — literal page text): {_join(pack.get('ocr'))}\n"
-            f"  Table content (supporting): {_join(pack.get('tables'))}\n"
-            f"  V1 context (guidance): {_join(pack.get('v1_context'))}\n"
-            f"  V2 context (guidance): {_join(pack.get('v2_context'))}\n"
-            f"  V3 intelligence (guidance): {_join(pack.get('v3_page_intelligence'))}\n"
-            f"  Visual understanding (guidance): {_join(pack.get('visuals'))}\n"
+            f"  OCR text (supporting — literal page text): {_join(pack.get('ocr'), 2400)}\n"
+            f"  Table content (supporting): {_join(pack.get('tables'), 1400)}\n"
+            f"  V1 context (guidance): {_join(pack.get('v1_context'), 700)}\n"
+            f"  V2 context (guidance): {_join(pack.get('v2_context'), 900)}\n"
+            f"  V3 intelligence (guidance): {_join(pack.get('v3_page_intelligence'), 1200)}\n"
+            f"  Visual understanding (guidance): {_join(pack.get('visuals'), 1800)}\n"
             f"  Related parts: {', '.join(parts) if parts else 'none'}\n"
             f"  Conflicts (unresolved; never resolve to fact): {conflict_note or 'none'}"
         )

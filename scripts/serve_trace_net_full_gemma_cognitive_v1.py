@@ -29,6 +29,7 @@ from scripts.trace_net_h30_page_content_bridge_v1 import (
 )
 from scripts.trace_net_h30_engram_skill_shadow_v1 import install_engram_skill_shadow
 from scripts.trace_net_h30_evidence_aware_answer_modes_v1 import install_evidence_aware_answer_modes
+from scripts.trace_net_h30_exact_page_answer_mode_v1 import install_exact_page_answer_mode
 from scripts.trace_net_h30_final_engram_rollout_v1 import install_final_engram_rollout
 from scripts.trace_net_h30_engineer_answer_contract_v1 import (
     apply_engineer_answer_contract,
@@ -48,6 +49,33 @@ DANGEROUS_TERMS = (
     "safe to install", "safe installation", "fits", "fitment", "eligible",
     "eligibility", "effectivity", "installation authority", "applicable to",
 )
+DANGEROUS_TERM_PATTERNS = tuple(
+    re.compile(pattern, re.I)
+    for pattern in (
+        r"\binterchangeable\b",
+        r"\binterchangeability\b",
+        r"\bapproved replacement\b",
+        r"\bapproved for\b",
+        r"\bsafe to install\b",
+        r"\bsafe installation\b",
+        r"\bfits\b",
+        r"\bfitment\b",
+        r"\beligible\b",
+        r"\beligibility\b",
+        r"\beffectivity\b",
+        r"\binstallation authority\b",
+        r"\bapplicable to\b",
+    )
+)
+
+
+def contains_dangerous_claim(text: str) -> bool:
+    """Match complete authority/safety phrases, not harmless substrings.
+
+    In particular, the word ``fits`` must not fire on OCR words such as
+    ``fittings``.
+    """
+    return any(pattern.search(str(text or "")) for pattern in DANGEROUS_TERM_PATTERNS)
 
 
 def compact(value: Any, limit: int = 30000) -> str:
@@ -234,24 +262,15 @@ def _registry_value(row: Mapping[str, Any], value_keys: Sequence[str]) -> str:
 
 
 def citation_registry(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
-    """Immutable, ordered registry of ALL citation-eligible evidence, proof first
-    then guidance. Built once per answer and shared by the prompt and validator
-    (the same instance) so the two can never drift.
+    """Build the final writer registry once, including exact-page records.
 
-    A direct-source entry is authority "proof" and may back a confirmed claim; a
-    candidate/visual/semantic/source-resolution entry is "guidance" and may be
-    cited only to support a candidate/guidance statement — never promoted to
-    proof. Direct records come first so a proof-only answer keeps stable [1..N]
-    numbering. Each entry carries its citation_id, class, permitted identifiers,
-    pages, ATA codes, nomenclature, guidance flags, source-resolution status, and
-    claim scope.
-
-    If result already carries a built registry, that exact instance is returned.
+    Some upstream stages already attach a registry before the exact-page pack is
+    available to the writer. Treat that list as a base, not as final: remove any
+    old page rows, add the current exact-page rows, prioritize proof and page
+    sources ahead of unrelated guidance, renumber once, and share this same list
+    with the prompt and validator.
     """
     existing = result.get("citation_registry")
-    if isinstance(existing, list):
-        return existing
-
     envelope = result.get("evidence_envelope") if isinstance(result.get("evidence_envelope"), Mapping) else {}
     registry: List[Dict[str, Any]] = []
 
@@ -265,9 +284,9 @@ def citation_registry(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
             page_ids = [own_page] if own_page else []
             for graph_page in row.get("graph_pages") or []:
                 if isinstance(graph_page, Mapping):
-                    gpid = compact(graph_page.get("page_id"), 200)
-                    if gpid and gpid not in page_ids:
-                        page_ids.append(gpid)
+                    graph_pid = compact(graph_page.get("page_id"), 200)
+                    if graph_pid and graph_pid not in page_ids:
+                        page_ids.append(graph_pid)
             proof = authority == "proof"
             registry.append({
                 "class": cls,
@@ -286,33 +305,38 @@ def citation_registry(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
                 "value": _registry_value(row, value_keys),
             })
 
-    add(direct_evidence(result), "direct_source", "proof",
-        ("normalized_value", "value", "field_name"))
-    add(candidate_evidence(result), "candidate", "guidance",
-        ("candidate_value", "part_number", "nomenclature", "value"))
-    add(visual_guidance(result), "visual", "guidance",
-        ("subject", "figure_refs", "part_numbers", "value"))
-    add(semantic_guidance(result), "semantic", "guidance",
-        ("candidate_type", "summary", "point_id", "value"))
-    add(envelope.get("source_resolution"), "source_resolution", "guidance",
-        ("resolution_status", "value", "field_name"))
+    if isinstance(existing, list) and existing:
+        for entry in existing:
+            if isinstance(entry, Mapping) and not entry.get("page_content"):
+                copied = dict(entry)
+                copied.pop("citation_id", None)
+                registry.append(copied)
+    else:
+        add(direct_evidence(result), "direct_source", "proof",
+            ("normalized_value", "value", "field_name"))
+        add(candidate_evidence(result), "candidate", "guidance",
+            ("candidate_value", "part_number", "nomenclature", "value"))
+        add(visual_guidance(result), "visual", "guidance",
+            ("subject", "figure_refs", "part_numbers", "value"))
+        add(semantic_guidance(result), "semantic", "guidance",
+            ("candidate_type", "summary", "point_id", "value"))
+        add(envelope.get("source_resolution"), "source_resolution", "guidance",
+            ("resolution_status", "value", "field_name"))
 
-    # Each exact-page content record is a SEPARATE citable entry so a page answer
-    # can cite the specific record backing each sentence. OCR/table are source
-    # "supporting"; V1/V2/V3 and unresolved visual are "guidance". None can prove
-    # approval/fit/effectivity/safety/interchangeability.
     page_rows = page_content_registry_rows(result)
+    page_entries: List[Dict[str, Any]] = []
     for row in page_rows:
         record = row["record"]
         authority = row["authority"]
         supporting = authority == "supporting"
         own_page = compact(record.get("page_id"), 200)
-        registry.append({
+        full_text = compact(record.get("text"), 20000)
+        page_entries.append({
             "class": row["class"],
             "authority": authority,
             "can_prove_claims": False,
             "guidance_only": not supporting,
-            "claim_scope": "source_supporting" if supporting else "candidate_or_guidance",
+            "claim_scope": "literal_page_source" if supporting else "page_guidance",
             "candidate_value": compact(record.get("candidate_value"), 200),
             "page_id": own_page,
             "page_ids": [own_page] if own_page else [],
@@ -321,23 +345,65 @@ def citation_registry(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
             "nomenclature": _as_str_list(record.get("nomenclature")),
             "source_resolved": bool(record.get("source_resolved")),
             "field_name": compact(record.get("field_name") or row["kind"], 200),
-            "value": compact(record.get("text"), 400),
+            "value": compact(full_text, 2400),
+            "identifier_blob": full_text,
             "page_content": True,
             "page_content_kind": row["kind"],
         })
 
-    registry = registry[:CITATION_REGISTRY_LIMIT]
+    proof_entries = [entry for entry in registry if entry.get("can_prove_claims")]
+    other_entries = [entry for entry in registry if not entry.get("can_prove_claims")]
+    prioritized = proof_entries + page_entries + other_entries
+
+    deduplicated: List[Dict[str, Any]] = []
+    seen = set()
+    for entry in prioritized:
+        key = (
+            str(entry.get("class") or ""),
+            str(entry.get("page_id") or ""),
+            str(entry.get("value") or entry.get("candidate_value") or ""),
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        copied = dict(entry)
+        copied.pop("citation_id", None)
+        deduplicated.append(copied)
+        if len(deduplicated) >= CITATION_REGISTRY_LIMIT:
+            break
+
+    registry = deduplicated
     for index, entry in enumerate(registry, 1):
         entry["citation_id"] = index
-    # Stamp the assigned id back onto each page-content record so the prompt
-    # renderer can print it and telemetry can report which ids are page content.
+
+    page_lookup = {
+        (
+            str(entry.get("class") or ""),
+            str(entry.get("page_id") or ""),
+            str(entry.get("identifier_blob") or entry.get("value") or ""),
+        ): entry
+        for entry in registry
+        if entry.get("page_content")
+    }
     page_content_ids: List[int] = []
-    page_entries = [entry for entry in registry if entry.get("page_content")]
-    for row, entry in zip(page_rows, page_entries):
-        row["record"]["citation_id"] = entry["citation_id"]
-        row["record"]["citation_class"] = entry["class"]
-        page_content_ids.append(entry["citation_id"])
+    for row in page_rows:
+        record = row["record"]
+        key = (
+            str(row.get("class") or ""),
+            str(record.get("page_id") or ""),
+            compact(record.get("text"), 20000),
+        )
+        entry = page_lookup.get(key)
+        if entry is None:
+            continue
+        if isinstance(record, MutableMapping):
+            record["citation_id"] = entry["citation_id"]
+            record["citation_class"] = entry["class"]
+        page_content_ids.append(int(entry["citation_id"]))
+
     _record_page_content_citation_ids(result, page_content_ids)
+    if isinstance(result, MutableMapping):
+        result["citation_registry"] = registry
     return registry
 
 
@@ -399,7 +465,7 @@ def validate_answer(
         if not entry.get("page_content"):
             continue
         blob = " ".join([
-            str(entry.get("value") or ""),
+            str(entry.get("identifier_blob") or entry.get("value") or ""),
             " ".join(entry.get("nomenclature") or []),
             str(entry.get("ata") or ""),
         ])
@@ -468,7 +534,7 @@ def validate_answer(
                 break
 
     lower = text.lower()
-    if any(term in lower for term in DANGEROUS_TERMS) and not authority:
+    if contains_dangerous_claim(lower) and not authority:
         failures.append("dangerous_claim_without_explicit_authority")
 
     route = str(result.get("route") or "")
@@ -513,7 +579,7 @@ def build_prompt(
 NON-NEGOTIABLE RULES
 1. Use only the evidence printed below. Never add facts from memory.
 2. Preserve uncertainty. Candidate, semantic, graph, summary, and visual guidance are not source truth.
-3. Cite by registry number like [1]. EVERY factual line must cite the specific registry entry it came from — a directly supported statement cites a DIRECTLY SUPPORTED [n]; each candidate/guidance statement cites its own CANDIDATE / GUIDANCE [n]. Do not write a factual line without its citation.
+3. Cite ONLY by numeric registry number like [1]. Never use a page id, source label, or text such as [V1 context] as a citation. EVERY factual line must cite the specific registry entry it came from.
 4. A DIRECTLY SUPPORTED (proof) citation may confirm a claim. A CANDIDATE / GUIDANCE citation may support ONLY a "candidate"/"possible"/"guidance" statement and must NEVER be phrased as a confirmed identity, approval, fit, effectivity, safety, or interchangeability claim.
 5. When both kinds exist, structure the answer in two clearly separated parts: first the directly supported result(s), then the possible candidate result(s). Do not merge a candidate into the confirmed result.
 6. Do not invent a part number, ATA number, page, figure, table value, nomenclature, manufacturer, revision, procedure step, warning, or authority claim. Every part number, ATA code, and page id you write must appear verbatim in the citation registry or the user query, tied to its registry entry.
@@ -913,6 +979,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 install_gemma_latency_support(globals())
 install_engram_skill_shadow(globals())
 install_evidence_aware_answer_modes(globals())
+install_exact_page_answer_mode(globals())
 install_final_engram_rollout(globals())
 
 

@@ -429,6 +429,22 @@ def build_information_gain_followups(
     known = _known_topics(result)
     candidate_count = _candidate_count(result)
 
+    if _page_content_found(result):
+        return {
+            "quality_status": "PASS",
+            "selected_skill_id": skill_id,
+            "skill_selection_basis": selection["selection_basis"],
+            "known_topics": sorted(known),
+            "candidate_count": candidate_count,
+            "selected_count": 0,
+            "questions": [],
+            "records": [],
+            "generic_question_count": 0,
+            "suppression_reason": "exact_page_already_supplied_and_found",
+            "answer_permission": False,
+            "source_truth_mutation_allowed": False,
+        }
+
     ordered_topics: List[str] = []
     for topic in MODE_TOPIC_PREFIX.get(mode, ()):
         if topic not in ordered_topics:
