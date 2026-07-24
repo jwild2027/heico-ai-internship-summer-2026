@@ -264,6 +264,28 @@ def test_overlay_merges_graph_into_existing_candidate(monkeypatch, tmp_path):
     assert cov["candidates_added"] == 0
 
 
+def test_merge_does_not_explode_string_nomenclature():
+    # q05 regression: a base candidate may store nomenclature as a plain string;
+    # merging must not char-explode it into ['S','T','R','U',...].
+    module = load_module()
+    existing = {
+        "candidate_value": "120-29067-005",
+        "nomenclature": "STRUCTURE, ASSY",
+        "page_id": "t_p_demo_p1",
+        "ata_codes": "25-21-00",
+    }
+    graph_record = {
+        "nomenclature": ["STRUCTURE, LATERAL LEG"],
+        "ata_codes": ["25-21-00"],
+        "graph_pages": [],
+        "graph_match_reason": "partial_fragment",
+    }
+    module._merge_graph_record(existing, graph_record)
+    assert existing["nomenclature"] == ["STRUCTURE, ASSY", "STRUCTURE, LATERAL LEG"]
+    assert all(len(name) > 2 for name in existing["nomenclature"])
+    assert existing["ata_codes"] == ["25-21-00"]
+
+
 def test_overlay_disabled_by_default_is_noop(monkeypatch, tmp_path):
     module = _fake_graph(monkeypatch, tmp_path)
     monkeypatch.delenv("TRACE_NET_H30_GRAPH_RETRIEVAL_ENABLED", raising=False)

@@ -248,6 +248,20 @@ def _normalize_identifier(value: Any) -> str:
     return re.sub(r"[^A-Z0-9]", "", str(value or "").upper())
 
 
+def _as_str_list(value: Any) -> List[str]:
+    """Coerce a nomenclature/ATA field to a list of strings WITHOUT exploding a
+    string into characters. A base candidate may store nomenclature as a plain
+    string; ``list("STRUCTURE, ASSY")`` would yield ['S','T','R',...], which is
+    the q05 char-explosion bug. Wrap a string as a single-element list instead."""
+    if value in (None, ""):
+        return []
+    if isinstance(value, str):
+        return [value]
+    if isinstance(value, (list, tuple)):
+        return [str(item) for item in value if str(item).strip()]
+    return [str(value)]
+
+
 def _merge_graph_record(
     existing: MutableMapping[str, Any],
     graph_record: Mapping[str, Any],
@@ -269,14 +283,14 @@ def _merge_graph_record(
             seen_pages.add(page.get("page_id"))
     existing["graph_pages"] = pages
 
-    nomenclature = list(existing.get("nomenclature") or [])
-    for name in graph_record.get("nomenclature") or []:
+    nomenclature = _as_str_list(existing.get("nomenclature"))
+    for name in _as_str_list(graph_record.get("nomenclature")):
         if name not in nomenclature:
             nomenclature.append(name)
     existing["nomenclature"] = nomenclature
 
-    ata_codes = list(existing.get("ata_codes") or [])
-    for code in graph_record.get("ata_codes") or []:
+    ata_codes = _as_str_list(existing.get("ata_codes"))
+    for code in _as_str_list(graph_record.get("ata_codes")):
         if code not in ata_codes:
             ata_codes.append(code)
     if ata_codes:

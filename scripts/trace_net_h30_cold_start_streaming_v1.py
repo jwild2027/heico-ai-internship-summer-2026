@@ -297,11 +297,13 @@ def install_gemma_latency_support(module: MutableMapping[str, Any]) -> None:
             )
             timing.update(ollama_metrics)
             if status == 200:
-                extra_allowed = (
-                    synthesis_allowed_identifiers(query, result)
-                    if synthesis_only
-                    else None
-                )
+                # Align the validator's allowed identifiers with the citation
+                # registry: candidate/visual/semantic identifiers may always be
+                # MENTIONED as guidance, even in a mixed direct+candidate answer
+                # (q06), so listing suffix candidates is not rejected as
+                # unsupported. Proof safety stays with the dangerous-claim gate
+                # and the final Self-RAG critic.
+                extra_allowed = synthesis_allowed_identifiers(query, result)
                 validation = validate_answer(
                     answer, query, result, extra_allowed=extra_allowed
                 )

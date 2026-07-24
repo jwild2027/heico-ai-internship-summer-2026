@@ -358,7 +358,9 @@ def test_validate_answer_extra_allowed_permits_candidate_identifiers():
     result_obj = {
         "route": "guided_part_discovery",
         "evidence_envelope": {
-            "candidate_evidence": [{"candidate_value": "120-41824-003"}],
+            "candidate_evidence": [
+                {"candidate_value": "120-41824-003", "page_id": "t_p_120_1176_p000351"}
+            ],
         },
     }
     answer = "The strongest candidate is 120-41824-003, but this is not confirmed."
@@ -368,10 +370,15 @@ def test_validate_answer_extra_allowed_permits_candidate_identifiers():
     assert not strict["accepted"]
     assert any(f.startswith("unsupported_part_number") for f in strict["failures"])
 
-    # With synthesis extra_allowed the candidate may be mentioned as a lead.
+    # With synthesis extra_allowed the candidate id AND its source page may be
+    # mentioned as leads (q06: candidate page ids must be allowed too).
     extra = writer.synthesis_allowed_identifiers("The P/N contains 41824", result_obj)
+    assert "T_P_120_1176_P000351" in extra["pages"]
     lenient = writer.validate_answer(
-        answer, "The P/N contains 41824", result_obj, extra_allowed=extra
+        "Candidate 120-41824-003 appears on page t_p_120_1176_p000351 (not confirmed).",
+        "The P/N contains 41824",
+        result_obj,
+        extra_allowed=extra,
     )
     assert lenient["accepted"]
 
