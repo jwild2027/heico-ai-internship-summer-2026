@@ -105,6 +105,7 @@ for required in \
   scripts/trace_net_h30_typed_evidence_envelope_v1.py \
   scripts/trace_net_h30_evidence_aware_answer_modes_v1.py \
   scripts/trace_net_h30_exact_page_answer_mode_v1.py \
+  scripts/trace_net_h30_answer_quality_v1.py \
   scripts/serve_trace_net_full_gemma_cognitive_v1.py \
   scripts/serve_trace_net_openwebui_cognitive_bridge_v1.py \
   scripts/trace_net_h30_cold_start_streaming_v1.py \
@@ -232,6 +233,7 @@ echo "============================================================"
   scripts/run_trace_net_h30_typed_evidence_live_smoke_v1.py \
   scripts/trace_net_h30_evidence_aware_answer_modes_v1.py \
   scripts/trace_net_h30_exact_page_answer_mode_v1.py \
+  scripts/trace_net_h30_answer_quality_v1.py \
   scripts/check_trace_net_h30_evidence_aware_answer_modes_v1.py \
   scripts/run_trace_net_h30_evidence_aware_answer_modes_live_smoke_v1.py \
   scripts/check_trace_net_h30_shadow_planner_v1.py \
@@ -250,6 +252,7 @@ echo "compile_status=PASS"
   tests/unit/test_trace_net_h30_typed_evidence_envelope_v1.py \
   tests/unit/test_trace_net_h30_evidence_aware_answer_modes_v1.py \
   tests/unit/test_trace_net_h30_exact_page_answer_integration_v1.py \
+  tests/unit/test_trace_net_h30_answer_quality_v1.py \
   tests/unit/test_trace_net_full_gemma_cognitive_v1.py \
   tests/unit/test_trace_net_h30_cold_start_streaming_v1.py
 
