@@ -28,7 +28,8 @@ def page_result(*, rejected: bool = False):
         "text": (
             "STEP 1 REMOVE PART 120-29074-005. "
             "STEP 2 CHECK 595-37778 AND 595-37038. "
-            "STEP 3 INSTALL 120-29074-015 AND 120-29919-001."
+            "STEP 3 INSTALL 120-29074-015 AND 120-29919-001. "
+            "EFFECTIVITY: ALL."
         ),
         "origin": "artifact",
         "authority": "supporting",
@@ -165,6 +166,46 @@ def test_literal_page_identifiers_validate_with_numeric_page_citation():
         registry=registry,
     )
     assert validation["accepted"], validation
+
+
+def test_cited_exact_page_ocr_may_report_literal_effectivity_text():
+    writer = load_path(WRITER_PATH, "trace_net_exact_page_writer_literal_authority_test")
+    result = page_result(rejected=True)
+    registry = writer.citation_registry(result)
+    citation = next(
+        entry["citation_id"]
+        for entry in registry
+        if entry.get("page_content_kind") == "ocr"
+    )
+    answer = (
+        f"- **OCR text:** The page text reads: EFFECTIVITY: ALL [{citation}]"
+    )
+    validation = writer.validate_answer(
+        answer,
+        f"Explain page {PAGE}.",
+        result,
+        registry=registry,
+    )
+    assert validation["accepted"], validation
+
+
+def test_unframed_effectivity_conclusion_still_requires_authority():
+    writer = load_path(WRITER_PATH, "trace_net_exact_page_writer_effectivity_guard_test")
+    result = page_result(rejected=True)
+    registry = writer.citation_registry(result)
+    citation = next(
+        entry["citation_id"]
+        for entry in registry
+        if entry.get("page_content_kind") == "ocr"
+    )
+    validation = writer.validate_answer(
+        f"Effectivity is ALL [{citation}].",
+        f"Explain page {PAGE}.",
+        result,
+        registry=registry,
+    )
+    assert not validation["accepted"]
+    assert "dangerous_claim_without_explicit_authority" in validation["failures"]
 
 
 def test_authority_claim_still_fails_even_with_page_citation():

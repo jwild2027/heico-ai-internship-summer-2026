@@ -69,13 +69,65 @@ DANGEROUS_TERM_PATTERNS = tuple(
 )
 
 
-def contains_dangerous_claim(text: str) -> bool:
-    """Match complete authority/safety phrases, not harmless substrings.
+def _literal_page_source_line(
+    line: str,
+    registry: Optional[Sequence[Mapping[str, Any]]],
+) -> bool:
+    """Return true only for a cited, explicitly attributed OCR/table line.
 
-    In particular, the word ``fits`` must not fire on OCR words such as
-    ``fittings``.
+    Exact-page OCR may literally contain protected words such as ``EFFECTIVITY``.
+    That permits only a statement about what the page prints; it never converts
+    the OCR record into approval, applicability, fit, safety, or replacement
+    authority.
     """
-    return any(pattern.search(str(text or "")) for pattern in DANGEROUS_TERM_PATTERNS)
+    if not registry:
+        return False
+    cited = {int(value) for value in CITATION_RE.findall(str(line or ""))}
+    if not cited:
+        return False
+    cited_supporting_page_source = any(
+        int(entry.get("citation_id") or 0) in cited
+        and entry.get("page_content") is True
+        and str(entry.get("authority") or "") == "supporting"
+        for entry in registry
+        if isinstance(entry, Mapping)
+    )
+    if not cited_supporting_page_source:
+        return False
+    normalized = re.sub(r"\s+", " ", str(line or "").lower()).strip()
+    literal_markers = (
+        "**ocr text:**",
+        "**table content:**",
+        "page text reads:",
+        "ocr text reads:",
+        "ocr reads:",
+        "the page prints:",
+        "the page lists:",
+        "printed on the requested page:",
+        "literal page text:",
+    )
+    return any(marker in normalized for marker in literal_markers)
+
+
+def contains_dangerous_claim(
+    text: str,
+    registry: Optional[Sequence[Mapping[str, Any]]] = None,
+) -> bool:
+    """Detect unsupported authority/safety claims line by line.
+
+    A dangerous phrase is still rejected everywhere except a narrowly framed,
+    cited exact-page OCR/table transcription. This keeps positive engineering
+    conclusions blocked while allowing the user to see protected words that are
+    literally printed on the requested page.
+    """
+    lines = str(text or "").splitlines() or [str(text or "")]
+    for line in lines:
+        if not any(pattern.search(line) for pattern in DANGEROUS_TERM_PATTERNS):
+            continue
+        if _literal_page_source_line(line, registry):
+            continue
+        return True
+    return False
 
 
 def compact(value: Any, limit: int = 30000) -> str:
@@ -534,7 +586,7 @@ def validate_answer(
                 break
 
     lower = text.lower()
-    if contains_dangerous_claim(lower) and not authority:
+    if contains_dangerous_claim(text, registry=registry) and not authority:
         failures.append("dangerous_claim_without_explicit_authority")
 
     route = str(result.get("route") or "")
