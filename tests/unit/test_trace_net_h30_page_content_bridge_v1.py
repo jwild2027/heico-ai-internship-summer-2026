@@ -169,6 +169,117 @@ def test_bridge_is_read_only():
     assert graph.edges == edges_before
 
 
+def test_ocr_artifact_record_normalizes_real_tesseract_schema(tmp_path):
+    mod = load_module()
+    raw = {
+        "page_id": P482,
+        "ocr_text_char_count": 42,
+        "ocr_sample_text": "Install the new leg structure (P/N 120-29074-005).",
+        "route_processor": "table_ocr_table_candidate_scan",
+        "route_confidence": 0.95,
+        "_artifact_source": "trace_net_ocr_route_scan_pack_v1_records.jsonl",
+        "_artifact_base": str(tmp_path / "records.jsonl"),
+    }
+    record = mod._ocr_artifact_record(raw, P482)
+    assert record is not None
+    assert "120-29074-005" in record["text"]
+    assert record["kind"] == "ocr"
+    assert record["authority"] == mod.SUPPORTING
+    assert record["source_resolved"] is True  # OCR is the literal page text.
+    assert record["ocr_engine"] == "table_ocr_table_candidate_scan"
+    assert record["ocr_confidence"] == 0.95
+
+
+def test_ocr_artifact_record_skips_empty_ocr_pages():
+    mod = load_module()
+    raw = {"page_id": P18, "ocr_text_char_count": 0, "ocr_sample_text": "", "ocr_text_path": None}
+    assert mod._ocr_artifact_record(raw, P18) is None
+
+
+def test_visual_record_from_confirmed_page_summary_schema():
+    mod = load_module()
+    raw = {
+        "page_id": P81,
+        "retrieval_document": {
+            "likely_diagram_subject": "armrest cover assembly",
+            "search_text": "technical_diagram | armrest cover assembly",
+            "figure_refs": ["figure 1 sheet 1"],
+            "part_numbers": ["120-41824-001"],
+            "visual_guidance_only": True,
+        },
+        "_artifact_source": "trace_net_confirmed_image_page_summary_v1_1.jsonl",
+    }
+    record = mod._visual_artifact_record(raw, P81)
+    assert record is not None
+    assert "armrest cover" in record["text"].lower()
+    assert "120-41824-001" in record["part_numbers"]
+    assert record["guidance_only"] is True
+    assert record["source_resolved"] is False  # visual is never independent proof
+
+
+def test_visual_record_from_evidence_pack_figure_only():
+    mod = load_module()
+    raw = {
+        "page_id": P18,
+        "figure": "2",
+        "callout": "",
+        "linked_description": "",
+        "evidence_kind": "unlinked_visual_candidate",
+        "proof_strength": "visual_or_ocr_observation_only_not_proof",
+        "_artifact_source": "trace_net_image_visual_evidence_pack_v1_records.jsonl",
+    }
+    record = mod._visual_artifact_record(raw, P18)
+    assert record is not None
+    assert "2" in record["figure_refs"]
+    assert record["source_resolved"] is False
+
+
+def test_visual_record_none_when_nothing_describable():
+    mod = load_module()
+    assert mod._visual_artifact_record({"page_id": P18}, P18) is None
+
+
+def test_visual_artifact_path_is_a_merged_list(monkeypatch):
+    mod = load_module()
+    monkeypatch.setenv("TRACE_NET_H30_PAGE_VISUAL_ARTIFACT", f"a.jsonl{mod._PATH_SEP}b.jsonl")
+    paths = mod._artifact_paths()
+    assert paths["visuals"] == ["a.jsonl", "b.jsonl"]
+    # single-path sections stay single even if given a separator-free value
+    monkeypatch.setenv("TRACE_NET_H30_PAGE_OCR_ARTIFACT", "only_ocr.jsonl")
+    assert mod._artifact_paths()["ocr"] == ["only_ocr.jsonl"]
+
+
+def test_ocr_and_visual_fill_from_artifacts_by_exact_page(monkeypatch):
+    mod = load_module()
+    graph = load_graph()
+    # A page whose graph node carries no OCR/visual edges: use the nonexistent-in-
+    # graph OCR/visual sections filled purely by artifact indexes for p482.
+    ocr_index = {P482: [{"page_id": P482, "ocr_text_char_count": 20, "ocr_sample_text": "STEP 1 remove bolt", "route_confidence": 0.9}]}
+    vis_index = {P482: [{"page_id": P482, "retrieval_document": {"likely_diagram_subject": "leg structure"}}],
+                 P18: [{"page_id": P18, "retrieval_document": {"likely_diagram_subject": "SHOULD NOT LEAK"}}]}
+    # p482 has graph OCR in the fixture, so artifact OCR must NOT override it.
+    pack = mod.page_content_pack(graph, P482, artifacts={"ocr": ocr_index, "visuals": vis_index})
+    assert pack["page_id"] == P482
+    # graph OCR present -> artifact OCR not used; visual empty in graph -> filled.
+    assert any("STEP 1" in r["text"] for r in pack["ocr"])  # from graph fixture
+    assert pack["telemetry"]["visual_exact_page_match"] is True
+    blob = json.dumps(pack).lower()
+    assert "should not leak" not in blob  # no cross-page bleed from p18
+
+
+def test_page_content_registry_rows_reference_records():
+    mod = load_module()
+    pack = mod.page_content_pack(load_graph(), P18)
+    result = {"evidence_envelope": {"coverage": {"page_content": {"available": True, "pages": [pack]}}}}
+    rows = mod.page_content_registry_rows(result)
+    assert rows, "expected page-content registry rows"
+    classes = {r["class"] for r in rows}
+    assert "page_ocr_text" in classes  # OCR present in fixture
+    # rows reference the underlying record dicts (so ids can be stamped back).
+    rows[0]["record"]["citation_id"] = 7
+    assert any(r.get("citation_id") == 7 for section in ("ocr", "v1_context", "v2_context", "visuals") for r in pack[section])
+
+
 def test_bridge_overlay_adds_no_upstream_or_second_gemma_call(monkeypatch):
     monkeypatch.setenv("TRACE_NET_H30_PAGE_CONTENT_BRIDGE_ENABLED", "1")
     mod = load_module()

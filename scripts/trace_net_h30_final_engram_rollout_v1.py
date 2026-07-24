@@ -370,7 +370,20 @@ def _known_topics(result: Mapping[str, Any]) -> set[str]:
     if atoms.get("document") or atoms.get("manual"):
         known.add("document_family")
 
+    # If the user already named an exact page (page-content bridge found it), the
+    # page/figure/table/document questions are already answered — do not ask them.
+    if _page_content_found(result):
+        known.update({"exact_source_location", "figure_table_item", "document_family"})
+
     return known
+
+
+def _page_content_found(result: Mapping[str, Any]) -> bool:
+    envelope = _mapping(result.get("evidence_envelope"))
+    coverage = _mapping(envelope.get("coverage"))
+    page_content = _mapping(coverage.get("page_content"))
+    pages = page_content.get("pages")
+    return bool(page_content.get("available") and isinstance(pages, list) and pages)
 
 
 def _candidate_count(result: Mapping[str, Any]) -> int:

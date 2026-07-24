@@ -143,6 +143,26 @@ def test_known_manufacturer_is_not_reasked():
     ]
 
 
+def test_exact_page_supplied_suppresses_which_page_followups():
+    module = load_module()
+    sample = result(
+        "semantic_graph_summary_guidance",
+        "document_page_navigation",
+    )
+    # The exact-page content bridge found the requested page.
+    sample["evidence_envelope"]["coverage"] = {
+        "page_content": {
+            "available": True,
+            "pages": [{"page_id": "t_p_120_1176_p000018"}],
+        }
+    }
+    plan = module.build_information_gain_followups(sample, maximum=3)
+    topics = [row["topic"] for row in plan["records"]]
+    assert "exact_source_location" not in topics
+    assert "figure_table_item" not in topics
+    assert "document_family" not in topics
+
+
 def test_conflict_questions_request_source_resolution():
     module = load_module()
     sample = result(

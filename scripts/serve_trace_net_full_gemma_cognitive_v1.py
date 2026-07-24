@@ -20,10 +20,13 @@ import urllib.error
 import urllib.request
 import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
+from typing import Any, Dict, List, Mapping, MutableMapping, Optional, Sequence, Tuple
 
 from scripts.trace_net_h30_cold_start_streaming_v1 import install_gemma_latency_support
-from scripts.trace_net_h30_page_content_bridge_v1 import render_page_content_prompt
+from scripts.trace_net_h30_page_content_bridge_v1 import (
+    page_content_registry_rows,
+    render_page_content_prompt,
+)
 from scripts.trace_net_h30_engram_skill_shadow_v1 import install_engram_skill_shadow
 from scripts.trace_net_h30_evidence_aware_answer_modes_v1 import install_evidence_aware_answer_modes
 from scripts.trace_net_h30_final_engram_rollout_v1 import install_final_engram_rollout
@@ -294,10 +297,62 @@ def citation_registry(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
     add(envelope.get("source_resolution"), "source_resolution", "guidance",
         ("resolution_status", "value", "field_name"))
 
+    # Each exact-page content record is a SEPARATE citable entry so a page answer
+    # can cite the specific record backing each sentence. OCR/table are source
+    # "supporting"; V1/V2/V3 and unresolved visual are "guidance". None can prove
+    # approval/fit/effectivity/safety/interchangeability.
+    page_rows = page_content_registry_rows(result)
+    for row in page_rows:
+        record = row["record"]
+        authority = row["authority"]
+        supporting = authority == "supporting"
+        own_page = compact(record.get("page_id"), 200)
+        registry.append({
+            "class": row["class"],
+            "authority": authority,
+            "can_prove_claims": False,
+            "guidance_only": not supporting,
+            "claim_scope": "source_supporting" if supporting else "candidate_or_guidance",
+            "candidate_value": compact(record.get("candidate_value"), 200),
+            "page_id": own_page,
+            "page_ids": [own_page] if own_page else [],
+            "ata": compact(record.get("ata"), 100),
+            "ata_codes": _as_str_list(record.get("ata")),
+            "nomenclature": _as_str_list(record.get("nomenclature")),
+            "source_resolved": bool(record.get("source_resolved")),
+            "field_name": compact(record.get("field_name") or row["kind"], 200),
+            "value": compact(record.get("text"), 400),
+            "page_content": True,
+            "page_content_kind": row["kind"],
+        })
+
     registry = registry[:CITATION_REGISTRY_LIMIT]
     for index, entry in enumerate(registry, 1):
         entry["citation_id"] = index
+    # Stamp the assigned id back onto each page-content record so the prompt
+    # renderer can print it and telemetry can report which ids are page content.
+    page_content_ids: List[int] = []
+    page_entries = [entry for entry in registry if entry.get("page_content")]
+    for row, entry in zip(page_rows, page_entries):
+        row["record"]["citation_id"] = entry["citation_id"]
+        row["record"]["citation_class"] = entry["class"]
+        page_content_ids.append(entry["citation_id"])
+    _record_page_content_citation_ids(result, page_content_ids)
     return registry
+
+
+def _record_page_content_citation_ids(result: Mapping[str, Any], ids: Sequence[int]) -> None:
+    """Write the assigned page-content citation ids into the coverage telemetry so
+    the run reports which registry entries are exact-page content."""
+    envelope = result.get("evidence_envelope") if isinstance(result.get("evidence_envelope"), Mapping) else None
+    if not isinstance(envelope, MutableMapping):
+        return
+    coverage = envelope.get("coverage")
+    page_content = coverage.get("page_content") if isinstance(coverage, Mapping) else None
+    telemetry = page_content.get("telemetry") if isinstance(page_content, Mapping) else None
+    if isinstance(telemetry, MutableMapping):
+        telemetry["page_content_registry_count"] = len(ids)
+        telemetry["page_content_citation_ids"] = list(ids)
 
 
 def citation_registry_digest(registry: Sequence[Mapping[str, Any]]) -> str:
@@ -333,6 +388,27 @@ def validate_answer(
             extra = extra_allowed.get(key)
             if extra:
                 allowed[key] = set(allowed[key]) | set(extra)
+
+    # Exact-page OCR/table/context is the literal text of the requested page, so
+    # any part/ATA/page id printed on it is a legitimate mention (not fabrication).
+    # This never relaxes the dangerous-claim, authority, or citation gates below.
+    page_content_present = any(entry.get("page_content") for entry in registry)
+    for key in ("parts", "atas", "pages"):
+        allowed[key] = set(allowed.get(key) or set())
+    for entry in registry:
+        if not entry.get("page_content"):
+            continue
+        blob = " ".join([
+            str(entry.get("value") or ""),
+            " ".join(entry.get("nomenclature") or []),
+            str(entry.get("ata") or ""),
+        ])
+        allowed["parts"] |= {v.upper() for v in PART_RE.findall(blob)}
+        allowed["atas"] |= {v.upper() for v in ATA_RE.findall(blob)}
+        allowed["pages"] |= {v.upper() for v in PAGE_RE.findall(blob)}
+        for pid in entry.get("page_ids") or []:
+            if pid:
+                allowed["pages"].add(str(pid).upper())
 
     if not text:
         failures.append("empty_answer")
@@ -376,6 +452,21 @@ def validate_answer(
                 failures.append("uncited_factual_line")
                 break
 
+    # For an exact-page answer (no direct proof bucket), require a citation on any
+    # line that asserts a concrete page identifier (part/ATA/page id). Disclaimer
+    # and framing lines carry no identifier and are not treated as page facts.
+    if page_content_present and not direct:
+        for line in (item.strip() for item in text.splitlines()):
+            lower_line = line.lower()
+            if not line or line.startswith("#") or lower_line.startswith(("source", "note:", "limitation:")):
+                continue
+            asserts_identifier = bool(
+                PART_RE.search(line) or ATA_RE.search(line) or PAGE_RE.search(line)
+            )
+            if asserts_identifier and not CITATION_RE.search(line):
+                failures.append("uncited_page_content_identifier")
+                break
+
     lower = text.lower()
     if any(term in lower for term in DANGEROUS_TERMS) and not authority:
         failures.append("dangerous_claim_without_explicit_authority")
@@ -401,6 +492,7 @@ def build_prompt(
     envelope = result.get("evidence_envelope") if isinstance(result.get("evidence_envelope"), Mapping) else {}
     registry = list(registry) if registry is not None else citation_registry(result)
     proof_lines: List[str] = []
+    supporting_lines: List[str] = []
     guidance_lines: List[str] = []
     for row in registry:
         line = (
@@ -411,6 +503,8 @@ def build_prompt(
         )
         if row.get("can_prove_claims"):
             proof_lines.append(line)
+        elif row.get("authority") == "supporting":
+            supporting_lines.append(line)
         else:
             guidance_lines.append(line)
 
@@ -445,6 +539,9 @@ EXACT PAGE CONTENT — explain the exact requested page from this; cite its page
 
 DIRECTLY SUPPORTED EVIDENCE — proof; a cited claim here may be stated as confirmed
 {chr(10).join(proof_lines) if proof_lines else 'NONE'}
+
+SUPPORTING PAGE SOURCE — literal OCR/table text of the exact page; may be quoted/described as what the page says, but does NOT by itself prove approval, fit, effectivity, safety, or interchangeability
+{chr(10).join(supporting_lines) if supporting_lines else 'NONE'}
 
 CANDIDATE / GUIDANCE EVIDENCE — guidance only; cite as candidate/possible, never confirmed
 {chr(10).join(guidance_lines) if guidance_lines else 'NONE'}

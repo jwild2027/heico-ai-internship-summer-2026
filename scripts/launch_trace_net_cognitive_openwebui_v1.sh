@@ -78,6 +78,11 @@ PAGE_CONTENT_BRIDGE_ENABLED="${TRACE_NET_H30_PAGE_CONTENT_BRIDGE_ENABLED:-1}"
 PAGE_V2_ARTIFACT="${TRACE_NET_H30_PAGE_V2_ARTIFACT:-$REPO/local_data/organization/trace_net/page_context_v2/trace_net_page_context_v2.json}"
 PAGE_V3_ARTIFACT="${TRACE_NET_H30_PAGE_V3_ARTIFACT:-$REPO/local_data/organization/trace_net/v3_page_intelligence/trace_net_v3_page_intelligence_cards_v1.json}"
 PAGE_TABLE_ARTIFACT="${TRACE_NET_H30_PAGE_TABLE_ARTIFACT:-$REPO/local_data/organization/trace_net/table_exact_search_adapter/trace_net_table_exact_search_documents_v1.jsonl}"
+# Per-page OCR text (tesseract full scan) and visual guidance. Visual guidance is
+# merged across several real artifacts (path-separator list). Point these at the
+# data repo when the canary repo does not itself hold local_data.
+PAGE_OCR_ARTIFACT="${TRACE_NET_H30_PAGE_OCR_ARTIFACT:-$REPO/local_data/organization/trace_net/ocr_route_scan_pack_tesseract_full/trace_net_ocr_route_scan_pack_v1_records.jsonl}"
+PAGE_VISUAL_ARTIFACT="${TRACE_NET_H30_PAGE_VISUAL_ARTIFACT:-$REPO/local_data/organization/trace_net/confirmed_image_page_summary_v1_1/trace_net_confirmed_image_page_summary_v1_1.jsonl:$REPO/local_data/organization/trace_net/confirmed_image_llava_observations_v1_1_sample/trace_net_confirmed_image_llava_observations_v1_1.jsonl:$REPO/local_data/organization/trace_net/image_visual_evidence_pack_v1/trace_net_image_visual_evidence_pack_v1_records.jsonl:$REPO/local_data/organization/trace_net/corrected_visual_context_builder_v35_4/trace_net_corrected_visual_context_cards_v35_4.jsonl}"
 RUN_CRITICAL_LIVE_ROUTE_SMOKE="${TRACE_NET_RUN_CRITICAL_LIVE_ROUTE_SMOKE:-0}"
 
 case "$PLANNER_ROLLOUT_MODE" in
@@ -313,6 +318,8 @@ export TRACE_NET_H30_PAGE_CONTENT_BRIDGE_ENABLED="$PAGE_CONTENT_BRIDGE_ENABLED"
 export TRACE_NET_H30_PAGE_V2_ARTIFACT="$PAGE_V2_ARTIFACT"
 export TRACE_NET_H30_PAGE_V3_ARTIFACT="$PAGE_V3_ARTIFACT"
 export TRACE_NET_H30_PAGE_TABLE_ARTIFACT="$PAGE_TABLE_ARTIFACT"
+export TRACE_NET_H30_PAGE_OCR_ARTIFACT="$PAGE_OCR_ARTIFACT"
+export TRACE_NET_H30_PAGE_VISUAL_ARTIFACT="$PAGE_VISUAL_ARTIFACT"
 exec "$PYTHON" -u -B scripts/serve_trace_net_cognitive_router_v1.py \\
   --host 127.0.0.1 \\
   --port 8118 \\
