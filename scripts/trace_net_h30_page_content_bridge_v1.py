@@ -43,6 +43,11 @@ import threading
 from pathlib import Path
 from typing import Any, Dict, List, Mapping, MutableMapping, Optional, Sequence, Tuple
 
+from scripts.trace_net_h30_layout_aware_ocr_v1 import (
+    reconstruct_layout_aware_ocr,
+    render_layout_reconstruction,
+)
+
 try:
     from tiff.trace_net_graph_query_helper_v1 import (
         collect_page_parts,
@@ -250,6 +255,14 @@ def _ocr_artifact_record(raw: Mapping[str, Any], pid: str) -> Optional[Dict[str,
     conf = raw.get("route_confidence")
     record = _fields(raw, "ocr", "artifact", SUPPORTING, pid)
     record["text"] = text
+    layout = reconstruct_layout_aware_ocr(
+        text,
+        word_boxes=(raw.get("ocr_words") or raw.get("words") or raw.get("tokens")),
+        page_route=(raw.get("accepted_route") or raw.get("route") or raw.get("primary_route")),
+    )
+    if layout.get("reconstruction_available"):
+        record["layout_reconstruction"] = layout
+        record["layout_reconstruction_text"] = render_layout_reconstruction(layout)
     record["ocr_engine"] = _compact(raw.get("route_processor") or raw.get("module") or "tesseract", 100)
     record["ocr_confidence"] = conf if isinstance(conf, (int, float)) else None
     record["ocr_char_count"] = char_count
@@ -628,6 +641,15 @@ def page_content_pack(graph: Any, page_id_query: str, *, artifacts: Optional[Map
         sections["v2_context"], sections["v3_page_intelligence"],
         sections["tables"], sections["ocr"], sections["visuals"],
     )
+    # Graph-backed OCR records may not have passed through the artifact
+    # normalizer. Attach the same conservative derived layout view here.
+    for record in ocr:
+        if not isinstance(record, dict) or record.get("layout_reconstruction"):
+            continue
+        layout = reconstruct_layout_aware_ocr(record.get("text"), page_route=record.get("role"))
+        if layout.get("reconstruction_available"):
+            record["layout_reconstruction"] = layout
+            record["layout_reconstruction_text"] = render_layout_reconstruction(layout)
     # Conflicts are detected across the full set before capping, then each
     # section is bounded so the prompt stays a reasonable size.
     conflicts = _detect_conflicts(v1 + v2 + v3 + ocr + tables + visuals)
@@ -686,6 +708,8 @@ def _telemetry(v1, v2, v3, ocr, tables, visuals, *, exact: bool, pid: str = "", 
         "ocr_exact_page_match": bool(exact and ocr),
         "visual_exact_page_match": bool(exact and visuals),
         "page_content_record_count": len(records),
+        "layout_reconstruction_record_count": sum(1 for r in ocr if r.get("layout_reconstruction_text")),
+        "layout_reconstruction_row_count": sum(len((r.get("layout_reconstruction") or {}).get("rows") or []) for r in ocr),
         # Assigned by the single-writer citation registry; placeholders here.
         "page_content_registry_count": 0,
         "page_content_citation_ids": [],
@@ -738,6 +762,7 @@ def install_page_content_bridge(router: MutableMapping[str, Any]) -> None:
             "ocr_record_count": 0, "table_record_count": 0, "visual_record_count": 0,
             "graph_record_count": 0, "artifact_fallback_record_count": 0,
             "cross_page_record_count": 0, "page_content_record_count": 0,
+            "layout_reconstruction_record_count": 0, "layout_reconstruction_row_count": 0,
         }
         ocr_exact = False
         visual_exact = False
@@ -808,6 +833,9 @@ def install_page_content_bridge(router: MutableMapping[str, Any]) -> None:
             "page_content_bridge_ocr_artifact_count": len(_artifact_paths().get("ocr", [])),
             "page_content_bridge_visual_artifact_count": len(_artifact_paths().get("visuals", [])),
             "page_content_bridge_adds_gemma_call": False,
+            "page_content_bridge_layout_aware_ocr": True,
+            "page_content_bridge_layout_is_derived_guidance": True,
+            "page_content_bridge_infers_blur_from_ocr": False,
             "answer_permission": False,
             "source_truth_mutation_allowed": False,
         })
@@ -885,6 +913,8 @@ def render_page_content_prompt(result: Mapping[str, Any]) -> str:
                 extra += f" (callouts {', '.join(r['callouts'])})"
             if r.get("ocr_engine"):
                 extra += f" (ocr:{r['ocr_engine']})"
+            if r.get("layout_reconstruction_text"):
+                extra += f" (layout reconstruction: {_compact(r.get('layout_reconstruction_text'), 900)})"
             items.append(f"{tag}{_compact(r.get('text'), limit)}{extra}")
         return " || ".join(items) if items else "none"
 

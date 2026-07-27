@@ -15,6 +15,11 @@ from __future__ import annotations
 import re
 from typing import Any, Dict, Iterable, List, Mapping, MutableMapping, Optional, Sequence, Tuple
 
+from scripts.trace_net_h30_layout_aware_ocr_v1 import (
+    format_layout_row,
+    reconstruct_layout_aware_ocr,
+)
+
 MODULE = "trace_net_h30_answer_quality_v1"
 STATUS = "TRACE_NET_H30_ANSWER_QUALITY_V1"
 PATCH_ID = "trace_net_h30_answer_quality_patch_v1"
@@ -602,11 +607,23 @@ def _render_ocr_recovery(query: str, registry: Sequence[Mapping[str, Any]]) -> s
             lines.append(f"- Matched OCR text: “{clue}” {citation}")
         elif clue:
             lines.append(f"- Search clue: “{clue}”")
-        if evidence_text:
+
+        layout = reconstruct_layout_aware_ocr(evidence_text)
+        if layout.get("reconstruction_available"):
+            if layout.get("table_kind") == "list_of_effective_pages":
+                lines.append("- The clue appears to combine cells from a List of Effective Pages table rather than one continuous sentence.")
+            else:
+                lines.append("- The OCR appears to combine values from separate table columns or rows.")
+            for row in layout.get("rows") or []:
+                rendered_row = format_layout_row(row)
+                if rendered_row:
+                    lines.append(f"- Reconstructed row: {rendered_row} {citation}")
+            lines.append("- This is a layout reconstruction from OCR, not a scan-quality or blur classification.")
+        elif evidence_text:
             excerpt = _compact(evidence_text, 420)
             if not _is_internal_text(excerpt):
                 lines.append(f"- Evidence excerpt: {excerpt} {citation}")
-        lines.append("- The page match is useful for locating the scan, but blurred or broken characters should be checked against the page image.")
+        lines.append("- OCR reading order and broken characters should be checked against the page image; no scan-quality condition is inferred from OCR alone.")
     else:
         lines.append("No indexed page matched the supplied OCR clue.")
     return "\n".join(lines).strip()
@@ -799,6 +816,9 @@ def install_answer_quality(module: MutableMapping[str, Any]) -> None:
             "ocr_summary_enabled": True,
             "graph_direct_answer_enabled": True,
             "ocr_direct_answer_enabled": True,
+            "layout_aware_ocr_reconstruction_enabled": True,
+            "layout_reconstruction_is_guidance_only": True,
+            "scan_quality_inferred_from_ocr": False,
             "final_validation_accepted": bool(validation.get("accepted")),
             "final_validation_failures": list(validation.get("failures") or []),
             "gemma_call_count_added": 0,
@@ -823,6 +843,8 @@ def install_answer_quality(module: MutableMapping[str, Any]) -> None:
             "answer_quality_final_revalidation": True,
             "answer_quality_internal_status_hidden": True,
             "answer_quality_ocr_summary": True,
+            "answer_quality_layout_aware_ocr": True,
+            "answer_quality_infers_blur_from_ocr": False,
             "answer_quality_nomenclature_cleaning": True,
             "answer_quality_specific_followups_suppressed": True,
             "answer_quality_adds_gemma_call": False,
