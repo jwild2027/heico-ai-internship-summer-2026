@@ -35,6 +35,9 @@ from scripts.trace_net_h30_answer_quality_v1 import install_answer_quality
 from scripts.trace_net_h30_chatgpt_answer_presentation_v1 import (
     install_chatgpt_answer_presentation,
 )
+from scripts.trace_net_h30_chatgpt_answer_presentation_v1_1 import (
+    install_chatgpt_answer_presentation_v1_1,
+)
 from scripts.trace_net_h30_engineer_answer_contract_v1 import (
     apply_engineer_answer_contract,
     clean_engineer_text,
@@ -1039,6 +1042,7 @@ install_exact_page_answer_mode(globals())
 install_final_engram_rollout(globals())
 install_answer_quality(globals())
 install_chatgpt_answer_presentation(globals())
+install_chatgpt_answer_presentation_v1_1(globals())
 
 
 if __name__ == "__main__":
