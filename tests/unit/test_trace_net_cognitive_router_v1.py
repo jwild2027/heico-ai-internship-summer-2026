@@ -163,7 +163,8 @@ def make_runtime(mod):
     )
 
 
-def test_exact_identifier_cross_route_recovery_uses_matching_candidate_only():
+def test_exact_identifier_cross_route_recovery_uses_matching_candidate_only(monkeypatch):
+    monkeypatch.setenv("TRACE_NET_H30_GRAPH_RETRIEVAL_ENABLED", "0")
     mod = load()
     runtime = make_runtime(mod)
     result = runtime.process({"query": "Find part 120-41824-003"})
