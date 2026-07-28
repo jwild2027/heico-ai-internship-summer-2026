@@ -1,10 +1,17 @@
 {
   "contract_id": "trace_net_h30_tiff_grounded20_public_answer_golden_v1",
-  "version": "v1",
+  "version": "v1.1",
   "purpose": "Protect the clean public Answer / Evidence / Limits contract for the stable TIFF-grounded 20-question benchmark without freezing internal telemetry.",
   "global": {
-    "required_headings": ["## Answer", "## Evidence"],
-    "allowed_headings": ["## Answer", "## Evidence", "## Limits"],
+    "required_headings": [
+      "## Answer",
+      "## Evidence"
+    ],
+    "allowed_headings": [
+      "## Answer",
+      "## Evidence",
+      "## Limits"
+    ],
     "require_post_validation_accepted": true,
     "forbidden_text": [
       "## Engineering confidence",
@@ -41,8 +48,17 @@
       "question_id": "q01",
       "category": "exact_part",
       "question": "Find part 120-20970-001.",
-      "required_text": ["120-20970-001", "Structure Armrest", "t_p_120_1176_p000343", "record remains a candidate"],
-      "required_headings": ["## Answer", "## Evidence", "## Limits"],
+      "required_text": [
+        "120-20970-001",
+        "Structure Armrest",
+        "t_p_120_1176_p000343",
+        "record remains a candidate"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence",
+        "## Limits"
+      ],
       "require_limits": true,
       "require_answer_citation": true
     },
@@ -50,82 +66,181 @@
       "question_id": "q02",
       "category": "exact_part",
       "question": "Find part 120-20970-003.",
-      "required_text": ["120-20970-003", "t_p_120_1176_p000344", "t_p_120_1176_p000353", "Structure Armrest", "Some associations remain guidance-level"],
-      "required_headings": ["## Answer", "## Evidence", "## Limits"],
+      "required_text": [
+        "120-20970-003",
+        "t_p_120_1176_p000344",
+        "t_p_120_1176_p000353",
+        "Structure Armrest",
+        "Some associations remain guidance-level"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence",
+        "## Limits"
+      ],
       "require_limits": true,
       "require_answer_citation": true,
-      "forbidden_text": ["Some listed nomenclature or page associations remain guidance-level"]
+      "forbidden_text": [
+        "Some listed nomenclature or page associations remain guidance-level"
+      ]
     },
     {
       "question_id": "q03",
       "category": "exact_part",
       "question": "Find part 120-26948-003.",
-      "required_text": ["120-26948-003", "t_p_120_1176_p000030", "t_p_120_1176_p000029", "Support", "Some associations remain guidance-level"],
-      "required_headings": ["## Answer", "## Evidence", "## Limits"],
+      "required_text": [
+        "120-26948-003",
+        "t_p_120_1176_p000030",
+        "t_p_120_1176_p000029",
+        "Support",
+        "Some associations remain guidance-level"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence",
+        "## Limits"
+      ],
       "require_limits": true,
       "require_answer_citation": true,
-      "forbidden_text": ["Some listed nomenclature or page associations remain guidance-level"]
+      "forbidden_text": [
+        "Some listed nomenclature or page associations remain guidance-level"
+      ]
     },
     {
       "question_id": "q04",
       "category": "partial_prefix",
       "question": "I only remember that the part number starts with 12029. Show matching candidates and source pages.",
-      "required_text": ["Matching candidates are listed below", "120-29067-005", "120-29068-003"],
-      "required_headings": ["## Answer", "## Evidence", "## Limits"],
+      "required_text": [
+        "Matching candidates are listed below",
+        "120-29067-005",
+        "120-29068-003"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence",
+        "## Limits"
+      ],
       "require_limits": true
     },
     {
       "question_id": "q05",
       "category": "partial_contains",
       "question": "I only remember that the part number contains 29067. Show matching candidates and source pages.",
-      "required_text": ["Matching candidates are listed below", "120-29067-001", "120-29067-005", "Structure Assembly"],
-      "required_headings": ["## Answer", "## Evidence", "## Limits"],
+      "required_text": [
+        "Matching candidates are listed below",
+        "120-29067-001",
+        "120-29067-005",
+        "Structure Assembly"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence",
+        "## Limits"
+      ],
       "require_limits": true,
-      "forbidden_text": ["Structure Assyv", "Structure Assembly Structure Assembly"]
+      "forbidden_text": [
+        "Structure Assyv",
+        "Structure Assembly Structure Assembly"
+      ]
     },
     {
       "question_id": "q06",
       "category": "partial_suffix",
       "question": "I only remember that the part number ends with 005. Show matching candidates and source pages.",
-      "required_text": ["Matching candidates are listed below", "120-36833-005", "120-29067-005", "120-29074-005"],
-      "required_headings": ["## Answer", "## Evidence", "## Limits"],
+      "required_text": [
+        "Matching candidates are listed below",
+        "120-36833-005",
+        "120-29067-005",
+        "120-29074-005"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence",
+        "## Limits"
+      ],
       "require_limits": true,
       "require_answer_citation": true,
-      "forbidden_text": ["Covered Part Number", "Using The Installed", "ASSYV"]
+      "forbidden_text": [
+        "Covered Part Number",
+        "Using The Installed",
+        "ASSYV"
+      ]
     },
     {
       "question_id": "q07",
       "category": "nomenclature",
       "question": "Find the pin in the document set. Show the best matching part candidates and connected source pages.",
-      "required_text": ["strongest nomenclature matches", "120-48023-001", "Pin Attach", "MS16562-216", "Pin Spring"],
-      "required_headings": ["## Answer", "## Evidence", "## Limits"],
+      "required_text": [
+        "strongest nomenclature matches",
+        "120-48023-001",
+        "Pin Attach",
+        "MS16562-216",
+        "Pin Spring"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence",
+        "## Limits"
+      ],
       "require_limits": true,
-      "forbidden_identifiers": ["120-29068-025"]
+      "forbidden_identifiers": [
+        "120-29068-025"
+      ]
     },
     {
       "question_id": "q08",
       "category": "nomenclature",
       "question": "Find the ring in the document set. Show the best matching part candidates and connected source pages.",
-      "required_text": ["strongest nomenclature matches", "120-48024-001", "Ring Locking", "t_p_120_1176_p000055"],
-      "required_headings": ["## Answer", "## Evidence", "## Limits"],
+      "required_text": [
+        "strongest nomenclature matches",
+        "120-48024-001",
+        "Ring Locking",
+        "t_p_120_1176_p000055"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence",
+        "## Limits"
+      ],
       "require_limits": true,
-      "forbidden_identifiers": ["120-29068-025"]
+      "forbidden_identifiers": [
+        "120-29068-025"
+      ]
     },
     {
       "question_id": "q09",
       "category": "nomenclature",
       "question": "Find the latch in the document set. Show the best matching part candidates and connected source pages.",
-      "required_text": ["strongest nomenclature matches", "1120-34691-001", "Cover Latch Snack Table Assembly", "120-61610-001"],
-      "required_headings": ["## Answer", "## Evidence", "## Limits"],
+      "required_text": [
+        "strongest nomenclature matches",
+        "1120-34691-001",
+        "Cover Latch Snack Table Assembly",
+        "120-61610-001"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence",
+        "## Limits"
+      ],
       "require_limits": true,
-      "forbidden_identifiers": ["120-29068-025"]
+      "forbidden_identifiers": [
+        "120-29068-025"
+      ]
     },
     {
       "question_id": "q10",
       "category": "ata_system",
       "question": "Find the relevant parts and source pages in ATA 25-21-00. Summarize the strongest available evidence.",
-      "required_text": ["ATA `25-21-00`", "t_p_120_1176_p000071", "t_p_120_1176_p000005"],
-      "required_headings": ["## Answer", "## Evidence", "## Limits"],
+      "required_text": [
+        "ATA `25-21-00`",
+        "t_p_120_1176_p000071",
+        "t_p_120_1176_p000005"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence",
+        "## Limits"
+      ],
       "require_limits": true,
       "require_answer_citation": true
     },
@@ -133,37 +248,82 @@
       "question_id": "q11",
       "category": "ata_system",
       "question": "Find the relevant parts and source pages in ATA 51-25-00. Summarize the strongest available evidence.",
-      "required_text": ["ATA `51-25-00`", "t_p_120_1176_p000047", "t_p_120_1176_p000077"],
-      "required_headings": ["## Answer", "## Evidence", "## Limits"],
+      "required_text": [
+        "ATA `51-25-00`",
+        "t_p_120_1176_p000047",
+        "source-location leads"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence",
+        "## Limits"
+      ],
       "require_limits": true,
-      "require_answer_citation": true
+      "require_answer_citation": true,
+      "phase3_contract_note": "The stale p000077 expectation was removed because Phase 2 rejected its semantic record as an explicit ATA mismatch; Phase 3 requires honest source-location framing."
     },
     {
       "question_id": "q12",
       "category": "table_ipl",
       "question": "Locate part 120-26948-003 in the IPL table.",
-      "required_text": ["120-26948-003", "IPL/table evidence", "t_p_120_1176_p000030", "Source-backed record"],
-      "required_headings": ["## Answer", "## Evidence"],
+      "required_text": [
+        "120-26948-003",
+        "IPL/table evidence",
+        "t_p_120_1176_p000030",
+        "Source-backed record"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence"
+      ],
       "require_limits": false,
       "require_answer_citation": true,
-      "forbidden_text": ["MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST", "CH-SEC-UN-FIG", "PER STOCK"]
+      "forbidden_text": [
+        "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+        "CH-SEC-UN-FIG",
+        "PER STOCK"
+      ]
     },
     {
       "question_id": "q13",
       "category": "table_ipl",
       "question": "Locate part 120-29067-035 in the IPL table.",
-      "required_text": ["120-29067-035", "IPL/table evidence", "t_p_120_1176_p000031", "Source-backed record"],
-      "required_headings": ["## Answer", "## Evidence"],
+      "required_text": [
+        "120-29067-035",
+        "IPL/table evidence",
+        "t_p_120_1176_p000031",
+        "Source-backed record"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence"
+      ],
       "require_limits": false,
       "require_answer_citation": true,
-      "forbidden_text": ["MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST", "CH-SEC-UN-FIG", "PER STOCK"]
+      "forbidden_text": [
+        "MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST",
+        "CH-SEC-UN-FIG",
+        "PER STOCK"
+      ]
     },
     {
       "question_id": "q14",
       "category": "visual_figure",
       "question": "Show the diagram on page t_p_120_1176_p000018.",
-      "required_text": ["t_p_120_1176_p000018", "Figure 2", "Seat backrest", "Seat belt", "Ashtray", "120TP250002.MCE", "does not resolve every numbered callout"],
-      "required_headings": ["## Answer", "## Evidence", "## Limits"],
+      "required_text": [
+        "t_p_120_1176_p000018",
+        "Figure 2",
+        "Seat backrest",
+        "Seat belt",
+        "Ashtray",
+        "120TP250002.MCE",
+        "does not resolve every numbered callout"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence",
+        "## Limits"
+      ],
       "require_limits": true,
       "require_answer_citation": true
     },
@@ -171,18 +331,41 @@
       "question_id": "q15",
       "category": "visual_figure",
       "question": "Show the diagram on page t_p_120_1176_p000081.",
-      "required_text": ["t_p_120_1176_p000081", "Single passenger seat", "Figure 1 Sheet 1", "120-41824-001/501", "120TP250014.MCE"],
-      "required_headings": ["## Answer", "## Evidence"],
+      "required_text": [
+        "t_p_120_1176_p000081",
+        "Single passenger seat",
+        "Figure 1 Sheet 1",
+        "120-41824-001/501",
+        "120TP250014.MCE"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence"
+      ],
       "require_limits": false,
       "require_answer_citation": true,
-      "forbidden_text": ["Visual summary:", "120-41824-0, 25-21-00"]
+      "forbidden_text": [
+        "Visual summary:",
+        "120-41824-0, 25-21-00"
+      ]
     },
     {
       "question_id": "q16",
       "category": "procedure",
       "question": "What procedure is described on page t_p_120_1176_p000482?",
-      "required_text": ["t_p_120_1176_p000482", "Continuation — c.", "Sequence 2 — a.", "120-29073-006", "120-29919-001", "not reproduced on this page"],
-      "required_headings": ["## Answer", "## Evidence", "## Limits"],
+      "required_text": [
+        "t_p_120_1176_p000482",
+        "Continuation — c.",
+        "Sequence 2 — a.",
+        "120-29073-006",
+        "120-29919-001",
+        "not reproduced on this page"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence",
+        "## Limits"
+      ],
       "require_limits": true,
       "require_answer_citation": true
     },
@@ -190,39 +373,80 @@
       "question_id": "q17",
       "category": "ocr_recovery",
       "question": "Locate the scanned page containing this OCR clue: '- Apr 10/06 25-21-00 607 Sep 30/98 25-LEP'. Reconstruct the surrounding text and table relationships, and report any uncertainty.",
-      "required_text": ["t_p_120_1176_p000005", "ATA 25-21-00 — manual page 607 — dated Sep 30/98", "Section 25-LEP — dated Apr 10/06", "layout reconstruction from OCR", "not a scan-quality or blur classification"],
-      "required_headings": ["## Answer", "## Evidence", "## Limits"],
+      "required_text": [
+        "t_p_120_1176_p000005",
+        "ATA 25-21-00 — manual page 607 — dated Sep 30/98",
+        "Section 25-LEP — dated Apr 10/06",
+        "layout reconstruction from OCR",
+        "not a scan-quality or blur classification"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence",
+        "## Limits"
+      ],
       "require_limits": true,
       "require_answer_citation": true,
-      "forbidden_text": ["Matched OCR text", "blurred scan"]
+      "forbidden_text": [
+        "Matched OCR text",
+        "blurred scan"
+      ]
     },
     {
       "question_id": "q18",
       "category": "graph_relationship",
       "question": "What assembly is connected to part 120-20970-001?",
-      "required_text": ["No explicit parent-assembly relationship", "120-20970-001", "Structure Armrest", "t_p_120_1176_p000343", "does not establish a parent-assembly relationship"],
-      "required_headings": ["## Answer", "## Evidence", "## Limits"],
+      "required_text": [
+        "No explicit parent-assembly relationship",
+        "120-20970-001",
+        "Structure Armrest",
+        "t_p_120_1176_p000343",
+        "does not establish a parent-assembly relationship"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence",
+        "## Limits"
+      ],
       "require_limits": true
     },
     {
       "question_id": "q19",
       "category": "negative_part",
       "question": "Find part 999-99999-999.",
-      "required_text": ["No indexed match was found", "999-99999-999", "No matching indexed part record was returned"],
-      "required_headings": ["## Answer", "## Evidence"],
+      "required_text": [
+        "No indexed match was found",
+        "999-99999-999",
+        "No matching indexed part record was returned"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence"
+      ],
       "require_limits": false,
       "require_identifier_lines_cited": false,
-      "forbidden_text": ["[1]"]
+      "forbidden_text": [
+        "[1]"
+      ]
     },
     {
       "question_id": "q20",
       "category": "negative_page",
       "question": "Open page t_p_120_1176_p999999 and explain what it contains.",
-      "required_text": ["t_p_120_1176_p999999", "was not found in the indexed document set", "no other page was substituted"],
-      "required_headings": ["## Answer", "## Evidence"],
+      "required_text": [
+        "t_p_120_1176_p999999",
+        "was not found in the indexed document set",
+        "no other page was substituted"
+      ],
+      "required_headings": [
+        "## Answer",
+        "## Evidence"
+      ],
       "require_limits": false,
       "require_identifier_lines_cited": false,
-      "forbidden_text": ["[1]"]
+      "forbidden_text": [
+        "[1]"
+      ]
     }
   ]
 }

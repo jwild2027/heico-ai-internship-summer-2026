@@ -107,6 +107,8 @@ for required in \
   scripts/trace_net_h30_typed_evidence_envelope_v1.py \
   scripts/trace_net_h30_claim_ready_evidence_v1.py \
   scripts/check_trace_net_h30_claim_ready_evidence_v1.py \
+  scripts/trace_net_h30_content_reconstruction_v1.py \
+  scripts/check_trace_net_h30_content_reconstruction_v1.py \
   scripts/trace_net_h30_evidence_aware_answer_modes_v1.py \
   scripts/trace_net_h30_exact_page_answer_mode_v1.py \
   scripts/trace_net_h30_answer_quality_v1.py \
@@ -285,6 +287,8 @@ echo "compile_status=PASS"
   tests/unit/test_trace_net_engram_skill_planner_guidance_v1.py \
   tests/unit/test_trace_net_h30_typed_evidence_envelope_v1.py \
   tests/unit/test_trace_net_h30_claim_ready_evidence_v1.py \
+  tests/unit/test_trace_net_h30_content_reconstruction_v1.py \
+  tests/unit/test_check_trace_net_h30_content_reconstruction_v1.py \
   tests/unit/test_trace_net_h30_evidence_aware_answer_modes_v1.py \
   tests/unit/test_trace_net_h30_exact_page_answer_integration_v1.py \
   tests/unit/test_trace_net_h30_answer_quality_v1.py \

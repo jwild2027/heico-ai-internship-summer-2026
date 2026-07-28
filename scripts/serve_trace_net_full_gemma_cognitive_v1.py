@@ -42,6 +42,10 @@ from scripts.trace_net_h30_chatgpt_answer_presentation_v1_1 import (
 from scripts.trace_net_h30_chatgpt_answer_presentation_v1_2 import (
     install_chatgpt_answer_presentation_v1_2,
 )
+# TRACE_NET_H30_PHASE3_CONTENT_RECONSTRUCTION_V1_IMPORT
+from scripts.trace_net_h30_content_reconstruction_v1 import (
+    install_content_reconstruction,
+)
 # TRACE_NET_H30_PHASE1_PUBLIC_ANSWER_CONTRACT_V1_IMPORT
 from scripts.trace_net_h30_public_answer_contract_v1 import (
     install_public_answer_contract,
@@ -324,6 +328,8 @@ def synthesis_allowed_identifiers(query: str, result: Mapping[str, Any]) -> Dict
         "candidate_evidence": candidate_evidence(result),
         "visual_guidance": visual_guidance(result),
         "semantic_guidance": semantic_guidance(result),
+        # TRACE_NET_H30_PHASE3_ATA_SOURCE_RESOLUTION_ALLOWLIST_V1
+        "source_resolution": _guidance_rows(result, "source_resolution"),
     }, 120000)
     return {
         "parts": {value.upper() for value in PART_RE.findall(blob)},
@@ -346,6 +352,8 @@ def allowed_identifiers(query: str, result: Mapping[str, Any]) -> Dict[str, set[
         "navigation_leads": coverage.get("navigation_leads", []),
         "ocr_evidence": coverage.get("ocr_evidence", []),
         "claim_results": coverage.get("claim_results", {}),
+        # TRACE_NET_H30_PHASE3_SELECTED_SOURCE_RESOLUTION_PAGES_V1
+        "source_resolution": _guidance_rows(result, "source_resolution"),
     }, 100000)
     return {
         "parts": {value.upper() for value in PART_RE.findall(proof_blob)},
@@ -1093,6 +1101,8 @@ install_chatgpt_answer_presentation(globals())
 install_chatgpt_answer_presentation_v1_1(globals())
 # TRACE_NET_H30_PHASE0_6_PRESENTATION_V1_2_INSTALL
 install_chatgpt_answer_presentation_v1_2(globals())
+# TRACE_NET_H30_PHASE3_CONTENT_RECONSTRUCTION_V1_INSTALL
+install_content_reconstruction(globals())
 # TRACE_NET_H30_PHASE1_PUBLIC_ANSWER_CONTRACT_V1_INSTALL
 install_public_answer_contract(globals())
 

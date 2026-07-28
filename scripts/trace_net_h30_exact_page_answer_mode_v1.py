@@ -236,12 +236,24 @@ def sanitize_validated_exact_page_answer(text: str, *, has_supporting: bool) -> 
 def _answer_mode(result: Mapping[str, Any], *, fallback_used: bool) -> Dict[str, Any]:
     page_content = _page_content(result)
     telemetry = page_content.get("telemetry") if isinstance(page_content.get("telemetry"), Mapping) else {}
+    # TRACE_NET_H30_PHASE3_EXACT_PAGE_TYPED_RECORD_SOURCE_V1
+    prior_mode = _mapping(result.get("answer_mode"))
+    typed_record_source = str(prior_mode.get("typed_record_source") or "")
+    if not typed_record_source:
+        envelope = result.get("evidence_envelope")
+        selected = envelope.get("claim_ready_evidence") if isinstance(envelope, Mapping) else None
+        typed_record_source = (
+            "claim_ready_evidence"
+            if isinstance(selected, Mapping) and selected.get("quality_status") == "PASS"
+            else "complete_typed_evidence_fallback"
+        )
     return {
         "status": "TRACE_NET_H30_EXACT_PAGE_ANSWER_MODE_V1",
         "quality_status": "PASS",
         "mode": MODE_EXACT_PAGE,
         "reason": "exact_canonical_page_content_available",
         "route": str(result.get("route") or ""),
+        "typed_record_source": typed_record_source,
         "gemma_writing_allowed": True,
         "deterministic_rendering_required": bool(fallback_used),
         "exact_page_match": bool(telemetry.get("exact_page_match")),
