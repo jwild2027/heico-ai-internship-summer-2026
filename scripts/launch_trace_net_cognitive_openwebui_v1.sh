@@ -56,6 +56,15 @@ FINAL_ENGRAM_MAX_REPAIRS="${TRACE_NET_H30_FINAL_ENGRAM_MAX_REPAIRS:-1}"
 # authority, positive-proof patterns) still bound the output and fall back to
 # the safe deterministic render on any violation. Set =0 to roll back.
 EVIDENCE_SYNTHESIS_ENABLED="${TRACE_NET_H30_EVIDENCE_SYNTHESIS_ENABLED:-1}"
+# TRACE_NET_H30_PHASE4_CONSTRAINED_WRITER_ENV_V1
+# The legacy free-form writer is suppressed while this is enabled. The final
+# Phase 3 answer is sent through at most one strict JSON wording call on the
+# canary routes below, with deterministic fallback on any failure.
+CONSTRAINED_WRITER_ENABLED="${TRACE_NET_H30_CONSTRAINED_WRITER_ENABLED:-1}"
+CONSTRAINED_WRITER_ROUTES="${TRACE_NET_H30_CONSTRAINED_WRITER_ROUTES:-exact_identifier_lookup,exact_table_ipl_lookup,ata_system_discovery}"
+CONSTRAINED_WRITER_MAX_CITATIONS="${TRACE_NET_H30_CONSTRAINED_WRITER_MAX_CITATIONS:-16}"
+CONSTRAINED_WRITER_MAX_OUTPUT_CHARS="${TRACE_NET_H30_CONSTRAINED_WRITER_MAX_OUTPUT_CHARS:-12000}"
+CONSTRAINED_WRITER_REQUIRE_EXACT_SUPPORT_SECTIONS="${TRACE_NET_H30_CONSTRAINED_WRITER_REQUIRE_EXACT_SUPPORT_SECTIONS:-1}"
 # General retrieval budget (router, all routes): overall wall-clock deadline,
 # per-tunnel upstream timeout, max executed tunnels, and per-tunnel candidate
 # cap. This bounds the serial upstream fan-out that otherwise let a single
@@ -109,6 +118,8 @@ for required in \
   scripts/check_trace_net_h30_claim_ready_evidence_v1.py \
   scripts/trace_net_h30_content_reconstruction_v1.py \
   scripts/check_trace_net_h30_content_reconstruction_v1.py \
+  scripts/trace_net_h30_constrained_gemma_writer_v1.py \
+  scripts/check_trace_net_h30_constrained_gemma_writer_v1.py \
   scripts/trace_net_h30_evidence_aware_answer_modes_v1.py \
   scripts/trace_net_h30_exact_page_answer_mode_v1.py \
   scripts/trace_net_h30_answer_quality_v1.py \
@@ -261,6 +272,10 @@ echo "============================================================"
   scripts/check_trace_net_h30_typed_evidence_envelope_v1.py \
   scripts/trace_net_h30_claim_ready_evidence_v1.py \
   scripts/check_trace_net_h30_claim_ready_evidence_v1.py \
+  scripts/trace_net_h30_content_reconstruction_v1.py \
+  scripts/check_trace_net_h30_content_reconstruction_v1.py \
+  scripts/trace_net_h30_constrained_gemma_writer_v1.py \
+  scripts/check_trace_net_h30_constrained_gemma_writer_v1.py \
   scripts/run_trace_net_h30_typed_evidence_live_smoke_v1.py \
   scripts/trace_net_h30_evidence_aware_answer_modes_v1.py \
   scripts/trace_net_h30_exact_page_answer_mode_v1.py \
@@ -289,6 +304,9 @@ echo "compile_status=PASS"
   tests/unit/test_trace_net_h30_claim_ready_evidence_v1.py \
   tests/unit/test_trace_net_h30_content_reconstruction_v1.py \
   tests/unit/test_check_trace_net_h30_content_reconstruction_v1.py \
+  tests/unit/test_trace_net_h30_constrained_gemma_writer_v1.py \
+  tests/unit/test_check_trace_net_h30_constrained_gemma_writer_v1.py \
+  tests/unit/test_trace_net_h30_phase4_runtime_wiring_v1.py \
   tests/unit/test_trace_net_h30_evidence_aware_answer_modes_v1.py \
   tests/unit/test_trace_net_h30_exact_page_answer_integration_v1.py \
   tests/unit/test_trace_net_h30_answer_quality_v1.py \
@@ -400,6 +418,12 @@ export TRACE_NET_H30_FINAL_ENGRAM_ROLLOUT_ENABLED="$FINAL_ENGRAM_ROLLOUT_ENABLED
 export TRACE_NET_H30_FINAL_ENGRAM_MAX_FOLLOWUPS="$FINAL_ENGRAM_MAX_FOLLOWUPS"
 export TRACE_NET_H30_FINAL_ENGRAM_MAX_REPAIRS="$FINAL_ENGRAM_MAX_REPAIRS"
 export TRACE_NET_H30_EVIDENCE_SYNTHESIS_ENABLED="$EVIDENCE_SYNTHESIS_ENABLED"
+# TRACE_NET_H30_PHASE4_CONSTRAINED_WRITER_EXPORT_V1
+export TRACE_NET_H30_CONSTRAINED_WRITER_ENABLED="$CONSTRAINED_WRITER_ENABLED"
+export TRACE_NET_H30_CONSTRAINED_WRITER_ROUTES="$CONSTRAINED_WRITER_ROUTES"
+export TRACE_NET_H30_CONSTRAINED_WRITER_MAX_CITATIONS="$CONSTRAINED_WRITER_MAX_CITATIONS"
+export TRACE_NET_H30_CONSTRAINED_WRITER_MAX_OUTPUT_CHARS="$CONSTRAINED_WRITER_MAX_OUTPUT_CHARS"
+export TRACE_NET_H30_CONSTRAINED_WRITER_REQUIRE_EXACT_SUPPORT_SECTIONS="$CONSTRAINED_WRITER_REQUIRE_EXACT_SUPPORT_SECTIONS
 exec "$PYTHON" -u -B scripts/serve_trace_net_full_gemma_cognitive_v1.py \\
   --host 127.0.0.1 \\
   --port 8128 \\

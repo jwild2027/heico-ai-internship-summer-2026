@@ -46,6 +46,10 @@ from scripts.trace_net_h30_chatgpt_answer_presentation_v1_2 import (
 from scripts.trace_net_h30_content_reconstruction_v1 import (
     install_content_reconstruction,
 )
+# TRACE_NET_H30_PHASE4_CONSTRAINED_WRITER_V1_IMPORT
+from scripts.trace_net_h30_constrained_gemma_writer_v1 import (
+    install_constrained_gemma_writer,
+)
 # TRACE_NET_H30_PHASE1_PUBLIC_ANSWER_CONTRACT_V1_IMPORT
 from scripts.trace_net_h30_public_answer_contract_v1 import (
     install_public_answer_contract,
@@ -844,8 +848,15 @@ class Runtime:
         final_text = safe_draft
         gemma_status = "SKIPPED_NO_DIRECT_EVIDENCE"
         validation = {"quality_status": "PASS", "failures": [], "accepted": True}
+        # TRACE_NET_H30_PHASE4_LEGACY_FREEFORM_SUPPRESSION_V1
+        constrained_writer_enabled = str(
+            os.environ.get("TRACE_NET_H30_CONSTRAINED_WRITER_ENABLED", "0")
+        ).strip().lower() in {"1", "true", "yes", "on"}
+        if constrained_writer_enabled:
+            writer_mode = "deterministic_input_for_constrained_writer"
+            gemma_status = "SKIPPED_CONSTRAINED_WRITER_OWNS_SINGLE_CALL"
 
-        if direct and route != "safe_general_chat":
+        if direct and route != "safe_general_chat" and not constrained_writer_enabled:
             prompt = build_prompt(query, result)
             gemma_payload = {
                 "model": self.gemma_model,
@@ -901,6 +912,7 @@ class Runtime:
             "answer_model": self.gemma_model,
             "writer_mode": writer_mode,
             "gemma_status": gemma_status,
+            "legacy_freeform_gemma_suppressed": constrained_writer_enabled,
             "post_answer_validation": validation,
             "answer_permission": False,
             "final_answer_allowed": False,
@@ -935,6 +947,11 @@ class Runtime:
             "direct_evidence_only_gemma_writing": True,
             "candidate_answers_deterministic": True,
             "post_answer_validation": True,
+            "constrained_writer_enabled": str(
+                os.environ.get("TRACE_NET_H30_CONSTRAINED_WRITER_ENABLED", "0")
+            ).strip().lower() in {"1", "true", "yes", "on"},
+            "single_gemma_call_maximum": True,
+            "legacy_freeform_writer_suppressed_when_constrained": True,
             "answer_permission": False,
             "final_answer_allowed": False,
             "source_truth_mutation_allowed": False,
@@ -1103,6 +1120,8 @@ install_chatgpt_answer_presentation_v1_1(globals())
 install_chatgpt_answer_presentation_v1_2(globals())
 # TRACE_NET_H30_PHASE3_CONTENT_RECONSTRUCTION_V1_INSTALL
 install_content_reconstruction(globals())
+# TRACE_NET_H30_PHASE4_CONSTRAINED_WRITER_V1_INSTALL
+install_constrained_gemma_writer(globals())
 # TRACE_NET_H30_PHASE1_PUBLIC_ANSWER_CONTRACT_V1_INSTALL
 install_public_answer_contract(globals())
 
