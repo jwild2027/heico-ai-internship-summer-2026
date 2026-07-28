@@ -15,5 +15,9 @@ def test_phase4_launcher_propagates_runtime_settings():
     source = Path("scripts/launch_trace_net_cognitive_openwebui_v1.sh").read_text(encoding="utf-8")
     assert "TRACE_NET_H30_CONSTRAINED_WRITER_ENABLED" in source
     assert "TRACE_NET_H30_CONSTRAINED_WRITER_ROUTES" in source
+    assert (
+        'export TRACE_NET_H30_CONSTRAINED_WRITER_REQUIRE_EXACT_SUPPORT_SECTIONS='
+        '"$CONSTRAINED_WRITER_REQUIRE_EXACT_SUPPORT_SECTIONS"'
+    ) in source
     assert "trace_net_h30_constrained_gemma_writer_v1.py" in source
     assert "check_trace_net_h30_constrained_gemma_writer_v1.py" in source
