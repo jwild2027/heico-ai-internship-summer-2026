@@ -131,10 +131,25 @@ def load_answer_mode_config(
     }
 
 
+def typed_record_source(result: Mapping[str, Any]) -> str:
+    envelope = result.get("evidence_envelope")
+    if not isinstance(envelope, Mapping):
+        return "missing_evidence_envelope"
+    selected = envelope.get("claim_ready_evidence")
+    if isinstance(selected, Mapping) and selected.get("quality_status") == "PASS":
+        if isinstance(selected.get("records"), list):
+            return "claim_ready_evidence"
+    return "complete_typed_evidence_fallback"
+
+
 def typed_records(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
     envelope = result.get("evidence_envelope")
     if not isinstance(envelope, Mapping):
         return []
+    selected = envelope.get("claim_ready_evidence")
+    if isinstance(selected, Mapping) and selected.get("quality_status") == "PASS":
+        if isinstance(selected.get("records"), list):
+            return _rows(selected.get("records"))
     return _rows(envelope.get("typed_evidence"))
 
 
@@ -244,6 +259,7 @@ def classify_answer_mode(
         "reason": reason,
         "route": route,
         "typed_record_count": len(records),
+        "typed_record_source": typed_record_source(result),
         "claim_support_allowed_count": len(support),
         "candidate_count": len(candidates),
         "visual_count": len(visuals),
@@ -637,6 +653,8 @@ def answer_modes_health(
         "non_direct_modes_deterministic": True,
         "gemma_only_for_confirmed_direct": True,
         "typed_evidence_is_source_of_mode_selection": True,
+        "claim_ready_evidence_preferred": True,
+        "evidence_selection_changed": True,
         "retrieval_changed": False,
         "route_changed": False,
         "evidence_selection_changed": False,

@@ -225,7 +225,41 @@ def http_json(
         return 599, {"error": f"{type(exc).__name__}: {exc}"}
 
 
+def _claim_ready_bucket(
+    result: Mapping[str, Any],
+    key: str,
+) -> Tuple[List[Dict[str, Any]], bool]:
+    envelope = result.get("evidence_envelope")
+    if not isinstance(envelope, Mapping):
+        return [], False
+    selected = envelope.get("claim_ready_evidence")
+    if not isinstance(selected, Mapping) or selected.get("quality_status") != "PASS":
+        return [], False
+    by_bucket = selected.get("by_bucket")
+    if not isinstance(by_bucket, Mapping):
+        return [], False
+    rows = by_bucket.get(key)
+    if not isinstance(rows, list):
+        return [], False
+    return [dict(row) for row in rows if isinstance(row, Mapping)], True
+
+
+def claim_ready_evidence_available(result: Mapping[str, Any]) -> bool:
+    envelope = result.get("evidence_envelope")
+    if not isinstance(envelope, Mapping):
+        return False
+    selected = envelope.get("claim_ready_evidence")
+    return bool(
+        isinstance(selected, Mapping)
+        and selected.get("quality_status") == "PASS"
+        and isinstance(selected.get("by_bucket"), Mapping)
+    )
+
+
 def direct_evidence(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
+    selected, present = _claim_ready_bucket(result, "direct_evidence")
+    if present:
+        return selected
     envelope = result.get("evidence_envelope")
     if not isinstance(envelope, Mapping):
         return []
@@ -234,6 +268,9 @@ def direct_evidence(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
 
 
 def authority_evidence(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
+    selected, present = _claim_ready_bucket(result, "authority_evidence")
+    if present:
+        return selected
     envelope = result.get("evidence_envelope")
     if not isinstance(envelope, Mapping):
         return []
@@ -242,6 +279,9 @@ def authority_evidence(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
 
 
 def _guidance_rows(result: Mapping[str, Any], key: str) -> List[Dict[str, Any]]:
+    selected, present = _claim_ready_bucket(result, key)
+    if present:
+        return selected
     envelope = result.get("evidence_envelope")
     if not isinstance(envelope, Mapping):
         return []
@@ -372,7 +412,7 @@ def citation_registry(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
                 "value": _registry_value(row, value_keys),
             })
 
-    if isinstance(existing, list) and existing:
+    if isinstance(existing, list) and existing and not claim_ready_evidence_available(result):
         for entry in existing:
             if isinstance(entry, Mapping) and not entry.get("page_content"):
                 copied = dict(entry)
@@ -387,7 +427,7 @@ def citation_registry(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
             ("subject", "figure_refs", "part_numbers", "value"))
         add(semantic_guidance(result), "semantic", "guidance",
             ("candidate_type", "summary", "point_id", "value"))
-        add(envelope.get("source_resolution"), "source_resolution", "guidance",
+        add(_guidance_rows(result, "source_resolution"), "source_resolution", "guidance",
             ("resolution_status", "value", "field_name"))
 
     page_rows = page_content_registry_rows(result)

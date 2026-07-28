@@ -43,6 +43,8 @@ ENGRAM_SKILL_PLANNER_GUIDANCE_MAX_CHARS="${TRACE_NET_H30_ENGRAM_SKILL_PLANNER_GU
 # otherwise), and the final Self-RAG deterministic validator are enabled by
 # default. Set the matching TRACE_NET_H30_* env var to 0 to roll any of them back.
 TYPED_EVIDENCE_ENABLED="${TRACE_NET_H30_TYPED_EVIDENCE_ENABLED:-1}"
+CLAIM_READY_EVIDENCE_ENABLED="${TRACE_NET_H30_CLAIM_READY_EVIDENCE_ENABLED:-1}"
+CLAIM_READY_EVIDENCE_MAX_RECORDS="${TRACE_NET_H30_CLAIM_READY_EVIDENCE_MAX_RECORDS:-32}"
 EVIDENCE_AWARE_ANSWER_MODES_ENABLED="${TRACE_NET_H30_EVIDENCE_AWARE_ANSWER_MODES_ENABLED:-1}"
 EVIDENCE_AWARE_ANSWER_MODES_MAX_ITEMS="${TRACE_NET_H30_EVIDENCE_AWARE_ANSWER_MODES_MAX_ITEMS:-6}"
 FINAL_ENGRAM_ROLLOUT_ENABLED="${TRACE_NET_H30_FINAL_ENGRAM_ROLLOUT_ENABLED:-1}"
@@ -103,6 +105,8 @@ for required in \
   scripts/trace_net_h30_shadow_planner_v1.py \
   scripts/trace_net_h30_engram_skill_planner_guidance_v1.py \
   scripts/trace_net_h30_typed_evidence_envelope_v1.py \
+  scripts/trace_net_h30_claim_ready_evidence_v1.py \
+  scripts/check_trace_net_h30_claim_ready_evidence_v1.py \
   scripts/trace_net_h30_evidence_aware_answer_modes_v1.py \
   scripts/trace_net_h30_exact_page_answer_mode_v1.py \
   scripts/trace_net_h30_answer_quality_v1.py \
@@ -253,6 +257,8 @@ echo "============================================================"
   scripts/run_trace_net_engram_skill_planner_guidance_live_smoke_v1.py \
   scripts/trace_net_h30_typed_evidence_envelope_v1.py \
   scripts/check_trace_net_h30_typed_evidence_envelope_v1.py \
+  scripts/trace_net_h30_claim_ready_evidence_v1.py \
+  scripts/check_trace_net_h30_claim_ready_evidence_v1.py \
   scripts/run_trace_net_h30_typed_evidence_live_smoke_v1.py \
   scripts/trace_net_h30_evidence_aware_answer_modes_v1.py \
   scripts/trace_net_h30_exact_page_answer_mode_v1.py \
@@ -278,6 +284,7 @@ echo "compile_status=PASS"
   tests/unit/test_trace_net_h30_shadow_planner_v1.py \
   tests/unit/test_trace_net_engram_skill_planner_guidance_v1.py \
   tests/unit/test_trace_net_h30_typed_evidence_envelope_v1.py \
+  tests/unit/test_trace_net_h30_claim_ready_evidence_v1.py \
   tests/unit/test_trace_net_h30_evidence_aware_answer_modes_v1.py \
   tests/unit/test_trace_net_h30_exact_page_answer_integration_v1.py \
   tests/unit/test_trace_net_h30_answer_quality_v1.py \
@@ -346,6 +353,8 @@ export TRACE_NET_H30_ENGRAM_SKILL_SHADOW_MAX_SKILLS="$ENGRAM_SKILL_SHADOW_MAX_SK
 export TRACE_NET_H30_ENGRAM_SKILL_PLANNER_GUIDANCE_ENABLED="$ENGRAM_SKILL_PLANNER_GUIDANCE_ENABLED"
 export TRACE_NET_H30_ENGRAM_SKILL_PLANNER_GUIDANCE_MAX_CHARS="$ENGRAM_SKILL_PLANNER_GUIDANCE_MAX_CHARS"
 export TRACE_NET_H30_TYPED_EVIDENCE_ENABLED="$TYPED_EVIDENCE_ENABLED"
+export TRACE_NET_H30_CLAIM_READY_EVIDENCE_ENABLED="$CLAIM_READY_EVIDENCE_ENABLED"
+export TRACE_NET_H30_CLAIM_READY_EVIDENCE_MAX_RECORDS="$CLAIM_READY_EVIDENCE_MAX_RECORDS"
 export TRACE_NET_H30_RETRIEVAL_BUDGET_ENABLED="$RETRIEVAL_BUDGET_ENABLED"
 export TRACE_NET_H30_RETRIEVAL_DEADLINE_SECONDS="$RETRIEVAL_DEADLINE_SECONDS"
 export TRACE_NET_H30_RETRIEVAL_PER_TUNNEL_TIMEOUT_SECONDS="$RETRIEVAL_PER_TUNNEL_TIMEOUT_SECONDS"
