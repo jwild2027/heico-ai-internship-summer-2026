@@ -94,13 +94,19 @@ def test_structured_output_accepts_exact_support_copy():
     assert "## Evidence" in validation["rendered"]
 
 
-def test_structured_output_rejects_changed_evidence():
+def test_structured_output_ignores_changed_model_support_and_keeps_phase3():
     packet = _packet()
     value = json.loads(_good_output(packet))
     value["evidence"] = ["Different evidence [1]"]
+    value["limits"] = ["Different limit [1]"]
     validation = validate_structured_output(parse_structured_writer_output(json.dumps(value)), packet=packet)
-    assert not validation["accepted"]
-    assert "evidence_section_not_exact_copy" in validation["failures"]
+    assert validation["accepted"], validation
+    assert "Different evidence" not in validation["rendered"]
+    assert "Different limit" not in validation["rendered"]
+    assert packet["deterministic_sections"]["evidence"][0] in validation["rendered"]
+    assert validation["support_sections_source"] == "phase3_deterministic"
+    assert validation["model_supplied_evidence_ignored"]
+    assert validation["model_supplied_limits_ignored"]
 
 
 def test_structured_output_rejects_new_identifier():

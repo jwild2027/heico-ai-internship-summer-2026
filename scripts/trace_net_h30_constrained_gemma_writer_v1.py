@@ -30,9 +30,11 @@ MODULE = "trace_net_h30_constrained_gemma_writer_v1"
 VERSION = "v1"
 STATUS = "TRACE_NET_H30_CONSTRAINED_GEMMA_WRITER_V1"
 # TRACE_NET_H30_PHASE4_LATENCY_GUARD_V1
+# TRACE_NET_H30_PHASE4_ANSWER_ONLY_CONTRACT_V1
 PATCH_ID = "trace_net_h30_phase4_constrained_gemma_writer_v1"
 SCHEMA_VERSION = "trace_net_constrained_writer_packet_v1"
 OUTPUT_SCHEMA_VERSION = "trace_net_constrained_writer_output_v1"
+OUTPUT_CONTRACT_MODE = "answer_only_phase3_support_v1"
 
 DEFAULT_CANARY_ROUTES: Tuple[str, ...] = (
     "exact_identifier_lookup",
@@ -78,6 +80,8 @@ SAFETY_CONTRACT = {
     "legacy_freeform_writer_suppressed": True,
     "phase3_deterministic_fallback_preserved": True,
     "structured_output_required": True,
+    "answer_only_model_output": True,
+    "phase3_owns_evidence_and_limits": True,
     "raw_evidence_envelope_excluded": True,
     "bounded_model_timeout": True,
     "end_to_end_budget_guard": True,
@@ -363,7 +367,8 @@ def build_writer_packet(
             "no_new_facts": True,
             "no_new_identifiers": True,
             "no_new_citations": True,
-            "evidence_and_limits_must_be_copied_exactly": True,
+            "answer_only_output": True,
+            "support_sections_are_phase3_deterministic": True,
             "guidance_cannot_become_proof": True,
             "authority_claims_require_proof_authority": True,
         },
@@ -401,24 +406,32 @@ def validate_packet(packet: Mapping[str, Any]) -> Dict[str, Any]:
 
 def render_writer_prompt(packet: Mapping[str, Any]) -> str:
     packet_json = json.dumps(packet, ensure_ascii=False, indent=2, sort_keys=True)
-    return f"""You are TRACE-Net's constrained wording step.
+    deterministic = _mapping(packet.get("deterministic_sections"))
+    original_answer_json = json.dumps(
+        [str(value) for value in (deterministic.get("answer") or [])],
+        ensure_ascii=False,
+        indent=2,
+    )
+    return f"""You are TRACE-Net's constrained answer-wording step.
 
 Return exactly one JSON object and no markdown fence or commentary:
 {{
   "schema_version": "{OUTPUT_SCHEMA_VERSION}",
-  "answer": ["one or more concise answer lines"],
-  "evidence": ["evidence lines copied exactly from deterministic_sections.evidence"],
-  "limits": ["limit lines copied exactly from deterministic_sections.limits"]
+  "answer": ["one or more concise answer lines"]
 }}
 
 Rules:
 1. Use only the packet below. Do not use memory or outside knowledge.
-2. Do not add, remove, merge, or change any evidence or limit line.
-3. You may improve only the answer wording, and only without changing meaning.
-4. Preserve every part number, ATA code, page id, figure reference, and citation from the deterministic answer.
+2. Return only schema_version and answer. Do not return Evidence, Limits, reasoning, notes, or extra keys.
+3. The safest valid response is to copy ORIGINAL ANSWER LINES exactly.
+4. Reword only when every fact, qualifier, part number, ATA code, page id, figure reference, citation, and required phrase remains unchanged.
 5. Do not add a citation or identifier that is not in packet.allowed.
 6. Guidance must remain guidance. Do not claim approval, fit, effectivity, safety, eligibility, interchangeability, or authority unless the packet explicitly supplies proof authority.
-7. Do not reveal packet keys, internal implementation details, or JSON beyond the required output object.
+7. TRACE-Net, not the model, will append the already validated Phase 3 Evidence and Limits sections.
+8. Do not reveal packet keys or internal implementation details.
+
+ORIGINAL ANSWER LINES
+{original_answer_json}
 
 CLAIM-READY WRITER PACKET
 {packet_json}
@@ -461,11 +474,41 @@ def _string_lines(value: Any, *, maximum: int = 32, max_chars: int = 3000) -> Li
     return output
 
 
+def _normalize_model_answer(value: Any) -> List[str]:
+    """Accept a strict answer value while tolerating harmless presentation wrappers."""
+    if isinstance(value, Mapping):
+        value = value.get("lines")
+
+    if isinstance(value, str):
+        raw = value.strip()
+        if re.search(r"(?im)^\s*##\s+answer\s*$", raw):
+            parsed = parse_public_answer(raw)
+            sections = parsed.get("sections") if isinstance(parsed, Mapping) else {}
+            answer_lines = sections.get("Answer") if isinstance(sections, Mapping) else []
+            values = answer_lines if isinstance(answer_lines, list) else []
+        else:
+            values = [raw]
+    elif isinstance(value, list):
+        values = value
+    else:
+        values = []
+
+    output: List[str] = []
+    for item in values[:6]:
+        line = _clean(item, 2200)
+        line = re.sub(r"\[\s*(\d{1,3})\s*\]", r"[\1]", line)
+        if line and not re.fullmatch(r"#{1,6}\s*(?:answer|evidence|limits)\s*", line, flags=re.I):
+            output.append(line)
+    return output
+
+
 def parse_structured_writer_output(text: str) -> Dict[str, Any]:
     value = _extract_json_object(text)
     return {
         "schema_version": str(value.get("schema_version") or ""),
-        "answer": _string_lines(value.get("answer"), maximum=6, max_chars=2200),
+        "answer": _normalize_model_answer(value.get("answer")),
+        # Evidence and Limits are parsed only for audit telemetry. They are never
+        # trusted or rendered; Phase 3 owns both support sections.
         "evidence": _string_lines(value.get("evidence"), maximum=32, max_chars=3000),
         "limits": _string_lines(value.get("limits"), maximum=16, max_chars=2400),
         "raw_object_present": bool(value),
@@ -483,6 +526,7 @@ def validate_structured_output(
     packet: Mapping[str, Any],
     require_exact_support_sections: bool = True,
 ) -> Dict[str, Any]:
+    """Validate model-authored Answer while deterministically retaining support."""
     failures: List[str] = []
     if not structured.get("raw_object_present"):
         failures.append("structured_json_missing")
@@ -490,26 +534,26 @@ def validate_structured_output(
         failures.append("structured_schema_version_invalid")
     if structured.get("unknown_keys"):
         failures.append("structured_unknown_keys")
+
     answer = [str(value) for value in (structured.get("answer") or [])]
-    evidence = [str(value) for value in (structured.get("evidence") or [])]
-    limits = [str(value) for value in (structured.get("limits") or [])]
     if not answer:
         failures.append("structured_answer_empty")
+
     deterministic = _mapping(packet.get("deterministic_sections"))
     expected_evidence = [str(value) for value in (deterministic.get("evidence") or [])]
     expected_limits = [str(value) for value in (deterministic.get("limits") or [])]
-    if require_exact_support_sections:
-        if evidence != expected_evidence:
-            failures.append("evidence_section_not_exact_copy")
-        if limits != expected_limits:
-            failures.append("limits_section_not_exact_copy")
+    supplied_evidence = [str(value) for value in (structured.get("evidence") or [])]
+    supplied_limits = [str(value) for value in (structured.get("limits") or [])]
 
-    rendered = render_public_answer(answer, evidence, limits)
+    # Critical safety rule: model-provided Evidence/Limits are never rendered.
+    # This removes a fragile exact-copy task without relaxing claim validation.
+    rendered = render_public_answer(answer, expected_evidence, expected_limits)
     allowed = _mapping(packet.get("allowed"))
     found = _protected_tokens(rendered)
     for key in ("citations", "parts", "atas", "pages", "figures"):
         if not set(found.get(key) or []).issubset(set(allowed.get(key) or [])):
             failures.append(f"structured_output_added_{key}")
+
     original_answer = "\n".join(str(value) for value in (deterministic.get("answer") or []))
     original_tokens = _protected_tokens(original_answer)
     candidate_answer = "\n".join(answer)
@@ -525,12 +569,18 @@ def validate_structured_output(
     contract = validate_public_answer_contract(rendered, route=str(packet.get("route") or ""))
     if not contract.get("accepted"):
         failures.extend(f"public_contract:{value}" for value in (contract.get("failures") or []))
+
     return {
         "quality_status": "PASS" if not failures else "FAIL",
         "accepted": not failures,
         "failures": list(dict.fromkeys(failures)),
         "rendered": rendered,
         "public_contract": contract,
+        "model_output_contract": OUTPUT_CONTRACT_MODE,
+        "support_sections_source": "phase3_deterministic",
+        "model_supplied_evidence_ignored": bool(supplied_evidence),
+        "model_supplied_limits_ignored": bool(supplied_limits),
+        "legacy_exact_support_copy_setting_ignored": bool(require_exact_support_sections),
     }
 
 
@@ -571,6 +621,8 @@ def constrained_writer_health(
         "single_model_call_maximum": True,
         "legacy_freeform_writer_suppressed": bool(config.get("enabled")),
         "structured_output_required": True,
+        "model_output_contract": OUTPUT_CONTRACT_MODE,
+        "support_sections_source": "phase3_deterministic",
         "phase3_fallback_preserved": True,
         "raw_evidence_envelope_excluded": True,
         "bounded_model_timeout": True,
@@ -644,6 +696,8 @@ def install_constrained_gemma_writer(module: MutableMapping[str, Any]) -> None:
             "single_call_maximum": True,
             "packet_schema_version": SCHEMA_VERSION,
             "output_schema_version": OUTPUT_SCHEMA_VERSION,
+            "model_output_contract": OUTPUT_CONTRACT_MODE,
+            "support_sections_source": "phase3_deterministic",
             "packet_validation": {},
             "structured_output_validation": {},
             "final_answer_validation": old_validation,
@@ -760,7 +814,7 @@ def install_constrained_gemma_writer(module: MutableMapping[str, Any]) -> None:
             "messages": [
                 {
                     "role": "system",
-                    "content": "Return one strict JSON object using only the supplied claim-ready packet.",
+                    "content": "Return one strict JSON object containing only schema_version and answer, using only the supplied claim-ready packet.",
                 },
                 {"role": "user", "content": render_writer_prompt(packet)},
             ],
@@ -890,6 +944,7 @@ __all__ = [
     "PATCH_ID",
     "SCHEMA_VERSION",
     "OUTPUT_SCHEMA_VERSION",
+    "OUTPUT_CONTRACT_MODE",
     "DEFAULT_CANARY_ROUTES",
     "build_writer_packet",
     "validate_packet",
