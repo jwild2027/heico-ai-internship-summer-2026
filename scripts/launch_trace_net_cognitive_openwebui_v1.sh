@@ -65,6 +65,16 @@ CONSTRAINED_WRITER_ROUTES="${TRACE_NET_H30_CONSTRAINED_WRITER_ROUTES:-exact_iden
 CONSTRAINED_WRITER_MAX_CITATIONS="${TRACE_NET_H30_CONSTRAINED_WRITER_MAX_CITATIONS:-16}"
 CONSTRAINED_WRITER_MAX_OUTPUT_CHARS="${TRACE_NET_H30_CONSTRAINED_WRITER_MAX_OUTPUT_CHARS:-12000}"
 CONSTRAINED_WRITER_REQUIRE_EXACT_SUPPORT_SECTIONS="${TRACE_NET_H30_CONSTRAINED_WRITER_REQUIRE_EXACT_SUPPORT_SECTIONS:-1}"
+# TRACE_NET_H30_PHASE4_LATENCY_GUARD_V1
+# The public benchmark uses a 240-second client timeout. Keep the writer below
+# that boundary and reserve time to validate and return the Phase 3 fallback.
+CONSTRAINED_WRITER_MODEL_TIMEOUT_SECONDS="${TRACE_NET_H30_CONSTRAINED_WRITER_MODEL_TIMEOUT_SECONDS:-45}"
+CONSTRAINED_WRITER_OVERALL_BUDGET_SECONDS="${TRACE_NET_H30_CONSTRAINED_WRITER_OVERALL_BUDGET_SECONDS:-210}"
+CONSTRAINED_WRITER_RESPONSE_RESERVE_SECONDS="${TRACE_NET_H30_CONSTRAINED_WRITER_RESPONSE_RESERVE_SECONDS:-20}"
+CONSTRAINED_WRITER_MIN_CALL_SECONDS="${TRACE_NET_H30_CONSTRAINED_WRITER_MIN_CALL_SECONDS:-8}"
+CONSTRAINED_WRITER_MAX_TOKENS="${TRACE_NET_H30_CONSTRAINED_WRITER_MAX_TOKENS:-512}"
+GEMMA_WRITER_QUEUE_TIMEOUT_SECONDS="${TRACE_NET_H30_GEMMA_WRITER_QUEUE_TIMEOUT_SECONDS:-30}"
+PUBLIC_BRIDGE_TIMEOUT_SECONDS="${TRACE_NET_H30_PUBLIC_BRIDGE_TIMEOUT_SECONDS:-225}"
 # General retrieval budget (router, all routes): overall wall-clock deadline,
 # per-tunnel upstream timeout, max executed tunnels, and per-tunnel candidate
 # cap. This bounds the serial upstream fan-out that otherwise let a single
@@ -307,6 +317,7 @@ echo "compile_status=PASS"
   tests/unit/test_trace_net_h30_constrained_gemma_writer_v1.py \
   tests/unit/test_check_trace_net_h30_constrained_gemma_writer_v1.py \
   tests/unit/test_trace_net_h30_phase4_runtime_wiring_v1.py \
+  tests/unit/test_trace_net_h30_phase4_latency_guard_v1.py \
   tests/unit/test_trace_net_h30_evidence_aware_answer_modes_v1.py \
   tests/unit/test_trace_net_h30_exact_page_answer_integration_v1.py \
   tests/unit/test_trace_net_h30_answer_quality_v1.py \
@@ -424,6 +435,11 @@ export TRACE_NET_H30_CONSTRAINED_WRITER_ROUTES="$CONSTRAINED_WRITER_ROUTES"
 export TRACE_NET_H30_CONSTRAINED_WRITER_MAX_CITATIONS="$CONSTRAINED_WRITER_MAX_CITATIONS"
 export TRACE_NET_H30_CONSTRAINED_WRITER_MAX_OUTPUT_CHARS="$CONSTRAINED_WRITER_MAX_OUTPUT_CHARS"
 export TRACE_NET_H30_CONSTRAINED_WRITER_REQUIRE_EXACT_SUPPORT_SECTIONS="$CONSTRAINED_WRITER_REQUIRE_EXACT_SUPPORT_SECTIONS"
+export TRACE_NET_H30_CONSTRAINED_WRITER_MODEL_TIMEOUT_SECONDS="$CONSTRAINED_WRITER_MODEL_TIMEOUT_SECONDS"
+export TRACE_NET_H30_CONSTRAINED_WRITER_OVERALL_BUDGET_SECONDS="$CONSTRAINED_WRITER_OVERALL_BUDGET_SECONDS"
+export TRACE_NET_H30_CONSTRAINED_WRITER_RESPONSE_RESERVE_SECONDS="$CONSTRAINED_WRITER_RESPONSE_RESERVE_SECONDS"
+export TRACE_NET_H30_CONSTRAINED_WRITER_MIN_CALL_SECONDS="$CONSTRAINED_WRITER_MIN_CALL_SECONDS"
+export TRACE_NET_H30_CONSTRAINED_WRITER_MAX_TOKENS="$CONSTRAINED_WRITER_MAX_TOKENS"
 exec "$PYTHON" -u -B scripts/serve_trace_net_full_gemma_cognitive_v1.py \\
   --host 127.0.0.1 \\
   --port 8128 \\
@@ -433,9 +449,9 @@ exec "$PYTHON" -u -B scripts/serve_trace_net_full_gemma_cognitive_v1.py \\
   --gemma-api-key ollama \\
   --gemma-model "$GEMMA_MODEL" \\
   --api-key "$GEMMA_KEY" \\
-  --timeout-seconds 1200 \\
+  --timeout-seconds "$CONSTRAINED_WRITER_OVERALL_BUDGET_SECONDS" \\
   --max-concurrency 1 \\
-  --queue-timeout-seconds 1200
+  --queue-timeout-seconds "$GEMMA_WRITER_QUEUE_TIMEOUT_SECONDS"
 INNER
 
 cat > /tmp/start_trace_net_openwebui_cognitive_8131.sh <<INNER
@@ -450,7 +466,7 @@ exec "$PYTHON" -u -B scripts/serve_trace_net_openwebui_cognitive_bridge_v1.py \\
   --upstream-api-key "$GEMMA_KEY" \\
   --public-api-key "$PUBLIC_KEY" \\
   --public-model "$PUBLIC_MODEL" \\
-  --timeout-seconds 1200
+  --timeout-seconds "$PUBLIC_BRIDGE_TIMEOUT_SECONDS"
 INNER
 
 chmod +x \

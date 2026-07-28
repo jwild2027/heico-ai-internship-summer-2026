@@ -17,6 +17,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import time
 from typing import Any, Dict, Iterable, List, Mapping, MutableMapping, Optional, Sequence, Tuple
 
 from scripts.trace_net_h30_public_answer_contract_v1 import (
@@ -28,6 +29,7 @@ from scripts.trace_net_h30_public_answer_contract_v1 import (
 MODULE = "trace_net_h30_constrained_gemma_writer_v1"
 VERSION = "v1"
 STATUS = "TRACE_NET_H30_CONSTRAINED_GEMMA_WRITER_V1"
+# TRACE_NET_H30_PHASE4_LATENCY_GUARD_V1
 PATCH_ID = "trace_net_h30_phase4_constrained_gemma_writer_v1"
 SCHEMA_VERSION = "trace_net_constrained_writer_packet_v1"
 OUTPUT_SCHEMA_VERSION = "trace_net_constrained_writer_output_v1"
@@ -77,6 +79,10 @@ SAFETY_CONTRACT = {
     "phase3_deterministic_fallback_preserved": True,
     "structured_output_required": True,
     "raw_evidence_envelope_excluded": True,
+    "bounded_model_timeout": True,
+    "end_to_end_budget_guard": True,
+    "response_headroom_reserved": True,
+    "bounded_generation_tokens": True,
     "guidance_not_promoted_to_proof": True,
     "retrieval_changed": False,
     "ranking_changed": False,
@@ -109,6 +115,44 @@ def _bool_env(environ: Mapping[str, str], name: str, default: bool) -> bool:
     return raw in {"1", "true", "yes", "on"}
 
 
+
+def _int_env(
+    environ: Mapping[str, str],
+    name: str,
+    default: int,
+    *,
+    minimum: int,
+    maximum: int,
+) -> int:
+    try:
+        value = int(str(environ.get(name, default)).strip())
+    except (TypeError, ValueError):
+        value = default
+    return max(minimum, min(maximum, value))
+
+
+def _float_env(
+    environ: Mapping[str, str],
+    name: str,
+    default: float,
+    *,
+    minimum: float,
+    maximum: float,
+) -> float:
+    try:
+        value = float(str(environ.get(name, default)).strip())
+    except (TypeError, ValueError):
+        value = default
+    return max(minimum, min(maximum, value))
+
+
+def _timeout_response(status: int, payload: Mapping[str, Any]) -> bool:
+    if int(status or 0) != 599:
+        return False
+    text = json.dumps(payload, ensure_ascii=False).casefold()
+    return any(token in text for token in ("timeout", "timed out", "socket.timeout"))
+
+
 def load_constrained_writer_config(
     environ: Optional[Mapping[str, str]] = None,
 ) -> Dict[str, Any]:
@@ -123,19 +167,73 @@ def load_constrained_writer_config(
         ).split(",")
         if value.strip()
     )
-    try:
-        max_citations = int(env.get("TRACE_NET_H30_CONSTRAINED_WRITER_MAX_CITATIONS", "16"))
-    except (TypeError, ValueError):
-        max_citations = 16
-    try:
-        max_output_chars = int(env.get("TRACE_NET_H30_CONSTRAINED_WRITER_MAX_OUTPUT_CHARS", "12000"))
-    except (TypeError, ValueError):
-        max_output_chars = 12000
+    max_citations = _int_env(
+        env,
+        "TRACE_NET_H30_CONSTRAINED_WRITER_MAX_CITATIONS",
+        16,
+        minimum=1,
+        maximum=32,
+    )
+    max_output_chars = _int_env(
+        env,
+        "TRACE_NET_H30_CONSTRAINED_WRITER_MAX_OUTPUT_CHARS",
+        12000,
+        minimum=1000,
+        maximum=30000,
+    )
+    max_tokens = _int_env(
+        env,
+        "TRACE_NET_H30_CONSTRAINED_WRITER_MAX_TOKENS",
+        512,
+        minimum=128,
+        maximum=2048,
+    )
+    model_timeout_seconds = _float_env(
+        env,
+        "TRACE_NET_H30_CONSTRAINED_WRITER_MODEL_TIMEOUT_SECONDS",
+        45.0,
+        minimum=5.0,
+        maximum=120.0,
+    )
+    overall_budget_seconds = _float_env(
+        env,
+        "TRACE_NET_H30_CONSTRAINED_WRITER_OVERALL_BUDGET_SECONDS",
+        210.0,
+        minimum=30.0,
+        maximum=900.0,
+    )
+    response_reserve_seconds = _float_env(
+        env,
+        "TRACE_NET_H30_CONSTRAINED_WRITER_RESPONSE_RESERVE_SECONDS",
+        20.0,
+        minimum=1.0,
+        maximum=60.0,
+    )
+    response_reserve_seconds = min(
+        response_reserve_seconds,
+        max(1.0, overall_budget_seconds - 5.0),
+    )
+    minimum_call_seconds = _float_env(
+        env,
+        "TRACE_NET_H30_CONSTRAINED_WRITER_MIN_CALL_SECONDS",
+        8.0,
+        minimum=1.0,
+        maximum=30.0,
+    )
+    minimum_call_seconds = min(
+        minimum_call_seconds,
+        max(1.0, overall_budget_seconds - response_reserve_seconds - 1.0),
+    )
     return {
         "enabled": _bool_env(env, "TRACE_NET_H30_CONSTRAINED_WRITER_ENABLED", False),
         "routes": routes or DEFAULT_CANARY_ROUTES,
-        "max_citations": max(1, min(32, max_citations)),
-        "max_output_chars": max(1000, min(30000, max_output_chars)),
+        "max_citations": max_citations,
+        "max_output_chars": max_output_chars,
+        "max_tokens": max_tokens,
+        "model_timeout_seconds": model_timeout_seconds,
+        "overall_budget_seconds": overall_budget_seconds,
+        "response_reserve_seconds": response_reserve_seconds,
+        "minimum_call_seconds": minimum_call_seconds,
         "require_evidence_and_limits_exact_copy": _bool_env(
             env,
             "TRACE_NET_H30_CONSTRAINED_WRITER_REQUIRE_EXACT_SUPPORT_SECTIONS",
@@ -475,6 +573,13 @@ def constrained_writer_health(
         "structured_output_required": True,
         "phase3_fallback_preserved": True,
         "raw_evidence_envelope_excluded": True,
+        "bounded_model_timeout": True,
+        "end_to_end_budget_guard": True,
+        "model_timeout_seconds": config.get("model_timeout_seconds"),
+        "overall_budget_seconds": config.get("overall_budget_seconds"),
+        "response_reserve_seconds": config.get("response_reserve_seconds"),
+        "minimum_call_seconds": config.get("minimum_call_seconds"),
+        "max_tokens": config.get("max_tokens"),
         "retrieval_changed": False,
         "ranking_changed": False,
         "route_changed": False,
@@ -504,7 +609,9 @@ def install_constrained_gemma_writer(module: MutableMapping[str, Any]) -> None:
         self: Any,
         payload: Mapping[str, Any],
     ) -> Dict[str, Any]:
+        request_started = time.monotonic()
         result = dict(current_process(self, payload))
+        upstream_elapsed_seconds = max(0.0, time.monotonic() - request_started)
         config = load_constrained_writer_config()
         query = extract_latest_user(payload)
         registry = (
@@ -516,6 +623,8 @@ def install_constrained_gemma_writer(module: MutableMapping[str, Any]) -> None:
         old_validation = _mapping(result.get("post_answer_validation"))
         eligible, reason = _eligible_for_call(result=result, config=config, registry=registry)
 
+        overall_budget_seconds = float(config.get("overall_budget_seconds") or 210.0)
+        response_reserve_seconds = float(config.get("response_reserve_seconds") or 20.0)
         telemetry: Dict[str, Any] = {
             "status": STATUS,
             "module": MODULE,
@@ -542,19 +651,72 @@ def install_constrained_gemma_writer(module: MutableMapping[str, Any]) -> None:
             "structured_output_accepted": False,
             "phase3_fallback_used": False,
             "gemma_call_count_added": 0,
+            "model_call_timed_out": False,
+            "budget_guard_applied": True,
+            "overall_budget_seconds": overall_budget_seconds,
+            "response_reserve_seconds": response_reserve_seconds,
+            "minimum_call_seconds": float(config.get("minimum_call_seconds") or 8.0),
+            "model_timeout_configured_seconds": float(config.get("model_timeout_seconds") or 45.0),
+            "model_timeout_used_seconds": 0.0,
+            "max_tokens": int(config.get("max_tokens") or 512),
+            "upstream_elapsed_ms": round(upstream_elapsed_seconds * 1000.0, 3),
+            "remaining_budget_before_call_seconds": max(
+                0.0,
+                overall_budget_seconds - upstream_elapsed_seconds,
+            ),
+            "model_call_elapsed_ms": 0.0,
+            "total_elapsed_ms": 0.0,
+            "budget_overrun_ms": 0.0,
             "retrieval_changed": False,
             "route_changed": False,
             "source_truth_mutation_allowed": False,
             "write_attempt_count": 0,
         }
 
-        if not eligible:
-            result["constrained_gemma_writer"] = telemetry
+        def attach_and_return() -> Dict[str, Any]:
+            total_elapsed_seconds = max(0.0, time.monotonic() - request_started)
+            telemetry["total_elapsed_ms"] = round(total_elapsed_seconds * 1000.0, 3)
+            telemetry["budget_overrun_ms"] = round(
+                max(0.0, total_elapsed_seconds - overall_budget_seconds) * 1000.0,
+                3,
+            )
             if config.get("enabled"):
                 result["citation_registry"] = registry
                 result["citation_registry_size"] = len(registry)
                 result["citation_registry_digest"] = citation_registry_digest(registry)
+            result["constrained_gemma_writer"] = telemetry
+            result["answer_permission"] = False
+            result["final_answer_allowed"] = False
+            result["can_answer_directly"] = False
+            result["can_prove_claims"] = False
+            result["source_truth_mutation_allowed"] = False
             return result
+
+        def phase3_fallback(
+            *,
+            fallback_reason: str,
+            writer_mode: str,
+            gemma_status: str,
+            quality_status: str = "PASS",
+            model_call_timed_out: bool = False,
+        ) -> Dict[str, Any]:
+            result["content"] = old_content
+            result["post_answer_validation"] = old_validation
+            result["writer_mode_before_constrained_writer"] = result.get("writer_mode")
+            result["writer_mode"] = writer_mode
+            result["gemma_status"] = gemma_status
+            telemetry.update({
+                "quality_status": quality_status,
+                "reason": fallback_reason,
+                "structured_output_accepted": False,
+                "phase3_fallback_used": True,
+                "model_call_timed_out": model_call_timed_out,
+                "final_answer_validation": old_validation,
+            })
+            return attach_and_return()
+
+        if not eligible:
+            return attach_and_return()
 
         packet = build_writer_packet(
             query=query,
@@ -566,13 +728,32 @@ def install_constrained_gemma_writer(module: MutableMapping[str, Any]) -> None:
         telemetry["packet_validation"] = packet_validation
         telemetry["packet"] = packet
         if not packet_validation.get("accepted"):
-            telemetry.update({
-                "quality_status": "FAIL",
-                "reason": "packet_validation_failed",
-                "phase3_fallback_used": True,
-            })
-            result["constrained_gemma_writer"] = telemetry
-            return result
+            return phase3_fallback(
+                fallback_reason="packet_validation_failed",
+                writer_mode="phase3_deterministic_fallback_after_constrained_packet_rejection",
+                gemma_status="CONSTRAINED_GEMMA_PACKET_REJECTED_PHASE3_FALLBACK",
+                quality_status="FAIL",
+            )
+
+        elapsed_before_call = max(0.0, time.monotonic() - request_started)
+        remaining_before_call = max(0.0, overall_budget_seconds - elapsed_before_call)
+        available_for_model = max(0.0, remaining_before_call - response_reserve_seconds)
+        telemetry["remaining_budget_before_call_seconds"] = round(remaining_before_call, 3)
+        telemetry["available_model_budget_seconds"] = round(available_for_model, 3)
+        minimum_call_seconds = float(config.get("minimum_call_seconds") or 8.0)
+        if available_for_model < minimum_call_seconds:
+            return phase3_fallback(
+                fallback_reason="insufficient_remaining_budget",
+                writer_mode="phase3_deterministic_fallback_before_constrained_gemma_budget_exhaustion",
+                gemma_status="CONSTRAINED_GEMMA_SKIPPED_INSUFFICIENT_REMAINING_BUDGET",
+            )
+
+        model_timeout_seconds = min(
+            float(config.get("model_timeout_seconds") or 45.0),
+            available_for_model,
+        )
+        model_timeout_seconds = max(1.0, model_timeout_seconds)
+        telemetry["model_timeout_used_seconds"] = round(model_timeout_seconds, 3)
 
         gemma_payload = {
             "model": self.gemma_model,
@@ -586,28 +767,41 @@ def install_constrained_gemma_writer(module: MutableMapping[str, Any]) -> None:
             "temperature": 0,
             "stream": False,
             "response_format": {"type": "json_object"},
+            "max_tokens": int(config.get("max_tokens") or 512),
         }
         telemetry["call_attempted"] = True
         telemetry["call_count"] = 1
         telemetry["gemma_call_count_added"] = 1
+        model_call_started = time.monotonic()
         status, gemma = http_json(
             self.gemma_base_url + "/chat/completions",
             gemma_payload,
             api_key=self.gemma_api_key,
-            timeout=self.timeout,
+            timeout=model_timeout_seconds,
         )
+        model_call_elapsed_seconds = max(0.0, time.monotonic() - model_call_started)
+        telemetry["model_call_elapsed_ms"] = round(model_call_elapsed_seconds * 1000.0, 3)
         telemetry["http_status"] = status
         if status != 200:
-            telemetry.update({
-                "quality_status": "PASS",
-                "reason": f"gemma_call_failed_status_{status}",
-                "phase3_fallback_used": True,
-            })
-            result["writer_mode_before_constrained_writer"] = result.get("writer_mode")
-            result["writer_mode"] = "phase3_deterministic_fallback_after_constrained_gemma_error"
-            result["gemma_status"] = f"CONSTRAINED_GEMMA_CALL_FAILED_STATUS_{status}"
-            result["constrained_gemma_writer"] = telemetry
-            return result
+            timed_out = _timeout_response(status, gemma)
+            return phase3_fallback(
+                fallback_reason=(
+                    "gemma_call_timeout"
+                    if timed_out
+                    else f"gemma_call_failed_status_{status}"
+                ),
+                writer_mode=(
+                    "phase3_deterministic_fallback_after_constrained_gemma_timeout"
+                    if timed_out
+                    else "phase3_deterministic_fallback_after_constrained_gemma_error"
+                ),
+                gemma_status=(
+                    "CONSTRAINED_GEMMA_CALL_TIMED_OUT_PHASE3_FALLBACK"
+                    if timed_out
+                    else f"CONSTRAINED_GEMMA_CALL_FAILED_STATUS_{status}"
+                ),
+                model_call_timed_out=timed_out,
+            )
 
         choices = gemma.get("choices") if isinstance(gemma, Mapping) else None
         raw_output = ""
@@ -615,12 +809,16 @@ def install_constrained_gemma_writer(module: MutableMapping[str, Any]) -> None:
             message = choices[0].get("message")
             if isinstance(message, Mapping):
                 raw_output = str(message.get("content") or "")
-        structured = parse_structured_writer_output(raw_output[: int(config.get("max_output_chars") or 12000)])
+        structured = parse_structured_writer_output(
+            raw_output[: int(config.get("max_output_chars") or 12000)]
+        )
         telemetry["structured_output_parsed"] = bool(structured.get("raw_object_present"))
         structured_validation = validate_structured_output(
             structured,
             packet=packet,
-            require_exact_support_sections=bool(config.get("require_evidence_and_limits_exact_copy", True)),
+            require_exact_support_sections=bool(
+                config.get("require_evidence_and_limits_exact_copy", True)
+            ),
         )
         telemetry["structured_output_validation"] = {
             key: value
@@ -659,29 +857,13 @@ def install_constrained_gemma_writer(module: MutableMapping[str, Any]) -> None:
                 "structured_output_accepted": True,
                 "phase3_fallback_used": False,
             })
-        else:
-            result["content"] = old_content
-            result["post_answer_validation"] = old_validation
-            result["writer_mode_before_constrained_writer"] = result.get("writer_mode")
-            result["writer_mode"] = "phase3_deterministic_fallback_after_constrained_output_rejection"
-            result["gemma_status"] = "CONSTRAINED_GEMMA_OUTPUT_REJECTED_PHASE3_FALLBACK"
-            telemetry.update({
-                "quality_status": "PASS",
-                "reason": "structured_output_rejected",
-                "structured_output_accepted": False,
-                "phase3_fallback_used": True,
-            })
+            return attach_and_return()
 
-        result["citation_registry"] = registry
-        result["citation_registry_size"] = len(registry)
-        result["citation_registry_digest"] = citation_registry_digest(registry)
-        result["constrained_gemma_writer"] = telemetry
-        result["answer_permission"] = False
-        result["final_answer_allowed"] = False
-        result["can_answer_directly"] = False
-        result["can_prove_claims"] = False
-        result["source_truth_mutation_allowed"] = False
-        return result
+        return phase3_fallback(
+            fallback_reason="structured_output_rejected",
+            writer_mode="phase3_deterministic_fallback_after_constrained_output_rejection",
+            gemma_status="CONSTRAINED_GEMMA_OUTPUT_REJECTED_PHASE3_FALLBACK",
+        )
 
     def health_constrained_writer(self: Any) -> Dict[str, Any]:
         result = dict(current_health(self))

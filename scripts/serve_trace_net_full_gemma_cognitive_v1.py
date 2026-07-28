@@ -991,7 +991,11 @@ def make_handler(runtime: Runtime):
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Length", str(len(raw)))
             self.end_headers()
-            self.wfile.write(raw)
+            # TRACE_NET_H30_DISCONNECTED_CLIENT_WRITE_GUARD_V1
+            try:
+                self.wfile.write(raw)
+            except (BrokenPipeError, ConnectionResetError):
+                self.close_connection = True
 
         def authorized(self) -> bool:
             return self.headers.get("Authorization", "") == f"Bearer {runtime.api_key}"
