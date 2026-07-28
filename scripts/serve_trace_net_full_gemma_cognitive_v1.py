@@ -38,6 +38,10 @@ from scripts.trace_net_h30_chatgpt_answer_presentation_v1 import (
 from scripts.trace_net_h30_chatgpt_answer_presentation_v1_1 import (
     install_chatgpt_answer_presentation_v1_1,
 )
+# TRACE_NET_H30_PHASE0_6_PRESENTATION_V1_2_IMPORT
+from scripts.trace_net_h30_chatgpt_answer_presentation_v1_2 import (
+    install_chatgpt_answer_presentation_v1_2,
+)
 from scripts.trace_net_h30_engineer_answer_contract_v1 import (
     apply_engineer_answer_contract,
     clean_engineer_text,
@@ -1043,6 +1047,8 @@ install_final_engram_rollout(globals())
 install_answer_quality(globals())
 install_chatgpt_answer_presentation(globals())
 install_chatgpt_answer_presentation_v1_1(globals())
+# TRACE_NET_H30_PHASE0_6_PRESENTATION_V1_2_INSTALL
+install_chatgpt_answer_presentation_v1_2(globals())
 
 
 if __name__ == "__main__":

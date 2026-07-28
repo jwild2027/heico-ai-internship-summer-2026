@@ -118,6 +118,17 @@ for required in \
   fi
 done
 
+# TRACE_NET_H30_PHASE0_6_0_7_PUBLIC_ANSWER_GATE_REQUIRED_V1
+for public_answer_required in \
+  scripts/trace_net_h30_chatgpt_answer_presentation_v1_2.py \
+  scripts/check_trace_net_h30_public_answer_golden_v1.py \
+  tests/fixtures/trace_net_h30_tiff_grounded20_public_answer_golden_v1.json; do
+  if [[ ! -f "$public_answer_required" ]]; then
+    echo "missing_public_answer_gate_file=$public_answer_required"
+    exit 1
+  fi
+done
+
 # TRACE_NET_H30_FINAL_PHASES6_10_REQUIRED_FILES_V1
 for final_required in \
   scripts/trace_net_h30_final_engram_rollout_v1.py \
@@ -259,6 +270,8 @@ echo "compile_status=PASS"
   tests/unit/test_trace_net_h30_answer_quality_v1.py \
   tests/unit/test_trace_net_h30_chatgpt_answer_presentation_v1.py \
   tests/unit/test_trace_net_h30_chatgpt_answer_presentation_v1_1.py \
+  tests/unit/test_trace_net_h30_chatgpt_answer_presentation_v1_2.py \
+  tests/unit/test_trace_net_h30_public_answer_golden_v1.py \
   tests/unit/test_trace_net_full_gemma_cognitive_v1.py \
   tests/unit/test_trace_net_h30_cold_start_streaming_v1.py
 
