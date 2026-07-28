@@ -129,6 +129,16 @@ for public_answer_required in \
   fi
 done
 
+# TRACE_NET_H30_PHASE1_PUBLIC_ANSWER_CONTRACT_REQUIRED_V1
+for phase1_public_required in \
+  scripts/trace_net_h30_public_answer_contract_v1.py \
+  scripts/check_trace_net_h30_public_answer_contract_v1.py; do
+  if [[ ! -f "$phase1_public_required" ]]; then
+    echo "missing_phase1_public_answer_contract_file=$phase1_public_required"
+    exit 1
+  fi
+done
+
 # TRACE_NET_H30_FINAL_PHASES6_10_REQUIRED_FILES_V1
 for final_required in \
   scripts/trace_net_h30_final_engram_rollout_v1.py \
@@ -249,6 +259,9 @@ echo "============================================================"
   scripts/trace_net_h30_answer_quality_v1.py \
   scripts/trace_net_h30_chatgpt_answer_presentation_v1.py \
   scripts/trace_net_h30_chatgpt_answer_presentation_v1_1.py \
+  scripts/trace_net_h30_chatgpt_answer_presentation_v1_2.py \
+  scripts/trace_net_h30_public_answer_contract_v1.py \
+  scripts/check_trace_net_h30_public_answer_contract_v1.py \
   scripts/check_trace_net_h30_evidence_aware_answer_modes_v1.py \
   scripts/run_trace_net_h30_evidence_aware_answer_modes_live_smoke_v1.py \
   scripts/check_trace_net_h30_shadow_planner_v1.py \
@@ -272,6 +285,8 @@ echo "compile_status=PASS"
   tests/unit/test_trace_net_h30_chatgpt_answer_presentation_v1_1.py \
   tests/unit/test_trace_net_h30_chatgpt_answer_presentation_v1_2.py \
   tests/unit/test_trace_net_h30_public_answer_golden_v1.py \
+  tests/unit/test_trace_net_h30_public_answer_contract_v1.py \
+  tests/unit/test_check_trace_net_h30_public_answer_contract_v1.py \
   tests/unit/test_trace_net_full_gemma_cognitive_v1.py \
   tests/unit/test_trace_net_h30_cold_start_streaming_v1.py
 

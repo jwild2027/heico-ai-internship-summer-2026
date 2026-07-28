@@ -9,6 +9,11 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Sequence
 
+from scripts.trace_net_h30_public_answer_contract_v1 import (
+    parse_public_answer,
+    validate_public_answer_contract,
+)
+
 MODULE = "check_trace_net_h30_public_answer_golden_v1"
 STATUS = "TRACE_NET_H30_PUBLIC_ANSWER_GOLDEN_V1"
 
@@ -23,20 +28,14 @@ def _rows(value: Any) -> List[Dict[str, Any]]:
 
 
 def _headings(text: str) -> List[str]:
-    return [line.strip() for line in str(text or "").splitlines() if line.strip().startswith("## ")]
+    parsed = parse_public_answer(text)
+    return [f"## {name}" for name in parsed["heading_order"]]
 
 
 def _section_lines(text: str, target: str) -> List[str]:
-    output: List[str] = []
-    current = ""
-    for raw in str(text or "").splitlines():
-        line = raw.strip()
-        if line.startswith("## "):
-            current = line[3:].strip().casefold()
-            continue
-        if current == target.casefold() and line:
-            output.append(line)
-    return output
+    parsed = parse_public_answer(text)
+    canonical = {"answer": "Answer", "evidence": "Evidence", "limits": "Limits"}.get(target.casefold(), target)
+    return list(parsed["sections"].get(canonical, []))
 
 
 def _normalized_line(value: str) -> str:
@@ -67,6 +66,7 @@ def validate_contract(summary_payload: Mapping[str, Any], contract: Mapping[str,
     global_forbidden_hits = 0
     unrelated_nomenclature_hits = 0
     raw_internal_hits = 0
+    runtime_contract_failure_count = 0
 
     for rule in expected:
         qid = str(rule.get("question_id") or "")
@@ -85,6 +85,14 @@ def validate_contract(summary_payload: Mapping[str, Any], contract: Mapping[str,
             failures.append("category_changed")
         if bool(global_rules.get("require_post_validation_accepted", True)) and not row.get("post_validation_accepted"):
             failures.append("post_validation_rejected")
+
+        runtime_contract = validate_public_answer_contract(
+            answer,
+            route=str(row.get("actual_route") or row.get("expected_route") or ""),
+        )
+        for failure in runtime_contract.get("failures") or []:
+            failures.append(f"public_contract:{failure}")
+            runtime_contract_failure_count += 1
 
         required_headings = list(rule.get("required_headings") or global_rules.get("required_headings") or [])
         for heading in required_headings:
@@ -162,6 +170,7 @@ def validate_contract(summary_payload: Mapping[str, Any], contract: Mapping[str,
         "global_forbidden_hit_count": global_forbidden_hits,
         "unrelated_nomenclature_result_count": unrelated_nomenclature_hits,
         "raw_internal_label_count": raw_internal_hits,
+        "runtime_contract_failure_count": runtime_contract_failure_count,
         "post_validation_rejected_count": sum(
             1 for row in records if not bool(row.get("post_validation_accepted"))
         ),
@@ -177,6 +186,7 @@ def write_markdown(path: Path, report: Mapping[str, Any]) -> None:
         "",
         f"Questions passed: {report.get('passed_question_count')}/{report.get('contract_question_count')}",
         f"Post-validation rejected: {report.get('post_validation_rejected_count')}",
+        f"Runtime contract failures: {report.get('runtime_contract_failure_count')}",
         f"Unrelated nomenclature results: {report.get('unrelated_nomenclature_result_count')}",
         f"Raw internal labels: {report.get('raw_internal_label_count')}",
         "",

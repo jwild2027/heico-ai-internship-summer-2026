@@ -42,6 +42,10 @@ from scripts.trace_net_h30_chatgpt_answer_presentation_v1_1 import (
 from scripts.trace_net_h30_chatgpt_answer_presentation_v1_2 import (
     install_chatgpt_answer_presentation_v1_2,
 )
+# TRACE_NET_H30_PHASE1_PUBLIC_ANSWER_CONTRACT_V1_IMPORT
+from scripts.trace_net_h30_public_answer_contract_v1 import (
+    install_public_answer_contract,
+)
 from scripts.trace_net_h30_engineer_answer_contract_v1 import (
     apply_engineer_answer_contract,
     clean_engineer_text,
@@ -1049,6 +1053,8 @@ install_chatgpt_answer_presentation(globals())
 install_chatgpt_answer_presentation_v1_1(globals())
 # TRACE_NET_H30_PHASE0_6_PRESENTATION_V1_2_INSTALL
 install_chatgpt_answer_presentation_v1_2(globals())
+# TRACE_NET_H30_PHASE1_PUBLIC_ANSWER_CONTRACT_V1_INSTALL
+install_public_answer_contract(globals())
 
 
 if __name__ == "__main__":
