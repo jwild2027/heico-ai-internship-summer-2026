@@ -18,6 +18,7 @@ from scripts.trace_net_h30_phase5_question_bank_v1 import (
     EXPECTED_TOTAL,
     bank_document,
     build_phase5_bank,
+    enrich_phase5_truth,
     validate_phase5_bank,
 )
 
@@ -503,7 +504,7 @@ def main() -> int:
     output_dir = Path(args.output_dir).resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    truth = grounded20.truth(repo)
+    truth = enrich_phase5_truth(repo, grounded20.truth(repo))
     bank = build_phase5_bank(truth)
     bank_validation = validate_phase5_bank(bank)
     bank_doc = bank_document(bank, truth)

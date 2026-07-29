@@ -5,6 +5,7 @@ from scripts.trace_net_h30_phase5_question_bank_v1 import (
     EXPECTED_ROUTE_COUNTS,
     EXPECTED_TOTAL,
     build_phase5_bank,
+    enrich_phase5_truth,
     validate_phase5_bank,
 )
 
@@ -221,3 +222,57 @@ def test_phase5_route_sensitive_prompts_are_single_intent_and_contract_aware():
     clarification = by_category["clarification"][0]
     assert not clarification["requires_citation"]
     assert not clarification["public_contract_required"]
+# TRACE_NET_H30_PHASE5_ROUTE_RESOLVER_ENRICHMENT_V1
+def test_phase5_enriches_deployed_sparse_card_routes_from_resolver(tmp_path):
+    import json
+
+    truth = synthetic_truth()
+    resolver_records = []
+    for card in truth["cards"]:
+        route = card["route"]["recommended_route_candidate"]
+        resolver_records.append({
+            "page_id": card["page_id"],
+            "primary_route": route,
+            "secondary_routes": [],
+            "part_number_tokens": list(card.get("important_parts") or []),
+            "signal_counts": {},
+        })
+        card["route"] = {}
+
+    report = tmp_path / "local_data/organization/trace_net/route_confidence_resolver/trace_net_route_confidence_resolver_v1.json"
+    report.parent.mkdir(parents=True)
+    report.write_text(json.dumps({
+        "quality_status": "PASS",
+        "records": resolver_records,
+    }), encoding="utf-8")
+
+    enriched = enrich_phase5_truth(tmp_path, truth)
+    info = enriched["phase5_route_resolver"]
+    assert info["loaded"] is True
+    assert info["record_count"] == len(truth["cards"])
+    assert info["matched_card_count"] == len(truth["cards"])
+    assert enriched["cards"][0]["phase5_route_resolver"]["primary_route"]
+
+    bank = build_phase5_bank(enriched)
+    assert validate_phase5_bank(bank)["accepted"]
+    table_rows = [row for row in bank if row["category"] == "table_ipl"]
+    assert len(table_rows) == 7
+    assert all("route_resolver:" in row["source_basis"]["selection_basis"] for row in table_rows)
+
+
+def test_phase5_content_signal_fallback_is_strict_but_not_route_metadata_dependent():
+    truth = synthetic_truth()
+    for index, card in enumerate(truth["cards"]):
+        card["route"] = {}
+        if index < 12:
+            card["v2_retrieval_summary"] += " Diagram illustration callout exploded view."
+
+    enriched = enrich_phase5_truth("/path/that/does/not/exist", truth)
+    assert enriched["phase5_route_resolver"]["loaded"] is False
+
+    bank = build_phase5_bank(enriched)
+    assert validate_phase5_bank(bank)["accepted"]
+    table_rows = [row for row in bank if row["category"] == "table_ipl"]
+    visual_rows = [row for row in bank if row["category"] == "visual_figure"]
+    assert all(row["source_basis"]["selection_basis"].startswith("content_signals:") for row in table_rows)
+    assert all(row["source_basis"]["selection_basis"].startswith("content_signals:") for row in visual_rows)

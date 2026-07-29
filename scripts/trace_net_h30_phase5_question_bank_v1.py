@@ -11,6 +11,7 @@ import hashlib
 import json
 import re
 from collections import Counter
+from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
 MODULE = "trace_net_h30_phase5_question_bank_v1"
@@ -96,7 +97,38 @@ def _page_of(card: Mapping[str, Any]) -> str:
     return str(card.get("page_id") or card.get("source_page_id") or "")
 
 
+ROUTE_RESOLVER_RELATIVE_PATHS = (
+    "local_data/organization/trace_net/route_confidence_resolver/trace_net_route_confidence_resolver_v1.json",
+    "local_data/organization/trace_net/route_confidence_resolver_visual_diagram_clamped/trace_net_route_confidence_resolver_v1.json",
+    "local_data/organization/trace_net/route_confidence_resolver_front_matter_clamped/trace_net_route_confidence_resolver_v1.json",
+)
+
+TABLE_PRIMARY_ROUTES = {"detailed_parts_list", "table_or_index"}
+VISUAL_PRIMARY_ROUTES = {"image_visual_diagram", "mixed_text_and_figure"}
+TABLE_CONTENT_SIGNALS = (
+    "detailed parts list", "illustrated parts list", "fig-item", "fig item",
+    "units per assy", "airline part number", "nomenclature", "part number",
+)
+VISUAL_CONTENT_SIGNALS = (
+    "image_visual_diagram", "mixed_text_and_figure", "diagram", "illustration",
+    "callout", "exploded view", "view a", "seat backrest", "seat belt",
+    "floatable seat bottom", "abraded area", "skin ply",
+)
+PROCEDURE_CONTENT_SIGNALS = (
+    "procedure_or_description", "description and operation", "procedure",
+    "removal", "remove", "installation", "install", "disassembly",
+    "inspection", "repair procedure", "cleaning procedure",
+    "adjustment procedure", "adjust",
+)
+WARNING_CONTENT_SIGNALS = ("warning", "caution", "note")
+
+
 def _route_of(card: Mapping[str, Any]) -> str:
+    resolver = card.get("phase5_route_resolver")
+    if isinstance(resolver, Mapping):
+        resolved = str(resolver.get("primary_route") or "").strip()
+        if resolved:
+            return resolved
     route = card.get("route")
     if isinstance(route, Mapping):
         return str(route.get("recommended_route_candidate") or route.get("best_route_candidate_before_review") or "")
@@ -109,8 +141,170 @@ def _card_blob(card: Mapping[str, Any]) -> str:
         for key in (
             "important_parts", "v2_retrieval_summary", "v2_short_summary",
             "retrieval_profile", "ocr", "v2_role", "v2_subrole",
+            "phase5_route_resolver",
         )
     )
+
+
+def enrich_phase5_truth(repo_root: str | Path, truth: Mapping[str, Any]) -> dict[str, Any]:
+    """Attach page-level route-resolver records to deployed V3 adapter cards.
+
+    The deployed embedding candidate bundle can omit recommended_route_candidate.
+    Phase 5 therefore joins the read-only 509-page resolver artifact by page_id.
+    No source artifact is mutated and no runtime behavior is changed.
+    """
+    repo = Path(repo_root).resolve()
+    selected_path: Path | None = None
+    selected_records: list[dict[str, Any]] = []
+
+    for relative in ROUTE_RESOLVER_RELATIVE_PATHS:
+        path = repo / relative
+        if not path.exists():
+            continue
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        records = payload.get("records") if isinstance(payload, Mapping) else None
+        if not isinstance(records, list):
+            continue
+        usable = [
+            dict(row) for row in records
+            if isinstance(row, Mapping)
+            and str(row.get("page_id") or "").strip()
+            and str(row.get("primary_route") or "").strip()
+        ]
+        if usable:
+            selected_path = path
+            selected_records = usable
+            break
+
+    output = dict(truth)
+    cards = [dict(row) for row in truth.get("cards") or [] if isinstance(row, Mapping)]
+    if not selected_records:
+        output["cards"] = cards
+        output["phase5_route_resolver"] = {
+            "loaded": False, "path": None, "record_count": 0,
+            "matched_card_count": 0, "primary_route_counts": {},
+        }
+        return output
+
+    by_page = {str(row["page_id"]): row for row in selected_records}
+    matched = 0
+    enriched_cards: list[dict[str, Any]] = []
+    for card in cards:
+        row = dict(card)
+        resolver = by_page.get(_page_of(row))
+        if resolver is not None:
+            row["phase5_route_resolver"] = resolver
+            matched += 1
+            existing_parts = list(row.get("important_parts") or [])
+            resolver_parts = list(resolver.get("part_number_tokens") or [])
+            row["important_parts"] = list(dict.fromkeys(
+                str(value) for value in [*existing_parts, *resolver_parts] if str(value).strip()
+            ))
+        enriched_cards.append(row)
+
+    route_counts = Counter(str(row.get("primary_route") or "") for row in selected_records)
+    output["cards"] = enriched_cards
+    output["phase5_route_resolver"] = {
+        "loaded": True,
+        "path": str(selected_path),
+        "record_count": len(selected_records),
+        "matched_card_count": matched,
+        "primary_route_counts": dict(sorted(route_counts.items())),
+    }
+    counts = dict(output.get("counts") or {})
+    counts["phase5_route_resolver_records"] = len(selected_records)
+    counts["phase5_route_resolver_matched_cards"] = matched
+    output["counts"] = counts
+    paths = dict(output.get("paths") or {})
+    paths["phase5_route_resolver"] = str(selected_path)
+    output["paths"] = paths
+    return output
+
+
+def _selection_basis(card: Mapping[str, Any], category: str) -> str:
+    route = _route_of(card)
+    resolver = card.get("phase5_route_resolver")
+    route_source = "route_resolver" if isinstance(resolver, Mapping) else "card_route"
+    low = _card_blob(card).casefold()
+
+    if category == "table_ipl":
+        if not _parts_from_card(card):
+            return ""
+        if route in TABLE_PRIMARY_ROUTES:
+            return f"{route_source}:{route}"
+        if any(signal in low for signal in TABLE_CONTENT_SIGNALS):
+            return "content_signals:table_ipl"
+        return ""
+    if category == "visual_figure":
+        if route in VISUAL_PRIMARY_ROUTES:
+            return f"{route_source}:{route}"
+        if any(signal in low for signal in VISUAL_CONTENT_SIGNALS):
+            return "content_signals:visual_figure"
+        return ""
+    if category == "procedure":
+        if route == "procedure_or_description":
+            return f"{route_source}:{route}"
+        if any(signal in low for signal in PROCEDURE_CONTENT_SIGNALS):
+            return "content_signals:procedure"
+        return ""
+    if category == "warning_caution_note":
+        if any(signal in low for signal in WARNING_CONTENT_SIGNALS):
+            return "content_signals:warning_caution_note"
+        return ""
+    raise ValueError(f"unknown_phase5_selection_category:{category}")
+
+
+def _selection_priority(card: Mapping[str, Any], category: str) -> int:
+    basis = _selection_basis(card, category)
+    if basis.startswith("route_resolver:"):
+        return 0
+    if basis.startswith("card_route:"):
+        return 1
+    if basis.startswith("content_signals:"):
+        return 2
+    return 99
+
+
+def _select_strict_cards(
+    cards: Sequence[Mapping[str, Any]],
+    category: str,
+    count: int,
+    *,
+    used_pages: set[str] | None = None,
+) -> list[Mapping[str, Any]]:
+    """Prefer explicit page routes before grounded content-signal fallback."""
+    used_pages = used_pages if used_pages is not None else set()
+    selected: list[Mapping[str, Any]] = []
+    seen: set[str] = set()
+    ranked = sorted(
+        cards,
+        key=lambda row: (
+            _selection_priority(row, category),
+            _page_of(row) in used_pages,
+            _page_of(row),
+        ),
+    )
+    for card in ranked:
+        pid = _page_of(card)
+        if not pid or pid in seen or _selection_priority(card, category) >= 99:
+            continue
+        selected.append(card)
+        seen.add(pid)
+        if len(selected) >= count:
+            return selected
+    raise RuntimeError(
+        f"not_enough_strict_cards category={category} requested={count} found={len(selected)}"
+    )
+
+
+def _strict_pool_counts(cards: Sequence[Mapping[str, Any]]) -> dict[str, int]:
+    return {
+        category: sum(bool(_selection_basis(card, category)) for card in cards)
+        for category in ("table_ipl", "visual_figure", "procedure", "warning_caution_note")
+    }
 
 
 def _parts_from_card(card: Mapping[str, Any]) -> list[str]:
@@ -465,60 +659,80 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
         ))
     used_pages: set[str] = set()
 
-    # Strict route metadata keeps positive IPL questions tied to actual parts-list
-    # pages instead of generic early-manual pages containing the word "table".
-    table_cards = _select_cards(
-        cards,
-        lambda card: _route_of(card) in {"detailed_parts_list", "table_or_index"}
-        and bool(_parts_from_card(card)),
-        7,
-        used_pages=used_pages,
-        allow_fallback=False,
+    # Use the page-level route resolver when the deployed embedding-card adapter
+    # omits route metadata. Content signals remain a strict, grounded fallback;
+    # arbitrary pages are never substituted merely to satisfy a category count.
+    strict_pool_counts = _strict_pool_counts(cards)
+    required_pool_counts = {
+        "table_ipl": 7, "visual_figure": 7,
+        "procedure": 6, "warning_caution_note": 4,
+    }
+    shortages = {
+        category: {"required": required, "found": strict_pool_counts.get(category, 0)}
+        for category, required in required_pool_counts.items()
+        if strict_pool_counts.get(category, 0) < required
+    }
+    if shortages:
+        resolver_info = dict(truth.get("phase5_route_resolver") or {})
+        raise RuntimeError(
+            "phase5_strict_pool_shortage "
+            + json.dumps({
+                "shortages": shortages,
+                "pool_counts": strict_pool_counts,
+                "route_resolver": resolver_info,
+            }, sort_keys=True)
+        )
+
+    table_cards = _select_strict_cards(
+        cards, "table_ipl", 7, used_pages=used_pages,
     )
     for card in table_cards:
         pid = _page_of(card); used_pages.add(pid); card_parts = _parts_from_card(card)
         bank.append(_question(
             "table_ipl", f"Locate part {card_parts[0]} in the IPL table.",
             "exact_table_ipl_lookup", identifiers=card_parts[:1], pages=[pid],
-            basis={"page": pid, "route": _route_of(card), "source_path": card.get("source_path")},
+            basis={
+                "page": pid, "route": _route_of(card),
+                "selection_basis": _selection_basis(card, "table_ipl"),
+                "strict_pool_count": strict_pool_counts["table_ipl"],
+                "source_path": card.get("source_path"),
+            },
         ))
 
-    visual_cards = _select_cards(
-        cards,
-        lambda card: _route_of(card) in {"image_visual_diagram", "mixed_text_and_figure"},
-        7,
-        used_pages=used_pages,
-        allow_fallback=False,
+    visual_cards = _select_strict_cards(
+        cards, "visual_figure", 7, used_pages=used_pages,
     )
     for card in visual_cards:
         pid = _page_of(card); used_pages.add(pid)
         bank.append(_question(
             "visual_figure", f"Show the diagram on page {pid}.",
             "visual_figure_callout_lookup", pages=[pid],
-            basis={"page": pid, "route": _route_of(card), "source_path": card.get("source_path")},
+            basis={
+                "page": pid, "route": _route_of(card),
+                "selection_basis": _selection_basis(card, "visual_figure"),
+                "strict_pool_count": strict_pool_counts["visual_figure"],
+                "source_path": card.get("source_path"),
+            },
         ))
 
-    procedure_cards = _select_cards(
-        cards,
-        lambda card: _route_of(card) == "procedure_or_description",
-        6,
-        used_pages=used_pages,
-        allow_fallback=False,
+    procedure_cards = _select_strict_cards(
+        cards, "procedure", 6, used_pages=used_pages,
     )
     for card in procedure_cards:
         pid = _page_of(card); used_pages.add(pid)
         bank.append(_question(
             "procedure", f"What procedure is described on page {pid}?",
             "procedure_task_lookup", pages=[pid],
-            basis={"page": pid, "route": _route_of(card), "source_path": card.get("source_path")},
+            basis={
+                "page": pid, "route": _route_of(card),
+                "selection_basis": _selection_basis(card, "procedure"),
+                "strict_pool_count": strict_pool_counts["procedure"],
+                "source_path": card.get("source_path"),
+            },
         ))
 
-    warning_cards = _select_cards(
-        cards,
-        lambda card: any(token in _card_blob(card).lower() for token in ("warning", "caution", "note")),
-        4,
-        used_pages=used_pages,
-        allow_fallback=False,
+    warning_cards = _select_strict_cards(
+        cards, "warning_caution_note", 4, used_pages=used_pages,
     )
     for card in warning_cards:
         pid = _page_of(card); used_pages.add(pid); low = _card_blob(card).lower()
@@ -528,7 +742,10 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
             "warning_caution_note_lookup", pages=[pid],
             basis={
                 "page": pid, "notice_type": notice,
-                "route": _route_of(card), "source_path": card.get("source_path"),
+                "route": _route_of(card),
+                "selection_basis": _selection_basis(card, "warning_caution_note"),
+                "strict_pool_count": strict_pool_counts["warning_caution_note"],
+                "source_path": card.get("source_path"),
             },
         ))
 
