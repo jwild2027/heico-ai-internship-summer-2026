@@ -91,3 +91,100 @@ def test_select_bank_supports_category_id_and_limit_filters():
     args = SimpleNamespace(only_categories="a", only_ids="", start_index=2, max_questions=1)
     selected = _select_bank(bank, args)
     assert [row["question_id"] for row in selected] == ["q003"]
+
+# TRACE_NET_H30_PHASE5_CALIBRATED_EVALUATOR_V1
+from scripts.run_trace_net_h30_grounded100_v1 import (
+    _existing_record_matches_question,
+    _regrade_existing_record,
+)
+
+
+def test_negative_no_match_does_not_treat_direct_query_echo_as_fabrication():
+    target = item()
+    target.update({
+        "negative_control": True,
+        "requires_citation": False,
+        "expected_identifiers": ["999-99999-999"],
+        "expected_pages": [],
+    })
+    payload = {
+        "choices": [{"message": {"content": (
+            "## Answer\n\nNo indexed match was found for `999-99999-999`.\n\n"
+            "## Evidence\n\n- No matching indexed part record was returned."
+        )}}],
+        "trace_net": {
+            "route": "exact_identifier_lookup",
+            "post_answer_validation": {"accepted": True, "failures": []},
+            "evidence_envelope": {
+                "direct_evidence": [{"candidate_value": "999-99999-999", "match_status": "not_found"}],
+                "candidate_evidence": [],
+                "source_resolution": [],
+            },
+        },
+    }
+    row = evaluate_record(target, payload, 200, 1000.0, "", latency_hard_limit_seconds=180)
+    assert row["passed_hard_gates"], row
+    assert not row["negative_identifier_fabricated"]
+    assert not row["required_citation_missing"]
+
+
+def test_plain_clarification_can_use_nontechnical_public_contract():
+    target = item("clarification_no_evidence")
+    target.update({
+        "category": "clarification",
+        "question": "Can you help me identify the component?",
+        "expected_identifiers": [],
+        "expected_pages": [],
+        "requires_citation": False,
+        "public_contract_required": False,
+    })
+    payload = {
+        "choices": [{"message": {"content": "Please share any part-number characters or ATA clues."}}],
+        "trace_net": {
+            "route": "clarification_no_evidence",
+            "post_answer_validation": {"accepted": True, "failures": []},
+            "evidence_envelope": {},
+        },
+    }
+    row = evaluate_record(target, payload, 200, 5.0, "", latency_hard_limit_seconds=180)
+    assert row["passed_hard_gates"], row
+    assert row["public_contract_ok"]
+    assert not row["public_contract_required"]
+
+
+def test_public_model_meta_text_is_a_hard_failure():
+    payload = good_payload()
+    payload["choices"][0]["message"]["content"] = (
+        "## Answer\n\nThe user's prompt contains an error. Part `120-20001-001` is listed [1].\n\n"
+        "## Evidence\n\n- Page `t_p_120_1176_p000001` [1]"
+    )
+    row = evaluate_record(item(), payload, 200, 1000.0, "", latency_hard_limit_seconds=180)
+    assert "public_model_meta_leak" in row["hard_failures"]
+    assert row["public_output_anomalies"]
+
+
+def test_existing_record_question_fingerprint_prevents_stale_resume():
+    current = item()
+    existing = {"question": dict(current), "evaluation": {}, "raw_response": {}}
+    assert _existing_record_matches_question(existing, current)
+    changed = dict(current)
+    changed["question"] = "Find the same part using a changed benchmark prompt."
+    assert not _existing_record_matches_question(existing, changed)
+
+
+def test_existing_record_is_regraded_under_current_evaluator():
+    target = item()
+    existing = {
+        "question": dict(target),
+        "evaluation": {
+            "http_status": 200,
+            "latency_ms": 1000.0,
+            "transport_error": "",
+        },
+        "raw_response": good_payload(),
+    }
+    refreshed = _regrade_existing_record(
+        existing, target, latency_hard_limit_seconds=180,
+    )
+    assert refreshed["passed_hard_gates"], refreshed
+    assert refreshed["public_contract_ok"]

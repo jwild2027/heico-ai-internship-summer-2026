@@ -69,12 +69,15 @@ EXPECTED_ROUTE_COUNTS = {
     "clarification_no_evidence": 1,
 }
 
-PRIORITY_NOUNS = (
+ROUTER_SAFE_NOMENCLATURE_TERMS = (
     "PIN", "RING", "LATCH", "COVER", "PANEL", "BRACKET", "FITTING",
     "SCREW", "BOLT", "CLIP", "SEAT", "FASTENER", "RETAINER", "SPRING",
-    "WASHER", "ARMREST", "SUPPORT", "HINGE", "TABLE", "LEG",
+    "WASHER", "ARMREST", "HINGE", "ASH TRAY", "ASHTRAY", "RAIL",
+    "BUCKLE", "ACTUATOR", "SWITCH", "VALVE", "HOSE", "CONNECTOR",
+    "CLAMP", "LEVER",
 )
 OTHER_IDENTIFIER_RE = re.compile(r"\b[A-Z]{2,}\d{3,}(?:[-./][A-Z0-9]+)+\b", re.I)
+FULL_PART_RE = re.compile(r"\b\d{2,4}-\d{5}-\d{3}\b", re.I)
 TOKEN_RE = re.compile(r"[A-Za-z0-9]{4,}")
 
 
@@ -111,9 +114,9 @@ def _card_blob(card: Mapping[str, Any]) -> str:
 
 
 def _parts_from_card(card: Mapping[str, Any]) -> list[str]:
-    # Reuse the common three-section aircraft part format and retain broader
-    # manufacturer-style identifiers for the dedicated category.
-    values = re.findall(r"\b\d{2,4}-\d{4,6}(?:-\d{3})?\b", _card_blob(card), re.I)
+    # Route-specific IPL/visual questions require a complete dash-number part.
+    # Broader manufacturer identifiers are handled by their dedicated category.
+    values = FULL_PART_RE.findall(_card_blob(card))
     return list(dict.fromkeys(value.upper() for value in values))
 
 
@@ -145,6 +148,7 @@ def _question(
     authority_sensitive: bool = False,
     multi_claim: bool = False,
     requires_citation: bool = True,
+    public_contract_required: bool = True,
 ) -> dict[str, Any]:
     return {
         "category": category,
@@ -158,6 +162,7 @@ def _question(
         "authority_sensitive": bool(authority_sensitive),
         "multi_claim": bool(multi_claim),
         "requires_citation": bool(requires_citation),
+        "public_contract_required": bool(public_contract_required),
     }
 
 
@@ -167,6 +172,7 @@ def _select_cards(
     count: int,
     *,
     used_pages: set[str] | None = None,
+    allow_fallback: bool = True,
 ) -> list[Mapping[str, Any]]:
     used_pages = used_pages if used_pages is not None else set()
     selected: list[Mapping[str, Any]] = []
@@ -179,6 +185,8 @@ def _select_cards(
         seen.add(pid)
         if len(selected) >= count:
             return selected
+    if not allow_fallback:
+        raise RuntimeError(f"not_enough_strict_cards requested={count} found={len(selected)}")
     # Evaluation generation must remain robust when route metadata is sparse.
     for card in sorted(cards, key=_page_of):
         pid = _page_of(card)
@@ -311,21 +319,19 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
             basis=row,
         ))
 
-    # 10 partial/family discovery questions. Real manuals contain many suffix
-    # variants in the same family, so two grounded targets may legitimately yield
-    # the same clue. Use deterministic wording variants to keep question text
-    # unique without inventing identifiers, pages, or retrieval expectations.
-    # TRACE_NET_H30_PHASE5_UNIQUE_DISCOVERY_PROMPTS_V1
+    # 10 partial/family discovery questions. Every wording variant keeps an
+    # explicit low-context marker understood by the deterministic router.
+    # TRACE_NET_H30_PHASE5_ROUTE_CALIBRATION_V1
     partial_specs = (
         ("partial_prefix", 3, "starts with"),
         ("partial_contains", 3, "contains"),
         ("partial_suffix", 2, "ends with"),
-        ("partial_family", 2, "belongs to the family"),
+        ("partial_family", 2, "has the family"),
     )
     partial_prompt_templates = (
-        "I only remember that the part number {phrase} {clue}. Show matching candidates and cited source pages.",
-        "Search for part numbers that {phrase} {clue}. Return distinct candidates with their cited source pages.",
-        "Use the partial clue {clue}: the part number {phrase} it. Separate every candidate by cited source page.",
+        "I only remember that the part number {phrase} {clue}. Show matching candidates with cited source pages.",
+        "I only know that the P/N {phrase} {clue}. Show matching candidates with cited source pages.",
+        "I only remember the partial clue {clue}; the part number {phrase} it. Show matching candidates with cited source pages.",
     )
     for category, count, phrase in partial_specs:
         for variant_index in range(count):
@@ -341,55 +347,76 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
             else:
                 clue = "-".join(part.split("-")[:2])
             page = dict((row.get("pages") or [{}])[0])
-            prompt = partial_prompt_templates[variant_index].format(
-                phrase=phrase,
-                clue=clue,
-            )
+            prompt = partial_prompt_templates[variant_index].format(phrase=phrase, clue=clue)
             bank.append(_question(
-                category,
-                prompt,
-                "guided_part_discovery", identifiers=[part], pages=[page.get("page_id", "")],
+                category, prompt, "guided_part_discovery",
+                identifiers=[part], pages=[page.get("page_id", "")],
                 basis={
-                    "part": part,
-                    "clue": clue,
-                    "mode": category,
+                    "part": part, "clue": clue, "mode": category,
                     "prompt_variant": variant_index + 1,
                 },
             ))
 
-    # 2 safe general controls.
+    # 2 safe general controls use the router's explicit conversational allow-list.
     bank.extend([
-        _question("safe_general", "Hello. Briefly explain what TRACE-Net can help search.", "safe_general_chat", requires_citation=False),
-        _question("safe_general", "What kinds of aircraft-manual questions can you help organize?", "safe_general_chat", requires_citation=False),
+        _question(
+            "safe_general", "hello", "safe_general_chat",
+            requires_citation=False, public_contract_required=False,
+        ),
+        _question(
+            "safe_general", "What can you do?", "safe_general_chat",
+            requires_citation=False, public_contract_required=False,
+        ),
     ])
 
-    # 8 nomenclature questions from grounded names.
+    # 8 nomenclature questions use only terms recognized by the deterministic
+    # nomenclature route. Ambiguous words such as "table" and bare "support"
+    # are excluded because they intentionally belong to other route families.
     noun_rows: list[tuple[str, dict[str, Any]]] = []
+    seen_pairs: set[tuple[str, str]] = set()
     seen_nouns: set[str] = set()
-    for noun in PRIORITY_NOUNS:
+    for noun in ROUTER_SAFE_NOMENCLATURE_TERMS:
         for row in usable_parts:
             names = " ".join(str(value) for value in row.get("nomenclature") or []).upper()
             if noun in names and noun not in seen_nouns:
-                noun_rows.append((noun, row)); seen_nouns.add(noun); break
-    for row in usable_parts:
-        if len(noun_rows) >= 8:
-            break
-        for name in row.get("nomenclature") or []:
-            for noun in re.findall(r"[A-Z]{4,}", str(name).upper()):
-                if noun in {"ASSY", "ASSEMBLY", "SINGLE", "PASSENGER", "WITH"} or noun in seen_nouns:
+                noun_rows.append((noun, row))
+                seen_nouns.add(noun)
+                seen_pairs.add((noun, str(row.get("part") or "")))
+                break
+    if len(noun_rows) < 8:
+        for row in usable_parts:
+            names = " ".join(str(value) for value in row.get("nomenclature") or []).upper()
+            for noun in ROUTER_SAFE_NOMENCLATURE_TERMS:
+                pair = (noun, str(row.get("part") or ""))
+                if noun not in names or pair in seen_pairs:
                     continue
-                noun_rows.append((noun, row)); seen_nouns.add(noun); break
+                noun_rows.append((noun, row))
+                seen_pairs.add(pair)
+                if len(noun_rows) >= 8:
+                    break
             if len(noun_rows) >= 8:
                 break
     if len(noun_rows) < 8:
-        raise RuntimeError(f"not_enough_nomenclature_terms found={len(noun_rows)}")
-    for noun, row in noun_rows[:8]:
+        raise RuntimeError(f"not_enough_router_safe_nomenclature_terms found={len(noun_rows)}")
+    nomenclature_templates = (
+        "Find the {noun} in the document set. Show the strongest part candidates with source pages.",
+        "Search the document set for a {noun}. Return the strongest part candidates with source pages.",
+        "Show the strongest nomenclature matches for {noun}. Include source pages.",
+        "Locate an indexed {noun} component. Return part candidates with source pages.",
+    )
+    for noun_index, (noun, row) in enumerate(noun_rows[:8]):
         page = dict((row.get("pages") or [{}])[0])
+        prompt = nomenclature_templates[noun_index % len(nomenclature_templates)].format(
+            noun=noun.lower(),
+        )
         bank.append(_question(
-            "nomenclature",
-            f"Find the {noun.lower()} in the document set. Show the strongest part candidates and connected source pages.",
-            "nomenclature_function_search", identifiers=[str(row["part"])], pages=[page.get("page_id", "")],
-            terms=[noun], basis={"part": row["part"], "nomenclature": row.get("nomenclature")},
+            "nomenclature", prompt, "nomenclature_function_search",
+            identifiers=[str(row["part"])], pages=[page.get("page_id", "")],
+            terms=[noun],
+            basis={
+                "part": row["part"], "nomenclature": row.get("nomenclature"),
+                "prompt_variant": noun_index % len(nomenclature_templates) + 1,
+            },
         ))
 
     # 8 ATA system searches. The deployed corpus may expose fewer than eight
@@ -411,14 +438,14 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
         raise RuntimeError("no_grounded_ata_codes")
 
     ata_prompt_templates = (
-        "Find the relevant parts and source pages in ATA {ata}. Summarize the strongest available evidence.",
-        "Review ATA {ata} and list the strongest indexed part and source-page evidence.",
-        "For ATA {ata}, identify the cited source pages and the most relevant part or nomenclature leads.",
-        "Summarize indexed page coverage and the strongest grounded technical evidence for ATA {ata}.",
-        "Which parts and cited source pages are most relevant to ATA {ata}? Keep guidance separate from proof.",
-        "Recheck ATA {ata} with emphasis on distinct source pages and grounded part evidence.",
-        "Build a source-location summary for ATA {ata}, including relevant part and page leads.",
-        "Consolidate the strongest available parts and source-page evidence for ATA {ata}.",
+        "Find the strongest source-page evidence in ATA {ata}.",
+        "Review ATA {ata} for the strongest indexed source-page evidence.",
+        "Identify the best cited source pages for ATA {ata}.",
+        "Summarize indexed page coverage for ATA {ata}.",
+        "Which cited source pages are most relevant to ATA {ata}?",
+        "Recheck ATA {ata} with emphasis on grounded source pages.",
+        "Build a source-location summary for ATA {ata}.",
+        "Consolidate the strongest source-page evidence for ATA {ata}.",
     )
     for ata_index in range(8):
         ata, pages = atas[ata_index % len(atas)]
@@ -437,48 +464,53 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
             },
         ))
     used_pages: set[str] = set()
+
+    # Strict route metadata keeps positive IPL questions tied to actual parts-list
+    # pages instead of generic early-manual pages containing the word "table".
     table_cards = _select_cards(
         cards,
         lambda card: _route_of(card) in {"detailed_parts_list", "table_or_index"}
-        or any(token in _card_blob(card).lower() for token in ("illustrated parts", "parts list", "table", "item")),
+        and bool(_parts_from_card(card)),
         7,
         used_pages=used_pages,
+        allow_fallback=False,
     )
     for card in table_cards:
         pid = _page_of(card); used_pages.add(pid); card_parts = _parts_from_card(card)
-        prompt = f"Locate part {card_parts[0]} in the IPL table and preserve same-row relationships." if card_parts else f"Show the IPL/table content on page {pid}."
         bank.append(_question(
-            "table_ipl", prompt, "exact_table_ipl_lookup", identifiers=card_parts[:1], pages=[pid],
+            "table_ipl", f"Locate part {card_parts[0]} in the IPL table.",
+            "exact_table_ipl_lookup", identifiers=card_parts[:1], pages=[pid],
             basis={"page": pid, "route": _route_of(card), "source_path": card.get("source_path")},
         ))
 
     visual_cards = _select_cards(
         cards,
-        lambda card: _route_of(card) in {"image_visual_diagram", "mixed_text_and_figure"}
-        or any(token in _card_blob(card).lower() for token in ("figure", "diagram", "illustration")),
+        lambda card: _route_of(card) in {"image_visual_diagram", "mixed_text_and_figure"},
         7,
         used_pages=used_pages,
+        allow_fallback=False,
     )
     for card in visual_cards:
-        pid = _page_of(card); used_pages.add(pid); card_parts = _parts_from_card(card)
-        prompt = f"Show the diagram for part {card_parts[0]} on page {pid} and report only explicit labels or callouts." if card_parts else f"Show the diagram on page {pid} and report only explicit labels or callouts."
+        pid = _page_of(card); used_pages.add(pid)
         bank.append(_question(
-            "visual_figure", prompt, "visual_figure_callout_lookup", identifiers=card_parts[:1], pages=[pid],
+            "visual_figure", f"Show the diagram on page {pid}.",
+            "visual_figure_callout_lookup", pages=[pid],
             basis={"page": pid, "route": _route_of(card), "source_path": card.get("source_path")},
         ))
 
     procedure_cards = _select_cards(
         cards,
-        lambda card: _route_of(card) == "procedure_or_description"
-        or any(token in _card_blob(card).lower() for token in ("procedure", "remove", "install", "adjust")),
+        lambda card: _route_of(card) == "procedure_or_description",
         6,
         used_pages=used_pages,
+        allow_fallback=False,
     )
     for card in procedure_cards:
         pid = _page_of(card); used_pages.add(pid)
         bank.append(_question(
-            "procedure", f"What procedure is described on page {pid}? Preserve the readable step sequence and uncertainty.",
-            "procedure_task_lookup", pages=[pid], basis={"page": pid, "route": _route_of(card), "source_path": card.get("source_path")},
+            "procedure", f"What procedure is described on page {pid}?",
+            "procedure_task_lookup", pages=[pid],
+            basis={"page": pid, "route": _route_of(card), "source_path": card.get("source_path")},
         ))
 
     warning_cards = _select_cards(
@@ -486,12 +518,18 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
         lambda card: any(token in _card_blob(card).lower() for token in ("warning", "caution", "note")),
         4,
         used_pages=used_pages,
+        allow_fallback=False,
     )
     for card in warning_cards:
-        pid = _page_of(card); used_pages.add(pid)
+        pid = _page_of(card); used_pages.add(pid); low = _card_blob(card).lower()
+        notice = "warning" if "warning" in low else ("caution" if "caution" in low else "note")
         bank.append(_question(
-            "warning_caution_note", f"What warning, caution, or note is explicitly present on page {pid}? Cite the page and do not invent one.",
-            "warning_caution_note_lookup", pages=[pid], basis={"page": pid, "source_path": card.get("source_path")},
+            "warning_caution_note", f"What {notice} is explicitly stated on page {pid}?",
+            "warning_caution_note_lookup", pages=[pid],
+            basis={
+                "page": pid, "notice_type": notice,
+                "route": _route_of(card), "source_path": card.get("source_path"),
+            },
         ))
 
     for pid, clue in _rare_ocr_clues(cards, 6):
@@ -516,22 +554,32 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
         "semantic_discovery", terms=["corrosion"], basis={"topic": "corrosion prevention"},
     ))
 
-    nav_cards = _select_cards(cards, lambda _card: True, 5, used_pages=used_pages)
+    nav_cards = _select_cards(
+        cards,
+        lambda card: len(_card_blob(card)) >= 300
+        and _route_of(card) not in {"blank_candidate", "cover_or_title_page"},
+        5,
+        used_pages=used_pages,
+    )
     for card in nav_cards:
         pid = _page_of(card); used_pages.add(pid)
         bank.append(_question(
-            "document_navigation", f"Open page {pid} and explain what indexed content it contains.",
-            "document_page_navigation", pages=[pid], basis={"page": pid, "source_path": card.get("source_path")},
+            "document_navigation", f"Open page {pid}.",
+            "document_page_navigation", pages=[pid],
+            basis={"page": pid, "route": _route_of(card), "source_path": card.get("source_path")},
         ))
 
-    comparison_cards = _select_cards(cards, lambda _card: True, 8, used_pages=used_pages)
+    comparison_cards = _select_cards(
+        cards, lambda card: len(_card_blob(card)) >= 300, 8, used_pages=used_pages,
+    )
     for index in range(0, 8, 2):
         left, right = comparison_cards[index], comparison_cards[index + 1]
         left_pid, right_pid = _page_of(left), _page_of(right)
         bank.append(_question(
             "cross_source_comparison",
-            f"Compare indexed pages {left_pid} and {right_pid} for shared and different technical content. Keep each claim tied to its source.",
-            "cross_source_comparison", pages=[left_pid, right_pid], basis={"left_page": left_pid, "right_page": right_pid},
+            f"Compare pages {left_pid} versus {right_pid} for the same technical topic.",
+            "cross_source_comparison", pages=[left_pid, right_pid],
+            basis={"left_page": left_pid, "right_page": right_pid},
             multi_claim=True,
         ))
 
@@ -549,7 +597,7 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
     for _ in range(3):
         row = next_part(high_degree=True); pages = [str(page.get("page_id") or "") for page in row.get("pages") or []]
         bank.append(_question(
-            "high_degree_aggregation", f"Show every indexed document page mentioning part {row['part']}. Report coverage and avoid silently truncating the result set.",
+            "high_degree_aggregation", f"Show every document mentioning part {row['part']}.",
             "high_degree_entity_aggregation", identifiers=[row["part"]], pages=pages[:12],
             basis={"part": row["part"], "known_page_count": len(pages), "pages": pages[:50]},
         ))
@@ -573,10 +621,24 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
         ))
 
     bank.extend([
-        _question("negative_part", "Find part 999-99999-999.", "exact_identifier_lookup", identifiers=["999-99999-999"], negative=True),
-        _question("negative_part", "Find part 888-88888-888 and cite the source page.", "exact_identifier_lookup", identifiers=["888-88888-888"], negative=True),
-        _question("negative_page", "Open page t_p_120_1176_p999999 and explain what it contains.", "document_page_navigation", pages=["t_p_120_1176_p999999"], negative=True),
-        _question("clarification", "Can you help me identify the component?", "clarification_no_evidence", requires_citation=False),
+        _question(
+            "negative_part", "Find part 999-99999-999.", "exact_identifier_lookup",
+            identifiers=["999-99999-999"], negative=True, requires_citation=False,
+        ),
+        _question(
+            "negative_part", "Find part 888-88888-888.", "exact_identifier_lookup",
+            identifiers=["888-88888-888"], negative=True, requires_citation=False,
+        ),
+        _question(
+            "negative_page", "Open page t_p_120_1176_p999999 and explain what it contains.",
+            "document_page_navigation", pages=["t_p_120_1176_p999999"],
+            negative=True, requires_citation=False,
+        ),
+        _question(
+            "clarification", "Can you help me identify the component?",
+            "clarification_no_evidence", requires_citation=False,
+            public_contract_required=False,
+        ),
     ])
 
     if len(bank) != EXPECTED_TOTAL:

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import re
 import time
@@ -28,6 +29,13 @@ PUBLIC_LEAK_PATTERNS = (
     "evidence_envelope", "claim_ready_evidence", "typed_evidence", "query_atoms",
     "retrieval_tunnels", "route_scores", "source_truth_mutation_allowed",
     "post_answer_validation", "structured_output_validation", "raw_response",
+)
+PUBLIC_OUTPUT_ANOMALY_PATTERNS = (
+    "the user's prompt contains an error",
+    "the user's prompt contains error-prone text",
+    "not a part of the answer",
+    "the system prompt",
+    "ignore previous instructions",
 )
 DANGEROUS_AUTHORITY_TERMS = (
     "approved replacement", "interchangeable", "eligible for installation",
@@ -106,6 +114,20 @@ def _candidate_values(rows: Sequence[Mapping[str, Any]]) -> list[str]:
     return values
 
 
+
+
+def _negative_candidate_values(envelope: Mapping[str, Any]) -> list[str]:
+    """Return only actual candidate-evidence values for negative controls.
+
+    Direct evidence may contain the requested identifier as a no-match/query echo.
+    That is not fabrication; only a returned candidate record can violate a negative
+    identifier control.
+    """
+    value = envelope.get("candidate_evidence")
+    rows = [dict(row) for row in value if isinstance(row, Mapping)] if isinstance(value, list) else []
+    return _candidate_values(rows)
+
+
 def _authority_proof_available(trace: Mapping[str, Any], envelope: Mapping[str, Any]) -> bool:
     registry = trace.get("citation_registry") if isinstance(trace.get("citation_registry"), list) else []
     if any(
@@ -160,21 +182,32 @@ def evaluate_record(
     recovered_ids = set(candidate_norms) | {value for value in expected_ids if value in evidence_blob}
     identifier_question = bool(expected_ids) and not bool(item.get("negative_control"))
     page_question = bool(expected_pages) and not bool(item.get("negative_control"))
-    negative_identifier_fabricated = bool(item.get("negative_control") and expected_ids & recovered_ids)
+    negative_candidate_norms = {
+        _norm(value) for value in _negative_candidate_values(envelope) if _norm(value)
+    }
+    negative_identifier_fabricated = bool(
+        item.get("negative_control") and expected_ids & negative_candidate_norms
+    )
     negative_page_fabricated = bool(item.get("negative_control") and expected_pages & recovered_pages)
     headings = [value.title() for value in HEADING_RE.findall(text)]
     citations = [int(value) for value in CITATION_RE.findall(text)]
     public_leaks = sorted(pattern for pattern in PUBLIC_LEAK_PATTERNS if pattern.casefold() in text.casefold())
+    public_output_anomalies = sorted(
+        pattern for pattern in PUBLIC_OUTPUT_ANOMALY_PATTERNS
+        if pattern.casefold() in text.casefold()
+    )
     proof_available = _authority_proof_available(trace, envelope)
     unsafe_authority = bool(item.get("authority_sensitive")) and _unsafe_authority_assertion(text, proof_available=proof_available)
     duplicate_candidate_count = len(candidate_norms) - len(set(candidate_norms))
     required_citation_missing = bool(item.get("requires_citation", True) and text.strip() and not citations)
-    public_contract_ok = bool(
+    public_contract_required = bool(item.get("public_contract_required", True))
+    structured_public_contract = bool(
         "Answer" in headings
         and "Evidence" in headings
         and headings.index("Answer") < headings.index("Evidence")
         and len(headings) == len(set(headings))
     )
+    public_contract_ok = bool((not public_contract_required and text.strip()) or structured_public_contract)
     actual_route = str(trace.get("route") or "")
     post_accepted = bool(validation.get("accepted"))
     hard_failures: list[str] = []
@@ -194,6 +227,8 @@ def evaluate_record(
         hard_failures.append("authority_claim_without_proof")
     if public_leaks:
         hard_failures.append("public_internal_leak")
+    if public_output_anomalies:
+        hard_failures.append("public_model_meta_leak")
     if latency_ms >= max(1.0, latency_hard_limit_seconds) * 1000.0:
         hard_failures.append("latency_hard_limit_exceeded")
     if required_citation_missing:
@@ -220,9 +255,11 @@ def evaluate_record(
         "post_validation_accepted": post_accepted,
         "post_validation_failures": list(validation.get("failures") or []),
         "unknown_citation_id": "unknown_citation_id" in (validation.get("failures") or []),
+        "public_contract_required": public_contract_required,
         "public_contract_ok": public_contract_ok,
         "public_headings": headings,
         "public_leaks": public_leaks,
+        "public_output_anomalies": public_output_anomalies,
         "citation_count": len(citations),
         "required_citation_missing": required_citation_missing,
         "candidate_count": len(candidates),
@@ -317,6 +354,7 @@ def summarize_records(
         "unknown_citation_id_count": sum(bool(row.get("unknown_citation_id")) for row in rows),
         "public_contract_pass_count": sum(bool(row.get("public_contract_ok")) for row in rows),
         "public_internal_leak_count": sum(bool(row.get("public_leaks")) for row in rows),
+        "public_output_anomaly_count": sum(bool(row.get("public_output_anomalies")) for row in rows),
         "required_citation_missing_count": sum(bool(row.get("required_citation_missing")) for row in rows),
         "duplicate_candidate_total": sum(int(row.get("duplicate_candidate_count") or 0) for row in rows),
         "negative_control_fabricated_count": sum(
@@ -361,6 +399,36 @@ def _load_record(path: Path) -> dict[str, Any] | None:
         return None
 
 
+def _question_fingerprint(item: Mapping[str, Any]) -> str:
+    blob = json.dumps(dict(item), ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(blob.encode("utf-8")).hexdigest()
+
+
+def _existing_record_matches_question(existing: Mapping[str, Any], item: Mapping[str, Any]) -> bool:
+    stored = existing.get("question") if isinstance(existing.get("question"), Mapping) else {}
+    if not stored:
+        return False
+    return _question_fingerprint(stored) == _question_fingerprint(item)
+
+
+def _regrade_existing_record(
+    existing: Mapping[str, Any],
+    item: Mapping[str, Any],
+    *,
+    latency_hard_limit_seconds: float,
+) -> dict[str, Any]:
+    previous = _mapping(existing.get("evaluation"))
+    raw_response = _mapping(existing.get("raw_response"))
+    return evaluate_record(
+        item,
+        raw_response,
+        int(previous.get("http_status") or 0),
+        float(previous.get("latency_ms") or 0.0),
+        str(previous.get("transport_error") or ""),
+        latency_hard_limit_seconds=latency_hard_limit_seconds,
+    )
+
+
 def _select_bank(bank: Sequence[Mapping[str, Any]], args: argparse.Namespace) -> list[dict[str, Any]]:
     selected = [dict(item) for item in bank]
     categories = {value.strip() for value in args.only_categories.split(",") if value.strip()}
@@ -380,8 +448,9 @@ def write_csv(path: Path, records: Sequence[Mapping[str, Any]]) -> None:
         "question_id", "ordinal", "category", "expected_route", "actual_route", "route_match",
         "http_status", "latency_ms", "nonempty_answer", "post_validation_accepted",
         "expected_identifier_recovered", "expected_page_recovered", "candidate_count",
-        "citation_count", "public_contract_ok", "negative_identifier_fabricated",
-        "negative_page_fabricated", "unsafe_authority_assertion", "constrained_writer_accepted",
+        "citation_count", "public_contract_ok", "public_output_anomalies",
+        "negative_identifier_fabricated", "negative_page_fabricated",
+        "unsafe_authority_assertion", "constrained_writer_accepted",
         "constrained_writer_fallback", "passed_hard_gates", "hard_failures", "question",
     ]
     with path.open("w", newline="", encoding="utf-8") as handle:
@@ -472,15 +541,37 @@ def main() -> int:
         path = _record_path(output_dir, item)
         existing = _load_record(path) if path.exists() else None
         if existing and (args.resume or args.rerun_failed):
-            evaluation = _mapping(existing.get("evaluation"))
-            should_skip = bool(args.resume)
-            if args.rerun_failed:
-                should_skip = bool(evaluation.get("passed_hard_gates"))
-            if should_skip:
-                records.append(evaluation)
+            question_matches = _existing_record_matches_question(existing, item)
+            if question_matches:
+                evaluation = _regrade_existing_record(
+                    existing, item,
+                    latency_hard_limit_seconds=args.latency_hard_limit,
+                )
+                refreshed_record = dict(existing)
+                refreshed_record["question"] = dict(item)
+                refreshed_record["question_fingerprint"] = _question_fingerprint(item)
+                refreshed_record["evaluation"] = evaluation
+                path.write_text(
+                    json.dumps(refreshed_record, indent=2, ensure_ascii=False),
+                    encoding="utf-8",
+                )
+                should_skip = bool(args.resume)
+                if args.rerun_failed:
+                    should_skip = bool(evaluation.get("passed_hard_gates"))
+                if should_skip:
+                    records.append(evaluation)
+                    print("=" * 100)
+                    print(
+                        f"[{run_index:03d}/{len(selected):03d}] {item['question_id']} "
+                        f"{item['category']} REGRADED-SKIP"
+                    )
+                    continue
+            else:
                 print("=" * 100)
-                print(f"[{run_index:03d}/{len(selected):03d}] {item['question_id']} {item['category']} RESUME-SKIP")
-                continue
+                print(
+                    f"[{run_index:03d}/{len(selected):03d}] {item['question_id']} "
+                    f"{item['category']} STALE-QUESTION-RERUN"
+                )
 
         print("=" * 100)
         print(f"[{run_index:03d}/{len(selected):03d}] {item['question_id']} {item['category']}")
@@ -499,6 +590,7 @@ def main() -> int:
             "status": STATUS,
             "contract_id": CONTRACT_ID,
             "question": item,
+            "question_fingerprint": _question_fingerprint(item),
             "evaluation": evaluation,
             "raw_response": payload,
         }

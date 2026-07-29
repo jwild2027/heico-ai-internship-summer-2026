@@ -60,6 +60,7 @@ def contract(bank):
             "maximum_negative_fabrications": 0,
             "maximum_duplicate_candidates": 0,
             "maximum_public_internal_leaks": 0,
+            "maximum_public_output_anomalies": 0,
             "maximum_unsafe_authority_assertions": 0,
             "maximum_required_citation_missing": 0,
             "maximum_record_hard_failures": 0
@@ -82,6 +83,7 @@ def passing_evaluation(item):
         "unknown_citation_id": False,
         "public_contract_ok": True,
         "public_leaks": [],
+        "public_output_anomalies": [],
         "required_citation_missing": False,
         "duplicate_candidate_count": 0,
         "identifier_question": bool(item["expected_identifiers"]) and not item["negative_control"],
@@ -131,3 +133,15 @@ def test_checker_rejects_missing_record(tmp_path):
     report = inspect_run(tmp_path, contract(bank))
     assert report["quality_status"] == "FAIL"
     assert any(value.startswith("record_file_count") for value in report["failures"])
+
+# TRACE_NET_H30_PHASE5_CALIBRATED_CHECKER_V1
+def test_checker_rejects_public_model_meta_anomaly(tmp_path):
+    bank = write_passing_run(tmp_path)
+    path = next(tmp_path.glob("001_q001_*.json"))
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    payload["evaluation"]["public_output_anomalies"] = ["the user's prompt contains an error"]
+    path.write_text(json.dumps(payload), encoding="utf-8")
+
+    report = inspect_run(tmp_path, contract(bank))
+    assert report["quality_status"] == "FAIL"
+    assert any("public_output_anomaly_count" in value for value in report["failures"])

@@ -168,3 +168,56 @@ def test_phase5_bank_deduplicates_manufacturer_fallback_candidates():
     assert len({item["question"].casefold() for item in manufacturer_questions}) == 2
     assert validate_phase5_bank(bank)["accepted"]
 
+
+# TRACE_NET_H30_PHASE5_CALIBRATED_CORPUS_V1
+def test_phase5_route_sensitive_prompts_are_single_intent_and_contract_aware():
+    bank = build_phase5_bank(synthetic_truth())
+    by_category = {}
+    for item in bank:
+        by_category.setdefault(item["category"], []).append(item)
+
+    assert {item["question"].casefold() for item in by_category["safe_general"]} == {
+        "hello", "what can you do?",
+    }
+    assert all(not item["requires_citation"] for item in by_category["safe_general"])
+    assert all(not item["public_contract_required"] for item in by_category["safe_general"])
+
+    partial = [item for item in bank if item["category"].startswith("partial_")]
+    assert all(
+        "only remember" in item["question"].casefold()
+        or "only know" in item["question"].casefold()
+        for item in partial
+    )
+
+    single_intent_categories = {
+        "table_ipl", "visual_figure", "procedure", "warning_caution_note",
+        "cross_source_comparison", "high_degree_aggregation",
+    }
+    assert all(
+        " and " not in item["question"].casefold()
+        for item in bank if item["category"] in single_intent_categories
+    )
+
+    assert all(
+        item["source_basis"]["route"] in {"detailed_parts_list", "table_or_index"}
+        for item in by_category["table_ipl"]
+    )
+    assert all(item["expected_identifiers"] for item in by_category["table_ipl"])
+    assert all(
+        item["source_basis"]["route"] in {"image_visual_diagram", "mixed_text_and_figure"}
+        for item in by_category["visual_figure"]
+    )
+    assert all(
+        item["source_basis"]["route"] == "procedure_or_description"
+        for item in by_category["procedure"]
+    )
+    assert all(
+        item["expected_terms"][0] not in {"SUPPORT", "TABLE", "LEG"}
+        for item in by_category["nomenclature"]
+    )
+
+    negative_controls = [item for item in bank if item["negative_control"]]
+    assert all(not item["requires_citation"] for item in negative_controls)
+    clarification = by_category["clarification"][0]
+    assert not clarification["requires_citation"]
+    assert not clarification["public_contract_required"]

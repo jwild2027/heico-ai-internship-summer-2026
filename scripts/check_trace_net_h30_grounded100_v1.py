@@ -124,6 +124,7 @@ def inspect_run(run_dir: Path, contract: Mapping[str, Any]) -> dict[str, Any]:
         ("negative_control_fabricated_count", "maximum_negative_fabrications"),
         ("duplicate_candidate_total", "maximum_duplicate_candidates"),
         ("public_internal_leak_count", "maximum_public_internal_leaks"),
+        ("public_output_anomaly_count", "maximum_public_output_anomalies"),
         ("unsafe_authority_assertion_count", "maximum_unsafe_authority_assertions"),
         ("required_citation_missing_count", "maximum_required_citation_missing"),
     )
