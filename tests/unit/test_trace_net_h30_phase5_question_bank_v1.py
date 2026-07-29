@@ -114,3 +114,57 @@ def test_phase5_bank_supports_one_grounded_ata_code():
     assert sum(bool(item["source_basis"]["ata_code_reused"]) for item in ata_questions) == 7
     assert validate_phase5_bank(bank)["accepted"]
 
+# TRACE_NET_H30_PHASE5_UNIQUE_PROMPTS_V1
+def test_phase5_bank_keeps_partial_prompts_unique_for_repeated_families():
+    truth = synthetic_truth()
+
+    # Shape the early grounded records like a real IPL: several dash-number
+    # variants share the same family and several records share suffix 005.
+    repeated_parts = [
+        "120-20970-001",
+        "120-20970-003",
+        "120-20970-005",
+        "120-20970-007",
+        "120-26948-003",
+        "120-26948-005",
+        "120-29067-005",
+        "120-29067-015",
+        "120-29068-005",
+        "120-29068-035",
+        "120-29069-005",
+        "120-29070-005",
+        "120-29074-005",
+        "120-41824-001",
+        "120-41824-003",
+        "120-48023-001",
+        "120-48024-001",
+        "120-61610-001",
+    ]
+    for row, part in zip(truth["parts"], repeated_parts):
+        row["part"] = part
+
+    bank = build_phase5_bank(truth)
+    partial_questions = [
+        item for item in bank
+        if item["category"].startswith("partial_")
+    ]
+
+    assert len(partial_questions) == 10
+    assert len({item["question"].casefold() for item in partial_questions}) == 10
+    assert all(item["source_basis"].get("prompt_variant") in {1, 2, 3} for item in partial_questions)
+    assert validate_phase5_bank(bank)["accepted"]
+
+
+def test_phase5_bank_deduplicates_manufacturer_fallback_candidates():
+    truth = synthetic_truth()
+    # The generated V3 text already contains manufacturer IDs; appending the
+    # fallback list must not create duplicate benchmark questions.
+    bank = build_phase5_bank(truth)
+    manufacturer_questions = [
+        item for item in bank
+        if item["category"] == "manufacturer_identifier"
+    ]
+    assert len(manufacturer_questions) == 2
+    assert len({item["question"].casefold() for item in manufacturer_questions}) == 2
+    assert validate_phase5_bank(bank)["accepted"]
+

@@ -283,7 +283,26 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
         {"identifier": "MS16562-216", "page_id": "t_p_120_1176_p000455"},
         {"identifier": "PE21052-2", "page_id": "t_p_120_1176_p000075"},
     ]
-    for row in (manufacturer_ids + fallback_manufacturer_ids)[:2]:
+    # Deduplicate discovered and fallback identifiers before selecting the two
+    # benchmark cases. The deployed V3 text may already contain a fallback ID.
+    # TRACE_NET_H30_PHASE5_UNIQUE_PROMPTS_V1
+    manufacturer_candidates: list[dict[str, str]] = []
+    seen_manufacturer_identifiers: set[str] = set()
+    for row in manufacturer_ids + fallback_manufacturer_ids:
+        identifier = str(row.get("identifier") or "").upper()
+        normalized_identifier = _norm(identifier)
+        if not normalized_identifier or normalized_identifier in seen_manufacturer_identifiers:
+            continue
+        seen_manufacturer_identifiers.add(normalized_identifier)
+        manufacturer_candidates.append({
+            "identifier": identifier,
+            "page_id": str(row.get("page_id") or ""),
+        })
+    if len(manufacturer_candidates) < 2:
+        raise RuntimeError(
+            f"not_enough_unique_manufacturer_identifiers found={len(manufacturer_candidates)}"
+        )
+    for row in manufacturer_candidates[:2]:
         identifier = row["identifier"]
         bank.append(_question(
             "manufacturer_identifier",
@@ -292,15 +311,24 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
             basis=row,
         ))
 
-    # 10 partial/family discovery questions.
+    # 10 partial/family discovery questions. Real manuals contain many suffix
+    # variants in the same family, so two grounded targets may legitimately yield
+    # the same clue. Use deterministic wording variants to keep question text
+    # unique without inventing identifiers, pages, or retrieval expectations.
+    # TRACE_NET_H30_PHASE5_UNIQUE_DISCOVERY_PROMPTS_V1
     partial_specs = (
         ("partial_prefix", 3, "starts with"),
         ("partial_contains", 3, "contains"),
         ("partial_suffix", 2, "ends with"),
         ("partial_family", 2, "belongs to the family"),
     )
+    partial_prompt_templates = (
+        "I only remember that the part number {phrase} {clue}. Show matching candidates and cited source pages.",
+        "Search for part numbers that {phrase} {clue}. Return distinct candidates with their cited source pages.",
+        "Use the partial clue {clue}: the part number {phrase} it. Separate every candidate by cited source page.",
+    )
     for category, count, phrase in partial_specs:
-        for _ in range(count):
+        for variant_index in range(count):
             row = next_part()
             part = str(row["part"])
             normalized = _norm(part)
@@ -313,11 +341,20 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
             else:
                 clue = "-".join(part.split("-")[:2])
             page = dict((row.get("pages") or [{}])[0])
+            prompt = partial_prompt_templates[variant_index].format(
+                phrase=phrase,
+                clue=clue,
+            )
             bank.append(_question(
                 category,
-                f"I only remember that the part number {phrase} {clue}. Show matching candidates and cited source pages.",
+                prompt,
                 "guided_part_discovery", identifiers=[part], pages=[page.get("page_id", "")],
-                basis={"part": part, "clue": clue, "mode": category},
+                basis={
+                    "part": part,
+                    "clue": clue,
+                    "mode": category,
+                    "prompt_variant": variant_index + 1,
+                },
             ))
 
     # 2 safe general controls.
