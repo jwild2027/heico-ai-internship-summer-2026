@@ -551,6 +551,12 @@ def citation_registry_digest(registry: Sequence[Mapping[str, Any]]) -> str:
     return hashlib.sha1(blob.encode("utf-8")).hexdigest()[:16]
 
 
+# TRACE_NET_H30_PHASE5_RESIDUAL_REPAIR_V1
+def _aggregation_coverage_telemetry_line(line: str) -> bool:
+    normalized = re.sub(r"^[\s*_-]+", "", str(line or "").casefold())
+    return normalized.startswith("coverage telemetry —") or normalized.startswith("coverage telemetry -")
+
+
 def validate_answer(
     answer: str,
     query: str,
@@ -623,15 +629,23 @@ def validate_answer(
 
     # Technical factual lines must carry a citation. This is intentionally
     # conservative; a rejected answer falls back to the deterministic renderer.
+    # TRACE_NET_H30_PHASE5_COVERAGE_TELEMETRY_ROUTE_SCOPE_FIX_V1
+    # Treat explicit coverage-telemetry labels as factual everywhere. The narrow
+    # high-degree aggregation exemption below skips them only on that route.
     factual_markers = (
         "appears", "lists", "listed", "shows", "identified", "located",
         "nomenclature", "quantity", "figure", "table", "manual", "part ",
-        "ata ", "page ", "revision", "manufacturer",
+        "ata ", "page ", "revision", "manufacturer", "coverage telemetry",
     )
     if direct:
         for line in (item.strip() for item in text.splitlines()):
             lower_line = line.lower()
             if not line or line.startswith("#") or lower_line.startswith(("source", "note:", "limitation:")):
+                continue
+            if (
+                str(result.get("route") or "") == "high_degree_entity_aggregation"
+                and _aggregation_coverage_telemetry_line(line)
+            ):
                 continue
             if any(marker in lower_line for marker in factual_markers) and not CITATION_RE.search(line):
                 failures.append("uncited_factual_line")

@@ -184,3 +184,25 @@ def test_finalize_content_removes_boundary_boilerplate_and_internal_tokens():
     assert "ae28c8694c95f9d6" not in final
     assert mod.PROOF_BOUNDARY not in final
     assert mod.AUTHORITY_BOUNDARY not in final
+
+# TRACE_NET_H30_PHASE5_RESIDUAL_REPAIR_V1
+
+def test_aggregation_renderer_labels_uncited_index_counts_as_coverage_telemetry():
+    mod = load_renderer()
+    atoms = SimpleNamespace(exact_part_numbers=["120-36834-523"])
+    env = envelope(coverage={
+        "aggregate_records": [
+            {"page_id": "t_p_120_1176_p000309", "document": "manual-a"},
+            {"page_id": "t_p_120_1176_p000326", "document": "manual-a"},
+        ],
+        "retrieval_completion": {
+            "scanned_file_count": 400,
+            "matched_file_count": 107,
+            "coverage_complete_for_candidate_files": False,
+        },
+    })
+    text = mod.render_aggregation(atoms, env)
+    assert "Coverage telemetry — matching pages" in text
+    assert "Coverage telemetry — matching documents" in text
+    assert "Coverage telemetry — page" in text
+    assert "Coverage telemetry — scope" in text

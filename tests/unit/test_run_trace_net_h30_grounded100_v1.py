@@ -188,3 +188,30 @@ def test_existing_record_is_regraded_under_current_evaluator():
     )
     assert refreshed["passed_hard_gates"], refreshed
     assert refreshed["public_contract_ok"]
+
+# TRACE_NET_H30_PHASE5_RESIDUAL_REPAIR_V1
+
+def test_positive_no_evidence_answer_is_not_mislabeled_as_missing_citation():
+    target = item("guided_part_discovery")
+    target.update({
+        "category": "partial_prefix",
+        "question": "I only remember that the part number starts with 120-29067.",
+        "expected_identifiers": ["120-29067-021"],
+        "expected_pages": ["t_p_120_1176_p000352"],
+        "requires_citation": True,
+    })
+    payload = {
+        "choices": [{"message": {"content": (
+            "## Answer\n\nNo indexed match was found for the requested part.\n\n"
+            "## Evidence\n\n- No matching indexed part record was returned."
+        )}}],
+        "trace_net": {
+            "route": "guided_part_discovery",
+            "post_answer_validation": {"accepted": True, "failures": []},
+            "evidence_envelope": {},
+        },
+    }
+    row = evaluate_record(target, payload, 200, 1000.0, "", latency_hard_limit_seconds=180)
+    assert "required_citation_missing" not in row["hard_failures"]
+    assert not row["required_citation_missing"]
+    assert not row["expected_identifier_recovered"]

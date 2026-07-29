@@ -52,6 +52,23 @@ PART_RE = re.compile(
 )
 FIGURE_RE = re.compile(r"\bfigure\s+\d+(?:\s+sheet\s+\d+)?\b", re.I)
 
+# TRACE_NET_H30_PHASE5_RESIDUAL_REPAIR_V1
+MODEL_META_PATTERNS: Tuple[re.Pattern[str], ...] = tuple(
+    re.compile(pattern, re.I)
+    for pattern in (
+        r"\bthe user(?:'s|’s) prompt contains\b",
+        r"\bnot (?:a )?part of the answer\b",
+        r"\berror-prone text\b",
+        r"\bend of the json object\b",
+        r"\bsystem prompt\b",
+        r"\bhidden instructions?\b",
+    )
+)
+
+
+def contains_model_meta_commentary(text: str) -> bool:
+    return any(pattern.search(str(text or "")) for pattern in MODEL_META_PATTERNS)
+
 ANSWER_ANCHOR_PATTERNS: Tuple[str, ...] = (
     "best indexed match",
     "appears in the indexed source records",
@@ -559,6 +576,8 @@ def validate_structured_output(
     candidate_answer = "\n".join(answer)
     candidate_tokens = _protected_tokens(candidate_answer)
     candidate_answer_low = re.sub(r"\s+", " ", candidate_answer).casefold()
+    if contains_model_meta_commentary(candidate_answer):
+        failures.append("structured_model_meta_leak")
     for phrase in packet.get("required_answer_phrases") or []:
         if str(phrase).casefold() not in candidate_answer_low:
             failures.append(f"answer_dropped_required_phrase:{phrase}")
@@ -946,6 +965,8 @@ __all__ = [
     "OUTPUT_SCHEMA_VERSION",
     "OUTPUT_CONTRACT_MODE",
     "DEFAULT_CANARY_ROUTES",
+    "MODEL_META_PATTERNS",
+    "contains_model_meta_commentary",
     "build_writer_packet",
     "validate_packet",
     "render_writer_prompt",

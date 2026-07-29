@@ -276,3 +276,41 @@ def test_phase5_content_signal_fallback_is_strict_but_not_route_metadata_depende
     visual_rows = [row for row in bank if row["category"] == "visual_figure"]
     assert all(row["source_basis"]["selection_basis"].startswith("content_signals:") for row in table_rows)
     assert all(row["source_basis"]["selection_basis"].startswith("content_signals:") for row in visual_rows)
+
+# TRACE_NET_H30_PHASE5_RESIDUAL_REPAIR_V1
+
+def test_phase5_third_partial_prompt_places_literal_clue_after_operator():
+    bank = build_phase5_bank(synthetic_truth())
+    third_rows = [
+        row for row in bank
+        if row["category"].startswith("partial_")
+        and (row.get("source_basis") or {}).get("prompt_variant") == 3
+    ]
+    assert third_rows
+    for row in third_rows:
+        clue = row["source_basis"]["clue"]
+        question = row["question"]
+        assert f"{clue}; that is my only clue" in question
+        assert " it." not in question
+
+
+def test_phase5_warning_pages_exclude_front_matter_routes():
+    bank = build_phase5_bank(synthetic_truth())
+    warning_rows = [row for row in bank if row["category"] == "warning_caution_note"]
+    assert len(warning_rows) == 4
+    assert all(
+        (row.get("source_basis") or {}).get("route")
+        not in {"blank_candidate", "cover_or_title_page", "review_required"}
+        for row in warning_rows
+    )
+
+
+def test_phase5_comparison_pages_are_source_resolved_or_strict_route_pages():
+    bank = build_phase5_bank(synthetic_truth())
+    comparison_rows = [row for row in bank if row["category"] == "cross_source_comparison"]
+    assert len(comparison_rows) == 4
+    assert all(
+        (row.get("source_basis") or {}).get("selection_basis")
+        == "source_resolved_or_strict_route_page"
+        for row in comparison_rows
+    )

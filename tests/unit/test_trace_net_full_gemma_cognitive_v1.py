@@ -172,3 +172,32 @@ def test_page_content_prompt_includes_supporting_tier_and_citation_ids():
     assert "EXACT PAGE CONTENT" in prompt
     ocr_id = next(e["citation_id"] for e in registry if e["class"] == "page_ocr_text")
     assert f"[{ocr_id}]" in prompt  # per-record id rendered into the page block
+
+# TRACE_NET_H30_PHASE5_RESIDUAL_REPAIR_V1
+
+def test_high_degree_aggregation_allows_explicit_coverage_telemetry_without_claim_citations():
+    mod = load()
+    result = base_result()
+    result["route"] = "high_degree_entity_aggregation"
+    check = mod.validate_answer(
+        "Part 120-41824-003 appears in the source [1].\n"
+        "- **Coverage telemetry — matching pages:** 6\n"
+        "- **Coverage telemetry — page:** `t_p_120_1176_p000202`\n"
+        "- **Coverage telemetry — scope:** Indexed artifacts only.",
+        "Show every document mentioning part 120-41824-003.",
+        result,
+    )
+    assert check["accepted"] is True, check["failures"]
+
+
+def test_coverage_telemetry_exemption_is_not_available_to_other_routes():
+    mod = load()
+    result = base_result()
+    check = mod.validate_answer(
+        "Part 120-41824-003 appears in the source [1].\n"
+        "- **Coverage telemetry — matching pages:** 6",
+        "Find part 120-41824-003.",
+        result,
+    )
+    assert check["accepted"] is False
+    assert "uncited_factual_line" in check["failures"]

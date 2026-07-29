@@ -489,22 +489,22 @@ def render_aggregation(atoms: Any, envelope: Any) -> str:
     lines = [
         "## Indexed coverage",
         "",
-        f"- **Matching pages:** {len(pages)}",
-        f"- **Matching documents:** {len(documents)}",
+        f"- **Coverage telemetry — matching pages:** {len(pages)}",
+        f"- **Coverage telemetry — matching documents:** {len(documents)}",
     ]
     if local:
-        lines.append(f"- **Artifact files scanned:** {int(local.get('scanned_file_count', 0) or 0)}")
-        lines.append(f"- **Files with matching records:** {int(local.get('matched_file_count', 0) or 0)}")
+        lines.append(f"- **Coverage telemetry — artifact files scanned:** {int(local.get('scanned_file_count', 0) or 0)}")
+        lines.append(f"- **Coverage telemetry — files with matching records:** {int(local.get('matched_file_count', 0) or 0)}")
         lines.append(
-            "- **Coverage:** "
+            "- **Coverage telemetry — coverage:** "
             + ("Complete for the bounded indexed artifact set" if local.get("coverage_complete_for_candidate_files") else "Capped or incomplete")
         )
     if pages:
         lines.extend(["", "### Resolved pages", ""])
-        lines.extend(f"- `{page}`" for page in pages[:12])
+        lines.extend(f"- **Coverage telemetry — page:** `{page}`" for page in pages[:12])
     lines.extend([
         "",
-        "**Scope:** This summarizes the currently indexed TRACE-Net artifact set, not manuals or pages that have not been indexed.",
+        "**Coverage telemetry — scope:** This summarizes the currently indexed TRACE-Net artifact set, not manuals or pages that have not been indexed.",
     ])
     return "\n".join(lines)
 

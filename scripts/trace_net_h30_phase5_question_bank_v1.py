@@ -251,7 +251,11 @@ def _selection_basis(card: Mapping[str, Any], category: str) -> str:
             return "content_signals:procedure"
         return ""
     if category == "warning_caution_note":
-        if any(signal in low for signal in WARNING_CONTENT_SIGNALS):
+        # Avoid front matter where words such as "note" are publication metadata,
+        # not an actionable warning/caution/note statement.
+        if route in {"blank_candidate", "cover_or_title_page", "review_required"}:
+            return ""
+        if re.search(r"\b(?:warning|caution|note)\b", low, re.I):
             return "content_signals:warning_caution_note"
         return ""
     raise ValueError(f"unknown_phase5_selection_category:{category}")
@@ -525,7 +529,7 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
     partial_prompt_templates = (
         "I only remember that the part number {phrase} {clue}. Show matching candidates with cited source pages.",
         "I only know that the P/N {phrase} {clue}. Show matching candidates with cited source pages.",
-        "I only remember the partial clue {clue}; the part number {phrase} it. Show matching candidates with cited source pages.",
+        "I only remember that the part number {phrase} {clue}; that is my only clue. Show matching candidates with cited source pages.",
     )
     for category, count, phrase in partial_specs:
         for variant_index in range(count):
@@ -617,16 +621,24 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
     # distinct ATA codes, so deterministically reuse grounded codes with unique
     # evidence objectives instead of inventing codes or aborting bank creation.
     # TRACE_NET_H30_PHASE5_ATA_REUSE_V1
+    source_resolved_page_ids = {
+        str(page.get("page_id") or "")
+        for row in usable_parts if bool(row.get("source_resolved"))
+        for page in (row.get("pages") or []) if str(page.get("page_id") or "")
+    }
     atas = [
         (
             ata,
-            list(dict.fromkeys(page for page in pages if str(page).strip())),
+            list(dict.fromkeys(
+                page for page in pages
+                if str(page).strip() and str(page) in source_resolved_page_ids
+            )),
         )
         for ata, pages in sorted(
             ata_pages.items(),
             key=lambda item: (-len(item[1]), item[0]),
         )
-        if pages
+        if any(str(page) in source_resolved_page_ids for page in pages)
     ]
     if not atas:
         raise RuntimeError("no_grounded_ata_codes")
@@ -786,8 +798,13 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
             basis={"page": pid, "route": _route_of(card), "source_path": card.get("source_path")},
         ))
 
+    comparison_page_ids = set(source_resolved_page_ids) | set(used_pages)
     comparison_cards = _select_cards(
-        cards, lambda card: len(_card_blob(card)) >= 300, 8, used_pages=used_pages,
+        cards,
+        lambda card: _page_of(card) in comparison_page_ids and len(_card_blob(card)) >= 300,
+        8,
+        used_pages=used_pages,
+        allow_fallback=False,
     )
     for index in range(0, 8, 2):
         left, right = comparison_cards[index], comparison_cards[index + 1]
@@ -796,7 +813,10 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
             "cross_source_comparison",
             f"Compare pages {left_pid} versus {right_pid} for the same technical topic.",
             "cross_source_comparison", pages=[left_pid, right_pid],
-            basis={"left_page": left_pid, "right_page": right_pid},
+            basis={
+                "left_page": left_pid, "right_page": right_pid,
+                "selection_basis": "source_resolved_or_strict_route_page",
+            },
             multi_claim=True,
         ))
 

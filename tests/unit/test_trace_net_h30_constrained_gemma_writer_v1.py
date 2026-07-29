@@ -216,3 +216,39 @@ def test_install_is_idempotent(monkeypatch):
     first = Runtime.process
     install_constrained_gemma_writer(namespace)
     assert Runtime.process is first
+
+# TRACE_NET_H30_PHASE5_RESIDUAL_REPAIR_V1
+
+def test_structured_output_rejects_model_meta_commentary():
+    packet = _packet()
+    value = json.loads(_good_output(packet))
+    value["answer"] = [
+        "The user's prompt contains an error. `120-26948-003` appears in the available IPL/table evidence on page `t_p_120_1176_p000030` [1]."
+    ]
+    validation = validate_structured_output(
+        parse_structured_writer_output(json.dumps(value)), packet=packet
+    )
+    assert not validation["accepted"]
+    assert "structured_model_meta_leak" in validation["failures"]
+
+
+def test_installed_writer_falls_back_on_model_meta_commentary(monkeypatch):
+    monkeypatch.setenv("TRACE_NET_H30_CONSTRAINED_WRITER_ENABLED", "1")
+
+    def response(payload):
+        packet = _packet()
+        value = json.loads(_good_output(packet))
+        value["answer"] = [
+            "The user's prompt contains an error. `120-26948-003` appears in the available IPL/table evidence on page `t_p_120_1176_p000030` [1]."
+        ]
+        return 200, {"choices": [{"message": {"content": json.dumps(value)}}]}
+
+    namespace, Runtime, calls = _module_namespace(response)
+    install_constrained_gemma_writer(namespace)
+    result = Runtime().process({"query": "Locate part 120-26948-003 in the IPL table."})
+    telemetry = result["constrained_gemma_writer"]
+    assert len(calls) == 1
+    assert telemetry["phase3_fallback_used"]
+    assert not telemetry["structured_output_accepted"]
+    assert "structured_model_meta_leak" in telemetry["structured_output_validation"]["failures"]
+    assert result["content"] == CONTENT

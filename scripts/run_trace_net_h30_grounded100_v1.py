@@ -129,6 +129,23 @@ def _negative_candidate_values(envelope: Mapping[str, Any]) -> list[str]:
     return _candidate_values(rows)
 
 
+# TRACE_NET_H30_PHASE5_RESIDUAL_REPAIR_V1
+NO_EVIDENCE_ANSWER_PATTERNS = tuple(
+    re.compile(pattern, re.I)
+    for pattern in (
+        r"\bno indexed match was found\b",
+        r"\bno matching indexed (?:part|ata|page|record)\b",
+        r"\bwas not found in the indexed document set\b",
+        r"\bno indexed part or page record was found\b",
+        r"\bno matching indexed .* record was returned\b",
+    )
+)
+
+
+def _is_no_evidence_answer(text: str) -> bool:
+    return any(pattern.search(str(text or "")) for pattern in NO_EVIDENCE_ANSWER_PATTERNS)
+
+
 def _authority_proof_available(trace: Mapping[str, Any], envelope: Mapping[str, Any]) -> bool:
     registry = trace.get("citation_registry") if isinstance(trace.get("citation_registry"), list) else []
     if any(
@@ -200,7 +217,12 @@ def evaluate_record(
     proof_available = _authority_proof_available(trace, envelope)
     unsafe_authority = bool(item.get("authority_sensitive")) and _unsafe_authority_assertion(text, proof_available=proof_available)
     duplicate_candidate_count = len(candidate_norms) - len(set(candidate_norms))
-    required_citation_missing = bool(item.get("requires_citation", True) and text.strip() and not citations)
+    required_citation_missing = bool(
+        item.get("requires_citation", True)
+        and text.strip()
+        and not citations
+        and not _is_no_evidence_answer(text)
+    )
     public_contract_required = bool(item.get("public_contract_required", True))
     structured_public_contract = bool(
         "Answer" in headings
