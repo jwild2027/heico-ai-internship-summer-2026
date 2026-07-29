@@ -138,6 +138,8 @@ NO_EVIDENCE_ANSWER_PATTERNS = tuple(
         r"\bwas not found in the indexed document set\b",
         r"\bno indexed part or page record was found\b",
         r"\bno matching indexed .* record was returned\b",
+        r"\bno explicit (?:warning|caution|note) was found\b",
+        r"\bcomparable exact-page records were not found\b",
     )
 )
 

@@ -327,3 +327,9 @@ def test_bridge_overlay_adds_no_upstream_or_second_gemma_call(monkeypatch):
     assert pc["telemetry"]["gemma_call_count_added"] == 0
     assert pc["telemetry"]["cross_page_record_count"] == 0
     assert "page_content_bridge" in env.retrieval_tunnels_used
+
+# TRACE_NET_H30_PHASE5_NOTICE_COMPARISON_RUNTIME_FIX_V1_1
+def test_cross_source_comparison_is_an_exact_page_bridge_route():
+    mod = load_module()
+    assert "cross_source_comparison" in mod.PAGE_ROUTES
+

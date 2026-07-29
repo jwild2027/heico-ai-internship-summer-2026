@@ -92,6 +92,8 @@ PAGE_ROUTES = {
     "warning_caution_note_lookup",
     "ocr_scan_recovery",
     "exact_table_ipl_lookup",
+    # TRACE_NET_H30_PHASE5_NOTICE_COMPARISON_RUNTIME_FIX_V1_1
+    "cross_source_comparison",
     "multi_question_research",
 }
 

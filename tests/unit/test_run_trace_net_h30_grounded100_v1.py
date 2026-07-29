@@ -215,3 +215,31 @@ def test_positive_no_evidence_answer_is_not_mislabeled_as_missing_citation():
     assert "required_citation_missing" not in row["hard_failures"]
     assert not row["required_citation_missing"]
     assert not row["expected_identifier_recovered"]
+
+# TRACE_NET_H30_PHASE5_NOTICE_COMPARISON_RUNTIME_FIX_V1_1
+def test_warning_no_notice_answer_is_valid_citation_free_no_evidence():
+    target = item("warning_caution_note_lookup")
+    target.update({
+        "question_id": "q059",
+        "category": "warning_caution_note",
+        "question": "What warning is explicitly stated on the requested page?",
+        "expected_identifiers": [],
+        "expected_pages": [],
+        "requires_citation": True,
+    })
+    payload = {
+        "choices": [{"message": {"content": (
+            "## Answer\n\nNo explicit warning was found in the exact-page OCR/table records.\n\n"
+            "## Evidence\n\n- No matching explicit notice record was returned for the requested page.\n\n"
+            "## Limits\n\n- Summary guidance was not treated as formal warning text."
+        )}}],
+        "trace_net": {
+            "route": "warning_caution_note_lookup",
+            "post_answer_validation": {"accepted": True, "failures": []},
+            "evidence_envelope": {},
+        },
+    }
+    row = evaluate_record(target, payload, 200, 10.0, "", latency_hard_limit_seconds=180)
+    assert row["passed_hard_gates"], row
+    assert not row["required_citation_missing"]
+

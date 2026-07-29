@@ -279,6 +279,11 @@ def _query_page(query: str) -> str:
     return match.group(0) if match else ""
 
 
+def _query_pages(query: str) -> List[str]:
+    """Return every canonical page id in query order without duplicates."""
+    return list(dict.fromkeys(PAGE_RE.findall(str(query or ""))))
+
+
 def _query_ata(query: str) -> str:
     match = ATA_RE.search(str(query or ""))
     return match.group(0) if match else ""
@@ -334,7 +339,7 @@ def _raw_manual_line(line: str) -> bool:
 
 def _clean_line(line: str) -> str:
     text = str(line or "").strip()
-    text = re.sub(r"^[-*]\s*", "", text)
+    text = re.sub(r"^(?:-\s+|\*\s+)", "", text)
     text = re.sub(r"^TRACE-Net\s+", "", text, flags=re.I)
     text = re.sub(r"\bTRACE-Net\b", "the search", text, flags=re.I)
     return re.sub(r"\s+", " ", text).strip()
@@ -664,6 +669,169 @@ def _render_graph(result: Mapping[str, Any], query: str, entries: Sequence[Mappi
     )
 
 
+# TRACE_NET_H30_PHASE5_NOTICE_COMPARISON_RUNTIME_FIX_V1_1
+
+def _public_page_excerpt(value: Any, limit: int = 700) -> str:
+    """Produce a compact public excerpt without leaking internal/raw-manual labels."""
+    text = _compact(value, 4000)
+    for pattern in INTERNAL_PATTERNS + RAW_MANUAL_PATTERNS:
+        text = pattern.sub(" ", text)
+    text = re.sub(r"\s+", " ", text).strip(" ;,|-")
+    return text[:limit].rstrip()
+
+
+def _requested_notice(query: str) -> str:
+    low = str(query or "").casefold()
+    for value in ("warning", "caution", "note"):
+        if re.search(rf"\b{value}\b", low):
+            return value
+    return "notice"
+
+
+def _page_source_entries(
+    entries: Sequence[Mapping[str, Any]],
+    page: str,
+    *,
+    supporting_only: bool = False,
+) -> List[Dict[str, Any]]:
+    output: List[Dict[str, Any]] = []
+    for raw in entries:
+        entry = dict(raw)
+        if not entry.get("page_content") or not _citation(entry):
+            continue
+        if page and _entry_page(entry).casefold() != page.casefold():
+            continue
+        cls = _entry_class(entry)
+        supporting = cls in {"page_ocr_text", "page_table"}
+        if supporting_only and not supporting:
+            continue
+        output.append(entry)
+    output.sort(
+        key=lambda entry: (
+            0 if _entry_class(entry) == "page_ocr_text" else 1
+            if _entry_class(entry) == "page_table" else 2,
+            -len(_entry_text(entry)),
+            int(entry.get("citation_id") or 10_000),
+        )
+    )
+    return output
+
+
+def _notice_excerpt(text: str, notice: str) -> str:
+    if notice not in {"warning", "caution", "note"}:
+        return ""
+    source = _compact(text, 12000)
+    pattern = re.compile(
+        rf"\b{re.escape(notice)}\b\s*(?::|[—–-]|\.(?=\s+[A-Za-z0-9]))?\s*",
+        re.I,
+    )
+    for match in pattern.finditer(source):
+        candidate = source[match.start() : match.start() + 1000]
+        next_notice = re.search(
+            r"\s+\b(?:WARNING|CAUTION|NOTE)\b\s*(?::|[—–-])",
+            candidate[max(20, len(match.group(0))) :],
+            re.I,
+        )
+        if next_notice:
+            candidate = candidate[: max(20, len(match.group(0))) + next_notice.start()]
+        candidate = _public_page_excerpt(candidate, 750)
+        if len(re.findall(r"[A-Za-z0-9]+", candidate)) >= 5:
+            return candidate
+    return ""
+
+
+def _render_notice(
+    result: Mapping[str, Any],
+    query: str,
+    entries: Sequence[Mapping[str, Any]],
+) -> str:
+    page = _query_page(query)
+    notice = _requested_notice(query)
+    for entry in _page_source_entries(entries, page, supporting_only=True):
+        excerpt = _notice_excerpt(_entry_text(entry), notice)
+        if not excerpt:
+            continue
+        citation = _citation(entry)
+        source_label = "OCR text" if _entry_class(entry) == "page_ocr_text" else "Table content"
+        return _format_sections(
+            f"Page `{page}` contains an explicit {notice} {citation}." if page
+            else f"An explicit {notice} was found {citation}.",
+            [f"**{source_label}:** {excerpt} {citation}"],
+            [
+                "The notice is reproduced from exact-page OCR/table text; "
+                "check the cited scan when punctuation or line breaks matter."
+            ],
+        )
+    return _format_sections(
+        f"No explicit {notice} was found in the exact-page OCR/table records.",
+        ["No matching explicit notice record was returned for the requested page."],
+        ["Summary and visual guidance were not treated as formal warning/caution/note text."],
+    )
+
+
+def _best_comparison_entry(
+    entries: Sequence[Mapping[str, Any]],
+    page: str,
+) -> Dict[str, Any]:
+    supporting = _page_source_entries(entries, page, supporting_only=True)
+    if supporting:
+        return supporting[0]
+    any_page = _page_source_entries(entries, page, supporting_only=False)
+    return any_page[0] if any_page else {}
+
+
+def _render_comparison(
+    result: Mapping[str, Any],
+    query: str,
+    entries: Sequence[Mapping[str, Any]],
+) -> str:
+    requested_pages = _query_pages(query)[:2]
+    selected: List[Tuple[str, Dict[str, Any]]] = []
+    for page in requested_pages:
+        entry = _best_comparison_entry(entries, page)
+        if entry:
+            selected.append((page, entry))
+
+    if len(selected) < 2:
+        return _format_sections(
+            "Comparable exact-page records were not found for both requested pages.",
+            ["No complete two-page OCR/table comparison pair was available."],
+            ["No other pages were substituted for the requested comparison."],
+        )
+
+    references = " and ".join(
+        f"`{page}` {_citation(entry)}" for page, entry in selected
+    )
+    evidence: List[str] = []
+    for page, entry in selected:
+        citation = _citation(entry)
+        cls = _entry_class(entry)
+        if cls == "page_ocr_text":
+            label = "OCR text"
+            verb = "reads"
+        elif cls == "page_table":
+            label = "Table content"
+            verb = "contains"
+        else:
+            label = "Page-context guidance"
+            verb = "suggests"
+        excerpt = _public_page_excerpt(_entry_text(entry), 650)
+        if not excerpt:
+            excerpt = "An exact-page indexed record was resolved."
+        evidence.append(
+            f"**{label}:** Page `{page}` {verb}: {excerpt} {citation}"
+        )
+
+    return _format_sections(
+        f"The requested pages are summarized from their exact-page records: {references}.",
+        evidence,
+        [
+            "This is a source-by-source comparison. Differences are not treated as "
+            "contradictions unless the cited page records explicitly disagree."
+        ],
+    )
+
+
 def _page_pack_found(result: Mapping[str, Any], target: str) -> bool:
     envelope = _mapping(result.get("evidence_envelope"))
     coverage = _mapping(envelope.get("coverage"))
@@ -707,6 +875,10 @@ def render_chatgpt_style_answer_v1_1(result: Mapping[str, Any], query: str) -> s
         return _render_graph(result, query, entries)
     if route == "ocr_scan_recovery":
         return _render_ocr(query, content, entries)
+    if route == "warning_caution_note_lookup":
+        return _render_notice(result, query, entries)
+    if route == "cross_source_comparison":
+        return _render_comparison(result, query, entries)
     if route == "procedure_task_lookup":
         return _render_procedure(query, content)
     return _render_existing(content)

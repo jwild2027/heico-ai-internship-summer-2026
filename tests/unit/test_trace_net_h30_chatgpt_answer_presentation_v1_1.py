@@ -285,3 +285,62 @@ def test_install_repairs_uncited_direct_answer_and_preserves_telemetry():
     assert metadata["gemma_call_count_added"] == 0
     assert metadata["retrieval_changed"] is False
     assert metadata["source_truth_mutation_allowed"] is False
+
+# TRACE_NET_H30_PHASE5_NOTICE_COMPARISON_RUNTIME_FIX_V1_1
+def test_warning_route_renders_explicit_cited_ocr_notice():
+    mod = load("presentation_v11_warning_notice")
+    page = "t_p_120_1176_p000470"
+    registry = [
+        entry(
+            1,
+            "page_ocr_text",
+            page=page,
+            value="WARNING: Disconnect electrical power before removing the actuator.",
+            kind="ocr",
+        )
+    ]
+    current = result("warning_caution_note_lookup", registry)
+    answer = mod.render_chatgpt_style_answer_v1_1(
+        current,
+        f"What warning is explicitly stated on page {page}?",
+    )
+    assert headings(answer) == ["## Answer", "## Evidence", "## Limits"]
+    assert "contains an explicit warning [1]" in answer
+    assert "**OCR text:**" in answer
+    assert "Disconnect electrical power" in answer
+
+
+def test_warning_route_fails_closed_with_canonical_no_notice_answer():
+    mod = load("presentation_v11_warning_none")
+    page = "t_p_120_1176_p000470"
+    registry = [
+        entry(1, "page_ocr_text", page=page, value="General descriptive page text.", kind="ocr")
+    ]
+    current = result("warning_caution_note_lookup", registry)
+    answer = mod.render_chatgpt_style_answer_v1_1(
+        current,
+        f"What warning is explicitly stated on page {page}?",
+    )
+    assert headings(answer) == ["## Answer", "## Evidence", "## Limits"]
+    assert "No explicit warning was found" in answer
+    assert "[1]" not in answer
+
+
+def test_comparison_route_renders_both_exact_pages_with_citations():
+    mod = load("presentation_v11_page_comparison")
+    left = "t_p_120_1176_p000036"
+    right = "t_p_120_1176_p000037"
+    registry = [
+        entry(1, "page_ocr_text", page=left, value="Seat structure removal information.", kind="ocr"),
+        entry(2, "page_ocr_text", page=right, value="Seat structure installation information.", kind="ocr"),
+    ]
+    current = result("cross_source_comparison", registry)
+    answer = mod.render_chatgpt_style_answer_v1_1(
+        current,
+        f"Compare pages {left} versus {right} for the same technical topic.",
+    )
+    assert headings(answer) == ["## Answer", "## Evidence", "## Limits"]
+    assert left in answer and right in answer
+    assert "[1]" in answer and "[2]" in answer
+    assert answer.count("**OCR text:**") == 2
+
