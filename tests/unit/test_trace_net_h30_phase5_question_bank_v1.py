@@ -83,3 +83,34 @@ def test_phase5_bank_is_deterministic():
 def test_phase5_bank_covers_all_19_runtime_routes():
     routes = {item["expected_route"] for item in build_phase5_bank(synthetic_truth())}
     assert routes == set(EXPECTED_ROUTE_COUNTS)
+
+# TRACE_NET_H30_PHASE5_ATA_REUSE_V1
+def test_phase5_bank_reuses_five_grounded_ata_codes():
+    truth = synthetic_truth()
+    truth["ata_pages"] = dict(list(truth["ata_pages"].items())[:5])
+
+    bank = build_phase5_bank(truth)
+    ata_questions = [item for item in bank if item["category"] == "ata_system"]
+
+    assert len(ata_questions) == 8
+    assert len({item["expected_terms"][0] for item in ata_questions}) == 5
+    assert len({item["question"] for item in ata_questions}) == 8
+    assert sum(bool(item["source_basis"]["ata_code_reused"]) for item in ata_questions) == 3
+    assert all(item["expected_route"] == "ata_system_discovery" for item in ata_questions)
+    assert validate_phase5_bank(bank)["accepted"]
+
+
+def test_phase5_bank_supports_one_grounded_ata_code():
+    truth = synthetic_truth()
+    first_ata, first_pages = next(iter(truth["ata_pages"].items()))
+    truth["ata_pages"] = {first_ata: first_pages}
+
+    bank = build_phase5_bank(truth)
+    ata_questions = [item for item in bank if item["category"] == "ata_system"]
+
+    assert len(ata_questions) == 8
+    assert {item["expected_terms"][0] for item in ata_questions} == {first_ata}
+    assert len({item["question"] for item in ata_questions}) == 8
+    assert sum(bool(item["source_basis"]["ata_code_reused"]) for item in ata_questions) == 7
+    assert validate_phase5_bank(bank)["accepted"]
+

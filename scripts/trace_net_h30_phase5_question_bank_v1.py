@@ -355,17 +355,50 @@ def build_phase5_bank(truth: Mapping[str, Any]) -> list[dict[str, Any]]:
             terms=[noun], basis={"part": row["part"], "nomenclature": row.get("nomenclature")},
         ))
 
-    # 8 ATA system searches.
-    atas = sorted(ata_pages.items(), key=lambda item: (-len(item[1]), item[0]))
-    if len(atas) < 8:
-        raise RuntimeError(f"not_enough_ata_codes found={len(atas)}")
-    for ata, pages in atas[:8]:
+    # 8 ATA system searches. The deployed corpus may expose fewer than eight
+    # distinct ATA codes, so deterministically reuse grounded codes with unique
+    # evidence objectives instead of inventing codes or aborting bank creation.
+    # TRACE_NET_H30_PHASE5_ATA_REUSE_V1
+    atas = [
+        (
+            ata,
+            list(dict.fromkeys(page for page in pages if str(page).strip())),
+        )
+        for ata, pages in sorted(
+            ata_pages.items(),
+            key=lambda item: (-len(item[1]), item[0]),
+        )
+        if pages
+    ]
+    if not atas:
+        raise RuntimeError("no_grounded_ata_codes")
+
+    ata_prompt_templates = (
+        "Find the relevant parts and source pages in ATA {ata}. Summarize the strongest available evidence.",
+        "Review ATA {ata} and list the strongest indexed part and source-page evidence.",
+        "For ATA {ata}, identify the cited source pages and the most relevant part or nomenclature leads.",
+        "Summarize indexed page coverage and the strongest grounded technical evidence for ATA {ata}.",
+        "Which parts and cited source pages are most relevant to ATA {ata}? Keep guidance separate from proof.",
+        "Recheck ATA {ata} with emphasis on distinct source pages and grounded part evidence.",
+        "Build a source-location summary for ATA {ata}, including relevant part and page leads.",
+        "Consolidate the strongest available parts and source-page evidence for ATA {ata}.",
+    )
+    for ata_index in range(8):
+        ata, pages = atas[ata_index % len(atas)]
         bank.append(_question(
             "ata_system",
-            f"Find the relevant parts and source pages in ATA {ata}. Summarize the strongest available evidence.",
-            "ata_system_discovery", pages=pages[:8], terms=[ata], basis={"ata": ata, "pages": pages[:20]},
+            ata_prompt_templates[ata_index].format(ata=ata),
+            "ata_system_discovery",
+            pages=pages[:8],
+            terms=[ata],
+            basis={
+                "ata": ata,
+                "pages": pages[:20],
+                "variant": ata_index + 1,
+                "available_ata_code_count": len(atas),
+                "ata_code_reused": ata_index >= len(atas),
+            },
         ))
-
     used_pages: set[str] = set()
     table_cards = _select_cards(
         cards,
