@@ -54,6 +54,30 @@ def _sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def _normalize_text_eol(data: bytes) -> bytes:
+    """Normalize text bytes to LF without changing semantic JSON content."""
+    return data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+
+
+def _sha256_file_lf(path: Path) -> str:
+    return hashlib.sha256(_normalize_text_eol(path.read_bytes())).hexdigest()
+
+
+def _sha256_file_eol_candidates(path: Path) -> set[str]:
+    """Return hashes accepted for identical LF/CRLF/CR text checkouts."""
+    raw = path.read_bytes()
+    normalized_lf = _normalize_text_eol(raw)
+    normalized_crlf = normalized_lf.replace(b"\n", b"\r\n")
+    return {
+        hashlib.sha256(raw).hexdigest(),
+        hashlib.sha256(normalized_lf).hexdigest(),
+        hashlib.sha256(normalized_crlf).hexdigest(),
+    }
+
+
+# TRACE_NET_NHA_PHASE9_PORTABLE_CHECKSUM_FIX_V1
+
+
 def _write_json(path: Path, payload: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -130,6 +154,7 @@ def validate_release_source(phase4_dir: str | Path) -> dict[str, Any]:
         },
         "paths": {key: str(value) for key, value in paths.items()},
         "sha256": {key: _sha256_file(value) for key, value in paths.items()},
+        "sha256_lf": {key: _sha256_file_lf(value) for key, value in paths.items()},
         "safety_contract": {
             "real_source_only": True,
             "synthetic_phase5_loaded": False,
@@ -164,6 +189,8 @@ def promote_real_release(phase4_dir: str | Path, output_dir: str | Path) -> dict
             {
                 "name": name,
                 "sha256": _sha256_file(output / name),
+                "sha256_lf": _sha256_file_lf(output / name),
+                "checksum_mode": "text_eol_portable_v1",
                 "bytes": (output / name).stat().st_size,
             }
             for name in RELEASE_FILES
@@ -197,12 +224,26 @@ def check_promoted_release(release_dir: str | Path) -> dict[str, Any]:
     manifest = _read_json(manifest_path)
     if str(manifest.get("quality_status") or "") != "PASS":
         failures.append("manifest_quality_not_pass")
-    expected = {str(row.get("name") or ""): str(row.get("sha256") or "") for row in manifest.get("files") or []}
+    manifest_files = {
+        str(row.get("name") or ""): dict(row)
+        for row in manifest.get("files") or []
+        if isinstance(row, Mapping)
+    }
     for name in RELEASE_FILES:
         path = root / name
         if not path.exists():
             failures.append(f"missing_release_file:{name}")
-        elif _sha256_file(path) != expected.get(name):
+            continue
+        expected_record = manifest_files.get(name, {})
+        expected_lf = str(expected_record.get("sha256_lf") or "")
+        expected_raw = str(expected_record.get("sha256") or "")
+        if expected_lf:
+            matches = _sha256_file_lf(path) == expected_lf
+        else:
+            # Backward compatibility for the original Windows-created manifest:
+            # accept only byte-identical content modulo text line endings.
+            matches = bool(expected_raw) and expected_raw in _sha256_file_eol_candidates(path)
+        if not matches:
             failures.append(f"release_checksum_mismatch:{name}")
     validation = validate_release_source(root)
     failures.extend(validation.get("failures") or [])

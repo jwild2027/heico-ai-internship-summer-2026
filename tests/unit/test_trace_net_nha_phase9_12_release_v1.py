@@ -203,3 +203,37 @@ def test_release_manifest_is_deterministically_checkable(tmp_path):
     second = check_promoted_release(output)
     assert first["quality_status"] == second["quality_status"] == "PASS"
     assert second["counts"]["synthetic_record_count"] == 0
+
+
+def test_phase9_checker_accepts_line_ending_only_change(tmp_path):
+    source = make_phase4(tmp_path)
+    output = tmp_path / "release"
+    assert promote_real_release(source, output)["quality_status"] == "PASS"
+    manifest = json.loads(
+        (output / "trace_net_nha_real_release_manifest_v1.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    for record in manifest["files"]:
+        path = output / record["name"]
+        normalized = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+        path.write_bytes(normalized.replace(b"\n", b"\r\n"))
+    result = check_promoted_release(output)
+    assert result["quality_status"] == "PASS"
+    assert result["failures"] == []
+
+
+def test_phase9_manifest_records_portable_checksum(tmp_path):
+    source = make_phase4(tmp_path)
+    output = tmp_path / "release"
+    assert promote_real_release(source, output)["quality_status"] == "PASS"
+    manifest = json.loads(
+        (output / "trace_net_nha_real_release_manifest_v1.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert manifest["files"]
+    for record in manifest["files"]:
+        assert record["checksum_mode"] == "text_eol_portable_v1"
+        assert len(record["sha256_lf"]) == 64
+
