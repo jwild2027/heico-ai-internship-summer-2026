@@ -391,3 +391,42 @@ def test_final_renderer_keeps_evidence_deterministic():
     assert answer.count("## Evidence") == 1
     assert "[1]" in answer
     assert "Engram atoms and skill cards guide behavior but are not evidence" in answer
+
+
+def test_two_part_parent_comparison_writer_renders_after_gemma():
+    """Regression: the post-Gemma renderer must not crash on comparison metadata."""
+    packet = build_nha_writer_packet(
+        query=(
+            "Is 120-29067-001 the immediate parent of "
+            "120-20970-003 or only a higher ancestor?"
+        ),
+        engine=FakeEngine(),
+        engram_bundle=bundle(),
+    )
+    assert packet["eligible"] is True
+    assert packet["evidence"]["comparison_relation"] == "direct_parent"
+
+    def model_call(**kwargs):
+        return {
+            "quality_status": "PASS",
+            "content": json.dumps({
+                "answer": (
+                    "120-29067-001 is the immediate parent of "
+                    "120-20970-003."
+                )
+            }),
+            "prompt_eval_count": 120,
+            "eval_count": 18,
+        }
+
+    result = write_nha_answer_with_gemma(packet, model_call=model_call)
+
+    assert result.gemma_call_count == 1
+    assert result.gemma_writer_accepted is True
+    assert result.writer_source == "gemma"
+    assert result.self_rag_pass is True
+    assert "## Answer" in result.answer
+    assert "120-29067-001" in result.answer
+    assert "120-20970-003" in result.answer
+    assert "t_p_120_1176_p000343" in result.answer
+

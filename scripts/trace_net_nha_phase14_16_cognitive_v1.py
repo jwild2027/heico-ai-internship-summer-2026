@@ -607,13 +607,6 @@ def render_final_answer(answer_text: str, packet: Mapping[str, Any]) -> str:
         "Engram atoms and skill cards guide behavior but are not evidence.",
         "A higher ancestor is not treated as the direct NHA unless every intermediate hop is supported.",
     ]
-    relation = str(evidence.get("comparison_relation") or "")
-    if relation == "direct_parent" and not any(term in lower for term in ("direct parent", "immediate parent", "direct nha", "next higher assembly")):
-        failures.append("direct_parent_comparison_not_expressed")
-    elif relation == "higher_ancestor" and not ("higher ancestor" in lower and any(term in lower for term in ("not the direct", "not its direct", "not immediate"))):
-        failures.append("higher_ancestor_comparison_not_expressed")
-    elif relation == "not_supported_parent_or_ancestor" and not any(term in lower for term in ("not supported", "not shown", "not confirmed")):
-        failures.append("unsupported_comparison_not_expressed")
     behavior = str(evidence.get("behavior") or "")
     if behavior in {"conflict_limited", "candidate_or_clarification", "conflict_evidence_answer"}:
         limits.append(
