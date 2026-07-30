@@ -1,0 +1,34 @@
+{
+  "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+  "module": "trace_net_nha_phase4_hierarchy_v1",
+  "status": "TRACE_NET_NHA_PHASE4_HIERARCHY_V1",
+  "quality_status": "PASS",
+  "failures": [],
+  "warnings": [],
+  "counts": {
+    "hierarchy_rows": 40,
+    "hierarchy_relationships": 40,
+    "source_supported_relationships": 29,
+    "ambiguous_relationships": 11,
+    "direct_component_relationships": 30,
+    "lower_descendant_relationships": 10,
+    "source_supported_attaching_relationships": 7,
+    "attaching_groups": 6,
+    "cycle_count": 0,
+    "synthetic_record_count": 0,
+    "production_graph_write_count": 0
+  },
+  "cycles": [],
+  "safety_contract": {
+    "read_only": true,
+    "phase0_3_artifacts_mutated": false,
+    "source_truth_mutation_allowed": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "opensearch_write_attempt": false,
+    "llm_call_count": 0,
+    "synthetic_records_allowed": false,
+    "ambiguous_relationships_promoted_to_proof": false,
+    "attaching_parts_never_flattened_to_top_assembly": true
+  }
+}

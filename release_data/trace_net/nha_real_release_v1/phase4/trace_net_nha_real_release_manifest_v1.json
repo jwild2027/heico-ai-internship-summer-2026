@@ -1,0 +1,44 @@
+{
+  "schema_version": "trace_net_nha_phase9_12_release_v1",
+  "module": "trace_net_nha_phase9_12_release_v1",
+  "status": "TRACE_NET_NHA_PHASE9_REAL_RELEASE_V1",
+  "quality_status": "PASS",
+  "release_id": "trace_net_nha_real_release_v1",
+  "source_phase": "N4",
+  "source_dir": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\organization\\trace_net\\nha_phase4_hierarchy_v1",
+  "release_dir": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\release_data\\trace_net\\nha_real_release_v1\\phase4",
+  "files": [
+    {
+      "name": "trace_net_nha_hierarchy_relationships_v1.json",
+      "sha256": "7c522db686c7284d821af6934c6436deef4464f7313a2f3ac4d112f1e481b444",
+      "bytes": 54615
+    },
+    {
+      "name": "trace_net_nha_phase4_answer_key_v1.json",
+      "sha256": "88b4cf8d71ce1ce80f3bbdaa109144050a523dcc5df128d1b2239af05b9f06ce",
+      "bytes": 43207
+    },
+    {
+      "name": "trace_net_nha_phase4_quality_v1.json",
+      "sha256": "76301e45ebb94f989e920976888c013358114c8d4ffa65d7fffe717dff3b6c27",
+      "bytes": 1112
+    }
+  ],
+  "counts": {
+    "relationship_count": 40,
+    "source_supported_relationship_count": 29,
+    "ambiguous_relationship_count": 11,
+    "answer_key_case_count": 40,
+    "synthetic_record_count": 0,
+    "production_graph_write_count": 0
+  },
+  "safety_contract": {
+    "real_source_only": true,
+    "synthetic_phase5_loaded": false,
+    "synthetic_records_promoted": false,
+    "source_truth_mutation_allowed": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "opensearch_write_attempt": false
+  }
+}
