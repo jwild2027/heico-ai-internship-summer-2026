@@ -138,6 +138,41 @@ def test_chain_children_descendants_and_evidence_atoms():
         assert atoms["nha_candidate"] is True
 
 
+def test_real_situation_manual_language_regression():
+    expectations = {
+        "What bigger assembly is 120-20970-001 installed inside?": "direct_nha",
+        "Is 120-29067-001 the immediate parent of 120-20970-001 or only a higher ancestor?": "direct_nha",
+        "Starting at 120-20970-001, walk upward one supported assembly at a time.": "ancestor_chain",
+        "Which pieces are directly inside assembly 120-29067-001?": "direct_children",
+        "Show everything below 120-29067-001, but separate immediate parts from deeper descendants.": "direct_vs_descendants",
+        "Where in the IPL is the parent relationship for 120-20970-001 proven?": "relationship_evidence",
+        "Why are there several possible parents for 42952-10?": "scope_conflict_resolution",
+        "Which project or revision detail would resolve the parent of 42952-10?": "scope_conflict_resolution",
+    }
+    for query, expected_intent in expectations.items():
+        atoms = extract_nha_query_atoms(query)
+        assert atoms["nha_candidate"] is True, (query, atoms)
+        assert atoms["intent"] == expected_intent, (query, atoms)
+        assert select_nha_skills(query)["selected_skill_ids"], query
+
+    comparison = extract_nha_query_atoms(
+        "Is 120-29067-001 the immediate parent of 120-20970-001 or only a higher ancestor?"
+    )
+    assert comparison["target_part_number"] == "120-20970-001"
+    assert comparison["comparison_parent_part"] == "120-29067-001"
+    assert "parent_comparison" in comparison["query_atom_tokens"]
+
+    install = extract_nha_query_atoms("How do I install 120-20970-001?")
+    assert install["nha_candidate"] is False
+    assert install["intent"] == "none"
+
+    synthetic = extract_nha_query_atoms(
+        "What is the NHA of benchmark part 990-91001-001?"
+    )
+    assert synthetic["synthetic_blocked"] is True
+    assert synthetic["intent"] == "direct_nha"
+
+
 def test_scope_and_attaching_atoms():
     scope = extract_nha_query_atoms("Does the NHA of 42952-10 change by project and revision?")
     assert scope["intent"] == "scope_conflict_resolution"

@@ -25,7 +25,7 @@ from scripts.trace_net_nha_phase7_8_runtime_v1 import (
     public_contract_valid,
 )
 
-SCHEMA_VERSION = "trace_net_nha_phase16_gemma20_v1"
+SCHEMA_VERSION = "trace_net_nha_phase17_real_situation_gemma20_v1"
 
 
 def _dedupe(values):
@@ -45,6 +45,13 @@ def _write_jsonl(path: Path, rows: Sequence[Mapping[str, Any]]) -> None:
 
 
 def build_bank(phase4_dir: str, engram_dir: str) -> tuple[list[dict[str, Any]], Any, dict[str, Any]]:
+    """Build a real-language live gate.
+
+    Every non-synthetic case must travel through a real model-backed answer path:
+    NHA questions use the constrained NHA Gemma writer; the one non-NHA control
+    uses the upstream cognitive/Gemma stack. Synthetic security probes are the
+    sole zero-model-call exception.
+    """
     engine, source = load_real_engine(phase4_dir, max_depth=8)
     engram = load_nha_engram_bundle(engram_dir)
     if engram["quality_status"] != "PASS":
@@ -60,6 +67,16 @@ def build_bank(phase4_dir: str, engram_dir: str) -> tuple[list[dict[str, Any]], 
             direct.append((child, result))
         elif result.get("behavior") in {"conflict_limited", "candidate_or_clarification"} and result.get("pages"):
             limited.append((child, result))
+    if not direct:
+        raise ValueError("no_direct_nha_cases_available")
+    if not limited:
+        raise ValueError("no_conflict_limited_cases_available")
+
+    supported = [
+        row for row in relationships
+        if row.get("relationship_status") == "source_supported" and row.get("direct_nha")
+    ]
+    parents = sorted(_dedupe(row.get("direct_nha") for row in supported))
 
     cases: list[dict[str, Any]] = []
 
@@ -74,78 +91,128 @@ def build_bank(phase4_dir: str, engram_dir: str) -> tuple[list[dict[str, Any]], 
             "stream": len(cases) % 2 == 1,
         })
 
+    # Eight production-language probes taken from manual/adversarial usage rather
+    # than benchmark-shaped wording.
+    child0, result0 = direct[0]
+    parent0 = str(result0.get("direct_nha") or "")
+    add("direct_nha", f"What bigger assembly is {child0} installed inside?", "gemma_override")
+
+    child1, result1 = direct[1 % len(direct)]
+    parent1 = str(result1.get("direct_nha") or "")
+    add(
+        "direct_parent_comparison",
+        f"Is {parent1} the immediate parent of {child1} or only a higher ancestor?",
+        "gemma_override",
+    )
+
+    add(
+        "ancestor_chain",
+        f"Starting at {child0}, walk upward one supported assembly at a time.",
+        "gemma_override",
+    )
+
+    child_parent = parent0 or parents[0]
+    add(
+        "direct_children",
+        f"Which pieces are directly inside assembly {child_parent}?",
+        "gemma_override",
+    )
+
+    descendant_parent = ""
+    for parent in [child_parent, *parents]:
+        result = engine.descendants(parent)
+        if result.get("behavior") == "tree_answer" and result.get("pages") and result.get("descendants"):
+            descendant_parent = parent
+            break
+    if not descendant_parent:
+        raise ValueError("no_descendant_tree_case_available")
+    add(
+        "descendants",
+        f"Show everything below {descendant_parent}, but separate immediate parts from deeper descendants.",
+        "gemma_override",
+    )
+
+    add(
+        "relationship_evidence",
+        f"Where in the IPL is the parent relationship for {child0} proven?",
+        "gemma_override",
+    )
+
+    limited_child, _ = limited[0]
+    add(
+        "scope_conflict_resolution",
+        f"Why are there several possible parents for {limited_child}?",
+        "gemma_override",
+    )
+    add(
+        "scope_conflict_resolution",
+        f"Which project or revision detail would resolve the parent of {limited_child}?",
+        "gemma_override",
+    )
+
+    # Fill the remaining NHA slots with varied real-language questions while
+    # preserving the strict one-Gemma-call contract.
     direct_templates = (
-        "What larger unit contains {part}?",
-        "Which assembly is the immediate parent of {part}?",
-        "Where does {part} belong in the assembly hierarchy?",
-        "Give me the one-hop parent assembly for {part}.",
+        "Which assembly directly owns {part}?",
+        "Name the nearest supported parent assembly for {part}.",
+        "Where does {part} sit one level up in the assembly structure?",
+        "Tell me what assembly {part} belongs immediately to.",
         "What is the next higher assembly for {part}?",
-        "Identify the nearest parent assembly of {part}.",
-        "Which larger assembly directly contains {part}?",
-        "Tell me the direct NHA for {part}.",
     )
-    for (child, _), template in zip(direct[:8], direct_templates):
+    direct_index = 2
+    for template in direct_templates:
+        child, _ = direct[direct_index % len(direct)]
         add("direct_nha", template.format(part=child), "gemma_override")
+        direct_index += 1
 
-    scope_templates = (
-        "Does the NHA of {part} depend on project or revision?",
-        "For {part}, compare the parent candidates by project and configuration.",
-        "Which revision or effectivity would resolve the parent candidates for {part}?",
-    )
-    for (child, _), template in zip(limited[:3], scope_templates):
-        add("scope_conflict_resolution", template.format(part=child), "gemma_override")
-
-    supported = [
-        row for row in relationships
-        if row.get("relationship_status") == "source_supported" and row.get("direct_nha")
-    ]
-    parents = sorted(_dedupe(row.get("direct_nha") for row in supported))
     parent_added = 0
     for parent in parents:
+        if parent == child_parent:
+            continue
         result = engine.direct_children(parent)
         if result.get("behavior") == "direct_children_answer" and result.get("pages"):
             query = (
-                f"Which components sit immediately below assembly {parent}?"
-                if parent_added % 2 == 0
-                else f"Give the one-level breakdown under {parent}."
+                f"Which components are immediately inside assembly {parent}?"
+                if parent_added == 0
+                else f"List only the parts directly under assembly {parent}."
             )
             add("direct_children", query, "gemma_override")
             parent_added += 1
-            if parent_added >= 3:
+            if parent_added >= 2:
                 break
 
-    chain_added = 0
+    chain_added = False
     for row in sorted(
         supported,
         key=lambda value: (-int(value.get("hierarchy_depth") or 0), str(value.get("child_part") or "")),
     ):
         child = str(row.get("child_part") or "")
+        if child == child0:
+            continue
         result = engine.ancestor_chain(child)
-        if result.get("behavior") == "ordered_chain_answer" and len(result.get("chain") or []) > 2 and result.get("pages"):
-            query = (
-                f"Walk me upward through every supported assembly above {child}."
-                if chain_added == 0
-                else f"Trace the ordered parent path from {child} to the highest supported assembly."
-            )
-            add("ancestor_chain", query, "gemma_override")
-            chain_added += 1
-            if chain_added >= 2:
-                break
+        if result.get("behavior") == "ordered_chain_answer" and result.get("pages"):
+            add("ancestor_chain", f"Show the assembly chain above {child}, one supported hop at a time.", "gemma_override")
+            chain_added = True
+            break
+    if not chain_added:
+        add("relationship_evidence", f"Show the source evidence for the parent of {child1}.", "gemma_override")
 
-    evidence_index = 0
-    while len(cases) < 18 and direct:
+    evidence_index = 1
+    while len(cases) < 18:
         child, _ = direct[evidence_index % len(direct)]
         add(
             "relationship_evidence",
-            f"Which source page proves the NHA relationship for {child}?",
+            f"Which source record supports the direct parent relationship for {child}?",
             "gemma_override",
         )
         evidence_index += 1
 
-    add("non_nha_control", "What can TRACE-Net do?", "passthrough")
+    # A real non-NHA request must still prove one upstream cognitive/Gemma call.
+    add("non_nha_control", f"How do I install {child0}?", "passthrough")
+    # Security isolation is the only legitimate zero-model-call live case.
     add(
         "synthetic_block_control",
-        "What larger assembly contains synthetic part 990-91001-001?",
+        "What is the NHA of benchmark part 990-91001-001?",
         "synthetic_blocked",
     )
     if len(cases) != 20:
@@ -226,6 +293,11 @@ def evaluate(case: Mapping[str, Any], response: Mapping[str, Any]) -> dict[str, 
     action = str(headers.get("x-trace-net-nha-action") or "")
     expected_action = str(case.get("expected_action") or "")
     answer = str(response.get("answer") or "")
+    model_calls = int(headers.get("x-trace-net-model-calls") or 0)
+    model_path = str(headers.get("x-trace-net-model-path") or "")
+    upstream_calls = int(headers.get("x-trace-net-upstream-calls") or 0)
+    model_prompt_tokens = int(headers.get("x-trace-net-model-prompt-tokens") or 0)
+    model_completion_tokens = int(headers.get("x-trace-net-model-completion-tokens") or 0)
     packet = case.get("expected_packet") if isinstance(case.get("expected_packet"), Mapping) else {}
     evidence = packet.get("evidence") if isinstance(packet.get("evidence"), Mapping) else {}
 
@@ -235,6 +307,14 @@ def evaluate(case: Mapping[str, Any], response: Mapping[str, Any]) -> dict[str, 
         failures.append(f"action expected={expected_action} actual={action}")
 
     if expected_action == "gemma_override":
+        if model_calls != 1:
+            failures.append(f"overall_model_call_count expected=1 actual={model_calls}")
+        if model_path != "nha_constrained_gemma":
+            failures.append(f"model_path expected=nha_constrained_gemma actual={model_path}")
+        if upstream_calls != 0:
+            failures.append(f"unexpected_upstream_call_count:{upstream_calls}")
+        if model_prompt_tokens < 1 or model_completion_tokens < 1:
+            failures.append("nha_model_tokens_missing")
         if headers.get("x-trace-net-nha-gemma-calls") != "1":
             failures.append("nha_gemma_call_count_not_one")
         if headers.get("x-trace-net-nha-writer-source") != "gemma":
@@ -258,6 +338,12 @@ def evaluate(case: Mapping[str, Any], response: Mapping[str, Any]) -> dict[str, 
             if value not in answer:
                 failures.append(f"missing_expected_identifier:{value}")
     elif expected_action == "synthetic_blocked":
+        if model_calls != 0:
+            failures.append(f"synthetic_overall_model_call_count:{model_calls}")
+        if model_path:
+            failures.append(f"synthetic_model_path_present:{model_path}")
+        if upstream_calls != 0:
+            failures.append(f"synthetic_upstream_call_count:{upstream_calls}")
         if headers.get("x-trace-net-nha-gemma-calls") not in {"", "0"}:
             failures.append("synthetic_sent_to_gemma")
         if headers.get("x-trace-net-nha-synthetic-access") != "0":
@@ -265,6 +351,16 @@ def evaluate(case: Mapping[str, Any], response: Mapping[str, Any]) -> dict[str, 
     elif expected_action == "passthrough":
         if action != "passthrough":
             failures.append("passthrough_control_not_passthrough")
+        if model_calls != 1:
+            failures.append(f"passthrough_model_call_count expected=1 actual={model_calls}")
+        if model_path != "upstream_cognitive":
+            failures.append(f"passthrough_model_path expected=upstream_cognitive actual={model_path}")
+        if upstream_calls != 1:
+            failures.append(f"passthrough_upstream_call_count expected=1 actual={upstream_calls}")
+        if headers.get("x-trace-net-nha-gemma-calls") not in {"", "0"}:
+            failures.append("passthrough_used_nha_gemma_writer")
+        if not answer.strip():
+            failures.append("passthrough_answer_empty")
 
     return {
         "case_id": case.get("case_id"),
@@ -278,6 +374,11 @@ def evaluate(case: Mapping[str, Any], response: Mapping[str, Any]) -> dict[str, 
         "engram_skill": headers.get("x-trace-net-nha-engram-skill", ""),
         "engram_atom_count": int(headers.get("x-trace-net-nha-engram-atoms") or 0),
         "gemma_call_count": int(headers.get("x-trace-net-nha-gemma-calls") or 0),
+        "model_call_count": model_calls,
+        "model_path": model_path,
+        "upstream_call_count": upstream_calls,
+        "model_prompt_tokens": model_prompt_tokens,
+        "model_completion_tokens": model_completion_tokens,
         "writer_source": headers.get("x-trace-net-nha-writer-source", ""),
         "self_rag": headers.get("x-trace-net-nha-self-rag", ""),
         "http_status": response.get("http_status"),
@@ -335,6 +436,19 @@ def main(argv: Sequence[str] | None = None) -> int:
         "engram_atoms_present_count": sum(row["engram_atom_count"] > 0 for row in real),
         "synthetic_block_count": sum(row["expected_action"] == "synthetic_blocked" for row in records),
         "passthrough_control_count": sum(row["expected_action"] == "passthrough" for row in records),
+        "model_backed_question_count": sum(row["expected_action"] != "synthetic_blocked" for row in records),
+        "overall_model_call_count": sum(row["model_call_count"] for row in records),
+        "nha_model_path_count": sum(row["model_path"] == "nha_constrained_gemma" for row in records),
+        "upstream_model_path_count": sum(row["model_path"] == "upstream_cognitive" for row in records),
+        "upstream_call_count": sum(row["upstream_call_count"] for row in records),
+        "unexpected_zero_model_call_count": sum(
+            row["expected_action"] != "synthetic_blocked" and row["model_call_count"] == 0
+            for row in records
+        ),
+        "allowed_zero_model_call_count": sum(
+            row["expected_action"] == "synthetic_blocked" and row["model_call_count"] == 0
+            for row in records
+        ),
         "stream_count": sum(row["stream"] for row in records),
         "nonstream_count": sum(not row["stream"] for row in records),
         "production_graph_write_count": 0,
@@ -345,7 +459,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     summary = {
         "schema_version": SCHEMA_VERSION,
         "module": "run_trace_net_nha_phase16_gemma20_v1",
-        "status": "TRACE_NET_NHA_PHASE16_GEMMA20_V1",
+        "status": "TRACE_NET_NHA_PHASE17_REAL_SITUATION_GEMMA20_V1",
         "quality_status": quality,
         "counts": counts,
         "latency": {
@@ -354,6 +468,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         },
         "failures": [f"{row['case_id']}:{'|'.join(row['failures'])}" for row in failed],
         "warnings": [],
+        "live_model_call_policy": "one_real_model_path_for_every_non_synthetic_request",
         "artifacts": [
             "trace_net_nha_phase16_gemma20_bank_v1.json",
             "trace_net_nha_phase16_gemma20_results_v1.json",
@@ -367,8 +482,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     print(json.dumps(summary, indent=2, ensure_ascii=False))
     print(f"quality_status={quality}")
     if args.strict and failed:
-        raise SystemExit("TRACE_NET_NHA_PHASE16_GEMMA20=FAIL")
-    print("TRACE_NET_NHA_PHASE16_GEMMA20=PASS" if not failed else "TRACE_NET_NHA_PHASE16_GEMMA20=WARN")
+        raise SystemExit("TRACE_NET_NHA_PHASE17_REAL_SITUATION_GEMMA20=FAIL")
+    print("TRACE_NET_NHA_PHASE17_REAL_SITUATION_GEMMA20=PASS" if not failed else "TRACE_NET_NHA_PHASE17_REAL_SITUATION_GEMMA20=WARN")
     return 0
 
 

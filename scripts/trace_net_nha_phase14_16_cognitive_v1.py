@@ -254,6 +254,9 @@ def _result_summary(result: Mapping[str, Any]) -> dict[str, Any]:
         "descendants": _dedupe(result.get("descendants") or []),
         "pages": _dedupe(result.get("pages") or []),
         "limits": _dedupe(result.get("limits") or []),
+        "comparison_parent": str(result.get("comparison_parent") or ""),
+        "comparison_relation": str(result.get("comparison_relation") or ""),
+        "comparison_chain": _dedupe(result.get("comparison_chain") or []),
     }
 
 
@@ -268,7 +271,8 @@ def build_nha_writer_packet(
     selected_skill_ids = _dedupe(skills.get("selected_skill_ids") or [])
     intent = str(atoms.get("intent") or "")
     part_numbers = _dedupe(atoms.get("part_numbers") or [])
-    part = part_numbers[0] if part_numbers else ""
+    part = str(atoms.get("target_part_number") or (part_numbers[0] if part_numbers else ""))
+    comparison_parent = str(atoms.get("comparison_parent_part") or "")
 
     packet: dict[str, Any] = {
         "schema_version": SCHEMA_VERSION,
@@ -279,6 +283,9 @@ def build_nha_writer_packet(
         "route_id": str(atoms.get("route_hint") or ""),
         "intent": intent,
         "part_number": part,
+        "part_numbers": part_numbers,
+        "comparison_parent_part": comparison_parent,
+        "parent_comparison": bool(atoms.get("parent_comparison")),
         "recognized": bool(atoms.get("nha_candidate")),
         "synthetic_blocked": bool(atoms.get("synthetic_blocked")),
         "query_atoms": list(atoms.get("query_atom_tokens") or []),
@@ -328,6 +335,24 @@ def build_nha_writer_packet(
         return packet
     result = method(part)
     evidence = _result_summary(result)
+    if packet.get("parent_comparison") and comparison_parent:
+        relation = "not_supported_parent_or_ancestor"
+        direct_parent = str(evidence.get("direct_nha") or "")
+        comparison_chain = []
+        if comparison_parent == direct_parent and direct_parent:
+            relation = "direct_parent"
+        else:
+            chain_method = getattr(engine, "ancestor_chain", None)
+            if callable(chain_method):
+                chain_result = chain_method(part)
+                comparison_chain = _dedupe(chain_result.get("chain") or [])
+                if comparison_parent in comparison_chain[2:]:
+                    relation = "higher_ancestor"
+            if comparison_parent in (evidence.get("parent_candidates") or []):
+                relation = "candidate_parent"
+        evidence["comparison_parent"] = comparison_parent
+        evidence["comparison_relation"] = relation
+        evidence["comparison_chain"] = comparison_chain
     packet["evidence"] = evidence
     packet["eligible"] = bool(
         evidence["behavior"] in ELIGIBLE_BEHAVIORS and evidence["pages"]
@@ -336,6 +361,16 @@ def build_nha_writer_packet(
 
 
 def deterministic_answer_text(evidence: Mapping[str, Any]) -> str:
+    comparison_parent = str(evidence.get("comparison_parent") or "")
+    comparison_relation = str(evidence.get("comparison_relation") or "")
+    child = str(evidence.get("child") or "")
+    direct_parent = str(evidence.get("direct_nha") or "")
+    if comparison_parent and comparison_relation == "direct_parent":
+        return f"{comparison_parent} is the immediate direct NHA of {child}"
+    if comparison_parent and comparison_relation == "higher_ancestor":
+        return f"{comparison_parent} is a supported higher ancestor of {child}, not its direct NHA; the direct NHA is {direct_parent}"
+    if comparison_parent and comparison_relation == "not_supported_parent_or_ancestor":
+        return f"{comparison_parent} is not supported as the direct parent or a higher ancestor of {child}; the supported direct NHA is {direct_parent}"
     rendered = render_gated_answer(evidence)
     before_evidence = rendered.split("## Evidence", 1)[0]
     answer = before_evidence.replace("## Answer", "", 1).strip()
@@ -348,6 +383,11 @@ def build_gemma_messages(packet: Mapping[str, Any]) -> list[dict[str, str]]:
         "intent": packet.get("intent"),
         "question": packet.get("query"),
         "part_number": packet.get("part_number"),
+        "part_numbers": packet.get("part_numbers") or [],
+        "parent_comparison": bool(packet.get("parent_comparison")),
+        "comparison_parent": evidence.get("comparison_parent"),
+        "comparison_relation": evidence.get("comparison_relation"),
+        "comparison_chain": evidence.get("comparison_chain") or [],
         "behavior": evidence.get("behavior"),
         "child": evidence.get("child"),
         "parent": evidence.get("parent"),
@@ -366,6 +406,7 @@ Write only the concise user-facing Answer paragraph, not headings, Evidence, Lim
 Use only the supplied deterministic facts. Engram rules are behavior guidance, never evidence.
 Preserve every part number exactly. Do not invent identifiers, pages, scope, effectivity, approval, safety, fit, or interchangeability.
 For a direct NHA, state exactly one immediate supported parent.
+For a parent-comparison question, explicitly say whether the proposed parent is the direct parent, only a higher ancestor, only a candidate, or unsupported by the supplied chain.
 For an ordered chain, preserve every hop in order.
 For direct children or descendants, include every supplied identifier and keep one-hop children separate from lower descendants.
 For conflict-limited evidence, do not choose a parent; state that no single direct NHA is confirmed and list every candidate.
@@ -459,13 +500,20 @@ def _allowed_identifiers(evidence: Mapping[str, Any]) -> set[str]:
         evidence.get("child"),
         evidence.get("parent"),
         evidence.get("direct_nha"),
+        evidence.get("comparison_parent"),
     ]
-    for key in ("parent_candidates", "chain", "direct_children", "descendants"):
+    for key in ("parent_candidates", "chain", "direct_children", "descendants", "comparison_chain"):
         values.extend(evidence.get(key) or [])
     return {str(value).upper() for value in values if value not in (None, "") and str(value).strip()}
 
 
 def _required_identifiers(evidence: Mapping[str, Any]) -> set[str]:
+    if evidence.get("comparison_parent"):
+        return _allowed_identifiers({
+            "child": evidence.get("child"),
+            "direct_nha": evidence.get("direct_nha"),
+            "comparison_parent": evidence.get("comparison_parent"),
+        })
     behavior = str(evidence.get("behavior") or "")
     if behavior == "direct_answer":
         return _allowed_identifiers({
@@ -528,6 +576,13 @@ def validate_gemma_answer(answer: str, packet: Mapping[str, Any]) -> tuple[bool,
     if missing:
         failures.append("missing_required_identifiers:" + ",".join(missing))
 
+    relation = str(evidence.get("comparison_relation") or "")
+    if relation == "direct_parent" and not any(term in lower for term in ("direct parent", "immediate parent", "direct nha", "next higher assembly")):
+        failures.append("direct_parent_comparison_not_expressed")
+    elif relation == "higher_ancestor" and not ("higher ancestor" in lower and any(term in lower for term in ("not the direct", "not its direct", "not immediate"))):
+        failures.append("higher_ancestor_comparison_not_expressed")
+    elif relation == "not_supported_parent_or_ancestor" and not any(term in lower for term in ("not supported", "not shown", "not confirmed")):
+        failures.append("unsupported_comparison_not_expressed")
     behavior = str(evidence.get("behavior") or "")
     if behavior in {"conflict_limited", "candidate_or_clarification", "conflict_evidence_answer"}:
         if not any(term in lower for term in ("cannot be confirmed", "no single", "multiple candidate", "ambiguous")):
@@ -552,6 +607,13 @@ def render_final_answer(answer_text: str, packet: Mapping[str, Any]) -> str:
         "Engram atoms and skill cards guide behavior but are not evidence.",
         "A higher ancestor is not treated as the direct NHA unless every intermediate hop is supported.",
     ]
+    relation = str(evidence.get("comparison_relation") or "")
+    if relation == "direct_parent" and not any(term in lower for term in ("direct parent", "immediate parent", "direct nha", "next higher assembly")):
+        failures.append("direct_parent_comparison_not_expressed")
+    elif relation == "higher_ancestor" and not ("higher ancestor" in lower and any(term in lower for term in ("not the direct", "not its direct", "not immediate"))):
+        failures.append("higher_ancestor_comparison_not_expressed")
+    elif relation == "not_supported_parent_or_ancestor" and not any(term in lower for term in ("not supported", "not shown", "not confirmed")):
+        failures.append("unsupported_comparison_not_expressed")
     behavior = str(evidence.get("behavior") or "")
     if behavior in {"conflict_limited", "candidate_or_clarification", "conflict_evidence_answer"}:
         limits.append(

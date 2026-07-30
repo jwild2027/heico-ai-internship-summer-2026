@@ -15,6 +15,8 @@ from scripts.trace_net_nha_phase14_16_cognitive_v1 import (
     validate_gemma_answer,
     write_nha_answer_with_gemma,
 )
+from scripts.serve_trace_net_nha_phase16_gemma_proxy_v1 import decision_headers
+from scripts.run_trace_net_nha_phase16_gemma20_v1 import evaluate as evaluate_live_case
 
 
 class FakeEngine:
@@ -155,6 +157,105 @@ def test_directional_larger_assembly_phrase_routes_to_direct_parent():
     assert packet["selected_skill_ids"] == ["nha_direct_parent_lookup"]
 
 
+def test_two_part_parent_comparison_uses_second_identifier_as_child():
+    packet = build_nha_writer_packet(
+        query="Is 120-29067-001 the immediate parent of 120-20970-001 or only a higher ancestor?",
+        engine=FakeEngine(),
+        engram_bundle=bundle(),
+    )
+    assert packet["eligible"] is True
+    assert packet["part_number"] == "120-20970-001"
+    assert packet["comparison_parent_part"] == "120-29067-001"
+    assert packet["evidence"]["comparison_relation"] == "direct_parent"
+    assert packet["evidence"]["direct_nha"] == "120-29067-001"
+    ok, failures = validate_gemma_answer(
+        "120-29067-001 is the immediate parent of 120-20970-001.",
+        packet,
+    )
+    assert ok, failures
+
+
+def test_manual_child_descendant_and_conflict_packets_are_eligible():
+    cases = {
+        "Which pieces are directly inside assembly 120-29067-001?": "direct_children",
+        "Show everything below 120-29067-001, but separate immediate parts from deeper descendants.": "direct_vs_descendants",
+        "Why are there several possible parents for 42952-10?": "scope_conflict_resolution",
+    }
+    for query, intent in cases.items():
+        packet = build_nha_writer_packet(
+            query=query,
+            engine=FakeEngine(),
+            engram_bundle=bundle(),
+        )
+        assert packet["recognized"] is True, (query, packet)
+        assert packet["eligible"] is True, (query, packet)
+        assert packet["intent"] == intent, (query, packet)
+        assert packet["selected_memory_atom_ids"], query
+
+
+def test_model_call_headers_distinguish_live_paths():
+    packet = build_nha_writer_packet(
+        query="What bigger assembly is 120-20970-001 installed inside?",
+        engine=FakeEngine(),
+        engram_bundle=bundle(),
+    )
+    nha = decision_headers(
+        packet,
+        action="gemma_override",
+        writer_source="gemma",
+        gemma_calls=1,
+        self_rag="PASS",
+        model_calls=1,
+        model_path="nha_constrained_gemma",
+        upstream_calls=0,
+        prompt_tokens=100,
+        completion_tokens=20,
+    )
+    assert nha["X-Trace-Net-Model-Calls"] == "1"
+    assert nha["X-Trace-Net-Model-Path"] == "nha_constrained_gemma"
+    assert nha["X-Trace-Net-Upstream-Calls"] == "0"
+
+    upstream = decision_headers(
+        {"intent": "none"},
+        action="passthrough",
+        model_calls=1,
+        model_path="upstream_cognitive",
+        upstream_calls=1,
+    )
+    assert upstream["X-Trace-Net-Model-Calls"] == "1"
+    assert upstream["X-Trace-Net-Model-Path"] == "upstream_cognitive"
+    assert upstream["X-Trace-Net-Upstream-Calls"] == "1"
+
+    blocked = decision_headers({}, action="synthetic_blocked")
+    assert blocked["X-Trace-Net-Model-Calls"] == "0"
+    assert blocked["X-Trace-Net-Model-Path"] == ""
+
+
+def test_live_evaluator_rejects_zero_model_passthrough():
+    case = {
+        "case_id": "T",
+        "kind": "non_nha_control",
+        "query": "How do I install 120-20970-001?",
+        "expected_action": "passthrough",
+        "expected_packet": {},
+        "stream": False,
+    }
+    response = {
+        "http_status": 200,
+        "headers": {
+            "x-trace-net-nha-action": "passthrough",
+            "x-trace-net-model-calls": "0",
+            "x-trace-net-model-path": "",
+            "x-trace-net-upstream-calls": "0",
+        },
+        "answer": "An upstream-looking answer.",
+        "latency_seconds": 1.0,
+    }
+    result = evaluate_live_case(case, response)
+    assert result["passed"] is False
+    assert any("passthrough_model_call_count" in value for value in result["failures"])
+
+
 def test_procedure_query_is_not_nha():
     packet = build_nha_writer_packet(
         query="How do I install 120-20970-001?",
@@ -167,7 +268,7 @@ def test_procedure_query_is_not_nha():
 
 def test_synthetic_query_is_blocked_before_evidence():
     packet = build_nha_writer_packet(
-        query="What larger unit contains 990-91001-001?",
+        query="What is the NHA of benchmark part 990-91001-001?",
         engine=FakeEngine(),
         engram_bundle=bundle(),
     )

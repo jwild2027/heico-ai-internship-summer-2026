@@ -54,6 +54,13 @@ def main(argv: Sequence[str] | None = None) -> int:
         "engram_atoms_present_count": args.expected_gemma_overrides,
         "synthetic_block_count": 1,
         "passthrough_control_count": 1,
+        "model_backed_question_count": args.expected_count - 1,
+        "overall_model_call_count": args.expected_count - 1,
+        "nha_model_path_count": args.expected_gemma_overrides,
+        "upstream_model_path_count": 1,
+        "upstream_call_count": 1,
+        "unexpected_zero_model_call_count": 0,
+        "allowed_zero_model_call_count": 1,
         "stream_count": 10,
         "nonstream_count": 10,
         "production_graph_write_count": 0,
@@ -75,9 +82,9 @@ def main(argv: Sequence[str] | None = None) -> int:
         failures.append("quality_artifact_not_pass")
 
     output = {
-        "schema_version": "trace_net_nha_phase16_gemma20_check_v1",
+        "schema_version": "trace_net_nha_phase17_real_situation_gemma20_check_v1",
         "module": "check_trace_net_nha_phase16_gemma20_v1",
-        "status": "TRACE_NET_NHA_PHASE16_GEMMA20_CHECK_V1",
+        "status": "TRACE_NET_NHA_PHASE17_REAL_SITUATION_GEMMA20_CHECK_V1",
         "quality_status": "PASS" if not failures else "FAIL",
         "failures": list(dict.fromkeys(failures)),
         "warnings": [],
@@ -85,8 +92,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     }
     print(json.dumps(output, indent=2, ensure_ascii=False))
     if args.strict and failures:
-        raise SystemExit("TRACE_NET_NHA_PHASE16_GEMMA20_CHECK=FAIL")
-    print("TRACE_NET_NHA_PHASE16_GEMMA20_CHECK=PASS" if not failures else "TRACE_NET_NHA_PHASE16_GEMMA20_CHECK=WARN")
+        raise SystemExit("TRACE_NET_NHA_PHASE17_REAL_SITUATION_GEMMA20_CHECK=FAIL")
+    print("TRACE_NET_NHA_PHASE17_REAL_SITUATION_GEMMA20_CHECK=PASS" if not failures else "TRACE_NET_NHA_PHASE17_REAL_SITUATION_GEMMA20_CHECK=WARN")
     return 0
 
 

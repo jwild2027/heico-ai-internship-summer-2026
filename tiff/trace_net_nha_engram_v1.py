@@ -57,7 +57,7 @@ _ATA_RE = re.compile(r"\b\d{2}-\d{2}-\d{2}\b")
 _SYNTHETIC_RE = re.compile(r"\b990-\d{5}-\d{3}\b", re.I)
 
 DIRECT_TERMS = (
-    "direct nha", "next higher assembly", "immediate parent", "direct parent",
+    "direct nha", "nha of", "nha for", "next higher assembly", "immediate parent", "direct parent",
     "parent assembly", "immediate assembly", "assembly contains", "assembly containing",
     "larger unit contains", "belongs to", "installed in", "mounts in", "sits in",
     "part of which assembly", "what assembly is this part of", "one level above",
@@ -78,12 +78,21 @@ CHILD_TERMS = (
     "immediately below", "directly contain", "one-level breakdown", "one-hop children",
     "belong immediately to assembly", "direct component list", "immediate child relationships",
     "directly contained by assembly", "components are directly under",
+    "pieces are directly inside", "pieces directly inside", "parts directly inside",
+    "components directly inside", "directly inside assembly",
 )
 DESCENDANT_TERMS = (
     "lower descendants", "all descendants", "all components below", "all parts below",
     "subassemblies below", "full breakdown", "entire breakdown", "nested components",
     "direct versus lower", "direct vs lower", "children versus descendants",
     "descend from", "transitive descendants", "entire hierarchy below", "descendant tree",
+    "everything below", "deeper descendants", "immediate parts from deeper descendants",
+    "separate immediate parts", "separate immediate components",
+)
+CONFLICT_TERMS = (
+    "several possible parents", "multiple possible parents", "several parent candidates",
+    "multiple parent candidates", "more than one possible parent", "why are there several parents",
+    "why are there multiple parents", "why are there several possible parents",
 )
 EVIDENCE_TERMS = (
     "which page proves", "what page proves", "page proves", "source page", "evidence page",
@@ -149,6 +158,7 @@ def extract_nha_query_atoms(query: str) -> Dict[str, Any]:
     chain_hits = _contains_any(text, CHAIN_TERMS)
     child_hits = _contains_any(text, CHILD_TERMS)
     descendant_hits = _contains_any(text, DESCENDANT_TERMS)
+    conflict_hits = _contains_any(text, CONFLICT_TERMS)
     evidence_hits = _contains_any(text, EVIDENCE_TERMS)
     attaching_hits = _contains_any(text, ATTACHING_TERMS)
     procedure_hits = _contains_any(text, PROCEDURE_TERMS)
@@ -169,6 +179,35 @@ def extract_nha_query_atoms(query: str) -> Dict[str, Any]:
     scope_relationship = bool(
         scope_hits and parts and re.search(r"\b(?:nha|parent|assembly|relationship|candidate|hierarchy)\b", lower)
     )
+    parent_comparison = bool(
+        len(parts) >= 2
+        and re.search(
+            r"\b(?:is|are)\s+[A-Z0-9-]+\s+(?:the\s+)?(?:immediate|direct|next\s+higher)\s+"
+            r"(?:parent|parent\s+assembly|assembly|nha)\s+(?:of|for)\s+[A-Z0-9-]+",
+            text,
+            re.I,
+        )
+    )
+    comparison_parent_part = parts[0] if parent_comparison else ""
+    target_part_number = parts[1] if parent_comparison else (parts[0] if parts else "")
+    child_directional = bool(
+        parts
+        and re.search(
+            r"\b(?:which|what)\s+(?:pieces|parts|components|items)\s+(?:are\s+)?"
+            r"(?:directly|immediately)\s+(?:inside|in|under|below)\s+(?:assembly\s+)?[A-Z0-9-]+",
+            text,
+            re.I,
+        )
+    )
+    descendant_directional = bool(
+        parts
+        and (
+            re.search(r"\beverything\s+below\b", lower)
+            or re.search(r"\bdeeper\s+descendants?\b", lower)
+        )
+        and re.search(r"\b(?:separate|distinguish|split|keep)\b", lower)
+    )
+
     # Direction matters: "Which larger assembly directly contains PART?" asks
     # for PART's parent, while "Which components are directly under ASSEMBLY?"
     # asks for children. This narrow subject-before-object pattern resolves only
@@ -186,7 +225,7 @@ def extract_nha_query_atoms(query: str) -> Dict[str, Any]:
 
     # Carefully accept conversational parent language only when a part is present.
     relationship_language = bool(
-        direct_hits or chain_hits or child_hits or descendant_hits or evidence_hits or attaching_hits
+        direct_hits or chain_hits or child_hits or descendant_hits or conflict_hits or evidence_hits or attaching_hits
     )
     conversational_direct = bool(
         parts
@@ -204,6 +243,9 @@ def extract_nha_query_atoms(query: str) -> Dict[str, Any]:
     )
     relationship_language = (
         relationship_language
+        or parent_comparison
+        or child_directional
+        or descendant_directional
         or parent_directional_direct
         or conversational_direct
         or scope_comparison
@@ -217,17 +259,17 @@ def extract_nha_query_atoms(query: str) -> Dict[str, Any]:
 
     if evidence_hits:
         intent = "relationship_evidence"
-    elif scope_comparison or (scope_hits and relationship_language):
+    elif conflict_hits or scope_comparison or (scope_hits and relationship_language):
         intent = "scope_conflict_resolution"
     elif attaching_hits:
         intent = "direct_nha"
     elif chain_hits:
         intent = "ancestor_chain"
-    elif descendant_hits:
+    elif descendant_hits or descendant_directional:
         intent = "direct_vs_descendants"
-    elif parent_directional_direct:
+    elif parent_comparison or parent_directional_direct:
         intent = "direct_nha"
-    elif child_hits:
+    elif child_hits or child_directional:
         intent = "direct_children"
     elif direct_hits or conversational_direct or attaching_hits:
         intent = "direct_nha"
@@ -245,14 +287,18 @@ def extract_nha_query_atoms(query: str) -> Dict[str, Any]:
     token_atoms: List[str] = []
     if candidate:
         token_atoms.extend(["nha", "assembly_relationship", f"{intent}_intent"])
-    if intent == "direct_nha" and (direct_hits or conversational_direct or parent_directional_direct):
+    if intent == "direct_nha" and (direct_hits or conversational_direct or parent_directional_direct or parent_comparison):
         token_atoms.extend(["direct_parent", "immediate_parent", "next_higher_assembly"])
+    if parent_comparison:
+        token_atoms.extend(["parent_comparison", "proposed_parent", "target_child"])
     if chain_hits:
         token_atoms.extend(["ancestor_chain", "ordered_hierarchy"])
-    if child_hits and intent == "direct_children":
+    if (child_hits or child_directional) and intent == "direct_children":
         token_atoms.extend(["direct_children", "one_level_below"])
-    if descendant_hits:
+    if (descendant_hits or descendant_directional) and intent == "direct_vs_descendants":
         token_atoms.extend(["lower_descendants", "transitive_hierarchy"])
+    if conflict_hits:
+        token_atoms.extend(["parent_conflict", "scope_context", "scope_comparison"])
     if evidence_hits:
         token_atoms.extend(["relationship_evidence", "source_page_required"])
     if attaching_hits:
@@ -272,6 +318,9 @@ def extract_nha_query_atoms(query: str) -> Dict[str, Any]:
         "schema_version": "trace_net_nha_query_atoms_v1",
         "query": text,
         "part_numbers": parts,
+        "target_part_number": target_part_number,
+        "comparison_parent_part": comparison_parent_part,
+        "parent_comparison": parent_comparison,
         "synthetic_part_numbers": synthetic_parts,
         "intent": intent,
         "nha_candidate": candidate,
@@ -280,6 +329,7 @@ def extract_nha_query_atoms(query: str) -> Dict[str, Any]:
         "chain_terms": chain_hits,
         "child_terms": child_hits,
         "descendant_terms": descendant_hits,
+        "conflict_terms": conflict_hits,
         "evidence_terms": evidence_hits,
         "attaching_terms": attaching_hits,
         "scope_terms": scope_hits,
@@ -823,7 +873,7 @@ def build_100_question_bank() -> List[Dict[str, Any]]:
         "What is one level above {p}?",
         "Which parent assembly does {p} belong to?",
         "Where does {p} sit in the assembly hierarchy?",
-        "What larger unit contains {p}?",
+        "What bigger assembly is {p} installed inside?",
         "Which assembly is {p} installed in?",
         "Tell me the direct parent of {p}.",
         "Is there an immediate assembly above {p}?",
@@ -869,7 +919,7 @@ def build_100_question_bank() -> List[Dict[str, Any]]:
 
     child_templates = [
         "List the direct children of assembly {p}.",
-        "Which parts sit immediately below assembly {p}?",
+        "Which pieces are directly inside assembly {p}?",
         "Show the immediate components of {p}.",
         "What does assembly {p} directly contain?",
         "Give the one-level breakdown under {p}.",
@@ -894,7 +944,7 @@ def build_100_question_bank() -> List[Dict[str, Any]]:
     descendant_templates = [
         "Show direct versus lower descendants below assembly {p}.",
         "Separate the immediate children and all lower descendants of {p}.",
-        "Give the full breakdown below {p}, keeping one-hop parts separate.",
+        "Show everything below {p}, but separate immediate parts from deeper descendants.",
         "Which direct components and nested components are under {p}?",
         "List the lower descendants of {p}.",
         "Show all components below {p}, grouped by depth.",
@@ -943,7 +993,7 @@ def build_100_question_bank() -> List[Dict[str, Any]]:
         "For this aircraft configuration, which NHA owns {p}?",
         "Compare project Alpha and project Beta parent relationships for {p}.",
         "Which revision changed the direct parent of {p}?",
-        "I have multiple parent candidates for {p}; what configuration resolves them?",
+        "Why are there several possible parents for {p}?",
         "Which usage-code scope applies to {p}'s NHA?",
         "Does serial-range effectivity change the assembly above {p}?",
         "Which dash-number variant determines the parent of {p}?",
@@ -1002,7 +1052,7 @@ def build_100_question_bank() -> List[Dict[str, Any]]:
         ))
 
     synthetic_templates = [
-        "What is the direct NHA of synthetic part 990-91001-001?",
+        "What is the NHA of benchmark part 990-91001-001?",
         "Show the assembly chain above 990-92001-001.",
         "Which page proves the parent of 990-93001-001?",
         "List direct children of synthetic assembly 990-94001-001.",

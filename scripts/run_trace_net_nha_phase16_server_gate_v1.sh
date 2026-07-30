@@ -60,6 +60,7 @@ rm -rf "$LIVE20_DIR"
   --expected-gemma-overrides 18 \
   --strict
 
+echo "TRACE_NET_NHA_PHASE17_REAL_SITUATION_MODEL_CALL_GATE=PASS"
 echo "status=TRACE_NET_NHA_PHASE16_SERVER_GATE_V1"
 echo "quality_status=PASS"
 echo "engram_dir=$ENGRAM_DIR"

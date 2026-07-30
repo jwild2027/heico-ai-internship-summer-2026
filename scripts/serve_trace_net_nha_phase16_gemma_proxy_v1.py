@@ -76,6 +76,11 @@ def decision_headers(
     writer_source: str = "",
     gemma_calls: int = 0,
     self_rag: str = "",
+    model_calls: int = 0,
+    model_path: str = "",
+    upstream_calls: int = 0,
+    prompt_tokens: int = 0,
+    completion_tokens: int = 0,
 ) -> dict[str, str]:
     return {
         "X-Trace-Net-NHA-Action": action,
@@ -94,6 +99,11 @@ def decision_headers(
         "X-Trace-Net-NHA-Writer-Source": writer_source,
         "X-Trace-Net-NHA-Self-RAG": self_rag,
         "X-Trace-Net-NHA-Synthetic-Access": "0",
+        "X-Trace-Net-Model-Calls": str(int(model_calls)),
+        "X-Trace-Net-Model-Path": model_path,
+        "X-Trace-Net-Upstream-Calls": str(int(upstream_calls)),
+        "X-Trace-Net-Model-Prompt-Tokens": str(int(prompt_tokens)),
+        "X-Trace-Net-Model-Completion-Tokens": str(int(completion_tokens)),
     }
 
 
@@ -301,6 +311,9 @@ def make_handler(runtime: Runtime):
             self_rag = ""
             prompt_tokens = 0
             completion_tokens = 0
+            model_calls = 0
+            model_path = ""
+            upstream_calls = 0
 
             if packet.get("synthetic_blocked"):
                 action = "synthetic_blocked"
@@ -322,6 +335,8 @@ def make_handler(runtime: Runtime):
                 prompt_tokens = write.prompt_tokens
                 completion_tokens = write.completion_tokens
                 result = openai_completion(answer, runtime.public_model)
+                model_calls = 1
+                model_path = "nha_constrained_gemma"
                 result["usage"] = {
                     "prompt_tokens": prompt_tokens,
                     "completion_tokens": completion_tokens,
@@ -343,6 +358,12 @@ def make_handler(runtime: Runtime):
                     return
                 answer = extract_answer(result)
                 result["model"] = runtime.public_model
+                usage = result.get("usage") if isinstance(result.get("usage"), Mapping) else {}
+                prompt_tokens = int(usage.get("prompt_tokens") or 0)
+                completion_tokens = int(usage.get("completion_tokens") or 0)
+                model_calls = 1
+                upstream_calls = 1
+                model_path = "upstream_cognitive_shadow"
             else:
                 upstream_payload = dict(payload)
                 upstream_payload["model"] = runtime.upstream_model
@@ -358,6 +379,12 @@ def make_handler(runtime: Runtime):
                     return
                 answer = extract_answer(result)
                 result["model"] = runtime.public_model
+                usage = result.get("usage") if isinstance(result.get("usage"), Mapping) else {}
+                prompt_tokens = int(usage.get("prompt_tokens") or 0)
+                completion_tokens = int(usage.get("completion_tokens") or 0)
+                model_calls = 1
+                upstream_calls = 1
+                model_path = "upstream_cognitive"
 
             if not answer:
                 self.send_json(
@@ -373,6 +400,11 @@ def make_handler(runtime: Runtime):
                 writer_source=writer_source,
                 gemma_calls=gemma_calls,
                 self_rag=self_rag,
+                model_calls=model_calls,
+                model_path=model_path,
+                upstream_calls=upstream_calls,
+                prompt_tokens=prompt_tokens,
+                completion_tokens=completion_tokens,
             )
             runtime.record({
                 "schema_version": "trace_net_nha_phase16_telemetry_v1",
@@ -387,6 +419,9 @@ def make_handler(runtime: Runtime):
                 "self_rag_pass": self_rag == "PASS" if self_rag else None,
                 "prompt_tokens": prompt_tokens,
                 "completion_tokens": completion_tokens,
+                "model_call_count": model_calls,
+                "model_path": model_path,
+                "upstream_call_count": upstream_calls,
                 "latency_seconds": round(time.perf_counter() - started, 3),
                 "production_graph_write_count": 0,
                 "source_artifact_mutation_count": 0,
