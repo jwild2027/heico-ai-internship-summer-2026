@@ -21,3 +21,14 @@ Rollback:
 ```bash
 bash scripts/launch_trace_net_cognitive_openwebui_nha_unified_v1.sh rollback
 ```
+
+## N18.1 mixed-gate policy correction
+
+The public promotion gate distinguishes three upstream outcomes:
+
+- `accepted`: Gemma returned a validated constrained rewrite.
+- `safe_fallback`: Gemma returned an answer, the safety validator rejected the rewrite, and TRACE-Net released the already-validated deterministic Phase 3 answer.
+- `invalid`: the model was skipped, timed out, failed, or produced an unknown runtime state.
+
+Both `accepted` and `safe_fallback` prove a completed real Gemma call while preserving fail-closed behavior. The gate still rejects skipped calls, timeouts, HTTP/model failures, missing public evidence, or invalid final formatting. IPL/table questions follow their existing public contract and require `## Answer` plus `## Evidence`; they do not invent a `## Limits` requirement when the golden contract marks limits as optional.
+

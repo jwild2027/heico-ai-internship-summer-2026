@@ -90,6 +90,7 @@ def test_summary_requires_eleven_actual_model_backed_cases():
             "http_status": 200,
             "action": action,
             "model_calls": 0 if action == "synthetic_blocked" else 1,
+            "upstream_gemma_outcome": "accepted" if action == "passthrough" else "",
             "stream": case["stream"],
             "latency_seconds": 1.0,
             "failures": [],
@@ -97,3 +98,82 @@ def test_summary_requires_eleven_actual_model_backed_cases():
     summary = summarize(records)
     assert summary["quality_status"] == "PASS", summary
     assert summary["counts"]["model_backed_question_count"] == 11
+
+# TRACE_NET_NHA_PHASE18_1_GATE_POLICY_FIX_V1
+
+def test_upstream_completed_rejected_output_uses_safe_fallback_and_passes_gate():
+    case = next(row for row in build_bank() if row["kind"] == "upstream_exact_part")
+    response = {
+        "http_status": 200,
+        "headers": {
+            "x-trace-net-nha-action": "passthrough",
+            "x-trace-net-model-calls": "1",
+            "x-trace-net-model-path": "upstream_cognitive",
+            "x-trace-net-upstream-calls": "1",
+            "x-trace-net-upstream-gemma-status": "CONSTRAINED_GEMMA_OUTPUT_REJECTED_PHASE3_FALLBACK",
+            "x-trace-net-upstream-writer-mode": "public_answer_contract_v1",
+        },
+        "answer": (
+            "## Answer\n\n120-20970-001 appears in the indexed source records [1].\n\n"
+            "## Evidence\n\n- t_p_120_1176_p000343 [1]\n\n"
+            "## Limits\n\n- The returned association remains bounded by the cited source."
+        ),
+        "body": {},
+        "latency_seconds": 1.0,
+    }
+    result = evaluate(case, response)
+    assert result["passed"] is True, result
+    assert result["upstream_gemma_outcome"] == "safe_fallback"
+
+
+def test_upstream_ipl_contract_does_not_invent_limits_requirement():
+    case = next(row for row in build_bank() if row["kind"] == "upstream_ipl")
+    required = case["required_text"]
+    response = {
+        "http_status": 200,
+        "headers": {
+            "x-trace-net-nha-action": "passthrough",
+            "x-trace-net-model-calls": "1",
+            "x-trace-net-model-path": "upstream_cognitive",
+            "x-trace-net-upstream-calls": "1",
+            "x-trace-net-upstream-gemma-status": "CONSTRAINED_GEMMA_CALL_SUCCEEDED_AND_VALIDATED",
+            "x-trace-net-upstream-writer-mode": "public_answer_contract_v1",
+        },
+        "answer": (
+            f"## Answer\n\n{required[0]} appears in the available IPL/table evidence [1].\n\n"
+            f"## Evidence\n\n- Source-backed record on `{required[1]}` [1]."
+        ),
+        "body": {},
+        "latency_seconds": 1.0,
+    }
+    result = evaluate(case, response)
+    assert "## Limits" not in response["answer"]
+    assert result["passed"] is True, result
+    assert result["upstream_gemma_outcome"] == "accepted"
+
+
+def test_upstream_timeout_is_not_a_safe_model_outcome():
+    case = next(row for row in build_bank() if row["kind"] == "upstream_exact_part")
+    response = {
+        "http_status": 200,
+        "headers": {
+            "x-trace-net-nha-action": "passthrough",
+            "x-trace-net-model-calls": "1",
+            "x-trace-net-model-path": "upstream_cognitive",
+            "x-trace-net-upstream-calls": "1",
+            "x-trace-net-upstream-gemma-status": "CONSTRAINED_GEMMA_CALL_TIMED_OUT_PHASE3_FALLBACK",
+            "x-trace-net-upstream-writer-mode": "public_answer_contract_v1",
+        },
+        "answer": (
+            "## Answer\n\n120-20970-001 appears in the indexed source records [1].\n\n"
+            "## Evidence\n\n- t_p_120_1176_p000343 [1]\n\n"
+            "## Limits\n\n- Limited."
+        ),
+        "body": {},
+        "latency_seconds": 1.0,
+    }
+    result = evaluate(case, response)
+    assert result["passed"] is False
+    assert result["upstream_gemma_outcome"] == "invalid"
+    assert any("upstream_gemma_outcome" in value for value in result["failures"])
+

@@ -16,6 +16,8 @@ EXPECTED = {
     "nha_model_call_count": 6,
     "upstream_question_count": 5,
     "upstream_actual_gemma_call_count": 5,
+    "upstream_final_public_answer_pass_count": 5,
+    "upstream_invalid_model_outcome_count": 0,
     "synthetic_block_count": 1,
     "model_backed_question_count": 11,
     "unexpected_zero_model_call_count": 0,
@@ -51,17 +53,29 @@ def check(output_dir: str | Path) -> dict[str, Any]:
     for key, expected in EXPECTED.items():
         if counts.get(key) != expected:
             failures.append(f"count:{key} expected={expected} actual={counts.get(key)}")
+    accepted = int(counts.get("upstream_gemma_accepted_count") or 0)
+    fallback = int(counts.get("upstream_safe_fallback_count") or 0)
+    if accepted + fallback != 5:
+        failures.append(
+            "upstream_completed_model_outcomes expected=5 "
+            f"actual={accepted + fallback} accepted={accepted} fallback={fallback}"
+        )
     if len(records) != 12:
         failures.append(f"record_count:{len(records)}!=12")
     if any(not bool(row.get("passed")) for row in records if isinstance(row, Mapping)):
         failures.append("failed_record_present")
+    for row in records:
+        if not isinstance(row, Mapping) or row.get("action") != "passthrough":
+            continue
+        if row.get("upstream_gemma_outcome") not in {"accepted", "safe_fallback"}:
+            failures.append(f"invalid_upstream_outcome:{row.get('case_id')}")
     return {
-        "schema_version": "trace_net_nha_phase18_unified8131_check_v1",
+        "schema_version": "trace_net_nha_phase18_1_unified8131_check_v1",
         "module": "check_trace_net_nha_phase18_unified8131_gate_v1",
-        "status": "TRACE_NET_NHA_PHASE18_UNIFIED8131_CHECK_V1",
+        "status": "TRACE_NET_NHA_PHASE18_1_UNIFIED8131_CHECK_V1",
         "quality_status": "PASS" if not failures else "FAIL",
         "failures": failures,
-        "warnings": [],
+        "warnings": list(quality.get("warnings") or []),
         "counts": dict(counts),
     }
 
