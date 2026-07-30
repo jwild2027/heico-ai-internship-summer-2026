@@ -237,3 +237,26 @@ def test_phase9_manifest_records_portable_checksum(tmp_path):
         assert record["checksum_mode"] == "text_eol_portable_v1"
         assert len(record["sha256_lf"]) == 64
 
+
+def test_live20_bank_fills_sparse_real_mix_with_evidence_cases(tmp_path):
+    source = make_phase4(tmp_path)
+    relationship_path = source / "trace_net_nha_hierarchy_relationships_v1.json"
+    payload = json.loads(relationship_path.read_text(encoding="utf-8"))
+    payload["records"] = [
+        row
+        for row in payload["records"]
+        if not str(row.get("child_part") or "").startswith("120-530")
+        and str(row.get("direct_nha") or "") != "120-50020-001"
+    ]
+    write_json(relationship_path, payload)
+
+    bank = build_live20_bank(source, total=20)
+
+    assert len(bank) == 20
+    assert len({row["case_id"] for row in bank}) == 20
+    assert len({row["query"] for row in bank}) == 20
+    assert sum(row["expected_action"] == "override" for row in bank) == 18
+    assert sum(row["expected_action"] == "passthrough" for row in bank) == 1
+    assert sum(row["expected_action"] == "synthetic_blocked" for row in bank) == 1
+    assert sum(row["kind"] == "relationship_evidence_page" for row in bank) == 2
+

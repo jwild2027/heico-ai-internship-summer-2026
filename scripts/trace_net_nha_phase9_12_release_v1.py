@@ -329,16 +329,47 @@ def build_live20_bank(phase4_dir: str | Path, *, total: int = 20, max_depth: int
             tree_added = True
             break
 
-    if direct:
-        child, _ = direct[0]
+    # TRACE_NET_NHA_PHASE10_LIVE20_FILL_FIX_V1
+    # The real release may contain fewer distinct parent/chain categories than the
+    # synthetic unit fixture. Fill the remaining real slots with deterministic
+    # relationship-evidence questions instead of failing below 20 cases.
+    control_count = 2
+    real_target = total - control_count
+    if real_target < 1:
+        raise ValueError(f"live20_total_too_small:{total}")
+    if len(cases) > real_target:
+        raise ValueError(
+            f"live20_primary_cases_exceed_target target={real_target} actual={len(cases)}"
+        )
+
+    seen_queries = {str(row.get("query") or "") for row in cases}
+    evidence_behaviors = {"page_and_trait_answer", "conflict_evidence_answer"}
+    for child, _ in [*direct, *limited]:
+        if len(cases) >= real_target:
+            break
+        query = f"Which page proves the NHA relationship for {child}?"
+        if query in seen_queries:
+            continue
         result = engine.page_evidence(child)
-        add("relationship_evidence_page", f"Which page proves the NHA relationship for {child}?", "override", result)
+        if result.get("behavior") not in evidence_behaviors or not result.get("pages"):
+            continue
+        add("relationship_evidence_page", query, "override", result)
+        seen_queries.add(query)
+
+    if len(cases) != real_target or not tree_added:
+        raise ValueError(
+            "unable_to_build_live20 "
+            f"expected_real={real_target} actual_real={len(cases)} "
+            f"direct_pool={len(direct)} limited_pool={len(limited)} "
+            f"parent_cases={parent_added} chain_cases={chain_added} "
+            f"tree_added={tree_added}"
+        )
 
     add("non_nha_control", "What can TRACE-Net do?", "passthrough")
     add("synthetic_block_control", "What is the direct NHA of synthetic part 990-91001-001?", "synthetic_blocked")
 
-    if len(cases) != total or not tree_added:
-        raise ValueError(f"unable_to_build_live20 expected={total} actual={len(cases)} tree_added={tree_added}")
+    if len(cases) != total:
+        raise ValueError(f"unable_to_build_live20 expected={total} actual={len(cases)}")
     return cases
 
 
