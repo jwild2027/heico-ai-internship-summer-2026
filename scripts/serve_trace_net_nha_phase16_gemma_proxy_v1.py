@@ -69,6 +69,37 @@ def _short_join(values: Sequence[Any], limit: int = 6) -> str:
     return ",".join(str(value) for value in list(values)[:limit])
 
 
+def observe_upstream_model(result: Mapping[str, Any]) -> dict[str, Any]:
+    """Report an actual upstream Gemma attempt, not merely an HTTP passthrough."""
+    trace = result.get("trace_net") if isinstance(result.get("trace_net"), Mapping) else {}
+    constrained = (
+        trace.get("constrained_gemma_writer")
+        if isinstance(trace.get("constrained_gemma_writer"), Mapping)
+        else {}
+    )
+    status = str(trace.get("gemma_status") or "")
+    writer_mode = str(trace.get("writer_mode") or "")
+    call_count = int(constrained.get("call_count") or 0)
+    call_attempted = bool(constrained.get("call_attempted")) or call_count > 0
+    if call_count < 1 and status.startswith("LLM_CALL_"):
+        call_count = 1
+        call_attempted = True
+    accepted = bool(
+        constrained.get("structured_output_accepted")
+        or status in {
+            "CONSTRAINED_GEMMA_CALL_SUCCEEDED_AND_VALIDATED",
+            "LLM_CALL_SUCCEEDED_AND_VALIDATED",
+        }
+    )
+    return {
+        "model_call_count": call_count if call_attempted else 0,
+        "model_path": "upstream_cognitive" if call_attempted else "upstream_cognitive_deterministic",
+        "gemma_status": status,
+        "writer_mode": writer_mode,
+        "accepted": accepted,
+    }
+
+
 def decision_headers(
     packet: Mapping[str, Any],
     *,
@@ -81,6 +112,8 @@ def decision_headers(
     upstream_calls: int = 0,
     prompt_tokens: int = 0,
     completion_tokens: int = 0,
+    upstream_gemma_status: str = "",
+    upstream_writer_mode: str = "",
 ) -> dict[str, str]:
     return {
         "X-Trace-Net-NHA-Action": action,
@@ -104,6 +137,8 @@ def decision_headers(
         "X-Trace-Net-Upstream-Calls": str(int(upstream_calls)),
         "X-Trace-Net-Model-Prompt-Tokens": str(int(prompt_tokens)),
         "X-Trace-Net-Model-Completion-Tokens": str(int(completion_tokens)),
+        "X-Trace-Net-Upstream-Gemma-Status": upstream_gemma_status,
+        "X-Trace-Net-Upstream-Writer-Mode": upstream_writer_mode,
     }
 
 
@@ -314,6 +349,8 @@ def make_handler(runtime: Runtime):
             model_calls = 0
             model_path = ""
             upstream_calls = 0
+            upstream_gemma_status = ""
+            upstream_writer_mode = ""
 
             if packet.get("synthetic_blocked"):
                 action = "synthetic_blocked"
@@ -361,9 +398,16 @@ def make_handler(runtime: Runtime):
                 usage = result.get("usage") if isinstance(result.get("usage"), Mapping) else {}
                 prompt_tokens = int(usage.get("prompt_tokens") or 0)
                 completion_tokens = int(usage.get("completion_tokens") or 0)
-                model_calls = 1
+                observation = observe_upstream_model(result)
+                model_calls = int(observation["model_call_count"])
                 upstream_calls = 1
-                model_path = "upstream_cognitive_shadow"
+                model_path = (
+                    "upstream_cognitive_shadow"
+                    if model_calls
+                    else "upstream_cognitive_deterministic_shadow"
+                )
+                upstream_gemma_status = str(observation["gemma_status"])
+                upstream_writer_mode = str(observation["writer_mode"])
             else:
                 upstream_payload = dict(payload)
                 upstream_payload["model"] = runtime.upstream_model
@@ -382,9 +426,12 @@ def make_handler(runtime: Runtime):
                 usage = result.get("usage") if isinstance(result.get("usage"), Mapping) else {}
                 prompt_tokens = int(usage.get("prompt_tokens") or 0)
                 completion_tokens = int(usage.get("completion_tokens") or 0)
-                model_calls = 1
+                observation = observe_upstream_model(result)
+                model_calls = int(observation["model_call_count"])
                 upstream_calls = 1
-                model_path = "upstream_cognitive"
+                model_path = str(observation["model_path"])
+                upstream_gemma_status = str(observation["gemma_status"])
+                upstream_writer_mode = str(observation["writer_mode"])
 
             if not answer:
                 self.send_json(
@@ -405,6 +452,8 @@ def make_handler(runtime: Runtime):
                 upstream_calls=upstream_calls,
                 prompt_tokens=prompt_tokens,
                 completion_tokens=completion_tokens,
+                upstream_gemma_status=upstream_gemma_status,
+                upstream_writer_mode=upstream_writer_mode,
             )
             runtime.record({
                 "schema_version": "trace_net_nha_phase16_telemetry_v1",
@@ -422,6 +471,8 @@ def make_handler(runtime: Runtime):
                 "model_call_count": model_calls,
                 "model_path": model_path,
                 "upstream_call_count": upstream_calls,
+                "upstream_gemma_status": upstream_gemma_status,
+                "upstream_writer_mode": upstream_writer_mode,
                 "latency_seconds": round(time.perf_counter() - started, 3),
                 "production_graph_write_count": 0,
                 "source_artifact_mutation_count": 0,
