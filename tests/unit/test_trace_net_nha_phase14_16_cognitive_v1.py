@@ -143,6 +143,18 @@ def test_direct_packet_uses_atoms_skill_and_evidence():
     assert packet["evidence"]["direct_nha"] == "120-29067-001"
 
 
+def test_directional_larger_assembly_phrase_routes_to_direct_parent():
+    packet = build_nha_writer_packet(
+        query="Which larger assembly directly contains 120-29074-001?",
+        engine=FakeEngine(),
+        engram_bundle=bundle(),
+    )
+    assert packet["recognized"] is True
+    assert packet["eligible"] is True
+    assert packet["intent"] == "direct_nha"
+    assert packet["selected_skill_ids"] == ["nha_direct_parent_lookup"]
+
+
 def test_procedure_query_is_not_nha():
     packet = build_nha_writer_packet(
         query="How do I install 120-20970-001?",

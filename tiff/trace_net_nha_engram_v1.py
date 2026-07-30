@@ -169,6 +169,20 @@ def extract_nha_query_atoms(query: str) -> Dict[str, Any]:
     scope_relationship = bool(
         scope_hits and parts and re.search(r"\b(?:nha|parent|assembly|relationship|candidate|hierarchy)\b", lower)
     )
+    # Direction matters: "Which larger assembly directly contains PART?" asks
+    # for PART's parent, while "Which components are directly under ASSEMBLY?"
+    # asks for children. This narrow subject-before-object pattern resolves only
+    # the first form and does not globally promote overlapping child phrases.
+    parent_directional_direct = bool(
+        parts
+        and re.search(
+            r"\b(?:which|what)\s+(?:larger\s+|parent\s+|immediate\s+)?"
+            r"assembly\s+(?:directly\s+)?contains?\b",
+            lower,
+        )
+        and not procedure_hits
+        and not exact_lookup_hits
+    )
 
     # Carefully accept conversational parent language only when a part is present.
     relationship_language = bool(
@@ -188,7 +202,13 @@ def extract_nha_query_atoms(query: str) -> Dict[str, Any]:
         scope_hits
         and re.search(r"\b(?:change|different|compare|depends?|which|for each|between)\b", lower)
     )
-    relationship_language = relationship_language or conversational_direct or scope_comparison or scope_relationship
+    relationship_language = (
+        relationship_language
+        or parent_directional_direct
+        or conversational_direct
+        or scope_comparison
+        or scope_relationship
+    )
 
     # Procedure requests and plain exact-location requests are negative controls unless
     # they also explicitly ask an assembly relationship.
@@ -205,6 +225,8 @@ def extract_nha_query_atoms(query: str) -> Dict[str, Any]:
         intent = "ancestor_chain"
     elif descendant_hits:
         intent = "direct_vs_descendants"
+    elif parent_directional_direct:
+        intent = "direct_nha"
     elif child_hits:
         intent = "direct_children"
     elif direct_hits or conversational_direct or attaching_hits:
@@ -223,11 +245,11 @@ def extract_nha_query_atoms(query: str) -> Dict[str, Any]:
     token_atoms: List[str] = []
     if candidate:
         token_atoms.extend(["nha", "assembly_relationship", f"{intent}_intent"])
-    if direct_hits or conversational_direct:
+    if intent == "direct_nha" and (direct_hits or conversational_direct or parent_directional_direct):
         token_atoms.extend(["direct_parent", "immediate_parent", "next_higher_assembly"])
     if chain_hits:
         token_atoms.extend(["ancestor_chain", "ordered_hierarchy"])
-    if child_hits:
+    if child_hits and intent == "direct_children":
         token_atoms.extend(["direct_children", "one_level_below"])
     if descendant_hits:
         token_atoms.extend(["lower_descendants", "transitive_hierarchy"])
@@ -796,7 +818,7 @@ def build_100_question_bank() -> List[Dict[str, Any]]:
     direct_templates = [
         "What is the direct NHA of part {p}?",
         "What is the next higher assembly for {p}?",
-        "Which assembly immediately contains {p}?",
+        "Which larger assembly directly contains {p}?",
         "What is the immediate parent assembly of {p}?",
         "What is one level above {p}?",
         "Which parent assembly does {p} belong to?",

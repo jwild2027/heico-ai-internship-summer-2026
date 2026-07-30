@@ -101,6 +101,7 @@ def test_direct_and_conversational_atoms():
     for query in (
         "What is the direct NHA of part 120-20970-001?",
         "Which assembly immediately contains 120-20970-001?",
+        "Which larger assembly directly contains 120-29074-001?",
         "What larger unit contains 120-20970-001?",
         "Where does 120-20970-001 sit in the assembly hierarchy?",
     ):
@@ -108,6 +109,20 @@ def test_direct_and_conversational_atoms():
         assert atoms["nha_candidate"] is True
         assert atoms["intent"] == "direct_nha"
         assert "direct_nha_intent" in atoms["query_atom_tokens"]
+
+
+def test_directional_overlap_preserves_true_child_queries():
+    for query in (
+        "Which components are directly under 120-29067-001?",
+        "What is directly contained by assembly 120-29067-001?",
+    ):
+        atoms = extract_nha_query_atoms(query)
+        assert atoms["intent"] == "direct_children", atoms
+        assert "direct_children" in atoms["query_atom_tokens"]
+        assert "direct_parent" not in atoms["query_atom_tokens"]
+        assert select_nha_skills(query)["selected_skill_ids"] == [
+            "nha_children_descendants_reasoning"
+        ]
 
 
 def test_chain_children_descendants_and_evidence_atoms():
