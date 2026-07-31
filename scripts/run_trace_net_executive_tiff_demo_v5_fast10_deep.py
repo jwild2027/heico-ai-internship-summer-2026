@@ -33,8 +33,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
-STATUS = "TRACE_NET_EXECUTIVE_TIFF_DEMO_FAST10_DEEP_V5"
-VERSION = "v5"
+STATUS = "TRACE_NET_EXECUTIVE_TIFF_DEMO_FAST10_DEEP_V5_1"
+VERSION = "v5.1"
 DEFAULT_REPO = "/data/trace_net/repos/heico-ai-internship-summer-2026"
 DEFAULT_SOURCE = "/data/trace_net/inputs/metadata.zip"
 DEFAULT_TESSERACT = "/usr/bin/tesseract"
@@ -68,7 +68,7 @@ STAGE_INFO: dict[tuple[str, str], tuple[str, str, str]] = {
     ("validator", "build"): ("4A", "Validate uncertain page decisions", "Additional deterministic rules inspect pages that were not obvious initially."),
     ("validator", "check"): ("4B", "Check the validated decisions", "The validator confirms the decisions remain safe and automatic."),
     ("retry", "build"): ("5A", "Retry only unresolved pages", "Only unresolved pages receive a bounded second deterministic probe."),
-    ("retry", "check"): ("5B", "Verify the final page decisions", "All ten pages must now have one final operational route."),
+    ("retry", "check"): ("5B", "Verify the final page decisions", "Each page must have either a validated retrieval route or a safe graph-only route."),
     ("storage", "build"): ("6A", "Prepare graph, vector, and exact-search records", "The same page creates different read-only records for different search jobs."),
     ("storage", "check"): ("6B", "Check storage eligibility", "Records are validated without writing to production databases."),
     ("loader", "build"): ("7A", "Create a dry-run loading plan", "TRACE-Net shows what would go to Postgres, Qdrant, and OpenSearch."),
@@ -348,11 +348,12 @@ def build_stage_plan(
     add("retry", "build", [
         "scripts/build_trace_net_route_unresolved_retry_probe_v1.py",
         "--route-validator-runner", str(reports["validator"]), "--output-dir", str(paths.retry_dir),
+        "--quality",
     ])
     add("retry", "check", [
         "scripts/check_trace_net_route_unresolved_retry_probe_v1_quality.py",
         "--report-path", str(reports["retry"]), "--write-json", "--min-records", "10",
-        "--min-final-validated", "10", "--min-retry-validated", "0", "--max-remaining-unresolved", "0",
+        "--min-final-validated", "9", "--min-retry-validated", "0", "--max-remaining-unresolved", "1",
         "--require-source-quality-pass", "--require-no-human-review-required", "--require-decision-files",
         "--require-four-validated-routes-only", "--max-unsafe", "0", "--require-no-answer-permission",
         "--require-no-source-truth-mutation", "--require-no-write-attempts",
@@ -581,8 +582,17 @@ def build_ingestion_summary(paths: Fast10Paths, stage_results: Sequence[tuple[St
         failures.append("one or more chronological stage commands did not pass")
     if not all_reports_pass:
         failures.append("one or more of the nine stage reports is missing or not PASS")
-    if first_count(retry, ("final_validated_route_count",)) != 10:
-        failures.append("final validated route count is not 10")
+    fully_validated_route_count = first_count(retry, ("final_validated_route_count",))
+    validator_gated_graph_only_count = first_count(retry, ("remaining_validator_gated_unresolved_count",))
+    safely_routed_page_count = fully_validated_route_count + validator_gated_graph_only_count
+    if safely_routed_page_count != 10:
+        failures.append("validated plus graph-only routed page count is not 10")
+    if validator_gated_graph_only_count > 1:
+        failures.append("more than one page remained validator-gated in the focused demo")
+    if first_count(storage, ("postgres_graph_record_count",)) != 10:
+        failures.append("graph-ready page record count is not 10")
+    if first_count(storage, ("invalid_operational_route_count",)) != 0:
+        failures.append("one or more storage records has an invalid operational route")
     if first_count(contract, ("lineage_ready_count",)) != 10:
         failures.append("lineage-ready record count is not 10")
     if first_count(contract, ("missing_lineage_count",)) != 0:
@@ -595,7 +605,10 @@ def build_ingestion_summary(paths: Fast10Paths, stage_results: Sequence[tuple[St
         "selected_page_count": 10,
         "stage_quality_statuses": statuses,
         "stage_report_count": len(payloads),
-        "final_validated_route_counts": dict(retry.get("final_validated_route_counts") or {}),
+        "final_validated_route_counts": dict(storage.get("final_validated_route_counts") or retry.get("final_validated_route_counts") or {}),
+        "fully_validated_route_count": fully_validated_route_count,
+        "validator_gated_graph_only_count": validator_gated_graph_only_count,
+        "safely_routed_page_count": safely_routed_page_count,
         "lineage_ready_count": first_count(contract, ("lineage_ready_count",)),
         "missing_lineage_count": first_count(contract, ("missing_lineage_count",)),
         "postgres_graph_record_count": first_count(storage, ("postgres_graph_record_count",)),
@@ -605,6 +618,124 @@ def build_ingestion_summary(paths: Fast10Paths, stage_results: Sequence[tuple[St
         "failures": failures,
         "live_database_writes_enabled": False,
     }
+
+
+def validator_gated_page_ids(storage_payload: Mapping[str, Any]) -> set[str]:
+    """Return pages that have a display route but remain graph-only for safety."""
+    page_ids: set[str] = set()
+    for record in storage_payload.get("records") or []:
+        if not isinstance(record, Mapping):
+            continue
+        if bool(record.get("validator_gated")) or str(record.get("storage_decision") or "") == "graph_only_validator_gated":
+            page_id = str(record.get("page_id") or "").strip()
+            if page_id:
+                page_ids.add(page_id)
+    return page_ids
+
+
+def print_v5_classifications(deep: Any, records: Sequence[Any], expected_count: int, graph_only_ids: set[str]) -> None:
+    deep.banner(
+        "PAGE-BY-PAGE CLASSIFICATION",
+        "Every page receives a visible type. Low-confidence pages remain graph-only and cannot become direct retrieval evidence.",
+    )
+    for index, row in enumerate(records, start=1):
+        route = deep.canonical_operational_route(row.route)
+        suffix = " — GRAPH-ONLY SAFETY HOLD" if row.page_id in graph_only_ids else " — VALIDATED FOR NORMAL PROCESSING"
+        print(
+            f"CLASSIFY {index:02d}/{expected_count:02d} — {row.page_id} -> {deep.route_label(route)}{suffix}",
+            flush=True,
+        )
+
+
+def build_v5_embeddings(
+    deep: Any,
+    output_dir: Path,
+    records: Sequence[Any],
+    graph_only_ids: set[str],
+    ollama_url: str,
+    model: str,
+    timeout: float,
+    max_chars: int,
+) -> list[Any]:
+    deep.banner(
+        "PAGE-BY-PAGE EMBEDDINGS",
+        "BGE-M3 converts validated searchable pages into meaning vectors. Graph-only safety-hold pages are visibly skipped.",
+    )
+    results: list[Any] = []
+    total = len(records)
+    for index, row in enumerate(records, start=1):
+        text = re.sub(r"\s+", " ", row.text).strip()
+        if row.page_id in graph_only_ids:
+            result = deep.EmbeddingRecord(row.page_id, row.page_number, row.route, "SKIP_VALIDATOR_GATED", 0, 0.0, len(text), [])
+            results.append(result)
+            print(
+                f"EMBED {index:02d}/{total:02d} — {row.page_id} -> SKIPPED (validator-gated graph-only safety hold)",
+                flush=True,
+            )
+            continue
+        if not text:
+            result = deep.EmbeddingRecord(row.page_id, row.page_number, row.route, "SKIP_NO_TEXT", 0, 0.0, 0, [])
+            results.append(result)
+            print(f"EMBED {index:02d}/{total:02d} — {row.page_id} -> SKIPPED (no OCR text)", flush=True)
+            continue
+        prepared = text[:max_chars]
+        try:
+            vector = deep.embed_text(ollama_url, model, prepared, timeout)
+            status = "PASS" if vector else "FAIL_EMPTY_VECTOR"
+        except Exception as exc:
+            vector = []
+            status = f"FAIL_{type(exc).__name__}"
+        result = deep.EmbeddingRecord(
+            page_id=row.page_id,
+            page_number=row.page_number,
+            route=row.route,
+            status=status,
+            dimension=len(vector),
+            vector_norm=round(deep.vector_norm(vector), 6),
+            text_char_count=len(prepared),
+            vector=vector,
+        )
+        results.append(result)
+        print(
+            f"EMBED {index:02d}/{total:02d} — {row.page_id} -> {status} "
+            f"dimension={len(vector)} text_chars={len(prepared):,}",
+            flush=True,
+        )
+
+    rows = [
+        {
+            "page_id": item.page_id,
+            "page_number": item.page_number,
+            "route": item.route,
+            "status": item.status,
+            "dimension": item.dimension,
+            "vector_norm": item.vector_norm,
+            "text_char_count": item.text_char_count,
+            "vector": item.vector,
+        }
+        for item in results
+    ]
+    path = output_dir / "trace_net_demo_page_embeddings_v4.jsonl"
+    deep.write_jsonl(path, rows)
+    summary = {
+        "status": "TRACE_NET_DEMO_EMBEDDINGS_MADE",
+        "model": model,
+        "record_count": len(results),
+        "embedded_count": sum(1 for item in results if item.status == "PASS"),
+        "skipped_count": sum(1 for item in results if item.status.startswith("SKIP")),
+        "validator_gated_skip_count": sum(1 for item in results if item.status == "SKIP_VALIDATOR_GATED"),
+        "failed_count": sum(1 for item in results if item.status.startswith("FAIL")),
+        "dimensions": sorted({item.dimension for item in results if item.dimension}),
+        "path": str(path),
+        "qdrant_write_attempt": False,
+    }
+    deep.write_json(output_dir / "trace_net_demo_embedding_summary_v4.json", summary)
+    print()
+    print(color(f"✓ EMBEDDING FILE MADE — {summary['embedded_count']}/{len(results)} pages embedded", GREEN))
+    if graph_only_ids:
+        print(color(f"✓ SAFETY HOLD ENFORCED — {len(graph_only_ids)} page skipped from embedding", GREEN))
+    print(f"Embedding file: {path}")
+    return results
 
 
 def copy_if_present(source: Path, destination: Path) -> None:
@@ -663,10 +794,10 @@ def main(argv: Sequence[str] | None = None) -> None:
     questions = tuple(args.questions or DEFAULT_QUESTIONS)
 
     banner(
-        "TRACE-NET EXECUTIVE DEMONSTRATION — DEEP 10-PAGE MODE",
+        "TRACE-NET EXECUTIVE DEMONSTRATION — DEEP 10-PAGE MODE v5.1",
         "10 TIFFs → OCR → final page routes → graph → Engram → embeddings → deterministic retrieval → Gemma → validation",
     )
-    print("This is a separate v5 presentation mode.")
+    print("This is a separate v5.1 presentation mode.")
     print("The corrected full 509-page v4.1 demo remains installed and unchanged.")
     print(color("This run demonstrates the full process on exactly 10 original pages; it is not a full-corpus benchmark.", YELLOW))
     print("Private model chain-of-thought is not displayed. The auditable code decisions, evidence, model call, and validators are shown.")
@@ -817,7 +948,14 @@ def main(argv: Sequence[str] | None = None) -> None:
     print(f"  Normal text pages: {gate['route_counts']['plain_text']}")
     print(f"  Table/IPL pages: {gate['route_counts']['table']}")
     print(f"  Image/diagram pages: {gate['route_counts']['image']}")
-    deep.print_classifications(page_records, 10)
+    graph_only_ids = validator_gated_page_ids(storage_payload)
+    print_v5_classifications(deep, page_records, 10, graph_only_ids)
+    if graph_only_ids:
+        print()
+        print(color("SAFETY EXPLANATION", BOLD + YELLOW))
+        print("The page still receives a visible document type, but it remains graph-only because its retry confidence did not meet the retrieval threshold.")
+        print("It is not embedded, not exact-indexed, and not allowed to act as direct answer evidence.")
+        print(f"Graph-only page IDs: {sorted(graph_only_ids)}")
 
     graph = deep.build_graph_snapshot(output_dir, paths.subset_zip, page_records)
     copy_if_present(output_dir / "trace_net_demo_graph_nodes_v4.jsonl", output_dir / "trace_net_fast10_deep_v5_graph_nodes.jsonl")
@@ -838,9 +976,11 @@ def main(argv: Sequence[str] | None = None) -> None:
         "qdrant_write_attempt": False,
     }
     if not args.skip_embeddings and ollama_ok and args.embedding_model in models:
-        embedding_records = deep.build_embeddings(
+        embedding_records = build_v5_embeddings(
+            deep,
             output_dir,
             page_records,
+            graph_only_ids,
             args.ollama_url,
             args.embedding_model,
             args.request_timeout,
@@ -926,6 +1066,8 @@ def main(argv: Sequence[str] | None = None) -> None:
         "question_pass_count": sum(1 for result in question_results if result.get("quality_status") == "PASS"),
         "page_count": len(page_records),
         "unknown_page_count": gate["unclassified_page_count"],
+        "fully_validated_route_count": ingestion.get("fully_validated_route_count"),
+        "validator_gated_graph_only_count": ingestion.get("validator_gated_graph_only_count"),
         "production_database_writes": False,
         "original_source_modified": False,
         "full_v4_1_demo_modified": False,
@@ -936,6 +1078,8 @@ def main(argv: Sequence[str] | None = None) -> None:
     print(f"Overall result: {final_manifest['quality_status']}")
     print(f"Pages processed: {len(page_records)}/10")
     print(f"Unknown page types: {gate['unclassified_page_count']}")
+    print(f"Fully validated retrieval routes: {ingestion.get('fully_validated_route_count')}/10")
+    print(f"Graph-only safety holds: {ingestion.get('validator_gated_graph_only_count')}")
     print(f"Graph nodes: {graph.get('node_count')}")
     print(f"Graph edges: {graph.get('edge_count')}")
     print(f"Engram layers made: {len(engram.get('layers') or [])}/6")

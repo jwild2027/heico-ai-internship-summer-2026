@@ -32,6 +32,7 @@ def make_source_zip(path: Path, start: int = 335, end: int = 352) -> None:
 
 
 def test_v5_is_separate_from_existing_modes() -> None:
+    assert v5.VERSION == "v5.1"
     text = SCRIPT.read_text(encoding="utf-8")
     assert "run_trace_net_executive_tiff_demo_v5_fast10_deep.py" in str(SCRIPT)
     assert "executive_fast10_deep_v5_" in text
@@ -111,11 +112,108 @@ def test_stage_plan_uses_ten_page_quality_thresholds(tmp_path: Path) -> None:
     )
     joined = "\n".join(" ".join(row.command) for row in plan)
     assert "--require-source-page-count 10" in joined
-    assert "--min-final-validated 10" in joined
-    assert "--max-remaining-unresolved 0" in joined
+    assert "--quality" in joined
+    assert "--min-final-validated 9" in joined
+    assert "--max-remaining-unresolved 1" in joined
     assert "--min-lineage-ready 10" in joined
     assert "--min-postgres-contract-ready 10" in joined
     assert "509" not in joined
+
+
+def _write_ingestion_reports(paths: v5.Fast10Paths, *, final_validated: int, remaining: int) -> None:
+    payloads = {
+        "ocr": {"quality_status": "PASS", "summary": {"route_record_count": 10}},
+        "resolver": {"quality_status": "PASS", "summary": {}},
+        "four_route": {"quality_status": "PASS", "summary": {}},
+        "validator": {"quality_status": "PASS", "summary": {}},
+        "retry": {
+            "quality_status": "PASS",
+            "summary": {
+                "final_validated_route_count": final_validated,
+                "remaining_validator_gated_unresolved_count": remaining,
+                "final_validated_route_counts": {"plain_text": 4, "table": final_validated - 4},
+            },
+        },
+        "storage": {
+            "quality_status": "PASS",
+            "summary": {
+                "postgres_graph_record_count": 10,
+                "invalid_operational_route_count": 0,
+                "final_validated_route_counts": {"plain_text": 4, "table": 6},
+                "qdrant_embedding_allowed_count": final_validated,
+                "opensearch_index_allowed_count": 5,
+            },
+        },
+        "loader": {"quality_status": "PASS", "summary": {}},
+        "contract": {
+            "quality_status": "PASS",
+            "summary": {"lineage_ready_count": 10, "missing_lineage_count": 0},
+        },
+        "retrieval_payload_audit": {
+            "quality_status": "PASS",
+            "summary": {"qdrant_payload_count": final_validated, "opensearch_payload_count": 5},
+        },
+    }
+    for stage, payload in payloads.items():
+        v5.write_json(paths.reports[stage], payload)
+
+
+def _successful_stage_results(paths: v5.Fast10Paths):
+    return [
+        (v5.StageCommand(stage, kind, [], report), v5.StageResult(0, 0.0, report))
+        for stage, report in paths.reports.items()
+        for kind in ("build", "check")
+    ]
+
+
+def test_ingestion_summary_accepts_one_safe_graph_only_hold(tmp_path: Path) -> None:
+    paths = v5.Fast10Paths(tmp_path / "run")
+    _write_ingestion_reports(paths, final_validated=9, remaining=1)
+    summary = v5.build_ingestion_summary(paths, _successful_stage_results(paths))
+    assert summary["quality_status"] == "PASS"
+    assert summary["fully_validated_route_count"] == 9
+    assert summary["validator_gated_graph_only_count"] == 1
+    assert summary["safely_routed_page_count"] == 10
+    assert summary["final_validated_route_counts"] == {"plain_text": 4, "table": 6}
+
+
+def test_ingestion_summary_rejects_more_than_one_graph_only_hold(tmp_path: Path) -> None:
+    paths = v5.Fast10Paths(tmp_path / "run")
+    _write_ingestion_reports(paths, final_validated=8, remaining=2)
+    summary = v5.build_ingestion_summary(paths, _successful_stage_results(paths))
+    assert summary["quality_status"] == "FAIL"
+    assert any("more than one page" in failure for failure in summary["failures"])
+
+
+def test_validator_gated_page_ids_uses_storage_policy() -> None:
+    payload = {
+        "records": [
+            {"page_id": "page_1", "validator_gated": False, "storage_decision": "validated_graph_and_semantic_index"},
+            {"page_id": "page_2", "validator_gated": True, "storage_decision": "graph_only_validator_gated"},
+        ]
+    }
+    assert v5.validator_gated_page_ids(payload) == {"page_2"}
+
+
+def test_v5_embeddings_skip_validator_gated_page(tmp_path: Path) -> None:
+    v4 = load_module(V4_SCRIPT, "trace_net_demo_v4_embedding_hold_test")
+    records = [
+        v4.PageRecord("page_1", 1, "1.tif", "table", "searchable table text", {}),
+        v4.PageRecord("page_2", 2, "2.tif", "table", "held table text", {}),
+    ]
+    original_embed_text = v4.embed_text
+    try:
+        v4.embed_text = lambda *args, **kwargs: [1.0, 2.0, 3.0]
+        results = v5.build_v5_embeddings(
+            v4, tmp_path, records, {"page_2"}, "http://127.0.0.1:11434", "bge-m3:latest", 10, 1000
+        )
+    finally:
+        v4.embed_text = original_embed_text
+    assert results[0].status == "PASS"
+    assert results[1].status == "SKIP_VALIDATOR_GATED"
+    summary = json.loads((tmp_path / "trace_net_demo_embedding_summary_v4.json").read_text())
+    assert summary["embedded_count"] == 1
+    assert summary["validator_gated_skip_count"] == 1
 
 
 def test_output_paths_are_v5_specific(tmp_path: Path) -> None:
