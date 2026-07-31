@@ -317,7 +317,8 @@ echo "============================================================"
 
 echo "compile_status=PASS"
 
-"$PYTHON" -m pytest -q \
+# TRACE_NET_NHA_PHASE20_LEGACY_TEST_ENV_ISOLATION_V1
+TRACE_NET_H30_PHASE19_PRESERVATION_WRITER_ENABLED=0 "$PYTHON" -m pytest -q \
   tests/unit/test_trace_net_cognitive_router_v1.py \
   tests/unit/test_trace_net_h30_shadow_planner_v1.py \
   tests/unit/test_trace_net_engram_skill_planner_guidance_v1.py \
