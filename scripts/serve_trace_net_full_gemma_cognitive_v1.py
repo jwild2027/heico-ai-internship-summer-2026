@@ -50,6 +50,9 @@ from scripts.trace_net_h30_content_reconstruction_v1 import (
 from scripts.trace_net_h30_constrained_gemma_writer_v1 import (
     install_constrained_gemma_writer,
 )
+from scripts.trace_net_h30_phase19_preservation_writer_v1 import (
+    install_phase19_preservation_writer,
+)
 # TRACE_NET_H30_PHASE1_PUBLIC_ANSWER_CONTRACT_V1_IMPORT
 from scripts.trace_net_h30_public_answer_contract_v1 import (
     install_public_answer_contract,
@@ -1140,6 +1143,8 @@ install_chatgpt_answer_presentation_v1_2(globals())
 install_content_reconstruction(globals())
 # TRACE_NET_H30_PHASE4_CONSTRAINED_WRITER_V1_INSTALL
 install_constrained_gemma_writer(globals())
+# TRACE_NET_H30_PHASE19_PRESERVATION_WRITER_INSTALL_V1
+install_phase19_preservation_writer(globals())
 # TRACE_NET_H30_PHASE1_PUBLIC_ANSWER_CONTRACT_V1_INSTALL
 install_public_answer_contract(globals())
 

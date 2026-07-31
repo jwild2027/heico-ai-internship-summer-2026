@@ -43,6 +43,9 @@ from scripts.trace_net_h30_retrieval_completion_v1 import install_retrieval_comp
 from scripts.trace_net_h30_engram_critic_repair_v1 import install_engram_critic_repair
 from scripts.trace_net_h30_user_facing_renderer_v1 import install_user_facing_renderer
 from scripts.trace_net_h30_navigation_latency_fastpath_v1 import install_navigation_latency_fastpath
+from scripts.trace_net_h30_phase19_route_completion_fastpath_v1 import (
+    install_phase19_route_completion_fastpath,
+)
 from scripts.trace_net_h30_part_intent_source_resolution_v1 import install_part_intent_source_resolution
 from scripts.trace_net_h30_shadow_planner_v1 import install_shadow_planner
 from scripts.trace_net_h30_validated_planner_execution_v1 import install_validated_planner_execution
@@ -1590,6 +1593,8 @@ install_graph_source_retrieval(globals())
 install_page_content_bridge(globals())
 # TRACE_NET_H30_PHASE2_CLAIM_READY_EVIDENCE_INSTALL
 install_claim_ready_evidence(globals())
+# TRACE_NET_H30_PHASE19_ROUTE_COMPLETION_INSTALL_V1
+install_phase19_route_completion_fastpath(globals())
 
 if __name__ == "__main__":
     raise SystemExit(main())

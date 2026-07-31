@@ -73,6 +73,13 @@ CONSTRAINED_WRITER_OVERALL_BUDGET_SECONDS="${TRACE_NET_H30_CONSTRAINED_WRITER_OV
 CONSTRAINED_WRITER_RESPONSE_RESERVE_SECONDS="${TRACE_NET_H30_CONSTRAINED_WRITER_RESPONSE_RESERVE_SECONDS:-20}"
 CONSTRAINED_WRITER_MIN_CALL_SECONDS="${TRACE_NET_H30_CONSTRAINED_WRITER_MIN_CALL_SECONDS:-8}"
 CONSTRAINED_WRITER_MAX_TOKENS="${TRACE_NET_H30_CONSTRAINED_WRITER_MAX_TOKENS:-512}"
+# TRACE_NET_H30_PHASE19_UPSTREAM_LATENCY_WRITER_ENV_V1
+PHASE19_ROUTE_COMPLETION_ENABLED="${TRACE_NET_H30_PHASE19_ROUTE_COMPLETION_ENABLED:-0}"
+PHASE19_EXACT_IDENTIFIER_MAX_CALLS="${TRACE_NET_H30_PHASE19_EXACT_IDENTIFIER_MAX_CALLS:-2}"
+PHASE19_EXACT_TABLE_MAX_CALLS="${TRACE_NET_H30_PHASE19_EXACT_TABLE_MAX_CALLS:-2}"
+PHASE19_ATA_MAX_CALLS="${TRACE_NET_H30_PHASE19_ATA_MAX_CALLS:-2}"
+PHASE19_PRESERVATION_WRITER_ENABLED="${TRACE_NET_H30_PHASE19_PRESERVATION_WRITER_ENABLED:-0}"
+PHASE19_PRESERVATION_MAX_TOKENS="${TRACE_NET_H30_PHASE19_PRESERVATION_MAX_TOKENS:-384}"
 GEMMA_WRITER_QUEUE_TIMEOUT_SECONDS="${TRACE_NET_H30_GEMMA_WRITER_QUEUE_TIMEOUT_SECONDS:-30}"
 PUBLIC_BRIDGE_TIMEOUT_SECONDS="${TRACE_NET_H30_PUBLIC_BRIDGE_TIMEOUT_SECONDS:-225}"
 # General retrieval budget (router, all routes): overall wall-clock deadline,
@@ -129,6 +136,8 @@ for required in \
   scripts/trace_net_h30_content_reconstruction_v1.py \
   scripts/check_trace_net_h30_content_reconstruction_v1.py \
   scripts/trace_net_h30_constrained_gemma_writer_v1.py \
+  scripts/trace_net_h30_phase19_route_completion_fastpath_v1.py \
+  scripts/trace_net_h30_phase19_preservation_writer_v1.py \
   scripts/check_trace_net_h30_constrained_gemma_writer_v1.py \
   scripts/trace_net_h30_evidence_aware_answer_modes_v1.py \
   scripts/trace_net_h30_exact_page_answer_mode_v1.py \
@@ -285,6 +294,8 @@ echo "============================================================"
   scripts/trace_net_h30_content_reconstruction_v1.py \
   scripts/check_trace_net_h30_content_reconstruction_v1.py \
   scripts/trace_net_h30_constrained_gemma_writer_v1.py \
+  scripts/trace_net_h30_phase19_route_completion_fastpath_v1.py \
+  scripts/trace_net_h30_phase19_preservation_writer_v1.py \
   scripts/check_trace_net_h30_constrained_gemma_writer_v1.py \
   scripts/run_trace_net_h30_typed_evidence_live_smoke_v1.py \
   scripts/trace_net_h30_evidence_aware_answer_modes_v1.py \
@@ -315,6 +326,8 @@ echo "compile_status=PASS"
   tests/unit/test_trace_net_h30_content_reconstruction_v1.py \
   tests/unit/test_check_trace_net_h30_content_reconstruction_v1.py \
   tests/unit/test_trace_net_h30_constrained_gemma_writer_v1.py \
+  tests/unit/test_trace_net_h30_phase19_route_completion_fastpath_v1.py \
+  tests/unit/test_trace_net_h30_phase19_preservation_writer_v1.py \
   tests/unit/test_check_trace_net_h30_constrained_gemma_writer_v1.py \
   tests/unit/test_trace_net_h30_phase4_runtime_wiring_v1.py \
   tests/unit/test_trace_net_h30_phase4_latency_guard_v1.py \
@@ -393,6 +406,10 @@ export TRACE_NET_H30_RETRIEVAL_DEADLINE_SECONDS="$RETRIEVAL_DEADLINE_SECONDS"
 export TRACE_NET_H30_RETRIEVAL_PER_TUNNEL_TIMEOUT_SECONDS="$RETRIEVAL_PER_TUNNEL_TIMEOUT_SECONDS"
 export TRACE_NET_H30_RETRIEVAL_MAX_TUNNELS="$RETRIEVAL_MAX_TUNNELS"
 export TRACE_NET_H30_RETRIEVAL_MAX_CANDIDATES_PER_TUNNEL="$RETRIEVAL_MAX_CANDIDATES_PER_TUNNEL"
+export TRACE_NET_H30_PHASE19_ROUTE_COMPLETION_ENABLED="$PHASE19_ROUTE_COMPLETION_ENABLED"
+export TRACE_NET_H30_PHASE19_EXACT_IDENTIFIER_MAX_CALLS="$PHASE19_EXACT_IDENTIFIER_MAX_CALLS"
+export TRACE_NET_H30_PHASE19_EXACT_TABLE_MAX_CALLS="$PHASE19_EXACT_TABLE_MAX_CALLS"
+export TRACE_NET_H30_PHASE19_ATA_MAX_CALLS="$PHASE19_ATA_MAX_CALLS"
 export TRACE_NET_H30_GRAPH_RETRIEVAL_ENABLED="$GRAPH_RETRIEVAL_ENABLED"
 export TRACE_NET_H30_GRAPH_NODES_PATH="$GRAPH_NODES_PATH"
 export TRACE_NET_H30_GRAPH_EDGES_PATH="$GRAPH_EDGES_PATH"
@@ -440,6 +457,8 @@ export TRACE_NET_H30_CONSTRAINED_WRITER_OVERALL_BUDGET_SECONDS="$CONSTRAINED_WRI
 export TRACE_NET_H30_CONSTRAINED_WRITER_RESPONSE_RESERVE_SECONDS="$CONSTRAINED_WRITER_RESPONSE_RESERVE_SECONDS"
 export TRACE_NET_H30_CONSTRAINED_WRITER_MIN_CALL_SECONDS="$CONSTRAINED_WRITER_MIN_CALL_SECONDS"
 export TRACE_NET_H30_CONSTRAINED_WRITER_MAX_TOKENS="$CONSTRAINED_WRITER_MAX_TOKENS"
+export TRACE_NET_H30_PHASE19_PRESERVATION_WRITER_ENABLED="$PHASE19_PRESERVATION_WRITER_ENABLED"
+export TRACE_NET_H30_PHASE19_PRESERVATION_MAX_TOKENS="$PHASE19_PRESERVATION_MAX_TOKENS"
 exec "$PYTHON" -u -B scripts/serve_trace_net_full_gemma_cognitive_v1.py \\
   --host 127.0.0.1 \\
   --port 8128 \\
