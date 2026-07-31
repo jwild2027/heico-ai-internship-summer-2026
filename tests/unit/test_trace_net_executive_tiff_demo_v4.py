@@ -45,7 +45,7 @@ def test_extract_page_records_merges_route_and_text() -> None:
             {
                 "page_id": "t_p_demo_p000001",
                 "page_number": 1,
-                "final_validated_route": "table",
+                "final_validated_operational_route": "table",
             }
         ]
     }
@@ -54,6 +54,50 @@ def test_extract_page_records_merges_route_and_text() -> None:
     assert merged[0].route == "table"
     assert "120-29073-001" in merged[0].text
 
+
+
+def test_retry_report_final_operational_route_is_authoritative() -> None:
+    payload = {
+        "records": [
+            {
+                "page_id": "t_p_demo_p000001",
+                "page_number": 1,
+                "source_operational_route": "plain_text",
+                "final_validated_operational_route": "table",
+            }
+        ]
+    }
+    records = MOD.extract_page_records(payload)
+    assert len(records) == 1
+    assert records[0].route == "table"
+
+
+def test_canonical_operational_route_maps_subtypes() -> None:
+    assert MOD.canonical_operational_route("blank_candidate") == "blank"
+    assert MOD.canonical_operational_route("procedure_or_description") == "plain_text"
+    assert MOD.canonical_operational_route("detailed_parts_list") == "table"
+    assert MOD.canonical_operational_route("mixed_text_and_figure") == "image"
+
+
+def test_classification_gate_accepts_complete_four_route_set() -> None:
+    records = [
+        MOD.PageRecord("p1", 1, "1.tif", "blank", "", {}),
+        MOD.PageRecord("p2", 2, "2.tif", "plain_text", "text", {}),
+        MOD.PageRecord("p3", 3, "3.tif", "table", "table", {}),
+        MOD.PageRecord("p4", 4, "4.tif", "image", "figure", {}),
+    ]
+    gate = MOD.classification_gate(records, 4)
+    assert gate["quality_status"] == "PASS"
+    assert gate["unclassified_page_count"] == 0
+    assert gate["classified_page_count"] == 4
+
+
+def test_classification_gate_rejects_unknown_instead_of_printing_it() -> None:
+    records = [MOD.PageRecord("p1", 1, "1.tif", "unknown", "text", {})]
+    gate = MOD.classification_gate(records, 1)
+    assert gate["quality_status"] == "FAIL"
+    assert gate["unclassified_page_count"] == 1
+    assert gate["unknown_page_ids"] == ["p1"]
 
 def test_build_graph_snapshot_creates_two_files(tmp_path: Path) -> None:
     records = [

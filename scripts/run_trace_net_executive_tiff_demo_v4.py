@@ -35,8 +35,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable, Iterator, Mapping, Sequence
 
-STATUS = "TRACE_NET_EXECUTIVE_TIFF_DEMO_DEEP_V4"
-VERSION = "v4"
+STATUS = "TRACE_NET_EXECUTIVE_TIFF_DEMO_DEEP_V4_1"
+VERSION = "v4.1"
 DEFAULT_REPO = "/data/trace_net/repos/heico-ai-internship-summer-2026"
 DEFAULT_SOURCE = "/data/trace_net/inputs/metadata.zip"
 DEFAULT_TESSERACT = "/usr/bin/tesseract"
@@ -99,6 +99,38 @@ ROUTE_LABELS = {
     "mixed_text_and_figure": "MIXED TEXT + FIGURE",
     "review_required": "VALIDATOR-RESOLVED PAGE",
 }
+
+# The retry/probe artifact is the final authority for the four operational page
+# routes. Earlier v4 used the wrong field name and displayed UNKNOWN even though
+# all 509 records were successfully classified. Keep the final field first.
+ROUTE_FIELD_PRIORITY = (
+    "final_validated_operational_route",
+    "validated_operational_route",
+    "final_operational_route",
+    "resolved_operational_route",
+    "source_operational_route",
+    "final_validated_route",
+    "final_route",
+    "operational_route",
+    "primary_route",
+    "route",
+)
+
+CANONICAL_ROUTE_ALIASES = {
+    "blank": "blank",
+    "blank_candidate": "blank",
+    "plain_text": "plain_text",
+    "normal_text": "plain_text",
+    "procedure_or_description": "plain_text",
+    "cover_or_title_page": "plain_text",
+    "table": "table",
+    "table_or_index": "table",
+    "detailed_parts_list": "table",
+    "image": "image",
+    "image_visual_diagram": "image",
+    "mixed_text_and_figure": "image",
+}
+CANONICAL_OPERATIONAL_ROUTES = frozenset({"blank", "plain_text", "table", "image"})
 
 
 @dataclass
@@ -224,8 +256,15 @@ def normalize_route(value: Any) -> str:
     return text or "unknown"
 
 
+def canonical_operational_route(value: Any) -> str:
+    """Map every accepted classifier/subtype label to one of four final routes."""
+    normalized = normalize_route(value)
+    return CANONICAL_ROUTE_ALIASES.get(normalized, normalized if normalized in CANONICAL_OPERATIONAL_ROUTES else "unknown")
+
+
 def route_label(route: str) -> str:
-    return ROUTE_LABELS.get(normalize_route(route), normalize_route(route).replace("_", " ").upper())
+    canonical = canonical_operational_route(route)
+    return ROUTE_LABELS.get(canonical, canonical.replace("_", " ").upper())
 
 
 def extract_text(record: Mapping[str, Any]) -> str:
@@ -261,7 +300,7 @@ def extract_page_records(payload: Any) -> list[PageRecord]:
         if not page_number:
             page_number = page_number_from_id(page_id)
         source_member = str(first_value(item, ("source_member", "source_path", "tiff_reference", "raw_tiff_path", "file_name")) or "")
-        route = normalize_route(first_value(item, ("final_validated_route", "final_route", "operational_route", "primary_route", "route")))
+        route = canonical_operational_route(first_value(item, ROUTE_FIELD_PRIORITY))
         text = extract_text(item)
         record = PageRecord(page_id, page_number, source_member, route, text, dict(item))
         previous = candidates.get(page_id)
@@ -451,14 +490,51 @@ def print_ocr_results(records: Sequence[PageRecord], expected_count: int) -> Non
         )
 
 
+def classification_gate(records: Sequence[PageRecord], expected_count: int) -> dict[str, Any]:
+    """Require a complete four-route result before graph/Engram/demo output."""
+    route_counts = {route: 0 for route in sorted(CANONICAL_OPERATIONAL_ROUTES)}
+    unknown_page_ids: list[str] = []
+    duplicate_page_ids: list[str] = []
+    seen: set[str] = set()
+    for row in records:
+        if row.page_id in seen:
+            duplicate_page_ids.append(row.page_id)
+        seen.add(row.page_id)
+        route = canonical_operational_route(row.route)
+        if route not in CANONICAL_OPERATIONAL_ROUTES:
+            unknown_page_ids.append(row.page_id)
+        else:
+            route_counts[route] += 1
+
+    failures: list[str] = []
+    if expected_count and len(records) != expected_count:
+        failures.append(f"page_record_count {len(records)} does not equal expected_count {expected_count}")
+    if unknown_page_ids:
+        failures.append(f"unclassified_page_count is {len(unknown_page_ids)}")
+    if duplicate_page_ids:
+        failures.append(f"duplicate_page_id_count is {len(set(duplicate_page_ids))}")
+
+    return {
+        "status": "TRACE_NET_DEMO_CLASSIFICATION_GATE_V4_1",
+        "quality_status": "PASS" if not failures else "FAIL",
+        "expected_page_count": expected_count,
+        "page_record_count": len(records),
+        "classified_page_count": sum(route_counts.values()),
+        "unclassified_page_count": len(unknown_page_ids),
+        "unknown_page_ids": unknown_page_ids,
+        "duplicate_page_ids": sorted(set(duplicate_page_ids)),
+        "route_counts": route_counts,
+        "failures": failures,
+    }
+
+
 def print_classifications(records: Sequence[PageRecord], expected_count: int) -> None:
-    banner("PAGE-BY-PAGE CLASSIFICATION", "The deterministic classifier chooses the correct processing route for every page.")
-    if not records:
-        print(color("No page-level route records were found.", RED))
-        return
+    banner("PAGE-BY-PAGE CLASSIFICATION", "The deterministic classifier chooses one of four final processing routes for every page.")
     for index, row in enumerate(records, start=1):
+        route = canonical_operational_route(row.route)
+        # main() runs classification_gate first, so this output can never show UNKNOWN.
         print(
-            f"CLASSIFY {index:03d}/{expected_count:03d} — {row.page_id} -> {route_label(row.route)}",
+            f"CLASSIFY {index:03d}/{expected_count:03d} — {row.page_id} -> {route_label(route)}",
             flush=True,
         )
 
@@ -490,13 +566,13 @@ def build_graph_snapshot(output_dir: Path, source_package: Path, records: Sequen
             "node_type": "page",
             "label": row.page_id,
             "page_number": row.page_number,
-            "route": normalize_route(row.route),
+            "route": canonical_operational_route(row.route),
             "source_member": row.source_member,
         })
         known_nodes.add(page_node)
         edges.append({"from": "source:raw_tiff_package", "relationship": "CONTAINS_PAGE", "to": page_node})
 
-        route_node = f"route:{normalize_route(row.route)}"
+        route_node = f"route:{canonical_operational_route(row.route)}"
         if route_node not in route_nodes:
             route_nodes.add(route_node)
             nodes.append({"node_id": route_node, "node_type": "route", "label": route_label(row.route)})
@@ -539,7 +615,8 @@ def build_engram_layers(output_dir: Path, records: Sequence[PageRecord], graph: 
     route_counts: dict[str, int] = {}
     identifiers: set[str] = set()
     for row in records:
-        route_counts[normalize_route(row.route)] = route_counts.get(normalize_route(row.route), 0) + 1
+        route = canonical_operational_route(row.route)
+        route_counts[route] = route_counts.get(route, 0) + 1
         identifiers.update(identifiers_in_text(row.text))
 
     layers = [
@@ -1156,6 +1233,25 @@ def main(argv: Sequence[str] | None = None) -> None:
     page_records = merge_page_records(ocr_records, route_records, storage_records)
 
     print_ocr_results(ocr_records or page_records, page_count)
+    gate = classification_gate(page_records, page_count)
+    write_json(output_dir / "trace_net_demo_classification_gate_v4.json", gate)
+    if gate["quality_status"] != "PASS":
+        banner("CLASSIFICATION DISPLAY GATE FAILED")
+        print("The technical pipeline completed, but the executive display could not resolve every final page route.")
+        print("The demo will not print UNKNOWN labels or build misleading graph/Engram summaries.")
+        for failure in gate["failures"]:
+            print(f"  • {failure}")
+        if gate["unknown_page_ids"]:
+            print("  First unresolved page IDs:", ", ".join(gate["unknown_page_ids"][:20]))
+        print(f"Classification gate report: {output_dir / 'trace_net_demo_classification_gate_v4.json'}")
+        print("PuTTY remains open.")
+        return
+
+    print(color("✓ CLASSIFICATION GATE PASSED — every page has one final route", GREEN))
+    print(f"  Blank pages: {gate['route_counts']['blank']}")
+    print(f"  Normal text pages: {gate['route_counts']['plain_text']}")
+    print(f"  Table/IPL pages: {gate['route_counts']['table']}")
+    print(f"  Image/diagram pages: {gate['route_counts']['image']}")
     print_classifications(page_records, page_count)
 
     ingestion_summary = summarize_ingestion(pipeline_report)

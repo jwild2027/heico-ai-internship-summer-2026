@@ -54,3 +54,37 @@ To omit the 509 real embedding calls during a rehearsal:
 python -B scripts/run_trace_net_executive_tiff_demo_v4.py \
   --skip-embeddings
 ```
+
+## v4.1 classification display fix
+
+The final retry/probe artifact stores each authoritative page route in
+`final_validated_operational_route`. The original v4 presenter looked for an
+older field name and therefore displayed `UNKNOWN` even when the classifier
+pipeline had passed.
+
+v4.1 resolves routes in this order:
+
+1. `final_validated_operational_route`
+2. `validated_operational_route`
+3. final/resolved/source operational-route fallbacks
+4. earlier four-route/resolver fields only when needed
+
+Every accepted value is normalized to exactly one of:
+
+- `blank`
+- `plain_text`
+- `table`
+- `image`
+
+A classification gate now requires the page count to match and requires zero
+unclassified pages before the demo may build its graph, Engram summary, or
+embeddings. The presenter never substitutes `UNKNOWN` as a page type.
+
+A completed OCR run can be corrected without repeating OCR:
+
+```bash
+python -B scripts/run_trace_net_executive_tiff_demo_v4.py \
+  --output-dir /data/trace_net_runs/executive_deep_demo_v4_<timestamp> \
+  --skip-ingestion \
+  --skip-embeddings
+```
