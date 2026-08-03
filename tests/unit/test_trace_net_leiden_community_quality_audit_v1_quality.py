@@ -20,7 +20,7 @@ def test_quality_checker_fails_when_community_as_proof_nonzero(tmp_path):
     proc = subprocess.run(
         [
             sys.executable,
-            "scripts/check_trace_net_leiden_community_quality_audit_v1_quality.py",
+            "scripts/maintenance/graph/check_trace_net_leiden_community_quality_audit_v1_quality.py",
             "--report-path",
             str(path),
             "--min-communities",
@@ -61,7 +61,7 @@ def test_build_script_and_check_script_end_to_end(tmp_path):
     build = subprocess.run(
         [
             sys.executable,
-            "scripts/build_trace_net_leiden_community_quality_audit_v1.py",
+            "scripts/build/graph/build_trace_net_leiden_community_quality_audit_v1.py",
             "--leiden-communities",
             str(leiden_path),
             "--category-aware-leiden-overlay",
@@ -90,7 +90,7 @@ def test_build_script_and_check_script_end_to_end(tmp_path):
     check = subprocess.run(
         [
             sys.executable,
-            "scripts/check_trace_net_leiden_community_quality_audit_v1_quality.py",
+            "scripts/maintenance/graph/check_trace_net_leiden_community_quality_audit_v1_quality.py",
             "--report-path",
             str(report_path),
             "--require-page-count",

@@ -7,7 +7,7 @@ from pathlib import Path
 
 def test_build_graph_org_chart_script_help_runs_directly() -> None:
     repo_root = Path(__file__).resolve().parents[2]
-    script = repo_root / "scripts" / "build_graph_org_chart_site.py"
+    script = repo_root / "scripts/build/graph/build_graph_org_chart_site.py"
     if not script.exists():
         return
 

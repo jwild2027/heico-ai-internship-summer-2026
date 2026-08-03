@@ -1,0 +1,155 @@
+{
+  "schema_version": "trace_net_nha_phase0_3_v1",
+  "module": "trace_net_nha_phase0_3_v1",
+  "status": "TRACE_NET_NHA_PHASE0_3_V1",
+  "quality_status": "PASS",
+  "input_path": "C:\\Users\\juswil\\Desktop\\metadata.zip",
+  "output_dir": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\organization\\trace_net\\nha_phase0_3_v1",
+  "pilot_pages": [
+    342,
+    343,
+    344,
+    348,
+    349,
+    351,
+    354,
+    363,
+    368
+  ],
+  "ocr_artifact_path": "",
+  "tesseract_direct_enabled": true,
+  "inventory": {
+    "schema_version": "trace_net_nha_phase0_3_v1",
+    "module": "trace_net_nha_phase0_3_v1",
+    "status": "TRACE_NET_NHA_PHASE0_3_V1",
+    "document_id": "120-1176",
+    "document_label": "EMB CMM ATA 25-21-00 REV.4",
+    "document_title": "EMB CMM ATA 25-21-00 REV.4",
+    "document_objid": "heico001/00003594/00000027",
+    "document_revision": "4",
+    "ata": "25-21-00",
+    "page_count": 509,
+    "source_exists_count": 509,
+    "size_match_count": 509
+  },
+  "phase_counts": {
+    "inventory_pages": 509,
+    "assembly_anchors": 9,
+    "ipl_rows": 45,
+    "relationships": 40,
+    "source_supported_relationships": 2,
+    "ambiguous_relationships": 2,
+    "candidate_relationships": 36,
+    "cycle_count": 0,
+    "synthetic_record_count": 0,
+    "production_graph_write_count": 0
+  },
+  "page_processing": [
+    {
+      "page_ordinal": 342,
+      "page_id": "t_p_120_1176_p000342",
+      "tiff_filename": "00000342.tif",
+      "ocr_method": "tesseract_direct",
+      "ocr_char_count": 409,
+      "anchor_count": 1,
+      "row_count": 0,
+      "relationship_count": 0
+    },
+    {
+      "page_ordinal": 343,
+      "page_id": "t_p_120_1176_p000343",
+      "tiff_filename": "00000343.tif",
+      "ocr_method": "tesseract_direct",
+      "ocr_char_count": 1174,
+      "anchor_count": 1,
+      "row_count": 12,
+      "relationship_count": 11
+    },
+    {
+      "page_ordinal": 344,
+      "page_id": "t_p_120_1176_p000344",
+      "tiff_filename": "00000344.tif",
+      "ocr_method": "tesseract_direct",
+      "ocr_char_count": 602,
+      "anchor_count": 1,
+      "row_count": 2,
+      "relationship_count": 2
+    },
+    {
+      "page_ordinal": 348,
+      "page_id": "t_p_120_1176_p000348",
+      "tiff_filename": "00000348.tif",
+      "ocr_method": "tesseract_direct",
+      "ocr_char_count": 430,
+      "anchor_count": 1,
+      "row_count": 0,
+      "relationship_count": 0
+    },
+    {
+      "page_ordinal": 349,
+      "page_id": "t_p_120_1176_p000349",
+      "tiff_filename": "00000349.tif",
+      "ocr_method": "tesseract_direct",
+      "ocr_char_count": 1515,
+      "anchor_count": 1,
+      "row_count": 16,
+      "relationship_count": 13
+    },
+    {
+      "page_ordinal": 351,
+      "page_id": "t_p_120_1176_p000351",
+      "tiff_filename": "00000351.tif",
+      "ocr_method": "tesseract_direct",
+      "ocr_char_count": 411,
+      "anchor_count": 1,
+      "row_count": 0,
+      "relationship_count": 0
+    },
+    {
+      "page_ordinal": 354,
+      "page_id": "t_p_120_1176_p000354",
+      "tiff_filename": "00000354.tif",
+      "ocr_method": "tesseract_direct",
+      "ocr_char_count": 420,
+      "anchor_count": 1,
+      "row_count": 0,
+      "relationship_count": 0
+    },
+    {
+      "page_ordinal": 363,
+      "page_id": "t_p_120_1176_p000363",
+      "tiff_filename": "00000363.tif",
+      "ocr_method": "tesseract_direct",
+      "ocr_char_count": 435,
+      "anchor_count": 1,
+      "row_count": 0,
+      "relationship_count": 0
+    },
+    {
+      "page_ordinal": 368,
+      "page_id": "t_p_120_1176_p000368",
+      "tiff_filename": "00000368.tif",
+      "ocr_method": "tesseract_direct",
+      "ocr_char_count": 1239,
+      "anchor_count": 1,
+      "row_count": 15,
+      "relationship_count": 14
+    }
+  ],
+  "failures": [],
+  "warnings": [],
+  "artifacts": [
+    "trace_net_nha_assembly_anchors_v1.json",
+    "trace_net_nha_assembly_anchors_v1.jsonl",
+    "trace_net_nha_graph_bundle_v1.json",
+    "trace_net_nha_ipl_rows_v1.json",
+    "trace_net_nha_ipl_rows_v1.jsonl",
+    "trace_net_nha_page_inventory_v1.json",
+    "trace_net_nha_page_inventory_v1.jsonl",
+    "trace_net_nha_page_processing_v1.json",
+    "trace_net_nha_phase0_3_quality_v1.json",
+    "trace_net_nha_real_answer_key_v1.json",
+    "trace_net_nha_relationships_v1.json",
+    "trace_net_nha_relationships_v1.jsonl"
+  ]
+}

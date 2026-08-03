@@ -4,8 +4,8 @@ from pathlib import Path
 
 def test_scripts_importable():
     for rel in [
-        "scripts/build_trace_net_route_confidence_resolver_v1.py",
-        "scripts/check_trace_net_route_confidence_resolver_v1_quality.py",
+        "scripts/build/router/build_trace_net_route_confidence_resolver_v1.py",
+        "scripts/maintenance/benchmark/check_trace_net_route_confidence_resolver_v1_quality.py",
     ]:
         path = Path(rel)
         assert path.exists()

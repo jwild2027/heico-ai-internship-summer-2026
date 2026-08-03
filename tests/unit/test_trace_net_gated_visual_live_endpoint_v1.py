@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 
-SCRIPT = Path("scripts/serve_trace_net_gated_visual_live_endpoint_v1.py")
+SCRIPT = Path("scripts/operations/visual/serve_trace_net_gated_visual_live_endpoint_v1.py")
 
 
 def load_module():

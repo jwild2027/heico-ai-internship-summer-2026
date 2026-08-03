@@ -4,7 +4,7 @@ import json
 import re
 from pathlib import Path
 
-from scripts.trace_net_nha_phase7_8_runtime_v1 import (
+from src.trace_net.graph.trace_net_nha_phase7_8_runtime_v1 import (
     NHAIntegrationAdapter,
     build_gate_bank,
     classify_nha_intent,

@@ -1,0 +1,30 @@
+{
+  "schema_version": "trace_net_nha_phase0_3_v1",
+  "module": "trace_net_nha_phase0_3_v1",
+  "status": "TRACE_NET_NHA_PHASE0_3_V1",
+  "quality_status": "PASS",
+  "failures": [],
+  "warnings": [],
+  "counts": {
+    "inventory_pages": 509,
+    "assembly_anchors": 9,
+    "ipl_rows": 45,
+    "relationships": 40,
+    "source_supported_relationships": 2,
+    "ambiguous_relationships": 2,
+    "candidate_relationships": 36,
+    "cycle_count": 0,
+    "synthetic_record_count": 0,
+    "production_graph_write_count": 0
+  },
+  "cycles": [],
+  "safety_contract": {
+    "read_only": true,
+    "source_truth_mutation_allowed": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "opensearch_write_attempt": false,
+    "synthetic_records_allowed_in_phase0_3": false,
+    "ambiguous_relationships_promoted_to_proof": false
+  }
+}

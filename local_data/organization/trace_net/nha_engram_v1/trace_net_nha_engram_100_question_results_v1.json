@@ -1,0 +1,4982 @@
+{
+  "records": [
+    {
+      "question_id": "NHA-ENGRAM-001",
+      "category": "direct_nha",
+      "query": "What is the direct NHA of part 120-20970-001?",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What is the direct NHA of part 120-20970-001?",
+        "part_numbers": [
+          "120-20970-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "direct nha"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-002",
+      "category": "direct_nha",
+      "query": "What is the next higher assembly for 120-29073-001?",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What is the next higher assembly for 120-29073-001?",
+        "part_numbers": [
+          "120-29073-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "next higher assembly"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-003",
+      "category": "direct_nha",
+      "query": "Which larger assembly directly contains 120-34291-001?",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which larger assembly directly contains 120-34291-001?",
+        "part_numbers": [
+          "120-34291-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "directly contains"
+        ],
+        "chain_terms": [],
+        "child_terms": [
+          "directly contain"
+        ],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-004",
+      "category": "direct_nha",
+      "query": "What is the immediate parent assembly of 120-48023-001?",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What is the immediate parent assembly of 120-48023-001?",
+        "part_numbers": [
+          "120-48023-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "immediate parent",
+          "parent assembly"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-005",
+      "category": "direct_nha",
+      "query": "What is one level above 120-29074-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What is one level above 120-29074-001?",
+        "part_numbers": [
+          "120-29074-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "one level above"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-006",
+      "category": "direct_nha",
+      "query": "Which parent assembly does 120-29077-001 belong to?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which parent assembly does 120-29077-001 belong to?",
+        "part_numbers": [
+          "120-29077-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "parent assembly"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-007",
+      "category": "direct_nha",
+      "query": "Where does 42952-10 sit in the assembly hierarchy?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Where does 42952-10 sit in the assembly hierarchy?",
+        "part_numbers": [
+          "42952-10"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-008",
+      "category": "direct_nha",
+      "query": "What larger unit contains NAS464P5A16?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What larger unit contains NAS464P5A16?",
+        "part_numbers": [
+          "NAS464P5A16"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "larger unit contains"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-009",
+      "category": "direct_nha",
+      "query": "Which assembly is MS21042L5 installed in?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which assembly is MS21042L5 installed in?",
+        "part_numbers": [
+          "MS21042L5"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "installed in"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-010",
+      "category": "direct_nha",
+      "query": "Tell me the direct parent of 120-61546-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Tell me the direct parent of 120-61546-001.",
+        "part_numbers": [
+          "120-61546-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "direct parent"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-011",
+      "category": "direct_nha",
+      "query": "Is there an immediate assembly above 120-36060-003?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Is there an immediate assembly above 120-36060-003?",
+        "part_numbers": [
+          "120-36060-003"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "immediate assembly"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-012",
+      "category": "direct_nha",
+      "query": "What assembly is part 120-20970-003 directly under?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What assembly is part 120-20970-003 directly under?",
+        "part_numbers": [
+          "120-20970-003"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "directly under"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-013",
+      "category": "direct_nha",
+      "query": "Where does 120-20970-001 mount in the hierarchy?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Where does 120-20970-001 mount in the hierarchy?",
+        "part_numbers": [
+          "120-20970-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-014",
+      "category": "direct_nha",
+      "query": "Name the one-hop parent for 120-29073-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Name the one-hop parent for 120-29073-001.",
+        "part_numbers": [
+          "120-29073-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "one-hop parent"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-015",
+      "category": "direct_nha",
+      "query": "Which component group directly owns 120-34291-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which component group directly owns 120-34291-001?",
+        "part_numbers": [
+          "120-34291-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "directly owns"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-016",
+      "category": "ancestor_chain",
+      "query": "Show the complete assembly chain above 120-20970-001.",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Show the complete assembly chain above 120-20970-001.",
+        "part_numbers": [
+          "120-20970-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "ancestor_chain",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [
+          "assembly chain",
+          "complete assembly chain"
+        ],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "ancestor_chain",
+          "ancestor_chain_intent",
+          "assembly_relationship",
+          "nha",
+          "ordered_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_ancestor_chain_reasoning"
+      ],
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "actual_primary_skill": "nha_ancestor_chain_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-017",
+      "category": "ancestor_chain",
+      "query": "Walk me upward through the assemblies for 120-29073-001.",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Walk me upward through the assemblies for 120-29073-001.",
+        "part_numbers": [
+          "120-29073-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "ancestor_chain",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [
+          "walk me upward"
+        ],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "ancestor_chain",
+          "ancestor_chain_intent",
+          "assembly_relationship",
+          "nha",
+          "ordered_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_ancestor_chain_reasoning"
+      ],
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "actual_primary_skill": "nha_ancestor_chain_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-018",
+      "category": "ancestor_chain",
+      "query": "List all higher assemblies above 120-34291-001 in order.",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "List all higher assemblies above 120-34291-001 in order.",
+        "part_numbers": [
+          "120-34291-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "ancestor_chain",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [
+          "all higher assemblies"
+        ],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "ancestor_chain",
+          "ancestor_chain_intent",
+          "assembly_relationship",
+          "nha",
+          "ordered_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_ancestor_chain_reasoning"
+      ],
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "actual_primary_skill": "nha_ancestor_chain_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-019",
+      "category": "ancestor_chain",
+      "query": "Trace the ancestor chain for 120-48023-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Trace the ancestor chain for 120-48023-001.",
+        "part_numbers": [
+          "120-48023-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "ancestor_chain",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [
+          "ancestor chain"
+        ],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "ancestor_chain",
+          "ancestor_chain_intent",
+          "assembly_relationship",
+          "nha",
+          "ordered_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_ancestor_chain_reasoning"
+      ],
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "actual_primary_skill": "nha_ancestor_chain_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-020",
+      "category": "ancestor_chain",
+      "query": "Give the full hierarchy from 120-29074-001 to the top assembly.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Give the full hierarchy from 120-29074-001 to the top assembly.",
+        "part_numbers": [
+          "120-29074-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "ancestor_chain",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [
+          "full hierarchy"
+        ],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "ancestor_chain",
+          "ancestor_chain_intent",
+          "assembly_relationship",
+          "nha",
+          "ordered_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_ancestor_chain_reasoning"
+      ],
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "actual_primary_skill": "nha_ancestor_chain_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-021",
+      "category": "ancestor_chain",
+      "query": "What is the parent path above 120-29077-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What is the parent path above 120-29077-001?",
+        "part_numbers": [
+          "120-29077-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "ancestor_chain",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [
+          "parent path"
+        ],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "ancestor_chain",
+          "ancestor_chain_intent",
+          "assembly_relationship",
+          "nha",
+          "ordered_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_ancestor_chain_reasoning"
+      ],
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "actual_primary_skill": "nha_ancestor_chain_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-022",
+      "category": "ancestor_chain",
+      "query": "Trace upward one supported hop at a time from 42952-10.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Trace upward one supported hop at a time from 42952-10.",
+        "part_numbers": [
+          "42952-10"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "ancestor_chain",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [
+          "trace upward"
+        ],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "ancestor_chain",
+          "ancestor_chain_intent",
+          "assembly_relationship",
+          "nha",
+          "ordered_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_ancestor_chain_reasoning"
+      ],
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "actual_primary_skill": "nha_ancestor_chain_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-023",
+      "category": "ancestor_chain",
+      "query": "Show every supported ancestor of NAS464P5A16.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Show every supported ancestor of NAS464P5A16.",
+        "part_numbers": [
+          "NAS464P5A16"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "ancestor_chain",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [
+          "supported ancestor"
+        ],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "ancestor_chain",
+          "ancestor_chain_intent",
+          "assembly_relationship",
+          "nha",
+          "ordered_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_ancestor_chain_reasoning"
+      ],
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "actual_primary_skill": "nha_ancestor_chain_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-024",
+      "category": "ancestor_chain",
+      "query": "How does MS21042L5 roll up through the assembly structure?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "How does MS21042L5 roll up through the assembly structure?",
+        "part_numbers": [
+          "MS21042L5"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "ancestor_chain",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [
+          "roll up through"
+        ],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "ancestor_chain",
+          "ancestor_chain_intent",
+          "assembly_relationship",
+          "nha",
+          "ordered_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_ancestor_chain_reasoning"
+      ],
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "actual_primary_skill": "nha_ancestor_chain_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-025",
+      "category": "ancestor_chain",
+      "query": "Give me the ordered assembly lineage for 120-61546-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Give me the ordered assembly lineage for 120-61546-001.",
+        "part_numbers": [
+          "120-61546-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "ancestor_chain",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [
+          "ordered assembly lineage"
+        ],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "ancestor_chain",
+          "ancestor_chain_intent",
+          "assembly_relationship",
+          "nha",
+          "ordered_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_ancestor_chain_reasoning"
+      ],
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "actual_primary_skill": "nha_ancestor_chain_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-026",
+      "category": "ancestor_chain",
+      "query": "From part 120-36060-003, what is the chain of containing assemblies?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "From part 120-36060-003, what is the chain of containing assemblies?",
+        "part_numbers": [
+          "120-36060-003"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "ancestor_chain",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [
+          "chain of containing assemblies"
+        ],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "ancestor_chain",
+          "ancestor_chain_intent",
+          "assembly_relationship",
+          "nha",
+          "ordered_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_ancestor_chain_reasoning"
+      ],
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "actual_primary_skill": "nha_ancestor_chain_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-027",
+      "category": "ancestor_chain",
+      "query": "Walk from 120-20970-003 to its highest supported assembly.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Walk from 120-20970-003 to its highest supported assembly.",
+        "part_numbers": [
+          "120-20970-003"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "ancestor_chain",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [
+          "highest supported assembly"
+        ],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "ancestor_chain",
+          "ancestor_chain_intent",
+          "assembly_relationship",
+          "nha",
+          "ordered_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_ancestor_chain_reasoning"
+      ],
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "actual_primary_skill": "nha_ancestor_chain_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-028",
+      "category": "ancestor_chain",
+      "query": "Show the hierarchy above 120-20970-001 without skipping intermediate parents.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Show the hierarchy above 120-20970-001 without skipping intermediate parents.",
+        "part_numbers": [
+          "120-20970-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "ancestor_chain",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [
+          "hierarchy above"
+        ],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "ancestor_chain",
+          "ancestor_chain_intent",
+          "assembly_relationship",
+          "nha",
+          "ordered_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_ancestor_chain_reasoning"
+      ],
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "actual_primary_skill": "nha_ancestor_chain_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-029",
+      "category": "ancestor_chain",
+      "query": "List the NHA chain for 120-29073-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "List the NHA chain for 120-29073-001.",
+        "part_numbers": [
+          "120-29073-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "ancestor_chain",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [
+          "nha chain"
+        ],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "ancestor_chain",
+          "ancestor_chain_intent",
+          "assembly_relationship",
+          "nha",
+          "ordered_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_ancestor_chain_reasoning"
+      ],
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "actual_primary_skill": "nha_ancestor_chain_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-030",
+      "category": "ancestor_chain",
+      "query": "What are all parents above 120-34291-001, nearest first?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What are all parents above 120-34291-001, nearest first?",
+        "part_numbers": [
+          "120-34291-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "ancestor_chain",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [
+          "all parents"
+        ],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "ancestor_chain",
+          "ancestor_chain_intent",
+          "assembly_relationship",
+          "nha",
+          "ordered_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_ancestor_chain_reasoning"
+      ],
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "actual_primary_skill": "nha_ancestor_chain_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-031",
+      "category": "direct_children",
+      "query": "List the direct children of assembly 120-29067-001.",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "List the direct children of assembly 120-29067-001.",
+        "part_numbers": [
+          "120-29067-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_children",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [
+          "direct children"
+        ],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_children",
+          "direct_children_intent",
+          "nha",
+          "one_level_below"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-032",
+      "category": "direct_children",
+      "query": "Which parts sit immediately below assembly 120-29073-001?",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which parts sit immediately below assembly 120-29073-001?",
+        "part_numbers": [
+          "120-29073-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_children",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [
+          "immediately below"
+        ],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_children",
+          "direct_children_intent",
+          "nha",
+          "one_level_below"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-033",
+      "category": "direct_children",
+      "query": "Show the immediate components of 120-29074-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Show the immediate components of 120-29074-001.",
+        "part_numbers": [
+          "120-29074-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_children",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [
+          "immediate components"
+        ],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_children",
+          "direct_children_intent",
+          "nha",
+          "one_level_below"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-034",
+      "category": "direct_children",
+      "query": "What does assembly 120-29067-001 directly contain?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What does assembly 120-29067-001 directly contain?",
+        "part_numbers": [
+          "120-29067-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_children",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [
+          "directly contain"
+        ],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_children",
+          "direct_children_intent",
+          "nha",
+          "one_level_below"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-035",
+      "category": "direct_children",
+      "query": "Give the one-level breakdown under 120-29073-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Give the one-level breakdown under 120-29073-001.",
+        "part_numbers": [
+          "120-29073-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_children",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [
+          "one-level breakdown"
+        ],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_children",
+          "direct_children_intent",
+          "nha",
+          "one_level_below"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-036",
+      "category": "direct_children",
+      "query": "Which components are directly under 120-29074-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which components are directly under 120-29074-001?",
+        "part_numbers": [
+          "120-29074-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_children",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "directly under"
+        ],
+        "chain_terms": [],
+        "child_terms": [
+          "components are directly under"
+        ],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_children",
+          "direct_children_intent",
+          "nha",
+          "one_level_below"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-037",
+      "category": "direct_children",
+      "query": "List only the one-hop children of 120-29067-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "List only the one-hop children of 120-29067-001.",
+        "part_numbers": [
+          "120-29067-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_children",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [
+          "one-hop children"
+        ],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_children",
+          "direct_children_intent",
+          "nha",
+          "one_level_below"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-038",
+      "category": "direct_children",
+      "query": "What parts belong immediately to assembly 120-29073-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What parts belong immediately to assembly 120-29073-001?",
+        "part_numbers": [
+          "120-29073-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_children",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [
+          "belong immediately to assembly"
+        ],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_children",
+          "direct_children_intent",
+          "nha",
+          "one_level_below"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-039",
+      "category": "direct_children",
+      "query": "Show the direct component list for 120-29074-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Show the direct component list for 120-29074-001.",
+        "part_numbers": [
+          "120-29074-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_children",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [
+          "direct component list"
+        ],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_children",
+          "direct_children_intent",
+          "nha",
+          "one_level_below"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-040",
+      "category": "direct_children",
+      "query": "Which items are one level below 120-29067-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which items are one level below 120-29067-001?",
+        "part_numbers": [
+          "120-29067-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_children",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [
+          "one level below"
+        ],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_children",
+          "direct_children_intent",
+          "nha",
+          "one_level_below"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-041",
+      "category": "direct_children",
+      "query": "Name the immediate child relationships of 120-29073-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Name the immediate child relationships of 120-29073-001.",
+        "part_numbers": [
+          "120-29073-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_children",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [
+          "immediate child relationships"
+        ],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_children",
+          "direct_children_intent",
+          "nha",
+          "one_level_below"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-042",
+      "category": "direct_children",
+      "query": "What is directly contained by assembly 120-29074-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What is directly contained by assembly 120-29074-001?",
+        "part_numbers": [
+          "120-29074-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_children",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [
+          "directly contain",
+          "directly contained by assembly"
+        ],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_children",
+          "direct_children_intent",
+          "nha",
+          "one_level_below"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-043",
+      "category": "descendants",
+      "query": "Show direct versus lower descendants below assembly 120-29067-001.",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Show direct versus lower descendants below assembly 120-29067-001.",
+        "part_numbers": [
+          "120-29067-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_vs_descendants",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [
+          "direct versus lower",
+          "lower descendants"
+        ],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_vs_descendants_intent",
+          "lower_descendants",
+          "nha",
+          "transitive_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-044",
+      "category": "descendants",
+      "query": "Separate the immediate children and all lower descendants of 120-29073-001.",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Separate the immediate children and all lower descendants of 120-29073-001.",
+        "part_numbers": [
+          "120-29073-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_vs_descendants",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [
+          "immediate children"
+        ],
+        "descendant_terms": [
+          "lower descendants"
+        ],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_vs_descendants_intent",
+          "lower_descendants",
+          "nha",
+          "transitive_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-045",
+      "category": "descendants",
+      "query": "Give the full breakdown below 120-29074-001, keeping one-hop parts separate.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Give the full breakdown below 120-29074-001, keeping one-hop parts separate.",
+        "part_numbers": [
+          "120-29074-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_vs_descendants",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [
+          "full breakdown"
+        ],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_vs_descendants_intent",
+          "lower_descendants",
+          "nha",
+          "transitive_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-046",
+      "category": "descendants",
+      "query": "Which direct components and nested components are under 120-29067-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which direct components and nested components are under 120-29067-001?",
+        "part_numbers": [
+          "120-29067-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_vs_descendants",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [
+          "direct components"
+        ],
+        "descendant_terms": [
+          "nested components"
+        ],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_vs_descendants_intent",
+          "lower_descendants",
+          "nha",
+          "transitive_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-047",
+      "category": "descendants",
+      "query": "List the lower descendants of 120-29073-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "List the lower descendants of 120-29073-001.",
+        "part_numbers": [
+          "120-29073-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_vs_descendants",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [
+          "lower descendants"
+        ],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_vs_descendants_intent",
+          "lower_descendants",
+          "nha",
+          "transitive_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-048",
+      "category": "descendants",
+      "query": "Show all components below 120-29074-001, grouped by depth.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Show all components below 120-29074-001, grouped by depth.",
+        "part_numbers": [
+          "120-29074-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_vs_descendants",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [
+          "all components below"
+        ],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_vs_descendants_intent",
+          "lower_descendants",
+          "nha",
+          "transitive_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-049",
+      "category": "descendants",
+      "query": "What subassemblies and nested parts descend from 120-29067-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What subassemblies and nested parts descend from 120-29067-001?",
+        "part_numbers": [
+          "120-29067-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_vs_descendants",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [
+          "descend from"
+        ],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_vs_descendants_intent",
+          "lower_descendants",
+          "nha",
+          "transitive_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-050",
+      "category": "descendants",
+      "query": "Compare direct children with transitive descendants for 120-29073-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Compare direct children with transitive descendants for 120-29073-001.",
+        "part_numbers": [
+          "120-29073-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_vs_descendants",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [
+          "direct children"
+        ],
+        "descendant_terms": [
+          "transitive descendants"
+        ],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_vs_descendants_intent",
+          "lower_descendants",
+          "nha",
+          "transitive_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-051",
+      "category": "descendants",
+      "query": "Give the entire hierarchy below 120-29074-001 without flattening it.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Give the entire hierarchy below 120-29074-001 without flattening it.",
+        "part_numbers": [
+          "120-29074-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_vs_descendants",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [
+          "entire hierarchy below"
+        ],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_vs_descendants_intent",
+          "lower_descendants",
+          "nha",
+          "transitive_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-052",
+      "category": "descendants",
+      "query": "Show the descendant tree under 120-29067-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Show the descendant tree under 120-29067-001.",
+        "part_numbers": [
+          "120-29067-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_vs_descendants",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [
+          "descendant tree"
+        ],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_vs_descendants_intent",
+          "lower_descendants",
+          "nha",
+          "transitive_hierarchy"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_children_descendants_reasoning"
+      ],
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "actual_primary_skill": "nha_children_descendants_reasoning"
+    },
+    {
+      "question_id": "NHA-ENGRAM-053",
+      "category": "relationship_evidence",
+      "query": "Which page proves the NHA relationship for 120-20970-001?",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which page proves the NHA relationship for 120-20970-001?",
+        "part_numbers": [
+          "120-20970-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "relationship_evidence",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [
+          "nha relationship for",
+          "page proves",
+          "which page proves"
+        ],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "relationship_evidence",
+          "relationship_evidence_intent",
+          "source_page_required"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_relationship_evidence"
+      ],
+      "expected_primary_skill": "nha_relationship_evidence",
+      "actual_primary_skill": "nha_relationship_evidence"
+    },
+    {
+      "question_id": "NHA-ENGRAM-054",
+      "category": "relationship_evidence",
+      "query": "Cite the source page for the parent relationship of 120-29073-001.",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Cite the source page for the parent relationship of 120-29073-001.",
+        "part_numbers": [
+          "120-29073-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "relationship_evidence",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [
+          "source page"
+        ],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "relationship_evidence",
+          "relationship_evidence_intent",
+          "source_page_required"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_relationship_evidence"
+      ],
+      "expected_primary_skill": "nha_relationship_evidence",
+      "actual_primary_skill": "nha_relationship_evidence"
+    },
+    {
+      "question_id": "NHA-ENGRAM-055",
+      "category": "relationship_evidence",
+      "query": "Where is the NHA relationship for 120-34291-001 shown?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Where is the NHA relationship for 120-34291-001 shown?",
+        "part_numbers": [
+          "120-34291-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "relationship_evidence",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [
+          "nha relationship for"
+        ],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "relationship_evidence",
+          "relationship_evidence_intent",
+          "source_page_required"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_relationship_evidence"
+      ],
+      "expected_primary_skill": "nha_relationship_evidence",
+      "actual_primary_skill": "nha_relationship_evidence"
+    },
+    {
+      "question_id": "NHA-ENGRAM-056",
+      "category": "relationship_evidence",
+      "query": "What IPL page supports the parent assembly of 120-48023-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What IPL page supports the parent assembly of 120-48023-001?",
+        "part_numbers": [
+          "120-48023-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "relationship_evidence",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "parent assembly"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [
+          "ipl page supports"
+        ],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "relationship_evidence",
+          "relationship_evidence_intent",
+          "source_page_required"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_relationship_evidence"
+      ],
+      "expected_primary_skill": "nha_relationship_evidence",
+      "actual_primary_skill": "nha_relationship_evidence"
+    },
+    {
+      "question_id": "NHA-ENGRAM-057",
+      "category": "relationship_evidence",
+      "query": "Show the relationship evidence pages for 120-29074-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Show the relationship evidence pages for 120-29074-001.",
+        "part_numbers": [
+          "120-29074-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "relationship_evidence",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [
+          "evidence page",
+          "relationship evidence"
+        ],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "relationship_evidence",
+          "relationship_evidence_intent",
+          "source_page_required"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_relationship_evidence"
+      ],
+      "expected_primary_skill": "nha_relationship_evidence",
+      "actual_primary_skill": "nha_relationship_evidence"
+    },
+    {
+      "question_id": "NHA-ENGRAM-058",
+      "category": "relationship_evidence",
+      "query": "Which figure and item prove the relationship for 120-29077-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which figure and item prove the relationship for 120-29077-001?",
+        "part_numbers": [
+          "120-29077-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "relationship_evidence",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [
+          "figure and item prove"
+        ],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "relationship_evidence",
+          "relationship_evidence_intent",
+          "source_page_required"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_relationship_evidence"
+      ],
+      "expected_primary_skill": "nha_relationship_evidence",
+      "actual_primary_skill": "nha_relationship_evidence"
+    },
+    {
+      "question_id": "NHA-ENGRAM-059",
+      "category": "relationship_evidence",
+      "query": "Give the source pages connecting 42952-10 to its parent.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Give the source pages connecting 42952-10 to its parent.",
+        "part_numbers": [
+          "42952-10"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "relationship_evidence",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [
+          "source page"
+        ],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "relationship_evidence",
+          "relationship_evidence_intent",
+          "source_page_required"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_relationship_evidence"
+      ],
+      "expected_primary_skill": "nha_relationship_evidence",
+      "actual_primary_skill": "nha_relationship_evidence"
+    },
+    {
+      "question_id": "NHA-ENGRAM-060",
+      "category": "relationship_evidence",
+      "query": "Where in the manual is this assembly relationship documented for NAS464P5A16?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Where in the manual is this assembly relationship documented for NAS464P5A16?",
+        "part_numbers": [
+          "NAS464P5A16"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "relationship_evidence",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [
+          "assembly relationship documented"
+        ],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "relationship_evidence",
+          "relationship_evidence_intent",
+          "source_page_required"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_relationship_evidence"
+      ],
+      "expected_primary_skill": "nha_relationship_evidence",
+      "actual_primary_skill": "nha_relationship_evidence"
+    },
+    {
+      "question_id": "NHA-ENGRAM-061",
+      "category": "relationship_evidence",
+      "query": "What page should I cite for the direct NHA of MS21042L5?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What page should I cite for the direct NHA of MS21042L5?",
+        "part_numbers": [
+          "MS21042L5"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "relationship_evidence",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "direct nha"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [
+          "page should i cite"
+        ],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "relationship_evidence",
+          "relationship_evidence_intent",
+          "source_page_required"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_relationship_evidence"
+      ],
+      "expected_primary_skill": "nha_relationship_evidence",
+      "actual_primary_skill": "nha_relationship_evidence"
+    },
+    {
+      "question_id": "NHA-ENGRAM-062",
+      "category": "relationship_evidence",
+      "query": "Show the source evidence for 120-61546-001's parent candidates.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Show the source evidence for 120-61546-001's parent candidates.",
+        "part_numbers": [
+          "120-61546-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "relationship_evidence",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [
+          "show the source",
+          "source evidence"
+        ],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "relationship_evidence",
+          "relationship_evidence_intent",
+          "source_page_required"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_relationship_evidence"
+      ],
+      "expected_primary_skill": "nha_relationship_evidence",
+      "actual_primary_skill": "nha_relationship_evidence"
+    },
+    {
+      "question_id": "NHA-ENGRAM-063",
+      "category": "scope_resolution",
+      "query": "Does the NHA of 120-20970-001 change by project?",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Does the NHA of 120-20970-001 change by project?",
+        "part_numbers": [
+          "120-20970-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "scope_conflict_resolution",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {
+          "project": [
+            "project"
+          ]
+        },
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "project_scope",
+          "scope_comparison",
+          "scope_conflict_resolution_intent",
+          "scope_context"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_scope_conflict_resolution"
+      ],
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "actual_primary_skill": "nha_scope_conflict_resolution"
+    },
+    {
+      "question_id": "NHA-ENGRAM-064",
+      "category": "scope_resolution",
+      "query": "Which parent applies to configuration A for 120-29073-001?",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which parent applies to configuration A for 120-29073-001?",
+        "part_numbers": [
+          "120-29073-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "scope_conflict_resolution",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {
+          "configuration": [
+            "config",
+            "configuration"
+          ]
+        },
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "configuration_scope",
+          "nha",
+          "scope_comparison",
+          "scope_conflict_resolution_intent",
+          "scope_context"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_scope_conflict_resolution"
+      ],
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "actual_primary_skill": "nha_scope_conflict_resolution"
+    },
+    {
+      "question_id": "NHA-ENGRAM-065",
+      "category": "scope_resolution",
+      "query": "Compare the NHA of 120-34291-001 across revisions.",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Compare the NHA of 120-34291-001 across revisions.",
+        "part_numbers": [
+          "120-34291-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "scope_conflict_resolution",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {
+          "revision": [
+            "revision"
+          ]
+        },
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "revision_scope",
+          "scope_comparison",
+          "scope_conflict_resolution_intent",
+          "scope_context"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_scope_conflict_resolution"
+      ],
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "actual_primary_skill": "nha_scope_conflict_resolution"
+    },
+    {
+      "question_id": "NHA-ENGRAM-066",
+      "category": "scope_resolution",
+      "query": "What parent assembly applies under usage code 001 for 120-48023-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What parent assembly applies under usage code 001 for 120-48023-001?",
+        "part_numbers": [
+          "120-48023-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "scope_conflict_resolution",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "parent assembly"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {
+          "usage_code": [
+            "usage code"
+          ]
+        },
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "scope_conflict_resolution_intent",
+          "scope_context",
+          "usage_code_scope"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_scope_conflict_resolution"
+      ],
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "actual_primary_skill": "nha_scope_conflict_resolution"
+    },
+    {
+      "question_id": "NHA-ENGRAM-067",
+      "category": "scope_resolution",
+      "query": "Which effectivity selects the parent of 120-29074-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which effectivity selects the parent of 120-29074-001?",
+        "part_numbers": [
+          "120-29074-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "scope_conflict_resolution",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {
+          "effectivity": [
+            "effectivity"
+          ]
+        },
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "effectivity_scope",
+          "nha",
+          "scope_comparison",
+          "scope_conflict_resolution_intent",
+          "scope_context"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_scope_conflict_resolution"
+      ],
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "actual_primary_skill": "nha_scope_conflict_resolution"
+    },
+    {
+      "question_id": "NHA-ENGRAM-068",
+      "category": "scope_resolution",
+      "query": "Does the parent of 120-29077-001 differ by variant?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Does the parent of 120-29077-001 differ by variant?",
+        "part_numbers": [
+          "120-29077-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "scope_conflict_resolution",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {
+          "variant": [
+            "variant"
+          ]
+        },
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "scope_conflict_resolution_intent",
+          "scope_context",
+          "variant_scope"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_scope_conflict_resolution"
+      ],
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "actual_primary_skill": "nha_scope_conflict_resolution"
+    },
+    {
+      "question_id": "NHA-ENGRAM-069",
+      "category": "scope_resolution",
+      "query": "For this aircraft configuration, which NHA owns 42952-10?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "For this aircraft configuration, which NHA owns 42952-10?",
+        "part_numbers": [
+          "42952-10"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "scope_conflict_resolution",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {
+          "configuration": [
+            "config",
+            "configuration"
+          ],
+          "aircraft": [
+            "aircraft"
+          ]
+        },
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "aircraft_scope",
+          "assembly_relationship",
+          "configuration_scope",
+          "nha",
+          "scope_comparison",
+          "scope_conflict_resolution_intent",
+          "scope_context"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_scope_conflict_resolution"
+      ],
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "actual_primary_skill": "nha_scope_conflict_resolution"
+    },
+    {
+      "question_id": "NHA-ENGRAM-070",
+      "category": "scope_resolution",
+      "query": "Compare project Alpha and project Beta parent relationships for NAS464P5A16.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Compare project Alpha and project Beta parent relationships for NAS464P5A16.",
+        "part_numbers": [
+          "NAS464P5A16"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "scope_conflict_resolution",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {
+          "project": [
+            "project"
+          ]
+        },
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "project_scope",
+          "scope_comparison",
+          "scope_conflict_resolution_intent",
+          "scope_context"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_scope_conflict_resolution"
+      ],
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "actual_primary_skill": "nha_scope_conflict_resolution"
+    },
+    {
+      "question_id": "NHA-ENGRAM-071",
+      "category": "scope_resolution",
+      "query": "Which revision changed the direct parent of MS21042L5?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which revision changed the direct parent of MS21042L5?",
+        "part_numbers": [
+          "MS21042L5"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "scope_conflict_resolution",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "direct parent"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {
+          "revision": [
+            "revision"
+          ]
+        },
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "revision_scope",
+          "scope_comparison",
+          "scope_conflict_resolution_intent",
+          "scope_context"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_scope_conflict_resolution"
+      ],
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "actual_primary_skill": "nha_scope_conflict_resolution"
+    },
+    {
+      "question_id": "NHA-ENGRAM-072",
+      "category": "scope_resolution",
+      "query": "I have multiple parent candidates for 120-61546-001; what configuration resolves them?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "I have multiple parent candidates for 120-61546-001; what configuration resolves them?",
+        "part_numbers": [
+          "120-61546-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "scope_conflict_resolution",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {
+          "configuration": [
+            "config",
+            "configuration"
+          ]
+        },
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "configuration_scope",
+          "nha",
+          "scope_conflict_resolution_intent",
+          "scope_context"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_scope_conflict_resolution"
+      ],
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "actual_primary_skill": "nha_scope_conflict_resolution"
+    },
+    {
+      "question_id": "NHA-ENGRAM-073",
+      "category": "scope_resolution",
+      "query": "Which usage-code scope applies to 120-36060-003's NHA?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which usage-code scope applies to 120-36060-003's NHA?",
+        "part_numbers": [
+          "120-36060-003"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "scope_conflict_resolution",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {
+          "usage_code": [
+            "usage-code"
+          ]
+        },
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "scope_comparison",
+          "scope_conflict_resolution_intent",
+          "scope_context",
+          "usage_code_scope"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_scope_conflict_resolution"
+      ],
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "actual_primary_skill": "nha_scope_conflict_resolution"
+    },
+    {
+      "question_id": "NHA-ENGRAM-074",
+      "category": "scope_resolution",
+      "query": "Does serial-range effectivity change the assembly above 120-20970-003?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Does serial-range effectivity change the assembly above 120-20970-003?",
+        "part_numbers": [
+          "120-20970-003"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "scope_conflict_resolution",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {
+          "effectivity": [
+            "effectivity"
+          ]
+        },
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "effectivity_scope",
+          "nha",
+          "scope_comparison",
+          "scope_conflict_resolution_intent",
+          "scope_context"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_scope_conflict_resolution"
+      ],
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "actual_primary_skill": "nha_scope_conflict_resolution"
+    },
+    {
+      "question_id": "NHA-ENGRAM-075",
+      "category": "scope_resolution",
+      "query": "Which dash-number variant determines the parent of 120-20970-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which dash-number variant determines the parent of 120-20970-001?",
+        "part_numbers": [
+          "120-20970-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "scope_conflict_resolution",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {
+          "variant": [
+            "dash-number",
+            "variant"
+          ]
+        },
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "scope_comparison",
+          "scope_conflict_resolution_intent",
+          "scope_context",
+          "variant_scope"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_scope_conflict_resolution"
+      ],
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "actual_primary_skill": "nha_scope_conflict_resolution"
+    },
+    {
+      "question_id": "NHA-ENGRAM-076",
+      "category": "scope_resolution",
+      "query": "What project context is required to choose the NHA of 120-29073-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What project context is required to choose the NHA of 120-29073-001?",
+        "part_numbers": [
+          "120-29073-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "scope_conflict_resolution",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {
+          "project": [
+            "project"
+          ]
+        },
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "project_scope",
+          "scope_conflict_resolution_intent",
+          "scope_context"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_scope_conflict_resolution"
+      ],
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "actual_primary_skill": "nha_scope_conflict_resolution"
+    },
+    {
+      "question_id": "NHA-ENGRAM-077",
+      "category": "scope_resolution",
+      "query": "Compare configuration and revision scope for 120-34291-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Compare configuration and revision scope for 120-34291-001.",
+        "part_numbers": [
+          "120-34291-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "scope_conflict_resolution",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {
+          "configuration": [
+            "config",
+            "configuration"
+          ],
+          "revision": [
+            "revision"
+          ]
+        },
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "configuration_scope",
+          "nha",
+          "revision_scope",
+          "scope_comparison",
+          "scope_conflict_resolution_intent",
+          "scope_context"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_scope_conflict_resolution"
+      ],
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "actual_primary_skill": "nha_scope_conflict_resolution"
+    },
+    {
+      "question_id": "NHA-ENGRAM-078",
+      "category": "attaching_parts",
+      "query": "Which assembly directly owns the attaching part 42952-10?",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which assembly directly owns the attaching part 42952-10?",
+        "part_numbers": [
+          "42952-10"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "directly owns"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [
+          "attaching part"
+        ],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "attaching_parts",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "nearest_supported_component",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-079",
+      "category": "attaching_parts",
+      "query": "What is the nearest supported component for attaching hardware MS21042L5?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What is the nearest supported component for attaching hardware MS21042L5?",
+        "part_numbers": [
+          "MS21042L5"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "nearest supported component"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [
+          "attaching hardware"
+        ],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "attaching_parts",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "nearest_supported_component",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-080",
+      "category": "attaching_parts",
+      "query": "Which component group is the fastener NAS464P5A16 directly under?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which component group is the fastener NAS464P5A16 directly under?",
+        "part_numbers": [
+          "NAS464P5A16"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "directly under"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [
+          "fastener"
+        ],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "attaching_parts",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "nearest_supported_component",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-081",
+      "category": "attaching_parts",
+      "query": "Where does the attaching bolt 120-48023-001 belong in the hierarchy?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Where does the attaching bolt 120-48023-001 belong in the hierarchy?",
+        "part_numbers": [
+          "120-48023-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [
+          "attaching bolt"
+        ],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "attaching_parts",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "nearest_supported_component",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-082",
+      "category": "attaching_parts",
+      "query": "What direct NHA applies to mounting hardware 42952-10?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What direct NHA applies to mounting hardware 42952-10?",
+        "part_numbers": [
+          "42952-10"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "direct nha"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [
+          "mounting hardware"
+        ],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "attaching_parts",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "nearest_supported_component",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-083",
+      "category": "attaching_parts",
+      "query": "Which nearest component contains the attaching part MS21042L5?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which nearest component contains the attaching part MS21042L5?",
+        "part_numbers": [
+          "MS21042L5"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "nearest component contains"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [
+          "attaching part",
+          "nearest component"
+        ],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "attaching_parts",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "nearest_supported_component",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-084",
+      "category": "attaching_parts",
+      "query": "Do not jump to the top assembly; what directly contains the attaching fastener NAS464P5A16?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Do not jump to the top assembly; what directly contains the attaching fastener NAS464P5A16?",
+        "part_numbers": [
+          "NAS464P5A16"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "directly contains"
+        ],
+        "chain_terms": [],
+        "child_terms": [
+          "directly contain"
+        ],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [
+          "attaching fastener",
+          "fastener"
+        ],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "attaching_parts",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "nearest_supported_component",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-085",
+      "category": "attaching_parts",
+      "query": "What one-hop parent owns the fastener group containing 120-48023-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What one-hop parent owns the fastener group containing 120-48023-001?",
+        "part_numbers": [
+          "120-48023-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": false,
+        "direct_terms": [
+          "one-hop parent"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [
+          "fastener",
+          "fastener group"
+        ],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "attaching_parts",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "nearest_supported_component",
+          "next_higher_assembly",
+          "nha"
+        ],
+        "route_hint": "assembly_relationship_reasoning",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [
+        "nha_direct_parent_lookup"
+      ],
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "actual_primary_skill": "nha_direct_parent_lookup"
+    },
+    {
+      "question_id": "NHA-ENGRAM-086",
+      "category": "negative_exact_identifier",
+      "query": "Find part 120-20970-001.",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Find part 120-20970-001.",
+        "part_numbers": [
+          "120-20970-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "none",
+        "nha_candidate": false,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [
+          "find part"
+        ],
+        "negative_procedure": false,
+        "negative_exact_lookup": true,
+        "query_atom_tokens": [
+          "exact_location_request"
+        ],
+        "route_hint": "",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [],
+      "expected_primary_skill": "",
+      "actual_primary_skill": ""
+    },
+    {
+      "question_id": "NHA-ENGRAM-087",
+      "category": "negative_exact_identifier",
+      "query": "Where is part 120-20970-001 listed in the manual?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Where is part 120-20970-001 listed in the manual?",
+        "part_numbers": [
+          "120-20970-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "none",
+        "nha_candidate": false,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [
+          "listed in the manual",
+          "where is part"
+        ],
+        "negative_procedure": false,
+        "negative_exact_lookup": true,
+        "query_atom_tokens": [
+          "exact_location_request"
+        ],
+        "route_hint": "",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [],
+      "expected_primary_skill": "",
+      "actual_primary_skill": ""
+    },
+    {
+      "question_id": "NHA-ENGRAM-088",
+      "category": "negative_exact_identifier",
+      "query": "Locate P/N 120-29073-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Locate P/N 120-29073-001.",
+        "part_numbers": [
+          "120-29073-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "none",
+        "nha_candidate": false,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [],
+        "route_hint": "",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [],
+      "expected_primary_skill": "",
+      "actual_primary_skill": ""
+    },
+    {
+      "question_id": "NHA-ENGRAM-089",
+      "category": "negative_exact_identifier",
+      "query": "What page lists 120-34291-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What page lists 120-34291-001?",
+        "part_numbers": [
+          "120-34291-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "none",
+        "nha_candidate": false,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [
+          "what page lists"
+        ],
+        "negative_procedure": false,
+        "negative_exact_lookup": true,
+        "query_atom_tokens": [
+          "exact_location_request"
+        ],
+        "route_hint": "",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [],
+      "expected_primary_skill": "",
+      "actual_primary_skill": ""
+    },
+    {
+      "question_id": "NHA-ENGRAM-090",
+      "category": "negative_procedure",
+      "query": "How do I install 120-20970-001?",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "How do I install 120-20970-001?",
+        "part_numbers": [
+          "120-20970-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "none",
+        "nha_candidate": false,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [
+          "how do i install"
+        ],
+        "exact_lookup_terms": [],
+        "negative_procedure": true,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "procedure_request"
+        ],
+        "route_hint": "",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [],
+      "expected_primary_skill": "",
+      "actual_primary_skill": ""
+    },
+    {
+      "question_id": "NHA-ENGRAM-091",
+      "category": "negative_procedure",
+      "query": "Give the installation procedure for 120-29073-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Give the installation procedure for 120-29073-001.",
+        "part_numbers": [
+          "120-29073-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "none",
+        "nha_candidate": false,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [
+          "installation procedure"
+        ],
+        "exact_lookup_terms": [],
+        "negative_procedure": true,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "procedure_request"
+        ],
+        "route_hint": "",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [],
+      "expected_primary_skill": "",
+      "actual_primary_skill": ""
+    },
+    {
+      "question_id": "NHA-ENGRAM-092",
+      "category": "negative_procedure",
+      "query": "How do I remove the assembly 120-29067-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "How do I remove the assembly 120-29067-001?",
+        "part_numbers": [
+          "120-29067-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "none",
+        "nha_candidate": false,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [
+          "remove the"
+        ],
+        "exact_lookup_terms": [],
+        "negative_procedure": true,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "procedure_request"
+        ],
+        "route_hint": "",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [],
+      "expected_primary_skill": "",
+      "actual_primary_skill": ""
+    },
+    {
+      "question_id": "NHA-ENGRAM-093",
+      "category": "negative_procedure",
+      "query": "What torque applies to bolt 42952-10?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What torque applies to bolt 42952-10?",
+        "part_numbers": [
+          "42952-10"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "none",
+        "nha_candidate": false,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [
+          "torque"
+        ],
+        "exact_lookup_terms": [],
+        "negative_procedure": true,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "procedure_request"
+        ],
+        "route_hint": "",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [],
+      "expected_primary_skill": "",
+      "actual_primary_skill": ""
+    },
+    {
+      "question_id": "NHA-ENGRAM-094",
+      "category": "negative_authority",
+      "query": "Is 120-20970-001 an approved replacement?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Is 120-20970-001 an approved replacement?",
+        "part_numbers": [
+          "120-20970-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "none",
+        "nha_candidate": false,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [],
+        "route_hint": "",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [],
+      "expected_primary_skill": "",
+      "actual_primary_skill": ""
+    },
+    {
+      "question_id": "NHA-ENGRAM-095",
+      "category": "negative_authority",
+      "query": "Can I safely install 120-20970-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Can I safely install 120-20970-001?",
+        "part_numbers": [
+          "120-20970-001"
+        ],
+        "synthetic_part_numbers": [],
+        "intent": "none",
+        "nha_candidate": false,
+        "synthetic_blocked": false,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [],
+        "route_hint": "",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [],
+      "expected_primary_skill": "",
+      "actual_primary_skill": ""
+    },
+    {
+      "question_id": "NHA-ENGRAM-096",
+      "category": "synthetic_block",
+      "query": "What is the direct NHA of synthetic part 990-91001-001?",
+      "core20": true,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "What is the direct NHA of synthetic part 990-91001-001?",
+        "part_numbers": [
+          "990-91001-001"
+        ],
+        "synthetic_part_numbers": [
+          "990-91001-001"
+        ],
+        "intent": "direct_nha",
+        "nha_candidate": true,
+        "synthetic_blocked": true,
+        "direct_terms": [
+          "direct nha"
+        ],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_nha_intent",
+          "direct_parent",
+          "immediate_parent",
+          "next_higher_assembly",
+          "nha",
+          "production_block_required",
+          "synthetic_identifier"
+        ],
+        "route_hint": "",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [],
+      "expected_primary_skill": "",
+      "actual_primary_skill": ""
+    },
+    {
+      "question_id": "NHA-ENGRAM-097",
+      "category": "synthetic_block",
+      "query": "Show the assembly chain above 990-92001-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Show the assembly chain above 990-92001-001.",
+        "part_numbers": [
+          "990-92001-001"
+        ],
+        "synthetic_part_numbers": [
+          "990-92001-001"
+        ],
+        "intent": "ancestor_chain",
+        "nha_candidate": true,
+        "synthetic_blocked": true,
+        "direct_terms": [],
+        "chain_terms": [
+          "assembly chain"
+        ],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "ancestor_chain",
+          "ancestor_chain_intent",
+          "assembly_relationship",
+          "nha",
+          "ordered_hierarchy",
+          "production_block_required",
+          "synthetic_identifier"
+        ],
+        "route_hint": "",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [],
+      "expected_primary_skill": "",
+      "actual_primary_skill": ""
+    },
+    {
+      "question_id": "NHA-ENGRAM-098",
+      "category": "synthetic_block",
+      "query": "Which page proves the parent of 990-93001-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which page proves the parent of 990-93001-001?",
+        "part_numbers": [
+          "990-93001-001"
+        ],
+        "synthetic_part_numbers": [
+          "990-93001-001"
+        ],
+        "intent": "relationship_evidence",
+        "nha_candidate": true,
+        "synthetic_blocked": true,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [
+          "page proves",
+          "which page proves"
+        ],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "production_block_required",
+          "relationship_evidence",
+          "relationship_evidence_intent",
+          "source_page_required",
+          "synthetic_identifier"
+        ],
+        "route_hint": "",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [],
+      "expected_primary_skill": "",
+      "actual_primary_skill": ""
+    },
+    {
+      "question_id": "NHA-ENGRAM-099",
+      "category": "synthetic_block",
+      "query": "List direct children of synthetic assembly 990-94001-001.",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "List direct children of synthetic assembly 990-94001-001.",
+        "part_numbers": [
+          "990-94001-001"
+        ],
+        "synthetic_part_numbers": [
+          "990-94001-001"
+        ],
+        "intent": "direct_children",
+        "nha_candidate": true,
+        "synthetic_blocked": true,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [
+          "direct children"
+        ],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {},
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "direct_children",
+          "direct_children_intent",
+          "nha",
+          "one_level_below",
+          "production_block_required",
+          "synthetic_identifier"
+        ],
+        "route_hint": "",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [],
+      "expected_primary_skill": "",
+      "actual_primary_skill": ""
+    },
+    {
+      "question_id": "NHA-ENGRAM-100",
+      "category": "synthetic_block",
+      "query": "Which revision changes the NHA of 990-95001-001?",
+      "core20": false,
+      "passed": true,
+      "failures": [],
+      "atoms": {
+        "schema_version": "trace_net_nha_query_atoms_v1",
+        "query": "Which revision changes the NHA of 990-95001-001?",
+        "part_numbers": [
+          "990-95001-001"
+        ],
+        "synthetic_part_numbers": [
+          "990-95001-001"
+        ],
+        "intent": "scope_conflict_resolution",
+        "nha_candidate": true,
+        "synthetic_blocked": true,
+        "direct_terms": [],
+        "chain_terms": [],
+        "child_terms": [],
+        "descendant_terms": [],
+        "evidence_terms": [],
+        "attaching_terms": [],
+        "scope_terms": {
+          "revision": [
+            "revision"
+          ]
+        },
+        "procedure_terms": [],
+        "exact_lookup_terms": [],
+        "negative_procedure": false,
+        "negative_exact_lookup": false,
+        "query_atom_tokens": [
+          "assembly_relationship",
+          "nha",
+          "production_block_required",
+          "revision_scope",
+          "scope_comparison",
+          "scope_conflict_resolution_intent",
+          "scope_context",
+          "synthetic_identifier"
+        ],
+        "route_hint": "",
+        "answer_permission": false,
+        "final_answer_allowed": false,
+        "can_prove_claims": false,
+        "source_truth_mutation_allowed": false
+      },
+      "selected_skill_ids": [],
+      "expected_primary_skill": "",
+      "actual_primary_skill": ""
+    }
+  ]
+}

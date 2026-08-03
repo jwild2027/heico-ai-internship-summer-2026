@@ -6,8 +6,8 @@ from pathlib import Path
 
 def test_llm_assisted_query_planner_v17_scripts_importable():
     for script in (
-        "scripts/build_trace_net_e2e_llm_assisted_query_planner_v17.py",
-        "scripts/check_trace_net_e2e_llm_assisted_query_planner_v17_quality.py",
+        "scripts/build/ingestion/build_trace_net_e2e_llm_assisted_query_planner_v17.py",
+        "scripts/maintenance/benchmark/check_trace_net_e2e_llm_assisted_query_planner_v17_quality.py",
     ):
         path = Path(script)
         assert path.exists(), script

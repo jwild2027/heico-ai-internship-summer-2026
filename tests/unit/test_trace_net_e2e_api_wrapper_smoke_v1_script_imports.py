@@ -10,7 +10,7 @@ if str(REPO_ROOT) not in sys.path:
 
 
 def test_build_script_imports():
-    path = Path("scripts/build_trace_net_e2e_api_wrapper_smoke_v1.py")
+    path = Path("scripts/benchmark/build_trace_net_e2e_api_wrapper_smoke_v1.py")
     spec = importlib.util.spec_from_file_location("build_trace_net_e2e_api_wrapper_smoke_v1", path)
     module = importlib.util.module_from_spec(spec)
     assert spec.loader is not None
@@ -19,7 +19,7 @@ def test_build_script_imports():
 
 
 def test_check_script_imports():
-    path = Path("scripts/check_trace_net_e2e_api_wrapper_smoke_v1_quality.py")
+    path = Path("scripts/benchmark/check_trace_net_e2e_api_wrapper_smoke_v1_quality.py")
     spec = importlib.util.spec_from_file_location("check_trace_net_e2e_api_wrapper_smoke_v1_quality", path)
     module = importlib.util.module_from_spec(spec)
     assert spec.loader is not None

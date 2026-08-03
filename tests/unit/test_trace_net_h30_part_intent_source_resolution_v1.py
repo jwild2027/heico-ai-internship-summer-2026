@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from types import SimpleNamespace
 
-from scripts.trace_net_h30_part_intent_source_resolution_v1 import (
+from src.trace_net.retrieval.trace_net_h30_part_intent_source_resolution_v1 import (
     apply_intent_to_atoms,
     build_claim_evidence,
     build_source_resolution,
@@ -433,7 +433,7 @@ def _response_for_semantic_test(*, query_atoms, candidates=None, direct=None, ci
 
 
 def test_semantic_benchmark_accepts_fail_closed_exact_guidance():
-    from scripts.run_trace_net_h30_phase4_3_semantic_benchmark_v1 import evaluate_semantic_response
+    from scripts.benchmark.run_trace_net_h30_phase4_3_semantic_benchmark_v1 import evaluate_semantic_response
 
     response = _response_for_semantic_test(
         query_atoms={"identifier_mode": "exact"},
@@ -452,7 +452,7 @@ def test_semantic_benchmark_accepts_fail_closed_exact_guidance():
 
 
 def test_semantic_benchmark_rejects_unrelated_exact_candidate():
-    from scripts.run_trace_net_h30_phase4_3_semantic_benchmark_v1 import evaluate_semantic_response
+    from scripts.benchmark.run_trace_net_h30_phase4_3_semantic_benchmark_v1 import evaluate_semantic_response
 
     response = _response_for_semantic_test(
         query_atoms={"identifier_mode": "exact"},
@@ -472,7 +472,7 @@ def test_semantic_benchmark_rejects_unrelated_exact_candidate():
 
 
 def test_semantic_benchmark_rejects_ocr_noise_and_duplicate_lines():
-    from scripts.run_trace_net_h30_phase4_3_semantic_benchmark_v1 import evaluate_semantic_response
+    from scripts.benchmark.run_trace_net_h30_phase4_3_semantic_benchmark_v1 import evaluate_semantic_response
 
     content = "## Answer\n\nPlease provide the exact missing part-number fragment?\nPlease provide the exact missing part-number fragment?\n\n## Evidence\n\nNo proof.\n\n## Engineering confidence\n\nGuidance only.\n\n## Limits\n\n- Source proof required."
     response = _response_for_semantic_test(
@@ -495,7 +495,7 @@ def test_semantic_benchmark_rejects_ocr_noise_and_duplicate_lines():
 
 
 def test_semantic_benchmark_requires_visible_citation_alignment():
-    from scripts.run_trace_net_h30_phase4_3_semantic_benchmark_v1 import evaluate_semantic_response
+    from scripts.benchmark.run_trace_net_h30_phase4_3_semantic_benchmark_v1 import evaluate_semantic_response
 
     direct = [{"page_id": "p1", "field_name": "part_number", "normalized_value": "120-41824-003"}]
     response = _response_for_semantic_test(

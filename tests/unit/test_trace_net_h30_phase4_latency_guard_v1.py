@@ -1,6 +1,6 @@
 import json
 
-from scripts import trace_net_h30_constrained_gemma_writer_v1 as writer
+from src.trace_net.writing import trace_net_h30_constrained_gemma_writer_v1 as writer
 
 
 CONTENT = """## Answer

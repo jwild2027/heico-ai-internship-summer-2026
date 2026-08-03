@@ -8,7 +8,7 @@ import pytest
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-SCRIPT = REPO_ROOT / "scripts" / "build_trace_net_visual_lab_v1.py"
+SCRIPT = REPO_ROOT / "scripts/build/visual/build_trace_net_visual_lab_v1.py"
 VISUAL_LAB = REPO_ROOT / "local_data" / "organization" / "trace_net" / "visual_lab"
 
 

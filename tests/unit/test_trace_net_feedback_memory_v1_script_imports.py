@@ -10,16 +10,16 @@ def run_help(script: str) -> None:
 
 
 def test_init_script_imports() -> None:
-    run_help("scripts/init_trace_net_feedback_memory_v1.py")
+    run_help("scripts/operations/feedback/init_trace_net_feedback_memory_v1.py")
 
 
 def test_record_script_imports() -> None:
-    run_help("scripts/record_trace_net_feedback_v1.py")
+    run_help("scripts/maintenance/feedback/record_trace_net_feedback_v1.py")
 
 
 def test_build_script_imports() -> None:
-    run_help("scripts/build_trace_net_feedback_memory_v1.py")
+    run_help("scripts/build/feedback/build_trace_net_feedback_memory_v1.py")
 
 
 def test_quality_script_imports() -> None:
-    run_help("scripts/check_trace_net_feedback_memory_v1_quality.py")
+    run_help("scripts/maintenance/feedback/check_trace_net_feedback_memory_v1_quality.py")

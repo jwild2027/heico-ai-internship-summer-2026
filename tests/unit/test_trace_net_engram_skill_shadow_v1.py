@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 SHADOW_PATH = Path("tiff/trace_net_engram_skill_shadow_v1.py")
-INSTALLER_PATH = Path("scripts/trace_net_h30_engram_skill_shadow_v1.py")
+INSTALLER_PATH = Path("src/trace_net/engram/trace_net_h30_engram_skill_shadow_v1.py")
 LIBRARY_PATH = Path(
     "local_data/organization/trace_net/engram_skill_cards_v1/"
     "trace_net_engram_skill_cards_v1.json"
@@ -219,7 +219,7 @@ def test_offline_report_builds_files(tmp_path):
     records.write_text(json.dumps(row) + "\n", encoding="utf-8")
 
     report = load(
-        Path("scripts/build_trace_net_engram_skill_shadow_report_v1.py"),
+        Path("scripts/build/engram/build_trace_net_engram_skill_shadow_report_v1.py"),
         "shadow_report",
     )
     output_dir = tmp_path / "out"

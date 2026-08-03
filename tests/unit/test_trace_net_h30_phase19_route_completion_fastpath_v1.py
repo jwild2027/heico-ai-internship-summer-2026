@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from scripts.trace_net_h30_phase19_route_completion_fastpath_v1 import (
+from src.trace_net.router.trace_net_h30_phase19_route_completion_fastpath_v1 import (
     evidence_sufficient,
     install_phase19_route_completion_fastpath,
 )

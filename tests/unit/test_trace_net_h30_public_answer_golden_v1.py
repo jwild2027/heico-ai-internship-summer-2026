@@ -5,7 +5,7 @@ import json
 import sys
 from pathlib import Path
 
-MODULE_PATH = Path("scripts/check_trace_net_h30_public_answer_golden_v1.py")
+MODULE_PATH = Path("scripts/benchmark/core/check_trace_net_h30_public_answer_golden_v1.py")
 CONTRACT_PATH = Path("tests/fixtures/trace_net_h30_tiff_grounded20_public_answer_golden_v1.json")
 
 

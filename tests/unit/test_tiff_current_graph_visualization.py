@@ -13,7 +13,7 @@ def test_current_509_page_graph_visualization_outputs_printable_summary() -> Non
     if not (graph_dir / "graph_nodes.json").exists() or not (graph_dir / "graph_edges.json").exists():
         pytest.skip("local graph artifacts are not present")
     if not (trait_dir / "page_character_cards.json").exists():
-        pytest.skip("entity-trait page character cards are not present; run scripts/export_entity_trait_graph.py first")
+        pytest.skip("entity-trait page character cards are not present; run scripts/build/graph/export_entity_trait_graph.py first")
 
     result = export_graph_visualizations(
         graph_dir=graph_dir,

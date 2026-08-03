@@ -1,4 +1,21 @@
 {
-  "schema_version": "trace_net_visual_lab_export_v1",
-  "datasets": []
+  "datasets": [
+    {
+      "generated_at_utc": "2026-07-31T18:18:05.110602+00:00",
+      "label": "Full 509-page run",
+      "manifest": "data/full_509/manifest.json",
+      "page_count": 509,
+      "quality_status": "PASS",
+      "slug": "full_509"
+    },
+    {
+      "generated_at_utc": "2026-07-31T18:18:05.869773+00:00",
+      "label": "Mini 10-page run",
+      "manifest": "data/mini_10/manifest.json",
+      "page_count": 10,
+      "quality_status": "PASS",
+      "slug": "mini_10"
+    }
+  ],
+  "schema_version": "trace_net_visual_lab_export_v1"
 }

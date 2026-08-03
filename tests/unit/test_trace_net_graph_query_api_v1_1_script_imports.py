@@ -4,7 +4,7 @@ import sys
 
 def test_run_script_help_imports():
     result = subprocess.run(
-        [sys.executable, "scripts/run_trace_net_graph_query_api_v1_1.py", "--help"],
+        [sys.executable, "scripts/operations/graph/run_trace_net_graph_query_api_v1_1.py", "--help"],
         text=True,
         capture_output=True,
         timeout=15,
@@ -15,7 +15,7 @@ def test_run_script_help_imports():
 
 def test_quality_script_help_imports():
     result = subprocess.run(
-        [sys.executable, "scripts/check_trace_net_graph_query_api_v1_1_quality.py", "--help"],
+        [sys.executable, "scripts/maintenance/benchmark/check_trace_net_graph_query_api_v1_1_quality.py", "--help"],
         text=True,
         capture_output=True,
         timeout=15,

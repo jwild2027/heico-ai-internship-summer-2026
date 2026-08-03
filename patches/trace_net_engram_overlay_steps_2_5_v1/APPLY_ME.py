@@ -728,10 +728,10 @@ python patches/trace_net_engram_overlay_steps_2_5_v1/APPLY_ME.py
 '''
 
 write("tiff/trace_net_engineering_answer_runner_overlay_context_pack_v1.py", CONTEXT_PACK)
-write("scripts/build_trace_net_engineering_answer_runner_overlay_context_pack_v1.py", BUILD_SCRIPT)
-write("scripts/check_trace_net_engineering_answer_runner_overlay_context_pack_v1.py", CHECK_SCRIPT)
+write("scripts/build/context/build_trace_net_engineering_answer_runner_overlay_context_pack_v1.py", BUILD_SCRIPT)
+write("scripts/maintenance/context/check_trace_net_engineering_answer_runner_overlay_context_pack_v1.py", CHECK_SCRIPT)
 write("tiff/trace_net_engineering_engram_answer_runner_overlay_llm_smoke_complete_v1.py", COMPLETENESS)
-write("scripts/check_trace_net_engineering_engram_answer_runner_overlay_llm_smoke_complete_v1.py", COMPLETE_SCRIPT)
+write("scripts/benchmark/check_trace_net_engineering_engram_answer_runner_overlay_llm_smoke_complete_v1.py", COMPLETE_SCRIPT)
 write("tests/unit/test_trace_net_engineering_answer_runner_overlay_context_pack_v1.py", TEST_CONTEXT)
 write("tests/unit/test_trace_net_engineering_engram_answer_runner_overlay_llm_smoke_complete_v1.py", TEST_COMPLETE)
 write("docs/trace_net_engineering_answer_runner_overlay_context_pack_v1_README.md", README)

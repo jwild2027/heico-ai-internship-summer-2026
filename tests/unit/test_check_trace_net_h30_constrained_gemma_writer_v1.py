@@ -1,6 +1,6 @@
 import json
 
-from scripts.check_trace_net_h30_constrained_gemma_writer_v1 import inspect_run
+from scripts.maintenance.writing.check_trace_net_h30_constrained_gemma_writer_v1 import inspect_run
 
 
 def _write(path, qid, route, writer, accepted=True):

@@ -81,7 +81,7 @@ def test_write_pipeline_manifest_creates_timestamped_and_latest(tmp_path: Path, 
 
     config = PipelineConfig(db_path=str(db_path), config_path="local_config.yaml")
     result = PipelineRunResult(
-        step=PipelineStep("rag_eval", ("python", "scripts/evaluate_rag_questions.py")),
+        step=PipelineStep("rag_eval", ("python", "scripts/benchmark/evaluate_rag_questions.py")),
         returncode=0,
         elapsed_seconds=1.25,
     )

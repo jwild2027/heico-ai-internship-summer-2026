@@ -7,7 +7,7 @@ from pathlib import Path
 
 def test_build_script_help_runs_from_repo_root():
     result = subprocess.run(
-        [sys.executable, "scripts/build_trace_net_table_exact_search_adapter_v1.py", "--help"],
+        [sys.executable, "scripts/build/tables/build_trace_net_table_exact_search_adapter_v1.py", "--help"],
         cwd=Path(__file__).resolve().parents[2],
         text=True,
         capture_output=True,
@@ -19,7 +19,7 @@ def test_build_script_help_runs_from_repo_root():
 
 def test_quality_script_help_runs_from_repo_root():
     result = subprocess.run(
-        [sys.executable, "scripts/check_trace_net_table_exact_search_adapter_v1_quality.py", "--help"],
+        [sys.executable, "scripts/maintenance/benchmark/check_trace_net_table_exact_search_adapter_v1_quality.py", "--help"],
         cwd=Path(__file__).resolve().parents[2],
         text=True,
         capture_output=True,

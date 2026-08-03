@@ -17,18 +17,18 @@ run_case() {
   echo "Command args: $*"
   echo "============================================================"
 
-  python scripts/trace_net_ask.py "$@" --top-k 10
+  python legacy/scripts/obsolete_cli/trace_net_ask.py "$@" --top-k 10
 
-  python scripts/check_trace_net_ask_quality.py \
+  python scripts/maintenance/benchmark/check_trace_net_ask_quality.py \
     --write-json \
     --min-answer-pages 1 \
     --min-evidence-records 1 \
     --max-unsafe-answer-groups 0 \
     --require-feedback-mode off
 
-  python scripts/simulate_trace_net_weighted_search.py
+  python scripts/operations/ingestion/simulate_trace_net_weighted_search.py
 
-  python scripts/check_trace_net_weighted_search_quality.py \
+  python scripts/maintenance/benchmark/check_trace_net_weighted_search_quality.py \
     --write-json \
     --min-groups 1 \
     --min-pages 1 \

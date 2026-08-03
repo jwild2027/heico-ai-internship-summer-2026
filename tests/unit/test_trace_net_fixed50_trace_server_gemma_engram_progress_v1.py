@@ -3,7 +3,7 @@ import importlib.util
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SCRIPT = ROOT / "scripts" / "run_trace_net_fixed50_trace_server_gemma_engram_progress_v1.py"
+SCRIPT = ROOT / "scripts/benchmark/serving/run_trace_net_fixed50_trace_server_gemma_engram_progress_v1.py"
 FIXTURE = ROOT / "tests" / "fixtures" / "trace_net_fixed50_questions_v1.json"
 
 

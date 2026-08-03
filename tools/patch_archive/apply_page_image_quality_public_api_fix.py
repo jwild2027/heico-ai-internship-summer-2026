@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 
 MODULE = Path('tiff/page_image_recognition_quality.py')
-CHECK_SCRIPT = Path('scripts/check_page_image_recognition_quality.py')
+CHECK_SCRIPT = Path('scripts/maintenance/ingestion/check_page_image_recognition_quality.py')
 
 MODULE_CODE = r'''from __future__ import annotations
 

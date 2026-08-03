@@ -6,8 +6,8 @@ from pathlib import Path
 
 def test_scripts_importable() -> None:
     for rel in [
-        "scripts/build_trace_net_category_aware_graph_ui_overlay_v1.py",
-        "scripts/check_trace_net_category_aware_graph_ui_overlay_v1_quality.py",
+        "scripts/build/graph/build_trace_net_category_aware_graph_ui_overlay_v1.py",
+        "scripts/maintenance/graph/check_trace_net_category_aware_graph_ui_overlay_v1_quality.py",
     ]:
         path = Path(rel)
         assert path.exists()

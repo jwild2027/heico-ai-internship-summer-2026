@@ -3,13 +3,13 @@ import sys
 from pathlib import Path
 
 MODULE_PATH = Path(
-    "scripts/trace_net_h30_final_engram_rollout_v1.py"
+    "src/trace_net/validation/trace_net_h30_final_engram_rollout_v1.py"
 )
 WRITER_PATH = Path(
-    "scripts/serve_trace_net_full_gemma_cognitive_v1.py"
+    "scripts/operations/serving/serve_trace_net_full_gemma_cognitive_v1.py"
 )
 LAUNCHER_PATH = Path(
-    "scripts/launch_trace_net_cognitive_openwebui_v1.sh"
+    "scripts/operations/launch_trace_net_cognitive_openwebui_v1.sh"
 )
 
 

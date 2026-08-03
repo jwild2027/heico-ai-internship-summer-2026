@@ -202,7 +202,7 @@ def test_script_build_and_check(tmp_path: Path):
     build = subprocess.run(
         [
             sys.executable,
-            str(root / "scripts" / "build_trace_net_e2e_llm_prompt_contract_v11.py"),
+            str(root / "scripts/build/core/build_trace_net_e2e_llm_prompt_contract_v11.py"),
             "--dynamic-context-pack",
             str(context_path),
             "--self-rag-context-critic",
@@ -250,7 +250,7 @@ def test_script_build_and_check(tmp_path: Path):
     check = subprocess.run(
         [
             sys.executable,
-            str(root / "scripts" / "check_trace_net_e2e_llm_prompt_contract_v11_quality.py"),
+            str(root / "scripts/maintenance/benchmark/check_trace_net_e2e_llm_prompt_contract_v11_quality.py"),
             "--report-path",
             str(report_path),
             "--min-context-packs",

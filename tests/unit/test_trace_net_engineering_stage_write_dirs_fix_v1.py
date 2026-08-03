@@ -1,4 +1,4 @@
-from scripts.fix_trace_net_engineering_stage_write_dirs_v1 import patch_write_json_text
+from scripts.migration.ingestion.fix_trace_net_engineering_stage_write_dirs_v1 import patch_write_json_text
 
 
 def test_patch_write_json_adds_parent_mkdir_before_write_text():

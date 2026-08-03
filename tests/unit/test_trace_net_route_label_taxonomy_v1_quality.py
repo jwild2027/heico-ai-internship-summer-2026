@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from tiff.trace_net_route_label_taxonomy_v1 import build_route_label_taxonomy
-from scripts.check_trace_net_route_label_taxonomy_v1_quality import check_quality
+from scripts.maintenance.benchmark.check_trace_net_route_label_taxonomy_v1_quality import check_quality
 
 
 def test_quality_check_passes_with_required_labels(tmp_path):

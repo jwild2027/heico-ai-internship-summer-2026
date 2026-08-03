@@ -3,13 +3,13 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from scripts.trace_net_nha_phase5_synthetic_benchmark_v1 import (
+from src.trace_net.graph.trace_net_nha_phase5_synthetic_benchmark_v1 import (
     build_answer_key,
     build_synthetic_benchmark,
     validate_phase5,
     build_graph_overlay,
 )
-from scripts.trace_net_nha_phase20_gemma100_v1 import (
+from src.trace_net.graph.trace_net_nha_phase20_gemma100_v1 import (
     DIRECT_PARENT_TEMPLATES,
     build_benchmark_packet,
     build_gemma100_answer_key,
@@ -226,5 +226,5 @@ def test_direct_parent_template_library_is_diverse():
 
 
 def test_launcher_isolates_legacy_tests_from_phase19_env():
-    launcher = Path("scripts/launch_trace_net_cognitive_openwebui_v1.sh").read_text(encoding="utf-8")
+    launcher = Path("scripts/operations/launch_trace_net_cognitive_openwebui_v1.sh").read_text(encoding="utf-8")
     assert 'TRACE_NET_H30_PHASE19_PRESERVATION_WRITER_ENABLED=0 "$PYTHON" -m pytest -q' in launcher

@@ -1,6 +1,6 @@
 from collections import Counter
 
-from scripts.trace_net_h30_phase5_question_bank_v1 import (
+from scripts.benchmark.trace_net_h30_phase5_question_bank_v1 import (
     CATEGORY_COUNTS,
     EXPECTED_ROUTE_COUNTS,
     EXPECTED_TOTAL,

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from scripts.run_trace_net_nha_phase19_unified8131_gate_v1 import evaluate, summarize
+from scripts.operations.graph.run_trace_net_nha_phase19_unified8131_gate_v1 import evaluate, summarize
 
 
 def upstream_case():

@@ -5,7 +5,7 @@ import json
 import sys
 from pathlib import Path
 
-MODULE_PATH = Path("scripts/check_trace_net_h30_content_reconstruction_v1.py")
+MODULE_PATH = Path("scripts/maintenance/writing/check_trace_net_h30_content_reconstruction_v1.py")
 
 
 def load(name="phase3_checker"):

@@ -1,7 +1,7 @@
-"""Compatibility wrapper for the visual text extraction quality gate.
+"""Compatibility shim (tiff reorganization). Moved to ``src.trace_net.visual.quality.visual_text_quality``.
 
-The canonical module is ``tiff.visual_text_extraction_quality``.  This wrapper
-keeps shorter imports working for notebooks, scripts, or tests.
+Old ``tiff`` imports keep working: this re-exports the relocated module in full.
 """
-
-from tiff.visual_text_extraction_quality import *  # noqa: F401,F403
+import importlib as _importlib
+import sys as _sys
+_sys.modules[__name__] = _importlib.import_module("src.trace_net.visual.quality.visual_text_quality")

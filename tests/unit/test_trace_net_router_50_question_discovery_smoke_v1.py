@@ -4,7 +4,7 @@ from pathlib import Path
 import importlib.util
 import sys
 
-SCRIPT_PATH = Path("scripts/run_trace_net_router_50_question_discovery_smoke_v1.py")
+SCRIPT_PATH = Path("scripts/benchmark/run_trace_net_router_50_question_discovery_smoke_v1.py")
 FIXTURE_PATH = Path("tests/fixtures/trace_net_router_50_question_discovery_questions_v1.json")
 
 

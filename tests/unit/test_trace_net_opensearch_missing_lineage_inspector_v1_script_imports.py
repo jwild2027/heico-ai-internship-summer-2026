@@ -8,7 +8,7 @@ def test_module_imports():
 
 
 def test_script_wrappers_import():
-    build_script = importlib.import_module("scripts.build_trace_net_opensearch_missing_lineage_inspector_v1")
-    check_script = importlib.import_module("scripts.check_trace_net_opensearch_missing_lineage_inspector_v1_quality")
+    build_script = importlib.import_module("scripts.build.retrieval.build_trace_net_opensearch_missing_lineage_inspector_v1")
+    check_script = importlib.import_module("scripts.maintenance.benchmark.check_trace_net_opensearch_missing_lineage_inspector_v1_quality")
     assert callable(build_script.main)
     assert callable(check_script.main)

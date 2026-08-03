@@ -1,4 +1,4 @@
-from scripts.start_trace_net_openwebui_e2e_v1 import (
+from scripts.operations.serving.start_trace_net_openwebui_e2e_v1 import (
     endpoint_ask_url,
     endpoint_chat_url,
     endpoint_health_url,

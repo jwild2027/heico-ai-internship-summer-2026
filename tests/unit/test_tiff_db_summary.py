@@ -4,8 +4,8 @@ from pathlib import Path
 
 from PIL import Image
 
-from scripts.batch_scan_tiffs_to_json import scan_folder_to_json
-from scripts.summarize_tiff_db import summarize_db
+from src.trace_net.ingestion.batch_scan_tiffs_to_json import scan_folder_to_json
+from scripts.maintenance.ingestion.summarize_tiff_db import summarize_db
 
 
 def _make_tiff(path: Path) -> None:

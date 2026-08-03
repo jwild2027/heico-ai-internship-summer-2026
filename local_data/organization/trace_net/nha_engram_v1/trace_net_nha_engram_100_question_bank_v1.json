@@ -1,0 +1,1382 @@
+{
+  "records": [
+    {
+      "question_id": "NHA-ENGRAM-001",
+      "category": "direct_nha",
+      "query": "What is the direct NHA of part 120-20970-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "direct_parent"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-002",
+      "category": "direct_nha",
+      "query": "What is the next higher assembly for 120-29073-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "direct_parent"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-003",
+      "category": "direct_nha",
+      "query": "Which larger assembly directly contains 120-34291-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "direct_parent"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-004",
+      "category": "direct_nha",
+      "query": "What is the immediate parent assembly of 120-48023-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "direct_parent"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-005",
+      "category": "direct_nha",
+      "query": "What is one level above 120-29074-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "direct_parent"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-006",
+      "category": "direct_nha",
+      "query": "Which parent assembly does 120-29077-001 belong to?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "direct_parent"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-007",
+      "category": "direct_nha",
+      "query": "Where does 42952-10 sit in the assembly hierarchy?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "direct_parent"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-008",
+      "category": "direct_nha",
+      "query": "What larger unit contains NAS464P5A16?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "direct_parent"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-009",
+      "category": "direct_nha",
+      "query": "Which assembly is MS21042L5 installed in?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "direct_parent"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-010",
+      "category": "direct_nha",
+      "query": "Tell me the direct parent of 120-61546-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "direct_parent"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-011",
+      "category": "direct_nha",
+      "query": "Is there an immediate assembly above 120-36060-003?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "direct_parent"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-012",
+      "category": "direct_nha",
+      "query": "What assembly is part 120-20970-003 directly under?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "direct_parent"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-013",
+      "category": "direct_nha",
+      "query": "Where does 120-20970-001 mount in the hierarchy?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "direct_parent"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-014",
+      "category": "direct_nha",
+      "query": "Name the one-hop parent for 120-29073-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "direct_parent"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-015",
+      "category": "direct_nha",
+      "query": "Which component group directly owns 120-34291-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "direct_parent"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-016",
+      "category": "ancestor_chain",
+      "query": "Show the complete assembly chain above 120-20970-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "ancestor_chain",
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "required_atoms": [
+        "ancestor_chain_intent",
+        "ancestor_chain"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-017",
+      "category": "ancestor_chain",
+      "query": "Walk me upward through the assemblies for 120-29073-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "ancestor_chain",
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "required_atoms": [
+        "ancestor_chain_intent",
+        "ancestor_chain"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-018",
+      "category": "ancestor_chain",
+      "query": "List all higher assemblies above 120-34291-001 in order.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "ancestor_chain",
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "required_atoms": [
+        "ancestor_chain_intent",
+        "ancestor_chain"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-019",
+      "category": "ancestor_chain",
+      "query": "Trace the ancestor chain for 120-48023-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "ancestor_chain",
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "required_atoms": [
+        "ancestor_chain_intent",
+        "ancestor_chain"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-020",
+      "category": "ancestor_chain",
+      "query": "Give the full hierarchy from 120-29074-001 to the top assembly.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "ancestor_chain",
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "required_atoms": [
+        "ancestor_chain_intent",
+        "ancestor_chain"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-021",
+      "category": "ancestor_chain",
+      "query": "What is the parent path above 120-29077-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "ancestor_chain",
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "required_atoms": [
+        "ancestor_chain_intent",
+        "ancestor_chain"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-022",
+      "category": "ancestor_chain",
+      "query": "Trace upward one supported hop at a time from 42952-10.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "ancestor_chain",
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "required_atoms": [
+        "ancestor_chain_intent",
+        "ancestor_chain"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-023",
+      "category": "ancestor_chain",
+      "query": "Show every supported ancestor of NAS464P5A16.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "ancestor_chain",
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "required_atoms": [
+        "ancestor_chain_intent",
+        "ancestor_chain"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-024",
+      "category": "ancestor_chain",
+      "query": "How does MS21042L5 roll up through the assembly structure?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "ancestor_chain",
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "required_atoms": [
+        "ancestor_chain_intent",
+        "ancestor_chain"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-025",
+      "category": "ancestor_chain",
+      "query": "Give me the ordered assembly lineage for 120-61546-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "ancestor_chain",
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "required_atoms": [
+        "ancestor_chain_intent",
+        "ancestor_chain"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-026",
+      "category": "ancestor_chain",
+      "query": "From part 120-36060-003, what is the chain of containing assemblies?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "ancestor_chain",
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "required_atoms": [
+        "ancestor_chain_intent",
+        "ancestor_chain"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-027",
+      "category": "ancestor_chain",
+      "query": "Walk from 120-20970-003 to its highest supported assembly.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "ancestor_chain",
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "required_atoms": [
+        "ancestor_chain_intent",
+        "ancestor_chain"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-028",
+      "category": "ancestor_chain",
+      "query": "Show the hierarchy above 120-20970-001 without skipping intermediate parents.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "ancestor_chain",
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "required_atoms": [
+        "ancestor_chain_intent",
+        "ancestor_chain"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-029",
+      "category": "ancestor_chain",
+      "query": "List the NHA chain for 120-29073-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "ancestor_chain",
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "required_atoms": [
+        "ancestor_chain_intent",
+        "ancestor_chain"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-030",
+      "category": "ancestor_chain",
+      "query": "What are all parents above 120-34291-001, nearest first?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "ancestor_chain",
+      "expected_primary_skill": "nha_ancestor_chain_reasoning",
+      "required_atoms": [
+        "ancestor_chain_intent",
+        "ancestor_chain"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-031",
+      "category": "direct_children",
+      "query": "List the direct children of assembly 120-29067-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_children",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_children_intent",
+        "direct_children"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-032",
+      "category": "direct_children",
+      "query": "Which parts sit immediately below assembly 120-29073-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_children",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_children_intent",
+        "direct_children"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-033",
+      "category": "direct_children",
+      "query": "Show the immediate components of 120-29074-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_children",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_children_intent",
+        "direct_children"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-034",
+      "category": "direct_children",
+      "query": "What does assembly 120-29067-001 directly contain?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_children",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_children_intent",
+        "direct_children"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-035",
+      "category": "direct_children",
+      "query": "Give the one-level breakdown under 120-29073-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_children",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_children_intent",
+        "direct_children"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-036",
+      "category": "direct_children",
+      "query": "Which components are directly under 120-29074-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_children",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_children_intent",
+        "direct_children"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-037",
+      "category": "direct_children",
+      "query": "List only the one-hop children of 120-29067-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_children",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_children_intent",
+        "direct_children"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-038",
+      "category": "direct_children",
+      "query": "What parts belong immediately to assembly 120-29073-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_children",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_children_intent",
+        "direct_children"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-039",
+      "category": "direct_children",
+      "query": "Show the direct component list for 120-29074-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_children",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_children_intent",
+        "direct_children"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-040",
+      "category": "direct_children",
+      "query": "Which items are one level below 120-29067-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_children",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_children_intent",
+        "direct_children"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-041",
+      "category": "direct_children",
+      "query": "Name the immediate child relationships of 120-29073-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_children",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_children_intent",
+        "direct_children"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-042",
+      "category": "direct_children",
+      "query": "What is directly contained by assembly 120-29074-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_children",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_children_intent",
+        "direct_children"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-043",
+      "category": "descendants",
+      "query": "Show direct versus lower descendants below assembly 120-29067-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_vs_descendants",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_vs_descendants_intent",
+        "lower_descendants"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-044",
+      "category": "descendants",
+      "query": "Separate the immediate children and all lower descendants of 120-29073-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_vs_descendants",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_vs_descendants_intent",
+        "lower_descendants"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-045",
+      "category": "descendants",
+      "query": "Give the full breakdown below 120-29074-001, keeping one-hop parts separate.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_vs_descendants",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_vs_descendants_intent",
+        "lower_descendants"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-046",
+      "category": "descendants",
+      "query": "Which direct components and nested components are under 120-29067-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_vs_descendants",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_vs_descendants_intent",
+        "lower_descendants"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-047",
+      "category": "descendants",
+      "query": "List the lower descendants of 120-29073-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_vs_descendants",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_vs_descendants_intent",
+        "lower_descendants"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-048",
+      "category": "descendants",
+      "query": "Show all components below 120-29074-001, grouped by depth.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_vs_descendants",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_vs_descendants_intent",
+        "lower_descendants"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-049",
+      "category": "descendants",
+      "query": "What subassemblies and nested parts descend from 120-29067-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_vs_descendants",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_vs_descendants_intent",
+        "lower_descendants"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-050",
+      "category": "descendants",
+      "query": "Compare direct children with transitive descendants for 120-29073-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_vs_descendants",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_vs_descendants_intent",
+        "lower_descendants"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-051",
+      "category": "descendants",
+      "query": "Give the entire hierarchy below 120-29074-001 without flattening it.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_vs_descendants",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_vs_descendants_intent",
+        "lower_descendants"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-052",
+      "category": "descendants",
+      "query": "Show the descendant tree under 120-29067-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_vs_descendants",
+      "expected_primary_skill": "nha_children_descendants_reasoning",
+      "required_atoms": [
+        "direct_vs_descendants_intent",
+        "lower_descendants"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-053",
+      "category": "relationship_evidence",
+      "query": "Which page proves the NHA relationship for 120-20970-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "relationship_evidence",
+      "expected_primary_skill": "nha_relationship_evidence",
+      "required_atoms": [
+        "relationship_evidence_intent",
+        "source_page_required"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-054",
+      "category": "relationship_evidence",
+      "query": "Cite the source page for the parent relationship of 120-29073-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "relationship_evidence",
+      "expected_primary_skill": "nha_relationship_evidence",
+      "required_atoms": [
+        "relationship_evidence_intent",
+        "source_page_required"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-055",
+      "category": "relationship_evidence",
+      "query": "Where is the NHA relationship for 120-34291-001 shown?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "relationship_evidence",
+      "expected_primary_skill": "nha_relationship_evidence",
+      "required_atoms": [
+        "relationship_evidence_intent",
+        "source_page_required"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-056",
+      "category": "relationship_evidence",
+      "query": "What IPL page supports the parent assembly of 120-48023-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "relationship_evidence",
+      "expected_primary_skill": "nha_relationship_evidence",
+      "required_atoms": [
+        "relationship_evidence_intent",
+        "source_page_required"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-057",
+      "category": "relationship_evidence",
+      "query": "Show the relationship evidence pages for 120-29074-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "relationship_evidence",
+      "expected_primary_skill": "nha_relationship_evidence",
+      "required_atoms": [
+        "relationship_evidence_intent",
+        "source_page_required"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-058",
+      "category": "relationship_evidence",
+      "query": "Which figure and item prove the relationship for 120-29077-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "relationship_evidence",
+      "expected_primary_skill": "nha_relationship_evidence",
+      "required_atoms": [
+        "relationship_evidence_intent",
+        "source_page_required"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-059",
+      "category": "relationship_evidence",
+      "query": "Give the source pages connecting 42952-10 to its parent.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "relationship_evidence",
+      "expected_primary_skill": "nha_relationship_evidence",
+      "required_atoms": [
+        "relationship_evidence_intent",
+        "source_page_required"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-060",
+      "category": "relationship_evidence",
+      "query": "Where in the manual is this assembly relationship documented for NAS464P5A16?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "relationship_evidence",
+      "expected_primary_skill": "nha_relationship_evidence",
+      "required_atoms": [
+        "relationship_evidence_intent",
+        "source_page_required"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-061",
+      "category": "relationship_evidence",
+      "query": "What page should I cite for the direct NHA of MS21042L5?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "relationship_evidence",
+      "expected_primary_skill": "nha_relationship_evidence",
+      "required_atoms": [
+        "relationship_evidence_intent",
+        "source_page_required"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-062",
+      "category": "relationship_evidence",
+      "query": "Show the source evidence for 120-61546-001's parent candidates.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "relationship_evidence",
+      "expected_primary_skill": "nha_relationship_evidence",
+      "required_atoms": [
+        "relationship_evidence_intent",
+        "source_page_required"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-063",
+      "category": "scope_resolution",
+      "query": "Does the NHA of 120-20970-001 change by project?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "scope_conflict_resolution",
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "required_atoms": [
+        "scope_conflict_resolution_intent",
+        "scope_context"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-064",
+      "category": "scope_resolution",
+      "query": "Which parent applies to configuration A for 120-29073-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "scope_conflict_resolution",
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "required_atoms": [
+        "scope_conflict_resolution_intent",
+        "scope_context"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-065",
+      "category": "scope_resolution",
+      "query": "Compare the NHA of 120-34291-001 across revisions.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "scope_conflict_resolution",
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "required_atoms": [
+        "scope_conflict_resolution_intent",
+        "scope_context"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-066",
+      "category": "scope_resolution",
+      "query": "What parent assembly applies under usage code 001 for 120-48023-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "scope_conflict_resolution",
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "required_atoms": [
+        "scope_conflict_resolution_intent",
+        "scope_context"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-067",
+      "category": "scope_resolution",
+      "query": "Which effectivity selects the parent of 120-29074-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "scope_conflict_resolution",
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "required_atoms": [
+        "scope_conflict_resolution_intent",
+        "scope_context"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-068",
+      "category": "scope_resolution",
+      "query": "Does the parent of 120-29077-001 differ by variant?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "scope_conflict_resolution",
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "required_atoms": [
+        "scope_conflict_resolution_intent",
+        "scope_context"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-069",
+      "category": "scope_resolution",
+      "query": "For this aircraft configuration, which NHA owns 42952-10?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "scope_conflict_resolution",
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "required_atoms": [
+        "scope_conflict_resolution_intent",
+        "scope_context"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-070",
+      "category": "scope_resolution",
+      "query": "Compare project Alpha and project Beta parent relationships for NAS464P5A16.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "scope_conflict_resolution",
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "required_atoms": [
+        "scope_conflict_resolution_intent",
+        "scope_context"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-071",
+      "category": "scope_resolution",
+      "query": "Which revision changed the direct parent of MS21042L5?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "scope_conflict_resolution",
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "required_atoms": [
+        "scope_conflict_resolution_intent",
+        "scope_context"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-072",
+      "category": "scope_resolution",
+      "query": "I have multiple parent candidates for 120-61546-001; what configuration resolves them?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "scope_conflict_resolution",
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "required_atoms": [
+        "scope_conflict_resolution_intent",
+        "scope_context"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-073",
+      "category": "scope_resolution",
+      "query": "Which usage-code scope applies to 120-36060-003's NHA?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "scope_conflict_resolution",
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "required_atoms": [
+        "scope_conflict_resolution_intent",
+        "scope_context"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-074",
+      "category": "scope_resolution",
+      "query": "Does serial-range effectivity change the assembly above 120-20970-003?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "scope_conflict_resolution",
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "required_atoms": [
+        "scope_conflict_resolution_intent",
+        "scope_context"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-075",
+      "category": "scope_resolution",
+      "query": "Which dash-number variant determines the parent of 120-20970-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "scope_conflict_resolution",
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "required_atoms": [
+        "scope_conflict_resolution_intent",
+        "scope_context"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-076",
+      "category": "scope_resolution",
+      "query": "What project context is required to choose the NHA of 120-29073-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "scope_conflict_resolution",
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "required_atoms": [
+        "scope_conflict_resolution_intent",
+        "scope_context"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-077",
+      "category": "scope_resolution",
+      "query": "Compare configuration and revision scope for 120-34291-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "scope_conflict_resolution",
+      "expected_primary_skill": "nha_scope_conflict_resolution",
+      "required_atoms": [
+        "scope_conflict_resolution_intent",
+        "scope_context"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-078",
+      "category": "attaching_parts",
+      "query": "Which assembly directly owns the attaching part 42952-10?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "attaching_parts",
+        "nearest_supported_component"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-079",
+      "category": "attaching_parts",
+      "query": "What is the nearest supported component for attaching hardware MS21042L5?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "attaching_parts",
+        "nearest_supported_component"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-080",
+      "category": "attaching_parts",
+      "query": "Which component group is the fastener NAS464P5A16 directly under?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "attaching_parts",
+        "nearest_supported_component"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-081",
+      "category": "attaching_parts",
+      "query": "Where does the attaching bolt 120-48023-001 belong in the hierarchy?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "attaching_parts",
+        "nearest_supported_component"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-082",
+      "category": "attaching_parts",
+      "query": "What direct NHA applies to mounting hardware 42952-10?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "attaching_parts",
+        "nearest_supported_component"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-083",
+      "category": "attaching_parts",
+      "query": "Which nearest component contains the attaching part MS21042L5?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "attaching_parts",
+        "nearest_supported_component"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-084",
+      "category": "attaching_parts",
+      "query": "Do not jump to the top assembly; what directly contains the attaching fastener NAS464P5A16?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "attaching_parts",
+        "nearest_supported_component"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-085",
+      "category": "attaching_parts",
+      "query": "What one-hop parent owns the fastener group containing 120-48023-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": false,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "nha_direct_parent_lookup",
+      "required_atoms": [
+        "direct_nha_intent",
+        "attaching_parts",
+        "nearest_supported_component"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-086",
+      "category": "negative_exact_identifier",
+      "query": "Find part 120-20970-001.",
+      "expected_nha_candidate": false,
+      "expected_blocked": false,
+      "expected_intent": "none",
+      "expected_primary_skill": "",
+      "required_atoms": [],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-087",
+      "category": "negative_exact_identifier",
+      "query": "Where is part 120-20970-001 listed in the manual?",
+      "expected_nha_candidate": false,
+      "expected_blocked": false,
+      "expected_intent": "none",
+      "expected_primary_skill": "",
+      "required_atoms": [],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-088",
+      "category": "negative_exact_identifier",
+      "query": "Locate P/N 120-29073-001.",
+      "expected_nha_candidate": false,
+      "expected_blocked": false,
+      "expected_intent": "none",
+      "expected_primary_skill": "",
+      "required_atoms": [],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-089",
+      "category": "negative_exact_identifier",
+      "query": "What page lists 120-34291-001?",
+      "expected_nha_candidate": false,
+      "expected_blocked": false,
+      "expected_intent": "none",
+      "expected_primary_skill": "",
+      "required_atoms": [],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-090",
+      "category": "negative_procedure",
+      "query": "How do I install 120-20970-001?",
+      "expected_nha_candidate": false,
+      "expected_blocked": false,
+      "expected_intent": "none",
+      "expected_primary_skill": "",
+      "required_atoms": [],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-091",
+      "category": "negative_procedure",
+      "query": "Give the installation procedure for 120-29073-001.",
+      "expected_nha_candidate": false,
+      "expected_blocked": false,
+      "expected_intent": "none",
+      "expected_primary_skill": "",
+      "required_atoms": [],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-092",
+      "category": "negative_procedure",
+      "query": "How do I remove the assembly 120-29067-001?",
+      "expected_nha_candidate": false,
+      "expected_blocked": false,
+      "expected_intent": "none",
+      "expected_primary_skill": "",
+      "required_atoms": [],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-093",
+      "category": "negative_procedure",
+      "query": "What torque applies to bolt 42952-10?",
+      "expected_nha_candidate": false,
+      "expected_blocked": false,
+      "expected_intent": "none",
+      "expected_primary_skill": "",
+      "required_atoms": [],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-094",
+      "category": "negative_authority",
+      "query": "Is 120-20970-001 an approved replacement?",
+      "expected_nha_candidate": false,
+      "expected_blocked": false,
+      "expected_intent": "none",
+      "expected_primary_skill": "",
+      "required_atoms": [],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-095",
+      "category": "negative_authority",
+      "query": "Can I safely install 120-20970-001?",
+      "expected_nha_candidate": false,
+      "expected_blocked": false,
+      "expected_intent": "none",
+      "expected_primary_skill": "",
+      "required_atoms": [],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-096",
+      "category": "synthetic_block",
+      "query": "What is the direct NHA of synthetic part 990-91001-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": true,
+      "expected_intent": "direct_nha",
+      "expected_primary_skill": "",
+      "required_atoms": [
+        "synthetic_identifier",
+        "production_block_required"
+      ],
+      "core20": true
+    },
+    {
+      "question_id": "NHA-ENGRAM-097",
+      "category": "synthetic_block",
+      "query": "Show the assembly chain above 990-92001-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": true,
+      "expected_intent": "ancestor_chain",
+      "expected_primary_skill": "",
+      "required_atoms": [
+        "synthetic_identifier",
+        "production_block_required"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-098",
+      "category": "synthetic_block",
+      "query": "Which page proves the parent of 990-93001-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": true,
+      "expected_intent": "relationship_evidence",
+      "expected_primary_skill": "",
+      "required_atoms": [
+        "synthetic_identifier",
+        "production_block_required"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-099",
+      "category": "synthetic_block",
+      "query": "List direct children of synthetic assembly 990-94001-001.",
+      "expected_nha_candidate": true,
+      "expected_blocked": true,
+      "expected_intent": "direct_children",
+      "expected_primary_skill": "",
+      "required_atoms": [
+        "synthetic_identifier",
+        "production_block_required"
+      ],
+      "core20": false
+    },
+    {
+      "question_id": "NHA-ENGRAM-100",
+      "category": "synthetic_block",
+      "query": "Which revision changes the NHA of 990-95001-001?",
+      "expected_nha_candidate": true,
+      "expected_blocked": true,
+      "expected_intent": "scope_conflict_resolution",
+      "expected_primary_skill": "",
+      "required_atoms": [
+        "synthetic_identifier",
+        "production_block_required"
+      ],
+      "core20": false
+    }
+  ]
+}

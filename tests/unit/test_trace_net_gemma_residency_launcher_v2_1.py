@@ -5,8 +5,8 @@ import re
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-V2 = REPO_ROOT / "scripts" / "launch_trace_net_gemma_resident_openwebui_v2.sh"
-V2_1 = REPO_ROOT / "scripts" / "launch_trace_net_gemma_resident_openwebui_v2_1.sh"
+V2 = REPO_ROOT / "scripts/operations/launch_trace_net_gemma_resident_openwebui_v2.sh"
+V2_1 = REPO_ROOT / "scripts/operations/launch_trace_net_gemma_resident_openwebui_v2_1.sh"
 
 
 def read(path: Path) -> str:

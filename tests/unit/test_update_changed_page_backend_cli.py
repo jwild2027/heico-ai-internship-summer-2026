@@ -24,7 +24,7 @@ class FakeSummary:
 
 
 def _load_script_module():
-    script = Path(__file__).resolve().parents[2] / "scripts" / "update_changed_page_backend.py"
+    script = Path(__file__).resolve().parents[2] / "scripts/operations/ingestion/update_changed_page_backend.py"
     spec = importlib.util.spec_from_file_location("update_changed_page_backend_for_test", script)
     assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)

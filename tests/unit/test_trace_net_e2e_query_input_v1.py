@@ -82,7 +82,7 @@ def test_build_script_round_trip(tmp_path: Path) -> None:
     output_dir = tmp_path / "out"
     cmd = [
         sys.executable,
-        "scripts/build_trace_net_e2e_query_input_v1.py",
+        "scripts/build/ingestion/build_trace_net_e2e_query_input_v1.py",
         "--include-standard-demo-queries",
         "--output-dir",
         str(output_dir),
@@ -108,7 +108,7 @@ def test_quality_script_round_trip(tmp_path: Path) -> None:
     subprocess.run(
         [
             sys.executable,
-            "scripts/build_trace_net_e2e_query_input_v1.py",
+            "scripts/build/ingestion/build_trace_net_e2e_query_input_v1.py",
             "--include-standard-demo-queries",
             "--output-dir",
             str(output_dir),
@@ -128,7 +128,7 @@ def test_quality_script_round_trip(tmp_path: Path) -> None:
     subprocess.run(
         [
             sys.executable,
-            "scripts/check_trace_net_e2e_query_input_v1_quality.py",
+            "scripts/maintenance/benchmark/check_trace_net_e2e_query_input_v1_quality.py",
             "--report-path",
             str(output_dir / "trace_net_e2e_query_input_v1.json"),
             "--min-query-records",

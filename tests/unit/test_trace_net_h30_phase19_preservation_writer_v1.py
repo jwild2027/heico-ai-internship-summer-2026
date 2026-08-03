@@ -3,7 +3,7 @@ from __future__ import annotations
 import sys
 import types
 
-from scripts.trace_net_h30_phase19_preservation_writer_v1 import (
+from src.trace_net.writing.trace_net_h30_phase19_preservation_writer_v1 import (
     answer_digest,
     build_preservation_prompt,
     canonical_answer_object,
@@ -44,7 +44,7 @@ def test_install_monkeypatches_writer_and_attaches_telemetry(monkeypatch):
     monkeypatch.setenv("TRACE_NET_H30_PHASE19_PRESERVATION_WRITER_ENABLED", "1")
     monkeypatch.setenv("TRACE_NET_H30_PHASE19_PRESERVATION_MAX_TOKENS", "256")
 
-    fake_writer = types.ModuleType("scripts.trace_net_h30_constrained_gemma_writer_v1")
+    fake_writer = types.ModuleType("src.trace_net.writing.trace_net_h30_constrained_gemma_writer_v1")
     fake_writer.OUTPUT_SCHEMA_VERSION = "schema-v1"
     fake_writer.build_writer_packet = lambda *a, **k: packet()
     fake_writer.render_writer_prompt = lambda value: "legacy"

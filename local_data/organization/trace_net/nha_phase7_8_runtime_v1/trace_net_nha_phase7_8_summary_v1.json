@@ -1,0 +1,44 @@
+{
+  "schema_version": "trace_net_nha_phase7_8_runtime_v1",
+  "module": "trace_net_nha_phase7_8_runtime_v1",
+  "status": "TRACE_NET_NHA_PHASE7_8_RUNTIME_V1",
+  "quality_status": "PASS",
+  "phase4_dir": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\organization\\trace_net\\nha_phase4_hierarchy_v1",
+  "output_dir": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\organization\\trace_net\\nha_phase7_8_runtime_v1",
+  "input_sha256": {
+    "relationships": "7c522db686c7284d821af6934c6436deef4464f7313a2f3ac4d112f1e481b444",
+    "quality": "76301e45ebb94f989e920976888c013358114c8d4ffa65d7fffe717dff3b6c27",
+    "answer_key": "88b4cf8d71ce1ce80f3bbdaa109144050a523dcc5df128d1b2239af05b9f06ce"
+  },
+  "counts": {
+    "shadow_case_count": 40,
+    "shadow_pass_count": 40,
+    "shadow_fail_count": 0,
+    "shadow_candidate_count": 34,
+    "shadow_override_count": 0,
+    "gated_case_count": 40,
+    "gated_pass_count": 40,
+    "gated_fail_count": 0,
+    "gated_override_count": 34,
+    "gated_public_contract_pass_count": 34,
+    "false_gated_override_count": 0,
+    "synthetic_block_count": 6,
+    "synthetic_access_count": 0,
+    "llm_call_count_for_nha_overrides": 0,
+    "production_graph_write_count": 0,
+    "source_artifact_mutation_count": 0
+  },
+  "failures": [],
+  "warnings": [],
+  "artifacts": [
+    "trace_net_nha_phase7_8_gate_bank_v1.json",
+    "trace_net_nha_phase7_shadow_results_v1.json",
+    "trace_net_nha_phase7_shadow_results_v1.jsonl",
+    "trace_net_nha_phase7_shadow_telemetry_v1.jsonl",
+    "trace_net_nha_phase8_gated_results_v1.json",
+    "trace_net_nha_phase8_gated_results_v1.jsonl",
+    "trace_net_nha_phase8_gated_telemetry_v1.jsonl",
+    "trace_net_nha_phase7_8_quality_v1.json",
+    "report.md"
+  ]
+}

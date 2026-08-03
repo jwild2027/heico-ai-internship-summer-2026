@@ -1,4 +1,4 @@
-from scripts.fix_trace_net_engineering_eval_short_run_dirs_v1 import patch_text
+from scripts.migration.benchmark.fix_trace_net_engineering_eval_short_run_dirs_v1 import patch_text
 
 
 def test_patch_replaces_long_question_slug_line():

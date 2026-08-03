@@ -1,0 +1,33 @@
+{
+  "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+  "module": "trace_net_nha_phase6_query_benchmark_v1",
+  "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+  "quality_status": "PASS",
+  "failures": [],
+  "warnings": [],
+  "counts": {
+    "synthetic_question_count": 60,
+    "synthetic_pass_count": 60,
+    "synthetic_fail_count": 0,
+    "real_smoke_question_count": 20,
+    "real_smoke_pass_count": 20,
+    "real_smoke_fail_count": 0,
+    "llm_call_count": 0,
+    "production_graph_write_count": 0,
+    "source_artifact_mutation_count": 0
+  },
+  "safety_contract": {
+    "read_only": true,
+    "synthetic_requires_explicit_enable": true,
+    "synthetic_never_supports_production_claims": true,
+    "physical_tiff_modified": false,
+    "ocr_source_modified": false,
+    "phase4_artifacts_mutated": false,
+    "phase5_artifacts_mutated": false,
+    "source_truth_mutation_allowed": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "opensearch_write_attempt": false,
+    "llm_call_count": 0
+  }
+}

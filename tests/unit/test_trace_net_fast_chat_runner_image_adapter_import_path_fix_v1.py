@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 def _load_module():
-    path = Path("scripts/fix_trace_net_fast_chat_runner_image_adapter_import_path_v1.py")
+    path = Path("scripts/migration/visual/fix_trace_net_fast_chat_runner_image_adapter_import_path_v1.py")
     spec = importlib.util.spec_from_file_location("fix_import_path", path)
     assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)

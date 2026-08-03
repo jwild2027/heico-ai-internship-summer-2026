@@ -4,7 +4,7 @@ import importlib.util
 
 
 def _load_module():
-    path = Path("scripts/fix_trace_net_image_route_adapter_output_dirs_v1.py")
+    path = Path("scripts/migration/visual/fix_trace_net_image_route_adapter_output_dirs_v1.py")
     spec = importlib.util.spec_from_file_location("fix_trace_net_image_route_adapter_output_dirs_v1", path)
     mod = importlib.util.module_from_spec(spec)
     assert spec.loader is not None

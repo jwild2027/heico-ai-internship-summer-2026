@@ -8,8 +8,8 @@ from pathlib import Path
 def test_script_help_invocations() -> None:
     root = Path(__file__).resolve().parents[2]
     for script in [
-        "scripts/build_trace_net_human_review_queue_table_geometry_integration_v1.py",
-        "scripts/check_trace_net_human_review_queue_table_geometry_integration_v1_quality.py",
+        "scripts/build/tables/build_trace_net_human_review_queue_table_geometry_integration_v1.py",
+        "scripts/maintenance/benchmark/check_trace_net_human_review_queue_table_geometry_integration_v1_quality.py",
     ]:
         result = subprocess.run(
             [sys.executable, script, "--help"],

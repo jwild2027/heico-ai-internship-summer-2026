@@ -2,7 +2,7 @@ from pathlib import Path
 
 
 def test_phase4_runtime_wiring_and_single_call_suppression():
-    source = Path("scripts/serve_trace_net_full_gemma_cognitive_v1.py").read_text(encoding="utf-8")
+    source = Path("scripts/operations/serving/serve_trace_net_full_gemma_cognitive_v1.py").read_text(encoding="utf-8")
     assert "TRACE_NET_H30_PHASE4_CONSTRAINED_WRITER_V1_IMPORT" in source
     assert "install_constrained_gemma_writer(globals())" in source
     assert "legacy_freeform_gemma_suppressed" in source
@@ -13,7 +13,7 @@ def test_phase4_runtime_wiring_and_single_call_suppression():
 
 
 def test_phase4_launcher_propagates_runtime_settings():
-    source = Path("scripts/launch_trace_net_cognitive_openwebui_v1.sh").read_text(encoding="utf-8")
+    source = Path("scripts/operations/launch_trace_net_cognitive_openwebui_v1.sh").read_text(encoding="utf-8")
     for name in (
         "TRACE_NET_H30_CONSTRAINED_WRITER_ENABLED",
         "TRACE_NET_H30_CONSTRAINED_WRITER_ROUTES",
@@ -31,6 +31,6 @@ def test_phase4_launcher_propagates_runtime_settings():
 
 
 def test_public_bridge_ignores_disconnected_client_write():
-    source = Path("scripts/serve_trace_net_openwebui_cognitive_bridge_v1.py").read_text(encoding="utf-8")
+    source = Path("scripts/operations/serving/serve_trace_net_openwebui_cognitive_bridge_v1.py").read_text(encoding="utf-8")
     assert "except (BrokenPipeError, ConnectionResetError)" in source
     assert "self.close_connection = True" in source

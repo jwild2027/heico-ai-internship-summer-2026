@@ -3,8 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from scripts.serve_trace_net_nha_phase12_release_proxy_v1 import decision_headers, synthetic_block_answer
-from scripts.trace_net_nha_phase9_12_release_v1 import (
+from scripts.operations.serving.serve_trace_net_nha_phase12_release_proxy_v1 import decision_headers, synthetic_block_answer
+from src.trace_net.graph.trace_net_nha_phase9_12_release_v1 import (
     build_live20_bank,
     check_promoted_release,
     evaluate_live_case,

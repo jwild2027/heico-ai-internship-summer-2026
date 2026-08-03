@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 def _load_script_module():
-    path = Path(__file__).resolve().parents[2] / "scripts" / "report_part_catalog_qa.py"
+    path = Path(__file__).resolve().parents[2] / "scripts/maintenance/ingestion/report_part_catalog_qa.py"
     spec = importlib.util.spec_from_file_location("report_part_catalog_qa_cli", path)
     assert spec is not None
     assert spec.loader is not None

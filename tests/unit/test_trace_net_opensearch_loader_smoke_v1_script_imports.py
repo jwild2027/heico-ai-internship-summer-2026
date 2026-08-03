@@ -7,8 +7,8 @@ from pathlib import Path
 
 
 def test_script_modules_import() -> None:
-    build_mod = importlib.import_module("scripts.build_trace_net_opensearch_loader_smoke_v1")
-    check_mod = importlib.import_module("scripts.check_trace_net_opensearch_loader_smoke_v1_quality")
+    build_mod = importlib.import_module("scripts.benchmark.retrieval.build_trace_net_opensearch_loader_smoke_v1")
+    check_mod = importlib.import_module("scripts.benchmark.check_trace_net_opensearch_loader_smoke_v1_quality")
 
     assert hasattr(build_mod, "main")
     assert hasattr(check_mod, "main")
@@ -17,7 +17,7 @@ def test_script_modules_import() -> None:
 def test_build_script_runs_help_when_called_directly() -> None:
     """Regression: direct script execution must find the repo-local tiff package."""
     repo_root = Path(__file__).resolve().parents[2]
-    script = repo_root / "scripts" / "build_trace_net_opensearch_loader_smoke_v1.py"
+    script = repo_root / "scripts/benchmark/retrieval/build_trace_net_opensearch_loader_smoke_v1.py"
 
     result = subprocess.run(
         [sys.executable, str(script), "--help"],

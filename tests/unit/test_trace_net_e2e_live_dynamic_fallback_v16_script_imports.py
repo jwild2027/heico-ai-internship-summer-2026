@@ -6,9 +6,9 @@ from pathlib import Path
 
 def test_live_dynamic_fallback_v16_scripts_importable():
     for script in (
-        "scripts/build_trace_net_e2e_live_dynamic_fallback_v16.py",
-        "scripts/check_trace_net_e2e_live_dynamic_fallback_v16_quality.py",
-        "scripts/serve_trace_net_e2e_live_dynamic_fallback_v16.py",
+        "scripts/build/validation/build_trace_net_e2e_live_dynamic_fallback_v16.py",
+        "scripts/maintenance/validation/check_trace_net_e2e_live_dynamic_fallback_v16_quality.py",
+        "scripts/operations/serving/serve_trace_net_e2e_live_dynamic_fallback_v16.py",
     ):
         path = Path(script)
         assert path.exists(), script

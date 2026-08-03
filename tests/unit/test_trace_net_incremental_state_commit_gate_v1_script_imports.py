@@ -7,8 +7,8 @@ from pathlib import Path
 def test_scripts_import_module() -> None:
     root = Path(__file__).resolve().parents[2]
     for rel in [
-        "scripts/build_trace_net_incremental_state_commit_gate_v1.py",
-        "scripts/check_trace_net_incremental_state_commit_gate_v1_quality.py",
+        "scripts/build/ingestion/build_trace_net_incremental_state_commit_gate_v1.py",
+        "scripts/maintenance/benchmark/check_trace_net_incremental_state_commit_gate_v1_quality.py",
     ]:
         spec = importlib.util.spec_from_file_location("script_under_test", root / rel)
         assert spec is not None

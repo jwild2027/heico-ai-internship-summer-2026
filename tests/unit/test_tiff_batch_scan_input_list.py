@@ -4,7 +4,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from scripts.batch_scan_tiffs_to_json import (
+from src.trace_net.ingestion.batch_scan_tiffs_to_json import (
     iter_tiff_files_from_list,
     scan_folder_to_json,
 )

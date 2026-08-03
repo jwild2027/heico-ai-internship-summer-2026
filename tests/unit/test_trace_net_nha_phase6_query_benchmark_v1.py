@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from scripts.trace_net_nha_phase6_query_benchmark_v1 import (
+from src.trace_net.graph.trace_net_nha_phase6_query_benchmark_v1 import (
     NHAQueryEngine,
     build_real_smoke_cases,
     evaluate_synthetic_question,
@@ -226,8 +226,8 @@ def test_validation_contract_pass_and_fail():
 def test_cli_entrypoints_bootstrap_repo_root(tmp_path):
     repo_root = Path(__file__).resolve().parents[2]
     for relative in (
-        "scripts/run_trace_net_nha_phase6_query_benchmark_v1.py",
-        "scripts/check_trace_net_nha_phase6_query_benchmark_v1.py",
+        "scripts/benchmark/run_trace_net_nha_phase6_query_benchmark_v1.py",
+        "scripts/benchmark/check_trace_net_nha_phase6_query_benchmark_v1.py",
     ):
         completed = subprocess.run(
             [sys.executable, "-B", str(repo_root / relative), "--help"],

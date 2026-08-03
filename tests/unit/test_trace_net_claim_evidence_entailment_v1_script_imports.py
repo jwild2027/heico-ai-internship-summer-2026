@@ -4,7 +4,7 @@ import sys
 
 def test_build_script_help_runs_directly():
     result = subprocess.run(
-        [sys.executable, "scripts/build_trace_net_claim_evidence_entailment_v1.py", "--help"],
+        [sys.executable, "scripts/build/ingestion/build_trace_net_claim_evidence_entailment_v1.py", "--help"],
         text=True,
         capture_output=True,
         check=False,
@@ -15,7 +15,7 @@ def test_build_script_help_runs_directly():
 
 def test_quality_script_help_runs_directly():
     result = subprocess.run(
-        [sys.executable, "scripts/check_trace_net_claim_evidence_entailment_v1_quality.py", "--help"],
+        [sys.executable, "scripts/maintenance/benchmark/check_trace_net_claim_evidence_entailment_v1_quality.py", "--help"],
         text=True,
         capture_output=True,
         check=False,

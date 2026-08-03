@@ -4,8 +4,8 @@ import py_compile
 
 
 def test_scripts_compile() -> None:
-    py_compile.compile("scripts/build_trace_net_e2e_query_planning_routing_v1.py", doraise=True)
-    py_compile.compile("scripts/check_trace_net_e2e_query_planning_routing_v1_quality.py", doraise=True)
+    py_compile.compile("scripts/build/router/build_trace_net_e2e_query_planning_routing_v1.py", doraise=True)
+    py_compile.compile("scripts/maintenance/benchmark/check_trace_net_e2e_query_planning_routing_v1_quality.py", doraise=True)
 
 
 def test_module_imports() -> None:

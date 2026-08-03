@@ -12,9 +12,9 @@ def test_module_imports():
 
 def test_scripts_import_without_running():
     for rel in [
-        "scripts/build_trace_net_e2e_local_endpoint_v1.py",
-        "scripts/check_trace_net_e2e_local_endpoint_v1_quality.py",
-        "scripts/serve_trace_net_e2e_local_endpoint_v1.py",
+        "scripts/build/serving/build_trace_net_e2e_local_endpoint_v1.py",
+        "scripts/maintenance/benchmark/check_trace_net_e2e_local_endpoint_v1_quality.py",
+        "scripts/operations/serving/serve_trace_net_e2e_local_endpoint_v1.py",
     ]:
         path = Path(rel)
         spec = importlib.util.spec_from_file_location(path.stem, path)

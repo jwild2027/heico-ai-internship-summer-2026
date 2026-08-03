@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 def test_build_script_imports():
-    path = Path("scripts/build_trace_net_part_number_exact_retrieval_probe_v1.py")
+    path = Path("scripts/benchmark/build_trace_net_part_number_exact_retrieval_probe_v1.py")
     assert path.exists()
     spec = importlib.util.spec_from_file_location("build_probe", path)
     module = importlib.util.module_from_spec(spec)
@@ -13,7 +13,7 @@ def test_build_script_imports():
 
 
 def test_check_script_imports():
-    path = Path("scripts/check_trace_net_part_number_exact_retrieval_probe_v1_quality.py")
+    path = Path("scripts/benchmark/check_trace_net_part_number_exact_retrieval_probe_v1_quality.py")
     assert path.exists()
     spec = importlib.util.spec_from_file_location("check_probe", path)
     module = importlib.util.module_from_spec(spec)

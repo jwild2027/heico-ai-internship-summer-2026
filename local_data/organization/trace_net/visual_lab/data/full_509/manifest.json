@@ -1,0 +1,42 @@
+{
+  "dataset_label": "Full 509-page run",
+  "dataset_slug": "full_509",
+  "embedding_dimension": 1024,
+  "embedding_point_count": 495,
+  "engram_layer_count": 6,
+  "exact_search_eligible_count": 282,
+  "failures": [],
+  "files": {
+    "classification": "classification.json",
+    "engram_layers": "engram_layers.json",
+    "graph_edges": "graph_edges.json",
+    "graph_nodes": "graph_nodes.json",
+    "ocr_pages": "ocr_pages.json",
+    "quality_summary": "quality_summary.json",
+    "question_traces": "question_traces.json",
+    "source_lineage": "source_lineage.json",
+    "storage_plan": "storage_plan.json",
+    "vector_projection": "vector_projection.json"
+  },
+  "generated_at_utc": "2026-07-31T18:18:05.110602+00:00",
+  "graph_edge_count": 3693,
+  "graph_node_count": 1032,
+  "graph_only_safety_hold_count": 30,
+  "graph_ready_count": 509,
+  "lineage_ready_count": 509,
+  "page_count": 509,
+  "production_write_attempt_count": 0,
+  "quality_status": "PASS",
+  "question_count": 2,
+  "route_counts": {
+    "blank": 14,
+    "image": 11,
+    "plain_text": 180,
+    "table": 304
+  },
+  "run_directory_name": "executive_deep_demo_v4_20260731_130923",
+  "schema_version": "trace_net_visual_lab_export_v1",
+  "status": "TRACE_NET_VISUAL_LAB_DATASET_BUILT",
+  "thumbnail_count": 509,
+  "vector_eligible_count": 465
+}

@@ -4,9 +4,9 @@ from pathlib import Path
 
 def test_v25_scripts_importable():
     for script in (
-        "scripts/build_trace_net_e2e_live_orchestrator_endpoint_v25.py",
-        "scripts/check_trace_net_e2e_live_orchestrator_endpoint_v25_quality.py",
-        "scripts/serve_trace_net_e2e_live_orchestrator_endpoint_v25.py",
+        "scripts/build/serving/build_trace_net_e2e_live_orchestrator_endpoint_v25.py",
+        "scripts/maintenance/serving/check_trace_net_e2e_live_orchestrator_endpoint_v25_quality.py",
+        "scripts/operations/serving/serve_trace_net_e2e_live_orchestrator_endpoint_v25.py",
     ):
         path = Path(script)
         assert path.exists(), script

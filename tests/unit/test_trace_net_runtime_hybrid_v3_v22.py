@@ -88,7 +88,7 @@ def test_final_policy_api_command_uses_expected_script_and_defaults(tmp_path):
         max_groups = 8
 
     command = final_policy_api_command(Args())
-    assert "scripts/run_trace_net_ask_api_final_return_policy_hybrid_v3_v22.py" in command[1]
+    assert "scripts/operations/serving/run_trace_net_ask_api_final_return_policy_hybrid_v3_v22.py" in command[1]
     assert "--port" in command
     assert "8016" in command
     assert "trace-net-final-return-policy-hybrid-v3-v2.2" in command

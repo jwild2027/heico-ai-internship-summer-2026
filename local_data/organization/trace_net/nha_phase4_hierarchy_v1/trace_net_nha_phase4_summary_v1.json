@@ -1,0 +1,39 @@
+{
+  "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+  "module": "trace_net_nha_phase4_hierarchy_v1",
+  "status": "TRACE_NET_NHA_PHASE4_HIERARCHY_V1",
+  "quality_status": "PASS",
+  "phase0_3_dir": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\organization\\trace_net\\nha_phase0_3_v1",
+  "output_dir": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\organization\\trace_net\\nha_phase4_hierarchy_v1",
+  "input_counts": {
+    "inventory_pages": 509,
+    "assembly_anchors": 9,
+    "ipl_rows": 45,
+    "phase0_3_relationships": 40
+  },
+  "phase4_counts": {
+    "hierarchy_rows": 40,
+    "hierarchy_relationships": 40,
+    "source_supported_relationships": 29,
+    "ambiguous_relationships": 11,
+    "direct_component_relationships": 30,
+    "lower_descendant_relationships": 10,
+    "source_supported_attaching_relationships": 7,
+    "attaching_groups": 6,
+    "cycle_count": 0,
+    "synthetic_record_count": 0,
+    "production_graph_write_count": 0
+  },
+  "failures": [],
+  "warnings": [],
+  "artifacts": [
+    "trace_net_nha_phase4_answer_key_v1.json",
+    "trace_net_nha_phase4_graph_bundle_v1.json",
+    "trace_net_nha_phase4_quality_v1.json",
+    "trace_net_nha_hierarchy_rows_v1.json",
+    "trace_net_nha_hierarchy_rows_v1.jsonl",
+    "trace_net_nha_hierarchy_relationships_v1.json",
+    "trace_net_nha_hierarchy_relationships_v1.jsonl",
+    "trace_net_nha_attaching_groups_v1.json"
+  ]
+}

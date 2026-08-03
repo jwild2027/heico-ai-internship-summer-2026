@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-TARGET = Path("scripts/check_full_system_quality.py")
+TARGET = Path("scripts/maintenance/benchmark/check_full_system_quality.py")
 
 
 def main() -> int:

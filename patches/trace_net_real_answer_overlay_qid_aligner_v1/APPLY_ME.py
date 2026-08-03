@@ -10,7 +10,7 @@ SRC = Path(__file__).resolve().parent / "files"
 
 FILES = [
     "tiff/trace_net_engineering_real_answer_overlay_question_id_aligner_v1.py",
-    "scripts/build_trace_net_engineering_real_answer_overlay_question_id_aligner_v1.py",
+    "scripts/build/ingestion/build_trace_net_engineering_real_answer_overlay_question_id_aligner_v1.py",
     "tests/unit/test_trace_net_engineering_real_answer_overlay_question_id_aligner_v1.py",
     "docs/trace_net_engineering_real_answer_overlay_question_id_aligner_v1_README.md",
 ]

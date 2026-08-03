@@ -8,7 +8,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 
-SCRIPT = Path("scripts/build_trace_net_meaningful_image_route_detector_v1_2.py")
+SCRIPT = Path("scripts/build/visual/build_trace_net_meaningful_image_route_detector_v1_2.py")
 
 
 def make_table(path: Path) -> None:
@@ -115,7 +115,7 @@ def test_meaningful_image_route_detector_classifies_synthetic_pages(tmp_path: Pa
 
 def test_route_manifest_loader_accepts_jsonl(tmp_path: Path) -> None:
     sys.path.insert(0, str(Path.cwd() / "scripts"))
-    import build_trace_net_meaningful_image_route_detector_v1_2 as m
+    import scripts.build.visual.build_trace_net_meaningful_image_route_detector_v1_2 as m
 
     path = tmp_path / "routes.jsonl"
     path.write_text(

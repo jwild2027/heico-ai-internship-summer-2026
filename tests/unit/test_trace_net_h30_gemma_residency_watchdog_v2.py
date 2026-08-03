@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime, timedelta, timezone
 import json
 
-from scripts.trace_net_h30_gemma_residency_watchdog_v2 import (
+from src.trace_net.serving.trace_net_h30_gemma_residency_watchdog_v2 import (
     GemmaResidencyManager,
     parse_ollama_expiry,
     progress_event,

@@ -1,7 +1,7 @@
 from pathlib import Path
 import ast
 
-from scripts.fix_trace_net_fast_chat_runner_image_route_syntax_v1 import _repair_text
+from scripts.migration.visual.fix_trace_net_fast_chat_runner_image_route_syntax_v1 import _repair_text
 
 
 def test_repair_malformed_inline_if() -> None:

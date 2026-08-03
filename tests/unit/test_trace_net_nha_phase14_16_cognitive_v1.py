@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from scripts.trace_net_nha_phase14_16_cognitive_v1 import (
+from src.trace_net.graph.trace_net_nha_phase14_16_cognitive_v1 import (
     build_gemma_messages,
     build_nha_writer_packet,
     load_nha_engram_bundle,
@@ -15,8 +15,8 @@ from scripts.trace_net_nha_phase14_16_cognitive_v1 import (
     validate_gemma_answer,
     write_nha_answer_with_gemma,
 )
-from scripts.serve_trace_net_nha_phase16_gemma_proxy_v1 import decision_headers
-from scripts.run_trace_net_nha_phase16_gemma20_v1 import evaluate as evaluate_live_case
+from scripts.operations.serving.serve_trace_net_nha_phase16_gemma_proxy_v1 import decision_headers
+from scripts.benchmark.graph.run_trace_net_nha_phase16_gemma20_v1 import evaluate as evaluate_live_case
 
 
 class FakeEngine:

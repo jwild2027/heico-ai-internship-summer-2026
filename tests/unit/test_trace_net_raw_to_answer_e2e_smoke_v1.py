@@ -94,7 +94,7 @@ def test_build_pipeline_command_uses_existing_runner():
         tesseract_cmd=Path("tesseract.exe"),
         output_dir=Path("out"),
     )
-    assert "scripts/run_trace_net_ocr_classifier_pipeline_v1.py" in cmd
+    assert "scripts/operations/ocr/run_trace_net_ocr_classifier_pipeline_v1.py" in cmd
     assert "--source-package" in cmd
     assert "--quality" in cmd
 

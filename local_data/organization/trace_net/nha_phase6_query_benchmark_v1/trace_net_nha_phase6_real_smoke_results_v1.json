@@ -1,0 +1,1764 @@
+{
+  "records": [
+    {
+      "case_id": "nha_phase4_case:e366906aa3f053d21ecb",
+      "child_part": "120-20970-001",
+      "expected_behavior": "direct_answer",
+      "actual_behavior": "direct_answer",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "direct_answer",
+        "child": "120-20970-001",
+        "parent": "",
+        "direct_nha": "120-29067-001",
+        "parent_candidates": [
+          "120-29067-001"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000343",
+          "t_p_120_1176_p000342",
+          "t_p_120_1176_p000344"
+        ],
+        "item_order": [
+          "180"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:352c7b232be4fb5469d6",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component",
+            "relationship_status": "source_supported",
+            "child_part": "120-20970-001",
+            "direct_nha": "120-29067-001",
+            "parent_candidates": [
+              "120-29067-001"
+            ],
+            "top_assembly_part": "120-29067-001",
+            "top_assembly_candidates": [
+              "120-29067-001"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "180",
+            "figure": "79",
+            "row_page_id": "t_p_120_1176_p000343",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000342",
+              "t_p_120_1176_p000343",
+              "t_p_120_1176_p000344"
+            ],
+            "row_id": "nha_row:39a5ea1b1d6066e158f0",
+            "boundary_resolution_method": "substantive_component_closes_sticky_attaching_region",
+            "ambiguity_reason": "",
+            "can_prove_direct_nha": true,
+            "guidance_only": false,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe direct NHA of `120-20970-001` is `120-29067-001`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000343`.\n- Relationship page reference: `t_p_120_1176_p000342`.\n- Relationship page reference: `t_p_120_1176_p000344`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.024
+    },
+    {
+      "case_id": "nha_phase4_case:2098abea707bd6b16ad6",
+      "child_part": "120-20970-003",
+      "expected_behavior": "direct_answer",
+      "actual_behavior": "direct_answer",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "direct_answer",
+        "child": "120-20970-003",
+        "parent": "",
+        "direct_nha": "120-29067-001",
+        "parent_candidates": [
+          "120-29067-001"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000344",
+          "t_p_120_1176_p000342",
+          "t_p_120_1176_p000343"
+        ],
+        "item_order": [
+          "190"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:9a2e0440ded1fd058db9",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component",
+            "relationship_status": "source_supported",
+            "child_part": "120-20970-003",
+            "direct_nha": "120-29067-001",
+            "parent_candidates": [
+              "120-29067-001"
+            ],
+            "top_assembly_part": "120-29067-001",
+            "top_assembly_candidates": [
+              "120-29067-001"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "190",
+            "figure": "79",
+            "row_page_id": "t_p_120_1176_p000344",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000342",
+              "t_p_120_1176_p000343",
+              "t_p_120_1176_p000344"
+            ],
+            "row_id": "nha_row:b646ce2fab0f26e9c86c",
+            "boundary_resolution_method": "substantive_component_closes_sticky_attaching_region",
+            "ambiguity_reason": "",
+            "can_prove_direct_nha": true,
+            "guidance_only": false,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe direct NHA of `120-20970-003` is `120-29067-001`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000344`.\n- Relationship page reference: `t_p_120_1176_p000342`.\n- Relationship page reference: `t_p_120_1176_p000343`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.017
+    },
+    {
+      "case_id": "nha_phase4_case:537b24f6ffeb8646d144",
+      "child_part": "120-29068-009",
+      "expected_behavior": "direct_answer",
+      "actual_behavior": "direct_answer",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "direct_answer",
+        "child": "120-29068-009",
+        "parent": "",
+        "direct_nha": "120-29068-001",
+        "parent_candidates": [
+          "120-29068-001"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000368"
+        ],
+        "item_order": [
+          "100"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:d3583636174f6ce3747a",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component",
+            "relationship_status": "source_supported",
+            "child_part": "120-29068-009",
+            "direct_nha": "120-29068-001",
+            "parent_candidates": [
+              "120-29068-001"
+            ],
+            "top_assembly_part": "120-29068-001",
+            "top_assembly_candidates": [
+              "120-29068-001"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "2",
+            "item_number": "100",
+            "figure": "87",
+            "row_page_id": "t_p_120_1176_p000368",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000368"
+            ],
+            "row_id": "nha_row:b4df5bd074cd5aa83c65",
+            "boundary_resolution_method": "substantive_component_closes_sticky_attaching_region",
+            "ambiguity_reason": "",
+            "can_prove_direct_nha": true,
+            "guidance_only": false,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe direct NHA of `120-29068-009` is `120-29068-001`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000368`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.012
+    },
+    {
+      "case_id": "nha_phase4_case:9a2443808f895044c773",
+      "child_part": "120-29070-001",
+      "expected_behavior": "direct_answer",
+      "actual_behavior": "direct_answer",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "direct_answer",
+        "child": "120-29070-001",
+        "parent": "",
+        "direct_nha": "120-29068-001",
+        "parent_candidates": [
+          "120-29068-001"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000368"
+        ],
+        "item_order": [
+          "181"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:1a44b506c5f8527fdc14",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component",
+            "relationship_status": "source_supported",
+            "child_part": "120-29070-001",
+            "direct_nha": "120-29068-001",
+            "parent_candidates": [
+              "120-29068-001"
+            ],
+            "top_assembly_part": "120-29068-001",
+            "top_assembly_candidates": [
+              "120-29068-001"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "181",
+            "figure": "87",
+            "row_page_id": "t_p_120_1176_p000368",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000368"
+            ],
+            "row_id": "nha_row:a6f32c32c6a749fba281",
+            "boundary_resolution_method": "substantive_component_closes_sticky_attaching_region",
+            "ambiguity_reason": "",
+            "can_prove_direct_nha": true,
+            "guidance_only": false,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe direct NHA of `120-29070-001` is `120-29068-001`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000368`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.01
+    },
+    {
+      "case_id": "nha_phase4_case:f1836f8bccf76125f8c3",
+      "child_part": "120-29070-003",
+      "expected_behavior": "direct_answer",
+      "actual_behavior": "direct_answer",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "direct_answer",
+        "child": "120-29070-003",
+        "parent": "",
+        "direct_nha": "120-29068-001",
+        "parent_candidates": [
+          "120-29068-001"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000368"
+        ],
+        "item_order": [
+          "191"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:b9f140b104edfe3c161c",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component",
+            "relationship_status": "source_supported",
+            "child_part": "120-29070-003",
+            "direct_nha": "120-29068-001",
+            "parent_candidates": [
+              "120-29068-001"
+            ],
+            "top_assembly_part": "120-29068-001",
+            "top_assembly_candidates": [
+              "120-29068-001"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "191",
+            "figure": "87",
+            "row_page_id": "t_p_120_1176_p000368",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000368"
+            ],
+            "row_id": "nha_row:b00a87229a0a65afe877",
+            "boundary_resolution_method": "substantive_component_closes_sticky_attaching_region",
+            "ambiguity_reason": "",
+            "can_prove_direct_nha": true,
+            "guidance_only": false,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe direct NHA of `120-29070-003` is `120-29068-001`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000368`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.01
+    },
+    {
+      "case_id": "nha_phase4_case:1f5159ef14c4e9dc9dee",
+      "child_part": "120-29070-005",
+      "expected_behavior": "direct_answer",
+      "actual_behavior": "direct_answer",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "direct_answer",
+        "child": "120-29070-005",
+        "parent": "",
+        "direct_nha": "120-29068-001",
+        "parent_candidates": [
+          "120-29068-001"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000368"
+        ],
+        "item_order": [
+          "201"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:6e5122d532de08c1d15f",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component",
+            "relationship_status": "source_supported",
+            "child_part": "120-29070-005",
+            "direct_nha": "120-29068-001",
+            "parent_candidates": [
+              "120-29068-001"
+            ],
+            "top_assembly_part": "120-29068-001",
+            "top_assembly_candidates": [
+              "120-29068-001"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "201",
+            "figure": "87",
+            "row_page_id": "t_p_120_1176_p000368",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000368"
+            ],
+            "row_id": "nha_row:29d32fe1554b3db97f1c",
+            "boundary_resolution_method": "substantive_component_closes_sticky_attaching_region",
+            "ambiguity_reason": "",
+            "can_prove_direct_nha": true,
+            "guidance_only": false,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe direct NHA of `120-29070-005` is `120-29068-001`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000368`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.01
+    },
+    {
+      "case_id": "nha_phase4_case:4207079be09c3e66d9b7",
+      "child_part": "120-29074-001",
+      "expected_behavior": "direct_answer",
+      "actual_behavior": "direct_answer",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "direct_answer",
+        "child": "120-29074-001",
+        "parent": "",
+        "direct_nha": "120-29068-001",
+        "parent_candidates": [
+          "120-29068-001"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000368"
+        ],
+        "item_order": [
+          "1"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:ee60e3511a670f89296b",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component",
+            "relationship_status": "source_supported",
+            "child_part": "120-29074-001",
+            "direct_nha": "120-29068-001",
+            "parent_candidates": [
+              "120-29068-001"
+            ],
+            "top_assembly_part": "120-29068-001",
+            "top_assembly_candidates": [
+              "120-29068-001"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "1",
+            "figure": "87",
+            "row_page_id": "t_p_120_1176_p000368",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000368"
+            ],
+            "row_id": "nha_row:0b643e1b05a4986af92e",
+            "boundary_resolution_method": "figure_title_direct_component",
+            "ambiguity_reason": "",
+            "can_prove_direct_nha": true,
+            "guidance_only": false,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe direct NHA of `120-29074-001` is `120-29068-001`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000368`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.01
+    },
+    {
+      "case_id": "nha_phase4_case:07417ff76b77963e4473",
+      "child_part": "120-29077-001",
+      "expected_behavior": "direct_answer",
+      "actual_behavior": "direct_answer",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "direct_answer",
+        "child": "120-29077-001",
+        "parent": "",
+        "direct_nha": "120-29068-001",
+        "parent_candidates": [
+          "120-29068-001"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000368"
+        ],
+        "item_order": [
+          "110"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:fa539f6620bbd263f4db",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component",
+            "relationship_status": "source_supported",
+            "child_part": "120-29077-001",
+            "direct_nha": "120-29068-001",
+            "parent_candidates": [
+              "120-29068-001"
+            ],
+            "top_assembly_part": "120-29068-001",
+            "top_assembly_candidates": [
+              "120-29068-001"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "110",
+            "figure": "87",
+            "row_page_id": "t_p_120_1176_p000368",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000368"
+            ],
+            "row_id": "nha_row:c624dd5f17ab73eba9d6",
+            "boundary_resolution_method": "substantive_component_closes_sticky_attaching_region",
+            "ambiguity_reason": "",
+            "can_prove_direct_nha": true,
+            "guidance_only": false,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe direct NHA of `120-29077-001` is `120-29068-001`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000368`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.009
+    },
+    {
+      "case_id": "nha_phase4_case:60a695287883b1f59aa7",
+      "child_part": "120-29093-001",
+      "expected_behavior": "direct_answer",
+      "actual_behavior": "direct_answer",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "direct_answer",
+        "child": "120-29093-001",
+        "parent": "",
+        "direct_nha": "120-29067-001",
+        "parent_candidates": [
+          "120-29067-001"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000343",
+          "t_p_120_1176_p000342",
+          "t_p_120_1176_p000344"
+        ],
+        "item_order": [
+          "150"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:41930407d071d6b150f0",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component",
+            "relationship_status": "source_supported",
+            "child_part": "120-29093-001",
+            "direct_nha": "120-29067-001",
+            "parent_candidates": [
+              "120-29067-001"
+            ],
+            "top_assembly_part": "120-29067-001",
+            "top_assembly_candidates": [
+              "120-29067-001"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "150",
+            "figure": "79",
+            "row_page_id": "t_p_120_1176_p000343",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000342",
+              "t_p_120_1176_p000343",
+              "t_p_120_1176_p000344"
+            ],
+            "row_id": "nha_row:253b268283226fde8f8d",
+            "boundary_resolution_method": "substantive_component_closes_sticky_attaching_region",
+            "ambiguity_reason": "",
+            "can_prove_direct_nha": true,
+            "guidance_only": false,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe direct NHA of `120-29093-001` is `120-29067-001`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000343`.\n- Relationship page reference: `t_p_120_1176_p000342`.\n- Relationship page reference: `t_p_120_1176_p000344`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.011
+    },
+    {
+      "case_id": "nha_phase4_case:ba22151b90ec9731e697",
+      "child_part": "120-31565-002",
+      "expected_behavior": "direct_answer",
+      "actual_behavior": "direct_answer",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "direct_answer",
+        "child": "120-31565-002",
+        "parent": "",
+        "direct_nha": "120-29067-001",
+        "parent_candidates": [
+          "120-29067-001"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000343",
+          "t_p_120_1176_p000342",
+          "t_p_120_1176_p000344"
+        ],
+        "item_order": [
+          "170"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:c947a69005054cbd2fd0",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component",
+            "relationship_status": "source_supported",
+            "child_part": "120-31565-002",
+            "direct_nha": "120-29067-001",
+            "parent_candidates": [
+              "120-29067-001"
+            ],
+            "top_assembly_part": "120-29067-001",
+            "top_assembly_candidates": [
+              "120-29067-001"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "170",
+            "figure": "79",
+            "row_page_id": "t_p_120_1176_p000343",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000342",
+              "t_p_120_1176_p000343",
+              "t_p_120_1176_p000344"
+            ],
+            "row_id": "nha_row:3a8f09ab47b7f91cabeb",
+            "boundary_resolution_method": "substantive_component_closes_sticky_attaching_region",
+            "ambiguity_reason": "",
+            "can_prove_direct_nha": true,
+            "guidance_only": false,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe direct NHA of `120-31565-002` is `120-29067-001`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000343`.\n- Relationship page reference: `t_p_120_1176_p000342`.\n- Relationship page reference: `t_p_120_1176_p000344`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.011
+    },
+    {
+      "case_id": "nha_phase4_case:c29c0e8788218443817d",
+      "child_part": "120-34292-001",
+      "expected_behavior": "direct_answer",
+      "actual_behavior": "direct_answer",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "direct_answer",
+        "child": "120-34292-001",
+        "parent": "",
+        "direct_nha": "120-29068-001",
+        "parent_candidates": [
+          "120-29068-001"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000368"
+        ],
+        "item_order": [
+          "90"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:6f1403173e54fd5c88d8",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component",
+            "relationship_status": "source_supported",
+            "child_part": "120-34292-001",
+            "direct_nha": "120-29068-001",
+            "parent_candidates": [
+              "120-29068-001"
+            ],
+            "top_assembly_part": "120-29068-001",
+            "top_assembly_candidates": [
+              "120-29068-001"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "90",
+            "figure": "87",
+            "row_page_id": "t_p_120_1176_p000368",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000368"
+            ],
+            "row_id": "nha_row:63d0105204272db8609e",
+            "boundary_resolution_method": "substantive_component_closes_sticky_attaching_region",
+            "ambiguity_reason": "",
+            "can_prove_direct_nha": true,
+            "guidance_only": false,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe direct NHA of `120-34292-001` is `120-29068-001`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000368`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.01
+    },
+    {
+      "case_id": "nha_phase4_case:797bfa442c2a6331373a",
+      "child_part": "120-34293-001",
+      "expected_behavior": "direct_answer",
+      "actual_behavior": "direct_answer",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "direct_answer",
+        "child": "120-34293-001",
+        "parent": "",
+        "direct_nha": "120-29067-001",
+        "parent_candidates": [
+          "120-29067-001"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000343",
+          "t_p_120_1176_p000342",
+          "t_p_120_1176_p000344"
+        ],
+        "item_order": [
+          "160"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:f0d70427eee45f6deaef",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component",
+            "relationship_status": "source_supported",
+            "child_part": "120-34293-001",
+            "direct_nha": "120-29067-001",
+            "parent_candidates": [
+              "120-29067-001"
+            ],
+            "top_assembly_part": "120-29067-001",
+            "top_assembly_candidates": [
+              "120-29067-001"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "160",
+            "figure": "79",
+            "row_page_id": "t_p_120_1176_p000343",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000342",
+              "t_p_120_1176_p000343",
+              "t_p_120_1176_p000344"
+            ],
+            "row_id": "nha_row:0781f9fb3300db385076",
+            "boundary_resolution_method": "substantive_component_closes_sticky_attaching_region",
+            "ambiguity_reason": "",
+            "can_prove_direct_nha": true,
+            "guidance_only": false,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe direct NHA of `120-34293-001` is `120-29067-001`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000343`.\n- Relationship page reference: `t_p_120_1176_p000342`.\n- Relationship page reference: `t_p_120_1176_p000344`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.011
+    },
+    {
+      "case_id": "nha_phase4_case:894a797a8ebf430aa01e",
+      "child_part": "120-34489-001",
+      "expected_behavior": "direct_answer",
+      "actual_behavior": "direct_answer",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "direct_answer",
+        "child": "120-34489-001",
+        "parent": "",
+        "direct_nha": "120-29068-001",
+        "parent_candidates": [
+          "120-29068-001"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000368"
+        ],
+        "item_order": [
+          "170"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:6b8d2aa12ac8b45250fa",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component",
+            "relationship_status": "source_supported",
+            "child_part": "120-34489-001",
+            "direct_nha": "120-29068-001",
+            "parent_candidates": [
+              "120-29068-001"
+            ],
+            "top_assembly_part": "120-29068-001",
+            "top_assembly_candidates": [
+              "120-29068-001"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "170",
+            "figure": "87",
+            "row_page_id": "t_p_120_1176_p000368",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000368"
+            ],
+            "row_id": "nha_row:2e935247c4ff376a1894",
+            "boundary_resolution_method": "substantive_component_closes_sticky_attaching_region",
+            "ambiguity_reason": "",
+            "can_prove_direct_nha": true,
+            "guidance_only": false,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe direct NHA of `120-34489-001` is `120-29068-001`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000368`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.009
+    },
+    {
+      "case_id": "nha_phase4_case:1a8ffcff65ae7f4e8cc7",
+      "child_part": "120-35881-001",
+      "expected_behavior": "direct_answer",
+      "actual_behavior": "direct_answer",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "direct_answer",
+        "child": "120-35881-001",
+        "parent": "",
+        "direct_nha": "120-29068-001",
+        "parent_candidates": [
+          "120-29068-001"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000368"
+        ],
+        "item_order": [
+          "70"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:39a313ff237856e912c4",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component",
+            "relationship_status": "source_supported",
+            "child_part": "120-35881-001",
+            "direct_nha": "120-29068-001",
+            "parent_candidates": [
+              "120-29068-001"
+            ],
+            "top_assembly_part": "120-29068-001",
+            "top_assembly_candidates": [
+              "120-29068-001"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "70",
+            "figure": "87",
+            "row_page_id": "t_p_120_1176_p000368",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000368"
+            ],
+            "row_id": "nha_row:21fa83e92703247cbcb9",
+            "boundary_resolution_method": "substantive_component_closes_sticky_attaching_region",
+            "ambiguity_reason": "",
+            "can_prove_direct_nha": true,
+            "guidance_only": false,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe direct NHA of `120-35881-001` is `120-29068-001`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000368`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.011
+    },
+    {
+      "case_id": "nha_phase4_case:bc43d2566e3e9b607e97",
+      "child_part": "120-36060-005",
+      "expected_behavior": "direct_answer",
+      "actual_behavior": "direct_answer",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "direct_answer",
+        "child": "120-36060-005",
+        "parent": "",
+        "direct_nha": "120-29068-001",
+        "parent_candidates": [
+          "120-29068-001"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000368"
+        ],
+        "item_order": [
+          "200"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:5643ad7373ad4b219a82",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component",
+            "relationship_status": "source_supported",
+            "child_part": "120-36060-005",
+            "direct_nha": "120-29068-001",
+            "parent_candidates": [
+              "120-29068-001"
+            ],
+            "top_assembly_part": "120-29068-001",
+            "top_assembly_candidates": [
+              "120-29068-001"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "200",
+            "figure": "87",
+            "row_page_id": "t_p_120_1176_p000368",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000368"
+            ],
+            "row_id": "nha_row:f4a534ff5d407c5fd52e",
+            "boundary_resolution_method": "substantive_component_closes_sticky_attaching_region",
+            "ambiguity_reason": "",
+            "can_prove_direct_nha": true,
+            "guidance_only": false,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe direct NHA of `120-36060-005` is `120-29068-001`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000368`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.009
+    },
+    {
+      "case_id": "nha_phase6_real_context_case:fce81c738f929dce7478",
+      "child_part": "120-29067-011",
+      "expected_behavior": "candidate_or_clarification",
+      "actual_behavior": "conflict_limited",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "conflict_limited",
+        "child": "120-29067-011",
+        "parent": "",
+        "direct_nha": "",
+        "parent_candidates": [
+          "120-29067-003",
+          "120-29067-021",
+          "120-29067-031"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000349",
+          "t_p_120_1176_p000348"
+        ],
+        "item_order": [
+          "80"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:d49294db4df86914d509",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component_candidate",
+            "relationship_status": "ambiguous",
+            "child_part": "120-29067-011",
+            "direct_nha": "",
+            "parent_candidates": [
+              "120-29067-003",
+              "120-29067-021",
+              "120-29067-031"
+            ],
+            "top_assembly_part": "",
+            "top_assembly_candidates": [
+              "120-29067-003",
+              "120-29067-021",
+              "120-29067-031"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "80",
+            "figure": "81",
+            "row_page_id": "t_p_120_1176_p000349",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000348",
+              "t_p_120_1176_p000349"
+            ],
+            "row_id": "nha_row:81ea736345ceff8fb411",
+            "boundary_resolution_method": "substantive_component_closes_sticky_attaching_region",
+            "ambiguity_reason": "multiple_top_assembly_variants_require_usage_or_effectivity_resolution",
+            "can_prove_direct_nha": false,
+            "guidance_only": true,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe parent relationship is conflicting; no direct NHA is confirmed. Candidates: `120-29067-003`, `120-29067-021`, `120-29067-031`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000349`.\n- Relationship page reference: `t_p_120_1176_p000348`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.016
+    },
+    {
+      "case_id": "nha_phase6_real_context_case:afb5c2cb30ab250dce79",
+      "child_part": "120-29073-001",
+      "expected_behavior": "candidate_or_clarification",
+      "actual_behavior": "conflict_limited",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "conflict_limited",
+        "child": "120-29073-001",
+        "parent": "",
+        "direct_nha": "",
+        "parent_candidates": [
+          "120-29067-003",
+          "120-29067-021",
+          "120-29067-031"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000349",
+          "t_p_120_1176_p000348"
+        ],
+        "item_order": [
+          "1"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:976534767d3b14e54191",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component_candidate",
+            "relationship_status": "ambiguous",
+            "child_part": "120-29073-001",
+            "direct_nha": "",
+            "parent_candidates": [
+              "120-29067-003",
+              "120-29067-021",
+              "120-29067-031"
+            ],
+            "top_assembly_part": "",
+            "top_assembly_candidates": [
+              "120-29067-003",
+              "120-29067-021",
+              "120-29067-031"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "1",
+            "figure": "81",
+            "row_page_id": "t_p_120_1176_p000349",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000348",
+              "t_p_120_1176_p000349"
+            ],
+            "row_id": "nha_row:d18d9b8f18110be055aa",
+            "boundary_resolution_method": "figure_title_direct_component",
+            "ambiguity_reason": "multiple_top_assembly_variants_require_usage_or_effectivity_resolution",
+            "can_prove_direct_nha": false,
+            "guidance_only": true,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe parent relationship is conflicting; no direct NHA is confirmed. Candidates: `120-29067-003`, `120-29067-021`, `120-29067-031`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000349`.\n- Relationship page reference: `t_p_120_1176_p000348`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.013
+    },
+    {
+      "case_id": "nha_phase6_real_context_case:aae8bfbf93ab498e040e",
+      "child_part": "120-29073-005",
+      "expected_behavior": "candidate_or_clarification",
+      "actual_behavior": "conflict_limited",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "conflict_limited",
+        "child": "120-29073-005",
+        "parent": "",
+        "direct_nha": "",
+        "parent_candidates": [
+          "120-29067-003",
+          "120-29067-021",
+          "120-29067-031"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000349",
+          "t_p_120_1176_p000348"
+        ],
+        "item_order": [
+          "2"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:b252cd100de77b9627cb",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component_candidate",
+            "relationship_status": "ambiguous",
+            "child_part": "120-29073-005",
+            "direct_nha": "",
+            "parent_candidates": [
+              "120-29067-003",
+              "120-29067-021",
+              "120-29067-031"
+            ],
+            "top_assembly_part": "",
+            "top_assembly_candidates": [
+              "120-29067-003",
+              "120-29067-021",
+              "120-29067-031"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "2",
+            "figure": "81",
+            "row_page_id": "t_p_120_1176_p000349",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000348",
+              "t_p_120_1176_p000349"
+            ],
+            "row_id": "nha_row:a1f49580269d524e6540",
+            "boundary_resolution_method": "figure_title_direct_component",
+            "ambiguity_reason": "multiple_top_assembly_variants_require_usage_or_effectivity_resolution",
+            "can_prove_direct_nha": false,
+            "guidance_only": true,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe parent relationship is conflicting; no direct NHA is confirmed. Candidates: `120-29067-003`, `120-29067-021`, `120-29067-031`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000349`.\n- Relationship page reference: `t_p_120_1176_p000348`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.011
+    },
+    {
+      "case_id": "nha_phase6_real_context_case:15ef6bbe4790e31fde3e",
+      "child_part": "120-29075-031",
+      "expected_behavior": "candidate_or_clarification",
+      "actual_behavior": "conflict_limited",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "conflict_limited",
+        "child": "120-29075-031",
+        "parent": "",
+        "direct_nha": "",
+        "parent_candidates": [
+          "120-29067-003",
+          "120-29067-021",
+          "120-29067-031"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000349",
+          "t_p_120_1176_p000348"
+        ],
+        "item_order": [
+          "82"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:9a90c58ee6b43ae88caa",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component_candidate",
+            "relationship_status": "ambiguous",
+            "child_part": "120-29075-031",
+            "direct_nha": "",
+            "parent_candidates": [
+              "120-29067-003",
+              "120-29067-021",
+              "120-29067-031"
+            ],
+            "top_assembly_part": "",
+            "top_assembly_candidates": [
+              "120-29067-003",
+              "120-29067-021",
+              "120-29067-031"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "82",
+            "figure": "81",
+            "row_page_id": "t_p_120_1176_p000349",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000348",
+              "t_p_120_1176_p000349"
+            ],
+            "row_id": "nha_row:3078bae9f6c60ae0c5f0",
+            "boundary_resolution_method": "substantive_component_closes_sticky_attaching_region",
+            "ambiguity_reason": "multiple_top_assembly_variants_require_usage_or_effectivity_resolution",
+            "can_prove_direct_nha": false,
+            "guidance_only": true,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe parent relationship is conflicting; no direct NHA is confirmed. Candidates: `120-29067-003`, `120-29067-021`, `120-29067-031`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000349`.\n- Relationship page reference: `t_p_120_1176_p000348`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.01
+    },
+    {
+      "case_id": "nha_phase6_real_context_case:d38352e5341859b375cd",
+      "child_part": "120-34291-001",
+      "expected_behavior": "candidate_or_clarification",
+      "actual_behavior": "conflict_limited",
+      "passed": true,
+      "failures": [],
+      "result": {
+        "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+        "module": "trace_net_nha_phase6_query_benchmark_v1",
+        "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+        "truth_mode": "real_source",
+        "behavior": "conflict_limited",
+        "child": "120-34291-001",
+        "parent": "",
+        "direct_nha": "",
+        "parent_candidates": [
+          "120-29067-003",
+          "120-29067-021",
+          "120-29067-031"
+        ],
+        "chain": [],
+        "direct_children": [],
+        "descendants": [],
+        "pages": [
+          "t_p_120_1176_p000349",
+          "t_p_120_1176_p000348"
+        ],
+        "item_order": [
+          "70"
+        ],
+        "rows": [
+          {
+            "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+            "relationship_id": "nha_hierarchy_membership:ceb9b18f0c13de87c662",
+            "truth_mode": "real_source",
+            "source_truth": true,
+            "production_visible": true,
+            "relationship_type": "direct_component_candidate",
+            "relationship_status": "ambiguous",
+            "child_part": "120-34291-001",
+            "direct_nha": "",
+            "parent_candidates": [
+              "120-29067-003",
+              "120-29067-021",
+              "120-29067-031"
+            ],
+            "top_assembly_part": "",
+            "top_assembly_candidates": [
+              "120-29067-003",
+              "120-29067-021",
+              "120-29067-031"
+            ],
+            "ancestor_candidates": [],
+            "hierarchy_depth": 1,
+            "direct_child_of_top_assembly": true,
+            "lower_descendant_of_top_assembly": false,
+            "attaching_parts_context": false,
+            "quantity": "1",
+            "item_number": "70",
+            "figure": "81",
+            "row_page_id": "t_p_120_1176_p000349",
+            "anchor_page_ids": [
+              "t_p_120_1176_p000348",
+              "t_p_120_1176_p000349"
+            ],
+            "row_id": "nha_row:814d3bb4a78c7b20f8fe",
+            "boundary_resolution_method": "substantive_component_closes_sticky_attaching_region",
+            "ambiguity_reason": "multiple_top_assembly_variants_require_usage_or_effectivity_resolution",
+            "can_prove_direct_nha": false,
+            "guidance_only": true,
+            "source_truth_mutation_allowed": false
+          }
+        ],
+        "comparisons": [],
+        "project_ids": [
+          "None"
+        ],
+        "configuration_ids": [
+          "None"
+        ],
+        "revision_ids": [
+          "None"
+        ],
+        "limits": [],
+        "read_only": true,
+        "source_truth_mutation_allowed": false,
+        "production_graph_write_count": 0,
+        "scope": null,
+        "public_answer": "## Answer\n\nThe parent relationship is conflicting; no direct NHA is confirmed. Candidates: `120-29067-003`, `120-29067-021`, `120-29067-031`.\n\n## Evidence\n\n- Relationship page reference: `t_p_120_1176_p000349`.\n- Relationship page reference: `t_p_120_1176_p000348`.\n\n## Limits\n\n- Only direct, source-supported relationships are treated as confirmed."
+      },
+      "latency_ms": 0.011
+    }
+  ]
+}

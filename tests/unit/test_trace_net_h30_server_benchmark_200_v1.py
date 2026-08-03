@@ -7,8 +7,8 @@ from pathlib import Path
 
 
 REPO = Path(__file__).resolve().parents[2]
-RUNNER_PATH = REPO / "scripts" / "run_trace_net_h30_server_benchmark_200_v1.py"
-LAUNCHER_PATH = REPO / "scripts" / "launch_trace_net_h30_server_benchmark_200_v1.sh"
+RUNNER_PATH = REPO / "scripts/benchmark/run_trace_net_h30_server_benchmark_200_v1.py"
+LAUNCHER_PATH = REPO / "scripts/benchmark/operations/launch_trace_net_h30_server_benchmark_200_v1.sh"
 
 
 def load_module(path: Path, name: str):

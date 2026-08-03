@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from scripts.trace_net_h30_validated_planner_execution_v1 import (
+from src.trace_net.router.trace_net_h30_validated_planner_execution_v1 import (
     BROAD_ROUTES,
     MATURE_ROUTES,
     NARROW_ROUTES,

@@ -1,0 +1,40 @@
+{
+  "schema_version": "trace_net_nha_phase6_query_benchmark_v1",
+  "module": "trace_net_nha_phase6_query_benchmark_v1",
+  "status": "TRACE_NET_NHA_PHASE6_QUERY_BENCHMARK_V1",
+  "quality_status": "PASS",
+  "phase4_dir": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\organization\\trace_net\\nha_phase4_hierarchy_v1",
+  "phase5_dir": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\organization\\trace_net\\nha_phase5_synthetic_benchmark_v1",
+  "output_dir": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\organization\\trace_net\\nha_phase6_query_benchmark_v1",
+  "input_sha256": {
+    "real_relationships": "7c522db686c7284d821af6934c6436deef4464f7313a2f3ac4d112f1e481b444",
+    "real_answer_key": "88b4cf8d71ce1ce80f3bbdaa109144050a523dcc5df128d1b2239af05b9f06ce",
+    "phase4_quality": "76301e45ebb94f989e920976888c013358114c8d4ffa65d7fffe717dff3b6c27",
+    "synthetic_relationships": "1469e7bcfdaa58f97bbcab996b96638ed4194c42b1c9ed30fc8cdb16d3a7bc8c",
+    "synthetic_assignments": "cb9fc71aa762da0fcfd5a43ef3647638d942e23c6eb6d864d974cd6e71442de4",
+    "synthetic_questions": "327e2a4e25619af7de40792852960934b2bd5a24ce53c8217eb8c4b6f6707c44",
+    "synthetic_scenarios": "9c4a6093dfe574a5284ed313bbfb6ad32ff2eafab1644108b0fa9537acb9039a",
+    "phase5_quality": "39bea92da988f1ca53e1291635a720f402195f94a1120f006c5694a6c2bae84f"
+  },
+  "counts": {
+    "synthetic_question_count": 60,
+    "synthetic_pass_count": 60,
+    "synthetic_fail_count": 0,
+    "real_smoke_question_count": 20,
+    "real_smoke_pass_count": 20,
+    "real_smoke_fail_count": 0,
+    "llm_call_count": 0,
+    "production_graph_write_count": 0,
+    "source_artifact_mutation_count": 0
+  },
+  "failures": [],
+  "warnings": [],
+  "artifacts": [
+    "trace_net_nha_phase6_synthetic_results_v1.json",
+    "trace_net_nha_phase6_synthetic_results_v1.jsonl",
+    "trace_net_nha_phase6_real_smoke_results_v1.json",
+    "trace_net_nha_phase6_real_smoke_results_v1.jsonl",
+    "trace_net_nha_phase6_quality_v1.json",
+    "report.md"
+  ]
+}

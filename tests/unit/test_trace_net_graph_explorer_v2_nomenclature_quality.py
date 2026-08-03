@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-MODULE_PATH = ROOT / "scripts" / "check_trace_net_graph_explorer_v2_nomenclature_fix_quality.py"
+MODULE_PATH = ROOT / "scripts/maintenance/benchmark/check_trace_net_graph_explorer_v2_nomenclature_fix_quality.py"
 
 spec = importlib.util.spec_from_file_location("graph_v2_nom_quality", MODULE_PATH)
 quality = importlib.util.module_from_spec(spec)

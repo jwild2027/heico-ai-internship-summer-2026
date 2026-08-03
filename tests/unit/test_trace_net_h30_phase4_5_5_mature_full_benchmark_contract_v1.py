@@ -81,7 +81,7 @@ def record():
 def test_router_builds_bounded_guided_followups():
     router = load(
         "phase455_router",
-        "scripts/serve_trace_net_cognitive_router_v1.py",
+        "scripts/operations/router/serve_trace_net_cognitive_router_v1.py",
     )
     atoms = router.extract_query_atoms(record()["query"])
     questions = router.build_follow_up_questions(
@@ -99,7 +99,7 @@ def test_router_builds_bounded_guided_followups():
 def test_writer_appends_followups_once():
     writer = load(
         "phase455_writer",
-        "scripts/serve_trace_net_full_gemma_cognitive_v1.py",
+        "scripts/operations/serving/serve_trace_net_full_gemma_cognitive_v1.py",
     )
     questions = [
         "What additional part number characters do you remember?",
@@ -141,7 +141,7 @@ def test_revision_metadata_is_not_a_noise_candidate():
 def test_mature_candidate_response_passes_legacy_bank_adapter():
     benchmark = load(
         "phase455_benchmark",
-        "scripts/run_trace_net_full_user_query_gemma_benchmark_v1.py",
+        "scripts/benchmark/run_trace_net_full_user_query_gemma_benchmark_v1.py",
     )
     result = benchmark.evaluate(
         record(),
@@ -159,7 +159,7 @@ def test_mature_candidate_response_passes_legacy_bank_adapter():
 def test_mature_candidate_response_still_fails_missing_followups():
     benchmark = load(
         "phase455_benchmark_missing_followups",
-        "scripts/run_trace_net_full_user_query_gemma_benchmark_v1.py",
+        "scripts/benchmark/run_trace_net_full_user_query_gemma_benchmark_v1.py",
     )
     result = benchmark.evaluate(
         record(),
@@ -175,7 +175,7 @@ def test_mature_candidate_response_still_fails_missing_followups():
 def test_mature_direct_evidence_requires_validated_writer():
     benchmark = load(
         "phase455_benchmark_direct",
-        "scripts/run_trace_net_full_user_query_gemma_benchmark_v1.py",
+        "scripts/benchmark/run_trace_net_full_user_query_gemma_benchmark_v1.py",
     )
     row = {
         "question_id": "qx",
@@ -237,7 +237,7 @@ def test_mature_direct_evidence_requires_validated_writer():
 def test_legacy_canary_contract_remains_supported():
     benchmark = load(
         "phase455_benchmark_legacy",
-        "scripts/run_trace_net_full_user_query_gemma_benchmark_v1.py",
+        "scripts/benchmark/run_trace_net_full_user_query_gemma_benchmark_v1.py",
     )
     row = {
         "question_id": "legacy",

@@ -6,9 +6,9 @@ from pathlib import Path
 
 def test_scripts_import_without_running() -> None:
     script_paths = [
-        Path("scripts/record_trace_net_human_review_decision_v1.py"),
-        Path("scripts/build_trace_net_human_review_decisions_v1.py"),
-        Path("scripts/check_trace_net_human_review_decisions_v1_quality.py"),
+        Path("scripts/maintenance/ingestion/record_trace_net_human_review_decision_v1.py"),
+        Path("scripts/build/ingestion/build_trace_net_human_review_decisions_v1.py"),
+        Path("scripts/maintenance/benchmark/check_trace_net_human_review_decisions_v1_quality.py"),
     ]
     for script_path in script_paths:
         spec = importlib.util.spec_from_file_location(script_path.stem, script_path)

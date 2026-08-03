@@ -6,10 +6,10 @@ import json
 import sys
 from pathlib import Path
 
-CLAIM_PATH = Path("scripts/trace_net_h30_claim_ready_evidence_v1.py")
-CHECK_PATH = Path("scripts/check_trace_net_h30_claim_ready_evidence_v1.py")
-MODE_PATH = Path("scripts/trace_net_h30_evidence_aware_answer_modes_v1.py")
-WRITER_PATH = Path("scripts/serve_trace_net_full_gemma_cognitive_v1.py")
+CLAIM_PATH = Path("src/trace_net/context/trace_net_h30_claim_ready_evidence_v1.py")
+CHECK_PATH = Path("scripts/maintenance/context/check_trace_net_h30_claim_ready_evidence_v1.py")
+MODE_PATH = Path("src/trace_net/writing/trace_net_h30_evidence_aware_answer_modes_v1.py")
+WRITER_PATH = Path("scripts/operations/serving/serve_trace_net_full_gemma_cognitive_v1.py")
 
 
 def load(path: Path, name: str):
@@ -368,10 +368,10 @@ def test_checker_rejects_missing_selector(tmp_path):
 
 
 def test_phase2_runtime_wiring_is_present():
-    router = Path("scripts/serve_trace_net_cognitive_router_v1.py").read_text(encoding="utf-8")
+    router = Path("scripts/operations/router/serve_trace_net_cognitive_router_v1.py").read_text(encoding="utf-8")
     modes = MODE_PATH.read_text(encoding="utf-8")
     writer = WRITER_PATH.read_text(encoding="utf-8")
-    launcher = Path("scripts/launch_trace_net_cognitive_openwebui_v1.sh").read_text(encoding="utf-8")
+    launcher = Path("scripts/operations/launch_trace_net_cognitive_openwebui_v1.sh").read_text(encoding="utf-8")
     assert "install_claim_ready_evidence" in router
     assert "typed_record_source" in modes
     assert "claim_ready_evidence_available" in writer

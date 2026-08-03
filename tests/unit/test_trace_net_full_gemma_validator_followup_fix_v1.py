@@ -1,4 +1,4 @@
-from scripts.serve_trace_net_full_gemma_user_query_canary_v1 import (
+from scripts.benchmark.serving.serve_trace_net_full_gemma_user_query_canary_v1 import (
     append_followups,
     validate_composed_answer,
 )

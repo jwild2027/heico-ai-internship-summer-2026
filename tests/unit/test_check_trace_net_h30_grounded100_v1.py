@@ -5,7 +5,7 @@ import sys
 import types
 import re
 
-_grounded_stub = types.ModuleType("scripts.run_trace_net_tiff_grounded20_v1")
+_grounded_stub = types.ModuleType("scripts.benchmark.ingestion.run_trace_net_tiff_grounded20_v1")
 _grounded_stub.answer = lambda payload: str((((payload.get("choices") or [{}])[0].get("message") or {}).get("content") or ""))
 def _stub_pages(value):
     text = str(value)
@@ -13,11 +13,11 @@ def _stub_pages(value):
 _grounded_stub.evidence_page_ids = _stub_pages
 _grounded_stub.truth = lambda repo: {}
 _grounded_stub.call = lambda *args, **kwargs: (200, {}, "")
-sys.modules.setdefault("scripts.run_trace_net_tiff_grounded20_v1", _grounded_stub)
+sys.modules.setdefault("scripts.benchmark.ingestion.run_trace_net_tiff_grounded20_v1", _grounded_stub)
 
-from scripts.check_trace_net_h30_grounded100_v1 import inspect_run
-from scripts.run_trace_net_h30_grounded100_v1 import summarize_records
-from scripts.trace_net_h30_phase5_question_bank_v1 import bank_document, build_phase5_bank
+from scripts.benchmark.check_trace_net_h30_grounded100_v1 import inspect_run
+from scripts.benchmark.run_trace_net_h30_grounded100_v1 import summarize_records
+from scripts.benchmark.trace_net_h30_phase5_question_bank_v1 import bank_document, build_phase5_bank
 
 
 def synthetic_truth():

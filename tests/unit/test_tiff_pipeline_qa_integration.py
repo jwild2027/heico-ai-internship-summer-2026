@@ -16,7 +16,7 @@ def test_pipeline_runs_qa_triage_after_raw_qa() -> None:
     steps = build_pipeline_steps(config)
     names = [step.name for step in steps]
     assert names == ["part_catalog_qa", "part_catalog_qa_triage"]
-    assert "scripts/triage_part_catalog_qa.py" in steps[1].command
+    assert "scripts/maintenance/ingestion/triage_part_catalog_qa.py" in steps[1].command
     assert "--replace-all-report" in steps[1].command
 
 

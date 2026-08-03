@@ -18,7 +18,7 @@ def load(name: str, path: str):
 def test_executor_owned_part_tunnels_include_phase4_3_resolution():
     planner = load(
         "phase456_planner",
-        "scripts/trace_net_h30_validated_planner_execution_v1.py",
+        "src/trace_net/router/trace_net_h30_validated_planner_execution_v1.py",
     )
     exact = planner.ROUTE_TUNNELS["exact_identifier_lookup"]
     guided = planner.ROUTE_TUNNELS["guided_part_discovery"]
@@ -36,7 +36,7 @@ def test_executor_owned_part_tunnels_include_phase4_3_resolution():
 def test_planner_override_declares_phase4_3_candidate_tunnel():
     planner = load(
         "phase456_planner_override",
-        "scripts/trace_net_h30_validated_planner_execution_v1.py",
+        "src/trace_net/router/trace_net_h30_validated_planner_execution_v1.py",
     )
 
     class FakeRoutePlan:
@@ -78,11 +78,11 @@ def test_planner_override_declares_phase4_3_candidate_tunnel():
 def test_native_writer_wrapper_restores_visible_followups_after_contract():
     cold = load(
         "phase456_cold",
-        "scripts/trace_net_h30_cold_start_streaming_v1.py",
+        "src/trace_net/serving/trace_net_h30_cold_start_streaming_v1.py",
     )
     writer = load(
         "phase456_writer",
-        "scripts/serve_trace_net_full_gemma_cognitive_v1.py",
+        "scripts/operations/serving/serve_trace_net_full_gemma_cognitive_v1.py",
     )
 
     questions = [

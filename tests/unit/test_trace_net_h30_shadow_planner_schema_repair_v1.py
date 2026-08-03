@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from scripts.trace_net_h30_shadow_planner_v1 import (
+from src.trace_net.router.trace_net_h30_shadow_planner_v1 import (
     PROPOSAL_SCHEMA_GUIDANCE,
     build_schema_repair_seed,
     build_shadow_planner_seed,

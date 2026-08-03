@@ -5,7 +5,7 @@ import zipfile
 from argparse import Namespace
 from pathlib import Path
 
-from scripts import trace_net_tiff_to_answer_server_demo_v1 as demo
+from scripts.operations.serving import trace_net_tiff_to_answer_server_demo_v1 as demo
 
 
 def test_find_record_exact_page_id():

@@ -3,8 +3,8 @@ from __future__ import annotations
 import json
 from typing import Any, Dict, List
 
-from scripts.trace_net_h30_shadow_planner_v1 import call_shadow_planner
-from scripts.trace_net_h30_validated_planner_execution_v1 import canonicalize_planner_contract
+from src.trace_net.router.trace_net_h30_shadow_planner_v1 import call_shadow_planner
+from src.trace_net.router.trace_net_h30_validated_planner_execution_v1 import canonicalize_planner_contract
 
 SAFETY_FALSE = {
     "answer_permission": False,

@@ -34,7 +34,7 @@ def test_visible_candidate_parser_ignores_nomenclature_tokens():
 
 
 def test_partial_item_number_overrides_table_but_real_item_does_not():
-    router = load("p458_router_item", "scripts/serve_trace_net_cognitive_router_v1.py")
+    router = load("p458_router_item", "scripts/operations/router/serve_trace_net_cognitive_router_v1.py")
     for query, mode, value in (
         ("The item number begins with PE13", "prefix", "PE13"),
         ("All I know is the item number contains 48024", "contains", "48024"),
@@ -50,7 +50,7 @@ def test_partial_item_number_overrides_table_but_real_item_does_not():
 
 
 def test_nas_and_descriptive_vocabulary_routes():
-    router = load("p458_router_vocab", "scripts/serve_trace_net_cognitive_router_v1.py")
+    router = load("p458_router_vocab", "scripts/operations/router/serve_trace_net_cognitive_router_v1.py")
     atoms = router.extract_query_atoms("The part starts with NAS and I am not sure of the rest")
     assert atoms.identifier_mode == "prefix" and atoms.part_prefix == "NAS"
     assert router.plan_route(atoms).primary_route == "guided_part_discovery"
@@ -64,7 +64,7 @@ def test_nas_and_descriptive_vocabulary_routes():
 
 
 def test_discovery_routes_have_five_complete_followups():
-    router = load("p458_router_followups", "scripts/serve_trace_net_cognitive_router_v1.py")
+    router = load("p458_router_followups", "scripts/operations/router/serve_trace_net_cognitive_router_v1.py")
     cases = (
         ("I only remember the part contains 824", "guided_part_discovery"),
         ("I am looking for a hinge", "nomenclature_function_search"),
@@ -96,7 +96,7 @@ def _response(route, tunnels, used, answer, followups, planner=None):
 
 
 def test_benchmark_physical_topic_planner_adoption_and_specialized_labels():
-    bench = load("p458_bench", "scripts/run_trace_net_full_user_query_gemma_benchmark_v1.py")
+    bench = load("p458_bench", "scripts/benchmark/run_trace_net_full_user_query_gemma_benchmark_v1.py")
     qs = [
         "Do you remember any part number characters, digits, separators, or stamped markings?",
         "Do you know the manufacturer, vendor, or supplier?",
@@ -123,8 +123,8 @@ def test_benchmark_physical_topic_planner_adoption_and_specialized_labels():
 
 
 def test_native_wrapper_appends_nomenclature_followups():
-    cold = load("p458_cold", "scripts/trace_net_h30_cold_start_streaming_v1.py")
-    writer = load("p458_writer", "scripts/serve_trace_net_full_gemma_cognitive_v1.py")
+    cold = load("p458_cold", "src/trace_net/serving/trace_net_h30_cold_start_streaming_v1.py")
+    writer = load("p458_writer", "scripts/operations/serving/serve_trace_net_full_gemma_cognitive_v1.py")
     qs = [f"Question {i} with part number manufacturer look like detail?" for i in range(5)]
     upstream = {"route": "nomenclature_function_search", "content": "Candidate guidance only.", "follow_up_questions": qs, "evidence_envelope": {"direct_evidence": [], "candidate_evidence": []}, "answer_permission": False, "final_answer_allowed": False, "can_answer_directly": False, "can_prove_claims": False, "source_truth_mutation_allowed": False}
     class Runtime:

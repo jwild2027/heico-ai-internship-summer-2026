@@ -13,7 +13,7 @@ def test_build_script_runs_from_repo_root(tmp_path):
     out = tmp_path / "out"
     proc = subprocess.run([
         sys.executable,
-        "scripts/build_trace_net_gold_label_decision_merge_v1.py",
+        "scripts/build/ingestion/build_trace_net_gold_label_decision_merge_v1.py",
         "--auto-review-seed", str(seed),
         "--output-dir", str(out),
         "--quality",

@@ -90,10 +90,10 @@ def test_pipeline_includes_document_organization_audit_and_export_before_eval() 
     assert "document_organization_export" in names
     assert names.index("document_organization_audit") < names.index("document_organization_export") < names.index("rag_eval")
     step = steps[names.index("document_organization_audit")]
-    assert "scripts/audit_document_organization.py" in step.command
+    assert "scripts/maintenance/ingestion/audit_document_organization.py" in step.command
     assert "--no-refresh-manifest" in step.command
     export_step = steps[names.index("document_organization_export")]
-    assert "scripts/export_document_organization.py" in export_step.command
+    assert "scripts/build/ingestion/export_document_organization.py" in export_step.command
     assert "--strict" in export_step.command
 
 

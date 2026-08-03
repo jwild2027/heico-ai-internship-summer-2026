@@ -7,10 +7,10 @@ from pathlib import Path
 def test_scripts_help_execute_from_repo_root():
     root = Path(__file__).resolve().parents[2]
     scripts = [
-        "scripts/build_trace_net_engineering_reasoning_kernel_v1.py",
-        "scripts/check_trace_net_engineering_reasoning_kernel_v1_quality.py",
-        "scripts/build_trace_net_engineering_query_planner_v1.py",
-        "scripts/check_trace_net_engineering_query_planner_v1_quality.py",
+        "scripts/build/ingestion/build_trace_net_engineering_reasoning_kernel_v1.py",
+        "scripts/maintenance/benchmark/check_trace_net_engineering_reasoning_kernel_v1_quality.py",
+        "scripts/build/ingestion/build_trace_net_engineering_query_planner_v1.py",
+        "scripts/maintenance/benchmark/check_trace_net_engineering_query_planner_v1_quality.py",
     ]
     for script in scripts:
         completed = subprocess.run(

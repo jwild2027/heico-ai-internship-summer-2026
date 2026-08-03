@@ -2,7 +2,7 @@ from __future__ import annotations
 import importlib.util, sys
 from pathlib import Path
 
-SCRIPT = Path("scripts/check_trace_net_openwebui_full_stack_v2.py")
+SCRIPT = Path("scripts/maintenance/serving/check_trace_net_openwebui_full_stack_v2.py")
 
 def load():
     spec = importlib.util.spec_from_file_location("checker_v2", SCRIPT)

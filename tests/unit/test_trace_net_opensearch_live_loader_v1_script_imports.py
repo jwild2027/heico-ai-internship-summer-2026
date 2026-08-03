@@ -8,9 +8,9 @@ from pathlib import Path
 def test_script_imports() -> None:
     root = Path(__file__).resolve().parents[2]
     scripts = [
-        root / "scripts" / "build_trace_net_opensearch_live_loader_v1.py",
-        root / "scripts" / "check_trace_net_opensearch_live_loader_v1_quality.py",
-        root / "scripts" / "run_trace_net_opensearch_live_loader_v1.py",
+        root / "scripts/build/retrieval/build_trace_net_opensearch_live_loader_v1.py",
+        root / "scripts/maintenance/benchmark/check_trace_net_opensearch_live_loader_v1_quality.py",
+        root / "scripts/operations/retrieval/run_trace_net_opensearch_live_loader_v1.py",
     ]
     for script in scripts:
         result = subprocess.run([sys.executable, str(script), "--help"], cwd=root, text=True, capture_output=True)

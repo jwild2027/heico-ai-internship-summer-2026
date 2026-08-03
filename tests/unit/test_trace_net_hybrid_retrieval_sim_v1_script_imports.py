@@ -14,10 +14,10 @@ def load_script(path: str):
 
 
 def test_run_script_imports():
-    module = load_script("scripts/run_trace_net_hybrid_retrieval_sim_v1.py")
+    module = load_script("scripts/benchmark/run_trace_net_hybrid_retrieval_sim_v1.py")
     assert hasattr(module, "main")
 
 
 def test_quality_script_imports():
-    module = load_script("scripts/check_trace_net_hybrid_retrieval_sim_v1_quality.py")
+    module = load_script("scripts/benchmark/check_trace_net_hybrid_retrieval_sim_v1_quality.py")
     assert hasattr(module, "quality_main")

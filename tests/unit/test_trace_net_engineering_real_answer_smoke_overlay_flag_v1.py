@@ -60,7 +60,7 @@ def test_build_context_pack_command_contains_safety_flags():
     ])
     cmd = build_context_pack_command(parsed, Path("out/trace_net_engineering_real_answer_smoke_test_v1.json"), Path("out"))
     joined = " ".join(cmd)
-    assert "scripts/build_trace_net_engineering_answer_runner_overlay_context_pack_v1.py" in joined
+    assert "scripts/build/context/build_trace_net_engineering_answer_runner_overlay_context_pack_v1.py" in joined
     assert "--engram-answer-runner-overlay-map overlay.json" in joined
     assert "--require-no-answer-permission" in joined
     assert "--max-write-attempts 0" in joined

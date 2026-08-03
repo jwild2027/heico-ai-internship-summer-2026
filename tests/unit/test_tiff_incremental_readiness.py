@@ -80,7 +80,7 @@ def test_audit_reports_ok_when_required_files_exist(tmp_path: Path, monkeypatch)
     monkeypatch.chdir(tmp_path)
     (tmp_path / "scripts").mkdir()
     (tmp_path / "tiff").mkdir()
-    (tmp_path / "scripts" / "update_changed_page_backend.py").write_text("", encoding="utf-8")
+    (tmp_path / "scripts/operations/ingestion/update_changed_page_backend.py").write_text("", encoding="utf-8")
     (tmp_path / "tiff" / "changed_page_update.py").write_text("", encoding="utf-8")
 
     config = tmp_path / "local_config.yaml"
@@ -117,7 +117,7 @@ def test_audit_can_require_clean_quality(tmp_path: Path, monkeypatch) -> None:
     monkeypatch.chdir(tmp_path)
     (tmp_path / "scripts").mkdir()
     (tmp_path / "tiff").mkdir()
-    (tmp_path / "scripts" / "update_changed_page_backend.py").write_text("", encoding="utf-8")
+    (tmp_path / "scripts/operations/ingestion/update_changed_page_backend.py").write_text("", encoding="utf-8")
     (tmp_path / "tiff" / "changed_page_update.py").write_text("", encoding="utf-8")
     quality = tmp_path / "quality.json"
     manifest = tmp_path / "manifest.json"
@@ -168,7 +168,7 @@ def test_audit_accepts_lowercase_quality_status_and_current_source_keys(tmp_path
     monkeypatch.chdir(tmp_path)
     (tmp_path / "scripts").mkdir()
     (tmp_path / "tiff").mkdir()
-    (tmp_path / "scripts" / "update_changed_page_backend.py").write_text("", encoding="utf-8")
+    (tmp_path / "scripts/operations/ingestion/update_changed_page_backend.py").write_text("", encoding="utf-8")
     (tmp_path / "tiff" / "changed_page_update.py").write_text("", encoding="utf-8")
 
     quality = tmp_path / "quality.json"

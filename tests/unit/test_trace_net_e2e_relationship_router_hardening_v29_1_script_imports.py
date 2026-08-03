@@ -6,9 +6,9 @@ from pathlib import Path
 
 def test_relationship_router_hardening_v29_1_scripts_importable():
     for script in (
-        "scripts/build_trace_net_e2e_relationship_router_hardening_v29_1.py",
-        "scripts/check_trace_net_e2e_relationship_router_hardening_v29_1_quality.py",
-        "scripts/serve_trace_net_e2e_relationship_router_hardening_v29_1.py",
+        "scripts/build/graph/build_trace_net_e2e_relationship_router_hardening_v29_1.py",
+        "scripts/maintenance/graph/check_trace_net_e2e_relationship_router_hardening_v29_1_quality.py",
+        "scripts/operations/router/serve_trace_net_e2e_relationship_router_hardening_v29_1.py",
     ):
         path = Path(script)
         assert path.exists(), script
