@@ -23,6 +23,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any, Dict, List, Mapping, MutableMapping, Optional, Sequence, Tuple
 
 from scripts.trace_net_h30_cold_start_streaming_v1 import install_gemma_latency_support
+from scripts.trace_net_h30_gemma_residency_watchdog_v2 import install_writer_residency_watchdog
 from scripts.trace_net_h30_page_content_bridge_v1 import (
     page_content_registry_rows,
     render_page_content_prompt,
@@ -1147,6 +1148,7 @@ install_constrained_gemma_writer(globals())
 install_phase19_preservation_writer(globals())
 # TRACE_NET_H30_PHASE1_PUBLIC_ANSWER_CONTRACT_V1_INSTALL
 install_public_answer_contract(globals())
+install_writer_residency_watchdog(globals())
 
 
 if __name__ == "__main__":
