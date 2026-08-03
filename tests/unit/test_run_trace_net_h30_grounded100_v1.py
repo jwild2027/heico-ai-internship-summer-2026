@@ -4,7 +4,7 @@ import sys
 import types
 import re
 
-_grounded_stub = types.ModuleType("scripts.run_trace_net_tiff_grounded20_v1")
+_grounded_stub = types.ModuleType("scripts.benchmark.ingestion.run_trace_net_tiff_grounded20_v1")
 _grounded_stub.answer = lambda payload: str((((payload.get("choices") or [{}])[0].get("message") or {}).get("content") or ""))
 def _stub_pages(value):
     text = str(value)
@@ -12,9 +12,9 @@ def _stub_pages(value):
 _grounded_stub.evidence_page_ids = _stub_pages
 _grounded_stub.truth = lambda repo: {}
 _grounded_stub.call = lambda *args, **kwargs: (200, {}, "")
-sys.modules.setdefault("scripts.run_trace_net_tiff_grounded20_v1", _grounded_stub)
+sys.modules.setdefault("scripts.benchmark.ingestion.run_trace_net_tiff_grounded20_v1", _grounded_stub)
 
-from scripts.run_trace_net_h30_grounded100_v1 import (
+from scripts.benchmark.run_trace_net_h30_grounded100_v1 import (
     _select_bank,
     evaluate_record,
     summarize_records,
@@ -93,7 +93,7 @@ def test_select_bank_supports_category_id_and_limit_filters():
     assert [row["question_id"] for row in selected] == ["q003"]
 
 # TRACE_NET_H30_PHASE5_CALIBRATED_EVALUATOR_V1
-from scripts.run_trace_net_h30_grounded100_v1 import (
+from scripts.benchmark.run_trace_net_h30_grounded100_v1 import (
     _existing_record_matches_question,
     _regrade_existing_record,
 )

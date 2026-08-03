@@ -6,7 +6,7 @@ import sys
 import zipfile
 from pathlib import Path
 
-from scripts.trace_net_nha_phase0_3_v1 import (
+from src.trace_net.graph.trace_net_nha_phase0_3_v1 import (
     CorpusSource,
     build_answer_key,
     build_graph_bundle,
@@ -166,8 +166,8 @@ def test_validation_rejects_cycle_and_synthetic_leak():
 def test_cli_entrypoints_bootstrap_repo_root_when_run_directly(tmp_path):
     repo_root = Path(__file__).resolve().parents[2]
     for relative in (
-        "scripts/build_trace_net_nha_phase0_3_v1.py",
-        "scripts/check_trace_net_nha_phase0_3_v1.py",
+        "scripts/build/graph/build_trace_net_nha_phase0_3_v1.py",
+        "scripts/maintenance/graph/check_trace_net_nha_phase0_3_v1.py",
     ):
         completed = subprocess.run(
             [sys.executable, "-B", str(repo_root / relative), "--help"],

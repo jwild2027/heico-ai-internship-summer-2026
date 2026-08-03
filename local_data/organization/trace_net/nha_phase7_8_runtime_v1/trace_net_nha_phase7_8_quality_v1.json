@@ -1,0 +1,39 @@
+{
+  "schema_version": "trace_net_nha_phase7_8_runtime_v1",
+  "module": "trace_net_nha_phase7_8_runtime_v1",
+  "status": "TRACE_NET_NHA_PHASE7_8_RUNTIME_V1",
+  "quality_status": "PASS",
+  "failures": [],
+  "warnings": [],
+  "counts": {
+    "shadow_case_count": 40,
+    "shadow_pass_count": 40,
+    "shadow_fail_count": 0,
+    "shadow_candidate_count": 34,
+    "shadow_override_count": 0,
+    "gated_case_count": 40,
+    "gated_pass_count": 40,
+    "gated_fail_count": 0,
+    "gated_override_count": 34,
+    "gated_public_contract_pass_count": 34,
+    "false_gated_override_count": 0,
+    "synthetic_block_count": 6,
+    "synthetic_access_count": 0,
+    "llm_call_count_for_nha_overrides": 0,
+    "production_graph_write_count": 0,
+    "source_artifact_mutation_count": 0
+  },
+  "safety_contract": {
+    "read_only": true,
+    "shadow_never_overrides": true,
+    "synthetic_artifacts_loaded": false,
+    "synthetic_identifier_blocked": true,
+    "only_real_phase4_relationships_loaded": true,
+    "non_nha_passthrough": true,
+    "source_truth_mutation_allowed": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "opensearch_write_attempt": false,
+    "llm_call_count_for_nha_overrides": 0
+  }
+}

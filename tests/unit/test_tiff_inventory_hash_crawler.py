@@ -8,7 +8,7 @@ from PIL import Image
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-SCRIPT_PATH = REPO_ROOT / "scripts" / "tiff_inventory_hash_crawler.py"
+SCRIPT_PATH = REPO_ROOT / "scripts/maintenance/ingestion/tiff_inventory_hash_crawler.py"
 
 
 def load_crawler():

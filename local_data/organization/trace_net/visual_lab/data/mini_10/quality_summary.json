@@ -1,0 +1,20 @@
+{
+  "artifact_sources": {
+    "embeddings": "/data/trace_net_runs/executive_fast10_deep_v5_20260731_134625/trace_net_demo_page_embeddings_v4.jsonl",
+    "engram": "/data/trace_net_runs/executive_fast10_deep_v5_20260731_134625/trace_net_demo_engram_layers_v4.json",
+    "graph_edges": "/data/trace_net_runs/executive_fast10_deep_v5_20260731_134625/trace_net_demo_graph_edges_v4.jsonl",
+    "graph_nodes": "/data/trace_net_runs/executive_fast10_deep_v5_20260731_134625/trace_net_demo_graph_nodes_v4.jsonl",
+    "ocr_records": "/data/trace_net_runs/executive_fast10_deep_v5_20260731_134625/ocr_route_scan_pack_fast10_deep_v5/trace_net_ocr_route_scan_pack_v1_records.jsonl"
+  },
+  "checks": {
+    "engram_layer_count": 6,
+    "lineage_not_ready_count": 0,
+    "missing_artifacts": [],
+    "page_count": 10,
+    "production_write_attempt_count": 0,
+    "unknown_route_count": 0,
+    "vector_projection_status": "PASS"
+  },
+  "failures": [],
+  "quality_status": "PASS"
+}

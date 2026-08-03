@@ -12,14 +12,14 @@ def test_module_imports() -> None:
 
 
 def test_run_script_help_executes() -> None:
-    script = Path("scripts/run_trace_net_graph_query_api_v1.py")
+    script = Path("scripts/operations/graph/run_trace_net_graph_query_api_v1.py")
     result = subprocess.run([sys.executable, str(script), "--help"], capture_output=True, text=True)
     assert result.returncode == 0
     assert "Graph Query API" in result.stdout
 
 
 def test_check_script_help_executes() -> None:
-    script = Path("scripts/check_trace_net_graph_query_api_v1_quality.py")
+    script = Path("scripts/maintenance/graph/check_trace_net_graph_query_api_v1_quality.py")
     result = subprocess.run([sys.executable, str(script), "--help"], capture_output=True, text=True)
     assert result.returncode == 0
     assert "Graph Query API" in result.stdout

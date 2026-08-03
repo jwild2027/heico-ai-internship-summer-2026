@@ -26,5 +26,5 @@ def test_legacy_incremental_command_api_still_exists():
     cfg = IncrementalPipelineConfig(run_backend_when_unchanged=True, run_ocr=False)
     commands = build_incremental_commands(cfg, changed_count=0)
     assert [c.name for c in commands] == ["backend_pipeline"]
-    assert "scripts/run_tiff_backend_pipeline.py" in commands[0].command
+    assert "scripts/operations/ingestion/run_tiff_backend_pipeline.py" in commands[0].command
     assert format_command(("python", "script.py", "two words")) == 'python script.py "two words"'

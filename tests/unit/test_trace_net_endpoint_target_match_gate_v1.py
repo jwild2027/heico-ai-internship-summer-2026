@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from scripts.serve_trace_net_e2e_local_endpoint_target_gate_v1 import (
+from scripts.operations.serving.serve_trace_net_e2e_local_endpoint_target_gate_v1 import (
     citation_record_matches_any_target,
     extract_citation_like_records,
     extract_explicit_part_targets,

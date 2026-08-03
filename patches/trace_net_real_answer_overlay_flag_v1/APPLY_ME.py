@@ -35,7 +35,7 @@ MODULE = "trace_net_engineering_real_answer_smoke_overlay_flag_v1"
 VERSION = "v1"
 
 BASE_SMOKE_FILENAME = "trace_net_engineering_real_answer_smoke_test_v1.json"
-CONTEXT_PACK_SCRIPT = "scripts/build_trace_net_engineering_answer_runner_overlay_context_pack_v1.py"
+CONTEXT_PACK_SCRIPT = "scripts/build/context/build_trace_net_engineering_answer_runner_overlay_context_pack_v1.py"
 
 OVERLAY_HELP = """
 Engram overlay options added by trace_net_engineering_real_answer_smoke_overlay_flag_v1:
@@ -257,7 +257,7 @@ if __name__ == "__main__":  # pragma: no cover
     raise SystemExit(main())
 '''
 
-FILES["scripts/build_trace_net_engineering_real_answer_smoke_test_v1.py"] = r'''#!/usr/bin/env python
+FILES["scripts/benchmark/build_trace_net_engineering_real_answer_smoke_test_v1.py"] = r'''#!/usr/bin/env python
 from __future__ import annotations
 
 from tiff.trace_net_engineering_real_answer_smoke_overlay_flag_v1 import main
@@ -328,7 +328,7 @@ def test_build_context_pack_command_contains_safety_flags():
     ])
     cmd = build_context_pack_command(parsed, Path("out/trace_net_engineering_real_answer_smoke_test_v1.json"), Path("out"))
     joined = " ".join(cmd)
-    assert "scripts/build_trace_net_engineering_answer_runner_overlay_context_pack_v1.py" in joined
+    assert "scripts/build/context/build_trace_net_engineering_answer_runner_overlay_context_pack_v1.py" in joined
     assert "--engram-answer-runner-overlay-map overlay.json" in joined
     assert "--require-no-answer-permission" in joined
     assert "--max-write-attempts 0" in joined
@@ -359,7 +359,7 @@ Safety contract:
 Typical usage adds the flag to the existing real smoke command:
 
 ```bash
-python -B scripts/build_trace_net_engineering_real_answer_smoke_test_v1.py \
+python -B scripts/benchmark/build_trace_net_engineering_real_answer_smoke_test_v1.py \
   ...existing real answer smoke args... \
   --output-dir local_data/organization/trace_net/engineering_real_answer_smoke_test_v1 \
   --engram-answer-runner-overlay-map local_data/organization/trace_net/.../trace_net_engineering_engram_answer_smoke_overlay_map_v1.json \
@@ -372,7 +372,7 @@ python -B scripts/build_trace_net_engineering_real_answer_smoke_test_v1.py \
 def write_file(rel: str, content: str) -> None:
     path = ROOT / rel
     path.parent.mkdir(parents=True, exist_ok=True)
-    if path.exists() and rel == "scripts/build_trace_net_engineering_real_answer_smoke_test_v1.py":
+    if path.exists() and rel == "scripts/benchmark/build_trace_net_engineering_real_answer_smoke_test_v1.py":
         bak = path.with_suffix(path.suffix + ".bak_engram_overlay_flag_v1")
         if not bak.exists():
             bak.write_text(path.read_text(encoding="utf-8"), encoding="utf-8")

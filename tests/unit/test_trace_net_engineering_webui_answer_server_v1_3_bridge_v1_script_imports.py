@@ -12,15 +12,15 @@ def _load_script(path: str):
 
 
 def test_build_script_imports():
-    module = _load_script("scripts/build_trace_net_engineering_webui_answer_server_v1_3_bridge_v1.py")
+    module = _load_script("scripts/build/serving/build_trace_net_engineering_webui_answer_server_v1_3_bridge_v1.py")
     assert hasattr(module, "main_build")
 
 
 def test_check_script_imports():
-    module = _load_script("scripts/check_trace_net_engineering_webui_answer_server_v1_3_bridge_v1_quality.py")
+    module = _load_script("scripts/maintenance/serving/check_trace_net_engineering_webui_answer_server_v1_3_bridge_v1_quality.py")
     assert hasattr(module, "main_check")
 
 
 def test_run_script_imports():
-    module = _load_script("scripts/run_trace_net_engineering_webui_answer_server_v1_3_bridge_v1.py")
+    module = _load_script("scripts/operations/serving/run_trace_net_engineering_webui_answer_server_v1_3_bridge_v1.py")
     assert hasattr(module, "main_run")

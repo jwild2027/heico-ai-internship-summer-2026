@@ -15,7 +15,7 @@ def test_changed_page_backend_command_is_selected_when_requested():
     commands = build_commands(cfg, summary, changed_page_backend=True)
     backend = [c for c in commands if c.name == "backend_pipeline"][0]
     assert backend.will_run
-    assert "scripts/run_changed_page_backend_update.py" in backend.argv
+    assert "scripts/operations/ingestion/run_changed_page_backend_update.py" in backend.argv
     assert "--changed-list" in backend.argv
     assert "local_data/changed_tiffs.txt" in backend.argv
 
@@ -25,4 +25,4 @@ def test_changed_page_backend_is_not_default():
     summary = ChangeDetectionSummary(files_seen=1, changed_paths=["changed.tif"])
     commands = build_commands(cfg, summary)
     backend = [c for c in commands if c.name == "backend_pipeline"][0]
-    assert "scripts/run_tiff_backend_pipeline.py" in backend.argv
+    assert "scripts/operations/ingestion/run_tiff_backend_pipeline.py" in backend.argv

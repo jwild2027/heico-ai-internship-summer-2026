@@ -4,7 +4,7 @@ import importlib.util
 import sys
 from pathlib import Path
 
-ROUTER_PATH = Path(__file__).resolve().parents[2] / "scripts" / "serve_trace_net_guided_discovery_router_proxy_v6.py"
+ROUTER_PATH = Path(__file__).resolve().parents[2] / "scripts/operations/router/serve_trace_net_guided_discovery_router_proxy_v6.py"
 
 
 def _load_router_module():

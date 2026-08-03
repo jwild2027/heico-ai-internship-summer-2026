@@ -1,0 +1,269 @@
+{
+  "records": [
+    {
+      "engram_id": "policy_nha_direct_parent_one_hop_v1",
+      "memory_type": "policy_trait",
+      "priority": "hard_boundary",
+      "trait": "nha_direct_parent",
+      "triggers": [
+        "direct NHA",
+        "next higher assembly",
+        "immediate parent"
+      ],
+      "trigger_text": "direct NHA | next higher assembly | immediate parent",
+      "rule": "A direct NHA is exactly one source-supported parent hop; never substitute a grandparent or top assembly.",
+      "good_behavior": "Apply the rule as behavior guidance, then require current real source evidence before making a factual claim.",
+      "bad_behavior": "Treating the atom, skill card, example, or synthetic benchmark as proof of a current relationship.",
+      "source": "TRACE-Net NHA N0-N12 lessons and live-20 review",
+      "status": "active"
+    },
+    {
+      "engram_id": "policy_nha_ordered_chain_no_skip_v1",
+      "memory_type": "policy_trait",
+      "priority": "hard_boundary",
+      "trait": "nha_chain_order",
+      "triggers": [
+        "assembly chain",
+        "ancestor chain",
+        "all higher assemblies"
+      ],
+      "trigger_text": "assembly chain | ancestor chain | all higher assemblies",
+      "rule": "Every reported hierarchy hop must be source-supported and ordered; stop at the first unresolved hop.",
+      "good_behavior": "Apply the rule as behavior guidance, then require current real source evidence before making a factual claim.",
+      "bad_behavior": "Treating the atom, skill card, example, or synthetic benchmark as proof of a current relationship.",
+      "source": "TRACE-Net NHA N0-N12 lessons and live-20 review",
+      "status": "active"
+    },
+    {
+      "engram_id": "policy_nha_children_not_descendants_v1",
+      "memory_type": "policy_trait",
+      "priority": "hard_boundary",
+      "trait": "nha_depth_boundary",
+      "triggers": [
+        "direct children",
+        "lower descendants",
+        "assembly breakdown"
+      ],
+      "trigger_text": "direct children | lower descendants | assembly breakdown",
+      "rule": "Direct children are one hop only; lower descendants must be labeled separately.",
+      "good_behavior": "Apply the rule as behavior guidance, then require current real source evidence before making a factual claim.",
+      "bad_behavior": "Treating the atom, skill card, example, or synthetic benchmark as proof of a current relationship.",
+      "source": "TRACE-Net NHA N0-N12 lessons and live-20 review",
+      "status": "active"
+    },
+    {
+      "engram_id": "policy_nha_scope_before_candidate_choice_v1",
+      "memory_type": "policy_trait",
+      "priority": "hard_boundary",
+      "trait": "nha_scope_boundary",
+      "triggers": [
+        "project",
+        "configuration",
+        "effectivity",
+        "usage code",
+        "revision",
+        "variant"
+      ],
+      "trigger_text": "project | configuration | effectivity | usage code | revision | variant",
+      "rule": "Do not choose among multiple parent candidates without explicit scope support.",
+      "good_behavior": "Apply the rule as behavior guidance, then require current real source evidence before making a factual claim.",
+      "bad_behavior": "Treating the atom, skill card, example, or synthetic benchmark as proof of a current relationship.",
+      "source": "TRACE-Net NHA N0-N12 lessons and live-20 review",
+      "status": "active"
+    },
+    {
+      "engram_id": "policy_nha_attaching_nearest_component_v1",
+      "memory_type": "policy_trait",
+      "priority": "high",
+      "trait": "nha_attaching_parts",
+      "triggers": [
+        "attaching parts",
+        "attaching hardware",
+        "fastener group"
+      ],
+      "trigger_text": "attaching parts | attaching hardware | fastener group",
+      "rule": "Attaching hardware maps to the nearest source-supported component group, not automatically to the top assembly.",
+      "good_behavior": "Apply the rule as behavior guidance, then require current real source evidence before making a factual claim.",
+      "bad_behavior": "Treating the atom, skill card, example, or synthetic benchmark as proof of a current relationship.",
+      "source": "TRACE-Net NHA N0-N12 lessons and live-20 review",
+      "status": "active"
+    },
+    {
+      "engram_id": "policy_nha_source_page_required_v1",
+      "memory_type": "policy_trait",
+      "priority": "hard_boundary",
+      "trait": "nha_source_trace",
+      "triggers": [
+        "NHA evidence",
+        "source page",
+        "IPL row"
+      ],
+      "trigger_text": "NHA evidence | source page | IPL row",
+      "rule": "Every positive NHA claim requires the supporting real source page or pages.",
+      "good_behavior": "Apply the rule as behavior guidance, then require current real source evidence before making a factual claim.",
+      "bad_behavior": "Treating the atom, skill card, example, or synthetic benchmark as proof of a current relationship.",
+      "source": "TRACE-Net NHA N0-N12 lessons and live-20 review",
+      "status": "active"
+    },
+    {
+      "engram_id": "policy_nha_guidance_not_proof_v1",
+      "memory_type": "policy_trait",
+      "priority": "hard_boundary",
+      "trait": "nha_guidance_boundary",
+      "triggers": [
+        "OCR",
+        "visual",
+        "summary",
+        "graph guidance"
+      ],
+      "trigger_text": "OCR | visual | summary | graph guidance",
+      "rule": "OCR, visual, summary, graph, and Engram guidance may find candidates but cannot prove an NHA edge.",
+      "good_behavior": "Apply the rule as behavior guidance, then require current real source evidence before making a factual claim.",
+      "bad_behavior": "Treating the atom, skill card, example, or synthetic benchmark as proof of a current relationship.",
+      "source": "TRACE-Net NHA N0-N12 lessons and live-20 review",
+      "status": "active"
+    },
+    {
+      "engram_id": "policy_nha_synthetic_never_production_v1",
+      "memory_type": "policy_trait",
+      "priority": "hard_boundary",
+      "trait": "nha_synthetic_boundary",
+      "triggers": [
+        "990-",
+        "synthetic benchmark",
+        "benchmark relationship"
+      ],
+      "trigger_text": "990- | synthetic benchmark | benchmark relationship",
+      "rule": "Synthetic N5 relationships and identifiers never support production NHA claims or upstream language-model prompts.",
+      "good_behavior": "Apply the rule as behavior guidance, then require current real source evidence before making a factual claim.",
+      "bad_behavior": "Treating the atom, skill card, example, or synthetic benchmark as proof of a current relationship.",
+      "source": "TRACE-Net NHA N0-N12 lessons and live-20 review",
+      "status": "active"
+    },
+    {
+      "engram_id": "semantic_nha_synonyms_v1",
+      "memory_type": "semantic_memory",
+      "priority": "high",
+      "trait": "nha_vocabulary",
+      "triggers": [
+        "NHA",
+        "next higher assembly",
+        "parent assembly",
+        "installed in",
+        "belongs to"
+      ],
+      "trigger_text": "NHA | next higher assembly | parent assembly | installed in | belongs to",
+      "rule": "Treat NHA, next higher assembly, immediate/direct parent assembly, installed in, belongs to, and one level above as relationship-language synonyms when grounded by a part identifier.",
+      "good_behavior": "Apply the rule as behavior guidance, then require current real source evidence before making a factual claim.",
+      "bad_behavior": "Treating the atom, skill card, example, or synthetic benchmark as proof of a current relationship.",
+      "source": "TRACE-Net NHA N0-N12 lessons and live-20 review",
+      "status": "active"
+    },
+    {
+      "engram_id": "semantic_nha_scope_vocabulary_v1",
+      "memory_type": "semantic_memory",
+      "priority": "high",
+      "trait": "nha_scope_vocabulary",
+      "triggers": [
+        "project",
+        "configuration",
+        "effectivity",
+        "usage code",
+        "revision",
+        "variant"
+      ],
+      "trigger_text": "project | configuration | effectivity | usage code | revision | variant",
+      "rule": "Project, configuration, effectivity, usage code, revision, and variant are scope atoms that may distinguish parent relationships.",
+      "good_behavior": "Apply the rule as behavior guidance, then require current real source evidence before making a factual claim.",
+      "bad_behavior": "Treating the atom, skill card, example, or synthetic benchmark as proof of a current relationship.",
+      "source": "TRACE-Net NHA N0-N12 lessons and live-20 review",
+      "status": "active"
+    },
+    {
+      "engram_id": "route_nha_assembly_relationship_reasoning_v1",
+      "memory_type": "route_behavior",
+      "priority": "high",
+      "trait": "nha_route_awareness",
+      "triggers": [
+        "direct NHA",
+        "assembly chain",
+        "direct children",
+        "relationship evidence"
+      ],
+      "trigger_text": "direct NHA | assembly chain | direct children | relationship evidence",
+      "rule": "NHA intents should route to assembly_relationship_reasoning and retrieve real relationship evidence before any answer writer is called.",
+      "good_behavior": "Apply the rule as behavior guidance, then require current real source evidence before making a factual claim.",
+      "bad_behavior": "Treating the atom, skill card, example, or synthetic benchmark as proof of a current relationship.",
+      "source": "TRACE-Net NHA N0-N12 lessons and live-20 review",
+      "status": "active"
+    },
+    {
+      "engram_id": "critic_nha_no_grandparent_as_direct_v1",
+      "memory_type": "critic_trait",
+      "priority": "high",
+      "trait": "nha_self_rag",
+      "triggers": [
+        "direct NHA",
+        "ancestor",
+        "intermediate hop"
+      ],
+      "trigger_text": "direct NHA | ancestor | intermediate hop",
+      "rule": "Reject a draft that labels a higher ancestor as the direct NHA when an intermediate supported parent exists.",
+      "good_behavior": "Apply the rule as behavior guidance, then require current real source evidence before making a factual claim.",
+      "bad_behavior": "Treating the atom, skill card, example, or synthetic benchmark as proof of a current relationship.",
+      "source": "TRACE-Net NHA N0-N12 lessons and live-20 review",
+      "status": "active"
+    },
+    {
+      "engram_id": "critic_nha_no_candidate_collapse_v1",
+      "memory_type": "critic_trait",
+      "priority": "high",
+      "trait": "nha_self_rag",
+      "triggers": [
+        "candidate parent",
+        "ambiguous",
+        "conflict"
+      ],
+      "trigger_text": "candidate parent | ambiguous | conflict",
+      "rule": "Reject a draft that collapses multiple parent candidates into one unsupported conclusion.",
+      "good_behavior": "Apply the rule as behavior guidance, then require current real source evidence before making a factual claim.",
+      "bad_behavior": "Treating the atom, skill card, example, or synthetic benchmark as proof of a current relationship.",
+      "source": "TRACE-Net NHA N0-N12 lessons and live-20 review",
+      "status": "active"
+    },
+    {
+      "engram_id": "repair_nha_request_scope_v1",
+      "memory_type": "repair_trait",
+      "priority": "high",
+      "trait": "nha_crag_repair",
+      "triggers": [
+        "ambiguous parent",
+        "missing scope",
+        "conflict"
+      ],
+      "trigger_text": "ambiguous parent | missing scope | conflict",
+      "rule": "When candidates remain, ask for the smallest discriminating project/configuration/effectivity/usage-code/revision/variant field; do not invent it.",
+      "good_behavior": "Apply the rule as behavior guidance, then require current real source evidence before making a factual claim.",
+      "bad_behavior": "Treating the atom, skill card, example, or synthetic benchmark as proof of a current relationship.",
+      "source": "TRACE-Net NHA N0-N12 lessons and live-20 review",
+      "status": "active"
+    },
+    {
+      "engram_id": "style_nha_answer_shape_v1",
+      "memory_type": "style_trait",
+      "priority": "high",
+      "trait": "nha_answer_shape",
+      "triggers": [
+        "NHA answer",
+        "assembly relationship",
+        "hierarchy answer"
+      ],
+      "trigger_text": "NHA answer | assembly relationship | hierarchy answer",
+      "rule": "Use Answer, Evidence, and Limits; state direct parent or ordered chain first, cite pages, and explain scope limits without exposing internal record fields.",
+      "good_behavior": "Apply the rule as behavior guidance, then require current real source evidence before making a factual claim.",
+      "bad_behavior": "Treating the atom, skill card, example, or synthetic benchmark as proof of a current relationship.",
+      "source": "TRACE-Net NHA N0-N12 lessons and live-20 review",
+      "status": "active"
+    }
+  ]
+}

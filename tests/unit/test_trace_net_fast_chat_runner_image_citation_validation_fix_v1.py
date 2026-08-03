@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from scripts.fix_trace_net_fast_chat_runner_image_citation_validation_v1 import apply_fix, patch_source
+from scripts.migration.validation.fix_trace_net_fast_chat_runner_image_citation_validation_v1 import apply_fix, patch_source
 
 
 def _sample_runner() -> str:

@@ -1,4 +1,4 @@
-from scripts.build_trace_net_h39a_whole_page_vision_summary_llama_chat_v1 import _chat_url
+from scripts.build.visual.build_trace_net_h39a_whole_page_vision_summary_llama_chat_v1 import _chat_url
 
 
 def test_chat_url_rewrites_generate_endpoint():

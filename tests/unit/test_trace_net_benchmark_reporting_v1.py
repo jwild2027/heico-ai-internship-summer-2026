@@ -2,7 +2,7 @@ import csv
 import json
 from pathlib import Path
 
-from scripts.trace_net_benchmark_reporting_v1 import (
+from scripts.benchmark.trace_net_benchmark_reporting_v1 import (
     build_progress_summary,
     completed_question_ids,
     load_records_jsonl,

@@ -47,7 +47,7 @@ def test_print_current_entity_trait_overlay_from_local_artifacts() -> None:
     if not _has_current_local_graph():
         pytest.skip("local graph artifacts are not present; run the backend graph export first")
     if not Path("local_data/organization/entity_traits/trait_graph_summary.json").exists():
-        pytest.skip("entity-trait overlay artifacts are not present; run scripts/export_entity_trait_graph.py first")
+        pytest.skip("entity-trait overlay artifacts are not present; run scripts/build/graph/export_entity_trait_graph.py first")
 
     report = build_current_graph_setup_report(
         expected_pages=509,

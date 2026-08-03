@@ -4,8 +4,8 @@ from pathlib import Path
 
 def test_scripts_importable():
     for rel in [
-        "scripts/build_trace_net_e2e_dynamic_tunnel_ranker_v6.py",
-        "scripts/check_trace_net_e2e_dynamic_tunnel_ranker_v6_quality.py",
+        "scripts/build/retrieval/build_trace_net_e2e_dynamic_tunnel_ranker_v6.py",
+        "scripts/maintenance/benchmark/check_trace_net_e2e_dynamic_tunnel_ranker_v6_quality.py",
     ]:
         path = Path(rel)
         spec = importlib.util.spec_from_file_location(path.stem, path)

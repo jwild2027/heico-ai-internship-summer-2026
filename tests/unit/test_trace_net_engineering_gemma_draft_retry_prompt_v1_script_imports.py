@@ -7,8 +7,8 @@ from pathlib import Path
 def test_scripts_help_execute_from_repo_root():
     root = Path(__file__).resolve().parents[2]
     scripts = [
-        "scripts/build_trace_net_engineering_gemma_draft_retry_prompt_v1.py",
-        "scripts/check_trace_net_engineering_gemma_draft_retry_prompt_v1_quality.py",
+        "scripts/build/writing/build_trace_net_engineering_gemma_draft_retry_prompt_v1.py",
+        "scripts/maintenance/benchmark/check_trace_net_engineering_gemma_draft_retry_prompt_v1_quality.py",
     ]
     for script in scripts:
         completed = subprocess.run(
@@ -20,7 +20,7 @@ def test_scripts_help_execute_from_repo_root():
         )
         assert completed.returncode == 0, completed.stderr
     build_help = subprocess.run(
-        [sys.executable, "scripts/build_trace_net_engineering_gemma_draft_retry_prompt_v1.py", "--help"],
+        [sys.executable, "scripts/build/writing/build_trace_net_engineering_gemma_draft_retry_prompt_v1.py", "--help"],
         cwd=root,
         text=True,
         stdout=subprocess.PIPE,

@@ -5,8 +5,8 @@ from pathlib import Path
 def test_scripts_import_without_running():
     root = Path(__file__).resolve().parents[2]
     for rel in [
-        "scripts/build_trace_net_table_crop_selection_diagnostics_v1.py",
-        "scripts/check_trace_net_table_crop_selection_diagnostics_v1_quality.py",
+        "scripts/build/tables/build_trace_net_table_crop_selection_diagnostics_v1.py",
+        "scripts/maintenance/benchmark/check_trace_net_table_crop_selection_diagnostics_v1_quality.py",
     ]:
         path = root / rel
         spec = importlib.util.spec_from_file_location(path.stem, path)

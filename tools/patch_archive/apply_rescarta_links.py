@@ -59,9 +59,9 @@ def main() -> int:
 
     print(f"\nUpdated source_links rows: {count}")
     print("Next recommended commands:")
-    print("  python scripts/audit_source_links.py --config local_config.yaml --strict")
-    print("  python scripts/run_tiff_backend_pipeline.py --config local_config.yaml")
-    print("  python scripts/check_pipeline_quality.py --require-incremental-smoke")
+    print("  python scripts/maintenance/ingestion/audit_source_links.py --config local_config.yaml --strict")
+    print("  python scripts/operations/ingestion/run_tiff_backend_pipeline.py --config local_config.yaml")
+    print("  python scripts/maintenance/benchmark/check_pipeline_quality.py --require-incremental-smoke")
     return 0
 
 

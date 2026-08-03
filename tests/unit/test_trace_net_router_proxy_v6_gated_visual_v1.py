@@ -4,7 +4,7 @@ import importlib.util
 import sys
 
 
-SCRIPT = "scripts/serve_trace_net_router_proxy_v6_gated_visual_v1.py"
+SCRIPT = "scripts/operations/visual/serve_trace_net_router_proxy_v6_gated_visual_v1.py"
 
 
 def load_module():

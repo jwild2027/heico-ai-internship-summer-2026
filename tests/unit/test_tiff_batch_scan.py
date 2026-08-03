@@ -6,7 +6,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from scripts.batch_scan_tiffs_to_json import iter_tiff_files, report_output_path, scan_folder_to_json
+from src.trace_net.ingestion.batch_scan_tiffs_to_json import iter_tiff_files, report_output_path, scan_folder_to_json
 
 
 def _make_tiff(path: Path, size: tuple[int, int] = (120, 80)) -> None:

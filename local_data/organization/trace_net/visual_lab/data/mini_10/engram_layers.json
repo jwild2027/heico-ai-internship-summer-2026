@@ -1,0 +1,173 @@
+{
+  "layers": [
+    {
+      "contents": {
+        "active_page_count": 10,
+        "active_question": null,
+        "current_run_output": "/data/trace_net_runs/executive_fast10_deep_v5_20260731_134625",
+        "selected_evidence": []
+      },
+      "layer": "working_memory",
+      "plain_english": "What TRACE-Net is handling right now."
+    },
+    {
+      "contents": {
+        "graph_edge_count": 60,
+        "graph_node_count": 43,
+        "route_counts": {
+          "plain_text": 4,
+          "table": 6
+        },
+        "unique_part_identifier_count": 30
+      },
+      "layer": "semantic_memory",
+      "plain_english": "Stable facts and relationships learned from the manuals."
+    },
+    {
+      "contents": {
+        "rules": [
+          "Extract exact identifiers deterministically before retrieval.",
+          "Use route-specific retrieval tunnels.",
+          "Treat graph, vector, summaries, and visual findings as guidance until source-resolved.",
+          "Allow one Gemma answer-writing call only after evidence is prepared.",
+          "Reject unsupported identifiers, citations, and safety claims."
+        ]
+      },
+      "layer": "procedural_memory",
+      "plain_english": "Rules describing how the system must search and answer."
+    },
+    {
+      "contents": {
+        "lineage_ready_count": 10,
+        "run_timestamp": "2026-07-31 13:46:59",
+        "stage_quality_statuses": {
+          "contract": "PASS",
+          "four_route": "PASS",
+          "loader": "PASS",
+          "ocr": "PASS",
+          "resolver": "PASS",
+          "retrieval_payload_audit": "PASS",
+          "retry": "PASS",
+          "storage": "PASS",
+          "validator": "PASS"
+        },
+        "write_attempt_count": 0
+      },
+      "layer": "episodic_memory",
+      "plain_english": "What happened during this specific run."
+    },
+    {
+      "contents": {
+        "admit_limits": true,
+        "answer_style": "direct, evidence-first, readable by engineers and managers",
+        "citation_required": true,
+        "preserve_identifiers_exactly": true,
+        "production_writes_allowed": false
+      },
+      "layer": "trait_memory",
+      "plain_english": "Stable answer style and safety behavior."
+    },
+    {
+      "contents": {
+        "crag_repairs": "bounded retry only when evidence is weak",
+        "self_rag_checks": [
+          "route correctness",
+          "evidence sufficiency",
+          "citation readiness",
+          "identifier fidelity"
+        ],
+        "source_truth_mutation_allowed": false
+      },
+      "layer": "critic_memory",
+      "plain_english": "Checks that catch weak evidence or unsupported answers."
+    }
+  ],
+  "raw": {
+    "layer_count": 6,
+    "layers": [
+      {
+        "contents": {
+          "active_page_count": 10,
+          "active_question": null,
+          "current_run_output": "/data/trace_net_runs/executive_fast10_deep_v5_20260731_134625",
+          "selected_evidence": []
+        },
+        "layer": "working_memory",
+        "plain_english": "What TRACE-Net is handling right now."
+      },
+      {
+        "contents": {
+          "graph_edge_count": 60,
+          "graph_node_count": 43,
+          "route_counts": {
+            "plain_text": 4,
+            "table": 6
+          },
+          "unique_part_identifier_count": 30
+        },
+        "layer": "semantic_memory",
+        "plain_english": "Stable facts and relationships learned from the manuals."
+      },
+      {
+        "contents": {
+          "rules": [
+            "Extract exact identifiers deterministically before retrieval.",
+            "Use route-specific retrieval tunnels.",
+            "Treat graph, vector, summaries, and visual findings as guidance until source-resolved.",
+            "Allow one Gemma answer-writing call only after evidence is prepared.",
+            "Reject unsupported identifiers, citations, and safety claims."
+          ]
+        },
+        "layer": "procedural_memory",
+        "plain_english": "Rules describing how the system must search and answer."
+      },
+      {
+        "contents": {
+          "lineage_ready_count": 10,
+          "run_timestamp": "2026-07-31 13:46:59",
+          "stage_quality_statuses": {
+            "contract": "PASS",
+            "four_route": "PASS",
+            "loader": "PASS",
+            "ocr": "PASS",
+            "resolver": "PASS",
+            "retrieval_payload_audit": "PASS",
+            "retry": "PASS",
+            "storage": "PASS",
+            "validator": "PASS"
+          },
+          "write_attempt_count": 0
+        },
+        "layer": "episodic_memory",
+        "plain_english": "What happened during this specific run."
+      },
+      {
+        "contents": {
+          "admit_limits": true,
+          "answer_style": "direct, evidence-first, readable by engineers and managers",
+          "citation_required": true,
+          "preserve_identifiers_exactly": true,
+          "production_writes_allowed": false
+        },
+        "layer": "trait_memory",
+        "plain_english": "Stable answer style and safety behavior."
+      },
+      {
+        "contents": {
+          "crag_repairs": "bounded retry only when evidence is weak",
+          "self_rag_checks": [
+            "route correctness",
+            "evidence sufficiency",
+            "citation readiness",
+            "identifier fidelity"
+          ],
+          "source_truth_mutation_allowed": false
+        },
+        "layer": "critic_memory",
+        "plain_english": "Checks that catch weak evidence or unsupported answers."
+      }
+    ],
+    "status": "TRACE_NET_DEMO_ENGRAM_LAYERS_MADE"
+  },
+  "status": "PASS"
+}

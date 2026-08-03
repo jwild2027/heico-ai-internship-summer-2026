@@ -14,10 +14,10 @@ def _load_script(path: Path):
 
 
 def test_build_script_imports() -> None:
-    module = _load_script(Path("scripts/build_trace_net_fishnet_ocr_grid_v1.py"))
+    module = _load_script(Path("scripts/build/ocr/build_trace_net_fishnet_ocr_grid_v1.py"))
     assert hasattr(module, "main_build")
 
 
 def test_quality_script_imports() -> None:
-    module = _load_script(Path("scripts/check_trace_net_fishnet_ocr_grid_v1_quality.py"))
+    module = _load_script(Path("scripts/maintenance/ocr/check_trace_net_fishnet_ocr_grid_v1_quality.py"))
     assert hasattr(module, "main_check")

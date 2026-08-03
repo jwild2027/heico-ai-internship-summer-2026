@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 
-SCRIPT = Path("scripts/build_trace_net_gated_visual_answer_context_pack_v1.py")
+SCRIPT = Path("scripts/build/visual/build_trace_net_gated_visual_answer_context_pack_v1.py")
 
 
 def write_jsonl(path: Path, records: list[dict]) -> None:

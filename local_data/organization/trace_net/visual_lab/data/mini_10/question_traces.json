@@ -1,0 +1,1574 @@
+{
+  "records": [
+    {
+      "answer": "Part number **120-29073-001** is identified as **STRUCTURE, LATERAL LEG** [E1, E2].\n\nNearby or similar parts found in the same maintenance manual lists include:\n*   **120-29073-005**: STRUCTURE, LATER... (page 346) [E1]\n*   **120-29067-019**: STRUCTURE ASSY (page 346) [E1]\n*   **120-29067-029**: STRUCTURE ASSY (page 346) [E1]\n*   **120-29067-001**: STRUCTURE ASSY (page 343) [E2]",
+      "deterministic_steps": [],
+      "evidence": [],
+      "exact_identifiers": [],
+      "final_release_decision": null,
+      "gemma_status": "PASS",
+      "model": "gemma4:26b",
+      "question": "Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.",
+      "question_number": 1,
+      "raw": {
+        "answer": "Part number **120-29073-001** is identified as **STRUCTURE, LATERAL LEG** [E1, E2].\n\nNearby or similar parts found in the same maintenance manual lists include:\n*   **120-29073-005**: STRUCTURE, LATER... (page 346) [E1]\n*   **120-29067-019**: STRUCTURE ASSY (page 346) [E1]\n*   **120-29067-029**: STRUCTURE ASSY (page 346) [E1]\n*   **120-29067-001**: STRUCTURE ASSY (page 343) [E2]",
+        "llm_result": {
+          "content": "Part number **120-29073-001** is identified as **STRUCTURE, LATERAL LEG** [E1, E2].\n\nNearby or similar parts found in the same maintenance manual lists include:\n*   **120-29073-005**: STRUCTURE, LATER... (page 346) [E1]\n*   **120-29067-019**: STRUCTURE ASSY (page 346) [E1]\n*   **120-29067-029**: STRUCTURE ASSY (page 346) [E1]\n*   **120-29067-001**: STRUCTURE ASSY (page 343) [E2]",
+          "llm_base_url": "http://127.0.0.1:11434/v1",
+          "llm_called": true,
+          "llm_content_char_count": 381,
+          "llm_finish_reason": "stop",
+          "llm_max_tokens": 4096,
+          "llm_model": "gemma4:26b",
+          "llm_reasoning_char_count": 2647,
+          "llm_status": "PASS",
+          "ok": true,
+          "raw_status": "response_received"
+        },
+        "quality_status": "PASS",
+        "query_atoms": {
+          "asks_next_higher_assembly": false,
+          "asks_table_or_item": false,
+          "asks_visual": false,
+          "ata_chapters": [],
+          "exact_part_identifiers": [
+            "120-29073-001"
+          ],
+          "figure_numbers": [],
+          "keywords": [
+            "find",
+            "part",
+            "number",
+            "29073",
+            "nearby",
+            "similar",
+            "parts"
+          ]
+        },
+        "question": "Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.",
+        "question_number": 1,
+        "retrieval_evidence_records": [
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000346",
+              "page_number": 346,
+              "source_image_sha256": "8dffe9dfc0a70ffa55b76d4a4157e51d6d3635cfc3d0eff4d34d9ccb2027c9a8",
+              "source_member": "00000346.tif"
+            },
+            "ocr_char_count": 1000,
+            "ocr_excerpt": "\u20ac emenncn MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM | PARTNUMBER STOCK Maser eODE. FROM} PER NUMBER TO ASSY 80 - | 120-29067-019 STRUCTURE ASSY .......cccccseeeeeeeeeeeeeeeees VS4956 A REF - | 120-29067-029 STRUCTURE ASSY .......cccccseeeeeeeeeeeeeeeees VS4956 | 172/999] REF 1 | 120-29073-001 . STRUCTURE, LATERAL LEG ..........0..0.. VS4956 A 1 -2 | 120-29073-005 . STRUCTURE, LATER\u2026",
+            "page_id": "t_p_120_1176_p000346",
+            "page_number": 346,
+            "part_number_count": 7,
+            "payload_ids": [
+              "t_p_120_1176_p000346::qdrant::0001",
+              "t_p_120_1176_p000346::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000346.tif",
+            "retrieval_reasons": [
+              "matched_part_number:120-29073-001",
+              "matched_query_terms:120-29073-001,and,number,part,parts",
+              "table_route_relevant_to_part_query",
+              "part_number_density:7"
+            ],
+            "retrieval_score": 152,
+            "route": "table",
+            "source_image_sha256": "8dffe9dfc0a70ffa55b76d4a4157e51d6d3635cfc3d0eff4d34d9ccb2027c9a8",
+            "source_member": "00000346.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000343",
+              "page_number": 343,
+              "source_image_sha256": "203c3d8ab9741c517ba0527da601cf614889e4b5529ee79135c0244aa571fcd5",
+              "source_member": "00000343.tif"
+            },
+            "ocr_char_count": 999,
+            "ocr_excerpt": "\u20ac emenncn MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM | PARTNUMBER STOCK ater eODE. FROM | PER NUMBER TO ASSY 79 - | 120-29067-001 STRUCTURE ASSY ......ccccccceccceeeeeeeeeeeees VS4956 A REF 1 | 120-29073-001 . STRUCTURE, LATERAL LEG. ...........00.... VS4956 1 ATTACHING PARTS 10 | PE21052-2 / PIN, ATTACH.............cccccccseeeeeeeeeeeeeeeteeennees 1 20 | 42952-10 . FITTING, ATTACH\u2026",
+            "page_id": "t_p_120_1176_p000343",
+            "page_number": 343,
+            "part_number_count": 5,
+            "payload_ids": [
+              "t_p_120_1176_p000343::qdrant::0001",
+              "t_p_120_1176_p000343::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000343.tif",
+            "retrieval_reasons": [
+              "matched_part_number:120-29073-001",
+              "matched_query_terms:120-29073-001,and,number,part,parts",
+              "table_route_relevant_to_part_query",
+              "part_number_density:5"
+            ],
+            "retrieval_score": 151,
+            "route": "table",
+            "source_image_sha256": "203c3d8ab9741c517ba0527da601cf614889e4b5529ee79135c0244aa571fcd5",
+            "source_member": "00000343.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000340",
+              "page_number": 340,
+              "source_image_sha256": "3e3aa25759fd0c5745b13af886752a9a9a564308c76930fef25a1950c1d5998e",
+              "source_member": "00000340.tif"
+            },
+            "ocr_char_count": 1000,
+            "ocr_excerpt": "-< EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM| PARTNUMBER STOCK ase eODE. FROM | PER NUMBER TO ASSY 78 - | 120-46137-001 TRIPLE PASSENGER SEAT ASSY ............ VS4956 |071/171) REF - | 120-46137-501 TRIPLE PASSENGER SEAT ASSY ............ VS4956 | 172/999) REF 1 | 120-29069-007 . STRUCTURE, ASSY. (SEE FIGURE 25-21-00-107) oo... etettttteeesseeeeee VS4956 | 071/171 1 -2 | 12\u2026",
+            "page_id": "t_p_120_1176_p000340",
+            "page_number": 340,
+            "part_number_count": 9,
+            "payload_ids": [
+              "t_p_120_1176_p000340::qdrant::0001",
+              "t_p_120_1176_p000340::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000340.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and,number,part,parts",
+              "table_route_relevant_to_part_query",
+              "part_number_density:9"
+            ],
+            "retrieval_score": 48,
+            "route": "table",
+            "source_image_sha256": "3e3aa25759fd0c5745b13af886752a9a9a564308c76930fef25a1950c1d5998e",
+            "source_member": "00000340.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000347",
+              "page_number": 347,
+              "source_image_sha256": "5273feda6f51cbef873028fce5bb82b30b3258f3e79764b9ec839324d67f92eb",
+              "source_member": "00000347.tif"
+            },
+            "ocr_char_count": 998,
+            "ocr_excerpt": "-<\u20ac EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE NOMENCLATURE VENDOR EFF UNITS FIG. ITEM PART NUMBER STOCK FROM PER NUMBER 1234567 CODE TO ASSY 80 RK 160 120-29093-001 ee ee ee ee ee ee VS4956 . SUPPORT, ATTACH 170 120-34293-003 . SUPPORT, ATTACH ee ee ee ee ee ee VS4956 -171 120-34293-001 SUPPORT, ATTACH ee ee ee ee ee ee VS4956 A 1 180 120-31565-002 A 1 PLATE, ATTACH eee ee ee ee ee eee VS4956 -1\u2026",
+            "page_id": "t_p_120_1176_p000347",
+            "page_number": 347,
+            "part_number_count": 7,
+            "payload_ids": [
+              "t_p_120_1176_p000347::qdrant::0001",
+              "t_p_120_1176_p000347::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000347.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and,number,part,parts",
+              "table_route_relevant_to_part_query",
+              "part_number_density:7"
+            ],
+            "retrieval_score": 47,
+            "route": "table",
+            "source_image_sha256": "5273feda6f51cbef873028fce5bb82b30b3258f3e79764b9ec839324d67f92eb",
+            "source_member": "00000347.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000344",
+              "page_number": 344,
+              "source_image_sha256": "f98a298d87c2f5a918251241c649754c2e490f23473301d84e66d7d998e82ea6",
+              "source_member": "00000344.tif"
+            },
+            "ocr_char_count": 690,
+            "ocr_excerpt": "-<\u20ac EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE NOMENCLATURE VENDOR EFF UNITS FIG. ITEM PART NUMBER STOCK 1234567 CODE FROM PER NUMBER TO ASSY 19 ATTACHING PARTS 190 120-20970-003 ee VS4956 028 STRUCTURE, ARMREST -191 120-36060-003 STRUCTURE, ARMREST ee VS4956 B 200 MS51957-45 SCREW 210 MS21061L08 NUT eee eee eee ee ee ee ee ee RK USAGE CODE LIST A AIRCRAFT 120028, 120034 THRU 120048, 120052, 1200\u2026",
+            "page_id": "t_p_120_1176_p000344",
+            "page_number": 344,
+            "part_number_count": 3,
+            "payload_ids": [
+              "t_p_120_1176_p000344::qdrant::0001",
+              "t_p_120_1176_p000344::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000344.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and,number,part,parts",
+              "table_route_relevant_to_part_query",
+              "part_number_density:3"
+            ],
+            "retrieval_score": 46,
+            "route": "table",
+            "source_image_sha256": "f98a298d87c2f5a918251241c649754c2e490f23473301d84e66d7d998e82ea6",
+            "source_member": "00000344.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000339",
+              "page_number": 339,
+              "source_image_sha256": "485ba45fb3d9ae821f430edb9eefc7315fb6209a0c4ba224b5ce1bc97e39c4ae",
+              "source_member": "00000339.tif"
+            },
+            "ocr_char_count": 493,
+            "ocr_excerpt": "-< EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST 70 20 ; x . 40 Nees (C) 170 200 SS 20 \" AS oN SS a 30 JF 180 290 = Ee S (A) J oN SS 4 (z: id 180 / /200 s \u201cLey ol \u00a9 My oN 10 C TS y/ (A) () \\ S =~ ayy | 10 VY Ke Zz YR ~ Vj Q oe \u2014~ / We NP \u2018 0 ay (C) P\\ \\100 ; 30 F150 a 80 160 LPP re 00 / o a 120 ss - 200 \u2014\u2014 | (A) 110 lz ie 120 a 90 ee 29] 120 190 120TP250073.MCE Triple Passenger Seat (120-46137-001/501) Figu\u2026",
+            "page_id": "t_p_120_1176_p000339",
+            "page_number": 339,
+            "part_number_count": 1,
+            "payload_ids": [
+              "t_p_120_1176_p000339::qdrant::0001"
+            ],
+            "raw_tiff_reference": "00000339.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and,part,parts",
+              "part_number_density:1"
+            ],
+            "retrieval_score": 15,
+            "route": "plain_text",
+            "source_image_sha256": "485ba45fb3d9ae821f430edb9eefc7315fb6209a0c4ba224b5ce1bc97e39c4ae",
+            "source_member": "00000339.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_and_semantic_index",
+            "targets": [
+              "qdrant"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000342",
+              "page_number": 342,
+              "source_image_sha256": "e4a86647dfa46b551a02909a28f987170a2765a0f7d90415f35f2bf55701ae88",
+              "source_member": "00000342.tif"
+            },
+            "ocr_char_count": 450,
+            "ocr_excerpt": "<< EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST 80 (7) 180 A Lyd 130 BP \u201860 110 120 400 (A) 5 <A S a | SS /-\u2014\u2014170 Fe Ss] aA S Ny NG i! \u00a5 i =e we ~ \u2018JT 150 LP \\ S LA / Be SLE 30 a | \\ On : 40 a a 50 90 (D) on 70 @ 190 210, Se 10 \u2014& SQ ly eA) (eee & 120 7 /S i] SOO . os K oa (D) \u201cSao N6f 140 200 ava 120TP250074.MCE Single Passenger Seat Structure (120-29067-001) Figure 79 Sheet 1 EFFECTIVITY: ALL 25-21-00 Pa\u2026",
+            "page_id": "t_p_120_1176_p000342",
+            "page_number": 342,
+            "part_number_count": 1,
+            "payload_ids": [
+              "t_p_120_1176_p000342::qdrant::0001"
+            ],
+            "raw_tiff_reference": "00000342.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and,part,parts",
+              "part_number_density:1"
+            ],
+            "retrieval_score": 15,
+            "route": "plain_text",
+            "source_image_sha256": "e4a86647dfa46b551a02909a28f987170a2765a0f7d90415f35f2bf55701ae88",
+            "source_member": "00000342.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_and_semantic_index",
+            "targets": [
+              "qdrant"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000345",
+              "page_number": 345,
+              "source_image_sha256": "1b64ec464bd788df7ced22c1085d6ba7796e8b50c2ca1fc44b0c1eb397b59779",
+              "source_member": "00000345.tif"
+            },
+            "ocr_char_count": 457,
+            "ocr_excerpt": "<< EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST 80 Sy ; (/ = 190 (\\\\ _ 140 st QI 70 120 130 Ho (A) a @ ~~ \u00a9 /_ \u2014\u2014- 180 Se SEF Wa p~ 60 : ~e I ZL, me we ~ i 160 LP \\ QE [ee L \u00a9) s mM \\ (B) ~ \u201c 8 50 100 (D) on 70 | @ = PO 10 \u2014_\u00a7 SS SN / PU \\ (ee % 130 ae \u00bb KK Oe (D) SSN ONS 155 SEU 210 cS3 \\ 150 \u00a9) ye 120TP250075.MCE Single Passenger Seat Structure (120-29067-019/029) Figure 80 Sheet 1 EFFECTIVITY: ALL 25-21\u2026",
+            "page_id": "t_p_120_1176_p000345",
+            "page_number": 345,
+            "part_number_count": 1,
+            "payload_ids": [
+              "t_p_120_1176_p000345::qdrant::0001"
+            ],
+            "raw_tiff_reference": "00000345.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and,part,parts",
+              "part_number_density:1"
+            ],
+            "retrieval_score": 15,
+            "route": "plain_text",
+            "source_image_sha256": "1b64ec464bd788df7ced22c1085d6ba7796e8b50c2ca1fc44b0c1eb397b59779",
+            "source_member": "00000345.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_and_semantic_index",
+            "targets": [
+              "qdrant"
+            ]
+          }
+        ],
+        "retrieval_tunnels": [
+          "exact identifier",
+          "table/IPL",
+          "OCR",
+          "graph",
+          "vector guidance"
+        ],
+        "selected_route": "exact_identifier_lookup",
+        "validation": {
+          "allowed_identifier_count": 16,
+          "answer_identifier_count": 5,
+          "citation_labels_used": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "failures": [],
+          "invalid_citation_labels": [],
+          "quality_status": "PASS",
+          "source_truth_mutation_allowed": false,
+          "unsupported_identifiers": []
+        },
+        "vector_candidates": [
+          {
+            "page_id": "t_p_120_1176_p000343",
+            "similarity": 0.622593
+          },
+          {
+            "page_id": "t_p_120_1176_p000347",
+            "similarity": 0.604649
+          },
+          {
+            "page_id": "t_p_120_1176_p000346",
+            "similarity": 0.602566
+          },
+          {
+            "page_id": "t_p_120_1176_p000340",
+            "similarity": 0.599185
+          },
+          {
+            "page_id": "t_p_120_1176_p000344",
+            "similarity": 0.589053
+          }
+        ]
+      },
+      "route": "exact_identifier_lookup",
+      "source_file": "trace_net_demo_question_01_v4.json",
+      "validation": {
+        "allowed_identifier_count": 16,
+        "answer_identifier_count": 5,
+        "citation_labels_used": [
+          1,
+          1,
+          1,
+          2
+        ],
+        "failures": [],
+        "invalid_citation_labels": [],
+        "quality_status": "PASS",
+        "source_truth_mutation_allowed": false,
+        "unsupported_identifiers": []
+      },
+      "vector_candidates": [
+        {
+          "page_id": "t_p_120_1176_p000343",
+          "similarity": 0.622593
+        },
+        {
+          "page_id": "t_p_120_1176_p000347",
+          "similarity": 0.604649
+        },
+        {
+          "page_id": "t_p_120_1176_p000346",
+          "similarity": 0.602566
+        },
+        {
+          "page_id": "t_p_120_1176_p000340",
+          "similarity": 0.599185
+        },
+        {
+          "page_id": "t_p_120_1176_p000344",
+          "similarity": 0.589053
+        }
+      ]
+    },
+    {
+      "answer": "The provided evidence does not contain information regarding part number 120-20970-001 or the larger assembly it is installed inside. The only related part found in the evidence is 120-20970-003, which is identified as \"STRUCTURE, ARMREST\" (E5, page 344), but the documentation does not specify a parent assembly for this part.",
+      "deterministic_steps": [],
+      "evidence": [],
+      "exact_identifiers": [],
+      "final_release_decision": null,
+      "gemma_status": "PASS",
+      "model": "gemma4:26b",
+      "question": "What bigger assembly is 120-20970-001 installed inside? Use TRACE-Net evidence and cite pages.",
+      "question_number": 2,
+      "raw": {
+        "answer": "The provided evidence does not contain information regarding part number 120-20970-001 or the larger assembly it is installed inside. The only related part found in the evidence is 120-20970-003, which is identified as \"STRUCTURE, ARMREST\" (E5, page 344), but the documentation does not specify a parent assembly for this part.",
+        "llm_result": {
+          "content": "The provided evidence does not contain information regarding part number 120-20970-001 or the larger assembly it is installed inside. The only related part found in the evidence is 120-20970-003, which is identified as \"STRUCTURE, ARMREST\" (E5, page 344), but the documentation does not specify a parent assembly for this part.",
+          "llm_base_url": "http://127.0.0.1:11434/v1",
+          "llm_called": true,
+          "llm_content_char_count": 327,
+          "llm_finish_reason": "stop",
+          "llm_max_tokens": 4096,
+          "llm_model": "gemma4:26b",
+          "llm_reasoning_char_count": 3913,
+          "llm_status": "PASS",
+          "ok": true,
+          "raw_status": "response_received"
+        },
+        "quality_status": "PASS",
+        "query_atoms": {
+          "asks_next_higher_assembly": true,
+          "asks_table_or_item": false,
+          "asks_visual": false,
+          "ata_chapters": [],
+          "exact_part_identifiers": [
+            "120-20970-001"
+          ],
+          "figure_numbers": [],
+          "keywords": [
+            "bigger",
+            "assembly",
+            "20970",
+            "installed"
+          ]
+        },
+        "question": "What bigger assembly is 120-20970-001 installed inside? Use TRACE-Net evidence and cite pages.",
+        "question_number": 2,
+        "retrieval_evidence_records": [
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000340",
+              "page_number": 340,
+              "source_image_sha256": "3e3aa25759fd0c5745b13af886752a9a9a564308c76930fef25a1950c1d5998e",
+              "source_member": "00000340.tif"
+            },
+            "ocr_char_count": 1000,
+            "ocr_excerpt": "-< EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM| PARTNUMBER STOCK ase eODE. FROM | PER NUMBER TO ASSY 78 - | 120-46137-001 TRIPLE PASSENGER SEAT ASSY ............ VS4956 |071/171) REF - | 120-46137-501 TRIPLE PASSENGER SEAT ASSY ............ VS4956 | 172/999) REF 1 | 120-29069-007 . STRUCTURE, ASSY. (SEE FIGURE 25-21-00-107) oo... etettttteeesseeeeee VS4956 | 071/171 1 -2 | 12\u2026",
+            "page_id": "t_p_120_1176_p000340",
+            "page_number": 340,
+            "part_number_count": 9,
+            "payload_ids": [
+              "t_p_120_1176_p000340::qdrant::0001",
+              "t_p_120_1176_p000340::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000340.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and",
+              "table_route_relevant_to_part_query",
+              "part_number_density:9"
+            ],
+            "retrieval_score": 33,
+            "route": "table",
+            "source_image_sha256": "3e3aa25759fd0c5745b13af886752a9a9a564308c76930fef25a1950c1d5998e",
+            "source_member": "00000340.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000346",
+              "page_number": 346,
+              "source_image_sha256": "8dffe9dfc0a70ffa55b76d4a4157e51d6d3635cfc3d0eff4d34d9ccb2027c9a8",
+              "source_member": "00000346.tif"
+            },
+            "ocr_char_count": 1000,
+            "ocr_excerpt": "\u20ac emenncn MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM | PARTNUMBER STOCK Maser eODE. FROM} PER NUMBER TO ASSY 80 - | 120-29067-019 STRUCTURE ASSY .......cccccseeeeeeeeeeeeeeeees VS4956 A REF - | 120-29067-029 STRUCTURE ASSY .......cccccseeeeeeeeeeeeeeeees VS4956 | 172/999] REF 1 | 120-29073-001 . STRUCTURE, LATERAL LEG ..........0..0.. VS4956 A 1 -2 | 120-29073-005 . STRUCTURE, LATER\u2026",
+            "page_id": "t_p_120_1176_p000346",
+            "page_number": 346,
+            "part_number_count": 7,
+            "payload_ids": [
+              "t_p_120_1176_p000346::qdrant::0001",
+              "t_p_120_1176_p000346::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000346.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and",
+              "table_route_relevant_to_part_query",
+              "part_number_density:7"
+            ],
+            "retrieval_score": 32,
+            "route": "table",
+            "source_image_sha256": "8dffe9dfc0a70ffa55b76d4a4157e51d6d3635cfc3d0eff4d34d9ccb2027c9a8",
+            "source_member": "00000346.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000347",
+              "page_number": 347,
+              "source_image_sha256": "5273feda6f51cbef873028fce5bb82b30b3258f3e79764b9ec839324d67f92eb",
+              "source_member": "00000347.tif"
+            },
+            "ocr_char_count": 998,
+            "ocr_excerpt": "-<\u20ac EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE NOMENCLATURE VENDOR EFF UNITS FIG. ITEM PART NUMBER STOCK FROM PER NUMBER 1234567 CODE TO ASSY 80 RK 160 120-29093-001 ee ee ee ee ee ee VS4956 . SUPPORT, ATTACH 170 120-34293-003 . SUPPORT, ATTACH ee ee ee ee ee ee VS4956 -171 120-34293-001 SUPPORT, ATTACH ee ee ee ee ee ee VS4956 A 1 180 120-31565-002 A 1 PLATE, ATTACH eee ee ee ee ee eee VS4956 -1\u2026",
+            "page_id": "t_p_120_1176_p000347",
+            "page_number": 347,
+            "part_number_count": 7,
+            "payload_ids": [
+              "t_p_120_1176_p000347::qdrant::0001",
+              "t_p_120_1176_p000347::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000347.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and",
+              "table_route_relevant_to_part_query",
+              "part_number_density:7"
+            ],
+            "retrieval_score": 32,
+            "route": "table",
+            "source_image_sha256": "5273feda6f51cbef873028fce5bb82b30b3258f3e79764b9ec839324d67f92eb",
+            "source_member": "00000347.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000343",
+              "page_number": 343,
+              "source_image_sha256": "203c3d8ab9741c517ba0527da601cf614889e4b5529ee79135c0244aa571fcd5",
+              "source_member": "00000343.tif"
+            },
+            "ocr_char_count": 999,
+            "ocr_excerpt": "\u20ac emenncn MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM | PARTNUMBER STOCK ater eODE. FROM | PER NUMBER TO ASSY 79 - | 120-29067-001 STRUCTURE ASSY ......ccccccceccceeeeeeeeeeeees VS4956 A REF 1 | 120-29073-001 . STRUCTURE, LATERAL LEG. ...........00.... VS4956 1 ATTACHING PARTS 10 | PE21052-2 / PIN, ATTACH.............cccccccseeeeeeeeeeeeeeeteeennees 1 20 | 42952-10 . FITTING, ATTACH\u2026",
+            "page_id": "t_p_120_1176_p000343",
+            "page_number": 343,
+            "part_number_count": 5,
+            "payload_ids": [
+              "t_p_120_1176_p000343::qdrant::0001",
+              "t_p_120_1176_p000343::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000343.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and",
+              "table_route_relevant_to_part_query",
+              "part_number_density:5"
+            ],
+            "retrieval_score": 31,
+            "route": "table",
+            "source_image_sha256": "203c3d8ab9741c517ba0527da601cf614889e4b5529ee79135c0244aa571fcd5",
+            "source_member": "00000343.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000344",
+              "page_number": 344,
+              "source_image_sha256": "f98a298d87c2f5a918251241c649754c2e490f23473301d84e66d7d998e82ea6",
+              "source_member": "00000344.tif"
+            },
+            "ocr_char_count": 690,
+            "ocr_excerpt": "-<\u20ac EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE NOMENCLATURE VENDOR EFF UNITS FIG. ITEM PART NUMBER STOCK 1234567 CODE FROM PER NUMBER TO ASSY 19 ATTACHING PARTS 190 120-20970-003 ee VS4956 028 STRUCTURE, ARMREST -191 120-36060-003 STRUCTURE, ARMREST ee VS4956 B 200 MS51957-45 SCREW 210 MS21061L08 NUT eee eee eee ee ee ee ee ee RK USAGE CODE LIST A AIRCRAFT 120028, 120034 THRU 120048, 120052, 1200\u2026",
+            "page_id": "t_p_120_1176_p000344",
+            "page_number": 344,
+            "part_number_count": 3,
+            "payload_ids": [
+              "t_p_120_1176_p000344::qdrant::0001",
+              "t_p_120_1176_p000344::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000344.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and",
+              "table_route_relevant_to_part_query",
+              "part_number_density:3"
+            ],
+            "retrieval_score": 31,
+            "route": "table",
+            "source_image_sha256": "f98a298d87c2f5a918251241c649754c2e490f23473301d84e66d7d998e82ea6",
+            "source_member": "00000344.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000339",
+              "page_number": 339,
+              "source_image_sha256": "485ba45fb3d9ae821f430edb9eefc7315fb6209a0c4ba224b5ce1bc97e39c4ae",
+              "source_member": "00000339.tif"
+            },
+            "ocr_char_count": 493,
+            "ocr_excerpt": "-< EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST 70 20 ; x . 40 Nees (C) 170 200 SS 20 \" AS oN SS a 30 JF 180 290 = Ee S (A) J oN SS 4 (z: id 180 / /200 s \u201cLey ol \u00a9 My oN 10 C TS y/ (A) () \\ S =~ ayy | 10 VY Ke Zz YR ~ Vj Q oe \u2014~ / We NP \u2018 0 ay (C) P\\ \\100 ; 30 F150 a 80 160 LPP re 00 / o a 120 ss - 200 \u2014\u2014 | (A) 110 lz ie 120 a 90 ee 29] 120 190 120TP250073.MCE Triple Passenger Seat (120-46137-001/501) Figu\u2026",
+            "page_id": "t_p_120_1176_p000339",
+            "page_number": 339,
+            "part_number_count": 1,
+            "payload_ids": [
+              "t_p_120_1176_p000339::qdrant::0001"
+            ],
+            "raw_tiff_reference": "00000339.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and",
+              "part_number_density:1"
+            ],
+            "retrieval_score": 5,
+            "route": "plain_text",
+            "source_image_sha256": "485ba45fb3d9ae821f430edb9eefc7315fb6209a0c4ba224b5ce1bc97e39c4ae",
+            "source_member": "00000339.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_and_semantic_index",
+            "targets": [
+              "qdrant"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000342",
+              "page_number": 342,
+              "source_image_sha256": "e4a86647dfa46b551a02909a28f987170a2765a0f7d90415f35f2bf55701ae88",
+              "source_member": "00000342.tif"
+            },
+            "ocr_char_count": 450,
+            "ocr_excerpt": "<< EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST 80 (7) 180 A Lyd 130 BP \u201860 110 120 400 (A) 5 <A S a | SS /-\u2014\u2014170 Fe Ss] aA S Ny NG i! \u00a5 i =e we ~ \u2018JT 150 LP \\ S LA / Be SLE 30 a | \\ On : 40 a a 50 90 (D) on 70 @ 190 210, Se 10 \u2014& SQ ly eA) (eee & 120 7 /S i] SOO . os K oa (D) \u201cSao N6f 140 200 ava 120TP250074.MCE Single Passenger Seat Structure (120-29067-001) Figure 79 Sheet 1 EFFECTIVITY: ALL 25-21-00 Pa\u2026",
+            "page_id": "t_p_120_1176_p000342",
+            "page_number": 342,
+            "part_number_count": 1,
+            "payload_ids": [
+              "t_p_120_1176_p000342::qdrant::0001"
+            ],
+            "raw_tiff_reference": "00000342.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and",
+              "part_number_density:1"
+            ],
+            "retrieval_score": 5,
+            "route": "plain_text",
+            "source_image_sha256": "e4a86647dfa46b551a02909a28f987170a2765a0f7d90415f35f2bf55701ae88",
+            "source_member": "00000342.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_and_semantic_index",
+            "targets": [
+              "qdrant"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000345",
+              "page_number": 345,
+              "source_image_sha256": "1b64ec464bd788df7ced22c1085d6ba7796e8b50c2ca1fc44b0c1eb397b59779",
+              "source_member": "00000345.tif"
+            },
+            "ocr_char_count": 457,
+            "ocr_excerpt": "<< EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST 80 Sy ; (/ = 190 (\\\\ _ 140 st QI 70 120 130 Ho (A) a @ ~~ \u00a9 /_ \u2014\u2014- 180 Se SEF Wa p~ 60 : ~e I ZL, me we ~ i 160 LP \\ QE [ee L \u00a9) s mM \\ (B) ~ \u201c 8 50 100 (D) on 70 | @ = PO 10 \u2014_\u00a7 SS SN / PU \\ (ee % 130 ae \u00bb KK Oe (D) SSN ONS 155 SEU 210 cS3 \\ 150 \u00a9) ye 120TP250075.MCE Single Passenger Seat Structure (120-29067-019/029) Figure 80 Sheet 1 EFFECTIVITY: ALL 25-21\u2026",
+            "page_id": "t_p_120_1176_p000345",
+            "page_number": 345,
+            "part_number_count": 1,
+            "payload_ids": [
+              "t_p_120_1176_p000345::qdrant::0001"
+            ],
+            "raw_tiff_reference": "00000345.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and",
+              "part_number_density:1"
+            ],
+            "retrieval_score": 5,
+            "route": "plain_text",
+            "source_image_sha256": "1b64ec464bd788df7ced22c1085d6ba7796e8b50c2ca1fc44b0c1eb397b59779",
+            "source_member": "00000345.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_and_semantic_index",
+            "targets": [
+              "qdrant"
+            ]
+          }
+        ],
+        "retrieval_tunnels": [
+          "exact identifier",
+          "table/IPL",
+          "OCR",
+          "graph",
+          "vector guidance"
+        ],
+        "selected_route": "graph_relationship_reasoning",
+        "validation": {
+          "allowed_identifier_count": 17,
+          "answer_identifier_count": 2,
+          "citation_labels_used": [],
+          "failures": [],
+          "invalid_citation_labels": [],
+          "quality_status": "PASS",
+          "source_truth_mutation_allowed": false,
+          "unsupported_identifiers": []
+        },
+        "vector_candidates": [
+          {
+            "page_id": "t_p_120_1176_p000346",
+            "similarity": 0.535171
+          },
+          {
+            "page_id": "t_p_120_1176_p000340",
+            "similarity": 0.528874
+          },
+          {
+            "page_id": "t_p_120_1176_p000343",
+            "similarity": 0.528617
+          },
+          {
+            "page_id": "t_p_120_1176_p000342",
+            "similarity": 0.528136
+          },
+          {
+            "page_id": "t_p_120_1176_p000339",
+            "similarity": 0.521173
+          }
+        ]
+      },
+      "route": "graph_relationship_reasoning",
+      "source_file": "trace_net_demo_question_02_v4.json",
+      "validation": {
+        "allowed_identifier_count": 17,
+        "answer_identifier_count": 2,
+        "citation_labels_used": [],
+        "failures": [],
+        "invalid_citation_labels": [],
+        "quality_status": "PASS",
+        "source_truth_mutation_allowed": false,
+        "unsupported_identifiers": []
+      },
+      "vector_candidates": [
+        {
+          "page_id": "t_p_120_1176_p000346",
+          "similarity": 0.535171
+        },
+        {
+          "page_id": "t_p_120_1176_p000340",
+          "similarity": 0.528874
+        },
+        {
+          "page_id": "t_p_120_1176_p000343",
+          "similarity": 0.528617
+        },
+        {
+          "page_id": "t_p_120_1176_p000342",
+          "similarity": 0.528136
+        },
+        {
+          "page_id": "t_p_120_1176_p000339",
+          "similarity": 0.521173
+        }
+      ]
+    },
+    {
+      "answer": "Part number **120-29073-001** is identified as **STRUCTURE, LATERAL LEG** [E1, E2].\n\nNearby or similar parts found in the same maintenance manual lists include:\n*   **120-29073-005**: STRUCTURE, LATER... (page 346) [E1]\n*   **120-29067-019**: STRUCTURE ASSY (page 346) [E1]\n*   **120-29067-029**: STRUCTURE ASSY (page 346) [E1]\n*   **120-29067-001**: STRUCTURE ASSY (page 343) [E2]",
+      "deterministic_steps": [],
+      "evidence": [],
+      "exact_identifiers": [],
+      "final_release_decision": null,
+      "gemma_status": "PASS",
+      "model": "gemma4:26b",
+      "question": "Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.",
+      "question_number": 3,
+      "raw": {
+        "answer": "Part number **120-29073-001** is identified as **STRUCTURE, LATERAL LEG** [E1, E2].\n\nNearby or similar parts found in the same maintenance manual lists include:\n*   **120-29073-005**: STRUCTURE, LATER... (page 346) [E1]\n*   **120-29067-019**: STRUCTURE ASSY (page 346) [E1]\n*   **120-29067-029**: STRUCTURE ASSY (page 346) [E1]\n*   **120-29067-001**: STRUCTURE ASSY (page 343) [E2]",
+        "llm_result": {
+          "content": "Part number **120-29073-001** is identified as **STRUCTURE, LATERAL LEG** [E1, E2].\n\nNearby or similar parts found in the same maintenance manual lists include:\n*   **120-29073-005**: STRUCTURE, LATER... (page 346) [E1]\n*   **120-29067-019**: STRUCTURE ASSY (page 346) [E1]\n*   **120-29067-029**: STRUCTURE ASSY (page 346) [E1]\n*   **120-29067-001**: STRUCTURE ASSY (page 343) [E2]",
+          "llm_base_url": "http://127.0.0.1:11434/v1",
+          "llm_called": true,
+          "llm_content_char_count": 381,
+          "llm_finish_reason": "stop",
+          "llm_max_tokens": 4096,
+          "llm_model": "gemma4:26b",
+          "llm_reasoning_char_count": 2647,
+          "llm_status": "PASS",
+          "ok": true,
+          "raw_status": "response_received"
+        },
+        "quality_status": "PASS",
+        "query_atoms": {
+          "asks_next_higher_assembly": false,
+          "asks_table_or_item": false,
+          "asks_visual": false,
+          "ata_chapters": [],
+          "exact_part_identifiers": [
+            "120-29073-001"
+          ],
+          "figure_numbers": [],
+          "keywords": [
+            "find",
+            "part",
+            "number",
+            "29073",
+            "nearby",
+            "similar",
+            "parts"
+          ]
+        },
+        "question": "Find part number 120-29073-001 and nearby similar parts. Use TRACE-Net evidence and cite pages.",
+        "question_number": 1,
+        "retrieval_evidence_records": [
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000346",
+              "page_number": 346,
+              "source_image_sha256": "8dffe9dfc0a70ffa55b76d4a4157e51d6d3635cfc3d0eff4d34d9ccb2027c9a8",
+              "source_member": "00000346.tif"
+            },
+            "ocr_char_count": 1000,
+            "ocr_excerpt": "\u20ac emenncn MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM | PARTNUMBER STOCK Maser eODE. FROM} PER NUMBER TO ASSY 80 - | 120-29067-019 STRUCTURE ASSY .......cccccseeeeeeeeeeeeeeeees VS4956 A REF - | 120-29067-029 STRUCTURE ASSY .......cccccseeeeeeeeeeeeeeeees VS4956 | 172/999] REF 1 | 120-29073-001 . STRUCTURE, LATERAL LEG ..........0..0.. VS4956 A 1 -2 | 120-29073-005 . STRUCTURE, LATER\u2026",
+            "page_id": "t_p_120_1176_p000346",
+            "page_number": 346,
+            "part_number_count": 7,
+            "payload_ids": [
+              "t_p_120_1176_p000346::qdrant::0001",
+              "t_p_120_1176_p000346::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000346.tif",
+            "retrieval_reasons": [
+              "matched_part_number:120-29073-001",
+              "matched_query_terms:120-29073-001,and,number,part,parts",
+              "table_route_relevant_to_part_query",
+              "part_number_density:7"
+            ],
+            "retrieval_score": 152,
+            "route": "table",
+            "source_image_sha256": "8dffe9dfc0a70ffa55b76d4a4157e51d6d3635cfc3d0eff4d34d9ccb2027c9a8",
+            "source_member": "00000346.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000343",
+              "page_number": 343,
+              "source_image_sha256": "203c3d8ab9741c517ba0527da601cf614889e4b5529ee79135c0244aa571fcd5",
+              "source_member": "00000343.tif"
+            },
+            "ocr_char_count": 999,
+            "ocr_excerpt": "\u20ac emenncn MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM | PARTNUMBER STOCK ater eODE. FROM | PER NUMBER TO ASSY 79 - | 120-29067-001 STRUCTURE ASSY ......ccccccceccceeeeeeeeeeeees VS4956 A REF 1 | 120-29073-001 . STRUCTURE, LATERAL LEG. ...........00.... VS4956 1 ATTACHING PARTS 10 | PE21052-2 / PIN, ATTACH.............cccccccseeeeeeeeeeeeeeeteeennees 1 20 | 42952-10 . FITTING, ATTACH\u2026",
+            "page_id": "t_p_120_1176_p000343",
+            "page_number": 343,
+            "part_number_count": 5,
+            "payload_ids": [
+              "t_p_120_1176_p000343::qdrant::0001",
+              "t_p_120_1176_p000343::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000343.tif",
+            "retrieval_reasons": [
+              "matched_part_number:120-29073-001",
+              "matched_query_terms:120-29073-001,and,number,part,parts",
+              "table_route_relevant_to_part_query",
+              "part_number_density:5"
+            ],
+            "retrieval_score": 151,
+            "route": "table",
+            "source_image_sha256": "203c3d8ab9741c517ba0527da601cf614889e4b5529ee79135c0244aa571fcd5",
+            "source_member": "00000343.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000340",
+              "page_number": 340,
+              "source_image_sha256": "3e3aa25759fd0c5745b13af886752a9a9a564308c76930fef25a1950c1d5998e",
+              "source_member": "00000340.tif"
+            },
+            "ocr_char_count": 1000,
+            "ocr_excerpt": "-< EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM| PARTNUMBER STOCK ase eODE. FROM | PER NUMBER TO ASSY 78 - | 120-46137-001 TRIPLE PASSENGER SEAT ASSY ............ VS4956 |071/171) REF - | 120-46137-501 TRIPLE PASSENGER SEAT ASSY ............ VS4956 | 172/999) REF 1 | 120-29069-007 . STRUCTURE, ASSY. (SEE FIGURE 25-21-00-107) oo... etettttteeesseeeeee VS4956 | 071/171 1 -2 | 12\u2026",
+            "page_id": "t_p_120_1176_p000340",
+            "page_number": 340,
+            "part_number_count": 9,
+            "payload_ids": [
+              "t_p_120_1176_p000340::qdrant::0001",
+              "t_p_120_1176_p000340::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000340.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and,number,part,parts",
+              "table_route_relevant_to_part_query",
+              "part_number_density:9"
+            ],
+            "retrieval_score": 48,
+            "route": "table",
+            "source_image_sha256": "3e3aa25759fd0c5745b13af886752a9a9a564308c76930fef25a1950c1d5998e",
+            "source_member": "00000340.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000347",
+              "page_number": 347,
+              "source_image_sha256": "5273feda6f51cbef873028fce5bb82b30b3258f3e79764b9ec839324d67f92eb",
+              "source_member": "00000347.tif"
+            },
+            "ocr_char_count": 998,
+            "ocr_excerpt": "-<\u20ac EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE NOMENCLATURE VENDOR EFF UNITS FIG. ITEM PART NUMBER STOCK FROM PER NUMBER 1234567 CODE TO ASSY 80 RK 160 120-29093-001 ee ee ee ee ee ee VS4956 . SUPPORT, ATTACH 170 120-34293-003 . SUPPORT, ATTACH ee ee ee ee ee ee VS4956 -171 120-34293-001 SUPPORT, ATTACH ee ee ee ee ee ee VS4956 A 1 180 120-31565-002 A 1 PLATE, ATTACH eee ee ee ee ee eee VS4956 -1\u2026",
+            "page_id": "t_p_120_1176_p000347",
+            "page_number": 347,
+            "part_number_count": 7,
+            "payload_ids": [
+              "t_p_120_1176_p000347::qdrant::0001",
+              "t_p_120_1176_p000347::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000347.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and,number,part,parts",
+              "table_route_relevant_to_part_query",
+              "part_number_density:7"
+            ],
+            "retrieval_score": 47,
+            "route": "table",
+            "source_image_sha256": "5273feda6f51cbef873028fce5bb82b30b3258f3e79764b9ec839324d67f92eb",
+            "source_member": "00000347.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000344",
+              "page_number": 344,
+              "source_image_sha256": "f98a298d87c2f5a918251241c649754c2e490f23473301d84e66d7d998e82ea6",
+              "source_member": "00000344.tif"
+            },
+            "ocr_char_count": 690,
+            "ocr_excerpt": "-<\u20ac EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE NOMENCLATURE VENDOR EFF UNITS FIG. ITEM PART NUMBER STOCK 1234567 CODE FROM PER NUMBER TO ASSY 19 ATTACHING PARTS 190 120-20970-003 ee VS4956 028 STRUCTURE, ARMREST -191 120-36060-003 STRUCTURE, ARMREST ee VS4956 B 200 MS51957-45 SCREW 210 MS21061L08 NUT eee eee eee ee ee ee ee ee RK USAGE CODE LIST A AIRCRAFT 120028, 120034 THRU 120048, 120052, 1200\u2026",
+            "page_id": "t_p_120_1176_p000344",
+            "page_number": 344,
+            "part_number_count": 3,
+            "payload_ids": [
+              "t_p_120_1176_p000344::qdrant::0001",
+              "t_p_120_1176_p000344::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000344.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and,number,part,parts",
+              "table_route_relevant_to_part_query",
+              "part_number_density:3"
+            ],
+            "retrieval_score": 46,
+            "route": "table",
+            "source_image_sha256": "f98a298d87c2f5a918251241c649754c2e490f23473301d84e66d7d998e82ea6",
+            "source_member": "00000344.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000339",
+              "page_number": 339,
+              "source_image_sha256": "485ba45fb3d9ae821f430edb9eefc7315fb6209a0c4ba224b5ce1bc97e39c4ae",
+              "source_member": "00000339.tif"
+            },
+            "ocr_char_count": 493,
+            "ocr_excerpt": "-< EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST 70 20 ; x . 40 Nees (C) 170 200 SS 20 \" AS oN SS a 30 JF 180 290 = Ee S (A) J oN SS 4 (z: id 180 / /200 s \u201cLey ol \u00a9 My oN 10 C TS y/ (A) () \\ S =~ ayy | 10 VY Ke Zz YR ~ Vj Q oe \u2014~ / We NP \u2018 0 ay (C) P\\ \\100 ; 30 F150 a 80 160 LPP re 00 / o a 120 ss - 200 \u2014\u2014 | (A) 110 lz ie 120 a 90 ee 29] 120 190 120TP250073.MCE Triple Passenger Seat (120-46137-001/501) Figu\u2026",
+            "page_id": "t_p_120_1176_p000339",
+            "page_number": 339,
+            "part_number_count": 1,
+            "payload_ids": [
+              "t_p_120_1176_p000339::qdrant::0001"
+            ],
+            "raw_tiff_reference": "00000339.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and,part,parts",
+              "part_number_density:1"
+            ],
+            "retrieval_score": 15,
+            "route": "plain_text",
+            "source_image_sha256": "485ba45fb3d9ae821f430edb9eefc7315fb6209a0c4ba224b5ce1bc97e39c4ae",
+            "source_member": "00000339.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_and_semantic_index",
+            "targets": [
+              "qdrant"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000342",
+              "page_number": 342,
+              "source_image_sha256": "e4a86647dfa46b551a02909a28f987170a2765a0f7d90415f35f2bf55701ae88",
+              "source_member": "00000342.tif"
+            },
+            "ocr_char_count": 450,
+            "ocr_excerpt": "<< EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST 80 (7) 180 A Lyd 130 BP \u201860 110 120 400 (A) 5 <A S a | SS /-\u2014\u2014170 Fe Ss] aA S Ny NG i! \u00a5 i =e we ~ \u2018JT 150 LP \\ S LA / Be SLE 30 a | \\ On : 40 a a 50 90 (D) on 70 @ 190 210, Se 10 \u2014& SQ ly eA) (eee & 120 7 /S i] SOO . os K oa (D) \u201cSao N6f 140 200 ava 120TP250074.MCE Single Passenger Seat Structure (120-29067-001) Figure 79 Sheet 1 EFFECTIVITY: ALL 25-21-00 Pa\u2026",
+            "page_id": "t_p_120_1176_p000342",
+            "page_number": 342,
+            "part_number_count": 1,
+            "payload_ids": [
+              "t_p_120_1176_p000342::qdrant::0001"
+            ],
+            "raw_tiff_reference": "00000342.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and,part,parts",
+              "part_number_density:1"
+            ],
+            "retrieval_score": 15,
+            "route": "plain_text",
+            "source_image_sha256": "e4a86647dfa46b551a02909a28f987170a2765a0f7d90415f35f2bf55701ae88",
+            "source_member": "00000342.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_and_semantic_index",
+            "targets": [
+              "qdrant"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000345",
+              "page_number": 345,
+              "source_image_sha256": "1b64ec464bd788df7ced22c1085d6ba7796e8b50c2ca1fc44b0c1eb397b59779",
+              "source_member": "00000345.tif"
+            },
+            "ocr_char_count": 457,
+            "ocr_excerpt": "<< EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST 80 Sy ; (/ = 190 (\\\\ _ 140 st QI 70 120 130 Ho (A) a @ ~~ \u00a9 /_ \u2014\u2014- 180 Se SEF Wa p~ 60 : ~e I ZL, me we ~ i 160 LP \\ QE [ee L \u00a9) s mM \\ (B) ~ \u201c 8 50 100 (D) on 70 | @ = PO 10 \u2014_\u00a7 SS SN / PU \\ (ee % 130 ae \u00bb KK Oe (D) SSN ONS 155 SEU 210 cS3 \\ 150 \u00a9) ye 120TP250075.MCE Single Passenger Seat Structure (120-29067-019/029) Figure 80 Sheet 1 EFFECTIVITY: ALL 25-21\u2026",
+            "page_id": "t_p_120_1176_p000345",
+            "page_number": 345,
+            "part_number_count": 1,
+            "payload_ids": [
+              "t_p_120_1176_p000345::qdrant::0001"
+            ],
+            "raw_tiff_reference": "00000345.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and,part,parts",
+              "part_number_density:1"
+            ],
+            "retrieval_score": 15,
+            "route": "plain_text",
+            "source_image_sha256": "1b64ec464bd788df7ced22c1085d6ba7796e8b50c2ca1fc44b0c1eb397b59779",
+            "source_member": "00000345.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_and_semantic_index",
+            "targets": [
+              "qdrant"
+            ]
+          }
+        ],
+        "retrieval_tunnels": [
+          "exact identifier",
+          "table/IPL",
+          "OCR",
+          "graph",
+          "vector guidance"
+        ],
+        "selected_route": "exact_identifier_lookup",
+        "validation": {
+          "allowed_identifier_count": 16,
+          "answer_identifier_count": 5,
+          "citation_labels_used": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "failures": [],
+          "invalid_citation_labels": [],
+          "quality_status": "PASS",
+          "source_truth_mutation_allowed": false,
+          "unsupported_identifiers": []
+        },
+        "vector_candidates": [
+          {
+            "page_id": "t_p_120_1176_p000343",
+            "similarity": 0.622593
+          },
+          {
+            "page_id": "t_p_120_1176_p000347",
+            "similarity": 0.604649
+          },
+          {
+            "page_id": "t_p_120_1176_p000346",
+            "similarity": 0.602566
+          },
+          {
+            "page_id": "t_p_120_1176_p000340",
+            "similarity": 0.599185
+          },
+          {
+            "page_id": "t_p_120_1176_p000344",
+            "similarity": 0.589053
+          }
+        ]
+      },
+      "route": "exact_identifier_lookup",
+      "source_file": "trace_net_fast10_deep_v5_question_01.json",
+      "validation": {
+        "allowed_identifier_count": 16,
+        "answer_identifier_count": 5,
+        "citation_labels_used": [
+          1,
+          1,
+          1,
+          2
+        ],
+        "failures": [],
+        "invalid_citation_labels": [],
+        "quality_status": "PASS",
+        "source_truth_mutation_allowed": false,
+        "unsupported_identifiers": []
+      },
+      "vector_candidates": [
+        {
+          "page_id": "t_p_120_1176_p000343",
+          "similarity": 0.622593
+        },
+        {
+          "page_id": "t_p_120_1176_p000347",
+          "similarity": 0.604649
+        },
+        {
+          "page_id": "t_p_120_1176_p000346",
+          "similarity": 0.602566
+        },
+        {
+          "page_id": "t_p_120_1176_p000340",
+          "similarity": 0.599185
+        },
+        {
+          "page_id": "t_p_120_1176_p000344",
+          "similarity": 0.589053
+        }
+      ]
+    },
+    {
+      "answer": "The provided evidence does not contain information regarding part number 120-20970-001 or the larger assembly it is installed inside. The only related part found in the evidence is 120-20970-003, which is identified as \"STRUCTURE, ARMREST\" (E5, page 344), but the documentation does not specify a parent assembly for this part.",
+      "deterministic_steps": [],
+      "evidence": [],
+      "exact_identifiers": [],
+      "final_release_decision": null,
+      "gemma_status": "PASS",
+      "model": "gemma4:26b",
+      "question": "What bigger assembly is 120-20970-001 installed inside? Use TRACE-Net evidence and cite pages.",
+      "question_number": 4,
+      "raw": {
+        "answer": "The provided evidence does not contain information regarding part number 120-20970-001 or the larger assembly it is installed inside. The only related part found in the evidence is 120-20970-003, which is identified as \"STRUCTURE, ARMREST\" (E5, page 344), but the documentation does not specify a parent assembly for this part.",
+        "llm_result": {
+          "content": "The provided evidence does not contain information regarding part number 120-20970-001 or the larger assembly it is installed inside. The only related part found in the evidence is 120-20970-003, which is identified as \"STRUCTURE, ARMREST\" (E5, page 344), but the documentation does not specify a parent assembly for this part.",
+          "llm_base_url": "http://127.0.0.1:11434/v1",
+          "llm_called": true,
+          "llm_content_char_count": 327,
+          "llm_finish_reason": "stop",
+          "llm_max_tokens": 4096,
+          "llm_model": "gemma4:26b",
+          "llm_reasoning_char_count": 3913,
+          "llm_status": "PASS",
+          "ok": true,
+          "raw_status": "response_received"
+        },
+        "quality_status": "PASS",
+        "query_atoms": {
+          "asks_next_higher_assembly": true,
+          "asks_table_or_item": false,
+          "asks_visual": false,
+          "ata_chapters": [],
+          "exact_part_identifiers": [
+            "120-20970-001"
+          ],
+          "figure_numbers": [],
+          "keywords": [
+            "bigger",
+            "assembly",
+            "20970",
+            "installed"
+          ]
+        },
+        "question": "What bigger assembly is 120-20970-001 installed inside? Use TRACE-Net evidence and cite pages.",
+        "question_number": 2,
+        "retrieval_evidence_records": [
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000340",
+              "page_number": 340,
+              "source_image_sha256": "3e3aa25759fd0c5745b13af886752a9a9a564308c76930fef25a1950c1d5998e",
+              "source_member": "00000340.tif"
+            },
+            "ocr_char_count": 1000,
+            "ocr_excerpt": "-< EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM| PARTNUMBER STOCK ase eODE. FROM | PER NUMBER TO ASSY 78 - | 120-46137-001 TRIPLE PASSENGER SEAT ASSY ............ VS4956 |071/171) REF - | 120-46137-501 TRIPLE PASSENGER SEAT ASSY ............ VS4956 | 172/999) REF 1 | 120-29069-007 . STRUCTURE, ASSY. (SEE FIGURE 25-21-00-107) oo... etettttteeesseeeeee VS4956 | 071/171 1 -2 | 12\u2026",
+            "page_id": "t_p_120_1176_p000340",
+            "page_number": 340,
+            "part_number_count": 9,
+            "payload_ids": [
+              "t_p_120_1176_p000340::qdrant::0001",
+              "t_p_120_1176_p000340::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000340.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and",
+              "table_route_relevant_to_part_query",
+              "part_number_density:9"
+            ],
+            "retrieval_score": 33,
+            "route": "table",
+            "source_image_sha256": "3e3aa25759fd0c5745b13af886752a9a9a564308c76930fef25a1950c1d5998e",
+            "source_member": "00000340.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000346",
+              "page_number": 346,
+              "source_image_sha256": "8dffe9dfc0a70ffa55b76d4a4157e51d6d3635cfc3d0eff4d34d9ccb2027c9a8",
+              "source_member": "00000346.tif"
+            },
+            "ocr_char_count": 1000,
+            "ocr_excerpt": "\u20ac emenncn MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM | PARTNUMBER STOCK Maser eODE. FROM} PER NUMBER TO ASSY 80 - | 120-29067-019 STRUCTURE ASSY .......cccccseeeeeeeeeeeeeeeees VS4956 A REF - | 120-29067-029 STRUCTURE ASSY .......cccccseeeeeeeeeeeeeeeees VS4956 | 172/999] REF 1 | 120-29073-001 . STRUCTURE, LATERAL LEG ..........0..0.. VS4956 A 1 -2 | 120-29073-005 . STRUCTURE, LATER\u2026",
+            "page_id": "t_p_120_1176_p000346",
+            "page_number": 346,
+            "part_number_count": 7,
+            "payload_ids": [
+              "t_p_120_1176_p000346::qdrant::0001",
+              "t_p_120_1176_p000346::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000346.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and",
+              "table_route_relevant_to_part_query",
+              "part_number_density:7"
+            ],
+            "retrieval_score": 32,
+            "route": "table",
+            "source_image_sha256": "8dffe9dfc0a70ffa55b76d4a4157e51d6d3635cfc3d0eff4d34d9ccb2027c9a8",
+            "source_member": "00000346.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000347",
+              "page_number": 347,
+              "source_image_sha256": "5273feda6f51cbef873028fce5bb82b30b3258f3e79764b9ec839324d67f92eb",
+              "source_member": "00000347.tif"
+            },
+            "ocr_char_count": 998,
+            "ocr_excerpt": "-<\u20ac EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE NOMENCLATURE VENDOR EFF UNITS FIG. ITEM PART NUMBER STOCK FROM PER NUMBER 1234567 CODE TO ASSY 80 RK 160 120-29093-001 ee ee ee ee ee ee VS4956 . SUPPORT, ATTACH 170 120-34293-003 . SUPPORT, ATTACH ee ee ee ee ee ee VS4956 -171 120-34293-001 SUPPORT, ATTACH ee ee ee ee ee ee VS4956 A 1 180 120-31565-002 A 1 PLATE, ATTACH eee ee ee ee ee eee VS4956 -1\u2026",
+            "page_id": "t_p_120_1176_p000347",
+            "page_number": 347,
+            "part_number_count": 7,
+            "payload_ids": [
+              "t_p_120_1176_p000347::qdrant::0001",
+              "t_p_120_1176_p000347::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000347.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and",
+              "table_route_relevant_to_part_query",
+              "part_number_density:7"
+            ],
+            "retrieval_score": 32,
+            "route": "table",
+            "source_image_sha256": "5273feda6f51cbef873028fce5bb82b30b3258f3e79764b9ec839324d67f92eb",
+            "source_member": "00000347.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000343",
+              "page_number": 343,
+              "source_image_sha256": "203c3d8ab9741c517ba0527da601cf614889e4b5529ee79135c0244aa571fcd5",
+              "source_member": "00000343.tif"
+            },
+            "ocr_char_count": 999,
+            "ocr_excerpt": "\u20ac emenncn MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE EFF | UNITS FIG. ITEM | PARTNUMBER STOCK ater eODE. FROM | PER NUMBER TO ASSY 79 - | 120-29067-001 STRUCTURE ASSY ......ccccccceccceeeeeeeeeeeees VS4956 A REF 1 | 120-29073-001 . STRUCTURE, LATERAL LEG. ...........00.... VS4956 1 ATTACHING PARTS 10 | PE21052-2 / PIN, ATTACH.............cccccccseeeeeeeeeeeeeeeteeennees 1 20 | 42952-10 . FITTING, ATTACH\u2026",
+            "page_id": "t_p_120_1176_p000343",
+            "page_number": 343,
+            "part_number_count": 5,
+            "payload_ids": [
+              "t_p_120_1176_p000343::qdrant::0001",
+              "t_p_120_1176_p000343::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000343.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and",
+              "table_route_relevant_to_part_query",
+              "part_number_density:5"
+            ],
+            "retrieval_score": 31,
+            "route": "table",
+            "source_image_sha256": "203c3d8ab9741c517ba0527da601cf614889e4b5529ee79135c0244aa571fcd5",
+            "source_member": "00000343.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000344",
+              "page_number": 344,
+              "source_image_sha256": "f98a298d87c2f5a918251241c649754c2e490f23473301d84e66d7d998e82ea6",
+              "source_member": "00000344.tif"
+            },
+            "ocr_char_count": 690,
+            "ocr_excerpt": "-<\u20ac EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST AIRLINE NOMENCLATURE VENDOR EFF UNITS FIG. ITEM PART NUMBER STOCK 1234567 CODE FROM PER NUMBER TO ASSY 19 ATTACHING PARTS 190 120-20970-003 ee VS4956 028 STRUCTURE, ARMREST -191 120-36060-003 STRUCTURE, ARMREST ee VS4956 B 200 MS51957-45 SCREW 210 MS21061L08 NUT eee eee eee ee ee ee ee ee RK USAGE CODE LIST A AIRCRAFT 120028, 120034 THRU 120048, 120052, 1200\u2026",
+            "page_id": "t_p_120_1176_p000344",
+            "page_number": 344,
+            "part_number_count": 3,
+            "payload_ids": [
+              "t_p_120_1176_p000344::qdrant::0001",
+              "t_p_120_1176_p000344::opensearch::0001"
+            ],
+            "raw_tiff_reference": "00000344.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and",
+              "table_route_relevant_to_part_query",
+              "part_number_density:3"
+            ],
+            "retrieval_score": 31,
+            "route": "table",
+            "source_image_sha256": "f98a298d87c2f5a918251241c649754c2e490f23473301d84e66d7d998e82ea6",
+            "source_member": "00000344.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_semantic_and_exact_index",
+            "targets": [
+              "qdrant",
+              "opensearch"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000339",
+              "page_number": 339,
+              "source_image_sha256": "485ba45fb3d9ae821f430edb9eefc7315fb6209a0c4ba224b5ce1bc97e39c4ae",
+              "source_member": "00000339.tif"
+            },
+            "ocr_char_count": 493,
+            "ocr_excerpt": "-< EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST 70 20 ; x . 40 Nees (C) 170 200 SS 20 \" AS oN SS a 30 JF 180 290 = Ee S (A) J oN SS 4 (z: id 180 / /200 s \u201cLey ol \u00a9 My oN 10 C TS y/ (A) () \\ S =~ ayy | 10 VY Ke Zz YR ~ Vj Q oe \u2014~ / We NP \u2018 0 ay (C) P\\ \\100 ; 30 F150 a 80 160 LPP re 00 / o a 120 ss - 200 \u2014\u2014 | (A) 110 lz ie 120 a 90 ee 29] 120 190 120TP250073.MCE Triple Passenger Seat (120-46137-001/501) Figu\u2026",
+            "page_id": "t_p_120_1176_p000339",
+            "page_number": 339,
+            "part_number_count": 1,
+            "payload_ids": [
+              "t_p_120_1176_p000339::qdrant::0001"
+            ],
+            "raw_tiff_reference": "00000339.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and",
+              "part_number_density:1"
+            ],
+            "retrieval_score": 5,
+            "route": "plain_text",
+            "source_image_sha256": "485ba45fb3d9ae821f430edb9eefc7315fb6209a0c4ba224b5ce1bc97e39c4ae",
+            "source_member": "00000339.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_and_semantic_index",
+            "targets": [
+              "qdrant"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000342",
+              "page_number": 342,
+              "source_image_sha256": "e4a86647dfa46b551a02909a28f987170a2765a0f7d90415f35f2bf55701ae88",
+              "source_member": "00000342.tif"
+            },
+            "ocr_char_count": 450,
+            "ocr_excerpt": "<< EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST 80 (7) 180 A Lyd 130 BP \u201860 110 120 400 (A) 5 <A S a | SS /-\u2014\u2014170 Fe Ss] aA S Ny NG i! \u00a5 i =e we ~ \u2018JT 150 LP \\ S LA / Be SLE 30 a | \\ On : 40 a a 50 90 (D) on 70 @ 190 210, Se 10 \u2014& SQ ly eA) (eee & 120 7 /S i] SOO . os K oa (D) \u201cSao N6f 140 200 ava 120TP250074.MCE Single Passenger Seat Structure (120-29067-001) Figure 79 Sheet 1 EFFECTIVITY: ALL 25-21-00 Pa\u2026",
+            "page_id": "t_p_120_1176_p000342",
+            "page_number": 342,
+            "part_number_count": 1,
+            "payload_ids": [
+              "t_p_120_1176_p000342::qdrant::0001"
+            ],
+            "raw_tiff_reference": "00000342.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and",
+              "part_number_density:1"
+            ],
+            "retrieval_score": 5,
+            "route": "plain_text",
+            "source_image_sha256": "e4a86647dfa46b551a02909a28f987170a2765a0f7d90415f35f2bf55701ae88",
+            "source_member": "00000342.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_and_semantic_index",
+            "targets": [
+              "qdrant"
+            ]
+          },
+          {
+            "answer_permission": false,
+            "citation": {
+              "page_id": "t_p_120_1176_p000345",
+              "page_number": 345,
+              "source_image_sha256": "1b64ec464bd788df7ced22c1085d6ba7796e8b50c2ca1fc44b0c1eb397b59779",
+              "source_member": "00000345.tif"
+            },
+            "ocr_char_count": 457,
+            "ocr_excerpt": "<< EMBRAER MAINTENANCE MANUAL WITH ILLUSTRATED PARTS LIST 80 Sy ; (/ = 190 (\\\\ _ 140 st QI 70 120 130 Ho (A) a @ ~~ \u00a9 /_ \u2014\u2014- 180 Se SEF Wa p~ 60 : ~e I ZL, me we ~ i 160 LP \\ QE [ee L \u00a9) s mM \\ (B) ~ \u201c 8 50 100 (D) on 70 | @ = PO 10 \u2014_\u00a7 SS SN / PU \\ (ee % 130 ae \u00bb KK Oe (D) SSN ONS 155 SEU 210 cS3 \\ 150 \u00a9) ye 120TP250075.MCE Single Passenger Seat Structure (120-29067-019/029) Figure 80 Sheet 1 EFFECTIVITY: ALL 25-21\u2026",
+            "page_id": "t_p_120_1176_p000345",
+            "page_number": 345,
+            "part_number_count": 1,
+            "payload_ids": [
+              "t_p_120_1176_p000345::qdrant::0001"
+            ],
+            "raw_tiff_reference": "00000345.tif",
+            "retrieval_reasons": [
+              "matched_query_terms:and",
+              "part_number_density:1"
+            ],
+            "retrieval_score": 5,
+            "route": "plain_text",
+            "source_image_sha256": "1b64ec464bd788df7ced22c1085d6ba7796e8b50c2ca1fc44b0c1eb397b59779",
+            "source_member": "00000345.tif",
+            "source_truth_mutation_allowed": false,
+            "storage_decision": "validated_graph_and_semantic_index",
+            "targets": [
+              "qdrant"
+            ]
+          }
+        ],
+        "retrieval_tunnels": [
+          "exact identifier",
+          "table/IPL",
+          "OCR",
+          "graph",
+          "vector guidance"
+        ],
+        "selected_route": "graph_relationship_reasoning",
+        "validation": {
+          "allowed_identifier_count": 17,
+          "answer_identifier_count": 2,
+          "citation_labels_used": [],
+          "failures": [],
+          "invalid_citation_labels": [],
+          "quality_status": "PASS",
+          "source_truth_mutation_allowed": false,
+          "unsupported_identifiers": []
+        },
+        "vector_candidates": [
+          {
+            "page_id": "t_p_120_1176_p000346",
+            "similarity": 0.535171
+          },
+          {
+            "page_id": "t_p_120_1176_p000340",
+            "similarity": 0.528874
+          },
+          {
+            "page_id": "t_p_120_1176_p000343",
+            "similarity": 0.528617
+          },
+          {
+            "page_id": "t_p_120_1176_p000342",
+            "similarity": 0.528136
+          },
+          {
+            "page_id": "t_p_120_1176_p000339",
+            "similarity": 0.521173
+          }
+        ]
+      },
+      "route": "graph_relationship_reasoning",
+      "source_file": "trace_net_fast10_deep_v5_question_02.json",
+      "validation": {
+        "allowed_identifier_count": 17,
+        "answer_identifier_count": 2,
+        "citation_labels_used": [],
+        "failures": [],
+        "invalid_citation_labels": [],
+        "quality_status": "PASS",
+        "source_truth_mutation_allowed": false,
+        "unsupported_identifiers": []
+      },
+      "vector_candidates": [
+        {
+          "page_id": "t_p_120_1176_p000346",
+          "similarity": 0.535171
+        },
+        {
+          "page_id": "t_p_120_1176_p000340",
+          "similarity": 0.528874
+        },
+        {
+          "page_id": "t_p_120_1176_p000343",
+          "similarity": 0.528617
+        },
+        {
+          "page_id": "t_p_120_1176_p000342",
+          "similarity": 0.528136
+        },
+        {
+          "page_id": "t_p_120_1176_p000339",
+          "similarity": 0.521173
+        }
+      ]
+    }
+  ]
+}

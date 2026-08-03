@@ -9,8 +9,8 @@ from pathlib import Path
 import pytest
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-SCRIPT = REPO_ROOT / "scripts" / "run_trace_net_executive_tiff_demo_v5_fast10_deep.py"
-V4_SCRIPT = REPO_ROOT / "scripts" / "run_trace_net_executive_tiff_demo_v4.py"
+SCRIPT = REPO_ROOT / "scripts/operations/ingestion/run_trace_net_executive_tiff_demo_v5_fast10_deep.py"
+V4_SCRIPT = REPO_ROOT / "scripts/operations/ingestion/run_trace_net_executive_tiff_demo_v4.py"
 
 
 def load_module(path: Path, name: str):

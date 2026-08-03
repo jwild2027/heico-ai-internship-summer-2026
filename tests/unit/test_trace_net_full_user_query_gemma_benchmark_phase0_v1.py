@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 
-SCRIPT = Path("scripts/run_trace_net_full_user_query_gemma_benchmark_v1.py")
+SCRIPT = Path("scripts/benchmark/run_trace_net_full_user_query_gemma_benchmark_v1.py")
 
 
 def load():

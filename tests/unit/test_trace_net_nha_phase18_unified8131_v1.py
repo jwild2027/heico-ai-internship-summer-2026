@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from scripts.run_trace_net_nha_phase18_unified8131_gate_v1 import build_bank, evaluate, summarize
-from scripts.serve_trace_net_nha_phase16_gemma_proxy_v1 import observe_upstream_model
+from scripts.operations.graph.run_trace_net_nha_phase18_unified8131_gate_v1 import build_bank, evaluate, summarize
+from scripts.operations.serving.serve_trace_net_nha_phase16_gemma_proxy_v1 import observe_upstream_model
 
 
 def test_observe_upstream_constrained_gemma_success():

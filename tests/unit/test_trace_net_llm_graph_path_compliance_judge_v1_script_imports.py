@@ -5,7 +5,7 @@ from pathlib import Path
 
 def test_build_script_help_imports():
     result = subprocess.run(
-        [sys.executable, "scripts/build_trace_net_llm_graph_path_compliance_judge_v1.py", "--help"],
+        [sys.executable, "scripts/build/graph/build_trace_net_llm_graph_path_compliance_judge_v1.py", "--help"],
         cwd=Path(__file__).resolve().parents[2],
         text=True,
         stdout=subprocess.PIPE,
@@ -17,7 +17,7 @@ def test_build_script_help_imports():
 
 def test_check_script_help_imports():
     result = subprocess.run(
-        [sys.executable, "scripts/check_trace_net_llm_graph_path_compliance_judge_v1_quality.py", "--help"],
+        [sys.executable, "scripts/maintenance/benchmark/check_trace_net_llm_graph_path_compliance_judge_v1_quality.py", "--help"],
         cwd=Path(__file__).resolve().parents[2],
         text=True,
         stdout=subprocess.PIPE,

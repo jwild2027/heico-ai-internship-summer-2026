@@ -6,9 +6,9 @@ from pathlib import Path
 def test_scripts_import_and_help_from_repo_root():
     repo_root = Path(__file__).resolve().parents[2]
     scripts = [
-        "scripts/build_trace_net_ask_api_hybrid_v3_routing_v1.py",
-        "scripts/check_trace_net_ask_api_hybrid_v3_routing_v1_quality.py",
-        "scripts/run_trace_net_ask_api_hybrid_v3_routing_v1.py",
+        "scripts/build/router/build_trace_net_ask_api_hybrid_v3_routing_v1.py",
+        "scripts/maintenance/benchmark/check_trace_net_ask_api_hybrid_v3_routing_v1_quality.py",
+        "scripts/operations/router/run_trace_net_ask_api_hybrid_v3_routing_v1.py",
     ]
     for script in scripts:
         result = subprocess.run(

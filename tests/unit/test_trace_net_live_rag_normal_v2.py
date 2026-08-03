@@ -2,7 +2,7 @@ from __future__ import annotations
 import importlib.util, sys
 from pathlib import Path
 
-SCRIPT = Path("scripts/serve_trace_net_live_rag_normal_v2.py")
+SCRIPT = Path("scripts/operations/serving/serve_trace_net_live_rag_normal_v2.py")
 
 def load():
     spec = importlib.util.spec_from_file_location("normal_v2", SCRIPT)

@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from scripts.refresh_visual_text_extraction_summary import refresh_visual_text_extraction_summary
+from scripts.maintenance.visual.refresh_visual_text_extraction_summary import refresh_visual_text_extraction_summary
 from tiff.visual_text_extraction import VisualTextPaths
 
 

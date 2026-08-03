@@ -4,7 +4,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-LAUNCHER = ROOT / "scripts" / "launch_trace_net_cognitive_openwebui_v1.sh"
+LAUNCHER = ROOT / "scripts/operations/launch_trace_net_cognitive_openwebui_v1.sh"
 
 ENV_TO_LOCAL = {
     "TRACE_NET_H30_PLANNER_ROLLOUT_MODE": "PLANNER_ROLLOUT_MODE",

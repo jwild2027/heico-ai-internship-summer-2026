@@ -7,9 +7,9 @@ from pathlib import Path
 def test_v34_scripts_import_without_running() -> None:
     root = Path(__file__).resolve().parents[2]
     for rel in [
-        "scripts/build_trace_net_e2e_image_visual_observer_route_v34_2.py",
-        "scripts/check_trace_net_e2e_image_visual_observer_route_v34_2_quality.py",
-        "scripts/serve_trace_net_e2e_image_visual_observer_route_v34_2.py",
+        "scripts/build/visual/build_trace_net_e2e_image_visual_observer_route_v34_2.py",
+        "scripts/maintenance/visual/check_trace_net_e2e_image_visual_observer_route_v34_2_quality.py",
+        "scripts/operations/visual/serve_trace_net_e2e_image_visual_observer_route_v34_2.py",
     ]:
         path = root / rel
         spec = importlib.util.spec_from_file_location(path.stem, path)

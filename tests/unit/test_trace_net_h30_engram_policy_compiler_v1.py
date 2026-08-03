@@ -6,9 +6,9 @@ import sys
 from pathlib import Path
 from types import SimpleNamespace
 
-COMPILER = Path("scripts/trace_net_h30_engram_policy_compiler_v1.py")
-PRECISION = Path("scripts/trace_net_h30_cognitive_precision_v1.py")
-RETRIEVAL = Path("scripts/trace_net_h30_retrieval_completion_v1.py")
+COMPILER = Path("src/trace_net/engram/trace_net_h30_engram_policy_compiler_v1.py")
+PRECISION = Path("src/trace_net/engram/trace_net_h30_cognitive_precision_v1.py")
+RETRIEVAL = Path("src/trace_net/retrieval/trace_net_h30_retrieval_completion_v1.py")
 
 
 def load(path: Path, name: str):

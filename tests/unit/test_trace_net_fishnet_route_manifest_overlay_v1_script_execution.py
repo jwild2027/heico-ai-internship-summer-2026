@@ -12,7 +12,7 @@ def _repo_root() -> Path:
 def test_build_script_help_runs_when_invoked_as_path() -> None:
     repo = _repo_root()
     result = subprocess.run(
-        [sys.executable, "scripts/build_trace_net_fishnet_route_manifest_overlay_v1.py", "--help"],
+        [sys.executable, "scripts/build/ocr/build_trace_net_fishnet_route_manifest_overlay_v1.py", "--help"],
         cwd=repo,
         text=True,
         stdout=subprocess.PIPE,
@@ -26,7 +26,7 @@ def test_build_script_help_runs_when_invoked_as_path() -> None:
 def test_quality_script_help_runs_when_invoked_as_path() -> None:
     repo = _repo_root()
     result = subprocess.run(
-        [sys.executable, "scripts/check_trace_net_fishnet_route_manifest_overlay_v1_quality.py", "--help"],
+        [sys.executable, "scripts/maintenance/benchmark/check_trace_net_fishnet_route_manifest_overlay_v1_quality.py", "--help"],
         cwd=repo,
         text=True,
         stdout=subprocess.PIPE,

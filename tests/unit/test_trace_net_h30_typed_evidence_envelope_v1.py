@@ -3,13 +3,13 @@ import sys
 from pathlib import Path
 
 MODULE_PATH = Path(
-    "scripts/trace_net_h30_typed_evidence_envelope_v1.py"
+    "src/trace_net/context/trace_net_h30_typed_evidence_envelope_v1.py"
 )
 ROUTER_PATH = Path(
-    "scripts/serve_trace_net_cognitive_router_v1.py"
+    "scripts/operations/router/serve_trace_net_cognitive_router_v1.py"
 )
 LAUNCHER_PATH = Path(
-    "scripts/launch_trace_net_cognitive_openwebui_v1.sh"
+    "scripts/operations/launch_trace_net_cognitive_openwebui_v1.sh"
 )
 
 

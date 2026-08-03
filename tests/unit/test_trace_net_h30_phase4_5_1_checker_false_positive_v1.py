@@ -3,7 +3,7 @@ from __future__ import annotations
 import importlib.util
 from pathlib import Path
 
-MODULE_PATH = Path("scripts/check_trace_net_h30_phase4_5_1_launcher_env_v1.py")
+MODULE_PATH = Path("scripts/maintenance/operations/check_trace_net_h30_phase4_5_1_launcher_env_v1.py")
 
 
 def load_module():

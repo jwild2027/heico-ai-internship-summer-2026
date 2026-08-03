@@ -3,7 +3,7 @@ from pathlib import Path
 from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[2]
-SCRIPT = ROOT / "scripts" / "launch_trace_net_router_stack_v2.py"
+SCRIPT = ROOT / "scripts/operations/router/launch_trace_net_router_stack_v2.py"
 spec = importlib.util.spec_from_file_location("launcher_v2", SCRIPT)
 launcher = importlib.util.module_from_spec(spec)
 import sys
@@ -12,7 +12,7 @@ spec.loader.exec_module(launcher)
 
 
 def test_launcher_v2_uses_router_proxy_v4_script():
-    assert launcher.ROUTER_SCRIPT.as_posix() == "scripts/serve_trace_net_guided_discovery_router_proxy_v4.py"
+    assert launcher.ROUTER_SCRIPT.as_posix() == "scripts/operations/router/serve_trace_net_guided_discovery_router_proxy_v4.py"
 
 
 def test_launcher_v2_manifest_reports_router_model_v4(tmp_path):

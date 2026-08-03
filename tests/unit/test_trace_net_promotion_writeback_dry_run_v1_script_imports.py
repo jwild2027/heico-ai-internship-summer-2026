@@ -13,10 +13,10 @@ def load_script(path: str):
 
 
 def test_build_script_imports() -> None:
-    module = load_script("scripts/build_trace_net_promotion_writeback_dry_run_v1.py")
+    module = load_script("scripts/build/ingestion/build_trace_net_promotion_writeback_dry_run_v1.py")
     assert hasattr(module, "main")
 
 
 def test_check_script_imports() -> None:
-    module = load_script("scripts/check_trace_net_promotion_writeback_dry_run_v1_quality.py")
+    module = load_script("scripts/maintenance/benchmark/check_trace_net_promotion_writeback_dry_run_v1_quality.py")
     assert hasattr(module, "main")

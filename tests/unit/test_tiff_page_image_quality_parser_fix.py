@@ -36,7 +36,7 @@ def test_page_image_quality_parser_accepts_counts_shape(tmp_path: Path) -> None:
 
     rc = subprocess.call([
         sys.executable,
-        "scripts/check_page_image_recognition_quality.py",
+        "scripts/maintenance/ingestion/check_page_image_recognition_quality.py",
         "--audit-json",
         str(audit_path),
         "--graph-nodes",

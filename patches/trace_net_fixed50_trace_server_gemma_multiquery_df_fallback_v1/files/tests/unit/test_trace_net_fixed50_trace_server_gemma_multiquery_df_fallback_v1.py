@@ -1,4 +1,4 @@
-from scripts.run_trace_net_fixed50_trace_server_gemma_multiquery_df_fallback_v1 import (
+from scripts.benchmark.serving.run_trace_net_fixed50_trace_server_gemma_multiquery_df_fallback_v1 import (
     query_variants,
     classify_bucket,
     grade,

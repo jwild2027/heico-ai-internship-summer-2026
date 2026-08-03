@@ -5,8 +5,8 @@ from pathlib import Path
 
 import pytest
 
-from scripts import serve_trace_net_blue_green_frontdoor_v1 as frontdoor
-from scripts import trace_net_blue_green_pointer_v1 as pointer
+from scripts.operations.serving import serve_trace_net_blue_green_frontdoor_v1 as frontdoor
+from src.trace_net.serving import trace_net_blue_green_pointer_v1 as pointer
 
 REPO = Path(__file__).resolve().parents[2]
 
@@ -98,14 +98,14 @@ def test_frontdoor_preserves_trace_headers():
 
 
 def test_phase20_wrapper_delegates_to_blue_green_without_nested_handler():
-    text = (REPO / "scripts/run_trace_net_nha_phase20_final_server_gate_v1.sh").read_text(encoding="utf-8")
+    text = (REPO / "scripts/benchmark/serving/run_trace_net_nha_phase20_final_server_gate_v1.sh").read_text(encoding="utf-8")
     assert "run_trace_net_nha_blue_green_final_gate_v1.sh" in text
     assert "rollback_on_failure" not in text
     assert "launch_trace_net_nha_phase19_stack_v1.sh" not in text
 
 
 def test_final_gate_cleans_only_candidate_services():
-    text = (REPO / "scripts/run_trace_net_nha_blue_green_final_gate_v1.sh").read_text(encoding="utf-8")
+    text = (REPO / "scripts/benchmark/graph/run_trace_net_nha_blue_green_final_gate_v1.sh").read_text(encoding="utf-8")
     assert "launch_trace_net_nha_blue_green_candidate_v1.sh" in text
     assert "launch_trace_net_nha_phase19_stack_v1.sh" not in text
     assert "production_ports_restarted=false" in text
@@ -114,7 +114,7 @@ def test_final_gate_cleans_only_candidate_services():
 
 
 def test_candidate_launcher_does_not_stop_production_router_or_writer():
-    text = (REPO / "scripts/launch_trace_net_nha_blue_green_candidate_v1.sh").read_text(encoding="utf-8")
+    text = (REPO / "scripts/operations/launch_trace_net_nha_blue_green_candidate_v1.sh").read_text(encoding="utf-8")
     assert "stop_one \"$ROUTER_SESSION\" \"$ROUTER_PORT\"" in text
     assert "stop_one \"$WRITER_SESSION\" \"$WRITER_PORT\"" in text
     assert "8118/tcp" not in text
@@ -123,7 +123,7 @@ def test_candidate_launcher_does_not_stop_production_router_or_writer():
 
 
 def test_promoter_never_rebuilds_8118_or_8128():
-    text = (REPO / "scripts/promote_trace_net_nha_blue_green_v1.sh").read_text(encoding="utf-8")
+    text = (REPO / "scripts/operations/graph/promote_trace_net_nha_blue_green_v1.sh").read_text(encoding="utf-8")
     assert "launch_trace_net_cognitive_openwebui_v1.sh" not in text
     assert "8118/tcp" not in text
     assert "8128/tcp" not in text
@@ -132,7 +132,7 @@ def test_promoter_never_rebuilds_8118_or_8128():
 
 
 def test_color_port_sets_are_disjoint():
-    text = (REPO / "scripts/launch_trace_net_nha_blue_green_candidate_v1.sh").read_text(encoding="utf-8")
+    text = (REPO / "scripts/operations/launch_trace_net_nha_blue_green_candidate_v1.sh").read_text(encoding="utf-8")
     for value in ("8218", "8228", "8231", "8233", "8318", "8328", "8331", "8333"):
         assert value in text
     assert len({8218, 8228, 8231, 8233, 8318, 8328, 8331, 8333}) == 8

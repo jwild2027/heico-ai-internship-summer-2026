@@ -11,7 +11,7 @@ def test_module_imports():
 
 def test_build_script_help_runs():
     result = subprocess.run(
-        [sys.executable, "scripts/build_trace_net_leiden_representative_label_tightening_v1.py", "--help"],
+        [sys.executable, "scripts/build/graph/build_trace_net_leiden_representative_label_tightening_v1.py", "--help"],
         cwd=Path(__file__).resolve().parents[2],
         text=True,
         capture_output=True,
@@ -22,7 +22,7 @@ def test_build_script_help_runs():
 
 def test_quality_script_help_runs():
     result = subprocess.run(
-        [sys.executable, "scripts/check_trace_net_leiden_representative_label_tightening_v1_quality.py", "--help"],
+        [sys.executable, "scripts/maintenance/graph/check_trace_net_leiden_representative_label_tightening_v1_quality.py", "--help"],
         cwd=Path(__file__).resolve().parents[2],
         text=True,
         capture_output=True,

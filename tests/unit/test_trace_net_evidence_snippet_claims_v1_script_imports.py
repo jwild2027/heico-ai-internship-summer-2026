@@ -14,10 +14,10 @@ def load_script(path: str):
 
 
 def test_build_script_imports_main() -> None:
-    module = load_script("scripts/build_trace_net_evidence_snippet_claims_v1.py")
+    module = load_script("scripts/build/ingestion/build_trace_net_evidence_snippet_claims_v1.py")
     assert callable(module.main)
 
 
 def test_quality_script_imports_quality_main() -> None:
-    module = load_script("scripts/check_trace_net_evidence_snippet_claims_v1_quality.py")
+    module = load_script("scripts/maintenance/benchmark/check_trace_net_evidence_snippet_claims_v1_quality.py")
     assert callable(module.quality_main)

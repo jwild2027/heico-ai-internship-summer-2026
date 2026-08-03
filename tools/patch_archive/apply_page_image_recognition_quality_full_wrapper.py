@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-TARGET = Path("scripts/check_full_system_quality.py")
+TARGET = Path("scripts/maintenance/benchmark/check_full_system_quality.py")
 BACKUP = Path("scripts/check_full_system_quality_base.py")
 FLAG = "--require-page-image-recognition-quality"
 
@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "scripts" / "check_full_system_quality_base.py"
-IMAGE_QUALITY = ROOT / "scripts" / "check_page_image_recognition_quality.py"
+IMAGE_QUALITY = ROOT / "scripts/maintenance/ingestion/check_page_image_recognition_quality.py"
 
 
 def _run(cmd: list[str]) -> int:

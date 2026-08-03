@@ -1,0 +1,44 @@
+{
+  "schema_version": "trace_net_nha_engram_summary_v1",
+  "module": "trace_net_nha_engram_v1",
+  "status": "TRACE_NET_NHA_ENGRAM_V1",
+  "quality_status": "PASS",
+  "output_dir": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\organization\\trace_net\\nha_engram_v1",
+  "counts": {
+    "nha_memory_atom_count": 15,
+    "nha_skill_card_count": 5,
+    "overlay_skill_card_count": 10,
+    "question_count": 100,
+    "pass_count": 100,
+    "fail_count": 0,
+    "core20_count": 20,
+    "core20_pass_count": 20,
+    "synthetic_block_question_count": 5,
+    "negative_question_count": 10,
+    "llm_call_count": 0,
+    "production_graph_write_count": 0,
+    "source_artifact_mutation_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0
+  },
+  "failures": [],
+  "warnings": [],
+  "input_sha256": {
+    "base_engram_core": "f57c2e2899e5c7f2b0cc242a8d129703a5b8b7930881adb737719bd8b1f4e331",
+    "base_skill_library": "d65858f7fbdf320fe24af82688b5dab8b904352dbab11647c6dffa0e4fd67807"
+  },
+  "artifacts": [
+    "trace_net_nha_engram_100_question_bank_v1.json",
+    "trace_net_nha_engram_100_question_results_v1.json",
+    "trace_net_nha_engram_100_question_results_v1.jsonl",
+    "trace_net_nha_engram_core_overlay_v1.json",
+    "trace_net_nha_engram_memory_atoms_v1.json",
+    "trace_net_nha_engram_overlay_library_v1.json",
+    "trace_net_nha_engram_quality_v1.json",
+    "trace_net_nha_engram_skill_cards_v1.json",
+    "trace_net_nha_engram_summary_v1.json",
+    "trace_net_nha_query_atom_vocabulary_v1.json"
+  ],
+  "next_phase": "N14 wires this reviewed overlay into the H30 planner/router; N15 adds one constrained Gemma answer call."
+}

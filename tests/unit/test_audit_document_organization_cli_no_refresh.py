@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 def test_audit_document_organization_accepts_no_refresh_manifest(monkeypatch) -> None:
-    script_path = Path(__file__).resolve().parents[2] / "scripts" / "audit_document_organization.py"
+    script_path = Path(__file__).resolve().parents[2] / "scripts/maintenance/ingestion/audit_document_organization.py"
     spec = importlib.util.spec_from_file_location("audit_document_organization_cli", script_path)
     assert spec and spec.loader
     module = importlib.util.module_from_spec(spec)

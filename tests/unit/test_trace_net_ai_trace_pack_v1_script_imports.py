@@ -7,7 +7,7 @@ from pathlib import Path
 
 def test_build_script_help_runs():
     result = subprocess.run(
-        [sys.executable, "scripts/build_trace_net_ai_trace_pack_v1.py", "--help"],
+        [sys.executable, "scripts/build/ingestion/build_trace_net_ai_trace_pack_v1.py", "--help"],
         cwd=Path.cwd(),
         text=True,
         capture_output=True,
@@ -19,7 +19,7 @@ def test_build_script_help_runs():
 
 def test_quality_script_help_runs():
     result = subprocess.run(
-        [sys.executable, "scripts/check_trace_net_ai_trace_pack_v1_quality.py", "--help"],
+        [sys.executable, "scripts/maintenance/benchmark/check_trace_net_ai_trace_pack_v1_quality.py", "--help"],
         cwd=Path.cwd(),
         text=True,
         capture_output=True,

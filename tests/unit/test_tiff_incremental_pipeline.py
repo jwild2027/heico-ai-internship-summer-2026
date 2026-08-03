@@ -27,7 +27,7 @@ def test_build_incremental_commands_runs_backend_when_requested():
     assert len(commands) == 1
     assert commands[0].name == "backend_pipeline"
     assert commands[0].skip_reason is None
-    assert "scripts/run_tiff_backend_pipeline.py" in commands[0].command
+    assert "scripts/operations/ingestion/run_tiff_backend_pipeline.py" in commands[0].command
 
 
 def test_build_incremental_commands_includes_ocr_for_changed_files():

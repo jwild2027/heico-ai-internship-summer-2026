@@ -8,8 +8,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-BUILD_SCRIPT = ROOT / "scripts" / "build_trace_net_image_route_inventory_llava_jobs_v1.py"
-CHECK_SCRIPT = ROOT / "scripts" / "check_trace_net_image_route_inventory_llava_jobs_v1.py"
+BUILD_SCRIPT = ROOT / "scripts/build/visual/build_trace_net_image_route_inventory_llava_jobs_v1.py"
+CHECK_SCRIPT = ROOT / "scripts/maintenance/visual/check_trace_net_image_route_inventory_llava_jobs_v1.py"
 
 
 def load_module(path: Path, name: str):

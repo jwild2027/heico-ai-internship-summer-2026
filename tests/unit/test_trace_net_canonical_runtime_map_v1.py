@@ -19,7 +19,7 @@ def test_build_runtime_map_marks_primary_and_support_modules(tmp_path: Path) -> 
     required_paths = [
         "tiff/trace_net_openwebui_page_context_bridge_v1.py",
         "tiff/trace_net_page_context_pack_v3.py",
-        "scripts/serve_trace_net_openwebui_page_context_bridge_v1.py",
+        "scripts/operations/serving/serve_trace_net_openwebui_page_context_bridge_v1.py",
         "tiff/trace_net_webui_self_rag_crag_bridge_v1.py",
         "tiff/trace_net_e2e_live_self_rag_crag_evaluator_v20.py",
         "tiff/trace_net_engineering_engram_core_v1.py",

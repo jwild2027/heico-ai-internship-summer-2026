@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
-MODULE_PATH = ROOT / "scripts" / "build_trace_net_graph_explorer_v2_nomenclature_fix.py"
+MODULE_PATH = ROOT / "scripts/build/graph/build_trace_net_graph_explorer_v2_nomenclature_fix.py"
 
 spec = importlib.util.spec_from_file_location("graph_v2_nom_fix", MODULE_PATH)
 mod = importlib.util.module_from_spec(spec)

@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from scripts.smoke_test_changed_page_backend_mode import extract_changed_list_count, find_first_tiff
+from scripts.benchmark.ingestion.smoke_test_changed_page_backend_mode import extract_changed_list_count, find_first_tiff
 
 
 def test_extract_changed_list_count():

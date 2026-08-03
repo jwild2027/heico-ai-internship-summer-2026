@@ -1,0 +1,1205 @@
+{
+  "schema_version": "trace_net_nha_phase0_3_v1",
+  "module": "trace_net_nha_phase0_3_v1",
+  "status": "TRACE_NET_NHA_PHASE0_3_V1",
+  "truth_mode": "real_source",
+  "case_count": 40,
+  "direct_answer_case_count": 2,
+  "candidate_case_count": 38,
+  "cases": [
+    {
+      "case_id": "nha_case:9af038fe343813c86c83",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29073-001?",
+      "child_part": "120-29073-001",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29067-001",
+      "expected_parent_candidates": [
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "1",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343"
+      ],
+      "relationship_status": "source_supported",
+      "must_not_claim": [],
+      "source_relationship_id": "assembly_membership:3bd174b10ffe9f6c55de"
+    },
+    {
+      "case_id": "nha_case:3d526cdeb9262a438ff3",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 42952-10?",
+      "child_part": "42952-10",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "42952-10",
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "20",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:01e924ae38fcf0891f1a"
+    },
+    {
+      "case_id": "nha_case:de2e024c03243e65680f",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part MS21042L5?",
+      "child_part": "MS21042L5",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "MS21042L5",
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "30",
+      "expected_quantity": "2",
+      "expected_pages": [
+        "t_p_120_1176_p000343"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:5a66156916e165464efc"
+    },
+    {
+      "case_id": "nha_case:cca1ad4a3a6ecbc0873a",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-34291-001?",
+      "child_part": "120-34291-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-34291-001",
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "70",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:a299969f10d84714574d"
+    },
+    {
+      "case_id": "nha_case:dcf6a885033874de988b",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29067-011?",
+      "child_part": "120-29067-011",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-29067-011",
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "80",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:662c570c5d3edefb2cb1"
+    },
+    {
+      "case_id": "nha_case:0f14566e867e3692e7c6",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 42952-10?",
+      "child_part": "42952-10",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "42952-10",
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "100",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:6b6cdb7ae976fe3ae5f5"
+    },
+    {
+      "case_id": "nha_case:8238ae9026af0dc3c5e0",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29093-001?",
+      "child_part": "120-29093-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-29093-001",
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "150",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:ba14cac9b1b732bb3644"
+    },
+    {
+      "case_id": "nha_case:897579b5bd2e8be7f648",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-34293-001?",
+      "child_part": "120-34293-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-34293-001",
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "160",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:49d1329cd287b7a7233e"
+    },
+    {
+      "case_id": "nha_case:12b2f89ad4812599426d",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-31565-002?",
+      "child_part": "120-31565-002",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-31565-002",
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "170",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:50d9236b97612487161f"
+    },
+    {
+      "case_id": "nha_case:1eccd6a81f74e7938db7",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-20970-001?",
+      "child_part": "120-20970-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-20970-001",
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "180",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:586f09553f197181fe79"
+    },
+    {
+      "case_id": "nha_case:d2186d273b5f9fb75e01",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-36060-001?",
+      "child_part": "120-36060-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-36060-001",
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "181",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:df11558dea3f956c3353"
+    },
+    {
+      "case_id": "nha_case:a084328f0d4626694c28",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-20970-003?",
+      "child_part": "120-20970-003",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-20970-003",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "190",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000344"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:1e290e28e2a3b92de7fb"
+    },
+    {
+      "case_id": "nha_case:dad58e0ab12d66fae118",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-36060-003?",
+      "child_part": "120-36060-003",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-36060-003",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "191",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000344"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:9877f84b77eb2a226dce"
+    },
+    {
+      "case_id": "nha_case:3a5c36b146a69e38798d",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29073-001?",
+      "child_part": "120-29073-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-29073-001",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "1",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349"
+      ],
+      "relationship_status": "ambiguous",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:486831bf1e00d0b319a3"
+    },
+    {
+      "case_id": "nha_case:d9a6f8f95b7178f04322",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29073-005?",
+      "child_part": "120-29073-005",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "2",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349"
+      ],
+      "relationship_status": "ambiguous",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:8dd4d5ca675cf5301ba9"
+    },
+    {
+      "case_id": "nha_case:942f1cd234390023eae8",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-48023-001?",
+      "child_part": "120-48023-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-48023-001",
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "11",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:c7d79770ab1203747380"
+    },
+    {
+      "case_id": "nha_case:3097d0666b58d3c5c7f5",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-61546-001?",
+      "child_part": "120-61546-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-61546-001",
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "15",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:5507ff321e1b18eb8fc3"
+    },
+    {
+      "case_id": "nha_case:71e0d19e476675f33e4d",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 42952-10?",
+      "child_part": "42952-10",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "42952-10",
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "20",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:0c5da7df841bd3db78df"
+    },
+    {
+      "case_id": "nha_case:989a5dc0d0eb45634012",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-34291-001?",
+      "child_part": "120-34291-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-34291-001",
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "70",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:a1aa3b749db4820abf20"
+    },
+    {
+      "case_id": "nha_case:c3c92d9f740bd36213bf",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29067-011?",
+      "child_part": "120-29067-011",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-29067-011",
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "80",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:8d5a15817288185c61e8"
+    },
+    {
+      "case_id": "nha_case:ae409c7aa487ebbe20cd",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-40851-001?",
+      "child_part": "120-40851-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-40851-001",
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "81",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:0936e6dddff4775d0a1d"
+    },
+    {
+      "case_id": "nha_case:b6789a0e1015a96a7960",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29075-031?",
+      "child_part": "120-29075-031",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-29075-031",
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "82",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:4dd614b6155b52056c12"
+    },
+    {
+      "case_id": "nha_case:859c3791cc3572399733",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-40849-001?",
+      "child_part": "120-40849-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-40849-001",
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "90",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:fbd239fd310035553cdf"
+    },
+    {
+      "case_id": "nha_case:3f488901c73ce1545619",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 42952-10?",
+      "child_part": "42952-10",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "42952-10",
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "110",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:6b8316a8343a9d715a10"
+    },
+    {
+      "case_id": "nha_case:04f5e05143b26736114b",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part NAS464P5A16?",
+      "child_part": "NAS464P5A16",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "NAS464P5A16",
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "141",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:fec692d93d979c883ff2"
+    },
+    {
+      "case_id": "nha_case:4fb2f9163dc52013657e",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-48023-001?",
+      "child_part": "120-48023-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-48023-001",
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "150",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:5636901959ec5c225f89"
+    },
+    {
+      "case_id": "nha_case:d8d6c99406cc248a63f5",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29074-001?",
+      "child_part": "120-29074-001",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29068-001",
+      "expected_parent_candidates": [
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "1",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "relationship_status": "source_supported",
+      "must_not_claim": [],
+      "source_relationship_id": "assembly_membership:c555343915ca54bed57c"
+    },
+    {
+      "case_id": "nha_case:65f593c225b0b1dc4853",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 42952-10?",
+      "child_part": "42952-10",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "42952-10",
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "20",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:f0cd88248628d947742f"
+    },
+    {
+      "case_id": "nha_case:a055c00f5163c3db226d",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-35881-001?",
+      "child_part": "120-35881-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-35881-001",
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "70",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:2bce6551b92b6371702d"
+    },
+    {
+      "case_id": "nha_case:d71edd7bf0aa8d6b1a0e",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-34292-001?",
+      "child_part": "120-34292-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-34292-001",
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "90",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:062fd7e103ccde2ea5d1"
+    },
+    {
+      "case_id": "nha_case:1ce93c30aa7bed0a9f2d",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29068-009?",
+      "child_part": "120-29068-009",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-29068-009",
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "100",
+      "expected_quantity": "2",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:c6557487835fe87b8be4"
+    },
+    {
+      "case_id": "nha_case:25b4bb40e421eebbc4b4",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29077-001?",
+      "child_part": "120-29077-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-29077-001",
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "110",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:9d43443160ada0070861"
+    },
+    {
+      "case_id": "nha_case:c5f0591d1025bc855312",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 42952-10?",
+      "child_part": "42952-10",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "42952-10",
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "120",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:04c0b2032d5acffa87f3"
+    },
+    {
+      "case_id": "nha_case:204462366dc6b9bf87ce",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-34489-001?",
+      "child_part": "120-34489-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-34489-001",
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "170",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:fe6ff0ef5585a666376e"
+    },
+    {
+      "case_id": "nha_case:be7f23b2da3e5430f61b",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-36060-001?",
+      "child_part": "120-36060-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-36060-001",
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "180",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:623c0fbd703734b77330"
+    },
+    {
+      "case_id": "nha_case:721122ec7367d9339e52",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29070-001?",
+      "child_part": "120-29070-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-29070-001",
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "181",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:e525665e77e88b04f011"
+    },
+    {
+      "case_id": "nha_case:01d681db93e51be5f9a4",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-36060-003?",
+      "child_part": "120-36060-003",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-36060-003",
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "190",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:509f3e6b9437f3733886"
+    },
+    {
+      "case_id": "nha_case:121222f0db7e8c520b1d",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29070-003?",
+      "child_part": "120-29070-003",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-29070-003",
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "191",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:4c55ef1f449d2c3435d8"
+    },
+    {
+      "case_id": "nha_case:311a31158305da1e48b1",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-36060-005?",
+      "child_part": "120-36060-005",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-36060-005",
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "200",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:79cbce372f7d20529a53"
+    },
+    {
+      "case_id": "nha_case:ed9e0e8d6847884113e4",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29070-005?",
+      "child_part": "120-29070-005",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-29070-005",
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "201",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "relationship_status": "candidate",
+      "must_not_claim": [
+        "Any candidate parent is confirmed without usage-code/effectivity or attaching-parts resolution",
+        "A higher ancestor is the direct NHA without an explicit intermediate hop"
+      ],
+      "source_relationship_id": "assembly_membership:cc69527a697ef160f384"
+    }
+  ]
+}

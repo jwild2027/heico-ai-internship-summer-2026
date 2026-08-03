@@ -20,7 +20,7 @@ from tiff.trace_net_openwebui_page_context_bridge_v1 import (
     should_use_context_bridge_fallback,
     should_use_page_context,
 )
-from scripts.check_trace_net_openwebui_page_context_bridge_v1_quality import check_quality
+from scripts.maintenance.context.check_trace_net_openwebui_page_context_bridge_v1_quality import check_quality
 
 
 def sample_pack() -> dict:
@@ -247,8 +247,8 @@ def test_render_page_context_fallback_answer_uses_requested_pages_and_limits() -
 def test_script_wrappers_bootstrap_repo_root_for_direct_execution() -> None:
     repo_root = Path(__file__).resolve().parents[2]
     scripts = [
-        repo_root / "scripts" / "build_trace_net_openwebui_page_context_bridge_v1.py",
-        repo_root / "scripts" / "serve_trace_net_openwebui_page_context_bridge_v1.py",
+        repo_root / "scripts/build/context/build_trace_net_openwebui_page_context_bridge_v1.py",
+        repo_root / "scripts/operations/serving/serve_trace_net_openwebui_page_context_bridge_v1.py",
     ]
     for script in scripts:
         result = subprocess.run(

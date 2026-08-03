@@ -27,7 +27,7 @@ def test_build_script_runs_from_repo_root(tmp_path):
     result = subprocess.run(
         [
             sys.executable,
-            "scripts/build_trace_net_four_route_storage_gate_v1.py",
+            "scripts/build/ingestion/build_trace_net_four_route_storage_gate_v1.py",
             "--route-unresolved-retry-probe",
             str(source),
             "--output-dir",

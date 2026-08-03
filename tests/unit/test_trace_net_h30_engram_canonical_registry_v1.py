@@ -3,16 +3,16 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from scripts.trace_net_h30_engram_canonical_registry_v1 import (
+from src.trace_net.engram.trace_net_h30_engram_canonical_registry_v1 import (
     DEFAULT_REGISTRY_PATH,
     check_pack_inheritance,
     load_canonical_registry,
     resolve_atom_inheritance,
 )
-from scripts.trace_net_h30_cognitive_precision_v1 import (
+from src.trace_net.engram.trace_net_h30_cognitive_precision_v1 import (
     select_engram_memory,
 )
-from scripts.trace_net_h30_engram_policy_compiler_v1 import (
+from src.trace_net.engram.trace_net_h30_engram_policy_compiler_v1 import (
     compile_engram_policy,
 )
 

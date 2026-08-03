@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from types import SimpleNamespace
 
-from scripts.trace_net_h30_phase4_3_1_exact_identifier_v1 import (
+from src.trace_net.retrieval.trace_net_h30_phase4_3_1_exact_identifier_v1 import (
     build_planner_seed,
     classify_identifier_entity,
     enforce_final_identifier_filter,
@@ -320,7 +320,7 @@ def _semantic_response(route: str):
 
 
 def test_semantic_benchmark_rejects_manual_overview_clarification_route():
-    from scripts.run_trace_net_h30_phase4_3_semantic_benchmark_v1 import evaluate_semantic_response
+    from scripts.benchmark.run_trace_net_h30_phase4_3_semantic_benchmark_v1 import evaluate_semantic_response
 
     result = evaluate_semantic_response(
         query="Describe the manual at a high level",
@@ -336,7 +336,7 @@ def test_semantic_benchmark_rejects_manual_overview_clarification_route():
 
 
 def test_semantic_benchmark_accepts_manual_overview_semantic_route():
-    from scripts.run_trace_net_h30_phase4_3_semantic_benchmark_v1 import evaluate_semantic_response
+    from scripts.benchmark.run_trace_net_h30_phase4_3_semantic_benchmark_v1 import evaluate_semantic_response
 
     result = evaluate_semantic_response(
         query="Describe the manual at a high level",

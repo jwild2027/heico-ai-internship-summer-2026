@@ -12,7 +12,7 @@ def test_changed_page_backend_mode_uses_update_script_for_changed_files():
     backend = [cmd for cmd in commands if cmd.name == "backend_pipeline"][0]
 
     assert backend.skip_reason is None
-    assert "scripts/update_changed_page_backend.py" in backend.argv
+    assert "scripts/operations/ingestion/update_changed_page_backend.py" in backend.argv
     assert "--changed-list" in backend.argv
 
 
@@ -23,5 +23,5 @@ def test_full_backend_mode_still_uses_full_backend_pipeline():
     commands = build_commands(cfg, summary)
     backend = [cmd for cmd in commands if cmd.name == "backend_pipeline"][0]
 
-    assert "scripts/run_tiff_backend_pipeline.py" in backend.argv
-    assert "scripts/update_changed_page_backend.py" not in backend.argv
+    assert "scripts/operations/ingestion/run_tiff_backend_pipeline.py" in backend.argv
+    assert "scripts/operations/ingestion/update_changed_page_backend.py" not in backend.argv

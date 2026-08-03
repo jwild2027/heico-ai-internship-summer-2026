@@ -9,9 +9,9 @@ LIBRARY_PATH = Path(
     "local_data/organization/trace_net/engram_skill_cards_v1/"
     "trace_net_engram_skill_cards_v1.json"
 )
-COGNITIVE_PATH = Path("scripts/serve_trace_net_cognitive_router_v1.py")
-GEMMA_PATH = Path("scripts/serve_trace_net_full_gemma_cognitive_v1.py")
-LAUNCHER_PATH = Path("scripts/launch_trace_net_cognitive_openwebui_v1.sh")
+COGNITIVE_PATH = Path("scripts/operations/router/serve_trace_net_cognitive_router_v1.py")
+GEMMA_PATH = Path("scripts/operations/serving/serve_trace_net_full_gemma_cognitive_v1.py")
+LAUNCHER_PATH = Path("scripts/operations/launch_trace_net_cognitive_openwebui_v1.sh")
 
 def load(path, name):
     spec = importlib.util.spec_from_file_location(name, path)
@@ -145,7 +145,7 @@ def test_shadow_q001_no_false_manufacturer_skill():
 def test_cognitive_runtime_is_wired_once():
     text = COGNITIVE_PATH.read_text(encoding="utf-8")
     assert text.count(
-        "from scripts.trace_net_h30_engram_skill_shadow_v1 "
+        "from src.trace_net.engram.trace_net_h30_engram_skill_shadow_v1 "
         "import install_engram_skill_shadow"
     ) == 1
     assert text.count(
@@ -155,7 +155,7 @@ def test_cognitive_runtime_is_wired_once():
 def test_gemma_runtime_is_wired_once():
     text = GEMMA_PATH.read_text(encoding="utf-8")
     assert text.count(
-        "from scripts.trace_net_h30_engram_skill_shadow_v1 "
+        "from src.trace_net.engram.trace_net_h30_engram_skill_shadow_v1 "
         "import install_engram_skill_shadow"
     ) == 1
     assert text.count(

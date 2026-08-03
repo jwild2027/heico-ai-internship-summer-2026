@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 from types import SimpleNamespace
 
-MODULE_PATH = Path("scripts/trace_net_h30_navigation_latency_fastpath_v1.py")
+MODULE_PATH = Path("src/trace_net/retrieval/trace_net_h30_navigation_latency_fastpath_v1.py")
 
 
 def load_module():

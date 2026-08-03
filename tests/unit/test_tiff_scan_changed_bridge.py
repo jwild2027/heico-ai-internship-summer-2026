@@ -3,7 +3,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from scripts.scan_changed_tiffs import read_path_list, resolve_listed_path, scan_changed_tiffs
+from scripts.build.ingestion.scan_changed_tiffs import read_path_list, resolve_listed_path, scan_changed_tiffs
 
 
 def make_tiff(path: Path, color: int = 255) -> None:

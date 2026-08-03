@@ -6,7 +6,7 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-from scripts.trace_net_nha_phase5_synthetic_benchmark_v1 import (
+from src.trace_net.graph.trace_net_nha_phase5_synthetic_benchmark_v1 import (
     CASE_COUNTS,
     DEFAULT_SEED,
     EXPECTED_QUESTION_COUNT,
@@ -141,8 +141,8 @@ def test_end_to_end_build_and_cli_entrypoints(tmp_path):
 
     repo_root = Path(__file__).resolve().parents[2]
     for relative in (
-        "scripts/build_trace_net_nha_phase5_synthetic_benchmark_v1.py",
-        "scripts/check_trace_net_nha_phase5_synthetic_benchmark_v1.py",
+        "scripts/benchmark/graph/build_trace_net_nha_phase5_synthetic_benchmark_v1.py",
+        "scripts/benchmark/check_trace_net_nha_phase5_synthetic_benchmark_v1.py",
     ):
         completed = subprocess.run([sys.executable, "-B", str(repo_root / relative), "--help"], cwd=tmp_path, text=True, capture_output=True, check=False)
         assert completed.returncode == 0, completed.stderr

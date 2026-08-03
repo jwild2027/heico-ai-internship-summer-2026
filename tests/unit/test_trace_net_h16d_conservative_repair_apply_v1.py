@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from scripts.apply_trace_net_h16d_conservative_retry_repair_v1 import (
+from scripts.migration.ingestion.apply_trace_net_h16d_conservative_retry_repair_v1 import (
     OPTION_MARKER,
     _patch_ollama_options,
     _remove_h16c_incomplete_calls,

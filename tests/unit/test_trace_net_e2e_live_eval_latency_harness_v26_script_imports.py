@@ -6,8 +6,8 @@ from pathlib import Path
 
 def test_live_eval_latency_harness_v26_scripts_importable():
     for script in (
-        "scripts/build_trace_net_e2e_live_eval_latency_harness_v26.py",
-        "scripts/check_trace_net_e2e_live_eval_latency_harness_v26_quality.py",
+        "scripts/benchmark/build_trace_net_e2e_live_eval_latency_harness_v26.py",
+        "scripts/benchmark/check_trace_net_e2e_live_eval_latency_harness_v26_quality.py",
     ):
         path = Path(script)
         assert path.exists(), script

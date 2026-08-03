@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 def test_run_script_imports():
-    path = Path("scripts/run_trace_net_table_route_value_audit_lep_v4_preset_v1.py")
+    path = Path("scripts/operations/tables/run_trace_net_table_route_value_audit_lep_v4_preset_v1.py")
     assert path.exists()
     spec = importlib.util.spec_from_file_location("run_lep_v4_preset", path)
     assert spec is not None
@@ -16,7 +16,7 @@ def test_run_script_imports():
 
 
 def test_check_script_imports():
-    path = Path("scripts/check_trace_net_table_route_value_audit_lep_v4_preset_v1_quality.py")
+    path = Path("scripts/maintenance/tables/check_trace_net_table_route_value_audit_lep_v4_preset_v1_quality.py")
     assert path.exists()
     spec = importlib.util.spec_from_file_location("check_lep_v4_preset", path)
     assert spec is not None
@@ -28,7 +28,7 @@ def test_check_script_imports():
 
 def test_run_script_direct_cli_help_from_repo_root():
     completed = subprocess.run(
-        [sys.executable, "scripts/run_trace_net_table_route_value_audit_lep_v4_preset_v1.py", "--help"],
+        [sys.executable, "scripts/operations/tables/run_trace_net_table_route_value_audit_lep_v4_preset_v1.py", "--help"],
         cwd=Path.cwd(),
         text=True,
         capture_output=True,
@@ -40,7 +40,7 @@ def test_run_script_direct_cli_help_from_repo_root():
 
 def test_check_script_direct_cli_help_from_repo_root():
     completed = subprocess.run(
-        [sys.executable, "scripts/check_trace_net_table_route_value_audit_lep_v4_preset_v1_quality.py", "--help"],
+        [sys.executable, "scripts/maintenance/tables/check_trace_net_table_route_value_audit_lep_v4_preset_v1_quality.py", "--help"],
         cwd=Path.cwd(),
         text=True,
         capture_output=True,

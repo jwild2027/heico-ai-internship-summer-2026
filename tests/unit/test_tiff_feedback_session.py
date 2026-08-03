@@ -42,7 +42,7 @@ def test_normalize_rating_accepts_common_inputs() -> None:
 def test_make_and_save_feedback_entry(tmp_path: Path) -> None:
     answer = AnswerRun(
         question="What is part 120-37313-001?",
-        command=["python", "scripts/ask_tiff_rag.py"],
+        command=["python", "scripts/operations/ingestion/ask_tiff_rag.py"],
         returncode=0,
         elapsed_seconds=0.25,
         stdout="LLM used: False\nEmbeddings used: False\n120-37313-001 is HOLDER, MAGAZINE.",

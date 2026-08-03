@@ -4,8 +4,8 @@ from pathlib import Path
 
 def test_scripts_import_without_side_effects():
     for rel in [
-        "scripts/build_trace_net_e2e_dynamic_query_tunnels_v3.py",
-        "scripts/check_trace_net_e2e_dynamic_query_tunnels_v3_quality.py",
+        "scripts/build/retrieval/build_trace_net_e2e_dynamic_query_tunnels_v3.py",
+        "scripts/maintenance/benchmark/check_trace_net_e2e_dynamic_query_tunnels_v3_quality.py",
     ]:
         path = Path(rel)
         assert path.exists(), rel

@@ -3,7 +3,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from scripts.trace_net_h30_constrained_gemma_writer_v1 import (
+from src.trace_net.writing.trace_net_h30_constrained_gemma_writer_v1 import (
     OUTPUT_SCHEMA_VERSION,
     build_writer_packet,
     install_constrained_gemma_writer,

@@ -121,7 +121,7 @@ def test_build_and_check_scripts(tmp_path: Path):
 
     build_cmd = [
         sys.executable,
-        "scripts/build_trace_net_e2e_crag_retrieval_corrector_v10.py",
+        "scripts/benchmark/validation/build_trace_net_e2e_crag_retrieval_corrector_v10.py",
         "--self-rag-context-critic",
         str(critic_path),
         "--output-dir",
@@ -150,7 +150,7 @@ def test_build_and_check_scripts(tmp_path: Path):
 
     check_cmd = [
         sys.executable,
-        "scripts/check_trace_net_e2e_crag_retrieval_corrector_v10_quality.py",
+        "scripts/benchmark/check_trace_net_e2e_crag_retrieval_corrector_v10_quality.py",
         "--report-path",
         str(report_path),
         "--min-context-critiques",

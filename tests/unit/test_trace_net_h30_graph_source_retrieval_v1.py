@@ -5,7 +5,7 @@ import json
 import sys
 from pathlib import Path
 
-MODULE_PATH = Path("scripts/trace_net_h30_graph_source_retrieval_v1.py")
+MODULE_PATH = Path("src/trace_net/graph/trace_net_h30_graph_source_retrieval_v1.py")
 
 NODES = {
     "nodes": [

@@ -4,7 +4,7 @@ import importlib.util
 import sys
 from pathlib import Path
 
-SCRIPT = Path("scripts/serve_trace_net_cognitive_router_v1.py")
+SCRIPT = Path("scripts/operations/router/serve_trace_net_cognitive_router_v1.py")
 
 
 def load():

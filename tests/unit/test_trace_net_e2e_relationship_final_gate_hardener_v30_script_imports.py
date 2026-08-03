@@ -6,8 +6,8 @@ from pathlib import Path
 
 def test_relationship_final_gate_hardener_v30_scripts_importable():
     for script in (
-        "scripts/build_trace_net_e2e_relationship_final_gate_hardener_v30.py",
-        "scripts/check_trace_net_e2e_relationship_final_gate_hardener_v30_quality.py",
+        "scripts/benchmark/graph/build_trace_net_e2e_relationship_final_gate_hardener_v30.py",
+        "scripts/benchmark/graph/check_trace_net_e2e_relationship_final_gate_hardener_v30_quality.py",
     ):
         path = Path(script)
         assert path.exists(), script

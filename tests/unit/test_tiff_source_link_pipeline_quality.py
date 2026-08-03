@@ -88,7 +88,7 @@ def test_pipeline_adds_source_link_audit_before_rag_eval(tmp_path: Path) -> None
     assert "source_link_audit" in names
     assert names.index("source_link_audit") < names.index("rag_eval")
     audit = steps[names.index("source_link_audit")]
-    assert audit.command[:2] == ("python", "scripts/audit_source_links.py")
+    assert audit.command[:2] == ("python", "scripts/maintenance/ingestion/audit_source_links.py")
     assert "--strict" in audit.command
     assert "--write-json" in audit.command
     assert "local_data/source_links/source_link_audit.json" in audit.command
@@ -110,7 +110,7 @@ def test_pipeline_adds_ocr_coverage_audit_before_rag_eval(tmp_path: Path) -> Non
     assert "ocr_coverage_audit" in names
     assert names.index("source_link_audit") < names.index("ocr_coverage_audit") < names.index("rag_eval")
     audit = steps[names.index("ocr_coverage_audit")]
-    assert audit.command[:2] == ("python", "scripts/audit_ocr_coverage.py")
+    assert audit.command[:2] == ("python", "scripts/maintenance/ocr/audit_ocr_coverage.py")
     assert "--strict" in audit.command
     assert "--write-json" in audit.command
     assert "--fail-on-empty-ocr" not in audit.command
@@ -254,7 +254,7 @@ def test_manifest_artifacts_include_source_link_audit_json() -> None:
         config=config,
         results=[
             PipelineRunResult(
-                step=PipelineStep(name="source_link_audit", command=("python", "scripts/audit_source_links.py")),
+                step=PipelineStep(name="source_link_audit", command=("python", "scripts/maintenance/ingestion/audit_source_links.py")),
                 returncode=0,
             )
         ],

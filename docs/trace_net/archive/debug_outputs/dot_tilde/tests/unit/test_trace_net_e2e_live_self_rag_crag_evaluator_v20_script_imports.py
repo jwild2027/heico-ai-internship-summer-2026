@@ -6,8 +6,8 @@ from pathlib import Path
 
 def test_live_self_rag_crag_evaluator_v20_scripts_importable():
     for script in (
-        "scripts/build_trace_net_e2e_live_self_rag_crag_evaluator_v20.py",
-        "scripts/check_trace_net_e2e_live_self_rag_crag_evaluator_v20_quality.py",
+        "scripts/benchmark/validation/build_trace_net_e2e_live_self_rag_crag_evaluator_v20.py",
+        "scripts/benchmark/validation/check_trace_net_e2e_live_self_rag_crag_evaluator_v20_quality.py",
     ):
         path = Path(script)
         assert path.exists(), script

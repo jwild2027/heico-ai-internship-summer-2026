@@ -7,8 +7,8 @@ from pathlib import Path
 def test_scripts_help_execute_from_repo_root():
     root = Path(__file__).resolve().parents[2]
     scripts = [
-        "scripts/run_trace_net_engineering_question_v1.py",
-        "scripts/check_trace_net_engineering_question_orchestrator_v1_quality.py",
+        "scripts/operations/ingestion/run_trace_net_engineering_question_v1.py",
+        "scripts/maintenance/benchmark/check_trace_net_engineering_question_orchestrator_v1_quality.py",
     ]
     for script in scripts:
         completed = subprocess.run(

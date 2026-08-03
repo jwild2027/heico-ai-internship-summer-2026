@@ -5,10 +5,10 @@ import json
 import sys
 from pathlib import Path
 
-MODULE_PATH = Path("scripts/trace_net_h30_cold_start_streaming_v1.py")
-LAUNCHER_PATH = Path("scripts/launch_trace_net_cognitive_openwebui_v1.sh")
-WRITER_PATH = Path("scripts/serve_trace_net_full_gemma_cognitive_v1.py")
-BRIDGE_PATH = Path("scripts/serve_trace_net_openwebui_cognitive_bridge_v1.py")
+MODULE_PATH = Path("src/trace_net/serving/trace_net_h30_cold_start_streaming_v1.py")
+LAUNCHER_PATH = Path("scripts/operations/launch_trace_net_cognitive_openwebui_v1.sh")
+WRITER_PATH = Path("scripts/operations/serving/serve_trace_net_full_gemma_cognitive_v1.py")
+BRIDGE_PATH = Path("scripts/operations/serving/serve_trace_net_openwebui_cognitive_bridge_v1.py")
 
 
 def load_module():

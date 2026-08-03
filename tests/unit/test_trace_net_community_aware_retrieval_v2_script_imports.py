@@ -14,7 +14,7 @@ def test_module_imports() -> None:
 def test_build_script_help_runs() -> None:
     root = Path(__file__).resolve().parents[2]
     result = subprocess.run(
-        [sys.executable, str(root / "scripts" / "build_trace_net_community_aware_retrieval_v2.py"), "--help"],
+        [sys.executable, str(root / "scripts/benchmark/graph/build_trace_net_community_aware_retrieval_v2.py"), "--help"],
         cwd=root,
         text=True,
         capture_output=True,
@@ -27,7 +27,7 @@ def test_build_script_help_runs() -> None:
 def test_quality_script_help_runs() -> None:
     root = Path(__file__).resolve().parents[2]
     result = subprocess.run(
-        [sys.executable, str(root / "scripts" / "check_trace_net_community_aware_retrieval_v2_quality.py"), "--help"],
+        [sys.executable, str(root / "scripts/benchmark/check_trace_net_community_aware_retrieval_v2_quality.py"), "--help"],
         cwd=root,
         text=True,
         capture_output=True,

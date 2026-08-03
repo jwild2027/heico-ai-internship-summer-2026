@@ -1,0 +1,1290 @@
+{
+  "schema_version": "trace_net_nha_phase4_hierarchy_v1",
+  "module": "trace_net_nha_phase4_hierarchy_v1",
+  "status": "TRACE_NET_NHA_PHASE4_HIERARCHY_V1",
+  "truth_mode": "real_source",
+  "case_count": 40,
+  "direct_answer_case_count": 29,
+  "candidate_case_count": 11,
+  "direct_component_case_count": 30,
+  "lower_descendant_case_count": 10,
+  "cases": [
+    {
+      "case_id": "nha_phase4_case:3af9577e5e87fa5350bd",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29073-001?",
+      "child_part": "120-29073-001",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29067-001",
+      "expected_parent_candidates": [
+        "120-29067-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-29073-001",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "1",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343",
+        "t_p_120_1176_p000342",
+        "t_p_120_1176_p000344"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:7876d192f7a61b7fe2ae"
+    },
+    {
+      "case_id": "nha_phase4_case:76f1ade6a0b668cc9a5f",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 42952-10?",
+      "child_part": "42952-10",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29073-001",
+      "expected_parent_candidates": [
+        "120-29073-001"
+      ],
+      "expected_hierarchy_depth": 2,
+      "expected_role": "attaching_part",
+      "expected_top_assembly_candidates": [
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "42952-10",
+        "120-29073-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "20",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343",
+        "t_p_120_1176_p000342",
+        "t_p_120_1176_p000344"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:83151da3aa61dff986bb"
+    },
+    {
+      "case_id": "nha_phase4_case:b46d5a53751deda3d933",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part MS21042L5?",
+      "child_part": "MS21042L5",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29073-001",
+      "expected_parent_candidates": [
+        "120-29073-001"
+      ],
+      "expected_hierarchy_depth": 2,
+      "expected_role": "attaching_part",
+      "expected_top_assembly_candidates": [
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "MS21042L5",
+        "120-29073-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "30",
+      "expected_quantity": "2",
+      "expected_pages": [
+        "t_p_120_1176_p000343",
+        "t_p_120_1176_p000342",
+        "t_p_120_1176_p000344"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:84dc43a82a258b7348f2"
+    },
+    {
+      "case_id": "nha_phase4_case:e3078a74e7cbcf360e18",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-34291-001?",
+      "child_part": "120-34291-001",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29067-001",
+      "expected_parent_candidates": [
+        "120-29067-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-34291-001",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "70",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343",
+        "t_p_120_1176_p000342",
+        "t_p_120_1176_p000344"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:deceaf0942fcd91174d8"
+    },
+    {
+      "case_id": "nha_phase4_case:9c67a6adc2e18053ce42",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29067-011?",
+      "child_part": "120-29067-011",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29067-001",
+      "expected_parent_candidates": [
+        "120-29067-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-29067-011",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "80",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343",
+        "t_p_120_1176_p000342",
+        "t_p_120_1176_p000344"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:26e48ac2a5b28ab70ed0"
+    },
+    {
+      "case_id": "nha_phase4_case:8688b3ede6228824e079",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 42952-10?",
+      "child_part": "42952-10",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29067-011",
+      "expected_parent_candidates": [
+        "120-29067-011"
+      ],
+      "expected_hierarchy_depth": 2,
+      "expected_role": "attaching_part",
+      "expected_top_assembly_candidates": [
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "42952-10",
+        "120-29067-011"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "100",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343",
+        "t_p_120_1176_p000342",
+        "t_p_120_1176_p000344"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:76f859975133600e79d0"
+    },
+    {
+      "case_id": "nha_phase4_case:60a695287883b1f59aa7",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29093-001?",
+      "child_part": "120-29093-001",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29067-001",
+      "expected_parent_candidates": [
+        "120-29067-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-29093-001",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "150",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343",
+        "t_p_120_1176_p000342",
+        "t_p_120_1176_p000344"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:41930407d071d6b150f0"
+    },
+    {
+      "case_id": "nha_phase4_case:797bfa442c2a6331373a",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-34293-001?",
+      "child_part": "120-34293-001",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29067-001",
+      "expected_parent_candidates": [
+        "120-29067-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-34293-001",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "160",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343",
+        "t_p_120_1176_p000342",
+        "t_p_120_1176_p000344"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:f0d70427eee45f6deaef"
+    },
+    {
+      "case_id": "nha_phase4_case:ba22151b90ec9731e697",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-31565-002?",
+      "child_part": "120-31565-002",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29067-001",
+      "expected_parent_candidates": [
+        "120-29067-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-31565-002",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "170",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343",
+        "t_p_120_1176_p000342",
+        "t_p_120_1176_p000344"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:c947a69005054cbd2fd0"
+    },
+    {
+      "case_id": "nha_phase4_case:e366906aa3f053d21ecb",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-20970-001?",
+      "child_part": "120-20970-001",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29067-001",
+      "expected_parent_candidates": [
+        "120-29067-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-20970-001",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "180",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343",
+        "t_p_120_1176_p000342",
+        "t_p_120_1176_p000344"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:352c7b232be4fb5469d6"
+    },
+    {
+      "case_id": "nha_phase4_case:985df6a8e6803d46bda0",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-36060-001?",
+      "child_part": "120-36060-001",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29067-001",
+      "expected_parent_candidates": [
+        "120-29067-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-36060-001",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "181",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000343",
+        "t_p_120_1176_p000342",
+        "t_p_120_1176_p000344"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:d4b7119f00161fc154c5"
+    },
+    {
+      "case_id": "nha_phase4_case:2098abea707bd6b16ad6",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-20970-003?",
+      "child_part": "120-20970-003",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29067-001",
+      "expected_parent_candidates": [
+        "120-29067-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-20970-003",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "190",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000344",
+        "t_p_120_1176_p000342",
+        "t_p_120_1176_p000343"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:9a2e0440ded1fd058db9"
+    },
+    {
+      "case_id": "nha_phase4_case:b6695ea1d33a9506a77f",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-36060-003?",
+      "child_part": "120-36060-003",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29067-001",
+      "expected_parent_candidates": [
+        "120-29067-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-001"
+      ],
+      "expected_relationship_order": [
+        "120-36060-003",
+        "120-29067-001"
+      ],
+      "expected_figure": "79",
+      "expected_item_number": "191",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000344",
+        "t_p_120_1176_p000342",
+        "t_p_120_1176_p000343"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:28652ff4cdea6baaea4f"
+    },
+    {
+      "case_id": "nha_phase4_case:d811fa3c782a9be752c1",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29073-001?",
+      "child_part": "120-29073-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-29073-001",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "1",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349",
+        "t_p_120_1176_p000348"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:976534767d3b14e54191"
+    },
+    {
+      "case_id": "nha_phase4_case:43789412bfda20d79e1e",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29073-005?",
+      "child_part": "120-29073-005",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-29073-005",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "2",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349",
+        "t_p_120_1176_p000348"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:b252cd100de77b9627cb"
+    },
+    {
+      "case_id": "nha_phase4_case:5676bfc2b8972f683462",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-48023-001?",
+      "child_part": "120-48023-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-001",
+        "120-29073-005"
+      ],
+      "expected_hierarchy_depth": 2,
+      "expected_role": "attaching_part",
+      "expected_top_assembly_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-48023-001",
+        "120-29073-001",
+        "120-29073-005"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "11",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349",
+        "t_p_120_1176_p000348"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:b23a6226b1361fd12036"
+    },
+    {
+      "case_id": "nha_phase4_case:b22e1fdcce483b504be5",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-61546-001?",
+      "child_part": "120-61546-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-001",
+        "120-29073-005"
+      ],
+      "expected_hierarchy_depth": 2,
+      "expected_role": "attaching_part",
+      "expected_top_assembly_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-61546-001",
+        "120-29073-001",
+        "120-29073-005"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "15",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349",
+        "t_p_120_1176_p000348"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:43ba95438998eb2215d0"
+    },
+    {
+      "case_id": "nha_phase4_case:e6b22746e8cf2816508e",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 42952-10?",
+      "child_part": "42952-10",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29073-001",
+        "120-29073-005"
+      ],
+      "expected_hierarchy_depth": 2,
+      "expected_role": "attaching_part",
+      "expected_top_assembly_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "42952-10",
+        "120-29073-001",
+        "120-29073-005"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "20",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349",
+        "t_p_120_1176_p000348"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:0c2c569411c2d6d51941"
+    },
+    {
+      "case_id": "nha_phase4_case:eb81ae6609e24749db69",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-34291-001?",
+      "child_part": "120-34291-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-34291-001",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "70",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349",
+        "t_p_120_1176_p000348"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:ceb9b18f0c13de87c662"
+    },
+    {
+      "case_id": "nha_phase4_case:79180426f00874b7093d",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29067-011?",
+      "child_part": "120-29067-011",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-29067-011",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "80",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349",
+        "t_p_120_1176_p000348"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:d49294db4df86914d509"
+    },
+    {
+      "case_id": "nha_phase4_case:964fbae5692123018329",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-40851-001?",
+      "child_part": "120-40851-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-40851-001",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "81",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349",
+        "t_p_120_1176_p000348"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:763bc2cf38fa508de466"
+    },
+    {
+      "case_id": "nha_phase4_case:9d8a52013fc8c2c78fb4",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29075-031?",
+      "child_part": "120-29075-031",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-29075-031",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "82",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349",
+        "t_p_120_1176_p000348"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:9a90c58ee6b43ae88caa"
+    },
+    {
+      "case_id": "nha_phase4_case:662bde7d8031e8230d85",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-40849-001?",
+      "child_part": "120-40849-001",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-40849-001",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "90",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349",
+        "t_p_120_1176_p000348"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:8bf32fc7586fcfbb670f"
+    },
+    {
+      "case_id": "nha_phase4_case:8d5864c381bfe82fe8f3",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 42952-10?",
+      "child_part": "42952-10",
+      "expected_behavior": "candidate_or_clarification",
+      "expected_direct_nha": "",
+      "expected_parent_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "42952-10",
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "110",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349",
+        "t_p_120_1176_p000348"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:941994f6d094e33d5c3c"
+    },
+    {
+      "case_id": "nha_phase4_case:96556750c8e3ed63cf9a",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part NAS464P5A16?",
+      "child_part": "NAS464P5A16",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "42952-10",
+      "expected_parent_candidates": [
+        "42952-10"
+      ],
+      "expected_hierarchy_depth": 2,
+      "expected_role": "attaching_part",
+      "expected_top_assembly_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "NAS464P5A16",
+        "42952-10"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "141",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349",
+        "t_p_120_1176_p000348"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:b5d4ec65a26a10a3bb35"
+    },
+    {
+      "case_id": "nha_phase4_case:21071d18cb3ec402e13d",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-48023-001?",
+      "child_part": "120-48023-001",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "42952-10",
+      "expected_parent_candidates": [
+        "42952-10"
+      ],
+      "expected_hierarchy_depth": 2,
+      "expected_role": "attaching_part",
+      "expected_top_assembly_candidates": [
+        "120-29067-003",
+        "120-29067-021",
+        "120-29067-031"
+      ],
+      "expected_relationship_order": [
+        "120-48023-001",
+        "42952-10"
+      ],
+      "expected_figure": "81",
+      "expected_item_number": "150",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000349",
+        "t_p_120_1176_p000348"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:b0ed848448611477b86f"
+    },
+    {
+      "case_id": "nha_phase4_case:4207079be09c3e66d9b7",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29074-001?",
+      "child_part": "120-29074-001",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29068-001",
+      "expected_parent_candidates": [
+        "120-29068-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-29074-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "1",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:ee60e3511a670f89296b"
+    },
+    {
+      "case_id": "nha_phase4_case:6f0b8e396d953e6f1c83",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 42952-10?",
+      "child_part": "42952-10",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29074-001",
+      "expected_parent_candidates": [
+        "120-29074-001"
+      ],
+      "expected_hierarchy_depth": 2,
+      "expected_role": "attaching_part",
+      "expected_top_assembly_candidates": [
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "42952-10",
+        "120-29074-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "20",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:bd8ec75d797ab682e497"
+    },
+    {
+      "case_id": "nha_phase4_case:1a8ffcff65ae7f4e8cc7",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-35881-001?",
+      "child_part": "120-35881-001",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29068-001",
+      "expected_parent_candidates": [
+        "120-29068-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-35881-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "70",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:39a313ff237856e912c4"
+    },
+    {
+      "case_id": "nha_phase4_case:c29c0e8788218443817d",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-34292-001?",
+      "child_part": "120-34292-001",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29068-001",
+      "expected_parent_candidates": [
+        "120-29068-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-34292-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "90",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:6f1403173e54fd5c88d8"
+    },
+    {
+      "case_id": "nha_phase4_case:537b24f6ffeb8646d144",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29068-009?",
+      "child_part": "120-29068-009",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29068-001",
+      "expected_parent_candidates": [
+        "120-29068-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-29068-009",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "100",
+      "expected_quantity": "2",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:d3583636174f6ce3747a"
+    },
+    {
+      "case_id": "nha_phase4_case:07417ff76b77963e4473",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29077-001?",
+      "child_part": "120-29077-001",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29068-001",
+      "expected_parent_candidates": [
+        "120-29068-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-29077-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "110",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:fa539f6620bbd263f4db"
+    },
+    {
+      "case_id": "nha_phase4_case:9617cd03cb8becc7a94c",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 42952-10?",
+      "child_part": "42952-10",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29077-001",
+      "expected_parent_candidates": [
+        "120-29077-001"
+      ],
+      "expected_hierarchy_depth": 2,
+      "expected_role": "attaching_part",
+      "expected_top_assembly_candidates": [
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "42952-10",
+        "120-29077-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "120",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "must_not_claim": [
+        "An attaching part is a direct child of the top assembly",
+        "An ambiguous parent candidate is confirmed"
+      ],
+      "source_relationship_id": "nha_hierarchy_membership:ed3371238c0f1df9dabb"
+    },
+    {
+      "case_id": "nha_phase4_case:894a797a8ebf430aa01e",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-34489-001?",
+      "child_part": "120-34489-001",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29068-001",
+      "expected_parent_candidates": [
+        "120-29068-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-34489-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "170",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:6b8d2aa12ac8b45250fa"
+    },
+    {
+      "case_id": "nha_phase4_case:093d4cdc2ad983cb7814",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-36060-001?",
+      "child_part": "120-36060-001",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29068-001",
+      "expected_parent_candidates": [
+        "120-29068-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-36060-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "180",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:4ce2746cde1c0eb09843"
+    },
+    {
+      "case_id": "nha_phase4_case:9a2443808f895044c773",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29070-001?",
+      "child_part": "120-29070-001",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29068-001",
+      "expected_parent_candidates": [
+        "120-29068-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-29070-001",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "181",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:1a44b506c5f8527fdc14"
+    },
+    {
+      "case_id": "nha_phase4_case:72dbc46b6fc2a7dc8b86",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-36060-003?",
+      "child_part": "120-36060-003",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29068-001",
+      "expected_parent_candidates": [
+        "120-29068-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-36060-003",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "190",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:f4888cb0e9d2fa3ffc69"
+    },
+    {
+      "case_id": "nha_phase4_case:f1836f8bccf76125f8c3",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29070-003?",
+      "child_part": "120-29070-003",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29068-001",
+      "expected_parent_candidates": [
+        "120-29068-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-29070-003",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "191",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:b9f140b104edfe3c161c"
+    },
+    {
+      "case_id": "nha_phase4_case:bc43d2566e3e9b607e97",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-36060-005?",
+      "child_part": "120-36060-005",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29068-001",
+      "expected_parent_candidates": [
+        "120-29068-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-36060-005",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "200",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:5643ad7373ad4b219a82"
+    },
+    {
+      "case_id": "nha_phase4_case:1f5159ef14c4e9dc9dee",
+      "truth_mode": "real_source",
+      "question": "What is the direct next higher assembly of part 120-29070-005?",
+      "child_part": "120-29070-005",
+      "expected_behavior": "direct_answer",
+      "expected_direct_nha": "120-29068-001",
+      "expected_parent_candidates": [
+        "120-29068-001"
+      ],
+      "expected_hierarchy_depth": 1,
+      "expected_role": "direct_component",
+      "expected_top_assembly_candidates": [
+        "120-29068-001"
+      ],
+      "expected_relationship_order": [
+        "120-29070-005",
+        "120-29068-001"
+      ],
+      "expected_figure": "87",
+      "expected_item_number": "201",
+      "expected_quantity": "1",
+      "expected_pages": [
+        "t_p_120_1176_p000368"
+      ],
+      "must_not_claim": [],
+      "source_relationship_id": "nha_hierarchy_membership:6e5122d532de08c1d15f"
+    }
+  ]
+}

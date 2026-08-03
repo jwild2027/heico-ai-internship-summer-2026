@@ -5,9 +5,9 @@ import py_compile
 import sys
 from pathlib import Path
 
-MODULE_PATH = Path("scripts/trace_net_h30_engineer_answer_contract_v1.py")
-WRITER_PATH = Path("scripts/serve_trace_net_full_gemma_cognitive_v1.py")
-COLD_PATH = Path("scripts/trace_net_h30_cold_start_streaming_v1.py")
+MODULE_PATH = Path("src/trace_net/writing/trace_net_h30_engineer_answer_contract_v1.py")
+WRITER_PATH = Path("scripts/operations/serving/serve_trace_net_full_gemma_cognitive_v1.py")
+COLD_PATH = Path("src/trace_net/serving/trace_net_h30_cold_start_streaming_v1.py")
 
 
 def load_contract():

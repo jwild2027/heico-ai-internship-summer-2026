@@ -3,7 +3,7 @@
 
 Run from repo root:
 
-    python scripts/check_tiff_ui_ready.py --strict
+    python scripts/maintenance/ingestion/check_tiff_ui_ready.py --strict
     python -m streamlit run apps/streamlit/tiff_rag_ui.py
 
 This UI is intentionally local/read-only. It consumes organization export JSON

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from types import SimpleNamespace
 
-from scripts.trace_net_h30_engram_critic_repair_v1 import (
+from src.trace_net.validation.trace_net_h30_engram_critic_repair_v1 import (
     CHECK_ROUTES,
     HINT_ROUTES,
     evaluate_policy_checks,

@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SCRIPT = ROOT / "scripts" / "run_trace_net_cognitive_route_smoke_v1.py"
+SCRIPT = ROOT / "scripts/benchmark/run_trace_net_cognitive_route_smoke_v1.py"
 
 
 def load_module():

@@ -5,8 +5,8 @@ import sys
 from pathlib import Path
 from types import SimpleNamespace
 
-HELPER = Path("scripts/trace_net_h30_retrieval_completion_v1.py")
-BOUNDARY = Path("scripts/trace_net_h30_answer_boundary_v1.py")
+HELPER = Path("src/trace_net/retrieval/trace_net_h30_retrieval_completion_v1.py")
+BOUNDARY = Path("src/trace_net/validation/trace_net_h30_answer_boundary_v1.py")
 
 
 def load(path: Path, name: str):

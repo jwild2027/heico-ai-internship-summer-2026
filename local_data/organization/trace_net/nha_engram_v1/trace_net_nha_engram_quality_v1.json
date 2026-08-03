@@ -1,0 +1,52 @@
+{
+  "schema_version": "trace_net_nha_engram_quality_v1",
+  "module": "trace_net_nha_engram_v1",
+  "status": "TRACE_NET_NHA_ENGRAM_V1",
+  "quality_status": "PASS",
+  "failures": [],
+  "warnings": [],
+  "counts": {
+    "nha_memory_atom_count": 15,
+    "nha_skill_card_count": 5,
+    "overlay_skill_card_count": 10,
+    "question_count": 100,
+    "pass_count": 100,
+    "fail_count": 0,
+    "core20_count": 20,
+    "core20_pass_count": 20,
+    "synthetic_block_question_count": 5,
+    "negative_question_count": 10,
+    "llm_call_count": 0,
+    "production_graph_write_count": 0,
+    "source_artifact_mutation_count": 0,
+    "postgres_write_attempt_count": 0,
+    "qdrant_write_attempt_count": 0,
+    "opensearch_write_attempt_count": 0
+  },
+  "category_counts": {
+    "ancestor_chain": 15,
+    "attaching_parts": 8,
+    "descendants": 10,
+    "direct_children": 12,
+    "direct_nha": 15,
+    "negative_authority": 2,
+    "negative_exact_identifier": 4,
+    "negative_procedure": 4,
+    "relationship_evidence": 10,
+    "scope_resolution": 15,
+    "synthetic_block": 5
+  },
+  "safety_contract": {
+    "engram_guidance_only": true,
+    "answer_permission": false,
+    "final_answer_allowed": false,
+    "can_be_used_as_proof": false,
+    "can_prove_claims": false,
+    "retrieval_execution_allowed": false,
+    "llm_call_count": 0,
+    "source_truth_mutation_allowed": false,
+    "postgres_write_attempt": false,
+    "qdrant_write_attempt": false,
+    "opensearch_write_attempt": false
+  }
+}

@@ -12,7 +12,7 @@ def test_build_script_runs_from_repo_root(tmp_path):
     out = tmp_path / "out"
     result = subprocess.run([
         sys.executable,
-        "scripts/build_trace_net_route_confidence_resolver_v1.py",
+        "scripts/build/router/build_trace_net_route_confidence_resolver_v1.py",
         "--scan-pack", str(scan),
         "--output-dir", str(out),
         "--quality",

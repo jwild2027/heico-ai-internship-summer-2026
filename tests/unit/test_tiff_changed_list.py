@@ -3,7 +3,7 @@ from __future__ import annotations
 import sqlite3
 from pathlib import Path
 
-from scripts.list_changed_tiffs_for_scan import changed_tiff_rows, ensure_schema, main
+from scripts.maintenance.ingestion.list_changed_tiffs_for_scan import changed_tiff_rows, ensure_schema, main
 
 
 def make_inventory_db(path: Path) -> None:

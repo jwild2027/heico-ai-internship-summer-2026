@@ -5,7 +5,7 @@ import json
 import sys
 from pathlib import Path
 
-MODULE_PATH = Path(__file__).resolve().parents[2] / "scripts" / "run_trace_net_executive_tiff_demo_v4.py"
+MODULE_PATH = Path(__file__).resolve().parents[2] / "scripts/operations/ingestion/run_trace_net_executive_tiff_demo_v4.py"
 SPEC = importlib.util.spec_from_file_location("trace_net_demo_v4", MODULE_PATH)
 assert SPEC and SPEC.loader
 MOD = importlib.util.module_from_spec(SPEC)

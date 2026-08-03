@@ -6,8 +6,8 @@ from pathlib import Path
 
 def test_live_llm_draft_adapter_v22_scripts_importable():
     for script in (
-        "scripts/build_trace_net_e2e_live_llm_draft_adapter_v22.py",
-        "scripts/check_trace_net_e2e_live_llm_draft_adapter_v22_quality.py",
+        "scripts/build/ingestion/build_trace_net_e2e_live_llm_draft_adapter_v22.py",
+        "scripts/maintenance/benchmark/check_trace_net_e2e_live_llm_draft_adapter_v22_quality.py",
     ):
         path = Path(script)
         assert path.exists(), script

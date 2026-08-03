@@ -1,4 +1,4 @@
-from scripts.fix_trace_net_fast_chat_runner_image_route_precedence_v1 import patch_source_text
+from scripts.migration.visual.fix_trace_net_fast_chat_runner_image_route_precedence_v1 import patch_source_text
 
 
 def _source() -> str:

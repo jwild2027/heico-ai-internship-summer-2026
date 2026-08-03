@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 def test_build_script_imports():
-    path = Path("scripts/build_trace_net_webui_self_rag_crag_bridge_v1.py")
+    path = Path("scripts/build/validation/build_trace_net_webui_self_rag_crag_bridge_v1.py")
     assert path.exists()
     spec = importlib.util.spec_from_file_location("build_trace_net_webui_self_rag_crag_bridge_v1", path)
     module = importlib.util.module_from_spec(spec)
@@ -13,7 +13,7 @@ def test_build_script_imports():
 
 
 def test_check_script_imports():
-    path = Path("scripts/check_trace_net_webui_self_rag_crag_bridge_v1_quality.py")
+    path = Path("scripts/maintenance/validation/check_trace_net_webui_self_rag_crag_bridge_v1_quality.py")
     assert path.exists()
     spec = importlib.util.spec_from_file_location("check_trace_net_webui_self_rag_crag_bridge_v1_quality", path)
     module = importlib.util.module_from_spec(spec)

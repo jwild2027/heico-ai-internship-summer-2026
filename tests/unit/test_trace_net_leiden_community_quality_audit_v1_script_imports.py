@@ -5,7 +5,7 @@ from pathlib import Path
 
 def test_build_script_help_runs_directly():
     proc = subprocess.run(
-        [sys.executable, "scripts/build_trace_net_leiden_community_quality_audit_v1.py", "--help"],
+        [sys.executable, "scripts/build/graph/build_trace_net_leiden_community_quality_audit_v1.py", "--help"],
         cwd=Path.cwd(),
         text=True,
         capture_output=True,
@@ -16,7 +16,7 @@ def test_build_script_help_runs_directly():
 
 def test_check_script_help_runs_directly():
     proc = subprocess.run(
-        [sys.executable, "scripts/check_trace_net_leiden_community_quality_audit_v1_quality.py", "--help"],
+        [sys.executable, "scripts/maintenance/graph/check_trace_net_leiden_community_quality_audit_v1_quality.py", "--help"],
         cwd=Path.cwd(),
         text=True,
         capture_output=True,

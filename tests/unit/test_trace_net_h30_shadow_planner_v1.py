@@ -4,7 +4,7 @@ import os
 from dataclasses import dataclass, field
 from types import SimpleNamespace
 
-from scripts.trace_net_h30_shadow_planner_v1 import (
+from src.trace_net.router.trace_net_h30_shadow_planner_v1 import (
     build_shadow_planner_seed,
     compare_shadow_to_deterministic,
     extract_candidate_tokens,

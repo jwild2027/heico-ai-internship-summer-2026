@@ -1,0 +1,54 @@
+{
+  "schema_version": "trace_net_nha_phase5_synthetic_benchmark_v1",
+  "module": "trace_net_nha_phase5_synthetic_benchmark_v1",
+  "status": "TRACE_NET_NHA_PHASE5_SYNTHETIC_BENCHMARK_V1",
+  "quality_status": "PASS",
+  "seed": "TRACE_NET_NHA_SYNTHETIC_SEED_V1_20260729",
+  "phase0_3_dir": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\organization\\trace_net\\nha_phase0_3_v1",
+  "phase4_dir": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\organization\\trace_net\\nha_phase4_hierarchy_v1",
+  "output_dir": "C:\\Users\\juswil\\Documents\\GitHub\\heico-ai-internship-summer-2026\\local_data\\organization\\trace_net\\nha_phase5_synthetic_benchmark_v1",
+  "input_counts": {
+    "inventory_pages": 509,
+    "real_phase4_relationships": 40
+  },
+  "phase5_counts": {
+    "inventory_pages": 509,
+    "synthetic_scenarios": 30,
+    "synthetic_relationships": 66,
+    "synthetic_page_assignments": 68,
+    "synthetic_questions": 60,
+    "confirmed_benchmark_relationships": 62,
+    "conflict_relationships": 4,
+    "no_nha_scenarios": 2,
+    "cycle_count": 0,
+    "production_graph_write_count": 0,
+    "source_artifact_mutation_count": 0,
+    "llm_call_count": 0
+  },
+  "case_type_counts": {
+    "simple_direct": 6,
+    "three_hop_chain": 4,
+    "direct_children": 4,
+    "direct_and_descendants": 4,
+    "same_child_two_projects": 3,
+    "revision_change": 3,
+    "attaching_parts": 2,
+    "contradiction": 2,
+    "no_nha": 2
+  },
+  "failures": [],
+  "warnings": [],
+  "artifacts": [
+    "trace_net_nha_phase5_quality_v1.json",
+    "trace_net_nha_synthetic_answer_key_v1.json",
+    "trace_net_nha_synthetic_graph_overlay_v1.json",
+    "trace_net_nha_synthetic_manifest_v1.json",
+    "trace_net_nha_synthetic_page_assignments_v1.json",
+    "trace_net_nha_synthetic_page_assignments_v1.jsonl",
+    "trace_net_nha_synthetic_question_bank_v1.json",
+    "trace_net_nha_synthetic_relationships_v1.json",
+    "trace_net_nha_synthetic_relationships_v1.jsonl",
+    "trace_net_nha_synthetic_scenarios_v1.json",
+    "trace_net_nha_synthetic_scenarios_v1.jsonl"
+  ]
+}

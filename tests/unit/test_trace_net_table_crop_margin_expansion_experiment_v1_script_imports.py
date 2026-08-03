@@ -5,8 +5,8 @@ from pathlib import Path
 def test_scripts_are_importable():
     root = Path(__file__).resolve().parents[2]
     for rel in [
-        "scripts/build_trace_net_table_crop_margin_expansion_experiment_v1.py",
-        "scripts/check_trace_net_table_crop_margin_expansion_experiment_v1_quality.py",
+        "scripts/build/tables/build_trace_net_table_crop_margin_expansion_experiment_v1.py",
+        "scripts/maintenance/tables/check_trace_net_table_crop_margin_expansion_experiment_v1_quality.py",
     ]:
         path = root / rel
         assert path.exists()

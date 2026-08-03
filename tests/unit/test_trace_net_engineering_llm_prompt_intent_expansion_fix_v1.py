@@ -1,4 +1,4 @@
-from scripts.fix_trace_net_engineering_llm_prompt_intent_expansion_v1 import patch_text, validate_text
+from scripts.migration.core.fix_trace_net_engineering_llm_prompt_intent_expansion_v1 import patch_text, validate_text
 
 
 def _sample() -> str:

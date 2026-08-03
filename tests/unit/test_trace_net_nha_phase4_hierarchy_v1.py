@@ -5,7 +5,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from scripts.trace_net_nha_phase4_hierarchy_v1 import (
+from src.trace_net.graph.trace_net_nha_phase4_hierarchy_v1 import (
     build_answer_key,
     build_graph_bundle,
     is_attaching_hardware,
@@ -154,8 +154,8 @@ def test_validation_rejects_flattening_and_cycle():
 def test_cli_entrypoints_bootstrap_repo_root(tmp_path):
     repo_root = Path(__file__).resolve().parents[2]
     for relative in (
-        "scripts/build_trace_net_nha_phase4_hierarchy_v1.py",
-        "scripts/check_trace_net_nha_phase4_hierarchy_v1.py",
+        "scripts/build/graph/build_trace_net_nha_phase4_hierarchy_v1.py",
+        "scripts/maintenance/graph/check_trace_net_nha_phase4_hierarchy_v1.py",
     ):
         completed = subprocess.run(
             [sys.executable, "-B", str(repo_root / relative), "--help"],

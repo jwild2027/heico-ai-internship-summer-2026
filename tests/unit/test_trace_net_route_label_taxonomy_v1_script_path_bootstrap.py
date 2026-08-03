@@ -4,7 +4,7 @@ import sys
 
 def test_build_script_help_runs_from_scripts_path():
     result = subprocess.run(
-        [sys.executable, "scripts/build_trace_net_route_label_taxonomy_v1.py", "--help"],
+        [sys.executable, "scripts/build/ingestion/build_trace_net_route_label_taxonomy_v1.py", "--help"],
         capture_output=True,
         text=True,
     )
