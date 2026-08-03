@@ -33,7 +33,39 @@ from dataclasses import asdict, dataclass, field
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
 
+from scripts.trace_net_h30_answer_boundary_v1 import enforce_h30_answer_boundaries
+from scripts.trace_net_h30_engram_policy_compiler_v1 import (
+    build_working_memory,
+    compile_engram_policy,
+    refresh_working_memory,
+)
+from scripts.trace_net_h30_retrieval_completion_v1 import install_retrieval_completion
+from scripts.trace_net_h30_engram_critic_repair_v1 import install_engram_critic_repair
+from scripts.trace_net_h30_user_facing_renderer_v1 import install_user_facing_renderer
+from scripts.trace_net_h30_navigation_latency_fastpath_v1 import install_navigation_latency_fastpath
+from scripts.trace_net_h30_phase19_route_completion_fastpath_v1 import (
+    install_phase19_route_completion_fastpath,
+)
+from scripts.trace_net_h30_part_intent_source_resolution_v1 import install_part_intent_source_resolution
+from scripts.trace_net_h30_shadow_planner_v1 import install_shadow_planner
+from scripts.trace_net_h30_validated_planner_execution_v1 import install_validated_planner_execution
+from scripts.trace_net_h30_engram_skill_shadow_v1 import install_engram_skill_shadow
+from scripts.trace_net_h30_typed_evidence_envelope_v1 import install_typed_evidence_envelope
+from scripts.trace_net_h30_claim_ready_evidence_v1 import install_claim_ready_evidence
+from scripts.trace_net_h30_graph_source_retrieval_v1 import install_graph_source_retrieval
+from scripts.trace_net_h30_page_content_bridge_v1 import install_page_content_bridge
+from scripts.trace_net_h30_cognitive_precision_v1 import (
+    decompose_claim_queries,
+    explicit_semantic_intent,
+    filter_entity_consistent,
+    has_any_phrase as precision_has_any_phrase,
+    select_engram_memory,
+    specialized_route_queries,
+    valid_identifier_fragment,
+)
+
 MODULE = "trace_net_cognitive_router_v1"
+PATCH_ID = "trace_net_h30_retrieval_completion_v2"
 MODEL_ID = "trace-net-cognitive-router-v1"
 
 PART_EXACT_RE = re.compile(r"\b\d{2,3}-\d{5}(?:-\d{3})?\b", re.I)
@@ -63,9 +95,13 @@ VISUAL_TERMS = {
 TABLE_TERMS = {"table", "ipl", "illustrated parts list", "row", "column", "item"}
 PROCEDURE_TERMS = {
     "procedure", "steps", "step", "remove", "removal", "install", "installation",
-    "assemble", "disassemble", "replace", "tools required", "task",
+    "installed", "removed", "assemble", "disassemble", "replace", "tools required",
+    "task",
 }
-WARNING_TERMS = {"warning", "caution", "note", "precaution", "hazard", "safety"}
+WARNING_TERMS = {
+    "warning", "warnings", "caution", "cautions", "note", "notes",
+    "precaution", "hazard", "safety",
+}
 AUTHORITY_TERMS = {
     "interchangeable", "interchangeability", "approved", "approved replacement", "approved for",
     "safe to install", "fit approval", "fits", "fitment", "effectivity",
@@ -74,17 +110,24 @@ AUTHORITY_TERMS = {
 NAVIGATION_TERMS = {
     "where is", "which page", "take me to", "nearby pages", "first page",
     "find the page", "where does", "location in the manual",
+    "which source document", "source document and page",
 }
 GRAPH_TERMS = {
     "contains this part", "assembly contains", "connected to", "relationship",
     "mentioned together", "references this", "what assembly", "linked to",
+    "parent assembly",
 }
 SEMANTIC_TERMS = {
     "about", "related to", "discusses", "pages on", "something about", "topic",
 }
 COMPARE_TERMS = {"compare", "both manuals", "between revisions", "difference between"}
-CONFLICT_TERMS = {"conflict", "contradiction", "disagree", "different numbers", "mismatch"}
-OCR_TERMS = {"blurry", "scan", "ocr", "read the image", "hard to read", "faint"}
+CONFLICT_TERMS = {
+    "conflict", "conflicts", "conflicting", "contradiction", "contradict",
+    "disagree", "disagrees", "different numbers", "mismatch",
+}
+OCR_TERMS = {
+    "blurry", "scan", "scanned", "ocr", "read the image", "hard to read", "faint",
+}
 AGGREGATE_TERMS = {
     "every document", "all references", "all pages", "across the manuals",
     "every page", "summarize all", "where is this used",
@@ -93,6 +136,8 @@ NOMENCLATURE_TERMS = {
     "ring", "locking ring", "retaining ring", "bracket", "latch", "pin", "bolt",
     "screw", "fastener", "fitting", "cover", "panel", "seat", "armrest",
     "tray table", "table", "hinge", "clip", "spring", "washer", "nut",
+    "ashtray", "bearing", "support rail", "rail", "buckle", "actuator",
+    "switch", "valve", "hose", "connector", "clamp", "lever",
 }
 
 AUTHORITY_FIELD_HINTS = {
@@ -138,6 +183,12 @@ class QueryAtoms:
     part_prefix: Optional[str] = None
     part_suffix: Optional[str] = None
     part_contains: Optional[str] = None
+    identifier_mode: str = "none"
+    normalized_identifier: str = ""
+    family_identifier: Optional[str] = None
+    allow_family_expansion: bool = False
+    allow_partial_candidates: bool = False
+    explicit_partial_wording: bool = False
     page_ids: List[str] = field(default_factory=list)
     figures: List[str] = field(default_factory=list)
     items: List[str] = field(default_factory=list)
@@ -168,6 +219,8 @@ class RoutePlan:
     authority_required: bool
     repair_budget: int
     rationale: List[str]
+    engram_policy: Dict[str, Any] = field(default_factory=dict)
+    working_memory: Dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass
@@ -185,6 +238,8 @@ class EvidenceEnvelope:
     coverage: Dict[str, Any] = field(default_factory=dict)
     upstream_results: List[Dict[str, Any]] = field(default_factory=list)
     crag_repairs: List[Dict[str, Any]] = field(default_factory=list)
+    source_resolution: List[Dict[str, Any]] = field(default_factory=list)
+    claim_evidence: Dict[str, List[Dict[str, Any]]] = field(default_factory=dict)
     safety_contract: Dict[str, Any] = field(default_factory=lambda: {
         "read_only": True,
         "answer_permission": False,
@@ -324,6 +379,14 @@ def extract_query_atoms(query: str) -> QueryAtoms:
             part_suffix = match.group(1).strip(".,;: ").upper()
             break
 
+    # Reject prose accidentally captured by permissive proximity regexes.
+    if part_prefix and not valid_identifier_fragment(part_prefix):
+        part_prefix = None
+    if part_contains and not valid_identifier_fragment(part_contains):
+        part_contains = None
+    if part_suffix and not valid_identifier_fragment(part_suffix):
+        part_suffix = None
+
     manufacturer = None
     for name in ("Honeywell", "Embraer", "Collins", "Safran", "Boeing", "Airbus", "Recaro"):
         if name.lower() in low:
@@ -331,11 +394,15 @@ def extract_query_atoms(query: str) -> QueryAtoms:
             break
 
     nomenclature_terms = sorted(
-        {term for term in NOMENCLATURE_TERMS if term in low},
+        {term for term in NOMENCLATURE_TERMS if precision_has_any_phrase(low, (term,))},
         key=lambda value: (-len(value), value),
     )
     assembly_context = sorted(
-        {term for term in ("seat", "seat assembly", "armrest", "tray table", "cabin", "panel", "door", "galley") if term in low},
+        {
+            term
+            for term in ("seat", "seat assembly", "armrest", "tray table", "cabin", "panel", "door", "galley")
+            if precision_has_any_phrase(low, (term,))
+        },
         key=lambda value: (-len(value), value),
     )
 
@@ -343,17 +410,17 @@ def extract_query_atoms(query: str) -> QueryAtoms:
     if general_chat and any(term in tokens for term in TECHNICAL_TERMS):
         general_chat = False
 
-    visual_requested = any(term in low for term in VISUAL_TERMS)
-    table_requested = any(term in low for term in TABLE_TERMS)
-    procedure_requested = any(term in low for term in PROCEDURE_TERMS)
-    warning_requested = any(term in low for term in WARNING_TERMS)
-    authority_requested = any(term in low for term in AUTHORITY_TERMS)
-    navigation_requested = any(term in low for term in NAVIGATION_TERMS)
-    graph_requested = any(term in low for term in GRAPH_TERMS)
-    comparison_requested = any(term in low for term in COMPARE_TERMS)
-    contradiction_requested = any(term in low for term in CONFLICT_TERMS)
-    ocr_requested = any(term in low for term in OCR_TERMS)
-    aggregate_requested = any(term in low for term in AGGREGATE_TERMS)
+    visual_requested = precision_has_any_phrase(low, VISUAL_TERMS)
+    table_requested = precision_has_any_phrase(low, TABLE_TERMS)
+    procedure_requested = precision_has_any_phrase(low, PROCEDURE_TERMS)
+    warning_requested = precision_has_any_phrase(low, WARNING_TERMS)
+    authority_requested = precision_has_any_phrase(low, AUTHORITY_TERMS)
+    navigation_requested = precision_has_any_phrase(low, NAVIGATION_TERMS)
+    graph_requested = precision_has_any_phrase(low, GRAPH_TERMS)
+    comparison_requested = precision_has_any_phrase(low, COMPARE_TERMS)
+    contradiction_requested = precision_has_any_phrase(low, CONFLICT_TERMS)
+    ocr_requested = precision_has_any_phrase(low, OCR_TERMS)
+    aggregate_requested = precision_has_any_phrase(low, AGGREGATE_TERMS)
 
     requested_claims: List[str] = []
     for name, active in (
@@ -422,21 +489,30 @@ def plan_route(atoms: QueryAtoms) -> RoutePlan:
             repair_budget=0,
             rationale=["query matches a narrow nontechnical conversational allow-list"],
         )
-    if atoms.multi_question:
+    # Specialized single-intent signals (conflict resolution, scan recovery) take
+    # precedence over the multi-question heuristic when there is no strong
+    # independent claim: "the OCR and table disagree" or "the scan is blurry and
+    # the table is hard to read" is one intent, not two. But an exact identifier
+    # (or page id) alongside those signals IS a genuine second claim and stays
+    # multi-question (e.g. "find part 120-... and recover its OCR labels").
+    strong_multi = bool(
+        atoms.multi_question and (atoms.exact_part_numbers or atoms.page_ids)
+    )
+    if atoms.contradiction_requested and not strong_multi:
+        route = "contradiction_resolution"
+        rationale.append("query explicitly asks about conflicting or disagreeing evidence")
+    elif atoms.ocr_requested and not strong_multi:
+        route = "ocr_scan_recovery"
+        rationale.append("query asks to recover information from a difficult scan")
+    elif atoms.multi_question:
         route = "multi_question_research"
         rationale.append("multiple independent technical claims were requested")
     elif atoms.authority_requested:
         route = "authority_eligibility_verification"
         rationale.append("approval/effectivity/interchangeability authority is requested")
-    elif atoms.contradiction_requested:
-        route = "contradiction_resolution"
-        rationale.append("query explicitly asks about conflicting evidence")
     elif atoms.comparison_requested:
         route = "cross_source_comparison"
         rationale.append("query requests source or revision comparison")
-    elif atoms.ocr_requested:
-        route = "ocr_scan_recovery"
-        rationale.append("query asks to recover information from a difficult scan")
     elif atoms.warning_requested:
         route = "warning_caution_note_lookup"
         rationale.append("query targets warning/caution/note evidence")
@@ -467,10 +543,13 @@ def plan_route(atoms: QueryAtoms) -> RoutePlan:
     elif atoms.part_prefix or atoms.part_contains or atoms.part_suffix or "only know" in low or "only remember" in low:
         route = "guided_part_discovery"
         rationale.append("partial part-number clues require candidate discovery")
+    elif explicit_semantic_intent(low):
+        route = "semantic_discovery"
+        rationale.append("explicit topical/page-discovery intent outranks incidental component nouns")
     elif atoms.nomenclature_terms or atoms.assembly_context:
         route = "nomenclature_function_search"
         rationale.append("nomenclature/function/assembly clues were extracted")
-    elif any(term in low for term in SEMANTIC_TERMS):
+    elif precision_has_any_phrase(low, SEMANTIC_TERMS):
         route = "semantic_discovery"
         rationale.append("query is topical rather than identifier-exact")
     else:
@@ -521,6 +600,81 @@ def plan_route(atoms: QueryAtoms) -> RoutePlan:
         repair_budget=2,
         rationale=rationale,
     )
+
+
+DISCOVERY_FOLLOWUP_ROUTES = {
+    "guided_part_discovery",
+    "nomenclature_function_search",
+    "semantic_discovery",
+    "clarification_no_evidence",
+}
+
+
+def build_follow_up_questions(
+    atoms: QueryAtoms,
+    route: str,
+) -> List[str]:
+    """Build five bounded discovery questions without treating them as evidence."""
+    if route not in DISCOVERY_FOLLOWUP_ROUTES:
+        return []
+
+    questions: List[str] = []
+    if atoms.part_prefix:
+        questions.append(
+            "What additional part number characters do you remember after "
+            f"the prefix {atoms.part_prefix}?"
+        )
+    elif atoms.part_contains:
+        questions.append(
+            "What characters appear before or after "
+            f"{atoms.part_contains} in the part number?"
+        )
+    elif atoms.part_suffix:
+        questions.append(
+            "What part number characters appear before "
+            f"the suffix {atoms.part_suffix}?"
+        )
+    else:
+        questions.append(
+            "Do you remember any part number characters, digits, separators, "
+            "or stamped markings?"
+        )
+
+    questions.append(
+        "Do you know the manufacturer, vendor, or supplier?"
+        if not atoms.manufacturer
+        else "Are there any additional vendor markings or supplier codes?"
+    )
+
+    if atoms.nomenclature_terms or atoms.assembly_context:
+        clue = atoms.nomenclature_terms[0] if atoms.nomenclature_terms else atoms.assembly_context[0]
+        questions.append(
+            f"What function does the {clue} perform, and what assembly or "
+            "installation location is it associated with?"
+        )
+    else:
+        questions.append(
+            "What component, function, assembly, or installation location is "
+            "the part associated with?"
+        )
+
+    questions.append(
+        "What does the part look like, including its shape, color, size, "
+        "markings, and nearby hardware?"
+    )
+    questions.append(
+        "Do you know the ATA chapter, aircraft system, figure, diagram, IPL "
+        "item, table, manual, or page?"
+    )
+
+    output: List[str] = []
+    seen = set()
+    for question in questions:
+        normalized = re.sub(r"\s+", " ", question).strip().lower()
+        if normalized and normalized not in seen:
+            seen.add(normalized)
+            output.append(question)
+    return output[:5]
 
 
 def http_json(
@@ -605,6 +759,25 @@ def candidate_matches_nomenclature(row: Mapping[str, Any], atoms: QueryAtoms) ->
     if component_terms:
         return any(term.lower() in hay for term in component_terms)
     return bool(atoms.assembly_context and any(term.lower() in hay for term in atoms.assembly_context))
+
+def apply_exact_entity_gate(envelope: EvidenceEnvelope, atoms: QueryAtoms) -> None:
+    if not atoms.exact_part_numbers:
+        return
+    dropped_total = 0
+    for attribute in ("direct_evidence", "candidate_evidence", "visual_guidance", "semantic_guidance"):
+        rows = getattr(envelope, attribute)
+        kept, dropped = filter_entity_consistent(rows, atoms.exact_part_numbers)
+        setattr(envelope, attribute, kept)
+        dropped_total += len(dropped)
+        if dropped:
+            envelope.uncertainties.append(
+                f"entity_gate_removed_{len(dropped)}_{attribute}_row(s)_with_explicit_mismatched_part_numbers"
+            )
+    if dropped_total:
+        envelope.coverage["entity_mismatch_drop_count"] = (
+            int(envelope.coverage.get("entity_mismatch_drop_count") or 0) + dropped_total
+        )
+
 
 def document_ata(document: str) -> Optional[str]:
     match = ATA_EXACT_RE.search(document or "")
@@ -729,7 +902,7 @@ class CognitiveRuntime:
             self.unified_base_url + "/api/trace-net/ask",
             {"query": query, "messages": [{"role": "user", "content": query}], "top_k": top_k},
             api_key=self.unified_api_key,
-            timeout=self.timeout,
+            timeout=getattr(self, "retrieval_timeout", None) or self.timeout,
         )
 
     def call_guided(self, query: str, *, top_k: int = 8) -> Tuple[int, Dict[str, Any]]:
@@ -737,7 +910,7 @@ class CognitiveRuntime:
             self.guided_base_url + "/api/trace-net/guided-discovery",
             {"question": query, "top_k": top_k, "loose_top_k": top_k, "include_view": False},
             api_key=None,
-            timeout=self.timeout,
+            timeout=getattr(self, "retrieval_timeout", None) or self.timeout,
         )
 
     def add_unified(self, envelope: EvidenceEnvelope, query: str, label: str) -> Dict[str, Any]:
@@ -769,7 +942,11 @@ class CognitiveRuntime:
             "quality_status": result.get("quality_status"),
             "candidate_count": result.get("total_candidate_route_count"),
         })
-        envelope.candidate_evidence.extend(extract_candidates(result, atoms, allow_broad=allow_broad))
+        new_candidates = extract_candidates(result, atoms, allow_broad=allow_broad)
+        per_tunnel_cap = getattr(self, "max_candidates_per_tunnel", 0) or 0
+        if per_tunnel_cap > 0:
+            new_candidates = new_candidates[:per_tunnel_cap]
+        envelope.candidate_evidence.extend(new_candidates)
         if status != 200:
             envelope.uncertainties.append(f"{label} returned status {status}")
         return result
@@ -815,12 +992,17 @@ class CognitiveRuntime:
             self.add_unified(envelope, "Find diagram for " + query, "confirmed_visual")
         elif route == "visual_figure_callout_lookup":
             self.add_unified(envelope, query, "confirmed_visual")
+        elif route in {
+            "exact_table_ipl_lookup", "procedure_task_lookup", "warning_caution_note_lookup",
+            "cross_source_comparison", "contradiction_resolution", "ocr_scan_recovery",
+            "high_degree_entity_aggregation",
+        }:
+            for index, subquery in enumerate(specialized_route_queries(route, query, atoms, maximum=3), 1):
+                self.add_unified(envelope, subquery, f"{route}_specialized_{index}")
         elif route == "multi_question_research":
-            clauses = [part.strip() for part in re.split(r"\band\b|;|\balso\b|\bthen\b", query, flags=re.I) if part.strip()]
-            for index, clause in enumerate(clauses[:3], 1):
-                self.add_unified(envelope, clause, f"bounded_subquery_{index}")
-            if not clauses:
-                self.add_unified(envelope, query, "normal_source_truth")
+            subqueries = decompose_claim_queries(query, atoms, maximum=6)
+            for index, subquery in enumerate(subqueries, 1):
+                self.add_unified(envelope, subquery, f"claim_subquery_{index}")
         else:
             self.add_unified(envelope, query, plan.retrieval_tunnels[0])
 
@@ -828,6 +1010,7 @@ class CognitiveRuntime:
         envelope.candidate_evidence = unique_dicts(envelope.candidate_evidence, ("candidate_value", "page_id", "document", "ata"))
         envelope.visual_guidance = unique_dicts(envelope.visual_guidance, ("page_id", "subject", "figure_refs", "part_numbers"))
         envelope.semantic_guidance = unique_dicts(envelope.semantic_guidance, ("point_id", "page_id", "candidate_type"))
+        apply_exact_entity_gate(envelope, atoms)
         for row in envelope.candidate_evidence:
             conflict = metadata_conflict(row)
             if conflict:
@@ -844,6 +1027,7 @@ class CognitiveRuntime:
             "semantic_guidance_count": len(envelope.semantic_guidance),
             "authority_evidence_count": len(envelope.authority_evidence),
             "contradiction_count": len(envelope.contradictions),
+            "entity_mismatch_drop_count": int(envelope.coverage.get("entity_mismatch_drop_count") or 0),
             "upstream_request_count": len(envelope.upstream_results),
             "result_was_capped": any(len(group) >= 8 for group in (envelope.candidate_evidence, envelope.visual_guidance, envelope.semantic_guidance)),
         }
@@ -961,6 +1145,7 @@ class CognitiveRuntime:
         envelope.candidate_evidence = unique_dicts(envelope.candidate_evidence, ("candidate_value", "page_id", "document", "ata"))
         envelope.visual_guidance = unique_dicts(envelope.visual_guidance, ("page_id", "subject", "figure_refs", "part_numbers"))
         envelope.semantic_guidance = unique_dicts(envelope.semantic_guidance, ("point_id", "page_id", "candidate_type"))
+        apply_exact_entity_gate(envelope, atoms)
         envelope.authority_evidence = [
             row for row in envelope.direct_evidence
             if any(hint in compact(row.get("field_name"), 300).lower() for hint in AUTHORITY_FIELD_HINTS)
@@ -1079,7 +1264,35 @@ class CognitiveRuntime:
         query = extract_latest_user(payload)
         atoms = extract_query_atoms(query)
         plan = plan_route(atoms)
+
+        # Engram is selected before retrieval and compiled into a validated
+        # preference policy. Adapters and absolute safety remain deterministic.
+        engram_memory = select_engram_memory(
+            atoms.latest_query,
+            plan.primary_route,
+            atoms.requested_claims,
+            maximum_atoms=6,
+        )
+        plan.engram_policy = compile_engram_policy(
+            engram_memory,
+            plan.primary_route,
+            atoms.requested_claims,
+        )
+        plan.working_memory = build_working_memory(
+            query,
+            atoms,
+            plan,
+            plan.engram_policy,
+        )
+
         envelope = self.gather_initial(plan, atoms)
+        envelope.coverage["engram_policy"] = plan.engram_policy
+        plan.working_memory = refresh_working_memory(
+            plan.working_memory,
+            envelope,
+            plan,
+        )
+        envelope.coverage["working_memory"] = plan.working_memory
         critic_before = self.critic(plan, atoms, envelope)
 
         for _ in range(plan.repair_budget):
@@ -1089,10 +1302,33 @@ class CognitiveRuntime:
             self.repair(plan, atoms, envelope, critic_before)
             if len(envelope.crag_repairs) == previous_repairs:
                 break
+            plan.working_memory = refresh_working_memory(
+                plan.working_memory,
+                envelope,
+                plan,
+            )
+            envelope.coverage["working_memory"] = plan.working_memory
             critic_before = self.critic(plan, atoms, envelope)
 
         final_critic = critic_before
+        plan.working_memory = refresh_working_memory(
+            plan.working_memory,
+            envelope,
+            plan,
+        )
+        envelope.coverage["working_memory"] = plan.working_memory
         content = self.render(plan, atoms, envelope, final_critic)
+        content = enforce_h30_answer_boundaries(
+            route=plan.primary_route,
+            query=atoms.latest_query,
+            query_atoms=asdict(atoms),
+            evidence_envelope=asdict(envelope),
+            answer=content,
+        )
+        follow_up_questions = build_follow_up_questions(
+            atoms,
+            plan.primary_route,
+        )
 
         return {
             "module": MODULE,
@@ -1103,7 +1339,13 @@ class CognitiveRuntime:
             "route_plan": asdict(plan),
             "route_registry": list(ALL_ROUTES),
             "query_atoms": asdict(atoms),
+            "engram_memory": engram_memory,
+            "engram_policy": plan.engram_policy,
+            "working_memory": plan.working_memory,
             "content": content,
+            "follow_up_questions": follow_up_questions,
+            "clarification_required": bool(follow_up_questions),
+            "clarification_recommended": bool(follow_up_questions),
             "evidence_envelope": asdict(envelope),
             "self_rag_critic": final_critic,
             "crag_repair_attempts": envelope.crag_repairs,
@@ -1236,15 +1478,41 @@ def make_handler(runtime: CognitiveRuntime):
                     self.send_json(400, error_payload("Missing query or user message.", "missing_query", 400))
                     return
                 path = self.path.split("?", 1)[0]
+                if path == "/api/trace-net/shadow-plan":
+                    self.send_json(200, runtime.shadow_plan(query))
+                    return
+                if path == "/api/trace-net/planner-decision":
+                    self.send_json(200, runtime.planner_decision(query))
+                    return
                 if path == "/api/trace-net/plan":
                     atoms = extract_query_atoms(query)
                     plan = plan_route(atoms)
+                    engram_memory = select_engram_memory(
+                        atoms.latest_query,
+                        plan.primary_route,
+                        atoms.requested_claims,
+                        maximum_atoms=6,
+                    )
+                    plan.engram_policy = compile_engram_policy(
+                        engram_memory,
+                        plan.primary_route,
+                        atoms.requested_claims,
+                    )
+                    plan.working_memory = build_working_memory(
+                        query,
+                        atoms,
+                        plan,
+                        plan.engram_policy,
+                    )
                     self.send_json(200, {
                         "quality_status": "PASS",
                         "module": MODULE,
                         "query": query,
                         "query_atoms": asdict(atoms),
                         "route_plan": asdict(plan),
+                        "engram_memory": engram_memory,
+                        "engram_policy": plan.engram_policy,
+                        "working_memory": plan.working_memory,
                         "route_registry": list(ALL_ROUTES),
                         "retrieval_executed": False,
                         "answer_permission": False,
@@ -1311,6 +1579,22 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     server.serve_forever()
     return 0
 
+
+install_retrieval_completion(globals())
+install_engram_critic_repair(globals())
+install_user_facing_renderer(globals())
+install_navigation_latency_fastpath(globals())
+install_part_intent_source_resolution(globals())
+install_shadow_planner(globals())
+install_validated_planner_execution(globals())
+install_engram_skill_shadow(globals())
+install_typed_evidence_envelope(globals())
+install_graph_source_retrieval(globals())
+install_page_content_bridge(globals())
+# TRACE_NET_H30_PHASE2_CLAIM_READY_EVIDENCE_INSTALL
+install_claim_ready_evidence(globals())
+# TRACE_NET_H30_PHASE19_ROUTE_COMPLETION_INSTALL_V1
+install_phase19_route_completion_fastpath(globals())
 
 if __name__ == "__main__":
     raise SystemExit(main())

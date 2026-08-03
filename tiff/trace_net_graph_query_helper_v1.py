@@ -413,12 +413,19 @@ class GraphIndex:
         return sorted(matches, key=lambda n: n["node_id"])
 
     def find_page_nodes(self, value: str) -> list[dict[str, Any]]:
+        # Page ids require EXACT normalized equality. A full canonical page id
+        # must never substring-match a different page (e.g. p000018 vs p000181,
+        # p000081 vs p000181); the old `needle in node_search_text` clause matched
+        # the bare page number inside a longer page's blob. Part/ATA fragment
+        # matchers keep substring behavior on purpose; page ids do not.
         needle = upper_clean(value)
+        if not needle:
+            return []
         matches = []
         for node in self.nodes:
             if not is_page_node(node):
                 continue
-            if needle in upper_clean(node_search_text(node)) or needle == upper_clean(node.get("node_id")):
+            if needle == upper_clean(node.get("node_id")) or needle == upper_clean(page_id(node)):
                 matches.append(node)
         return sorted(matches, key=lambda n: n["node_id"])
 

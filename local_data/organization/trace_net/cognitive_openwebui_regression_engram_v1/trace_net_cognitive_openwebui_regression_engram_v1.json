@@ -1,0 +1,294 @@
+{
+  "status": "TRACE_NET_COGNITIVE_OPENWEBUI_REGRESSION_ENGRAM_BUILT",
+  "module": "trace_net_cognitive_openwebui_regression_engram_v1",
+  "version": "v1",
+  "quality_status": "PASS",
+  "safety_contract": "behavior_guidance_only_no_source_truth_no_answer_permission_no_db_writes",
+  "memory_atoms": [
+    {
+      "atom_id": "h30_openwebui_lexical_boundary_v1",
+      "memory_layer": "procedural_memory",
+      "title": "Match technical clue words at token boundaries",
+      "triggers": [
+        "recover",
+        "coverage",
+        "cover",
+        "nomenclature"
+      ],
+      "routes": [
+        "nomenclature_function_search",
+        "ocr_scan_recovery",
+        "high_degree_entity_aggregation"
+      ],
+      "claims": [],
+      "examples": [
+        "recover does not activate cover",
+        "coverage does not activate cover"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "source": "H30 OpenWebUI live route regression",
+      "inherits": [
+        "query_clue_token_boundaries"
+      ],
+      "rule_ref": "query_clue_token_boundaries",
+      "route_context": "Match technical clue words at token boundaries",
+      "rule_storage": "canonical_registry"
+    },
+    {
+      "atom_id": "h30_openwebui_identifier_shape_v1",
+      "memory_layer": "procedural_memory",
+      "title": "Partial identifiers must look like identifiers",
+      "triggers": [
+        "contains",
+        "starts with",
+        "ends with",
+        "part number",
+        "p/n"
+      ],
+      "routes": [
+        "guided_part_discovery",
+        "document_page_navigation"
+      ],
+      "claims": [
+        "exact_identifier"
+      ],
+      "examples": [
+        "P/N contains 41824 is valid",
+        "contain the strongest evidence must not extract THE"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "source": "H30 OpenWebUI live route regression",
+      "inherits": [
+        "identifier_shape_validation"
+      ],
+      "rule_ref": "identifier_shape_validation",
+      "route_context": "Partial identifiers must look like identifiers",
+      "rule_storage": "canonical_registry"
+    },
+    {
+      "atom_id": "h30_openwebui_semantic_intent_priority_v1",
+      "memory_layer": "semantic_memory",
+      "title": "Explicit topical discovery outranks incidental component nouns",
+      "triggers": [
+        "find pages about",
+        "pages about",
+        "even when the exact phrase is not used",
+        "semantic search"
+      ],
+      "routes": [
+        "semantic_discovery"
+      ],
+      "claims": [],
+      "examples": [
+        "Find pages about corrosion prevention for passenger seats routes semantic",
+        "The noun seat alone does not turn a topical search into part discovery"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "source": "H30 OpenWebUI live route regression",
+      "inherits": [
+        "semantic_intent_priority"
+      ],
+      "rule_ref": "semantic_intent_priority",
+      "route_context": "Explicit topical discovery outranks incidental component nouns",
+      "rule_storage": "canonical_registry"
+    },
+    {
+      "atom_id": "h30_openwebui_exact_entity_gate_v1",
+      "memory_layer": "critic_memory",
+      "title": "Remove explicitly mismatched entity evidence",
+      "triggers": [
+        "exact part",
+        "part",
+        "figure",
+        "diagram",
+        "table",
+        "ocr"
+      ],
+      "routes": [
+        "exact_identifier_lookup",
+        "visual_figure_callout_lookup",
+        "exact_table_ipl_lookup",
+        "ocr_scan_recovery",
+        "multi_question_research",
+        "high_degree_entity_aggregation"
+      ],
+      "claims": [
+        "exact_identifier",
+        "visual_identity",
+        "table_value"
+      ],
+      "examples": [
+        "A request for 120-41824-003 must not surface a figure containing only 120-41824-217",
+        "Safe but irrelevant evidence is still bad evidence"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "source": "H30 OpenWebUI live route regression",
+      "inherits": [
+        "exact_entity_gate"
+      ],
+      "rule_ref": "exact_entity_gate",
+      "route_context": "Remove explicitly mismatched entity evidence",
+      "rule_storage": "canonical_registry"
+    },
+    {
+      "atom_id": "h30_openwebui_claim_decomposition_v1",
+      "memory_layer": "procedural_memory",
+      "title": "Decompose multi-question research by claim type",
+      "triggers": [
+        "identify",
+        "locate",
+        "determine whether",
+        "and"
+      ],
+      "routes": [
+        "multi_question_research"
+      ],
+      "claims": [
+        "exact_identifier",
+        "visual_identity",
+        "table_value",
+        "authority",
+        "relationship"
+      ],
+      "examples": [
+        "Part identity and replacement approval require separate evidence gates",
+        "A figure result cannot satisfy an authority claim"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "source": "H30 OpenWebUI live route regression",
+      "inherits": [
+        "claim_decomposition",
+        "guidance_is_not_proof"
+      ],
+      "rule_ref": "claim_decomposition",
+      "route_context": "Decompose multi-question research by claim type",
+      "rule_storage": "canonical_registry"
+    },
+    {
+      "atom_id": "h30_openwebui_specialized_before_fallback_v1",
+      "memory_layer": "critic_memory",
+      "title": "Try the specialized tunnel before broad semantic fallback",
+      "triggers": [
+        "ipl",
+        "procedure",
+        "warning",
+        "contradiction",
+        "ocr",
+        "every page"
+      ],
+      "routes": [
+        "exact_table_ipl_lookup",
+        "procedure_task_lookup",
+        "warning_caution_note_lookup",
+        "contradiction_resolution",
+        "ocr_scan_recovery",
+        "high_degree_entity_aggregation"
+      ],
+      "claims": [
+        "table_value",
+        "procedure",
+        "warning",
+        "comparison"
+      ],
+      "examples": [
+        "An IPL item request should try table rows and cells",
+        "A warning request should try warning blocks before generic page similarity"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "source": "H30 OpenWebUI live route regression",
+      "inherits": [
+        "specialized_tunnel_first"
+      ],
+      "rule_ref": "specialized_tunnel_first",
+      "route_context": "Try the specialized tunnel before broad semantic fallback",
+      "rule_storage": "canonical_registry"
+    },
+    {
+      "atom_id": "h30_openwebui_guidance_not_proof_v1",
+      "memory_layer": "trait_memory",
+      "title": "Keep guidance useful without promoting it",
+      "triggers": [
+        "candidate",
+        "visual",
+        "semantic",
+        "graph",
+        "summary",
+        "ocr"
+      ],
+      "routes": [
+        "exact_identifier_lookup",
+        "guided_part_discovery",
+        "semantic_discovery",
+        "visual_figure_callout_lookup",
+        "ocr_scan_recovery",
+        "multi_question_research"
+      ],
+      "claims": [],
+      "examples": [
+        "A visual association can guide the user to a page without proving nomenclature",
+        "A candidate list is not a final identification"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "universal": true,
+      "source": "H15-H30 Engram safety contract",
+      "inherits": [
+        "guidance_is_not_proof"
+      ],
+      "rule_ref": "guidance_is_not_proof",
+      "route_context": "Keep guidance useful without promoting it",
+      "rule_storage": "canonical_registry"
+    },
+    {
+      "atom_id": "h30_openwebui_authority_boundary_v1",
+      "memory_layer": "procedural_memory",
+      "title": "Authority claims require explicit authority evidence",
+      "triggers": [
+        "approved",
+        "replacement",
+        "interchangeable",
+        "effectivity",
+        "applicable",
+        "eligible",
+        "safe to install"
+      ],
+      "routes": [
+        "authority_eligibility_verification",
+        "multi_question_research"
+      ],
+      "claims": [
+        "authority"
+      ],
+      "examples": [
+        "A shared part family does not prove interchangeability",
+        "No authority evidence means no approval claim"
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "source": "H14-H30 authority safety contract",
+      "inherits": [
+        "authority_requires_explicit_proof",
+        "guidance_is_not_proof",
+        "direct_source_before_fallback"
+      ],
+      "rule_ref": "authority_requires_explicit_proof",
+      "route_context": "Authority claims require explicit authority evidence",
+      "rule_storage": "canonical_registry"
+    }
+  ],
+  "policy_compiler_compatible": true,
+  "canonical_rule_deduplication": true,
+  "policy_effect_schema": "trace_net_h30_engram_policy_compiler_v1",
+  "canonical_rule_registry": "local_data/organization/trace_net/engram_canonical_rule_registry_v1/trace_net_engram_canonical_rule_registry_v1.json",
+  "canonical_rule_registry_required": true,
+  "inheritance_schema": "trace_net_h30_engram_canonical_registry_v1",
+  "inherited_rule_reference_count": 11,
+  "local_policy_effect_count": 0,
+  "local_rule_text_count": 0
+}

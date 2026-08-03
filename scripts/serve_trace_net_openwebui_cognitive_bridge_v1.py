@@ -12,6 +12,8 @@ import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any, Dict, Mapping, Optional, Sequence, Tuple
 
+from scripts.trace_net_h30_cold_start_streaming_v1 import install_bridge_streaming_support
+
 MODULE = "trace_net_openwebui_cognitive_bridge_v1"
 DEFAULT_MODEL = "trace-net-gemma4-cognitive-rag-v1"
 
@@ -114,7 +116,11 @@ def make_handler(runtime: Runtime):
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Length", str(len(raw)))
             self.end_headers()
-            self.wfile.write(raw)
+            # TRACE_NET_H30_DISCONNECTED_CLIENT_WRITE_GUARD_V1
+            try:
+                self.wfile.write(raw)
+            except (BrokenPipeError, ConnectionResetError):
+                self.close_connection = True
 
         def do_GET(self) -> None:
             path = self.path.split("?", 1)[0]
@@ -226,6 +232,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     print("stream_normalization=true")
     server.serve_forever()
     return 0
+
+
+install_bridge_streaming_support(globals())
 
 
 if __name__ == "__main__":

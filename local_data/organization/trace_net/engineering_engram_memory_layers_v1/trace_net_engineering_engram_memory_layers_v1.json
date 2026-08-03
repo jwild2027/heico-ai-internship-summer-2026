@@ -2,13 +2,20 @@
   "status": "TRACE_NET_ENGINEERING_ENGRAM_MEMORY_LAYERS_BUILT",
   "module": "trace_net_engineering_engram_memory_layers_v1",
   "version": "v1",
-  "generated_at": "2026-07-01T17:06:04Z",
+  "generated_at": "2026-07-15T18:04:10Z",
   "quality_status": "PASS",
   "safety_contract": "no_db_writes_no_vector_writes_no_search_writes_no_source_truth_mutation_no_answer_permission",
   "source_engram_core_path": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1.json",
   "taxonomy": {
     "memory_layers": [
       "working_memory",
+      "semantic_memory",
+      "procedural_memory",
+      "episodic_memory",
+      "trait_memory",
+      "critic_memory"
+    ],
+    "persisted_memory_layers": [
       "semantic_memory",
       "procedural_memory",
       "episodic_memory",
@@ -89,15 +96,33 @@
         "must_not_persist_source_truth": true
       }
     },
+    "working_memory_storage": "runtime_only",
+    "runtime_working_memory_fields": [
+      "question",
+      "route",
+      "requested_claims",
+      "requested_part_numbers",
+      "searches_attempted",
+      "evidence_found",
+      "evidence_rejected_count",
+      "best_result",
+      "unresolved_fields",
+      "repair_budget_remaining",
+      "engram_policy_hash"
+    ],
     "proof_boundary": "Engram memory is behavior guidance only. Manual facts must still come from current proof_context citations.",
-    "working_memory_note": "Working memory can carry current proof citations at answer time but is not persisted as source truth by this artifact."
+    "working_memory_note": "Working memory is created fresh for each request and is not stored in this persisted behavior-memory artifact."
   },
   "memory_atoms": [
     {
-      "atom_id": "h17_imported_f39d3c6bcc27e0fa",
+      "atom_id": "policy_no_interchangeability_without_authority_v1",
+      "canonical_rule_id": "policy_no_interchangeability_without_authority_v1",
+      "legacy_atom_ids": [
+        "h17_imported_f39d3c6bcc27e0fa"
+      ],
       "memory_layer": "procedural_memory",
       "memory_type": "policy_trait",
-      "title": "h17_imported_f39d3c6bcc27e0fa",
+      "title": "No interchangeability without authority",
       "trigger": [
         "interchangeability",
         "approved replacement",
@@ -105,20 +130,25 @@
         "shared nomenclature"
       ],
       "rule": "Shared nomenclature, nearby figures, or part-family similarity are not proof of interchangeability or replacement approval.",
-      "allowed_behavior": "",
-      "forbidden_behavior": "",
+      "allowed_behavior": "Say what TRACE-Net can prove about each part, then state interchangeability/replacement approval is not proven.",
+      "forbidden_behavior": "Treating the same description or part-family proximity as approval or interchangeability.",
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "H14C llm smoke repair",
       "source_core_path": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1.json",
       "source_hash": "f39d3c6bcc27e0fa",
+      "source_engram_id": "policy_no_interchangeability_without_authority_v1",
       "trait": "source_trace_caution"
     },
     {
-      "atom_id": "h17_imported_568223f7c37a12f1",
+      "atom_id": "policy_no_installation_safety_from_figure_v1",
+      "canonical_rule_id": "policy_no_installation_safety_from_figure_v1",
+      "legacy_atom_ids": [
+        "h17_imported_568223f7c37a12f1"
+      ],
       "memory_layer": "procedural_memory",
       "memory_type": "policy_trait",
-      "title": "h17_imported_568223f7c37a12f1",
+      "title": "No installation safety from figure",
       "trigger": [
         "installation safety",
         "safe install",
@@ -126,20 +156,25 @@
         "aircraft effectivity"
       ],
       "rule": "Figure/part identification evidence does not prove installation safety, fit approval, aircraft effectivity, or replacement approval.",
-      "allowed_behavior": "",
-      "forbidden_behavior": "",
+      "allowed_behavior": "Lead with not proven, then list the source-trace-ready identity/nomenclature evidence that is proven.",
+      "forbidden_behavior": "Implying a figure, OCR line, or part listing authorizes installation or fit.",
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "H14C llm smoke repair",
       "source_core_path": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1.json",
       "source_hash": "568223f7c37a12f1",
+      "source_engram_id": "policy_no_installation_safety_from_figure_v1",
       "trait": "approval_boundary"
     },
     {
-      "atom_id": "h17_imported_98eaef4c97e6af7b",
-      "memory_layer": "working_memory",
+      "atom_id": "policy_v2_summaries_guidance_not_proof_v1",
+      "canonical_rule_id": "policy_v2_summaries_guidance_not_proof_v1",
+      "legacy_atom_ids": [
+        "h17_imported_98eaef4c97e6af7b"
+      ],
+      "memory_layer": "semantic_memory",
       "memory_type": "policy_trait",
-      "title": "h17_imported_98eaef4c97e6af7b",
+      "title": "V2 summaries guidance not proof",
       "trigger": [
         "v2 summary",
         "summaries",
@@ -147,20 +182,25 @@
         "summary-only"
       ],
       "rule": "V2 summaries may guide planning and framing, but cannot prove source claims; factual claims require proof_context citations.",
-      "allowed_behavior": "",
-      "forbidden_behavior": "",
-      "proof_role": "current_proof_context_only",
+      "allowed_behavior": "Use summaries only to guide route selection and answer framing; cite proof_context for claims.",
+      "forbidden_behavior": "Using a v2 summary as direct evidence for part identity or approval.",
+      "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "H10/H14C semantic eval",
       "source_core_path": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1.json",
       "source_hash": "98eaef4c97e6af7b",
+      "source_engram_id": "policy_v2_summaries_guidance_not_proof_v1",
       "trait": "summary_boundary"
     },
     {
-      "atom_id": "h17_imported_e10694f7f568466e",
+      "atom_id": "route_visual_link_vs_ocr_nomenclature_v1",
+      "canonical_rule_id": "route_visual_link_vs_ocr_nomenclature_v1",
+      "legacy_atom_ids": [
+        "h17_imported_e10694f7f568466e"
+      ],
       "memory_layer": "semantic_memory",
       "memory_type": "route_behavior",
-      "title": "h17_imported_e10694f7f568466e",
+      "title": "Visual link vs OCR nomenclature",
       "trigger": [
         "visual route",
         "OCR nomenclature",
@@ -168,20 +208,25 @@
         "figure identity"
       ],
       "rule": "visual_figure_link establishes figure-to-part identity; ocr_nomenclature provides OCR-backed line-text name proof.",
-      "allowed_behavior": "",
-      "forbidden_behavior": "",
+      "allowed_behavior": "Explain both routes separately when asked evidence-support or pipeline questions.",
+      "forbidden_behavior": "Saying only 'not proven' for pipeline questions when route behavior evidence is available.",
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "H14C safe reasoning traces",
       "source_core_path": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1.json",
       "source_hash": "e10694f7f568466e",
+      "source_engram_id": "route_visual_link_vs_ocr_nomenclature_v1",
       "trait": "route_awareness"
     },
     {
-      "atom_id": "h17_imported_846864e2ed658bc0",
+      "atom_id": "route_table_ocr_supports_exact_part_v1",
+      "canonical_rule_id": "route_table_ocr_supports_exact_part_v1",
+      "legacy_atom_ids": [
+        "h17_imported_846864e2ed658bc0"
+      ],
       "memory_layer": "semantic_memory",
       "memory_type": "route_behavior",
-      "title": "h17_imported_846864e2ed658bc0",
+      "title": "Table OCR supports exact part",
       "trigger": [
         "table OCR",
         "exact part",
@@ -189,20 +234,25 @@
         "evidence supports"
       ],
       "rule": "Exact-part/table-OCR evidence supports presence of a part number but does not by itself prove approvals or compatibility.",
-      "allowed_behavior": "",
-      "forbidden_behavior": "",
+      "allowed_behavior": "Use table/OCR evidence to support part presence and citation readiness, while keeping approval claims out of scope.",
+      "forbidden_behavior": "Converting a table hit into effectivity, fit, or replacement authority.",
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "H11-H14C smoke evals",
       "source_core_path": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1.json",
       "source_hash": "846864e2ed658bc0",
+      "source_engram_id": "route_table_ocr_supports_exact_part_v1",
       "trait": "route_awareness"
     },
     {
-      "atom_id": "h17_imported_15583042313de8d5",
+      "atom_id": "style_engineering_answer_shape_v1",
+      "canonical_rule_id": "style_engineering_answer_shape_v1",
+      "legacy_atom_ids": [
+        "h17_imported_15583042313de8d5"
+      ],
       "memory_layer": "trait_memory",
       "memory_type": "style_trait",
-      "title": "h17_imported_15583042313de8d5",
+      "title": "Engineering answer shape",
       "trigger": [
         "engineering answer",
         "limitations",
@@ -210,40 +260,50 @@
         "confidence"
       ],
       "rule": "Prefer answer sections: Answer, Evidence, Engineering confidence, Limits; for limitations questions, split Can prove vs Cannot prove.",
-      "allowed_behavior": "",
-      "forbidden_behavior": "",
+      "allowed_behavior": "Give a concise direct answer, then cite proof and state limits.",
+      "forbidden_behavior": "Generic disclaimer-only answers, or citation dumps without answering the actual intent.",
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "H14C llm answer style",
       "source_core_path": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1.json",
       "source_hash": "15583042313de8d5",
+      "source_engram_id": "style_engineering_answer_shape_v1",
       "trait": "engineering_answer_shape"
     },
     {
-      "atom_id": "h17_imported_44ab4e8f4519026e",
+      "atom_id": "style_useful_not_proven_v1",
+      "canonical_rule_id": "style_useful_not_proven_v1",
+      "legacy_atom_ids": [
+        "h17_imported_44ab4e8f4519026e"
+      ],
       "memory_layer": "trait_memory",
       "memory_type": "style_trait",
-      "title": "h17_imported_44ab4e8f4519026e",
+      "title": "Useful not proven",
       "trigger": [
         "not proven",
         "cannot prove",
         "not source-trace-ready"
       ],
       "rule": "When a claim is not proven, still explain what TRACE-Net can prove and why the requested claim is outside the evidence.",
-      "allowed_behavior": "",
-      "forbidden_behavior": "",
+      "allowed_behavior": "Not proven + can prove identity/nomenclature/pages + cannot prove approval/safety/effectivity.",
+      "forbidden_behavior": "Only saying 'not proven' without useful evidence context.",
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "H13 over-refusal repair through H14C",
       "source_core_path": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1.json",
       "source_hash": "44ab4e8f4519026e",
+      "source_engram_id": "style_useful_not_proven_v1",
       "trait": "useful_caution"
     },
     {
-      "atom_id": "h17_imported_e9e7d1bcb97b344f",
-      "memory_layer": "working_memory",
+      "atom_id": "style_unknown_part_or_figure_v1",
+      "canonical_rule_id": "style_unknown_part_or_figure_v1",
+      "legacy_atom_ids": [
+        "h17_imported_e9e7d1bcb97b344f"
+      ],
+      "memory_layer": "procedural_memory",
       "memory_type": "style_trait",
-      "title": "h17_imported_e9e7d1bcb97b344f",
+      "title": "Unknown part or figure",
       "trigger": [
         "unknown part",
         "unknown figure",
@@ -251,40 +311,50 @@
         "999"
       ],
       "rule": "For unknown part/figure questions with no proof_context, lead with not found / not source-trace-ready and do not cite unrelated evidence.",
-      "allowed_behavior": "",
-      "forbidden_behavior": "",
-      "proof_role": "current_proof_context_only",
+      "allowed_behavior": "State no proof_context was available and avoid unrelated citations.",
+      "forbidden_behavior": "Citing nearby known figures or parts for an unknown requested identifier.",
+      "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "H14C partial unknown handling",
       "source_core_path": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1.json",
       "source_hash": "e9e7d1bcb97b344f",
+      "source_engram_id": "style_unknown_part_or_figure_v1",
       "trait": "unknown_handling"
     },
     {
-      "atom_id": "h17_imported_2b473a0ff68388c0",
-      "memory_layer": "critic_memory",
+      "atom_id": "episode_h13_generic_not_proven_v1",
+      "canonical_rule_id": "episode_h13_generic_not_proven_v1",
+      "legacy_atom_ids": [
+        "h17_imported_2b473a0ff68388c0"
+      ],
+      "memory_layer": "episodic_memory",
       "memory_type": "episodic_failure_memory",
-      "title": "h17_imported_2b473a0ff68388c0",
+      "title": "H13 generic not proven",
       "trigger": [
         "pipeline question",
         "debug question",
         "nomenclature missing"
       ],
       "rule": "H13/H14 initially answered pipeline/debug questions with generic 'not proven'; H14C repaired this using scaffold + route-specific intent rules.",
-      "allowed_behavior": "",
-      "forbidden_behavior": "",
+      "allowed_behavior": "Explain route behavior when the scaffold describes pipeline behavior; distinguish pipeline explanation from source-truth proof.",
+      "forbidden_behavior": "Blank/blocked or generic not-proven answers for route behavior questions.",
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "H13-H14C eval history",
       "source_core_path": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1.json",
       "source_hash": "2b473a0ff68388c0",
+      "source_engram_id": "episode_h13_generic_not_proven_v1",
       "trait": "failure_memory"
     },
     {
-      "atom_id": "h17_imported_81996026ec62b901",
+      "atom_id": "episode_h14b_path_length_stage_output_v1",
+      "canonical_rule_id": "episode_h14b_path_length_stage_output_v1",
+      "legacy_atom_ids": [
+        "h17_imported_81996026ec62b901"
+      ],
       "memory_layer": "episodic_memory",
       "memory_type": "episodic_failure_memory",
-      "title": "h17_imported_81996026ec62b901",
+      "title": "H14B path length stage output",
       "trigger": [
         "Windows path",
         "quality_check missing",
@@ -292,20 +362,25 @@
         "FileNotFoundError"
       ],
       "rule": "H14B exposed nested stage-output path failures; H14C used shorter output dirs and safe trace records to prevent blocked answers.",
-      "allowed_behavior": "",
-      "forbidden_behavior": "",
+      "allowed_behavior": "Use short run directories and record safe failure traces instead of letting path plumbing block question evaluation.",
+      "forbidden_behavior": "Long nested run directories that prevent quality-check artifacts from being written/read on Windows.",
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "H14B/H14C path hardening",
       "source_core_path": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1.json",
       "source_hash": "81996026ec62b901",
+      "source_engram_id": "episode_h14b_path_length_stage_output_v1",
       "trait": "failure_memory"
     },
     {
-      "atom_id": "h17_imported_59e7c73df5037d43",
+      "atom_id": "critic_answer_behavior_self_rag_v1",
+      "canonical_rule_id": "critic_answer_behavior_self_rag_v1",
+      "legacy_atom_ids": [
+        "h17_imported_59e7c73df5037d43"
+      ],
       "memory_layer": "critic_memory",
       "memory_type": "critic_trait",
-      "title": "h17_imported_59e7c73df5037d43",
+      "title": "Answer behavior Self RAG",
       "trigger": [
         "answer critique",
         "Self-RAG",
@@ -313,20 +388,25 @@
         "intent mismatch"
       ],
       "rule": "Self-RAG should check whether the draft obeys source-trace boundaries, answers the actual intent, cites claims, and avoids over/under-refusal.",
-      "allowed_behavior": "",
-      "forbidden_behavior": "",
+      "allowed_behavior": "Critique answers for evidence support and behavior correctness before delivery.",
+      "forbidden_behavior": "Only checking citation existence while missing semantic intent failure.",
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "H10 semantic answer quality eval",
       "source_core_path": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1.json",
       "source_hash": "59e7c73df5037d43",
+      "source_engram_id": "critic_answer_behavior_self_rag_v1",
       "trait": "self_rag_behavior_check"
     },
     {
-      "atom_id": "h17_imported_a84215fe40232b55",
+      "atom_id": "repair_crag_engram_repair_v1",
+      "canonical_rule_id": "repair_crag_engram_repair_v1",
+      "legacy_atom_ids": [
+        "h17_imported_a84215fe40232b55"
+      ],
       "memory_layer": "critic_memory",
       "memory_type": "repair_trait",
-      "title": "h17_imported_a84215fe40232b55",
+      "title": "CRAG engram repair",
       "trigger": [
         "CRAG",
         "repair",
@@ -334,89 +414,112 @@
         "retry"
       ],
       "rule": "CRAG should retrieve relevant failure/repair engrams and regenerate or rewrite the answer when Self-RAG flags weak behavior or weak evidence.",
-      "allowed_behavior": "",
-      "forbidden_behavior": "",
+      "allowed_behavior": "Use retrieved repair patterns such as 'shared nomenclature is not interchangeability' to fix weak drafts.",
+      "forbidden_behavior": "Retrying the same prompt without adding behavior memory or evidence diagnostics.",
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "TRACE-Net engram architecture plan",
       "source_core_path": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1.json",
       "source_hash": "a84215fe40232b55",
+      "source_engram_id": "repair_crag_engram_repair_v1",
       "trait": "crag_repair_reflex"
     },
     {
-      "atom_id": "h17_imported_a013ea6cae2ac2e8",
+      "atom_id": "episode_llm_smoke_result_01_v1",
+      "canonical_rule_id": "episode_llm_smoke_result_01_v1",
+      "legacy_atom_ids": [
+        "h17_imported_a013ea6cae2ac2e8"
+      ],
       "memory_layer": "episodic_memory",
       "memory_type": "episodic_eval_memory",
-      "title": "h17_imported_a013ea6cae2ac2e8",
+      "title": "LLM smoke result 01",
       "trigger": [
         "LLM smoke",
         "answer quality",
         "eval history"
       ],
       "rule": "Observed eval result: 28 GOOD, 2 PARTIAL, 0 BAD, 0 BLOCKED out of 30; unsupported_claim_count=0.",
-      "allowed_behavior": "",
-      "forbidden_behavior": "",
+      "allowed_behavior": "Reuse high-performing answer patterns and keep safety counters at zero.",
+      "forbidden_behavior": "Ignore prior eval failures or regress on unsupported claims.",
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "local_data/organization/trace_net/llm_h14c_30/trace_net_engineering_llm_answer_smoke_v1.json",
       "source_core_path": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1.json",
       "source_hash": "a013ea6cae2ac2e8",
+      "source_engram_id": "episode_llm_smoke_result_01_v1",
       "trait": "eval_history"
     },
     {
-      "atom_id": "h17_imported_774825e2b50c55aa",
+      "atom_id": "episode_partial_category_01_unknown_figure_v1",
+      "canonical_rule_id": "episode_partial_category_01_unknown_figure_v1",
+      "legacy_atom_ids": [
+        "h17_imported_774825e2b50c55aa"
+      ],
       "memory_layer": "episodic_memory",
       "memory_type": "episodic_failure_memory",
-      "title": "h17_imported_774825e2b50c55aa",
+      "title": "Partial category 01 unknown figure",
       "trigger": [
         "unknown_figure",
         "partial answer",
         "quality improvement"
       ],
       "rule": "Category 'unknown_figure' was graded PARTIAL in a smoke eval; retrieve a more specific answer pattern before drafting.",
-      "allowed_behavior": "",
-      "forbidden_behavior": "",
+      "allowed_behavior": "Explain the boundary and the available proof rather than generic refusal.",
+      "forbidden_behavior": "Generic not-proven or incomplete answer for a known weak category.",
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "local_data/organization/trace_net/llm_h14c_30/trace_net_engineering_llm_answer_smoke_v1.json",
       "source_core_path": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1.json",
       "source_hash": "774825e2b50c55aa",
+      "source_engram_id": "episode_partial_category_01_unknown_figure_v1",
       "trait": "partial_answer_memory"
     },
     {
-      "atom_id": "h17_imported_93da9c7d59c179ab",
+      "atom_id": "episode_partial_category_01_unknown_part_v1",
+      "canonical_rule_id": "episode_partial_category_01_unknown_part_v1",
+      "legacy_atom_ids": [
+        "h17_imported_93da9c7d59c179ab"
+      ],
       "memory_layer": "episodic_memory",
       "memory_type": "episodic_failure_memory",
-      "title": "h17_imported_93da9c7d59c179ab",
+      "title": "Partial category 01 unknown part",
       "trigger": [
         "unknown_part",
         "partial answer",
         "quality improvement"
       ],
       "rule": "Category 'unknown_part' was graded PARTIAL in a smoke eval; retrieve a more specific answer pattern before drafting.",
-      "allowed_behavior": "",
-      "forbidden_behavior": "",
+      "allowed_behavior": "Explain the boundary and the available proof rather than generic refusal.",
+      "forbidden_behavior": "Generic not-proven or incomplete answer for a known weak category.",
       "proof_role": "guidance_only",
       "activation_status": "active",
       "source": "local_data/organization/trace_net/llm_h14c_30/trace_net_engineering_llm_answer_smoke_v1.json",
       "source_core_path": "local_data\\organization\\trace_net\\engineering_engram_core_v1\\trace_net_engineering_engram_core_v1.json",
       "source_hash": "93da9c7d59c179ab",
+      "source_engram_id": "episode_partial_category_01_unknown_part_v1",
       "trait": "partial_answer_memory"
     },
     {
-      "atom_id": "working_current_question_context_pack_citations_v1",
-      "memory_layer": "working_memory",
-      "memory_type": "working_memory",
-      "title": "Current answer working set",
+      "atom_id": "procedural_working_memory_runtime_boundary_v2",
+      "canonical_rule_id": "working_memory_runtime_boundary",
+      "legacy_atom_ids": [
+        "working_current_question_context_pack_citations_v1"
+      ],
+      "memory_layer": "procedural_memory",
+      "memory_type": "procedural_memory",
+      "title": "Working memory is request-local",
       "trigger": [
+        "working memory",
+        "current question",
+        "current context pack",
         "every answer"
       ],
-      "rule": "Use the current user question, current context pack, and current proof citations as the only answer-time factual working set.",
-      "allowed_behavior": "Ground the draft in current proof_context and citation labels.",
-      "forbidden_behavior": "Do not import proof from old Engram memories or summaries.",
-      "proof_role": "current_proof_context_only",
+      "rule": "Create working memory fresh for the current request. Use only the current question, context pack, evidence, and proof citations; do not persist that temporary state as Engram source truth.",
+      "allowed_behavior": "Track current claims, searches, evidence, rejected evidence, best result, unresolved fields, and repair budget during the request.",
+      "forbidden_behavior": "Do not store current manual facts or citations as permanent Engram memory, and do not import proof from previous requests.",
+      "proof_role": "guidance_only",
       "activation_status": "active",
-      "source": "h17_seed_taxonomy"
+      "source": "h17_seed_taxonomy_phase2_cleanup"
     },
     {
       "atom_id": "semantic_visual_link_vs_ocr_nomenclature_v1",
@@ -433,7 +536,9 @@
       "forbidden_behavior": "Do not treat visual observations alone as clean nomenclature proof unless source-trace-ready text supports it.",
       "proof_role": "guidance_only",
       "activation_status": "active",
-      "source": "h17_seed_taxonomy"
+      "source": "h17_seed_taxonomy",
+      "canonical_rule_id": "semantic_visual_link_vs_ocr_nomenclature_v1",
+      "legacy_atom_ids": []
     },
     {
       "atom_id": "procedural_no_interchangeability_without_authority_v1",
@@ -452,7 +557,9 @@
       "forbidden_behavior": "Do not infer approval from shared nomenclature, nearby figures, graph proximity, or part-family similarity.",
       "proof_role": "guidance_only",
       "activation_status": "active",
-      "source": "h17_seed_taxonomy"
+      "source": "h17_seed_taxonomy",
+      "canonical_rule_id": "procedural_no_interchangeability_without_authority_v1",
+      "legacy_atom_ids": []
     },
     {
       "atom_id": "episodic_h13_generic_not_proven_repair_v1",
@@ -469,7 +576,9 @@
       "forbidden_behavior": "Do not answer with a generic refusal when proof_context supports a useful limited explanation.",
       "proof_role": "guidance_only",
       "activation_status": "active",
-      "source": "h17_seed_taxonomy"
+      "source": "h17_seed_taxonomy",
+      "canonical_rule_id": "episodic_h13_generic_not_proven_repair_v1",
+      "legacy_atom_ids": []
     },
     {
       "atom_id": "trait_cautious_source_trace_helpful_v1",
@@ -485,7 +594,9 @@
       "forbidden_behavior": "Do not become a generic disclaimer machine or invent approvals.",
       "proof_role": "guidance_only",
       "activation_status": "active",
-      "source": "h17_seed_taxonomy"
+      "source": "h17_seed_taxonomy",
+      "canonical_rule_id": "trait_cautious_source_trace_helpful_v1",
+      "legacy_atom_ids": []
     },
     {
       "atom_id": "critic_safe_but_too_generic_repair_v1",
@@ -503,26 +614,32 @@
       "forbidden_behavior": "Do not repair by adding unsupported claims or treating Engram memory as proof.",
       "proof_role": "guidance_only",
       "activation_status": "active",
-      "source": "h17_seed_taxonomy"
+      "source": "h17_seed_taxonomy",
+      "canonical_rule_id": "critic_safe_but_too_generic_repair_v1",
+      "legacy_atom_ids": []
     }
   ],
   "summary": {
     "module": "trace_net_engineering_engram_memory_layers_v1",
     "version": "v1",
     "memory_layer_count": 6,
+    "persisted_memory_layer_count": 5,
+    "dynamic_working_memory_enabled": true,
     "memory_atom_count": 21,
     "layer_counts": {
-      "working_memory": 3,
-      "semantic_memory": 3,
-      "procedural_memory": 3,
-      "episodic_memory": 5,
+      "working_memory": 0,
+      "semantic_memory": 4,
+      "procedural_memory": 5,
+      "episodic_memory": 6,
       "trait_memory": 3,
-      "critic_memory": 4
+      "critic_memory": 3
     },
     "source_engram_atom_count": 15,
     "seed_atom_count": 6,
-    "engram_memory_guidance_only_count": 18,
-    "working_memory_current_proof_context_count": 3,
+    "engram_memory_guidance_only_count": 21,
+    "working_memory_current_proof_context_count": 0,
+    "engineer_query_clarification_atom_count": 0,
+    "source_query_planner_count": 0,
     "answer_permission_count": 0,
     "source_truth_mutation_allowed_count": 0,
     "postgres_write_attempt_count": 0,
@@ -530,6 +647,20 @@
     "opensearch_write_attempt_count": 0,
     "opensearch_upload_attempt_count": 0,
     "write_attempt_count": 0,
+    "persistent_layer_counts": {
+      "semantic_memory": 4,
+      "procedural_memory": 5,
+      "episodic_memory": 6,
+      "trait_memory": 3,
+      "critic_memory": 3
+    },
+    "static_working_memory_atom_count": 0,
+    "runtime_generated_working_memory_atom_count": 0,
+    "readable_atom_id_count": 21,
+    "canonical_rule_id_count": 21,
+    "legacy_alias_count": 16,
+    "allowed_behavior_populated_count": 21,
+    "forbidden_behavior_populated_count": 21,
     "unsafe_finding_count": 0,
     "unsafe_findings": []
   },

@@ -163,7 +163,9 @@ def make_runtime(mod):
     )
 
 
-def test_exact_identifier_cross_route_recovery_uses_matching_candidate_only():
+def test_exact_identifier_cross_route_recovery_uses_matching_candidate_only(monkeypatch, tmp_path):
+    monkeypatch.setenv("TRACE_NET_H30_GRAPH_RETRIEVAL_ENABLED", "0")
+    monkeypatch.setenv("TRACE_NET_LOCAL_ARTIFACT_ROOT", str(tmp_path))
     mod = load()
     runtime = make_runtime(mod)
     result = runtime.process({"query": "Find part 120-41824-003"})
@@ -172,6 +174,24 @@ def test_exact_identifier_cross_route_recovery_uses_matching_candidate_only():
     assert [row["candidate_value"] for row in candidates] == ["120-41824-003"]
     assert "candidate evidence" in result["content"].lower()
     assert result["self_rag_critic"]["quality_status"] == "PASS"
+
+
+def test_deterministic_fallback_is_declared_as_a_plan_amendment():
+    # A deterministic overlay fallback must be recorded as a plan amendment so
+    # that used_tunnel is a subset of declared_tunnel under the STRICT evaluator
+    # (no broad tunnel-family whitelist). Here the part-intent source-resolution
+    # fallback fires for a "contains" identifier query.
+    mod = load()
+    runtime = make_runtime(mod)
+    result = runtime.process({"query": "The P/N contains 41824"})
+
+    declared = set(result["route_plan"]["retrieval_tunnels"])
+    used = result["evidence_envelope"]["retrieval_tunnels_used"]
+
+    assert "phase4_3_candidate_source_resolution" in used
+    assert "phase4_3_candidate_source_resolution" in declared
+    # The contract holds with no undeclared/improvised tunnels.
+    assert all(tunnel in declared for tunnel in used)
 
 
 def test_safe_general_chat_is_deterministic_and_contains_no_fake_source_claim():
@@ -193,3 +213,60 @@ def test_metadata_conflict_is_not_promoted():
     })
     assert conflict
     assert conflict["type"] == "ata_document_mismatch"
+
+
+def test_ocr_exact_part_is_scope_not_a_second_claim():
+    mod = load()
+    query = (
+        "Recover the OCR labels for part 120-41824-003 from the "
+        "blurry scan. Include the page, OCR engine, confidence, "
+        "and readable text."
+    )
+    atoms = mod.extract_query_atoms(query)
+    plan = mod.plan_route(atoms)
+
+    assert atoms.ocr_requested is True
+    assert atoms.exact_part_numbers == ["120-41824-003"]
+    assert set(atoms.requested_claims) == {
+        "exact_identifier",
+        "ocr",
+    }
+    assert atoms.multi_question is False
+    assert plan.primary_route == "ocr_scan_recovery"
+
+
+def test_explicit_identity_plus_ocr_remains_multi_question():
+    mod = load()
+    query = (
+        "Find part 120-41824-003 and recover its OCR labels "
+        "from the blurry scan."
+    )
+    atoms = mod.extract_query_atoms(query)
+    plan = mod.plan_route(atoms)
+
+    assert atoms.ocr_requested is True
+    assert atoms.multi_question is True
+    assert plan.primary_route == "multi_question_research"
+
+
+def test_pronoun_only_navigation_fails_closed_to_clarification():
+    mod = load()
+    atoms = mod.extract_query_atoms("Which page contains it?")
+    plan = mod.plan_route(atoms)
+
+    assert atoms.exact_part_numbers == []
+    assert atoms.requested_claims == []
+    assert atoms.navigation_requested is False
+    assert atoms.multi_question is False
+    assert plan.primary_route == "clarification_no_evidence"
+
+
+def test_named_navigation_target_still_routes_navigation():
+    mod = load()
+    atoms = mod.extract_query_atoms(
+        "Which page discusses the component?"
+    )
+    plan = mod.plan_route(atoms)
+
+    assert atoms.navigation_requested is True
+    assert plan.primary_route == "document_page_navigation"

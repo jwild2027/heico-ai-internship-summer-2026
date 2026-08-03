@@ -15,6 +15,17 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable, Mapping
 
+try:
+    from tiff.trace_net_scan_quality_assessment_v1 import (
+        assess_scan_quality_from_record,
+        validate_route_labels,
+    )
+except ModuleNotFoundError:  # direct execution from tiff/
+    from trace_net_scan_quality_assessment_v1 import (
+        assess_scan_quality_from_record,
+        validate_route_labels,
+    )
+
 MODULE = "trace_net_route_confidence_resolver_v1"
 STATUS = "TRACE_NET_ROUTE_CONFIDENCE_RESOLVER_BUILT"
 VERSION = "v1"
@@ -30,6 +41,9 @@ CANONICAL_LABELS = [
     "mixed_text_and_figure",
     "review_required",
 ]
+
+# Scan condition is separate metadata.  It may never become a page route.
+validate_route_labels(CANONICAL_LABELS)
 
 PART_NUMBER_RE = re.compile(r"\b\d{3}-\d{5}-[A-Za-z0-9]{3,}\b")
 DATE_RE = re.compile(r"\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{1,2}/?\d{0,2}\b", re.I)
@@ -190,6 +204,8 @@ def _write_csv(path: Path, records: list[Mapping[str, Any]]) -> None:
         "secondary_routes",
         "route_confidence_score",
         "route_confidence_band",
+        "scan_quality_state",
+        "blur_detected",
         "auto_resolved",
         "multi_route_required",
         "validator_required",
@@ -514,6 +530,12 @@ def _resolve_record(record: Mapping[str, Any], *, high_threshold: float, medium_
 
     storage = _storage_policy(primary, confidence_band, validator_required)
 
+    # Enforce the corpus-scale contract: quality labels can never be page
+    # routes.  Scan quality is derived only from image measurements and is
+    # attached as independent metadata.
+    validate_route_labels([meta["legacy_route"], primary, *secondary_routes, *candidate_routes])
+    scan_quality = assess_scan_quality_from_record(record, page_route=primary)
+
     page_number = record.get("canonical_page_number") or record.get("page_number")
     page_id = record.get("page_id") or (f"page_{page_number}" if page_number is not None else None)
     return {
@@ -530,6 +552,10 @@ def _resolve_record(record: Mapping[str, Any], *, high_threshold: float, medium_
         "primary_route": primary,
         "secondary_routes": secondary_routes,
         "candidate_routes": candidate_routes,
+        "scan_quality": scan_quality,
+        "scan_quality_state": scan_quality["quality_state"],
+        "blur_detected": scan_quality["blur_detected"],
+        "scan_quality_route_separated": True,
         "route_scores": {k: round(v, 3) for k, v in scores.items() if v > 0},
         "route_reasons": route_reasons,
         "route_confidence_score": round(float(max(scores.values()) if primary != "review_required" else 0.0), 3),
@@ -608,6 +634,8 @@ def build_route_confidence_resolver(
 
     route_counts = Counter(r["primary_route"] for r in records)
     confidence_counts = Counter(r["route_confidence_band"] for r in records)
+    scan_quality_counts = Counter(r["scan_quality_state"] for r in records)
+    blur_detected_count = sum(1 for r in records if r.get("blur_detected") is True)
     auto_resolved_count = sum(1 for r in records if r["auto_resolved"])
     multi_route_required_count = sum(1 for r in records if r["multi_route_required"])
     validator_required_count = sum(1 for r in records if r["validator_required"])
@@ -628,6 +656,10 @@ def build_route_confidence_resolver(
         "invalid_taxonomy_labels": invalid_taxonomy_labels,
         "primary_route_counts": dict(sorted(route_counts.items())),
         "route_confidence_band_counts": dict(sorted(confidence_counts.items())),
+        "scan_quality_state_counts": dict(sorted(scan_quality_counts.items())),
+        "blur_detected_count": blur_detected_count,
+        "route_quality_label_violation_count": 0,
+        "scan_quality_is_not_page_route": True,
         "auto_resolved_route_count": auto_resolved_count,
         "multi_route_required_count": multi_route_required_count,
         "validator_required_count": validator_required_count,

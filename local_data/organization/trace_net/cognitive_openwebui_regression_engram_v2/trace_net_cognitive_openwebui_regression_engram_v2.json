@@ -1,0 +1,229 @@
+{
+  "status": "TRACE_NET_H30_RETRIEVAL_COMPLETION_ENGRAM_V2_BUILT",
+  "module": "trace_net_h30_retrieval_completion_engram_v2",
+  "version": "v2",
+  "quality_status": "PASS",
+  "safety_contract": "behavior_guidance_only_no_source_truth_no_answer_permission_no_db_writes",
+  "memory_atoms": [
+    {
+      "atom_id": "h30_correct_route_requires_correct_tunnel_v2",
+      "memory_layer": "critic_memory",
+      "title": "A correct route name is not enough",
+      "triggers": [
+        "correct route",
+        "specialized tunnel",
+        "semantic fallback",
+        "retrieval"
+      ],
+      "routes": [
+        "document_page_navigation",
+        "ocr_scan_recovery",
+        "high_degree_entity_aggregation",
+        "multi_question_research",
+        "exact_table_ipl_lookup",
+        "procedure_task_lookup"
+      ],
+      "claims": [],
+      "examples": [
+        "An OCR route must inspect OCR records rather than only semantic page similarity.",
+        "A navigation route should preserve a matching visual page as a navigation lead."
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "source": "H30 OpenWebUI retrieval-completion regression",
+      "inherits": [
+        "specialized_tunnel_first"
+      ],
+      "rule_ref": "specialized_tunnel_first",
+      "route_context": "A correct route name is not enough",
+      "rule_storage": "canonical_registry"
+    },
+    {
+      "atom_id": "h30_navigation_guidance_value_v2",
+      "memory_layer": "procedural_memory",
+      "title": "Keep matching navigation leads useful",
+      "triggers": [
+        "which page",
+        "source document",
+        "strongest evidence",
+        "location"
+      ],
+      "routes": [
+        "document_page_navigation"
+      ],
+      "claims": [
+        "exact_identifier"
+      ],
+      "examples": [
+        "Page 84 may be reported as a visual navigation lead for the exact requested part.",
+        "The page lead must not be described as approval or nomenclature proof."
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "source": "H30 OpenWebUI navigation regression",
+      "inherits": [
+        "navigation_exact_entity_presentation",
+        "guidance_is_not_proof",
+        "exact_entity_gate",
+        "specialized_tunnel_first",
+        "direct_source_before_fallback"
+      ],
+      "rule_ref": "navigation_exact_entity_presentation",
+      "route_context": "Keep matching navigation leads useful",
+      "rule_storage": "canonical_registry"
+    },
+    {
+      "atom_id": "h30_actual_ocr_record_required_v2",
+      "memory_layer": "procedural_memory",
+      "title": "OCR answers require OCR records",
+      "triggers": [
+        "ocr",
+        "recover",
+        "readable labels",
+        "blurry",
+        "faint"
+      ],
+      "routes": [
+        "ocr_scan_recovery"
+      ],
+      "claims": [
+        "ocr"
+      ],
+      "examples": [
+        "Report the stored OCR snippet and confidence when present.",
+        "When no OCR record is resolved, say so and list pages for retry."
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "source": "H30 OpenWebUI OCR regression",
+      "inherits": [
+        "actual_ocr_record_required",
+        "guidance_is_not_proof",
+        "specialized_tunnel_first",
+        "direct_source_before_fallback"
+      ],
+      "rule_ref": "actual_ocr_record_required",
+      "route_context": "OCR answers require OCR records",
+      "rule_storage": "canonical_registry"
+    },
+    {
+      "atom_id": "h30_aggregation_coverage_metadata_v2",
+      "memory_layer": "critic_memory",
+      "title": "Broad aggregation needs coverage metadata",
+      "triggers": [
+        "every page",
+        "all pages",
+        "coverage",
+        "every document"
+      ],
+      "routes": [
+        "high_degree_entity_aggregation"
+      ],
+      "claims": [
+        "exact_identifier"
+      ],
+      "examples": [
+        "Two semantic hits alone do not establish every-page coverage.",
+        "State that indexed-artifact coverage is not the same as all external manuals."
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "source": "H30 OpenWebUI aggregation regression",
+      "inherits": [
+        "aggregation_coverage_required",
+        "guidance_is_not_proof",
+        "specialized_tunnel_first",
+        "direct_source_before_fallback"
+      ],
+      "rule_ref": "aggregation_coverage_required",
+      "route_context": "Broad aggregation needs coverage metadata",
+      "rule_storage": "canonical_registry"
+    },
+    {
+      "atom_id": "h30_claim_buckets_must_survive_rendering_v2",
+      "memory_layer": "trait_memory",
+      "title": "Keep decomposed claims separate in the answer",
+      "triggers": [
+        "identify",
+        "nomenclature",
+        "parent assembly",
+        "figure",
+        "ipl row",
+        "approved replacement"
+      ],
+      "routes": [
+        "multi_question_research"
+      ],
+      "claims": [
+        "exact_identifier",
+        "nomenclature",
+        "relationship",
+        "visual_identity",
+        "table_value",
+        "authority"
+      ],
+      "examples": [
+        "A figure can be guidance-found while nomenclature remains unresolved.",
+        "No authority evidence means the replacement claim is not confirmed even when identity guidance exists."
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "source": "H30 OpenWebUI multi-claim regression",
+      "inherits": [
+        "claim_buckets_survive_rendering",
+        "claim_decomposition",
+        "guidance_is_not_proof",
+        "specialized_tunnel_first"
+      ],
+      "rule_ref": "claim_buckets_survive_rendering",
+      "route_context": "Keep decomposed claims separate in the answer",
+      "rule_storage": "canonical_registry"
+    },
+    {
+      "atom_id": "h30_direct_source_resolution_before_final_fallback_v2",
+      "memory_layer": "procedural_memory",
+      "title": "Attempt source-trace resolution before final fallback",
+      "triggers": [
+        "citation-ready",
+        "direct source",
+        "source trace",
+        "exact part"
+      ],
+      "routes": [
+        "exact_identifier_lookup",
+        "document_page_navigation",
+        "exact_table_ipl_lookup",
+        "ocr_scan_recovery",
+        "high_degree_entity_aggregation",
+        "multi_question_research"
+      ],
+      "claims": [
+        "exact_identifier",
+        "table_value",
+        "ocr"
+      ],
+      "examples": [
+        "A source-citation row with page, field, and value may become direct evidence.",
+        "An unmarked OCR or visual row remains guidance."
+      ],
+      "proof_role": "guidance_only",
+      "activation_status": "active",
+      "source": "H30 retrieval completion architecture",
+      "inherits": [
+        "direct_source_before_fallback"
+      ],
+      "rule_ref": "direct_source_before_fallback",
+      "route_context": "Attempt source-trace resolution before final fallback",
+      "rule_storage": "canonical_registry"
+    }
+  ],
+  "policy_compiler_compatible": true,
+  "canonical_rule_deduplication": true,
+  "policy_effect_schema": "trace_net_h30_engram_policy_compiler_v1",
+  "canonical_rule_registry": "local_data/organization/trace_net/engram_canonical_rule_registry_v1/trace_net_engram_canonical_rule_registry_v1.json",
+  "canonical_rule_registry_required": true,
+  "inheritance_schema": "trace_net_h30_engram_canonical_registry_v1",
+  "inherited_rule_reference_count": 19,
+  "local_policy_effect_count": 0,
+  "local_rule_text_count": 0
+}
