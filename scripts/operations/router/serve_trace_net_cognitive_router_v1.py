@@ -677,6 +677,20 @@ def build_follow_up_questions(
     return output[:5]
 
 
+def discovery_tunnel_timeout_seconds() -> float:
+    """Return the bounded timeout used only by ATA/nomenclature discovery."""
+    try:
+        value = float(
+            os.environ.get(
+                "TRACE_NET_H30_DISCOVERY_TUNNEL_TIMEOUT_SECONDS",
+                "12",
+            )
+        )
+    except (TypeError, ValueError):
+        value = 12.0
+    return max(1.0, min(30.0, value))
+
+
 def http_json(
     url: str,
     payload: Optional[Mapping[str, Any]],
@@ -913,13 +927,38 @@ class CognitiveRuntime:
             timeout=getattr(self, "retrieval_timeout", None) or self.timeout,
         )
 
+    def run_with_retrieval_timeout(
+        self,
+        timeout_seconds: float,
+        call: Any,
+    ) -> Any:
+        """Temporarily bound one retrieval call without changing global timeouts."""
+        had_override = hasattr(self, "retrieval_timeout")
+        previous = getattr(self, "retrieval_timeout", None)
+        configured = previous or self.timeout
+        bounded = min(
+            float(configured),
+            max(0.5, float(timeout_seconds)),
+        )
+        self.retrieval_timeout = bounded
+        try:
+            return call()
+        finally:
+            if had_override:
+                self.retrieval_timeout = previous
+            else:
+                delattr(self, "retrieval_timeout")
+
     def add_unified(self, envelope: EvidenceEnvelope, query: str, label: str) -> Dict[str, Any]:
+        started = time.monotonic()
         status, result = self.call_unified(query)
+        elapsed_ms = round((time.monotonic() - started) * 1000.0, 3)
         envelope.retrieval_tunnels_used.append(label)
         envelope.upstream_results.append({
             "tunnel": label,
             "status_code": status,
             "query": query,
+            "elapsed_ms": elapsed_ms,
             "route": result.get("route"),
             "quality_status": result.get("quality_status"),
             "content_preview": compact(result.get("content"), 1000),
@@ -932,12 +971,15 @@ class CognitiveRuntime:
         return result
 
     def add_guided(self, envelope: EvidenceEnvelope, query: str, atoms: QueryAtoms, label: str, *, allow_broad: bool = False) -> Dict[str, Any]:
+        started = time.monotonic()
         status, result = self.call_guided(query)
+        elapsed_ms = round((time.monotonic() - started) * 1000.0, 3)
         envelope.retrieval_tunnels_used.append(label)
         envelope.upstream_results.append({
             "tunnel": label,
             "status_code": status,
             "query": query,
+            "elapsed_ms": elapsed_ms,
             "route": "guided_discovery",
             "quality_status": result.get("quality_status"),
             "candidate_count": result.get("total_candidate_route_count"),
@@ -975,21 +1017,61 @@ class CognitiveRuntime:
             self.add_unified(envelope, query, "normal_source_resolution")
         elif route == "ata_system_discovery":
             ata_clue = atoms.ata_exact[0] if atoms.ata_exact else (atoms.ata_prefix or "")
-            self.add_unified(envelope, f"Find source-backed manual sections and pages for ATA {ata_clue}", "normal_source_truth")
             broad = f"I need to identify a part in the ATA {ata_clue} system area, but I do not know the part number."
-            self.add_guided(envelope, broad, atoms, "guided_broad_candidates", allow_broad=True)
+            route_timeout = discovery_tunnel_timeout_seconds()
+            self.run_with_retrieval_timeout(
+                route_timeout,
+                lambda: self.add_guided(
+                    envelope,
+                    broad,
+                    atoms,
+                    "guided_broad_candidates",
+                    allow_broad=True,
+                ),
+            )
             envelope.candidate_evidence = [
                 row for row in envelope.candidate_evidence
                 if compact(row.get("ata"), 100).startswith(str(ata_clue))
             ]
+            # Candidate discovery is sufficient for this discovery route. Only
+            # invoke the slower source-truth tunnel when guided retrieval found
+            # no matching ATA candidate.
+            if not envelope.candidate_evidence:
+                self.run_with_retrieval_timeout(
+                    route_timeout,
+                    lambda: self.add_unified(
+                        envelope,
+                        f"Find source-backed manual sections and pages for ATA {ata_clue}",
+                        "normal_source_truth",
+                    ),
+                )
         elif route == "nomenclature_function_search":
-            self.add_unified(envelope, query, "normal_source_truth")
-            self.add_guided(envelope, query, atoms, "guided_nomenclature_candidates", allow_broad=True)
+            route_timeout = discovery_tunnel_timeout_seconds()
+            self.run_with_retrieval_timeout(
+                route_timeout,
+                lambda: self.add_guided(
+                    envelope,
+                    query,
+                    atoms,
+                    "guided_nomenclature_candidates",
+                    allow_broad=True,
+                ),
+            )
             envelope.candidate_evidence = [
                 row for row in envelope.candidate_evidence
                 if candidate_matches_nomenclature(row, atoms)
             ]
-            self.add_unified(envelope, "Find diagram for " + query, "confirmed_visual")
+            # Preserve source-truth fallback, but do not pay for it after the
+            # guided route already produced matching candidate evidence.
+            if not envelope.candidate_evidence:
+                self.run_with_retrieval_timeout(
+                    route_timeout,
+                    lambda: self.add_unified(
+                        envelope,
+                        query,
+                        "normal_source_truth",
+                    ),
+                )
         elif route == "visual_figure_callout_lookup":
             self.add_unified(envelope, query, "confirmed_visual")
         elif route in {

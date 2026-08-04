@@ -588,9 +588,95 @@ def render_deterministic_mode(
             "guide the requested technical claim. No technical conclusion is provided."
         )
 
+    # Technical deterministic modes must remain fail-closed while still
+    # satisfying the shared public Answer / Evidence / Limits contract.
+    # The Evidence section describes only the evidence state; it does not
+    # promote guidance, invent a citation, or grant answer permission.
+    if (
+        mode not in {MODE_GENERAL_CHAT, MODE_UPSTREAM_ERROR}
+        and not re.search(r"(?m)^## Answer\s*$", text)
+    ):
+        route = str(result.get("route") or "")
+        if (
+            mode == MODE_NO_EVIDENCE
+            and route == "visual_figure_callout_lookup"
+        ):
+            text = (
+                "No source-supported visual match was resolved for this request."
+            )
+            evidence_line = (
+                "No typed visual record with a source page, figure reference, "
+                "or citation-ready source trace was recovered."
+            )
+            limit_line = (
+                "The requested figure, diagram, or callout cannot be confirmed "
+                "from the currently indexed evidence."
+            )
+        elif mode == MODE_AUTHORITY_MISSING:
+            evidence_line = (
+                "No direct authority field supporting approval, fit, effectivity, "
+                "eligibility, applicability, or interchangeability was recovered."
+            )
+            limit_line = (
+                "No installation-authority conclusion is permitted from candidate "
+                "or guidance-only records."
+            )
+        elif mode == MODE_CONFLICT:
+            evidence_line = (
+                "The records described above remain unresolved conflict guidance "
+                "and are not direct proof."
+            )
+            limit_line = (
+                "No positive technical conclusion is permitted until the conflict "
+                "is resolved against direct source evidence."
+            )
+        elif mode == MODE_VISUAL:
+            evidence_line = (
+                "The visual records described above are guidance-only and are not "
+                "citation-ready direct proof."
+            )
+            limit_line = (
+                "Technical identity must be resolved to a direct source field "
+                "before it can be confirmed."
+            )
+        elif mode == MODE_CANDIDATE:
+            evidence_line = (
+                "The identifiers described above are indexed candidate records "
+                "and are not a final identification."
+            )
+            limit_line = (
+                "Exact identity, approval, fit, effectivity, and interchangeability "
+                "remain unproven."
+            )
+        elif mode == MODE_SEMANTIC:
+            evidence_line = (
+                "The records described above are semantic, graph, summary, or "
+                "source-resolution guidance rather than direct proof."
+            )
+            limit_line = (
+                "The requested claim must be resolved to citation-ready direct "
+                "source evidence before confirmation."
+            )
+        else:
+            evidence_line = (
+                "No typed evidence record capable of supporting or safely guiding "
+                "the requested technical claim was recovered."
+            )
+            limit_line = (
+                "No technical conclusion is provided without source-supported "
+                "evidence."
+            )
+        text = (
+            "## Answer\n\n"
+            + text.strip()
+            + "\n\n## Evidence\n\n- "
+            + evidence_line
+            + "\n\n## Limits\n\n- "
+            + limit_line
+        )
+
     return _append_followups(
-        text,
-        result.get("follow_up_questions") or [],
+        text, result.get("follow_up_questions") or []
     )
 
 
