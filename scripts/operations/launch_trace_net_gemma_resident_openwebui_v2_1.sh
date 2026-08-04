@@ -41,6 +41,7 @@ FINAL_ENGRAM_MAX_FOLLOWUPS="${TRACE_NET_H30_FINAL_ENGRAM_MAX_FOLLOWUPS:-3}"
 FINAL_ENGRAM_MAX_REPAIRS="${TRACE_NET_H30_FINAL_ENGRAM_MAX_REPAIRS:-1}"
 EVIDENCE_SYNTHESIS_ENABLED="${TRACE_NET_H30_EVIDENCE_SYNTHESIS_ENABLED:-1}"
 CONSTRAINED_WRITER_ENABLED="${TRACE_NET_H30_CONSTRAINED_WRITER_ENABLED:-1}"
+CONSTRAINED_WRITER_MANDATORY_TECHNICAL_ROUTES="${TRACE_NET_H30_CONSTRAINED_WRITER_MANDATORY_TECHNICAL_ROUTES:-1}"
 CONSTRAINED_WRITER_ROUTES="${TRACE_NET_H30_CONSTRAINED_WRITER_ROUTES:-exact_identifier_lookup,exact_table_ipl_lookup,ata_system_discovery}"
 CONSTRAINED_WRITER_MAX_CITATIONS="${TRACE_NET_H30_CONSTRAINED_WRITER_MAX_CITATIONS:-16}"
 CONSTRAINED_WRITER_MAX_OUTPUT_CHARS="${TRACE_NET_H30_CONSTRAINED_WRITER_MAX_OUTPUT_CHARS:-12000}"
@@ -64,6 +65,7 @@ validate_switch() {
 }
 validate_switch TRACE_NET_GEMMA_LAUNCHER_RUN_FOCUSED_TESTS "$RUN_FOCUSED_TESTS"
 validate_switch TRACE_NET_GEMMA_LAUNCHER_RUN_PROGRESS_SMOKE "$RUN_PROGRESS_SMOKE"
+validate_switch TRACE_NET_H30_CONSTRAINED_WRITER_MANDATORY_TECHNICAL_ROUTES "$CONSTRAINED_WRITER_MANDATORY_TECHNICAL_ROUTES"
 
 cd "$REPO"
 source "$VENV/bin/activate"
@@ -305,6 +307,7 @@ export TRACE_NET_H30_FINAL_ENGRAM_MAX_FOLLOWUPS=$(q "$FINAL_ENGRAM_MAX_FOLLOWUPS
 export TRACE_NET_H30_FINAL_ENGRAM_MAX_REPAIRS=$(q "$FINAL_ENGRAM_MAX_REPAIRS")
 export TRACE_NET_H30_EVIDENCE_SYNTHESIS_ENABLED=$(q "$EVIDENCE_SYNTHESIS_ENABLED")
 export TRACE_NET_H30_CONSTRAINED_WRITER_ENABLED=$(q "$CONSTRAINED_WRITER_ENABLED")
+export TRACE_NET_H30_CONSTRAINED_WRITER_MANDATORY_TECHNICAL_ROUTES=$(q "$CONSTRAINED_WRITER_MANDATORY_TECHNICAL_ROUTES")
 export TRACE_NET_H30_CONSTRAINED_WRITER_ROUTES=$(q "$CONSTRAINED_WRITER_ROUTES")
 export TRACE_NET_H30_CONSTRAINED_WRITER_MAX_CITATIONS=$(q "$CONSTRAINED_WRITER_MAX_CITATIONS")
 export TRACE_NET_H30_CONSTRAINED_WRITER_MAX_OUTPUT_CHARS=$(q "$CONSTRAINED_WRITER_MAX_OUTPUT_CHARS")
@@ -395,6 +398,7 @@ if mode == "writer":
         data.get("evidence_aware_answer_modes_enabled") is True,
         data.get("final_engram_rollout_enabled") is True,
         data.get("constrained_gemma_writer_enabled") is True,
+        data.get("mandatory_technical_gemma_enabled") is True,
         data.get("legacy_freeform_writer_suppressed") is True,
         data.get("phase3_deterministic_fallback_preserved") is True,
     ))
@@ -448,6 +452,7 @@ writer_expected = {
     "evidence_aware_answer_modes_enabled": True,
     "final_engram_rollout_enabled": True,
     "constrained_gemma_writer_enabled": True,
+    "mandatory_technical_gemma_enabled": True,
     "legacy_freeform_writer_suppressed": True,
     "phase3_deterministic_fallback_preserved": True,
 }

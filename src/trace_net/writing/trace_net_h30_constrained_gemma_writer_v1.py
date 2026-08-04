@@ -21,6 +21,7 @@ import time
 from typing import Any, Dict, Iterable, List, Mapping, MutableMapping, Optional, Sequence, Tuple
 
 from src.trace_net.writing.trace_net_h30_public_answer_contract_v1 import (
+    TECHNICAL_ROUTES,
     parse_public_answer,
     render_public_answer,
     validate_public_answer_contract,
@@ -40,6 +41,15 @@ DEFAULT_CANARY_ROUTES: Tuple[str, ...] = (
     "exact_identifier_lookup",
     "exact_table_ipl_lookup",
     "ata_system_discovery",
+)
+
+# TRACE_NET_H30_MANDATORY_GEMMA_ALL_TECHNICAL_V1
+# The deterministic Phase 3 answer remains the evidence/safety authority. When
+# enabled, every validated technical route receives exactly one constrained
+# Gemma wording attempt, including guidance-only and no-evidence responses.
+MANDATORY_TECHNICAL_ROUTES: Tuple[str, ...] = tuple(sorted(TECHNICAL_ROUTES))
+MANDATORY_TECHNICAL_ENV = (
+    "TRACE_NET_H30_CONSTRAINED_WRITER_MANDATORY_TECHNICAL_ROUTES"
 )
 
 CITATION_RE = re.compile(r"\[(\d{1,3})\]")
@@ -247,6 +257,11 @@ def load_constrained_writer_config(
     )
     return {
         "enabled": _bool_env(env, "TRACE_NET_H30_CONSTRAINED_WRITER_ENABLED", False),
+        "mandatory_technical_routes": _bool_env(
+            env,
+            MANDATORY_TECHNICAL_ENV,
+            False,
+        ),
         "routes": routes or DEFAULT_CANARY_ROUTES,
         "max_citations": max_citations,
         "max_output_chars": max_output_chars,
@@ -612,13 +627,26 @@ def _eligible_for_call(
     if not config.get("enabled"):
         return False, "disabled"
     route = str(result.get("route") or "")
-    if route not in set(config.get("routes") or ()):
+    mandatory = bool(config.get("mandatory_technical_routes"))
+    if mandatory:
+        if route not in set(MANDATORY_TECHNICAL_ROUTES):
+            return False, "non_technical_route"
+    elif route not in set(config.get("routes") or ()):
         return False, "route_not_in_canary"
     if not bool(_mapping(result.get("post_answer_validation")).get("accepted")):
         return False, "phase3_answer_not_validated"
     content = str(result.get("content") or "")
     if not content.strip():
         return False, "phase3_answer_empty"
+
+    # Mandatory mode intentionally permits an empty citation registry and
+    # negative/no-evidence drafts. The model receives only the already-validated
+    # deterministic Answer/Evidence/Limits packet, may author only the Answer,
+    # and is rejected if it adds identifiers, citations, authority, or facts that
+    # violate the existing validators.
+    if mandatory:
+        return True, "eligible_mandatory_validated_technical_route"
+
     if not registry:
         return False, "citation_registry_empty"
     if not CITATION_RE.search(content):
@@ -637,6 +665,15 @@ def constrained_writer_health(
         "quality_status": "PASS",
         "enabled": bool(config.get("enabled")),
         "canary_routes": list(config.get("routes") or ()),
+        "mandatory_technical_routes_enabled": bool(
+            config.get("mandatory_technical_routes")
+        ),
+        "mandatory_technical_routes": list(MANDATORY_TECHNICAL_ROUTES),
+        "validated_technical_route_call_policy": (
+            "exactly_one_constrained_attempt"
+            if config.get("mandatory_technical_routes")
+            else "canary_eligible_only"
+        ),
         "single_model_call_maximum": True,
         "legacy_freeform_writer_suppressed": bool(config.get("enabled")),
         "structured_output_required": True,
@@ -693,6 +730,13 @@ def install_constrained_gemma_writer(module: MutableMapping[str, Any]) -> None:
         old_content = str(result.get("content") or "")
         old_validation = _mapping(result.get("post_answer_validation"))
         eligible, reason = _eligible_for_call(result=result, config=config, registry=registry)
+        route = str(result.get("route") or "")
+        mandatory_call_required = bool(
+            config.get("mandatory_technical_routes")
+            and route in set(MANDATORY_TECHNICAL_ROUTES)
+            and bool(_mapping(result.get("post_answer_validation")).get("accepted"))
+            and bool(str(result.get("content") or "").strip())
+        )
 
         overall_budget_seconds = float(config.get("overall_budget_seconds") or 210.0)
         response_reserve_seconds = float(config.get("response_reserve_seconds") or 20.0)
@@ -703,9 +747,14 @@ def install_constrained_gemma_writer(module: MutableMapping[str, Any]) -> None:
             "patch_id": PATCH_ID,
             "quality_status": "SKIPPED",
             "enabled": bool(config.get("enabled")),
-            "route": str(result.get("route") or ""),
+            "route": route,
             "eligible": eligible,
             "reason": reason,
+            "mandatory_technical_routes_enabled": bool(
+                config.get("mandatory_technical_routes")
+            ),
+            "mandatory_call_required": mandatory_call_required,
+            "mandatory_call_satisfied": False,
             "legacy_freeform_gemma_suppressed": bool(
                 result.get("legacy_freeform_gemma_suppressed")
                 or config.get("enabled")
@@ -748,6 +797,10 @@ def install_constrained_gemma_writer(module: MutableMapping[str, Any]) -> None:
 
         def attach_and_return() -> Dict[str, Any]:
             total_elapsed_seconds = max(0.0, time.monotonic() - request_started)
+            telemetry["mandatory_call_satisfied"] = bool(
+                not mandatory_call_required
+                or int(telemetry.get("call_count") or 0) == 1
+            )
             telemetry["total_elapsed_ms"] = round(total_elapsed_seconds * 1000.0, 3)
             telemetry["budget_overrun_ms"] = round(
                 max(0.0, total_elapsed_seconds - overall_budget_seconds) * 1000.0,
@@ -943,6 +996,16 @@ def install_constrained_gemma_writer(module: MutableMapping[str, Any]) -> None:
         health = constrained_writer_health()
         result["constrained_gemma_writer"] = health
         result["constrained_gemma_writer_enabled"] = bool(health.get("enabled"))
+        mandatory_enabled = bool(health.get("mandatory_technical_routes_enabled"))
+        result["mandatory_technical_gemma_enabled"] = mandatory_enabled
+        result["mandatory_technical_gemma_route_count"] = len(
+            health.get("mandatory_technical_routes") or []
+        )
+        result["validated_technical_route_call_policy"] = health.get(
+            "validated_technical_route_call_policy"
+        )
+        result["direct_evidence_only_gemma_writing"] = not mandatory_enabled
+        result["candidate_answers_deterministic"] = not mandatory_enabled
         result["single_gemma_call_maximum"] = True
         result["legacy_freeform_writer_suppressed"] = bool(health.get("enabled"))
         result["phase3_deterministic_fallback_preserved"] = True
@@ -965,6 +1028,8 @@ __all__ = [
     "OUTPUT_SCHEMA_VERSION",
     "OUTPUT_CONTRACT_MODE",
     "DEFAULT_CANARY_ROUTES",
+    "MANDATORY_TECHNICAL_ROUTES",
+    "MANDATORY_TECHNICAL_ENV",
     "MODEL_META_PATTERNS",
     "contains_model_meta_commentary",
     "build_writer_packet",
