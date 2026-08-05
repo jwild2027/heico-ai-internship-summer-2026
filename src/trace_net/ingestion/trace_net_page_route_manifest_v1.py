@@ -372,12 +372,227 @@ def _choose_route(scores: Mapping[str, float], safe_for_routing: bool, conflict:
     return top_route, top_score, conflict, []
 
 
+def _table_line_geometry_artifact_present(artifact_keys: Sequence[str]) -> bool:
+    """Presence-only, UNVALIDATED signal. The artifact-detector page card exposes
+    only the artifact-key NAME; the manifest cannot see the underlying grid type,
+    line/intersection measurements, or quality status, and the key can co-occur
+    with a near-empty ruling grid. It is therefore reported for transparency but
+    NOT used to confirm a table candidate."""
+    haystack = " ".join(str(k).lower() for k in artifact_keys)
+    return "table_line_geometry" in haystack
+
+
+def _has_table_geometry(artifact_keys: Sequence[str], ink_metadata: Mapping[str, Any]) -> Tuple[bool, str]:
+    """Confirming table geometry = a VALIDATED page-ink ruling grid (measured line
+    and intersection counts above threshold). The table_line_geometry artifact key
+    is presence-only/unvalidated (see above) and does NOT by itself confirm. No new
+    geometry is computed here; only existing page-ink evidence is consumed."""
+    if ink_metadata.get("page_ink_route_evidence_available"):
+        intersections = _safe_int(ink_metadata.get("ink_intersection_count"))
+        table_grid = _safe_float(ink_metadata.get("ink_table_grid_likelihood"))
+        horizontal = _safe_int(ink_metadata.get("ink_horizontal_line_count"))
+        vertical = _safe_int(ink_metadata.get("ink_vertical_line_count"))
+        if intersections >= 40 and table_grid >= 0.55 and horizontal >= 3 and vertical >= 2:
+            return True, "ink_grid_geometry_supports_table"
+    return False, ""
+
+
+def _apply_scan_pack_route_signal(
+    route_scores: Dict[str, float],
+    routing_reasons: List[str],
+    scan_pack_card: Optional[Mapping[str, Any]],
+    artifact_keys: Sequence[str],
+    ink_metadata: Mapping[str, Any],
+) -> Tuple[Dict[str, float], List[str], Dict[str, Any]]:
+    """Integrate the OCR scan pack's route as an upstream CANDIDATE signal.
+
+    A confident scan-pack route lends a bounded boost. A low-confidence table
+    CANDIDATE (Patch 3: table vocabulary/parts without text structure) is only
+    allowed to raise the table score when actual geometry confirms it; otherwise
+    it is advisory and the manifest routes by the remaining evidence.
+    """
+    if not scan_pack_card:
+        return route_scores, routing_reasons, {"scan_pack_route_signal_available": False}
+
+    scores = dict(route_scores)
+    reasons = list(routing_reasons)
+    sp_route = str(scan_pack_card.get("accepted_route") or "").strip()
+    sp_conf = _safe_float(scan_pack_card.get("route_confidence"))
+    sp_reasons = [str(r) for r in (scan_pack_card.get("route_reasons") or [])]
+
+    is_table_candidate = (
+        "table_supporting_only_no_structure_candidate" in sp_reasons
+        or "mixed_table_and_visual_requires_validator" in sp_reasons
+        or (sp_route == ROUTE_TABLE and 0.0 < sp_conf <= 0.5)
+    )
+    has_geometry, geometry_reason = _has_table_geometry(artifact_keys, ink_metadata)
+    signal_reasons: List[str] = []
+    resolution: Dict[str, Any] = {
+        "scan_pack_route_signal_available": True,
+        "scan_pack_route": sp_route,
+        "scan_pack_route_confidence": sp_conf,
+        "is_low_confidence_table_candidate": is_table_candidate,
+        "table_geometry_present": has_geometry,
+        "table_line_geometry_artifact_present_unvalidated": _table_line_geometry_artifact_present(artifact_keys),
+    }
+
+    if sp_route == ROUTE_BLANK:
+        # OCR found no content: reinforce the blank route.
+        scores[ROUTE_BLANK] = _clip(max(scores.get(ROUTE_BLANK, 0.0), max(0.60, sp_conf)))
+        signal_reasons.append("scan_pack_blank_signal")
+        resolution["resolution"] = "reinforced_blank"
+    elif sp_route in (ROUTE_TABLE, ROUTE_IMAGE, ROUTE_TEXT):
+        # Real OCR content is present: the manifest's evidence-absent blank default
+        # must not win over the authoritative OCR-derived route.
+        scores[ROUTE_BLANK] = min(scores.get(ROUTE_BLANK, 0.0), 0.10)
+        if is_table_candidate:
+            if has_geometry:
+                # Confirm table only up to a bounded score so strong contradicting
+                # image/ink evidence can still win above it.
+                scores[ROUTE_TABLE] = _clip(max(scores.get(ROUTE_TABLE, 0.0), 0.75))
+                signal_reasons.append("scan_pack_table_candidate_confirmed_by_geometry")
+                if geometry_reason:
+                    signal_reasons.append(geometry_reason)
+                resolution["resolution"] = "confirmed_table_by_geometry"
+                resolution["geometry_source"] = geometry_reason
+            else:
+                # Unconfirmed table candidate: geometry did not back it, so do not
+                # authorize table. Prefer text unless image evidence is stronger;
+                # keep table as a validator-gated secondary.
+                scores[ROUTE_TEXT] = _clip(max(scores.get(ROUTE_TEXT, 0.0), 0.55))
+                scores[ROUTE_TABLE] = _clip(max(scores.get(ROUTE_TABLE, 0.0), 0.40))
+                signal_reasons.append("scan_pack_table_candidate_unconfirmed_no_geometry")
+                resolution["resolution"] = "table_candidate_unconfirmed_deferred"
+        else:
+            # Confident OCR content route provides a FLOOR. A high-confidence
+            # STRUCTURAL route — a text-structural table (repeated item/part/qty
+            # rows), an index/TOC/vendor structure, or a sparse diagram with strong
+            # cross-PSM callout disagreement — gets a stronger floor so competing
+            # marginal evidence (a mere figure, or ink text density from page marks)
+            # cannot flip it; other content routes get a moderate floor that
+            # stronger validated image/ink/table geometry can still exceed.
+            has_text_structure = sp_route == ROUTE_TABLE and any(
+                str(r).startswith("table_structural_rows") for r in sp_reasons
+            )
+            has_index_structure = sp_route == ROUTE_TABLE and any(
+                str(r).startswith("index_structural_rows") for r in sp_reasons
+            )
+            has_diagram_structure = sp_route == ROUTE_IMAGE and any(
+                str(r).startswith("diagram_sparse_callouts") for r in sp_reasons
+            )
+            # Index and sparse-diagram structures must clear specifically strong
+            # COMPETING marginal evidence (generic image artifact keys; ink text
+            # density from page marks), so they get a slightly higher floor than a
+            # text-structural table, which already carries table corroboration.
+            if has_index_structure or has_diagram_structure:
+                floor = 0.82
+            elif has_text_structure:
+                floor = 0.80
+            else:
+                floor = 0.60
+            scores[sp_route] = _clip(max(scores.get(sp_route, 0.0), floor))
+            signal_reasons.append(f"scan_pack_route_signal_{sp_route}")
+            if has_text_structure:
+                resolution["resolution"] = "adopted_text_structural_table"
+            elif has_index_structure:
+                resolution["resolution"] = "adopted_index_structural_table"
+            elif has_diagram_structure:
+                resolution["resolution"] = "adopted_sparse_diagram_image"
+            else:
+                resolution["resolution"] = f"adopted_{sp_route}"
+    else:
+        resolution["resolution"] = "scan_pack_signal_advisory_only"
+
+    reasons.extend(signal_reasons)
+    resolution["scan_pack_signal_reasons"] = signal_reasons
+    return scores, reasons, resolution
+
+
+def _is_validated_procedure_prose(scan_pack_card: Optional[Mapping[str, Any]]) -> bool:
+    """A confident scan-pack normal_text backed by strong procedural/descriptive
+    prose structure (imperative steps, NOTE/WARNING blocks, long prose lines). Such
+    validated procedure structure must not be flipped by INK-ONLY diagram/grid marks
+    (underlines, page furniture, dashed hatching) unless real artifact image/table
+    evidence corroborates it."""
+    if not scan_pack_card:
+        return False
+    if str(scan_pack_card.get("accepted_route") or "") != ROUTE_TEXT:
+        return False
+    if _safe_float(scan_pack_card.get("route_confidence")) < 0.85:
+        return False
+    reasons = [str(r) for r in (scan_pack_card.get("route_reasons") or [])]
+    return any(r.startswith("strong_prose") or r.startswith("descriptive_prose") for r in reasons)
+
+
+def _apply_validated_ink_geometry(
+    route_scores: Dict[str, float],
+    routing_reasons: List[str],
+    ink_metadata: Mapping[str, Any],
+    scan_pack_card: Optional[Mapping[str, Any]],
+    *,
+    table_count: int = 0,
+    image_count: int = 0,
+) -> Tuple[Dict[str, float], List[str], Dict[str, Any]]:
+    """Patch 4.1: let VALIDATED page-ink geometry (measured ruling grid or diagram
+    likelihood) establish a route even when the artifact detector has no
+    corroborating evidence, and let scan-pack/ink agreement corroborate the shared
+    route over marginal single-source evidence. No new geometry is computed.
+
+    Patch 4.2: an ink-only diagram/grid override does NOT overrule validated
+    procedure prose unless real artifact image/table evidence corroborates it. Valid
+    ink geometry is not disabled globally — it still recovers parts lists and
+    diagrams that are not confident procedural prose (e.g. Patch-4.1 recoveries)."""
+    if not ink_metadata.get("page_ink_route_evidence_available"):
+        return route_scores, routing_reasons, {"validated_ink_geometry_available": False}
+    scores = dict(route_scores)
+    reasons: List[str] = []
+    telem: Dict[str, Any] = {"validated_ink_geometry_available": True}
+    table_grid = _safe_float(ink_metadata.get("ink_table_grid_likelihood"))
+    diagram = _safe_float(ink_metadata.get("ink_diagram_likelihood"))
+    horizontal = _safe_int(ink_metadata.get("ink_horizontal_line_count"))
+    vertical = _safe_int(ink_metadata.get("ink_vertical_line_count"))
+    intersections = _safe_int(ink_metadata.get("ink_intersection_count"))
+    ink_primary = ink_metadata.get("ink_primary_route")
+    procedure_prose = _is_validated_procedure_prose(scan_pack_card)
+    telem["validated_procedure_prose"] = procedure_prose
+
+    # Validated ruling-grid table geometry (real horizontal+vertical lines that
+    # intersect) — a parts list mislabeled by text OCR is recovered as table.
+    if table_grid >= 0.70 and horizontal >= 3 and vertical >= 3 and intersections >= 20:
+        if procedure_prose and table_count <= 0:
+            reasons.append("ink_ruling_grid_override_suppressed_for_procedure_prose")
+            telem["ink_table_grid_override_suppressed"] = True
+        else:
+            scores[ROUTE_TABLE] = _clip(max(scores.get(ROUTE_TABLE, 0.0), 0.80))
+            reasons.append("validated_ink_ruling_grid_supports_table")
+            telem["validated_ink_table_grid"] = True
+    # Validated diagram geometry (strong diagram likelihood, not a ruling grid).
+    elif diagram >= 0.70:
+        if procedure_prose and image_count <= 0:
+            reasons.append("ink_diagram_override_suppressed_for_procedure_prose")
+            telem["ink_diagram_override_suppressed"] = True
+        else:
+            scores[ROUTE_IMAGE] = _clip(max(scores.get(ROUTE_IMAGE, 0.0), 0.80))
+            reasons.append("validated_ink_diagram_supports_image")
+            telem["validated_ink_diagram"] = True
+
+    # Scan-pack / ink agreement: the corroborated route beats marginal evidence.
+    sp_route = str((scan_pack_card or {}).get("accepted_route") or "").strip()
+    if sp_route in (ROUTE_TABLE, ROUTE_IMAGE, ROUTE_TEXT) and ink_primary == sp_route:
+        scores[sp_route] = _clip(max(scores.get(sp_route, 0.0), 0.82))
+        reasons.append(f"scan_pack_ink_agreement_{sp_route}")
+        telem["scan_pack_ink_agreement"] = sp_route
+
+    return scores, routing_reasons + reasons, telem
+
+
 def build_route_card(
     source_card: Optional[Mapping[str, Any]],
     evidence_cards: Sequence[Mapping[str, Any]],
     artifact_detector_path: Path,
     ink_card: Optional[Mapping[str, Any]] = None,
     page_ink_route_evidence_path: Optional[Path] = None,
+    scan_pack_card: Optional[Mapping[str, Any]] = None,
 ) -> Dict[str, Any]:
     source_card = source_card or {}
     page_number = _page_number_from_card(source_card) if source_card else None
@@ -434,6 +649,18 @@ def build_route_card(
         ocr_count=ocr_count,
         no_specialized_evidence=no_specialized_evidence,
     )
+    # Patch 4: integrate the upstream OCR scan-pack route as a candidate signal and
+    # resolve low-confidence table candidates against the geometry above.
+    route_scores, routing_reasons, scan_pack_integration = _apply_scan_pack_route_signal(
+        route_scores, routing_reasons, scan_pack_card, artifact_keys, ink_metadata
+    )
+    # Patch 4.1: validated ink geometry + scan-pack/ink agreement correct the
+    # measured routing conflicts (parts-list->image, prose->image, diagram->text).
+    route_scores, routing_reasons, geometry_integration = _apply_validated_ink_geometry(
+        route_scores, routing_reasons, ink_metadata, scan_pack_card,
+        table_count=table_count, image_count=image_count,
+    )
+    scan_pack_integration["validated_ink_geometry"] = geometry_integration
 
     positive_scores = [score for score in (route_scores[ROUTE_TABLE], route_scores[ROUTE_IMAGE], route_scores[ROUTE_TEXT]) if score >= 0.50]
     top_two = sorted([route_scores[ROUTE_TABLE], route_scores[ROUTE_IMAGE], route_scores[ROUTE_TEXT]], reverse=True)[:2]
@@ -464,6 +691,12 @@ def build_route_card(
         "image_filename": source_card.get("image_filename"),
         "page_aliases": sorted(str(a) for a in aliases if str(a).strip()),
         "primary_route": primary_route,
+        # Canonical final route: this manifest is the single final-route authority.
+        # Downstream dispatch must consume final_route / primary_route (identical),
+        # not the upstream scan-pack/fishnet/ink candidate routes.
+        "final_route": primary_route,
+        "final_route_authority": "trace_net_page_route_manifest_v1",
+        "scan_pack_route_integration": scan_pack_integration,
         "secondary_routes": secondary_routes,
         "route_confidence": _clip(route_confidence),
         "review_required": bool(review_required),
@@ -511,6 +744,7 @@ def build_page_route_manifest_report(
     page_ink_route_evidence: Optional[Path] = None,
     thresholds: Optional[PageRouteManifestQualityThresholds] = None,
     write_outputs: bool = True,
+    ocr_route_scan_pack: Optional[Path] = None,
 ) -> Dict[str, Any]:
     output_dir.mkdir(parents=True, exist_ok=True)
     detector_payload = read_json(Path(artifact_detector))
@@ -533,6 +767,23 @@ def build_page_route_manifest_report(
             number = _page_number_from_card(card)
             if number:
                 ink_cards_by_number[number] = card
+
+    # Optional: upstream OCR scan-pack routes, consumed as candidate signals.
+    scan_pack_cards_by_number: Dict[int, Mapping[str, Any]] = {}
+    if ocr_route_scan_pack:
+        scan_pack_payload = read_json(Path(ocr_route_scan_pack))
+        scan_records = (
+            scan_pack_payload.get("records")
+            or scan_pack_payload.get("page_records")
+            or scan_pack_payload.get("scan_records")
+            or []
+        )
+        for card in scan_records:
+            if not isinstance(card, Mapping):
+                continue
+            number = _page_number_from_card(card)
+            if number:
+                scan_pack_cards_by_number[number] = card
 
     evidence_by_number: Dict[int, List[Mapping[str, Any]]] = defaultdict(list)
     evidence_without_number: List[Mapping[str, Any]] = []
@@ -559,6 +810,7 @@ def build_page_route_manifest_report(
             Path(artifact_detector),
             ink_card=ink_cards_by_number.get(number or -1),
             page_ink_route_evidence_path=Path(page_ink_route_evidence) if page_ink_route_evidence else None,
+            scan_pack_card=scan_pack_cards_by_number.get(number or -1),
         ))
 
     # Include artifact-only pages that did not join to source metadata.
@@ -571,6 +823,7 @@ def build_page_route_manifest_report(
             Path(artifact_detector),
             ink_card=ink_cards_by_number.get(number),
             page_ink_route_evidence_path=Path(page_ink_route_evidence) if page_ink_route_evidence else None,
+            scan_pack_card=scan_pack_cards_by_number.get(number),
         ))
         for card in cards:
             seen_evidence_ids.add(id(card))

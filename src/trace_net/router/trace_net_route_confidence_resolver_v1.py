@@ -290,22 +290,52 @@ def _word_count(record: Mapping[str, Any], text: str) -> int:
     return len(re.findall(r"\b\w+\b", text))
 
 
-def _ink_density(record: Mapping[str, Any]) -> float:
-    for key in ["ink_density", "dark_pixel_ratio", "foreground_ratio"]:
-        value = record.get(key)
+# Small, explicit, deterministic ink-field contract (no recursive/arbitrary
+# searching). The OCR scan pack spreads ``ink_ratio_estimate`` at the top level of
+# each record; the 509 audit uses ``ink_ratio``; older records used
+# ``ink_density`` / ``dark_pixel_ratio`` / ``foreground_ratio``. All are accepted
+# at the top level and inside the canonical nested feature containers below.
+_INK_ALIASES: tuple[str, ...] = (
+    "ink_ratio_estimate",
+    "ink_ratio",
+    "ink_density",
+    "dark_pixel_ratio",
+    "foreground_ratio",
+)
+_INK_FEATURE_CONTAINERS: tuple[str, ...] = (
+    "image_features",
+    "page_ink_features",
+    "ink_features",
+)
+
+
+def _coerce_ink_value(value: Any) -> float | None:
+    """Return a float ink ratio, or None if the value is absent/invalid so the
+    lookup can fall through to the next alias rather than masking it with 0.0."""
+    if value is None or isinstance(value, bool):
+        return None
+    if isinstance(value, (int, float)):
+        return float(value)
+    if isinstance(value, str):
         try:
-            if value is not None:
-                return float(value)
-        except (TypeError, ValueError):
-            pass
-    features = record.get("image_features") or {}
-    if isinstance(features, Mapping):
-        for key in ["ink_density", "dark_pixel_ratio", "foreground_ratio"]:
-            try:
-                if features.get(key) is not None:
-                    return float(features[key])
-            except (TypeError, ValueError):
-                pass
+            return float(value.strip())
+        except ValueError:
+            return None
+    return None
+
+
+def _ink_density(record: Mapping[str, Any]) -> float:
+    for key in _INK_ALIASES:
+        value = _coerce_ink_value(record.get(key))
+        if value is not None:
+            return value
+    for container in _INK_FEATURE_CONTAINERS:
+        features = record.get(container)
+        if isinstance(features, Mapping):
+            for key in _INK_ALIASES:
+                value = _coerce_ink_value(features.get(key))
+                if value is not None:
+                    return value
     return 0.0
 
 
