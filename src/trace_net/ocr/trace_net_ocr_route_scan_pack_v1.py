@@ -24,6 +24,7 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
 VERSION = "v1"
+TRACE_NET_OCR_PATCH_5_1_APPLIED = True
 MODULE = "trace_net_ocr_route_scan_pack_v1"
 REPORT_NAME = "trace_net_ocr_route_scan_pack_v1.json"
 RECORDS_NAME = "trace_net_ocr_route_scan_pack_v1_records.jsonl"
@@ -650,43 +651,118 @@ _TRAILING_PAGE_RE = re.compile(r"(?:\d{1,4}|NOT\s+APPLICABLE|[ivxlcdm]{1,6})\s*$
 
 
 def _index_structure_signal(text: str) -> dict[str, Any]:
-    """Detect whitespace-aligned index/TOC/vendor structure (columnar, may lack
-    ruling lines). Robust to noisy OCR: vendor codes read onto their own lines still
-    count, and a TOC header with subject+trailing-page rows counts even when Tesseract
-    mangles the dotted leaders into garbage. Returns counts + whether to fire."""
-    dotted = vendor = vendor_only = trailing_page = 0
-    for ln in _content_lines(text):
-        s = ln.strip()
-        if _DOTTED_LEADER_RE.search(ln):
-            dotted += 1
-        m = _VENDOR_CODE_RE.match(s)
-        if m:
-            rest = s[m.end():]
-            if sum(1 for w in rest.split() if len(w) >= 3 and any(c.isalpha() for c in w)) >= 1:
-                vendor += 1
-        if _VENDOR_CODE_ONLY_RE.match(s):
-            vendor_only += 1
-        alpha = sum(1 for w in s.split() if len(w) >= 3 and any(c.isalpha() for c in w))
-        if alpha >= 1 and _TRAILING_PAGE_RE.search(s):
-            trailing_page += 1
-    low = (text or "").lower()
-    header_vendor = "vendor" in low and "code" in low and ("name" in low or "address" in low)
-    header_toc = ("subject" in low and "page" in low) or "table of contents" in low
-    header_cue = header_vendor or header_toc
-    fires = (
-        dotted >= 3
-        or vendor >= 3
-        or (header_vendor and vendor_only >= 2)
-        or (header_cue and (dotted >= 1 or vendor >= 1))
-        or (header_toc and trailing_page >= 3)
+    """Detect only structurally confirmed vendor/numerical indexes, LEP, or TOC.
+
+    Header words embedded in explanatory prose do not count. This removes the page
+    23 false vendor-index trigger while retaining the real vendor index, numerical
+    index pages, list-of-effective-pages tables, and the final table of contents.
+    """
+    content = _content_lines(text)
+
+    def normalize(value: str) -> str:
+        value = value.upper().replace("’", "'").replace("`", "'")
+        value = re.sub(r"[^A-Z0-9]+", " ", value)
+        return re.sub(r"\s+", " ", value).strip()
+
+    normalized = [normalize(line) for line in content]
+    normalized_joined = " | ".join(normalized)
+    date_row_re = re.compile(
+        r"\b(?:JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\s+\d{1,2}/\d{2}\b",
+        re.I,
     )
-    kind = "vendor_index" if max(vendor, vendor_only) >= dotted else "toc_leader_index"
-    rows = max(dotted, vendor, vendor_only, trailing_page if header_toc else 0)
+    ata_figure_row_re = re.compile(
+        r"\b\d{2}\s*-\s*\d{2}\s*-\s*\d{2}\s*-\s*\d{1,3}[A-Z]?\b",
+        re.I,
+    )
+
+    dotted = vendor = vendor_only = trailing_page = ata_rows = dated_rows = lep_rows = 0
+    for line in content:
+        stripped = line.strip()
+        if _DOTTED_LEADER_RE.search(line):
+            dotted += 1
+        vendor_match = _VENDOR_CODE_RE.match(stripped)
+        if vendor_match:
+            rest = stripped[vendor_match.end():]
+            if sum(
+                1 for word in rest.split()
+                if len(word) >= 3 and any(char.isalpha() for char in word)
+            ) >= 1:
+                vendor += 1
+        if _VENDOR_CODE_ONLY_RE.match(stripped):
+            vendor_only += 1
+        alpha = sum(
+            1 for word in stripped.split()
+            if len(word) >= 3 and any(char.isalpha() for char in word)
+        )
+        if alpha >= 1 and _TRAILING_PAGE_RE.search(stripped):
+            trailing_page += 1
+        if ata_figure_row_re.search(stripped):
+            ata_rows += 1
+        if date_row_re.search(stripped):
+            dated_rows += 1
+        if re.search(r"\b25\s*-\s*(?:LEP|IPL|NUMERICAL\s+INDEX|CONTENTS)\b", stripped, re.I):
+            lep_rows += 1
+
+    header_toc = (
+        "TABLE OF CONTENTS" in normalized
+        or any(line == "SUBJECT PAGE" for line in normalized)
+    )
+    header_vendor = (
+        (
+            "VENDORS NAMES AND ADDRESSES" in normalized_joined
+            or "VENDOR NAMES AND ADDRESSES" in normalized_joined
+        )
+        and (
+            "VENDOR" in normalized
+            or "CODE" in normalized
+            or any("VENDOR CODE" in line for line in normalized)
+        )
+    )
+    header_numerical = (
+        any("PART NUMBER UNITS AIRLINE" in line for line in normalized)
+        and any("CH SEC UN FIG" in line for line in normalized)
+    )
+    header_lep = (
+        any("SUBJECT PAGE DATE" in line for line in normalized)
+        and any(line.startswith("CHAPTER") for line in normalized)
+        and any(line.startswith("SECTION") for line in normalized)
+    )
+    header_lep_cover = (
+        "CHAPTER" in normalized
+        and "SECTION" in normalized
+        and "SUBJECT" in normalized
+        and dated_rows >= 3
+        and lep_rows >= 3
+    )
+
+    kind = None
+    rows = 0
+    if header_vendor and max(vendor, vendor_only) >= 2:
+        kind = "vendor_index"
+        rows = max(vendor, vendor_only)
+    elif header_numerical and ata_rows >= 3:
+        kind = "numerical_index"
+        rows = ata_rows
+    elif (header_lep or header_lep_cover) and dated_rows >= 3:
+        kind = "list_of_effective_pages"
+        rows = max(dated_rows, lep_rows)
+    elif header_toc and (dotted >= 3 or trailing_page >= 3):
+        kind = "table_of_contents"
+        rows = max(dotted, trailing_page)
+
     return {
-        "fires": fires, "dotted_leader_rows": dotted, "vendor_code_rows": vendor,
-        "vendor_code_only_rows": vendor_only, "trailing_page_rows": trailing_page,
-        "header_cue": header_cue, "rows": rows, "kind": kind,
+        "fires": kind is not None,
+        "dotted_leader_rows": dotted,
+        "vendor_code_rows": vendor,
+        "vendor_code_only_rows": vendor_only,
+        "trailing_page_rows": trailing_page,
+        "ata_figure_rows": ata_rows,
+        "dated_rows": dated_rows,
+        "header_cue": kind is not None,
+        "rows": rows,
+        "kind": kind or "none",
     }
+
 
 
 def _diagram_signal(
@@ -696,25 +772,75 @@ def _diagram_signal(
     prose: Mapping[str, Any],
     supplemental: Mapping[str, Any] | None,
 ) -> dict[str, Any]:
-    """Detect a sparse technical diagram: a figure/drawing title, prose-poor body,
-    and strong PSM3/PSM11 disagreement (PSM 11 recovers many candidate callout
-    labels PSM 3 misses). Requires supplemental PSM-11 evidence; without it, does
-    not fire (so a page with no cross-PSM signal is never guessed as a diagram)."""
+    """Detect either cross-PSM sparse diagrams or a narrow labeled-figure layout.
+
+    The second path fixes page 494 without lowering the global disagreement
+    threshold: it requires an explicit ``Figure <number>`` line, multiple short
+    uppercase label lines, weak sentence/prose structure, and no table structure.
+    """
     title = bool(_DRAWING_TITLE_RE.search(text or "")) or bool(_DRAWING_NUMBER_RE.search(text or ""))
-    alpha_words = [t for t in tokens if len(t) >= 3 and any(c.isalpha() for c in t)]
+    alpha_words = [token for token in tokens if len(token) >= 3 and any(char.isalpha() for char in token)]
     sparse = int(prose.get("long_nl_lines", 0)) < 5 and len(alpha_words) < 70
-    u11 = int((supplemental or {}).get("psm11_unique_token_count") or 0)
-    agree = float((supplemental or {}).get("psm3_psm11_agreement") if supplemental and supplemental.get("psm3_psm11_agreement") is not None else 1.0)
-    disagreement = u11 >= 12 and agree <= 0.60
+    unique_psm11 = int((supplemental or {}).get("psm11_unique_token_count") or 0)
+    agreement = float(
+        (supplemental or {}).get("psm3_psm11_agreement")
+        if supplemental and supplemental.get("psm3_psm11_agreement") is not None
+        else 1.0
+    )
+    disagreement = unique_psm11 >= 12 and agreement <= 0.60
+
+    content = _content_lines(text)
+    figure_number_line = any(
+        re.fullmatch(r"\s*figure\s+\d{1,5}\s*", line, re.I)
+        for line in content
+    )
+    label_line_count = 0
+    ignored = {"MAINTENANCE MANUAL WITH", "ILLUSTRATED PARTS LIST", "EFFECTIVITY ALL"}
+    for line in content:
+        normalized = re.sub(r"[^A-Z0-9]+", " ", line.upper()).strip()
+        words = normalized.split()
+        if not words or normalized in ignored or normalized.startswith("PAGE ") or normalized.startswith("T P "):
+            continue
+        letters = [char for char in line if char.isalpha()]
+        if not letters:
+            continue
+        uppercase_ratio = sum(char.isupper() for char in letters) / len(letters)
+        if (
+            uppercase_ratio >= 0.85
+            and 1 <= len(words) <= 6
+            and not line.rstrip().endswith((".", ";", ":"))
+        ):
+            label_line_count += 1
+
+    labeled_figure_layout = bool(
+        figure_number_line
+        and label_line_count >= 4
+        and int(prose.get("long_nl_lines", 0)) < 3
+        and int(prose.get("sentence_punct", 0)) <= 2
+        and len(alpha_words) < 90
+    )
     fires = bool(
-        title and sparse and disagreement
+        title
         and not structure.get("has_structure")
         and not prose.get("strong")
+        and (disagreement or labeled_figure_layout)
+    )
+    reason = (
+        "cross_psm_disagreement" if disagreement
+        else "figure_title_labeled_layout" if labeled_figure_layout
+        else None
     )
     return {
-        "fires": fires, "title": title, "psm11_unique_token_count": u11,
-        "psm3_psm11_agreement": round(agree, 4), "alpha_word_count": len(alpha_words),
+        "fires": fires,
+        "reason": reason,
+        "title": title,
+        "psm11_unique_token_count": unique_psm11,
+        "psm3_psm11_agreement": round(agreement, 4),
+        "alpha_word_count": len(alpha_words),
+        "figure_number_line": figure_number_line,
+        "label_line_count": label_line_count,
     }
+
 
 
 def _classify_route(
@@ -790,7 +916,10 @@ def _classify_route(
     # misses). Runs after the prose gate so genuine procedures stay normal_text;
     # requires cross-PSM disagreement so a noisy-but-prose page is not flipped.
     if diagram["fires"]:
-        reasons.append(f"diagram_sparse_callouts_psm_disagreement:{diagram['psm11_unique_token_count']}")
+        if diagram.get("reason") == "figure_title_labeled_layout":
+            reasons.append(f"diagram_figure_title_labeled_layout:{diagram['label_line_count']}")
+        else:
+            reasons.append(f"diagram_sparse_callouts_psm_disagreement:{diagram['psm11_unique_token_count']}")
         return "image_visual", 0.85, reasons
 
     # 5. Mixed page (some table rows + dispersed callouts): defer to validator.

@@ -175,7 +175,8 @@ def test_build_cleanup_preserves_raw_and_adds_cleaned():
     assert out["cleaned_ocr_text"] != TOC_509  # derivative differs
     assert out["is_index_or_toc"] is True
     assert out["toc_index_entries"]
-    assert out["retained_callout_candidate_count"] >= 1
+    assert out["retained_callout_candidate_count"] == 0
+    assert out["supplemental_callout_scope_applied"] is False
     assert out["supplemental_callouts_confirmed"] is False
 
 

@@ -30,6 +30,8 @@ ROUTE_TEXT = "normal_text"
 ROUTE_BLANK = "blank_candidate"
 ROUTE_REVIEW = "review"
 
+TRACE_NET_OCR_PATCH_5_1_APPLIED = True
+
 
 class PageRouteManifestError(RuntimeError):
     pass
@@ -478,7 +480,11 @@ def _apply_scan_pack_route_signal(
                 str(r).startswith("index_structural_rows") for r in sp_reasons
             )
             has_diagram_structure = sp_route == ROUTE_IMAGE and any(
-                str(r).startswith("diagram_sparse_callouts") for r in sp_reasons
+                str(reason).startswith((
+                    "diagram_sparse_callouts",
+                    "diagram_figure_title_labeled_layout",
+                ))
+                for reason in sp_reasons
             )
             # Index and sparse-diagram structures must clear specifically strong
             # COMPETING marginal evidence (generic image artifact keys; ink text
