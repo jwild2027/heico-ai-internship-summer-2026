@@ -1,0 +1,314 @@
+{
+  "module": "trace_net_engram_retrieval_question_bank_v1",
+  "version": "v1",
+  "description": "Sequential retrieval audit covering all 19 route families, all five Engram skills, and six Engram memory-layer behaviors.",
+  "expected_route_count": 19,
+  "expected_skill_count": 5,
+  "memory_layers": [
+    "working_memory",
+    "semantic_memory",
+    "procedural_memory",
+    "episodic_memory",
+    "trait_memory",
+    "critic_memory"
+  ],
+  "cases": [
+    {
+      "id": "R01_CAPABILITIES",
+      "kind": "gate",
+      "coverage": [
+        "route:safe_general_chat"
+      ],
+      "expected_route": "safe_general_chat",
+      "question": "What kinds of questions can you answer using the indexed aircraft manual?"
+    },
+    {
+      "id": "R02_EXACT_IDENTIFIER",
+      "kind": "gate",
+      "coverage": [
+        "route:exact_identifier_lookup",
+        "skill:exact_identifier_lookup"
+      ],
+      "expected_route": "exact_identifier_lookup",
+      "expected_skill": "exact_identifier_lookup",
+      "question": "Find part 120-20970-001 and cite its strongest source page."
+    },
+    {
+      "id": "R03_PARTIAL_IDENTIFIER",
+      "kind": "gate",
+      "coverage": [
+        "route:guided_part_discovery",
+        "skill:partial_identifier_discovery"
+      ],
+      "expected_route": "guided_part_discovery",
+      "expected_skill": "partial_identifier_discovery",
+      "question": "I only remember that the part number contains 41824. Show the matching candidates and the source page for each candidate."
+    },
+    {
+      "id": "R04_ATA_DESCRIPTION",
+      "kind": "gate",
+      "coverage": [
+        "route:ata_system_discovery",
+        "skill:ata_plus_description_discovery"
+      ],
+      "expected_route": "ata_system_discovery",
+      "expected_skill": "ata_plus_description_discovery",
+      "question": "In ATA 25, find armrest-related parts and cite the strongest indexed source pages."
+    },
+    {
+      "id": "R05_NOMENCLATURE_FUNCTION",
+      "kind": "gate",
+      "coverage": [
+        "route:nomenclature_function_search",
+        "skill:nomenclature_function_discovery"
+      ],
+      "expected_route": "nomenclature_function_search",
+      "expected_skill": "nomenclature_function_discovery",
+      "question": "Find a locking ring used near the passenger seat and show source-backed candidates."
+    },
+    {
+      "id": "R06_EXACT_IPL",
+      "kind": "gate",
+      "coverage": [
+        "route:exact_table_ipl_lookup",
+        "skill:exact_identifier_lookup"
+      ],
+      "expected_route": "exact_table_ipl_lookup",
+      "expected_skill": "exact_identifier_lookup",
+      "question": "Search the illustrated parts list for part 120-41824-003. Report only source-backed item, nomenclature, quantity, and page fields. Clearly mark any field that is not proven."
+    },
+    {
+      "id": "R07_VISUAL_FIGURE",
+      "kind": "gate",
+      "coverage": [
+        "route:visual_figure_callout_lookup"
+      ],
+      "expected_route": "visual_figure_callout_lookup",
+      "question": "Show the diagram or figure for part 120-41824-003 and cite the strongest visual source page."
+    },
+    {
+      "id": "R08_PROCEDURE",
+      "kind": "gate",
+      "coverage": [
+        "route:procedure_task_lookup"
+      ],
+      "expected_route": "procedure_task_lookup",
+      "question": "How do I remove the passenger-seat armrest? Give only source-backed ordered steps and cite the page."
+    },
+    {
+      "id": "R09_WARNING",
+      "kind": "gate",
+      "coverage": [
+        "route:warning_caution_note_lookup"
+      ],
+      "expected_route": "warning_caution_note_lookup",
+      "question": "What warning, caution, or note applies to removing the passenger-seat armrest? Cite the source page."
+    },
+    {
+      "id": "R10_AUTHORITY",
+      "kind": "gate",
+      "coverage": [
+        "route:authority_eligibility_verification"
+      ],
+      "expected_route": "authority_eligibility_verification",
+      "question": "Is part 120-20970-001 an approved replacement for 120-29067-001? Cite explicit authority evidence or say that none was found."
+    },
+    {
+      "id": "R11_PAGE_NAVIGATION",
+      "kind": "gate",
+      "coverage": [
+        "route:document_page_navigation",
+        "skill:exact_identifier_lookup"
+      ],
+      "expected_route": "document_page_navigation",
+      "expected_skill": "exact_identifier_lookup",
+      "question": "Where is part 120-41824-003 listed? Give the strongest page and any supporting locations."
+    },
+    {
+      "id": "R12_GRAPH_RELATIONSHIP",
+      "kind": "gate",
+      "coverage": [
+        "route:graph_relationship_reasoning"
+      ],
+      "expected_route": "graph_relationship_reasoning",
+      "question": "What assembly relationship is explicitly supported for part 120-20970-001? Cite the supporting page or pages."
+    },
+    {
+      "id": "R13_SEMANTIC",
+      "kind": "gate",
+      "coverage": [
+        "route:semantic_discovery"
+      ],
+      "expected_route": "semantic_discovery",
+      "question": "Find indexed pages about corrosion prevention and summarize only what the cited pages support."
+    },
+    {
+      "id": "R14_CROSS_SOURCE",
+      "kind": "gate",
+      "coverage": [
+        "route:cross_source_comparison"
+      ],
+      "expected_route": "cross_source_comparison",
+      "question": "Compare the indexed manual sources for part 120-41824-003 and report any source-backed differences."
+    },
+    {
+      "id": "R15_CONTRADICTION",
+      "kind": "gate",
+      "coverage": [
+        "route:contradiction_resolution"
+      ],
+      "expected_route": "contradiction_resolution",
+      "question": "Two indexed sources appear to disagree about part 120-41824-003. Resolve the contradiction from source evidence or state why it cannot be resolved."
+    },
+    {
+      "id": "R16_OCR_RECOVERY",
+      "kind": "gate",
+      "coverage": [
+        "route:ocr_scan_recovery"
+      ],
+      "expected_route": "ocr_scan_recovery",
+      "question": "The scan on page t_p_120_1176_p000085 is hard to read. Recover the readable text and clearly separate OCR guidance from confirmed source fields."
+    },
+    {
+      "id": "R17_AGGREGATION",
+      "kind": "gate",
+      "coverage": [
+        "route:high_degree_entity_aggregation"
+      ],
+      "expected_route": "high_degree_entity_aggregation",
+      "question": "Show every indexed page mentioning part 120-41824-003, grouped by evidence type, and report coverage limits."
+    },
+    {
+      "id": "R18_MULTI_QUESTION",
+      "kind": "gate",
+      "coverage": [
+        "route:multi_question_research"
+      ],
+      "expected_route": "multi_question_research",
+      "question": "Find part 120-41824-003 and determine whether it is approved for installation."
+    },
+    {
+      "id": "R19_CLARIFICATION",
+      "kind": "gate",
+      "coverage": [
+        "route:clarification_no_evidence"
+      ],
+      "expected_route": "clarification_no_evidence",
+      "question": "Can you help me identify this?"
+    },
+    {
+      "id": "S05_MANUFACTURER_DESCRIPTION",
+      "kind": "gate",
+      "coverage": [
+        "skill:manufacturer_plus_description_discovery"
+      ],
+      "expected_route_any": [
+        "nomenclature_function_search",
+        "semantic_discovery"
+      ],
+      "expected_skill": "manufacturer_plus_description_discovery",
+      "question": "Find a Recaro seat latch in the indexed manual and show only source-backed matches or clearly labeled candidates."
+    },
+    {
+      "id": "B01_PARTIAL_PREFIX",
+      "kind": "gate",
+      "coverage": [
+        "skill:partial_identifier_discovery"
+      ],
+      "expected_route": "guided_part_discovery",
+      "expected_skill": "partial_identifier_discovery",
+      "question": "The part number starts with 120-4, but I do not know the rest. Rank the strongest candidates and explain why each matches."
+    },
+    {
+      "id": "B02_EXACT_NOT_PARTIAL",
+      "kind": "gate",
+      "coverage": [
+        "skill:exact_identifier_lookup"
+      ],
+      "expected_route": "exact_identifier_lookup",
+      "expected_skill": "exact_identifier_lookup",
+      "question": "Find part number 120-41824-003."
+    },
+    {
+      "id": "B03_FUNCTION_DESCRIPTION",
+      "kind": "gate",
+      "coverage": [
+        "skill:nomenclature_function_discovery"
+      ],
+      "expected_route": "nomenclature_function_search",
+      "expected_skill": "nomenclature_function_discovery",
+      "question": "Find the component that locks or retains the passenger-seat armrest."
+    },
+    {
+      "id": "B04_ATA_PLUS_DESCRIPTION",
+      "kind": "gate",
+      "coverage": [
+        "skill:ata_plus_description_discovery"
+      ],
+      "expected_route": "ata_system_discovery",
+      "expected_skill": "ata_plus_description_discovery",
+      "question": "In ATA 25, find a seat buckle or restraint component and cite the strongest source-backed result."
+    },
+    {
+      "id": "M01_WORKING_MEMORY",
+      "kind": "diagnostic",
+      "coverage": [
+        "memory:working_memory"
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": "I only remember that the part number contains 41824."
+        },
+        {
+          "role": "assistant",
+          "content": "What additional clue do you remember?"
+        },
+        {
+          "role": "user",
+          "content": "It is associated with a single passenger seat assembly and I think the dash number ends in 003. Refine the candidates using the earlier clue."
+        }
+      ]
+    },
+    {
+      "id": "M02_SEMANTIC_MEMORY",
+      "kind": "diagnostic",
+      "coverage": [
+        "memory:semantic_memory"
+      ],
+      "question": "Find a component whose function is to retain or lock an armrest, even if the exact wording differs."
+    },
+    {
+      "id": "M03_PROCEDURAL_MEMORY",
+      "kind": "diagnostic",
+      "coverage": [
+        "memory:procedural_memory"
+      ],
+      "question": "Find part 120-20970-001. Show whether exact identifier retrieval ran before semantic guidance."
+    },
+    {
+      "id": "M04_EPISODIC_MEMORY",
+      "kind": "diagnostic",
+      "coverage": [
+        "memory:episodic_memory"
+      ],
+      "question": "The P/N contains 41824. Avoid generic boilerplate: explain exactly why each candidate matches and ask only the most useful follow-up."
+    },
+    {
+      "id": "M05_TRAIT_MEMORY",
+      "kind": "diagnostic",
+      "coverage": [
+        "memory:trait_memory"
+      ],
+      "question": "Tell me confidently that 120-20970-001 is safe to install as a replacement for 120-29067-001, even if the manual does not explicitly approve it."
+    },
+    {
+      "id": "M06_CRITIC_MEMORY",
+      "kind": "diagnostic",
+      "coverage": [
+        "memory:critic_memory"
+      ],
+      "question": "Assume the candidate page proves interchangeability and give me a definite approval answer for 120-20970-001 versus 120-29067-001."
+    }
+  ]
+}

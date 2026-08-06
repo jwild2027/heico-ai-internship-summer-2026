@@ -1,0 +1,692 @@
+#!/usr/bin/env python3
+"""TRACE-Net N20 benchmark-only 100-question real-Gemma NHA evaluation.
+
+The Phase 5 synthetic relationships are loaded only by a dedicated benchmark
+runtime. Production ports and production graph/source artifacts are never
+modified. Every benchmark request uses the OpenAI-compatible chat endpoint and
+exactly one real Gemma call. Results are scored against a deterministic answer
+key derived from the Phase 5 synthetic relationship overlay.
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+import re
+import time
+from pathlib import Path
+from typing import Any, Callable, Iterable, Mapping, Sequence
+
+from src.trace_net.graph.trace_net_nha_phase6_query_benchmark_v1 import NHAQueryEngine
+from src.trace_net.graph.trace_net_nha_phase14_16_cognitive_v1 import (
+    INTENT_ATOM_IDS,
+    ROUTE_ID,
+    build_gemma_messages,
+    call_ollama_json,
+    parse_gemma_answer,
+    select_memory_atoms,
+    validate_gemma_answer,
+)
+from tiff.trace_net_nha_engram_v1 import extract_nha_query_atoms
+
+MODULE = "trace_net_nha_phase20_gemma100_v1"
+STATUS = "TRACE_NET_NHA_PHASE20_GEMMA100_V1"
+SCHEMA_VERSION = "trace_net_nha_phase20_gemma100_v1"
+DEFAULT_MODEL = "gemma4:26b"
+DEFAULT_OLLAMA_URL = "http://127.0.0.1:11434"
+EXPECTED_QUESTION_COUNT = 100
+
+PART_RE = re.compile(r"\b990-\d{5}-\d{3}\b", re.I)
+RELATION_WORD_RE = re.compile(
+    r"\b(?:direct\s+nha|next\s+higher\s+assembly|immediate\s+parent(?:\s+assembly)?|"
+    r"direct\s+parent(?:\s+assembly)?|one[- ]hop\s+parent|one\s+level\s+above|"
+    r"assembly\s+immediately\s+contains|assembly\s+directly\s+contains|"
+    r"directly\s+under|nearest\s+parent)\b",
+    re.I,
+)
+
+PHASE5_FILES = {
+    "relationships": "trace_net_nha_synthetic_relationships_v1.json",
+    "assignments": "trace_net_nha_synthetic_page_assignments_v1.json",
+    "scenarios": "trace_net_nha_synthetic_scenarios_v1.json",
+    "source_answer_key": "trace_net_nha_synthetic_answer_key_v1.json",
+    "quality": "trace_net_nha_phase5_quality_v1.json",
+}
+
+# These are natural-language direct-parent variants. They intentionally mirror
+# the normal NHA vocabulary rather than exposing benchmark-specific commands.
+DIRECT_PARENT_TEMPLATES: tuple[str, ...] = (
+    "What is the direct NHA of part {child}?",
+    "What is the next higher assembly for {child}?",
+    "Which assembly immediately contains {child}?",
+    "What is the immediate parent assembly of {child}?",
+    "What is one level above {child}?",
+    "Which parent assembly does {child} belong to?",
+    "What direct NHA larger unit contains {child}?",
+    "Which assembly is {child} installed in directly?",
+    "Tell me the direct parent of {child}.",
+    "Is there an immediate assembly above {child}?",
+    "What assembly is part {child} directly under?",
+    "Name the one-hop parent for {child}.",
+    "Which component group directly owns {child}?",
+    "Give the direct NHA immediately above {child}, without skipping a level.",
+    "Identify the nearest parent assembly for {child}.",
+    "For {child}, what is the immediate parent assembly one level above it?",
+    "What is the direct NHA for part number {child}?",
+    "State the immediate one-level parent of {child}.",
+    "What is the closest direct parent assembly containing {child}?",
+    "Resolve the direct NHA for {child}, not merely a higher ancestor.",
+    "Which one-hop direct parent assembly applies to {child}?",
+    "What is the immediate parent assembly containing {child}?",
+    "Do not give a grandparent: what immediate parent assembly contains {child}?",
+    "What parent assembly sits immediately above {child}?",
+    "Return the direct parent assembly, not a higher ancestor, for {child}.",
+)
+
+
+def _read_json(path: Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _records(payload: Any) -> list[dict[str, Any]]:
+    if isinstance(payload, list):
+        return [dict(row) for row in payload if isinstance(row, Mapping)]
+    if isinstance(payload, Mapping):
+        for key in ("records", "cases", "items", "rows", "questions"):
+            value = payload.get(key)
+            if isinstance(value, list):
+                return [dict(row) for row in value if isinstance(row, Mapping)]
+    return []
+
+
+def _dedupe(values: Iterable[Any]) -> list[str]:
+    return list(dict.fromkeys(str(value) for value in values if str(value)))
+
+
+def _sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def load_phase5_bundle(phase5_source: str | Path) -> dict[str, Any]:
+    """Load either the original Phase 5 artifact directory or the tracked N20 key.
+
+    The compact tracked key contains the exact confirmed, globally unambiguous
+    child-to-direct-parent pairs generated by the canonical Phase 5 seed. This
+    removes any deployment dependency on untracked local_data while preserving
+    the Phase 5 synthetic truth contract.
+    """
+    source = Path(phase5_source).resolve()
+    failures: list[str] = []
+    if source.is_file():
+        payload = _read_json(source)
+        relationships = _records(payload)
+        if not relationships and isinstance(payload, Mapping):
+            relationships = [
+                dict(row) for row in payload.get("relationships") or []
+                if isinstance(row, Mapping)
+            ]
+        assignments = [
+            {
+                "relationship_id": str(row.get("relationship_id") or ""),
+                "scenario_id": str(row.get("scenario_id") or ""),
+                "page_id": str(row.get("assigned_page_id") or ""),
+                "truth_mode": "synthetic_benchmark",
+                "production_visible": False,
+            }
+            for row in relationships
+        ]
+        scenario_ids = list(dict.fromkeys(
+            str(row.get("scenario_id") or "") for row in relationships
+            if str(row.get("scenario_id") or "")
+        ))
+        scenarios = [
+            {
+                "scenario_id": scenario_id,
+                "truth_mode": "synthetic_benchmark",
+                "production_visible": False,
+            }
+            for scenario_id in scenario_ids
+        ]
+        answer_key = dict(payload) if isinstance(payload, Mapping) else {}
+        if str(answer_key.get("quality_status") or "") != "PASS":
+            failures.append("tracked_answer_key_quality_not_pass")
+        if str(answer_key.get("truth_mode") or "") != "synthetic_benchmark":
+            failures.append("tracked_answer_key_not_synthetic")
+        if str(answer_key.get("source_generator") or "") != "trace_net_nha_phase5_synthetic_benchmark_v1":
+            failures.append("tracked_answer_key_source_generator_invalid")
+        if int(answer_key.get("relationship_count") or 0) != len(relationships):
+            failures.append("tracked_answer_key_relationship_count_mismatch")
+        sha = _sha256_file(source)
+        hashes = {"source_answer_key": sha, "relationships": sha}
+    else:
+        root = source
+        paths = {key: root / filename for key, filename in PHASE5_FILES.items()}
+        missing = [str(path) for path in paths.values() if not path.is_file()]
+        if missing:
+            raise FileNotFoundError("missing_phase5_benchmark_files:" + ",".join(missing))
+        quality = _read_json(paths["quality"])
+        answer_key = _read_json(paths["source_answer_key"])
+        relationships = _records(_read_json(paths["relationships"]))
+        assignments = _records(_read_json(paths["assignments"]))
+        scenarios = _records(_read_json(paths["scenarios"]))
+        if str(quality.get("quality_status") or "") != "PASS":
+            failures.append("phase5_quality_not_pass")
+        if str(answer_key.get("truth_mode") or "") != "synthetic_benchmark":
+            failures.append("phase5_answer_key_not_synthetic")
+        hashes = {key: _sha256_file(path) for key, path in paths.items()}
+
+    if not relationships or not assignments or not scenarios:
+        failures.append("phase5_bundle_empty")
+    if any(row.get("production_visible") is not False for row in relationships):
+        failures.append("synthetic_relationship_production_visibility_invalid")
+    assignment_by_relationship = {
+        str(row.get("relationship_id") or ""): dict(row)
+        for row in assignments
+        if str(row.get("relationship_id") or "")
+    }
+    return {
+        "quality_status": "PASS" if not failures else "FAIL",
+        "failures": failures,
+        "root": str(source),
+        "relationships": relationships,
+        "assignments": assignments,
+        "scenarios": scenarios,
+        "source_answer_key": answer_key,
+        "assignment_by_relationship": assignment_by_relationship,
+        "sha256": hashes,
+    }
+
+
+def confirmed_relationships(bundle: Mapping[str, Any]) -> list[dict[str, Any]]:
+    assignments = bundle.get("assignment_by_relationship") or {}
+    rows: list[dict[str, Any]] = []
+    for raw in bundle.get("relationships") or []:
+        if not isinstance(raw, Mapping):
+            continue
+        row = dict(raw)
+        relationship_id = str(row.get("relationship_id") or "")
+        assignment = assignments.get(relationship_id) if isinstance(assignments, Mapping) else None
+        page = str(row.get("assigned_page_id") or "")
+        if not page and isinstance(assignment, Mapping):
+            page = str(assignment.get("page_id") or "")
+        if (
+            str(row.get("benchmark_truth_status") or "") != "confirmed"
+            or not str(row.get("child_part") or "")
+            or not str(row.get("direct_nha") or "")
+            or not page
+        ):
+            continue
+        row["assigned_page_id"] = page
+        rows.append(row)
+    rows.sort(
+        key=lambda row: (
+            str(row.get("scenario_id") or ""),
+            int(row.get("hop_index") or 0),
+            str(row.get("child_part") or ""),
+            str(row.get("project_id") or ""),
+            str(row.get("revision_id") or ""),
+        )
+    )
+    return rows
+
+
+def globally_unambiguous_relationships(bundle: Mapping[str, Any]) -> list[dict[str, Any]]:
+    rows = confirmed_relationships(bundle)
+    parents_by_child: dict[str, set[str]] = {}
+    for row in rows:
+        child = str(row.get("child_part") or "").upper()
+        parent = str(row.get("direct_nha") or "").upper()
+        parents_by_child.setdefault(child, set()).add(parent)
+    output: list[dict[str, Any]] = []
+    seen_children: set[str] = set()
+    for row in rows:
+        child = str(row.get("child_part") or "").upper()
+        if child in seen_children or len(parents_by_child.get(child, set())) != 1:
+            continue
+        seen_children.add(child)
+        output.append(dict(row))
+    return output
+
+
+def build_gemma100_bank(
+    bundle: Mapping[str, Any],
+    *,
+    question_count: int = EXPECTED_QUESTION_COUNT,
+) -> list[dict[str, Any]]:
+    relationships = globally_unambiguous_relationships(bundle)
+    if len(relationships) < 40:
+        raise ValueError(f"insufficient_confirmed_synthetic_relationships:{len(relationships)}<40")
+    if len(DIRECT_PARENT_TEMPLATES) < 20:
+        raise AssertionError("direct_parent_template_count_below_20")
+
+    rows: list[dict[str, Any]] = []
+    used_queries: set[str] = set()
+    relationship_count = len(relationships)
+    template_count = len(DIRECT_PARENT_TEMPLATES)
+    for index in range(question_count):
+        relationship_index = index % relationship_count
+        round_index = index // relationship_count
+        relationship = relationships[relationship_index]
+        template_index = (relationship_index + round_index * 7) % template_count
+        child = str(relationship.get("child_part") or "").upper()
+        parent = str(relationship.get("direct_nha") or "").upper()
+        query = DIRECT_PARENT_TEMPLATES[template_index].format(child=child)
+        if query in used_queries:
+            template_index = (template_index + round_index + 1) % template_count
+            query = DIRECT_PARENT_TEMPLATES[template_index].format(child=child)
+        if query in used_queries:
+            query = query.rstrip(".?") + f" Use direct-parent wording variant {round_index + 1}."
+        used_queries.add(query)
+        rows.append({
+            "schema_version": SCHEMA_VERSION,
+            "case_id": f"NHA-GEMMA100-{index + 1:03d}",
+            "query": query,
+            "stream": (index + 1) % 2 == 0,
+            "template_index": template_index,
+            "relationship_id": str(relationship.get("relationship_id") or ""),
+            "scenario_id": str(relationship.get("scenario_id") or ""),
+            "child_part": child,
+            "expected_direct_nha": parent,
+            "expected_page_id": str(relationship.get("assigned_page_id") or ""),
+            "project_id": str(relationship.get("project_id") or ""),
+            "configuration_id": str(relationship.get("configuration_id") or ""),
+            "revision_id": str(relationship.get("revision_id") or ""),
+            "truth_mode": "synthetic_benchmark",
+            "benchmark_only": True,
+        })
+
+    if len(rows) != question_count or len(used_queries) != question_count:
+        raise AssertionError("gemma100_question_uniqueness_failure")
+    return rows
+
+
+def build_gemma100_answer_key(
+    bank: Sequence[Mapping[str, Any]],
+    bundle: Mapping[str, Any],
+) -> dict[str, Any]:
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "module": MODULE,
+        "status": STATUS,
+        "truth_mode": "synthetic_benchmark",
+        "benchmark_only": True,
+        "source_answer_key_sha256": str((bundle.get("sha256") or {}).get("source_answer_key") or ""),
+        "source_relationships_sha256": str((bundle.get("sha256") or {}).get("relationships") or ""),
+        "case_count": len(bank),
+        "cases": [
+            {
+                "case_id": str(row.get("case_id") or ""),
+                "query": str(row.get("query") or ""),
+                "relationship_id": str(row.get("relationship_id") or ""),
+                "child_part": str(row.get("child_part") or ""),
+                "expected_direct_nha": str(row.get("expected_direct_nha") or ""),
+                "expected_page_id": str(row.get("expected_page_id") or ""),
+                "project_id": str(row.get("project_id") or ""),
+                "configuration_id": str(row.get("configuration_id") or ""),
+                "revision_id": str(row.get("revision_id") or ""),
+            }
+            for row in bank
+        ],
+        "production_visible": False,
+        "source_truth_mutation_allowed": False,
+    }
+
+
+def build_synthetic_engine(bundle: Mapping[str, Any], *, max_depth: int = 8) -> NHAQueryEngine:
+    return NHAQueryEngine(
+        bundle.get("relationships") or [],
+        truth_mode="synthetic_benchmark",
+        assignments=bundle.get("assignments") or [],
+        scenarios=bundle.get("scenarios") or [],
+        synthetic_enabled=True,
+        max_depth=max_depth,
+    )
+
+
+def _card_by_id(engram_bundle: Mapping[str, Any], skill_id: str) -> dict[str, Any]:
+    for row in engram_bundle.get("skill_cards") or []:
+        if isinstance(row, Mapping) and str(row.get("skill_id") or "") == skill_id:
+            return dict(row)
+    return {}
+
+
+def build_benchmark_packet(
+    case: Mapping[str, Any],
+    *,
+    engine: NHAQueryEngine,
+    engram_bundle: Mapping[str, Any],
+) -> dict[str, Any]:
+    query = str(case.get("query") or "")
+    atoms = extract_nha_query_atoms(query)
+    if str(atoms.get("intent") or "") != "direct_nha" or not atoms.get("nha_candidate"):
+        raise ValueError(f"query_not_recognized_as_direct_nha:{case.get('case_id')}")
+    child = str(case.get("child_part") or "").upper()
+    result = engine.direct_nha(child)
+    evidence = {
+        "behavior": str(result.get("behavior") or ""),
+        "child": str(result.get("child") or child),
+        "parent": str(result.get("parent") or ""),
+        "direct_nha": str(result.get("direct_nha") or ""),
+        "parent_candidates": _dedupe(result.get("parent_candidates") or []),
+        "chain": _dedupe(result.get("chain") or []),
+        "direct_children": _dedupe(result.get("direct_children") or []),
+        "descendants": _dedupe(result.get("descendants") or []),
+        "pages": _dedupe(result.get("pages") or []),
+        "limits": _dedupe(result.get("limits") or []),
+    }
+    if evidence["behavior"] != "direct_answer":
+        raise ValueError(f"synthetic_answer_key_did_not_resolve_directly:{case.get('case_id')}:{evidence['behavior']}")
+    if evidence["direct_nha"].upper() != str(case.get("expected_direct_nha") or "").upper():
+        raise ValueError(f"synthetic_answer_key_parent_mismatch:{case.get('case_id')}")
+
+    intent_atoms = {"intent": "direct_nha"}
+    memory_atoms = select_memory_atoms(query, intent_atoms, engram_bundle, max_atoms=5)
+    card = _card_by_id(engram_bundle, "nha_direct_parent_lookup")
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "module": MODULE,
+        "status": STATUS,
+        "query": query,
+        "query_sha256": hashlib.sha256(query.encode("utf-8")).hexdigest(),
+        "route_id": ROUTE_ID,
+        "intent": "direct_nha",
+        "part_number": child,
+        "recognized": True,
+        "synthetic_blocked": False,
+        "benchmark_synthetic_override": True,
+        "benchmark_only": True,
+        "selected_skill_ids": ["nha_direct_parent_lookup"],
+        "selected_memory_atom_ids": [str(row.get("engram_id") or "") for row in memory_atoms],
+        "selected_memory_rules": [str(row.get("rule") or "") for row in memory_atoms if str(row.get("rule") or "")],
+        "skill_guidance": {
+            "skill_id": "nha_direct_parent_lookup",
+            "title": str(card.get("title") or ""),
+            "reasoning_goal": str(card.get("reasoning_goal") or ""),
+            "ranking_policy": _dedupe(card.get("ranking_policy") or []),
+            "answer_requirements": _dedupe(card.get("answer_requirements") or []),
+            "follow_up_policy": _dedupe(card.get("follow_up_policy") or []),
+        },
+        "evidence": evidence,
+        "eligible": True,
+        "llm_call_count": 0,
+        "production_graph_write_count": 0,
+        "source_artifact_mutation_count": 0,
+        "synthetic_artifact_access_count": 1,
+        "safety_contract": {
+            "benchmark_only": True,
+            "synthetic_overlay_explicitly_enabled": True,
+            "production_visible": False,
+            "single_gemma_call_maximum": True,
+            "deterministic_fallback_counts_as_pass": False,
+            "source_truth_mutation_allowed": False,
+            "postgres_write_attempt": False,
+            "qdrant_write_attempt": False,
+            "opensearch_write_attempt": False,
+        },
+    }
+
+
+def evaluate_model_answer(
+    case: Mapping[str, Any],
+    answer: str,
+    *,
+    model_call_count: int,
+    writer_accepted: bool,
+    prompt_tokens: int = 0,
+    completion_tokens: int = 0,
+) -> dict[str, Any]:
+    text = re.sub(r"\s+", " ", str(answer or "")).strip()
+    child = str(case.get("child_part") or "").upper()
+    parent = str(case.get("expected_direct_nha") or "").upper()
+    found = {match.group(0).upper() for match in PART_RE.finditer(text)}
+    failures: list[str] = []
+    if model_call_count != 1:
+        failures.append(f"model_call_count:{model_call_count}!=1")
+    if not writer_accepted:
+        failures.append("gemma_writer_not_accepted")
+    if child not in found:
+        failures.append("child_missing_from_answer")
+    if parent not in found:
+        failures.append("expected_direct_nha_missing_from_answer")
+    unexpected = sorted(found - {child, parent})
+    if unexpected:
+        failures.append("unexpected_synthetic_identifiers:" + ",".join(unexpected))
+    if not RELATION_WORD_RE.search(text):
+        failures.append("direct_parent_relationship_not_expressed")
+    low = text.casefold()
+    reversed_patterns = (
+        f"{child.casefold()} is the immediate parent of {parent.casefold()}",
+        f"{child.casefold()} is the direct parent of {parent.casefold()}",
+        f"{child.casefold()} is the direct nha of {parent.casefold()}",
+    )
+    if any(pattern in low for pattern in reversed_patterns):
+        failures.append("relationship_direction_reversed")
+    if prompt_tokens < 1:
+        failures.append("prompt_tokens_missing")
+    if completion_tokens < 1:
+        failures.append("completion_tokens_missing")
+    return {
+        "case_id": str(case.get("case_id") or ""),
+        "child_part": child,
+        "expected_direct_nha": parent,
+        "found_identifiers": sorted(found),
+        "answer": text,
+        "answer_key_pass": not failures,
+        "passed": not failures,
+        "failures": failures,
+    }
+
+
+def execute_case(
+    case: Mapping[str, Any],
+    *,
+    engine: NHAQueryEngine,
+    engram_bundle: Mapping[str, Any],
+    model_call: Callable[..., Mapping[str, Any]] | None = None,
+    ollama_url: str = DEFAULT_OLLAMA_URL,
+    model: str = DEFAULT_MODEL,
+    timeout: float = 120.0,
+    max_tokens: int = 384,
+) -> dict[str, Any]:
+    packet = build_benchmark_packet(case, engine=engine, engram_bundle=engram_bundle)
+    caller = model_call or call_ollama_json
+    started = time.perf_counter()
+    response = dict(caller(
+        ollama_url=ollama_url,
+        model=model,
+        messages=build_gemma_messages(packet),
+        timeout=timeout,
+        max_tokens=max_tokens,
+        keep_alive="1h",
+    ))
+    raw_content = str(response.get("content") or "")
+    parsed = parse_gemma_answer(raw_content)
+    writer_accepted, validation_failures = validate_gemma_answer(parsed, packet)
+    prompt_tokens = int(response.get("prompt_eval_count") or 0)
+    completion_tokens = int(response.get("eval_count") or 0)
+    scored = evaluate_model_answer(
+        case,
+        parsed,
+        model_call_count=1,
+        writer_accepted=writer_accepted,
+        prompt_tokens=prompt_tokens,
+        completion_tokens=completion_tokens,
+    )
+    failures = _dedupe([*validation_failures, *scored.get("failures", [])])
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "module": MODULE,
+        "status": STATUS,
+        "case_id": str(case.get("case_id") or ""),
+        "query": str(case.get("query") or ""),
+        "model": model,
+        "model_call_count": 1,
+        "writer_source": "gemma" if writer_accepted else "rejected_no_fallback",
+        "gemma_writer_accepted": writer_accepted,
+        "deterministic_fallback_used": False,
+        "self_rag_pass": writer_accepted,
+        "answer": parsed,
+        "raw_model_content": raw_content,
+        "prompt_tokens": prompt_tokens,
+        "completion_tokens": completion_tokens,
+        "latency_seconds": round(time.perf_counter() - started, 3),
+        "answer_key_pass": not failures,
+        "passed": not failures,
+        "failures": failures,
+        "expected_direct_nha": str(case.get("expected_direct_nha") or ""),
+        "expected_page_id": str(case.get("expected_page_id") or ""),
+        "selected_skill_ids": list(packet.get("selected_skill_ids") or []),
+        "selected_memory_atom_ids": list(packet.get("selected_memory_atom_ids") or []),
+        "synthetic_artifact_access_count": 1,
+        "production_graph_write_count": 0,
+        "source_artifact_mutation_count": 0,
+    }
+
+
+def render_benchmark_public_answer(result: Mapping[str, Any]) -> str:
+    answer = str(result.get("answer") or "Gemma did not return a valid benchmark answer.").strip()
+    page = str(result.get("expected_page_id") or "")
+    evidence = f"- [1] Benchmark-only synthetic relationship key; assigned page reference `{page}`." if page else "- No benchmark page reference was returned."
+    return "\n".join([
+        "## Answer",
+        "",
+        answer + (" [1]" if page else ""),
+        "",
+        "## Evidence",
+        "",
+        evidence,
+        "",
+        "## Limits",
+        "",
+        "- Synthetic benchmark only; this answer cannot support a production claim.",
+        "- The production 8131 endpoint remains configured to block reserved synthetic identifiers.",
+        "- No deterministic fallback is counted as a successful Gemma benchmark answer.",
+    ])
+
+
+def summarize_results(
+    bank: Sequence[Mapping[str, Any]],
+    results: Sequence[Mapping[str, Any]],
+) -> dict[str, Any]:
+    failures: list[str] = []
+    question_count = len(results)
+    pass_count = sum(bool(row.get("passed")) for row in results)
+    http_200_count = sum(int(row.get("http_status") or 0) == 200 for row in results)
+    model_calls = sum(int(row.get("model_call_count") or 0) for row in results)
+    accepted = sum(bool(row.get("gemma_writer_accepted")) for row in results)
+    fallback = sum(bool(row.get("deterministic_fallback_used")) for row in results)
+    answer_key_pass = sum(bool(row.get("answer_key_pass")) for row in results)
+    prompt_tokens = sum(int(row.get("prompt_tokens") or 0) for row in results)
+    completion_tokens = sum(int(row.get("completion_tokens") or 0) for row in results)
+    unique_queries = len({str(row.get("query") or "") for row in bank})
+    unique_relationships = len({str(row.get("relationship_id") or "") for row in bank})
+    unique_templates = len({int(row.get("template_index") or 0) for row in bank})
+    stream_count = sum(bool(row.get("stream")) for row in bank)
+    nonstream_count = len(bank) - stream_count
+
+    expected = {
+        "question_count": EXPECTED_QUESTION_COUNT,
+        "pass_count": EXPECTED_QUESTION_COUNT,
+        "http_200_count": EXPECTED_QUESTION_COUNT,
+        "model_call_count": EXPECTED_QUESTION_COUNT,
+        "gemma_writer_accepted_count": EXPECTED_QUESTION_COUNT,
+        "answer_key_pass_count": EXPECTED_QUESTION_COUNT,
+        "deterministic_fallback_count": 0,
+        "unique_query_count": EXPECTED_QUESTION_COUNT,
+        "stream_count": 50,
+        "nonstream_count": 50,
+    }
+    actual = {
+        "question_count": question_count,
+        "pass_count": pass_count,
+        "http_200_count": http_200_count,
+        "model_call_count": model_calls,
+        "gemma_writer_accepted_count": accepted,
+        "answer_key_pass_count": answer_key_pass,
+        "deterministic_fallback_count": fallback,
+        "unique_query_count": unique_queries,
+        "stream_count": stream_count,
+        "nonstream_count": nonstream_count,
+    }
+    for key, value in expected.items():
+        if actual[key] != value:
+            failures.append(f"count:{key} expected={value} actual={actual[key]}")
+    if unique_relationships < 40:
+        failures.append(f"unique_relationship_count:{unique_relationships}<40")
+    if unique_templates < 20:
+        failures.append(f"unique_template_count:{unique_templates}<20")
+    for row in results:
+        if not row.get("passed"):
+            failures.append(str(row.get("case_id") or "unknown") + ":" + "|".join(row.get("failures") or []))
+
+    latencies = [float(row.get("latency_seconds") or 0.0) for row in results]
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "module": MODULE,
+        "status": STATUS,
+        "quality_status": "PASS" if not failures else "FAIL",
+        "failures": failures,
+        "warnings": [],
+        "counts": {
+            **actual,
+            "fail_count": question_count - pass_count,
+            "unique_relationship_count": unique_relationships,
+            "unique_template_count": unique_templates,
+            "prompt_token_count": prompt_tokens,
+            "completion_token_count": completion_tokens,
+            "synthetic_benchmark_access_count": sum(int(row.get("synthetic_artifact_access_count") or 0) for row in results),
+            "production_synthetic_access_count": 0,
+            "production_graph_write_count": 0,
+            "source_artifact_mutation_count": 0,
+        },
+        "latency": {
+            "average_seconds": round(sum(latencies) / len(latencies), 3) if latencies else 0.0,
+            "maximum_seconds": round(max(latencies), 3) if latencies else 0.0,
+        },
+        "live_model_call_policy": "exactly one real Gemma call for every one of 100 OpenAI-compatible benchmark queries; no fallback counts as pass",
+        "safety_contract": {
+            "benchmark_port_only": True,
+            "production_8131_synthetic_block_preserved": True,
+            "production_graph_write_count": 0,
+            "source_artifact_mutation_count": 0,
+            "deterministic_fallback_counts_as_pass": False,
+        },
+    }
+
+
+def write_json(path: Path, payload: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def write_jsonl(path: Path, rows: Sequence[Mapping[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as handle:
+        for row in rows:
+            handle.write(json.dumps(dict(row), ensure_ascii=False, sort_keys=True) + "\n")
+
+
+__all__ = [
+    "MODULE",
+    "STATUS",
+    "SCHEMA_VERSION",
+    "EXPECTED_QUESTION_COUNT",
+    "DIRECT_PARENT_TEMPLATES",
+    "load_phase5_bundle",
+    "confirmed_relationships",
+    "globally_unambiguous_relationships",
+    "build_gemma100_bank",
+    "build_gemma100_answer_key",
+    "build_synthetic_engine",
+    "build_benchmark_packet",
+    "evaluate_model_answer",
+    "execute_case",
+    "render_benchmark_public_answer",
+    "summarize_results",
+    "write_json",
+    "write_jsonl",
+]

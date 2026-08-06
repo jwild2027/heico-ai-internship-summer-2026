@@ -15,7 +15,7 @@ def load(path: str, name: str):
 
 
 def test_answer_quality_reconstructs_q17_without_blur_claim():
-    quality = load("src/trace_net/validation/trace_net_h30_answer_quality_v1.py", "layout_quality_integration")
+    quality = load("src/trace_net/validation/answer_quality/trace_net_h30_answer_quality_v1.py", "layout_quality_integration")
     registry = [{
         "citation_id": 1,
         "class": "semantic",
@@ -39,7 +39,7 @@ def test_answer_quality_reconstructs_q17_without_blur_claim():
 
 
 def test_page_bridge_attaches_and_prompts_layout_reconstruction():
-    bridge = load("src/trace_net/context/trace_net_h30_page_content_bridge_v1.py", "layout_bridge_integration")
+    bridge = load("src/trace_net/pipeline/s6_retrieval/context_build/trace_net_h30_page_content_bridge_v1.py", "layout_bridge_integration")
     raw = {
         "page_id": "t_p_120_1176_p000005",
         "ocr_sample_text": "- Apr 10/06 25-21-00 607 Sep 30/98 25-LEP",
@@ -78,6 +78,6 @@ def test_page_bridge_attaches_and_prompts_layout_reconstruction():
 
 
 def test_existing_answer_quality_contract_still_loads():
-    quality = load("src/trace_net/validation/trace_net_h30_answer_quality_v1.py", "layout_quality_load")
+    quality = load("src/trace_net/validation/answer_quality/trace_net_h30_answer_quality_v1.py", "layout_quality_load")
     assert callable(quality.install_answer_quality)
     assert callable(quality.render_quality_answer)

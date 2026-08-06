@@ -1,9 +1,9 @@
-import importlib
-
-
-def test_build_script_imports():
-    assert importlib.import_module("scripts.build.ingestion.build_trace_net_answer_context_anchor_injector_v1")
-
-
-def test_check_script_imports():
-    assert importlib.import_module("scripts.maintenance.benchmark.check_trace_net_answer_context_anchor_injector_v1_quality")
+import importlib
+
+
+def test_build_script_imports():
+    assert importlib.import_module("scripts.build.ingestion.build_trace_net_answer_context_anchor_injector_v1")
+
+
+def test_check_script_imports():
+    assert importlib.import_module("scripts.maintenance.ingestion.check_trace_net_answer_context_anchor_injector_v1_quality")

@@ -1,7 +1,8 @@
-"""Quality entrypoint helpers for TRACE-Net Hybrid v3 v2.2 runtime."""
+"""Compatibility shim (repo reorg — reorg: validation). Moved to ``src.trace_net.validation.contract_audits.trace_net_runtime_hybrid_v3_v22_quality``.
 
-from __future__ import annotations
-
-from tiff.trace_net_runtime_hybrid_v3_v22 import check_main, evaluate_quality
-
-__all__ = ["check_main", "evaluate_quality"]
+Importing from this old path keeps working: it re-exports the relocated module in full.
+Update imports to the new path when convenient.
+"""
+import importlib as _importlib
+import sys as _sys
+_sys.modules[__name__] = _importlib.import_module("src.trace_net.validation.contract_audits.trace_net_runtime_hybrid_v3_v22_quality")
