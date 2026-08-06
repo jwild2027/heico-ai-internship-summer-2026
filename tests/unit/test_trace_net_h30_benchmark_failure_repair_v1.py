@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 REPO = Path(__file__).resolve().parents[2]
-BOUNDARY_PATH = REPO / "src/trace_net/validation/trace_net_h30_answer_boundary_v1.py"
+BOUNDARY_PATH = REPO / "src/trace_net/validation/answer_quality/trace_net_h30_answer_boundary_v1.py"
 RUNNER_PATH = REPO / "scripts/benchmark/run_trace_net_h30_server_benchmark_200_v1.py"
 ROUTER_PATH = REPO / "scripts/operations/router/serve_trace_net_cognitive_router_v1.py"
 LAUNCHER_PATH = REPO / "scripts/benchmark/operations/launch_trace_net_h30_server_benchmark_200_v1.sh"

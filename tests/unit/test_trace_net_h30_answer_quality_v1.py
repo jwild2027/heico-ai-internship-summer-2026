@@ -6,7 +6,7 @@ import re
 import sys
 from pathlib import Path
 
-MODULE_PATH = Path("src/trace_net/validation/trace_net_h30_answer_quality_v1.py")
+MODULE_PATH = Path("src/trace_net/validation/answer_quality/trace_net_h30_answer_quality_v1.py")
 
 
 def load_module(name: str = "trace_net_h30_answer_quality_test"):

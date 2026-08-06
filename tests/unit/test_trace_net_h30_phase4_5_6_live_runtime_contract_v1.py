@@ -78,7 +78,7 @@ def test_planner_override_declares_phase4_3_candidate_tunnel():
 def test_native_writer_wrapper_restores_visible_followups_after_contract():
     cold = load(
         "phase456_cold",
-        "src/trace_net/serving/trace_net_h30_cold_start_streaming_v1.py",
+        "src/trace_net/serving/adapters/trace_net_h30_cold_start_streaming_v1.py",
     )
     writer = load(
         "phase456_writer",

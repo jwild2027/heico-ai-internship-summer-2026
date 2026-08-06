@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 MODULE_PATH = Path(
-    "src/trace_net/context/trace_net_h30_typed_evidence_envelope_v1.py"
+    "src/trace_net/pipeline/s6_retrieval/context_build/trace_net_h30_typed_evidence_envelope_v1.py"
 )
 ROUTER_PATH = Path(
     "scripts/operations/router/serve_trace_net_cognitive_router_v1.py"

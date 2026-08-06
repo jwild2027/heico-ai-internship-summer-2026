@@ -123,7 +123,7 @@ def test_benchmark_physical_topic_planner_adoption_and_specialized_labels():
 
 
 def test_native_wrapper_appends_nomenclature_followups():
-    cold = load("p458_cold", "src/trace_net/serving/trace_net_h30_cold_start_streaming_v1.py")
+    cold = load("p458_cold", "src/trace_net/serving/adapters/trace_net_h30_cold_start_streaming_v1.py")
     writer = load("p458_writer", "scripts/operations/serving/serve_trace_net_full_gemma_cognitive_v1.py")
     qs = [f"Question {i} with part number manufacturer look like detail?" for i in range(5)]
     upstream = {"route": "nomenclature_function_search", "content": "Candidate guidance only.", "follow_up_questions": qs, "evidence_envelope": {"direct_evidence": [], "candidate_evidence": []}, "answer_permission": False, "final_answer_allowed": False, "can_answer_directly": False, "can_prove_claims": False, "source_truth_mutation_allowed": False}

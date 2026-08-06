@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 MODULE_PATH = Path(
-    "src/trace_net/validation/trace_net_h30_final_engram_rollout_v1.py"
+    "src/trace_net/validation/answer_quality/trace_net_h30_final_engram_rollout_v1.py"
 )
 WRITER_PATH = Path(
     "scripts/operations/serving/serve_trace_net_full_gemma_cognitive_v1.py"
