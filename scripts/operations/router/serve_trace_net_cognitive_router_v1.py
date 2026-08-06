@@ -504,6 +504,28 @@ def plan_route(atoms: QueryAtoms) -> RoutePlan:
     elif atoms.ocr_requested and not strong_multi:
         route = "ocr_scan_recovery"
         rationale.append("query asks to recover information from a difficult scan")
+    # TRACE_NET_H30_EXACT_IPL_DOMINANT_INTENT_V2_1
+    # An exact identifier is the target entity, not a second independent claim.
+    # A request for IPL fields (item/nomenclature/quantity/page) is one table
+    # lookup unless another genuinely different technical task is also present.
+    elif (
+        (atoms.table_requested or bool(atoms.items))
+        and not any((
+            atoms.visual_requested,
+            atoms.procedure_requested,
+            atoms.warning_requested,
+            atoms.authority_requested,
+            atoms.comparison_requested,
+            atoms.contradiction_requested,
+            atoms.ocr_requested,
+            atoms.aggregate_requested,
+            atoms.graph_requested,
+        ))
+    ):
+        route = "exact_table_ipl_lookup"
+        rationale.append(
+            "exact identifier plus IPL field list is one dominant table intent"
+        )
     elif atoms.multi_question:
         route = "multi_question_research"
         rationale.append("multiple independent technical claims were requested")

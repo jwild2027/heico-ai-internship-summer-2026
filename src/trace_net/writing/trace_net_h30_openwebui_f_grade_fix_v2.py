@@ -91,6 +91,60 @@ def is_capabilities_question(query: str) -> bool:
     return any(pattern.search(text) for pattern in CAPABILITY_PATTERNS)
 
 
+# TRACE_NET_H30_EXACT_IPL_DEFENSIVE_OVERRIDE_V2_1
+IPL_INTENT_PHRASES = (
+    "illustrated parts list",
+    "parts list",
+    "ipl",
+    "table",
+)
+IPL_FIELD_PHRASES = (
+    "item",
+    "nomenclature",
+    "quantity",
+    "qty",
+    "page",
+    "field",
+    "row",
+)
+IPL_CONFLICT_PHRASES = (
+    "figure",
+    "diagram",
+    "callout",
+    "procedure",
+    "remove",
+    "removal",
+    "install",
+    "installation",
+    "warning",
+    "caution",
+    "approved",
+    "replacement",
+    "interchangeable",
+    "effectivity",
+    "eligibility",
+    "compare",
+    "conflict",
+    "contradiction",
+    "blurry",
+    "ocr",
+    "assembly relationship",
+    "parent assembly",
+)
+
+
+def is_exact_ipl_field_question(query: str) -> bool:
+    """Recognize one exact-identifier IPL field request, not multi-research."""
+    text = _clean(query).lower()
+    if not text or not PART_RE.search(text):
+        return False
+    if not any(phrase in text for phrase in IPL_INTENT_PHRASES):
+        return False
+    if not any(phrase in text for phrase in IPL_FIELD_PHRASES):
+        return False
+    return not any(phrase in text for phrase in IPL_CONFLICT_PHRASES)
+
+
 def contains_internal_diagnostic(text: str) -> bool:
     return any(pattern.search(str(text or "")) for pattern in INTERNAL_PATTERNS)
 
@@ -407,7 +461,10 @@ def install_openwebui_f_grade_fix(module: MutableMapping[str, Any]) -> None:
 
         result = dict(current_process(self, payload))
         route = str(result.get("route") or "")
-        if route != "exact_table_ipl_lookup":
+        exact_ipl_query = is_exact_ipl_field_question(query)
+        route_before_override = route
+
+        if route != "exact_table_ipl_lookup" and not exact_ipl_query:
             result["openwebui_f_grade_fix"] = {
                 "status": STATUS,
                 "patch_id": PATCH_ID,
@@ -420,6 +477,16 @@ def install_openwebui_f_grade_fix(module: MutableMapping[str, Any]) -> None:
                 "write_attempt_count": 0,
             }
             return result
+
+        # Defensive release gate: the router patch should already select the
+        # exact IPL route. If an older/stale router still returns multi-question,
+        # release only the deterministic IPL field-status answer and expose the
+        # corrected public route. No evidence is promoted and no retrieval is
+        # executed here.
+        if exact_ipl_query and route != "exact_table_ipl_lookup":
+            result["route_before_openwebui_f_grade_fix"] = route
+            route = "exact_table_ipl_lookup"
+            result["route"] = route
 
         prior = str(result.get("content") or "")
         content = render_table_field_answer(query, result)
@@ -446,7 +513,10 @@ def install_openwebui_f_grade_fix(module: MutableMapping[str, Any]) -> None:
             "final_internal_diagnostic_present": contains_internal_diagnostic(content),
             "gemma_call_count_added": 0,
             "retrieval_changed": False,
-            "route_changed": False,
+            "route_changed": route_before_override != route,
+            "route_before_override": route_before_override,
+            "final_route": route,
+            "dominant_exact_ipl_intent": exact_ipl_query,
             "source_truth_mutation_allowed": False,
             "write_attempt_count": 0,
         }
@@ -467,6 +537,8 @@ def install_openwebui_f_grade_fix(module: MutableMapping[str, Any]) -> None:
             "exact_ipl_deterministic_field_status_enabled": True,
             "exact_ipl_internal_diagnostic_suppression": True,
             "exact_ipl_exact_identifier_proof_gate": True,
+            "exact_ipl_dominant_intent_enabled": True,
+            "exact_ipl_defensive_route_override_enabled": True,
             "openwebui_f_grade_fix_source_truth_mutation_allowed": False,
         })
         return result
