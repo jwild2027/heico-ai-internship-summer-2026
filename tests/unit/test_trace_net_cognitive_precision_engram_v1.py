@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROUTER = Path("scripts/operations/router/serve_trace_net_cognitive_router_v1.py")
 WRITER = Path("scripts/operations/serving/serve_trace_net_full_gemma_cognitive_v1.py")
-HELPER = Path("src/trace_net/engram/trace_net_h30_cognitive_precision_v1.py")
+HELPER = Path("src/trace_net/pipeline/s5_engram/skills/trace_net_h30_cognitive_precision_v1.py")
 ENGRAM = Path(
     "local_data/organization/trace_net/cognitive_openwebui_regression_engram_v1/"
     "trace_net_cognitive_openwebui_regression_engram_v1.json"

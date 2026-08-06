@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 SHADOW_PATH = Path("tiff/trace_net_engram_skill_shadow_v1.py")
-INSTALLER_PATH = Path("src/trace_net/engram/trace_net_h30_engram_skill_shadow_v1.py")
+INSTALLER_PATH = Path("src/trace_net/pipeline/s5_engram/skills/trace_net_h30_engram_skill_shadow_v1.py")
 LIBRARY_PATH = Path(
     "local_data/organization/trace_net/engram_skill_cards_v1/"
     "trace_net_engram_skill_cards_v1.json"

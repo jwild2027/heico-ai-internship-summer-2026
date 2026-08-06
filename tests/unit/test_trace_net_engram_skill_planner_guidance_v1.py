@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 MODULE_PATH = Path(
-    "src/trace_net/engram/trace_net_h30_engram_skill_planner_guidance_v1.py"
+    "src/trace_net/pipeline/s5_engram/skills/trace_net_h30_engram_skill_planner_guidance_v1.py"
 )
 LIBRARY_PATH = Path(
     "local_data/organization/trace_net/engram_skill_cards_v1/"
