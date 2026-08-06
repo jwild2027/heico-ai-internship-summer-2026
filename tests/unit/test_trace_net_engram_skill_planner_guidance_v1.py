@@ -10,10 +10,10 @@ LIBRARY_PATH = Path(
     "trace_net_engram_skill_cards_v1.json"
 )
 SHADOW_PATH = Path(
-    "src/trace_net/router/trace_net_h30_shadow_planner_v1.py"
+    "src/trace_net/pipeline/s6_retrieval/routing/trace_net_h30_shadow_planner_v1.py"
 )
 VALIDATED_PATH = Path(
-    "src/trace_net/router/trace_net_h30_validated_planner_execution_v1.py"
+    "src/trace_net/pipeline/s6_retrieval/routing/trace_net_h30_validated_planner_execution_v1.py"
 )
 LAUNCHER_PATH = Path(
     "scripts/operations/launch_trace_net_cognitive_openwebui_v1.sh"
