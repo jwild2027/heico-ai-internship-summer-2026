@@ -4,10 +4,10 @@ import sys
 from pathlib import Path
 
 MODULE_PATH = Path(
-    "src/trace_net/writing/trace_net_h30_constrained_gemma_writer_v1.py"
+    "src/trace_net/writing/constrained_writer/trace_net_h30_constrained_gemma_writer_v1.py"
 )
 PUBLIC_CONTRACT_PATH = Path(
-    "src/trace_net/writing/trace_net_h30_public_answer_contract_v1.py"
+    "src/trace_net/writing/answer_contracts/trace_net_h30_public_answer_contract_v1.py"
 )
 RESIDENT_LAUNCHER = Path(
     "scripts/operations/launch_trace_net_gemma_resident_openwebui_v2_1.sh"

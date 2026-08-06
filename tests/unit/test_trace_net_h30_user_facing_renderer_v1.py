@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 from types import SimpleNamespace
 
-MODULE_PATH = Path("src/trace_net/writing/trace_net_h30_user_facing_renderer_v1.py")
+MODULE_PATH = Path("src/trace_net/writing/answer_presentation/trace_net_h30_user_facing_renderer_v1.py")
 ROUTER_PATH = Path("scripts/operations/router/serve_trace_net_cognitive_router_v1.py")
 
 

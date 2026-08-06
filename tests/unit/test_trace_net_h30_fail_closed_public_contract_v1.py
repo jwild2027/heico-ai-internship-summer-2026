@@ -6,10 +6,10 @@ import pytest
 
 
 MODE_PATH = Path(
-    "src/trace_net/writing/trace_net_h30_evidence_aware_answer_modes_v1.py"
+    "src/trace_net/writing/answer_modes/trace_net_h30_evidence_aware_answer_modes_v1.py"
 )
 CONTRACT_PATH = Path(
-    "src/trace_net/writing/trace_net_h30_public_answer_contract_v1.py"
+    "src/trace_net/writing/answer_contracts/trace_net_h30_public_answer_contract_v1.py"
 )
 
 

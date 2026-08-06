@@ -6,8 +6,8 @@ import sys
 from pathlib import Path
 
 WRITER_PATH = Path("scripts/operations/serving/serve_trace_net_full_gemma_cognitive_v1.py")
-OVERLAY_PATH = Path("src/trace_net/writing/trace_net_h30_exact_page_answer_mode_v1.py")
-FINAL_PATH = Path("src/trace_net/validation/trace_net_h30_final_engram_rollout_v1.py")
+OVERLAY_PATH = Path("src/trace_net/writing/answer_modes/trace_net_h30_exact_page_answer_mode_v1.py")
+FINAL_PATH = Path("src/trace_net/validation/answer_quality/trace_net_h30_final_engram_rollout_v1.py")
 
 PAGE = "t_p_120_1176_p000482"
 

@@ -6,7 +6,7 @@ import re
 import sys
 from pathlib import Path
 
-MODULE_PATH = Path("src/trace_net/writing/trace_net_h30_chatgpt_answer_presentation_v1.py")
+MODULE_PATH = Path("src/trace_net/writing/answer_presentation/trace_net_h30_chatgpt_answer_presentation_v1.py")
 
 
 def load(name: str = "trace_net_h30_chatgpt_answer_presentation_test"):
