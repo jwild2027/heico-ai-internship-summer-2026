@@ -4,7 +4,7 @@ import importlib.util
 import sys
 from pathlib import Path
 
-MODULE_PATH = Path("src/trace_net/ocr/trace_net_h30_layout_aware_ocr_v1.py")
+MODULE_PATH = Path("src/trace_net/pipeline/s2_ocr/text_ocr/trace_net_h30_layout_aware_ocr_v1.py")
 
 
 def load_module(name: str = "trace_net_h30_layout_aware_ocr_test"):
