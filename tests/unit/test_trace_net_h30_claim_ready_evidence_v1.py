@@ -6,7 +6,7 @@ import json
 import sys
 from pathlib import Path
 
-CLAIM_PATH = Path("src/trace_net/context/trace_net_h30_claim_ready_evidence_v1.py")
+CLAIM_PATH = Path("src/trace_net/pipeline/s6_retrieval/context_build/trace_net_h30_claim_ready_evidence_v1.py")
 CHECK_PATH = Path("scripts/maintenance/context/check_trace_net_h30_claim_ready_evidence_v1.py")
 MODE_PATH = Path("src/trace_net/writing/trace_net_h30_evidence_aware_answer_modes_v1.py")
 WRITER_PATH = Path("scripts/operations/serving/serve_trace_net_full_gemma_cognitive_v1.py")

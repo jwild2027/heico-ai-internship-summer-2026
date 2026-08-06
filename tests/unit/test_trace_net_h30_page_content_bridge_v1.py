@@ -6,7 +6,7 @@ import json
 import sys
 from pathlib import Path
 
-MODULE_PATH = Path("src/trace_net/context/trace_net_h30_page_content_bridge_v1.py")
+MODULE_PATH = Path("src/trace_net/pipeline/s6_retrieval/context_build/trace_net_h30_page_content_bridge_v1.py")
 FIXTURE = Path("tests/data/trace_net_page_content_fixture_v1.json")
 V3_ARTIFACT = Path("tests/data/trace_net_page_content_fixture_v3_artifact.json")
 
