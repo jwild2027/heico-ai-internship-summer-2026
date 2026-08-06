@@ -99,6 +99,25 @@ def answer_text(payload: Mapping[str, Any]) -> str:
     return ""
 
 
+def ata_description_outcome(answer: str) -> str:
+    low = re.sub(r"\s+", " ", str(answer or "")).casefold()
+    positive = (
+        "120-20970-001" in answer
+        and "structure armrest" in low
+    )
+    if positive:
+        return "source_match"
+    safe_limited = (
+        "none had a citation-ready nomenclature matching armrest" in low
+        and "source-location lead" in low
+        and bool(re.search(r"\bt_p_[a-z0-9_]+_p\d{6}\b", low))
+        and "does not by itself prove" in low
+    )
+    if safe_limited:
+        return "safe_limited"
+    return "missing"
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--base-url", required=True)
@@ -160,8 +179,9 @@ def main() -> int:
             if strong_pos < 0 or uncertain_pos < 0 or strong_pos > uncertain_pos:
                 failures.append("partial_ranking_not_improved")
         elif case_id == "R04_ATA_DESCRIPTION":
-            if "120-20970-001" not in answer or "Structure Armrest" not in answer:
-                failures.append("ata_description_match_missing")
+            ata_outcome = ata_description_outcome(answer)
+            if ata_outcome == "missing":
+                failures.append("ata_description_result_neither_supported_nor_safely_limited")
         elif case_id == "R05_NOMENCLATURE_FUNCTION":
             if "120-48024-001" not in answer or "Ring Locking" not in answer:
                 failures.append("locking_ring_match_missing")

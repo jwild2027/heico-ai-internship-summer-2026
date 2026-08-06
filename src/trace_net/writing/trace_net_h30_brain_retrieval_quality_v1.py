@@ -27,8 +27,8 @@ from src.trace_net.writing.trace_net_h30_public_answer_contract_v1 import (
 )
 
 MODULE = "trace_net_h30_brain_retrieval_quality_v1"
-STATUS = "TRACE_NET_H30_BRAIN_RETRIEVAL_QUALITY_V1"
-PATCH_ID = "trace_net_h30_brain_retrieval_quality_v1"
+STATUS = "TRACE_NET_H30_BRAIN_RETRIEVAL_QUALITY_V1_1"
+PATCH_ID = "trace_net_h30_brain_retrieval_quality_v1_1"
 
 PART_RE = re.compile(r"\b\d{2,4}-\d{4,6}(?:-\d{1,3})?\b", re.I)
 FULL_PART_RE = re.compile(r"^\d{3}-\d{5}-\d{3}$", re.I)
@@ -95,6 +95,20 @@ FIGURE_ALIASES = (
     "figure_title",
     "visual_figure",
     "callout_figure",
+)
+FIGURE_NUMBER_ALIASES = (
+    "figure",
+    "figure_number",
+    "figure_no",
+    "figure_id",
+    "fig",
+    "fig_no",
+)
+SHEET_NUMBER_ALIASES = (
+    "sheet",
+    "sheet_number",
+    "sheet_no",
+    "figure_sheet",
 )
 
 CONTEXT_STOPWORDS = {
@@ -194,8 +208,60 @@ def _figure(entry: Mapping[str, Any]) -> str:
     match = FIGURE_RE.search(explicit)
     if match:
         return _clean(match.group(0)).title()
-    match = FIGURE_RE.search(_blob(entry))
-    return _clean(match.group(0)).title() if match else ""
+
+    # Some visual records store Figure and Sheet as separate numeric fields,
+    # for example figure_number=2 and sheet_number=1. Reconstruct only from
+    # explicitly named figure/sheet fields; never infer a figure from a part or
+    # page number.
+    figure_value = _nested_scalar(entry, FIGURE_NUMBER_ALIASES)
+    sheet_value = _nested_scalar(entry, SHEET_NUMBER_ALIASES)
+    figure_match = re.search(r"\b(\d{1,4})\b", figure_value)
+    sheet_match = re.search(r"\b(\d{1,3})\b", sheet_value)
+
+    if not figure_match and explicit:
+        compact_match = re.search(
+            r"(?:figure|fig\.?)?\s*#?\s*(\d{1,4})"
+            r"(?:\s*(?:sheet|sh\.?)\s*#?\s*(\d{1,3}))?",
+            explicit,
+            re.I,
+        )
+        if compact_match and (
+            re.search(r"\b(?:figure|fig|sheet|sh)\b", explicit, re.I)
+            or explicit.strip().isdigit()
+        ):
+            figure_match = compact_match
+            if compact_match.group(2):
+                sheet_value = compact_match.group(2)
+                sheet_match = re.search(r"\d{1,3}", sheet_value)
+
+    if figure_match:
+        figure_number = str(int(figure_match.group(1)))
+        rendered = f"Figure {figure_number}"
+        if sheet_match:
+            rendered += f" Sheet {int(sheet_match.group(0))}"
+        return rendered
+
+    blob = _blob(entry)
+    match = FIGURE_RE.search(blob)
+    if match:
+        return _clean(match.group(0)).title()
+
+    json_figure = re.search(
+        r'"(?:figure_number|figure_no|figure)"\s*:\s*"?(\d{1,4})',
+        blob,
+        re.I,
+    )
+    if json_figure:
+        json_sheet = re.search(
+            r'"(?:sheet_number|sheet_no|sheet|figure_sheet)"\s*:\s*"?(\d{1,3})',
+            blob,
+            re.I,
+        )
+        rendered = f"Figure {int(json_figure.group(1))}"
+        if json_sheet:
+            rendered += f" Sheet {int(json_sheet.group(1))}"
+        return rendered
+    return ""
 
 
 def _canonical_name(value: Any) -> str:
@@ -253,21 +319,60 @@ def _canonical_name(value: Any) -> str:
     return " ".join(word.title() for word in output[:8])
 
 
-def _name(entry: Mapping[str, Any]) -> str:
-    candidates: List[str] = []
+def _name_values(entry: Mapping[str, Any]) -> List[str]:
+    values: List[str] = []
+    wanted = {alias.casefold() for alias in NAME_ALIASES}
     for mapping in _iter_mappings(entry):
-        for alias in NAME_ALIASES:
-            for key, value in mapping.items():
-                if str(key).casefold() != alias.casefold():
-                    continue
-                if isinstance(value, (str, int, float)):
-                    name = _canonical_name(value)
-                    if name:
-                        candidates.append(name)
+        for key, value in mapping.items():
+            if str(key).casefold() not in wanted:
+                continue
+            if isinstance(value, (str, int, float)) and not isinstance(value, bool):
+                cleaned = _clean(value)
+                if cleaned:
+                    values.append(cleaned)
+            elif isinstance(value, list):
+                values.extend(
+                    _clean(item)
+                    for item in value
+                    if isinstance(item, (str, int, float))
+                    and not isinstance(item, bool)
+                    and _clean(item)
+                )
+    return values
+
+
+def _best_name(values: Sequence[str]) -> str:
+    candidates: List[str] = []
+    for value in values:
+        candidate = _canonical_name(value)
+        if candidate:
+            candidates.append(candidate)
+    # Coordinate/table records sometimes split one nomenclature across fields
+    # or sibling records under the same citation (for example RING + LOCKING).
+    # Joining only explicit nomenclature/description aliases reconstructs that
+    # field without reading arbitrary query or search metadata.
+    combined = _canonical_name(" ".join(values))
+    if combined:
+        candidates.append(combined)
     if not candidates:
         return ""
-    candidates.sort(key=lambda value: (_name_quality(value), len(value)), reverse=True)
+    candidates = list(dict.fromkeys(candidates))
+    candidates.sort(
+        key=lambda value: (_name_quality(value), len(value)),
+        reverse=True,
+    )
     return candidates[0]
+
+
+def _name(entry: Mapping[str, Any]) -> str:
+    return _best_name(_name_values(entry))
+
+
+def _group_name(entries: Sequence[Mapping[str, Any]]) -> str:
+    values: List[str] = []
+    for entry in entries:
+        values.extend(_name_values(entry))
+    return _best_name(values)
 
 
 def _name_quality(value: str) -> int:
@@ -327,19 +432,20 @@ def _records(result: Mapping[str, Any]) -> List[Dict[str, Any]]:
 
     records: List[Dict[str, Any]] = []
     for citation, entries in groups.items():
-        names = [_name(entry) for entry in entries]
-        names = [name for name in names if name]
-        names.sort(key=lambda value: (_name_quality(value), len(value)), reverse=True)
+        group_name = _group_name(entries)
         parts = [_part(entry) for entry in entries]
         pages = [_page(entry) for entry in entries]
         figures = [_figure(entry) for entry in entries]
+        group_figure = next((value for value in figures if value), "")
+        if not group_figure:
+            group_figure = _figure({"citation_records": entries})
         combined_blob = " ".join(_blob(entry) for entry in entries)
         record = {
             "citation_id": citation,
             "part": next((value for value in parts if value), ""),
             "page": next((value for value in pages if value), ""),
-            "figure": next((value for value in figures if value), ""),
-            "name": names[0] if names else "",
+            "figure": group_figure,
+            "name": group_name,
             "direct": any(_is_direct(entry) for entry in entries),
             "visual": any(_is_visual(entry) for entry in entries),
             "conflict": any(
@@ -937,6 +1043,9 @@ def install_brain_retrieval_quality(module: MutableMapping[str, Any]) -> None:
             "nomenclature_exact_term_ranking": True,
             "global_internal_diagnostic_suppression": True,
             "visual_answer_substantive_validation": True,
+            "grouped_nomenclature_field_reconstruction": True,
+            "split_figure_field_reconstruction": True,
+            "ata_safe_limited_result_supported": True,
             "deterministic_registry_token_guard": True,
             "brain_retrieval_quality_adds_gemma_call": False,
             "brain_retrieval_quality_changes_retrieval": False,
