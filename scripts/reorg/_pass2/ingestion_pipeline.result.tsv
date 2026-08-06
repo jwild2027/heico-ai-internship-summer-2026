@@ -1,0 +1,60 @@
+src/trace_net/ingestion/chunking_strategy.py	src/trace_net/ingestion/chunking/chunking_strategy.py	Profiles a document and selects flat vs parent-child chunking strategy
+src/trace_net/ingestion/document_batch_audit.py	src/trace_net/ingestion/intake_audit/document_batch_audit.py	Read-only shape-of-folder audit of messy TIFF/ResCarta batches before ingest
+src/trace_net/ingestion/heading_detectors.py	src/trace_net/ingestion/chunking/heading_detectors.py	Pluggable per-format heading detectors used to find chunk boundaries
+src/trace_net/ingestion/ingest_bridge.py	src/trace_net/ingestion/rag/ingest_bridge.py	Wires the RAG benchmark extract/chunk pipeline into the SQLite+Chroma DB layer
+src/trace_net/ingestion/json_report.py	src/trace_net/ingestion/tiff_inventory/json_report.py	Builds per-TIFF JSON scan reports from inventory+OCR+metadata parsers (tiff scan layer)
+src/trace_net/ingestion/local_config.py	src/trace_net/ingestion/local_config.py	Shared JSON/YAML-lite config loader for TIFF/RAG scripts; one-off utility folded to ingestion root
+src/trace_net/ingestion/manual_metadata_parser.py	src/trace_net/ingestion/tiff_inventory/manual_metadata_parser.py	Rule-based parser for manual/IPL page metadata from OCR (tiff metadata layer)
+src/trace_net/ingestion/metadata_parser.py	src/trace_net/ingestion/tiff_inventory/metadata_parser.py	Rule-based drawing/title-block metadata parser from OCR text (tiff metadata layer)
+src/trace_net/ingestion/ollama_client.py	src/trace_net/ingestion/rag/ollama_client.py	Stdlib-only local Ollama LLM client used by RAG answer generation
+src/trace_net/ingestion/outline_chunker.py	src/trace_net/ingestion/chunking/outline_chunker.py	Builds chunks from a PDF outline/bookmarks (highest-quality chunk source)
+src/trace_net/ingestion/parent_child_chunker.py	src/trace_net/ingestion/chunking/parent_child_chunker.py	Hybrid parent-child chunker chaining outline, heading and semantic strategies
+src/trace_net/ingestion/part_filters.py	src/trace_net/ingestion/part_catalog/part_filters.py	Second-stage part-number/nomenclature cleanup filters (belongs to part_catalog)
+src/trace_net/ingestion/pdf_ingestion_pipeline.py	src/trace_net/ingestion/pdf_extract/pdf_ingestion_pipeline.py	Standalone pypdf extract + chunk + Ollama summarize PDF ingestion pipeline
+src/trace_net/ingestion/pdfplumber_extractor.py	src/trace_net/ingestion/pdf_extract/pdfplumber_extractor.py	pdfplumber PDF page-extraction backend feeding shared summarization ingest
+src/trace_net/ingestion/pipeline_manifest.py	src/trace_net/ingestion/orchestration/pipeline_manifest.py	Builds backend pipeline run manifests and SQLite health summaries
+src/trace_net/ingestion/pipeline_runner.py	src/trace_net/ingestion/orchestration/pipeline_runner.py	Orchestrates the backend rebuild pipeline by shelling out to stage scripts
+src/trace_net/ingestion/production_adapters.py	src/trace_net/ingestion/orchestration/production_adapters.py	Production storage adapter stubs and readiness checks for Postgres/OpenSearch/Qdrant/ResCarta
+src/trace_net/ingestion/public_tiff_zip_audit.py	src/trace_net/ingestion/intake_audit/public_tiff_zip_audit.py	Read-only audit of a public ResCarta-style TIFF ZIP package
+src/trace_net/ingestion/pymupdf_extractor.py	src/trace_net/ingestion/pdf_extract/pymupdf_extractor.py	PyMuPDF PDF page-extraction backend feeding shared summarization ingest
+src/trace_net/ingestion/pypdf_extractor.py	src/trace_net/ingestion/pdf_extract/pypdf_extractor.py	pypdf PDF page-extraction backend feeding shared summarization ingest
+src/trace_net/ingestion/rag_answer.py	src/trace_net/ingestion/rag/rag_answer.py	Deterministic + LLM answer generation over retrieved TIFF RAG sources
+src/trace_net/ingestion/rag_ata_answer.py	src/trace_net/ingestion/rag/rag_ata_answer.py	Deterministic source-page answers for exact ATA-section queries
+src/trace_net/ingestion/rag_chunks.py	src/trace_net/ingestion/rag/rag_chunks.py	Builds page- and chunk-level RAG tables from the TIFF search database
+src/trace_net/ingestion/rag_ingestion_pipeline.py	src/trace_net/ingestion/rag/rag_ingestion_pipeline.py	Benchmark PyMuPDF+BGE+Chroma ingestion CLI with OCR/retrieval diagnostics
+src/trace_net/ingestion/real_scale_intake.py	src/trace_net/ingestion/intake_audit/real_scale_intake.py	Read-only source-package intake planning and raw-vs-processed traceability
+src/trace_net/ingestion/realistic_query_trace_tests.py	src/trace_net/ingestion/runners/realistic_query_trace_tests.py	Subprocess-driven prompt-to-retrieval-to-graph trace regression harness
+src/trace_net/ingestion/sqlite_store.py	src/trace_net/ingestion/tiff_inventory/sqlite_store.py	SQLite storage for TIFF inventory, scan reports and extracted metadata
+src/trace_net/ingestion/streamlit_ui_backend.py	src/trace_net/ingestion/orchestration/streamlit_ui_backend.py	Streamlit-free backend helpers serving export/manifest artifacts to the TIFF UI
+src/trace_net/ingestion/trace_net.py	src/trace_net/ingestion/page_routing/trace_net.py	TRACE-Net page-route planner deciding each page's next extraction route
+src/trace_net/ingestion/trace_net_algorithm_policy.py	src/trace_net/ingestion/confidence_policy/trace_net_algorithm_policy.py	Turns community-ablation results into a reusable algorithm-selection policy artifact
+src/trace_net/ingestion/trace_net_answer_context_anchor_injector_v1.py	src/trace_net/ingestion/answer_context/trace_net_answer_context_anchor_injector_v1.py	Injects ranked exact part-number retrieval anchors into the answer context seed
+src/trace_net/ingestion/trace_net_answer_context_evidence_enricher_v1.py	src/trace_net/ingestion/answer_context/trace_net_answer_context_evidence_enricher_v1.py	Enriches an answer-context pack with source-traceable OCR/table/page excerpts
+src/trace_net/ingestion/trace_net_answer_context_exact_row_proof_v1.py	src/trace_net/ingestion/answer_context/trace_net_answer_context_exact_row_proof_v1.py	Verifies exact part-number presence to upgrade answer-context evidence to proven
+src/trace_net/ingestion/trace_net_artifact_detector_v1.py	src/trace_net/ingestion/page_routing/trace_net_artifact_detector_v1.py	Detects table/image/crop artifact cards per page to drive extraction routing
+src/trace_net/ingestion/trace_net_ask.py	src/trace_net/ingestion/answer_context/trace_net_ask.py	Ask orchestration CLI running search->citations->grouping->answer composer
+src/trace_net/ingestion/trace_net_claim_evidence_entailment_v1.py	src/trace_net/ingestion/answer_context/trace_net_claim_evidence_entailment_v1.py	Advisory critic scoring claim-to-evidence support and escalating weak spans
+src/trace_net/ingestion/trace_net_confidence_stage2.py	src/trace_net/ingestion/confidence_policy/trace_net_confidence_stage2.py	Stage 2 confidence eval comparing rule tiers vs score-based confidence tiers
+src/trace_net/ingestion/trace_net_confidence_stage3_policy.py	src/trace_net/ingestion/confidence_policy/trace_net_confidence_stage3_policy.py	Stage 3 builder materializing a layer-specific confidence policy artifact
+src/trace_net/ingestion/trace_net_confidence_stage4_simulation.py	src/trace_net/ingestion/confidence_policy/trace_net_confidence_stage4_simulation.py	Stage 4 read-only simulation of confidence-policy tier/RAG/repair recommendations
+src/trace_net/ingestion/trace_net_confidence_stage5_control.py	src/trace_net/ingestion/confidence_policy/trace_net_confidence_stage5_control.py	Stage 5 controlled-decision view enabling the confidence policy for chosen layers
+src/trace_net/ingestion/trace_net_e2e_cascade_route_feature_audit_v35_2.py	src/trace_net/ingestion/page_routing/trace_net_e2e_cascade_route_feature_audit_v35_2.py	Audits cascade route features per page image to validate blank/text/table/image routing
+src/trace_net/ingestion/trace_net_element_category_taxonomy_v1.py	src/trace_net/ingestion/page_routing/trace_net_element_category_taxonomy_v1.py	Normalizes page/element signals into a stable category taxonomy for routing/review
+src/trace_net/ingestion/trace_net_engineering_query_planner_v1.py	src/trace_net/ingestion/answer_context/trace_net_engineering_query_planner_v1.py	Plans engineering queries (part/figure/item/topic intents) for the answer pipeline
+src/trace_net/ingestion/trace_net_engineering_real_answer_overlay_question_id_aligner_v1.py	src/trace_net/ingestion/answer_context/trace_net_engineering_real_answer_overlay_question_id_aligner_v1.py	Aligns real-answer overlay records to question IDs for the engineering answer path
+src/trace_net/ingestion/trace_net_gold_label_auto_review_seed_v1.py	src/trace_net/ingestion/human_review/trace_net_gold_label_auto_review_seed_v1.py	Auto-seeds canonical page-route gold labels and flags review-required pages
+src/trace_net/ingestion/trace_net_gold_label_decision_merge_v1.py	src/trace_net/ingestion/human_review/trace_net_gold_label_decision_merge_v1.py	Merges auto-seeded labels with human review CSV decisions into final gold labels
+src/trace_net/ingestion/trace_net_gold_label_review_reduction_v1.py	src/trace_net/ingestion/human_review/trace_net_gold_label_review_reduction_v1.py	Reduces/prioritizes the gold-label review queue into reviewer worklists
+src/trace_net/ingestion/trace_net_h38c_diversity_task_repair_runner_v1.py	src/trace_net/ingestion/runners/trace_net_h38c_diversity_task_repair_runner_v1.py	Runner that executes diversity-task repair passes and emits report artifacts
+src/trace_net/ingestion/trace_net_human_review_triage_v1.py	src/trace_net/ingestion/human_review/trace_net_human_review_triage_v1.py	Dedups/groups the raw human-review queue into advisory triage cards
+src/trace_net/ingestion/trace_net_human_review_workbench_preview_wiring_v1.py	src/trace_net/ingestion/human_review/trace_net_human_review_workbench_preview_wiring_v1.py	Wires review cards to source-package/TIFF preview metadata for the workbench
+src/trace_net/ingestion/trace_net_human_review_workbench_v1.py	src/trace_net/ingestion/human_review/trace_net_human_review_workbench_v1.py	Builds a UI-ready view model over human-review triage cards
+src/trace_net/ingestion/trace_net_it_issue_origin_test_matrix_v1.py	src/trace_net/ingestion/runners/trace_net_it_issue_origin_test_matrix_v1.py	Stress-test harness driving the IT operations console with synthetic issue-origin artifacts
+src/trace_net/ingestion/trace_net_page_element_registry_v1.py	src/trace_net/ingestion/page_routing/trace_net_page_element_registry_v1.py	Builds one read-only page intake/element registry record that classifies and routes each page
+src/trace_net/ingestion/trace_net_page_ink_route_evidence_v1.py	src/trace_net/ingestion/page_routing/trace_net_page_ink_route_evidence_v1.py	Derives pixel-ink route evidence (blank/text/table/image) per page from images
+src/trace_net/ingestion/quality/trace_net_page_ink_route_evidence_v1_quality.py	src/trace_net/ingestion/page_routing/quality/trace_net_page_ink_route_evidence_v1_quality.py	Quality gate over the page ink-route evidence audit
+src/trace_net/ingestion/trace_net_pre_algorithm_baseline.py	src/trace_net/ingestion/confidence_policy/trace_net_pre_algorithm_baseline.py	Captures read-only OCR/graph/evidence baseline metrics before applying an algorithm-filter policy
+src/trace_net/ingestion/trace_net_repair.py	src/trace_net/ingestion/page_routing/trace_net_repair.py	Repair planner converting trust traits into per-page repair/route actions
+src/trace_net/ingestion/trace_net_v2_sample_runner_simple_v1.py	src/trace_net/ingestion/runners/trace_net_v2_sample_runner_simple_v1.py	Simple runner generating TRACE-Net v2 sample records/prompts/quality from page contexts
+src/trace_net/ingestion/trace_net_weights_policy.py	src/trace_net/ingestion/confidence_policy/trace_net_weights_policy.py	Writes the versioned TRACE-Net layer confidence/risk/ranking weights policy artifact
+src/trace_net/ingestion/unstructured_extractor.py	src/trace_net/ingestion/pdf_extract/unstructured_extractor.py	unstructured PDF page-extraction backend feeding shared summarization ingest
