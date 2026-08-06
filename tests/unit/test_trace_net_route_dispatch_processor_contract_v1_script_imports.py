@@ -1,6 +1,6 @@
-def test_script_imports() -> None:
-    import scripts.build.core.build_trace_net_route_dispatch_processor_contract_v1 as build_script
-    import scripts.maintenance.core.check_trace_net_route_dispatch_processor_contract_v1_quality as check_script
-
-    assert build_script.main is not None
-    assert check_script.main is not None
+def test_script_imports() -> None:
+    import scripts.build.core.build_trace_net_route_dispatch_processor_contract_v1 as build_script
+    import scripts.maintenance.validation.check_trace_net_route_dispatch_processor_contract_v1_quality as check_script
+
+    assert build_script.main is not None
+    assert check_script.main is not None
