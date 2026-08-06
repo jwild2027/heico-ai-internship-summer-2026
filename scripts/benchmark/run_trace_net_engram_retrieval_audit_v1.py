@@ -120,14 +120,56 @@ def collect_strings(value: Any, keys: Sequence[str]) -> List[str]:
 
 
 def selected_skill(trace: Mapping[str, Any]) -> tuple[str, str, List[str]]:
-    candidates: List[str] = []
-    basis = ""
+    # TRACE_NET_ENGRAM_AUDIT_EXPLICIT_SKILL_SELECTION_V1
+    # Read explicit selection fields only; never treat supported-skill registries
+    # or arbitrary skill strings as the selected runtime behavior.
+    preferred_suffixes = (
+        "final_engram_rollout.selected_skill_id",
+        "engram_skill_selection.selected_skill_id",
+        "engram_skill_planner_guidance.selected_skill_id",
+        "engram_skill_shadow.selected_skill_id",
+        "engram_memory.primary_skill_id",
+    )
+    explicit: List[tuple[str, str]] = []
+    basis_by_parent: Dict[str, str] = {}
+
     for path, child in walk(trace):
-        if isinstance(child, str) and child in SUPPORTED_SKILLS and child not in candidates:
-            candidates.append(child)
-        if path.endswith("selection_basis") and isinstance(child, str) and not basis:
-            basis = child
-    return (candidates[0] if candidates else "", basis, candidates)
+        if path.endswith(("skill_selection_basis", "selection_basis")) and isinstance(child, str):
+            parent = path.rsplit(".", 1)[0]
+            basis_by_parent[parent] = child
+        leaf = path.rsplit(".", 1)[-1].split("[", 1)[0]
+        if (
+            leaf in {"selected_skill_id", "primary_skill_id"}
+            and isinstance(child, str)
+            and child in SUPPORTED_SKILLS
+        ):
+            explicit.append((path, child))
+
+    ordered: List[tuple[str, str]] = []
+    for suffix in preferred_suffixes:
+        ordered.extend(item for item in explicit if item[0].endswith(suffix))
+    ordered.extend(item for item in explicit if item not in ordered)
+
+    candidates: List[str] = []
+    for _, skill in ordered:
+        if skill not in candidates:
+            candidates.append(skill)
+
+    if not ordered:
+        return "", "", []
+
+    selected_path, selected = ordered[0]
+    parent = selected_path.rsplit(".", 1)[0]
+    basis = basis_by_parent.get(parent, "")
+    if not basis:
+        rollout = trace.get("final_engram_rollout")
+        if isinstance(rollout, Mapping):
+            basis = str(
+                rollout.get("skill_selection_basis")
+                or rollout.get("selection_basis")
+                or ""
+            )
+    return selected, basis, candidates
 
 
 def evidence_counts(trace: Mapping[str, Any]) -> Dict[str, int]:

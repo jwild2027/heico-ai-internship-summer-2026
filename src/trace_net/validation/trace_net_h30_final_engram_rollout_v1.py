@@ -44,6 +44,8 @@ SUPPORTED_SKILL_IDS = (
 ROUTE_SKILL_FALLBACK = {
     "guided_part_discovery": "partial_identifier_discovery",
     "exact_identifier_lookup": "exact_identifier_lookup",
+    "exact_table_ipl_lookup": "exact_identifier_lookup",
+    "document_page_navigation": "exact_identifier_lookup",
     "nomenclature_function_search": "nomenclature_function_discovery",
     "ata_system_discovery": "ata_plus_description_discovery",
 }
@@ -291,6 +293,10 @@ def _manufacturer_known(atoms: Mapping[str, Any]) -> bool:
 def select_primary_skill(
     result: Mapping[str, Any],
 ) -> Dict[str, Any]:
+    # TRACE_NET_H30_ROUTE_CONSISTENT_ENGRAM_SKILL_V1
+    # The executed deterministic route owns the behavior skill for partial,
+    # exact, ATA, and nomenclature requests. Manufacturer + description is the
+    # intentional specialization above a nomenclature/semantic route.
     discovered: List[str] = []
     for key in (
         "engram_skill_shadow",
@@ -302,6 +308,31 @@ def select_primary_skill(
             if candidate in SUPPORTED_SKILL_IDS and candidate not in discovered:
                 discovered.append(candidate)
 
+    atoms = _mapping(result.get("query_atoms"))
+    route = str(result.get("route") or "")
+
+    if _manufacturer_known(atoms) and route in {
+        "nomenclature_function_search",
+        "semantic_discovery",
+    }:
+        return {
+            "skill_id": "manufacturer_plus_description_discovery",
+            "selection_basis": "deterministic_manufacturer_route_override",
+            "candidate_skill_ids": discovered,
+        }
+
+    route_skill = ROUTE_SKILL_FALLBACK.get(route, "")
+    if route_skill:
+        return {
+            "skill_id": route_skill,
+            "selection_basis": (
+                "route_consistent_runtime_selected_engram_skill"
+                if route_skill in discovered
+                else "deterministic_route_skill_override"
+            ),
+            "candidate_skill_ids": discovered,
+        }
+
     if discovered:
         return {
             "skill_id": discovered[0],
@@ -309,7 +340,6 @@ def select_primary_skill(
             "candidate_skill_ids": discovered,
         }
 
-    atoms = _mapping(result.get("query_atoms"))
     if _manufacturer_known(atoms):
         return {
             "skill_id": "manufacturer_plus_description_discovery",
@@ -317,15 +347,9 @@ def select_primary_skill(
             "candidate_skill_ids": [],
         }
 
-    route = str(result.get("route") or "")
-    fallback = ROUTE_SKILL_FALLBACK.get(route, "")
     return {
-        "skill_id": fallback,
-        "selection_basis": (
-            "deterministic_route_fallback"
-            if fallback
-            else "no_applicable_final_rollout_skill"
-        ),
+        "skill_id": "",
+        "selection_basis": "no_applicable_final_rollout_skill",
         "candidate_skill_ids": [],
     }
 

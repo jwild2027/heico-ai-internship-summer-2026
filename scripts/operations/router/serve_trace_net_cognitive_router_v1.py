@@ -504,6 +504,28 @@ def plan_route(atoms: QueryAtoms) -> RoutePlan:
     elif atoms.ocr_requested and not strong_multi:
         route = "ocr_scan_recovery"
         rationale.append("query asks to recover information from a difficult scan")
+    # TRACE_NET_H30_DOMINANT_VISUAL_INTENT_V1
+    # An exact identifier names the target entity; it is not a second claim.
+    # "Show the diagram/figure for part X and cite the page" is one bounded
+    # visual lookup unless another independent technical task is also present.
+    elif (
+        (atoms.visual_requested or bool(atoms.figures))
+        and not any((
+            atoms.table_requested,
+            atoms.procedure_requested,
+            atoms.warning_requested,
+            atoms.authority_requested,
+            atoms.comparison_requested,
+            atoms.contradiction_requested,
+            atoms.ocr_requested,
+            atoms.aggregate_requested,
+            atoms.graph_requested,
+        ))
+    ):
+        route = "visual_figure_callout_lookup"
+        rationale.append(
+            "exact identifier plus figure/diagram request is one dominant visual intent"
+        )
     # TRACE_NET_H30_EXACT_IPL_DOMINANT_INTENT_V2_1
     # An exact identifier is the target entity, not a second independent claim.
     # A request for IPL fields (item/nomenclature/quantity/page) is one table
