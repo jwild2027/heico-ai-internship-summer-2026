@@ -58,6 +58,9 @@ from src.trace_net.writing.trace_net_h30_phase19_preservation_writer_v1 import (
 from src.trace_net.writing.trace_net_h30_public_answer_contract_v1 import (
     install_public_answer_contract,
 )
+from src.trace_net.writing.trace_net_h30_openwebui_f_grade_fix_v2 import (
+    install_openwebui_f_grade_fix,
+)
 from src.trace_net.writing.trace_net_h30_engineer_answer_contract_v1 import (
     apply_engineer_answer_contract,
     clean_engineer_text,
@@ -1148,6 +1151,7 @@ install_constrained_gemma_writer(globals())
 install_phase19_preservation_writer(globals())
 # TRACE_NET_H30_PHASE1_PUBLIC_ANSWER_CONTRACT_V1_INSTALL
 install_public_answer_contract(globals())
+install_openwebui_f_grade_fix(globals())
 install_writer_residency_watchdog(globals())
 
 
